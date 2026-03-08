@@ -1084,22 +1084,18 @@ function dismissWarning() {
 
 /* ── FDA Reference Search ───────────────────────────────────────────────── */
 function initFDASearch() {
-  const wrap = document.getElementById('fda-quick-links');
-  const sorted = [...MEDICATIONS].sort((a,b) => a.name.localeCompare(b.name));
+  const input = document.getElementById('fda-filter');
+  const btn = document.getElementById('fda-go-btn');
 
-  function renderLinks(filter) {
-    const filtered = filter ? sorted.filter(m => m.name.toLowerCase().includes(filter.toLowerCase())) : sorted;
-    wrap.innerHTML = filtered.map(m => {
-      const url = `https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=BasicSearch.process&query=${encodeURIComponent(m.name)}`;
-      return `<a href="${url}" target="_blank" rel="noopener" class="fda-link-btn">${m.name} ↗</a>`;
-    }).join('');
+  function openFDA() {
+    const query = input.value.trim();
+    if (!query) return;
+    const url = `https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=BasicSearch.process&query=${encodeURIComponent(query)}`;
+    window.open(url, '_blank', 'noopener');
   }
 
-  renderLinks('');
-
-  document.getElementById('fda-filter').addEventListener('input', e => {
-    renderLinks(e.target.value.trim());
-  });
+  btn.addEventListener('click', openFDA);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') openFDA(); });
 }
 
 /* ── QT Risk Tool ───────────────────────────────────────────────────────── */

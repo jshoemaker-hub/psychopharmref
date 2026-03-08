@@ -1763,6 +1763,153 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
   color: var(--text-muted);
 }
 
+/* ── References & Methods Section ──────────────────────────────────────── */
+.ref-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+}
+.ref-card-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin: 0 0 6px;
+}
+.ref-card-sub {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 0 16px;
+}
+.fda-search-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.fda-search-row .fda-filter-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 9px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-main);
+  font-size: 14px;
+}
+.fda-search-btn {
+  padding: 9px 18px;
+  border-radius: 6px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity .15s;
+}
+.fda-search-btn:hover { opacity: .85; }
+.ref-method-block {
+  margin-bottom: 22px;
+}
+.ref-method-block h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 8px;
+}
+.ref-method-block p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 0 8px;
+  line-height: 1.6;
+}
+.ref-formula {
+  background: var(--bg);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: var(--text-main);
+  margin: 8px 0;
+  white-space: pre-wrap;
+}
+.ref-inline-formula {
+  font-family: 'Courier New', monospace;
+  background: rgba(255,255,255,.06);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-size: 13px;
+}
+.ref-method-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 10px 0;
+}
+.ref-method-table th {
+  background: rgba(255,255,255,.06);
+  color: var(--text-main);
+  padding: 7px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.ref-method-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  color: var(--text-muted);
+  vertical-align: top;
+}
+.ref-method-steps {
+  padding-left: 18px;
+  margin: 8px 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.ref-hale-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+  font-size: 13px;
+}
+.ref-hale-list li {
+  padding: 3px 0;
+  color: var(--text-muted);
+}
+.ref-hale-list li strong {
+  color: var(--text-main);
+  font-family: 'Courier New', monospace;
+}
+.ref-caveat {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+.ref-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.ref-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.ref-list li:last-child { border-bottom: none; }
+.ref-list a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.ref-list a:hover { text-decoration: underline; }
+
 /* ── Scrollbar ─────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }

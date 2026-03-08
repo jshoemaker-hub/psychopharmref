@@ -33,7 +33,7 @@
         <span class="nav-icon">&#9998;</span> Receptor Glossary
       </a></li>
       <li><a href="#" class="nav-link" data-section="fda-search">
-        <span class="nav-icon">&#128269;</span> FDA References
+        <span class="nav-icon">&#128269;</span> References
       </a></li>
       <li><a href="#" class="nav-link" data-section="qt-risk">
         <span class="nav-icon">&#10084;</span> QT Risk Tool
@@ -342,12 +342,104 @@
     <!-- ── FDA References ───────────────────────────────────────────────── -->
     <section id="fda-search" class="section">
       <div class="section-header">
-        <h2>FDA References</h2>
-        <p class="section-sub">Each button opens the official FDA Drug@FDA page for that medication on <strong>accessdata.fda.gov</strong>.</p>
+        <h2>References &amp; Methods</h2>
+        <p class="section-sub">Data sources, methodology, and direct FDA labeling access.</p>
       </div>
 
-      <input type="text" id="fda-filter" class="fda-filter-input" placeholder="Filter medications…" autocomplete="off">
-      <div id="fda-quick-links" class="fda-link-grid"></div>
+      <!-- ── FDA Search ─────────────────────────────────────────────────── -->
+      <div class="ref-card">
+        <h3 class="ref-card-title">&#128269; FDA Drug&#64;FDA Search</h3>
+        <p class="ref-card-sub">Search the official FDA Drug&#64;FDA database directly at <strong>accessdata.fda.gov</strong>. Enter any medication name to open its FDA labeling page.</p>
+        <div class="fda-search-row">
+          <input type="text" id="fda-filter" class="fda-filter-input" placeholder="Enter medication name and press Search…" autocomplete="off">
+          <button class="fda-search-btn" id="fda-go-btn">Search FDA &#8599;</button>
+        </div>
+      </div>
+
+      <!-- ── Methods ───────────────────────────────────────────────────── -->
+      <div class="ref-card">
+        <h3 class="ref-card-title">&#9881; Methods — How Data Is Calculated</h3>
+
+        <div class="ref-method-block">
+          <h4>Receptor Binding Affinity (Ki Values)</h4>
+          <p>Receptor binding data is expressed as the inhibition constant <strong>Ki (nM)</strong> — the concentration of drug required to occupy 50% of a receptor in a competitive binding assay. Lower Ki values indicate stronger binding affinity. All Ki values are sourced from in vitro radioligand binding studies, primarily the NIMH Psychoactive Drug Screening Program (PDSP) database, FDA-approved prescribing information, and peer-reviewed pharmacology literature.</p>
+          <p>Ki values of <strong>≥10,000 nM</strong> are treated as negligible affinity and displayed as "—" in charts. For visualization, Ki is converted to <strong>pKi</strong> using the formula:</p>
+          <div class="ref-formula">pKi = 9 − log<sub>10</sub>(Ki<sub>nM</sub>)</div>
+          <p>This transforms Ki in nanomolar units to the equivalent of −log<sub>10</sub>(Ki in molar), producing values typically between 5 and 10 where higher numbers indicate stronger binding. The pie chart displays <strong>relative affinity</strong> normalized from 1/Ki values (receptors with Ki ≥5,000 nM excluded).</p>
+        </div>
+
+        <div class="ref-method-block">
+          <h4>Side Effect Risk Scores</h4>
+          <p>Side effect risk scores estimate the likelihood that a drug will cause a given clinical side effect based on its receptor binding profile. Scores range from <strong>0 to 100</strong> (higher = greater predicted risk) and are calculated as follows:</p>
+
+          <ol class="ref-method-steps">
+            <li><strong>Receptor-to-side-effect mapping:</strong> Each side effect is linked to one or more receptors known to mediate it, each assigned a clinical weight (0–1.0) based on the strength of the pharmacological evidence. For example, sedation is driven primarily by H₁ antagonism (weight 1.0), with secondary contributions from α₁ (0.5) and M₁ (0.3).</li>
+            <li><strong>Affinity normalization:</strong> For each relevant receptor, the drug's Ki value is converted to a 0–1 affinity score using the pKi scale: <span class="ref-inline-formula">normalized = max(0, (pKi − 5) / 4)</span>. This maps the range Ki=10,000 nM (pKi=5 → score 0) to Ki=1 nM (pKi=9 → score 1). Drugs with Ki ≥10,000 nM score 0.</li>
+            <li><strong>Weighted average:</strong> The final score is the weighted average of normalized affinity scores across all receptors in the profile, multiplied by 100: <span class="ref-inline-formula">Score = (Σ weight × normalized) / Σ weight × 100</span>.</li>
+            <li><strong>Risk thresholds:</strong> Scores are binned as: Very Low (&lt;20), Low (20–39), Moderate (40–59), High (60–79), Very High (≥80).</li>
+          </ol>
+
+          <div class="ref-method-table-wrap">
+            <table class="ref-method-table">
+              <thead><tr><th>Side Effect</th><th>Receptor Drivers (weight)</th></tr></thead>
+              <tbody>
+                <tr><td>Sedation / Drowsiness</td><td>H₁ (1.0), α₁ (0.5), M₁ (0.3)</td></tr>
+                <tr><td>Weight Gain</td><td>H₁ (1.0), 5HT₂C (0.9), M₁ (0.2)</td></tr>
+                <tr><td>Dry Mouth / Constipation</td><td>M₁ (1.0)</td></tr>
+                <tr><td>Orthostatic Hypotension</td><td>α₁ (1.0), α₂ (0.3)</td></tr>
+                <tr><td>Sexual Dysfunction</td><td>SERT (1.0), 5HT₂A (0.4)</td></tr>
+                <tr><td>EPS / Akathisia</td><td>D₂ (1.0), D₃ (0.5)</td></tr>
+                <tr><td>Metabolic Effects</td><td>5HT₂C (1.0), H₁ (0.8), M₁ (0.2)</td></tr>
+                <tr><td>Insomnia / Activation</td><td>DAT (1.0), NET (0.9), SERT (0.3)</td></tr>
+                <tr><td>Hyperprolactinemia</td><td>D₂ (1.0)</td></tr>
+                <tr><td>Nausea / GI Upset</td><td>SERT (0.8), D₂ (0.6)</td></tr>
+                <tr><td>Cognitive Impairment</td><td>M₁ (1.0), H₁ (0.7), α₁ (0.3)</td></tr>
+                <tr><td>Cardiac / QT Effects</td><td>H₁ (0.5), α₁ (0.6)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="ref-caveat">&#9888; <strong>Important caveat:</strong> Side effect scores are derived from in vitro receptor binding data and represent a pharmacological prediction — not a clinical probability. They do not account for pharmacokinetic factors (bioavailability, CNS penetration, active metabolites), dose-dependence, individual patient variability, or clinical trial incidence data. Scores should be interpreted as a comparative tool to guide discussion, not as definitive risk estimates.</p>
+        </div>
+
+        <div class="ref-method-block">
+          <h4>Pregnancy &amp; Breastfeeding Data</h4>
+          <p>Pregnancy classifications use the historical <strong>FDA letter category system (A/B/C/D/X)</strong>, which remains widely referenced clinically despite being replaced by the Pregnancy and Lactation Labeling Rule (PLLR) for drugs approved after 2015. Drugs approved under PLLR are labeled "N/A" for category.</p>
+          <p>Breastfeeding classifications use <strong>Hale's Lactation Risk Categories (L1–L5)</strong>:</p>
+          <ul class="ref-hale-list">
+            <li><strong>L1 — Safest:</strong> Extensively studied; no adverse effects in infant; not orally bioavailable in infant.</li>
+            <li><strong>L2 — Safer:</strong> Limited studies show no increase in adverse effects; risk to infant is remote.</li>
+            <li><strong>L3 — Moderately Safe:</strong> No controlled studies; risk of adverse effects possible; give only if benefit outweighs risk.</li>
+            <li><strong>L4 — Possibly Hazardous:</strong> Positive evidence of risk to infant; benefits may be acceptable in life-threatening situations.</li>
+            <li><strong>L5 — Contraindicated:</strong> Risk clearly outweighs any benefit.</li>
+          </ul>
+          <p>Sources: FDA prescribing information, NIH LactMed database, Hale's <em>Medications and Mothers' Milk</em> (2023), Briggs <em>Drugs in Pregnancy and Lactation</em> (12th ed.).</p>
+        </div>
+
+        <div class="ref-method-block">
+          <h4>QTc Calculator &amp; Tisdale Risk Score</h4>
+          <p>QTc values are calculated using the <strong>Bazett formula</strong> (QTc = QT / √RR) and the <strong>Fridericia formula</strong> (QTc = QT / ∛RR), where RR = 60/HR in seconds. Fridericia is recommended at heart rates &lt;50 or &gt;100 bpm as Bazett over-corrects at extremes.</p>
+          <p>The <strong>Tisdale Risk Score</strong> is reproduced from: Tisdale JE, et al. <em>Circ Cardiovasc Qual Outcomes.</em> 2013;6(4):479–487. It was validated in hospitalized patients; application in outpatient settings should be interpreted with appropriate clinical judgment.</p>
+        </div>
+      </div>
+
+      <!-- ── General References ─────────────────────────────────────────── -->
+      <div class="ref-card">
+        <h3 class="ref-card-title">&#128218; General References</h3>
+        <ol class="ref-list">
+          <li>NIMH Psychoactive Drug Screening Program (PDSP) Ki Database. <a href="https://pdsp.unc.edu" target="_blank" rel="noopener">pdsp.unc.edu</a></li>
+          <li>FDA Drug&#64;FDA Database. <a href="https://www.accessdata.fda.gov/scripts/cder/daf/" target="_blank" rel="noopener">accessdata.fda.gov</a></li>
+          <li>NIH LactMed Database. <a href="https://www.ncbi.nlm.nih.gov/books/NBK501922/" target="_blank" rel="noopener">nlm.nih.gov/lactmed</a></li>
+          <li>Stahl SM. <em>Stahl's Essential Psychopharmacology: Neuroscientific Basis and Practical Applications.</em> 5th ed. Cambridge University Press; 2021.</li>
+          <li>Hale TW. <em>Medications and Mothers' Milk.</em> 2023 ed. Springer; 2023.</li>
+          <li>Briggs GG, Freeman RK, Towers CV, Forinash AB. <em>Drugs in Pregnancy and Lactation.</em> 12th ed. Wolters Kluwer; 2021.</li>
+          <li>Tisdale JE, et al. Development and validation of a risk score to predict QT interval prolongation in hospitalized patients. <em>Circ Cardiovasc Qual Outcomes.</em> 2013;6(4):479–487.</li>
+          <li>Academy of Consultation-Liaison Psychiatry (ACLP). <em>How-To Guide: QTc Prolongation.</em> 2020.</li>
+          <li>Woosley RL, Heise CW, Gallo T, et al. CredibleMeds / AZCERT QTDrugs List. <a href="https://crediblemeds.org" target="_blank" rel="noopener">crediblemeds.org</a></li>
+          <li>Roden DM. Drug-induced prolongation of the QT interval. <em>N Engl J Med.</em> 2004;350:1013–1022.</li>
+          <li>Drew BJ, et al. Prevention of Torsade de Pointes in Hospital Settings. <em>Circulation.</em> 2010;121:1047–1060.</li>
+        </ol>
+      </div>
+
     </section>
 
     <!-- ── QT Risk Tool ──────────────────────────────────────────────────── -->
