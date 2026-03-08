@@ -383,6 +383,26 @@ function synapticModalHTML(drugId) {
   }).join('');
 }
 
+/* ── Perinatal Cell Helpers ─────────────────────────────────────────────── */
+const PERINATAL_RISK_BADGE = {
+  low:     { cls: 'peri-low',     label: 'Compatible'  },
+  caution: { cls: 'peri-caution', label: 'Caution'     },
+  avoid:   { cls: 'peri-avoid',   label: 'Avoid'       },
+  unknown: { cls: 'peri-unknown', label: 'Unknown'     },
+};
+
+function perinatalCell(data, isBF = false) {
+  if (!data) return '<span class="no-badge">—</span>';
+  const b = PERINATAL_RISK_BADGE[data.risk] || PERINATAL_RISK_BADGE.unknown;
+  const cat = isBF
+    ? (data.hale && data.hale !== 'unknown' ? `<span class="peri-cat">Hale ${data.hale}</span>` : '')
+    : (data.fdaCategory ? `<span class="peri-cat">Cat. ${data.fdaCategory}</span>` : '');
+  const title = (data.notes || '').replace(/"/g, '&quot;');
+  return `<div class="peri-cell" title="${title}">
+    <span class="peri-badge ${b.cls}">${b.label}</span>${cat}
+  </div>`;
+}
+
 /* ── Drug Database Table ────────────────────────────────────────────────── */
 let sortCol = 'name';
 let sortDir = 1;
@@ -402,7 +422,6 @@ function visibleMeds() {
   });
 
   if (sideEffectSort) {
-    // Sort by side effect risk score; nulls (no Ki data) go to the end
     return filtered.sort((a, b) => {
       const sa = sideEffectScore(a, sideEffectSort);
       const sb = sideEffectScore(b, sideEffectSort);
@@ -410,6 +429,17 @@ function visibleMeds() {
       if (sa === null) return 1;
       if (sb === null) return -1;
       return sortDir * (sa - sb);
+    });
+  }
+
+  // Perinatal risk sort
+  const RISK_ORDER = { low: 1, caution: 2, avoid: 3, unknown: 4 };
+  if (sortCol === 'pregnancy' || sortCol === 'breastfeeding') {
+    return filtered.sort((a, b) => {
+      const pa = PERINATAL_DATA[a.id]?.[sortCol]?.risk ?? 'unknown';
+      const pb = PERINATAL_DATA[b.id]?.[sortCol]?.risk ?? 'unknown';
+      const diff = (RISK_ORDER[pa] ?? 4) - (RISK_ORDER[pb] ?? 4);
+      return diff !== 0 ? sortDir * diff : a.name.localeCompare(b.name);
     });
   }
 
@@ -428,7 +458,7 @@ function renderDrugTable() {
   const meds  = visibleMeds();
   const tbody = document.getElementById('main-tbody');
   const showSE = !!sideEffectSort;
-  const colCount = showSE ? 14 : 13;
+  const colCount = showSE ? 16 : 15;
 
   tbody.innerHTML = meds.map(m => {
     const renal = m.renalImpairment.modified
@@ -463,6 +493,10 @@ function renderDrugTable() {
         : `<td><span class="no-badge">N/A</span></td>`;
     }
 
+    const pData = PERINATAL_DATA[m.id];
+    const pregCell = perinatalCell(pData?.pregnancy);
+    const bfCell   = perinatalCell(pData?.breastfeeding, true);
+
     return `<tr>
       <td class="drug-name-cell" style="cursor:pointer" onclick="openDrugModal('${m.id}')">${m.name}</td>
       ${seCell}
@@ -476,6 +510,8 @@ function renderDrugTable() {
       <td>${geriatric}</td>
       <td>${qt}</td>
       <td>${pb}</td>
+      <td>${pregCell}</td>
+      <td>${bfCell}</td>
       <td>${synapticHTML}</td>
       <td>${chartBtn}</td>
     </tr>`;

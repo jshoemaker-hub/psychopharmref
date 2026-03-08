@@ -291,9 +291,33 @@ html, body {
 .col-hepatic    { min-width: 90px; }
 .col-geriatric  { min-width: 80px; }
 .col-qt         { min-width: 110px; }
-.col-pb         { min-width: 110px; }
-.col-synaptic   { min-width: 200px; }
-.col-receptor   { min-width: 100px; }
+.col-pb           { min-width: 110px; }
+.col-pregnancy    { min-width: 130px; }
+.col-breastfeeding{ min-width: 140px; }
+.col-synaptic     { min-width: 200px; }
+.col-receptor     { min-width: 100px; }
+
+/* ── Perinatal Risk Badges ──────────────────────────────────────────────── */
+.peri-cell { display: flex; flex-direction: column; gap: 3px; }
+.peri-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  border: 1px solid;
+}
+.peri-low     { background: #dcfce7; color: #14532d; border-color: #86efac; }
+.peri-caution { background: #fef9c3; color: #713f12; border-color: #fde047; }
+.peri-avoid   { background: #fecaca; color: #450a0a; border-color: #f87171; }
+.peri-unknown { background: var(--bg3); color: var(--text-muted); border-color: var(--border); }
+.peri-cat {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
 
 table {
   width: max-content;
