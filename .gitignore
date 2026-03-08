@@ -1,0 +1,26 @@
+# Reference PDFs and source documents (large binaries — keep locally, not in repo)
+*.pdf
+*.docx
+*.png
+*.jpg
+*.jpeg
+
+# Reference text files used during development
+ANXIOLYTICS LIST.txt
+STIMULANTS LIST.txt
+List of anticholinergics and antihistamines.txt
+List of antidepressants.txt
+List of antipsychotics.txt
+List of mood stabilizers.txt
+psychopharmacology .txt
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo

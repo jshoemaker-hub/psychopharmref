@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psychopharmacology Reference</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- Sidebar Navigation -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">PsychoPharm<span>Ref</span></div>
+      <div class="logo-sub">Clinical Reference</div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#" class="nav-link active" data-section="overview">
+        <span class="nav-icon">&#9632;</span> Overview
+      </a></li>
+      <li><a href="#" class="nav-link" data-section="drug-table">
+        <span class="nav-icon">&#9776;</span> Drug Database
+      </a></li>
+      <li><a href="#" class="nav-link" data-section="p450">
+        <span class="nav-icon">&#9654;</span> P450 Interactions
+      </a></li>
+      <li><a href="#" class="nav-link" data-section="receptor-binding">
+        <span class="nav-icon">&#9673;</span> Receptor Binding
+      </a></li>
+      <li><a href="#" class="nav-link" data-section="glossary">
+        <span class="nav-icon">&#9998;</span> Receptor Glossary
+      </a></li>
+      <li><a href="#" class="nav-link" data-section="fda-search">
+        <span class="nav-icon">&#128269;</span> FDA References
+      </a></li>
+      <li><a href="#" class="nav-link" data-section="qt-risk">
+        <span class="nav-icon">&#10084;</span> QT Risk Tool
+      </a></li>
+    </ul>
+
+    <div class="filter-panel">
+      <h4>Filter by Class</h4>
+      <label class="filter-item"><input type="checkbox" class="class-filter" value="SSRI" checked> SSRI</label>
+      <label class="filter-item"><input type="checkbox" class="class-filter" value="SNRI" checked> SNRI</label>
+      <label class="filter-item"><input type="checkbox" class="class-filter" value="TCA" checked> TCA</label>
+      <label class="filter-item"><input type="checkbox" class="class-filter" value="MAOI" checked> MAOI</label>
+      <label class="filter-item"><input type="checkbox" class="class-filter" value="NDRI" checked> NDRI</label>
+      <label class="filter-item"><input type="checkbox" class="class-filter" value="NaSSA" checked> NaSSA</label>
+      <label class="filter-item"><input type="checkbox" class="class-filter" value="SARI" checked> SARI</label>
+      <label class="filter-item"><input type="checkbox" class="class-filter" value="SSRI/5HT1A" checked> SSRI/5HT1A</label>
+      <label class="filter-item"><input type="checkbox" class="class-filter" value="FGA" checked> FGA</label>
+      <label class="filter-item"><input type="checkbox" class="class-filter" value="SGA" checked> SGA</label>
+      <label class="filter-item"><input type="checkbox" class="class-filter" value="Mood Stabilizer" checked> Mood Stabilizer</label>
+      <label class="filter-item"><input type="checkbox" class="class-filter" value="Z-Drug" checked> Z-Drug</label>
+      <label class="filter-item"><input type="checkbox" class="class-filter" value="Benzodiazepine" checked> Benzodiazepine</label>
+      <label class="filter-item"><input type="checkbox" class="class-filter" value="Melatonin Agonist" checked> Melatonin Agonist</label>
+      <label class="filter-item"><input type="checkbox" class="class-filter" value="Orexin Antagonist" checked> Orexin Antagonist</label>
+    </div>
+
+    <div class="sidebar-footer">
+      <small>Data from FDA labels &amp; literature.<br>For clinical use verify with current labeling.</small>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="content">
+
+    <!-- ── Overview ─────────────────────────────────────────────────────── -->
+    <section id="overview" class="section active">
+      <div class="section-header">
+        <h2>Psychopharmacology Reference</h2>
+        <p class="section-sub">Comprehensive psychiatric medication data for clinical reference</p>
+      </div>
+
+      <div class="stats-grid" id="stats-grid"></div>
+
+      <div class="overview-search">
+        <input type="text" id="quick-search" placeholder="Quick drug lookup (name or brand)..." autocomplete="off">
+        <div id="search-results" class="search-dropdown"></div>
+      </div>
+
+      <div class="overview-cards">
+        <div class="info-card">
+          <h3>Drug Table</h3>
+          <p>Sortable, filterable table of all medications with key pharmacological attributes: half-life, protein binding, renal/hepatic dosing, QT interval effects, and more.</p>
+          <button class="btn-primary" onclick="switchSection('drug-table')">View Drug Database</button>
+        </div>
+        <div class="info-card">
+          <h3>P450 Interactions</h3>
+          <p>Visual matrix showing CYP450 enzyme interactions — substrates, inhibitors (strong/moderate/weak), and inducers — for all medications at a glance.</p>
+          <button class="btn-primary" onclick="switchSection('p450')">View P450 Matrix</button>
+        </div>
+        <div class="info-card">
+          <h3>Receptor Binding</h3>
+          <p>Pie charts of relative receptor affinity (inverse Ki) per drug, and bar charts comparing absolute binding across drug classes at each receptor.</p>
+          <button class="btn-primary" onclick="switchSection('receptor-binding')">View Receptor Charts</button>
+        </div>
+        <div class="info-card">
+          <h3>Receptor Glossary</h3>
+          <p>Clinical effects of activating or blocking each receptor system — benefits and common side effects for SERT, NET, DAT, 5HT, dopamine, histamine, adrenergic, muscarinic, GABA-A, and more.</p>
+          <button class="btn-primary" onclick="switchSection('glossary')">View Glossary</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Drug Database ─────────────────────────────────────────────────── -->
+    <section id="drug-table" class="section">
+      <div class="section-header">
+        <h2>Drug Database</h2>
+        <div class="table-controls">
+          <input type="text" id="table-search" placeholder="Search drugs..." autocomplete="off">
+          <select id="category-filter">
+            <option value="">All Categories</option>
+            <option value="Antidepressant">Antidepressants</option>
+            <option value="Antipsychotic">Antipsychotics</option>
+            <option value="Mood Stabilizer">Mood Stabilizers</option>
+            <option value="Sleep">Sleep Medications</option>
+            <option value="Anxiolytic">Anxiolytics</option>
+            <option value="Stimulant">Stimulants</option>
+            <option value="Other">Other</option>
+          </select>
+          <label class="toggle-label">
+            <input type="checkbox" id="toggle-cols" checked>
+            Show all columns
+          </label>
+        </div>
+        <div class="se-sort-bar">
+          <label class="se-sort-label">Sort by side effect risk:</label>
+          <select id="se-sort">
+            <option value="">— None —</option>
+            <option value="sedation">Sedation / Drowsiness</option>
+            <option value="weightGain">Weight Gain</option>
+            <option value="anticholinergic">Dry Mouth / Constipation (Anticholinergic)</option>
+            <option value="orthostasis">Orthostatic Hypotension / Dizziness</option>
+            <option value="sexualDysfunction">Sexual Dysfunction</option>
+            <option value="eps">EPS / Akathisia / Movement Disorders</option>
+            <option value="metabolic">Metabolic Effects / Insulin Resistance</option>
+            <option value="insomnia">Insomnia / Activation / Agitation</option>
+            <option value="hyperprolactinemia">Hyperprolactinemia</option>
+            <option value="nausea">Nausea / GI Upset</option>
+            <option value="cognitiveImpairment">Cognitive Impairment / Memory</option>
+            <option value="cardiacQT">Cardiac / QT Effects</option>
+          </select>
+          <button id="se-sort-dir" class="se-dir-btn" style="display:none">Least → Most risky</button>
+        </div>
+      </div>
+
+      <div class="col-toggles" id="col-toggles"></div>
+
+      <div class="table-wrapper">
+        <table id="main-table">
+          <thead>
+            <tr>
+              <th id="th-se-risk" class="col-se-risk" style="display:none">Risk</th>
+              <th class="sortable col-name" data-col="name">Drug <span class="sort-arrow"></span></th>
+              <th class="sortable col-brand" data-col="brandName">Brand <span class="sort-arrow"></span></th>
+              <th class="sortable col-class" data-col="class">Class <span class="sort-arrow"></span></th>
+              <th class="col-enantiomer">Active Enantiomer</th>
+              <th class="col-halflife">Half-Life (Parent)</th>
+              <th class="col-metabolites">Active Metabolites</th>
+              <th class="col-renal">Renal Adjust</th>
+              <th class="col-hepatic">Hepatic Adjust</th>
+              <th class="col-geriatric">Geriatric</th>
+              <th class="col-qt">QT Prolongation</th>
+              <th class="sortable col-pb" data-col="proteinBinding">Protein Binding <span class="sort-arrow"></span></th>
+              <th class="col-synaptic">Pre / Post-Synaptic Binding</th>
+              <th class="col-receptor">Receptor Chart</th>
+            </tr>
+          </thead>
+          <tbody id="main-tbody"></tbody>
+        </table>
+      </div>
+
+      <!-- Drug Detail Modal -->
+      <div id="drug-modal" class="modal hidden">
+        <div class="modal-content">
+          <button class="modal-close" id="modal-close">&times;</button>
+          <div id="modal-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── P450 Interactions ─────────────────────────────────────────────── -->
+    <section id="p450" class="section">
+      <div class="section-header">
+        <h2>P450 Interactions</h2>
+        <p class="section-sub">CYP enzyme interactions for all medications. S = Substrate &bull; Inhibitor strength shown in color &bull; Ind = Inducer</p>
+      </div>
+
+      <div class="p450-legend">
+        <span class="legend-item"><span class="badge badge-substrate">S</span> Substrate</span>
+        <span class="legend-item"><span class="badge badge-strong">Inh-S</span> Strong Inhibitor</span>
+        <span class="legend-item"><span class="badge badge-moderate">Inh-M</span> Moderate Inhibitor</span>
+        <span class="legend-item"><span class="badge badge-weak">Inh-W</span> Weak Inhibitor</span>
+        <span class="legend-item"><span class="badge badge-inducer">Ind</span> Inducer</span>
+      </div>
+
+      <div class="p450-filter">
+        <label>Filter by category:
+          <select id="p450-category">
+            <option value="">All</option>
+            <option value="Antidepressant">Antidepressants</option>
+            <option value="Antipsychotic">Antipsychotics</option>
+            <option value="Mood Stabilizer">Mood Stabilizers</option>
+            <option value="Sleep">Sleep</option>
+            <option value="Anxiolytic">Anxiolytics</option>
+            <option value="Stimulant">Stimulants</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="p450-table">
+          <thead>
+            <tr>
+              <th>Drug</th>
+              <th>Class</th>
+              <th>CYP1A2</th>
+              <th>CYP2B6</th>
+              <th>CYP2C9</th>
+              <th>CYP2C19</th>
+              <th>CYP2D6</th>
+              <th>CYP3A4</th>
+            </tr>
+          </thead>
+          <tbody id="p450-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── Receptor Binding ──────────────────────────────────────────────── -->
+    <section id="receptor-binding" class="section">
+      <div class="section-header">
+        <h2>Receptor Binding Profiles</h2>
+        <p class="section-sub">Ki values in nM (lower = higher affinity). Pie shows relative affinity (1/Ki normalized). Bar charts show pKi = &minus;log<sub>10</sub>(Ki) per drug class.</p>
+      </div>
+
+      <!-- Individual Drug Pie Chart -->
+      <div class="receptor-drug-selector">
+        <label for="drug-select">Select Drug:</label>
+        <select id="drug-select">
+          <option value="">-- Choose a drug --</option>
+        </select>
+      </div>
+
+      <div id="pie-container" class="chart-panel hidden">
+        <div class="chart-info" id="pie-drug-info"></div>
+        <div class="pie-wrap">
+          <canvas id="pie-chart" width="420" height="420"></canvas>
+        </div>
+        <div class="ki-table-wrap">
+          <table id="ki-table" class="ki-table">
+            <thead><tr><th>Receptor</th><th>Ki (nM)</th><th>Binding Action</th><th>Affinity</th></tr></thead>
+            <tbody id="ki-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="no-receptor-data" class="info-box hidden"></div>
+
+      <!-- Side-by-Side Drug Comparison -->
+      <div class="section-divider">
+        <h3>Side-by-Side Drug Comparison</h3>
+        <p class="section-sub">Select any two medications to compare their receptor binding profiles directly.</p>
+      </div>
+
+      <div class="compare-selectors">
+        <div class="compare-drug-slot">
+          <label>Drug A</label>
+          <select id="compare-a"><option value="">-- Select drug --</option></select>
+        </div>
+        <div class="compare-vs">vs</div>
+        <div class="compare-drug-slot">
+          <label>Drug B</label>
+          <select id="compare-b"><option value="">-- Select drug --</option></select>
+        </div>
+      </div>
+
+      <div id="compare-container" class="hidden">
+        <div class="bar-chart-wrap" style="margin-bottom:16px">
+          <canvas id="compare-chart" height="340"></canvas>
+        </div>
+        <div id="compare-table-wrap" class="compare-table-wrap"></div>
+      </div>
+      <div id="compare-empty" class="info-box hidden">Select two drugs above to compare their receptor binding profiles.</div>
+
+      <!-- Class Bar Charts -->
+      <div class="section-divider">
+        <h3>Class Comparisons — pKi by Receptor</h3>
+        <p class="section-sub">Each chart shows all drugs in a class. Y-axis: pKi = &minus;log<sub>10</sub>(Ki nM). Higher bar = stronger affinity.</p>
+      </div>
+
+      <div class="class-select-row">
+        <label for="class-select">Drug Class:</label>
+        <select id="class-select">
+          <option value="SSRI">SSRIs</option>
+          <option value="SNRI">SNRIs</option>
+          <option value="TCA">TCAs</option>
+          <option value="SGA">SGAs</option>
+          <option value="FGA">FGAs</option>
+          <option value="Azapirone">Azapirones</option>
+          <option value="NMDA Antagonist">NMDA Antagonists</option>
+          <option value="Neuroactive Steroid">Neuroactive Steroids</option>
+          <option value="Gabapentinoid">Gabapentinoids</option>
+          <option value="Alpha-2 Agonist">Alpha-2 Agonists</option>
+          <option value="Stimulant">Stimulants</option>
+          <option value="Wake-Promoting Agent">Wake-Promoting Agents</option>
+          <option value="Antihistamine">Antihistamines</option>
+          <option value="Benzodiazepine">Benzodiazepines</option>
+        </select>
+        <div class="receptor-toggles" id="receptor-toggles"></div>
+      </div>
+
+      <div class="bar-chart-wrap">
+        <canvas id="bar-chart" height="340"></canvas>
+      </div>
+    </section>
+
+    <!-- ── Receptor Glossary ─────────────────────────────────────────────── -->
+    <section id="glossary" class="section">
+      <div class="section-header">
+        <h2>Receptor Glossary</h2>
+        <p class="section-sub">Clinical effects of receptor activation or inhibition. Expand any receptor for a full breakdown of benefits and side effects.</p>
+      </div>
+
+      <div class="glossary-controls">
+        <input type="text" id="glossary-search" placeholder="Search receptors, effects, or side effects..." autocomplete="off">
+        <div class="glossary-type-filters" id="glossary-type-filters"></div>
+      </div>
+
+      <div id="glossary-grid"></div>
+    </section>
+
+    <!-- ── FDA References ───────────────────────────────────────────────── -->
+    <section id="fda-search" class="section">
+      <div class="section-header">
+        <h2>FDA References</h2>
+        <p class="section-sub">Each button opens the official FDA Drug@FDA page for that medication on <strong>accessdata.fda.gov</strong>.</p>
+      </div>
+
+      <input type="text" id="fda-filter" class="fda-filter-input" placeholder="Filter medications…" autocomplete="off">
+      <div id="fda-quick-links" class="fda-link-grid"></div>
+    </section>
+
+    <!-- ── QT Risk Tool ──────────────────────────────────────────────────── -->
+    <section id="qt-risk" class="section">
+      <div class="section-header">
+        <h2>QT Prolongation Risk Tool</h2>
+        <p class="section-sub">QTc calculator, Tisdale risk scoring, drug reference lists, and monitoring guidance. For educational use — always verify with current clinical resources.</p>
+      </div>
+
+      <!-- ── Education accordion ──────────────────────────────────────────── -->
+      <div class="qt-accordion">
+
+        <details class="qt-panel">
+          <summary class="qt-panel-title">What Is QT Prolongation?</summary>
+          <div class="qt-panel-body">
+            <p>The QT interval on an ECG represents ventricular depolarization (QRS) plus repolarization (T wave). <strong>Prolongation of the QT interval</strong> reflects delayed ventricular repolarization, creating a vulnerable window during which an early depolarization can trigger a potentially fatal arrhythmia.</p>
+            <p>Because the QT interval varies with heart rate, a <strong>corrected QTc</strong> is calculated to normalize for rate. The most widely used formula is <em>Bazett's</em>, though Fridericia's is preferred at very high or low heart rates.</p>
+            <div class="qt-formula-row">
+              <div class="qt-formula-box">
+                <div class="qt-formula-name">Bazett (most common)</div>
+                <div class="qt-formula">QTc = QT ÷ √RR</div>
+                <div class="qt-formula-sub">RR in seconds = 60 ÷ HR</div>
+              </div>
+              <div class="qt-formula-box">
+                <div class="qt-formula-name">Fridericia (preferred at HR &lt;50 or &gt;100)</div>
+                <div class="qt-formula">QTc = QT ÷ ∛RR</div>
+                <div class="qt-formula-sub">More accurate across heart rate extremes</div>
+              </div>
+            </div>
+            <h4 style="margin-top:14px;margin-bottom:6px">QTc Thresholds</h4>
+            <div class="qt-thresh-grid">
+              <div class="qt-thresh-box qt-thresh-normal"><div class="qt-thresh-val">≤440 ms</div><div class="qt-thresh-lbl">Normal (men)</div></div>
+              <div class="qt-thresh-box qt-thresh-normal"><div class="qt-thresh-val">≤450 ms</div><div class="qt-thresh-lbl">Normal (women)</div></div>
+              <div class="qt-thresh-box qt-thresh-border"><div class="qt-thresh-val">450–470 ms</div><div class="qt-thresh-lbl">Borderline — monitor</div></div>
+              <div class="qt-thresh-box qt-thresh-concern"><div class="qt-thresh-val">&gt;470 ms (♀) / &gt;450 ms (♂)</div><div class="qt-thresh-lbl">Prolonged — review agents</div></div>
+              <div class="qt-thresh-box qt-thresh-high"><div class="qt-thresh-val">≥500 ms</div><div class="qt-thresh-lbl">High risk — TdP threshold</div></div>
+              <div class="qt-thresh-box qt-thresh-high"><div class="qt-thresh-val">+60 ms from baseline</div><div class="qt-thresh-lbl">Clinically significant change</div></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="qt-panel">
+          <summary class="qt-panel-title">Torsades de Pointes (TdP) &amp; Risk Factors</summary>
+          <div class="qt-panel-body">
+            <p><strong>Torsades de Pointes (TdP)</strong> is a polymorphic ventricular tachycardia characterized by a "twisting" QRS morphology around the isoelectric axis. It can degenerate into ventricular fibrillation and sudden cardiac death.</p>
+            <h4 style="margin:10px 0 6px">Patient-Level Risk Factors</h4>
+            <div class="qt-risk-cols">
+              <ul>
+                <li><strong>Female sex</strong> — longer baseline QTc; ~70% of TdP cases</li>
+                <li><strong>Age ≥65</strong> — reduced repolarization reserve</li>
+                <li><strong>Hypokalemia</strong> (K+ &lt;3.5 mEq/L) — most important electrolyte</li>
+                <li><strong>Hypomagnesemia</strong> — Mg²⁺ &lt;0.8 mEq/L</li>
+                <li><strong>Hypocalcemia</strong></li>
+                <li><strong>Bradycardia</strong> (&lt;50 bpm) — rate-dependent TdP risk</li>
+              </ul>
+              <ul>
+                <li><strong>Heart failure</strong> — reduced repolarization reserve</li>
+                <li><strong>Myocardial infarction / ischemia</strong></li>
+                <li><strong>Congenital long QT syndrome</strong></li>
+                <li><strong>Hypothyroidism</strong></li>
+                <li><strong>Hepatic impairment</strong> — increases drug exposure</li>
+                <li><strong>Anorexia nervosa</strong> — electrolyte depletion</li>
+              </ul>
+            </div>
+            <div class="qt-callout qt-callout-warn">
+              <strong>Additive risk:</strong> The combination of multiple QT-prolonging drugs is the most common preventable cause of drug-induced TdP. Two drugs with modest individual risk can produce synergistic QTc prolongation when co-prescribed.
+            </div>
+          </div>
+        </details>
+
+        <details class="qt-panel">
+          <summary class="qt-panel-title">Monitoring Recommendations</summary>
+          <div class="qt-panel-body">
+            <h4 style="margin-bottom:8px">Before Starting a QT-Prolonging Agent</h4>
+            <ul>
+              <li>Obtain baseline ECG with QTc measurement</li>
+              <li>Review all concurrent medications for additive QT risk (CredibleMeds / AZCERT database)</li>
+              <li>Measure and correct electrolytes (K⁺, Mg²⁺, Ca²⁺) before initiation</li>
+              <li>Assess for congenital long QT syndrome risk (family/personal history of sudden death, syncope)</li>
+              <li>Assess renal and hepatic function — affects drug clearance and exposure</li>
+            </ul>
+            <h4 style="margin:10px 0 8px">During Treatment</h4>
+            <ul>
+              <li>Repeat ECG 1–2 weeks after initiation and after dose increases</li>
+              <li>For high-risk agents (e.g., methadone, haloperidol IV, clozapine): ECG at 1 week, 1 month, then periodically</li>
+              <li>Monitor electrolytes regularly, especially with diuretics, vomiting, or poor oral intake</li>
+              <li>Educate patient on symptoms: palpitations, dizziness, syncope, presyncope</li>
+            </ul>
+            <h4 style="margin:10px 0 8px">Action Thresholds</h4>
+            <div class="qt-thresh-grid">
+              <div class="qt-thresh-box qt-thresh-border"><div class="qt-thresh-val">450–499 ms</div><div class="qt-thresh-lbl">Correct electrolytes; reassess drug necessity; increase monitoring frequency</div></div>
+              <div class="qt-thresh-box qt-thresh-concern"><div class="qt-thresh-val">500–519 ms</div><div class="qt-thresh-lbl">Reduce dose or discontinue offending agent(s); cardiology consultation</div></div>
+              <div class="qt-thresh-box qt-thresh-high"><div class="qt-thresh-val">≥520 ms or +60 ms</div><div class="qt-thresh-lbl">Discontinue QT-prolonging agent(s); urgent cardiology evaluation; consider inpatient monitoring</div></div>
+            </div>
+            <div class="qt-callout qt-callout-info" style="margin-top:12px">
+              <strong>Note on CredibleMeds:</strong> The Arizona CERT / CredibleMeds database (crediblemeds.org) is the authoritative resource for drug-induced QT risk classification. Categories include: Known Risk, Conditional Risk, Possible Risk, and Special Risk. Clinicians should consult this database for the most current risk listings.
+            </div>
+          </div>
+        </details>
+
+      </div><!-- end accordion -->
+
+      <!-- ── QTc Calculator ───────────────────────────────────────────────── -->
+      <div class="qt-card" id="qtc-calculator">
+        <h3 class="qt-card-title">&#9654; QTc Calculator</h3>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">Enter the measured QT interval and heart rate from the ECG. QTc is calculated using both Bazett and Fridericia formulas.</p>
+        <div class="qtc-inputs">
+          <div class="qtc-input-group">
+            <label>QT Interval (ms)</label>
+            <input type="number" id="qt-interval" placeholder="e.g. 420" min="200" max="700" step="1">
+          </div>
+          <div class="qtc-input-group">
+            <label>Heart Rate (bpm)</label>
+            <input type="number" id="qt-hr" placeholder="e.g. 72" min="20" max="200" step="1">
+          </div>
+          <div class="qtc-input-group">
+            <label>Patient Sex</label>
+            <select id="qt-sex">
+              <option value="">Select…</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <button class="qt-calc-btn" onclick="calcQTc()">Calculate QTc</button>
+        </div>
+        <div id="qtc-result" class="qtc-result hidden"></div>
+      </div>
+
+      <!-- ── Tisdale Risk Score ───────────────────────────────────────────── -->
+      <div class="qt-card" id="tisdale-tool">
+        <h3 class="qt-card-title">&#9654; Tisdale QT Risk Score</h3>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:4px">Validated risk scoring tool for predicting QT prolongation in hospitalized patients (Tisdale et al., <em>Circ Cardiovasc Qual Outcomes</em>, 2013). Each item adds to a cumulative risk score.</p>
+        <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px">Originally validated in inpatient settings. Use in outpatient context as a general guide to identify high-burden patients.</p>
+        <div class="tisdale-grid">
+          <label class="tisdale-item">
+            <input type="checkbox" class="tisdale-cb" data-pts="1"> Age ≥68 years <span class="tisdale-pts">+1</span>
+          </label>
+          <label class="tisdale-item">
+            <input type="checkbox" class="tisdale-cb" data-pts="1"> Female sex <span class="tisdale-pts">+1</span>
+          </label>
+          <label class="tisdale-item">
+            <input type="checkbox" class="tisdale-cb" data-pts="1"> Loop diuretic use (furosemide, bumetanide, torsemide) <span class="tisdale-pts">+1</span>
+          </label>
+          <label class="tisdale-item">
+            <input type="checkbox" class="tisdale-cb" data-pts="2"> Serum potassium ≤3.5 mEq/L <span class="tisdale-pts">+2</span>
+          </label>
+          <label class="tisdale-item">
+            <input type="checkbox" class="tisdale-cb" data-pts="2"> Admission / baseline QTc 450–499 ms <span class="tisdale-pts">+2</span>
+          </label>
+          <label class="tisdale-item">
+            <input type="checkbox" class="tisdale-cb" data-pts="2"> Acute myocardial infarction <span class="tisdale-pts">+2</span>
+          </label>
+          <label class="tisdale-item">
+            <input type="checkbox" class="tisdale-cb" data-pts="3"> Heart failure (reduced or preserved EF) <span class="tisdale-pts">+3</span>
+          </label>
+          <label class="tisdale-item">
+            <input type="checkbox" class="tisdale-cb" data-pts="3"> Sepsis or systemic infection <span class="tisdale-pts">+3</span>
+          </label>
+          <label class="tisdale-item">
+            <input type="checkbox" class="tisdale-cb" data-pts="3"> On exactly <em>one</em> QT-prolonging drug <span class="tisdale-pts">+3</span>
+          </label>
+          <label class="tisdale-item">
+            <input type="checkbox" class="tisdale-cb" data-pts="3"> On <em>two or more</em> QT-prolonging drugs (replaces single-drug item) <span class="tisdale-pts">+3</span>
+          </label>
+        </div>
+        <div id="tisdale-result" class="tisdale-result">
+          <span class="tisdale-score-label">Total Score:</span>
+          <span id="tisdale-score">0</span>
+          <span id="tisdale-risk-badge" class="tisdale-risk-badge">—</span>
+          <div id="tisdale-interp" class="tisdale-interp"></div>
+        </div>
+      </div>
+
+      <!-- ── Non-Psychiatric QT Drugs ─────────────────────────────────────── -->
+      <div class="qt-card">
+        <h3 class="qt-card-title">&#9654; Non-Psychiatric Medications with QT Risk</h3>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:14px">Commonly prescribed medications <em>outside</em> psychiatry that prolong the QT interval. Risk classification based on CredibleMeds / AZCERT and published literature. This does not replace the CredibleMeds database — always verify current risk status.</p>
+        <div class="qt-drug-legend">
+          <span class="qt-risk-pill qt-known">Known Risk</span> Established evidence for QT prolongation and TdP &nbsp;|&nbsp;
+          <span class="qt-risk-pill qt-conditional">Conditional</span> Risk under certain conditions (dose, drug interactions, patient factors) &nbsp;|&nbsp;
+          <span class="qt-risk-pill qt-possible">Possible</span> Some evidence but less established
+        </div>
+        <div id="qt-nonpsych-list" class="qt-nonpsych-grid"></div>
+      </div>
+
+      <!-- ── Psychiatric QT Drugs ─────────────────────────────────────────── -->
+      <div class="qt-card">
+        <h3 class="qt-card-title">&#9654; Psychiatric Medications with QT Risk</h3>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:14px">Medications in the database flagged for QT prolongation. Click any drug name to open its full detail modal.</p>
+        <div id="qt-psych-list" class="qt-psych-grid"></div>
+      </div>
+
+      <!-- ── References ───────────────────────────────────────────────────── -->
+      <div class="qt-card">
+        <h3 class="qt-card-title">&#9654; References</h3>
+        <ol class="qt-refs">
+          <li>Tisdale JE, et al. Development and validation of a risk score to predict QT interval prolongation in hospitalized patients. <em>Circ Cardiovasc Qual Outcomes.</em> 2013;6(4):479–487.</li>
+          <li>Tisdale JE, et al. Drug-Induced QT Interval Prolongation and Torsades de Pointes: Role of the Pharmacist in Risk Assessment, Prevention and Management. <em>Can Pharm J (Ott).</em> 2016;149(3):139–152.</li>
+          <li>Academy of Consultation-Liaison Psychiatry (ACLP). <em>How-To Guide: QTc Prolongation.</em> 2020. Available at: aclponline.org.</li>
+          <li>Woosley RL, Heise CW, Gallo T, et al. CredibleMeds / AZCERT. Available at: crediblemeds.org. [QTDrugs List — updated continuously]</li>
+          <li>Nachimuthu S, Assar MD, Schussler JM. Drug-induced QT interval prolongation: mechanisms and clinical management. <em>Ther Adv Drug Saf.</em> 2012;3(5):241–253.</li>
+          <li>Roden DM. Drug-Induced Prolongation of the QT Interval. <em>N Engl J Med.</em> 2004;350:1013–1022.</li>
+          <li>Drew BJ, et al. Prevention of Torsade de Pointes in Hospital Settings: A Scientific Statement From the American Heart Association and the American College of Cardiology Foundation. <em>Circulation.</em> 2010;121:1047–1060.</li>
+        </ol>
+      </div>
+
+    </section><!-- end qt-risk -->
+
+  </main>
+
+  <!-- ── Clinical Warning Modal ──────────────────────────────────────────── -->
+  <div id="warning-modal" class="warning-overlay">
+    <div class="warning-box">
+      <div class="warning-icon">⚠</div>
+      <h2 class="warning-title">Important Disclaimer</h2>
+      <div class="warning-body">
+
+        <p><strong>PsychoPharmRef is an independent educational reference tool</strong> intended solely for use by licensed healthcare professionals, students, and researchers in clinical training contexts. It is <strong>not intended for use by patients or the general public.</strong></p>
+
+        <div class="warning-section-label">Not a Substitute for Clinical Judgment</div>
+        <p>Nothing in this tool constitutes medical advice, a clinical recommendation, or a standard of care. All information must be interpreted within the full context of an individual patient's clinical presentation, history, and current medications by a qualified clinician.</p>
+
+        <div class="warning-section-label">Data Accuracy &amp; Currency</div>
+        <ul>
+          <li>Data is derived from FDA-approved prescribing information, the PDSP Ki database, and peer-reviewed pharmacology literature. It may not reflect the most current labeling, post-market safety updates, or newly approved indications.</li>
+          <li>Receptor binding values (Ki) are sourced from in vitro studies and may not directly predict in vivo clinical effects at therapeutic doses.</li>
+          <li>The QT risk tool and Tisdale score are provided for educational awareness only and do not replace a full clinical assessment or real-time ECG interpretation.</li>
+        </ul>
+
+        <div class="warning-section-label">Scope of Use</div>
+        <ul>
+          <li>This reference does not account for individual patient factors including renal or hepatic impairment, genetic polymorphisms, pregnancy, pediatric populations, or off-label indications unless explicitly noted.</li>
+          <li>Drug interaction screening presented here is not comprehensive. Always verify interactions using a current clinical decision support system (e.g., Lexicomp, Micromedex, Clinical Pharmacology).</li>
+          <li>Always consult current FDA-approved labeling and applicable clinical practice guidelines before making any prescribing or clinical decision.</li>
+        </ul>
+
+        <div class="warning-section-label">No Liability</div>
+        <p>The creators of PsychoPharmRef assume no liability for clinical decisions made in whole or in part on the basis of information presented in this tool. Use is entirely at the clinician's own professional discretion and responsibility.</p>
+
+        <p class="warning-footer-note">By clicking below, you confirm that you are a licensed healthcare professional or student acting under supervision, and that you understand this tool is for educational reference only and not for direct patient care decision-making.</p>
+      </div>
+      <button class="warning-dismiss" onclick="dismissWarning()">I Understand — Continue to Reference Tool</button>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
