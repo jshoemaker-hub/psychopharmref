@@ -1272,3 +1272,158 @@ renderGlossary();
 initFDASearch();
 renderQTNonPsychList();
 renderQTPsychList();
+
+/* ── Refill Calendar ────────────────────────────────────────────────────── */
+
+// Shared helpers
+function parseLocalDate(str) {
+  // Parse YYYY-MM-DD as local time (avoids UTC off-by-one)
+  const [y, m, d] = str.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
+
+function addDays(date, days) {
+  const d = new Date(date);
+  d.setDate(d.getDate() + days);
+  return d;
+}
+
+function fmtDate(date) {
+  return date.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+function daysBetween(a, b) {
+  return Math.round((b - a) / (1000 * 60 * 60 * 24));
+}
+
+// 1. Days Between
+function calcDaysBetween() {
+  const v1 = document.getElementById('db-date1').value;
+  const v2 = document.getElementById('db-date2').value;
+  const res = document.getElementById('db-result');
+  if (!v1 || !v2) { showRCError(res, 'Please select both dates.'); return; }
+
+  const d1   = parseLocalDate(v1);
+  const d2   = parseLocalDate(v2);
+  const diff = Math.abs(daysBetween(d1, d2));
+  const earlier = d1 <= d2 ? d1 : d2;
+  const later   = d1 <= d2 ? d2 : d1;
+
+  res.className = 'rc-result';
+  res.innerHTML = `
+    <div class="rc-big-num">${diff} <span class="rc-big-unit">days</span></div>
+    <div class="rc-detail">From <strong>${fmtDate(earlier)}</strong> to <strong>${fmtDate(later)}</strong></div>
+    <div class="rc-detail">${Math.floor(diff / 7)} weeks and ${diff % 7} days &bull; ~${(diff / 30.44).toFixed(1)} months</div>
+  `;
+}
+
+// 2. Usage Calculator
+function calcUsage() {
+  const startVal = document.getElementById('uc-start').value;
+  const endVal   = document.getElementById('uc-end').value;
+  const qty      = parseFloat(document.getElementById('uc-qty').value);
+  const dose     = parseFloat(document.getElementById('uc-dose').value);
+  const unit     = document.getElementById('uc-unit').value;
+  const remaining = parseFloat(document.getElementById('uc-remaining').value) || 0;
+  const res      = document.getElementById('uc-result');
+
+  if (!startVal || !endVal || !qty || !dose) {
+    showRCError(res, 'Please fill in all required fields (fill date, end date, quantity, and dose strength).');
+    return;
+  }
+
+  const start = parseLocalDate(startVal);
+  const end   = parseLocalDate(endVal);
+  const days  = daysBetween(start, end);
+
+  if (days <= 0) { showRCError(res, 'End date must be after fill date.'); return; }
+
+  const pillsUsed     = qty - remaining;
+  const totalMg       = pillsUsed * dose;
+  const avgPerDay     = totalMg / days;
+  const pillsPerDay   = pillsUsed / days;
+  const perMonth      = avgPerDay * 30.44;
+  const pillsPerMonth = pillsPerDay * 30.44;
+
+  res.className = 'rc-result';
+  res.innerHTML = `
+    <div class="rc-stats-grid">
+      <div class="rc-stat"><div class="rc-stat-val">${days}</div><div class="rc-stat-lbl">Days in Period</div></div>
+      <div class="rc-stat"><div class="rc-stat-val">${pillsUsed.toFixed(1)}</div><div class="rc-stat-lbl">Pills Used</div></div>
+      <div class="rc-stat"><div class="rc-stat-val">${avgPerDay.toFixed(2)} <span class="rc-stat-unit">${unit}/day</span></div><div class="rc-stat-lbl">Avg Daily Dose</div></div>
+      <div class="rc-stat"><div class="rc-stat-val">${pillsPerDay.toFixed(2)}</div><div class="rc-stat-lbl">Pills/Day Avg</div></div>
+      <div class="rc-stat"><div class="rc-stat-val">${perMonth.toFixed(1)} <span class="rc-stat-unit">${unit}</span></div><div class="rc-stat-lbl">Projected Monthly Total</div></div>
+      <div class="rc-stat"><div class="rc-stat-val">${pillsPerMonth.toFixed(1)}</div><div class="rc-stat-lbl">Projected Pills/Month</div></div>
+    </div>
+    <div class="rc-detail" style="margin-top:10px">
+      Period: <strong>${fmtDate(start)}</strong> → <strong>${fmtDate(end)}</strong> &bull;
+      Prescribed: <strong>${qty} pills × ${dose} ${unit}</strong>
+      ${remaining > 0 ? `&bull; Remaining at count: <strong>${remaining} pills</strong>` : ''}
+    </div>
+  `;
+}
+
+// 3. Forward Refill Dates
+function calcForwardRefills() {
+  const dateVal = document.getElementById('fwd-date').value;
+  const daysVal = parseInt(document.getElementById('fwd-days').value);
+  const res     = document.getElementById('fwd-result');
+
+  if (!dateVal || !daysVal || daysVal < 1) {
+    showRCError(res, 'Please enter a fill date and days supply.');
+    return;
+  }
+
+  const start = parseLocalDate(dateVal);
+  const rows  = Array.from({ length: 6 }, (_, i) => {
+    const n    = i + 1;
+    const date = addDays(start, daysVal * n);
+    const from = addDays(start, daysVal * (n - 1));
+    return `<tr>
+      <td class="rc-fill-num">Fill #${n}</td>
+      <td class="rc-fill-date">${fmtDate(date)}</td>
+      <td class="rc-fill-note">${daysVal} days after ${fmtDate(from)}</td>
+    </tr>`;
+  }).join('');
+
+  res.className = 'rc-result';
+  res.innerHTML = `
+    <div class="rc-detail" style="margin-bottom:10px">Starting from fill on <strong>${fmtDate(start)}</strong>, every <strong>${daysVal} days</strong>:</div>
+    <table class="rc-fill-table"><tbody>${rows}</tbody></table>
+  `;
+}
+
+// 4. Reverse Refill Tracker
+function calcReverseRefills() {
+  const dateVal = document.getElementById('rev-date').value;
+  const daysVal = parseInt(document.getElementById('rev-days').value);
+  const res     = document.getElementById('rev-result');
+
+  if (!dateVal || !daysVal || daysVal < 1) {
+    showRCError(res, 'Please enter the most recent fill date and days between fills.');
+    return;
+  }
+
+  const latest = parseLocalDate(dateVal);
+  const rows   = Array.from({ length: 6 }, (_, i) => {
+    const n    = i + 1;
+    const date = addDays(latest, -daysVal * n);
+    return `<tr>
+      <td class="rc-fill-num">Fill −${n}</td>
+      <td class="rc-fill-date">${fmtDate(date)}</td>
+      <td class="rc-fill-note">${daysVal} days before ${fmtDate(addDays(latest, -daysVal * (n - 1)))}</td>
+    </tr>`;
+  }).join('');
+
+  res.className = 'rc-result';
+  res.innerHTML = `
+    <div class="rc-detail" style="margin-bottom:10px">Working back from <strong>${fmtDate(latest)}</strong>, every <strong>${daysVal} days</strong>:</div>
+    <table class="rc-fill-table"><tbody>${rows}</tbody></table>
+    <div class="rc-detail" style="margin-top:10px;font-style:italic;color:var(--text-muted)">These are <em>expected</em> dates based on a consistent fill interval. Actual fill dates may vary.</div>
+  `;
+}
+
+function showRCError(el, msg) {
+  el.className = 'rc-result rc-error';
+  el.innerHTML = msg;
+}
