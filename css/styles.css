@@ -271,10 +271,13 @@ html, body {
 /* ── Main Table ────────────────────────────────────────────────────────── */
 .table-wrapper {
   overflow-x: auto;
+  overflow-y: auto;
+  max-height: calc(100vh - 260px);
   border: 1px solid var(--border);
   border-radius: 8px;
-  /* Ensure the wrapper fills available width so the table can scroll */
   width: 100%;
+  /* Always show scrollbar so users know it's scrollable */
+  scrollbar-gutter: stable;
 }
 
 /* Prevent columns from collapsing — let content dictate width */
@@ -338,12 +341,14 @@ td {
   left: 0;
   z-index: 5;
   background: var(--bg2);
+  box-shadow: 2px 0 6px rgba(35,30,20,0.08);
 }
 #main-table thead th:first-child {
   z-index: 15;
   background: var(--bg3);
 }
 #main-table tbody tr:hover td:first-child { background: var(--bg3); }
+
 
 .drug-name-cell { font-weight: 600; color: var(--accent); white-space: nowrap; }
 .brand-name { color: var(--text-muted); font-size: 12px; }

@@ -464,8 +464,8 @@ function renderDrugTable() {
     }
 
     return `<tr>
-      ${seCell}
       <td class="drug-name-cell" style="cursor:pointer" onclick="openDrugModal('${m.id}')">${m.name}</td>
+      ${seCell}
       <td class="brand-name">${m.brandName}</td>
       <td>${classBadge(m.class)}</td>
       <td>${enan}</td>
