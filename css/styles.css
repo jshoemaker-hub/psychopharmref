@@ -2379,6 +2379,136 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
 }
 .cc-pharm-note strong { color: var(--cc); }
 
+/* ── Disease Brain Regions ──────────────────────────────────────────────── */
+.region-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.rl-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.rl-item::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--rc);
+  flex-shrink: 0;
+}
+
+.disease-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.disease-grid-single {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.disease-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--dc, var(--accent));
+  border-radius: 10px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dc-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.dc-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dc, var(--accent));
+}
+.dc-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--dc, var(--accent)) 18%, transparent);
+  color: var(--dc, var(--accent));
+  border: 1px solid color-mix(in srgb, var(--dc, var(--accent)) 35%, transparent);
+  border-radius: 20px;
+  padding: 2px 9px;
+}
+
+.dc-regions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.dc-region {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--rc, #888) 18%, transparent);
+  color: color-mix(in srgb, var(--rc, #888) 90%, white);
+  border: 1px solid color-mix(in srgb, var(--rc, #888) 35%, transparent);
+  border-radius: 20px;
+  padding: 3px 9px;
+}
+
+.dc-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.dc-themes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.dc-themes-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-right: 2px;
+}
+.dc-theme {
+  font-size: 0.72rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 7px;
+  color: var(--text-muted);
+}
+
+.dc-insight {
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.dc-insight strong { color: var(--accent); }
+
+.dc-circuit-link {
+  font-size: 0.75rem;
+  color: var(--accent);
+  opacity: 0.7;
+  font-style: italic;
+}
+
 /* ── Scrollbar ─────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
