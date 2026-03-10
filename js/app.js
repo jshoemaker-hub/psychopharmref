@@ -1568,6 +1568,9 @@ function initMedCompare() {
     });
   });
 
+  // Track current drugs for print
+  let mcCurrentDrugs = [];
+
   // Compare button
   document.getElementById('mc-go-btn').addEventListener('click', () => {
     const drugs = [];
@@ -1582,11 +1585,16 @@ function initMedCompare() {
       alert('Please select at least 2 medications to compare.');
       return;
     }
+    mcCurrentDrugs = drugs;
     renderComparison(drugs);
     document.getElementById('mc-results').style.display = '';
     // Reset to first tab
     document.querySelectorAll('.mc-tab').forEach((t,i) => t.classList.toggle('mc-tab--active', i===0));
     document.querySelectorAll('.mc-panel').forEach((p,i) => p.classList.toggle('mc-panel--active', i===0));
+  });
+
+  document.getElementById('mc-print-btn').addEventListener('click', () => {
+    if (mcCurrentDrugs.length >= 2) printMedComparison(mcCurrentDrugs);
   });
 
   // Drug color palette (up to 6)
@@ -1596,6 +1604,190 @@ function initMedCompare() {
     renderReceptorTab(drugs);
     renderSETab(drugs);
     renderCircuitTab(drugs);
+  }
+
+  /* ── Print / PDF ── */
+  function printMedComparison(drugs) {
+    const KI_SIG = 1000;
+    const date = new Date().toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+
+    // ── Receptor rows
+    const receptorRows = RECEPTOR_LIST.map(r => {
+      const cells = drugs.map(d => {
+        if (!d.receptorKi) return null;
+        const ki = d.receptorKi[r] || 10000;
+        return ki < 10000 ? ki : null;
+      });
+      if (cells.every(c => c === null)) return null;
+      const sharedSig = cells.filter(c => c !== null && c <= KI_SIG).length;
+      return { r, cells, sharedSig };
+    }).filter(Boolean);
+
+    const receptorTableRows = receptorRows.map(({r, cells, sharedSig}) => `
+      <tr>
+        <td style="font-weight:600;padding:5px 8px;border-bottom:1px solid #e0e0e0">${r}</td>
+        ${drugs.map((_d, idx) => {
+          const ki = cells[idx];
+          if (ki === null) return `<td style="padding:5px 8px;border-bottom:1px solid #e0e0e0;color:#aaa;text-align:center">—</td>`;
+          const col = ki < 10 ? '#d94f30' : ki < 100 ? '#c07000' : ki < 1000 ? '#2060b0' : '#888';
+          return `<td style="padding:5px 8px;border-bottom:1px solid #e0e0e0;text-align:center;color:${col};font-weight:${ki<1000?'600':'400'}">${ki} nM</td>`;
+        }).join('')}
+        <td style="padding:5px 8px;border-bottom:1px solid #e0e0e0;text-align:center;font-size:11px;color:${sharedSig>=2?'#2a7a2a':'#aaa'}">${sharedSig >= 2 ? `${sharedSig}/${drugs.length}` : '—'}</td>
+      </tr>`).join('');
+
+    // ── Side effect rows
+    const seRows = Object.entries(SIDE_EFFECT_PROFILES).map(([key, profile]) => {
+      const scores = drugs.map(d => sideEffectScore(d, key));
+      const sigCount = scores.filter(s => s !== null && s >= 25).length;
+      return { label: profile.label, scores, sigCount };
+    }).sort((a,b) => b.sigCount - a.sigCount || b.scores.reduce((x,s)=>x+(s||0),0) - a.scores.reduce((x,s)=>x+(s||0),0));
+
+    const seTableRows = seRows.map(({label, scores, sigCount}) => `
+      <tr>
+        <td style="padding:5px 8px;border-bottom:1px solid #e0e0e0;font-size:12px">${label}</td>
+        ${scores.map(s => {
+          if (s === null) return `<td style="padding:5px 8px;border-bottom:1px solid #e0e0e0;text-align:center;color:#aaa;font-size:12px">N/A</td>`;
+          const col = s < 25 ? '#888' : s < 50 ? '#c07000' : s < 75 ? '#d06000' : '#c02020';
+          return `<td style="padding:5px 8px;border-bottom:1px solid #e0e0e0;text-align:center;font-weight:600;color:${col};font-size:12px">${s}</td>`;
+        }).join('')}
+        <td style="padding:5px 8px;border-bottom:1px solid #e0e0e0;text-align:center;font-size:11px;color:${sigCount>=2?'#2a7a2a':'#aaa'}">${sigCount >= 2 ? `${sigCount}/${drugs.length}` : '—'}</td>
+      </tr>`).join('');
+
+    // ── Circuit rows
+    const drugCircuits = drugs.map(drug => {
+      const circuits = new Set();
+      if (drug.receptorKi) {
+        for (const [r, ki] of Object.entries(drug.receptorKi)) {
+          if (ki <= KI_SIG && RECEPTOR_CIRCUIT_MAP[r]) RECEPTOR_CIRCUIT_MAP[r].forEach(c => circuits.add(c));
+        }
+      }
+      return { drug, circuits };
+    });
+    const allCircuits = new Set();
+    drugCircuits.forEach(dc => dc.circuits.forEach(c => allCircuits.add(c)));
+    const circuitData = [...allCircuits].map(circuit => {
+      const mods = drugCircuits.filter(dc => dc.circuits.has(circuit));
+      return { circuit, count: mods.length, drugs: mods.map(dc => dc.drug) };
+    }).sort((a,b) => b.count - a.count);
+
+    const circuitTableRows = circuitData.map(({circuit, count, drugs: mods}) => `
+      <tr>
+        <td style="padding:5px 8px;border-bottom:1px solid #e0e0e0;font-size:12px;font-weight:${count>=2?'600':'400'}">${circuit}</td>
+        ${drugs.map(d => {
+          const mod = mods.find(m => m.name === d.name);
+          return `<td style="padding:5px 8px;border-bottom:1px solid #e0e0e0;text-align:center;font-size:13px">${mod ? '&#10003;' : ''}</td>`;
+        }).join('')}
+        <td style="padding:5px 8px;border-bottom:1px solid #e0e0e0;text-align:center;font-size:11px;color:${count>=2?'#2a7a2a':'#aaa'}">${count >= 2 ? `${count}/${drugs.filter(d=>d.receptorKi).length}` : '—'}</td>
+      </tr>`).join('');
+
+    // ── Conditions
+    const sharedConds = new Map();
+    circuitData.filter(c => c.count >= 2).forEach(c => {
+      (CIRCUIT_CONDITIONS_MAP[c.circuit] || []).forEach(cond => {
+        const ex = sharedConds.get(cond) || 0;
+        sharedConds.set(cond, ex + 1);
+      });
+    });
+    const condList = [...sharedConds.entries()].sort((a,b)=>b[1]-a[1])
+      .map(([cond]) => `<span style="display:inline-block;margin:3px 4px;padding:3px 9px;background:#eaf2ea;border:1px solid #8aba8a;border-radius:12px;font-size:11px;color:#2a5a2a">${cond}</span>`)
+      .join('');
+
+    // ── Drug summary rows
+    const drugSummaryRows = drugs.map((d, idx) => {
+      const color = DRUG_COLORS[idx];
+      return `<tr>
+        <td style="padding:6px 10px;font-weight:700;color:${color};border-bottom:1px solid #e0e0e0">${d.name}</td>
+        <td style="padding:6px 10px;border-bottom:1px solid #e0e0e0;font-size:12px">${d.class || '—'}</td>
+        <td style="padding:6px 10px;border-bottom:1px solid #e0e0e0;font-size:12px">${d.halfLife?.drug || '—'}</td>
+        <td style="padding:6px 10px;border-bottom:1px solid #e0e0e0;font-size:12px">${d.mechanism || (d.receptorKi ? 'Receptor-mediated (see binding)' : '—')}</td>
+      </tr>`;
+    }).join('');
+
+    const thStyle = 'padding:6px 8px;background:#f0f4f0;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:#555;border-bottom:2px solid #c8d8c8';
+    const thCenterStyle = thStyle + ';text-align:center';
+
+    const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Medication Comparison — ${drugs.map(d=>d.name).join(', ')}</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; color: #1a1a1a; background: #fff; padding: 28px 32px; }
+  h1 { font-size: 20px; font-weight: 700; color: #1a3a1a; margin-bottom: 4px; }
+  .subtitle { font-size: 12px; color: #666; margin-bottom: 6px; }
+  .drugs-header { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid #2a7a2a; }
+  .drug-chip { padding: 4px 14px; border-radius: 16px; font-size: 13px; font-weight: 700; color: #fff; }
+  h2 { font-size: 14px; font-weight: 700; color: #1a3a1a; margin: 20px 0 8px; padding-bottom: 4px; border-bottom: 1px solid #c8d8c8; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .caveat { font-size: 10px; color: #888; margin-top: 20px; padding-top: 10px; border-top: 1px solid #ddd; line-height: 1.5; }
+  @media print {
+    body { padding: 16px 20px; }
+    @page { margin: 1.5cm; size: A4 landscape; }
+  }
+</style>
+</head>
+<body>
+  <h1>Medication Comparison Report</h1>
+  <div class="subtitle">Generated ${date} &nbsp;|&nbsp; PsychoPharmRef</div>
+  <div class="drugs-header">
+    ${drugs.map((d, idx) => `<span class="drug-chip" style="background:${DRUG_COLORS[idx]}">${d.name}</span>`).join('')}
+  </div>
+
+  <h2>Drug Summary</h2>
+  <table>
+    <thead><tr>
+      <th style="${thStyle}">Drug</th>
+      <th style="${thStyle}">Class</th>
+      <th style="${thStyle}">Half-Life</th>
+      <th style="${thStyle}">Mechanism</th>
+    </tr></thead>
+    <tbody>${drugSummaryRows}</tbody>
+  </table>
+
+  <h2>Receptor Binding (Ki, nM)</h2>
+  <table>
+    <thead><tr>
+      <th style="${thStyle}">Receptor</th>
+      ${drugs.map((d, idx) => `<th style="${thCenterStyle};color:${DRUG_COLORS[idx]}">${d.name}</th>`).join('')}
+      <th style="${thCenterStyle}">Shared (&le;1000 nM)</th>
+    </tr></thead>
+    <tbody>${receptorTableRows}</tbody>
+  </table>
+  <p style="font-size:10px;color:#888;margin-top:4px">Ki color: <span style="color:#d94f30;font-weight:600">very high &lt;10</span> &nbsp; <span style="color:#c07000;font-weight:600">high &lt;100</span> &nbsp; <span style="color:#2060b0;font-weight:600">moderate &lt;1000</span></p>
+
+  <h2>Predicted Side Effect Risk (0–100)</h2>
+  <table>
+    <thead><tr>
+      <th style="${thStyle}">Side Effect</th>
+      ${drugs.map((d, idx) => `<th style="${thCenterStyle};color:${DRUG_COLORS[idx]}">${d.name}</th>`).join('')}
+      <th style="${thCenterStyle}">Shared Risk (&ge;25)</th>
+    </tr></thead>
+    <tbody>${seTableRows}</tbody>
+  </table>
+  <p style="font-size:10px;color:#888;margin-top:4px">Scores based on receptor binding profile and receptor–side effect weight mapping. Higher score = greater predicted risk.</p>
+
+  <h2>Neuropsychiatric Circuits Modulated</h2>
+  <table>
+    <thead><tr>
+      <th style="${thStyle}">Circuit</th>
+      ${drugs.map((d, idx) => `<th style="${thCenterStyle};color:${DRUG_COLORS[idx]}">${d.name}</th>`).join('')}
+      <th style="${thCenterStyle}">Overlap</th>
+    </tr></thead>
+    <tbody>${circuitTableRows}</tbody>
+  </table>
+
+  ${condList ? `<h2>Conditions Suggested by Shared Circuit Targets</h2>
+  <div style="margin-top:6px">${condList}</div>` : ''}
+
+  <p class="caveat">This report is generated for educational and clinical reference purposes only. Receptor binding values (Ki) are derived from in vitro pharmacology data and may not directly predict in vivo clinical effects. Side effect scores are modeled estimates based on receptor profiles and do not substitute for clinical judgment or individualized assessment. Circuit mapping is based on established neuroscience literature. Always verify with current FDA-approved labeling, clinical practice guidelines, and patient-specific factors. PsychoPharmRef assumes no liability for clinical decisions based on this report.</p>
+</body>
+</html>`;
+
+    const win = window.open('', '_blank', 'width=1000,height=800');
+    win.document.documentElement.innerHTML = html;
+    win.focus();
+    setTimeout(() => win.print(), 500);
   }
 
   /* ── Receptor Binding Tab ── */

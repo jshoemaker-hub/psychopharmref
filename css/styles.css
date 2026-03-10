@@ -2614,6 +2614,19 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
 .info-card--soon { opacity: 0.6; }
 
 /* ── Medication Comparison ──────────────────────────────────────────────── */
+.mc-results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+}
+.mc-results-header .mc-tabs { border-bottom: none; margin-bottom: 0; flex: 1; }
+.mc-results { border-bottom: 1px solid var(--border); padding-bottom: 0; }
+.mc-results-header { border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+.mc-print-btn { white-space: nowrap; flex-shrink: 0; }
+
 .mc-setup-card { margin-bottom: 24px; }
 
 .mc-count-row {
