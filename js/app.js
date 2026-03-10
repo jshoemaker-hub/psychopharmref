@@ -2087,9 +2087,9 @@ function initMedTaper() {
     return rounded + ' mg';
   }
 
-  // Compute step delta in mg
-  function stepDeltaMg(currentMg, stepSize, stepType) {
-    if (stepType === 'percent') return currentMg * (stepSize / 100);
+  // Compute step delta in mg — percent always calculated from original starting dose
+  function stepDeltaMg(currentMg, stepSize, stepType, startMg) {
+    if (stepType === 'percent') return (startMg ?? currentMg) * (stepSize / 100);
     return toMg(stepSize, stepType);
   }
 
@@ -2102,7 +2102,7 @@ function initMedTaper() {
     const CAP = 200; // safety cap to prevent runaway loops
 
     for (let i = 0; i < CAP; i++) {
-      const delta = stepDeltaMg(current, stepSize, stepType);
+      const delta = stepDeltaMg(current, stepSize, stepType, startMg);
       if (delta <= 0) break;
       let next = goingDown ? current - delta : current + delta;
       if (goingDown) {
