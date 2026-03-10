@@ -2388,7 +2388,7 @@
             <div class="mt-field">
               <label class="mt-label">Target Dose <span class="mt-label-hint">(use 0 for full taper)</span></label>
               <div class="mt-dose-row">
-                <input type="number" class="mt-input" id="mt-target-dose" placeholder="e.g. 0" min="0" step="any">
+                <input type="number" class="mt-input" id="mt-target-dose" placeholder="0" min="0" step="any" value="0">
                 <select class="mt-unit-select" id="mt-target-unit">
                   <option value="mcg">mcg</option>
                   <option value="mg" selected>mg</option>
@@ -2422,12 +2422,6 @@
                 </select>
               </div>
               <span class="mt-field-hint">Time at each dose before next step</span>
-            </div>
-
-            <div class="mt-field">
-              <label class="mt-label">Number of Steps</label>
-              <input type="number" class="mt-input" id="mt-steps" placeholder="auto" min="1" step="1">
-              <span class="mt-field-hint">Leave blank to auto-calculate from start → target</span>
             </div>
 
             <div class="mt-field">
@@ -2553,11 +2547,6 @@
                 </select>
               </div>
               <span class="mt-field-hint">For half-lives, Drug A's half-life is used</span>
-            </div>
-            <div class="mt-field">
-              <label class="mt-label">Number of Steps</label>
-              <input type="number" class="mt-input" id="mt-cross-steps" placeholder="auto" min="1" step="1">
-              <span class="mt-field-hint">Leave blank to auto-calculate</span>
             </div>
             <div class="mt-field">
               <label class="mt-label">Start Date</label>

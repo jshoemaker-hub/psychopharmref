@@ -2093,19 +2093,15 @@ function initMedTaper() {
     return toMg(stepSize, stepType);
   }
 
-  // Generate a dose sequence
-  function generateSequence(startMg, targetMg, stepSize, stepType, maxSteps, direction) {
+  // Generate a dose sequence (always auto-calculated from start → target)
+  function generateSequence(startMg, targetMg, stepSize, stepType, direction) {
     // direction: 'taper' (down) or 'start' (up)
     const doses = [startMg];
     let current = startMg;
     const goingDown = direction === 'taper';
+    const CAP = 200; // safety cap to prevent runaway loops
 
-    // Auto-calculate max steps if not provided
-    if (!maxSteps || maxSteps < 1) {
-      maxSteps = 50; // safety cap
-    }
-
-    for (let i = 0; i < maxSteps; i++) {
+    for (let i = 0; i < CAP; i++) {
       const delta = stepDeltaMg(current, stepSize, stepType);
       if (delta <= 0) break;
       let next = goingDown ? current - delta : current + delta;
@@ -2240,7 +2236,6 @@ function initMedTaper() {
     const stepType   = document.getElementById('mt-step-type').value;
     const interval   = parseFloat(document.getElementById('mt-interval').value);
     const intUnit    = document.getElementById('mt-interval-unit').value;
-    const stepsIn    = parseInt(document.getElementById('mt-steps').value) || 0;
     const startDate  = document.getElementById('mt-start-date').value;
 
     if (!drugName || isNaN(startVal) || isNaN(stepSize) || isNaN(interval) || !startDate) {
@@ -2250,11 +2245,10 @@ function initMedTaper() {
 
     const drug      = MEDICATIONS.find(m => m.name === drugName);
     const startMg   = toMg(startVal, startUnit);
-    const targetMg  = isNaN(targetVal) ? (direction === 'taper' ? 0 : startMg * 2) : toMg(targetVal, targetUnit);
+    const targetMg  = isNaN(targetVal) ? 0 : toMg(targetVal, targetUnit);
     const intervalDays = intervalToDays(interval, intUnit, drug);
-    const maxSteps  = stepsIn > 0 ? stepsIn : Math.ceil(Math.abs(startMg - targetMg) / Math.max(stepDeltaMg(startMg, stepSize, stepType), 0.001));
 
-    const doses = generateSequence(startMg, targetMg, stepSize, stepType, maxSteps, direction);
+    const doses = generateSequence(startMg, targetMg, stepSize, stepType, direction);
     const dates = buildDates(startDate, intervalDays, doses.length);
     const intLabel = `${interval} ${intUnit}${intUnit === 'halflife' ? ` (≈${(intervalDays).toFixed(1)} days)` : ''}`;
 
@@ -2280,7 +2274,6 @@ function initMedTaper() {
     const bStepType  = document.getElementById('mt-b-step-type').value;
     const interval   = parseFloat(document.getElementById('mt-cross-interval').value);
     const intUnit    = document.getElementById('mt-cross-interval-unit').value;
-    const stepsIn    = parseInt(document.getElementById('mt-cross-steps').value) || 0;
     const startDate  = document.getElementById('mt-cross-date').value;
 
     if (!drugAName || !drugBName || isNaN(aStart) || isNaN(bStart) || isNaN(aStep) || isNaN(bStep) || isNaN(interval) || !startDate) {
@@ -2295,12 +2288,8 @@ function initMedTaper() {
     const bTargetMg  = isNaN(bTarget) ? aStartMg : toMg(bTarget, bTargetUnit);
     const intervalDays = intervalToDays(interval, intUnit, drugA);
 
-    const maxA = stepsIn > 0 ? stepsIn : Math.ceil(Math.abs(aStartMg - aTargetMg) / Math.max(stepDeltaMg(aStartMg, aStep, aStepType), 0.001));
-    const maxB = stepsIn > 0 ? stepsIn : Math.ceil(Math.abs(bTargetMg - bStartMg) / Math.max(stepDeltaMg(bStartMg, bStep, bStepType), 0.001));
-    const maxSteps = stepsIn > 0 ? stepsIn : Math.max(maxA, maxB);
-
-    const dosesA = generateSequence(aStartMg, aTargetMg, aStep, aStepType, maxSteps, 'taper');
-    const dosesB = generateSequence(bStartMg, bTargetMg, bStep, bStepType, maxSteps, 'start');
+    const dosesA = generateSequence(aStartMg, aTargetMg, aStep, aStepType, 'taper');
+    const dosesB = generateSequence(bStartMg, bTargetMg, bStep, bStepType, 'start');
     const count  = Math.max(dosesA.length, dosesB.length);
     const dates  = buildDates(startDate, intervalDays, count);
     const intLabel = `${interval} ${intUnit}${intUnit === 'halflife' ? ` (≈${(intervalDays).toFixed(1)} days)` : ''}`;
