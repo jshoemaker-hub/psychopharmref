@@ -36,6 +36,7 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="p450">P450 Interactions</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="receptor-binding">Receptor Binding</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="glossary">Receptor Glossary</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="med-compare">Med Comparison</a></li>
         </ul>
       </li>
 
@@ -97,7 +98,7 @@
 
     <div class="sidebar-footer">
       <a href="#" class="sf-link" onclick="switchSection('fda-search');return false;">References &amp; Methods</a>
-      <a href="#" class="sf-link" id="sf-disclaimer-link" onclick="document.getElementById('warning-modal').style.display='flex';return false;">Legal Disclaimer</a>
+      <a href="#" class="sf-link" id="sf-disclaimer-link" onclick="document.getElementById('warning-modal').classList.remove('hidden');return false;">Legal Disclaimer</a>
       <span class="sf-contact">Contact — coming soon</span>
     </div>
   </nav>
@@ -2273,6 +2274,55 @@
       </div>
 
     </section><!-- end brain-regions -->
+
+    <!-- ── Medication Comparison ─────────────────────────────────────────── -->
+    <section id="med-compare" class="section">
+      <div class="section-header">
+        <h2>Medication Comparison</h2>
+        <p class="section-sub">Compare up to 6 medications across receptor binding, predicted side effects, and neuropsychiatric circuit targets.</p>
+      </div>
+
+      <!-- Setup card -->
+      <div class="ref-card mc-setup-card">
+        <h3 class="ref-card-title">&#9878; Select Medications</h3>
+        <div class="mc-count-row">
+          <span class="mc-count-label">Number to compare:</span>
+          <div class="mc-count-pills" id="mc-count-pills">
+            <button class="mc-count-btn active" data-n="2">2</button>
+            <button class="mc-count-btn" data-n="3">3</button>
+            <button class="mc-count-btn" data-n="4">4</button>
+            <button class="mc-count-btn" data-n="5">5</button>
+            <button class="mc-count-btn" data-n="6">6</button>
+          </div>
+        </div>
+        <div class="mc-selectors" id="mc-selectors"></div>
+        <button class="btn-primary mc-go-btn" id="mc-go-btn">Compare Medications &#9656;</button>
+      </div>
+
+      <!-- Results (hidden until compare clicked) -->
+      <div id="mc-results" class="mc-results" style="display:none">
+        <div class="mc-tabs" id="mc-tabs">
+          <button class="mc-tab mc-tab--active" data-tab="receptors">&#9673; Receptor Binding</button>
+          <button class="mc-tab" data-tab="sideeffects">&#9888; Side Effect Overlap</button>
+          <button class="mc-tab" data-tab="circuits">&#129504; Circuits &amp; Conditions</button>
+        </div>
+
+        <div class="mc-panel mc-panel--active" id="mc-panel-receptors">
+          <div class="mc-chart-wrap">
+            <canvas id="mc-bar-chart"></canvas>
+          </div>
+          <div id="mc-receptor-table"></div>
+        </div>
+
+        <div class="mc-panel" id="mc-panel-sideeffects">
+          <div id="mc-se-content"></div>
+        </div>
+
+        <div class="mc-panel" id="mc-panel-circuits">
+          <div id="mc-circuit-content"></div>
+        </div>
+      </div>
+    </section>
 
   </main>
 

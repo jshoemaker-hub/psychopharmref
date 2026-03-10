@@ -203,7 +203,7 @@ function getColor(receptor) {
 // Map each section to its parent group
 const SECTION_GROUP = {
   'drug-table': 'psychopharm', 'p450': 'psychopharm',
-  'receptor-binding': 'psychopharm', 'glossary': 'psychopharm',
+  'receptor-binding': 'psychopharm', 'glossary': 'psychopharm', 'med-compare': 'psychopharm',
   'qt-risk': 'tools', 'refill-calendar': 'tools',
   'cog-domains': 'insights', 'neuro-circuits': 'insights', 'brain-regions': 'insights',
   'fda-search': null, 'overview': null
@@ -1356,6 +1356,7 @@ renderGlossary();
 initFDASearch();
 renderQTNonPsychList();
 renderQTPsychList();
+initMedCompare();
 
 /* ── Refill Calendar ────────────────────────────────────────────────────── */
 
@@ -1510,4 +1511,318 @@ function calcReverseRefills() {
 function showRCError(el, msg) {
   el.className = 'rc-result rc-error';
   el.innerHTML = msg;
+}
+
+/* ── Medication Comparison ─────────────────────────────────────────────── */
+function initMedCompare() {
+  const KI_SIG = 1000;   // nM threshold for "significant" receptor affinity
+  const KI_CHART = 5000; // show receptor in chart if any drug ≤ this Ki
+
+  let mcCount = 2;
+  let mcChart = null;
+
+  const drugNames = MEDICATIONS.map(m => m.name).sort();
+
+  function buildSelectors() {
+    const container = document.getElementById('mc-selectors');
+    if (!container) return;
+    container.innerHTML = '';
+    for (let i = 0; i < mcCount; i++) {
+      const wrap = document.createElement('div');
+      wrap.className = 'mc-select-wrap';
+      const label = document.createElement('label');
+      label.className = 'mc-select-label';
+      label.textContent = `Drug ${i + 1}`;
+      const sel = document.createElement('select');
+      sel.className = 'mc-select';
+      sel.id = `mc-sel-${i}`;
+      sel.innerHTML = `<option value="">— Select —</option>` +
+        drugNames.map(n => `<option value="${n}">${n}</option>`).join('');
+      wrap.appendChild(label);
+      wrap.appendChild(sel);
+      container.appendChild(wrap);
+    }
+  }
+
+  // Count pill buttons
+  document.querySelectorAll('.mc-count-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.mc-count-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      mcCount = parseInt(btn.dataset.n);
+      buildSelectors();
+      document.getElementById('mc-results').style.display = 'none';
+    });
+  });
+
+  buildSelectors();
+
+  // Tab switching
+  document.querySelectorAll('.mc-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.mc-tab').forEach(t => t.classList.remove('mc-tab--active'));
+      document.querySelectorAll('.mc-panel').forEach(p => p.classList.remove('mc-panel--active'));
+      tab.classList.add('mc-tab--active');
+      document.getElementById(`mc-panel-${tab.dataset.tab}`).classList.add('mc-panel--active');
+    });
+  });
+
+  // Compare button
+  document.getElementById('mc-go-btn').addEventListener('click', () => {
+    const drugs = [];
+    for (let i = 0; i < mcCount; i++) {
+      const val = document.getElementById(`mc-sel-${i}`)?.value;
+      if (val) {
+        const drug = MEDICATIONS.find(m => m.name === val);
+        if (drug && !drugs.find(d => d.name === val)) drugs.push(drug);
+      }
+    }
+    if (drugs.length < 2) {
+      alert('Please select at least 2 medications to compare.');
+      return;
+    }
+    renderComparison(drugs);
+    document.getElementById('mc-results').style.display = '';
+    // Reset to first tab
+    document.querySelectorAll('.mc-tab').forEach((t,i) => t.classList.toggle('mc-tab--active', i===0));
+    document.querySelectorAll('.mc-panel').forEach((p,i) => p.classList.toggle('mc-panel--active', i===0));
+  });
+
+  // Drug color palette (up to 6)
+  const DRUG_COLORS = ['#5b8dee','#f47560','#57c785','#f0c040','#b57bee','#f07090'];
+
+  function renderComparison(drugs) {
+    renderReceptorTab(drugs);
+    renderSETab(drugs);
+    renderCircuitTab(drugs);
+  }
+
+  /* ── Receptor Binding Tab ── */
+  function renderReceptorTab(drugs) {
+    // Find receptors where at least one drug has Ki ≤ KI_CHART
+    const activeReceptors = RECEPTOR_LIST.filter(r =>
+      drugs.some(d => d.receptorKi && (d.receptorKi[r] || 10000) <= KI_CHART)
+    );
+
+    // Rebuild chart
+    const ctx = document.getElementById('mc-bar-chart');
+    if (mcChart) { mcChart.destroy(); mcChart = null; }
+
+    if (activeReceptors.length === 0) {
+      ctx.closest('.mc-chart-wrap').innerHTML = '<p style="color:var(--text-muted);padding:20px">No receptor Ki data available for selected medications.</p>';
+    } else {
+      ctx.closest('.mc-chart-wrap').innerHTML = '<canvas id="mc-bar-chart"></canvas>';
+      const newCtx = document.getElementById('mc-bar-chart');
+      const datasets = drugs.map((drug, idx) => ({
+        label: drug.name,
+        data: activeReceptors.map(r => {
+          if (!drug.receptorKi) return 0;
+          const ki = drug.receptorKi[r] || 10000;
+          const pki = ki < 10000 ? Math.max(0, 9 - Math.log10(ki)) : 0;
+          return Math.round(pki * 100) / 100;
+        }),
+        backgroundColor: DRUG_COLORS[idx] + 'cc',
+        borderColor: DRUG_COLORS[idx],
+        borderWidth: 1,
+        borderRadius: 3,
+      }));
+      mcChart = new Chart(newCtx, {
+        type: 'bar',
+        data: { labels: activeReceptors, datasets },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { labels: { color: '#c8bfb0', font: { size: 12 } } },
+            tooltip: {
+              callbacks: {
+                label: ctx => {
+                  const drug = drugs[ctx.datasetIndex];
+                  if (!drug.receptorKi) return `${drug.name}: no data`;
+                  const r = activeReceptors[ctx.dataIndex];
+                  const ki = drug.receptorKi[r] || 10000;
+                  return `${drug.name}: pKi ${ctx.parsed.y.toFixed(2)} (Ki=${ki} nM)`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: { ticks: { color: '#9a9080' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+            y: {
+              title: { display: true, text: 'pKi (−log₁₀ Ki)', color: '#9a9080' },
+              ticks: { color: '#9a9080' },
+              grid: { color: 'rgba(255,255,255,0.05)' },
+              min: 0, max: 9
+            }
+          }
+        }
+      });
+    }
+
+    // Render Ki table
+    const tableDiv = document.getElementById('mc-receptor-table');
+    const rows = RECEPTOR_LIST.map(r => {
+      const cells = drugs.map(d => {
+        if (!d.receptorKi) return { ki: null, pki: 0, sig: false };
+        const ki = d.receptorKi[r] || 10000;
+        const pki = ki < 10000 ? (9 - Math.log10(ki)) : 0;
+        return { ki, pki, sig: ki <= KI_SIG };
+      });
+      const anySig = cells.some(c => c.sig);
+      return { r, cells, anySig };
+    }).filter(row => row.cells.some(c => c.ki && c.ki < 10000));
+
+    if (rows.length === 0) { tableDiv.innerHTML = ''; return; }
+
+    tableDiv.innerHTML = `
+      <table class="mc-ki-table">
+        <thead>
+          <tr>
+            <th>Receptor</th>
+            ${drugs.map((d,i) => `<th style="color:${DRUG_COLORS[i]}">${d.name}</th>`).join('')}
+            <th>Shared High Affinity</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map(({r, cells, anySig}) => {
+            const sharedSig = cells.filter(c => c.sig).length;
+            return `<tr class="${anySig ? 'mc-row-sig' : ''}">
+              <td class="mc-r-name">${r}</td>
+              ${cells.map(c => {
+                if (!c.ki || c.ki >= 10000) return `<td class="mc-ki-cell mc-ki-none">—</td>`;
+                const level = c.ki < 10 ? 'mc-ki-vhigh' : c.ki < 100 ? 'mc-ki-high' : c.ki < 1000 ? 'mc-ki-mod' : 'mc-ki-low';
+                return `<td class="mc-ki-cell ${level}">${c.ki} nM</td>`;
+              }).join('')}
+              <td class="mc-shared-cell">${sharedSig >= 2 ? `<span class="mc-shared-badge">${sharedSig}/${drugs.length}</span>` : '<span class="mc-no-share">—</span>'}</td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+      <p class="mc-ki-legend">pKi bars show binding strength (higher = tighter). Ki threshold: <span class="mc-ki-vhigh" style="padding:1px 5px;border-radius:3px">very high &lt;10 nM</span> <span class="mc-ki-high" style="padding:1px 5px;border-radius:3px">high &lt;100</span> <span class="mc-ki-mod" style="padding:1px 5px;border-radius:3px">moderate &lt;1000</span></p>
+    `;
+  }
+
+  /* ── Side Effects Tab ── */
+  function renderSETab(drugs) {
+    const container = document.getElementById('mc-se-content');
+    const entries = Object.entries(SIDE_EFFECT_PROFILES).map(([key, profile]) => {
+      const scores = drugs.map(d => ({ drug: d, score: sideEffectScore(d, key) }));
+      const sigDrugs = scores.filter(s => s.score !== null && s.score >= 25);
+      return { key, label: profile.label, scores, sigCount: sigDrugs.length,
+               avgSig: sigDrugs.length ? Math.round(sigDrugs.reduce((a,b) => a + b.score, 0) / sigDrugs.length) : 0 };
+    }).sort((a, b) => b.sigCount - a.sigCount || b.avgSig - a.avgSig);
+
+    container.innerHTML = `
+      <div class="mc-se-grid">
+        ${entries.map(e => {
+          const overlapClass = e.sigCount >= drugs.length ? 'mc-overlap-all' :
+                               e.sigCount >= 2 ? 'mc-overlap-partial' : 'mc-overlap-none';
+          return `
+          <div class="mc-se-card ${overlapClass}">
+            <div class="mc-se-header">
+              <span class="mc-se-label">${e.label}</span>
+              ${e.sigCount >= 2 ? `<span class="mc-overlap-badge">${e.sigCount === drugs.length ? 'All drugs' : `${e.sigCount}/${drugs.length} drugs`}</span>` : ''}
+            </div>
+            <div class="mc-se-bars">
+              ${drugs.map((d, idx) => {
+                const s = e.scores.find(x => x.drug === d);
+                const score = s?.score ?? null;
+                if (score === null) return `<div class="mc-se-bar-row"><span class="mc-se-bar-name" style="color:${DRUG_COLORS[idx]}">${d.name}</span><span class="mc-se-bar-na">no data</span></div>`;
+                const rl = riskLabel(score);
+                return `<div class="mc-se-bar-row">
+                  <span class="mc-se-bar-name" style="color:${DRUG_COLORS[idx]}">${d.name}</span>
+                  <div class="mc-se-bar-track"><div class="mc-se-bar-fill" style="width:${score}%;background:${DRUG_COLORS[idx]}66;border-right:2px solid ${DRUG_COLORS[idx]}"></div></div>
+                  <span class="mc-se-bar-score ${rl.cls}">${score}</span>
+                </div>`;
+              }).join('')}
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+      <p class="mc-ki-legend">Scores 0–100 based on receptor affinity vs. side-effect receptor weights. Cards highlighted when ≥2 drugs share moderate+ risk.</p>
+    `;
+  }
+
+  /* ── Circuits & Conditions Tab ── */
+  function renderCircuitTab(drugs) {
+    const container = document.getElementById('mc-circuit-content');
+
+    // Build circuit sets per drug
+    const drugCircuits = drugs.map(drug => {
+      const circuits = new Set();
+      if (drug.receptorKi) {
+        for (const [receptor, ki] of Object.entries(drug.receptorKi)) {
+          if (ki <= KI_SIG && RECEPTOR_CIRCUIT_MAP[receptor]) {
+            RECEPTOR_CIRCUIT_MAP[receptor].forEach(c => circuits.add(c));
+          }
+        }
+      }
+      return { drug, circuits };
+    });
+
+    // Find all circuits mentioned
+    const allCircuits = new Set();
+    drugCircuits.forEach(dc => dc.circuits.forEach(c => allCircuits.add(c)));
+
+    // For each circuit, which drugs modulate it
+    const circuitData = [...allCircuits].map(circuit => {
+      const mods = drugCircuits.filter(dc => dc.circuits.has(circuit)).map(dc => dc.drug);
+      const conditions = CIRCUIT_CONDITIONS_MAP[circuit] || [];
+      return { circuit, mods, conditions };
+    }).sort((a, b) => b.mods.length - a.mods.length);
+
+    // Conditions implied by overlap (circuits shared by 2+ drugs)
+    const sharedConditions = new Map();
+    circuitData.filter(c => c.mods.length >= 2).forEach(c => {
+      c.conditions.forEach(cond => {
+        const existing = sharedConditions.get(cond) || { circuits: [], drugCount: 0 };
+        existing.circuits.push(c.circuit);
+        existing.drugCount = Math.max(existing.drugCount, c.mods.length);
+        sharedConditions.set(cond, existing);
+      });
+    });
+
+    const sortedConditions = [...sharedConditions.entries()]
+      .sort((a, b) => b[1].circuits.length - a[1].circuits.length || b[1].drugCount - a[1].drugCount);
+
+    const noDataDrugs = drugs.filter(d => !d.receptorKi);
+
+    container.innerHTML = `
+      ${noDataDrugs.length ? `<p class="ref-caveat" style="margin-bottom:16px">Note: ${noDataDrugs.map(d=>d.name).join(', ')} ${noDataDrugs.length===1?'does':'do'} not have Ki receptor data and ${noDataDrugs.length===1?'is':'are'} excluded from circuit analysis.</p>` : ''}
+
+      <div class="mc-circuit-grid">
+        ${circuitData.length === 0 ? '<p style="color:var(--text-muted)">No receptor binding data available for circuit mapping.</p>' :
+          circuitData.map(c => {
+            const overlapClass = c.mods.length >= drugs.filter(d=>d.receptorKi).length ? 'mc-overlap-all' :
+                                 c.mods.length >= 2 ? 'mc-overlap-partial' : '';
+            return `
+            <div class="mc-circuit-card ${overlapClass}">
+              <div class="mc-circuit-head">
+                <span class="mc-circuit-name">${c.circuit}</span>
+                <span class="mc-circuit-badge">${c.mods.length}/${drugs.filter(d=>d.receptorKi).length} drugs</span>
+              </div>
+              <div class="mc-circuit-drugs">
+                ${c.mods.map((d,i) => {
+                  const idx = drugs.indexOf(d);
+                  return `<span class="mc-circuit-drug" style="background:${DRUG_COLORS[idx]}22;color:${DRUG_COLORS[idx]};border-color:${DRUG_COLORS[idx]}55">${d.name}</span>`;
+                }).join('')}
+              </div>
+              ${c.conditions.length ? `<div class="mc-circuit-conditions">${c.conditions.map(cond => `<span class="mc-cond-pill">${cond}</span>`).join('')}</div>` : ''}
+            </div>`;
+          }).join('')}
+      </div>
+
+      ${sortedConditions.length >= 1 ? `
+      <div class="mc-conditions-summary">
+        <h4 class="mc-summary-title">&#129504; Conditions Suggested by Circuit Overlap</h4>
+        <p class="ref-card-sub" style="margin-bottom:14px">These conditions are linked to circuits modulated by 2 or more of the selected medications. A shared circuit target suggests potential efficacy or mechanistic relevance across these agents.</p>
+        <div class="mc-cond-grid">
+          ${sortedConditions.map(([cond, data]) => `
+            <div class="mc-cond-card">
+              <div class="mc-cond-name">${cond}</div>
+              <div class="mc-cond-detail">${data.circuits.length} shared circuit${data.circuits.length > 1 ? 's' : ''}</div>
+            </div>`).join('')}
+        </div>
+      </div>` : ''}
+    `;
+  }
 }

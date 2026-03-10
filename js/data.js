@@ -2887,3 +2887,37 @@ const MEDICATIONS = [
     receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 2 }
   }
 ];
+
+/* ── Receptor → Circuit mapping ─────────────────────────────────────────── */
+const RECEPTOR_CIRCUIT_MAP = {
+  SERT:    ['Serotonergic (Raphe Nuclei)', 'Limbic/Mood (Amygdala–PFC)', 'Papez Circuit'],
+  NET:     ['Noradrenergic (LC → PFC)', 'DLPFC Executive Loop', 'Anterior Cingulate Loop'],
+  DAT:     ['Mesolimbic DA (Reward)', 'Mesocortical DA (Cognition)', 'Motor BG Loop'],
+  D1:      ['DLPFC Executive Loop', 'Mesocortical DA (Cognition)'],
+  D2:      ['Mesolimbic DA (Reward)', 'Motor BG Loop', 'Mesocortical DA (Cognition)'],
+  D3:      ['Mesolimbic DA (Reward)'],
+  '5HT1A': ['Limbic/Mood (Amygdala–PFC)', 'Papez Circuit', 'Serotonergic (Raphe Nuclei)'],
+  '5HT2A': ['DLPFC Executive Loop', 'Prefrontal Cortico–BG Loop'],
+  '5HT2C': ['Mesolimbic DA (Reward)', 'Orbitofrontal Loop'],
+  H1:      ['Ascending Histaminergic (Arousal)'],
+  alpha1:  ['DLPFC Executive Loop', 'Anterior Cingulate Loop', 'Noradrenergic (LC → PFC)'],
+  alpha2:  ['Noradrenergic (LC → PFC)', 'DLPFC Executive Loop'],
+  M1:      ['Papez Circuit (Hippocampal Memory)', 'Cholinergic Basal Forebrain'],
+};
+
+const CIRCUIT_CONDITIONS_MAP = {
+  'Serotonergic (Raphe Nuclei)':         ['MDD', 'GAD', 'Panic Disorder', 'Social Anxiety', 'OCD', 'PTSD', 'Bulimia Nervosa'],
+  'Limbic/Mood (Amygdala–PFC)':          ['MDD', 'PTSD', 'GAD', 'Bipolar Disorder', 'Panic Disorder', 'Borderline PD'],
+  'Papez Circuit':                        ['PTSD', 'Anxiety Disorders', 'MCI / Dementia'],
+  'DLPFC Executive Loop':                 ['MDD (cognitive features)', 'ADHD', 'Schizophrenia (cognitive)', 'OCD'],
+  'Anterior Cingulate Loop':              ['MDD', 'OCD', 'ADHD', 'Schizophrenia'],
+  'Orbitofrontal Loop':                   ['OCD', 'Addiction / SUD', 'Bipolar Disorder'],
+  'Mesolimbic DA (Reward)':               ['Schizophrenia (positive sx)', 'Bipolar (mania)', 'Addiction / SUD', 'Bipolar Depression'],
+  'Mesocortical DA (Cognition)':          ['Schizophrenia (negative/cognitive sx)', 'ADHD', 'MDD (cognitive features)'],
+  'Motor BG Loop':                        ['Parkinson Disease', 'Tourette Syndrome', 'OCD', 'EPS risk'],
+  'Noradrenergic (LC → PFC)':             ['ADHD', 'PTSD', 'MDD', 'Anxiety Disorders', 'Chronic Pain'],
+  'Prefrontal Cortico–BG Loop':           ['OCD', 'Schizophrenia', 'MDD'],
+  'Ascending Histaminergic (Arousal)':    ['Insomnia', 'Hypersomnia', 'Agitation'],
+  'Papez Circuit (Hippocampal Memory)':   ['Alzheimer Disease', 'Delirium', 'Amnesia', 'MCI'],
+  'Cholinergic Basal Forebrain':          ['Alzheimer Disease', 'Delirium', 'MCI', 'Memory Impairment'],
+};
