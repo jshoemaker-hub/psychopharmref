@@ -50,6 +50,7 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="qt-risk">QT Risk Tool</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="refill-calendar">Refill Calendar</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="med-compare">Med Comparison</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="med-taper">Taper / Start</a></li>
         </ul>
       </li>
 
@@ -139,6 +140,8 @@
           <div class="ic-sub-links">
             <button class="btn-sub" onclick="switchSection('qt-risk')">QT Risk Tool</button>
             <button class="btn-sub" onclick="switchSection('refill-calendar')">Refill Calendar</button>
+            <button class="btn-sub" onclick="switchSection('med-compare')">Med Comparison</button>
+            <button class="btn-sub" onclick="switchSection('med-taper')">Taper / Start</button>
           </div>
         </div>
         <div class="info-card info-card--topic">
@@ -2323,6 +2326,249 @@
         </div>
       </div>
     </section>
+
+    <!-- ── Medication Taper / Start ──────────────────────────────────────── -->
+    <section id="med-taper" class="section">
+      <div class="section-header">
+        <h2>Medication Taper / Start Scheduler</h2>
+        <p class="section-sub">Generate a dose titration or tapering schedule for psychiatric medications.</p>
+      </div>
+
+      <!-- Clinical Warning -->
+      <div class="mt-warning">
+        <span class="mt-warning-icon">&#9888;</span>
+        <div>
+          <strong>Clinical Use Only</strong> — Medication tapering and titration must be supervised by a qualified prescriber. Abrupt discontinuation of psychiatric medications can cause serious withdrawal effects, relapse, or discontinuation syndrome. This tool generates reference schedules only and does not constitute medical advice. Always individualize based on patient response and clinical judgment.
+        </div>
+      </div>
+
+      <!-- Mode Toggle -->
+      <div class="mt-mode-row">
+        <button class="mt-mode-btn mt-mode-btn--active" id="mt-mode-single" data-mode="single">Single Drug</button>
+        <button class="mt-mode-btn" id="mt-mode-cross" data-mode="cross">Cross-Taper (2 Drugs)</button>
+      </div>
+
+      <!-- ── Single Drug Panel ── -->
+      <div id="mt-single-panel" class="mt-panel">
+        <div class="mt-form ref-card">
+          <h3 class="ref-card-title">&#128138; Single Drug Schedule</h3>
+
+          <div class="mt-direction-row">
+            <label class="mt-dir-opt">
+              <input type="radio" name="mt-dir" value="taper" checked> Taper (reduce dose)
+            </label>
+            <label class="mt-dir-opt">
+              <input type="radio" name="mt-dir" value="start"> Start / Titrate Up
+            </label>
+          </div>
+
+          <div class="mt-fields-grid">
+            <div class="mt-field">
+              <label class="mt-label">Medication</label>
+              <select class="mt-select" id="mt-drug-single">
+                <option value="">— Select —</option>
+              </select>
+            </div>
+
+            <div class="mt-field">
+              <label class="mt-label">Starting Dose</label>
+              <div class="mt-dose-row">
+                <input type="number" class="mt-input" id="mt-start-dose" placeholder="e.g. 20" min="0" step="any">
+                <select class="mt-unit-select" id="mt-start-unit">
+                  <option value="mcg">mcg</option>
+                  <option value="mg" selected>mg</option>
+                  <option value="g">g</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mt-field">
+              <label class="mt-label">Target Dose <span class="mt-label-hint">(use 0 for full taper)</span></label>
+              <div class="mt-dose-row">
+                <input type="number" class="mt-input" id="mt-target-dose" placeholder="e.g. 0" min="0" step="any">
+                <select class="mt-unit-select" id="mt-target-unit">
+                  <option value="mcg">mcg</option>
+                  <option value="mg" selected>mg</option>
+                  <option value="g">g</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mt-field">
+              <label class="mt-label">Step Size</label>
+              <div class="mt-dose-row">
+                <input type="number" class="mt-input" id="mt-step-size" placeholder="e.g. 5" min="0.001" step="any">
+                <select class="mt-unit-select" id="mt-step-type">
+                  <option value="percent">%</option>
+                  <option value="mcg">mcg</option>
+                  <option value="mg" selected>mg</option>
+                  <option value="g">g</option>
+                </select>
+              </div>
+              <span class="mt-field-hint">Amount to change per step</span>
+            </div>
+
+            <div class="mt-field">
+              <label class="mt-label">Step Interval</label>
+              <div class="mt-dose-row">
+                <input type="number" class="mt-input" id="mt-interval" placeholder="e.g. 7" min="0.5" step="any">
+                <select class="mt-unit-select" id="mt-interval-unit">
+                  <option value="hours">hours</option>
+                  <option value="days" selected>days</option>
+                  <option value="halflife">half-lives</option>
+                </select>
+              </div>
+              <span class="mt-field-hint">Time at each dose before next step</span>
+            </div>
+
+            <div class="mt-field">
+              <label class="mt-label">Number of Steps</label>
+              <input type="number" class="mt-input" id="mt-steps" placeholder="auto" min="1" step="1">
+              <span class="mt-field-hint">Leave blank to auto-calculate from start → target</span>
+            </div>
+
+            <div class="mt-field">
+              <label class="mt-label">Start Date</label>
+              <input type="date" class="mt-input" id="mt-start-date">
+            </div>
+          </div>
+
+          <button class="btn-primary mt-generate-btn" id="mt-generate-single">Generate Schedule &#9656;</button>
+        </div>
+
+        <div id="mt-single-output" class="mt-output" style="display:none"></div>
+      </div>
+
+      <!-- ── Cross-Taper Panel ── -->
+      <div id="mt-cross-panel" class="mt-panel" style="display:none">
+        <div class="mt-form ref-card">
+          <h3 class="ref-card-title">&#8651; Cross-Taper Schedule</h3>
+          <p class="ref-card-sub" style="margin-bottom:16px">Drug A tapers down while Drug B titrates up over the same period. Both share the same step interval and schedule dates.</p>
+
+          <div class="mt-cross-cols">
+            <!-- Drug A: Taper Down -->
+            <div class="mt-cross-col mt-cross-col--down">
+              <div class="mt-cross-col-header">&#8595; Drug A — Tapering Down</div>
+              <div class="mt-field">
+                <label class="mt-label">Medication</label>
+                <select class="mt-select" id="mt-drug-a">
+                  <option value="">— Select —</option>
+                </select>
+              </div>
+              <div class="mt-field">
+                <label class="mt-label">Starting Dose</label>
+                <div class="mt-dose-row">
+                  <input type="number" class="mt-input" id="mt-a-start" placeholder="e.g. 20" min="0" step="any">
+                  <select class="mt-unit-select" id="mt-a-start-unit">
+                    <option value="mcg">mcg</option>
+                    <option value="mg" selected>mg</option>
+                    <option value="g">g</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mt-field">
+                <label class="mt-label">Target Dose</label>
+                <div class="mt-dose-row">
+                  <input type="number" class="mt-input" id="mt-a-target" placeholder="e.g. 0" min="0" step="any" value="0">
+                  <select class="mt-unit-select" id="mt-a-target-unit">
+                    <option value="mcg">mcg</option>
+                    <option value="mg" selected>mg</option>
+                    <option value="g">g</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mt-field">
+                <label class="mt-label">Step Size</label>
+                <div class="mt-dose-row">
+                  <input type="number" class="mt-input" id="mt-a-step" placeholder="e.g. 5" min="0.001" step="any">
+                  <select class="mt-unit-select" id="mt-a-step-type">
+                    <option value="percent">%</option>
+                    <option value="mcg">mcg</option>
+                    <option value="mg" selected>mg</option>
+                    <option value="g">g</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Drug B: Titrate Up -->
+            <div class="mt-cross-col mt-cross-col--up">
+              <div class="mt-cross-col-header">&#8593; Drug B — Titrating Up</div>
+              <div class="mt-field">
+                <label class="mt-label">Medication</label>
+                <select class="mt-select" id="mt-drug-b">
+                  <option value="">— Select —</option>
+                </select>
+              </div>
+              <div class="mt-field">
+                <label class="mt-label">Starting Dose</label>
+                <div class="mt-dose-row">
+                  <input type="number" class="mt-input" id="mt-b-start" placeholder="e.g. 5" min="0" step="any">
+                  <select class="mt-unit-select" id="mt-b-start-unit">
+                    <option value="mcg">mcg</option>
+                    <option value="mg" selected>mg</option>
+                    <option value="g">g</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mt-field">
+                <label class="mt-label">Target Dose</label>
+                <div class="mt-dose-row">
+                  <input type="number" class="mt-input" id="mt-b-target" placeholder="e.g. 20" min="0" step="any">
+                  <select class="mt-unit-select" id="mt-b-target-unit">
+                    <option value="mcg">mcg</option>
+                    <option value="mg" selected>mg</option>
+                    <option value="g">g</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mt-field">
+                <label class="mt-label">Step Size</label>
+                <div class="mt-dose-row">
+                  <input type="number" class="mt-input" id="mt-b-step" placeholder="e.g. 5" min="0.001" step="any">
+                  <select class="mt-unit-select" id="mt-b-step-type">
+                    <option value="percent">%</option>
+                    <option value="mcg">mcg</option>
+                    <option value="mg" selected>mg</option>
+                    <option value="g">g</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shared settings -->
+          <div class="mt-shared-row">
+            <div class="mt-field">
+              <label class="mt-label">Step Interval</label>
+              <div class="mt-dose-row">
+                <input type="number" class="mt-input" id="mt-cross-interval" placeholder="e.g. 7" min="0.5" step="any">
+                <select class="mt-unit-select" id="mt-cross-interval-unit">
+                  <option value="hours">hours</option>
+                  <option value="days" selected>days</option>
+                  <option value="halflife">half-lives</option>
+                </select>
+              </div>
+              <span class="mt-field-hint">For half-lives, Drug A's half-life is used</span>
+            </div>
+            <div class="mt-field">
+              <label class="mt-label">Number of Steps</label>
+              <input type="number" class="mt-input" id="mt-cross-steps" placeholder="auto" min="1" step="1">
+              <span class="mt-field-hint">Leave blank to auto-calculate</span>
+            </div>
+            <div class="mt-field">
+              <label class="mt-label">Start Date</label>
+              <input type="date" class="mt-input" id="mt-cross-date">
+            </div>
+          </div>
+
+          <button class="btn-primary mt-generate-btn" id="mt-generate-cross">Generate Cross-Taper &#9656;</button>
+        </div>
+
+        <div id="mt-cross-output" class="mt-output" style="display:none"></div>
+      </div>
+
+    </section><!-- end med-taper -->
 
   </main>
 

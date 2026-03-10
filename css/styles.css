@@ -2848,6 +2848,217 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
 .mc-cond-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
 .mc-cond-detail { font-size: 11px; color: var(--text-muted); }
 
+/* ── Medication Taper / Start ───────────────────────────────────────────── */
+.mt-warning {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: rgba(240,96,64,0.08);
+  border: 1px solid rgba(240,96,64,0.3);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 24px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+.mt-warning-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.mt-warning strong { color: #f06040; display: block; margin-bottom: 3px; }
+
+.mt-mode-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.mt-mode-btn {
+  padding: 9px 22px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: none;
+  color: var(--text-muted);
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.mt-mode-btn:hover { background: var(--bg3); color: var(--text); }
+.mt-mode-btn--active { background: rgba(74,124,53,0.14); color: var(--accent); border-color: var(--accent); }
+
+.mt-panel { }
+
+.mt-form { margin-bottom: 20px; }
+
+.mt-direction-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.mt-dir-opt {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.mt-dir-opt input { accent-color: var(--accent); }
+
+.mt-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.mt-field { display: flex; flex-direction: column; gap: 5px; }
+.mt-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.mt-label-hint { font-size: 10px; opacity: 0.7; text-transform: none; letter-spacing: 0; }
+.mt-field-hint { font-size: 11px; color: var(--text-muted); opacity: 0.65; }
+
+.mt-input {
+  padding: 8px 10px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 13px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.mt-input:focus { outline: none; border-color: var(--accent); }
+.mt-select {
+  padding: 8px 10px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 13px;
+  width: 100%;
+}
+.mt-select:focus { outline: none; border-color: var(--accent); }
+
+.mt-dose-row { display: flex; gap: 6px; }
+.mt-dose-row .mt-input { flex: 1; min-width: 0; }
+.mt-unit-select {
+  padding: 8px 6px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.mt-generate-btn { margin-top: 4px; }
+
+/* Cross-taper layout */
+.mt-cross-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+@media (max-width: 700px) { .mt-cross-cols { grid-template-columns: 1fr; } }
+
+.mt-cross-col {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.mt-cross-col--down { border-top: 3px solid #f47560; }
+.mt-cross-col--up   { border-top: 3px solid #57c785; }
+.mt-cross-col-header {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.mt-cross-col--down .mt-cross-col-header { color: #f47560; }
+.mt-cross-col--up   .mt-cross-col-header { color: #57c785; }
+
+.mt-shared-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Output */
+.mt-output { margin-top: 4px; }
+.mt-output-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.mt-output-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.025);
+}
+.mt-output-drug { font-size: 16px; font-weight: 700; color: var(--accent); margin-right: 10px; }
+.mt-output-dir  { font-size: 13px; color: var(--text-muted); }
+.mt-output-meta { font-size: 12px; color: var(--text-muted); }
+
+.mt-print-btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: none;
+  color: var(--text-muted);
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.mt-print-btn:hover { background: var(--bg3); color: var(--text); }
+
+.mt-table-wrap { overflow-x: auto; }
+.mt-schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.mt-schedule-table th {
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+.mt-schedule-table td {
+  padding: 9px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  color: var(--text);
+}
+.mt-schedule-table tr:last-child td { border-bottom: none; }
+.mt-row-first td { background: rgba(74,124,53,0.07); }
+.mt-row-zero td { background: rgba(240,96,64,0.06); color: var(--text-muted); }
+.mt-step-num { font-variant-numeric: tabular-nums; color: var(--text-muted); font-size: 12px; }
+.mt-dose-cell { font-weight: 600; }
+.mt-notes-cell { font-size: 12px; color: var(--text-muted); font-style: italic; }
+.mt-output-caveat { padding: 12px 20px; font-size: 11px; border-top: 1px solid var(--border); margin: 0; }
+
 /* ── Scrollbar ─────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }

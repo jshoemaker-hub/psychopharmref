@@ -204,7 +204,7 @@ function getColor(receptor) {
 const SECTION_GROUP = {
   'drug-table': 'psychopharm', 'p450': 'psychopharm',
   'receptor-binding': 'psychopharm', 'glossary': 'psychopharm',
-  'qt-risk': 'tools', 'refill-calendar': 'tools', 'med-compare': 'tools',
+  'qt-risk': 'tools', 'refill-calendar': 'tools', 'med-compare': 'tools', 'med-taper': 'tools',
   'cog-domains': 'insights', 'neuro-circuits': 'insights', 'brain-regions': 'insights',
   'fda-search': null, 'overview': null
 };
@@ -1357,6 +1357,7 @@ initFDASearch();
 renderQTNonPsychList();
 renderQTPsychList();
 initMedCompare();
+initMedTaper();
 
 /* ── Refill Calendar ────────────────────────────────────────────────────── */
 
@@ -1825,4 +1826,294 @@ function initMedCompare() {
       </div>` : ''}
     `;
   }
+}
+
+/* ── Medication Taper / Start Scheduler ─────────────────────────────────── */
+function initMedTaper() {
+
+  // Populate drug dropdowns
+  const drugNames = MEDICATIONS.map(m => m.name).sort();
+  const options = drugNames.map(n => `<option value="${n}">${n}</option>`).join('');
+  ['mt-drug-single','mt-drug-a','mt-drug-b'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = '<option value="">— Select —</option>' + options;
+  });
+
+  // Set today as default date
+  const today = new Date().toISOString().split('T')[0];
+  ['mt-start-date','mt-cross-date'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = today;
+  });
+
+  // Mode toggle
+  document.querySelectorAll('.mt-mode-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.mt-mode-btn').forEach(b => b.classList.remove('mt-mode-btn--active'));
+      btn.classList.add('mt-mode-btn--active');
+      const mode = btn.dataset.mode;
+      document.getElementById('mt-single-panel').style.display = mode === 'single' ? '' : 'none';
+      document.getElementById('mt-cross-panel').style.display  = mode === 'cross'  ? '' : 'none';
+    });
+  });
+
+  // Parse half-life string → hours (takes first numeric range midpoint)
+  function parseHalfLifeHours(drug) {
+    if (!drug || !drug.halfLife || !drug.halfLife.drug) return 24; // default 24h
+    const str = drug.halfLife.drug;
+    const nums = str.match(/[\d.]+/g);
+    if (!nums) return 24;
+    const values = nums.map(Number).filter(n => n > 0);
+    if (values.length === 0) return 24;
+    const avg = values.reduce((a, b) => a + b, 0) / values.length;
+    // Convert to hours if string contains 'day'
+    return str.toLowerCase().includes('day') ? avg * 24 : avg;
+  }
+
+  // Convert interval to days
+  function intervalToDays(interval, unit, drugForHL) {
+    if (unit === 'hours')    return interval / 24;
+    if (unit === 'days')     return interval;
+    if (unit === 'halflife') return (interval * parseHalfLifeHours(drugForHL)) / 24;
+    return interval;
+  }
+
+  // Convert dose to mg (canonical unit for storage)
+  function toMg(val, unit) {
+    if (unit === 'mcg') return val / 1000;
+    if (unit === 'g')   return val * 1000;
+    return val; // mg
+  }
+
+  // Format dose: auto-choose best unit for display
+  function formatDose(mg) {
+    if (mg === 0) return '0 mg';
+    if (mg < 0.1)    return (mg * 1000).toFixed(1) + ' mcg';
+    if (mg >= 1000)  return (mg / 1000).toFixed(3).replace(/\.?0+$/, '') + ' g';
+    // Round to avoid floating point noise
+    const rounded = Math.round(mg * 1000) / 1000;
+    return rounded + ' mg';
+  }
+
+  // Compute step delta in mg
+  function stepDeltaMg(currentMg, stepSize, stepType) {
+    if (stepType === 'percent') return currentMg * (stepSize / 100);
+    return toMg(stepSize, stepType);
+  }
+
+  // Generate a dose sequence
+  function generateSequence(startMg, targetMg, stepSize, stepType, maxSteps, direction) {
+    // direction: 'taper' (down) or 'start' (up)
+    const doses = [startMg];
+    let current = startMg;
+    const goingDown = direction === 'taper';
+
+    // Auto-calculate max steps if not provided
+    if (!maxSteps || maxSteps < 1) {
+      maxSteps = 50; // safety cap
+    }
+
+    for (let i = 0; i < maxSteps; i++) {
+      const delta = stepDeltaMg(current, stepSize, stepType);
+      if (delta <= 0) break;
+      let next = goingDown ? current - delta : current + delta;
+      if (goingDown) {
+        next = Math.max(0, next);
+        if (next <= targetMg + 0.0001) { doses.push(targetMg); break; }
+      } else {
+        if (next >= targetMg - 0.0001) { doses.push(targetMg); break; }
+      }
+      current = next;
+      doses.push(Math.round(current * 10000) / 10000);
+    }
+    return doses;
+  }
+
+  // Build date list from start + intervalDays
+  function buildDates(startDateStr, intervalDays, count) {
+    const dates = [];
+    const start = new Date(startDateStr + 'T00:00:00');
+    for (let i = 0; i < count; i++) {
+      const d = new Date(start);
+      d.setDate(d.getDate() + Math.round(i * intervalDays));
+      dates.push(d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }));
+    }
+    return dates;
+  }
+
+  // Render single schedule output
+  function renderSingleOutput(containerId, drugName, direction, doses, dates, intervalLabel) {
+    const container = document.getElementById(containerId);
+    const dirLabel  = direction === 'taper' ? '&#8595; Tapering Down' : '&#8593; Titrating Up';
+    const lastDose  = doses[doses.length - 1];
+
+    container.style.display = '';
+    container.innerHTML = `
+      <div class="mt-output-card">
+        <div class="mt-output-header">
+          <div>
+            <span class="mt-output-drug">${drugName}</span>
+            <span class="mt-output-dir">${dirLabel}</span>
+          </div>
+          <div class="mt-output-meta">
+            ${doses.length} step${doses.length !== 1 ? 's' : ''} &nbsp;|&nbsp;
+            ${intervalLabel} per step &nbsp;|&nbsp;
+            Final dose: <strong>${formatDose(lastDose)}</strong>
+          </div>
+          <button class="mt-print-btn" onclick="window.print()">&#128438; Print / Save PDF</button>
+        </div>
+        <div class="mt-table-wrap">
+          <table class="mt-schedule-table">
+            <thead>
+              <tr>
+                <th>Step</th>
+                <th>Date</th>
+                <th>Daily Dose</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${doses.map((dose, i) => `
+                <tr class="${dose === 0 ? 'mt-row-zero' : i === 0 ? 'mt-row-first' : ''}">
+                  <td class="mt-step-num">${i === 0 ? 'Start' : i}</td>
+                  <td>${dates[i] || '—'}</td>
+                  <td class="mt-dose-cell"><strong>${formatDose(dose)}</strong></td>
+                  <td class="mt-notes-cell">${dose === 0 ? 'Discontinue' : i === 0 ? 'Initial dose' : ''}</td>
+                </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+        <p class="ref-caveat mt-output-caveat">This schedule is generated for reference only. Adjust timing and doses based on clinical response, tolerability, and patient-specific factors. Consult current prescribing guidelines.</p>
+      </div>
+    `;
+  }
+
+  // Render cross-taper output
+  function renderCrossOutput(containerId, drugA, drugB, dosesA, dosesB, dates, intervalLabel) {
+    const container = document.getElementById(containerId);
+    const count = Math.max(dosesA.length, dosesB.length);
+    container.style.display = '';
+    container.innerHTML = `
+      <div class="mt-output-card">
+        <div class="mt-output-header">
+          <div>
+            <span class="mt-output-drug" style="color:#f47560">${drugA} &#8595;</span>
+            <span style="color:var(--text-muted);margin:0 8px">/</span>
+            <span class="mt-output-drug" style="color:#57c785">${drugB} &#8593;</span>
+          </div>
+          <div class="mt-output-meta">${count} steps &nbsp;|&nbsp; ${intervalLabel} per step</div>
+          <button class="mt-print-btn" onclick="window.print()">&#128438; Print / Save PDF</button>
+        </div>
+        <div class="mt-table-wrap">
+          <table class="mt-schedule-table">
+            <thead>
+              <tr>
+                <th>Step</th>
+                <th>Date</th>
+                <th style="color:#f47560">${drugA} (&#8595; taper)</th>
+                <th style="color:#57c785">${drugB} (&#8593; start)</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${Array.from({length: count}, (_, idx) => {
+                const dA = dosesA[Math.min(idx, dosesA.length-1)];
+                const dB = dosesB[Math.min(idx, dosesB.length-1)];
+                return `
+                <tr class="${idx === 0 ? 'mt-row-first' : ''}">
+                  <td class="mt-step-num">${idx === 0 ? 'Start' : idx}</td>
+                  <td>${dates[idx] || '—'}</td>
+                  <td class="mt-dose-cell" style="color:#f47560"><strong>${formatDose(dA)}</strong></td>
+                  <td class="mt-dose-cell" style="color:#57c785"><strong>${formatDose(dB)}</strong></td>
+                  <td class="mt-notes-cell">${idx === 0 ? 'Cross-taper begins' : ''}</td>
+                </tr>`;
+              }).join('')}
+            </tbody>
+          </table>
+        </div>
+        <p class="ref-caveat mt-output-caveat">Cross-taper schedules require close clinical monitoring. Overlap duration and dose ratio should be adjusted based on each drug's receptor profile, pharmacokinetics, and the patient's clinical response.</p>
+      </div>
+    `;
+  }
+
+  // ── Single Drug Generate ──
+  document.getElementById('mt-generate-single').addEventListener('click', () => {
+    const drugName   = document.getElementById('mt-drug-single').value;
+    const direction  = document.querySelector('input[name="mt-dir"]:checked')?.value || 'taper';
+    const startVal   = parseFloat(document.getElementById('mt-start-dose').value);
+    const startUnit  = document.getElementById('mt-start-unit').value;
+    const targetVal  = parseFloat(document.getElementById('mt-target-dose').value);
+    const targetUnit = document.getElementById('mt-target-unit').value;
+    const stepSize   = parseFloat(document.getElementById('mt-step-size').value);
+    const stepType   = document.getElementById('mt-step-type').value;
+    const interval   = parseFloat(document.getElementById('mt-interval').value);
+    const intUnit    = document.getElementById('mt-interval-unit').value;
+    const stepsIn    = parseInt(document.getElementById('mt-steps').value) || 0;
+    const startDate  = document.getElementById('mt-start-date').value;
+
+    if (!drugName || isNaN(startVal) || isNaN(stepSize) || isNaN(interval) || !startDate) {
+      alert('Please fill in: Medication, Starting Dose, Step Size, Interval, and Start Date.');
+      return;
+    }
+
+    const drug      = MEDICATIONS.find(m => m.name === drugName);
+    const startMg   = toMg(startVal, startUnit);
+    const targetMg  = isNaN(targetVal) ? (direction === 'taper' ? 0 : startMg * 2) : toMg(targetVal, targetUnit);
+    const intervalDays = intervalToDays(interval, intUnit, drug);
+    const maxSteps  = stepsIn > 0 ? stepsIn : Math.ceil(Math.abs(startMg - targetMg) / Math.max(stepDeltaMg(startMg, stepSize, stepType), 0.001));
+
+    const doses = generateSequence(startMg, targetMg, stepSize, stepType, maxSteps, direction);
+    const dates = buildDates(startDate, intervalDays, doses.length);
+    const intLabel = `${interval} ${intUnit}${intUnit === 'halflife' ? ` (≈${(intervalDays).toFixed(1)} days)` : ''}`;
+
+    renderSingleOutput('mt-single-output', drugName, direction, doses, dates, intLabel);
+    document.getElementById('mt-single-output').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // ── Cross-Taper Generate ──
+  document.getElementById('mt-generate-cross').addEventListener('click', () => {
+    const drugAName  = document.getElementById('mt-drug-a').value;
+    const drugBName  = document.getElementById('mt-drug-b').value;
+    const aStart     = parseFloat(document.getElementById('mt-a-start').value);
+    const aStartUnit = document.getElementById('mt-a-start-unit').value;
+    const aTarget    = parseFloat(document.getElementById('mt-a-target').value);
+    const aTargetUnit= document.getElementById('mt-a-target-unit').value;
+    const aStep      = parseFloat(document.getElementById('mt-a-step').value);
+    const aStepType  = document.getElementById('mt-a-step-type').value;
+    const bStart     = parseFloat(document.getElementById('mt-b-start').value);
+    const bStartUnit = document.getElementById('mt-b-start-unit').value;
+    const bTarget    = parseFloat(document.getElementById('mt-b-target').value);
+    const bTargetUnit= document.getElementById('mt-b-target-unit').value;
+    const bStep      = parseFloat(document.getElementById('mt-b-step').value);
+    const bStepType  = document.getElementById('mt-b-step-type').value;
+    const interval   = parseFloat(document.getElementById('mt-cross-interval').value);
+    const intUnit    = document.getElementById('mt-cross-interval-unit').value;
+    const stepsIn    = parseInt(document.getElementById('mt-cross-steps').value) || 0;
+    const startDate  = document.getElementById('mt-cross-date').value;
+
+    if (!drugAName || !drugBName || isNaN(aStart) || isNaN(bStart) || isNaN(aStep) || isNaN(bStep) || isNaN(interval) || !startDate) {
+      alert('Please fill in all required fields for both drugs.');
+      return;
+    }
+
+    const drugA      = MEDICATIONS.find(m => m.name === drugAName);
+    const aStartMg   = toMg(aStart, aStartUnit);
+    const aTargetMg  = isNaN(aTarget) ? 0 : toMg(aTarget, aTargetUnit);
+    const bStartMg   = toMg(bStart, bStartUnit);
+    const bTargetMg  = isNaN(bTarget) ? aStartMg : toMg(bTarget, bTargetUnit);
+    const intervalDays = intervalToDays(interval, intUnit, drugA);
+
+    const maxA = stepsIn > 0 ? stepsIn : Math.ceil(Math.abs(aStartMg - aTargetMg) / Math.max(stepDeltaMg(aStartMg, aStep, aStepType), 0.001));
+    const maxB = stepsIn > 0 ? stepsIn : Math.ceil(Math.abs(bTargetMg - bStartMg) / Math.max(stepDeltaMg(bStartMg, bStep, bStepType), 0.001));
+    const maxSteps = stepsIn > 0 ? stepsIn : Math.max(maxA, maxB);
+
+    const dosesA = generateSequence(aStartMg, aTargetMg, aStep, aStepType, maxSteps, 'taper');
+    const dosesB = generateSequence(bStartMg, bTargetMg, bStep, bStepType, maxSteps, 'start');
+    const count  = Math.max(dosesA.length, dosesB.length);
+    const dates  = buildDates(startDate, intervalDays, count);
+    const intLabel = `${interval} ${intUnit}${intUnit === 'halflife' ? ` (≈${(intervalDays).toFixed(1)} days)` : ''}`;
+
+    renderCrossOutput('mt-cross-output', drugAName, drugBName, dosesA, dosesB, dates, intLabel);
+    document.getElementById('mt-cross-output').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 }
