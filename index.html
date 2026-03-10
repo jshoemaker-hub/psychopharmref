@@ -17,36 +17,66 @@
     </div>
 
     <ul class="nav-links">
-      <li><a href="#" class="nav-link active" data-section="overview">
-        <span class="nav-icon">&#9632;</span> Overview
-      </a></li>
-      <li><a href="#" class="nav-link" data-section="drug-table">
-        <span class="nav-icon">&#9776;</span> Drug Database
-      </a></li>
-      <li><a href="#" class="nav-link" data-section="p450">
-        <span class="nav-icon">&#9654;</span> P450 Interactions
-      </a></li>
-      <li><a href="#" class="nav-link" data-section="receptor-binding">
-        <span class="nav-icon">&#9673;</span> Receptor Binding
-      </a></li>
-      <li><a href="#" class="nav-link" data-section="glossary">
-        <span class="nav-icon">&#9998;</span> Receptor Glossary
-      </a></li>
-      <li><a href="#" class="nav-link" data-section="fda-search">
-        <span class="nav-icon">&#128269;</span> References
-      </a></li>
-      <li><a href="#" class="nav-link" data-section="qt-risk">
-        <span class="nav-icon">&#10084;</span> QT Risk Tool
-      </a></li>
-      <li><a href="#" class="nav-link" data-section="refill-calendar">
-        <span class="nav-icon">&#128197;</span> Refill Calendar
-      </a></li>
-      <li><a href="#" class="nav-link" data-section="neuro-cog">
-        <span class="nav-icon">&#129504;</span> Clinical Insights
-      </a></li>
+      <!-- Home -->
+      <li>
+        <a href="#" class="nav-link active" data-section="overview">
+          <span class="nav-icon">&#8962;</span> Home
+        </a>
+      </li>
+
+      <!-- Psychopharmacology -->
+      <li class="nav-group" data-group="psychopharm">
+        <button class="nav-parent-btn">
+          <span class="nav-icon">&#128138;</span>
+          <span class="nav-parent-label">Psychopharmacology</span>
+          <span class="nav-caret">&#9658;</span>
+        </button>
+        <ul class="nav-sub">
+          <li><a href="#" class="nav-link nav-sub-link" data-section="drug-table">Drug Database</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="p450">P450 Interactions</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="receptor-binding">Receptor Binding</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="glossary">Receptor Glossary</a></li>
+        </ul>
+      </li>
+
+      <!-- Clinical Tools -->
+      <li class="nav-group" data-group="tools">
+        <button class="nav-parent-btn">
+          <span class="nav-icon">&#128295;</span>
+          <span class="nav-parent-label">Clinical Tools</span>
+          <span class="nav-caret">&#9658;</span>
+        </button>
+        <ul class="nav-sub">
+          <li><a href="#" class="nav-link nav-sub-link" data-section="qt-risk">QT Risk Tool</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="refill-calendar">Refill Calendar</a></li>
+        </ul>
+      </li>
+
+      <!-- Clinical Insights -->
+      <li class="nav-group" data-group="insights">
+        <button class="nav-parent-btn">
+          <span class="nav-icon">&#129504;</span>
+          <span class="nav-parent-label">Clinical Insights</span>
+          <span class="nav-caret">&#9658;</span>
+        </button>
+        <ul class="nav-sub">
+          <li><a href="#" class="nav-link nav-sub-link" data-section="cog-domains">Cognitive Domains</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="neuro-circuits">Neuropsych Circuits</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="brain-regions">Brain Regions</a></li>
+        </ul>
+      </li>
+
+      <!-- Blog -->
+      <li class="nav-group nav-group--disabled" data-group="blog">
+        <button class="nav-parent-btn" disabled>
+          <span class="nav-icon">&#9998;</span>
+          <span class="nav-parent-label">Blog</span>
+          <span class="nav-soon">soon</span>
+        </button>
+      </li>
     </ul>
 
-    <div class="filter-panel">
+    <div class="filter-panel" style="display:none">
       <h4>Filter by Class</h4>
       <label class="filter-item"><input type="checkbox" class="class-filter" value="SSRI" checked> SSRI</label>
       <label class="filter-item"><input type="checkbox" class="class-filter" value="SNRI" checked> SNRI</label>
@@ -66,7 +96,9 @@
     </div>
 
     <div class="sidebar-footer">
-      <small>Data from FDA labels &amp; literature.<br>For clinical use verify with current labeling.</small>
+      <a href="#" class="sf-link" onclick="switchSection('fda-search');return false;">References &amp; Methods</a>
+      <a href="#" class="sf-link" id="sf-disclaimer-link" onclick="document.getElementById('warning-modal').style.display='flex';return false;">Legal Disclaimer</a>
+      <span class="sf-contact">Contact — coming soon</span>
     </div>
   </nav>
 
@@ -76,8 +108,8 @@
     <!-- ── Overview ─────────────────────────────────────────────────────── -->
     <section id="overview" class="section active">
       <div class="section-header">
-        <h2>Psychopharmacology Reference</h2>
-        <p class="section-sub">Comprehensive psychiatric medication data for clinical reference</p>
+        <h2>PsychoPharmRef</h2>
+        <p class="section-sub">Clinical pharmacology reference for psychiatric medications.</p>
       </div>
 
       <div class="stats-grid" id="stats-grid"></div>
@@ -87,26 +119,44 @@
         <div id="search-results" class="search-dropdown"></div>
       </div>
 
-      <div class="overview-cards">
-        <div class="info-card">
-          <h3>Drug Table</h3>
-          <p>Sortable, filterable table of all medications with key pharmacological attributes: half-life, protein binding, renal/hepatic dosing, QT interval effects, and more.</p>
-          <button class="btn-primary" onclick="switchSection('drug-table')">View Drug Database</button>
+      <div class="overview-cards overview-cards--topics">
+        <div class="info-card info-card--topic">
+          <div class="ic-icon">&#128138;</div>
+          <h3>Psychopharmacology</h3>
+          <p>Drug database, P450 enzyme interactions, receptor binding profiles, and receptor pharmacology glossary.</p>
+          <div class="ic-sub-links">
+            <button class="btn-sub" onclick="switchSection('drug-table')">Drug Database</button>
+            <button class="btn-sub" onclick="switchSection('p450')">P450 Interactions</button>
+            <button class="btn-sub" onclick="switchSection('receptor-binding')">Receptor Binding</button>
+            <button class="btn-sub" onclick="switchSection('glossary')">Receptor Glossary</button>
+          </div>
         </div>
-        <div class="info-card">
-          <h3>P450 Interactions</h3>
-          <p>Visual matrix showing CYP450 enzyme interactions — substrates, inhibitors (strong/moderate/weak), and inducers — for all medications at a glance.</p>
-          <button class="btn-primary" onclick="switchSection('p450')">View P450 Matrix</button>
+        <div class="info-card info-card--topic">
+          <div class="ic-icon">&#128295;</div>
+          <h3>Clinical Tools</h3>
+          <p>Interactive clinical decision support tools for QT prolongation risk assessment and medication refill scheduling.</p>
+          <div class="ic-sub-links">
+            <button class="btn-sub" onclick="switchSection('qt-risk')">QT Risk Tool</button>
+            <button class="btn-sub" onclick="switchSection('refill-calendar')">Refill Calendar</button>
+          </div>
         </div>
-        <div class="info-card">
-          <h3>Receptor Binding</h3>
-          <p>Pie charts of relative receptor affinity (inverse Ki) per drug, and bar charts comparing absolute binding across drug classes at each receptor.</p>
-          <button class="btn-primary" onclick="switchSection('receptor-binding')">View Receptor Charts</button>
+        <div class="info-card info-card--topic">
+          <div class="ic-icon">&#129504;</div>
+          <h3>Clinical Insights</h3>
+          <p>Neuropsychiatric cognitive domains, classic neurocircuits, and brain region involvement across major psychiatric diagnoses.</p>
+          <div class="ic-sub-links">
+            <button class="btn-sub" onclick="switchSection('cog-domains')">Cognitive Domains</button>
+            <button class="btn-sub" onclick="switchSection('neuro-circuits')">Neuropsych Circuits</button>
+            <button class="btn-sub" onclick="switchSection('brain-regions')">Brain Regions</button>
+          </div>
         </div>
-        <div class="info-card">
-          <h3>Receptor Glossary</h3>
-          <p>Clinical effects of activating or blocking each receptor system — benefits and common side effects for SERT, NET, DAT, 5HT, dopamine, histamine, adrenergic, muscarinic, GABA-A, and more.</p>
-          <button class="btn-primary" onclick="switchSection('glossary')">View Glossary</button>
+        <div class="info-card info-card--topic info-card--soon">
+          <div class="ic-icon">&#9998;</div>
+          <h3>Blog</h3>
+          <p>Clinical commentary, pharmacology explainers, and case-based learning. Coming soon.</p>
+          <div class="ic-sub-links">
+            <span class="btn-sub btn-sub--disabled">Coming Soon</span>
+          </div>
         </div>
       </div>
     </section>
@@ -754,10 +804,10 @@
 
     </section><!-- end refill-calendar -->
 
-    <!-- ── Cognitive Assessment ─────────────────────────────────────────── -->
-    <section id="neuro-cog" class="section">
+    <!-- ── Cognitive Domains ─────────────────────────────────────────────── -->
+    <section id="cog-domains" class="section">
       <div class="section-header">
-        <h2>Neuropsychiatric Cognitive Assessment</h2>
+        <h2>Cognitive Domains</h2>
         <p class="section-sub">Cognitive domains, standardized screening instruments, and clinical interpretation.</p>
       </div>
 
@@ -1194,9 +1244,14 @@
         </div>
       </div>
 
-      <!-- ══════════════════════════════════════════════════════════════════ -->
-      <!-- ── Neuropsychiatric Circuits ──────────────────────────────────── -->
-      <!-- ══════════════════════════════════════════════════════════════════ -->
+    </section><!-- end cog-domains -->
+
+    <!-- ── Neuropsychiatric Circuits ─────────────────────────────────────── -->
+    <section id="neuro-circuits" class="section">
+      <div class="section-header">
+        <h2>Classic Neuropsychiatric Circuits</h2>
+        <p class="section-sub">Parallel cortico–basal ganglia–thalamo–cortical loops and limbic circuits.</p>
+      </div>
 
       <!-- Intro / Big Concept -->
       <div class="ref-card" style="margin-top:32px">
@@ -1740,9 +1795,14 @@
         </table>
       </div>
 
-      <!-- ══════════════════════════════════════════════════════════════════ -->
-      <!-- ── Diagnoses & Brain Regions ─────────────────────────────────── -->
-      <!-- ══════════════════════════════════════════════════════════════════ -->
+    </section><!-- end neuro-circuits -->
+
+    <!-- ── Brain Regions ─────────────────────────────────────────────────── -->
+    <section id="brain-regions" class="section">
+      <div class="section-header">
+        <h2>Brain Regions in Neuropsychiatric Disorders</h2>
+        <p class="section-sub">Neuroanatomical correlates of major psychiatric and neurological diagnoses.</p>
+      </div>
 
       <div class="ref-card" style="margin-top:32px">
         <h3 class="ref-card-title">&#129504; Brain Regions in Neuropsychiatric Disorders</h3>
@@ -2212,7 +2272,7 @@
         </ol>
       </div>
 
-    </section><!-- end neuro-cog -->
+    </section><!-- end brain-regions -->
 
   </main>
 

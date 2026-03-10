@@ -200,6 +200,25 @@ function getColor(receptor) {
 }
 
 /* ── Navigation ─────────────────────────────────────────────────────────── */
+// Map each section to its parent group
+const SECTION_GROUP = {
+  'drug-table': 'psychopharm', 'p450': 'psychopharm',
+  'receptor-binding': 'psychopharm', 'glossary': 'psychopharm',
+  'qt-risk': 'tools', 'refill-calendar': 'tools',
+  'cog-domains': 'insights', 'neuro-circuits': 'insights', 'brain-regions': 'insights',
+  'fda-search': null, 'overview': null
+};
+
+function expandGroup(groupId) {
+  document.querySelectorAll('.nav-group').forEach(g => {
+    if (g.dataset.group === groupId) {
+      g.classList.add('open');
+    } else {
+      g.classList.remove('open');
+    }
+  });
+}
+
 function switchSection(id) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
@@ -208,14 +227,47 @@ function switchSection(id) {
   const link = document.querySelector(`[data-section="${id}"]`);
   if (link) link.classList.add('active');
 
+  // Expand the parent group for this section
+  const group = SECTION_GROUP[id];
+  expandGroup(group);
+
+  // Show filter panel only when drug-table is active
+  const filterPanel = document.querySelector('.filter-panel');
+  if (filterPanel) filterPanel.style.display = (id === 'drug-table') ? '' : 'none';
+
   // Lazy-render charts when section becomes active
   if (id === 'receptor-binding') renderBarChart();
+
+  // Scroll main content to top
+  document.getElementById('content').scrollTop = 0;
 }
 
-document.querySelectorAll('.nav-link').forEach(link => {
+// Parent nav button toggle
+document.querySelectorAll('.nav-parent-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    const group = btn.closest('.nav-group');
+    const isOpen = group.classList.contains('open');
+    // Close all groups
+    document.querySelectorAll('.nav-group').forEach(g => g.classList.remove('open'));
+    // Toggle clicked group
+    if (!isOpen) group.classList.add('open');
+  });
+});
+
+// Sub-link navigation
+document.querySelectorAll('.nav-sub-link').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
     switchSection(link.dataset.section);
+  });
+});
+
+// Home link
+document.querySelectorAll('[data-section="overview"]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    switchSection('overview');
   });
 });
 
