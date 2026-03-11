@@ -325,6 +325,7 @@ function initQuickSearch() {
     if (!item?.dataset.id) return;
     input.value = '';
     dropdown.innerHTML = '';
+    switchSection('drug-table');
     openDrugModal(item.dataset.id);
   });
 
@@ -1994,7 +1995,7 @@ function initMedCompare() {
                 <span class="mc-circuit-badge">${c.mods.length}/${drugs.filter(d=>d.receptorKi).length} drugs</span>
               </div>
               <div class="mc-circuit-drugs">
-                ${c.mods.map((d,i) => {
+                ${c.mods.map(d => {
                   const idx = drugs.indexOf(d);
                   return `<span class="mc-circuit-drug" style="background:${DRUG_COLORS[idx]}22;color:${DRUG_COLORS[idx]};border-color:${DRUG_COLORS[idx]}55">${d.name}</span>`;
                 }).join('')}
