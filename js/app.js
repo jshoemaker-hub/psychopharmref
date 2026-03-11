@@ -511,7 +511,7 @@ function renderDrugTable() {
   const meds  = visibleMeds();
   const tbody = document.getElementById('main-tbody');
   const showSE = !!sideEffectSort;
-  const colCount = showSE ? 16 : 15;
+  const colCount = showSE ? 15 : 14;
 
   tbody.innerHTML = meds.map(m => {
     const renal = m.renalImpairment.modified
@@ -551,9 +551,8 @@ function renderDrugTable() {
     const bfCell   = perinatalCell(pData?.breastfeeding, true);
 
     return `<tr>
-      <td class="drug-name-cell" style="cursor:pointer" onclick="openDrugModal('${m.id}')">${m.name}</td>
+      <td class="drug-name-cell" style="cursor:pointer" onclick="openDrugModal('${m.id}')">${m.name} <span class="brand-name">(${m.brandName})</span></td>
       ${seCell}
-      <td class="brand-name">${m.brandName}</td>
       <td>${classBadge(m.class)}</td>
       <td>${enan}</td>
       <td style="white-space:nowrap">${m.halfLife.drug}</td>
@@ -654,7 +653,7 @@ function renderP450Table(catFilter = '') {
 
   document.getElementById('p450-tbody').innerHTML = meds.map(m => `
     <tr>
-      <td class="drug-name-cell" style="cursor:pointer;white-space:nowrap" onclick="openDrugModal('${m.id}')">${m.name}</td>
+      <td class="drug-name-cell" style="cursor:pointer;white-space:nowrap" onclick="openDrugModal('${m.id}')">${m.name} <span class="brand-name">(${m.brandName})</span></td>
       <td>${classBadge(m.class)}</td>
       ${P450_ENZYMES.map(e => `<td class="p450-cell">${p450Cell(m, e)}</td>`).join('')}
     </tr>
@@ -1523,7 +1522,8 @@ function initMedCompare() {
   let mcCount = 2;
   let mcChart = null;
 
-  const drugNames = MEDICATIONS.map(m => m.name).sort();
+  const drugOptions = MEDICATIONS.slice().sort((a,b) => a.name.localeCompare(b.name))
+    .map(m => `<option value="${m.name}">${m.name} (${m.brandName})</option>`).join('');
 
   function buildSelectors() {
     const container = document.getElementById('mc-selectors');
@@ -1538,8 +1538,7 @@ function initMedCompare() {
       const sel = document.createElement('select');
       sel.className = 'mc-select';
       sel.id = `mc-sel-${i}`;
-      sel.innerHTML = `<option value="">— Select —</option>` +
-        drugNames.map(n => `<option value="${n}">${n}</option>`).join('');
+      sel.innerHTML = `<option value="">— Select —</option>` + drugOptions;
       wrap.appendChild(label);
       wrap.appendChild(sel);
       container.appendChild(wrap);
@@ -2025,11 +2024,11 @@ function initMedCompare() {
 function initMedTaper() {
 
   // Populate drug dropdowns
-  const drugNames = MEDICATIONS.map(m => m.name).sort();
-  const options = drugNames.map(n => `<option value="${n}">${n}</option>`).join('');
+  const taperOptions = MEDICATIONS.slice().sort((a,b) => a.name.localeCompare(b.name))
+    .map(m => `<option value="${m.name}">${m.name} (${m.brandName})</option>`).join('');
   ['mt-drug-single','mt-drug-a','mt-drug-b'].forEach(id => {
     const el = document.getElementById(id);
-    if (el) el.innerHTML = '<option value="">— Select —</option>' + options;
+    if (el) el.innerHTML = '<option value="">— Select —</option>' + taperOptions;
   });
 
   // Set today as default date
