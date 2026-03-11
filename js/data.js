@@ -927,7 +927,16 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 0.8, NET: 240, DAT: 3600, '5HT1A': 2000, '5HT2A': 200, '5HT2C': 36,
       D2: 5000, H1: 3000, alpha1: 1400, M1: 2000
-    }
+    },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 1987 },
+      { use: 'Obsessive-Compulsive Disorder', year: 1994 },
+      { use: 'Panic Disorder', year: 1994 },
+      { use: 'Bulimia Nervosa', year: 1994 },
+      { use: 'Premenstrual Dysphoric Disorder', year: 2000 },
+      { use: 'Bipolar Depression (with olanzapine)', year: 2003 },
+      { use: 'Treatment-Resistant Depression (with olanzapine)', year: 2003 },
+    ]
   },
   {
     id: 'sertraline',
@@ -950,7 +959,15 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 0.29, NET: 420, DAT: 25, '5HT1A': 4900, '5HT2A': 127, '5HT2C': 570,
       D2: 10000, H1: 10000, alpha1: 130, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 1991 },
+      { use: 'Obsessive-Compulsive Disorder', year: 1997 },
+      { use: 'Panic Disorder', year: 1997 },
+      { use: 'Post-Traumatic Stress Disorder', year: 1999 },
+      { use: 'Premenstrual Dysphoric Disorder', year: 2002 },
+      { use: 'Social Anxiety Disorder', year: 2003 },
+    ]
   },
   {
     id: 'escitalopram',
@@ -973,7 +990,11 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 1.1, NET: 7800, DAT: 10000, '5HT1A': 10000, '5HT2A': 2900, '5HT2C': 10000,
       D2: 10000, H1: 10000, alpha1: 10000, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 2002 },
+      { use: 'Generalized Anxiety Disorder', year: 2003 },
+    ]
   },
   {
     id: 'paroxetine',
@@ -996,7 +1017,16 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 0.13, NET: 39, DAT: 490, '5HT1A': 10000, '5HT2A': 1300, '5HT2C': 140,
       D2: 10000, H1: 10000, alpha1: 100, M1: 17
-    }
+    },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 1992 },
+      { use: 'Obsessive-Compulsive Disorder', year: 1996 },
+      { use: 'Panic Disorder', year: 1996 },
+      { use: 'Social Anxiety Disorder', year: 1999 },
+      { use: 'Generalized Anxiety Disorder', year: 2001 },
+      { use: 'Post-Traumatic Stress Disorder', year: 2001 },
+      { use: 'Premenstrual Dysphoric Disorder', year: 2003 },
+    ]
   },
   {
     id: 'citalopram',
@@ -1019,7 +1049,10 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 1.8, NET: 4070, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 617,
       D2: 10000, H1: 10000, alpha1: 10000, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 1998 },
+    ]
   },
   {
     id: 'fluvoxamine',
@@ -1042,7 +1075,11 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 2.2, NET: 1300, DAT: 9100, '5HT1A': 10000, '5HT2A': 2000, '5HT2C': 4400,
       D2: 10000, H1: 10000, alpha1: 10000, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Obsessive-Compulsive Disorder', year: 1994 },
+      { use: 'Social Anxiety Disorder', year: 2008 },
+    ]
   },
 
   // ── SNRIs ──────────────────────────────────────────────────────────────────
@@ -1067,7 +1104,13 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 7.5, NET: 2480, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000,
       D2: 10000, H1: 10000, alpha1: 10000, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 1993 },
+      { use: 'Generalized Anxiety Disorder', year: 1999 },
+      { use: 'Social Anxiety Disorder', year: 1999 },
+      { use: 'Panic Disorder', year: 2001 },
+    ]
   },
   {
     id: 'duloxetine',
@@ -1090,7 +1133,15 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 0.8, NET: 7.5, DAT: 240, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000,
       D2: 10000, H1: 2900, alpha1: 10000, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 2004 },
+      { use: 'Diabetic Peripheral Neuropathy', year: 2004 },
+      { use: 'Generalized Anxiety Disorder', year: 2007 },
+      { use: 'Fibromyalgia', year: 2008 },
+      { use: 'Chronic Musculoskeletal Pain', year: 2010 },
+      { use: 'Stress Urinary Incontinence', year: 2004 },
+    ]
   },
   {
     id: 'desvenlafaxine',
@@ -1113,7 +1164,10 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 40, NET: 558, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000,
       D2: 10000, H1: 10000, alpha1: 10000, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 2008 },
+    ]
   },
 
   // ── TCAs ───────────────────────────────────────────────────────────────────
@@ -1138,7 +1192,10 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 3.5, NET: 19, DAT: 3200, '5HT1A': 450, '5HT2A': 18, '5HT2C': 4,
       D2: 1100, H1: 1, alpha1: 27, alpha2: 900, M1: 17
-    }
+    },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 1961 },
+    ]
   },
   {
     id: 'nortriptyline',
@@ -1161,7 +1218,10 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 18, NET: 4.4, DAT: 1140, '5HT1A': 294, '5HT2A': 41, '5HT2C': 8,
       D2: 2000, H1: 6, alpha1: 57, alpha2: 10000, M1: 149
-    }
+    },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 1964 },
+    ]
   },
   {
     id: 'imipramine',
@@ -1184,7 +1244,11 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 1.4, NET: 37, DAT: 8500, '5HT1A': 10000, '5HT2A': 150, '5HT2C': 120,
       D2: 3600, H1: 11, alpha1: 50, alpha2: 10000, M1: 57
-    }
+    },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 1959 },
+      { use: 'Nocturnal Enuresis (pediatric)', year: 1974 },
+    ]
   },
 
   // ── MAOIs ──────────────────────────────────────────────────────────────────
@@ -1207,7 +1271,10 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: null,
     receptorKi: null,
-    mechanism: 'Irreversible non-selective MAO-A and MAO-B inhibitor; increases synaptic monoamines (NE, 5HT, DA)'
+    mechanism: 'Irreversible non-selective MAO-A and MAO-B inhibitor; increases synaptic monoamines (NE, 5HT, DA)',
+    indications: [
+      { use: 'Major Depressive Disorder (atypical)', year: 1961 },
+    ]
   },
   {
     id: 'tranylcypromine',
@@ -1228,7 +1295,10 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: null,
     receptorKi: null,
-    mechanism: 'Irreversible non-selective MAO-A and MAO-B inhibitor; mild dopamine-releasing properties'
+    mechanism: 'Irreversible non-selective MAO-A and MAO-B inhibitor; mild dopamine-releasing properties',
+    indications: [
+      { use: 'Major Depressive Disorder (atypical)', year: 1961 },
+    ]
   },
 
   // ── Other Antidepressants ──────────────────────────────────────────────────
@@ -1253,7 +1323,12 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 10000, NET: 52, DAT: 526, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000,
       D2: 4550, H1: 6700, alpha1: 10000, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 1985 },
+      { use: 'Seasonal Affective Disorder', year: 2006 },
+      { use: 'Smoking Cessation (as Zyban)', year: 1997 },
+    ]
   },
   {
     id: 'mirtazapine',
@@ -1276,7 +1351,10 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 10000, NET: 4600, DAT: 10000, '5HT1A': 500, '5HT2A': 18, '5HT2C': 6,
       D2: 1600, H1: 1.6, alpha1: 270, alpha2: 36, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 1996 },
+    ]
   },
   {
     id: 'trazodone',
@@ -1299,7 +1377,10 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 160, NET: 8300, DAT: 10000, '5HT1A': 14, '5HT2A': 36, '5HT2C': 230,
       D2: 2500, H1: 220, alpha1: 18, alpha2: 10000, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 1981 },
+    ]
   },
   {
     id: 'vilazodone',
@@ -1322,7 +1403,10 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 0.1, NET: 10000, DAT: 10000, '5HT1A': 2.3, '5HT2A': 10000, '5HT2C': 10000,
       D2: 10000, H1: 10000, alpha1: 10000, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 2011 },
+    ]
   },
 
   // ── FGAs (First-Generation Antipsychotics) ─────────────────────────────────
@@ -1347,7 +1431,12 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 1900, '5HT2A': 53, '5HT2C': 10000,
       D1: 50, D2: 1.5, D3: 1, H1: 1300, alpha1: 12, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Schizophrenia', year: 1967 },
+      { use: 'Tourette Syndrome', year: 1978 },
+      { use: 'Acute Psychosis / Agitation', year: 1967 },
+    ]
   },
   {
     id: 'chlorpromazine',
@@ -1370,7 +1459,13 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 200, '5HT2A': 3, '5HT2C': 15,
       D1: 30, D2: 3, D3: 10, H1: 3, alpha1: 5, alpha2: 10000, M1: 40
-    }
+    },
+    indications: [
+      { use: 'Schizophrenia', year: 1954 },
+      { use: 'Nausea / Vomiting', year: 1954 },
+      { use: 'Intractable Hiccups', year: 1954 },
+      { use: 'Acute Mania (adjunct)', year: 1954 },
+    ]
   },
   {
     id: 'fluphenazine',
@@ -1393,7 +1488,11 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 820, '5HT2A': 8, '5HT2C': 29,
       D1: 12, D2: 1, D3: 10000, H1: 10, alpha1: 7, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Schizophrenia', year: 1959 },
+      { use: 'Psychotic Disorders', year: 1959 },
+    ]
   },
 
   // ── SGAs (Second-Generation Antipsychotics) ────────────────────────────────
@@ -1418,7 +1517,12 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 210, '5HT2A': 0.16, '5HT2C': 25,
       D1: 10000, D2: 3.6, D3: 10, H1: 41, alpha1: 2.1, alpha2: 10, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Schizophrenia', year: 1993 },
+      { use: 'Bipolar Mania', year: 2003 },
+      { use: 'Autism-Associated Irritability', year: 2006 },
+    ]
   },
   {
     id: 'olanzapine',
@@ -1441,7 +1545,14 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 4400, '5HT2A': 4, '5HT2C': 11,
       D1: 32, D2: 11, D3: 49, H1: 7, alpha1: 19, alpha2: 10000, M1: 1.9
-    }
+    },
+    indications: [
+      { use: 'Schizophrenia', year: 1996 },
+      { use: 'Bipolar Mania', year: 1997 },
+      { use: 'Bipolar Depression (with fluoxetine)', year: 2003 },
+      { use: 'Treatment-Resistant Depression (with fluoxetine)', year: 2003 },
+      { use: 'Agitation in Schizophrenia/Bipolar (IM)', year: 2004 },
+    ]
   },
   {
     id: 'quetiapine',
@@ -1464,7 +1575,14 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 5300, '5HT2A': 22, '5HT2C': 220,
       D1: 10000, D2: 170, D3: 10000, H1: 30, alpha1: 94, alpha2: 10000, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Schizophrenia', year: 1997 },
+      { use: 'Bipolar Mania', year: 2004 },
+      { use: 'Bipolar Depression', year: 2006 },
+      { use: 'Adjunct for Major Depressive Disorder', year: 2009 },
+      { use: 'Bipolar Maintenance (adjunct)', year: 2008 },
+    ]
   },
   {
     id: 'aripiprazole',
@@ -1487,7 +1605,15 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 98, NET: 10000, DAT: 10000, '5HT1A': 5.1, '5HT2A': 3.4, '5HT2C': 15,
       D1: 265, D2: 0.34, D3: 0.8, H1: 61, alpha1: 57, alpha2: 10000, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Schizophrenia', year: 2002 },
+      { use: 'Bipolar Mania', year: 2004 },
+      { use: 'Adjunct for Major Depressive Disorder', year: 2007 },
+      { use: 'Autism-Associated Irritability', year: 2009 },
+      { use: 'Tourette Syndrome', year: 2014 },
+      { use: 'Bipolar Maintenance', year: 2005 },
+    ]
   },
   {
     id: 'clozapine',
@@ -1510,7 +1636,11 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 195, '5HT2A': 5.4, '5HT2C': 8.9,
       D1: 141, D2: 157, D3: 180, H1: 6.2, alpha1: 7, alpha2: 10000, M1: 2.8
-    }
+    },
+    indications: [
+      { use: 'Treatment-Resistant Schizophrenia', year: 1989 },
+      { use: 'Suicidality in Schizophrenia/Schizoaffective Disorder', year: 2002 },
+    ]
   },
   {
     id: 'ziprasidone',
@@ -1533,7 +1663,12 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 2.5, NET: 160, DAT: 10000, '5HT1A': 3.4, '5HT2A': 0.4, '5HT2C': 1.3,
       D1: 10000, D2: 4.8, D3: 7.2, H1: 47, alpha1: 10, alpha2: 10000, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Schizophrenia', year: 2001 },
+      { use: 'Bipolar Mania', year: 2004 },
+      { use: 'Agitation in Schizophrenia (IM)', year: 2002 },
+    ]
   },
   {
     id: 'lurasidone',
@@ -1556,7 +1691,11 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 6.4, '5HT2A': 2.0, '5HT2C': 415,
       D1: 10000, D2: 1.0, D3: 0.5, H1: 10000, alpha1: 47.9, alpha2: 10.8, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Schizophrenia', year: 2010 },
+      { use: 'Bipolar Depression', year: 2013 },
+    ]
   },
   {
     id: 'asenapine',
@@ -1579,7 +1718,12 @@ const MEDICATIONS = [
     receptorKi: {
       SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 2.5, '5HT2A': 0.07, '5HT2C': 0.03,
       D1: 10000, D2: 1.3, D3: 0.42, H1: 1.0, alpha1: 1.2, alpha2: 1.2, M1: 10000
-    }
+    },
+    indications: [
+      { use: 'Schizophrenia', year: 2009 },
+      { use: 'Bipolar Mania', year: 2009 },
+      { use: 'Bipolar Maintenance (adjunct)', year: 2015 },
+    ]
   },
 
   // ── Mood Stabilizers ───────────────────────────────────────────────────────
@@ -1602,7 +1746,11 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 0,
     receptorKi: null,
-    mechanism: 'Monovalent cation; inhibits GSK-3β and inositol monophosphatase; modulates second-messenger systems; not metabolized by P450'
+    mechanism: 'Monovalent cation; inhibits GSK-3β and inositol monophosphatase; modulates second-messenger systems; not metabolized by P450',
+    indications: [
+      { use: 'Bipolar Mania', year: 1970 },
+      { use: 'Bipolar Maintenance', year: 1974 },
+    ]
   },
   {
     id: 'valproate',
@@ -1623,7 +1771,12 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 90,
     receptorKi: null,
-    mechanism: 'Sodium channel blockade; GABA-transaminase inhibition (↑ GABA); histone deacetylase inhibition; inhibits UGT enzymes'
+    mechanism: 'Sodium channel blockade; GABA-transaminase inhibition (↑ GABA); histone deacetylase inhibition; inhibits UGT enzymes',
+    indications: [
+      { use: 'Epilepsy', year: 1978 },
+      { use: 'Bipolar Mania', year: 1995 },
+      { use: 'Migraine Prophylaxis', year: 1996 },
+    ]
   },
   {
     id: 'lamotrigine',
@@ -1644,7 +1797,11 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 55,
     receptorKi: null,
-    mechanism: 'Voltage-gated sodium channel blocker (Nav1.1, Nav1.6); inhibits glutamate release; metabolized primarily by UGT1A4 glucuronidation (not P450)'
+    mechanism: 'Voltage-gated sodium channel blocker (Nav1.1, Nav1.6); inhibits glutamate release; metabolized primarily by UGT1A4 glucuronidation (not P450)',
+    indications: [
+      { use: 'Epilepsy (adjunct)', year: 1994 },
+      { use: 'Bipolar Maintenance', year: 2003 },
+    ]
   },
   {
     id: 'carbamazepine',
@@ -1665,7 +1822,12 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 75,
     receptorKi: null,
-    mechanism: 'Voltage-gated sodium channel blocker; reduces repetitive neuronal firing; potent inducer of CYP enzymes (autoinduction)'
+    mechanism: 'Voltage-gated sodium channel blocker; reduces repetitive neuronal firing; potent inducer of CYP enzymes (autoinduction)',
+    indications: [
+      { use: 'Epilepsy', year: 1968 },
+      { use: 'Trigeminal Neuralgia', year: 1968 },
+      { use: 'Bipolar Mania', year: 2004 },
+    ]
   },
 
   // ── Sleep Medications ──────────────────────────────────────────────────────
@@ -1688,7 +1850,10 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 92,
     receptorKi: { 'GABA-A': 4.4 },
-    mechanism: 'GABA-A receptor positive allosteric modulator; selective for α1 subunit (sedation > anxiolysis); binds BZD site'
+    mechanism: 'GABA-A receptor positive allosteric modulator; selective for α1 subunit (sedation > anxiolysis); binds BZD site',
+    indications: [
+      { use: 'Insomnia (short-term)', year: 1992 },
+    ]
   },
   {
     id: 'eszopiclone',
@@ -1709,7 +1874,10 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 55,
     receptorKi: { 'GABA-A': 7.4 },
-    mechanism: 'GABA-A receptor positive allosteric modulator; binds BZD site; less α1-selective than zolpidem'
+    mechanism: 'GABA-A receptor positive allosteric modulator; binds BZD site; less α1-selective than zolpidem',
+    indications: [
+      { use: 'Insomnia', year: 2004 },
+    ]
   },
   {
     id: 'temazepam',
@@ -1730,7 +1898,10 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 96,
     receptorKi: { 'GABA-A': 23 },
-    mechanism: 'GABA-A receptor positive allosteric modulator; binds BZD site; non-selective across α subunits; metabolized by direct glucuronidation (not P450)'
+    mechanism: 'GABA-A receptor positive allosteric modulator; binds BZD site; non-selective across α subunits; metabolized by direct glucuronidation (not P450)',
+    indications: [
+      { use: 'Insomnia (short-term)', year: 1981 },
+    ]
   },
   {
     id: 'ramelteon',
@@ -1751,7 +1922,10 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 82,
     receptorKi: { 'MT1': 0.014, 'MT2': 0.112 },
-    mechanism: 'Melatonin MT1/MT2 receptor agonist; regulates circadian rhythm; no abuse potential; not a controlled substance'
+    mechanism: 'Melatonin MT1/MT2 receptor agonist; regulates circadian rhythm; no abuse potential; not a controlled substance',
+    indications: [
+      { use: 'Insomnia (sleep onset)', year: 2005 },
+    ]
   },
   {
     id: 'suvorexant',
@@ -1772,7 +1946,10 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 99,
     receptorKi: { 'OX1R': 0.55, 'OX2R': 0.35 },
-    mechanism: 'Dual orexin receptor antagonist (DORA); blocks OX1R and OX2R; promotes sleep by reducing wakefulness drive'
+    mechanism: 'Dual orexin receptor antagonist (DORA); blocks OX1R and OX2R; promotes sleep by reducing wakefulness drive',
+    indications: [
+      { use: 'Insomnia (sleep onset and maintenance)', year: 2014 },
+    ]
   }
 
   // ── Additional SNRIs ────────────────────────────────────────────────────

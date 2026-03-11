@@ -389,6 +389,17 @@ function openDrugModal(id) {
       <div class="modal-syn-list">${synapticModalHTML(drug.id)}</div>
     </div>
 
+    ${drug.indications?.length ? `
+  <div class="modal-section">
+    <h4>FDA-Approved Indications</h4>
+    <div class="modal-indications">
+      ${drug.indications.map(ind => `
+        <div class="modal-ind-row">
+          <span class="modal-ind-use">${ind.use}</span>
+          <span class="modal-ind-year">${ind.year}</span>
+        </div>`).join('')}
+    </div>
+  </div>` : ''}
     ${drug.mechanism ? `<div class="modal-section"><h4>Mechanism</h4><div style="font-size:13px;color:var(--text-muted);line-height:1.7">${drug.mechanism}</div></div>` : ''}
   `;
 

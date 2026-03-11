@@ -3072,6 +3072,38 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
 .mt-notes-cell { font-size: 12px; color: var(--text-muted); font-style: italic; }
 .mt-output-caveat { padding: 12px 20px; font-size: 11px; border-top: 1px solid var(--border); margin: 0; }
 
+/* ── Modal Indications ──────────────────────────────────────────────────── */
+.modal-indications {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.modal-ind-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 5px 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 12.5px;
+}
+.modal-ind-use {
+  color: var(--text);
+  flex: 1;
+}
+.modal-ind-year {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(74,124,53,0.12);
+  border-radius: 10px;
+  padding: 1px 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 /* ── Scrollbar ─────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
