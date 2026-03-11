@@ -1966,8 +1966,8 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Reduce to 50 mg BID (CrCl 5–29)', severe: 'Reduce to 25 mg BID' },
-    hepaticImpairment: { modified: false, notes: null },
+    renalImpairment: { modified: true, moderate: 'Reduce to 50 mg BID (CrCl 5–29)', severe: 'Reduce to 25 mg BID', notes: 'Reduce dose in moderate-severe renal impairment (CrCl <60 mL/min); max 50 mg BID if CrCl 5–29 mL/min.' },
+    hepaticImpairment: { modified: false, notes: 'No dose adjustment in mild-moderate; avoid in severe hepatic impairment.' },
     geriatricDosing: { modified: false, notes: 'Use with caution' },
     qtInterval: false,
     proteinBinding: 13,
@@ -1986,8 +1986,8 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Max 80 mg/day (CrCl 30–59)', severe: 'Max 40 mg/day (CrCl 15–29)' },
-    hepaticImpairment: { modified: false, notes: null },
+    renalImpairment: { modified: true, moderate: 'Max 80 mg/day (CrCl 30–59)', severe: 'Max 40 mg/day (CrCl 15–29)', notes: 'Reduce maximum dose based on CrCl: max 80 mg/day (CrCl 30–59), max 40 mg/day (CrCl 15–29). Avoid in ESRD.' },
+    hepaticImpairment: { modified: false, notes: 'No dose adjustment needed in hepatic impairment.' },
     geriatricDosing: { modified: false, notes: 'Use with caution' },
     qtInterval: false,
     proteinBinding: 22,
@@ -2008,8 +2008,8 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
-    hepaticImpairment: { modified: false, notes: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required in renal impairment, including severe.' },
+    hepaticImpairment: { modified: false, notes: 'No dose adjustment in mild-moderate; not recommended in severe hepatic impairment.' },
     geriatricDosing: { modified: false, notes: 'No specific adjustment' },
     qtInterval: false,
     proteinBinding: 98,
@@ -2030,9 +2030,9 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No formal recommendations; use with caution in severe renal impairment.' },
     hepaticImpairment: { modified: true, notes: 'Avoid in moderate-severe' },
-    geriatricDosing: { modified: false, notes: null },
+    geriatricDosing: { modified: false, notes: 'Use with caution; no specific dose adjustment but start low given limited geriatric data.' },
     qtInterval: false,
     proteinBinding: 97,
     receptorKi: { '5HT1A': 21, SERT: 160, NET: 10000, DAT: 10000, '5HT2A': 10000, D2: 500, H1: 10000, alpha1: 10000, M1: 10000 }
@@ -2052,7 +2052,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required; primarily hepatically metabolized.' },
     hepaticImpairment: { modified: true, notes: 'Use with caution; avoid in severe' },
     geriatricDosing: { modified: true, notes: 'Lower doses recommended; monitor closely' },
     qtInterval: false,
@@ -2073,9 +2073,9 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
-    hepaticImpairment: { modified: false, notes: null },
-    geriatricDosing: { modified: false, notes: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required; not renally eliminated.' },
+    hepaticImpairment: { modified: false, notes: 'Use with caution in moderate-severe hepatic impairment; may affect drug clearance.' },
+    geriatricDosing: { modified: false, notes: 'Not studied in elderly; use with caution given sedation and altered consciousness risk.' },
     qtInterval: false,
     proteinBinding: 99,
     receptorKi: null,
@@ -2094,9 +2094,9 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required in mild-moderate renal impairment. Not studied in severe.' },
     hepaticImpairment: { modified: true, notes: 'Avoid in severe (Child-Pugh C)' },
-    geriatricDosing: { modified: false, notes: null },
+    geriatricDosing: { modified: false, notes: 'Use with caution; sedation and CNS depression risk. Start at 20 mg. Not studied in elderly.' },
     qtInterval: false,
     proteinBinding: 99,
     receptorKi: null,
@@ -2115,9 +2115,9 @@ const MEDICATIONS = [
       inhibits: { 'CYP2D6': 'moderate' },
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Use with caution', severe: null },
+    renalImpairment: { modified: true, moderate: 'Use with caution', severe: null, notes: 'Reduce dose in moderate-severe renal impairment (CrCl <60 mL/min): max 45 mg/105 mg/day. Avoid in ESRD.' },
     hepaticImpairment: { modified: true, notes: 'Avoid in severe' },
-    geriatricDosing: { modified: false, notes: null },
+    geriatricDosing: { modified: false, notes: 'No specific geriatric adjustment; use with caution given CNS and cardiac effects.' },
     qtInterval: false,
     proteinBinding: 90,
     receptorKi: null,
@@ -2138,7 +2138,7 @@ const MEDICATIONS = [
       inhibits: { 'CYP2D6': 'weak' },
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required for low-dose insomnia use; caution at antidepressant doses.' },
     hepaticImpairment: { modified: true, notes: 'Use with caution; reduce dose' },
     geriatricDosing: { modified: true, notes: 'Avoid high doses (Beers List); 3–6 mg for insomnia generally acceptable' },
     qtInterval: true,
@@ -2160,7 +2160,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; use with caution. Metabolized hepatically.' },
     hepaticImpairment: { modified: true, notes: 'Use with caution' },
     geriatricDosing: { modified: true, notes: 'Very high EPS risk; avoid (Beers List)' },
     qtInterval: true,
@@ -2180,7 +2180,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; use with caution. Primarily hepatic metabolism.' },
     hepaticImpairment: { modified: true, notes: 'Use with caution' },
     geriatricDosing: { modified: true, notes: 'High EPS risk; use with caution' },
     qtInterval: true,
@@ -2200,7 +2200,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment recommended; use with caution.' },
     hepaticImpairment: { modified: true, notes: 'Use with caution' },
     geriatricDosing: { modified: true, notes: 'High EPS risk; avoid (Beers List)' },
     qtInterval: true,
@@ -2220,7 +2220,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; use with caution given QT risk and narrow therapeutic window.' },
     hepaticImpairment: { modified: true, notes: 'Use with caution' },
     geriatricDosing: { modified: true, notes: 'High EPS and QT risk; use with great caution' },
     qtInterval: true,
@@ -2241,7 +2241,7 @@ const MEDICATIONS = [
       inhibits: { 'CYP2D6': 'moderate' },
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; use with extreme caution given QT and pigmentary retinopathy risk.' },
     hepaticImpairment: { modified: true, notes: 'Avoid or use with extreme caution' },
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List); very high anticholinergic/QT burden' },
     qtInterval: true,
@@ -2261,7 +2261,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; use with caution.' },
     hepaticImpairment: { modified: true, notes: 'Use with caution' },
     geriatricDosing: { modified: true, notes: 'High EPS/sedation risk' },
     qtInterval: true,
@@ -2281,7 +2281,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment recommended; use with caution.' },
     hepaticImpairment: { modified: true, notes: 'Use with caution' },
     geriatricDosing: { modified: true, notes: 'Use with caution; EPS risk' },
     qtInterval: true,
@@ -2303,7 +2303,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Reduce dose (CrCl 50–79: max 6 mg; CrCl 10–49: max 3 mg)', severe: 'Avoid if CrCl <10' },
+    renalImpairment: { modified: true, moderate: 'Reduce dose (CrCl 50–79: max 6 mg; CrCl 10–49: max 3 mg)', severe: 'Avoid if CrCl <10', notes: 'Dose-adjust based on CrCl: max 6 mg/day (CrCl 50–79), max 3 mg/day (CrCl 10–49). Avoid if CrCl <10 mL/min.' },
     hepaticImpairment: { modified: false, notes: 'No adjustment needed (renal elimination)' },
     geriatricDosing: { modified: true, notes: 'Renal function decreases with age; dose-adjust accordingly' },
     qtInterval: true,
@@ -2323,9 +2323,9 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required; not significantly renally excreted.' },
     hepaticImpairment: { modified: true, notes: 'Avoid in hepatic impairment' },
-    geriatricDosing: { modified: false, notes: null },
+    geriatricDosing: { modified: false, notes: 'Use with caution; orthostatic hypotension and QT risks increase with age.' },
     qtInterval: true,
     proteinBinding: 95,
     receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 0.3, '5HT2C': 10000, D2: 7, D3: 10, H1: 40, alpha1: 0.4, alpha2: 10000, M1: 10000 }
@@ -2343,9 +2343,9 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Max 2 mg/day (CrCl <60)', severe: 'Max 2 mg/day' },
+    renalImpairment: { modified: true, moderate: 'Max 2 mg/day (CrCl <60)', severe: 'Max 2 mg/day', notes: 'Max 2 mg/day in severe renal impairment (CrCl <30 mL/min or ESRD).' },
     hepaticImpairment: { modified: true, notes: 'Max 2 mg/day in moderate-severe' },
-    geriatricDosing: { modified: false, notes: null },
+    geriatricDosing: { modified: false, notes: 'No specific adjustment; monitor for orthostatic hypotension and EPS.' },
     qtInterval: false,
     proteinBinding: 99,
     receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 0.12, '5HT2A': 0.47, '5HT2C': 2.1, D2: 0.3, D3: 1.1, H1: 19, alpha1: 0.6, alpha2: 0.5, M1: 10000 }
@@ -2363,9 +2363,9 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: 'No dose adjustment needed (mild-moderate)', severe: null },
+    renalImpairment: { modified: false, moderate: 'No dose adjustment needed (mild-moderate)', severe: null, notes: 'Avoid in severe renal impairment (CrCl <30 mL/min); not recommended.' },
     hepaticImpairment: { modified: true, notes: 'Avoid in severe hepatic impairment' },
-    geriatricDosing: { modified: false, notes: null },
+    geriatricDosing: { modified: false, notes: 'Use with caution; limited data. Monitor for EPS, metabolic effects, and orthostasis.' },
     qtInterval: false,
     proteinBinding: 91,
     receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 2.6, '5HT2A': 18, '5HT2C': 134, D2: 0.49, D3: 0.08, H1: 40, alpha1: 155, alpha2: 10000, M1: 10000 }
@@ -2383,9 +2383,9 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required in mild-moderate renal impairment.' },
     hepaticImpairment: { modified: true, notes: 'Avoid in moderate-severe (Child-Pugh B/C)' },
-    geriatricDosing: { modified: false, notes: null },
+    geriatricDosing: { modified: false, notes: 'Use with caution; approved for bipolar depression in adults. Monitor for sedation and orthostasis.' },
     qtInterval: false,
     proteinBinding: 97,
     receptorKi: { SERT: 62, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 0.54, '5HT2C': 10000, D2: 32, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 }
@@ -2403,7 +2403,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required in mild-moderate renal impairment. Not studied in severe (CrCl <30 mL/min).' },
     hepaticImpairment: { modified: true, notes: 'Avoid in hepatic impairment (not studied)' },
     geriatricDosing: { modified: false, notes: 'Main population; well studied in elderly with PD psychosis' },
     qtInterval: true,
@@ -2425,7 +2425,7 @@ const MEDICATIONS = [
       inhibits: { 'CYP2C19': 'moderate' },
       induces: ['CYP3A4']
     },
-    renalImpairment: { modified: true, moderate: 'Reduce starting dose by 50% (CrCl <30)', severe: 'Monitor closely' },
+    renalImpairment: { modified: true, moderate: 'Reduce starting dose by 50% (CrCl <30)', severe: 'Monitor closely', notes: 'Reduce initial dose by 50% if CrCl <30 mL/min; titrate slowly.' },
     hepaticImpairment: { modified: false, notes: 'No adjustment mild-moderate; avoid severe' },
     geriatricDosing: { modified: false, notes: 'Monitor sodium; hyponatremia risk' },
     qtInterval: false,
@@ -2446,9 +2446,9 @@ const MEDICATIONS = [
       inhibits: { 'CYP2C19': 'weak' },
       induces: ['CYP3A4']
     },
-    renalImpairment: { modified: true, moderate: 'Reduce dose 50% (CrCl <70)', severe: 'Hemodialysis patients supplement dose' },
+    renalImpairment: { modified: true, moderate: 'Reduce dose 50% (CrCl <70)', severe: 'Hemodialysis patients supplement dose', notes: 'Reduce dose by approximately 50% in moderate-severe renal impairment (CrCl <70 mL/min).' },
     hepaticImpairment: { modified: true, notes: 'Use with caution' },
-    geriatricDosing: { modified: false, notes: null },
+    geriatricDosing: { modified: false, notes: 'Use with caution; cognitive side effects (word-finding) may be more pronounced. Adjust for renal function.' },
     qtInterval: false,
     proteinBinding: 15,
     receptorKi: null,
@@ -2467,8 +2467,8 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Reduce based on CrCl (see full prescribing info)', severe: 'Supplement dose after dialysis' },
-    hepaticImpairment: { modified: false, notes: null },
+    renalImpairment: { modified: true, moderate: 'Reduce based on CrCl (see full prescribing info)', severe: 'Supplement dose after dialysis', notes: 'Dose-adjust based on CrCl: significant reductions required. CrCl 30–59: max 700 mg TID; CrCl 15–29: 200–700 mg BID; CrCl <15: 100–300 mg/day. Supplemental dose after dialysis.' },
+    hepaticImpairment: { modified: false, notes: 'No dose adjustment required; gabapentin is not hepatically metabolized.' },
     geriatricDosing: { modified: false, notes: 'Reduce dose for age-related renal decline' },
     qtInterval: false,
     proteinBinding: 3,
@@ -2490,7 +2490,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; use with caution. Primarily hepatically metabolized.' },
     hepaticImpairment: { modified: true, notes: 'Reduce dose; avoid in severe' },
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List); fall/cognitive risk; reduce dose if needed' },
     qtInterval: false,
@@ -2511,7 +2511,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; use with caution. Hepatic metabolism.' },
     hepaticImpairment: { modified: true, notes: 'Use with caution; avoid in severe' },
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List); long half-life increases fall/cognitive risk' },
     qtInterval: false,
@@ -2532,7 +2532,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; active metabolites (nordiazepam, oxazepam) may accumulate. Use with caution.' },
     hepaticImpairment: { modified: true, notes: 'Reduce dose; prolonged half-life' },
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List); extremely long half-life accumulation risk' },
     qtInterval: false,
@@ -2553,7 +2553,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; direct glucuronidation — safer than other BZDs in renal impairment.' },
     hepaticImpairment: { modified: false, notes: 'Safer than other BZDs in liver disease (direct glucuronidation)' },
     geriatricDosing: { modified: true, notes: 'Reduce dose (Beers List); no active metabolites preferred in elderly' },
     qtInterval: false,
@@ -2574,7 +2574,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; direct glucuronidation. One of the safest benzodiazepines in renal impairment.' },
     hepaticImpairment: { modified: false, notes: 'Safer — direct glucuronidation; preferred in liver disease' },
     geriatricDosing: { modified: false, notes: 'One of the safest BZDs in elderly (LOT rule: Lorazepam, Oxazepam, Temazepam); no active metabolites' },
     qtInterval: false,
@@ -2595,7 +2595,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; use with caution. Very long-acting metabolite chain may accumulate.' },
     hepaticImpairment: { modified: true, notes: 'Use with caution; very long-acting metabolites' },
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List); very long half-life chain accumulates' },
     qtInterval: false,
@@ -2616,7 +2616,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; converted to nordiazepam which may accumulate. Use with caution.' },
     hepaticImpairment: { modified: true, notes: 'Use with caution; nordiazepam accumulates' },
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List)' },
     qtInterval: false,
@@ -2637,7 +2637,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment for single doses; active metabolite (1-hydroxymidazolam glucuronide) accumulates in renal failure with repeated dosing.' },
     hepaticImpairment: { modified: true, notes: 'Reduce dose; avoid in severe' },
     geriatricDosing: { modified: true, notes: 'Reduce dose significantly; higher sensitivity to respiratory depression' },
     qtInterval: false,
@@ -2658,7 +2658,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; hepatic metabolism. Use with caution.' },
     hepaticImpairment: { modified: true, notes: 'Avoid in severe' },
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List); very high potency' },
     qtInterval: false,
@@ -2679,7 +2679,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; use with caution in renal impairment.' },
     hepaticImpairment: { modified: true, notes: 'Use with caution' },
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List)' },
     qtInterval: false,
@@ -2700,7 +2700,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; use with caution. Very long-acting active metabolite (desalkylflurazepam, t½ 40–250 hr) may accumulate.' },
     hepaticImpairment: { modified: true, notes: 'Use with caution; long-acting metabolites accumulate' },
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List); extreme accumulation risk with long-lived metabolite' },
     qtInterval: false,
@@ -2723,7 +2723,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Reduce dose; use with caution', severe: 'Avoid' },
+    renalImpairment: { modified: true, moderate: 'Reduce dose; use with caution', severe: 'Avoid', notes: 'Avoid in severe renal impairment (CrCl <10 mL/min). Use with caution in moderate impairment.' },
     hepaticImpairment: { modified: true, notes: 'Reduce dose; avoid in severe' },
     geriatricDosing: { modified: false, notes: 'Good option; no abuse potential' },
     qtInterval: false,
@@ -2743,8 +2743,8 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Reduce dose proportional to CrCl', severe: 'Significant reduction; dialysis supplement' },
-    hepaticImpairment: { modified: false, notes: null },
+    renalImpairment: { modified: true, moderate: 'Reduce dose proportional to CrCl', severe: 'Significant reduction; dialysis supplement', notes: 'Dose-adjust based on CrCl: CrCl 30–60: max 300 mg/day; CrCl 15–30: max 150 mg/day; CrCl <15: max 75 mg/day. Supplemental dose after dialysis.' },
+    hepaticImpairment: { modified: false, notes: 'No dose adjustment required; pregabalin is not hepatically metabolized.' },
     geriatricDosing: { modified: false, notes: 'Reduce dose for age-related renal function decline' },
     qtInterval: false,
     proteinBinding: 0,
@@ -2764,7 +2764,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; primarily hepatically metabolized. Use with caution in severe impairment.' },
     hepaticImpairment: { modified: true, notes: 'Reduce dose in significant hepatic disease' },
     geriatricDosing: { modified: false, notes: 'Use caution due to bradycardia/hypotension risk' },
     qtInterval: false,
@@ -2785,7 +2785,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Reduce dose', severe: 'Significant reduction' },
+    renalImpairment: { modified: true, moderate: 'Reduce dose', severe: 'Significant reduction', notes: 'Use with caution; reduce dose in severe renal impairment. Up to 65% eliminated renally.' },
     hepaticImpairment: { modified: false, notes: 'Use with caution' },
     geriatricDosing: { modified: false, notes: 'Monitor blood pressure carefully' },
     qtInterval: false,
@@ -2805,9 +2805,9 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'No specific adjustment needed', severe: 'Possible dose reduction' },
-    hepaticImpairment: { modified: false, notes: null },
-    geriatricDosing: { modified: false, notes: null },
+    renalImpairment: { modified: true, moderate: 'No specific adjustment needed', severe: 'Possible dose reduction', notes: 'Reduce dose in significant renal impairment; up to 80% excreted renally unchanged.' },
+    hepaticImpairment: { modified: false, notes: 'Use with caution; partially hepatically metabolized.' },
+    geriatricDosing: { modified: false, notes: 'Use with caution; monitor blood pressure and heart rate. Sedation risk.' },
     qtInterval: false,
     proteinBinding: 70,
     receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 3, M1: 10000 }
@@ -2827,8 +2827,8 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
-    hepaticImpairment: { modified: false, notes: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; use with caution in renal impairment.' },
+    hepaticImpairment: { modified: false, notes: 'Use with caution in hepatic impairment; hepatically metabolized.' },
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List); anticholinergic burden + fall risk' },
     qtInterval: false,
     proteinBinding: 73,
@@ -2849,9 +2849,9 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
-    hepaticImpairment: { modified: false, notes: null },
-    geriatricDosing: { modified: false, notes: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required; de-esterified to ritalinic acid, predominantly renally excreted as inactive metabolite.' },
+    hepaticImpairment: { modified: false, notes: 'No specific adjustment; use with caution in severe hepatic impairment.' },
+    geriatricDosing: { modified: false, notes: 'Use with caution; cardiovascular monitoring important. Limited geriatric data.' },
     qtInterval: false,
     proteinBinding: 15,
     receptorKi: { SERT: 10000, NET: 130, DAT: 34, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 }
@@ -2869,9 +2869,9 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
-    hepaticImpairment: { modified: false, notes: null },
-    geriatricDosing: { modified: false, notes: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required; inactive metabolite predominantly renally excreted.' },
+    hepaticImpairment: { modified: false, notes: 'No specific adjustment; use with caution.' },
+    geriatricDosing: { modified: false, notes: 'Use with caution; cardiovascular monitoring essential. Limited geriatric data.' },
     qtInterval: false,
     proteinBinding: 15,
     receptorKi: { SERT: 10000, NET: 130, DAT: 34, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
@@ -2890,9 +2890,9 @@ const MEDICATIONS = [
       inhibits: { 'CYP2D6': 'weak' },
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Use with caution', severe: 'Reduce dose; alkaline urine increases half-life' },
-    hepaticImpairment: { modified: false, notes: null },
-    geriatricDosing: { modified: false, notes: null },
+    renalImpairment: { modified: true, moderate: 'Use with caution', severe: 'Reduce dose; alkaline urine increases half-life', notes: 'No specific dose adjustment; acidified urine increases renal excretion. Use with caution in severe impairment.' },
+    hepaticImpairment: { modified: false, notes: 'No specific adjustment; primarily renally excreted. Use with caution.' },
+    geriatricDosing: { modified: false, notes: 'Use with extreme caution; significant cardiovascular risks in elderly. Not well studied.' },
     qtInterval: false,
     proteinBinding: 25,
     receptorKi: { SERT: 100, NET: 20, DAT: 10, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
@@ -2911,9 +2911,9 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
-    hepaticImpairment: { modified: false, notes: null },
-    geriatricDosing: { modified: false, notes: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; urinary pH affects excretion — alkaline urine increases reabsorption. Use with caution.' },
+    hepaticImpairment: { modified: false, notes: 'No specific adjustment; use with caution.' },
+    geriatricDosing: { modified: false, notes: 'Use with extreme caution; cardiovascular risk. Not well studied in elderly.' },
     qtInterval: false,
     proteinBinding: 20,
     receptorKi: { SERT: 100, NET: 18, DAT: 8, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 }
@@ -2931,9 +2931,9 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Max 50 mg/day (CrCl 15–29)', severe: 'Max 30 mg/day' },
-    hepaticImpairment: { modified: false, notes: null },
-    geriatricDosing: { modified: false, notes: null },
+    renalImpairment: { modified: true, moderate: 'Max 50 mg/day (CrCl 15–29)', severe: 'Max 30 mg/day', notes: 'Reduce max dose in moderate-severe renal impairment: max 50 mg/day (GFR 15–29); max 30 mg/day (GFR <15 or ESRD).' },
+    hepaticImpairment: { modified: false, notes: 'No dose adjustment required; hydrolyzed to d-amphetamine in blood.' },
+    geriatricDosing: { modified: false, notes: 'Use with extreme caution; cardiovascular monitoring essential. Not studied in elderly.' },
     qtInterval: false,
     proteinBinding: 98,
     receptorKi: { SERT: 100, NET: 18, DAT: 8, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
@@ -2952,7 +2952,7 @@ const MEDICATIONS = [
       inhibits: { 'CYP2C19': 'moderate' },
       induces: ['CYP3A4', 'CYP1A2']
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required in renal impairment; primarily hepatically metabolized.' },
     hepaticImpairment: { modified: true, notes: 'Reduce dose by 50% in severe' },
     geriatricDosing: { modified: false, notes: 'Consider lower dose' },
     qtInterval: false,
@@ -2973,9 +2973,9 @@ const MEDICATIONS = [
       inhibits: { 'CYP2C19': 'moderate' },
       induces: ['CYP3A4']
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required; primarily hepatically metabolized.' },
     hepaticImpairment: { modified: true, notes: 'Reduce dose by 50% in severe' },
-    geriatricDosing: { modified: false, notes: null },
+    geriatricDosing: { modified: false, notes: 'Consider lower doses; limited geriatric-specific data.' },
     qtInterval: false,
     proteinBinding: 60,
     receptorKi: { SERT: 10000, NET: 10000, DAT: 4600, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
@@ -2994,9 +2994,9 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Max 75 mg/day (CrCl 15–59)', severe: 'Avoid (CrCl <15)' },
-    hepaticImpairment: { modified: false, notes: null },
-    geriatricDosing: { modified: false, notes: null },
+    renalImpairment: { modified: true, moderate: 'Max 75 mg/day (CrCl 15–59)', severe: 'Avoid (CrCl <15)', notes: 'Reduce dose in renal impairment: max 75 mg/day (CrCl 15–59); avoid if CrCl <15 mL/min or ESRD. Primarily renally excreted unchanged.' },
+    hepaticImpairment: { modified: false, notes: 'No dose adjustment required; not significantly hepatically metabolized.' },
+    geriatricDosing: { modified: false, notes: 'Use with caution; monitor cardiovascular effects. Limited geriatric data.' },
     qtInterval: false,
     proteinBinding: 13,
     receptorKi: { SERT: 10000, NET: 21, DAT: 53, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 }
@@ -3016,7 +3016,7 @@ const MEDICATIONS = [
       inhibits: { 'CYP2D6': 'weak' },
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Reduce dose', severe: 'Reduce dose; monitor' },
+    renalImpairment: { modified: true, moderate: 'Reduce dose', severe: 'Reduce dose; monitor', notes: 'No specific dose adjustment; use with caution and consider dose reduction in severe impairment.' },
     hepaticImpairment: { modified: true, notes: 'Reduce dose; extend interval' },
     geriatricDosing: { modified: true, notes: 'Use with caution (Beers List); anticholinergic burden' },
     qtInterval: true,
@@ -3036,8 +3036,8 @@ const MEDICATIONS = [
       inhibits: { 'CYP2D6': 'moderate' },
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
-    hepaticImpairment: { modified: false, notes: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; use with caution. Urinary retention risk increased.' },
+    hepaticImpairment: { modified: false, notes: 'Use with caution in hepatic impairment; hepatically metabolized.' },
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List); very high anticholinergic burden; confusion/delirium risk' },
     qtInterval: false,
     proteinBinding: 82,
@@ -3056,8 +3056,8 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null },
-    hepaticImpairment: { modified: false, notes: null },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; use with caution given anticholinergic effects.' },
+    hepaticImpairment: { modified: false, notes: 'No specific dose adjustment; use with caution.' },
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List); high anticholinergic toxicity risk; confusion/urinary retention' },
     qtInterval: false,
     proteinBinding: 25,
