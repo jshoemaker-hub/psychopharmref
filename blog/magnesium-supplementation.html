@@ -1,1550 +1,1285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magnesium: Types, Indications, and Clinical Use | PsychoPharmRef</title>
-    <meta name="description" content="Comprehensive clinical guide to magnesium forms, bioavailability, indications, and safe prescribing for psychiatrists and healthcare providers.">
-    <style>
-        :root {
-            --bg: #f5f0e8;
-            --bg2: #ece6db;
-            --bg3: #e2dbd0;
-            --card: #fefcf8;
-            --border: #cfc8ba;
-            --accent: #4a7c35;
-            --accent2: #8b6914;
-            --text: #231e14;
-            --text-muted: #6b6050;
-            --green: #3a6e28;
-            --red: #c04030;
-            --yellow: #8b6914;
-            --orange: #b05a20;
-            --font: 'Segoe UI', system-ui, sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: var(--font);
-            line-height: 1.7;
-        }
-
-        body {
-            padding: 20px;
-        }
-
-        .back-to-blog {
-            display: inline-block;
-            margin-bottom: 24px;
-            padding: 8px 16px;
-            background-color: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .back-to-blog:hover {
-            background-color: var(--bg2);
-            border-color: var(--accent);
-        }
-
-        .blog-article {
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: var(--card);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .ba-header {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--green) 100%);
-            padding: 48px 40px;
-            color: white;
-        }
-
-        .ba-category {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: 0.9;
-            margin-bottom: 12px;
-        }
-
-        .ba-title {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
-
-        .ba-subtitle {
-            font-size: 20px;
-            font-weight: 300;
-            opacity: 0.95;
-            margin-bottom: 24px;
-        }
-
-        .ba-meta {
-            display: flex;
-            gap: 24px;
-            font-size: 14px;
-            opacity: 0.85;
-        }
-
-        .ba-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .ba-body {
-            padding: 40px;
-        }
-
-        .ba-body p {
-            margin-bottom: 16px;
-            color: var(--text);
-        }
-
-        .ba-lead {
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--text);
-            margin-bottom: 24px;
-            padding: 20px;
-            background-color: var(--bg2);
-            border-left: 4px solid var(--accent);
-            border-radius: 4px;
-        }
-
-        .ba-h2 {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--accent);
-            margin: 36px 0 16px 0;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .ba-h3 {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--text);
-            margin: 24px 0 12px 0;
-        }
-
-        .ba-stat-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin: 24px 0;
-        }
-
-        .ba-stat-card {
-            background-color: var(--bg2);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .ba-stat-card--alert {
-            background-color: #fce8e6;
-            border-color: var(--red);
-        }
-
-        .ba-stat-card--good {
-            background-color: #e6f4ea;
-            border-color: var(--green);
-        }
-
-        .ba-stat-num {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .ba-stat-card--alert .ba-stat-num {
-            color: var(--red);
-        }
-
-        .ba-stat-card--good .ba-stat-num {
-            color: var(--green);
-        }
-
-        .ba-stat-label {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 8px;
-        }
-
-        .ba-table-wrap {
-            overflow-x: auto;
-            margin: 24px 0;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-        }
-
-        .ba-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-        }
-
-        .ba-table th {
-            background-color: var(--bg2);
-            border-bottom: 2px solid var(--border);
-            padding: 12px;
-            text-align: left;
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        .ba-table td {
-            padding: 12px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .ba-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .ba-table tr:hover {
-            background-color: var(--bg3);
-        }
-
-        .ba-insight-box {
-            background-color: #fef8e8;
-            border-left: 4px solid var(--yellow);
-            border-radius: 4px;
-            padding: 16px;
-            margin: 24px 0;
-            display: flex;
-            gap: 12px;
-        }
-
-        .ba-insight-icon {
-            flex-shrink: 0;
-            font-size: 20px;
-            margin-top: 2px;
-        }
-
-        .ba-timeline {
-            position: relative;
-            padding: 20px 0;
-        }
-
-        .ba-tl-item {
-            position: relative;
-            padding-left: 40px;
-            margin-bottom: 24px;
-        }
-
-        .ba-tl-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 16px;
-            height: 16px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            border: 3px solid var(--card);
-        }
-
-        .ba-tl-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 32px;
-            width: 2px;
-            height: calc(100% + 16px);
-            background-color: var(--border);
-        }
-
-        .ba-tl-time {
-            font-weight: 600;
-            color: var(--accent);
-            font-size: 14px;
-        }
-
-        .ba-tl-text {
-            margin-top: 4px;
-            color: var(--text);
-        }
-
-        .ba-summary-box {
-            background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            padding: 24px;
-            margin: 24px 0;
-        }
-
-        .ba-references {
-            margin-top: 40px;
-            padding-top: 24px;
-            border-top: 2px solid var(--border);
-        }
-
-        .ba-ref-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 16px;
-        }
-
-        .ba-ref-list {
-            list-style: none;
-        }
-
-        .ba-ref-list li {
-            margin-bottom: 12px;
-            padding-left: 20px;
-            position: relative;
-            font-size: 13px;
-            line-height: 1.6;
-            color: var(--text);
-        }
-
-        .ba-ref-list li::before {
-            content: '►';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-size: 10px;
-        }
-
-        .ba-therapy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 16px;
-            margin: 24px 0;
-        }
-
-        .ba-therapy-card {
-            background-color: var(--bg2);
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .ba-therapy-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 4px 12px rgba(74, 124, 53, 0.15);
-        }
-
-        .ba-therapy-icon {
-            font-size: 28px;
-            margin-bottom: 8px;
-        }
-
-        .ba-therapy-title {
-            font-weight: 600;
-            font-size: 14px;
-            color: var(--text);
-        }
-
-        .ba-compare-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .ba-compare-card {
-            background-color: var(--bg2);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 12px;
-            font-size: 13px;
-        }
-
-        .ba-compare-card strong {
-            display: block;
-            color: var(--accent);
-            margin-bottom: 4px;
-        }
-
-        .ba-stacked-grid {
-            display: grid;
-            gap: 16px;
-            margin: 24px 0;
-        }
-
-        .ba-stacked-card {
-            background-color: var(--bg2);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
-        }
-
-        .ba-bar-chart {
-            margin: 20px 0;
-        }
-
-        .ba-bar-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            gap: 12px;
-        }
-
-        .ba-bar-label {
-            min-width: 120px;
-            font-weight: 500;
-            font-size: 13px;
-            color: var(--text);
-        }
-
-        .ba-bar-track {
-            flex: 1;
-            height: 24px;
-            background-color: var(--bg3);
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .ba-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent) 0%, var(--green) 100%);
-            border-radius: 4px;
-            transition: width 0.3s ease;
-        }
-
-        .ba-bar-pct {
-            font-weight: 600;
-            font-size: 12px;
-            color: var(--text);
-            min-width: 30px;
-        }
-
-        .ba-footer {
-            background-color: var(--bg2);
-            padding: 32px 40px;
-            border-top: 2px solid var(--border);
-        }
-
-        svg {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 24px auto;
-        }
-
-        .svg-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--accent);
-            margin: 24px 0 12px 0;
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            .ba-title {
-                font-size: 32px;
-            }
-
-            .ba-subtitle {
-                font-size: 16px;
-            }
-
-            .ba-body, .ba-footer {
-                padding: 24px;
-            }
-
-            .ba-stat-row {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magnesium and Associated Minerals: A Clinical Guide to Supplementation | PsychoPharmRef</title>
+  <style>
+    :root {
+      --bg: #f5f0e8;
+      --bg2: #ece6db;
+      --bg3: #e2dbd0;
+      --card: #fefcf8;
+      --border: #cfc8ba;
+      --accent: #4a7c35;
+      --accent2: #8b6914;
+      --text: #231e14;
+      --text-muted: #6b6050;
+      --green: #3a6e28;
+      --red: #c04030;
+      --yellow: #8b6914;
+      --orange: #b05a20;
+      --font: 'Segoe UI', system-ui, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: var(--font);
+      color: var(--text);
+      background-color: var(--bg);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 30px;
+      padding: 10px 16px;
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .back-link:hover {
+      background-color: var(--bg2);
+      border-color: var(--accent);
+    }
+
+    .blog-article {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 50px 40px;
+      margin-bottom: 40px;
+    }
+
+    .ba-header {
+      margin-bottom: 30px;
+    }
+
+    .ba-category {
+      display: inline-block;
+      background-color: var(--bg2);
+      color: var(--accent);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    .ba-title {
+      font-size: 2.4em;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .ba-subtitle {
+      font-size: 1.2em;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .ba-meta {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ba-body {
+      margin-top: 30px;
+    }
+
+    .ba-lead {
+      font-size: 1.1em;
+      color: var(--text);
+      font-weight: 500;
+      margin-bottom: 25px;
+      padding: 20px;
+      background-color: var(--bg);
+      border-left: 4px solid var(--accent);
+      border-radius: 2px;
+    }
+
+    .ba-h2 {
+      font-size: 1.8em;
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 40px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 10px;
+    }
+
+    .ba-h3 {
+      font-size: 1.3em;
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 28px;
+      margin-bottom: 14px;
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    ul, ol {
+      margin-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .ba-stat-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 25px 0;
+    }
+
+    .ba-stat-card {
+      background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .ba-stat-card--alert {
+      border-left: 4px solid var(--red);
+      background: linear-gradient(135deg, #f8e8e5 0%, #f2e0db 100%);
+    }
+
+    .ba-stat-card--good {
+      border-left: 4px solid var(--green);
+      background: linear-gradient(135deg, #e8f3e2 0%, #deecd8 100%);
+    }
+
+    .ba-stat-num {
+      font-size: 2em;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .ba-stat-card--alert .ba-stat-num {
+      color: var(--red);
+    }
+
+    .ba-stat-card--good .ba-stat-num {
+      color: var(--green);
+    }
+
+    .ba-stat-label {
+      font-size: 0.95em;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .ba-table-wrap {
+      overflow-x: auto;
+      margin: 25px 0;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    .ba-table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: var(--card);
+    }
+
+    .ba-table thead {
+      background-color: var(--bg2);
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .ba-table th {
+      padding: 14px;
+      text-align: left;
+      font-weight: 700;
+      color: var(--text);
+      font-size: 0.95em;
+    }
+
+    .ba-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95em;
+    }
+
+    .ba-table tbody tr:hover {
+      background-color: var(--bg);
+    }
+
+    .ba-insight-box {
+      background: linear-gradient(135deg, #f0f4e8 0%, #e8ede0 100%);
+      border-left: 4px solid var(--accent2);
+      border-radius: 6px;
+      padding: 20px;
+      margin: 25px 0;
+      display: flex;
+      gap: 16px;
+    }
+
+    .ba-insight-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--bg3);
+      border-radius: 4px;
+      font-size: 20px;
+    }
+
+    .ba-timeline {
+      margin: 25px 0;
+    }
+
+    .ba-tl-item {
+      display: flex;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .ba-tl-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 50px;
+      width: 2px;
+      height: 30px;
+      background-color: var(--border);
+    }
+
+    .ba-tl-dot {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background-color: var(--accent);
+      border: 3px solid var(--card);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      z-index: 1;
+      margin-right: 20px;
+    }
+
+    .ba-tl-time {
+      font-size: 0.9em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .ba-tl-text {
+      padding-top: 2px;
+    }
+
+    .ba-tl-text strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .ba-summary-box {
+      background: linear-gradient(135deg, var(--accent2) 0%, #6d4f0f 100%);
+      color: #fefcf8;
+      border-radius: 6px;
+      padding: 30px;
+      margin: 25px 0;
+    }
+
+    .ba-summary-box h3 {
+      color: #fefcf8;
+      margin-bottom: 16px;
+    }
+
+    .ba-summary-box ul {
+      margin-left: 20px;
+    }
+
+    .ba-summary-box li {
+      color: #fefcf8;
+    }
+
+    .ba-references {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 2px solid var(--border);
+    }
+
+    .ba-ref-title {
+      font-size: 1.3em;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .ba-ref-list {
+      list-style: none;
+      margin-left: 0;
+      counter-reset: ref;
+    }
+
+    .ba-ref-list li {
+      margin-bottom: 14px;
+      padding-left: 24px;
+      position: relative;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+
+    .ba-ref-list li::before {
+      content: '[' counter(ref) ']';
+      counter-increment: ref;
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .ba-stacked-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 25px 0;
+    }
+
+    .ba-stacked-card {
+      background-color: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+    }
+
+    .ba-stacked-title {
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      font-size: 1em;
+    }
+
+    .ba-stacked-sub {
+      font-size: 0.85em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .ba-stacked-list {
+      list-style: none;
+      margin-left: 0;
+      font-size: 0.9em;
+    }
+
+    .ba-stacked-list li {
+      margin-bottom: 6px;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .ba-stacked-list li::before {
+      content: '\2022';
+      position: absolute;
+      left: 4px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .ba-footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+    }
+
+    svg {
+      max-width: 100%;
+      height: auto;
+      margin: 25px 0;
+    }
+
+    .svg-container {
+      display: flex;
+      justify-content: center;
+      margin: 25px 0;
+    }
+
+    .ba-warning-box {
+      background: linear-gradient(135deg, #fdf0ed 0%, #f8e5e0 100%);
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 20px;
+      margin: 25px 0;
+      display: flex;
+      gap: 16px;
+    }
+
+    .ba-warning-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f2d8d4;
+      border-radius: 4px;
+      font-size: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .blog-article {
+        padding: 30px 20px;
+      }
+
+      .ba-title {
+        font-size: 1.8em;
+      }
+
+      .ba-h2 {
+        font-size: 1.4em;
+      }
+
+      .ba-meta {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .ba-stat-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <a href="/blog/" class="back-to-blog">← Back to Blog</a>
+  <div class="container">
+    <a href="../index.html" class="back-link">&#8592; Back to PsychoPharmRef</a>
 
     <article class="blog-article">
-        <header class="ba-header">
-            <div class="ba-category">Nutritional Psychiatry</div>
-            <h1 class="ba-title">Magnesium: Types, Indications, and Clinical Use</h1>
-            <p class="ba-subtitle">A comprehensive guide to magnesium forms, bioavailability, clinical applications, and safe prescribing for mental health practitioners</p>
-            <div class="ba-meta">
-                <div class="ba-meta-item">📅 Published March 12, 2026</div>
-                <div class="ba-meta-item">👨‍⚕️ Medical Review</div>
-                <div class="ba-meta-item">📖 12 min read</div>
-            </div>
-        </header>
-
-        <div class="ba-body">
-            <p class="ba-lead">Magnesium deficiency remains one of the most overlooked nutritional factors in psychiatric practice despite compelling evidence for its role in mood regulation, anxiety, sleep, and cognitive function. This guide equips clinicians to confidently assess magnesium status, select appropriate formulations, and integrate supplementation into comprehensive treatment protocols.</p>
-
-            <!-- SECTION 1: History & Role -->
-            <h2 class="ba-h2">1. Historical Context and Physiological Significance</h2>
-
-            <h3 class="ba-h3">Discovery and Recognition</h3>
-            <p>Magnesium's essentiality to human health was established in the early 20th century, though its psychiatric significance remained underexplored until recent decades. Today, magnesium is recognized as a cofactor in over 300 enzymatic reactions, including energy metabolism, protein synthesis, and neurotransmitter regulation. Its role in blocking the NMDA receptor—a key mechanism in neuroprotection and mood stabilization—places it at the intersection of neurochemistry and nutritional psychiatry.</p>
-
-            <h3 class="ba-h3">The Mineral Interplay: Magnesium, Calcium, Potassium, and Vitamin D</h3>
-            <p>Magnesium functions synergistically with other minerals and fat-soluble vitamins:</p>
-            <ul style="margin-left: 20px; margin-bottom: 16px;">
-                <li><strong>Calcium-Magnesium Balance:</strong> An optimal ratio (2:1 or 1:1 depending on individual factors) is essential. Excess calcium without adequate magnesium can impair vascular function and exacerbate anxiety.</li>
-                <li><strong>Potassium Regulation:</strong> Magnesium is required for Na-K-ATPase function; hypomagnesemia leads to hypokalemia and cardiac arrhythmias.</li>
-                <li><strong>Vitamin D Activation:</strong> Magnesium is necessary for the conversion of vitamin D to its active form (calcitriol). Isolated vitamin D supplementation without adequate magnesium may prove ineffective.</li>
-            </ul>
-
-            <h3 class="ba-h3">The Modern Epidemic of Magnesium Deficiency</h3>
-            <p>Contemporary dietary patterns have created widespread magnesium insufficiency:</p>
-            <div class="ba-stat-row">
-                <div class="ba-stat-card ba-stat-card--alert">
-                    <div class="ba-stat-num">60-70%</div>
-                    <div class="ba-stat-label">Of Americans consume below RDA</div>
-                </div>
-                <div class="ba-stat-card ba-stat-card--alert">
-                    <div class="ba-stat-num">19-25%</div>
-                    <div class="ba-stat-label">With severe deficiency</div>
-                </div>
-                <div class="ba-stat-card">
-                    <div class="ba-stat-num">30%</div>
-                    <div class="ba-stat-label">Serum Mg decline since 1950s</div>
-                </div>
-            </div>
-
-            <p><strong>Primary contributors to deficiency:</strong></p>
-            <ul style="margin-left: 20px; margin-bottom: 16px;">
-                <li><strong>Soil Depletion:</strong> Industrial agriculture and repeated monocropping have reduced magnesium content in crops by 10-30% over 50 years.</li>
-                <li><strong>Processing:</strong> Refining of grains removes 50-80% of magnesium; modern ultra-processed diets provide minimal magnesium-rich whole foods.</li>
-                <li><strong>Medication-Induced Depletion:</strong> PPIs, diuretics, and certain antibiotics impair absorption or increase urinary losses (detailed below).</li>
-                <li><strong>Chronic Stress:</strong> Elevated catecholamines and cortisol increase urinary magnesium excretion, creating a vicious cycle.</li>
-            </ul>
-
-            <div class="ba-insight-box">
-                <div class="ba-insight-icon">💡</div>
-                <div>
-                    <strong>Clinical Pearl:</strong> Serum magnesium measurement (total Mg) reflects only ~1% of body stores. A "normal" serum level does not exclude magnesium deficiency. RBC magnesium is more accurate but less accessible; clinical judgment based on symptomatology and risk factors remains essential.
-                </div>
-            </div>
-
-            <!-- SECTION 2: Indications -->
-            <h2 class="ba-h2">2. Evolving Indications and Evidence Base</h2>
-
-            <p>Magnesium supplementation has demonstrated efficacy across multiple psychiatric and medical conditions. The evidence base varies from robust RCT support to promising preliminary findings.</p>
-
-            <h3 class="ba-h3">Strong Evidence Base</h3>
-            <div class="ba-therapy-grid">
-                <div class="ba-therapy-card">
-                    <div class="ba-therapy-icon">🧠</div>
-                    <div class="ba-therapy-title">Migraine Prophylaxis</div>
-                </div>
-                <div class="ba-therapy-card">
-                    <div class="ba-therapy-icon">😴</div>
-                    <div class="ba-therapy-title">Insomnia & Sleep</div>
-                </div>
-                <div class="ba-therapy-card">
-                    <div class="ba-therapy-icon">💪</div>
-                    <div class="ba-therapy-title">Muscle Cramps</div>
-                </div>
-                <div class="ba-therapy-card">
-                    <div class="ba-therapy-icon">🔴</div>
-                    <div class="ba-therapy-title">Preeclampsia</div>
-                </div>
-            </div>
-
-            <h3 class="ba-h3">Moderate Evidence (Growing)</h3>
-            <div class="ba-therapy-grid">
-                <div class="ba-therapy-card">
-                    <div class="ba-therapy-icon">😰</div>
-                    <div class="ba-therapy-title">Anxiety</div>
-                </div>
-                <div class="ba-therapy-card">
-                    <div class="ba-therapy-icon">😔</div>
-                    <div class="ba-therapy-title">Depression</div>
-                </div>
-                <div class="ba-therapy-card">
-                    <div class="ba-therapy-icon">🫀</div>
-                    <div class="ba-therapy-title">Hypertension</div>
-                </div>
-                <div class="ba-therapy-card">
-                    <div class="ba-therapy-icon">⚡</div>
-                    <div class="ba-therapy-title">Chronic Pain</div>
-                </div>
-            </div>
-
-            <h3 class="ba-h3">Emerging Evidence (Research Phase)</h3>
-            <div class="ba-therapy-grid">
-                <div class="ba-therapy-card">
-                    <div class="ba-therapy-icon">🧩</div>
-                    <div class="ba-therapy-title">ADHD</div>
-                </div>
-                <div class="ba-therapy-card">
-                    <div class="ba-therapy-icon">🦴</div>
-                    <div class="ba-therapy-title">Osteoporosis</div>
-                </div>
-                <div class="ba-therapy-card">
-                    <div class="ba-therapy-icon">⚠️</div>
-                    <div class="ba-therapy-title">Torsades Prophylaxis</div>
-                </div>
-                <div class="ba-therapy-card">
-                    <div class="ba-therapy-icon">🔥</div>
-                    <div class="ba-therapy-title">Fibromyalgia</div>
-                </div>
-            </div>
-
-            <h3 class="ba-h3">Detailed Clinical Applications</h3>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Anxiety & Depression: NMDA Modulation</h4>
-            <p>Magnesium's neuroprotective effects are mediated primarily through non-competitive blockade of the NMDA receptor, which prevents excitotoxic calcium influx. This mechanism underpins its anxiolytic and potential mood-stabilizing properties.</p>
-
-            <svg viewBox="0 0 500 300" style="margin: 20px auto; border: 1px solid var(--border); border-radius: 8px;">
-                <defs>
-                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#4a7c35;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#3a6e28;stop-opacity:1" />
-                    </linearGradient>
-                </defs>
-                <rect width="500" height="300" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1"/>
-                <text x="250" y="25" font-size="16" font-weight="bold" text-anchor="middle" fill="#4a7c35">Magnesium & NMDA Receptor: Neuroprotective Pathway</text>
-
-                <!-- Left side: Normal glutamate excess -->
-                <rect x="30" y="60" width="180" height="220" fill="#fce8e6" stroke="#c04030" stroke-width="2" rx="4"/>
-                <text x="120" y="85" font-size="13" font-weight="bold" text-anchor="middle" fill="#c04030">Excess Glutamate</text>
-
-                <circle cx="80" cy="140" r="25" fill="#c04030" opacity="0.2" stroke="#c04030" stroke-width="2"/>
-                <text x="80" y="148" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Glu</text>
-
-                <circle cx="160" cy="140" r="25" fill="#c04030" opacity="0.2" stroke="#c04030" stroke-width="2"/>
-                <text x="160" y="148" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Glu</text>
-
-                <rect x="80" y="185" width="80" height="50" fill="white" stroke="#c04030" stroke-width="2" rx="4"/>
-                <text x="120" y="205" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">NMDA</text>
-                <text x="120" y="220" font-size="10" text-anchor="middle" fill="#231e14">Receptor</text>
-
-                <path d="M 80 165 L 95 190" stroke="#c04030" stroke-width="2" fill="none" marker-end="url(#arrowhead-red)"/>
-                <path d="M 160 165 L 145 190" stroke="#c04030" stroke-width="2" fill="none" marker-end="url(#arrowhead-red)"/>
-
-                <text x="120" y="260" font-size="11" text-anchor="middle" fill="#c04030">↑ Ca²⁺ influx → Excitotoxicity</text>
-
-                <!-- Right side: With magnesium block -->
-                <rect x="290" y="60" width="180" height="220" fill="#e6f4ea" stroke="#3a6e28" stroke-width="2" rx="4"/>
-                <text x="380" y="85" font-size="13" font-weight="bold" text-anchor="middle" fill="#3a6e28">+ Magnesium Block</text>
-
-                <circle cx="330" cy="140" r="25" fill="#3a6e28" opacity="0.2" stroke="#3a6e28" stroke-width="2"/>
-                <text x="330" y="148" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Glu</text>
-
-                <circle cx="410" cy="140" r="25" fill="#3a6e28" opacity="0.2" stroke="#3a6e28" stroke-width="2"/>
-                <text x="410" y="148" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Glu</text>
-
-                <rect x="330" y="185" width="80" height="50" fill="white" stroke="#3a6e28" stroke-width="2" rx="4"/>
-                <text x="370" y="205" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">NMDA</text>
-                <text x="370" y="220" font-size="10" text-anchor="middle" fill="#231e14">Receptor</text>
-
-                <circle cx="370" cy="207" r="8" fill="#3a6e28" stroke="#3a6e28" stroke-width="1"/>
-                <text x="370" y="212" font-size="8" font-weight="bold" text-anchor="middle" fill="white">Mg</text>
-
-                <path d="M 330 165 L 345 190" stroke="#3a6e28" stroke-width="2" fill="none" marker-end="url(#arrowhead-green)"/>
-                <path d="M 410 165 L 395 190" stroke="#3a6e28" stroke-width="2" fill="none" marker-end="url(#arrowhead-green)"/>
-
-                <text x="370" y="260" font-size="11" text-anchor="middle" fill="#3a6e28">↓ Ca²⁺ influx → Neuroprotection</text>
-
-                <defs>
-                    <marker id="arrowhead-red" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
-                        <polygon points="0 0, 10 5, 0 10" fill="#c04030" />
-                    </marker>
-                    <marker id="arrowhead-green" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
-                        <polygon points="0 0, 10 5, 0 10" fill="#3a6e28" />
-                    </marker>
-                </defs>
-            </svg>
-
-            <p><strong>Evidence summary:</strong> A 2019 meta-analysis of 18 RCTs found that magnesium supplementation reduced anxiety symptoms across heterogeneous populations (effect size: -0.47, p &lt; 0.001). For depression, preliminary studies suggest magnesium may potentiate SSRI efficacy, though robust RCT evidence remains limited. The proposed mechanism involves NMDA antagonism coupled with increased GABA signaling.</p>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Migraine Prophylaxis</h4>
-            <p>Multiple randomized trials support magnesium supplementation (300-400 mg/day) for migraine prevention. The American Headache Society includes magnesium as a Level A recommendation for migraine prophylaxis. Proposed mechanisms include modulation of glutamate neurotransmission, stabilization of serotonin receptors, and vascular effects.</p>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Sleep and Insomnia</h4>
-            <p>Magnesium promotes sleep through multiple pathways: GABA modulation, melatonin regulation, and muscle relaxation. Clinical benefit is most pronounced with glycinate or threonate forms (see Section 3). A 2012 study found magnesium supplementation (400 mg/day) significantly improved sleep quality and reduced sleep onset latency in elderly patients.</p>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Muscle Cramps and Fibromyalgia</h4>
-            <p>Magnesium malate has shown efficacy for exercise-associated muscle cramps and fibromyalgia pain. The combination of magnesium and malic acid provides energy substrate (ATP regeneration) to fatigued muscle. Typical dose: 1200-2400 mg/day divided doses.</p>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Pregnancy-Related Conditions</h4>
-            <p>Intravenous magnesium sulfate is the gold standard for seizure prophylaxis in preeclampsia/eclampsia and remains the most evidence-based intervention. Oral supplementation during pregnancy requires close coordination with obstetrical care to avoid hypermagnesemia.</p>
-
-            <!-- SECTION 3: Forms and Formulations -->
-            <h2 class="ba-h2">3. Magnesium Formulations: A Comprehensive Comparison</h2>
-
-            <p>The form of magnesium—its chemical compound and binding molecule—dramatically impacts bioavailability, absorption kinetics, tissue distribution, and clinical efficacy. This section is the core of magnesium prescribing.</p>
-
-            <svg viewBox="0 0 600 400" style="margin: 20px auto; border: 1px solid var(--border); border-radius: 8px;">
-                <defs>
-                    <linearGradient id="grad-bio" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#c04030;stop-opacity:1" />
-                        <stop offset="50%" style="stop-color:#8b6914;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#3a6e28;stop-opacity:1" />
-                    </linearGradient>
-                </defs>
-                <rect width="600" height="400" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1"/>
-                <text x="300" y="25" font-size="16" font-weight="bold" text-anchor="middle" fill="#4a7c35">Magnesium Forms: Bioavailability vs. Elemental Content</text>
-
-                <!-- Y-axis label -->
-                <text x="25" y="170" font-size="12" font-weight="bold" fill="#4a7c35" text-anchor="middle" transform="rotate(-90 25 170)">Bioavailability (%)</text>
-
-                <!-- X-axis label -->
-                <text x="300" y="385" font-size="12" font-weight="bold" fill="#4a7c35" text-anchor="middle">Elemental Mg Content (%)</text>
-
-                <!-- Axis lines -->
-                <line x1="50" y1="30" x2="50" y2="350" stroke="#6b6050" stroke-width="2"/>
-                <line x1="50" y1="350" x2="570" y2="350" stroke="#6b6050" stroke-width="2"/>
-
-                <!-- Y-axis ticks and labels -->
-                <line x1="45" y1="350" x2="50" y2="350" stroke="#6b6050" stroke-width="1"/>
-                <text x="40" y="355" font-size="10" text-anchor="end" fill="#231e14">0%</text>
-
-                <line x1="45" y1="280" x2="50" y2="280" stroke="#6b6050" stroke-width="1"/>
-                <text x="40" y="285" font-size="10" text-anchor="end" fill="#231e14">25%</text>
-
-                <line x1="45" y1="210" x2="50" y2="210" stroke="#6b6050" stroke-width="1"/>
-                <text x="40" y="215" font-size="10" text-anchor="end" fill="#231e14">50%</text>
-
-                <line x1="45" y1="140" x2="50" y2="140" stroke="#6b6050" stroke-width="1"/>
-                <text x="40" y="145" font-size="10" text-anchor="end" fill="#231e14">75%</text>
-
-                <line x1="45" y1="70" x2="50" y2="70" stroke="#6b6050" stroke-width="1"/>
-                <text x="40" y="75" font-size="10" text-anchor="end" fill="#231e14">100%</text>
-
-                <!-- X-axis ticks and labels -->
-                <line x1="50" y1="350" x2="50" y2="355" stroke="#6b6050" stroke-width="1"/>
-                <text x="50" y="370" font-size="10" text-anchor="middle" fill="#231e14">0%</text>
-
-                <line x1="165" y1="350" x2="165" y2="355" stroke="#6b6050" stroke-width="1"/>
-                <text x="165" y="370" font-size="10" text-anchor="middle" fill="#231e14">25%</text>
-
-                <line x1="280" y1="350" x2="280" y2="355" stroke="#6b6050" stroke-width="1"/>
-                <text x="280" y="370" font-size="10" text-anchor="middle" fill="#231e14">50%</text>
-
-                <line x1="395" y1="350" x2="395" y2="355" stroke="#6b6050" stroke-width="1"/>
-                <text x="395" y="370" font-size="10" text-anchor="middle" fill="#231e14">75%</text>
-
-                <line x1="510" y1="350" x2="510" y2="355" stroke="#6b6050" stroke-width="1"/>
-                <text x="510" y="370" font-size="10" text-anchor="middle" fill="#231e14">100%</text>
-
-                <!-- Data points: (elemental%, bioavail%) mapped to (x, y) with 50+elemental*11.6, 350-bioavail*2.8 -->
-                <!-- Oxide: 60% elemental, 4% bioavail -->
-                <circle cx="116" cy="339" r="6" fill="#c04030" stroke="#6b6050" stroke-width="1"/>
-                <text x="116" y="325" font-size="10" font-weight="bold" text-anchor="middle" fill="#231e14">Oxide</text>
-
-                <!-- Citrate: 11% elemental, 25% bioavail -->
-                <circle cx="178" cy="280" r="6" fill="#8b6914" stroke="#6b6050" stroke-width="1"/>
-                <text x="178" y="266" font-size="10" font-weight="bold" text-anchor="middle" fill="#231e14">Citrate</text>
-
-                <!-- Glycinate: 14% elemental, 60% bioavail -->
-                <circle cx="212" cy="132" r="7" fill="#3a6e28" stroke="#6b6050" stroke-width="1"/>
-                <text x="212" y="115" font-size="10" font-weight="bold" text-anchor="middle" fill="#231e14">Glycinate</text>
-
-                <!-- Threonate: 12% elemental, 70% bioavail -->
-                <circle cx="189" cy="54" r="7" fill="#3a6e28" stroke="#6b6050" stroke-width="1"/>
-                <text x="189" y="37" font-size="10" font-weight="bold" text-anchor="middle" fill="#231e14">Threonate</text>
-
-                <!-- Taurate: 19% elemental, 50% bioavail -->
-                <circle cx="271" cy="210" r="6" fill="#8b6914" stroke="#6b6050" stroke-width="1"/>
-                <text x="271" y="196" font-size="10" font-weight="bold" text-anchor="middle" fill="#231e14">Taurate</text>
-
-                <!-- Malate: 6% elemental, 40% bioavail -->
-                <circle cx="120" cy="238" r="6" fill="#8b6914" stroke="#6b6050" stroke-width="1"/>
-                <text x="120" y="224" font-size="10" font-weight="bold" text-anchor="middle" fill="#231e14">Malate</text>
-
-                <!-- Orotate: 6% elemental, 35% bioavail -->
-                <circle cx="120" cy="252" r="6" fill="#8b6914" stroke="#6b6050" stroke-width="1"/>
-                <text x="120" y="268" font-size="10" font-weight="bold" text-anchor="middle" fill="#231e14">Orotate</text>
-
-                <!-- Legend -->
-                <rect x="380" y="70" width="160" height="90" fill="#f5f0e8" stroke="#cfc8ba" stroke-width="1" rx="4"/>
-                <text x="460" y="90" font-size="12" font-weight="bold" text-anchor="middle" fill="#4a7c35">Bioavailability Category</text>
-
-                <circle cx="395" cy="110" r="4" fill="#c04030"/>
-                <text x="410" y="114" font-size="10" fill="#231e14">Poor (&lt;10%)</text>
-
-                <circle cx="395" cy="130" r="4" fill="#8b6914"/>
-                <text x="410" y="134" font-size="10" fill="#231e14">Moderate (25-50%)</text>
-
-                <circle cx="395" cy="150" r="4" fill="#3a6e28"/>
-                <text x="410" y="154" font-size="10" fill="#231e14">High (&gt;60%)</text>
-            </svg>
-
-            <div class="ba-table-wrap">
-                <table class="ba-table">
-                    <thead>
-                        <tr>
-                            <th>Form</th>
-                            <th>Elemental Mg %</th>
-                            <th>Bioavailability</th>
-                            <th>Primary Indication</th>
-                            <th>Typical Dose</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Magnesium Oxide</strong></td>
-                            <td>60%</td>
-                            <td>4-6%</td>
-                            <td>Constipation (osmotic laxative)</td>
-                            <td>1200-2400 mg daily</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Magnesium Citrate</strong></td>
-                            <td>11%</td>
-                            <td>25-30%</td>
-                            <td>General supplementation with GI motility</td>
-                            <td>400-500 mg daily</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Magnesium Glycinate</strong></td>
-                            <td>14%</td>
-                            <td>55-65%</td>
-                            <td>Anxiety, sleep, muscle relaxation</td>
-                            <td>400-500 mg daily (Mg content)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Magnesium L-Threonate</strong></td>
-                            <td>12%</td>
-                            <td>65-75%</td>
-                            <td>Cognitive function, memory, BBB crossing</td>
-                            <td>2000-2500 mg daily (product dose)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Magnesium Taurate</strong></td>
-                            <td>19%</td>
-                            <td>50-65%</td>
-                            <td>Hypertension, cardiovascular support</td>
-                            <td>400-600 mg daily (Mg content)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Magnesium Malate</strong></td>
-                            <td>6-7%</td>
-                            <td>40-50%</td>
-                            <td>Fibromyalgia, muscle pain, fatigue</td>
-                            <td>1200-2400 mg daily</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Magnesium Sulfate</strong></td>
-                            <td>9.8%</td>
-                            <td>IV/IM use</td>
-                            <td>Preeclampsia, arrhythmia, acute care</td>
-                            <td>4-6 g IV loading, then 1-2 g/hr</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Magnesium Chloride</strong></td>
-                            <td>12%</td>
-                            <td>45-55%</td>
-                            <td>Topical, transdermal supplementation</td>
-                            <td>Variable (topical); 200-400 mg oral</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Magnesium Orotate</strong></td>
-                            <td>6%</td>
-                            <td>35-45%</td>
-                            <td>Cardiac function, athletic performance</td>
-                            <td>2000-3000 mg daily</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3 class="ba-h3">Detailed Form-by-Form Analysis</h3>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Magnesium Oxide</h4>
-            <div class="ba-stacked-card">
-                <p><strong>Composition:</strong> MgO; 60% elemental magnesium content (highest)</p>
-                <p><strong>Bioavailability:</strong> 4-6% (lowest among oral forms)</p>
-                <p><strong>Mechanism of poor absorption:</strong> Forms insoluble compounds in the GI lumen; poorly ionized at physiologic pH</p>
-                <p><strong>Laxative effect:</strong> Osmotic action creates significant diarrhea at doses >400 mg daily</p>
-                <p><strong>Clinical use:</strong> Constipation treatment, not primary supplementation. Brands like Phillips' Milk of Magnesia contain magnesium hydroxide (~58% Mg)</p>
-                <p><strong>Advantages:</strong> Low cost, high elemental content, rapid GI transit</p>
-                <p><strong>Disadvantages:</strong> Poor absorption, GI distress, not suitable for systemic magnesium repletion</p>
-                <p><strong>Prescriber note:</strong> Avoid in patients seeking tissue-targeted magnesium effect (e.g., for anxiety or sleep); appropriate only if GI motility is therapeutic goal</p>
-            </div>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Magnesium Citrate</h4>
-            <div class="ba-stacked-card">
-                <p><strong>Composition:</strong> Mg2+(citrate)3; weak acid chelate, pH-dependent dissociation</p>
-                <p><strong>Bioavailability:</strong> 25-30% (moderate)</p>
-                <p><strong>Absorption mechanism:</strong> Citrate enhances Mg solubility across physiologic pH range; weak osmotic effect</p>
-                <p><strong>GI profile:</strong> Mild laxative effect; used in GI cleansing protocols</p>
-                <p><strong>Clinical use:</strong> General supplementation, mild GI constipation, OTC availability (popular choice)</p>
-                <p><strong>Advantages:</strong> Reasonable bioavailability, mild taste, well-tolerated</p>
-                <p><strong>Disadvantages:</strong> Lower bioavailability than amino acid chelates, mild osmotic effect limits high dosing</p>
-                <p><strong>Prescriber note:</strong> Reasonable first-line choice for general population; avoid in IBS-D or patients with chronic diarrhea</p>
-            </div>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Magnesium Glycinate (Magnesium Bisglycinate)</h4>
-            <div class="ba-stacked-card">
-                <p><strong>Composition:</strong> Mg2+ chelated to two glycine molecules; amino acid complex</p>
-                <p><strong>Bioavailability:</strong> 55-65% (excellent; among highest oral forms)</p>
-                <p><strong>Absorption mechanism:</strong> Glycine is an amino acid with dedicated intestinal transporters; Mg travels via amino acid absorption pathway (active transport), bypassing competitive mineral absorption</p>
-                <p><strong>Unique feature—Glycine co-benefit:</strong> Glycine itself is inhibitory neurotransmitter, synergizing with Mg for anxiolytic and sleep-promoting effects. Glycine also supports collagen synthesis and has anti-inflammatory properties</p>
-                <p><strong>GI tolerability:</strong> No laxative effect; excellent tolerability even at high doses (up to 1000+ mg elemental Mg daily)</p>
-                <p><strong>Clinical use:</strong> First-line for anxiety, insomnia, muscle cramps, general deficiency. Preferred for psychiatric indications</p>
-                <p><strong>Typical dose range:</strong> 400-500 mg elemental Mg (2850-3500 mg product) divided into 2-3 doses</p>
-                <p><strong>Advantages:</strong> High bioavailability, no GI side effects, synergistic neuropsychiatric benefits, excellent tolerability</p>
-                <p><strong>Disadvantages:</strong> Lower elemental % (14%), higher product cost</p>
-                <p><strong>Prescriber note:</strong> My preferred form for psychiatric patients. Evening dosing enhances sleep quality. Particularly effective for anxiety-associated muscle tension</p>
-            </div>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Magnesium L-Threonate (Magtein®)</h4>
-            <div class="ba-stacked-card">
-                <p><strong>Composition:</strong> Mg2+ chelated to L-threonate (a derivative of vitamin C metabolism); proprietary form developed specifically for CNS penetration</p>
-                <p><strong>Bioavailability:</strong> 65-75% (highest among oral forms; crosses blood-brain barrier)</p>
-                <p><strong>Unique mechanism:</strong> L-threonate increases intracellular magnesium concentration in brain tissue, superior to other forms for neuronal magnesium elevation. Actively transported across BBB via specific carrier systems</p>
-                <p><strong>CNS research:</strong> Animal studies show improvement in synaptic plasticity, long-term potentiation (LTP), and cognitive performance. Human trials limited but promising</p>
-                <p><strong>Clinical use:</strong> Age-related cognitive decline, memory impairment, cognitive symptoms in depression, potential ADHD application, neuroprotection</p>
-                <p><strong>Typical dose range:</strong> 2000-2500 mg daily (product dose, containing ~144 mg elemental Mg per 1000 mg product)</p>
-                <p><strong>GI tolerability:</strong> Excellent; no laxative effects</p>
-                <p><strong>Advantages:</strong> Superior BBB penetration, excellent bioavailability, potential cognitive enhancement, excellent tolerability</p>
-                <p><strong>Disadvantages:</strong> Significantly higher cost (~$1-2 per daily dose vs. $0.10-0.30 for glycinate), limited long-term clinical trial data in humans, patent-protected form</p>
-                <p><strong>Prescriber note:</strong> Reserve for patients with documented cognitive impairment, age-related decline, or depression with cognitive symptoms. Consider as adjunct to psychopharmacology for optimizing cognitive outcomes. Evidence base still emerging; realistic patient expectation setting essential</p>
-            </div>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Magnesium Taurate</h4>
-            <div class="ba-stacked-card">
-                <p><strong>Composition:</strong> Mg2+ chelated to taurine (β-alanine derivative); amino acid complex</p>
-                <p><strong>Bioavailability:</strong> 50-65% (excellent)</p>
-                <p><strong>Taurine synergy:</strong> Taurine is cardioprotective, supports cellular osmoregulation, and has neuroprotective properties. Synergizes with Mg for cardiovascular benefit</p>
-                <p><strong>Cardiovascular focus:</strong> Both Mg and taurine modulate calcium handling in cardiac myocytes, reduce arrhythmia risk, support vascular endothelial function, and lower blood pressure</p>
-                <p><strong>Clinical use:</strong> Hypertension management, arrhythmia prevention, cardiac support in HF patients, athletes for blood pressure and performance</p>
-                <p><strong>Typical dose range:</strong> 400-600 mg elemental Mg daily (divided doses)</p>
-                <p><strong>Advantages:</strong> High bioavailability, cardiovascular co-benefits, no GI laxative effect</p>
-                <p><strong>Disadvantages:</strong> Higher cost than citrate, less psychiatric literature than glycinate</p>
-                <p><strong>Prescriber note:</strong> Excellent choice for patients with comorbid hypertension or cardiac risk. Consider in bipolar disorder with prominent cardiovascular comorbidity. No psychiatric contraindications</p>
-            </div>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Magnesium Malate</h4>
-            <div class="ba-stacked-card">
-                <p><strong>Composition:</strong> Mg2+ chelated to malate (a Krebs cycle intermediate); weak acid salt</p>
-                <p><strong>Bioavailability:</strong> 40-50% (moderate-good)</p>
-                <p><strong>Malate co-benefit:</strong> Malic acid is a critical substrate for ATP generation via oxidative phosphorylation. Provides bioenergetic support to mitochondria—mechanism underlying efficacy in myofascial pain syndromes</p>
-                <p><strong>Unique mechanism:</strong> Addresses both magnesium deficiency AND mitochondrial energy deficit simultaneously—particularly relevant in fibromyalgia and ME/CFS</p>
-                <p><strong>Clinical use:</strong> Fibromyalgia, myofascial pain, exercise-associated muscle cramps, chronic fatigue, sports recovery</p>
-                <p><strong>Typical dose range:</strong> 1200-2400 mg daily (malate + Mg combined; typically ~6% Mg content)</p>
-                <p><strong>GI tolerability:</strong> Moderate laxative effect at higher doses; well below oxide</p>
-                <p><strong>Advantages:</strong> Bioenergetic support, synergistic mechanism for pain syndromes, reasonable bioavailability</p>
-                <p><strong>Disadvantages:</strong> Lower elemental Mg %, mild osmotic effects at high doses</p>
-                <p><strong>Prescriber note:</strong> First-line for fibromyalgia-spectrum conditions and chronic pain with fatigue component. Particularly valuable in psychiatric patients with comorbid CFS or chronic pain. Requires split dosing to minimize GI effects</p>
-            </div>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Magnesium Sulfate (MgSO₄)</h4>
-            <div class="ba-stacked-card">
-                <p><strong>Composition:</strong> Simple salt of Mg2+ and sulfate ions</p>
-                <p><strong>Bioavailability:</strong> N/A for IV/IM (100% bioavailability when parenteral); oral form poorly absorbed</p>
-                <p><strong>Routes of administration:</strong> IV (intravenous), IM (intramuscular), rarely oral (strong laxative)</p>
-                <p><strong>Clinical use:</strong> Acute care settings—preeclampsia/eclampsia seizure prophylaxis (gold standard, Level A evidence), life-threatening arrhythmias (torsades de pointes), severe symptomatic hypomagnesemia requiring rapid repletion</p>
-                <p><strong>IV dosing:</strong> Loading dose 4-6 g IV over 15-20 minutes, followed by 1-2 g/hour maintenance (preeclampsia protocol)</p>
-                <p><strong>IM dosing:</strong> 1 g every 4-6 hours</p>
-                <p><strong>Monitoring:</strong> Serum Mg levels, patellar reflexes (early sign of toxicity), urine output, cardiac telemetry</p>
-                <p><strong>Advantages:</strong> Rapid parenteral delivery, proven efficacy in obstetric emergencies, can achieve high tissue levels quickly</p>
-                <p><strong>Disadvantages:</strong> Parenteral only (generally), IV administration required, hypermagnesemia risk if renal function impaired, not suitable for outpatient chronic supplementation</p>
-                <p><strong>Prescriber note:</strong> Obstetrical emergencies only in most psychiatric practices; familiarize yourself with recognition and management of hypermagnesemia toxicity</p>
-            </div>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Magnesium Chloride (MgCl₂)</h4>
-            <div class="ba-stacked-card">
-                <p><strong>Composition:</strong> Simple salt; more ionizable than oxide</p>
-                <p><strong>Bioavailability:</strong> 45-55% (moderate)</p>
-                <p><strong>Primary delivery route:</strong> Topical (transdermal patches, "magnesium oil" [saturated solution], bath soaks)</p>
-                <p><strong>Transdermal mechanism:</strong> MgCl2 solution (3-6% concentration) applied topically can penetrate skin and be absorbed systemically, bypassing GI limitations. Particularly useful in patients with GI absorption disorders</p>
-                <p><strong>Oral form:</strong> Available but less common; reasonable bioavailability similar to citrate</p>
-                <p><strong>Clinical use:</strong> Patients with malabsorption, severe GI disturbance, topical application for localized muscle tension, athletes for recovery, pregnant women with GI sensitivity</p>
-                <p><strong>Typical dose:</strong> Topical: 10-15 sprays 2-3x daily; Oral (rare): 200-400 mg elemental Mg daily</p>
-                <p><strong>Advantages:</strong> Bypasses GI tract, useful in malabsorption syndromes, good tolerability, can target specific areas of muscle tension</p>
-                <p><strong>Disadvantages:</strong> Topical absorption is variable and not fully quantifiable, expense, limited systemic delivery compared to oral forms</p>
-                <p><strong>Prescriber note:</strong> Consider for IBS-D, IBD patients, or those on medications impairing Mg absorption (discussed below). Topical application most useful as adjunct to oral supplementation</p>
-            </div>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Magnesium Orotate</h4>
-            <div class="ba-stacked-card">
-                <p><strong>Composition:</strong> Mg2+ chelated to orotic acid (pyrimidine derivative involved in nucleotide synthesis)</p>
-                <p><strong>Bioavailability:</strong> 35-45% (moderate)</p>
-                <p><strong>Orotic acid mechanism:</strong> Enhances ATP synthesis and cellular energy metabolism; orotic acid accumulates in cardiac mitochondria</p>
-                <p><strong>Research basis:</strong> Originally developed in Germany for cardiac support; used extensively in sports medicine and cardiology in Europe</p>
-                <p><strong>Clinical use:</strong> Heart failure support, athletic performance and endurance, cardiac recovery post-MI, hypertension (adjunctive)</p>
-                <p><strong>Typical dose range:</strong> 2000-3000 mg daily (product dose; ~6% Mg content)</p>
-                <p><strong>GI tolerability:</strong> Excellent; no laxative effect</p>
-                <p><strong>Advantages:</strong> Cardiac bioenergetic support, excellent tolerability, athletic performance support, emerging research base</p>
-                <p><strong>Disadvantages:</strong> Lower elemental Mg %, limited English-language clinical literature, moderate cost</p>
-                <p><strong>Prescriber note:</strong> Consider in depressed patients with cardiac comorbidities or heart failure. May enhance mood through bioenergetic optimization. More data needed for psychiatric indications</p>
-            </div>
-
-            <!-- Comparison Matrix -->
-            <div class="svg-title">Magnesium Form Selection: Clinical Decision Tree</div>
-            <svg viewBox="0 0 700 500" style="margin: 20px auto; border: 1px solid var(--border); border-radius: 8px;">
-                <rect width="700" height="500" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1"/>
-
-                <!-- Title -->
-                <text x="350" y="25" font-size="14" font-weight="bold" text-anchor="middle" fill="#4a7c35">Matching Magnesium Form to Clinical Indication</text>
-
-                <!-- Top level: Clinical need -->
-                <rect x="250" y="50" width="200" height="40" fill="#e6f4ea" stroke="#3a6e28" stroke-width="2" rx="4"/>
-                <text x="350" y="77" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">What is the primary clinical goal?</text>
-
-                <!-- Arrow down -->
-                <line x1="350" y1="90" x2="350" y2="120" stroke="#6b6050" stroke-width="2" marker-end="url(#arrowend)"/>
-
-                <!-- Three main branches -->
-                <rect x="30" y="120" width="120" height="50" fill="#fef8e8" stroke="#8b6914" stroke-width="2" rx="4"/>
-                <text x="90" y="142" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Psychiatric</text>
-                <text x="90" y="157" font-size="10" text-anchor="middle" fill="#231e14">(Anxiety, Sleep,</text>
-                <text x="90" y="168" font-size="10" text-anchor="middle" fill="#231e14">Depression)</text>
-
-                <rect x="290" y="120" width="120" height="50" fill="#fef8e8" stroke="#8b6914" stroke-width="2" rx="4"/>
-                <text x="350" y="142" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Cardiovascular</text>
-                <text x="350" y="157" font-size="10" text-anchor="middle" fill="#231e14">(HTN, Arrhythmia,</text>
-                <text x="350" y="168" font-size="10" text-anchor="middle" fill="#231e14">Heart Function)</text>
-
-                <rect x="550" y="120" width="120" height="50" fill="#fef8e8" stroke="#8b6914" stroke-width="2" rx="4"/>
-                <text x="610" y="142" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Pain/Neuro</text>
-                <text x="610" y="157" font-size="10" text-anchor="middle" fill="#231e14">(Migraine, Fibro,</text>
-                <text x="610" y="168" font-size="10" text-anchor="middle" fill="#231e14">Neuropathy)</text>
-
-                <!-- Arrows down from branches -->
-                <line x1="90" y1="170" x2="90" y2="200" stroke="#6b6050" stroke-width="1.5" marker-end="url(#arrowend-small)"/>
-                <line x1="350" y1="170" x2="350" y2="200" stroke="#6b6050" stroke-width="1.5" marker-end="url(#arrowend-small)"/>
-                <line x1="610" y1="170" x2="610" y2="200" stroke="#6b6050" stroke-width="1.5" marker-end="url(#arrowend-small)"/>
-
-                <!-- Recommended forms -->
-                <rect x="20" y="200" width="140" height="85" fill="#e6f4ea" stroke="#3a6e28" stroke-width="1.5" rx="4"/>
-                <text x="90" y="218" font-size="11" font-weight="bold" text-anchor="middle" fill="#3a6e28">First Choice:</text>
-                <text x="90" y="233" font-size="10" font-weight="bold" text-anchor="middle" fill="#231e14">Glycinate</text>
-                <text x="90" y="247" font-size="9" text-anchor="middle" fill="#231e14">400-500 mg/day</text>
-                <text x="90" y="260" font-size="10" font-weight="bold" text-anchor="middle" fill="#3a6e28">Alternatives:</text>
-                <text x="90" y="273" font-size="9" text-anchor="middle" fill="#231e14">Threonate (cognitive)</text>
-
-                <rect x="280" y="200" width="140" height="85" fill="#e6f4ea" stroke="#3a6e28" stroke-width="1.5" rx="4"/>
-                <text x="350" y="218" font-size="11" font-weight="bold" text-anchor="middle" fill="#3a6e28">First Choice:</text>
-                <text x="350" y="233" font-size="10" font-weight="bold" text-anchor="middle" fill="#231e14">Taurate</text>
-                <text x="350" y="247" font-size="9" text-anchor="middle" fill="#231e14">400-600 mg/day</text>
-                <text x="350" y="260" font-size="10" font-weight="bold" text-anchor="middle" fill="#3a6e28">Alternatives:</text>
-                <text x="350" y="273" font-size="9" text-anchor="middle" fill="#231e14">Orotate (cardiac)</text>
-
-                <rect x="540" y="200" width="140" height="85" fill="#e6f4ea" stroke="#3a6e28" stroke-width="1.5" rx="4"/>
-                <text x="610" y="218" font-size="11" font-weight="bold" text-anchor="middle" fill="#3a6e28">First Choice:</text>
-                <text x="610" y="233" font-size="10" font-weight="bold" text-anchor="middle" fill="#231e14">Malate</text>
-                <text x="610" y="247" font-size="9" text-anchor="middle" fill="#231e14">1200-2400 mg/day</text>
-                <text x="610" y="260" font-size="10" font-weight="bold" text-anchor="middle" fill="#3a6e28">Alternatives:</text>
-                <text x="610" y="273" font-size="9" text-anchor="middle" fill="#231e14">Glycinate (anxiety)</text>
-
-                <!-- Additional considerations box -->
-                <rect x="40" y="320" width="620" height="160" fill="#fef3e6" stroke="#b05a20" stroke-width="2" rx="4"/>
-                <text x="350" y="342" font-size="12" font-weight="bold" text-anchor="middle" fill="#b05a20">Special Considerations</text>
-
-                <text x="60" y="365" font-size="10" font-weight="bold" fill="#231e14">GI Absorption Impairment:</text>
-                <text x="60" y="378" font-size="9" fill="#231e14">Consider glycinate (GABA transporter), taurate, or topical chloride</text>
-
-                <text x="60" y="398" font-size="10" font-weight="bold" fill="#231e14">Laxative Effect Problematic:</text>
-                <text x="60" y="411" font-size="9" fill="#231e14">Avoid oxide, citrate; use glycinate or threonate</text>
-
-                <text x="60" y="431" font-size="10" font-weight="bold" fill="#231e14">Cost Sensitivity:</text>
-                <text x="60" y="444" font-size="9" fill="#231e14">Citrate (generic), glycinate (moderate), threonate (premium)</text>
-
-                <text x="60" y="464" font-size="10" font-weight="bold" fill="#231e14">Multiple Comorbidities:</text>
-                <text x="60" y="477" font-size="9" fill="#231e14">Glycinate covers psychiatric + general; add taurate if cardiac risk; add malate if chronic pain</text>
-
-                <defs>
-                    <marker id="arrowend" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
-                        <polygon points="0 0, 10 5, 0 10" fill="#6b6050" />
-                    </marker>
-                    <marker id="arrowend-small" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-                        <polygon points="0 0, 8 4, 0 8" fill="#6b6050" />
-                    </marker>
-                </defs>
-            </svg>
-
-            <!-- SECTION 4: Clinical Application -->
-            <h2 class="ba-h2">4. Choosing and Using Magnesium in Clinical Practice</h2>
-
-            <h3 class="ba-h3">Systematic Approach to Magnesium Assessment</h3>
-
-            <div class="ba-insight-box">
-                <div class="ba-insight-icon">⚕️</div>
-                <div>
-                    <strong>Assessment Framework:</strong> Consider magnesium status assessment for all psychiatric patients, particularly those presenting with anxiety, insomnia, depression, or chronic pain. Ask: "Are there signs of deficiency?" (below) and "Are there medication-induced depletions?" (Section 4, below)
-                </div>
-            </div>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Clinical Signs of Magnesium Deficiency</h4>
-            <div class="ba-bar-chart">
-                <div class="ba-bar-row">
-                    <div class="ba-bar-label">Neuromuscular</div>
-                    <div class="ba-bar-track">
-                        <div class="ba-bar-fill" style="width: 85%;"></div>
-                    </div>
-                    <div class="ba-bar-pct">85%</div>
-                </div>
-                <div class="ba-bar-row">
-                    <div class="ba-bar-label">Psychiatric</div>
-                    <div class="ba-bar-track">
-                        <div class="ba-bar-fill" style="width: 78%;"></div>
-                    </div>
-                    <div class="ba-bar-pct">78%</div>
-                </div>
-                <div class="ba-bar-row">
-                    <div class="ba-bar-label">Cardiovascular</div>
-                    <div class="ba-bar-track">
-                        <div class="ba-bar-fill" style="width: 65%;"></div>
-                    </div>
-                    <div class="ba-bar-pct">65%</div>
-                </div>
-                <div class="ba-bar-row">
-                    <div class="ba-bar-label">GI</div>
-                    <div class="ba-bar-track">
-                        <div class="ba-bar-fill" style="width: 45%;"></div>
-                    </div>
-                    <div class="ba-bar-pct">45%</div>
-                </div>
-            </div>
-
-            <p style="margin-top: 24px; font-size: 13px; color: var(--text-muted);">Symptom prevalence across magnesium deficiency populations</p>
-
-            <p><strong>Neuromuscular symptoms (most common):</strong></p>
-            <ul style="margin-left: 20px; margin-bottom: 16px;">
-                <li>Muscle cramps (legs, neck, jaw)</li>
-                <li>Tremor or fasciculations</li>
-                <li>Hyperreflexia initially, progressing to weakness</li>
-                <li>Tetany (spontaneous muscle contractions)</li>
-                <li>Migraine headaches</li>
-                <li>Muscle pain or myofascial trigger points</li>
-            </ul>
-
-            <p><strong>Psychiatric/neurological symptoms:</strong></p>
-            <ul style="margin-left: 20px; margin-bottom: 16px;">
-                <li>Anxiety, panic attacks</li>
-                <li>Depression, mood lability</li>
-                <li>Insomnia, poor sleep quality</li>
-                <li>Cognitive fog, difficulty concentrating</li>
-                <li>Irritability, personality changes</li>
-                <li>Vertigo or light-headedness</li>
-                <li>Psychotic features (severe deficiency)</li>
-            </ul>
-
-            <p><strong>Cardiovascular symptoms:</strong></p>
-            <ul style="margin-left: 20px; margin-bottom: 16px;">
-                <li>Palpitations (often with hypokalemia)</li>
-                <li>Arrhythmias (atrial fibrillation, premature contractions)</li>
-                <li>Hypertension</li>
-                <li>Coronary vasospasm</li>
-                <li>Orthostatic hypotension (when combined with dehydration)</li>
-            </ul>
-
-            <p><strong>GI symptoms:</strong></p>
-            <ul style="margin-left: 20px; margin-bottom: 16px;">
-                <li>Constipation (paradoxically, can occur early)</li>
-                <li>Nausea or loss of appetite</li>
-                <li>Anorexia</li>
-            </ul>
-
-            <h3 class="ba-h3">Laboratory Assessment of Magnesium Status</h3>
-
-            <div class="ba-table-wrap">
-                <table class="ba-table">
-                    <thead>
-                        <tr>
-                            <th>Test Type</th>
-                            <th>Reference Range</th>
-                            <th>Sensitivity/Specificity</th>
-                            <th>Clinical Use</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Serum Mg (total)</strong></td>
-                            <td>1.7-2.2 mg/dL or 0.7-0.9 mmol/L</td>
-                            <td>Low sensitivity (~70%)</td>
-                            <td>Initial screening; limited by homeostatic regulation. "Normal" serum does not exclude deficiency</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Ionized Mg (free)</strong></td>
-                            <td>0.53-0.67 mmol/L</td>
-                            <td>Moderate sensitivity</td>
-                            <td>More accurate than total Mg; reflects bioavailable form. Less commonly available</td>
-                        </tr>
-                        <tr>
-                            <td><strong>RBC Mg (intracellular)</strong></td>
-                            <td>4.0-6.4 mg/dL RBCs or 1.6-2.6 mmol/L</td>
-                            <td>High sensitivity/specificity</td>
-                            <td>Gold standard for tissue Mg status. Reflects intracellular stores and long-term adequacy. Less accessible; specialty lab testing</td>
-                        </tr>
-                        <tr>
-                            <td><strong>24-hour urine Mg</strong></td>
-                            <td>&gt;100 mg/day (typical)</td>
-                            <td>Moderate</td>
-                            <td>Assesses Mg wasting and kidney handling. Useful in suspected renal losses (post-diuretic, post-PPI use)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <p><strong>Clinical recommendation:</strong> In primary care and psychiatric settings, RBC magnesium is the most useful but least accessible test. Serum magnesium is practical for screening but must be interpreted with clinical judgment—a low-normal or low serum Mg in a symptomatic patient warrants trial of supplementation even if "technically" normal. Many clinicians proceed with therapeutic trial based on symptomatology without extensive testing.</p>
-
-            <h3 class="ba-h3">Drug Interactions and Depletion Mechanisms</h3>
-
-            <svg viewBox="0 0 700 450" style="margin: 20px auto; border: 1px solid var(--border); border-radius: 8px;">
-                <rect width="700" height="450" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1"/>
-
-                <text x="350" y="25" font-size="14" font-weight="bold" text-anchor="middle" fill="#4a7c35">Medications That Deplete or Interact with Magnesium</text>
-
-                <!-- Category boxes -->
-                <!-- PPIs -->
-                <rect x="20" y="50" width="150" height="120" fill="#fce8e6" stroke="#c04030" stroke-width="2" rx="4"/>
-                <text x="95" y="70" font-size="11" font-weight="bold" text-anchor="middle" fill="#c04030">Proton Pump Inhibitors</text>
-                <text x="95" y="88" font-size="9" text-anchor="middle" fill="#231e14">Mechanism:</text>
-                <text x="95" y="100" font-size="8" text-anchor="middle" fill="#231e14">↓ Gastric pH</text>
-                <text x="95" y="110" font-size="8" text-anchor="middle" fill="#231e14">↓ Mg ionization</text>
-                <text x="95" y="120" font-size="8" text-anchor="middle" fill="#231e14">↓ Absorption</text>
-                <text x="95" y="138" font-size="9" font-weight="bold" text-anchor="middle" fill="#231e14">Omeprazole</text>
-                <text x="95" y="150" font-size="9" font-weight="bold" text-anchor="middle" fill="#231e14">Pantoprazole</text>
-                <text x="95" y="162" font-size="9" font-weight="bold" text-anchor="middle" fill="#231e14">Lansoprazole</text>
-
-                <!-- Diuretics -->
-                <rect x="190" y="50" width="150" height="120" fill="#fce8e6" stroke="#c04030" stroke-width="2" rx="4"/>
-                <text x="265" y="70" font-size="11" font-weight="bold" text-anchor="middle" fill="#c04030">Loop & Thiazide Diuretics</text>
-                <text x="265" y="88" font-size="9" text-anchor="middle" fill="#231e14">Mechanism:</text>
-                <text x="265" y="100" font-size="8" text-anchor="middle" fill="#231e14">↑ Urinary losses</text>
-                <text x="265" y="110" font-size="8" text-anchor="middle" fill="#231e14">↑ Wasting (TAL)</text>
-                <text x="265" y="120" font-size="8" text-anchor="middle" fill="#231e14">Often with ↑ K loss</text>
-                <text x="265" y="138" font-size="9" font-weight="bold" text-anchor="middle" fill="#231e14">Furosemide</text>
-                <text x="265" y="150" font-size="9" font-weight="bold" text-anchor="middle" fill="#231e14">Bumetanide</text>
-                <text x="265" y="162" font-size="9" font-weight="bold" text-anchor="middle" fill="#231e14">HCTZ</text>
-
-                <!-- Antibiotics -->
-                <rect x="360" y="50" width="150" height="120" fill="#fce8e6" stroke="#c04030" stroke-width="2" rx="4"/>
-                <text x="435" y="70" font-size="11" font-weight="bold" text-anchor="middle" fill="#c04030">Antibiotics</text>
-                <text x="435" y="88" font-size="9" text-anchor="middle" fill="#231e14">Mechanism:</text>
-                <text x="435" y="100" font-size="8" text-anchor="middle" fill="#231e14">Chelation (Tetracycline)</text>
-                <text x="435" y="110" font-size="8" text-anchor="middle" fill="#231e14">GI damage</text>
-                <text x="435" y="120" font-size="8" text-anchor="middle" fill="#231e14">Dysbiosis</text>
-                <text x="435" y="138" font-size="9" font-weight="bold" text-anchor="middle" fill="#231e14">Tetracyclines</text>
-                <text x="435" y="150" font-size="9" font-weight="bold" text-anchor="middle" fill="#231e14">Fluoroquinolones</text>
-                <text x="435" y="162" font-size="9" font-weight="bold" text-anchor="middle" fill="#231e14">Aminoglycosides</text>
-
-                <!-- Bisphosphonates -->
-                <rect x="530" y="50" width="150" height="120" fill="#fce8e6" stroke="#c04030" stroke-width="2" rx="4"/>
-                <text x="605" y="70" font-size="11" font-weight="bold" text-anchor="middle" fill="#c04030">Bisphosphonates</text>
-                <text x="605" y="88" font-size="9" text-anchor="middle" fill="#231e14">Mechanism:</text>
-                <text x="605" y="100" font-size="8" text-anchor="middle" fill="#231e14">Chelation</text>
-                <text x="605" y="110" font-size="8" text-anchor="middle" fill="#231e14">Complex formation</text>
-                <text x="605" y="120" font-size="8" text-anchor="middle" fill="#231e14">↓ Absorption</text>
-                <text x="605" y="138" font-size="9" font-weight="bold" text-anchor="middle" fill="#231e14">Alendronate</text>
-                <text x="605" y="150" font-size="9" font-weight="bold" text-anchor="middle" fill="#231e14">Risedronate</text>
-                <text x="605" y="162" font-size="9" font-weight="bold" text-anchor="middle" fill="#231e14">Zoledronate</text>
-
-                <!-- Additional section -->
-                <rect x="20" y="190" width="660" height="130" fill="#f5f0e8" stroke="#cfc8ba" stroke-width="1" rx="4"/>
-                <text x="350" y="210" font-size="11" font-weight="bold" text-anchor="middle" fill="#4a7c35">Clinical Management of Depletion</text>
-
-                <text x="40" y="233" font-size="10" font-weight="bold" fill="#231e14">On chronic PPI (e.g., omeprazole 20 mg daily)?</text>
-                <text x="40" y="248" font-size="9" fill="#231e14">Consider Mg glycinate 300-400 mg daily; measure serum Mg at baseline, 3 months. Reassess PPI necessity; deprescribe if possible. If essential, add supplementation indefinitely.</text>
-
-                <text x="40" y="273" font-size="10" font-weight="bold" fill="#231e14">On loop/thiazide diuretic (e.g., furosemide, HCTZ)?</text>
-                <text x="40" y="288" font-size="9" fill="#231e14">Supplement Mg glycinate or taurate 400-500 mg daily. Monitor K concurrently (diuretics also cause hypokalemia). Consider K-sparing diuretic if hypomagnesemia persistent despite supplementation.</text>
-
-                <text x="40" y="313" font-size="10" font-weight="bold" fill="#231e14">On tetracycline or fluoroquinolone?</text>
-                <text x="40" y="328" font-size="9" fill="#231e14">Separate Mg supplementation by ≥2 hours from antibiotic dose (chelation prevention). Take Mg form with lowest interaction risk: glycinate &gt; citrate &gt; oxide. Probiotic support may help restore GI Mg absorption post-antibiotic.</text>
-            </svg>
-
-            <h3 class="ba-h3">Magnesium Supplementation Protocols</h3>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Dosing Guidance by Clinical Context</h4>
-
-            <div class="ba-summary-box">
-                <h4 style="margin-bottom: 12px; color: var(--accent);">Anxiety or Sleep Disturbance</h4>
-                <p><strong>First-line form:</strong> Magnesium glycinate</p>
-                <p><strong>Initial dose:</strong> 300-400 mg elemental Mg daily (typically 2-3 capsules of 150 mg glycinate, or ~2000 mg product)</p>
-                <p><strong>Timing:</strong> Evening, 1 hour before bed. Can divide dose (200 mg morning, 200 mg evening) if daytime anxiety also present</p>
-                <p><strong>Duration to effect:</strong> 2-4 weeks for steady-state tissue levels; initial sleep effect may appear within 3-5 days</p>
-                <p><strong>Titration:</strong> If insufficient response after 3-4 weeks, increase to 500-600 mg daily (split dosing)</p>
-                <p><strong>Monitoring:</strong> Track sleep quality, anxiety symptoms. Mild GI looseness is sign to reduce dose (glycinate rarely causes laxative effect, so this suggests individual sensitivity)</p>
-                <p><strong>Drug interactions:</strong> Minimal; may enhance effect of benzodiazepines or other CNS depressants (counseling: avoid alcohol, assess for synergistic sedation)</p>
-            </div>
-
-            <div class="ba-summary-box">
-                <h4 style="margin-bottom: 12px; color: var(--accent);">Migraine Prophylaxis</h4>
-                <p><strong>Evidence-based form:</strong> Magnesium citrate or glycinate</p>
-                <p><strong>Therapeutic dose:</strong> 300-400 mg elemental Mg daily (consistent across major trials)</p>
-                <p><strong>Timing:</strong> Daily; divide into 2 doses if GI tolerability concern</p>
-                <p><strong>Duration to effect:</strong> 8-12 weeks (some improvement at 4 weeks); reassess at 3 months</p>
-                <p><strong>Success criteria:</strong> Reduction in migraine frequency by ≥25% or 1+ migraines/month reduction</p>
-                <p><strong>Combination approach:</strong> Stack with CoQ10 (300 mg) and riboflavin (400 mg) for additive migraine prevention</p>
-                <p><strong>Special note for women:</strong> Menstrual migraine may show enhanced response; consider timing supplementation to perimenstrual phase if catamenial pattern evident</p>
-            </div>
-
-            <div class="ba-summary-box">
-                <h4 style="margin-bottom: 12px; color: var(--accent);">Hypertension Management</h4>
-                <p><strong>First-line form:</strong> Magnesium taurate</p>
-                <p><strong>Therapeutic dose:</strong> 400-600 mg elemental Mg daily (typically 2-3 capsules of 200 mg taurate)</p>
-                <p><strong>Timing:</strong> Daily; divide doses for better absorption and BP coverage</p>
-                <p><strong>BP response:</strong> Modest effect (3-5 mmHg systolic reduction on average); synergizes with DASH diet, sodium restriction, exercise</p>
-                <p><strong>Adjunctive role:</strong> Not monotherapy; use alongside ACE-I, ARB, or other antihypertensives</p>
-                <p><strong>Special note:</strong> Ensure adequate potassium status; hypokalemia impairs Mg retention and BP control</p>
-            </div>
-
-            <div class="ba-summary-box">
-                <h4 style="margin-bottom: 12px; color: var(--accent);">Fibromyalgia or Chronic Myofascial Pain</h4>
-                <p><strong>First-line form:</strong> Magnesium malate</p>
-                <p><strong>Therapeutic dose:</strong> 1200-2400 mg daily (typically 2400-3000 mg product; split 3-4 divided doses)</p>
-                <p><strong>Timing:</strong> With meals; divided doses reduce GI osmotic effects</p>
-                <p><strong>Duration to effect:</strong> 4-8 weeks; assess pain scores, fatigue, tender point count at 8 weeks</p>
-                <p><strong>Combination approach:</strong> Stacking with magnesium glycinate (additional 300-400 mg Mg for anxiety/sleep) often synergistic in fibromyalgia</p>
-                <p><strong>Alternative considerations:</strong> If malate not tolerated, glycinate alone may provide benefit; some patients require malate + glycinate combination</p>
-            </div>
-
-            <div class="ba-summary-box">
-                <h4 style="margin-bottom: 12px; color: var(--accent);">Cognitive Decline or Memory Impairment</h4>
-                <p><strong>Specialized form:</strong> Magnesium L-threonate (Magtein®)</p>
-                <p><strong>Clinical dose:</strong> 2000-2500 mg daily (product dose; ~144 mg Mg per 1000 mg product)</p>
-                <p><strong>Timing:</strong> Daily; typically morning or throughout day (less sedating than glycinate)</p>
-                <p><strong>Duration to effect:</strong> 12+ weeks; brain magnesium accumulation requires extended supplementation</p>
-                <p><strong>Realistic expectations:</strong> Modest cognitive enhancement in early decline; no replacement for cognitive engagement, exercise, sleep optimization</p>
-                <p><strong>Cost-benefit discussion:</strong> Premium cost (~$1-2/day) warrants discussion of realistic benefit vs. other interventions (diet, exercise, psychosocial)</p>
-                <p><strong>Combination approach:</strong> Stack with phosphatidylserine, omega-3, or other neuroprotective agents in context of comprehensive cognitive optimization</p>
-            </div>
-
-            <h3 class="ba-h3">Timing and Bioavailability Optimization</h3>
-
-            <p><strong>With meals vs. on empty stomach:</strong> Most forms (glycinate, threonate, taurate, malate) absorb well with or without food. Citrate may have slightly improved absorption with acidic meals. Separate from mineral-binding foods (high phytate whole grains, high oxalate foods) by 2+ hours if malabsorption suspected. Calcium-rich meals can compete for absorption—separate by 2+ hours if supplementing both minerals.</p>
-
-            <p><strong>Evening timing for sleep:</strong> Glycinate and threonate best taken 1 hour before target sleep time. Malate and taurate can be taken throughout day but evening dose acceptable. Do NOT take with stimulating substances (caffeine, sympathomimetics).</p>
-
-            <p><strong>Staggered dosing:</strong> For doses >500 mg Mg, divide into 2-3 smaller doses throughout day to enhance absorption and reduce GI symptoms. Example: 400 mg Mg = 200 mg morning (with breakfast) + 200 mg evening (before bed).</p>
-
-            <!-- SECTION 5: Safety & Contraindications -->
-            <h2 class="ba-h2">5. Safety Profile, Toxicity, and Clinical Contraindications</h2>
-
-            <h3 class="ba-h3">Hypermagnesemia: The Toxicity Syndrome</h3>
-
-            <svg viewBox="0 0 700 380" style="margin: 20px auto; border: 1px solid var(--border); border-radius: 8px;">
-                <rect width="700" height="380" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1"/>
-
-                <text x="350" y="25" font-size="14" font-weight="bold" text-anchor="middle" fill="#c04030">Hypermagnesemia Severity Scale & Clinical Manifestations</text>
-
-                <!-- Serum level and severity scale -->
-                <text x="30" y="55" font-size="10" font-weight="bold" fill="#231e14">Serum Mg Level:</text>
-
-                <!-- Green: Normal -->
-                <rect x="30" y="65" width="90" height="40" fill="#e6f4ea" stroke="#3a6e28" stroke-width="2" rx="4"/>
-                <text x="75" y="82" font-size="11" font-weight="bold" text-anchor="middle" fill="#3a6e28">Normal</text>
-                <text x="75" y="98" font-size="9" text-anchor="middle" fill="#231e14">1.7-2.2 mg/dL</text>
-
-                <!-- Yellow: Mild -->
-                <rect x="140" y="65" width="90" height="40" fill="#fef8e8" stroke="#8b6914" stroke-width="2" rx="4"/>
-                <text x="185" y="82" font-size="11" font-weight="bold" text-anchor="middle" fill="#8b6914">Mild</text>
-                <text x="185" y="98" font-size="9" text-anchor="middle" fill="#231e14">2.5-4.0 mg/dL</text>
-
-                <!-- Orange: Moderate -->
-                <rect x="250" y="65" width="90" height="40" fill="#fce8e6" stroke="#b05a20" stroke-width="2" rx="4"/>
-                <text x="295" y="82" font-size="11" font-weight="bold" text-anchor="middle" fill="#b05a20">Moderate</text>
-                <text x="295" y="98" font-size="9" text-anchor="middle" fill="#231e14">4.0-6.0 mg/dL</text>
-
-                <!-- Red: Severe -->
-                <rect x="360" y="65" width="90" height="40" fill="#fce8e6" stroke="#c04030" stroke-width="2" rx="4"/>
-                <text x="405" y="82" font-size="11" font-weight="bold" text-anchor="middle" fill="#c04030">Severe</text>
-                <text x="405" y="98" font-size="9" text-anchor="middle" fill="#231e14">&gt; 6.0 mg/dL</text>
-
-                <!-- Critical -->
-                <rect x="470" y="65" width="200" height="40" fill="#400b0b" stroke="#c04030" stroke-width="2" rx="4"/>
-                <text x="570" y="82" font-size="11" font-weight="bold" text-anchor="middle" fill="white">CRITICAL EMERGENCY</text>
-                <text x="570" y="98" font-size="9" text-anchor="middle" fill="white">&gt; 12 mg/dL (cardiac/respiratory collapse)</text>
-
-                <!-- Clinical features by severity -->
-                <text x="30" y="130" font-size="10" font-weight="bold" fill="#231e14">Clinical Manifestations by Severity:</text>
-
-                <!-- Mild -->
-                <rect x="30" y="145" width="150" height="100" fill="#fef8e8" stroke="#8b6914" stroke-width="1" rx="4"/>
-                <text x="105" y="160" font-size="10" font-weight="bold" text-anchor="middle" fill="#8b6914">Mild (2.5-4 mg/dL)</text>
-                <text x="35" y="180" font-size="9" fill="#231e14">• Flushed face</text>
-                <text x="35" y="195" font-size="9" fill="#231e14">• Nausea, vomiting</text>
-                <text x="35" y="210" font-size="9" fill="#231e14">• Diarrhea</text>
-                <text x="35" y="225" font-size="9" fill="#231e14">• Hypotension (mild)</text>
-                <text x="35" y="240" font-size="9" fill="#231e14">• Drowsiness</text>
-
-                <!-- Moderate -->
-                <rect x="200" y="145" width="150" height="100" fill="#fce8e6" stroke="#b05a20" stroke-width="1" rx="4"/>
-                <text x="275" y="160" font-size="10" font-weight="bold" text-anchor="middle" fill="#b05a20">Moderate (4-6 mg/dL)</text>
-                <text x="205" y="180" font-size="9" fill="#231e14">• Loss of reflexes</text>
-                <text x="205" y="195" font-size="9" fill="#231e14">• Muscle weakness</text>
-                <text x="205" y="210" font-size="9" fill="#231e14">• Confusion</text>
-                <text x="205" y="225" font-size="9" fill="#231e14">• Bradycardia</text>
-                <text x="205" y="240" font-size="9" fill="#231e14">• Hypotension (marked)</text>
-
-                <!-- Severe -->
-                <rect x="370" y="145" width="300" height="100" fill="#fce8e6" stroke="#c04030" stroke-width="1" rx="4"/>
-                <text x="520" y="160" font-size="10" font-weight="bold" text-anchor="middle" fill="#c04030">Severe/Critical (&gt; 6 mg/dL)</text>
-                <text x="375" y="180" font-size="9" fill="#231e14">• Paralysis, areflexia (patellar reflex loss = early sign)</text>
-                <text x="375" y="195" font-size="9" fill="#231e14">• Respiratory depression (diaphragm weakness)</text>
-                <text x="375" y="210" font-size="9" fill="#231e14">• Cardiac arrhythmias (AV block, asystole)</text>
-                <text x="375" y="225" font-size="9" fill="#231e14">• Altered consciousness → coma</text>
-                <text x="375" y="240" font-size="9" fill="#231e14">• DEATH if untreated</text>
-
-                <!-- Risk factor box -->
-                <rect x="30" y="265" width="640" height="95" fill="#f5f0e8" stroke="#cfc8ba" stroke-width="1" rx="4"/>
-                <text x="350" y="283" font-size="10" font-weight="bold" text-anchor="middle" fill="#4a7c35">High-Risk Populations for Hypermagnesemia</text>
-
-                <text x="40" y="305" font-size="9" fill="#231e14"><tspan font-weight="bold">Renal Impairment:</tspan> The #1 risk factor. Normal kidneys excrete excess Mg freely; GFR &lt;30 mL/min dramatically increases hypermagnesemia risk. Magnesium supplementation CONTRAINDICATED in ESRD (eGFR &lt;15) unless dialysate Mg managed carefully. Use cautiously in Stage 3-4 CKD; monitor Mg levels.</text>
-
-                <text x="40" y="333" font-size="9" fill="#231e14"><tspan font-weight="bold">Dehydration/Prerenal AKI:</tspan> Decreased GFR increases Mg reabsorption. NSAIDs, ACE-I in volume-depleted states ↑ risk. Counsel patients on adequate hydration with supplementation.</text>
-
-                <text x="40" y="350" font-size="9" fill="#231e14"><tspan font-weight="bold">Medications:</tspan> Thiazide diuretics (paradoxically can ↑ Mg reabsorption in distal tubule); NSAIDs (volume depletion). Avoid mega-dosing in these populations.</text>
-            </svg>
-
-            <h3 class="ba-h3">Other Safety Considerations</h3>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Absolute Contraindications</h4>
-            <ul style="margin-left: 20px; margin-bottom: 16px;">
-                <li><strong>Severe renal failure (Stage 5 CKD, eGFR &lt;15 mL/min/1.73m²):</strong> Unless explicitly coordinated with nephrology and dialysate adjusted. Risk of life-threatening hypermagnesemia</li>
-                <li><strong>Myasthenia gravis:</strong> Magnesium blocks acetylcholine release at neuromuscular junction; can precipitate myasthenic crisis. Avoid supplementation and be cautious with environmental Mg sources</li>
-                <li><strong>Decompensated heart block or severe bradycardia:</strong> High-dose IV Mg used to treat arrhythmias, but paradoxically can worsen conduction in specific rhythms. Consult cardiology before supplementation in symptomatic bradycardia</li>
-            </ul>
-
-            <h4 style="margin-top: 20px; font-size: 16px; font-weight: 600; color: var(--text);">Relative Contraindications (Use Cautiously)</h4>
-            <ul style="margin-left: 20px; margin-bottom: 16px;">
-                <li><strong>CKD Stage 3-4 (eGFR 15-59):</strong> Monitor serum Mg at baseline and every 3-6 months; use lower doses; choose forms with lower bioavailability if concern. Educate on hydration</li>
-                <li><strong>Severe diarrhea or malabsorption syndromes (Crohn's, ulcerative colitis):</strong> May impair Mg absorption, rendering supplementation ineffective. Address underlying GI pathology first. Consider topical or IV supplementation in severe cases</li>
-                <li><strong>Concurrent use of bisphosphonates:</strong> Mg binds bisphosphonates and impairs absorption. Separate dosing by ≥2 hours</li>
-            </ul>
-
-            <h3 class="ba-h3">Common Side Effects and Management</h3>
-
-            <div class="ba-compare-row">
-                <div class="ba-compare-card">
-                    <strong>Diarrhea</strong>
-                    <p>Osmotic laxative effect (especially oxide, citrate, sulfate). Management: Reduce dose, divide into smaller frequent doses, switch to glycinate or threonate, ensure adequate hydration.</p>
-                </div>
-                <div class="ba-compare-card">
-                    <strong>Nausea</strong>
-                    <p>GI irritation. Management: Take with food, reduce dose, divide into smaller doses, switch form (glycinate often better tolerated).</p>
-                </div>
-                <div class="ba-compare-card">
-                    <strong>Mild Hypotension</strong>
-                    <p>Vascular smooth muscle relaxation, particularly with IV formulations. Management: Monitor BP, ensure hydration, reduce dose if symptomatic. Orthostatic hypotension rare with oral forms.</p>
-                </div>
-            </div>
-
-            <!-- SECTION 6: Monitoring and Evidence Summary -->
-            <h2 class="ba-h2">6. Monitoring During Supplementation</h2>
-
-            <h3 class="ba-h3">Recommended Monitoring Protocol</h3>
-
-            <div class="ba-table-wrap">
-                <table class="ba-table">
-                    <thead>
-                        <tr>
-                            <th>Time Point</th>
-                            <th>Assessment</th>
-                            <th>Purpose</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Baseline (before starting)</strong></td>
-                            <td>Serum Mg (optional but recommended), assess renal function (eGFR/creatinine), clinical symptom scale</td>
-                            <td>Establish baseline, identify contraindications, screen for CKD</td>
-                        </tr>
-                        <tr>
-                            <td><strong>2-4 weeks</strong></td>
-                            <td>Clinical symptom reassessment (anxiety, sleep, pain scale), GI tolerability check</td>
-                            <td>Early efficacy signal, optimize dosing before waiting full 8-12 weeks</td>
-                        </tr>
-                        <tr>
-                            <td><strong>8-12 weeks</strong></td>
-                            <td>Formal efficacy reassessment (sleep quality, anxiety GAD-7 if available, migraine diary if applicable), serum Mg (if baseline abnormal or CKD present)</td>
-                            <td>Determine if continuing, increase dose, or switch form; rule out hypermagnesemia if CKD</td>
-                        </tr>
-                        <tr>
-                            <td><strong>6-12 months (if continuing)</strong></td>
-                            <td>Periodic Mg level (annually in CKD patients), assess for development of symptoms suggesting toxicity (hyperreflexia loss, muscle weakness)</td>
-                            <td>Long-term safety, detect cumulative toxicity</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3 class="ba-h3">Patient Education Key Points</h3>
-
-            <div class="ba-insight-box">
-                <div class="ba-insight-icon">📋</div>
-                <div>
-                    <ul style="margin-left: 20px; list-style: disc;">
-                        <li><strong>Efficacy timeline:</strong> "Magnesium often takes 2-4 weeks to show benefit in sleep and anxiety. We're looking for gradual improvement, not immediate relief like a medication. If you feel worse, let me know."</li>
-                        <li><strong>GI side effects:</strong> "If you experience loose stools, take your dose with food, split it into smaller doses, or we can try a different form. This should improve over time."</li>
-                        <li><strong>Consistency:</strong> "Take magnesium every day. Missing doses will delay benefit. Set a phone reminder if needed."</li>
-                        <li><strong>Kidney health:</strong> "Magnesium is excreted through kidneys. If you have kidney disease, we need to monitor Mg levels carefully. Tell me if you develop kidney problems."</li>
-                        <li><strong>Cost and alternatives:</strong> "Magnesium is inexpensive compared to medications. If cost is a concern, citrate is the least expensive form, though glycinate may work better for anxiety."</li>
-                        <li><strong>Integration with other treatments:</strong> "Magnesium supplements your psychiatric medications but doesn't replace them. We're optimizing your overall treatment."</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- CONCLUSION -->
-            <h2 class="ba-h2">7. Clinical Summary and Evidence Synthesis</h2>
-
-            <div class="ba-summary-box">
-                <h3 style="margin-bottom: 12px; color: var(--accent);">Key Takeaways for Clinicians</h3>
-                <p><strong>1. Prevalence and Significance:</strong> Magnesium deficiency is common, underdiagnosed, and clinically significant across psychiatric and medical populations. Serum testing is insensitive; clinical judgment and symptomatology guide supplementation decisions.</p>
-                <p><strong>2. Form Matters:</strong> Bioavailability and clinical application vary dramatically by formulation. Glycinate is the workhorse for psychiatry (anxiety, insomnia, depression). Threonate for cognition. Taurate for cardiovascular. Malate for pain. Choose the form to match the indication.</p>
-                <p><strong>3. Mechanism-Based Indication Matching:</strong> Understand why you're prescribing each form: NMDA antagonism for anxiety/depression, ATP regeneration for pain, cardiac myocyte effects for HTN. This clarity enhances patient education and adherence.</p>
-                <p><strong>4. Drug Interactions Are Real:</strong> PPIs, diuretics, and certain antibiotics deplete magnesium. Recognize this pattern, counsel patients, and compensate with supplementation.</p>
-                <p><strong>5. Safety in CKD:</strong> Renal function is the primary limiting factor. Assess eGFR before prescribing; monitor Mg levels in Stage 3+ CKD. Absolute contraindication in ESRD unless carefully managed with nephrology.</p>
-                <p><strong>6. Evidence Base Varies:</strong> Strong RCT support for migraine prophylaxis and pregnancy applications. Growing evidence for anxiety and sleep. Emerging for cognition. Frame realistic expectations with patients.</p>
-            </div>
-
-            <!-- REFERENCES -->
-            <div class="ba-references">
-                <h2 class="ba-ref-title">References</h2>
-                <ol class="ba-ref-list">
-                    <li>Gromova OA, Shalina SN, Fadeev AV. Efficacy of magnesium supplementation in anxiety disorders. <em>Neurobiology of Anxiety</em>. 2019;65(4):412-419.</li>
-                    <li>Boyle NB, Lawton C, Dye L. The effects of magnesium supplementation on subjective anxiety and stress—a systematic review. <em>Nutrients</em>. 2017;6(11):540.</li>
-                    <li>Rondanelli M, Miccono A, Lamburghini S, et al. Self-reported functional status and depression in obese postmenopausal women after a standard rehabilitation program and magnesium supplementation: A randomized controlled study. <em>J Am Geriatr Soc</em>. 2013;61(12):2099-2106.</li>
-                    <li>Held K, Antonijevic IA, Kunzel H, et al. Oral Mg(2+) supplementation improves subjective feeling of sleep quality in healthy volunteers. <em>Sleep Med</em>. 2002;3(6):540-548.</li>
-                    <li>Yoneyama S, Omae K, Sakabe K, et al. Serum magnesium and cardiovascular risk factors. <em>Atherosclerosis</em>. 2016;254:170-175.</li>
-                    <li>Serefko A, Szopa A, Poleszak E. Magnesium and depression. <em>Magnes Res</em>. 2016;29(3):112-119.</li>
-                    <li>Slutsky I, Abumaria N, Wu LJ, et al. Enhancement of learning and memory by elevating brain magnesium. <em>Neuron</em>. 2010;65(2):165-177.</li>
-                    <li>Tarasov EA, Akhmedova SH, Grachev AV, Maslov MY. Magnesium deficiency and stress in habitual migraine. <em>PLoS One</em>. 2013;8(12):e81624.</li>
-                    <li>Sun-Edelstein C, Mauskop A. Role of magnesium in the pathogenesis and treatment of migraines. <em>Expert Rev Neurother</em>. 2009;9(3):369-379.</li>
-                    <li>Altura BT, Altura BM. Magnesium and cardiovascular biology: mechanisms and clinical significance. <em>Adv Cardiol</em>. 2018;46:257-279.</li>
-                    <li>De Baaij JH, Hoenderop JG, Bindels RJ. Magnesium in man: implications for health and disease. <em>Physiol Rev</em>. 2015;95(1):1-46.</li>
-                    <li>Murniece I, Santare D, Santare D, et al. Dietary magnesium intake and cardiovascular disease mortality: dose-response meta-analysis of prospective studies. <em>Am J Clin Nutr</em>. 2016;103(6):1437-1444.</li>
-                    <li>Winther B, Cowan C, Kemp S, et al. A randomized, double-blind, placebo-controlled study on the effects of magnesium and zinc on cognitive function in healthy adults. <em>Magnes Res</em>. 2012;25(3):188-200.</li>
-                    <li>Abumaria N, Yin B, Zhang L, et al. Effects of elevation of brain magnesium on fear conditioning, fear extinction, and synaptic plasticity related to fear learning. <em>J Neurosci</em>. 2011;31(41):14871-14881.</li>
-                    <li>Pickering G, Mazur A, Trousselard M, et al. Magnesium status and stress: the vicious circle concept. <em>J Am Coll Nutr</em>. 2020;39(7):1-8.</li>
-                    <li>Schuette SA, Vitale JJ, Fleischmann AI, et al. Studies on the mechanism of hypomagnesemia in alcohol addiction. <em>Alcohol Clin Exp Res</em>. 1992;16(6):1131-1136.</li>
-                    <li>Schlingmann KP, Waldegger S. TRPM6 and TRPM7 as gatekeepers of human magnesium metabolism. <em>Biochim Biophys Acta</em>. 2007;1772(8):813-821.</li>
-                    <li>Guo L, Pan Z, Yao W, et al. The efficacy and safety of magnesium supplementation for primary insomnia: a randomized controlled trial. <em>Front Neurol</em>. 2021;12:703853.</li>
-                    <li>National Institutes of Health Office of Dietary Supplements. Magnesium Fact Sheet for Health Professionals. Updated 2016. Accessed 2026.</li>
-                    <li>American Academy of Family Physicians. Management of Migraine Prophylaxis in Primary Care. Evidence-based guideline. 2019.</li>
-                </ol>
-            </div>
+      <header class="ba-header">
+        <div class="ba-category">Nutritional Medicine</div>
+        <h1 class="ba-title">Magnesium and Associated Minerals: A Clinical Guide to Supplementation</h1>
+        <p class="ba-subtitle">Formulations, indications, dosing, drug interactions, and dangers across medical and psychiatric contexts</p>
+        <div class="ba-meta">
+          <span>Published: March 2026</span>
+          <span>For Prescribing Clinicians</span>
+          <span>16 min read</span>
+        </div>
+      </header>
+
+      <div class="ba-body">
+        <div class="ba-lead">
+          Magnesium is the fourth most abundant cation in the human body and a cofactor in more than 300 enzymatic reactions. Despite its fundamental role in neurotransmission, energy metabolism, cardiovascular regulation, and glucose homeostasis, subclinical magnesium deficiency is pervasive in Western populations and frequently overlooked in clinical practice. This guide provides a rigorous, formulation-specific reference for clinicians managing patients with neurological, psychiatric, cardiovascular, and metabolic conditions in whom magnesium status is relevant.
         </div>
 
-        <footer class="ba-footer">
-            <p><strong>About PsychoPharmRef:</strong> This resource is written by and for healthcare providers. All content reflects current evidence as of publication and is intended to support clinical decision-making, not replace provider judgment or pharmacology consultation. Always verify dosing, interactions, and contraindications with current references before prescribing.</p>
-            <p style="margin-top: 16px; border-top: 1px solid var(--border); padding-top: 16px;">
-                <a href="/blog/" style="color: var(--accent); text-decoration: none; font-weight: 500;">← Back to Blog</a>
-            </p>
-        </footer>
+        <!-- SECTION 1 -->
+        <h2 class="ba-h2">1. History and Context of Magnesium in Medicine</h2>
+
+        <p>
+          Magnesium's clinical history spans more than two centuries, from its identification as a chemical element to its current status as one of the most widely sold dietary supplements in the United States. Understanding this arc helps contextualize the evidence base — which ranges from robust (IV magnesium in eclampsia) to preliminary (magnesium threonate for cognition) — and grounds clinical decision-making appropriately.
+        </p>
+
+        <div class="ba-timeline">
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot" style="font-size:11px;">1808</div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">1808</div>
+              <strong>Elemental Discovery</strong>
+              Humphry Davy isolates magnesium as a distinct element through electrolysis, naming it after Magnesia, a region of Greece. The element's biological significance would not be appreciated for another century.
+            </div>
+          </div>
+
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot" style="font-size:11px;">1906</div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">1906</div>
+              <strong>Meltzer and Auer: IV Magnesium</strong>
+              Samuel Meltzer and John Auer demonstrate that intravenous magnesium sulfate produces neuromuscular blockade and sedation in animals, laying the groundwork for its therapeutic application in tetanus and eclampsia.
+            </div>
+          </div>
+
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot" style="font-size:11px;">1920s</div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">1920s&#8211;1930s</div>
+              <strong>Eclampsia Protocol Established</strong>
+              Magnesium sulfate becomes the standard of care for seizure prophylaxis in eclampsia and preeclampsia, a role it retains today. This remains among the best-supported IV magnesium indications in all of medicine.
+            </div>
+          </div>
+
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot" style="font-size:11px;">1980s</div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">1980s&#8211;1990s</div>
+              <strong>Cardiology and Diuretic-Induced Depletion</strong>
+              Recognition of hypomagnesemia as a common consequence of loop and thiazide diuretic therapy leads to routine monitoring in cardiac patients. Magnesium's antiarrhythmic properties are characterized; IV magnesium for torsades de pointes becomes standard. The LIMIT-2 trial suggests potential benefit post-MI, though later trials do not confirm routine supplementation benefit.
+            </div>
+          </div>
+
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot" style="font-size:11px;">2000s</div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">2000s&#8211;Present</div>
+              <strong>Epidemiology of Deficiency and Psychiatric Interest</strong>
+              Population studies document that an estimated 50&#8211;60% of US adults consume magnesium below the Recommended Dietary Allowance. Epidemiological associations between low magnesium status and depression, anxiety, T2DM, hypertension, and migraine generate substantial research interest. Novel formulations (threonate, glycinate) are developed targeting neurological bioavailability. Magnesium supplements enter the top-selling supplement category in the US.
+            </div>
+          </div>
+
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot" style="font-size:11px;">Now</div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">Current Clinical Landscape</div>
+              <strong>Associated Minerals and Co-Supplementation</strong>
+              Magnesium is increasingly co-supplemented with zinc, boron, and vitamin B6 in formulations targeting neurological and musculoskeletal indications. The calcium-magnesium ratio is recognized as clinically meaningful, and phosphorus-rich Western diets are understood to impair magnesium absorption. Nuanced formulation selection is now a clinical competency.
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <h2 class="ba-h2">2. Physiology: Why Magnesium Matters</h2>
+
+        <p>
+          Magnesium is not a peripheral micronutrient. It is a structural requirement for the fundamental biochemistry of the cell. Every major organ system depends on adequate magnesium, and the mechanisms by which deficiency produces pathology are now well characterized at the molecular level.
+        </p>
+
+        <h3 class="ba-h3">Cellular Biochemistry</h3>
+        <p>
+          Magnesium serves as an obligate cofactor in more than 300 enzymatic reactions. Among the most fundamental: ATP does not function as an energy substrate in its free ionic form — it must complex with Mg<sup>2+</sup> (forming Mg-ATP) to be recognized by ATPases and kinases. This means that virtually every energy-dependent process in the cell — including membrane ion pumping, protein phosphorylation, and muscle contraction — is directly magnesium-dependent. Magnesium also participates in DNA and RNA synthesis and repair, acting as a cofactor for DNA polymerase and serving as a stabilizing counterion for the negatively charged phosphate backbone of nucleic acids. Protein synthesis at the ribosomal level likewise requires Mg<sup>2+</sup> for ribosome integrity.
+        </p>
+
+        <h3 class="ba-h3">NMDA Receptor Gating: Relevance to Psychiatry and Pain</h3>
+        <p>
+          One of magnesium's most clinically significant neurological roles is the voltage-dependent block of the N-methyl-D-aspartate (NMDA) receptor ion channel. At resting membrane potentials, Mg<sup>2+</sup> physically occludes the NMDA channel pore, preventing calcium influx even in the presence of glutamate and glycine co-agonists. This block is relieved only when the postsynaptic membrane is sufficiently depolarized, making NMDA receptor activation coincident with adequate membrane depolarization — a mechanism central to synaptic plasticity and long-term potentiation.
+        </p>
+        <p>
+          The psychiatric implications are substantial. Reduced magnesium availability attenuates this physiological block, resulting in excessive NMDA receptor activity. This has been proposed as a mechanism contributing to depressive neurophysiology, anxiety, and central sensitization states (including fibromyalgia and chronic pain syndromes). The convergence of magnesium deficiency with NMDA overactivity provides a plausible mechanistic link to the clinical observations of mood disorders in hypomagnesemic patients. Ketamine's antidepressant mechanism — NMDA antagonism — operates on the same receptor system.
+        </p>
+
+        <h3 class="ba-h3">HPA Axis Regulation</h3>
+        <p>
+          Magnesium modulates the hypothalamic-pituitary-adrenal (HPA) axis at multiple levels. It inhibits ACTH secretion from the anterior pituitary and reduces the sensitivity of the adrenal cortex to ACTH stimulation. In animal models, dietary magnesium deficiency produces HPA hyperactivation with elevated basal and stress-induced corticosterone. This creates a biologically plausible link between subclinical magnesium deficiency and the dysregulated cortisol responses observed in major depression and anxiety disorders.
+        </p>
+
+        <h3 class="ba-h3">Neurotransmitter Regulation</h3>
+        <p>
+          Beyond NMDA gating, magnesium modulates GABA-A receptor function, appears to influence serotonin synthesis (via tryptophan hydroxylase, a Mg-dependent enzyme), and reduces neuronal excitability by supporting the Na<sup>+</sup>/K<sup>+</sup>-ATPase that maintains resting membrane potential. The net effect of adequate magnesium is a buffering of excessive excitatory neurotransmission — consistent with its clinical associations with anxiety reduction and sleep promotion.
+        </p>
+
+        <h3 class="ba-h3">Cardiovascular Effects</h3>
+        <p>
+          Magnesium produces direct vasodilation through inhibition of calcium-mediated smooth muscle contraction — functionally acting as a physiological calcium channel antagonist. It supports endothelial nitric oxide production and reduces vascular reactivity. Its antiarrhythmic properties stem from stabilization of cardiac membrane potentials, prolongation of the refractory period, and blockade of calcium-dependent afterdepolarizations. These mechanisms underlie the clinical utility of IV magnesium in torsades de pointes and the association between dietary magnesium adequacy and lower cardiovascular event rates in epidemiological studies.
+        </p>
+
+        <h3 class="ba-h3">Bone Metabolism</h3>
+        <p>
+          Approximately 60% of total body magnesium resides in bone, where it is incorporated into the hydroxyapatite crystal lattice. Magnesium deficiency impairs osteoblast function, reduces bone quality (independent of calcium and vitamin D), and may increase fracture risk. Magnesium also influences PTH secretion and vitamin D activation — making its role in bone health interconnected with the broader calcium-vitamin D regulatory system.
+        </p>
+
+        <h3 class="ba-h3">Glucose and Insulin Signaling</h3>
+        <p>
+          Magnesium is required for insulin receptor tyrosine kinase activity and for the downstream intracellular signaling that enables glucose uptake. Intracellular magnesium deficiency impairs insulin receptor function, contributing to insulin resistance at the cellular level. Prospective cohort data and meta-analyses consistently show an inverse relationship between dietary magnesium intake and T2DM risk, with each 100 mg/day increment in intake associated with approximately a 15% reduction in diabetes risk in pooled analyses.
+        </p>
+
+        <h3 class="ba-h3">Systemic Inflammation</h3>
+        <p>
+          Magnesium deficiency activates the NF-&#954;B pathway and promotes release of pro-inflammatory cytokines including IL-6, TNF-alpha, and CRP. This inflammatory phenotype is independent of obesity or metabolic syndrome and has been proposed as a mechanism linking dietary magnesium inadequacy to the elevated inflammatory markers observed in depression, cardiovascular disease, and metabolic syndrome.
+        </p>
+
+        <div class="svg-container">
+          <svg viewBox="0 0 760 520" xmlns="http://www.w3.org/2000/svg" style="max-width:760px;">
+            <!-- Background -->
+            <rect width="760" height="520" fill="#fefcf8" rx="8"/>
+            <text x="380" y="32" font-size="16" font-weight="bold" text-anchor="middle" fill="#231e14">Magnesium: Roles Across Organ Systems</text>
+
+            <!-- Central Mg node -->
+            <circle cx="380" cy="265" r="52" fill="#4a7c35" opacity="0.9"/>
+            <text x="380" y="259" font-size="18" font-weight="bold" text-anchor="middle" fill="white">Mg</text>
+            <text x="380" y="277" font-size="13" text-anchor="middle" fill="white">2+</text>
+
+            <!-- BRAIN (top left) -->
+            <ellipse cx="130" cy="120" rx="80" ry="45" fill="#ece6db" stroke="#cfc8ba" stroke-width="1.5"/>
+            <text x="130" y="113" font-size="14" font-weight="bold" text-anchor="middle" fill="#231e14">Brain</text>
+            <text x="130" y="130" font-size="11" text-anchor="middle" fill="#6b6050">NMDA block</text>
+            <text x="130" y="144" font-size="11" text-anchor="middle" fill="#6b6050">HPA regulation</text>
+            <!-- Arrow brain to center -->
+            <line x1="205" y1="142" x2="336" y2="228" stroke="#4a7c35" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+            <!-- HEART (top right) -->
+            <ellipse cx="630" cy="120" rx="80" ry="45" fill="#ece6db" stroke="#cfc8ba" stroke-width="1.5"/>
+            <text x="630" y="113" font-size="14" font-weight="bold" text-anchor="middle" fill="#231e14">Heart</text>
+            <text x="630" y="130" font-size="11" text-anchor="middle" fill="#6b6050">Antiarrhythmic</text>
+            <text x="630" y="144" font-size="11" text-anchor="middle" fill="#6b6050">Vasodilation</text>
+            <!-- Arrow heart to center -->
+            <line x1="555" y1="142" x2="424" y2="228" stroke="#4a7c35" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+            <!-- MUSCLE (left) -->
+            <ellipse cx="75" cy="275" rx="72" ry="42" fill="#ece6db" stroke="#cfc8ba" stroke-width="1.5"/>
+            <text x="75" y="268" font-size="14" font-weight="bold" text-anchor="middle" fill="#231e14">Muscle</text>
+            <text x="75" y="284" font-size="11" text-anchor="middle" fill="#6b6050">Contraction</text>
+            <text x="75" y="298" font-size="11" text-anchor="middle" fill="#6b6050">ATP utilization</text>
+            <!-- Arrow muscle to center -->
+            <line x1="147" y1="275" x2="328" y2="265" stroke="#4a7c35" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+            <!-- BONE (right) -->
+            <ellipse cx="685" cy="275" rx="72" ry="42" fill="#ece6db" stroke="#cfc8ba" stroke-width="1.5"/>
+            <text x="685" y="268" font-size="14" font-weight="bold" text-anchor="middle" fill="#231e14">Bone</text>
+            <text x="685" y="284" font-size="11" text-anchor="middle" fill="#6b6050">60% body Mg</text>
+            <text x="685" y="298" font-size="11" text-anchor="middle" fill="#6b6050">Hydroxyapatite</text>
+            <!-- Arrow bone to center -->
+            <line x1="613" y1="275" x2="432" y2="265" stroke="#4a7c35" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+            <!-- PANCREAS (bottom left) -->
+            <ellipse cx="160" cy="420" rx="88" ry="42" fill="#ece6db" stroke="#cfc8ba" stroke-width="1.5"/>
+            <text x="160" y="413" font-size="14" font-weight="bold" text-anchor="middle" fill="#231e14">Pancreas</text>
+            <text x="160" y="429" font-size="11" text-anchor="middle" fill="#6b6050">Insulin signaling</text>
+            <text x="160" y="443" font-size="11" text-anchor="middle" fill="#6b6050">Glucose uptake</text>
+            <!-- Arrow pancreas to center -->
+            <line x1="238" y1="398" x2="344" y2="307" stroke="#4a7c35" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+            <!-- CELL NUCLEUS (bottom right) -->
+            <ellipse cx="600" cy="420" rx="88" ry="42" fill="#ece6db" stroke="#cfc8ba" stroke-width="1.5"/>
+            <text x="600" y="413" font-size="14" font-weight="bold" text-anchor="middle" fill="#231e14">Cell / DNA</text>
+            <text x="600" y="429" font-size="11" text-anchor="middle" fill="#6b6050">DNA/RNA synthesis</text>
+            <text x="600" y="443" font-size="11" text-anchor="middle" fill="#6b6050">&gt;300 enzyme cofactor</text>
+            <!-- Arrow cell to center -->
+            <line x1="522" y1="398" x2="416" y2="307" stroke="#4a7c35" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+            <!-- INFLAMMATION node (bottom center) -->
+            <ellipse cx="380" cy="460" rx="78" ry="35" fill="#f8e8e5" stroke="#c04030" stroke-width="1.5"/>
+            <text x="380" y="453" font-size="13" font-weight="bold" text-anchor="middle" fill="#c04030">Inflammation</text>
+            <text x="380" y="468" font-size="11" text-anchor="middle" fill="#6b6050">CRP / IL-6 / TNF-a</text>
+            <!-- Arrow inflammation to center -->
+            <line x1="380" y1="425" x2="380" y2="317" stroke="#c04030" stroke-width="1.8" stroke-dasharray="4,3" marker-end="url(#arrow-red)"/>
+            <text x="395" y="385" font-size="11" fill="#c04030">deficiency</text>
+            <text x="395" y="398" font-size="11" fill="#c04030">activates</text>
+
+            <!-- Arrow definitions -->
+            <defs>
+              <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#4a7c35"/>
+              </marker>
+              <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#c04030"/>
+              </marker>
+            </defs>
+          </svg>
+        </div>
+
+        <h3 class="ba-h3">Psychiatric Relevance: The Evidence Base</h3>
+        <p>
+          Multiple meta-analyses have found significant inverse associations between serum magnesium levels and risk of depression. A 2017 meta-analysis by Cheungpasitporn et al. found hypomagnesemia associated with approximately 1.5-fold increased odds of depression in cross-sectional studies. Animal models of dietary magnesium deficiency reliably produce anxiety-like and depression-like behavior that is reversible with repletion. Emerging research suggests adjunctive magnesium supplementation in bipolar disorder and anxiety disorders, though evidence remains preliminary for these specific indications. The mechanistic convergence — NMDA modulation, HPA regulation, neurotransmitter synthesis — provides biological plausibility that supports cautious clinical application pending further trial data.
+        </p>
+
+        <!-- SECTION 3 -->
+        <h2 class="ba-h2">3. Serum Magnesium: Testing and the "Normal" Problem</h2>
+
+        <p>
+          The routine clinical measurement of magnesium status is serum magnesium — and it is an inadequate biomarker for total body magnesium. Serum magnesium accounts for only approximately 1% of total body magnesium stores, with the remaining 99% distributed intracellularly across muscle (27%), soft tissue, and bone (60%). The serum compartment is tightly regulated; serum magnesium can remain within the reported normal range (0.75&#8211;0.95 mmol/L) even when intracellular magnesium is substantially depleted.
+        </p>
+
+        <h3 class="ba-h3">Limitations of Serum Measurement</h3>
+        <p>
+          A patient can have a normal serum magnesium and clinically significant intracellular magnesium deficiency, particularly following prolonged exposure to magnesium-depleting medications, chronic illness with poor dietary intake, or gastrointestinal malabsorption. More sensitive measures of magnesium status include red blood cell (RBC) magnesium — reflecting intracellular content — and 24-hour urinary magnesium excretion, which, when low (&lt;1 mmol/day) in a hypomagnesemic patient, suggests inadequate dietary intake or absorption rather than renal wasting. These tests, though more physiologically meaningful, are infrequently ordered in clinical practice. The practical implication: clinical assessment must incorporate symptoms, dietary history, medication exposures, and comorbidities alongside the serum value.
+        </p>
+
+        <h3 class="ba-h3">Medications That Deplete Magnesium</h3>
+        <ul>
+          <li><strong>Loop diuretics</strong> (furosemide, bumetanide, torsemide): Inhibit NKCC2-mediated magnesium reabsorption in the thick ascending limb; among the most potent magnesiuric agents</li>
+          <li><strong>Thiazide diuretics</strong>: Increase urinary magnesium excretion; relevant in long-term hypertension management</li>
+          <li><strong>Proton pump inhibitors</strong>: FDA safety communication issued 2011 — PPI use for &#8805;1 year associated with hypomagnesemia; mechanism involves reduced intestinal magnesium absorption via TRPM6/7 channel downregulation</li>
+          <li><strong>Aminoglycosides</strong> (gentamicin, tobramycin): Nephrotoxic; impair renal tubular magnesium reabsorption</li>
+          <li><strong>Amphotericin B</strong>: Causes renal tubular dysfunction with significant urinary magnesium wasting; monitor closely during systemic antifungal treatment</li>
+          <li><strong>Cisplatin</strong>: Nephrotoxicity causes marked renal magnesium wasting; hypomagnesemia is a common complication of platinum-based chemotherapy</li>
+          <li><strong>Tacrolimus / cyclosporine</strong>: Calcineurin inhibitors impair TRPM6-mediated magnesium transport in the distal nephron</li>
+          <li><strong>Chronic alcohol</strong>: Dietary deficiency, GI losses, and renal wasting collectively produce severe hypomagnesemia in alcohol use disorder</li>
+        </ul>
+
+        <h3 class="ba-h3">Medical Conditions Associated with Depletion</h3>
+        <ul>
+          <li><strong>Type 2 diabetes mellitus</strong>: Osmotic diuresis from glucosuria increases urinary magnesium losses; and insulin resistance impairs cellular uptake</li>
+          <li><strong>Gastrointestinal malabsorption</strong>: Crohn's disease, celiac disease, and short bowel syndrome reduce intestinal magnesium absorption</li>
+          <li><strong>Alcoholism</strong>: Multifactorial depletion as described above</li>
+          <li><strong>Primary aldosteronism</strong>: Aldosterone increases urinary magnesium excretion</li>
+          <li><strong>Renal tubular disorders</strong>: Gitelman syndrome (SLC12A3 mutations) and Bartter syndrome cause obligatory renal magnesium wasting</li>
+          <li><strong>Hypokalemia and hypocalcemia</strong>: Frequently co-occur with hypomagnesemia; refractory hypokalemia that fails to correct with potassium supplementation is a classic sign of concurrent magnesium depletion</li>
+        </ul>
+
+        <h3 class="ba-h3">Symptoms of Hypomagnesemia</h3>
+        <p>
+          Mild-to-moderate deficiency may be asymptomatic or produce nonspecific symptoms: fatigue, muscle cramps, irritability, insomnia, anxiety, palpitations, and headache. More severe hypomagnesemia (serum &lt;0.5 mmol/L) can produce tremors, hyperreflexia, tetany, and in severe cases, generalized seizures and ventricular arrhythmias. The symptom threshold is variable, particularly in patients with concurrent electrolyte disturbances.
+        </p>
+
+        <div class="ba-stat-row">
+          <div class="ba-stat-card ba-stat-card--alert">
+            <div class="ba-stat-num">48%</div>
+            <div class="ba-stat-label">US adults consuming below the RDA for magnesium (NHANES data)</div>
+          </div>
+          <div class="ba-stat-card ba-stat-card--alert">
+            <div class="ba-stat-num">65%</div>
+            <div class="ba-stat-label">ICU patients with documented hypomagnesemia on admission</div>
+          </div>
+          <div class="ba-stat-card ba-stat-card--alert">
+            <div class="ba-stat-num">&lt;0.5</div>
+            <div class="ba-stat-label">mmol/L serum Mg threshold for symptomatic hypomagnesemia (neuromuscular effects)</div>
+          </div>
+        </div>
+
+        <!-- SECTION 4 -->
+        <h2 class="ba-h2">4. Forms of Magnesium: Choosing the Right Formulation</h2>
+
+        <p>
+          The formulation of magnesium is not clinically interchangeable. Differences in elemental magnesium content, bioavailability, gastrointestinal tolerance, and tissue distribution — including potential blood-brain barrier penetration — have direct bearing on clinical outcomes. The ubiquity of magnesium oxide on pharmacy shelves belies its pharmacological limitations; selecting the appropriate form for the indication at hand is a meaningful clinical decision.
+        </p>
+
+        <h3 class="ba-h3">Magnesium Oxide</h3>
+        <p>
+          Magnesium oxide contains the highest elemental magnesium content by weight (approximately 60%), which is why it appears cost-effective on a milligram-per-milligram-elemental basis. However, its bioavailability is poor — estimated at less than 5% under most conditions. The majority of an oral oxide dose remains unabsorbed and exerts an osmotic laxative effect in the colon, which is its primary therapeutic utility (bowel preparation, constipation). For patients seeking systemic repletion — particularly for neurological, psychiatric, cardiovascular, or metabolic indications — magnesium oxide is not the appropriate choice. Despite this, it remains the dominant form in mass-market OTC supplements.
+        </p>
+
+        <h3 class="ba-h3">Magnesium Citrate</h3>
+        <p>
+          Magnesium citrate (approximately 16% elemental magnesium by weight) demonstrates meaningfully better bioavailability than oxide, estimated at approximately 25&#8211;30% in comparative studies. It is reasonably well tolerated at standard doses, with loose stools occurring if doses are excessive. Magnesium citrate has been used as a bowel preparation agent at high doses and as a general systemic supplement at lower doses. It is a reasonable first-line choice for general magnesium repletion when the more targeted forms are cost-prohibitive, and it has been studied in migraine prophylaxis.
+        </p>
+
+        <h3 class="ba-h3">Magnesium Glycinate (Bisglycinate)</h3>
+        <p>
+          Magnesium glycinate is a chelated form in which magnesium is bound to glycine via a coordinate covalent bond. This chelation confers two distinct advantages: superior bioavailability (estimates vary, but consistently higher than oxide; approximately 40&#8211;50% in comparative pharmacokinetic studies) and minimal laxative effect, because the chelated form is absorbed via peptide transporters in the small intestine rather than relying on passive diffusion. The glycine component itself carries pharmacological activity — glycine is an inhibitory neurotransmitter at glycinergic synapses and a co-agonist at the NMDA receptor, where it occupies the glycine-B site. Glycine supplementation has independently been associated with sleep-promoting effects in human trials. This dual activity makes glycinate the preferred form for neurological and psychiatric applications, including anxiety, insomnia, depression adjunct therapy, and migraine prophylaxis. It is also among the better-tolerated forms for long-term supplementation.
+        </p>
+
+        <h3 class="ba-h3">Magnesium L-Threonate (Magtein)</h3>
+        <p>
+          Magnesium L-threonate was developed at MIT (Liu et al., 2010) based on observations that threonate, a vitamin C metabolite, selectively enhances central nervous system magnesium levels in animal models by facilitating transport across the blood-brain barrier (BBB). In animal studies, magnesium threonate increases synaptic density, improves spatial and associative memory, and elevates cerebrospinal fluid magnesium more effectively than other forms. Human data are more limited but emerging: early trials suggest benefits for sleep latency, anxiety, and cognitive function in older adults. It remains the most expensive available form, carries the smallest elemental magnesium content per dose among major formulations, and requires ongoing clinical trial validation before strong efficacy claims can be made. For clinicians treating patients with specific neuropsychiatric or cognitive indications, it represents a reasonable premium option with a plausible mechanistic rationale.
+        </p>
+
+        <h3 class="ba-h3">Magnesium Malate</h3>
+        <p>
+          Bound to malic acid, magnesium malate has good bioavailability and the additional theoretical benefit of malic acid's role as an intermediate in the Krebs cycle — potentially supporting mitochondrial energy production in conditions characterized by cellular energy deficiency. Small studies have suggested utility in fibromyalgia and chronic fatigue-related muscle pain, likely via combined magnesium repletion and malic acid effects. It is well absorbed and generally well tolerated.
+        </p>
+
+        <h3 class="ba-h3">Magnesium Taurate</h3>
+        <p>
+          Magnesium taurate combines magnesium with taurine, an amino sulfonic acid with independent cardiovascular and neurological properties. Taurine modulates calcium channels, reduces blood pressure, and has antiarrhythmic properties — creating a pharmacological rationale for co-delivery with magnesium in cardiovascular contexts. Evidence specifically comparing taurate to other magnesium forms for clinical outcomes is limited; it is primarily distinguished by the potential additive cardiovascular benefit of taurine.
+        </p>
+
+        <h3 class="ba-h3">Magnesium Sulfate</h3>
+        <p>
+          Intravenous and intramuscular magnesium sulfate represent the highest-evidence form of magnesium in medicine. IV magnesium sulfate (4 g loading dose, 1&#8211;2 g/hour maintenance infusion) is the standard of care for eclampsia seizure prophylaxis and treatment. IV bolus administration (1&#8211;2 g over 5&#8211;20 minutes) is first-line for torsades de pointes regardless of magnesium level. A 2 g IV infusion is used adjunctively in acute severe asthma unresponsive to bronchodilators. Oral magnesium sulfate (Epsom salts) has very poor palatability and high osmotic laxative effect; its use is as a bowel preparation. Topical application (bath soaks, transdermal sprays) is widely marketed but absorption data are sparse and inconsistent; it should not be relied upon for systemic repletion.
+        </p>
+
+        <h3 class="ba-h3">Magnesium Chloride</h3>
+        <p>
+          Magnesium chloride has good bioavailability in oral form and is used in some topical preparations. Like magnesium sulfate, its topical absorption claims are not well-supported by high-quality pharmacokinetic data. Oral magnesium chloride is an acceptable form for systemic repletion with reasonable tolerability.
+        </p>
+
+        <h3 class="ba-h3">Clinical Decision: Threonate vs. Glycinate</h3>
+        <p>
+          For most psychiatric and neurological indications — anxiety, insomnia, depression adjunct, migraine — magnesium glycinate is the appropriate first-line recommendation based on established bioavailability, tolerability, dual glycine activity, and cost. Magnesium L-threonate is a reasonable alternative when the clinical focus is cognitive function, dementia-adjacent conditions, or when the patient has previously failed to respond to glycinate at adequate doses for neurological indications. The premium cost of threonate is a practical barrier that should be discussed with patients.
+        </p>
+
+        <div class="ba-table-wrap">
+          <table class="ba-table">
+            <thead>
+              <tr>
+                <th>Form</th>
+                <th>Elemental Mg %</th>
+                <th>Bioavailability</th>
+                <th>GI Tolerance</th>
+                <th>Primary Use</th>
+                <th>Evidence Level</th>
+                <th>Relative Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Oxide</strong></td>
+                <td>60%</td>
+                <td>&lt;5% (poor)</td>
+                <td>Laxative at doses &gt;300 mg</td>
+                <td>Constipation; bowel prep</td>
+                <td>Laxative: strong; repletion: inadequate</td>
+                <td>Lowest</td>
+              </tr>
+              <tr>
+                <td><strong>Citrate</strong></td>
+                <td>16%</td>
+                <td>~25&#8211;30%</td>
+                <td>Moderate; loose stools at high doses</td>
+                <td>General repletion; migraine prophylaxis</td>
+                <td>Moderate (migraine: Level B AAN)</td>
+                <td>Low</td>
+              </tr>
+              <tr>
+                <td><strong>Glycinate / Bisglycinate</strong></td>
+                <td>14%</td>
+                <td>~40&#8211;50% (high)</td>
+                <td>Excellent; minimal laxative effect</td>
+                <td>Anxiety, insomnia, depression adjunct, migraine</td>
+                <td>Moderate (multiple RCTs)</td>
+                <td>Moderate</td>
+              </tr>
+              <tr>
+                <td><strong>L-Threonate (Magtein)</strong></td>
+                <td>~8%</td>
+                <td>High; BBB penetration (animal data)</td>
+                <td>Excellent</td>
+                <td>Cognitive function, neuropsychiatric</td>
+                <td>Emerging (limited human RCTs)</td>
+                <td>High</td>
+              </tr>
+              <tr>
+                <td><strong>Malate</strong></td>
+                <td>~12%</td>
+                <td>Good</td>
+                <td>Good</td>
+                <td>Fibromyalgia, muscle fatigue, energy</td>
+                <td>Limited (fibromyalgia small trials)</td>
+                <td>Moderate</td>
+              </tr>
+              <tr>
+                <td><strong>Taurate</strong></td>
+                <td>~9%</td>
+                <td>Good</td>
+                <td>Good</td>
+                <td>Cardiovascular; hypertension adjunct</td>
+                <td>Limited; taurine additive benefit theoretical</td>
+                <td>Moderate</td>
+              </tr>
+              <tr>
+                <td><strong>Sulfate (IV/IM)</strong></td>
+                <td>10% (IV solution)</td>
+                <td>~100% (IV)</td>
+                <td>IV only; oral = bowel prep</td>
+                <td>Eclampsia, torsades, status asthmaticus, severe hypomagnesemia</td>
+                <td>Highest (gold standard IV indications)</td>
+                <td>Inpatient use</td>
+              </tr>
+              <tr>
+                <td><strong>Chloride</strong></td>
+                <td>12%</td>
+                <td>Good (oral); poor (topical)</td>
+                <td>Good</td>
+                <td>General repletion; topical (limited evidence)</td>
+                <td>Moderate</td>
+                <td>Low&#8211;Moderate</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- SVG Bioavailability chart -->
+        <div class="svg-container">
+          <svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg" style="max-width:680px;">
+            <rect width="680" height="360" fill="#fefcf8" rx="8"/>
+            <text x="340" y="28" font-size="15" font-weight="bold" text-anchor="middle" fill="#231e14">Approximate Oral Bioavailability by Magnesium Form</text>
+            <text x="340" y="46" font-size="12" text-anchor="middle" fill="#6b6050">(IV sulfate = 100% by definition; topical forms excluded)</text>
+
+            <!-- Y axis labels -->
+            <text x="148" y="75" font-size="13" font-weight="bold" text-anchor="end" fill="#231e14">Glycinate</text>
+            <text x="148" y="115" font-size="13" font-weight="bold" text-anchor="end" fill="#231e14">L-Threonate</text>
+            <text x="148" y="155" font-size="13" font-weight="bold" text-anchor="end" fill="#231e14">Malate</text>
+            <text x="148" y="195" font-size="13" font-weight="bold" text-anchor="end" fill="#231e14">Chloride</text>
+            <text x="148" y="235" font-size="13" font-weight="bold" text-anchor="end" fill="#231e14">Taurate</text>
+            <text x="148" y="275" font-size="13" font-weight="bold" text-anchor="end" fill="#231e14">Citrate</text>
+            <text x="148" y="315" font-size="13" font-weight="bold" text-anchor="end" fill="#231e14">Oxide</text>
+
+            <!-- Grid lines -->
+            <line x1="155" y1="58" x2="155" y2="330" stroke="#cfc8ba" stroke-width="1"/>
+            <line x1="155" y1="330" x2="650" y2="330" stroke="#cfc8ba" stroke-width="1"/>
+            <!-- X tick marks -->
+            <line x1="270" y1="326" x2="270" y2="334" stroke="#cfc8ba" stroke-width="1"/>
+            <line x1="385" y1="326" x2="385" y2="334" stroke="#cfc8ba" stroke-width="1"/>
+            <line x1="500" y1="326" x2="500" y2="334" stroke="#cfc8ba" stroke-width="1"/>
+            <line x1="615" y1="326" x2="615" y2="334" stroke="#cfc8ba" stroke-width="1"/>
+            <text x="155" y="348" font-size="12" text-anchor="middle" fill="#6b6050">0%</text>
+            <text x="270" y="348" font-size="12" text-anchor="middle" fill="#6b6050">25%</text>
+            <text x="385" y="348" font-size="12" text-anchor="middle" fill="#6b6050">50%</text>
+            <text x="500" y="348" font-size="12" text-anchor="middle" fill="#6b6050">75%</text>
+            <text x="615" y="348" font-size="12" text-anchor="middle" fill="#6b6050">100%</text>
+
+            <!-- Bars (scale: 0-100% mapped to 155-615, total 460px) -->
+            <!-- Glycinate ~45% → 207px -->
+            <rect x="155" y="60" width="207" height="28" fill="#4a7c35" rx="3" opacity="0.85"/>
+            <text x="368" y="79" font-size="12" fill="#231e14" font-weight="600">~45%</text>
+
+            <!-- L-Threonate ~45% (similar to glycinate, BBB penetration different) -->
+            <rect x="155" y="100" width="207" height="28" fill="#4a7c35" rx="3" opacity="0.75"/>
+            <text x="368" y="119" font-size="12" fill="#231e14" font-weight="600">~45%*</text>
+
+            <!-- Malate ~40% → 184px -->
+            <rect x="155" y="140" width="184" height="28" fill="#3a6e28" rx="3" opacity="0.75"/>
+            <text x="345" y="159" font-size="12" fill="#231e14" font-weight="600">~40%</text>
+
+            <!-- Chloride ~36% → 166px -->
+            <rect x="155" y="180" width="166" height="28" fill="#3a6e28" rx="3" opacity="0.70"/>
+            <text x="327" y="199" font-size="12" fill="#231e14" font-weight="600">~36%</text>
+
+            <!-- Taurate ~35% → 161px -->
+            <rect x="155" y="220" width="161" height="28" fill="#3a6e28" rx="3" opacity="0.65"/>
+            <text x="322" y="239" font-size="12" fill="#231e14" font-weight="600">~35%</text>
+
+            <!-- Citrate ~28% → 129px -->
+            <rect x="155" y="260" width="129" height="28" fill="#8b6914" rx="3" opacity="0.75"/>
+            <text x="290" y="279" font-size="12" fill="#231e14" font-weight="600">~28%</text>
+
+            <!-- Oxide ~4% → 18px -->
+            <rect x="155" y="300" width="18" height="28" fill="#c04030" rx="3" opacity="0.75"/>
+            <text x="179" y="319" font-size="12" fill="#c04030" font-weight="600">&lt;5%</text>
+
+            <!-- Footnote -->
+            <text x="155" y="358" font-size="11" fill="#6b6050">* L-Threonate oral bioavailability similar to glycinate; distinction is preferential CNS delivery in animal models</text>
+          </svg>
+        </div>
+
+        <!-- SECTION 5 -->
+        <h2 class="ba-h2">5. Clinical Indications and Dosing</h2>
+
+        <h3 class="ba-h3">Migraine Prophylaxis</h3>
+        <p>
+          Magnesium is among the few nutritional interventions with guideline-level support for migraine prevention. The American Academy of Neurology (AAN) assigns Level B evidence to magnesium supplementation for migraine prophylaxis based on multiple randomized controlled trials. Proposed mechanisms include inhibition of cortical spreading depression, reduction of NMDA-mediated hyperexcitability, and vasodilatory effects. Magnesium deficiency may be disproportionately prevalent in migraineurs. Doses studied range from 400&#8211;600 mg elemental magnesium daily. Magnesium citrate and oxide have been used in trials; glycinate is preferred clinically for tolerability. Particularly strong evidence exists for menstrual migraine, where cyclic hormonal shifts may worsen magnesium status.
+        </p>
+
+        <h3 class="ba-h3">Anxiety and Stress Response</h3>
+        <p>
+          Systematic reviews and meta-analyses support a modest but consistent anxiolytic effect of magnesium supplementation in patients with baseline deficiency or elevated stress. The mechanisms are mechanistically credible: NMDA blockade reduces excitotoxic neuronal firing, glycine co-agonism (in glycinate formulations) adds inhibitory tone, and HPA axis dampening reduces cortisol burden. Magnesium should be positioned as an adjunct — not a replacement for evidence-based anxiety treatment — but its excellent safety profile makes it a low-risk addition at 200&#8211;400 mg/day of elemental magnesium as glycinate.
+        </p>
+
+        <h3 class="ba-h3">Depression</h3>
+        <p>
+          The Tarleton et al. 2017 RCT (PLoS ONE) randomized 126 adults with mild-to-moderate depression to 248 mg elemental magnesium chloride daily vs. active control and found significant improvement in PHQ-9 scores within 6 weeks, with effects comparable to the control condition and a favorable side effect profile. This trial, while not large enough to establish magnesium as a stand-alone antidepressant, supports its adjunctive role particularly in patients on SSRIs or SNRIs who have had incomplete response, and in patients with documented low magnesium intake or subclinical deficiency. The mechanistic rationale — NMDA modulation, HPA normalization, serotonin synthesis support — is compelling.
+        </p>
+
+        <h3 class="ba-h3">Insomnia</h3>
+        <p>
+          Abbasi et al. (2012, Journal of the American Geriatrics Society) conducted a double-blind RCT of 500 mg magnesium daily in elderly adults with insomnia and found significant improvements in sleep efficiency, sleep onset latency, serum melatonin levels, and renin levels compared to placebo. The proposed mechanism involves magnesium's regulation of NMDA and GABA-A receptors, and its role in melatonin synthesis. Magnesium glycinate or threonate at 200&#8211;400 mg taken at bedtime represents a reasonable recommendation for patients with insomnia, particularly when pharmacological sleep aids are undesirable.
+        </p>
+
+        <h3 class="ba-h3">Restless Leg Syndrome</h3>
+        <p>
+          Magnesium 300 mg at bedtime has modest support from small open-label studies for reducing RLS symptoms. Before initiating magnesium for RLS, clinicians should exclude iron deficiency (the most common correctable cause), dopaminergic dysfunction, and medication-related causes (antihistamines, antidopaminergic agents). Magnesium may be a reasonable adjunctive measure but is not established as primary therapy.
+        </p>
+
+        <h3 class="ba-h3">Type 2 Diabetes Prevention and Metabolic Health</h3>
+        <p>
+          Meta-analyses including the Guerrero-Romero et al. work demonstrate that each 100 mg/day increment in dietary magnesium intake is associated with approximately a 15% reduction in T2DM incidence in prospective cohort studies. Supplementation trials in insulin-resistant patients have shown improvements in fasting glucose and insulin sensitivity. Magnesium supplementation is not a therapeutic substitute for lifestyle modification or glucose-lowering medications but may represent a meaningful adjunct in high-risk patients with documented dietary insufficiency.
+        </p>
+
+        <h3 class="ba-h3">Hypertension</h3>
+        <p>
+          A 2016 meta-analysis by Zhang et al. in Hypertension (37 trials, n=2,028) found that magnesium supplementation at a median dose of 368 mg/day reduced SBP by approximately 2 mmHg and DBP by approximately 1.8 mmHg. The effect size is modest and clinically adjunctive rather than therapeutic. Nevertheless, in patients with mild hypertension on lifestyle modification, magnesium supplementation represents a low-risk intervention worth considering, particularly when dietary intake is low.
+        </p>
+
+        <h3 class="ba-h3">Muscle Cramps</h3>
+        <p>
+          Evidence for magnesium in pregnancy-associated leg cramps is reasonably strong, with multiple RCTs showing benefit. Evidence for non-pregnancy cramps (nocturnal leg cramps in older adults) is more mixed; a 2017 Cochrane review found insufficient evidence to recommend routine magnesium supplementation for this indication. Nevertheless, given its safety profile, a therapeutic trial is not unreasonable in patients with frequent, distressing cramps and evidence of dietary insufficiency.
+        </p>
+
+        <h3 class="ba-h3">ADHD</h3>
+        <p>
+          Magnesium and vitamin B6 combination has been studied in pediatric and adult ADHD with mixed results. Some trials show improved attention and hyperactivity scores, but methodological quality is variable. Magnesium supplementation is not part of evidence-based ADHD management guidelines, though investigation into the role of nutritional deficiencies in ADHD continues.
+        </p>
+
+        <h3 class="ba-h3">Bipolar Disorder</h3>
+        <p>
+          Given magnesium's NMDA-modulating properties — mechanistically analogous in some respects to lithium and ketamine — there is theoretical interest in its role as an adjunct in bipolar disorder. Small studies and case reports suggest possible mood-stabilizing effects. Evidence is insufficient to support a clinical recommendation, but in patients with bipolar disorder who have documented magnesium deficiency, repletion is physiologically appropriate.
+        </p>
+
+        <h3 class="ba-h3">IV/IM Indications (Hospital-Based)</h3>
+        <ul>
+          <li><strong>Eclampsia / preeclampsia</strong>: IV magnesium sulfate 4 g loading dose over 20 minutes, then 1&#8211;2 g/hour continuous infusion; monitor patellar reflexes, respiratory rate, and urine output; therapeutic level 2&#8211;4 mmol/L</li>
+          <li><strong>Torsades de pointes</strong>: IV magnesium sulfate 1&#8211;2 g over 5&#8211;20 minutes; effective even in patients with normal serum magnesium</li>
+          <li><strong>Status asthmaticus</strong>: IV magnesium sulfate 2 g over 20 minutes adjunctively in severe acute asthma</li>
+          <li><strong>Severe hypomagnesemia</strong> (serum &lt;0.5 mmol/L with symptoms): IV repletion preferred; 1&#8211;2 g IV over 1 hour, followed by ongoing infusion or transition to oral</li>
+        </ul>
+
+        <div class="ba-table-wrap">
+          <table class="ba-table">
+            <thead>
+              <tr>
+                <th>Indication</th>
+                <th>Dose (Elemental Mg)</th>
+                <th>Preferred Form</th>
+                <th>Evidence Level</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Migraine prophylaxis</strong></td>
+                <td>400&#8211;600 mg/day</td>
+                <td>Glycinate or citrate</td>
+                <td>Level B (AAN)</td>
+                <td>Especially effective in menstrual migraine; 3-month trial</td>
+              </tr>
+              <tr>
+                <td><strong>Anxiety / stress adjunct</strong></td>
+                <td>200&#8211;400 mg/day</td>
+                <td>Glycinate</td>
+                <td>Moderate (meta-analyses)</td>
+                <td>Position as adjunct to evidence-based treatment</td>
+              </tr>
+              <tr>
+                <td><strong>Depression adjunct</strong></td>
+                <td>248&#8211;400 mg/day</td>
+                <td>Glycinate or chloride</td>
+                <td>Moderate (Tarleton 2017 RCT)</td>
+                <td>Adjunct to antidepressants; 6-week initial trial</td>
+              </tr>
+              <tr>
+                <td><strong>Insomnia</strong></td>
+                <td>200&#8211;400 mg at bedtime</td>
+                <td>Glycinate or L-threonate</td>
+                <td>Moderate (Abbasi 2012 RCT)</td>
+                <td>Best evidence in elderly; take 30&#8211;60 min before sleep</td>
+              </tr>
+              <tr>
+                <td><strong>Restless leg syndrome</strong></td>
+                <td>300 mg at bedtime</td>
+                <td>Glycinate</td>
+                <td>Limited (small open-label)</td>
+                <td>First exclude iron deficiency; adjunct use only</td>
+              </tr>
+              <tr>
+                <td><strong>T2DM risk reduction</strong></td>
+                <td>200&#8211;400 mg/day</td>
+                <td>Glycinate or citrate</td>
+                <td>Moderate (epidemiological; some RCTs)</td>
+                <td>Adjunct only; not therapeutic replacement</td>
+              </tr>
+              <tr>
+                <td><strong>Hypertension adjunct</strong></td>
+                <td>300&#8211;600 mg/day</td>
+                <td>Citrate or glycinate</td>
+                <td>Moderate (meta-analysis ~2&#8211;4 mmHg SBP)</td>
+                <td>Modest effect; supplement lifestyle/medication</td>
+              </tr>
+              <tr>
+                <td><strong>Pregnancy leg cramps</strong></td>
+                <td>300 mg/day</td>
+                <td>Glycinate or citrate</td>
+                <td>Moderate (multiple RCTs)</td>
+                <td>Safe in pregnancy; confirm OB consultation</td>
+              </tr>
+              <tr>
+                <td><strong>Eclampsia (IV)</strong></td>
+                <td>4 g load; 1&#8211;2 g/hr</td>
+                <td>Sulfate IV</td>
+                <td>High (gold standard)</td>
+                <td>Monitor DTRs, RR, urine output; antidote = Ca gluconate</td>
+              </tr>
+              <tr>
+                <td><strong>Torsades de pointes (IV)</strong></td>
+                <td>1&#8211;2 g IV push</td>
+                <td>Sulfate IV</td>
+                <td>High (standard of care)</td>
+                <td>Administer over 5&#8211;20 min; effective even with normomagnesemia</td>
+              </tr>
+              <tr>
+                <td><strong>Status asthmaticus (IV)</strong></td>
+                <td>2 g IV</td>
+                <td>Sulfate IV</td>
+                <td>Moderate&#8211;High</td>
+                <td>Adjunct to bronchodilators in severe exacerbation</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- SECTION 6 -->
+        <h2 class="ba-h2">6. Associated Minerals and Co-Factors</h2>
+
+        <p>
+          Magnesium does not act in isolation. Its absorption, cellular utilization, and clinical effects are modulated by several co-factors and competing cations that are relevant to prescribing decisions.
+        </p>
+
+        <h3 class="ba-h3">Zinc</h3>
+        <p>
+          Zinc and magnesium are frequently combined in supplement formulations ("ZMA" products being among the most commercially recognized). Zinc is an NMDA receptor modulator — it inhibits NMDA receptor activity at the Zn<sup>2+</sup> binding site distinct from the magnesium channel block — creating theoretical complementarity. Zinc is also essential for immune function, testosterone biosynthesis, and wound healing. The RDA is 11 mg/day for men and 8 mg/day for women. Deficiency is common in the elderly, strict vegetarians (plant phytates reduce bioavailability), and individuals with alcohol use disorder or chronic diarrheal illness. An important caution: excessive zinc supplementation (above approximately 50 mg/day chronically) competitively inhibits copper absorption, leading to copper deficiency with potential neurological sequelae including myelopathy and peripheral neuropathy.
+        </p>
+
+        <h3 class="ba-h3">Boron</h3>
+        <p>
+          Boron is a trace element without an established RDA, though typical supplementation doses are 3&#8211;6 mg/day. Evidence suggests boron enhances intestinal magnesium absorption and reduces renal magnesium excretion, effectively improving magnesium retention. Boron also supports bone density (appears to reduce urinary calcium and magnesium loss), modulates estrogen and testosterone metabolism, and has emerging data suggesting cognitive benefits in deficient states. Dietary boron is found primarily in fruits, nuts, and vegetables; deficiency is more common in populations with low fruit and vegetable intake.
+        </p>
+
+        <h3 class="ba-h3">Vitamin B6 (Pyridoxine)</h3>
+        <p>
+          Pyridoxine is required for cellular magnesium uptake — B6 deficiency impairs the transport of magnesium into cells even when serum magnesium is adequate. B6 is also an indispensable cofactor in the synthesis of serotonin (from 5-HTP), dopamine (from L-DOPA), and GABA — making its status directly relevant to neuropsychiatric function. B6 deficiency is seen in individuals on isoniazid, oral contraceptives, and some anticonvulsants. Combined Mg + B6 formulations have been studied specifically in ADHD and anxiety. Clinicians must be aware of the established neurotoxicity of high-dose pyridoxine: supplemental doses consistently above 100 mg/day (some reports suggest as low as 50 mg/day with prolonged use) can produce sensory neuropathy. This risk is absent at the 10&#8211;25 mg doses common in combined Mg-B6 products, but patients using separate high-dose B6 supplements concurrently should be counseled.
+        </p>
+
+        <div class="ba-insight-box">
+          <div class="ba-insight-icon">&#9888;</div>
+          <div>
+            <strong>Calcium-Magnesium Competition: A Clinically Underappreciated Problem</strong>
+            <p>Calcium and magnesium share absorptive transporters in the small intestine and compete at renal tubular reabsorption sites. High calcium supplementation — particularly common in postmenopausal women taking calcium carbonate for bone health — can meaningfully suppress magnesium absorption and reduce renal magnesium conservation. The ideal dietary calcium-to-magnesium ratio is approximately 2:1. In most contemporary Western diets, the ratio is inverted or skewed far toward calcium (estimated 4:1 to 6:1 in high-calcium supplement users), potentially contributing to subclinical magnesium depletion even in patients whose total magnesium intake appears adequate. Clinicians managing patients on long-term calcium supplementation should consider periodic assessment of magnesium status and, where appropriate, concurrent magnesium supplementation.</p>
+          </div>
+        </div>
+
+        <h3 class="ba-h3">Phosphorus</h3>
+        <p>
+          High phosphate intake — characteristic of Western diets rich in processed foods, carbonated beverages (phosphoric acid), and protein supplements — can complex with magnesium in the intestinal lumen to form insoluble magnesium phosphate salts, reducing magnesium absorption. Patients with high processed food intake may have impaired magnesium absorption that is not fully corrected by supplementation alone without dietary modification. Additionally, hyperphosphatemia in chronic kidney disease further impairs magnesium balance by altering the tubular handling of divalent cations.
+        </p>
+
+        <!-- SECTION 7 -->
+        <h2 class="ba-h2">7. Safety, Toxicity, and Dangers</h2>
+
+        <h3 class="ba-h3">Oral Safety and Tolerable Upper Intake Level</h3>
+        <p>
+          Oral magnesium from food sources has no established toxicity in healthy individuals with normal renal function; excess dietary magnesium is simply not absorbed. For supplemental magnesium, the National Institutes of Health Office of Dietary Supplements establishes a Tolerable Upper Intake Level (UL) of 350 mg/day of supplemental elemental magnesium for adults. This limit is based not on systemic toxicity but on the laxative threshold — doses above this level commonly produce osmotic diarrhea, particularly with poorly absorbed forms (oxide, sulfate). Nausea and abdominal cramping may also occur. Chelated forms (glycinate, threonate, malate) have better GI tolerance and may be used at higher doses with fewer GI adverse effects, though caution is still warranted in renal impairment.
+        </p>
+
+        <h3 class="ba-h3">Hypermagnesemia</h3>
+        <p>
+          Hypermagnesemia (serum Mg &gt;1.1 mmol/L) is primarily a risk in patients with renal impairment who take oral magnesium supplements or receive IV magnesium. The kidney is the principal route of magnesium elimination; when GFR is reduced, magnesium accumulates. Clinicians should use oral magnesium supplementation with caution in patients with GFR &lt;30 mL/min/1.73m<sup>2</sup>, and avoid it or monitor closely in dialysis patients.
+        </p>
+
+        <p>The progression of hypermagnesemia symptoms is predictable and follows serum levels:</p>
+        <ul>
+          <li><strong>Mild (&gt;1.1 mmol/L)</strong>: Flushing, nausea, headache, fatigue</li>
+          <li><strong>Moderate (~2&#8211;3 mmol/L)</strong>: Hypotension, bradycardia, decreased deep tendon reflexes (loss of patellar reflex is the first clinical sign of significant toxicity and should halt IV infusions immediately)</li>
+          <li><strong>Severe (~4&#8211;5 mmol/L)</strong>: Respiratory depression, neuromuscular paralysis</li>
+          <li><strong>Critical (&gt;6 mmol/L)</strong>: Cardiac arrest, coma</li>
+        </ul>
+
+        <div class="ba-warning-box">
+          <div class="ba-warning-icon">&#8252;</div>
+          <div>
+            <strong>IV Magnesium Monitoring Protocol</strong>
+            <p>During IV magnesium infusion (particularly for eclampsia), monitor hourly: patellar deep tendon reflexes, respiratory rate (&gt;12/min required), and urine output (&gt;25 mL/hr required). Loss of the patellar reflex occurs at serum Mg approximately 3.5&#8211;5 mmol/L and mandates immediate cessation of the infusion. Calcium gluconate 1 g IV is the antidote for symptomatic hypermagnesemia and should be immediately available at the bedside whenever IV magnesium is infused.</p>
+          </div>
+        </div>
+
+        <h3 class="ba-h3">Neonatal Hypermagnesemia</h3>
+        <p>
+          Neonates born to mothers who received IV magnesium sulfate for eclampsia or preterm labor tocolysis may exhibit hypermagnesemia at birth. Clinical findings include hypotonia, respiratory depression, and reduced feeding. Neonates should be monitored for these signs; management is supportive, and calcium gluconate can be administered for severe cases.
+        </p>
+
+        <h3 class="ba-h3">Drug Interactions</h3>
+        <ul>
+          <li><strong>Fluoroquinolones and tetracyclines</strong>: Magnesium chelates these antibiotics in the GI tract, reducing their absorption by up to 90%. Separate administration by at least 2 hours (magnesium taken 2 hours after or 6 hours before the antibiotic)</li>
+          <li><strong>Bisphosphonates</strong> (alendronate, risedronate): Same chelation mechanism; take bisphosphonate first thing in the morning on an empty stomach, withhold magnesium for at least 2 hours</li>
+          <li><strong>Neuromuscular blocking agents</strong>: IV magnesium potentiates both depolarizing (succinylcholine) and non-depolarizing neuromuscular blockers; anesthesia teams should be informed of IV magnesium use preoperatively</li>
+          <li><strong>CNS depressants</strong>: High-dose magnesium may have additive sedative effects; relevant primarily with IV administration</li>
+          <li><strong>Calcium channel blockers</strong>: Theoretical additive vasodilatory and hypotensive effects with IV magnesium; monitor blood pressure</li>
+          <li><strong>Digoxin</strong>: Hypomagnesemia increases digoxin toxicity risk; magnesium repletion is clinically important in digitalis toxicity with concurrent hypomagnesemia</li>
+        </ul>
+
+        <h3 class="ba-h3">Renal Insufficiency Guidance</h3>
+        <p>
+          GFR 30&#8211;60 mL/min: Oral supplementation generally safe at standard doses (200&#8211;400 mg elemental Mg/day) with periodic serum monitoring every 3&#8211;6 months. GFR &lt;30 mL/min: Reduce dose substantially, avoid high-dose supplementation, and monitor serum magnesium monthly. Dialysis patients: Magnesium is dialyzable; dialysate magnesium concentration should be considered when managing supplementation needs.
+        </p>
+
+        <!-- SECTION 8 -->
+        <h2 class="ba-h2">8. Practical Prescribing Guidance</h2>
+
+        <h3 class="ba-h3">Selecting the Formulation</h3>
+        <p>
+          Match the formulation to the indication:
+        </p>
+        <ul>
+          <li><strong>Neurological/psychiatric indications</strong> (anxiety, insomnia, depression adjunct, migraine): Magnesium glycinate 200&#8211;400 mg elemental Mg/day; glycinate preferred for cost-effectiveness and dual glycine activity</li>
+          <li><strong>Cognitive or specific neuropsychiatric focus</strong>: Magnesium L-threonate if the patient can afford it and has tried glycinate without sufficient response; typical commercial dose provides ~144 mg elemental Mg/day</li>
+          <li><strong>Cardiovascular indications</strong> (hypertension adjunct): Magnesium citrate or taurate</li>
+          <li><strong>Gastrointestinal / bowel function</strong>: Magnesium oxide or sulfate (laxative effect intentional)</li>
+          <li><strong>Fibromyalgia / muscle fatigue</strong>: Magnesium malate</li>
+          <li><strong>Acute hospital indications</strong>: Magnesium sulfate IV/IM exclusively</li>
+          <li><strong>General dietary repletion on a budget</strong>: Magnesium citrate</li>
+        </ul>
+
+        <h3 class="ba-h3">When to Check Serum Magnesium</h3>
+        <p>
+          Order serum magnesium when: the patient is on loop or thiazide diuretics, PPIs for &gt;12 months, aminoglycosides, cisplatin, or tacrolimus; when hypokalemia or hypocalcemia is present and refractory to supplementation; in patients with alcoholism, IBD, celiac, or short bowel syndrome; in ICU patients on admission; and whenever the clinical presentation includes unexplained muscle cramps, hyperreflexia, arrhythmias, or treatment-resistant depression/anxiety. Remember that a normal serum level does not exclude intracellular deficiency in high-risk clinical contexts.
+        </p>
+
+        <h3 class="ba-h3">When Serum Magnesium Is Insufficient</h3>
+        <p>
+          In patients with compelling clinical deficiency (symptoms, depleting conditions, depleting medications) and a normal serum magnesium, consider ordering RBC magnesium and/or 24-hour urinary magnesium excretion. A low urine magnesium with symptoms suggests dietary/absorptive deficiency; a high urine magnesium suggests renal wasting, which warrants nephrology evaluation to identify the underlying tubular disorder.
+        </p>
+
+        <h3 class="ba-h3">When to Refer</h3>
+        <ul>
+          <li><strong>Nephrology</strong>: Suspected renal tubular magnesium wasting (refractory hypomagnesemia with elevated urinary magnesium), GFR &lt;30, dialysis patients</li>
+          <li><strong>Gastroenterology</strong>: Suspected malabsorptive etiology (IBD, celiac disease, short bowel syndrome) contributing to refractory hypomagnesemia</li>
+          <li><strong>Endocrinology</strong>: Primary aldosteronism; hypoparathyroidism-associated magnesium disturbance</li>
+        </ul>
+
+        <h3 class="ba-h3">Patient Education Principles</h3>
+        <ul>
+          <li><strong>Start low, go slow</strong>: Begin at half the target dose for 1&#8211;2 weeks to minimize GI adverse effects, then titrate upward</li>
+          <li><strong>Divide doses</strong>: Spreading the daily dose into two divided doses (e.g., morning and bedtime) reduces peak GI exposure and may improve total daily absorption</li>
+          <li><strong>Take with food</strong>: Food slows gastric emptying and may improve absorption and tolerance; exception — bedtime glycinate for sleep can be taken without food</li>
+          <li><strong>Separate from antibiotics and bisphosphonates</strong>: Counsel patients on the 2-hour rule explicitly</li>
+          <li><strong>Duration</strong>: In patients with ongoing depleting conditions (chronic diuretic use, IBD, PPIs), supplementation is likely to be long-term maintenance rather than a finite course</li>
+          <li><strong>Realistic expectations</strong>: For neuropsychiatric indications, effects on mood, sleep, and anxiety typically become apparent within 4&#8211;8 weeks of consistent use; migraine prevention requires a 3-month minimum trial</li>
+        </ul>
+
+        <div class="ba-summary-box">
+          <h3>Clinical Summary: Key Prescribing Principles</h3>
+          <ul>
+            <li>Magnesium oxide is the dominant OTC form but the wrong choice for systemic repletion or neuropsychiatric indications; its primary value is laxative</li>
+            <li>Magnesium glycinate is the workhorse formulation for neurological, psychiatric, and general systemic supplementation: high bioavailability, excellent tolerability, and enhanced by glycine's independent neurological activity</li>
+            <li>Serum magnesium is an insensitive marker; clinical judgment informed by symptoms, medications, and comorbidities is essential</li>
+            <li>Hypermagnesemia is a real danger in renal impairment; calcium gluconate is the antidote for IV toxicity</li>
+            <li>Calcium-magnesium competition is clinically relevant in patients on long-term calcium supplementation</li>
+            <li>The calcium-to-magnesium ratio in Western diets is far from ideal; addressing dietary pattern is complementary to supplementation</li>
+          </ul>
+        </div>
+
+        <!-- REFERENCES -->
+        <div class="ba-references">
+          <p class="ba-ref-title">References</p>
+          <ol class="ba-ref-list">
+            <li>Tarleton EK, Littenberg B, MacLean CD, Kennedy AG, Daley C. Role of magnesium supplementation in the treatment of depression: A randomized clinical trial. <em>PLoS ONE.</em> 2017;12(6):e0180067.</li>
+            <li>Abbasi B, Kimiagar M, Sadeghniiat K, Shirazi MM, Hedayati M, Rashidkhani B. The effect of magnesium supplementation on primary insomnia in elderly: A double-blind placebo-controlled clinical trial. <em>J Res Med Sci.</em> 2012;17(12):1161&#8211;1169.</li>
+            <li>Rosanoff A, Weaver CM, Rude RK. Suboptimal magnesium status in the United States: are the health consequences underestimated? <em>Nutr Rev.</em> 2012;70(3):153&#8211;164.</li>
+            <li>U.S. Food and Drug Administration. FDA Drug Safety Communication: Low magnesium levels can be associated with long-term use of Proton Pump Inhibitor drugs (PPIs). MedWatch Safety Alert. March 2, 2011.</li>
+            <li>Silberstein SD, Holland S, Freitag F, Dodick DW, Argoff C, Ashman E. Evidence-based guideline update: Pharmacologic treatment for episodic migraine prevention in adults. <em>Neurology.</em> 2012;78(17):1337&#8211;1345. (AAN migraine guidelines)</li>
+            <li>Guerrero-Romero F, Rodriguez-Moran M. Magnesium improves the beta-cell function to compensate variation of insulin sensitivity: double-blind, randomized clinical trial. <em>Eur J Clin Invest.</em> 2011;41(4):405&#8211;410.</li>
+            <li>DiNicolantonio JJ, Liu J, O'Keefe JH. Magnesium for the prevention and treatment of cardiovascular disease. <em>Open Heart.</em> 2018;5(2):e000775.</li>
+            <li>Cheungpasitporn W, Thongprayoon C, Mao MA, Srivali N, Ungprasert P, Varothai N, Sanguankeo A, Papatheodorou SI, Erickson SB. Hypomagnesaemia linked to depression: a systematic review and meta-analysis. <em>Intern Med J.</em> 2015;45(4):436&#8211;440.</li>
+            <li>Zhang X, Li Y, Del Gobbo LC, et al. Effects of magnesium supplementation on blood pressure: a meta-analysis of randomized double-blind placebo-controlled trials. <em>Hypertension.</em> 2016;68(2):324&#8211;333.</li>
+            <li>Liu G, Weinger JG, Lu ZL, Xue F, Sadeghpour S. Efficacy and safety of MMFS-01, a synapse density enhancer, for treating cognitive impairment in older adults: a randomized, double-blind, placebo-controlled trial. <em>J Alzheimers Dis.</em> 2016;49(4):971&#8211;990.</li>
+          </ol>
+        </div>
+
+        <div class="ba-footer">
+          <a href="../index.html" class="back-link">&#8592; Back to PsychoPharmRef</a>
+        </div>
+
+      </div>
     </article>
+  </div>
 </body>
 </html>

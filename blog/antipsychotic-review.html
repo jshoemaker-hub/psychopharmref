@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antipsychotic Medications: A Clinical Review Across Generations | PsychoPharmRef</title>
+  <style>
+    :root {
+      --bg: #f5f0e8;
+      --bg2: #ece6db;
+      --bg3: #e2dbd0;
+      --card: #fefcf8;
+      --border: #cfc8ba;
+      --accent: #4a7c35;
+      --accent2: #8b6914;
+      --text: #231e14;
+      --text-muted: #6b6050;
+      --green: #3a6e28;
+      --red: #c04030;
+      --yellow: #8b6914;
+      --orange: #b05a20;
+      --font: 'Segoe UI', system-ui, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: var(--font);
+      color: var(--text);
+      background-color: var(--bg);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 30px;
+      padding: 10px 16px;
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .back-link:hover {
+      background-color: var(--bg2);
+      border-color: var(--accent);
+    }
+
+    .blog-article {
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 50px 40px;
+      margin-bottom: 40px;
+    }
+
+    .ba-header {
+      margin-bottom: 30px;
+    }
+
+    .ba-category {
+      display: inline-block;
+      background-color: var(--bg2);
+      color: var(--accent);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    .ba-title {
+      font-size: 2.4em;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .ba-subtitle {
+      font-size: 1.2em;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .ba-meta {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ba-body {
+      margin-top: 30px;
+    }
+
+    .ba-lead {
+      font-size: 1.1em;
+      color: var(--text);
+      font-weight: 500;
+      margin-bottom: 25px;
+      padding: 20px;
+      background-color: var(--bg);
+      border-left: 4px solid var(--accent);
+      border-radius: 2px;
+    }
+
+    .ba-h2 {
+      font-size: 1.8em;
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 40px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 10px;
+    }
+
+    .ba-h3 {
+      font-size: 1.3em;
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 28px;
+      margin-bottom: 14px;
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    ul, ol {
+      margin-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .ba-stat-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 25px 0;
+    }
+
+    .ba-stat-card {
+      background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .ba-stat-card--alert {
+      border-left: 4px solid var(--red);
+      background: linear-gradient(135deg, #f8e8e5 0%, #f2e0db 100%);
+    }
+
+    .ba-stat-card--good {
+      border-left: 4px solid var(--green);
+      background: linear-gradient(135deg, #e8f3e2 0%, #deecd8 100%);
+    }
+
+    .ba-stat-num {
+      font-size: 2em;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .ba-stat-card--alert .ba-stat-num {
+      color: var(--red);
+    }
+
+    .ba-stat-card--good .ba-stat-num {
+      color: var(--green);
+    }
+
+    .ba-stat-label {
+      font-size: 0.95em;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .ba-table-wrap {
+      overflow-x: auto;
+      margin: 25px 0;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    .ba-table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: var(--card);
+    }
+
+    .ba-table thead {
+      background-color: var(--bg2);
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .ba-table th {
+      padding: 14px;
+      text-align: left;
+      font-weight: 700;
+      color: var(--text);
+      font-size: 0.95em;
+    }
+
+    .ba-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95em;
+    }
+
+    .ba-table tbody tr:hover {
+      background-color: var(--bg);
+    }
+
+    .ba-insight-box {
+      background: linear-gradient(135deg, #f0f4e8 0%, #e8ede0 100%);
+      border-left: 4px solid var(--accent2);
+      border-radius: 6px;
+      padding: 20px;
+      margin: 25px 0;
+      display: flex;
+      gap: 16px;
+    }
+
+    .ba-insight-box--alert {
+      background: linear-gradient(135deg, #f8e8e5 0%, #f2e0db 100%);
+      border-left: 4px solid var(--red);
+    }
+
+    .ba-insight-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--bg3);
+      border-radius: 4px;
+      font-size: 20px;
+    }
+
+    .ba-timeline {
+      margin: 25px 0;
+    }
+
+    .ba-tl-item {
+      display: flex;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .ba-tl-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 50px;
+      width: 2px;
+      height: 30px;
+      background-color: var(--border);
+    }
+
+    .ba-tl-dot {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background-color: var(--accent);
+      border: 3px solid var(--card);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      z-index: 1;
+      margin-right: 20px;
+      font-size: 10px;
+      text-align: center;
+    }
+
+    .ba-tl-time {
+      font-size: 0.9em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .ba-tl-text {
+      padding-top: 2px;
+    }
+
+    .ba-tl-text strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .ba-summary-box {
+      background: linear-gradient(135deg, var(--accent2) 0%, #6d4f0f 100%);
+      color: #fefcf8;
+      border-radius: 6px;
+      padding: 30px;
+      margin: 25px 0;
+    }
+
+    .ba-summary-box h3 {
+      color: #fefcf8;
+      margin-bottom: 16px;
+    }
+
+    .ba-summary-box ul {
+      margin-left: 20px;
+    }
+
+    .ba-summary-box li {
+      color: #fefcf8;
+    }
+
+    .ba-references {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 2px solid var(--border);
+    }
+
+    .ba-ref-title {
+      font-size: 1.3em;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .ba-ref-list {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    .ba-ref-list li {
+      margin-bottom: 14px;
+      padding-left: 24px;
+      position: relative;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+
+    .ba-ref-list li::before {
+      content: '[' counter(ref) ']';
+      counter-increment: ref;
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .ba-ref-list {
+      counter-reset: ref;
+    }
+
+    .ba-stacked-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 25px 0;
+    }
+
+    .ba-stacked-card {
+      background-color: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+    }
+
+    .ba-stacked-title {
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      font-size: 1em;
+    }
+
+    .ba-stacked-sub {
+      font-size: 0.85em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .ba-stacked-list {
+      list-style: none;
+      margin-left: 0;
+      font-size: 0.9em;
+    }
+
+    .ba-stacked-list li {
+      margin-bottom: 6px;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .ba-stacked-list li::before {
+      content: '•';
+      position: absolute;
+      left: 4px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .ba-compare-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 25px 0;
+    }
+
+    .ba-compare-card {
+      background-color: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+    }
+
+    .ba-compare-card h4 {
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .ba-compare-card ul {
+      margin-left: 20px;
+      font-size: 0.95em;
+    }
+
+    .ba-footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+    }
+
+    svg {
+      max-width: 100%;
+      height: auto;
+      margin: 25px 0;
+    }
+
+    .svg-container {
+      display: flex;
+      justify-content: center;
+      margin: 25px 0;
+      overflow-x: auto;
+    }
+
+    @media (max-width: 768px) {
+      .blog-article {
+        padding: 30px 20px;
+      }
+
+      .ba-title {
+        font-size: 1.8em;
+      }
+
+      .ba-h2 {
+        font-size: 1.4em;
+      }
+
+      .ba-compare-row {
+        grid-template-columns: 1fr;
+      }
+
+      .ba-meta {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .ba-stat-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html" class="back-link">&#8592; Back to PsychoPharmRef</a>
+
+    <article class="blog-article">
+      <header class="ba-header">
+        <div class="ba-category">Psychopharmacology</div>
+        <h1 class="ba-title">Antipsychotic Medications: A Clinical Review Across Generations</h1>
+        <p class="ba-subtitle">From chlorpromazine to cariprazine — mechanisms, indications, side effects, selection, and monitoring</p>
+        <div class="ba-meta">
+          <span>Published: March 2026</span>
+          <span>For Prescribing Clinicians</span>
+          <span>20 min read</span>
+        </div>
+      </header>
+
+      <div class="ba-body">
+        <div class="ba-lead">
+          Antipsychotic medications have transformed the treatment of psychotic disorders since chlorpromazine's introduction in 1952. Spanning three generations — each with distinct receptor pharmacology, efficacy profiles, and tolerability trade-offs — these agents now occupy a central role across schizophrenia, bipolar disorder, major depression, and several off-label indications. Rational prescribing requires fluency in their comparative mechanisms, adverse effect signatures, and individualized selection criteria.
+        </div>
+
+        <!-- SECTION 1 -->
+        <h2 class="ba-h2">1. A Brief History of Antipsychotics</h2>
+
+        <p>
+          The development of antipsychotic pharmacotherapy over seven decades represents one of psychiatry's most consequential pharmacological narratives — from serendipitous discovery through iterative refinement toward mechanistically targeted agents. Each era introduced new efficacy opportunities alongside new clinical liabilities demanding careful monitoring.
+        </p>
+
+        <div class="ba-timeline">
+
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot">1952</div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">1952 — The Discovery of Chlorpromazine</div>
+              <strong>Henri Laborit and the Antihistamine Trail</strong>
+              <p>French surgeon Henri Laborit observed that promethazine (an antihistamine) produced surgical sedation without unconsciousness. Laborit advocated for its psychiatric application; Jean Delay and Pierre Deniker administered chlorpromazine to patients with acute psychosis at Sainte-Anne Hospital, Paris, reporting dramatic symptom reduction. The era of somatic psychiatric treatment had begun.</p>
+            </div>
+          </div>
+
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot">1958</div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">1958–1960s — First-Generation Expansion</div>
+              <strong>Haloperidol, Fluphenazine, Thioridazine</strong>
+              <p>Paul Janssen synthesized haloperidol (1958) in Belgium, a high-potency butyrophenone with potent D2 blockade. Fluphenazine and perphenazine extended the phenothiazine class. Depot formulations of fluphenazine decanoate addressed adherence in chronically ill patients. FGAs dominated inpatient psychiatry for three decades, reducing positive symptoms effectively but carrying substantial EPS burden.</p>
+            </div>
+          </div>
+
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot">1989</div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">1989 — Clozapine Reintroduction</div>
+              <strong>The Pivotal SGA Prototype</strong>
+              <p>Clozapine had been withdrawn in the 1970s following fatal agranulocytosis cases in Finland. The landmark Kane et al. (1988) trial demonstrated superiority over chlorpromazine in treatment-resistant schizophrenia, prompting FDA approval in 1989 with mandatory ANC monitoring. Clozapine's multi-receptor pharmacology — broad D2, D4, 5-HT2A, H1, M1, and alpha-1 blockade — established the conceptual framework for second-generation agents.</p>
+            </div>
+          </div>
+
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot">1990s</div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">1990s — The SGA Era</div>
+              <strong>Risperidone, Olanzapine, Quetiapine, Ziprasidone</strong>
+              <p>Risperidone (1993) introduced the "serotonin-dopamine antagonist" template with combined D2/5-HT2A blockade. Olanzapine (1996) and quetiapine (1997) followed, offering reduced EPS at the cost of significant metabolic effects. Ziprasidone (2001) added QTc concerns but a more favorable metabolic profile. This generation was marketed heavily on EPS reduction, though metabolic and prolactin-related adverse effects emerged as significant liabilities.</p>
+            </div>
+          </div>
+
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot">2002</div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">2002–2010s — Partial Agonists and Metabolic Optimization</div>
+              <strong>Aripiprazole, Lurasidone, Asenapine</strong>
+              <p>Aripiprazole (2002) introduced the partial D2 agonist mechanism — "dopamine system stabilizer" — reducing receptor blockade's EPS and prolactin-elevating effects. Lurasidone (2010) added robust 5-HT7 antagonism and was the first antipsychotic with FDA approval specifically for bipolar depression. Asenapine's sublingual formulation addressed bioavailability limitations of first-pass metabolism.</p>
+            </div>
+          </div>
+
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot">2015+</div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">2015 and Beyond — Third-Generation Agents</div>
+              <strong>Brexpiprazole, Cariprazine, Lumateperone</strong>
+              <p>Brexpiprazole (2015) refined aripiprazole's partial agonism with greater 5-HT1A and alpha-1 receptor affinity, earning MDD augmentation approval. Cariprazine (2015) demonstrated preferential D3 over D2 partial agonism, hypothesized to address negative symptoms more effectively. Lumateperone (2019) employs a novel SERT-mediated mechanism alongside D1/D2 modulation, achieving FDA approval for both schizophrenia and bipolar depression with a distinct tolerability profile.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="ba-stat-row">
+          <div class="ba-stat-card">
+            <div class="ba-stat-num">70+</div>
+            <div class="ba-stat-label">Years since chlorpromazine introduction (1952)</div>
+          </div>
+          <div class="ba-stat-card">
+            <div class="ba-stat-num">3</div>
+            <div class="ba-stat-label">Recognized generations of antipsychotics</div>
+          </div>
+          <div class="ba-stat-card--alert">
+            <div class="ba-stat-num">1–2%</div>
+            <div class="ba-stat-label">Lifetime risk of agranulocytosis with clozapine</div>
+          </div>
+          <div class="ba-stat-card--good">
+            <div class="ba-stat-num">~20</div>
+            <div class="ba-stat-label">FDA-approved antipsychotic agents currently available</div>
+          </div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <h2 class="ba-h2">2. Classes and Mechanisms</h2>
+
+        <h3 class="ba-h3">First-Generation Antipsychotics (FGAs)</h3>
+        <p>
+          FGAs exert primary antipsychotic effects through high-affinity D2 receptor antagonism in the mesolimbic dopamine pathway. D2 occupancy of 65–80% correlates with antipsychotic efficacy; occupancy above 80% substantially increases EPS risk. FGAs are classically subdivided by chlorpromazine equivalents into high-potency (haloperidol, fluphenazine), mid-potency (perphenazine, trifluoperazine), and low-potency agents (chlorpromazine, thioridazine). Low-potency agents carry greater anticholinergic, antihistaminergic, and alpha-1 blocking activity alongside reduced EPS burden relative to their high-potency counterparts.
+        </p>
+
+        <h3 class="ba-h3">Second-Generation Antipsychotics (SGAs)</h3>
+        <p>
+          SGAs combine D2 antagonism with high-affinity 5-HT2A antagonism. The serotonin-dopamine antagonist hypothesis posits that 5-HT2A blockade in the nigrostriatal pathway facilitates dopamine release, attenuating the EPS otherwise produced by D2 blockade. Clozapine remains the pharmacological outlier: relatively lower D2 affinity (explaining its minimal EPS), coupled with potent D4, 5-HT2A/C, H1, M1, and alpha-1/2 blockade. Clozapine's unique efficacy in treatment-resistant schizophrenia likely reflects this pleiotropic receptor profile rather than D2 blockade alone.
+        </p>
+
+        <h3 class="ba-h3">Third-Generation Agents — Partial D2 Agonists</h3>
+        <p>
+          Aripiprazole, brexpiprazole, and cariprazine are partial agonists at D2 and D3 receptors. In hyperdopaminergic states (mesolimbic), they act as functional antagonists; in hypodopaminergic states (mesocortical, nigrostriatal, tuberoinfundibular), they act as functional agonists — theoretically preserving prefrontal dopamine function and avoiding prolactin elevation. Cariprazine has a ~10-fold higher affinity for D3 vs. D2, raising interest in targeting negative symptoms and cognition. Lumateperone acts via postsynaptic D2 blockade combined with SERT-dependent modulation of glutamatergic neurotransmission, distinguishing it mechanistically from all prior agents.
+        </p>
+
+        <div class="ba-table-wrap">
+          <table class="ba-table">
+            <thead>
+              <tr>
+                <th>Drug</th>
+                <th>Class</th>
+                <th>D2 Mechanism</th>
+                <th>Key Receptor Profile</th>
+                <th>Half-Life</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Haloperidol</strong></td>
+                <td>FGA — high potency</td>
+                <td>Antagonist (high affinity)</td>
+                <td>D2 &gt;&gt; alpha-1, H1 minimal</td>
+                <td>18–40 h</td>
+              </tr>
+              <tr>
+                <td><strong>Chlorpromazine</strong></td>
+                <td>FGA — low potency</td>
+                <td>Antagonist (moderate affinity)</td>
+                <td>D2, H1, M1, alpha-1 (broad)</td>
+                <td>16–30 h</td>
+              </tr>
+              <tr>
+                <td><strong>Risperidone</strong></td>
+                <td>SGA</td>
+                <td>Antagonist</td>
+                <td>D2, 5-HT2A (high), alpha-1, H1</td>
+                <td>20–24 h (+ 9-OH metabolite)</td>
+              </tr>
+              <tr>
+                <td><strong>Olanzapine</strong></td>
+                <td>SGA</td>
+                <td>Antagonist</td>
+                <td>D1–4, 5-HT2A/C, H1, M1, alpha-1</td>
+                <td>21–54 h</td>
+              </tr>
+              <tr>
+                <td><strong>Quetiapine</strong></td>
+                <td>SGA</td>
+                <td>Antagonist (low D2 affinity)</td>
+                <td>H1 (high), 5-HT2A, alpha-1, D2; NET (norquetiapine)</td>
+                <td>6–7 h (XR: similar)</td>
+              </tr>
+              <tr>
+                <td><strong>Aripiprazole</strong></td>
+                <td>SGA / 3rd gen</td>
+                <td>Partial agonist</td>
+                <td>D2 partial, D3 partial, 5-HT2A antagonist, 5-HT1A partial agonist</td>
+                <td>75–146 h</td>
+              </tr>
+              <tr>
+                <td><strong>Clozapine</strong></td>
+                <td>SGA</td>
+                <td>Antagonist (low affinity)</td>
+                <td>D4, 5-HT2A/C, H1 (high), M1–4, alpha-1, D1–2</td>
+                <td>8–12 h</td>
+              </tr>
+              <tr>
+                <td><strong>Ziprasidone</strong></td>
+                <td>SGA</td>
+                <td>Antagonist</td>
+                <td>5-HT2A/C, D2, 5-HT1A partial, SERT/NET inhibition</td>
+                <td>7 h</td>
+              </tr>
+              <tr>
+                <td><strong>Lurasidone</strong></td>
+                <td>SGA</td>
+                <td>Antagonist</td>
+                <td>D2, 5-HT2A, 5-HT7 (antagonist), 5-HT1A partial, alpha-2C</td>
+                <td>18–40 h</td>
+              </tr>
+              <tr>
+                <td><strong>Cariprazine</strong></td>
+                <td>3rd generation</td>
+                <td>Partial agonist (D3 &gt; D2)</td>
+                <td>D3 &gt;&gt; D2, 5-HT2B antagonist, 5-HT1A partial</td>
+                <td>2–4 days (+ active metabolites: ~1–3 weeks)</td>
+              </tr>
+              <tr>
+                <td><strong>Lumateperone</strong></td>
+                <td>3rd generation</td>
+                <td>Postsynaptic antagonist; presynaptic partial agonist</td>
+                <td>SERT (60x D2 affinity), D1, 5-HT2A, glutamate modulation</td>
+                <td>13–26 h</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- SECTION 3 -->
+        <h2 class="ba-h2">3. Evolving Indications</h2>
+
+        <p>
+          Antipsychotic indications have expanded well beyond schizophrenia. FDA approval of multiple SGAs for bipolar disorder, MDD augmentation, and other conditions reflects both broader evidence generation and commercial development priorities. Off-label use remains common and is often evidence-informed but carries variable evidentiary quality.
+        </p>
+
+        <h3 class="ba-h3">Schizophrenia</h3>
+        <p>
+          All available antipsychotics are FDA-approved for schizophrenia. Meta-analytic data (Leucht et al., Lancet 2013) demonstrate that all agents are superior to placebo for positive symptoms, with modest differences in efficacy among SGAs. Clozapine uniquely outperforms other agents in treatment-resistant schizophrenia (TRS), defined as inadequate response to two adequate antipsychotic trials. First-episode schizophrenia benefits from the lowest effective dose; relapse prevention and long-acting injectable (LAI) formulations address the high relapse rates associated with non-adherence (estimated at 50% within one year of discharge).
+        </p>
+
+        <h3 class="ba-h3">Bipolar Disorder</h3>
+        <p>
+          Multiple SGAs hold FDA approval across the bipolar spectrum. For acute mania, approved agents include olanzapine, risperidone, quetiapine, aripiprazole, ziprasidone, asenapine, cariprazine, and paliperidone. For bipolar depression — a significant treatment gap historically — lurasidone (as monotherapy and adjunct), quetiapine, and cariprazine are FDA-approved, offering alternatives to the complex and often underutilized mood stabilizer combinations previously required. Olanzapine-fluoxetine combination (OFC) provides a combined approach for bipolar I depression.
+        </p>
+
+        <h3 class="ba-h3">MDD Augmentation</h3>
+        <p>
+          Partial or non-response to antidepressant monotherapy — affecting approximately 30–50% of MDD patients — has driven FDA approvals for antipsychotic augmentation. Aripiprazole, brexpiprazole, and quetiapine XR are specifically approved as MDD adjuncts. These agents appear to augment antidepressant response through multiple mechanisms: 5-HT1A partial agonism, NET-mediated norepinephrine effects (norquetiapine), and D3 receptor modulation. The risk-benefit calculation differs from the psychosis indication, as metabolic and movement disorder risks must be weighed against moderate augmentation efficacy.
+        </p>
+
+        <h3 class="ba-h3">Other FDA-Approved Indications</h3>
+        <ul>
+          <li><strong>Tourette's disorder:</strong> Haloperidol, pimozide (FGAs); aripiprazole (SGA) — FDA-approved for tic reduction</li>
+          <li><strong>Irritability in autism spectrum disorder:</strong> Aripiprazole, risperidone — FDA-approved for pediatric patients</li>
+          <li><strong>Acute agitation (IM formulations):</strong> Haloperidol, ziprasidone, olanzapine, aripiprazole — commonly used in emergency settings</li>
+          <li><strong>Delirium:</strong> Off-label but widely used; haloperidol remains standard; emerging data for quetiapine</li>
+          <li><strong>OCD augmentation:</strong> Risperidone, aripiprazole — used adjunctively with SRI therapy in refractory OCD</li>
+        </ul>
+
+        <h3 class="ba-h3">Off-Label Applications</h3>
+        <p>
+          Off-label use of antipsychotics is prevalent in clinical practice. Evidence quality varies considerably across applications:
+        </p>
+        <ul>
+          <li><strong>PTSD-related nightmares:</strong> Quetiapine is used off-label; prazosin has stronger RCT evidence for nightmare reduction specifically</li>
+          <li><strong>Borderline personality disorder:</strong> Low-dose antipsychotics may address cognitive-perceptual symptoms and affective dysregulation; evidence base modest</li>
+          <li><strong>Anxiety augmentation:</strong> Quetiapine has demonstrated anxiolytic properties; risk-benefit must be carefully considered vs. established first-line agents</li>
+          <li><strong>Dementia-related behavioral disturbances:</strong> FDA black box warning for elderly patients with dementia-related psychosis — approximately 1.6–1.7x increased mortality risk — requires explicit informed consent and conservative use</li>
+        </ul>
+
+        <div class="ba-table-wrap">
+          <table class="ba-table">
+            <thead>
+              <tr>
+                <th>Drug</th>
+                <th>FDA-Approved Indications</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Haloperidol</strong></td>
+                <td>Schizophrenia; acute psychosis; Tourette's; severe behavioral problems in children</td>
+              </tr>
+              <tr>
+                <td><strong>Chlorpromazine</strong></td>
+                <td>Schizophrenia; acute mania; intractable hiccups; nausea/vomiting; tetanus adjunct</td>
+              </tr>
+              <tr>
+                <td><strong>Risperidone</strong></td>
+                <td>Schizophrenia (adults and adolescents); bipolar I acute mania (mono/adjunct); irritability in autism (pediatric)</td>
+              </tr>
+              <tr>
+                <td><strong>Olanzapine</strong></td>
+                <td>Schizophrenia; bipolar I acute mania/mixed (mono/adjunct); bipolar I depression (OFC); maintenance bipolar I; acute agitation (IM)</td>
+              </tr>
+              <tr>
+                <td><strong>Quetiapine</strong></td>
+                <td>Schizophrenia; bipolar I acute mania (mono/adjunct); bipolar depression; bipolar maintenance (adjunct); MDD augmentation (XR)</td>
+              </tr>
+              <tr>
+                <td><strong>Aripiprazole</strong></td>
+                <td>Schizophrenia; bipolar I acute mania (mono/adjunct); bipolar maintenance; MDD augmentation; irritability in autism; Tourette's; acute agitation (IM)</td>
+              </tr>
+              <tr>
+                <td><strong>Clozapine</strong></td>
+                <td>Treatment-resistant schizophrenia; reduction of suicidal behavior in schizophrenia/schizoaffective disorder</td>
+              </tr>
+              <tr>
+                <td><strong>Ziprasidone</strong></td>
+                <td>Schizophrenia; bipolar I acute mania/mixed (mono/adjunct); acute agitation in schizophrenia (IM)</td>
+              </tr>
+              <tr>
+                <td><strong>Lurasidone</strong></td>
+                <td>Schizophrenia (adults and adolescents); bipolar depression (mono/adjunct)</td>
+              </tr>
+              <tr>
+                <td><strong>Cariprazine</strong></td>
+                <td>Schizophrenia; bipolar I acute mania/mixed; bipolar depression; MDD augmentation</td>
+              </tr>
+              <tr>
+                <td><strong>Brexpiprazole</strong></td>
+                <td>Schizophrenia; MDD augmentation; PTSD (adjunct, 2023 approval)</td>
+              </tr>
+              <tr>
+                <td><strong>Lumateperone</strong></td>
+                <td>Schizophrenia; bipolar depression (mono/adjunct)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- SECTION 4 -->
+        <h2 class="ba-h2">4. Side Effects Across Generations — Evolution and Shortcomings</h2>
+
+        <p>
+          The history of antipsychotic development is inseparable from the management of adverse effects. Each generation addressed the liabilities of its predecessors while introducing new ones. A comprehensive understanding of the side effect landscape is essential for informed prescribing, monitoring, and patient counseling.
+        </p>
+
+        <h3 class="ba-h3">Extrapyramidal Symptoms (EPS)</h3>
+        <p>
+          EPS arise from D2 blockade in the nigrostriatal pathway. The spectrum includes: <strong>akathisia</strong> (subjective motor restlessness, often the most distressing and underrecognized), <strong>drug-induced parkinsonism</strong> (rigidity, bradykinesia, tremor), <strong>acute dystonia</strong> (sustained involuntary muscle contractions, most common in young males within days of initiation), and <strong>tardive dyskinesia</strong> (TD; orofacial and choreiform movements, typically after months to years of exposure).
+        </p>
+        <p>
+          FGAs carry the highest EPS burden; haloperidol and fluphenazine are highest risk. SGAs substantially reduce — but do not eliminate — EPS risk: risperidone and paliperidone carry higher EPS rates among SGAs, particularly at doses above 6 mg/day. Clozapine has the lowest EPS risk of any antipsychotic. TD prevalence is estimated at 20–30% with long-term FGA exposure and 3–5% annually with SGAs. VMAT2 inhibitors (valbenazine, deutetrabenazine) are FDA-approved for TD management.
+        </p>
+
+        <h3 class="ba-h3">Metabolic Adverse Effects</h3>
+        <p>
+          Antipsychotic-induced metabolic syndrome — encompassing weight gain, dyslipidemia, and impaired glucose metabolism — represents the most consequential long-term safety concern for SGAs. Clozapine and olanzapine are associated with the greatest weight gain (average 4–9 kg over 10 weeks in clinical trials); quetiapine and risperidone are moderate risk; ziprasidone, lurasidone, and aripiprazole have the most favorable metabolic profiles. Mechanisms involve H1 blockade (driving appetite and weight gain), 5-HT2C antagonism (reducing satiety signaling), and direct effects on insulin sensitivity independent of weight changes.
+        </p>
+        <p>
+          Patients with schizophrenia have 2–3x the baseline cardiovascular mortality of the general population; antipsychotic-induced metabolic syndrome substantially compounds this risk. The CATIE trial (2005) demonstrated that 40–60% of patients receiving SGAs developed metabolic syndrome criteria after 18 months of treatment.
+        </p>
+
+        <h3 class="ba-h3">Prolactin Elevation</h3>
+        <p>
+          D2 blockade in the tuberoinfundibular pathway disinhibits prolactin secretion. Risperidone and paliperidone cause the most pronounced prolactin elevation among SGAs, often exceeding FGA levels; both can cause galactorrhea, gynecomastia, menstrual irregularities, and impaired bone density with chronic elevation. Aripiprazole uniquely <em>reduces</em> prolactin through partial D2 agonism and has been used adjunctively to counteract prolactin elevation caused by other agents. Quetiapine, olanzapine, and clozapine are relatively prolactin-neutral.
+        </p>
+
+        <h3 class="ba-h3">Sedation</h3>
+        <p>
+          H1 receptor blockade is the primary driver of antipsychotic sedation. Clozapine, olanzapine, and quetiapine — all high-affinity H1 antagonists — produce significant sedation, particularly at initiation. Sedation may be therapeutically useful in acute agitation or insomnia but is a significant source of functional impairment and non-adherence in outpatients. Ziprasidone and lurasidone have moderate sedation profiles; aripiprazole is least sedating and can be activating.
+        </p>
+
+        <h3 class="ba-h3">QTc Prolongation</h3>
+        <p>
+          Multiple antipsychotics inhibit hERG cardiac potassium channels, prolonging the QTc interval and increasing risk of Torsades de Pointes (TdP). Ziprasidone carries the most prominent QTc-prolonging effect among available SGAs; thioridazine (now rarely used) and intravenous haloperidol carry the highest risk among all antipsychotics. Baseline ECG is warranted for high-risk patients (congenital long QT, electrolyte abnormalities, concurrent QT-prolonging medications). QTc &gt;500 ms or increase &gt;60 ms from baseline warrants drug reconsideration.
+        </p>
+
+        <h3 class="ba-h3">Anticholinergic Effects</h3>
+        <p>
+          Muscarinic M1 blockade produces dry mouth, constipation, urinary retention, blurred vision, and cognitive impairment. Clozapine has the highest anticholinergic burden; olanzapine and quetiapine are moderate; high-potency FGAs and risperidone have minimal anticholinergic activity. Anticholinergic burden is additive across polypharmacy regimens — a clinically relevant consideration in elderly patients where cognitive impairment and urinary retention pose particular risks.
+        </p>
+
+        <h3 class="ba-h3">Agranulocytosis — Clozapine-Specific</h3>
+        <p>
+          Clozapine causes agranulocytosis (ANC &lt;500/mm&#179;) in approximately 1–2% of patients, with peak risk in the first 18 weeks. Fatalities occurred before mandatory monitoring was introduced. The FDA REMS program requires ANC monitoring with defined thresholds for dose modification or discontinuation. Clozapine also causes benign, non-dose-related leukocytosis and fever during initiation, which must be distinguished from early neutropenia.
+        </p>
+
+        <h3 class="ba-h3">Orthostatic Hypotension</h3>
+        <p>
+          Alpha-1 adrenergic blockade produces orthostatic hypotension, increasing fall risk and syncope, particularly problematic in elderly patients. Clozapine, chlorpromazine, and quetiapine carry the highest alpha-1 blocking activity. Gradual titration and counseling regarding positional changes are essential during initiation of these agents.
+        </p>
+
+        <!-- Side Effect Heatmap SVG -->
+        <div class="svg-container">
+          <svg viewBox="0 0 820 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:820px;">
+            <title>Antipsychotic Side Effect Profile Heatmap</title>
+
+            <!-- Background -->
+            <rect x="0" y="0" width="820" height="400" fill="#fefcf8" rx="6"/>
+
+            <!-- Title -->
+            <text x="410" y="28" font-size="15" font-weight="bold" text-anchor="middle" fill="#231e14">Antipsychotic Side Effect Severity Heatmap</text>
+            <text x="410" y="46" font-size="11" text-anchor="middle" fill="#6b6050">None/Minimal = green  |  Low = light green  |  Moderate = yellow  |  High = orange  |  Very High = red</text>
+
+            <!-- Column headers (side effects) -->
+            <!-- Col positions: 200, 300, 400, 500, 600, 700 (each 100 wide) -->
+            <text x="250" y="72" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">EPS /TD</text>
+            <text x="350" y="65" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Metabolic</text>
+            <text x="350" y="79" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Syndrome</text>
+            <text x="450" y="65" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Prolactin</text>
+            <text x="450" y="79" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Elevation</text>
+            <text x="550" y="65" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Sedation /</text>
+            <text x="550" y="79" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">H1 Block</text>
+            <text x="650" y="65" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">QTc</text>
+            <text x="650" y="79" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Prolongation</text>
+            <text x="750" y="65" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Anticholinergic</text>
+
+            <!-- Row label background -->
+            <rect x="0" y="82" width="200" height="300" fill="#ece6db" rx="2"/>
+
+            <!-- Drug row labels -->
+            <!-- Row y positions: 100, 135, 170, 205, 240, 275, 310, 345 (35px each) -->
+            <text x="196" y="117" font-size="13" font-weight="600" text-anchor="end" fill="#231e14">Haloperidol</text>
+            <text x="196" y="152" font-size="13" font-weight="600" text-anchor="end" fill="#231e14">Chlorpromazine</text>
+            <text x="196" y="187" font-size="13" font-weight="600" text-anchor="end" fill="#231e14">Risperidone</text>
+            <text x="196" y="222" font-size="13" font-weight="600" text-anchor="end" fill="#231e14">Olanzapine</text>
+            <text x="196" y="257" font-size="13" font-weight="600" text-anchor="end" fill="#231e14">Quetiapine</text>
+            <text x="196" y="292" font-size="13" font-weight="600" text-anchor="end" fill="#231e14">Aripiprazole</text>
+            <text x="196" y="327" font-size="13" font-weight="600" text-anchor="end" fill="#231e14">Clozapine</text>
+            <text x="196" y="362" font-size="13" font-weight="600" text-anchor="end" fill="#231e14">Ziprasidone</text>
+
+            <!-- Helper macro: cell = rect + text label -->
+            <!-- Color key: #c04030=VH(red), #b05a20=H(orange), #8b6914=M(yellow), #5a8a3a=L(lightgreen), #3a6e28=N(green) -->
+
+            <!-- Row 1: Haloperidol -->
+            <!-- EPS: VH -->
+            <rect x="202" y="88" width="96" height="32" fill="#c04030" rx="3"/>
+            <text x="250" y="109" font-size="12" font-weight="600" text-anchor="middle" fill="white">Very High</text>
+            <!-- Metabolic: None -->
+            <rect x="302" y="88" width="96" height="32" fill="#3a6e28" rx="3"/>
+            <text x="350" y="109" font-size="12" font-weight="600" text-anchor="middle" fill="white">Minimal</text>
+            <!-- Prolactin: VH -->
+            <rect x="402" y="88" width="96" height="32" fill="#c04030" rx="3"/>
+            <text x="450" y="109" font-size="12" font-weight="600" text-anchor="middle" fill="white">Very High</text>
+            <!-- Sedation: Low -->
+            <rect x="502" y="88" width="96" height="32" fill="#5a8a3a" rx="3"/>
+            <text x="550" y="109" font-size="12" font-weight="600" text-anchor="middle" fill="white">Low</text>
+            <!-- QTc: Moderate -->
+            <rect x="602" y="88" width="96" height="32" fill="#8b6914" rx="3"/>
+            <text x="650" y="109" font-size="12" font-weight="600" text-anchor="middle" fill="white">Moderate</text>
+            <!-- Anticholinergic: Low -->
+            <rect x="702" y="88" width="96" height="32" fill="#5a8a3a" rx="3"/>
+            <text x="750" y="109" font-size="12" font-weight="600" text-anchor="middle" fill="white">Low</text>
+
+            <!-- Row 2: Chlorpromazine -->
+            <rect x="202" y="123" width="96" height="32" fill="#b05a20" rx="3"/>
+            <text x="250" y="144" font-size="12" font-weight="600" text-anchor="middle" fill="white">High</text>
+            <rect x="302" y="123" width="96" height="32" fill="#8b6914" rx="3"/>
+            <text x="350" y="144" font-size="12" font-weight="600" text-anchor="middle" fill="white">Moderate</text>
+            <rect x="402" y="123" width="96" height="32" fill="#b05a20" rx="3"/>
+            <text x="450" y="144" font-size="12" font-weight="600" text-anchor="middle" fill="white">High</text>
+            <rect x="502" y="123" width="96" height="32" fill="#b05a20" rx="3"/>
+            <text x="550" y="144" font-size="12" font-weight="600" text-anchor="middle" fill="white">High</text>
+            <rect x="602" y="123" width="96" height="32" fill="#8b6914" rx="3"/>
+            <text x="650" y="144" font-size="12" font-weight="600" text-anchor="middle" fill="white">Moderate</text>
+            <rect x="702" y="123" width="96" height="32" fill="#b05a20" rx="3"/>
+            <text x="750" y="144" font-size="12" font-weight="600" text-anchor="middle" fill="white">High</text>
+
+            <!-- Row 3: Risperidone -->
+            <rect x="202" y="158" width="96" height="32" fill="#8b6914" rx="3"/>
+            <text x="250" y="179" font-size="12" font-weight="600" text-anchor="middle" fill="white">Moderate</text>
+            <rect x="302" y="158" width="96" height="32" fill="#8b6914" rx="3"/>
+            <text x="350" y="179" font-size="12" font-weight="600" text-anchor="middle" fill="white">Moderate</text>
+            <rect x="402" y="158" width="96" height="32" fill="#c04030" rx="3"/>
+            <text x="450" y="179" font-size="12" font-weight="600" text-anchor="middle" fill="white">Very High</text>
+            <rect x="502" y="158" width="96" height="32" fill="#8b6914" rx="3"/>
+            <text x="550" y="179" font-size="12" font-weight="600" text-anchor="middle" fill="white">Moderate</text>
+            <rect x="602" y="158" width="96" height="32" fill="#5a8a3a" rx="3"/>
+            <text x="650" y="179" font-size="12" font-weight="600" text-anchor="middle" fill="white">Low</text>
+            <rect x="702" y="158" width="96" height="32" fill="#3a6e28" rx="3"/>
+            <text x="750" y="179" font-size="12" font-weight="600" text-anchor="middle" fill="white">Minimal</text>
+
+            <!-- Row 4: Olanzapine -->
+            <rect x="202" y="193" width="96" height="32" fill="#5a8a3a" rx="3"/>
+            <text x="250" y="214" font-size="12" font-weight="600" text-anchor="middle" fill="white">Low</text>
+            <rect x="302" y="193" width="96" height="32" fill="#c04030" rx="3"/>
+            <text x="350" y="214" font-size="12" font-weight="600" text-anchor="middle" fill="white">Very High</text>
+            <rect x="402" y="193" width="96" height="32" fill="#8b6914" rx="3"/>
+            <text x="450" y="214" font-size="12" font-weight="600" text-anchor="middle" fill="white">Moderate</text>
+            <rect x="502" y="193" width="96" height="32" fill="#b05a20" rx="3"/>
+            <text x="550" y="214" font-size="12" font-weight="600" text-anchor="middle" fill="white">High</text>
+            <rect x="602" y="193" width="96" height="32" fill="#5a8a3a" rx="3"/>
+            <text x="650" y="214" font-size="12" font-weight="600" text-anchor="middle" fill="white">Low</text>
+            <rect x="702" y="193" width="96" height="32" fill="#8b6914" rx="3"/>
+            <text x="750" y="214" font-size="12" font-weight="600" text-anchor="middle" fill="white">Moderate</text>
+
+            <!-- Row 5: Quetiapine -->
+            <rect x="202" y="228" width="96" height="32" fill="#3a6e28" rx="3"/>
+            <text x="250" y="249" font-size="12" font-weight="600" text-anchor="middle" fill="white">Minimal</text>
+            <rect x="302" y="228" width="96" height="32" fill="#b05a20" rx="3"/>
+            <text x="350" y="249" font-size="12" font-weight="600" text-anchor="middle" fill="white">High</text>
+            <rect x="402" y="228" width="96" height="32" fill="#3a6e28" rx="3"/>
+            <text x="450" y="249" font-size="12" font-weight="600" text-anchor="middle" fill="white">Minimal</text>
+            <rect x="502" y="228" width="96" height="32" fill="#b05a20" rx="3"/>
+            <text x="550" y="249" font-size="12" font-weight="600" text-anchor="middle" fill="white">High</text>
+            <rect x="602" y="228" width="96" height="32" fill="#8b6914" rx="3"/>
+            <text x="650" y="249" font-size="12" font-weight="600" text-anchor="middle" fill="white">Moderate</text>
+            <rect x="702" y="228" width="96" height="32" fill="#8b6914" rx="3"/>
+            <text x="750" y="249" font-size="12" font-weight="600" text-anchor="middle" fill="white">Moderate</text>
+
+            <!-- Row 6: Aripiprazole -->
+            <rect x="202" y="263" width="96" height="32" fill="#5a8a3a" rx="3"/>
+            <text x="250" y="284" font-size="12" font-weight="600" text-anchor="middle" fill="white">Low</text>
+            <rect x="302" y="263" width="96" height="32" fill="#3a6e28" rx="3"/>
+            <text x="350" y="284" font-size="12" font-weight="600" text-anchor="middle" fill="white">Minimal</text>
+            <rect x="402" y="263" width="96" height="32" fill="#3a6e28" rx="3"/>
+            <text x="450" y="284" font-size="12" font-weight="600" text-anchor="middle" fill="white">Minimal*</text>
+            <rect x="502" y="263" width="96" height="32" fill="#3a6e28" rx="3"/>
+            <text x="550" y="284" font-size="12" font-weight="600" text-anchor="middle" fill="white">Minimal</text>
+            <rect x="602" y="263" width="96" height="32" fill="#3a6e28" rx="3"/>
+            <text x="650" y="284" font-size="12" font-weight="600" text-anchor="middle" fill="white">Minimal</text>
+            <rect x="702" y="263" width="96" height="32" fill="#3a6e28" rx="3"/>
+            <text x="750" y="284" font-size="12" font-weight="600" text-anchor="middle" fill="white">Minimal</text>
+
+            <!-- Row 7: Clozapine -->
+            <rect x="202" y="298" width="96" height="32" fill="#3a6e28" rx="3"/>
+            <text x="250" y="319" font-size="12" font-weight="600" text-anchor="middle" fill="white">Minimal</text>
+            <rect x="302" y="298" width="96" height="32" fill="#c04030" rx="3"/>
+            <text x="350" y="319" font-size="12" font-weight="600" text-anchor="middle" fill="white">Very High</text>
+            <rect x="402" y="298" width="96" height="32" fill="#3a6e28" rx="3"/>
+            <text x="450" y="319" font-size="12" font-weight="600" text-anchor="middle" fill="white">Minimal</text>
+            <rect x="502" y="298" width="96" height="32" fill="#c04030" rx="3"/>
+            <text x="550" y="319" font-size="12" font-weight="600" text-anchor="middle" fill="white">Very High</text>
+            <rect x="602" y="298" width="96" height="32" fill="#8b6914" rx="3"/>
+            <text x="650" y="319" font-size="12" font-weight="600" text-anchor="middle" fill="white">Moderate</text>
+            <rect x="702" y="298" width="96" height="32" fill="#c04030" rx="3"/>
+            <text x="750" y="319" font-size="12" font-weight="600" text-anchor="middle" fill="white">Very High</text>
+
+            <!-- Row 8: Ziprasidone -->
+            <rect x="202" y="333" width="96" height="32" fill="#8b6914" rx="3"/>
+            <text x="250" y="354" font-size="12" font-weight="600" text-anchor="middle" fill="white">Moderate</text>
+            <rect x="302" y="333" width="96" height="32" fill="#3a6e28" rx="3"/>
+            <text x="350" y="354" font-size="12" font-weight="600" text-anchor="middle" fill="white">Minimal</text>
+            <rect x="402" y="333" width="96" height="32" fill="#5a8a3a" rx="3"/>
+            <text x="450" y="354" font-size="12" font-weight="600" text-anchor="middle" fill="white">Low</text>
+            <rect x="502" y="333" width="96" height="32" fill="#8b6914" rx="3"/>
+            <text x="550" y="354" font-size="12" font-weight="600" text-anchor="middle" fill="white">Moderate</text>
+            <rect x="602" y="333" width="96" height="32" fill="#c04030" rx="3"/>
+            <text x="650" y="354" font-size="12" font-weight="600" text-anchor="middle" fill="white">Very High</text>
+            <rect x="702" y="333" width="96" height="32" fill="#3a6e28" rx="3"/>
+            <text x="750" y="354" font-size="12" font-weight="600" text-anchor="middle" fill="white">Minimal</text>
+
+            <!-- Footer note -->
+            <text x="202" y="384" font-size="11" fill="#6b6050">* Aripiprazole may reduce prolactin levels when used adjunctively with other antipsychotics.</text>
+
+          </svg>
+        </div>
+
+        <!-- SECTION 5 -->
+        <h2 class="ba-h2">5. Choosing the Right Antipsychotic</h2>
+
+        <p>
+          Antipsychotic selection requires integrating indication, patient-specific factors (metabolic history, cardiac risk, adherence, fertility, comorbidities), prior treatment history, and practical considerations such as formulary access and insurance coverage. The following framework provides evidence-anchored decision nodes for common clinical scenarios.
+        </p>
+
+        <h3 class="ba-h3">Clinical Decision Framework</h3>
+
+        <div class="ba-stacked-grid">
+          <div class="ba-stacked-card">
+            <div class="ba-stacked-title">First-Episode Schizophrenia</div>
+            <div class="ba-stacked-sub">Goal: Effective symptom control with minimal long-term burden</div>
+            <ul class="ba-stacked-list">
+              <li>Prefer lower-dose SGA: risperidone, aripiprazole, lurasidone</li>
+              <li>Start at lowest effective dose; titrate to response</li>
+              <li>First-episode patients may respond at lower D2 occupancy</li>
+              <li>Discuss LAI early — adherence is critical for relapse prevention</li>
+              <li>Monitor weight/metabolic parameters from day 1</li>
+            </ul>
+          </div>
+
+          <div class="ba-stacked-card">
+            <div class="ba-stacked-title">Treatment-Resistant Schizophrenia (TRS)</div>
+            <div class="ba-stacked-sub">Failed 2+ adequate trials (6 weeks at therapeutic dose)</div>
+            <ul class="ba-stacked-list">
+              <li>Clozapine is the evidence-based standard of care</li>
+              <li>Obtain ANC before initiation; enroll in REMS program</li>
+              <li>Titrate slowly to minimize hypotension and sedation</li>
+              <li>Target serum level 350–600 ng/mL for optimal efficacy</li>
+              <li>Consider augmentation with amisulpride or lamotrigine for partial responders</li>
+            </ul>
+          </div>
+
+          <div class="ba-stacked-card">
+            <div class="ba-stacked-title">Metabolic Syndrome / Obesity Concern</div>
+            <div class="ba-stacked-sub">Minimize weight gain and glucose dysregulation</div>
+            <ul class="ba-stacked-list">
+              <li>First choice: ziprasidone, lurasidone, aripiprazole</li>
+              <li>Avoid clozapine and olanzapine if metabolic risk is high</li>
+              <li>Ziprasidone: take with 500+ kcal meal for adequate absorption</li>
+              <li>Consider metformin co-prescription if metabolic risk is unavoidable</li>
+              <li>Monitor fasting glucose and lipids at baseline and 3-month intervals</li>
+            </ul>
+          </div>
+
+          <div class="ba-stacked-card">
+            <div class="ba-stacked-title">QTc Prolongation Concern</div>
+            <div class="ba-stacked-sub">Elevated baseline QTc or concurrent QT-prolonging agents</div>
+            <ul class="ba-stacked-list">
+              <li>Avoid ziprasidone, thioridazine, IV haloperidol</li>
+              <li>Preferred: aripiprazole (minimal QTc effect), lurasidone</li>
+              <li>Correct electrolytes (K+, Mg2+) before initiation</li>
+              <li>Review all concurrent medications for QT effects</li>
+              <li>Repeat ECG at therapeutic dose if borderline baseline QTc</li>
+            </ul>
+          </div>
+
+          <div class="ba-stacked-card">
+            <div class="ba-stacked-title">Bipolar Depression</div>
+            <div class="ba-stacked-sub">FDA-approved antipsychotics specifically for bipolar depression</div>
+            <ul class="ba-stacked-list">
+              <li>Lurasidone (monotherapy or adjunct): favorable metabolic profile</li>
+              <li>Quetiapine (IR or XR): broad evidence base, sedation useful if insomnia prominent</li>
+              <li>Cariprazine: FDA-approved, D3 activity may improve negative/cognitive symptoms</li>
+              <li>Lumateperone: approved mono/adjunct; low metabolic burden</li>
+              <li>OFC (olanzapine-fluoxetine): effective but highest metabolic risk</li>
+            </ul>
+          </div>
+
+          <div class="ba-stacked-card">
+            <div class="ba-stacked-title">MDD Augmentation</div>
+            <div class="ba-stacked-sub">Partial response to antidepressant monotherapy</div>
+            <ul class="ba-stacked-list">
+              <li>Aripiprazole: most robust evidence, activating, weight-neutral</li>
+              <li>Brexpiprazole: similar mechanism, potentially better tolerated akathisia profile</li>
+              <li>Quetiapine XR: sedating — useful if anxiety/insomnia comorbid</li>
+              <li>Cariprazine: FDA-approved for MDD augmentation (2023)</li>
+              <li>Screen for bipolar history before adding any antipsychotic to an antidepressant</li>
+            </ul>
+          </div>
+
+          <div class="ba-stacked-card">
+            <div class="ba-stacked-title">Prolactin-Sensitive Patients</div>
+            <div class="ba-stacked-sub">Breast cancer history, hypogonadism, osteoporosis, fertility concerns</div>
+            <ul class="ba-stacked-list">
+              <li>Preferred: aripiprazole (reduces prolactin), quetiapine, clozapine</li>
+              <li>Avoid risperidone, paliperidone (highest prolactin elevation)</li>
+              <li>FGAs generally prolactin-elevating — use cautiously</li>
+              <li>Adjunctive aripiprazole can normalize prolactin with concurrent risperidone</li>
+            </ul>
+          </div>
+
+          <div class="ba-stacked-card">
+            <div class="ba-stacked-title">Poor Adherence — LAI Formulations</div>
+            <div class="ba-stacked-sub">Improve adherence and reduce relapse rates</div>
+            <ul class="ba-stacked-list">
+              <li>Paliperidone palmitate (monthly, 3-monthly): most flexible LAI option</li>
+              <li>Aripiprazole monohydrate (monthly): favorable metabolic/EPS profile</li>
+              <li>Risperidone microspheres (biweekly): requires oral bridge for 3 weeks</li>
+              <li>Olanzapine pamoate (biweekly/monthly): post-injection sedation syndrome risk (PDSS) — 3-hour monitoring required</li>
+              <li>Haloperidol decanoate (monthly): cost-effective; EPS monitoring required</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Selection Flowchart SVG -->
+        <div class="svg-container">
+          <svg viewBox="0 0 800 620" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:800px;">
+            <title>Antipsychotic Selection Flowchart</title>
+            <rect x="0" y="0" width="800" height="620" fill="#f5f0e8" rx="6"/>
+
+            <!-- Title -->
+            <text x="400" y="28" font-size="15" font-weight="bold" text-anchor="middle" fill="#231e14">Antipsychotic Selection — Clinical Decision Flowchart</text>
+
+            <!-- START box -->
+            <rect x="300" y="42" width="200" height="40" fill="#4a7c35" rx="20"/>
+            <text x="400" y="67" font-size="14" font-weight="bold" text-anchor="middle" fill="white">New Antipsychotic Indication</text>
+
+            <!-- Arrow down -->
+            <line x1="400" y1="82" x2="400" y2="104" stroke="#4a7c35" stroke-width="2" marker-end="url(#arr)"/>
+
+            <!-- Diamond: Schizophrenia? -->
+            <polygon points="400,104 520,140 400,176 280,140" fill="#ece6db" stroke="#cfc8ba" stroke-width="1.5"/>
+            <text x="400" y="135" font-size="13" font-weight="600" text-anchor="middle" fill="#231e14">Schizophrenia</text>
+            <text x="400" y="151" font-size="13" font-weight="600" text-anchor="middle" fill="#231e14">Spectrum?</text>
+
+            <!-- Yes arrow down from diamond -->
+            <line x1="400" y1="176" x2="400" y2="200" stroke="#4a7c35" stroke-width="2" marker-end="url(#arr)"/>
+            <text x="413" y="192" font-size="12" fill="#3a6e28" font-weight="600">Yes</text>
+
+            <!-- No arrow right from diamond -->
+            <line x1="520" y1="140" x2="580" y2="140" stroke="#4a7c35" stroke-width="2" marker-end="url(#arr)"/>
+            <text x="545" y="133" font-size="12" fill="#3a6e28" font-weight="600">No</text>
+
+            <!-- Affective box (right branch) -->
+            <rect x="580" y="118" width="200" height="44" fill="#8b6914" rx="5"/>
+            <text x="680" y="137" font-size="13" font-weight="bold" text-anchor="middle" fill="white">Affective / MDD</text>
+            <text x="680" y="153" font-size="12" text-anchor="middle" fill="white">Augmentation Indication</text>
+            <line x1="680" y1="162" x2="680" y2="224" stroke="#8b6914" stroke-width="2" marker-end="url(#arr2)"/>
+
+            <!-- Affective options box -->
+            <rect x="580" y="224" width="200" height="90" fill="#ece6db" stroke="#cfc8ba" stroke-width="1.5" rx="5"/>
+            <text x="680" y="244" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Consider:</text>
+            <text x="588" y="261" font-size="11" fill="#231e14">Bipolar depression:</text>
+            <text x="588" y="276" font-size="11" fill="#231e14">Lurasidone, Quetiapine</text>
+            <text x="588" y="291" font-size="11" fill="#231e14">MDD augmentation:</text>
+            <text x="588" y="306" font-size="11" fill="#231e14">Aripiprazole, Brexpiprazole</text>
+
+            <!-- Diamond: Prior adequate trials? -->
+            <polygon points="400,200 530,248 400,296 270,248" fill="#ece6db" stroke="#cfc8ba" stroke-width="1.5"/>
+            <text x="400" y="242" font-size="13" font-weight="600" text-anchor="middle" fill="#231e14">Failed 2+ adequate</text>
+            <text x="400" y="258" font-size="13" font-weight="600" text-anchor="middle" fill="#231e14">antipsychotic trials?</text>
+
+            <!-- TRS: Yes arrow right -->
+            <line x1="530" y1="248" x2="580" y2="248" stroke="#c04030" stroke-width="2" marker-end="url(#arr3)"/>
+            <text x="550" y="241" font-size="12" fill="#c04030" font-weight="600">Yes</text>
+
+            <!-- TRS box -->
+            <rect x="540" y="372" width="230" height="64" fill="#c04030" rx="5"/>
+            <text x="655" y="395" font-size="13" font-weight="bold" text-anchor="middle" fill="white">Treatment-Resistant:</text>
+            <text x="655" y="413" font-size="13" font-weight="bold" text-anchor="middle" fill="white">CLOZAPINE</text>
+            <text x="655" y="428" font-size="11" text-anchor="middle" fill="#ffe0dc">(with REMS enrollment + ANC monitoring)</text>
+
+            <!-- TRS redirect line -->
+            <line x1="530" y1="248" x2="655" y2="248" stroke="#c04030" stroke-width="2"/>
+            <line x1="655" y1="248" x2="655" y2="372" stroke="#c04030" stroke-width="2" marker-end="url(#arr3)"/>
+
+            <!-- No arrow down -->
+            <line x1="400" y1="296" x2="400" y2="320" stroke="#4a7c35" stroke-width="2" marker-end="url(#arr)"/>
+            <text x="413" y="312" font-size="12" fill="#3a6e28" font-weight="600">No</text>
+
+            <!-- Diamond: Metabolic concern? -->
+            <polygon points="400,320 510,358 400,396 290,358" fill="#ece6db" stroke="#cfc8ba" stroke-width="1.5"/>
+            <text x="400" y="352" font-size="13" font-weight="600" text-anchor="middle" fill="#231e14">Metabolic concern</text>
+            <text x="400" y="368" font-size="13" font-weight="600" text-anchor="middle" fill="#231e14">or obesity?</text>
+
+            <!-- Metabolic: Yes arrow left -->
+            <line x1="290" y1="358" x2="220" y2="358" stroke="#4a7c35" stroke-width="2" marker-end="url(#arr)"/>
+            <text x="250" y="351" font-size="12" fill="#3a6e28" font-weight="600">Yes</text>
+
+            <!-- Metabolic choice box -->
+            <rect x="20" y="336" width="200" height="64" fill="#3a6e28" rx="5"/>
+            <text x="120" y="358" font-size="13" font-weight="bold" text-anchor="middle" fill="white">Ziprasidone,</text>
+            <text x="120" y="374" font-size="13" font-weight="bold" text-anchor="middle" fill="white">Lurasidone,</text>
+            <text x="120" y="390" font-size="13" font-weight="bold" text-anchor="middle" fill="white">Aripiprazole</text>
+
+            <!-- No arrow down from metabolic diamond -->
+            <line x1="400" y1="396" x2="400" y2="420" stroke="#4a7c35" stroke-width="2" marker-end="url(#arr)"/>
+            <text x="413" y="412" font-size="12" fill="#3a6e28" font-weight="600">No</text>
+
+            <!-- Diamond: QTc concern? -->
+            <polygon points="400,420 510,458 400,496 290,458" fill="#ece6db" stroke="#cfc8ba" stroke-width="1.5"/>
+            <text x="400" y="452" font-size="13" font-weight="600" text-anchor="middle" fill="#231e14">QTc prolongation</text>
+            <text x="400" y="468" font-size="13" font-weight="600" text-anchor="middle" fill="#231e14">concern?</text>
+
+            <!-- QTc: Yes arrow left -->
+            <line x1="290" y1="458" x2="220" y2="458" stroke="#4a7c35" stroke-width="2" marker-end="url(#arr)"/>
+            <text x="250" y="451" font-size="12" fill="#3a6e28" font-weight="600">Yes</text>
+
+            <!-- QTc choice box -->
+            <rect x="20" y="434" width="200" height="50" fill="#3a6e28" rx="5"/>
+            <text x="120" y="456" font-size="13" font-weight="bold" text-anchor="middle" fill="white">Aripiprazole or</text>
+            <text x="120" y="472" font-size="13" font-weight="bold" text-anchor="middle" fill="white">Lurasidone</text>
+            <text x="120" y="485" font-size="11" text-anchor="middle" fill="#c8ffc0">(Avoid ziprasidone)</text>
+
+            <!-- No arrow down -->
+            <line x1="400" y1="496" x2="400" y2="522" stroke="#4a7c35" stroke-width="2" marker-end="url(#arr)"/>
+            <text x="413" y="513" font-size="12" fill="#3a6e28" font-weight="600">No</text>
+
+            <!-- Default first episode box -->
+            <rect x="285" y="522" width="230" height="62" fill="#4a7c35" rx="5"/>
+            <text x="400" y="545" font-size="13" font-weight="bold" text-anchor="middle" fill="white">First-Episode / Standard:</text>
+            <text x="400" y="562" font-size="13" text-anchor="middle" fill="white">Risperidone, Aripiprazole,</text>
+            <text x="400" y="578" font-size="13" text-anchor="middle" fill="white">Lurasidone, Olanzapine</text>
+
+            <!-- Arrow markers -->
+            <defs>
+              <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#4a7c35"/>
+              </marker>
+              <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#8b6914"/>
+              </marker>
+              <marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#c04030"/>
+              </marker>
+            </defs>
+          </svg>
+        </div>
+
+        <div class="ba-insight-box">
+          <div class="ba-insight-icon">&#128161;</div>
+          <div>
+            <strong>Shared Decision-Making in Antipsychotic Selection</strong>
+            <p style="margin-bottom: 0;">Patient preferences — particularly regarding weight, sedation, injection vs. oral route, and sexual function — significantly predict long-term adherence. Evidence-based prescribing must integrate the patient's lived experience and treatment priorities. The CATIE trial demonstrated that all-cause discontinuation, largely patient-driven, was 74% at 18 months across all SGAs evaluated — underscoring that tolerability and patient preference are as clinically relevant as efficacy differences.</p>
+          </div>
+        </div>
+
+        <!-- SECTION 6 -->
+        <h2 class="ba-h2">6. Routine Monitoring</h2>
+
+        <p>
+          Systematic metabolic and safety monitoring is a standard of care for all patients prescribed antipsychotics. The American Diabetes Association/American Psychiatric Association consensus guidelines and subsequent APA schizophrenia practice guidelines provide the foundational monitoring framework. Clozapine requires additional specialized monitoring per its REMS program.
+        </p>
+
+        <div class="ba-table-wrap">
+          <table class="ba-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Baseline</th>
+                <th>1 Month</th>
+                <th>3 Months</th>
+                <th>6 Months</th>
+                <th>Annually</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Weight / BMI</strong></td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td><strong>Blood Pressure</strong></td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td><strong>Fasting Glucose</strong></td>
+                <td>Yes</td>
+                <td>—</td>
+                <td>Yes</td>
+                <td>—</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td><strong>HbA1c</strong></td>
+                <td>Yes (if DM risk)</td>
+                <td>—</td>
+                <td>—</td>
+                <td>Yes (if elevated)</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td><strong>Fasting Lipid Panel</strong></td>
+                <td>Yes</td>
+                <td>—</td>
+                <td>Yes (first initiation)</td>
+                <td>—</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td><strong>EPS / AIMS Assessment</strong></td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes (q6mo for TD-risk)</td>
+              </tr>
+              <tr>
+                <td><strong>QTc (ECG)</strong></td>
+                <td>Yes (high-risk agents/patients)</td>
+                <td>At target dose</td>
+                <td>—</td>
+                <td>—</td>
+                <td>As clinically indicated</td>
+              </tr>
+              <tr>
+                <td><strong>Prolactin</strong></td>
+                <td>If symptomatic</td>
+                <td>—</td>
+                <td>If symptomatic</td>
+                <td>—</td>
+                <td>If symptomatic</td>
+              </tr>
+              <tr>
+                <td><strong>CBC</strong></td>
+                <td>Yes (clozapine)</td>
+                <td>Weekly &#215; 6 months (clozapine)</td>
+                <td>Biweekly (clozapine)</td>
+                <td>Monthly (clozapine)</td>
+                <td>Monthly (clozapine)</td>
+              </tr>
+              <tr>
+                <td><strong>ANC (Absolute Neutrophil Count)</strong></td>
+                <td>Yes (clozapine REMS)</td>
+                <td>Weekly</td>
+                <td>Biweekly after 6 months</td>
+                <td>Monthly after 12 months</td>
+                <td>Monthly (ongoing)</td>
+              </tr>
+              <tr>
+                <td><strong>LFTs</strong></td>
+                <td>Yes (clozapine)</td>
+                <td>—</td>
+                <td>Yes (clozapine, first year)</td>
+                <td>Yes (clozapine)</td>
+                <td>Annually (clozapine)</td>
+              </tr>
+              <tr>
+                <td><strong>Waist Circumference</strong></td>
+                <td>Yes</td>
+                <td>—</td>
+                <td>—</td>
+                <td>Yes</td>
+                <td>Yes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ba-insight-box ba-insight-box--alert">
+          <div class="ba-insight-icon">&#9888;</div>
+          <div>
+            <strong>Clozapine REMS Program — Key Requirements</strong>
+            <p>Clozapine is available only through the FDA's Risk Evaluation and Mitigation Strategy (REMS) program. All prescribers, pharmacies, and patients must be enrolled. ANC thresholds govern dispensing:</p>
+            <ul style="margin-top: 8px; margin-left: 20px; margin-bottom: 0;">
+              <li><strong>ANC &ge; 1500/mm&#179;</strong> (general population) or &ge;1000/mm&#179; (benign ethnic neutropenia): Continue clozapine. Monitoring frequency per duration of therapy.</li>
+              <li><strong>ANC 1000–1499/mm&#179;</strong>: Monitor 3x/week; consult hematology if falls below 1000.</li>
+              <li><strong>ANC &lt; 1000/mm&#179;</strong> (or &lt;500 in benign ethnic neutropenia): Interrupt clozapine immediately; daily ANC monitoring; do not rechallenge unless hematologist approves.</li>
+              <li>After 12 months of stable ANC &ge;1500/mm&#179;, monitoring frequency may decrease to monthly.</li>
+              <li>Clozapine serum levels (target 350–600 ng/mL) can optimize efficacy and reduce dose-related side effects. Levels &gt;1000 ng/mL associated with seizure risk.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="ba-h3">Tardive Dyskinesia Monitoring</h3>
+        <p>
+          The Abnormal Involuntary Movement Scale (AIMS) should be administered at baseline and every 3–6 months for patients receiving long-term antipsychotics. Early detection enables dose reduction or medication change before TD becomes irreversible. Risk factors include: older age, female sex, African American ethnicity (not confirmed in all studies), greater cumulative antipsychotic exposure, early EPS, and mood disorder diagnosis. VMAT2 inhibitors (valbenazine, deutetrabenazine) are first-line FDA-approved treatments for established TD.
+        </p>
+
+        <h3 class="ba-h3">Metabolic Monitoring in Practice</h3>
+        <p>
+          Metabolic monitoring rates in real-world practice remain suboptimal. Studies consistently show that fewer than 50% of patients receive guideline-concordant metabolic monitoring in the months following antipsychotic initiation. Integrated care models, electronic health record reminders, and collaborative protocols with primary care improve adherence to monitoring standards. Clinicians should maintain a low threshold for early dietary and lifestyle counseling, and consider metformin prophylactically in high-risk patients (e.g., those starting olanzapine or clozapine).
+        </p>
+
+        <!-- SECTION 7 — References -->
+        <div class="ba-references">
+          <div class="ba-ref-title">References</div>
+          <ol class="ba-ref-list">
+            <li>Leucht S, Cipriani A, Spineli L, et al. Comparative efficacy and tolerability of 15 antipsychotic drugs in schizophrenia: a multiple-treatments meta-analysis. <em>Lancet.</em> 2013;382(9896):951–962. doi:10.1016/S0140-6736(13)60733-3</li>
+            <li>Kane J, Honigfeld G, Singer J, Meltzer H. Clozapine for the treatment-resistant schizophrenic: a double-blind comparison with chlorpromazine. <em>Arch Gen Psychiatry.</em> 1988;45(9):789–796.</li>
+            <li>Lieberman JA, Stroup TS, McEvoy JP, et al.; Clinical Antipsychotic Trials of Intervention Effectiveness (CATIE) Investigators. Effectiveness of antipsychotic drugs in patients with chronic schizophrenia. <em>N Engl J Med.</em> 2005;353(12):1209–1223.</li>
+            <li>Tiihonen J, Lönnqvist J, Wahlbeck K, et al. 11-year follow-up of mortality in patients with schizophrenia: a population-based cohort study (FIN11 study). <em>Lancet.</em> 2009;374(9690):620–627.</li>
+            <li>Correll CU, Manu P, Olshansky V, Napolitano B, Kane JM, Malhotra AK. Cardiometabolic risk of second-generation antipsychotic medications during first-time use in children and adolescents. <em>JAMA.</em> 2009;302(16):1765–1773.</li>
+            <li>American Psychiatric Association. <em>Practice Guideline for the Treatment of Patients with Schizophrenia.</em> 3rd ed. APA Publishing; 2021.</li>
+            <li>Stahl SM. <em>Stahl's Essential Psychopharmacology: Prescriber's Guide.</em> 7th ed. Cambridge University Press; 2021.</li>
+            <li>De Hert M, Detraux J, van Winkel R, Yu W, Correll CU. Metabolic and cardiovascular adverse effects associated with antipsychotic drugs. <em>Nat Rev Endocrinol.</em> 2012;8(2):114–126.</li>
+            <li>Solmi M, Murru A, Pacchiarotti I, et al. Safety, tolerability, and risks associated with first- and second-generation antipsychotics: a state-of-the-art clinical review. <em>Ther Clin Risk Manag.</em> 2017;13:757–777.</li>
+            <li>Lähteenvuo M, Tanskanen A, Taipale H, et al. Real-world effectiveness of pharmacologic treatments for the prevention of rehospitalization in a Finnish nationwide cohort of patients with bipolar disorder or schizophrenia. <em>JAMA Psychiatry.</em> 2018;75(4):347–355.</li>
+            <li>Bhattacharyya S. Antipsychotic-induced tardive dyskinesia: current understanding and approaches to management. <em>Neuropsychiatr Dis Treat.</em> 2021;17:2189–2201.</li>
+            <li>FDA Drug Safety Communication. Clozapine REMS Program. U.S. Food and Drug Administration. Accessed 2026. Available at: https://www.fda.gov/drugs/drug-safety-and-availability/clozapine-rems-program</li>
+          </ol>
+        </div>
+
+      </div><!-- end ba-body -->
+    </article>
+
+    <div class="ba-footer">
+      <p style="font-size: 0.9em; color: var(--text-muted);">PsychoPharmRef — Clinical reference for prescribing clinicians. Not intended for patient self-management.</p>
+      <a href="../index.html" class="back-link" style="margin-top: 16px;">&#8592; Back to PsychoPharmRef</a>
+    </div>
+
+  </div>
+</body>
+</html>
