@@ -682,7 +682,7 @@ function populateDrugSelect() {
   sel.innerHTML = '<option value="">-- Choose a drug --</option>' +
     Object.entries(groups).map(([cat, meds]) =>
       `<optgroup label="${cat}">${meds.map(m =>
-        `<option value="${m.id}">${m.name} (${m.brandName})</option>`
+        `<option value="${m.id}">${m.name} (${m.brandName.toUpperCase()})</option>`
       ).join('')}</optgroup>`
     ).join('');
 }
@@ -875,7 +875,7 @@ let compareChartInst = null;
 
 function populateCompareSelects() {
   const sorted = [...MEDICATIONS].filter(m => m.receptorKi).sort((a,b) => a.name.localeCompare(b.name));
-  const opts = sorted.map(m => `<option value="${m.id}">${m.name} (${m.class})</option>`).join('');
+  const opts = sorted.map(m => `<option value="${m.id}">${m.name} (${m.brandName.toUpperCase()})</option>`).join('');
   document.getElementById('compare-a').innerHTML = '<option value="">-- Select drug --</option>' + opts;
   document.getElementById('compare-b').innerHTML = '<option value="">-- Select drug --</option>' + opts;
 }
@@ -1534,7 +1534,7 @@ function initMedCompare() {
   let mcChart = null;
 
   const drugOptions = MEDICATIONS.slice().sort((a,b) => a.name.localeCompare(b.name))
-    .map(m => `<option value="${m.name}">${m.name} (${m.brandName})</option>`).join('');
+    .map(m => `<option value="${m.name}">${m.name} (${m.brandName.toUpperCase()})</option>`).join('');
 
   function buildSelectors() {
     const container = document.getElementById('mc-selectors');
@@ -2036,7 +2036,7 @@ function initMedTaper() {
 
   // Populate drug dropdowns
   const taperOptions = MEDICATIONS.slice().sort((a,b) => a.name.localeCompare(b.name))
-    .map(m => `<option value="${m.name}">${m.name} (${m.brandName})</option>`).join('');
+    .map(m => `<option value="${m.name}">${m.name} (${m.brandName.toUpperCase()})</option>`).join('');
   ['mt-drug-single','mt-drug-a','mt-drug-b'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.innerHTML = '<option value="">— Select —</option>' + taperOptions;

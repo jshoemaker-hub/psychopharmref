@@ -375,7 +375,7 @@ td {
 
 
 .drug-name-cell { font-weight: 600; color: var(--accent); white-space: nowrap; }
-.brand-name { color: var(--text-muted); font-size: 12px; }
+.brand-name { color: var(--text-muted); font-size: 12px; text-transform: uppercase; }
 
 /* Class badges */
 .class-badge {

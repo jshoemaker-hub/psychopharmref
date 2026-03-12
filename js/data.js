@@ -1971,7 +1971,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with caution' },
     qtInterval: false,
     proteinBinding: 13,
-    receptorKi: { SERT: 8.9, NET: 58, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, D2: 10000, H1: 10000, alpha1: 10000, M1: 10000 }
+    receptorKi: { SERT: 8.9, NET: 58, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, D2: 10000, H1: 10000, alpha1: 10000, M1: 10000 },
+    indications: [
+      { use: 'Fibromyalgia', year: 2009 },
+    ]
   }
   ,{
     id: 'levomilnacipran',
@@ -1991,7 +1994,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with caution' },
     qtInterval: false,
     proteinBinding: 22,
-    receptorKi: { SERT: 11, NET: 10, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, D2: 10000, H1: 10000, alpha1: 10000, M1: 10000 }
+    receptorKi: { SERT: 11, NET: 10, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, D2: 10000, H1: 10000, alpha1: 10000, M1: 10000 },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 2013 },
+    ]
   }
 
   // ── SSRI/5HT Multimodal ─────────────────────────────────────────────────
@@ -2013,7 +2019,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'No specific adjustment' },
     qtInterval: false,
     proteinBinding: 98,
-    receptorKi: { SERT: 1.6, NET: 113, DAT: 10000, '5HT1A': 15, '5HT2A': 200, '5HT2C': 910, D2: 10000, H1: 1200, alpha1: 2900, alpha2: 10000, M1: 10000 }
+    receptorKi: { SERT: 1.6, NET: 113, DAT: 10000, '5HT1A': 15, '5HT2A': 200, '5HT2C': 910, D2: 10000, H1: 1200, alpha1: 2900, alpha2: 10000, M1: 10000 },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 2013 },
+    ]
   }
 
   // ── Azapirone Antidepressant ────────────────────────────────────────────
@@ -2035,7 +2044,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with caution; no specific dose adjustment but start low given limited geriatric data.' },
     qtInterval: false,
     proteinBinding: 97,
-    receptorKi: { '5HT1A': 21, SERT: 160, NET: 10000, DAT: 10000, '5HT2A': 10000, D2: 500, H1: 10000, alpha1: 10000, M1: 10000 }
+    receptorKi: { '5HT1A': 21, SERT: 160, NET: 10000, DAT: 10000, '5HT2A': 10000, D2: 500, H1: 10000, alpha1: 10000, M1: 10000 },
+    indications: [
+      { use: 'Major Depressive Disorder', year: 2023 },
+    ]
   }
 
   // ── Novel Antidepressants ───────────────────────────────────────────────
@@ -2058,7 +2070,11 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 43,
     receptorKi: null,
-    mechanism: 'NMDA receptor uncompetitive antagonist; also acts at opioid mu/kappa receptors and sigma receptors; rapidly reduces depressive symptoms; administered intranasally in-office under REMS program; also increases AMPA/mTOR signaling downstream'
+    mechanism: 'NMDA receptor uncompetitive antagonist; also acts at opioid mu/kappa receptors and sigma receptors; rapidly reduces depressive symptoms; administered intranasally in-office under REMS program; also increases AMPA/mTOR signaling downstream',
+    indications: [
+      { use: 'Treatment-Resistant Depression (adults)', year: 2019 },
+      { use: 'MDD with Acute Suicidal Ideation or Behavior (adults)', year: 2020 },
+    ]
   }
   ,{
     id: 'brexanolone',
@@ -2079,7 +2095,10 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 99,
     receptorKi: null,
-    mechanism: 'GABA-A receptor positive allosteric modulator (neuroactive steroid); acts at synaptic and extrasynaptic GABA-A receptors including delta subunit-containing; IV 60-hour infusion; approved specifically for postpartum depression; no abuse potential designation'
+    mechanism: 'GABA-A receptor positive allosteric modulator (neuroactive steroid); acts at synaptic and extrasynaptic GABA-A receptors including delta subunit-containing; IV 60-hour infusion; approved specifically for postpartum depression; no abuse potential designation',
+    indications: [
+      { use: 'Postpartum Depression (adults)', year: 2019 },
+    ]
   }
   ,{
     id: 'zuranolone',
@@ -2100,7 +2119,11 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 99,
     receptorKi: null,
-    mechanism: 'GABA-A receptor positive allosteric modulator (neuroactive steroid); oral formulation; taken daily for 14 days; acts at synaptic and extrasynaptic GABA-A receptors; CNS depressant effects — driving restriction for 12 hours after each dose'
+    mechanism: 'GABA-A receptor positive allosteric modulator (neuroactive steroid); oral formulation; taken daily for 14 days; acts at synaptic and extrasynaptic GABA-A receptors; CNS depressant effects — driving restriction for 12 hours after each dose',
+    indications: [
+      { use: 'Major Depressive Disorder (adults)', year: 2023 },
+      { use: 'Postpartum Depression (adults)', year: 2023 },
+    ]
   }
   ,{
     id: 'dextromethorphan-bupropion',
@@ -2121,7 +2144,10 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 90,
     receptorKi: null,
-    mechanism: 'Dextromethorphan: uncompetitive NMDA receptor antagonist + sigma-1 receptor agonist + SERT/NET inhibitor; bupropion: NDRI + CYP2D6 inhibitor (increases DXM bioavailability 10-fold); together produce rapid antidepressant effect; approved for MDD in adults'
+    mechanism: 'Dextromethorphan: uncompetitive NMDA receptor antagonist + sigma-1 receptor agonist + SERT/NET inhibitor; bupropion: NDRI + CYP2D6 inhibitor (increases DXM bioavailability 10-fold); together produce rapid antidepressant effect; approved for MDD in adults',
+    indications: [
+      { use: 'Major Depressive Disorder (adults)', year: 2022 },
+    ]
   }
 
   // ── Additional TCA ──────────────────────────────────────────────────────
@@ -2143,7 +2169,11 @@ const MEDICATIONS = [
     geriatricDosing: { modified: true, notes: 'Avoid high doses (Beers List); 3–6 mg for insomnia generally acceptable' },
     qtInterval: true,
     proteinBinding: 80,
-    receptorKi: { SERT: 68, NET: 30, DAT: 10000, '5HT1A': 10000, '5HT2A': 28, '5HT2C': 10000, D2: 400, H1: 0.2, alpha1: 23, alpha2: 10000, M1: 70 }
+    receptorKi: { SERT: 68, NET: 30, DAT: 10000, '5HT1A': 10000, '5HT2A': 28, '5HT2C': 10000, D2: 400, H1: 0.2, alpha1: 23, alpha2: 10000, M1: 70 },
+    indications: [
+      { use: 'Depression and Anxiety', year: 1969 },
+      { use: 'Insomnia (low-dose 3–6 mg)', year: 2010 },
+    ]
   }
 
   // ── Additional FGAs ─────────────────────────────────────────────────────
@@ -2165,7 +2195,11 @@ const MEDICATIONS = [
     geriatricDosing: { modified: true, notes: 'Very high EPS risk; avoid (Beers List)' },
     qtInterval: true,
     proteinBinding: 90,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 1.6, '5HT2C': 10000, D2: 0.3, H1: 50, alpha1: 45, alpha2: 10000, M1: 1200 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 1.6, '5HT2C': 10000, D2: 0.3, H1: 50, alpha1: 45, alpha2: 10000, M1: 1200 },
+    indications: [
+      { use: 'Schizophrenia', year: 1958 },
+      { use: 'Short-term Anxiety', year: 1958 },
+    ]
   }
   ,{
     id: 'perphenazine',
@@ -2185,7 +2219,11 @@ const MEDICATIONS = [
     geriatricDosing: { modified: true, notes: 'High EPS risk; use with caution' },
     qtInterval: true,
     proteinBinding: 90,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 2.1, '5HT2C': 3.3, D2: 0.5, H1: 8, alpha1: 10, alpha2: 10000, M1: 500 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 2.1, '5HT2C': 3.3, D2: 0.5, H1: 8, alpha1: 10, alpha2: 10000, M1: 500 },
+    indications: [
+      { use: 'Schizophrenia', year: 1957 },
+      { use: 'Severe Nausea and Vomiting', year: 1957 },
+    ]
   }
   ,{
     id: 'thiothixene',
@@ -2205,7 +2243,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: true, notes: 'High EPS risk; avoid (Beers List)' },
     qtInterval: true,
     proteinBinding: 99,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 25, '5HT2C': 10000, D2: 0.5, H1: 10, alpha1: 35, alpha2: 10000, M1: 10000 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 25, '5HT2C': 10000, D2: 0.5, H1: 10, alpha1: 35, alpha2: 10000, M1: 10000 },
+    indications: [
+      { use: 'Schizophrenia', year: 1967 },
+    ]
   }
   ,{
     id: 'pimozide',
@@ -2226,7 +2267,10 @@ const MEDICATIONS = [
     qtInterval: true,
     proteinBinding: 99,
     receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 1.0, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
-    mechanism: 'D2 receptor antagonist; also a calcium channel blocker (cardiac Na/K/Ca channels); FDA approved for Tourette syndrome; significant QT prolongation risk — requires ECG monitoring; many drug interactions via CYP3A4'
+    mechanism: 'D2 receptor antagonist; also a calcium channel blocker (cardiac Na/K/Ca channels); FDA approved for Tourette syndrome; significant QT prolongation risk — requires ECG monitoring; many drug interactions via CYP3A4',
+    indications: [
+      { use: "Tourette's Syndrome", year: 1984 },
+    ]
   }
   ,{
     id: 'thioridazine',
@@ -2246,7 +2290,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List); very high anticholinergic/QT burden' },
     qtInterval: true,
     proteinBinding: 99,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 6, '5HT2C': 10000, D2: 3, H1: 4, alpha1: 6, alpha2: 10000, M1: 5 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 6, '5HT2C': 10000, D2: 3, H1: 4, alpha1: 6, alpha2: 10000, M1: 5 },
+    indications: [
+      { use: 'Schizophrenia (refractory, last-line)', year: 1962 },
+    ]
   }
   ,{
     id: 'loxapine',
@@ -2266,7 +2313,11 @@ const MEDICATIONS = [
     geriatricDosing: { modified: true, notes: 'High EPS/sedation risk' },
     qtInterval: true,
     proteinBinding: 97,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 2, '5HT2C': 10000, D2: 10, H1: 4, alpha1: 14, alpha2: 10000, M1: 200 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 2, '5HT2C': 10000, D2: 10, H1: 4, alpha1: 14, alpha2: 10000, M1: 200 },
+    indications: [
+      { use: 'Schizophrenia', year: 1975 },
+      { use: 'Acute Agitation in Schizophrenia/Bipolar (inhaled)', year: 2012 },
+    ]
   }
   ,{
     id: 'molindone',
@@ -2286,7 +2337,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: true, notes: 'Use with caution; EPS risk' },
     qtInterval: true,
     proteinBinding: 76,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 7, H1: 10000, alpha1: 100, alpha2: 10000, M1: 10000 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 7, H1: 10000, alpha1: 100, alpha2: 10000, M1: 10000 },
+    indications: [
+      { use: 'Schizophrenia', year: 1974 },
+    ]
   }
 
   // ── Additional SGAs ─────────────────────────────────────────────────────
@@ -2308,7 +2362,11 @@ const MEDICATIONS = [
     geriatricDosing: { modified: true, notes: 'Renal function decreases with age; dose-adjust accordingly' },
     qtInterval: true,
     proteinBinding: 74,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 0.5, '5HT2C': 10000, D2: 2.0, D3: 10, H1: 6, alpha1: 1.0, alpha2: 10000, M1: 10000 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 0.5, '5HT2C': 10000, D2: 2.0, D3: 10, H1: 6, alpha1: 1.0, alpha2: 10000, M1: 10000 },
+    indications: [
+      { use: 'Schizophrenia', year: 2006 },
+      { use: 'Schizoaffective Disorder', year: 2009 },
+    ]
   }
   ,{
     id: 'iloperidone',
@@ -2328,7 +2386,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with caution; orthostatic hypotension and QT risks increase with age.' },
     qtInterval: true,
     proteinBinding: 95,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 0.3, '5HT2C': 10000, D2: 7, D3: 10, H1: 40, alpha1: 0.4, alpha2: 10000, M1: 10000 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 0.3, '5HT2C': 10000, D2: 7, D3: 10, H1: 40, alpha1: 0.4, alpha2: 10000, M1: 10000 },
+    indications: [
+      { use: 'Schizophrenia', year: 2009 },
+    ]
   }
   ,{
     id: 'brexpiprazole',
@@ -2348,7 +2409,12 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'No specific adjustment; monitor for orthostatic hypotension and EPS.' },
     qtInterval: false,
     proteinBinding: 99,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 0.12, '5HT2A': 0.47, '5HT2C': 2.1, D2: 0.3, D3: 1.1, H1: 19, alpha1: 0.6, alpha2: 0.5, M1: 10000 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 0.12, '5HT2A': 0.47, '5HT2C': 2.1, D2: 0.3, D3: 1.1, H1: 19, alpha1: 0.6, alpha2: 0.5, M1: 10000 },
+    indications: [
+      { use: 'Schizophrenia', year: 2015 },
+      { use: 'MDD (adjunctive to antidepressants)', year: 2015 },
+      { use: "Alzheimer's-Related Agitation", year: 2023 },
+    ]
   }
   ,{
     id: 'cariprazine',
@@ -2368,7 +2434,12 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with caution; limited data. Monitor for EPS, metabolic effects, and orthostasis.' },
     qtInterval: false,
     proteinBinding: 91,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 2.6, '5HT2A': 18, '5HT2C': 134, D2: 0.49, D3: 0.08, H1: 40, alpha1: 155, alpha2: 10000, M1: 10000 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 2.6, '5HT2A': 18, '5HT2C': 134, D2: 0.49, D3: 0.08, H1: 40, alpha1: 155, alpha2: 10000, M1: 10000 },
+    indications: [
+      { use: 'Schizophrenia', year: 2015 },
+      { use: 'Bipolar I Mania/Mixed Episodes', year: 2015 },
+      { use: 'Bipolar I Depression', year: 2019 },
+    ]
   }
   ,{
     id: 'lumateperone',
@@ -2388,7 +2459,11 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with caution; approved for bipolar depression in adults. Monitor for sedation and orthostasis.' },
     qtInterval: false,
     proteinBinding: 97,
-    receptorKi: { SERT: 62, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 0.54, '5HT2C': 10000, D2: 32, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 }
+    receptorKi: { SERT: 62, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 0.54, '5HT2C': 10000, D2: 32, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
+    indications: [
+      { use: 'Schizophrenia', year: 2019 },
+      { use: 'Bipolar I/II Depression', year: 2021 },
+    ]
   }
   ,{
     id: 'pimavanserin',
@@ -2408,7 +2483,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Main population; well studied in elderly with PD psychosis' },
     qtInterval: true,
     proteinBinding: 95,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 0.08, '5HT2C': 0.3, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 0.08, '5HT2C': 0.3, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
+    indications: [
+      { use: "Parkinson's Disease Psychosis", year: 2016 },
+    ]
   }
 
   // ── Additional Mood Stabilizers ─────────────────────────────────────────
@@ -2431,7 +2509,10 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 40,
     receptorKi: null,
-    mechanism: 'Sodium channel blocker (voltage-gated Na⁺ channels); active metabolite (MHD) responsible for anticonvulsant and mood-stabilizing effects; less drug interaction burden than carbamazepine; hyponatremia risk more pronounced than carbamazepine'
+    mechanism: 'Sodium channel blocker (voltage-gated Na⁺ channels); active metabolite (MHD) responsible for anticonvulsant and mood-stabilizing effects; less drug interaction burden than carbamazepine; hyponatremia risk more pronounced than carbamazepine',
+    indications: [
+      { use: 'Partial Seizures (monotherapy/adjunctive)', year: 2000 },
+    ]
   }
   ,{
     id: 'topiramate',
@@ -2452,7 +2533,13 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 15,
     receptorKi: null,
-    mechanism: 'Multiple mechanisms: voltage-gated Na⁺ channel blockade; GABA-A PAM at non-BZD site; AMPA/kainate glutamate receptor antagonism; carbonic anhydrase inhibition; weight loss is common (unique among anticonvulsants); cognitive side effects ("dopamax")'
+    mechanism: 'Multiple mechanisms: voltage-gated Na⁺ channel blockade; GABA-A PAM at non-BZD site; AMPA/kainate glutamate receptor antagonism; carbonic anhydrase inhibition; weight loss is common (unique among anticonvulsants); cognitive side effects ("dopamax")',
+    indications: [
+      { use: 'Partial Seizures (adjunctive)', year: 1996 },
+      { use: 'Primary Generalized Tonic-Clonic Seizures', year: 1996 },
+      { use: 'Lennox-Gastaut Syndrome (adjunctive)', year: 1998 },
+      { use: 'Migraine Prophylaxis', year: 2004 },
+    ]
   }
   ,{
     id: 'gabapentin',
@@ -2473,7 +2560,12 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 3,
     receptorKi: null,
-    mechanism: 'Binds α₂δ subunit of voltage-gated calcium channels; reduces excitatory neurotransmitter release; despite name, does not act on GABA receptors; used for neuropathic pain, fibromyalgia, seizures, restless legs syndrome, anxiety (off-label)'
+    mechanism: 'Binds α₂δ subunit of voltage-gated calcium channels; reduces excitatory neurotransmitter release; despite name, does not act on GABA receptors; used for neuropathic pain, fibromyalgia, seizures, restless legs syndrome, anxiety (off-label)',
+    indications: [
+      { use: 'Partial Seizures (adjunctive)', year: 1993 },
+      { use: 'Postherpetic Neuralgia', year: 2002 },
+      { use: 'Restless Legs Syndrome', year: 2011 },
+    ]
   }
 
   // ── Benzodiazepines (Anxiolytics) ───────────────────────────────────────
@@ -2496,7 +2588,11 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 80,
     receptorKi: { 'GABA-A': 1.0 },
-    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); enhances Cl⁻ influx frequency; high-potency BZD; approved for anxiety and panic disorder; notable for rapid onset; significant dependence potential'
+    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); enhances Cl⁻ influx frequency; high-potency BZD; approved for anxiety and panic disorder; notable for rapid onset; significant dependence potential',
+    indications: [
+      { use: 'Generalized Anxiety Disorder', year: 1981 },
+      { use: 'Panic Disorder', year: 1990 },
+    ]
   }
   ,{
     id: 'clonazepam',
@@ -2517,7 +2613,11 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 85,
     receptorKi: { 'GABA-A': 1.0 },
-    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); high potency; long half-life; approved for seizures and panic disorder; also used off-label for anxiety, akathisia, REM sleep behavior disorder'
+    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); high potency; long half-life; approved for seizures and panic disorder; also used off-label for anxiety, akathisia, REM sleep behavior disorder',
+    indications: [
+      { use: 'Seizure Disorders (Lennox-Gastaut, akinetic, absence)', year: 1975 },
+      { use: 'Panic Disorder', year: 1997 },
+    ]
   }
   ,{
     id: 'diazepam',
@@ -2538,7 +2638,13 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 99,
     receptorKi: { 'GABA-A': 5.0 },
-    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); long half-life with very long-acting active metabolites; used for anxiety, muscle relaxation, alcohol withdrawal, seizures; significant accumulation in elderly'
+    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); long half-life with very long-acting active metabolites; used for anxiety, muscle relaxation, alcohol withdrawal, seizures; significant accumulation in elderly',
+    indications: [
+      { use: 'Anxiety Disorder', year: 1963 },
+      { use: 'Alcohol Withdrawal', year: 1963 },
+      { use: 'Muscle Spasm', year: 1963 },
+      { use: 'Seizures / Status Epilepticus (IV)', year: 1963 },
+    ]
   }
   ,{
     id: 'lorazepam',
@@ -2559,7 +2665,12 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 91,
     receptorKi: { 'GABA-A': 2.0 },
-    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); medium-potency; direct glucuronidation — safer in hepatic disease; no active metabolites; parenteral forms available for status epilepticus'
+    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); medium-potency; direct glucuronidation — safer in hepatic disease; no active metabolites; parenteral forms available for status epilepticus',
+    indications: [
+      { use: 'Anxiety Disorder', year: 1977 },
+      { use: 'Status Epilepticus (IV)', year: 1977 },
+      { use: 'Preoperative Sedation', year: 1977 },
+    ]
   }
   ,{
     id: 'oxazepam',
@@ -2580,7 +2691,11 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 97,
     receptorKi: { 'GABA-A': 8.0 },
-    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); short-to-medium half-life; direct glucuronidation (like lorazepam/temazepam — "LOT" BZDs); no active metabolites; preferred in elderly and hepatic impairment'
+    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); short-to-medium half-life; direct glucuronidation (like lorazepam/temazepam — "LOT" BZDs); no active metabolites; preferred in elderly and hepatic impairment',
+    indications: [
+      { use: 'Anxiety Disorder', year: 1965 },
+      { use: 'Alcohol Withdrawal', year: 1965 },
+    ]
   }
   ,{
     id: 'chlordiazepoxide',
@@ -2601,7 +2716,11 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 96,
     receptorKi: { 'GABA-A': 10.0 },
-    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); first clinically used BZD (1960); classic agent for alcohol withdrawal (CIWA protocol); very long-acting due to multiple active metabolites'
+    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); first clinically used BZD (1960); classic agent for alcohol withdrawal (CIWA protocol); very long-acting due to multiple active metabolites',
+    indications: [
+      { use: 'Anxiety Disorder', year: 1960 },
+      { use: 'Alcohol Withdrawal', year: 1960 },
+    ]
   }
   ,{
     id: 'clorazepate',
@@ -2622,7 +2741,12 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 97,
     receptorKi: { 'GABA-A': 5.0 },
-    mechanism: 'Prodrug: converted by GI acid to nordiazepam (active, the same metabolite as diazepam); GABA-A PAM; used for anxiety and seizures; long-acting due to nordiazepam'
+    mechanism: 'Prodrug: converted by GI acid to nordiazepam (active, the same metabolite as diazepam); GABA-A PAM; used for anxiety and seizures; long-acting due to nordiazepam',
+    indications: [
+      { use: 'Anxiety Disorder', year: 1972 },
+      { use: 'Alcohol Withdrawal', year: 1972 },
+      { use: 'Partial Seizures (adjunctive)', year: 1981 },
+    ]
   }
   ,{
     id: 'midazolam',
@@ -2643,7 +2767,11 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 97,
     receptorKi: { 'GABA-A': 2.0 },
-    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); ultra-short acting; water-soluble at acidic pH; parenteral form for procedural sedation/anesthesia; high potency; rapid onset; used in ICU sedation'
+    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); ultra-short acting; water-soluble at acidic pH; parenteral form for procedural sedation/anesthesia; high potency; rapid onset; used in ICU sedation',
+    indications: [
+      { use: 'Procedural Sedation / Anesthesia Induction', year: 1985 },
+      { use: 'Status Epilepticus (buccal/intranasal forms)', year: 2019 },
+    ]
   }
   ,{
     id: 'triazolam',
@@ -2664,7 +2792,10 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 89,
     receptorKi: { 'GABA-A': 0.3 },
-    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); very short half-life; very high potency; used for insomnia; significant next-day amnesia and rebound insomnia risk'
+    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); very short half-life; very high potency; used for insomnia; significant next-day amnesia and rebound insomnia risk',
+    indications: [
+      { use: 'Insomnia (short-term)', year: 1982 },
+    ]
   }
   ,{
     id: 'estazolam',
@@ -2685,7 +2816,10 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 93,
     receptorKi: { 'GABA-A': 1.5 },
-    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); intermediate half-life; indicated for insomnia; Schedule IV controlled substance'
+    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); intermediate half-life; indicated for insomnia; Schedule IV controlled substance',
+    indications: [
+      { use: 'Insomnia (short-term)', year: 1990 },
+    ]
   }
   ,{
     id: 'flurazepam',
@@ -2706,7 +2840,10 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 97,
     receptorKi: { 'GABA-A': 1.0 },
-    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); effective sleep induction but very long-acting active metabolite causes next-day sedation; poor choice for elderly'
+    mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); effective sleep induction but very long-acting active metabolite causes next-day sedation; poor choice for elderly',
+    indications: [
+      { use: 'Insomnia (short-term)', year: 1970 },
+    ]
   }
 
   // ── Other Anxiolytics ───────────────────────────────────────────────────
@@ -2728,7 +2865,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Good option; no abuse potential' },
     qtInterval: false,
     proteinBinding: 86,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 40, '5HT2A': 10000, '5HT2C': 10000, D2: 190, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 40, '5HT2A': 10000, '5HT2C': 10000, D2: 190, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
+    indications: [
+      { use: 'Generalized Anxiety Disorder', year: 1986 },
+    ]
   }
   ,{
     id: 'pregabalin',
@@ -2749,7 +2889,14 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 0,
     receptorKi: null,
-    mechanism: 'Binds α₂δ subunit of voltage-gated calcium channels; reduces excitatory neurotransmitter release; FDA-approved for anxiety (GAD), neuropathic pain, fibromyalgia, partial seizures; higher bioavailability and faster absorption than gabapentin; Schedule V in US'
+    mechanism: 'Binds α₂δ subunit of voltage-gated calcium channels; reduces excitatory neurotransmitter release; FDA-approved for anxiety (GAD), neuropathic pain, fibromyalgia, partial seizures; higher bioavailability and faster absorption than gabapentin; Schedule V in US',
+    indications: [
+      { use: 'Diabetic Peripheral Neuropathy', year: 2004 },
+      { use: 'Postherpetic Neuralgia', year: 2004 },
+      { use: 'Partial Seizures (adjunctive)', year: 2005 },
+      { use: 'Fibromyalgia', year: 2007 },
+      { use: 'Neuropathic Pain (spinal cord injury)', year: 2012 },
+    ]
   }
   ,{
     id: 'propranolol',
@@ -2770,7 +2917,15 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 90,
     receptorKi: null,
-    mechanism: 'Non-selective β1/β2 adrenergic receptor antagonist; lipophilic — crosses BBB; reduces peripheral manifestations of anxiety (tachycardia, tremor); used off-label for performance anxiety; also used for essential tremor, hypertension, post-MI; not a controlled substance; does not treat psychological anxiety'
+    mechanism: 'Non-selective β1/β2 adrenergic receptor antagonist; lipophilic — crosses BBB; reduces peripheral manifestations of anxiety (tachycardia, tremor); used off-label for performance anxiety; also used for essential tremor, hypertension, post-MI; not a controlled substance; does not treat psychological anxiety',
+    indications: [
+      { use: 'Hypertension', year: 1967 },
+      { use: 'Angina Pectoris', year: 1967 },
+      { use: 'Cardiac Arrhythmias', year: 1967 },
+      { use: 'Essential Tremor', year: 1973 },
+      { use: 'Migraine Prophylaxis', year: 1973 },
+      { use: 'Post-Myocardial Infarction', year: 1975 },
+    ]
   }
   ,{
     id: 'clonidine',
@@ -2790,7 +2945,11 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Monitor blood pressure carefully' },
     qtInterval: false,
     proteinBinding: 30,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 50, alpha2: 0.5, M1: 10000 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 50, alpha2: 0.5, M1: 10000 },
+    indications: [
+      { use: 'Hypertension', year: 1974 },
+      { use: 'ADHD (Kapvay ER)', year: 2010 },
+    ]
   }
   ,{
     id: 'guanfacine',
@@ -2810,7 +2969,11 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with caution; monitor blood pressure and heart rate. Sedation risk.' },
     qtInterval: false,
     proteinBinding: 70,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 3, M1: 10000 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 3, M1: 10000 },
+    indications: [
+      { use: 'Hypertension (Tenex IR)', year: 1986 },
+      { use: 'ADHD (Intuniv ER)', year: 2009 },
+    ]
   }
 
   // ── Antihistamines / Sleep ──────────────────────────────────────────────
@@ -2832,7 +2995,11 @@ const MEDICATIONS = [
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List); anticholinergic burden + fall risk' },
     qtInterval: false,
     proteinBinding: 73,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, H1: 0.5, alpha1: 10000, alpha2: 10000, M1: 50 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, H1: 0.5, alpha1: 10000, alpha2: 10000, M1: 50 },
+    indications: [
+      { use: 'Nausea/Vomiting of Pregnancy (Diclegis)', year: 2013 },
+      { use: 'Insomnia (OTC)', year: 1978 },
+    ]
   }
 
   // ── Stimulants ──────────────────────────────────────────────────────────
@@ -2854,7 +3021,11 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with caution; cardiovascular monitoring important. Limited geriatric data.' },
     qtInterval: false,
     proteinBinding: 15,
-    receptorKi: { SERT: 10000, NET: 130, DAT: 34, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 }
+    receptorKi: { SERT: 10000, NET: 130, DAT: 34, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
+    indications: [
+      { use: 'ADHD', year: 1955 },
+      { use: 'Narcolepsy', year: 1955 },
+    ]
   }
   ,{
     id: 'dexmethylphenidate',
@@ -2875,7 +3046,10 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 15,
     receptorKi: { SERT: 10000, NET: 130, DAT: 34, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
-    mechanism: 'd-threo isomer of methylphenidate; pharmacologically equivalent but ~2× more potent (only active enantiomer); same DAT/NET reuptake inhibition; ER formulation (Focalin XR) provides bimodal release'
+    mechanism: 'd-threo isomer of methylphenidate; pharmacologically equivalent but ~2× more potent (only active enantiomer); same DAT/NET reuptake inhibition; ER formulation (Focalin XR) provides bimodal release',
+    indications: [
+      { use: 'ADHD', year: 2001 },
+    ]
   }
   ,{
     id: 'amphetamine-mixed-salts',
@@ -2896,7 +3070,11 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 25,
     receptorKi: { SERT: 100, NET: 20, DAT: 10, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
-    mechanism: 'Monoamine releasing agent: reverses DAT/NET/SERT to release dopamine, norepinephrine, serotonin into synapse; also displaces vesicular storage via VMAT2; weak MAO inhibitor; approved for ADHD and narcolepsy; urine pH affects clearance (acidic → faster elimination)'
+    mechanism: 'Monoamine releasing agent: reverses DAT/NET/SERT to release dopamine, norepinephrine, serotonin into synapse; also displaces vesicular storage via VMAT2; weak MAO inhibitor; approved for ADHD and narcolepsy; urine pH affects clearance (acidic → faster elimination)',
+    indications: [
+      { use: 'ADHD', year: 1996 },
+      { use: 'Narcolepsy', year: 1996 },
+    ]
   }
   ,{
     id: 'dextroamphetamine',
@@ -2916,7 +3094,11 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with extreme caution; cardiovascular risk. Not well studied in elderly.' },
     qtInterval: false,
     proteinBinding: 20,
-    receptorKi: { SERT: 100, NET: 18, DAT: 8, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 }
+    receptorKi: { SERT: 100, NET: 18, DAT: 8, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
+    indications: [
+      { use: 'ADHD', year: 1937 },
+      { use: 'Narcolepsy', year: 1937 },
+    ]
   }
   ,{
     id: 'lisdexamfetamine',
@@ -2937,7 +3119,11 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 98,
     receptorKi: { SERT: 100, NET: 18, DAT: 8, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
-    mechanism: 'Prodrug of d-amphetamine; cleaved in RBCs by peptidases; abuse-deterrent formulation (oral route-specific activation); same pharmacology as dextroamphetamine once cleaved; also FDA-approved for binge eating disorder'
+    mechanism: 'Prodrug of d-amphetamine; cleaved in RBCs by peptidases; abuse-deterrent formulation (oral route-specific activation); same pharmacology as dextroamphetamine once cleaved; also FDA-approved for binge eating disorder',
+    indications: [
+      { use: 'ADHD', year: 2007 },
+      { use: 'Moderate-to-Severe Binge Eating Disorder', year: 2015 },
+    ]
   }
   ,{
     id: 'modafinil',
@@ -2958,7 +3144,12 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 60,
     receptorKi: { SERT: 10000, NET: 10000, DAT: 4600, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
-    mechanism: 'Weak DAT inhibitor; promotes wakefulness via increased histamine in hypothalamus, reduced GABA, increased norepinephrine and orexin signaling; exact mechanism not fully characterized; Schedule IV; FDA-approved for narcolepsy, shift work sleep disorder, OSA-related sleepiness'
+    mechanism: 'Weak DAT inhibitor; promotes wakefulness via increased histamine in hypothalamus, reduced GABA, increased norepinephrine and orexin signaling; exact mechanism not fully characterized; Schedule IV; FDA-approved for narcolepsy, shift work sleep disorder, OSA-related sleepiness',
+    indications: [
+      { use: 'Narcolepsy', year: 1998 },
+      { use: 'Excessive Sleepiness with OSA', year: 2003 },
+      { use: 'Shift Work Sleep Disorder', year: 2004 },
+    ]
   }
   ,{
     id: 'armodafinil',
@@ -2979,7 +3170,12 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 60,
     receptorKi: { SERT: 10000, NET: 10000, DAT: 4600, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
-    mechanism: 'R-enantiomer of modafinil; longer duration of action; same mechanism as modafinil (DAT inhibition, histaminergic wakefulness promotion); FDA-approved for narcolepsy, shift work disorder, OSA; Schedule IV'
+    mechanism: 'R-enantiomer of modafinil; longer duration of action; same mechanism as modafinil (DAT inhibition, histaminergic wakefulness promotion); FDA-approved for narcolepsy, shift work disorder, OSA; Schedule IV',
+    indications: [
+      { use: 'Narcolepsy', year: 2007 },
+      { use: 'Excessive Sleepiness with OSA', year: 2007 },
+      { use: 'Shift Work Sleep Disorder', year: 2007 },
+    ]
   }
   ,{
     id: 'solriamfetol',
@@ -2999,7 +3195,11 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with caution; monitor cardiovascular effects. Limited geriatric data.' },
     qtInterval: false,
     proteinBinding: 13,
-    receptorKi: { SERT: 10000, NET: 21, DAT: 53, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 }
+    receptorKi: { SERT: 10000, NET: 21, DAT: 53, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
+    indications: [
+      { use: 'Excessive Daytime Sleepiness with Narcolepsy', year: 2019 },
+      { use: 'Excessive Daytime Sleepiness with OSA', year: 2019 },
+    ]
   }
 
   // ── Anticholinergics / Antihistamines ───────────────────────────────────
@@ -3021,7 +3221,12 @@ const MEDICATIONS = [
     geriatricDosing: { modified: true, notes: 'Use with caution (Beers List); anticholinergic burden' },
     qtInterval: true,
     proteinBinding: 93,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, H1: 0.6, alpha1: 7, alpha2: 10000, M1: 200 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, H1: 0.6, alpha1: 7, alpha2: 10000, M1: 200 },
+    indications: [
+      { use: 'Anxiety and Tension', year: 1956 },
+      { use: 'Pruritus (itching)', year: 1956 },
+      { use: 'Preoperative Sedation', year: 1956 },
+    ]
   }
   ,{
     id: 'diphenhydramine',
@@ -3041,7 +3246,12 @@ const MEDICATIONS = [
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List); very high anticholinergic burden; confusion/delirium risk' },
     qtInterval: false,
     proteinBinding: 82,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, H1: 1.0, alpha1: 10000, alpha2: 10000, M1: 15 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, H1: 1.0, alpha1: 10000, alpha2: 10000, M1: 15 },
+    indications: [
+      { use: 'Allergic Conditions / Urticaria', year: 1946 },
+      { use: 'Motion Sickness', year: 1946 },
+      { use: 'Insomnia (OTC)', year: 1982 },
+    ]
   }
   ,{
     id: 'trihexyphenidyl',
@@ -3061,7 +3271,11 @@ const MEDICATIONS = [
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List); high anticholinergic toxicity risk; confusion/urinary retention' },
     qtInterval: false,
     proteinBinding: 25,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 2 }
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 2 },
+    indications: [
+      { use: 'Parkinsonism (all forms)', year: 1952 },
+      { use: 'Drug-Induced Extrapyramidal Symptoms', year: 1952 },
+    ]
   }
 ];
 
