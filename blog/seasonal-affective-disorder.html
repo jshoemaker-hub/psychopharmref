@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seasonal Affective Disorder: Clinical Recognition and Management | PsychoPharmRef</title>
+    <meta name="description" content="Comprehensive clinical overview of seasonal affective disorder including pathophysiology, epidemiology, and evidence-based treatment strategies for healthcare providers.">
+    <style>
+        :root {
+            --bg: #f5f0e8;
+            --bg2: #ece6db;
+            --bg3: #e2dbd0;
+            --card: #fefcf8;
+            --border: #cfc8ba;
+            --accent: #4a7c35;
+            --accent2: #8b6914;
+            --text: #231e14;
+            --text-muted: #6b6050;
+            --green: #3a6e28;
+            --red: #c04030;
+            --yellow: #8b6914;
+            --orange: #b05a20;
+            --font: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font);
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .blog-article {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .ba-header {
+            background: linear-gradient(135deg, var(--green) 0%, var(--accent) 100%);
+            color: #fff;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .ba-category {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .ba-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .ba-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+
+        .ba-meta {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .ba-body {
+            padding: 2.5rem;
+        }
+
+        .ba-lead {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: var(--bg2);
+            border-left: 4px solid var(--accent);
+            border-radius: 4px;
+        }
+
+        .ba-h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--green);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .ba-h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent2);
+            margin-top: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .ba-stat-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .ba-stat-card {
+            background-color: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .ba-stat-card--alert {
+            background: linear-gradient(135deg, rgba(192, 64, 48, 0.08) 0%, rgba(139, 105, 20, 0.08) 100%);
+            border-color: var(--red);
+        }
+
+        .ba-stat-card--good {
+            background: linear-gradient(135deg, rgba(58, 110, 40, 0.08) 0%, rgba(74, 124, 53, 0.08) 100%);
+            border-color: var(--green);
+        }
+
+        .ba-stat-num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .ba-stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .ba-table-wrap {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .ba-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card);
+        }
+
+        .ba-table th {
+            background-color: var(--green);
+            color: #fff;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .ba-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ba-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .ba-table tbody tr:nth-child(even) {
+            background-color: var(--bg2);
+        }
+
+        .ba-insight-box {
+            background: linear-gradient(135deg, var(--accent2) 0%, var(--orange) 100%);
+            color: #fff;
+            padding: 2rem;
+            border-radius: 6px;
+            margin: 2rem 0;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .ba-insight-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .ba-timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .ba-timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--border);
+        }
+
+        .ba-tl-item {
+            margin-bottom: 2rem;
+            padding-left: 70px;
+            position: relative;
+        }
+
+        .ba-tl-dot {
+            position: absolute;
+            left: 8px;
+            top: 5px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            border: 3px solid var(--card);
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        .ba-tl-time {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .ba-tl-text {
+            color: var(--text);
+        }
+
+        .ba-summary-box {
+            background-color: var(--bg2);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin: 2rem 0;
+        }
+
+        .ba-therapy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .ba-therapy-card {
+            background-color: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .ba-therapy-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(74, 124, 53, 0.1);
+        }
+
+        .ba-therapy-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .ba-therapy-title {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .ba-references {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border);
+        }
+
+        .ba-ref-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--green);
+            margin-bottom: 1.5rem;
+        }
+
+        .ba-ref-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .ba-ref-list li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        .ba-ref-list li::before {
+            content: '[' attr(data-num) ']';
+            position: absolute;
+            left: 0;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .ba-footer {
+            background-color: var(--bg2);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--green);
+            text-decoration: underline;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--green);
+        }
+
+        .diagram-container {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: var(--bg2);
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .diagram-label {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        em {
+            color: var(--text-muted);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Blog</a>
+
+        <article class="blog-article">
+            <div class="ba-header">
+                <span class="ba-category">Mood Disorders</span>
+                <h1 class="ba-title">Seasonal Affective Disorder</h1>
+                <p class="ba-subtitle">Clinical Recognition, Pathophysiology, and Evidence-Based Management Strategies</p>
+                <div class="ba-meta">
+                    <span>Published March 12, 2026</span>
+                    <span>Clinical Review</span>
+                    <span>Peer-Informed Content</span>
+                </div>
+            </div>
+
+            <div class="ba-body">
+                <p class="ba-lead">
+                    Seasonal affective disorder (SAD) represents a significant subtype of major depressive disorder characterized by seasonal patterns of mood disturbance, typically recurring in fall and winter months. This review examines the historical context, age-specific manifestations, neurobiological mechanisms, and contemporary therapeutic approaches to enhance clinical recognition and optimize patient outcomes.
+                </p>
+
+                <!-- HISTORY SECTION -->
+                <h2 class="ba-h2">Historical Context and Recognition</h2>
+
+                <p>
+                    Seasonal mood variations have been documented for millennia, with references appearing in ancient Greek and Norse literature. However, formal medical recognition of seasonal affective disorder is relatively recent. In 1984, Rosenthal and colleagues at the National Institute of Mental Health published a landmark paper describing a distinct seasonal pattern in major depressive disorder, establishing SAD as a legitimate psychiatric condition. The condition was subsequently incorporated into the DSM-III-R (1987) and confirmed in DSM-5 as a specifier for major depressive disorder characterized by a seasonal pattern.
+                </p>
+
+                <p>
+                    Initial epidemiological studies conducted in the 1980s and 1990s indicated that SAD prevalence increased with geographical latitude, with higher rates in northern latitudes (approximately 10% in Alaska) compared to southern regions (approximately 1-2% in Florida). This geographical variation became a cornerstone for understanding SAD's relationship to environmental light exposure.
+                </p>
+
+                <div class="ba-stat-row">
+                    <div class="ba-stat-card">
+                        <div class="ba-stat-num">1-3%</div>
+                        <div class="ba-stat-label">Prevalence in Southern US</div>
+                    </div>
+                    <div class="ba-stat-card">
+                        <div class="ba-stat-num">9-10%</div>
+                        <div class="ba-stat-label">Prevalence in Alaska</div>
+                    </div>
+                    <div class="ba-stat-card">
+                        <div class="ba-stat-num">1984</div>
+                        <div class="ba-stat-label">Year SAD Formally Described</div>
+                    </div>
+                </div>
+
+                <!-- AGE-SPECIFIC MANIFESTATIONS -->
+                <h2 class="ba-h2">Age-Specific Clinical Manifestations</h2>
+
+                <h3 class="ba-h3">Children and Adolescents</h3>
+
+                <p>
+                    SAD in pediatric populations presents with distinctive characteristics that differ from adult presentations. Children with SAD frequently manifest irritability, behavioral dysregulation, and social withdrawal rather than the anhedonia and fatigue prominent in adults. School performance may deteriorate with declining grades and increased absences. Appetite changes may be more apparent than mood symptoms, with parents often reporting increased carbohydrate cravings rather than the atypical hyperphagia observed in adults.
+                </p>
+
+                <p>
+                    Research indicates that SAD onset in children typically occurs between ages 9-12, with female predominance becoming evident by mid-to-late adolescence. Adolescents may present with social isolation, academic decline, and substance experimentation as compensatory behaviors. The condition frequently goes unrecognized in pediatric settings, as seasonal mood changes are often attributed to academic stress or normal developmental processes.
+                </p>
+
+                <h3 class="ba-h3">Adults</h3>
+
+                <p>
+                    Adult-onset SAD typically emerges in the third to fourth decade of life, with peak incidence between ages 30-40. The classic presentation includes depressed mood, marked fatigue and hypersomnia, appetite increase with carbohydrate cravings, weight gain, and significant functional impairment. Many adult patients describe a cyclical pattern: fall symptom onset corresponding with earlier sunset, progressive worsening through December-January, and spontaneous remission with spring equinox.
+                </p>
+
+                <p>
+                    Occupational and social functioning may be substantially compromised. Patients report difficulty meeting work deadlines, diminished concentration and decision-making capacity, interpersonal conflict, and reduced sexual desire. Unlike some depressive conditions, suicidality is generally lower in SAD, though passive death wishes and hopelessness may be expressed.
+                </p>
+
+                <h3 class="ba-h3">Geriatric Patients</h3>
+
+                <p>
+                    SAD manifestations in older adults frequently overlap with age-related medical and psychiatric comorbidities, complicating diagnosis. Geriatric patients more commonly present with somatic complaints—chronic pain, headaches, gastrointestinal disturbance—rather than explicit mood symptoms. Cognitive complaints and memory concerns may be prominent, occasionally mimicking early neurocognitive disorder.
+                </p>
+
+                <p>
+                    The epidemiological pattern differs markedly in geriatric populations. Counterintuitively, SAD prevalence may actually decrease in advanced age (>65 years), though seasonal depression remains clinically significant. Medication interactions become critical considerations, as many older adults take medications affecting serotonin, circadian function, or sleep architecture. Polypharmacy-related complications and medical comorbidities (cardiovascular disease, metabolic syndrome) frequently co-occur and may worsen seasonal mood fluctuations.
+                </p>
+
+                <div class="diagram-container">
+                    <svg viewBox="0 0 600 300" width="100%" style="max-width: 600px;">
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#4a7c35;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#3a6e28;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#8b6914;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#b05a20;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Title -->
+                        <text x="300" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#231e14">SAD Prevalence by Age Group</text>
+
+                        <!-- Y-axis -->
+                        <line x1="60" y1="50" x2="60" y2="240" stroke="#cfc8ba" stroke-width="2"/>
+                        <!-- X-axis -->
+                        <line x1="60" y1="240" x2="580" y2="240" stroke="#cfc8ba" stroke-width="2"/>
+
+                        <!-- Y-axis labels -->
+                        <text x="45" y="245" font-size="12" text-anchor="end" fill="#6b6050">0%</text>
+                        <text x="45" y="175" font-size="12" text-anchor="end" fill="#6b6050">5%</text>
+                        <text x="45" y="105" font-size="12" text-anchor="end" fill="#6b6050">10%</text>
+
+                        <!-- Bars -->
+                        <!-- Children -->
+                        <rect x="90" y="195" width="60" height="45" fill="url(#grad1)" rx="3"/>
+                        <text x="120" y="260" font-size="13" text-anchor="middle" fill="#231e14" font-weight="500">Children</text>
+                        <text x="120" y="180" font-size="13" text-anchor="middle" fill="#231e14" font-weight="600">2-3%</text>
+
+                        <!-- Adolescents -->
+                        <rect x="175" y="155" width="60" height="85" fill="url(#grad1)" rx="3"/>
+                        <text x="205" y="260" font-size="13" text-anchor="middle" fill="#231e14" font-weight="500">Adolescents</text>
+                        <text x="205" y="135" font-size="13" text-anchor="middle" fill="#231e14" font-weight="600">5-7%</text>
+
+                        <!-- Adults -->
+                        <rect x="260" y="90" width="60" height="150" fill="url(#grad2)" rx="3"/>
+                        <text x="290" y="260" font-size="13" text-anchor="middle" fill="#231e14" font-weight="500">Adults</text>
+                        <text x="290" y="65" font-size="13" text-anchor="middle" fill="#231e14" font-weight="600">10%</text>
+
+                        <!-- Geriatric -->
+                        <rect x="345" y="175" width="60" height="65" fill="url(#grad2)" rx="3"/>
+                        <text x="375" y="260" font-size="13" text-anchor="middle" fill="#231e14" font-weight="500">Geriatric</text>
+                        <text x="375" y="160" font-size="13" text-anchor="middle" fill="#231e14" font-weight="600">4-5%</text>
+
+                        <!-- Female predominance indicator -->
+                        <circle cx="480" cy="180" r="35" fill="none" stroke="#c04030" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="480" y="180" font-size="12" text-anchor="middle" fill="#c04030" font-weight="600">Female</text>
+                        <text x="480" y="200" font-size="11" text-anchor="middle" fill="#c04030">Predominance</text>
+                    </svg>
+                </div>
+                <p class="diagram-label">Age-stratified prevalence data demonstrates peak prevalence in adult populations with biphasic distribution.</p>
+
+                <!-- PATHOPHYSIOLOGY SECTION -->
+                <h2 class="ba-h2">Pathophysiology and Neurobiological Mechanisms</h2>
+
+                <p>
+                    SAD pathophysiology involves complex interactions between circadian rhythm disruption, neurotransmitter dysregulation, and photosensitivity. The following mechanisms are implicated in current understanding:
+                </p>
+
+                <h3 class="ba-h3">Circadian Rhythm Desynchronization</h3>
+
+                <p>
+                    The suprachiasmatic nucleus (SCN), located in the anterior hypothalamus, serves as the master circadian clock regulating sleep-wake cycles, hormone secretion, and mood regulation. During winter months, reduced light exposure delays circadian phase and lengthens the circadian period. This chronobiological shift—phase delay hypothesis—proposes that endogenous circadian rhythms become misaligned with external light-dark cycles, creating internal desynchronization.
+                </p>
+
+                <p>
+                    Intrinsically photosensitive retinal ganglion cells (ipRGCs), containing melanopsin, project directly to the SCN and are maximally responsive to blue light wavelengths (460-480 nm). Reduced winter light intensity and altered spectral composition fail to adequately stimulate ipRGCs, resulting in weakened circadian entrainment. This mechanism explains the therapeutic efficacy of bright light therapy specifically targeting blue wavelengths.
+                </p>
+
+                <div class="diagram-container">
+                    <svg viewBox="0 0 700 350" width="100%" style="max-width: 700px;">
+                        <!-- Background -->
+                        <rect width="700" height="350" fill="#ece6db"/>
+
+                        <!-- Title -->
+                        <text x="350" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#231e14">Circadian Rhythm Disruption in SAD</text>
+
+                        <!-- Normal cycle (top) -->
+                        <text x="30" y="60" font-size="14" font-weight="600" fill="#231e14">Winter (SAD):</text>
+
+                        <!-- Sun path for winter (lower arc) -->
+                        <path d="M 100 150 Q 200 120 300 120 Q 400 120 500 150" stroke="#8b6914" stroke-width="3" fill="none" stroke-dasharray="5,5"/>
+                        <circle cx="100" cy="150" r="8" fill="#b05a20"/>
+                        <circle cx="500" cy="150" r="8" fill="#b05a20"/>
+
+                        <!-- SCN rhythm (winter) -->
+                        <text x="30" y="200" font-size="12" fill="#6b6050">SCN Phase:</text>
+                        <path d="M 100 210 L 150 190 L 200 210 L 250 230 L 300 210 L 350 180 L 400 210 L 450 230 L 500 210" stroke="#c04030" stroke-width="3" fill="none"/>
+
+                        <!-- Light exposure (winter) -->
+                        <text x="30" y="270" font-size="12" fill="#6b6050">Light Exposure:</text>
+                        <rect x="100" y="280" width="80" height="20" fill="#b05a20" opacity="0.3" rx="3"/>
+                        <text x="190" y="295" font-size="12" fill="#6b6050">Limited dawn/dusk exposure</text>
+
+                        <!-- Normal cycle (bottom) -->
+                        <text x="30" y="320" font-size="14" font-weight="600" fill="#231e14">Summer (Normal):</text>
+
+                        <!-- Misalignment indicator -->
+                        <text x="550" y="200" font-size="11" fill="#c04030" font-weight="600" text-anchor="end">Desynchronization</text>
+                        <text x="550" y="215" font-size="11" fill="#c04030" font-weight="600" text-anchor="end">Phase Delay</text>
+                        <path d="M 540 225 L 535 235 L 545 235" fill="#c04030" stroke="#c04030" stroke-width="1"/>
+                    </svg>
+                </div>
+                <p class="diagram-label">Winter circadian phase delay resulting from reduced light exposure and circadian desynchronization.</p>
+
+                <h3 class="ba-h3">Neurotransmitter Dysregulation</h3>
+
+                <p>
+                    <strong>Serotonin Hypothesis:</strong> Emerging evidence suggests seasonal reduction in serotonin transporter (SERT) availability and altered serotonin synthesis. Positron emission tomography studies demonstrate increased SERT density in dorsal raphe nuclei during winter months in SAD patients, but not in controls. This increased transporter density may reflect enhanced serotonin reuptake and reduced synaptic serotonin availability. Light exposure appears to normalize SERT density and enhance serotonergic neurotransmission.
+                </p>
+
+                <p>
+                    <strong>Melatonin and Chronobiological Factors:</strong> Melatonin, synthesized by the pineal gland in response to darkness, exhibits elevated nighttime levels in SAD patients, with delayed melatonin offset in morning hours. This phase-delayed melatonin rhythm aligns with the phase delay hypothesis. Additionally, some research suggests altered melatonin receptor sensitivity or abnormalities in melatonin metabolism (via organic anion transporters) in SAD-vulnerable individuals.
+                </p>
+
+                <p>
+                    <strong>Dopamine and Glutamate:</strong> Evidence increasingly implicates dopaminergic hypoactivity in striatal regions during SAD episodes. Reduced dopamine availability may explain the anhedonia, psychomotor retardation, and motivational deficits characteristic of seasonal depression. Glutamatergic dysfunction and altered GABAergic inhibition may also contribute to symptom manifestation.
+                </p>
+
+                <div class="diagram-container">
+                    <svg viewBox="0 0 700 300" width="100%" style="max-width: 700px;">
+                        <defs>
+                            <marker id="arrowgreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                                <path d="M0,0 L0,6 L9,3 z" fill="#3a6e28" />
+                            </marker>
+                            <marker id="arrowred" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                                <path d="M0,0 L0,6 L9,3 z" fill="#c04030" />
+                            </marker>
+                        </defs>
+
+                        <text x="350" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#231e14">Melatonin & Serotonin Imbalance in SAD</text>
+
+                        <!-- Melatonin curve (winter - elevated) -->
+                        <text x="80" y="70" font-size="13" font-weight="600" fill="#231e14">Melatonin</text>
+                        <path d="M 50 100 Q 150 70 250 100 Q 350 130 450 100 Q 550 70 650 100" stroke="#c04030" stroke-width="4" fill="none"/>
+                        <text x="670" y="105" font-size="12" fill="#c04030" font-weight="600">↑ Elevated</text>
+
+                        <!-- Serotonin curve (winter - reduced) -->
+                        <text x="80" y="200" font-size="13" font-weight="600" fill="#231e14">Serotonin</text>
+                        <path d="M 50 250 Q 150 230 250 250 Q 350 220 450 250 Q 550 230 650 250" stroke="#3a6e28" stroke-width="4" fill="none"/>
+                        <text x="670" y="255" font-size="12" fill="#3a6e28" font-weight="600">↓ Reduced</text>
+
+                        <!-- SERT activity (increased) -->
+                        <rect x="100" y="270" width="30" height="15" fill="#c04030" opacity="0.4" rx="2"/>
+                        <text x="140" y="282" font-size="11" fill="#231e14">↑ SERT activity → ↓ synaptic 5-HT</text>
+
+                        <!-- Light therapy effect arrow -->
+                        <line x1="400" y1="150" x2="400" y2="180" stroke="#3a6e28" stroke-width="2" marker-end="url(#arrowgreen)"/>
+                        <text x="410" y="170" font-size="11" fill="#3a6e28" font-weight="600">Light therapy</text>
+                    </svg>
+                </div>
+                <p class="diagram-label">Seasonal neurotransmitter dysregulation showing elevated melatonin and reduced serotonin availability in SAD.</p>
+
+                <h3 class="ba-h3">Genetic and Phenotypic Factors</h3>
+
+                <p>
+                    Family studies demonstrate significant heritability, with SAD concordance rates of 40-50% in monozygotic twin pairs. Candidate gene approaches have identified variations in circadian clock genes (PER2, CLOCK), serotonergic pathway genes (5-HTTLPR, BDNF), and photoreceptor-related genes (melanopsin) associated with SAD vulnerability. Additionally, polymorphisms affecting melatonin synthesis and catecholamine metabolism may confer susceptibility.
+                </p>
+
+                <p>
+                    Phenotypically, seasonal chronotype preference (morningness vs. eveningness) influences SAD manifestation. Evening chronotypes in high-latitude regions experience greater circadian misalignment, correlating with higher SAD prevalence. This relationship suggests that individual differences in circadian phase position and period length represent important biological vulnerability factors.
+                </p>
+
+                <!-- TREATMENT SECTION -->
+                <h2 class="ba-h2">Evidence-Based Treatment Strategies</h2>
+
+                <p>
+                    Contemporary SAD management employs multimodal approaches combining light therapy, pharmacotherapy, behavioral interventions, and complementary modalities. The following sections review therapeutic options with supporting evidence:
+                </p>
+
+                <h3 class="ba-h3">Light Therapy (Phototherapy)</h3>
+
+                <p>
+                    Bright light therapy represents the gold standard and first-line treatment for SAD, with response rates of 50-85% across clinical trials. Standard protocols employ 10,000 lux light boxes positioned approximately 50 cm from the patient's face for 20-30 minutes each morning. Morning administration capitalizes on the phase advance properties of light, counteracting the phase delay characteristic of SAD.
+                </p>
+
+                <p>
+                    Light-responsive mechanisms involve ipRGC activation in the retina, with subsequent SCN stimulation and downstream regulation of pineal melatonin synthesis. Spectral composition proves critical: blue-enriched light (460-480 nm wavelength peak) demonstrates superior efficacy compared to broadband white light of equivalent intensity. Response typically emerges within 3-5 days of initiating therapy, earlier than pharmaceutical alternatives.
+                </p>
+
+                <p>
+                    Potential adverse effects include headache, eye strain, jitteriness, and hypomania in bipolar spectrum individuals. Timing considerations are essential: evening light exposure may exacerbate symptoms by further phase-delaying circadian rhythms. Patients with photosensitizing medications (lithium, some antimalarials) require medical supervision.
+                </p>
+
+                <div class="diagram-container">
+                    <svg viewBox="0 0 650 300" width="100%" style="max-width: 650px;">
+                        <defs>
+                            <linearGradient id="lightGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ffeb3b;stop-opacity:0.8" />
+                                <stop offset="100%" style="stop-color:#ffc107;stop-opacity:0.3" />
+                            </linearGradient>
+                        </defs>
+
+                        <text x="325" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#231e14">Light Therapy Mechanism of Action</text>
+
+                        <!-- Light source -->
+                        <rect x="100" y="50" width="60" height="40" fill="#ffc107" rx="4" stroke="#8b6914" stroke-width="2"/>
+                        <text x="130" y="77" font-size="12" text-anchor="middle" fill="#231e14" font-weight="600">10,000 lux</text>
+
+                        <!-- Light rays -->
+                        <line x1="130" y1="90" x2="180" y2="120" stroke="url(#lightGrad)" stroke-width="3"/>
+                        <line x1="140" y1="90" x2="190" y2="120" stroke="url(#lightGrad)" stroke-width="3"/>
+                        <line x1="150" y1="90" x2="200" y2="120" stroke="url(#lightGrad)" stroke-width="3"/>
+
+                        <!-- Eye/ipRGC -->
+                        <circle cx="220" cy="130" r="30" fill="none" stroke="#3a6e28" stroke-width="2"/>
+                        <circle cx="220" cy="130" r="8" fill="#3a6e28" opacity="0.5"/>
+                        <text x="220" y="175" font-size="11" text-anchor="middle" fill="#231e14" font-weight="600">ipRGC</text>
+
+                        <!-- Arrow to SCN -->
+                        <path d="M 250 130 L 320 130" stroke="#4a7c35" stroke-width="2" marker-end="url(#arrowgreen)" fill="none"/>
+
+                        <!-- SCN -->
+                        <rect x="320" y="110" width="80" height="40" fill="#4a7c35" rx="4"/>
+                        <text x="360" y="138" font-size="12" text-anchor="middle" fill="white" font-weight="600">SCN</text>
+
+                        <!-- Arrow to effects -->
+                        <path d="M 400 130 L 470 130" stroke="#4a7c35" stroke-width="2" marker-end="url(#arrowgreen)" fill="none"/>
+
+                        <!-- Effects boxes -->
+                        <rect x="470" y="50" width="140" height="30" fill="#3a6e28" opacity="0.2" rx="3" stroke="#3a6e28" stroke-width="1"/>
+                        <text x="540" y="72" font-size="11" text-anchor="middle" fill="#231e14">↓ Melatonin suppression</text>
+
+                        <rect x="470" y="90" width="140" height="30" fill="#3a6e28" opacity="0.2" rx="3" stroke="#3a6e28" stroke-width="1"/>
+                        <text x="540" y="112" font-size="11" text-anchor="middle" fill="#231e14">↑ Phase advance</text>
+
+                        <rect x="470" y="130" width="140" height="30" fill="#3a6e28" opacity="0.2" rx="3" stroke="#3a6e28" stroke-width="1"/>
+                        <text x="540" y="152" font-size="11" text-anchor="middle" fill="#231e14">↑ Serotonergic tone</text>
+
+                        <rect x="470" y="170" width="140" height="30" fill="#3a6e28" opacity="0.2" rx="3" stroke="#3a6e28" stroke-width="1"/>
+                        <text x="540" y="192" font-size="11" text-anchor="middle" fill="#231e14">↓ SAD symptoms</text>
+
+                        <!-- Timing note -->
+                        <rect x="100" y="240" width="530" height="45" fill="#ece6db" stroke="#cfc8ba" stroke-width="1" rx="3"/>
+                        <text x="365" y="258" font-size="12" text-anchor="middle" fill="#231e14" font-weight="600">Optimal timing: Morning exposure (6-9 AM)</text>
+                        <text x="365" y="278" font-size="11" text-anchor="middle" fill="#6b6050">Response emerges within 3-5 days; typical duration 20-30 minutes daily</text>
+                    </svg>
+                </div>
+                <p class="diagram-label">Phototherapy mechanism: blue light stimulation of ipRGCs → SCN activation → phase advance and serotonergic enhancement.</p>
+
+                <div class="ba-stat-row">
+                    <div class="ba-stat-card ba-stat-card--good">
+                        <div class="ba-stat-num">50-85%</div>
+                        <div class="ba-stat-label">Response Rate to Light Therapy</div>
+                    </div>
+                    <div class="ba-stat-card">
+                        <div class="ba-stat-num">3-5 days</div>
+                        <div class="ba-stat-label">Time to Initial Response</div>
+                    </div>
+                    <div class="ba-stat-card">
+                        <div class="ba-stat-num">20-30 min</div>
+                        <div class="ba-stat-label">Daily Treatment Duration</div>
+                    </div>
+                </div>
+
+                <h3 class="ba-h3">Pharmacotherapy: Antidepressant Medications</h3>
+
+                <p>
+                    Selective serotonin reuptake inhibitors (SSRIs) constitute the primary pharmacological option for SAD, with efficacy rates of 60-70% across randomized controlled trials. Bupropion demonstrates particular utility in SAD populations, as its dopaminergic and noradrenergic mechanisms of action address both anhedonia and psychomotor retardation. Sertraline and fluoxetine have demonstrated efficacy in controlled trials, while extended-release fluoxetine (Prozac weekly) may offer compliance advantages in seasonal symptom patterns.
+                </p>
+
+                <p>
+                    Dosing strategies include prophylactic initiation 1-2 weeks prior to expected symptom onset in patients with established seasonal patterns. Alternatively, symptom-triggered dosing commences with first mood symptoms. Response typically requires 4-6 weeks, longer than light therapy but potentially sustaining throughout treatment periods.
+                </p>
+
+                <p>
+                    Serotonin-norepinephrine reuptake inhibitors (SNRIs) including venlafaxine and duloxetine show promise, though controlled SAD trials remain limited. Combined light therapy and pharmacotherapy may demonstrate synergistic efficacy in treatment-resistant cases.
+                </p>
+
+                <div class="ba-table-wrap">
+                    <table class="ba-table">
+                        <thead>
+                            <tr>
+                                <th>Medication Class</th>
+                                <th>Examples</th>
+                                <th>Mechanism</th>
+                                <th>SAD Efficacy</th>
+                                <th>Key Considerations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>SSRIs</strong></td>
+                                <td>Sertraline, Fluoxetine, Paroxetine</td>
+                                <td>5-HT reuptake inhibition</td>
+                                <td>60-70%</td>
+                                <td>First-line; consider long QT risk with citalopram</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bupropion</strong></td>
+                                <td>Bupropion SR/XL</td>
+                                <td>DA/NE reuptake inhibition</td>
+                                <td>65-75%</td>
+                                <td>Addresses anhedonia/fatigue; seizure risk at higher doses</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SNRIs</strong></td>
+                                <td>Venlafaxine, Duloxetine</td>
+                                <td>5-HT/NE reuptake inhibition</td>
+                                <td>55-65%</td>
+                                <td>Limited SAD-specific RCT data; promising clinical reports</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tricyclics</strong></td>
+                                <td>Amitriptyline, Nortriptyline</td>
+                                <td>Multiple mechanisms</td>
+                                <td>30-50%</td>
+                                <td>Anticholinergic effects; limited supporting evidence</td>
+                            </tr>
+                            <tr>
+                                <td><strong>MAOIs</strong></td>
+                                <td>Phenelzine, Tranylcypromine</td>
+                                <td>Monoamine oxidase inhibition</td>
+                                <td>70-80%</td>
+                                <td>Efficacious but dietary restrictions; second-line</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="ba-h3">Dietary and Nutritional Interventions</h3>
+
+                <p>
+                    Nutritional factors implicate several mechanisms in SAD pathophysiology. <strong>Vitamin D deficiency</strong> correlates with seasonal depression, though causality remains contested. Some evidence supports vitamin D supplementation (1000-2000 IU daily or monthly high-dose supplementation) in SAD patients, particularly those in high-latitude regions with limited winter sun exposure. However, large randomized controlled trials have produced mixed findings, suggesting vitamin D may constitute an adjunctive rather than primary intervention.
+                </p>
+
+                <p>
+                    <strong>Tryptophan and carbohydrate metabolism:</strong> The carbohydrate-craving phenotype characteristic of SAD may reflect endogenous attempts to enhance tryptophan bioavailability and serotonin synthesis. Dietary carbohydrate loading increases the insulin-mediated uptake of competing large neutral amino acids, thereby increasing central tryptophan availability. While acute carbohydrate consumption may temporarily elevate mood through serotonergic enhancement, sustained dietary patterns emphasizing refined carbohydrates correlate with metabolic dysfunction and may paradoxically worsen long-term mood outcomes. Complex carbohydrate sources should be emphasized.
+                </p>
+
+                <p>
+                    <strong>Omega-3 polyunsaturated fatty acids:</strong> Limited evidence suggests omega-3 supplementation (EPA-dominant formulations at 1-2g daily) may provide mood-stabilizing benefits in seasonal depression, though trials remain limited. Mechanistic hypotheses involve cell membrane fluidity modifications and anti-inflammatory effects.
+                </p>
+
+                <div class="ba-insight-box">
+                    <span class="ba-insight-icon">💡</span>
+                    <div>
+                        <strong>Clinical Pearl:</strong> While carbohydrate cravings in SAD patients often prompt dietary restriction counseling, moderate complex carbohydrate consumption may provide legitimate neurochemical benefits. Patient education should distinguish between beneficial patterns (whole grains, legumes) and problematic consumption (refined sugars, processed foods causing metabolic dysfunction).
+                    </div>
+                </div>
+
+                <h3 class="ba-h3">Behavioral and Lifestyle Interventions</h3>
+
+                <p>
+                    <strong>Cognitive-Behavioral Therapy (CBT):</strong> Behavioral activation and cognitive restructuring demonstrate efficacy comparable to light therapy in some populations (40-60% response rates). CBT for SAD typically emphasizes activity scheduling, behavioral engagement despite motivational deficits, and challenging seasonal hopelessness patterns. Individual trials comparing CBT to light therapy show variable results, with potential advantages to combination approaches.
+                </p>
+
+                <p>
+                    <strong>Sleep hygiene and circadian alignment:</strong> Patients benefit from structured sleep-wake schedules maintaining consistent timing despite seasonal variations. Morning bright light exposure combined with evening darkness maintenance (blue-light-filtered screens) optimizes circadian phase positioning. Some patients derive benefit from sleep restriction therapy (mild sleep deprivation) to consolidate sleep and enhance mood, though this approach requires careful supervision.
+                </p>
+
+                <p>
+                    <strong>Exercise and physical activity:</strong> Aerobic exercise demonstrates modest mood-enhancing effects, though evidence specific to SAD remains limited. Morning outdoor exposure during exercise sessions provides combined benefits of physical activity, light exposure, and circadian regulation. Recommended frequency involves 150 minutes moderate-intensity aerobic activity weekly.
+                </p>
+
+                <h3 class="ba-h3">Sauna Therapy and Heat Exposure</h3>
+
+                <p>
+                    Emerging research suggests thermotherapy may provide adjunctive benefits in SAD management. Regular sauna use has demonstrated mood-enhancing effects in preliminary studies, potentially through multiple mechanisms: heat-stress-induced endorphin release, reduced melatonin synthesis through core temperature elevation, and sympathetic nervous system activation. Proposed protocols involve sauna exposure of 20-30 minutes at 80-100°C, two to three times weekly.
+                </p>
+
+                <p>
+                    Mechanistic hypotheses suggest that core temperature elevation mimics circadian phase effects comparable to morning light exposure, potentially resetting circadian phase in patients with delayed schedules. The neurovascular and neuroendocrine effects of acute heat stress (elevated BDNF, heat shock protein upregulation) may contribute to mood benefits. However, adequately powered randomized controlled trials remain lacking, warranting cautious interpretation pending additional evidence.
+                </p>
+
+                <p>
+                    Safety considerations include cardiovascular contraindications, medication interactions (sympathomimetics, diuretics), and potential hyponatremia with excessive fluid loss. Patients on antipsychotic medications with impaired thermoregulation require medical clearance prior to sauna initiation.
+                </p>
+
+                <h3 class="ba-h3">Supplements and Botanical Agents</h3>
+
+                <p>
+                    <strong>Melatonin:</strong> Melatonin represents a theoretically attractive agent given elevated melatonin levels in SAD, yet evidence for efficacy in seasonal depression specifically remains weak. Small studies examining melatonin timing effects (early evening dosing to advance circadian phase) show promise but require replication. Typical doses range 0.5-3 mg taken 30-60 minutes before desired sleep time.
+                </p>
+
+                <p>
+                    <strong>St. John's Wort (Hypericum perforatum):</strong> Multiple trials demonstrate efficacy comparable to conventional SSRIs in mild to moderate depression, though SAD-specific trials remain limited. Dosing typically involves 300 mg three times daily of standardized extracts. Significant drug interactions via CYP3A4 and CYP2C9 induction warrant caution in polypharmacy settings.
+                </p>
+
+                <p>
+                    <strong>5-Hydroxytryptophan (5-HTP):</strong> This tryptophan metabolite serves as a serotonin precursor, theoretically enhancing synthesis. Evidence remains inconclusive, with small trials showing modest effects. Dosing involves 50-100 mg two to three times daily. Risk of serotonin syndrome when combined with MAOIs or SSRIs requires careful consideration.
+                </p>
+
+                <h2 class="ba-h2">Integrated Treatment Algorithm</h2>
+
+                <div class="diagram-container">
+                    <svg viewBox="0 0 700 500" width="100%" style="max-width: 700px;">
+                        <defs>
+                            <marker id="arrowblack" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                                <path d="M0,0 L0,6 L9,3 z" fill="#231e14" />
+                            </marker>
+                        </defs>
+
+                        <text x="350" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#231e14">SAD Treatment Decision Algorithm</text>
+
+                        <!-- Initial assessment -->
+                        <rect x="250" y="45" width="200" height="50" fill="#4a7c35" stroke="#3a6e28" stroke-width="2" rx="5"/>
+                        <text x="350" y="70" font-size="13" font-weight="600" text-anchor="middle" fill="white">Clinical Assessment</text>
+                        <text x="350" y="88" font-size="11" text-anchor="middle" fill="white">Confirm seasonal pattern</text>
+
+                        <!-- Arrow down -->
+                        <path d="M 350 95 L 350 120" stroke="#231e14" stroke-width="2" marker-end="url(#arrowblack)"/>
+
+                        <!-- First-line treatment -->
+                        <rect x="200" y="120" width="300" height="60" fill="#8b6914" stroke="#b05a20" stroke-width="2" rx="5"/>
+                        <text x="350" y="145" font-size="13" font-weight="600" text-anchor="middle" fill="white">First-Line: Light Therapy</text>
+                        <text x="350" y="163" font-size="11" text-anchor="middle" fill="white">10,000 lux, 20-30 min, morning</text>
+                        <text x="350" y="178" font-size="11" text-anchor="middle" fill="white">Response expected 3-5 days</text>
+
+                        <!-- Decision branches -->
+                        <path d="M 200 150 L 100 220" stroke="#231e14" stroke-width="2" marker-end="url(#arrowblack)"/>
+                        <path d="M 500 150 L 600 220" stroke="#231e14" stroke-width="2" marker-end="url(#arrowblack)"/>
+                        <path d="M 350 180 L 350 220" stroke="#231e14" stroke-width="2" marker-end="url(#arrowblack)"/>
+
+                        <!-- Response outcome -->
+                        <rect x="50" y="220" width="100" height="50" fill="#3a6e28" rx="4"/>
+                        <text x="100" y="243" font-size="12" font-weight="600" text-anchor="middle" fill="white">Response</text>
+                        <text x="100" y="260" font-size="10" text-anchor="middle" fill="white">Continue therapy</text>
+
+                        <!-- Partial response -->
+                        <rect x="275" y="220" width="150" height="50" fill="#8b6914" rx="4"/>
+                        <text x="352" y="240" font-size="12" font-weight="600" text-anchor="middle" fill="white">Partial Response</text>
+                        <text x="352" y="257" font-size="11" text-anchor="middle" fill="white">Add SSRI or increase light</text>
+
+                        <!-- Non-response -->
+                        <rect x="550" y="220" width="100" height="50" fill="#c04030" rx="4"/>
+                        <text x="600" y="243" font-size="12" font-weight="600" text-anchor="middle" fill="white">Non-Response</text>
+                        <text x="600" y="260" font-size="10" text-anchor="middle" fill="white">Add pharmacotherapy</text>
+
+                        <!-- Second-line options -->
+                        <path d="M 352 270 L 352 310" stroke="#231e14" stroke-width="2" marker-end="url(#arrowblack)"/>
+
+                        <rect x="200" y="310" width="300" height="60" fill="#3a6e28" stroke="#4a7c35" stroke-width="2" rx="5"/>
+                        <text x="350" y="330" font-size="12" font-weight="600" text-anchor="middle" fill="white">Second-Line Options</text>
+                        <text x="350" y="348" font-size="11" text-anchor="middle" fill="white">SSRI • Bupropion • SNRI • Behavioral therapy</text>
+                        <text x="350" y="363" font-size="10" text-anchor="middle" fill="white">Consider combinations for optimal efficacy</text>
+
+                        <!-- Maintenance -->
+                        <path d="M 350 370 L 350 410" stroke="#231e14" stroke-width="2" marker-end="url(#arrowblack)"/>
+
+                        <rect x="200" y="410" width="300" height="60" fill="#4a7c35" stroke="#3a6e28" stroke-width="2" rx="5"/>
+                        <text x="350" y="430" font-size="12" font-weight="600" text-anchor="middle" fill="white">Maintenance Phase</text>
+                        <text x="350" y="448" font-size="11" text-anchor="middle" fill="white">Continue through winter season</text>
+                        <text x="350" y="463" font-size="10" text-anchor="middle" fill="white">Plan discontinuation 1-2 weeks into spring</text>
+                    </svg>
+                </div>
+                <p class="diagram-label">Clinical decision tree for SAD management emphasizing light therapy as first-line with structured escalation options.</p>
+
+                <h3 class="ba-h3">Combination Therapy Approaches</h3>
+
+                <p>
+                    Clinical evidence increasingly supports combination strategies, particularly light therapy plus pharmacotherapy in moderate to severe presentations. Research demonstrates that combined approaches produce response rates of 75-90%, exceeding monotherapy efficacy. Theoretical synergism involves light therapy's rapid phase-resetting effects combined with medication's sustained neurotransmitter enhancement.
+                </p>
+
+                <p>
+                    In treatment-resistant cases (defined as inadequate response to sequential monotherapies), consideration should be given to therapy augmentation (adding agents with complementary mechanisms) or switching strategies. MAOIs remain underutilized despite strong evidence for SAD efficacy (70-80% response rates), potentially offering options for SSRI-resistant patients, though dietary and drug interaction restrictions limit broader application.
+                </p>
+
+                <div class="ba-therapy-grid">
+                    <div class="ba-therapy-card">
+                        <span class="ba-therapy-icon">💡</span>
+                        <div class="ba-therapy-title">Light Therapy</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">10,000 lux, 20-30 min morning; Response 3-5 days; First-line</p>
+                    </div>
+                    <div class="ba-therapy-card">
+                        <span class="ba-therapy-icon">💊</span>
+                        <div class="ba-therapy-title">Pharmacotherapy</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">SSRI/Bupropion; Start 1-2 weeks before onset; Response 4-6 weeks</p>
+                    </div>
+                    <div class="ba-therapy-card">
+                        <span class="ba-therapy-icon">🧠</span>
+                        <div class="ba-therapy-title">Behavioral Therapy</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">CBT-SAD; Activity scheduling; 40-60% efficacy</p>
+                    </div>
+                    <div class="ba-therapy-card">
+                        <span class="ba-therapy-icon">🏃</span>
+                        <div class="ba-therapy-title">Exercise & Lifestyle</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">150 min/week aerobic; Morning outdoor exposure</p>
+                    </div>
+                    <div class="ba-therapy-card">
+                        <span class="ba-therapy-icon">🧘</span>
+                        <div class="ba-therapy-title">Sauna Therapy</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">20-30 min, 2-3x weekly; Emerging evidence</p>
+                    </div>
+                    <div class="ba-therapy-card">
+                        <span class="ba-therapy-icon">🌿</span>
+                        <div class="ba-therapy-title">Nutritional Support</div>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Vitamin D, omega-3, complex carbohydrates</p>
+                    </div>
+                </div>
+
+                <h2 class="ba-h2">Clinical Summary and Management Pearls</h2>
+
+                <div class="ba-summary-box">
+                    <h3 class="ba-h3" style="margin-top: 0;">Key Clinical Points</h3>
+                    <ul style="margin-left: 1.5rem;">
+                        <li><strong>Diagnostic specificity:</strong> Confirm temporal pattern with symptom onset 2 weeks before winter solstice and remission 1-2 weeks before summer solstice for two consecutive years minimum.</li>
+                        <li><strong>Light therapy timing:</strong> Morning administration (6-9 AM) critical for phase advance effects; evening exposure may exacerbate symptoms.</li>
+                        <li><strong>Prophylactic pharmacotherapy:</strong> Consider initiating SSRIs/bupropion 1-2 weeks prior to expected symptom onset in established patterns.</li>
+                        <li><strong>Age-specific considerations:</strong> Pediatric patients require careful monitoring for activation/behavioral dysregulation with SSRIs; geriatric populations need comprehensive medication review given polypharmacy risks.</li>
+                        <li><strong>Bipolar spectrum vigilance:</strong> Light therapy may precipitate hypomania/mania in bipolar disorder; ensure mood screening before initiation.</li>
+                        <li><strong>Combination efficacy:</strong> Light therapy plus pharmacotherapy produces superior outcomes to monotherapy in moderate-severe presentations.</li>
+                        <li><strong>Longitudinal planning:</strong> Structured discontinuation protocols (gradual medication taper 1-2 weeks into spring) prevent interdependent medication use.</li>
+                    </ul>
+                </div>
+
+                <!-- REFERENCES SECTION -->
+                <div class="ba-references">
+                    <h2 class="ba-ref-title">References</h2>
+                    <ol class="ba-ref-list">
+                        <li data-num="1">Rosenthal NE, et al. Seasonal affective disorder. A description of the syndrome and preliminary findings with light therapy. Arch Gen Psychiatry. 1984;41(1):72-80.</li>
+                        <li data-num="2">American Psychiatric Association. Diagnostic and Statistical Manual of Mental Disorders. 5th ed. Arlington, VA: American Psychiatric Publishing; 2013.</li>
+                        <li data-num="3">Melrose S. Seasonal affective disorder: an overview of assessment and treatment approaches. Depress Res Treat. 2015;2015:178564.</li>
+                        <li data-num="4">Magnusson A, Partonen T. The diagnosis, symptomatology, and epidemiology of seasonal affective disorder. CNS Spectr. 2005;10(8):625-634.</li>
+                        <li data-num="5">Wirz-Justice A, Quinto C, Cajochen C, Werth E, Hock C. A randomized, double-blind, placebo-controlled study of light therapy for antepartum depression. J Clin Psychiatry. 2011;72(7):986-993.</li>
+                        <li data-num="6">Lam RW, et al. Efficacy of bright light treatment, fluoxetine, and the combination in patients with nonseasonal major depressive disorder. J Clin Psychiatry. 2016;77(1):56-63.</li>
+                        <li data-num="7">Berman K, et al. Modulation of neuroplasticity by non-invasive brain stimulation and behavioral training in depression and stroke recovery. Neural Plast. 2008;2008:725763.</li>
+                        <li data-num="8">Terman M, Terman JS. Light therapy for seasonal affective disorder: an evidence-based review of the recent literature. J Affect Disord. 2005;89(2-3):111-120.</li>
+                        <li data-num="9">Lewy AJ, et al. The circadian basis of winter depression. Proc Natl Acad Sci USA. 2006;103(19):7414-7419.</li>
+                        <li data-num="10">Srinivasan V, et al. Melatonin in mood disorders. World J Biol Psychiatry. 2006;7(3):138-151.</li>
+                        <li data-num="11">Sprague RL, et al. Light therapy for seasonal affective disorder: a review of efficacy. Psychol Med. 1999;29(2):319-326.</li>
+                        <li data-num="12">Benedetti F, et al. The catechol-O-methyltransferase Val(108/158)Met polymorphism affects temporal dynamics of antidepressant response to sleep deprivation and light therapy. Neuropsychobiology. 2007;55(3-4):228-235.</li>
+                        <li data-num="13">Even C, Schröder CM, Friedman S, Rouillon F. Efficacy of light therapy in seasonal affective disorder: a meta-analysis revisited. J Affect Disord. 2008;108(1-2):11-20.</li>
+                        <li data-num="14">Partonen T, Lönnqvist J. Seasonal affective disorder. Lancet. 1998;352(9137):1369-1374.</li>
+                        <li data-num="15">Golden RN, et al. The efficacy of light therapy in the treatment of mood disorders: a review and meta-analysis of the evidence. Am J Psychiatry. 2005;162(4):656-662.</li>
+                        <li data-num="16">Angst J, et al. Seasonality of mood disorders. Arch Gen Psychiatry. 1987;44(10):888-893.</li>
+                        <li data-num="17">Lam RW, Levitan RD. Pathophysiology of seasonal affective disorder: a review. J Psychiatry Neurosci. 2000;25(5):469-480.</li>
+                        <li data-num="18">Kasper S, Wehr TA, Bartko JJ, Gaist PA, Rosenthal NE. Epidemiological findings of seasonal changes in mood and behavior: a telephone survey of Montgomery County, Maryland. Arch Gen Psychiatry. 1989;46(10):823-833.</li>
+                        <li data-num="19">Faraone SV, et al. Predictors of antidepressant response in depression. Psychiatry Res. 2016;243:268-275.</li>
+                        <li data-num="20">Lam RW. Seasonal affective disorder: diagnosis and management. Prim Care Companion J Clin Psychiatry. 2002;4(2):41-47.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="ba-footer">
+                <p style="margin-bottom: 1rem; color: var(--text-muted); font-size: 0.9rem;">
+                    <strong>Disclaimer:</strong> This article is for educational purposes and is intended for healthcare professionals. All clinical decisions should be informed by current evidence, clinical judgment, and individual patient assessment.
+                </p>
+                <a href="../index.html" class="btn-primary">← Back to Blog</a>
+            </div>
+        </article>
+    </div>
+</body>
+</html>

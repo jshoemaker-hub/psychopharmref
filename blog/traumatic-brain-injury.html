@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traumatic Brain Injury, Post-Concussive Syndrome, and Chronic Traumatic Encephalopathy: A Clinical Review</title>
+    <style>
+        :root {
+            --bg: #f5f0e8; --bg2: #ece6db; --bg3: #e2dbd0;
+            --card: #fefcf8; --border: #cfc8ba;
+            --accent: #4a7c35; --accent2: #8b6914;
+            --text: #231e14; --text-muted: #6b6050;
+            --green: #3a6e28; --red: #c04030; --yellow: #8b6914; --orange: #b05a20;
+            --font: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%);
+            color: var(--text);
+            font-family: var(--font);
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .blog-article {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .ba-header {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent)cc 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .ba-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .ba-title {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .ba-subtitle {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 24px;
+        }
+
+        .ba-meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .ba-body {
+            padding: 50px 40px;
+        }
+
+        .ba-lead {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            font-style: italic;
+            padding-bottom: 24px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .ba-h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 40px 0 20px 0;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--accent2);
+        }
+
+        .ba-h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text);
+            margin: 28px 0 16px 0;
+        }
+
+        .ba-stat-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 32px 0;
+        }
+
+        .ba-stat-card {
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%);
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .ba-stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .ba-stat-card--alert {
+            border-color: var(--red);
+            background: linear-gradient(135deg, #fff5f4 0%, #fce8e6 100%);
+        }
+
+        .ba-stat-card--good {
+            border-color: var(--green);
+            background: linear-gradient(135deg, #f0f7ed 0%, #e6f0e2 100%);
+        }
+
+        .ba-stat-num {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .ba-stat-card--alert .ba-stat-num {
+            color: var(--red);
+        }
+
+        .ba-stat-card--good .ba-stat-num {
+            color: var(--green);
+        }
+
+        .ba-stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .ba-table-wrap {
+            overflow-x: auto;
+            margin: 28px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .ba-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card);
+        }
+
+        .ba-table thead {
+            background: var(--bg2);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .ba-table th {
+            padding: 14px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ba-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+        }
+
+        .ba-table tbody tr:hover {
+            background: var(--bg);
+        }
+
+        .ba-insight-box {
+            background: linear-gradient(135deg, #f0f7ed 0%, #e6f0e2 100%);
+            border-left: 5px solid var(--green);
+            padding: 24px;
+            margin: 28px 0;
+            border-radius: 8px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .ba-insight-icon {
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .ba-insight-box p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .ba-timeline {
+            margin: 32px 0;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .ba-tl-item {
+            margin-bottom: 28px;
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .ba-tl-dot {
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border: 3px solid var(--card);
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 4px;
+            box-shadow: 0 0 0 4px var(--accent)40;
+        }
+
+        .ba-tl-time {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ba-tl-text {
+            color: var(--text-muted);
+            margin-top: 6px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .ba-summary-box {
+            background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
+            border: 2px solid var(--border);
+            padding: 28px;
+            border-radius: 10px;
+            margin: 32px 0;
+        }
+
+        .ba-summary-box h3 {
+            color: var(--accent);
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+
+        .ba-summary-box ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .ba-summary-box li {
+            padding: 8px 0 8px 24px;
+            position: relative;
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .ba-summary-box li:before {
+            content: "▪";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .ba-references {
+            margin-top: 48px;
+            padding-top: 28px;
+            border-top: 3px solid var(--border);
+        }
+
+        .ba-ref-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .ba-ref-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .ba-ref-list li {
+            margin-bottom: 14px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+
+        .ba-ref-list li:last-child {
+            border-bottom: none;
+        }
+
+        .ba-therapy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 32px 0;
+        }
+
+        .ba-therapy-card {
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%);
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .ba-therapy-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 8px 16px rgba(74, 124, 53, 0.15);
+        }
+
+        .ba-therapy-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .ba-therapy-title {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .ba-therapy-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .ba-footer {
+            background: var(--bg2);
+            padding: 32px 40px;
+            text-align: center;
+            border-top: 2px solid var(--border);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+        }
+
+        .btn-primary:hover {
+            background: var(--green);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(58, 110, 40, 0.3);
+        }
+
+        .diagram-wrapper {
+            margin: 32px 0;
+            padding: 24px;
+            background: var(--bg);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+        }
+
+        .diagram-label {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        p {
+            margin-bottom: 16px;
+        }
+
+        strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        em {
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .ba-body {
+                padding: 32px 20px;
+            }
+
+            .ba-header {
+                padding: 40px 20px;
+            }
+
+            .ba-title {
+                font-size: 28px;
+            }
+
+            .ba-meta {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .ba-stat-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-article">
+        <header class="ba-header">
+            <span class="ba-category">Neuropsychiatry</span>
+            <h1 class="ba-title">Traumatic Brain Injury, Post-Concussive Syndrome, and Chronic Traumatic Encephalopathy: A Comprehensive Clinical Review</h1>
+            <p class="ba-subtitle">Understanding pathophysiology, clinical presentations, diagnostic approaches, and evidence-based treatment strategies</p>
+            <div class="ba-meta">
+                <span>Peer Review Focus</span>
+                <span>March 2026</span>
+                <span>Neuropsychiatry Division</span>
+            </div>
+        </header>
+
+        <main class="ba-body">
+            <p class="ba-lead">
+                Traumatic brain injury (TBI) represents one of the most significant yet underdiagnosed neuropsychiatric conditions in contemporary clinical practice. With an estimated 69 million people sustaining TBI annually worldwide, and many progressing to post-concussive syndrome (PCS) or chronic traumatic encephalopathy (CTE), clinicians must develop sophisticated understanding of the underlying pathophysiology, diverse clinical presentations, and evolving treatment paradigms. This comprehensive review synthesizes current evidence to guide clinical decision-making in managing these complex conditions.
+            </p>
+
+            <!-- SECTION 1: HISTORICAL CONTEXT -->
+            <h2 class="ba-h2">1. Historical Evolution of Brain Injury Understanding</h2>
+
+            <p>
+                The understanding of traumatic brain injury has undergone remarkable transformation over the past two centuries. Early medical literature, including references to "commotio cerebri" in medieval texts, recognized that head impacts could produce profound alterations in consciousness and cognition, yet mechanistic understanding remained limited. The 19th and early 20th centuries brought systematic observation through railroad accidents and military conflicts, establishing foundational associations between TBI and long-term neuropsychiatric sequelae.
+            </p>
+
+            <p>
+                The recognition of what we now term post-concussive syndrome emerged from systematic study of World War I soldiers, where clinicians documented persistent headaches, cognitive dysfunction, emotional lability, and concentration deficits in the absence of apparent structural brain pathology. This fundamental observation—that functional impairment could exist without radiographic abnormality—established an enduring conceptual framework that continues to challenge diagnostic practice today.
+            </p>
+
+            <p>
+                The 1980s and 1990s witnessed the discovery of chronic traumatic encephalopathy through neuropathological examination of professional athletes exposed to repeated subconcussive impacts. Initial observations by Omalu and colleagues in American football players revealed a distinctive tauopathy distinct from Alzheimer's disease, fundamentally shifting our understanding of cumulative brain trauma mechanisms. Modern neuroimaging and biomarker techniques have since revolutionized TBI diagnosis, moving from purely clinical assessment toward multimodal biological confirmation.
+            </p>
+
+            <div class="ba-timeline">
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot"></div>
+                    <div class="ba-tl-time">Medieval-Early Modern Era</div>
+                    <div class="ba-tl-text">Recognition of acute consciousness alteration following head impacts; concept of "commotio cerebri"</div>
+                </div>
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot"></div>
+                    <div class="ba-tl-time">19th-Early 20th Century</div>
+                    <div class="ba-tl-text">Systematic observation through occupational and military injuries; establishment of TBI-neuropsychiatric sequelae associations</div>
+                </div>
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot"></div>
+                    <div class="ba-tl-time">Post-WWI Era (1920s-1940s)</div>
+                    <div class="ba-tl-text">Documentation of post-concussive syndrome in military populations; conceptualization of functional impairment without structural pathology</div>
+                </div>
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot"></div>
+                    <div class="ba-tl-time">1980s-2000s</div>
+                    <div class="ba-tl-text">Discovery and neuropathological characterization of chronic traumatic encephalopathy; recognition of cumulative impact effects</div>
+                </div>
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot"></div>
+                    <div class="ba-tl-time">2010s-Present</div>
+                    <div class="ba-tl-text">Advanced neuroimaging, biomarker development, and molecular understanding of TBI pathophysiology</div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: DIAGNOSTIC APPROACHES -->
+            <h2 class="ba-h2">2. Diagnostic Evolution: From Clinical Assessment to Multimodal Integration</h2>
+
+            <h3 class="ba-h3">2.1 Historical Diagnostic Framework</h3>
+
+            <p>
+                Traditional TBI diagnosis relied exclusively on clinical assessment criteria, particularly the Glasgow Coma Scale (GCS) developed by Teasdale and Jennett in 1974. This instrument, while invaluable for initial acute triage, measures only immediate neurological function and provides limited prognostic value for chronic sequelae.
+            </p>
+
+            <div class="diagram-wrapper">
+                <div>
+                    <svg width="500" height="280" viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Title -->
+                        <text x="250" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#4a7c35">Glasgow Coma Scale Scoring</text>
+
+                        <!-- Eye Response Box -->
+                        <rect x="20" y="50" width="140" height="200" fill="#f5f0e8" stroke="#cfc8ba" stroke-width="2" rx="6"/>
+                        <text x="90" y="70" font-size="14" font-weight="bold" text-anchor="middle" fill="#4a7c35">Eye Response</text>
+                        <text x="30" y="95" font-size="12" fill="#231e14">4 = Spontaneous</text>
+                        <text x="30" y="115" font-size="12" fill="#231e14">3 = To pain</text>
+                        <text x="30" y="135" font-size="12" fill="#231e14">2 = To voice</text>
+                        <text x="30" y="155" font-size="12" fill="#231e14">1 = No response</text>
+                        <text x="30" y="185" font-size="12" font-weight="bold" fill="#4a7c35">Range: 4-1</text>
+
+                        <!-- Verbal Response Box -->
+                        <rect x="180" y="50" width="140" height="200" fill="#f5f0e8" stroke="#cfc8ba" stroke-width="2" rx="6"/>
+                        <text x="250" y="70" font-size="14" font-weight="bold" text-anchor="middle" fill="#4a7c35">Verbal Response</text>
+                        <text x="190" y="95" font-size="12" fill="#231e14">5 = Oriented</text>
+                        <text x="190" y="115" font-size="12" fill="#231e14">4 = Confused</text>
+                        <text x="190" y="135" font-size="12" fill="#231e14">3 = Words</text>
+                        <text x="190" y="155" font-size="12" fill="#231e14">2 = Sounds</text>
+                        <text x="190" y="175" font-size="12" fill="#231e14">1 = No response</text>
+                        <text x="190" y="205" font-size="12" font-weight="bold" fill="#4a7c35">Range: 5-1</text>
+
+                        <!-- Motor Response Box -->
+                        <rect x="340" y="50" width="140" height="200" fill="#f5f0e8" stroke="#cfc8ba" stroke-width="2" rx="6"/>
+                        <text x="410" y="70" font-size="14" font-weight="bold" text-anchor="middle" fill="#4a7c35">Motor Response</text>
+                        <text x="350" y="95" font-size="12" fill="#231e14">6 = Obeys</text>
+                        <text x="350" y="115" font-size="12" fill="#231e14">5 = Localizes</text>
+                        <text x="350" y="135" font-size="12" fill="#231e14">4 = Withdraws</text>
+                        <text x="350" y="155" font-size="12" fill="#231e14">3 = Flexion</text>
+                        <text x="350" y="175" font-size="12" fill="#231e14">2 = Extension</text>
+                        <text x="350" y="195" font-size="12" fill="#231e14">1 = No response</text>
+                        <text x="350" y="225" font-size="12" font-weight="bold" fill="#4a7c35">Range: 6-1</text>
+
+                        <!-- Total Score -->
+                        <rect x="150" y="265" width="200" height="0" rx="4"/>
+                        <text x="250" y="260" font-size="13" font-weight="bold" text-anchor="middle" fill="#4a7c35">Total: 3-15 (15 = Normal)</text>
+                    </svg>
+                    <div class="diagram-label">Glasgow Coma Scale Components</div>
+                </div>
+            </div>
+
+            <p>
+                The GCS effectively categorizes acute injury severity (mild: 13-15, moderate: 9-12, severe: 3-8) but demonstrates significant limitations in predicting persistent neuropsychiatric symptoms. Many patients with GCS scores of 13-15 and absence of abnormal computed tomography progress to chronic debilitating PCS, while some severe injuries result in minimal long-term dysfunction. This disconnect necessitates supplementary diagnostic approaches.
+            </p>
+
+            <h3 class="ba-h3">2.2 Contemporary Diagnostic Approaches</h3>
+
+            <p>
+                Current best practice integrates multiple diagnostic modalities:
+            </p>
+
+            <div class="ba-table-wrap">
+                <table class="ba-table">
+                    <thead>
+                        <tr>
+                            <th>Diagnostic Modality</th>
+                            <th>Sensitivity/Specificity</th>
+                            <th>Clinical Application</th>
+                            <th>Current Availability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Glasgow Coma Scale</strong></td>
+                            <td>Acute severity categorization only</td>
+                            <td>Initial triage; acute monitoring</td>
+                            <td>Ubiquitous</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CT/MRI Imaging</strong></td>
+                            <td>Highly variable for mild TBI; 90-95% for severe</td>
+                            <td>Rule out hemorrhage; structural pathology</td>
+                            <td>Widely available</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Advanced MRI (DTI, SWI)</strong></td>
+                            <td>60-75% for microstructural injury</td>
+                            <td>Detect white matter disruption in mild TBI</td>
+                            <td>Academic/specialized centers</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PET Imaging</strong></td>
+                            <td>Sensitivity 70-85% for metabolic dysfunction</td>
+                            <td>Identify regional cerebral dysfunction; CTE staging</td>
+                            <td>Research; limited clinical availability</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tau/Amyloid Biomarkers (CSF, blood)</strong></td>
+                            <td>80-90% for TBI identification</td>
+                            <td>Biological confirmation; prognostication</td>
+                            <td>Emerging; select research centers</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Neuropsychological Testing</strong></td>
+                            <td>Excellent for functional assessment</td>
+                            <td>Detailed cognitive-emotional mapping</td>
+                            <td>Available; variable training standards</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vestibulo-Oculomotor Screening (VOMS)</strong></td>
+                            <td>Sensitivity 85-90% for concussion</td>
+                            <td>Assess brainstem/cerebellar dysfunction</td>
+                            <td>Increasingly available; sports medicine</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="ba-h3">2.3 Ideal Diagnostic Approach in Resource-Unlimited Scenario</h3>
+
+            <p>
+                If resource constraints were eliminated, optimal TBI diagnosis would incorporate a comprehensive multimodal protocol:
+            </p>
+
+            <div class="ba-summary-box">
+                <h3>Comprehensive Diagnostic Algorithm (Resource-Unlimited)</h3>
+                <ul>
+                    <li><strong>Acute Phase (0-72 hours):</strong> Clinical assessment + conventional imaging + advanced DTI/SWI MRI + initial biomarker panel (tau phosphorylated at threonine-181, phosphorylated tau variants, neurofilament light chain) + oculomotor assessment</li>
+                    <li><strong>Subacute Phase (1-4 weeks):</strong> Repeat biomarkers + functional MRI with default mode network analysis + spectroscopy + detailed neuropsychological evaluation + balance/vestibular testing</li>
+                    <li><strong>Chronic Phase (3-12 months):</strong> Longitudinal PET imaging (18F-tau, 11C-PiB) + repeat structural/functional MRI + serial biomarkers + advanced cognitive assessment + biofluid markers of neuroinflammation</li>
+                    <li><strong>If CTE Suspected:</strong> Longitudinal tau-PET with longitudinal assessment + cognitive decline documentation + family history integration + neuropathological correlation when applicable</li>
+                </ul>
+            </div>
+
+            <div class="ba-insight-box">
+                <div class="ba-insight-icon">🔍</div>
+                <div>
+                    <p><strong>Clinical Pearl:</strong> Biofluid biomarkers (blood-based tau, neurofilament light chain) represent the frontier of TBI diagnosis, providing biological objective measures of neuronal injury with 90%+ sensitivity-specificity in research settings, yet remain largely unavailable in routine clinical practice. Their integration into standard diagnostic protocols will likely transform TBI identification and prognostication over the next 5 years.</p>
+                </div>
+            </div>
+
+            <!-- SECTION 3: CLINICAL PRESENTATIONS AND PATHOPHYSIOLOGY -->
+            <h2 class="ba-h2">3. Clinical Presentations and Underlying Pathophysiology</h2>
+
+            <h3 class="ba-h3">3.1 Acute TBI: Immediate Molecular Events</h3>
+
+            <p>
+                The acute injury cascade involves immediate mechanical disruption of neuronal membranes and axonal damage, triggering characteristic pathophysiological events. Primary mechanical trauma initiates a cascade of ionic dysregulation, with excitatory glutamate release, influx of calcium and sodium, mitochondrial dysfunction, and secondary ischemic injury developing over hours to days.
+            </p>
+
+            <div class="diagram-wrapper">
+                <div>
+                    <svg width="550" height="380" viewBox="0 0 550 380" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Title -->
+                        <text x="275" y="25" font-size="16" font-weight="bold" text-anchor="middle" fill="#4a7c35">Acute TBI Pathophysiological Cascade</text>
+
+                        <!-- Central timeline -->
+                        <line x1="275" y1="50" x2="275" y2="360" stroke="#cfc8ba" stroke-width="3"/>
+
+                        <!-- Time periods -->
+                        <rect x="20" y="50" width="100" height="40" fill="#e6f0e2" stroke="#3a6e28" stroke-width="2" rx="4"/>
+                        <text x="70" y="78" font-size="12" font-weight="bold" text-anchor="middle" fill="#3a6e28">Immediate (0-5 min)</text>
+
+                        <rect x="430" y="50" width="100" height="40" fill="#fff5f4" stroke="#c04030" stroke-width="2" rx="4"/>
+                        <text x="480" y="78" font-size="12" font-weight="bold" text-anchor="middle" fill="#c04030">Hours (6-72 hrs)</text>
+
+                        <!-- Event boxes -->
+                        <!-- Left side events -->
+                        <rect x="30" y="120" width="180" height="80" fill="#f5f0e8" stroke="#8b6914" stroke-width="1.5" rx="4"/>
+                        <text x="120" y="140" font-size="11" font-weight="bold" text-anchor="middle" fill="#8b6914">Primary Axonal Injury</text>
+                        <text x="40" y="160" font-size="10" fill="#231e14">• Membrane disruption</text>
+                        <text x="40" y="175" font-size="10" fill="#231e14">• Mechanical shearing</text>
+                        <text x="40" y="190" font-size="10" fill="#231e14">• Axon stretch injury</text>
+
+                        <!-- Right side events -->
+                        <rect x="340" y="120" width="180" height="80" fill="#f5f0e8" stroke="#8b6914" stroke-width="1.5" rx="4"/>
+                        <text x="430" y="140" font-size="11" font-weight="bold" text-anchor="middle" fill="#8b6914">Ionic Dysregulation</text>
+                        <text x="350" y="160" font-size="10" fill="#231e14">• Glutamate release</text>
+                        <text x="350" y="175" font-size="10" fill="#231e14">• Ca2+/Na+ influx</text>
+                        <text x="350" y="190" font-size="10" fill="#231e14">• Mitochondrial swelling</text>
+
+                        <!-- Central - connecting arrow down -->
+                        <polygon points="275,110 270,100 280,100" fill="#4a7c35"/>
+
+                        <!-- Secondary cascade boxes -->
+                        <!-- Left side -->
+                        <rect x="30" y="230" width="180" height="90" fill="#fce8e6" stroke="#c04030" stroke-width="1.5" rx="4"/>
+                        <text x="120" y="250" font-size="11" font-weight="bold" text-anchor="middle" fill="#c04030">Metabolic Crisis</text>
+                        <text x="40" y="270" font-size="10" fill="#231e14">• ATP depletion</text>
+                        <text x="40" y="285" font-size="10" fill="#231e14">• Oxidative stress</text>
+                        <text x="40" y="300" font-size="10" fill="#231e14">• Free radical production</text>
+                        <text x="40" y="315" font-size="10" fill="#231e14">• ER stress activation</text>
+
+                        <!-- Right side -->
+                        <rect x="340" y="230" width="180" height="90" fill="#fce8e6" stroke="#c04030" stroke-width="1.5" rx="4"/>
+                        <text x="430" y="250" font-size="11" font-weight="bold" text-anchor="middle" fill="#c04030">Neuroinflammation</text>
+                        <text x="350" y="270" font-size="10" fill="#231e14">• Microglial activation</text>
+                        <text x="350" y="285" font-size="10" fill="#231e14">• IL-6, TNF-α production</text>
+                        <text x="350" y="300" font-size="10" fill="#231e14">• BBB disruption</text>
+                        <text x="350" y="315" font-size="10" fill="#231e14">• Astrocyte reactivity</text>
+
+                        <!-- Final outcome -->
+                        <rect x="100" y="350" width="350" height="25" fill="#e6f0e2" stroke="#3a6e28" stroke-width="2" rx="4"/>
+                        <text x="275" y="368" font-size="12" font-weight="bold" text-anchor="middle" fill="#3a6e28">Secondary Neuronal Dysfunction & Vulnerability to Chronic Sequelae</text>
+                    </svg>
+                    <div class="diagram-label">Pathophysiological Events Linking Acute Injury to Chronic Dysfunction</div>
+                </div>
+            </div>
+
+            <p>
+                These molecular cascades translate into observable clinical manifestations: loss of consciousness, post-traumatic amnesia, headache, dizziness, confusion, and autonomic instability. However, the severity of acute clinical presentation correlates inconsistently with long-term outcome, suggesting that predisposition factors and individual neurobiological variation substantially influence trajectory.
+            </p>
+
+            <h3 class="ba-h3">3.2 Post-Concussive Syndrome: Protean Clinical Presentations</h3>
+
+            <p>
+                Post-concussive syndrome encompasses heterogeneous neuropsychiatric manifestations persisting beyond the acute injury window (conventionally defined as >3 months post-injury). Clinical presentation varies dramatically between individuals, reflecting differential vulnerability of neural systems to specific injury mechanisms.
+            </p>
+
+            <div class="ba-stat-row">
+                <div class="ba-stat-card">
+                    <div class="ba-stat-num">78%</div>
+                    <div class="ba-stat-label">Prevalence of Headache</div>
+                </div>
+                <div class="ba-stat-card">
+                    <div class="ba-stat-num">65%</div>
+                    <div class="ba-stat-label">Cognitive Dysfunction</div>
+                </div>
+                <div class="ba-stat-card ba-stat-card--alert">
+                    <div class="ba-stat-num">42%</div>
+                    <div class="ba-stat-label">Depression/Anxiety</div>
+                </div>
+                <div class="ba-stat-card">
+                    <div class="ba-stat-num">54%</div>
+                    <div class="ba-stat-label">Sleep Disturbance</div>
+                </div>
+            </div>
+
+            <h3 class="ba-h3">3.3 Cognitive and Affective Symptom Clusters</h3>
+
+            <p>
+                <strong>Executive Dysfunction:</strong> Injury to prefrontal cortex and connecting white matter tracts produces deficits in working memory, cognitive flexibility, planning, and impulse inhibition. Patients describe difficulty with multitasking, decreased processing speed, and poor decision-making under time pressure. These deficits frequently interfere with return to work or academic productivity more profoundly than other PCS symptoms.
+            </p>
+
+            <p>
+                <strong>Memory Dysfunction:</strong> Post-traumatic amnesia (PTA) for events immediately surrounding injury is characteristic of TBI. However, persistent memory difficulties in PCS typically involve encoding of new information (anterograde amnesia) rather than retrieval of pre-injury memories. Neuroimaging studies suggest hippocampal and medial temporal lobe involvement, often with preserved gross hippocampal volume but reduced functional connectivity.
+            </p>
+
+            <p>
+                <strong>Mood and Anxiety Disturbances:</strong> Major depressive disorder develops in 25-50% of TBI survivors, substantially exceeding population base rates. This elevated incidence reflects multiple mechanisms: direct damage to mood-regulating brain regions (ventromedial prefrontal cortex, anterior insula, amygdala), disruption of monoaminergic neurotransmission, and psychological adjustment to disability. Similarly, anxiety disorders emerge in 20-40%, often manifesting as generalized anxiety, panic disorder, or social anxiety with new onset post-injury.
+            </p>
+
+            <p>
+                <strong>Behavioral and Personality Changes:</strong> Traumatic brain injury frequently produces alterations in personality and behavioral control that profoundly distress family members and often exceed the patient's self-awareness. Disinhibition, irritability, emotional lability, and aggression reflect orbitofrontal and anterior cingulate cortex dysfunction. These symptoms may emerge acutely or develop progressively, sometimes appearing worse months post-injury as acute confusion resolves.
+            </p>
+
+            <div class="ba-insight-box">
+                <div class="ba-insight-icon">🧠</div>
+                <div>
+                    <p><strong>Neuroanatomical Insight:</strong> The heterogeneity of PCS symptom profiles directly reflects differential vulnerability of brain systems to the three-dimensional force vectors and rotation patterns of specific injury mechanisms. A frontal impact produces distinct neuropsychiatric sequelae compared to temporal, parietal, or diffuse axonal injury patterns. This mechanistic understanding increasingly guides targeted rehabilitation and pharmacological interventions.</p>
+                </div>
+            </div>
+
+            <h3 class="ba-h3">3.4 Chronic Traumatic Encephalopathy: Progressive Neuropathology</h3>
+
+            <p>
+                Chronic traumatic encephalopathy represents a progressive neurodegenerative tauopathy resulting from repeated traumatic brain impacts, particularly subconcussive injuries that may not produce clinically apparent symptoms at the time of occurrence. Unlike post-concussive syndrome, which develops after identifiable head trauma (usually single moderate-to-severe events), CTE emerges from cumulative exposure, often requiring hundreds of impacts over years or decades.
+            </p>
+
+            <p>
+                The neuropathological hallmark involves predominantly perivascular and sulcal distributions of hyperphosphorylated tau, forming characteristic neurofibrillary tangles and dystrophic neurites. This tau pathology is distinct from Alzheimer's disease through: (1) greater concentration in superficial cortical layers, (2) perivascular distribution around small arterioles, (3) relative sparing of amyloid-beta pathology, and (4) predilection for frontal and temporal lobes.
+            </p>
+
+            <div class="diagram-wrapper">
+                <div>
+                    <svg width="550" height="320" viewBox="0 0 550 320" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Title -->
+                        <text x="275" y="25" font-size="16" font-weight="bold" text-anchor="middle" fill="#4a7c35">CTE Staging Framework (McKee et al.)</text>
+
+                        <!-- Stage I -->
+                        <rect x="20" y="50" width="120" height="240" fill="#e6f0e2" stroke="#3a6e28" stroke-width="2" rx="6"/>
+                        <text x="80" y="75" font-size="13" font-weight="bold" text-anchor="middle" fill="#3a6e28">Stage I</text>
+                        <text x="30" y="100" font-size="10" font-weight="600" fill="#231e14">Mild</text>
+                        <text x="30" y="120" font-size="9" fill="#6b6050">• Focal tau in:</text>
+                        <text x="35" y="135" font-size="9" fill="#6b6050">Sulci of frontal,</text>
+                        <text x="35" y="150" font-size="9" fill="#6b6050">temporal lobes</text>
+                        <text x="30" y="170" font-size="9" fill="#6b6050">• Limited neuro-</text>
+                        <text x="35" y="185" font-size="9" fill="#6b6050">fibrillary pathology</text>
+                        <text x="30" y="205" font-size="10" font-weight="600" fill="#3a6e28" font-style="italic">Minimal</text>
+                        <text x="30" y="220" font-size="10" font-weight="600" fill="#3a6e28" font-style="italic">symptoms or</text>
+                        <text x="30" y="235" font-size="10" font-weight="600" fill="#3a6e28" font-style="italic">cognitive decline</text>
+
+                        <!-- Stage II -->
+                        <rect x="155" y="50" width="120" height="240" fill="#fff5f4" stroke="#b05a20" stroke-width="2" rx="6"/>
+                        <text x="215" y="75" font-size="13" font-weight="bold" text-anchor="middle" fill="#b05a20">Stage II</text>
+                        <text x="165" y="100" font-size="10" font-weight="600" fill="#231e14">Moderate</text>
+                        <text x="165" y="120" font-size="9" fill="#6b6050">• Pathology extends</text>
+                        <text x="170" y="135" font-size="9" fill="#6b6050">to multiple cortical</text>
+                        <text x="170" y="150" font-size="9" fill="#6b6050">areas, limbic system</text>
+                        <text x="165" y="170" font-size="9" fill="#6b6050">• Moderate neurite</text>
+                        <text x="170" y="185" font-size="9" fill="#6b6050">and tangles present</text>
+                        <text x="165" y="205" font-size="10" font-weight="600" fill="#b05a20" font-style="italic">Behavioral</text>
+                        <text x="165" y="220" font-size="10" font-weight="600" fill="#b05a20" font-style="italic">changes &</text>
+                        <text x="165" y="235" font-size="10" font-weight="600" fill="#b05a20" font-style="italic">mild cognition loss</text>
+
+                        <!-- Stage III -->
+                        <rect x="290" y="50" width="120" height="240" fill="#fce8e6" stroke="#c04030" stroke-width="2" rx="6"/>
+                        <text x="350" y="75" font-size="13" font-weight="bold" text-anchor="middle" fill="#c04030">Stage III</text>
+                        <text x="300" y="100" font-size="10" font-weight="600" fill="#231e14">Severe</text>
+                        <text x="300" y="120" font-size="9" fill="#6b6050">• Widespread cortical</text>
+                        <text x="305" y="135" font-size="9" fill="#6b6050">tau, basal ganglia,</text>
+                        <text x="305" y="150" font-size="9" fill="#6b6050">brainstem, spinal cord</text>
+                        <text x="300" y="170" font-size="9" fill="#6b6050">• Severe neuronal</text>
+                        <text x="305" y="185" font-size="9" fill="#6b6050">loss and pathology</text>
+                        <text x="300" y="205" font-size="10" font-weight="600" fill="#c04030" font-style="italic">Progressive</text>
+                        <text x="300" y="220" font-size="10" font-weight="600" fill="#c04030" font-style="italic">dementia,</text>
+                        <text x="300" y="235" font-size="10" font-weight="600" fill="#c04030" font-style="italic">severe decline</text>
+
+                        <!-- Stage IV -->
+                        <rect x="425" y="50" width="120" height="240" fill="#e2dbd0" stroke="#6b6050" stroke-width="2" rx="6"/>
+                        <text x="485" y="75" font-size="13" font-weight="bold" text-anchor="middle" fill="#4a7c35">Stage IV</text>
+                        <text x="435" y="100" font-size="10" font-weight="600" fill="#231e14">End-Stage</text>
+                        <text x="435" y="120" font-size="9" fill="#6b6050">• Extensive pathology</text>
+                        <text x="440" y="135" font-size="9" fill="#6b6050">throughout entire</text>
+                        <text x="440" y="150" font-size="9" fill="#6b6050">nervous system</text>
+                        <text x="435" y="170" font-size="9" fill="#6b6050">• Severe neuronal</text>
+                        <text x="440" y="185" font-size="9" fill="#6b6050">loss, atrophy</text>
+                        <text x="435" y="205" font-size="10" font-weight="600" fill="#4a7c35" font-style="italic">Severe cognitive</text>
+                        <text x="435" y="220" font-size="10" font-weight="600" fill="#4a7c35" font-style="italic">decline, behavioral</text>
+                        <text x="435" y="235" font-size="10" font-weight="600" fill="#4a7c35" font-style="italic">disturbance, motor</text>
+                    </svg>
+                    <div class="diagram-label">Progressive Neuropathological Stages of CTE</div>
+                </div>
+            </div>
+
+            <p>
+                Clinical manifestations of CTE typically emerge insidiously years or decades after the cumulative trauma exposure period. Longitudinal studies of former athletes and military personnel identify characteristic progressive patterns: initial affective disturbance (depression, anxiety, irritability), followed by cognitive decline with executive dysfunction prominence, and in later stages, frank dementia with memory loss, language impairment, and progressive disability.
+            </p>
+
+            <!-- SECTION 4: ENVIRONMENTAL AND LIFE EXPERIENCE FACTORS -->
+            <h2 class="ba-h2">4. Environmental and Life Experience Factors Influencing TBI Risk and Severity</h2>
+
+            <p>
+                Traumatic brain injury risk and outcome are substantially determined by environmental, social, and behavioral factors beyond the injury mechanism itself. Understanding these influences is critical for risk stratification and intervention development.
+            </p>
+
+            <h3 class="ba-h3">4.1 Primary Risk Factors for TBI Occurrence</h3>
+
+            <div class="ba-stat-row">
+                <div class="ba-stat-card ba-stat-card--alert">
+                    <div class="ba-stat-num">3.2×</div>
+                    <div class="ba-stat-label">Risk Increase: Male Gender</div>
+                </div>
+                <div class="ba-stat-card ba-stat-card--alert">
+                    <div class="ba-stat-num">Peak Ages</div>
+                    <div class="ba-stat-label">0-4 years, 15-24 years, 60+ years</div>
+                </div>
+                <div class="ba-stat-card ba-stat-card--alert">
+                    <div class="ba-stat-num">2.9×</div>
+                    <div class="ba-stat-label">Risk Increase: Substance Use</div>
+                </div>
+                <div class="ba-stat-card ba-stat-card--alert">
+                    <div class="ba-stat-num">2.5×</div>
+                    <div class="ba-stat-label">Risk Increase: Prior TBI History</div>
+                </div>
+            </div>
+
+            <h3 class="ba-h3">4.2 Mechanisms and Epidemiology</h3>
+
+            <p>
+                <strong>Falls (35-50% of TBI cases):</strong> Disproportionately affecting the very young and elderly, falls represent the leading TBI etiology in most developed nations. Environmental factors (inadequate lighting, hazardous surfaces, cluttered living spaces) interact with individual vulnerability (balance impairment, vision changes, medication effects) to determine risk. Osteoporosis, Parkinson's disease, and orthostatic hypotension substantially elevate fall-related TBI risk in older adults.
+            </p>
+
+            <p>
+                <strong>Motor Vehicle Accidents (20-30%):</strong> Crash severity, vehicle type, speed, seatbelt/helmet use, and airbag deployment critically influence injury severity. Pre-existing neuropsychiatric conditions (ADHD, impulsivity disorders) associate with elevated risk, suggesting behavioral factors contribute alongside mechanical injury risk.
+            </p>
+
+            <p>
+                <strong>Interpersonal Violence (10-20%):</strong> Intimate partner violence, assault, and child abuse produce TBI with unique psychological sequelae distinct from unintentional injury. Victims frequently experience concurrent psychological trauma, post-traumatic stress disorder, and complex trauma presentations. The intentional nature of injury may substantially influence neuropsychiatric recovery trajectories through mechanisms beyond biomechanical injury characteristics.
+            </p>
+
+            <p>
+                <strong>Sports and Recreational Activities (8-10%):</strong> Collision sports (American football, ice hockey, rugby), contact sports (soccer, lacrosse), and high-impact recreation (skiing, skateboarding) produce TBI at higher rates than general population. Importantly, the cumulative effect of multiple subconcussive impacts in sports contexts remains incompletely understood, with emerging evidence suggesting significant neurobiological consequences even below the threshold of clinical concussion detection.
+            </p>
+
+            <h3 class="ba-h3">4.3 Modifiers of TBI Recovery: Protective and Vulnerability Factors</h3>
+
+            <div class="ba-summary-box">
+                <h3>Factors Influencing TBI Outcome Severity</h3>
+                <ul>
+                    <li><strong>Protective Factors:</strong> Higher educational attainment, strong social support networks, higher premorbid cognitive reserve, younger age at injury, intact family/vocational structures, positive coping styles, access to specialized rehabilitation</li>
+                    <li><strong>Vulnerability Factors:</strong> Pre-existing neuropsychiatric conditions (depression, ADHD, PTSD), substance use disorders, prior TBI history, lower socioeconomic status, social isolation, adverse childhood experiences, limited rehabilitation access, ongoing litigation/compensation issues</li>
+                    <li><strong>Neurobiological Factors:</strong> Apolipoprotein E4 genotype (APOE4) associated with worse cognitive outcomes; tau-related genetic variants; inflammatory response genotypes; reserve capacity of undamaged brain tissue</li>
+                </ul>
+            </div>
+
+            <div class="ba-insight-box">
+                <div class="ba-insight-icon">⚖️</div>
+                <div>
+                    <p><strong>Clinical Significance:</strong> The substantial influence of environmental, social, and behavioral factors on TBI outcome argues for comprehensive psychosocial assessment and intervention alongside biomedical management. Rehabilitation efficacy substantially improves when addressing modifiable vulnerability factors (substance use, untreated depression, social isolation) and bolstering protective factors (social support optimization, cognitive-behavioral interventions).</p>
+                </div>
+            </div>
+
+            <!-- SECTION 5: PHARMACOLOGICAL MANAGEMENT -->
+            <h2 class="ba-h2">5. Pharmacological Management of TBI: Mechanisms, Benefits, and Pitfalls</h2>
+
+            <p>
+                Pharmacological management of TBI lacks disease-modifying agents approved specifically for traumatic brain injury. Clinical practice instead relies on evidence-based symptomatic management targeting specific neuropsychiatric manifestations, using agents developed for other conditions but with mechanistic rationale in TBI contexts.
+            </p>
+
+            <h3 class="ba-h3">5.1 Cognitive Symptom Management</h3>
+
+            <p>
+                <strong>Methylphenidate and Amphetamine Stimulants:</strong> These catecholaminergic agonists enhance dopamine and norepinephrine availability, addressing the hypodopaminergic state characteristic of prefrontal dysfunction in TBI. Evidence demonstrates improvements in processing speed, attention, and executive function in 40-60% of TBI patients, with effects emerging within 1-2 weeks of initiation. However, stimulants may exacerbate emotional lability and irritability in some patients, particularly those with prominent amygdala involvement. Baseline cardiovascular assessment is essential given stimulant effects on blood pressure and heart rate.
+            </p>
+
+            <p>
+                <strong>Amantadine:</strong> This NMDA receptor antagonist with dopaminergic properties demonstrates particular efficacy in post-acute TBI, with data supporting improvements in consciousness level, arousal, and functional recovery during the first 6 months post-injury. Mechanisms involve neuroprotection through reduced excitotoxic glutamate signaling and possible promotion of neuroplasticity. Dosing typically ranges from 100-400 mg daily in divided doses. Common side effects include agitation, insomnia, and rarely, anticholinergic effects or orthostatic hypotension.
+            </p>
+
+            <p>
+                <strong>Methylphenidate versus Amantadine Distinction:</strong> Methylphenidate targets dopaminergic systems acutely; amantadine addresses glutamatergic excitotoxicity with sustained neuroprotective potential. Early post-injury (first 3-6 months), amantadine may be preferred; in chronic TBI (>1 year), methylphenidate often proves more effective for persistent cognitive symptoms.
+            </p>
+
+            <div class="ba-table-wrap">
+                <table class="ba-table">
+                    <thead>
+                        <tr>
+                            <th>Medication Class</th>
+                            <th>Target Symptoms</th>
+                            <th>Mechanism</th>
+                            <th>Benefits</th>
+                            <th>Common Side Effects</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Stimulants (MPH, AMPH)</strong></td>
+                            <td>Executive dysfunction, processing speed, attention</td>
+                            <td>↑ DA/NE availability</td>
+                            <td>Rapid onset (1-2 wks); evidence-based; well-tolerated</td>
+                            <td>Agitation, irritability, insomnia, tachycardia, appetite suppression</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Amantadine</strong></td>
+                            <td>Arousal, consciousness, motor recovery</td>
+                            <td>NMDA antagonism; ↑ DA</td>
+                            <td>Neuroprotective; sustained benefit; post-acute efficacy</td>
+                            <td>Insomnia, agitation, orthostasis, livedo reticularis</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SSRIs</strong></td>
+                            <td>Depression, anxiety, emotional lability</td>
+                            <td>↑ 5-HT availability</td>
+                            <td>Well-tolerated; address multiple symptoms; neuroprotective effects</td>
+                            <td>Sexual dysfunction, weight gain, emotional blunting, activation early</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tricyclic Antidepressants</strong></td>
+                            <td>Headache, depression, neuropathic pain</td>
+                            <td>↑ NE/5-HT; analgesic effects</td>
+                            <td>Multisymptomatic benefit; analgesic properties</td>
+                            <td>Anticholinergic effects, orthostasis, weight gain, sedation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Topiramate</strong></td>
+                            <td>Impulsivity, aggression, headache</td>
+                            <td>GABA enhancement; Na+ channel block; CA inhibition</td>
+                            <td>Evidence for impulsivity/aggression; headache prophylaxis</td>
+                            <td>Cognitive dulling, paresthesias, weight loss, language impairment</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Buspirone</strong></td>
+                            <td>Anxiety, irritability</td>
+                            <td>5-HT1A partial agonist</td>
+                            <td>Non-sedating; low abuse potential; anxiolytic without cognitive dulling</td>
+                            <td>Generally well-tolerated; slow onset (2-4 weeks)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="ba-h3">5.2 Mood and Anxiety Management</h3>
+
+            <p>
+                <strong>Selective Serotonin Reuptake Inhibitors (SSRIs):</strong> These agents represent first-line pharmacotherapy for post-TBI depression and anxiety, with sertraline and paroxetine showing efficacy in 50-70% of TBI patients. Response timelines parallel those in primary mood disorders (4-8 weeks for full effect). Beyond direct serotonergic effects, SSRIs demonstrate neuroprotective properties in TBI models, potentially attenuating secondary injury cascades. However, emotional blunting and sexual dysfunction occur in 20-40% of patients and may require dose adjustment or agent switching.
+            </p>
+
+            <p>
+                <strong>Tricyclic Antidepressants:</strong> Amitriptyline and nortriptyline offer multisymptomatic benefit in TBI through antidepressant effects combined with analgesic properties (particularly relevant for post-traumatic headache) and noradrenergic enhancement. Starting doses of 10-25 mg nightly with titration to 50-100 mg produce benefits in 60-75% of patients. Anticholinergic side effects and orthostatic hypotension require baseline and periodic cardiovascular monitoring, particularly in older adults.
+            </p>
+
+            <h3 class="ba-h3">5.3 Behavioral and Impulsivity Management</h3>
+
+            <p>
+                <strong>Topiramate:</strong> This anticonvulsant with multifactorial mechanisms (GABA potentiation, sodium channel blockade, carbonic anhydrase inhibition) demonstrates evidence for reducing aggression and impulsivity in TBI, with response rates of 50-65%. Efficacy for concomitant post-traumatic headache adds clinical utility. However, significant cognitive side effects (word-finding difficulty, concentration impairment) occur in 30-40% of patients, particularly at doses exceeding 200 mg daily. These cognitive effects may paradoxically worsen the executive dysfunction prompting medication use.
+            </p>
+
+            <p>
+                <strong>Buspiron:</strong> This 5-HT1A partial agonist provides anxiolytic and anti-irritability benefit without cognitive dulling or abuse potential, making it particularly valuable in TBI populations with high substance use disorder risk. Dosing of 15-30 mg daily in divided doses produces effects over 2-4 weeks. Unlike benzodiazepines, buspirone does not impair cognition or produce sedation.
+            </p>
+
+            <h3 class="ba-h3">5.4 Medications to Avoid in TBI Populations</h3>
+
+            <div class="ba-insight-box">
+                <div class="ba-insight-icon">⚠️</div>
+                <div>
+                    <p><strong>Contraindication Alert:</strong> Benzodiazepines should be avoided when possible in TBI populations due to: (1) cognitive impairment exacerbation, (2) fall risk amplification (critical in post-TBI balance dysfunction), (3) substance use disorder vulnerability (high in trauma populations), (4) paradoxical disinhibition in some TBI patients, and (5) neuroinflammation amplification in preclinical models. If absolutely necessary for acute seizure management, brief courses (1-2 weeks maximum) with rapid tapering are preferred.</p>
+                </div>
+            </div>
+
+            <p>
+                <strong>Antipsychotics:</strong> While sometimes used for behavioral dyscontrol or agitation, typical antipsychotics carry substantial risk in TBI through cognitive impairment, sedation, and movement disorder induction. Atypical agents (quetiapine, aripiprazole) at lower doses may be necessary for severe behavioral dysregulation, but careful risk-benefit analysis is essential.
+            </p>
+
+            <h3 class="ba-h3">5.5 Pharmacological Pitfalls and Practical Considerations</h3>
+
+            <ul style="margin-bottom: 24px;">
+                <li><strong>Polypharmacy Complexity:</strong> TBI patients frequently receive multiple psychotropic agents targeting distinct symptom domains, creating cumulative cognitive burden and drug-drug interaction risk. Systematic deprescribing exercises at 3-6 month intervals help identify medications with limited continued benefit.</li>
+                <li><strong>Individual Response Variability:</strong> TBI neurochemistry varies substantially between patients based on injury location, severity, and individual neurobiological factors. Agent selection should incorporate neuroimaging findings when available and involve careful monitoring for paradoxical responses (e.g., stimulant-induced irritability).</li>
+                <li><strong>Temporal Considerations:</strong> Medication initiation timing relative to injury is critical—acute post-injury periods (first 2 weeks) may be inappropriate for psychotropic initiation given evolving neurochemistry. Sequential introduction during post-acute rehabilitation (weeks 3-12) generally produces better outcomes with fewer adverse effects.</li>
+                <li><strong>Pharmacokinetic Alterations:</strong> TBI may alter medication metabolism through hepatic enzyme changes, particularly immediately post-injury, necessitating careful monitoring for toxicity and adjustment of agents with narrow therapeutic windows.</li>
+            </ul>
+
+            <!-- SECTION 6: NON-MEDICATION TREATMENTS -->
+            <h2 class="ba-h2">6. Evidence-Based Non-Medication Interventions for TBI</h2>
+
+            <p>
+                Comprehensive TBI management must integrate non-medication treatments that address cognitive, physical, behavioral, and psychosocial domains. Evidence-based interventions substantially exceed medication efficacy alone and should form the cornerstone of treatment plans.
+            </p>
+
+            <h3 class="ba-h3">6.1 Cognitive Rehabilitation</h3>
+
+            <p>
+                Cognitive rehabilitation encompasses structured, individualized interventions targeting specific neurocognitive deficits through practice, strategy instruction, and environmental adaptation. Systematic reviews and meta-analyses demonstrate moderate-to-strong evidence for efficacy across multiple cognitive domains.
+            </p>
+
+            <p>
+                <strong>Attention and Processing Speed Training:</strong> Computerized attention training programs and workstation-based interventions targeting sustained, selective, and divided attention demonstrate improvements in laboratory measures and functional cognitive performance. Moderate-to-heavy practice intensities (3-5 sessions weekly for 8-12 weeks) produce best outcomes, with transfer to real-world tasks improved by context-specific training incorporating relevant daily activities.
+            </p>
+
+            <p>
+                <strong>Memory Rehabilitation:</strong> Cognitive rehabilitation targeting memory dysfunction combines external compensation strategies (written schedules, electronic reminders, organizational systems) with internal strategy training (elaborative encoding, visual-spatial mnemonics, metacognitive monitoring). While complete memory restoration is unlikely in moderate-severe TBI, functional improvement in daily memory demands occurs in 60-75% of patients receiving structured interventions.
+            </p>
+
+            <p>
+                <strong>Executive Function Training:</strong> Higher-order cognitive rehabilitation targeting executive dysfunction emphasizes problem-solving, planning, cognitive flexibility, and impulse inhibition through direct training, guided discovery, and real-world application. Metacognitive strategy training (teaching patients to monitor their own cognitive processes) shows particular promise for generalization to untrained tasks.
+            </p>
+
+            <div class="ba-therapy-grid">
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">🧠</div>
+                    <div class="ba-therapy-title">Cognitive Rehabilitation</div>
+                    <p>Attention, memory, executive function training with moderate-heavy practice intensity over 8-12 weeks</p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">🏃</div>
+                    <div class="ba-therapy-title">Physical Therapy</div>
+                    <p>Balance, vestibular, aerobic training; evidence for cognitive improvement beyond motor function</p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">👁️</div>
+                    <div class="ba-therapy-title">Vestibulo-Oculomotor Training</div>
+                    <p>Specialized balance and eye movement rehabilitation addressing brainstem/cerebellar dysfunction</p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">🗣️</div>
+                    <div class="ba-therapy-title">Speech-Language Pathology</div>
+                    <p>Cognitive-communication training, pragmatic language rehabilitation, swallowing assessment</p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">💬</div>
+                    <div class="ba-therapy-title">Cognitive-Behavioral Therapy</div>
+                    <p>Depression, anxiety, pain management; sleep optimization; behavioral dyscontrol</p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">🧘</div>
+                    <div class="ba-therapy-title">Mindfulness & Acceptance</div>
+                    <p>ACT, mindfulness-based stress reduction; emotion regulation; adjustment to disability</p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">❤️</div>
+                    <div class="ba-therapy-title">Family Psychoeducation</div>
+                    <p>Education on injury sequelae, behavioral management, communication strategies, caregiver support</p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">⏰</div>
+                    <div class="ba-therapy-title">Sleep Optimization</div>
+                    <p>Sleep hygiene, stimulus control, behavioral interventions; pharmacotherapy only if necessary</p>
+                </div>
+            </div>
+
+            <h3 class="ba-h3">6.2 Physical and Vestibulo-Oculomotor Rehabilitation</h3>
+
+            <p>
+                <strong>Aerobic Exercise:</strong> Accumulating evidence suggests aerobic exercise produces benefits exceeding motor function improvement. Moderate-to-vigorous intensity aerobic training (20-30 minutes, 3-5 sessions weekly) demonstrates improvements in cognitive processing speed, executive function, and mood regulation through mechanisms including enhanced cerebral blood flow, neuroinflammation reduction, and neurotropic factor promotion. Additionally, exercise addresses insomnia and mood dysfunction prevalent in TBI.
+            </p>
+
+            <p>
+                <strong>Balance and Proprioceptive Training:</strong> Structured balance rehabilitation addressing fall risk and vertigo includes progressive standing activities, gaze stabilization exercises, and contextual balance challenges (dynamic environments). These interventions produce substantial functional improvement in post-TBI balance dysfunction and may reduce secondary fall-related injury risk.
+            </p>
+
+            <p>
+                <strong>Vestibulo-Oculomotor Rehabilitation:</strong> Specialized rehabilitation targeting oculomotor dysfunction (smooth pursuit, saccadic abnormalities) and vestibular system dysfunction through gaze stabilization exercises (Gaze Stabilization Techniques—GST), vestibular adaptation exercises, and motion sensitivity desensitization demonstrates strong efficacy for vertigo and dizziness resolution in 70-80% of TBI patients. Emerging evidence links these brainstem interventions to broader cognitive and mood improvements, suggesting vestibular system involvement in higher cognitive processing.
+            </p>
+
+            <h3 class="ba-h3">6.3 Psychological and Behavioral Interventions</h3>
+
+            <p>
+                <strong>Cognitive-Behavioral Therapy (CBT):</strong> CBT specifically adapted for TBI demonstrates strong evidence for depression, anxiety, and pain management. Treatment protocols integrate cognitive restructuring, behavioral activation, and problem-solving strategies while accounting for potential cognitive deficits. Group CBT for TBI produces outcomes comparable to individual therapy with added socialization benefits. Typical duration involves 12-16 weekly sessions with emphasis on skill generalization to real-world contexts.
+            </p>
+
+            <p>
+                <strong>Acceptance and Commitment Therapy (ACT):</strong> ACT-based approaches emphasize psychological flexibility, values clarification, and acceptance of persistent TBI-related limitations rather than symptom elimination. Particular utility emerges for patients with persistent symptoms unresponsive to standard rehabilitation. Studies demonstrate improvements in functioning and quality of life even without complete symptom resolution.
+            </p>
+
+            <p>
+                <strong>Behavioral Management for Aggression and Impulsivity:</strong> Functional analysis-based behavioral interventions identify antecedent factors precipitating behavioral dyscontrol and establish alternative response patterns. Environmental modifications (reducing trigger exposure), communication strategy training for family/caregivers, and explicit contingency management produce behavioral improvement in 60-75% of patients. These interventions prove particularly valuable before or alongside pharmacological management.
+            </p>
+
+            <h3 class="ba-h3">6.4 Sleep Optimization</h3>
+
+            <p>
+                Post-traumatic insomnia affects 40-80% of TBI patients and substantially impairs cognitive recovery, mood regulation, and rehabilitation engagement. Evidence-based behavioral sleep interventions including stimulus control therapy, sleep restriction, cognitive restructuring of sleep-related worry, and sleep hygiene optimization produce sustained improvements in 60-70% of cases. Pharmacological sleep aids (benzodiazepine receptor agonists, tricyclics) should be reserved for cases refractory to behavioral intervention due to cognitive impairment and dependence risks.
+            </p>
+
+            <h3 class="ba-h3">6.5 Family Psychoeducation and Social Support Optimization</h3>
+
+            <p>
+                Family members require comprehensive education on TBI pathophysiology, expected recovery trajectories, behavioral management strategies, and communication approaches. Family-focused interventions addressing caregiver burden, communication patterns, and problem-solving improve patient outcomes, family satisfaction, and caregiver psychological health. Group family education combined with individual coaching produces superior outcomes to individual psychoeducation alone.
+            </p>
+
+            <div class="ba-insight-box">
+                <div class="ba-insight-icon">🎯</div>
+                <div>
+                    <p><strong>Integration Principle:</strong> Optimal TBI management combines multimodal non-medication interventions administered by integrated rehabilitation teams (neuropsychologists, physical/occupational therapists, speech pathologists, clinical social workers) with pharmacological management of specific neuropsychiatric symptoms. Intensive early rehabilitation (weeks 2-12 post-injury) produces substantially better outcomes than delayed or minimal intervention, yet chronic TBI remains responsive to intervention even years post-injury.</p>
+                </div>
+            </div>
+
+            <!-- SECTION 7: TREATMENT ALGORITHM -->
+            <h2 class="ba-h2">7. Integrated Treatment Algorithm</h2>
+
+            <div class="diagram-wrapper">
+                <div>
+                    <svg width="600" height="420" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Title -->
+                        <text x="300" y="25" font-size="16" font-weight="bold" text-anchor="middle" fill="#4a7c35">TBI Management Decision Algorithm</text>
+
+                        <!-- Initial Assessment -->
+                        <rect x="200" y="50" width="200" height="50" fill="#e6f0e2" stroke="#3a6e28" stroke-width="2" rx="6"/>
+                        <text x="300" y="75" font-size="12" font-weight="bold" text-anchor="middle" fill="#3a6e28">Comprehensive TBI Assessment</text>
+                        <text x="300" y="90" font-size="10" text-anchor="middle" fill="#231e14">(Neuropsychological, imaging, clinical)</text>
+
+                        <line x1="300" y1="100" x2="300" y2="130" stroke="#4a7c35" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+                        <!-- Symptom Clustering -->
+                        <rect x="50" y="130" width="140" height="70" fill="#fce8e6" stroke="#c04030" stroke-width="2" rx="6"/>
+                        <text x="120" y="152" font-size="11" font-weight="bold" text-anchor="middle" fill="#c04030">Cognitive Deficit</text>
+                        <text x="70" y="172" font-size="9" fill="#231e14">→ Cognitive rehabbing</text>
+                        <text x="70" y="188" font-size="9" fill="#231e14">→ MPH/Amantadine</text>
+
+                        <rect x="230" y="130" width="140" height="70" fill="#fff5f4" stroke="#b05a20" stroke-width="2" rx="6"/>
+                        <text x="300" y="152" font-size="11" font-weight="bold" text-anchor="middle" fill="#b05a20">Behavioral/Mood</text>
+                        <text x="250" y="172" font-size="9" fill="#231e14">→ CBT/ACT</text>
+                        <text x="250" y="188" font-size="9" fill="#231e14">→ SSRI/Topiramate</text>
+
+                        <rect x="410" y="130" width="140" height="70" fill="#f5f0e8" stroke="#8b6914" stroke-width="2" rx="6"/>
+                        <text x="480" y="152" font-size="11" font-weight="bold" text-anchor="middle" fill="#8b6914">Motor/Balance</text>
+                        <text x="440" y="172" font-size="9" fill="#231e14">→ PT/Vestibular</text>
+                        <text x="440" y="188" font-size="9" fill="#231e14">→ Exercise program</text>
+
+                        <!-- Convergence arrows -->
+                        <line x1="120" y1="200" x2="200" y2="230" stroke="#4a7c35" stroke-width="2"/>
+                        <line x1="300" y1="200" x2="300" y2="230" stroke="#4a7c35" stroke-width="2"/>
+                        <line x1="480" y1="200" x2="400" y2="230" stroke="#4a7c35" stroke-width="2"/>
+
+                        <!-- Integration point -->
+                        <rect x="150" y="230" width="300" height="60" fill="#e6f0e2" stroke="#3a6e28" stroke-width="2" rx="6"/>
+                        <text x="300" y="252" font-size="12" font-weight="bold" text-anchor="middle" fill="#3a6e28">Integrated Multimodal Rehabilitation</text>
+                        <text x="300" y="270" font-size="9" text-anchor="middle" fill="#231e14">Coordinated team-based intervention with family involvement</text>
+
+                        <line x1="300" y1="290" x2="300" y2="320" stroke="#4a7c35" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+                        <!-- Monitoring -->
+                        <rect x="150" y="320" width="300" height="60" fill="#f5f0e8" stroke="#cfc8ba" stroke-width="2" rx="6"/>
+                        <text x="300" y="342" font-size="12" font-weight="bold" text-anchor="middle" fill="#4a7c35">3-Month Assessment & Adjustment</text>
+                        <text x="300" y="360" font-size="9" text-anchor="middle" fill="#231e14">Reassess symptom response; deprescribe ineffective agents; intensify effective interventions</text>
+
+                        <!-- SVG arrow marker definition -->
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                                <polygon points="0 0, 10 5, 0 10" fill="#4a7c35"/>
+                            </marker>
+                        </defs>
+
+                        <!-- Legend -->
+                        <text x="20" y="400" font-size="10" font-weight="600" fill="#4a7c35">Key: MPH=Methylphenidate; CBT=Cognitive-Behavioral Therapy; ACT=Acceptance &amp; Commitment Therapy; PT=Physical Therapy</text>
+                    </svg>
+                    <div class="diagram-label">Integrated Multimodal TBI Treatment Framework</div>
+                </div>
+            </div>
+
+            <!-- CLINICAL SUMMARY -->
+            <h2 class="ba-h2">8. Clinical Summary and Key Takeaways</h2>
+
+            <div class="ba-summary-box">
+                <h3>Essential Clinical Principles for TBI Management</h3>
+                <ul>
+                    <li><strong>Multimodal Assessment is Essential:</strong> Glasgow Coma Scale provides acute triage information only; chronic TBI diagnosis requires integrated neuropsychological, neuroimaging, and biomarker assessment. Blood-based biomarkers (tau, neurofilament light chain) increasingly available for objective injury confirmation.</li>
+                    <li><strong>Symptom Heterogeneity Requires Individualization:</strong> TBI presentations vary dramatically based on injury location, severity, and individual neurobiological factors. Standardized treatment protocols must be tailored to specific patient symptom profiles and neuroanatomical vulnerability patterns.</li>
+                    <li><strong>Environmental and Social Factors Profoundly Influence Outcome:</strong> Modifiable factors (substance use, untreated depression, social isolation) substantially determine recovery trajectory. Comprehensive psychosocial intervention addressing these factors enhances treatment efficacy.</li>
+                    <li><strong>Non-Medication Interventions Form Treatment Foundation:</strong> Cognitive rehabilitation, physical therapy, behavioral interventions, and psychosocial support demonstrate superior long-term outcomes compared to pharmacological management alone. Medications address specific symptoms but do not replace comprehensive rehabilitation.</li>
+                    <li><strong>Pharmacotherapy Requires Strategic Sequencing:</strong> Acute post-injury periods (first 2 weeks) generally inappropriate for psychotropic initiation; post-acute rehabilitation phases (weeks 3-12) ideal for intervention. Systematic 3-month reassessment guides deprescribing of ineffective agents.</li>
+                    <li><strong>CTE Represents Distinct Pathophysiology:</strong> Chronic traumatic encephalopathy emerges from cumulative subconcussive impacts over years/decades, distinct from single-event TBI or PCS. Progressive neuropathology and neuroimaging biomarkers aid diagnosis in living subjects; prevention through impact reduction remains paramount.</li>
+                </ul>
+            </div>
+
+            <!-- REFERENCES -->
+            <div class="ba-references">
+                <h3 class="ba-ref-title">References</h3>
+                <ul class="ba-ref-list">
+                    <li>Teasdale G, Jennett B. Assessment of coma and impaired consciousness: A practical scale. Lancet. 1974;2(7872):81-84.</li>
+                    <li>Omalu B, Bailes J, Hamilton RL, et al. Emerging histomorphologic phenotypes of chronic traumatic encephalopathy in American football players. Neurosurgery. 2011;69(1):173-183.</li>
+                    <li>Thurman DJ, Alverson C, Dunn KA, Guerrero J, Sniezek JE. Traumatic brain injury in the United States: A public health perspective. J Head Trauma Rehabil. 1999;14(6):602-615.</li>
+                    <li>Levin HS, Diaz-Arrastia R. Diagnosis, prognosis, and clinical management of mild traumatic brain injury. Lancet Neurol. 2015;14(5):506-517.</li>
+                    <li>Gasquoine PG. Postconcussion syndrome: A review. J Clin Exp Neuropsychol. 2016;38(10):1066-1076.</li>
+                    <li>McKee AC, Stern RA, Nowinski CJ, et al. The spectrum of disease in chronic traumatic encephalopathy. Brain. 2013;136(Pt 1):43-64.</li>
+                    <li>Johnson VE, Stewart W, Smith DH. Axonal pathology in traumatic brain injury. Exp Neurol. 2013;246:35-43.</li>
+                    <li>Ruff RL, Riechers RG, Wang XF, et al. A case-controlled study of fever following traumatic brain injury. J Clin Neurophysiol. 2008;25(1):14-20.</li>
+                    <li>Riggio S, Wong M. Pharmacological management of post-traumatic epilepsy. Expert Rev Neurother. 2011;11(10):1359-1368.</li>
+                    <li>Hoane MR, Pierce JL, Holland MA, et al. Traumatic brain injury: Mechanisms of secondary damage, mini-review. Neurol Res. 2008;30(8):761-772.</li>
+                    <li>Yuh EL, Mukherjee P, Lingsma HF, et al. Magnetic resonance imaging improves 3-month outcome prediction in mild traumatic brain injury. Ann Neurol. 2013;73(2):224-235.</li>
+                    <li>Stern RA, Riley DO, Daneshvar DH, Nowinski CJ, Cantu RC, McKee AC. Long-term consequences of repetitive brain trauma: chronic traumatic encephalopathy. PM R. 2011;3(10 Suppl 2):S460-S467.</li>
+                    <li>Whelan-Goodinson R, Ponsford J, Johnston L, Grant F. Psychiatric disorders following traumatic brain injury: their nature and frequency. J Head Trauma Rehabil. 2009;24(5):324-332.</li>
+                    <li>Felmingham KL, Baguley IJ, Green AM. Effects of diffuse axonal injury on speed of information processing following severe traumatic brain injury. Neuropsychology. 2001;15(3):356-363.</li>
+                    <li>Cifu DX, Hart BB. Disturbances of consciousness. In: Zasler ND, Katz DI, Zafonte RD, eds. Brain Injury Medicine: Principles and Practice. 2nd ed. New York: Demos Medical Publishing; 2007:71-85.</li>
+                    <li>Cernich AN, Chandler V, Lightfoot G, Salazar AM. The Head Injury Semantic Differential Scale (HISDS): a measure of subjective experience after head injury. Arch Clin Neuropsychol. 2007;22(2):236-245.</li>
+                    <li>Wechsler D. Wechsler Adult Intelligence Scale–Fourth Edition: Technical and Interpretive Manual. San Antonio, TX: Pearson Assessment; 2008.</li>
+                    <li>Leddy JJ, Sandler ML, Fornari ED, et al. Cognitive rest and prolonged symptom rest may not be "just what the doctor ordered" for recovery from concussion. Clin J Sport Med. 2016;26(4):299-303.</li>
+                    <li>Wilde EA, McCauley SR, Hunter JV, et al. Diffusion tensor imaging of acute mild traumatic brain injury in adolescents. Neurology. 2008;70(12):948-955.</li>
+                    <li>Arunkumar V, Lakshmanan G. Traumatic brain injury: A comprehensive narrative review. J Neurol Surg A Cent Eur Neurosurg. 2019;80(5):331-338.</li>
+                    <li>Guskiewicz KM, Marshall SW, Bailes J, et al. Incidence of sport-related concussion and implications for epidemiology. Neurosurgery. 2007;60(6):1189-1195.</li>
+                    <li>Langlois JA, Rutland-Brown W, Wald MM. The epidemiology and impact of traumatic brain injury: A brief overview. J Head Trauma Rehabil. 2006;21(5):375-378.</li>
+                    <li>Barkhoudarian G, Hovda DA, Giza CC. The molecular pathophysiology of concussive brain injury. Clin Sports Med. 2011;30(1):33-48.</li>
+                    <li>Rajagopal V, Samuel P, Ganapathy K. Neurotrauma: Understanding the pathophysiology. Indian J Neurotrauma. 2020;17(1):1-13.</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer class="ba-footer">
+            <div style="margin-bottom: 20px;">
+                <a href="../index.html" class="back-link">← Back to Blog</a>
+            </div>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
+                This article is intended for medical professionals and represents evidence-based synthesis of current literature. Always consult original sources and clinical guidelines for patient care decisions.
+            </p>
+            <p style="font-size: 12px; color: var(--text-muted);">
+                Last updated: March 12, 2026 | PsychoPharmRef Division
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
