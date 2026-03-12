@@ -4,501 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Medication Changes: Starting, Tapering, and Cross-Tapering Psychiatric Medications | PsychoPharmRef</title>
+  <link rel="stylesheet" href="blog.css">
   <style>
-    :root {
-      --bg: #f5f0e8;
-      --bg2: #ece6db;
-      --bg3: #e2dbd0;
-      --card: #fefcf8;
-      --border: #cfc8ba;
-      --accent: #4a7c35;
-      --accent2: #8b6914;
-      --text: #231e14;
-      --text-muted: #6b6050;
-      --green: #3a6e28;
-      --red: #c04030;
-      --yellow: #8b6914;
-      --orange: #b05a20;
-      --font: 'Segoe UI', system-ui, sans-serif;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      font-family: var(--font);
-      color: var(--text);
-      background-color: var(--bg);
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    .back-link {
-      display: inline-block;
-      margin-bottom: 30px;
-      padding: 10px 16px;
-      background-color: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      transition: all 0.2s;
-    }
-
-    .back-link:hover {
-      background-color: var(--bg2);
-      border-color: var(--accent);
-    }
-
-    .blog-article {
-      background-color: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 50px 40px;
-      margin-bottom: 40px;
-    }
-
-    .ba-header {
-      margin-bottom: 30px;
-    }
-
-    .ba-category {
-      display: inline-block;
-      background-color: var(--bg2);
-      color: var(--accent);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 16px;
-    }
-
-    .ba-title {
-      font-size: 2.4em;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 12px;
-      line-height: 1.2;
-    }
-
-    .ba-subtitle {
-      font-size: 1.2em;
-      color: var(--text-muted);
-      font-weight: 400;
-      margin-bottom: 20px;
-    }
-
-    .ba-meta {
-      display: flex;
-      gap: 20px;
-      font-size: 14px;
-      color: var(--text-muted);
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .ba-body {
-      margin-top: 30px;
-    }
-
-    .ba-lead {
-      font-size: 1.1em;
-      color: var(--text);
-      font-weight: 500;
-      margin-bottom: 25px;
-      padding: 20px;
-      background-color: var(--bg);
-      border-left: 4px solid var(--accent);
-      border-radius: 2px;
-    }
-
-    .ba-h2 {
-      font-size: 1.8em;
-      font-weight: 700;
-      color: var(--text);
-      margin-top: 40px;
-      margin-bottom: 20px;
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 10px;
-    }
-
-    .ba-h3 {
-      font-size: 1.3em;
-      font-weight: 700;
-      color: var(--text);
-      margin-top: 28px;
-      margin-bottom: 14px;
-    }
-
-    p {
-      margin-bottom: 16px;
-      color: var(--text);
-    }
-
-    ul, ol {
-      margin-left: 24px;
-      margin-bottom: 16px;
-    }
-
-    li {
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-
-    .ba-stat-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin: 25px 0;
-    }
-
-    .ba-stat-card {
-      background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .ba-stat-card--alert {
-      border-left: 4px solid var(--red);
-      background: linear-gradient(135deg, #f8e8e5 0%, #f2e0db 100%);
-    }
-
-    .ba-stat-card--good {
-      border-left: 4px solid var(--green);
-      background: linear-gradient(135deg, #e8f3e2 0%, #deecd8 100%);
-    }
-
-    .ba-stat-num {
-      font-size: 2em;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-
-    .ba-stat-card--alert .ba-stat-num {
-      color: var(--red);
-    }
-
-    .ba-stat-card--good .ba-stat-num {
-      color: var(--green);
-    }
-
-    .ba-stat-label {
-      font-size: 0.95em;
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .ba-table-wrap {
-      overflow-x: auto;
-      margin: 25px 0;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-    }
-
-    .ba-table {
-      width: 100%;
-      border-collapse: collapse;
-      background-color: var(--card);
-    }
-
-    .ba-table thead {
-      background-color: var(--bg2);
-      border-bottom: 2px solid var(--accent);
-    }
-
-    .ba-table th {
-      padding: 14px;
-      text-align: left;
-      font-weight: 700;
-      color: var(--text);
-      font-size: 0.95em;
-    }
-
-    .ba-table td {
-      padding: 12px 14px;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.95em;
-    }
-
-    .ba-table tbody tr:hover {
-      background-color: var(--bg);
-    }
-
-    .ba-insight-box {
-      background: linear-gradient(135deg, #f0f4e8 0%, #e8ede0 100%);
-      border-left: 4px solid var(--accent2);
-      border-radius: 6px;
-      padding: 20px;
-      margin: 25px 0;
-      display: flex;
-      gap: 16px;
-    }
-
-    .ba-insight-icon {
-      flex-shrink: 0;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: var(--bg3);
-      border-radius: 4px;
-      font-size: 20px;
-    }
-
-    .ba-timeline {
-      margin: 25px 0;
-    }
-
-    .ba-tl-item {
-      display: flex;
-      margin-bottom: 24px;
-      position: relative;
-    }
-
-    .ba-tl-item:not(:last-child)::before {
-      content: '';
-      position: absolute;
-      left: 19px;
-      top: 50px;
-      width: 2px;
-      height: 30px;
-      background-color: var(--border);
-    }
-
-    .ba-tl-dot {
-      flex-shrink: 0;
-      width: 40px;
-      height: 40px;
-      background-color: var(--accent);
-      border: 3px solid var(--card);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 700;
-      z-index: 1;
-      margin-right: 20px;
-    }
-
-    .ba-tl-time {
-      font-size: 0.9em;
-      color: var(--accent);
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .ba-tl-text {
-      padding-top: 2px;
-    }
-
-    .ba-tl-text strong {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--text);
-    }
-
-    .ba-summary-box {
-      background: linear-gradient(135deg, var(--accent2) 0%, #6d4f0f 100%);
-      color: #fefcf8;
-      border-radius: 6px;
-      padding: 30px;
-      margin: 25px 0;
-    }
-
-    .ba-summary-box h3 {
-      color: #fefcf8;
-      margin-bottom: 16px;
-    }
-
-    .ba-summary-box ul {
-      margin-left: 20px;
-    }
-
-    .ba-summary-box li {
-      color: #fefcf8;
-    }
-
-    .ba-references {
-      margin-top: 50px;
-      padding-top: 30px;
-      border-top: 2px solid var(--border);
-    }
-
-    .ba-ref-title {
-      font-size: 1.3em;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 20px;
-    }
-
-    .ba-ref-list {
-      list-style: none;
-      margin-left: 0;
-    }
-
-    .ba-ref-list li {
-      margin-bottom: 14px;
-      padding-left: 24px;
-      position: relative;
-      font-size: 0.95em;
-      line-height: 1.5;
-    }
-
-    .ba-ref-list li::before {
-      content: '[' counter(ref) ']';
-      counter-increment: ref;
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .ba-ref-list {
-      counter-reset: ref;
-    }
-
-    .ba-therapy-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin: 25px 0;
-    }
-
-    .ba-therapy-card {
-      background-color: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 20px;
-      text-align: center;
-      transition: all 0.2s;
-    }
-
-    .ba-therapy-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 2px 8px rgba(74, 124, 53, 0.1);
-    }
-
-    .ba-therapy-icon {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-
-    .ba-therapy-title {
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-
-    .ba-therapy-card p {
-      font-size: 0.9em;
-      margin-bottom: 0;
-    }
-
-    .ba-stacked-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin: 25px 0;
-    }
-
-    .ba-stacked-card {
-      background-color: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 20px;
-    }
-
-    .ba-stacked-icon {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    .ba-stacked-title {
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 8px;
-      font-size: 1em;
-    }
-
-    .ba-stacked-sub {
-      font-size: 0.85em;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
-
-    .ba-stacked-list {
-      list-style: none;
-      margin-left: 0;
-      font-size: 0.9em;
-    }
-
-    .ba-stacked-list li {
-      margin-bottom: 6px;
-      padding-left: 18px;
-      position: relative;
-    }
-
-    .ba-stacked-list li::before {
-      content: '•';
-      position: absolute;
-      left: 4px;
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .ba-compare-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin: 25px 0;
-    }
-
-    .ba-compare-card {
-      background-color: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 20px;
-    }
-
-    .ba-compare-card h4 {
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 14px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid var(--border);
-    }
-
-    .ba-compare-card ul {
-      margin-left: 20px;
-      font-size: 0.95em;
-    }
-
-    .ba-footer {
-      text-align: center;
-      margin-top: 50px;
-      padding-top: 30px;
-      border-top: 1px solid var(--border);
-    }
-
-    .btn-primary {
+.btn-primary {
       display: inline-block;
       background-color: var(--accent);
       color: #fefcf8;
@@ -511,49 +19,9 @@
       cursor: pointer;
       font-size: 1em;
     }
-
-    .btn-primary:hover {
+.btn-primary:hover {
       background-color: var(--green);
       box-shadow: 0 2px 8px rgba(74, 124, 53, 0.2);
-    }
-
-    svg {
-      max-width: 100%;
-      height: auto;
-      margin: 25px 0;
-    }
-
-    .svg-container {
-      display: flex;
-      justify-content: center;
-      margin: 25px 0;
-    }
-
-    @media (max-width: 768px) {
-      .blog-article {
-        padding: 30px 20px;
-      }
-
-      .ba-title {
-        font-size: 1.8em;
-      }
-
-      .ba-h2 {
-        font-size: 1.4em;
-      }
-
-      .ba-compare-row {
-        grid-template-columns: 1fr;
-      }
-
-      .ba-meta {
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .ba-stat-row {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
@@ -600,7 +68,7 @@
         </p>
 
         <div class="svg-container">
-          <svg width="600" height="320" viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
             <!-- Title -->
             <text x="300" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="var(--text)" style="fill: var(--text);">Dose Titration: Achieving Therapeutic Window</text>
 
@@ -772,7 +240,7 @@
         </p>
 
         <div class="svg-container">
-          <svg width="600" height="320" viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
             <text x="300" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="var(--text)" style="fill: var(--text);">D2 Receptor Occupancy Curve (Saturable Kinetics)</text>
 
             <!-- Grid -->
@@ -871,7 +339,7 @@
         </p>
 
         <div class="svg-container">
-          <svg width="600" height="340" viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg">
             <text x="300" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="var(--text)" style="fill: var(--text);">Hyperbolic vs. Linear Tapering</text>
 
             <!-- Grid -->
@@ -1021,7 +489,7 @@
         </p>
 
         <div class="svg-container">
-          <svg width="600" height="380" viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
             <text x="300" y="25" font-size="16" font-weight="bold" text-anchor="middle" fill="var(--text)" style="fill: var(--text);">Cross-Tapering Strategies Decision Tree</text>
 
             <!-- Tree structure -->
@@ -1205,7 +673,7 @@
         <h3 class="ba-h3">Cross-Tapering Timeline Visualization</h3>
 
         <div class="svg-container">
-          <svg width="600" height="280" viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
             <text x="300" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="var(--text)" style="fill: var(--text);">Cross-Taper Timeline: SSRI to SNRI</text>
 
             <!-- Week labels -->

@@ -5,353 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seasonal Affective Disorder: Clinical Recognition and Management | PsychoPharmRef</title>
     <meta name="description" content="Comprehensive clinical overview of seasonal affective disorder including pathophysiology, epidemiology, and evidence-based treatment strategies for healthcare providers.">
-    <style>
-        :root {
-            --bg: #f5f0e8;
-            --bg2: #ece6db;
-            --bg3: #e2dbd0;
-            --card: #fefcf8;
-            --border: #cfc8ba;
-            --accent: #4a7c35;
-            --accent2: #8b6914;
-            --text: #231e14;
-            --text-muted: #6b6050;
-            --green: #3a6e28;
-            --red: #c04030;
-            --yellow: #8b6914;
-            --orange: #b05a20;
-            --font: 'Segoe UI', system-ui, sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font);
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-        }
-
-        .blog-article {
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .ba-header {
-            background: linear-gradient(135deg, var(--green) 0%, var(--accent) 100%);
-            color: #fff;
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .ba-category {
-            display: inline-block;
-            background-color: rgba(255, 255, 255, 0.25);
-            color: #fff;
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 1rem;
-        }
-
-        .ba-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
-        }
-
-        .ba-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            font-weight: 300;
-            margin-bottom: 1.5rem;
-        }
-
-        .ba-meta {
-            font-size: 0.9rem;
-            opacity: 0.85;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .ba-body {
-            padding: 2.5rem;
-        }
-
-        .ba-lead {
-            font-size: 1.15rem;
-            font-weight: 500;
-            color: var(--text);
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background-color: var(--bg2);
-            border-left: 4px solid var(--accent);
-            border-radius: 4px;
-        }
-
-        .ba-h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--green);
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid var(--accent);
-        }
-
-        .ba-h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--accent2);
-            margin-top: 1.75rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .ba-stat-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .ba-stat-card {
-            background-color: var(--bg2);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .ba-stat-card--alert {
-            background: linear-gradient(135deg, rgba(192, 64, 48, 0.08) 0%, rgba(139, 105, 20, 0.08) 100%);
-            border-color: var(--red);
-        }
-
-        .ba-stat-card--good {
-            background: linear-gradient(135deg, rgba(58, 110, 40, 0.08) 0%, rgba(74, 124, 53, 0.08) 100%);
-            border-color: var(--green);
-        }
-
-        .ba-stat-num {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .ba-stat-label {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .ba-table-wrap {
-            overflow-x: auto;
-            margin: 2rem 0;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-        }
-
-        .ba-table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: var(--card);
-        }
-
-        .ba-table th {
-            background-color: var(--green);
-            color: #fff;
-            padding: 1rem;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        .ba-table td {
-            padding: 1rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .ba-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .ba-table tbody tr:nth-child(even) {
-            background-color: var(--bg2);
-        }
-
-        .ba-insight-box {
-            background: linear-gradient(135deg, var(--accent2) 0%, var(--orange) 100%);
-            color: #fff;
-            padding: 2rem;
-            border-radius: 6px;
-            margin: 2rem 0;
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
-        }
-
-        .ba-insight-icon {
-            font-size: 2rem;
-            flex-shrink: 0;
-        }
-
-        .ba-timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .ba-timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: var(--border);
-        }
-
-        .ba-tl-item {
-            margin-bottom: 2rem;
-            padding-left: 70px;
-            position: relative;
-        }
-
-        .ba-tl-dot {
-            position: absolute;
-            left: 8px;
-            top: 5px;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background-color: var(--accent);
-            border: 3px solid var(--card);
-            box-shadow: 0 0 0 2px var(--accent);
-        }
-
-        .ba-tl-time {
-            font-weight: 600;
-            color: var(--accent);
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .ba-tl-text {
-            color: var(--text);
-        }
-
-        .ba-summary-box {
-            background-color: var(--bg2);
-            border-left: 4px solid var(--accent);
-            padding: 1.5rem;
-            border-radius: 4px;
-            margin: 2rem 0;
-        }
-
-        .ba-therapy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .ba-therapy-card {
-            background-color: var(--bg2);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .ba-therapy-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 4px 12px rgba(74, 124, 53, 0.1);
-        }
-
-        .ba-therapy-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .ba-therapy-title {
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 0.75rem;
-            font-size: 1.1rem;
-        }
-
-        .ba-references {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 2px solid var(--border);
-        }
-
-        .ba-ref-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--green);
-            margin-bottom: 1.5rem;
-        }
-
-        .ba-ref-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .ba-ref-list li {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-            position: relative;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: var(--text);
-        }
-
-        .ba-ref-list li::before {
-            content: '[' attr(data-num) ']';
-            position: absolute;
-            left: 0;
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        .ba-footer {
-            background-color: var(--bg2);
-            padding: 2rem;
-            text-align: center;
-            border-top: 1px solid var(--border);
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 1rem;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .back-link:hover {
-            color: var(--green);
-            text-decoration: underline;
-        }
-
-        .btn-primary {
+    <link rel="stylesheet" href="blog.css">
+  <style>
+.btn-primary {
             display: inline-block;
             background-color: var(--accent);
             color: #fff;
@@ -364,58 +20,17 @@
             cursor: pointer;
             font-size: 1rem;
         }
-
-        .btn-primary:hover {
+.btn-primary:hover {
             background-color: var(--green);
         }
-
-        .diagram-container {
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background-color: var(--bg2);
-            border-radius: 6px;
-            border: 1px solid var(--border);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .diagram-label {
+.diagram-label {
             text-align: center;
             font-size: 0.9rem;
             color: var(--text-muted);
             margin-top: 1rem;
             font-style: italic;
         }
-
-        p {
-            margin-bottom: 1rem;
-        }
-
-        ul, ol {
-            margin-left: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
-
-        strong {
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        em {
-            color: var(--text-muted);
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-    </style>
+  </style>
 </head>
 <body>
     <div class="container">
@@ -498,7 +113,7 @@
                 </p>
 
                 <div class="diagram-container">
-                    <svg viewBox="0 0 600 300" width="100%" style="max-width: 600px;">
+                    <svg viewBox="0 0 600 300" style="max-width: 600px;">
                         <defs>
                             <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
                                 <stop offset="0%" style="stop-color:#4a7c35;stop-opacity:1" />
@@ -569,7 +184,7 @@
                 </p>
 
                 <div class="diagram-container">
-                    <svg viewBox="0 0 700 350" width="100%" style="max-width: 700px;">
+                    <svg viewBox="0 0 700 350" style="max-width: 700px;">
                         <!-- Background -->
                         <rect width="700" height="350" fill="#ece6db"/>
 
@@ -619,7 +234,7 @@
                 </p>
 
                 <div class="diagram-container">
-                    <svg viewBox="0 0 700 300" width="100%" style="max-width: 700px;">
+                    <svg viewBox="0 0 700 300" style="max-width: 700px;">
                         <defs>
                             <marker id="arrowgreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
                                 <path d="M0,0 L0,6 L9,3 z" fill="#3a6e28" />
@@ -684,7 +299,7 @@
                 </p>
 
                 <div class="diagram-container">
-                    <svg viewBox="0 0 650 300" width="100%" style="max-width: 650px;">
+                    <svg viewBox="0 0 650 300" style="max-width: 650px;">
                         <defs>
                             <linearGradient id="lightGrad" x1="0%" y1="0%" x2="0%" y2="100%">
                                 <stop offset="0%" style="stop-color:#ffeb3b;stop-opacity:0.8" />
@@ -885,7 +500,7 @@
                 <h2 class="ba-h2">Integrated Treatment Algorithm</h2>
 
                 <div class="diagram-container">
-                    <svg viewBox="0 0 700 500" width="100%" style="max-width: 700px;">
+                    <svg viewBox="0 0 700 500" style="max-width: 700px;">
                         <defs>
                             <marker id="arrowblack" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
                                 <path d="M0,0 L0,6 L9,3 z" fill="#231e14" />

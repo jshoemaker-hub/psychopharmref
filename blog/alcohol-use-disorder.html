@@ -5,326 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alcohol Use Disorder: Diagnosis, Pathophysiology, and Evidence-Based Treatment</title>
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="blog.css">
   <style>
-    :root {
-      --bg: #f5f0e8; --bg2: #ece6db; --bg3: #e2dbd0;
-      --card: #fefcf8; --border: #cfc8ba;
-      --accent: #4a7c35; --accent2: #8b6914;
-      --text: #231e14; --text-muted: #6b6050;
-      --green: #3a6e28; --red: #c04030; --yellow: #8b6914; --orange: #b05a20;
-      --font: 'Segoe UI', system-ui, sans-serif;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: var(--font);
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .blog-article {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem;
-      background-color: var(--card);
-    }
-
-    .ba-header {
-      margin-bottom: 3rem;
-      padding-bottom: 2rem;
-      border-bottom: 2px solid var(--border);
-    }
-
-    .ba-category {
-      display: inline-block;
-      background-color: var(--accent);
-      color: white;
-      padding: 0.4rem 0.8rem;
-      border-radius: 4px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .ba-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-      line-height: 1.2;
-    }
-
-    .ba-subtitle {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      font-weight: 400;
-    }
-
-    .ba-meta {
-      display: flex;
-      gap: 2rem;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      flex-wrap: wrap;
-    }
-
-    .ba-body {
-      font-size: 1rem;
-    }
-
-    .ba-body p {
-      margin-bottom: 1.2rem;
-    }
-
-    .ba-body h2 {
-      margin-top: 2.5rem;
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
-      color: var(--accent);
-      border-left: 4px solid var(--accent);
-      padding-left: 1rem;
-    }
-
-    .ba-body h3 {
-      margin-top: 1.8rem;
-      margin-bottom: 0.8rem;
-      font-size: 1.3rem;
-      color: var(--accent2);
-    }
-
-    .ba-lead {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      font-style: italic;
-      background-color: var(--bg2);
-      padding: 1.5rem;
-      border-left: 4px solid var(--accent);
-      margin: 1.5rem 0;
-      border-radius: 4px;
-    }
-
-    .ba-stat-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .ba-stat-card {
-      background-color: var(--bg2);
-      padding: 1.5rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      text-align: center;
-    }
-
-    .ba-stat-card--alert {
-      background-color: rgba(192, 64, 48, 0.08);
-      border-color: var(--red);
-    }
-
-    .ba-stat-card--good {
-      background-color: rgba(58, 110, 40, 0.08);
-      border-color: var(--green);
-    }
-
-    .ba-stat-num {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 0.3rem;
-    }
-
-    .ba-stat-card--alert .ba-stat-num {
-      color: var(--red);
-    }
-
-    .ba-stat-card--good .ba-stat-num {
-      color: var(--green);
-    }
-
-    .ba-stat-label {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    .ba-table-wrap {
-      overflow-x: auto;
-      margin: 1.5rem 0;
-      border-radius: 8px;
-    }
-
-    .ba-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.95rem;
-    }
-
-    .ba-table th {
-      background-color: var(--accent);
-      color: white;
-      padding: 1rem;
-      text-align: left;
-      font-weight: 600;
-    }
-
-    .ba-table td {
-      padding: 0.9rem 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .ba-table tbody tr:nth-child(odd) {
-      background-color: var(--bg);
-    }
-
-    .ba-insight-box {
-      background-color: rgba(74, 124, 53, 0.08);
-      border-left: 4px solid var(--accent);
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-      border-radius: 4px;
-    }
-
-    .ba-insight-icon {
-      color: var(--accent);
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .ba-timeline {
-      position: relative;
-      padding: 2rem 0;
-    }
-
-    .ba-tl-item {
-      display: flex;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-
-    .ba-tl-dot {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background-color: var(--accent);
-      margin-right: 2rem;
-      margin-top: 0.3rem;
-      flex-shrink: 0;
-    }
-
-    .ba-tl-time {
-      font-weight: 600;
-      color: var(--accent2);
-      margin-bottom: 0.3rem;
-      font-size: 0.95rem;
-    }
-
-    .ba-tl-text {
-      color: var(--text-muted);
-    }
-
-    .ba-summary-box {
-      background-color: var(--bg3);
-      padding: 2rem;
-      border-radius: 8px;
-      border: 2px solid var(--accent);
-      margin: 2rem 0;
-    }
-
-    .ba-summary-box h3 {
-      color: var(--accent);
-      margin-top: 0;
-    }
-
-    .ba-summary-box ul {
-      margin-left: 1.5rem;
-      margin-top: 1rem;
-    }
-
-    .ba-summary-box li {
-      margin-bottom: 0.5rem;
-    }
-
-    .ba-therapy-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .ba-therapy-card {
-      background-color: var(--bg2);
-      padding: 1.5rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      text-align: center;
-    }
-
-    .ba-therapy-icon {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .ba-therapy-title {
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      font-size: 1.1rem;
-    }
-
-    .ba-references {
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 2px solid var(--border);
-    }
-
-    .ba-ref-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-    }
-
-    .ba-ref-list {
-      list-style: none;
-      font-size: 0.95rem;
-      line-height: 1.8;
-    }
-
-    .ba-ref-list li {
-      margin-bottom: 1rem;
-      padding-left: 2rem;
-      position: relative;
-    }
-
-    .ba-ref-list li:before {
-      content: "[" counter(item) "]";
-      counter-increment: item;
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .ba-footer {
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .btn-primary {
+.btn-primary {
       display: inline-block;
       padding: 0.75rem 1.5rem;
       background-color: var(--accent);
@@ -334,12 +17,10 @@
       font-weight: 600;
       transition: background-color 0.3s;
     }
-
-    .btn-primary:hover {
+.btn-primary:hover {
       background-color: var(--green);
     }
-
-    .svg-diagram {
+.svg-diagram {
       margin: 2rem 0;
       display: flex;
       justify-content: center;
@@ -348,25 +29,6 @@
       border-radius: 8px;
       border: 1px solid var(--border);
     }
-
-    svg {
-      max-width: 100%;
-      height: auto;
-    }
-
-    .back-link {
-      display: inline-block;
-      margin-bottom: 2rem;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .back-link:hover {
-      text-decoration: underline;
-    }
-
-    counter-reset: item;
   </style>
 </head>
 <body>
@@ -522,7 +184,7 @@
       </p>
 
       <div class="svg-diagram">
-        <svg viewBox="0 0 600 350" xmlns="http://www.w3.org/2000/svg" width="600" height="350">
+        <svg viewBox="0 0 600 350" xmlns="http://www.w3.org/2000/svg">
           <!-- Title -->
           <text x="300" y="25" font-size="20" font-weight="bold" text-anchor="middle" fill="#4a7c35">
             GABA/Glutamate Balance in Alcohol Use Disorder
@@ -601,7 +263,7 @@
       <h3>Dysregulation of Reward and Stress Circuitry</h3>
 
       <div class="svg-diagram">
-        <svg viewBox="0 0 650 400" xmlns="http://www.w3.org/2000/svg" width="650" height="400">
+        <svg viewBox="0 0 650 400" xmlns="http://www.w3.org/2000/svg">
           <text x="325" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#4a7c35">
             Reward Circuitry in Alcohol Use Disorder
           </text>
@@ -721,7 +383,7 @@
       </p>
 
       <div class="svg-diagram">
-        <svg viewBox="0 0 650 320" xmlns="http://www.w3.org/2000/svg" width="650" height="320">
+        <svg viewBox="0 0 650 320" xmlns="http://www.w3.org/2000/svg">
           <text x="325" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#4a7c35">
             Stress-Induced Drinking Pathway
           </text>
@@ -866,7 +528,7 @@
       </p>
 
       <div class="svg-diagram">
-        <svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" width="700" height="420">
+        <svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg">
           <text x="350" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#4a7c35">
             AUD Medication Selection Algorithm
           </text>
@@ -1056,7 +718,7 @@
       </p>
 
       <div class="svg-diagram">
-        <svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" width="700" height="380">
+        <svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg">
           <text x="350" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#4a7c35">
             Treatment Response Timeline and Expected Outcomes
           </text>

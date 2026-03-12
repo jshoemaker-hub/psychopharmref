@@ -6,358 +6,9 @@
     <title>PTSD and Complex PTSD: Clinical Diagnosis and Management | PsychoPharmRef</title>
     <meta name="description" content="Comprehensive clinical review of PTSD and cPTSD for physicians: diagnostic criteria, pathophysiology, pharmacological and non-pharmacological treatments.">
     <link rel="stylesheet" href="../css/styles.css">
-    <style>
-        :root {
-            --bg: #f5f0e8;
-            --bg2: #ece6db;
-            --bg3: #e2dbd0;
-            --card: #fefcf8;
-            --border: #cfc8ba;
-            --accent: #4a7c35;
-            --accent2: #8b6914;
-            --text: #231e14;
-            --text-muted: #6b6050;
-            --green: #3a6e28;
-            --red: #c04030;
-            --yellow: #8b6914;
-            --orange: #b05a20;
-            --font: 'Segoe UI', system-ui, sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font);
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-        }
-
-        .blog-article {
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: var(--card);
-            padding: 3rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        .ba-header {
-            margin-bottom: 3rem;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 2rem;
-        }
-
-        .ba-category {
-            display: inline-block;
-            background-color: var(--accent);
-            color: white;
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 1rem;
-        }
-
-        .ba-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 1rem 0;
-            color: var(--text);
-        }
-
-        .ba-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            font-style: italic;
-            margin: 0.5rem 0 1rem 0;
-        }
-
-        .ba-meta {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-top: 1rem;
-        }
-
-        .ba-body {
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
-        .ba-body p {
-            margin: 1.2rem 0;
-        }
-
-        .ba-lead {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            color: var(--text);
-            font-weight: 500;
-            margin: 1.5rem 0;
-            padding: 1.5rem;
-            background-color: var(--bg2);
-            border-left: 4px solid var(--accent);
-        }
-
-        .ba-h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 2.5rem 0 1.5rem 0;
-            color: var(--accent);
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.8rem;
-        }
-
-        .ba-h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin: 1.8rem 0 1rem 0;
-            color: var(--accent2);
-        }
-
-        .ba-stat-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .ba-stat-card {
-            background-color: var(--bg2);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .ba-stat-card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .ba-stat-card--alert {
-            border-color: var(--red);
-            background-color: rgba(192,64,48,0.05);
-        }
-
-        .ba-stat-card--good {
-            border-color: var(--green);
-            background-color: rgba(58,110,40,0.05);
-        }
-
-        .ba-stat-num {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin: 0.5rem 0;
-        }
-
-        .ba-stat-card--alert .ba-stat-num {
-            color: var(--red);
-        }
-
-        .ba-stat-card--good .ba-stat-num {
-            color: var(--green);
-        }
-
-        .ba-stat-label {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .ba-table-wrap {
-            overflow-x: auto;
-            margin: 2rem 0;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-        }
-
-        .ba-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.95rem;
-        }
-
-        .ba-table thead {
-            background-color: var(--accent);
-            color: white;
-        }
-
-        .ba-table th {
-            padding: 1rem;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        .ba-table td {
-            padding: 1rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .ba-table tbody tr:hover {
-            background-color: var(--bg2);
-        }
-
-        .ba-insight-box {
-            background-color: var(--bg3);
-            border-left: 4px solid var(--accent2);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 4px;
-        }
-
-        .ba-insight-icon {
-            font-size: 1.5rem;
-            margin-right: 0.8rem;
-        }
-
-        .ba-insight-box h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--accent2);
-            margin: 0.5rem 0;
-        }
-
-        .ba-timeline {
-            margin: 2rem 0;
-        }
-
-        .ba-tl-item {
-            display: flex;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .ba-tl-dot {
-            width: 16px;
-            height: 16px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            margin-top: 0.4rem;
-            margin-right: 1.5rem;
-            flex-shrink: 0;
-            box-shadow: 0 0 0 4px var(--bg2);
-            border: 2px solid var(--accent);
-        }
-
-        .ba-tl-time {
-            font-weight: 700;
-            color: var(--accent);
-            font-size: 0.95rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .ba-tl-text {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .ba-summary-box {
-            background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
-            border: 1px solid var(--border);
-            padding: 2rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-        }
-
-        .ba-summary-box h3 {
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .ba-summary-box ul {
-            list-style-position: inside;
-            color: var(--text-muted);
-        }
-
-        .ba-summary-box li {
-            margin: 0.6rem 0;
-            margin-left: 1rem;
-        }
-
-        .ba-therapy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .ba-therapy-card {
-            background-color: var(--bg2);
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .ba-therapy-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 4px 12px rgba(74,124,53,0.15);
-        }
-
-        .ba-therapy-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .ba-therapy-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 0.8rem;
-        }
-
-        .ba-therapy-card p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        .ba-references {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 2px solid var(--border);
-        }
-
-        .ba-ref-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-        }
-
-        .ba-ref-list {
-            list-style: none;
-            font-size: 0.9rem;
-            line-height: 1.8;
-        }
-
-        .ba-ref-list li {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
-            text-indent: -1.5rem;
-            color: var(--text-muted);
-        }
-
-        .ba-footer {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .btn-primary {
+    <link rel="stylesheet" href="blog.css">
+  <style>
+.btn-primary {
             background-color: var(--accent);
             color: white;
             padding: 0.7rem 1.5rem;
@@ -370,13 +21,11 @@
             border: none;
             cursor: pointer;
         }
-
-        .btn-primary:hover {
+.btn-primary:hover {
             background-color: var(--green);
             box-shadow: 0 4px 12px rgba(74,124,53,0.25);
         }
-
-        .diagram {
+.diagram {
             margin: 2rem 0;
             padding: 2rem;
             background-color: var(--bg2);
@@ -386,34 +35,14 @@
             justify-content: center;
             align-items: center;
         }
-
-        .diagram-title {
+.diagram-title {
             text-align: center;
             font-weight: 600;
             color: var(--accent);
             margin-top: 1rem;
             font-size: 0.95rem;
         }
-
-        @media (max-width: 768px) {
-            .blog-article {
-                padding: 1.5rem;
-            }
-
-            .ba-title {
-                font-size: 1.8rem;
-            }
-
-            .ba-h2 {
-                font-size: 1.4rem;
-            }
-
-            .ba-footer {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-    </style>
+  </style>
 </head>
 <body>
     <article class="blog-article">
@@ -532,7 +161,7 @@
             </p>
 
             <div class="diagram">
-                <svg width="100%" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <style>
                             .ptsd-box { fill: #ece6db; stroke: #4a7c35; stroke-width: 2; }
@@ -634,7 +263,7 @@
             </p>
 
             <div class="diagram">
-                <svg width="100%" viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <marker id="arrowgreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
                             <path d="M0,0 L0,6 L9,3 z" fill="#4a7c35" />
@@ -776,7 +405,7 @@
             </ul>
 
             <div class="diagram">
-                <svg width="100%" viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <style>
                             .hpa-box { fill: #ece6db; stroke: #4a7c35; stroke-width: 2; }
@@ -1126,7 +755,7 @@
             </p>
 
             <div class="diagram">
-                <svg width="100%" viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <style>
                             .algo-box { fill: #ece6db; stroke: #4a7c35; stroke-width: 2; }
