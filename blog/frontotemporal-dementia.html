@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontotemporal Dementia: Clinical Recognition and Management | PsychoPharmRef</title>
+    <style>
+        :root {
+            --bg: #f5f0e8;
+            --bg2: #ece6db;
+            --bg3: #e2dbd0;
+            --card: #fefcf8;
+            --border: #cfc8ba;
+            --accent: #4a7c35;
+            --accent2: #8b6914;
+            --text: #231e14;
+            --text-muted: #6b6050;
+            --green: #3a6e28;
+            --red: #c04030;
+            --yellow: #8b6914;
+            --orange: #b05a20;
+            --font: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+            line-height: 1.6;
+        }
+
+        .blog-article {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 48px 32px;
+            background-color: var(--card);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 24px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .ba-header {
+            margin-bottom: 36px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .ba-category {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .ba-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .ba-subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .ba-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .ba-body {
+            font-size: 14px;
+            line-height: 1.75;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .ba-lead {
+            font-size: 16px;
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            padding: 20px;
+            background-color: var(--bg2);
+            border-left: 4px solid var(--accent);
+        }
+
+        .ba-h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text);
+            margin-top: 32px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .ba-h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text);
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .ba-stat-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .ba-stat-card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            border-top: 4px solid var(--accent2);
+        }
+
+        .ba-stat-card--alert {
+            border-top-color: var(--red);
+        }
+
+        .ba-stat-card--good {
+            border-top-color: var(--green);
+        }
+
+        .ba-stat-num {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .ba-stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ba-table-wrap {
+            overflow-x: auto;
+            margin: 24px 0;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .ba-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+        }
+
+        .ba-table th {
+            background-color: var(--bg2);
+            color: var(--text);
+            padding: 12px;
+            text-align: left;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .ba-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        .ba-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .ba-insight-box {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            background-color: #e8f4f0;
+            border: 2px solid #4a9b7f;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .ba-insight-icon {
+            font-size: 22px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .ba-insight-text {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .ba-timeline {
+            border-left: 2px solid var(--accent);
+            padding-left: 24px;
+            margin: 24px 0;
+        }
+
+        .ba-tl-item {
+            position: relative;
+            padding-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .ba-tl-dot {
+            position: absolute;
+            left: -13px;
+            top: 0;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+        }
+
+        .ba-tl-time {
+            font-size: 12px;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .ba-tl-text {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .ba-summary-box {
+            background-color: #e8f4f0;
+            border: 2px solid #4a9b7f;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .ba-summary-box h3 {
+            color: var(--text);
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .ba-summary-box ul {
+            list-style: none;
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .ba-summary-box li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .ba-summary-box li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .ba-references {
+            margin-top: 36px;
+            padding-top: 24px;
+            border-top: 2px solid var(--border);
+        }
+
+        .ba-ref-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .ba-ref-list {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            line-height: 2;
+        }
+
+        .ba-ref-list ol {
+            list-style-position: inside;
+            margin-left: 0;
+        }
+
+        .ba-ref-list li {
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .ba-therapy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .ba-therapy-card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .ba-therapy-icon {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .ba-therapy-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .ba-therapy-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .ba-compare-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .ba-compare-card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .ba-compare-card h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .ba-compare-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .ba-stacked-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .ba-stacked-card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .ba-stacked-card h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .ba-stacked-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .ba-bar-chart {
+            margin: 24px 0;
+        }
+
+        .ba-bar-row {
+            display: grid;
+            grid-template-columns: 120px 1fr 40px;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .ba-bar-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .ba-bar-track {
+            background-color: var(--bg2);
+            height: 20px;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .ba-bar-fill {
+            height: 100%;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .ba-bar-pct {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .ba-footer {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 2px solid var(--border);
+            text-align: center;
+        }
+
+        .ba-footer p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .diagram-container {
+            margin: 24px 0;
+            padding: 20px;
+            background-color: var(--bg2);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 640px) {
+            .blog-article {
+                padding: 32px 16px;
+            }
+
+            .ba-title {
+                font-size: 22px;
+            }
+
+            .ba-compare-row {
+                grid-template-columns: 1fr;
+            }
+
+            .ba-stat-row {
+                grid-template-columns: 1fr;
+            }
+
+            .ba-therapy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ba-bar-row {
+                grid-template-columns: 100px 1fr 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-article">
+        <a href="../index.html" class="back-link">← Back to Blog</a>
+
+        <div class="ba-header">
+            <div class="ba-category">Neurocognitive Disorders</div>
+            <h1 class="ba-title">Frontotemporal Dementia: Clinical Recognition and Management for Practitioners</h1>
+            <p class="ba-subtitle">From Pick's Disease to the Modern FTD Spectrum: Diagnostic Strategies and Evidence-Based Treatment Approaches</p>
+            <p class="ba-meta">Updated March 2026 • 8,200 words • Peer-reviewed references</p>
+        </div>
+
+        <div class="ba-lead">
+            Frontotemporal dementia (FTD) represents a heterogeneous group of neurodegenerative conditions characterized by progressive loss of frontal and temporal lobe function, presenting considerable diagnostic and therapeutic challenges to clinicians. Unlike Alzheimer's disease, FTD typically affects younger patients (mean onset 45–65 years), causing profound behavioral and language changes that often lead to misdiagnosis as primary psychiatric illness. This review synthesizes current understanding of FTD pathobiology, clinical variants, diagnostic approaches, and emerging treatment strategies for physician practitioners.
+        </div>
+
+        <h2 class="ba-h2">Historical Context: From Pick's Disease to the FTD Spectrum</h2>
+
+        <p class="ba-body">
+            Arnold Pick's 1892 clinical description of a patient with language dysfunction and focal brain atrophy established the foundation for modern FTD recognition. Pick initially described progressive language deterioration with preserved memory in his landmark case, noting peculiar swollen neurons at autopsy—later termed "Pick bodies" by Alzheimer in 1911. For nearly a century, Pick's disease remained a pathological diagnosis, distinct from other dementias largely by histological characteristics.
+        </p>
+
+        <p class="ba-body">
+            The critical conceptual shift occurred in the 1990s when researchers recognized that the clinical and pathological boundaries proposed by Pick were too restrictive. Neary and colleagues' seminal 1998 work consolidated three distinct clinical syndromes—behavioral variant FTD (bvFTD), semantic variant primary progressive aphasia (svPPA), and nonfluent variant PPA (nfvPPA)—under the umbrella term "frontotemporal dementia," acknowledging shared underlying pathology despite phenotypic diversity. This nosological advance fundamentally altered clinical practice and enabled unified research efforts.
+        </p>
+
+        <p class="ba-body">
+            The discovery of tau pathology in some cases and TDP-43 (TAR DNA-binding protein 43) pathology in others during the 2000s revealed that FTD could not be understood as a single disease entity. The landmark identification of hexanucleotide repeat expansions in the C9orf72 gene (2011) by two independent teams provided the first major genetic breakthrough, followed by recognition of MAPT (microtubule-associated protein tau) and GRN (progranulin) mutations. These discoveries established FTD as a genetic disease spectrum with profound implications for patient counseling, predictive testing, and biomarker research.
+        </p>
+
+        <h2 class="ba-h2">Current FTD Treatment Landscape: From Ineffective Trials to Emerging Promise</h2>
+
+        <p class="ba-body">
+            Unlike Alzheimer's disease, which has seen incremental therapeutic progress through anti-amyloid monoclonal antibodies, FTD remains without FDA-approved disease-modifying treatments. Early enthusiasm for cholinesterase inhibitors proved misplaced; trials demonstrated no efficacy and potential harm in FTD populations, contrasting sharply with their modest benefits in Alzheimer's disease. This fundamental difference reflects the distinct pathophysiology: FTD primarily involves frontal and anterior temporal regions with tau or TDP-43 inclusions, rather than amyloid-beta and tau tangles of the Alzheimer type.
+        </p>
+
+        <p class="ba-body">
+            Current pharmacological management remains largely symptomatic. Selective serotonin reuptake inhibitors (SSRIs) such as sertraline and paroxetine have shown modest benefit for behavioral symptoms, particularly irritability, impulsivity, and compulsive behaviors, in observational series and open-label studies, though rigorous controlled trials remain limited. Trazodone, often used off-label for agitation and sleep disturbance, lacks robust evidence but is frequently employed given its tolerability profile. Antipsychotic use requires extreme caution; while small case series suggest potential benefit in managing severe behavioral disturbance, the risk of accelerated cognitive decline and extrapyramidal side effects generally argues against routine use.
+        </p>
+
+        <p class="ba-body">
+            Emerging approaches show promise. The progranulin replacement strategy (GLY-101) targets GRN mutation carriers with preclinical and Phase 1 efficacy data. Antisense oligonucleotide therapies targeting C9orf72 repeats are in Phase 2 trials. tau-targeting therapies and TDP-43–based immunotherapies remain in earlier development stages. These approaches underscore the critical importance of genetic diagnosis and biomarker stratification in FTD clinical care, as future treatments will likely require precise categorization of underlying pathological substrates.
+        </p>
+
+        <div class="diagram-container">
+            <svg width="100%" height="400" viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .diagram-text { font-family: 'Segoe UI', sans-serif; font-size: 12px; fill: #231e14; }
+                        .diagram-title { font-size: 14px; font-weight: bold; }
+                        .box-ftd { fill: #e8f4f0; stroke: #4a9b7f; stroke-width: 2; }
+                        .box-alt { fill: #f5e8f0; stroke: #9b4a7f; stroke-width: 2; }
+                        .line { stroke: #6b6050; stroke-width: 2; fill: none; }
+                        .accent-line { stroke: #4a7c35; stroke-width: 2.5; fill: none; }
+                    </style>
+                </defs>
+
+                <text x="350" y="25" text-anchor="middle" class="diagram-text diagram-title">FTD Treatment Era Timeline</text>
+
+                <!-- Timeline -->
+                <line x1="100" y1="60" x2="650" y2="60" class="line"/>
+
+                <!-- 1892 -->
+                <circle cx="100" cy="60" r="6" fill="#4a7c35"/>
+                <text x="100" y="85" text-anchor="middle" class="diagram-text" font-weight="bold">1892</text>
+                <text x="100" y="100" text-anchor="middle" class="diagram-text" font-size="11">Pick's Case</text>
+
+                <!-- 1998 -->
+                <circle cx="220" cy="60" r="6" fill="#4a7c35"/>
+                <text x="220" y="85" text-anchor="middle" class="diagram-text" font-weight="bold">1998</text>
+                <text x="220" y="100" text-anchor="middle" class="diagram-text" font-size="11">FTD Spectrum</text>
+                <text x="220" y="112" text-anchor="middle" class="diagram-text" font-size="11">Recognized</text>
+
+                <!-- 2006 -->
+                <circle cx="340" cy="60" r="6" fill="#4a7c35"/>
+                <text x="340" y="85" text-anchor="middle" class="diagram-text" font-weight="bold">2006</text>
+                <text x="340" y="100" text-anchor="middle" class="diagram-text" font-size="11">TDP-43 in FTD</text>
+
+                <!-- 2011 -->
+                <circle cx="460" cy="60" r="6" fill="#4a7c35"/>
+                <text x="460" y="85" text-anchor="middle" class="diagram-text" font-weight="bold">2011</text>
+                <text x="460" y="100" text-anchor="middle" class="diagram-text" font-size="11">C9orf72 Discovery</text>
+
+                <!-- 2026 -->
+                <circle cx="580" cy="60" r="6" fill="#4a7c35"/>
+                <text x="580" y="85" text-anchor="middle" class="diagram-text" font-weight="bold">2026</text>
+                <text x="580" y="100" text-anchor="middle" class="diagram-text" font-size="11">Phase 2 Trials</text>
+
+                <!-- Treatment availability section -->
+                <rect x="80" y="160" width="600" height="200" fill="none" stroke="#cfc8ba" stroke-width="1" stroke-dasharray="5,5"/>
+
+                <text x="350" y="185" text-anchor="middle" class="diagram-text diagram-title">Treatment Availability by Era</text>
+
+                <!-- No approved therapy -->
+                <rect x="100" y="210" width="160" height="80" class="box-alt" rx="4"/>
+                <text x="180" y="230" text-anchor="middle" class="diagram-text" font-weight="bold" font-size="13">No Approved</text>
+                <text x="180" y="245" text-anchor="middle" class="diagram-text" font-weight="bold" font-size="13">Therapies</text>
+                <text x="180" y="265" text-anchor="middle" class="diagram-text" font-size="11">SSRIs, Trazodone</text>
+                <text x="180" y="280" text-anchor="middle" class="diagram-text" font-size="11">Symptomatic only</text>
+
+                <!-- Emerging approaches -->
+                <rect x="310" y="210" width="160" height="80" class="box-ftd" rx="4"/>
+                <text x="390" y="230" text-anchor="middle" class="diagram-text" font-weight="bold" font-size="13">Emerging Phase</text>
+                <text x="390" y="245" text-anchor="middle" class="diagram-text" font-weight="bold" font-size="13">2-3 Studies</text>
+                <text x="390" y="265" text-anchor="middle" class="diagram-text" font-size="11">GLY-101 (GRN)</text>
+                <text x="390" y="280" text-anchor="middle" class="diagram-text" font-size="11">ASO (C9orf72)</text>
+
+                <!-- Future directions -->
+                <rect x="520" y="210" width="160" height="80" class="box-ftd" rx="4"/>
+                <text x="600" y="230" text-anchor="middle" class="diagram-text" font-weight="bold" font-size="13">Pipeline Focus</text>
+                <text x="600" y="245" text-anchor="middle" class="diagram-text" font-weight="bold" font-size="13">Genetics-Based</text>
+                <text x="600" y="265" text-anchor="middle" class="diagram-text" font-size="11">Tau therapies</text>
+                <text x="600" y="280" text-anchor="middle" class="diagram-text" font-size="11">TDP-43 targeting</text>
+            </svg>
+        </div>
+
+        <h2 class="ba-h2">Clinical Phenotypes and Core Pathophysiology</h2>
+
+        <p class="ba-body">
+            FTD manifests as three distinct clinical variants, each reflecting different patterns of neurodegeneration within frontal and temporal lobe networks. Understanding these phenotypes is critical for accurate diagnosis and appropriate management, as they present with superficially different symptomatology that can lead to initial misdiagnosis.
+        </p>
+
+        <h3 class="ba-h3">Behavioral Variant FTD (bvFTD)</h3>
+
+        <p class="ba-body">
+            Behavioral variant FTD represents the most common FTD syndrome, accounting for approximately 50–60% of cases. Patients present with progressive personality change, social inappropriateness, disinhibition, impulsivity, and loss of empathy. Early features frequently include dietary changes (preference for sweets, weight gain), compulsive behaviors, apathy, and executive dysfunction. Remarkably, memory and language remain relatively preserved in early disease, a distinguishing feature that often leads to psychiatric misdiagnosis.
+        </p>
+
+        <p class="ba-body">
+            The behavioral changes in bvFTD reflect progressive dysfunction in ventromedial prefrontal and anterior insular regions critical for social cognition and emotional processing. Neuroimaging demonstrates predominantly frontal atrophy with sparing of medial temporal lobe structures, contrasting with Alzheimer's disease. Loss of theory of mind, impaired facial emotion recognition, and diminished guilt/embarrassment represent core cognitive deficits. Many patients present to psychiatrists with late-onset bipolar disorder, depression with poor response to antidepressants, or personality disorder, with neurodegenerative diagnosis delayed by years.
+        </p>
+
+        <h3 class="ba-h3">Semantic Variant Primary Progressive Aphasia (svPPA)</h3>
+
+        <p class="ba-body">
+            Semantic variant PPA affects approximately 15–20% of FTD patients, characterized by progressive loss of word meaning (semantic knowledge) while syntactic abilities and repetition remain preserved. Patients present with anomia, surface dyslexia (difficulty reading irregular words), and comprehension deficits for low-frequency words. Speech remains fluent and grammatical but increasingly content-empty. Many patients report inability to recognize familiar faces (prosopagnosia) or objects despite preserved visual perception.
+        </p>
+
+        <p class="ba-body">
+            Pathologically, svPPA involves anterior temporal lobe atrophy, often asymmetric, affecting left temporal regions more in patients with noun-semantic deficits and right temporal regions in those with face recognition problems. The anterior temporal lobes serve as a semantic hub integrating multimodal information about object identity, meaning, and conceptual knowledge. Both tau and TDP-43 pathologies appear in svPPA cases, with no distinctive pathological signature distinguishing them clinically.
+        </p>
+
+        <h3 class="ba-h3">Nonfluent Variant Primary Progressive Aphasia (nfvPPA)</h3>
+
+        <p class="ba-body">
+            Nonfluent variant PPA comprises approximately 20–25% of FTD cases, presenting with progressive agrammatism, anomia, and apraxia of speech (difficulty executing speech motor movements). Speech output is slow, effortful, and dysprosodic with frequent pauses and revisions. Comprehension of complex sentences with long-term dependencies is impaired, while single-word comprehension remains relatively preserved. Repetition is typically affected due to apraxia rather than phonological impairment.
+        </p>
+
+        <p class="ba-body">
+            Neuroimaging reveals atrophy in left inferior frontal gyrus (Broca's region) and insular regions, consistent with their role in speech production and syntactic processing. Pathologically, nfvPPA shows predominantly tau pathology in some cases and TDP-43 in others, with no clinical means to distinguish them before autopsy. Notably, nfvPPA shows the strongest association with motor neuron disease (approximately 10% of nfvPPA patients develop ALS features), underscoring pathobiological overlap between these neurological conditions.
+        </p>
+
+        <div class="diagram-container">
+            <svg width="100%" height="420" viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .diagram-text { font-family: 'Segoe UI', sans-serif; font-size: 12px; fill: #231e14; }
+                        .diagram-title { font-size: 14px; font-weight: bold; }
+                        .variant-box { stroke-width: 2; }
+                        .bvftd-box { fill: #fef3e6; stroke: #b05a20; }
+                        .svppa-box { fill: #f0f4e8; stroke: #6b8e23; }
+                        .nfvppa-box { fill: #e8f0f8; stroke: #3b5998; }
+                        .line { stroke: #6b6050; stroke-width: 1.5; fill: none; }
+                    </style>
+                </defs>
+
+                <text x="350" y="25" text-anchor="middle" class="diagram-text diagram-title">FTD Clinical Variants: Comparative Features</text>
+
+                <!-- bvFTD -->
+                <rect x="40" y="60" width="200" height="340" class="variant-box bvftd-box" rx="6"/>
+                <text x="140" y="85" text-anchor="middle" class="diagram-text" font-weight="bold" font-size="14">bvFTD</text>
+                <text x="140" y="105" text-anchor="middle" class="diagram-text" font-size="11" font-weight="bold">Core Features:</text>
+
+                <text x="55" y="125" class="diagram-text" font-size="11">• Personality change</text>
+                <text x="55" y="140" class="diagram-text" font-size="11">• Disinhibition</text>
+                <text x="55" y="155" class="diagram-text" font-size="11">• Loss of empathy</text>
+                <text x="55" y="170" class="diagram-text" font-size="11">• Apathy</text>
+                <text x="55" y="185" class="diagram-text" font-size="11">• Dietary changes</text>
+
+                <text x="55" y="210" class="diagram-text" font-size="11" font-weight="bold">Prevalence:</text>
+                <text x="55" y="225" class="diagram-text" font-size="11">50–60% of FTD</text>
+
+                <text x="55" y="250" class="diagram-text" font-size="11" font-weight="bold">Brain Atrophy:</text>
+                <text x="55" y="265" class="diagram-text" font-size="11">Medial prefrontal</text>
+                <text x="55" y="280" class="diagram-text" font-size="11">Anterior insula</text>
+
+                <text x="55" y="305" class="diagram-text" font-size="11" font-weight="bold">Memory/Language:</text>
+                <text x="55" y="320" class="diagram-text" font-size="11">Relatively preserved</text>
+
+                <text x="55" y="345" class="diagram-text" font-size="11" font-weight="bold">Common Misdiagnosis:</text>
+                <text x="55" y="360" class="diagram-text" font-size="11">Late-onset bipolar,</text>
+                <text x="55" y="375" class="diagram-text" font-size="11">personality disorder</text>
+
+                <!-- svPPA -->
+                <rect x="260" y="60" width="200" height="340" class="variant-box svppa-box" rx="6"/>
+                <text x="360" y="85" text-anchor="middle" class="diagram-text" font-weight="bold" font-size="14">svPPA</text>
+                <text x="360" y="105" text-anchor="middle" class="diagram-text" font-size="11" font-weight="bold">Core Features:</text>
+
+                <text x="275" y="125" class="diagram-text" font-size="11">• Loss of word meaning</text>
+                <text x="275" y="140" class="diagram-text" font-size="11">• Anomia</text>
+                <text x="275" y="155" class="diagram-text" font-size="11">• Surface dyslexia</text>
+                <text x="275" y="170" class="diagram-text" font-size="11">• Fluent but empty</text>
+                <text x="275" y="185" class="diagram-text" font-size="11">• Prosopagnosia</text>
+
+                <text x="275" y="210" class="diagram-text" font-size="11" font-weight="bold">Prevalence:</text>
+                <text x="275" y="225" class="diagram-text" font-size="11">15–20% of FTD</text>
+
+                <text x="275" y="250" class="diagram-text" font-size="11" font-weight="bold">Brain Atrophy:</text>
+                <text x="275" y="265" class="diagram-text" font-size="11">Anterior temporal</text>
+                <text x="275" y="280" class="diagram-text" font-size="11">Asymmetric</text>
+
+                <text x="275" y="305" class="diagram-text" font-size="11" font-weight="bold">Memory/Syntax:</text>
+                <text x="275" y="320" class="diagram-text" font-size="11">Memory preserved</text>
+                <text x="275" y="335" class="diagram-text" font-size="11">Syntax intact</text>
+
+                <text x="275" y="360" class="diagram-text" font-size="11" font-weight="bold">Pathology:</text>
+                <text x="275" y="375" class="diagram-text" font-size="11">Tau or TDP-43</text>
+
+                <!-- nfvPPA -->
+                <rect x="480" y="60" width="200" height="340" class="variant-box nfvppa-box" rx="6"/>
+                <text x="580" y="85" text-anchor="middle" class="diagram-text" font-weight="bold" font-size="14">nfvPPA</text>
+                <text x="580" y="105" text-anchor="middle" class="diagram-text" font-size="11" font-weight="bold">Core Features:</text>
+
+                <text x="495" y="125" class="diagram-text" font-size="11">• Agrammatism</text>
+                <text x="495" y="140" class="diagram-text" font-size="11">• Apraxia of speech</text>
+                <text x="495" y="155" class="diagram-text" font-size="11">• Anomia</text>
+                <text x="495" y="170" class="diagram-text" font-size="11">• Effortful speech</text>
+                <text x="495" y="185" class="diagram-text" font-size="11">• ALS overlap 10%</text>
+
+                <text x="495" y="210" class="diagram-text" font-size="11" font-weight="bold">Prevalence:</text>
+                <text x="495" y="225" class="diagram-text" font-size="11">20–25% of FTD</text>
+
+                <text x="495" y="250" class="diagram-text" font-size="11" font-weight="bold">Brain Atrophy:</text>
+                <text x="495" y="265" class="diagram-text" font-size="11">Left IFG (Broca)</text>
+                <text x="495" y="280" class="diagram-text" font-size="11">Insula</text>
+
+                <text x="495" y="305" class="diagram-text" font-size="11" font-weight="bold">Comprehension:</text>
+                <text x="495" y="320" class="diagram-text" font-size="11">Complex sentences</text>
+                <text x="495" y="335" class="diagram-text" font-size="11">impaired</text>
+
+                <text x="495" y="360" class="diagram-text" font-size="11" font-weight="bold">Key Association:</text>
+                <text x="495" y="375" class="diagram-text" font-size="11">Motor neuron disease</text>
+            </svg>
+        </div>
+
+        <h3 class="ba-h3">Pathobiological Substrates: Tau vs. TDP-43</h3>
+
+        <p class="ba-body">
+            The pathological diversity underlying FTD variants remains a defining challenge. Approximately 45% of FTD cases show tau pathology (FTLD-tau), including Pick bodies (FTLD-tau-Pick), tangle-predominant variant, and globular glial inclusions. Approximately 50% show TDP-43 pathology (FTLD-TDP) with distinct subtypes (Types A, B, and C by pathological distribution), while approximately 5% show FUS (fused in sarcoma) inclusions or other proteins.
+        </p>
+
+        <p class="ba-body">
+            Critically, clinical phenotype does not reliably predict underlying pathology. A patient with bvFTD might have tau or TDP-43 pathology; semantic variant PPA shows relatively higher tau prevalence (~70%) compared to other variants, but TDP-43 cases occur. This heterogeneity underscores the necessity of genetic testing when available, as gene mutations show some pathological predilection: MAPT mutations cause tau pathology, GRN mutations cause TDP-43 pathology (Type A), and C9orf72 expansions cause TDP-43 pathology (Type B).
+        </p>
+
+        <div class="diagram-container">
+            <svg width="100%" height="380" viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .diagram-text { font-family: 'Segoe UI', sans-serif; font-size: 12px; fill: #231e14; }
+                        .diagram-title { font-size: 14px; font-weight: bold; }
+                        .tau-box { fill: #fff0e6; stroke: #d4a574; stroke-width: 2; }
+                        .tdp-box { fill: #e8f4f0; stroke: #4a9b7f; stroke-width: 2; }
+                        .pie-label { font-size: 11px; font-weight: bold; }
+                        .line { stroke: #cfc8ba; stroke-width: 1.5; fill: none; }
+                    </style>
+                </defs>
+
+                <text x="350" y="25" text-anchor="middle" class="diagram-text diagram-title">FTD Pathology Distribution: Tau vs. TDP-43</text>
+
+                <!-- Pie chart -->
+                <circle cx="200" cy="150" r="100" fill="#e8f4f0" stroke="#4a9b7f" stroke-width="2"/>
+
+                <!-- Tau segment (45%) -->
+                <path d="M 200 150 L 200 50 A 100 100 0 0 1 270 73 Z" fill="#fff0e6" stroke="#d4a574" stroke-width="2"/>
+
+                <!-- TDP-43 segment (50%) -->
+                <path d="M 200 150 L 270 73 A 100 100 0 0 1 130 233 Z" fill="#e8f4f0" stroke="#4a9b7f" stroke-width="2"/>
+
+                <!-- FUS segment (5%) -->
+                <path d="M 200 150 L 130 233 A 100 100 0 0 1 200 50 Z" fill="#f5e8f0" stroke="#9b4a7f" stroke-width="2" stroke-dasharray="3,3"/>
+
+                <!-- Labels -->
+                <text x="200" y="75" text-anchor="middle" class="pie-label">45%</text>
+                <text x="200" y="90" text-anchor="middle" class="diagram-text" font-size="10">TAU</text>
+
+                <text x="265" y="165" text-anchor="middle" class="pie-label">50%</text>
+                <text x="265" y="180" text-anchor="middle" class="diagram-text" font-size="10">TDP-43</text>
+
+                <text x="135" y="210" text-anchor="middle" class="pie-label">5%</text>
+                <text x="135" y="225" text-anchor="middle" class="diagram-text" font-size="10">FUS/Other</text>
+
+                <!-- Tau characteristics -->
+                <rect x="350" y="60" width="320" height="150" class="tau-box" rx="6"/>
+                <text x="510" y="85" text-anchor="middle" class="diagram-text" font-weight="bold" font-size="13">TAU PATHOLOGY (FTLD-tau)</text>
+
+                <text x="365" y="110" class="diagram-text" font-size="11" font-weight="bold">Subtypes:</text>
+                <text x="365" y="125" class="diagram-text" font-size="11">• Pick bodies (classical)</text>
+                <text x="365" y="140" class="diagram-text" font-size="11">• Tangle-predominant</text>
+                <text x="365" y="155" class="diagram-text" font-size="11">• Globular glial inclusions</text>
+
+                <text x="530" y="110" class="diagram-text" font-size="11" font-weight="bold">Gene Association:</text>
+                <text x="530" y="125" class="diagram-text" font-size="11">MAPT mutations</text>
+                <text x="530" y="140" class="diagram-text" font-size="11">~40–50% genetic cases</text>
+                <text x="530" y="155" class="diagram-text" font-size="11">Higher in svPPA</text>
+
+                <!-- TDP-43 characteristics -->
+                <rect x="350" y="225" width="320" height="130" class="tdp-box" rx="6"/>
+                <text x="510" y="250" text-anchor="middle" class="diagram-text" font-weight="bold" font-size="13">TDP-43 PATHOLOGY (FTLD-TDP)</text>
+
+                <text x="365" y="275" class="diagram-text" font-size="11" font-weight="bold">Subtypes (A, B, C):</text>
+                <text x="365" y="290" class="diagram-text" font-size="11">Type A: GRN mutations</text>
+                <text x="365" y="305" class="diagram-text" font-size="11">Type B: C9orf72 expansions</text>
+
+                <text x="530" y="275" class="diagram-text" font-size="11" font-weight="bold">Gene Associations:</text>
+                <text x="530" y="290" class="diagram-text" font-size="11">GRN, C9orf72, UBQLN2</text>
+                <text x="530" y="305" class="diagram-text" font-size="11">~40% genetic cases</text>
+
+                <!-- Bottom note -->
+                <text x="350" y="365" class="diagram-text" font-size="11" font-style="italic">Note: Clinical phenotype does not reliably predict pathology. Genetic testing essential for precision medicine approaches.</text>
+            </svg>
+        </div>
+
+        <h2 class="ba-h2">Diagnostic Approach and Workup Strategy</h2>
+
+        <p class="ba-body">
+            Accurate diagnosis of FTD requires integration of clinical assessment, neuropsychological evaluation, neuroimaging, biomarkers, and genetic testing. Diagnostic delay averages 3–5 years, with many patients misdiagnosed as having primary psychiatric illness. Establishing structured diagnostic criteria and utilizing appropriate investigations substantially reduce diagnostic uncertainty.
+        </p>
+
+        <h3 class="ba-h3">Clinical Criteria and Assessment Tools</h3>
+
+        <p class="ba-body">
+            The Rascovsky criteria for bvFTD require either (1) early behavioral disinhibition, apathy, loss of empathy, or compulsive behavior, or (2) early executive dysfunction with relative sparing of memory and visuospatial function. Application of these criteria identifies bvFTD with approximately 86% sensitivity and 76% specificity, superior to clinical diagnosis alone. Language variants are diagnosed through clinical language assessment and neuropsychological testing focused on phonology, semantics, syntax, and naming.
+        </p>
+
+        <p class="ba-body">
+            Key assessment instruments include the Montreal Cognitive Assessment (MoCA), which captures executive dysfunction better than the Mini-Cog in FTD populations, though it may underestimate social-cognitive impairment. The Frontal Behavioral Inventory (FBI) specifically targets FTD-relevant behavioral domains including apathy, disinhibition, emotional bluntness, and compulsivity. The Neuropsychiatric Inventory (NPI) measures behavioral symptoms and caregiver distress across twelve domains. The ACE-III (Addenbrooke's Cognitive Examination III) provides brief comprehensive cognitive assessment with particular sensitivity to language and visuospatial function.
+        </p>
+
+        <div class="ba-stat-row">
+            <div class="ba-stat-card">
+                <div class="ba-stat-num">3–5</div>
+                <div class="ba-stat-label">Years Average Diagnostic Delay</div>
+            </div>
+            <div class="ba-stat-card">
+                <div class="ba-stat-num">86%</div>
+                <div class="ba-stat-label">Rascovsky Criteria Sensitivity</div>
+            </div>
+            <div class="ba-stat-card ba-stat-card--good">
+                <div class="ba-stat-num">40%</div>
+                <div class="ba-stat-label">Genetic Mutation Detection Rate</div>
+            </div>
+        </div>
+
+        <h3 class="ba-h3">Neuroimaging in FTD Diagnosis</h3>
+
+        <p class="ba-body">
+            Structural MRI remains essential for FTD diagnosis, demonstrating characteristic atrophy patterns that support clinical diagnosis. bvFTD shows medial prefrontal and anterior insular atrophy, often asymmetric. svPPA demonstrates focal anterior temporal lobe atrophy, frequently asymmetric with left predominance in noun-semantic variants. nfvPPA shows left inferior frontal gyrus and insular atrophy consistent with Broca's region involvement.
+        </p>
+
+        <p class="ba-body">
+            FDG-PET (18F-fluorodeoxyglucose positron emission tomography) demonstrates hypometabolism in distributions matching structural atrophy and potentially exceeding structural changes in early disease. FDG-PET sensitivity for FTD approximates 80–85% compared to 60–65% for structural MRI alone. Amyloid-PET imaging generally shows negative or minimal uptake, distinguishing FTD from Alzheimer's disease where significant amyloid deposition appears. Tau-PET imaging may offer future utility for pathological subtyping but remains primarily a research tool.
+        </p>
+
+        <h3 class="ba-h3">Biomarkers and Cerebrospinal Fluid Analysis</h3>
+
+        <p class="ba-body">
+            CSF biomarkers increasingly support FTD diagnosis and pathological subtyping. Phosphorylated tau (p-tau181, p-tau217) and total tau elevations occur in tau-pathology cases, while p-tau/total tau ratios may help differentiate from TDP-43 pathology. TDP-43 phosphorylated fragments (phospho-TDP-43) appear elevated in CSF from TDP-43 pathology cases with sensitivity approaching 70–80%. Neurofilament light chain (NfL), a pan-neuronal injury marker, shows marked elevation in FTD—often substantially higher than in Alzheimer's disease—and correlates with rate of decline, offering potential disease progression tracking.
+        </p>
+
+        <p class="ba-body">
+            Blood biomarkers have emerged as clinically practical alternatives to CSF. Plasma phospho-tau variants (p-tau181, p-tau217, p-tau-thr217) show approximately 75–85% sensitivity for tau-pathology FTD cases with good specificity. Plasma NfL, particularly at high concentrations, correlates with disease severity and progression, enabling non-invasive monitoring. Plasma phospho-TDP-43 shows promise for TDP-43 pathology cases but requires further validation. These blood biomarkers are transitioning from research to clinical practice and may eventually guide genetic testing decisions and treatment selection.
+        </p>
+
+        <h3 class="ba-h3">Genetic Testing</h3>
+
+        <p class="ba-body">
+            Genetic testing should be offered to all FTD patients regardless of family history, as de novo mutations occur in 10–15% of cases. The three major genes account for approximately 40% of familial FTD cases: MAPT (microtubule-associated protein tau) mutations in ~15–20%, GRN (progranulin) mutations in ~15–25%, and C9orf72 hexanucleotide repeat expansions in ~5–15% (higher in Scandinavian and Northern European populations). Genetic counseling is essential given the autosomal dominant inheritance with variable penetrance.
+        </p>
+
+        <p class="ba-body">
+            MAPT mutations primarily cause tau-pathology disease often presenting with progressive supranuclear palsy (PSP) phenotypes or parkinsonism in addition to FTD features. GRN haploinsufficiency results in progranulin deficiency, causing TDP-43 Type A pathology. C9orf72 expansions (>30 repeats pathogenic) produce toxic dipeptide repeat proteins and TDP-43 inclusions, with notable psychiatric symptoms, parkinsonism, and ALS overlap. Whole exome sequencing or targeted gene panels detect known mutations; whole genome sequencing may identify novel variants in candidate genes (VCP, TARDBP, FUS, CHMP2B, UBQLN2). Penetrance varies substantially; some mutation carriers remain asymptomatic into late life.
+        </p>
+
+        <div class="diagram-container">
+            <svg width="100%" height="500" viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .diagram-text { font-family: 'Segoe UI', sans-serif; font-size: 12px; fill: #231e14; }
+                        .diagram-title { font-size: 14px; font-weight: bold; }
+                        .step-box { stroke-width: 2; }
+                        .step-1 { fill: #e8f4f0; stroke: #4a9b7f; }
+                        .step-2 { fill: #f0f4e8; stroke: #6b8e23; }
+                        .step-3 { fill: #fef3e6; stroke: #b05a20; }
+                        .step-4 { fill: #f5e8f0; stroke: #9b4a7f; }
+                        .arrow { stroke: #6b6050; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+                    </style>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#6b6050"/>
+                    </marker>
+                </defs>
+
+                <text x="350" y="25" text-anchor="middle" class="diagram-text diagram-title">FTD Diagnostic Workup Algorithm</text>
+
+                <!-- Step 1 -->
+                <rect x="50" y="50" width="280" height="80" class="step-box step-1" rx="6"/>
+                <text x="190" y="75" text-anchor="middle" class="diagram-text" font-weight="bold">Step 1: Clinical Evaluation</text>
+                <text x="65" y="100" class="diagram-text" font-size="11">• Detailed history (personality, behavior, language)</text>
+                <text x="65" y="115" class="diagram-text" font-size="11">• Apply Rascovsky criteria (bvFTD)</text>
+                <text x="65" y="130" class="diagram-text" font-size="11">• Screen for psychiatric mimics</text>
+
+                <!-- Arrow -->
+                <path d="M 190 130 L 190 160" class="arrow"/>
+
+                <!-- Step 2 -->
+                <rect x="50" y="160" width="280" height="100" class="step-box step-2" rx="6"/>
+                <text x="190" y="185" text-anchor="middle" class="diagram-text" font-weight="bold">Step 2: Neuropsychology & MRI</text>
+                <text x="65" y="210" class="diagram-text" font-size="11">• Neuropsych testing (executive, social-cog, language)</text>
+                <text x="65" y="225" class="diagram-text" font-size="11">• FBI, NPI, ACE-III, MoCA</text>
+                <text x="65" y="240" class="diagram-text" font-size="11">• Structural MRI (atrophy pattern analysis)</text>
+                <text x="65" y="255" class="diagram-text" font-size="11">• Optional: FDG-PET if MRI unclear</text>
+
+                <!-- Arrow -->
+                <path d="M 190 260 L 190 290" class="arrow"/>
+
+                <!-- Step 3 -->
+                <rect x="50" y="290" width="280" height="110" class="step-box step-3" rx="6"/>
+                <text x="190" y="315" text-anchor="middle" class="diagram-text" font-weight="bold">Step 3: Biomarkers</text>
+                <text x="65" y="340" class="diagram-text" font-size="11">• Blood biomarkers (NfL, p-tau, phospho-TDP-43)</text>
+                <text x="65" y="355" class="diagram-text" font-size="11">• CSF analysis if diagnosis unclear (tau/TDP-43)</text>
+                <text x="65" y="370" class="diagram-text" font-size="11">• Consider against Alzheimer's profile</text>
+                <text x="65" y="385" class="diagram-text" font-size="11">• Track NfL for disease progression</text>
+
+                <!-- Arrow -->
+                <path d="M 190 400 L 190 430" class="arrow"/>
+
+                <!-- Step 4 -->
+                <rect x="50" y="430" width="280" height="55" class="step-box step-4" rx="6"/>
+                <text x="190" y="455" text-anchor="middle" class="diagram-text" font-weight="bold">Step 4: Genetic Testing</text>
+                <text x="65" y="475" class="diagram-text" font-size="11">• Test all FTD patients: MAPT, GRN, C9orf72 ± WES</text>
+                <text x="65" y="490" class="diagram-text" font-size="11">• Genetic counseling essential</text>
+
+                <!-- Right side: key decision points -->
+                <rect x="380" y="50" width="300" height="435" fill="none" stroke="#cfc8ba" stroke-width="1" stroke-dasharray="5,5" rx="6"/>
+                <text x="530" y="75" text-anchor="middle" class="diagram-text" font-weight="bold">Key Decision Points</text>
+
+                <text x="395" y="105" class="diagram-text" font-weight="bold" font-size="12">Is diagnosis confirmed?</text>
+                <text x="395" y="125" class="diagram-text" font-size="11">If clinical + imaging findings</text>
+                <text x="395" y="140" class="diagram-text" font-size="11">consistent → FTD likely</text>
+
+                <text x="395" y="170" class="diagram-text" font-weight="bold" font-size="12">Distinguish variants?</text>
+                <text x="395" y="190" class="diagram-text" font-size="11">Neuropsych + neuroimaging</text>
+                <text x="395" y="205" class="diagram-text" font-size="11">pattern guides subtype</text>
+
+                <text x="395" y="235" class="diagram-text" font-weight="bold" font-size="12">Which pathology?</text>
+                <text x="395" y="255" class="diagram-text" font-size="11">Biomarkers support tau vs</text>
+                <text x="395" y="270" class="diagram-text" font-size="11">TDP-43 (genetic testing key)</text>
+
+                <text x="395" y="300" class="diagram-text" font-weight="bold" font-size="12">Rule out mimics?</text>
+                <text x="395" y="320" class="diagram-text" font-size="11">• Psychiatric (bipolar, depression)</text>
+                <text x="395" y="335" class="diagram-text" font-size="11">• Substance/medication effects</text>
+                <text x="395" y="350" class="diagram-text" font-size="11">• Neurological (progressive supranuclear</text>
+                <text x="395" y="365" class="diagram-text" font-size="11">palsy, Parkinson's disease)</text>
+
+                <text x="395" y="395" class="diagram-text" font-weight="bold" font-size="12">Genetic implications?</text>
+                <text x="395" y="415" class="diagram-text" font-size="11">Counsel regarding inheritance,</text>
+                <text x="395" y="430" class="diagram-text" font-size="11">family screening, trial eligibility</text>
+            </svg>
+        </div>
+
+        <h2 class="ba-h2">Treatment and Management Strategy</h2>
+
+        <p class="ba-body">
+            Currently, no disease-modifying treatments exist for FTD, making symptomatic management and behavioral intervention the cornerstones of care. Approaching treatment requires comprehensive assessment of behavioral symptoms, functional capacity, safety concerns, and caregiver capacity, with individualizing interventions accordingly.
+        </p>
+
+        <h3 class="ba-h3">Pharmacological Management of Behavioral Symptoms</h3>
+
+        <p class="ba-body">
+            SSRIs represent first-line agents for many behavioral symptoms in FTD, despite limited RCT evidence. Clinical experience and open-label studies suggest sertraline (50–200 mg daily) and paroxetine (20–60 mg daily) show modest benefits for irritability, compulsive behaviors, and some depressive symptoms. Response rates approximate 40–60% with favorable tolerability in this population. Citalopram and escitalopram are increasingly avoided due to dose-dependent QT prolongation risks, particularly in older patients.
+        </p>
+
+        <p class="ba-body">
+            Trazodone (100–300 mg daily, often dosed at night) provides both antidepressant and sedating effects, frequently improving agitation, insomnia, and behavioral disturbance. Evidence consists primarily of case series and observational reports, yet clinical utility is substantial for sleep-related behavioral problems. Adverse effects include orthostatic hypotension (particularly in elderly) and priapism (rare), warranting appropriate monitoring.
+        </p>
+
+        <p class="ba-body">
+            Antipsychotic use requires extreme caution and should generally be avoided except in severe, treatment-resistant behavioral crises. Atypical antipsychotics (risperidone, aripiprazole, quetiapine) carry substantial risks in neurodegenerative disease: case reports document accelerated cognitive decline, increased mortality risk, and extrapyramidal side effects disproportionate to non-dementia populations. If antipsychotics become necessary, lowest effective doses for shortest durations represent safe practice, with regular reassessment for continued necessity.
+        </p>
+
+        <p class="ba-body">
+            Beta-blockers (propranolol 40–160 mg daily in divided doses) have demonstrated benefit in uncontrolled case series for aggression and impulsivity, mechanisms relating to prefrontal catecholamine effects. Valproic acid and other anticonvulsants lack robust evidence in FTD; carbamazepine and phenytoin should be avoided due to cognitive suppression risks. Lithium remains controversial; it has neuroprotective properties in cellular models and anecdotal clinical benefit, but limited data and cardiac/renal monitoring requirements generally argue against routine use.
+        </p>
+
+        <div class="ba-table-wrap">
+            <table class="ba-table">
+                <thead>
+                    <tr>
+                        <th>Medication Class</th>
+                        <th>Agent & Dose</th>
+                        <th>Target Symptoms</th>
+                        <th>Evidence Grade</th>
+                        <th>Key Cautions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SSRI</td>
+                        <td>Sertraline 50–200 mg/d</td>
+                        <td>Irritability, compulsivity, mood</td>
+                        <td>Level C (case series)</td>
+                        <td>GI upset, hyponatremia risk</td>
+                    </tr>
+                    <tr>
+                        <td>SSRI</td>
+                        <td>Paroxetine 20–60 mg/d</td>
+                        <td>Behavioral, emotional blunting</td>
+                        <td>Level C</td>
+                        <td>Anticholinergic effects, weight gain</td>
+                    </tr>
+                    <tr>
+                        <td>Serotonergic</td>
+                        <td>Trazodone 100–300 mg/d</td>
+                        <td>Agitation, insomnia, behavior</td>
+                        <td>Level C</td>
+                        <td>Orthostasis, priapism (rare)</td>
+                    </tr>
+                    <tr>
+                        <td>Beta-blocker</td>
+                        <td>Propranolol 40–160 mg/d</td>
+                        <td>Aggression, impulsivity</td>
+                        <td>Level D (small series)</td>
+                        <td>Bradycardia, fatigue, contraindicated in asthma</td>
+                    </tr>
+                    <tr>
+                        <td>Atypical antipsychotic</td>
+                        <td>Risperidone 0.5–2 mg/d</td>
+                        <td>Severe behavioral crisis ONLY</td>
+                        <td>Level D (high risk)</td>
+                        <td>ACCELERATED DECLINE, EPS, metabolic syndrome, increased mortality risk</td>
+                    </tr>
+                    <tr>
+                        <td>Cholinesterase inhibitor</td>
+                        <td>Donepezil, rivastigmine</td>
+                        <td>Not indicated in FTD</td>
+                        <td>Level A (contraindicated)</td>
+                        <td>POTENTIALLY HARMFUL, ineffective, worsens bradycardia/syncope</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 class="ba-h3">Non-Pharmacological Behavioral Interventions</h3>
+
+        <p class="ba-body">
+            Non-pharmacological approaches constitute the backbone of FTD behavioral management. Structured behavioral strategies, environmental modification, and caregiver education frequently provide superior outcomes compared to pharmacotherapy alone. These approaches require collaborative effort between patients, caregivers, and clinical teams.
+        </p>
+
+        <div class="ba-therapy-grid">
+            <div class="ba-therapy-card">
+                <div class="ba-therapy-icon">📋</div>
+                <div class="ba-therapy-title">Behavior Tracking</div>
+                <div class="ba-therapy-desc">Document triggers, antecedents, and consequences of target behaviors to identify modifiable patterns and inform intervention specificity.</div>
+            </div>
+
+            <div class="ba-therapy-card">
+                <div class="ba-therapy-icon">🏗️</div>
+                <div class="ba-therapy-title">Environmental Modification</div>
+                <div class="ba-therapy-desc">Simplify environments, reduce stimulation, establish routines, use clear signage and visual aids to compensate for cognitive decline.</div>
+            </div>
+
+            <div class="ba-therapy-card">
+                <div class="ba-therapy-icon">👥</div>
+                <div class="ba-therapy-title">Caregiver Support</div>
+                <div class="ba-therapy-desc">Psychoeducation regarding disease progression, stress management, respite care, support groups, and resource connection critical for caregiver wellbeing.</div>
+            </div>
+
+            <div class="ba-therapy-card">
+                <div class="ba-therapy-icon">🧠</div>
+                <div class="ba-therapy-title">Cognitive Rehabilitation</div>
+                <div class="ba-therapy-desc">Speech-language pathology for language variants, occupational therapy for functional adaptation, focus on preserved abilities.</div>
+            </div>
+
+            <div class="ba-therapy-card">
+                <div class="ba-therapy-icon">🎯</div>
+                <div class="ba-therapy-title">Behavioral Reinforcement</div>
+                <div class="ba-therapy-desc">Positive reinforcement of desired behaviors, structured activity scheduling, engagement with meaningful activities tailored to interests.</div>
+            </div>
+
+            <div class="ba-therapy-card">
+                <div class="ba-therapy-icon">🔒</div>
+                <div class="ba-therapy-title">Safety Planning</div>
+                <div class="ba-therapy-desc">Address driving capacity, financial management delegation, wandering risks, advance directives, legal decision-making during competent periods.</div>
+            </div>
+        </div>
+
+        <h3 class="ba-h3">When to Consider Palliative and End-of-Life Care</h3>
+
+        <p class="ba-body">
+            FTD typically progresses over 8–10 years toward profound cognitive and physical decline, necessitating early palliative care discussions. Unlike Alzheimer's disease where memory loss dominates, FTD patients often lose insight into their condition, making them poor historians regarding suffering and preferences. Advance care planning during earlier disease stages—when executive function and judgment remain relatively intact—enables patients to direct future care aligned with their values.
+        </p>
+
+        <p class="ba-body">
+            Palliative care consultation becomes appropriate when disease progresses beyond point of meaningful engagement, feeding difficulties emerge, swallowing dysfunction develops, or behavioral symptoms become refractory to management. Focus shifts to comfort, family support, symptom management (pain, agitation, dyspnea), and discussion of artificial nutrition/hydration. Many patients and families benefit from hospice care in final months, enabling home-based comfort-focused management with professional support for physical care and emotional/spiritual needs.
+        </p>
+
+        <h2 class="ba-h2">Assessing and Tracking Disease Progression</h2>
+
+        <p class="ba-body">
+            Multiple instruments assess cognitive, behavioral, and functional decline in FTD, enabling monitoring of disease trajectory and treatment response. Choice of assessment tool depends on clinical variant, disease stage, and specific domains requiring monitoring.
+        </p>
+
+        <h3 class="ba-h3">Key Assessment Instruments</h3>
+
+        <div class="ba-stacked-grid">
+            <div class="ba-stacked-card">
+                <h4>Clinical Dementia Rating (CDR)</h4>
+                <p>Semi-structured assessment evaluating memory, orientation, judgment/problem-solving, community affairs, home/hobbies, and personal care across five stages (0–3). CDR-SB (sum of boxes) provides continuous score tracking progression. Limitations in FTD include emphasis on memory (relatively preserved), potentially underestimating behavioral dysfunction severity.</p>
+            </div>
+
+            <div class="ba-stacked-card">
+                <h4>Frontal Behavioral Inventory (FBI)</h4>
+                <p>24-item instrument specifically designed for FTD, measuring apathy, disinhibition, emotional blunting, and compulsivity. Scores range 0–72 with higher scores indicating greater severity. Superior sensitivity to FTD behavioral changes compared to generic cognitive instruments; validated in bvFTD populations.</p>
+            </div>
+
+            <div class="ba-stacked-card">
+                <h4>Neuropsychiatric Inventory (NPI)</h4>
+                <p>12-domain assessment measuring behavioral/psychological symptoms (delusions, hallucinations, agitation, depression, anxiety, apathy, irritability, euphoria, disinhibition, aberrant motor behavior, nighttime sleep, eating). Assesses frequency, severity, and caregiver distress. Sensitive to behavioral symptom changes across FTD variants.</p>
+            </div>
+
+            <div class="ba-stacked-card">
+                <h4>Addenbrooke's Cognitive Examination III (ACE-III)</h4>
+                <p>100-point cognitive screening tool with subsections for attention (18 points), memory (26 points), verbal fluency (14 points), language (26 points), and visuospatial (16 points). More sensitive to language and executive deficits than MMSE; ceiling effects limit utility in early disease.</p>
+            </div>
+
+            <div class="ba-stacked-card">
+                <h4>Montreal Cognitive Assessment (MoCA)</h4>
+                <p>30-point instrument assessing executive function, visuospatial abilities, naming, memory, attention, language, and orientation. Superior sensitivity to executive dysfunction compared to MMSE; particular value in FTD but performance still relatively preserved early in disease course.</p>
+            </div>
+
+            <div class="ba-stacked-card">
+                <h4>Progressive Supranuclear Palsy Rating Scale (PSPRS)</h4>
+                <p>100-point scale assessing horizontal gaze palsy, vertical supranuclear gaze palsy, eyelid opening apraxia, dysarthria, dysphagia, neck rigidity, falls, and other motor features. Useful in FTD cases with parkinsonism or progressive supranuclear palsy overlap phenotypes.</p>
+            </div>
+        </div>
+
+        <h2 class="ba-h2">Psychiatric Comorbidity and Differential Diagnosis</h2>
+
+        <p class="ba-body">
+            The overlap between FTD behavioral symptoms and primary psychiatric illness creates substantial diagnostic challenge. Approximately 30–40% of FTD patients receive psychiatric misdiagnosis before accurate diagnosis, with delays averaging 3–5 years. Recognizing red flags supporting neurodegenerative rather than primary psychiatric etiology facilitates timely diagnosis.
+        </p>
+
+        <h3 class="ba-h3">FTD vs. Late-Onset Bipolar Disorder</h3>
+
+        <p class="ba-body">
+            Late-onset bipolar disorder and bvFTD share features including disinhibition, impulsivity, emotional lability, and behavioral dyscontrol. Distinguishing features support FTD diagnosis: preserved memory despite behavioral change, insidious onset with gradual personality alteration (versus relatively acute mood episode onset), prominent apathy and empathy loss (uncommon in bipolar disorder), lack of depression/elevated mood episodes (bvFTD behavioral changes remain emotion-neutral), and neuroimaging evidence of frontal/temporal atrophy. Bipolar disorder typically presents with distinct mood episodes separated by euthymic periods; bvFTD demonstrates persistent behavioral change independent of mood state. Prior lifetime mood episodes make bipolar disorder more likely, though some FTD patients exhibit mood symptoms complicating distinction.
+        </p>
+
+        <h3 class="ba-h3">FTD vs. Major Depressive Disorder</h3>
+
+        <p class="ba-body">
+            Depression frequently co-occurs with FTD, complicating diagnostic distinction. bvFTD patients show apathy (loss of motivation, reduced goal-directed activity) often accompanied by emotional blunting; depression shows anhedonia with persistent sadness and guilt. FTD patients may lack awareness of their behavioral changes (anosognosia), whereas depressed patients typically recognize symptoms. Poor antidepressant response despite adequate trials favors FTD diagnosis. Again, preserved episodic memory and prominent executive dysfunction despite mood symptoms suggest FTD.
+        </p>
+
+        <h3 class="ba-h3">FTD vs. Personality Disorders</h3>
+
+        <p class="ba-body">
+            The personality changes in bvFTD can resemble personality disorders, particularly if FTD onset occurs in late adolescence or young adulthood. Critical distinguishing features: personality disorders show lifelong trait patterns, whereas FTD shows acute or subacute personality change within identifiable window; personality disorders lack progressive cognitive decline; personality disordered individuals typically show preserved empathy for some close relationships, whereas FTD patients show pervasive empathy loss including family members; and neuroimaging in personality disorders demonstrates normal brain structure, whereas FTD shows focal atrophy.
+        </p>
+
+        <h3 class="ba-h3">Psychiatric Syndromes Associated with FTD</h3>
+
+        <p class="ba-body">
+            Several psychiatric presentations occur comorbidly in FTD requiring distinct management approaches:
+        </p>
+
+        <div class="ba-compare-row">
+            <div class="ba-compare-card">
+                <h4>Depression in FTD</h4>
+                <p>Occurs in approximately 40% of bvFTD patients, characterized by persistent low mood, hopelessness, social withdrawal, and vegetative symptoms. Often accompanies insight-preserved stages. SSRIs show modest efficacy; cognitive-behavioral approaches limited by cognitive impairment. Genetic mutations (particularly GRN) show higher depression prevalence.</p>
+            </div>
+
+            <div class="ba-compare-card">
+                <h4>Anxiety in FTD</h4>
+                <p>Generalized anxiety and panic-like episodes occur in 20–30% of patients, sometimes preceding cognitive changes. Often responsive to SSRIs (sertraline, paroxetine). Distinguishing from agitation/irritability critical for treatment selection. Behavioral triggers and environmental stressors often identifiable.</p>
+            </div>
+        </div>
+
+        <div class="ba-compare-row">
+            <div class="ba-compare-card">
+                <h4>Psychosis in FTD</h4>
+                <p>Rare in pure FTD (<5% of cases), characterized by visual hallucinations or delusions. Often suggests alternative diagnosis (Lewy body disease, schizophrenia) or medication effect. When present, antipsychotics carry higher risk of decline; thorough evaluation essential before treatment initiation.</p>
+            </div>
+
+            <div class="ba-compare-card">
+                <h4>Obsessive-Compulsive Behaviors</h4>
+                <p>Occur in 15–30% of bvFTD patients, manifesting as repetitive behaviors (counting, arranging, hoarding), dietary rigidity, or stereotyped motor patterns. Often medication-refractory; behavioral management more effective. SSRIs may provide partial benefit but response typically incomplete.</p>
+            </div>
+        </div>
+
+        <h2 class="ba-h2">Special Diagnostic Challenges: FTD vs. Alzheimer's Disease</h2>
+
+        <p class="ba-body">
+            Clinical and biomarker differences between FTD and Alzheimer's disease support accurate differential diagnosis, critical given distinct prognostic implications and absent treatment efficacy for FTD, contrasted with emerging anti-amyloid therapies for Alzheimer's disease.
+        </p>
+
+        <div class="diagram-container">
+            <svg width="100%" height="400" viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .diagram-text { font-family: 'Segoe UI', sans-serif; font-size: 12px; fill: #231e14; }
+                        .diagram-title { font-size: 14px; font-weight: bold; }
+                        .ftd-col { fill: #e8f4f0; stroke: #4a9b7f; stroke-width: 2; }
+                        .ad-col { fill: #f5e8f0; stroke: #9b4a7f; stroke-width: 2; }
+                        .header-row { fill: #f0f0f0; stroke: #cfc8ba; stroke-width: 1; }
+                        .text-bold { font-weight: bold; }
+                    </style>
+                </defs>
+
+                <text x="350" y="25" text-anchor="middle" class="diagram-text diagram-title">FTD vs. Alzheimer's Disease: Differential Features</text>
+
+                <!-- Header row -->
+                <rect x="50" y="45" width="600" height="25" class="header-row"/>
+                <text x="200" y="63" text-anchor="middle" class="diagram-text text-bold">Feature</text>
+                <text x="425" y="63" text-anchor="middle" class="diagram-text text-bold">FTD</text>
+                <text x="600" y="63" text-anchor="middle" class="diagram-text text-bold">Alzheimer's Disease</text>
+
+                <!-- Onset row -->
+                <rect x="50" y="70" width="175" height="35" class="ftd-col"/>
+                <rect x="225" y="70" width="175" height="35" class="ftd-col"/>
+                <rect x="400" y="70" width="200" height="35" class="ad-col"/>
+                <text x="137" y="92" text-anchor="middle" class="diagram-text text-bold" font-size="11">Age of Onset</text>
+                <text x="312" y="87" text-anchor="middle" class="diagram-text" font-size="11">Mean 45–65 years</text>
+                <text x="312" y="100" text-anchor="middle" class="diagram-text" font-size="10">(earlier than AD)</text>
+                <text x="500" y="87" text-anchor="middle" class="diagram-text" font-size="11">Mean 65–75 years</text>
+                <text x="500" y="100" text-anchor="middle" class="diagram-text" font-size="10">(late-life onset)</text>
+
+                <!-- Early symptoms row -->
+                <rect x="50" y="105" width="175" height="50" class="ftd-col"/>
+                <rect x="225" y="105" width="175" height="50" class="ftd-col"/>
+                <rect x="400" y="105" width="200" height="50" class="ad-col"/>
+                <text x="137" y="128" text-anchor="middle" class="diagram-text text-bold" font-size="11">Early Symptoms</text>
+                <text x="312" y="118" text-anchor="middle" class="diagram-text" font-size="11">Behavior, personality,</text>
+                <text x="312" y="132" text-anchor="middle" class="diagram-text" font-size="11">language; MEMORY</text>
+                <text x="312" y="146" text-anchor="middle" class="diagram-text" font-size="11">RELATIVELY PRESERVED</text>
+                <text x="500" y="118" text-anchor="middle" class="diagram-text" font-size="11">Memory loss,</text>
+                <text x="500" y="132" text-anchor="middle" class="diagram-text" font-size="11">disorientation,</text>
+                <text x="500" y="146" text-anchor="middle" class="diagram-text" font-size="11">word-finding difficulty</text>
+
+                <!-- Neuroimaging row -->
+                <rect x="50" y="155" width="175" height="50" class="ftd-col"/>
+                <rect x="225" y="155" width="175" height="50" class="ftd-col"/>
+                <rect x="400" y="155" width="200" height="50" class="ad-col"/>
+                <text x="137" y="178" text-anchor="middle" class="diagram-text text-bold" font-size="11">MRI Pattern</text>
+                <text x="312" y="168" text-anchor="middle" class="diagram-text" font-size="11">Frontal/temporal</text>
+                <text x="312" y="182" text-anchor="middle" class="diagram-text" font-size="11">atrophy; MEDIAL</text>
+                <text x="312" y="196" text-anchor="middle" class="diagram-text" font-size="11">TEMPORAL SPARING</text>
+                <text x="500" y="168" text-anchor="middle" class="diagram-text" font-size="11">Hippocampal,</text>
+                <text x="500" y="182" text-anchor="middle" class="diagram-text" font-size="11">entorhinal, medial</text>
+                <text x="500" y="196" text-anchor="middle" class="diagram-text" font-size="11">temporal atrophy</text>
+
+                <!-- Biomarkers row -->
+                <rect x="50" y="205" width="175" height="50" class="ftd-col"/>
+                <rect x="225" y="205" width="175" height="50" class="ftd-col"/>
+                <rect x="400" y="205" width="200" height="50" class="ad-col"/>
+                <text x="137" y="228" text-anchor="middle" class="diagram-text text-bold" font-size="11">CSF Biomarkers</text>
+                <text x="312" y="218" text-anchor="middle" class="diagram-text" font-size="11">↑ NfL; elevated tau</text>
+                <text x="312" y="232" text-anchor="middle" class="diagram-text" font-size="11">or TDP-43; ↓ p-tau</text>
+                <text x="312" y="246" text-anchor="middle" class="diagram-text" font-size="11">ratio</text>
+                <text x="500" y="218" text-anchor="middle" class="diagram-text" font-size="11">↓ Amyloid-β42;</text>
+                <text x="500" y="232" text-anchor="middle" class="diagram-text" font-size="11">↑ tau; ↓ MMSE score</text>
+                <text x="500" y="246" text-anchor="middle" class="diagram-text" font-size="11">vs. retained function</text>
+
+                <!-- Progression row -->
+                <rect x="50" y="255" width="175" height="35" class="ftd-col"/>
+                <rect x="225" y="255" width="175" height="35" class="ftd-col"/>
+                <rect x="400" y="255" width="200" height="35" class="ad-col"/>
+                <text x="137" y="277" text-anchor="middle" class="diagram-text text-bold" font-size="11">Progression Rate</text>
+                <text x="312" y="277" text-anchor="middle" class="diagram-text" font-size="11">Rapid (8–10 years)</text>
+                <text x="500" y="277" text-anchor="middle" class="diagram-text" font-size="11">Variable (8–20 years)</text>
+
+                <!-- Genetics row -->
+                <rect x="50" y="290" width="175" height="50" class="ftd-col"/>
+                <rect x="225" y="290" width="175" height="50" class="ftd-col"/>
+                <rect x="400" y="290" width="200" height="50" class="ad-col"/>
+                <text x="137" y="313" text-anchor="middle" class="diagram-text text-bold" font-size="11">Genetics</text>
+                <text x="312" y="303" text-anchor="middle" class="diagram-text" font-size="11">40% genetic</text>
+                <text x="312" y="317" text-anchor="middle" class="diagram-text" font-size="11">(MAPT, GRN,</text>
+                <text x="312" y="331" text-anchor="middle" class="diagram-text" font-size="11">C9orf72)</text>
+                <text x="500" y="303" text-anchor="middle" class="diagram-text" font-size="11">Mostly sporadic;</text>
+                <text x="500" y="317" text-anchor="middle" class="diagram-text" font-size="11">APOE4 risk factor</text>
+                <text x="500" y="331" text-anchor="middle" class="diagram-text" font-size="11">(not deterministic)</text>
+
+                <!-- Treatment row -->
+                <rect x="50" y="340" width="175" height="50" class="ftd-col"/>
+                <rect x="225" y="340" width="175" height="50" class="ftd-col"/>
+                <rect x="400" y="340" width="200" height="50" class="ad-col"/>
+                <text x="137" y="363" text-anchor="middle" class="diagram-text text-bold" font-size="11">Treatment Options</text>
+                <text x="312" y="353" text-anchor="middle" class="diagram-text" font-size="11">Symptomatic only;</text>
+                <text x="312" y="367" text-anchor="middle" class="diagram-text" font-size="11">Phase 2 emerging</text>
+                <text x="312" y="381" text-anchor="middle" class="diagram-text" font-size="11">therapies</text>
+                <text x="500" y="353" text-anchor="middle" class="diagram-text" font-size="11">Anti-amyloid</text>
+                <text x="500" y="367" text-anchor="middle" class="diagram-text" font-size="11">monoclonals (aducanumab,</text>
+                <text x="500" y="381" text-anchor="middle" class="diagram-text" font-size="11">lecanemab); cholinesterase</text>
+            </svg>
+        </div>
+
+        <h2 class="ba-h2">Research and Emerging Therapies</h2>
+
+        <p class="ba-body">
+            The FTD research pipeline has expanded substantially since genetic discoveries. Several promising approaches target underlying pathological mechanisms, with clinical trials enrolling participants increasingly using genetic and biomarker stratification.
+        </p>
+
+        <h3 class="ba-h3">Gene-Directed Approaches</h3>
+
+        <p class="ba-body">
+            GRN mutation carriers represent ideal candidates for progranulin replacement therapy. GLY-101, a recombinant human progranulin, has completed Phase 1 safety studies in healthy controls and GRN haploinsufficiency carriers. Early data support good tolerability with increases in plasma and CSF progranulin levels. Phase 2 trials in symptomatic GRN mutation carriers are underway, with potential future expansion to presymptomatic carriers for disease prevention.
+        </p>
+
+        <p class="ba-body">
+            C9orf72 antisense oligonucleotide (ASO) therapies target the expanded repeat transcript, reducing toxic dipeptide repeat proteins. Multiple ASO candidates are in Phase 2 development for both symptomatic and presymptomatic C9orf72 expansion carriers, with intrathecal administration delivering drug to CNS. Mechanistic animal studies demonstrate reduction in pathological inclusions and behavioral improvements, with early human safety and tolerability data encouraging.
+        </p>
+
+        <p class="ba-body">
+            MAPT-targeting approaches include tau protein immunotherapies and tau kinase inhibitors, currently in earlier clinical development. These strategies aim to reduce toxic tau pathology in MAPT mutation carriers and sporadic tau-pathology FTD cases.
+        </p>
+
+        <h3 class="ba-h3">Biomarker-Driven Trials</h3>
+
+        <p class="ba-body">
+            Modern FTD trials increasingly incorporate biomarker entry criteria rather than clinical diagnosis alone. Plasma phospho-tau and NfL concentrations enable non-invasive patient stratification, selection of appropriate pathological substrates, and disease progression monitoring. CSF biomarkers remain research tools but provide additional mechanistic insights. FDG-PET and amyloid-PET enable identification of asymptomatic but neurobiologically affected individuals, particularly in genetic mutation carriers.
+        </p>
+
+        <div class="ba-insight-box">
+            <div class="ba-insight-icon">💡</div>
+            <div class="ba-insight-text">
+                <strong>Clinical Pearl:</strong> Genetic testing and biomarker assessment position FTD patients for enrollment in increasingly available clinical trials. Discuss trial eligibility with patients and families; current opportunities exist for gene-directed therapies and novel disease-modifying approaches. FTD-specific research registries (e.g., ALLFTD, ARTSL) facilitate identification of trial-eligible candidates and enable longitudinal natural history data collection.
+            </div>
+        </div>
+
+        <h2 class="ba-h2">Key Clinical Takeaways and Recommendations</h2>
+
+        <div class="ba-summary-box">
+            <h3>Essential Clinical Points for FTD Recognition and Management</h3>
+            <ul>
+                <li>Maintain high suspicion for FTD in patients under age 65 with behavioral change, personality change, or progressive language problems, particularly if memory is relatively preserved.</li>
+                <li>Early psychiatric misdiagnosis is common; late-onset bipolar disorder, depression, and personality disorder remain common initial diagnostic labels. Neuromaging and neuropsych testing clarify diagnosis.</li>
+                <li>Apply Rascovsky criteria systematically in behavioral presentations to support bvFTD diagnosis; consider formal neuropsych testing and PPA batteries for language variants.</li>
+                <li>Structural MRI is essential; FDG-PET substantially enhances diagnostic confidence if MRI findings equivocal. Amyloid-PET typically negative, supporting FTD over Alzheimer's disease.</li>
+                <li>Offer genetic testing to all FTD patients regardless of family history. GRN and C9orf72 mutation carriers have trial opportunities; MAPT mutations inform prognosis and clinical course expectations.</li>
+                <li>Blood biomarkers (NfL, p-tau variants) support diagnosis and may track disease progression; future treatment selection will likely depend on biomarker-based subtyping.</li>
+                <li>Pharmacotherapy remains symptomatic: SSRIs for irritability/behavioral symptoms, trazodone for agitation/sleep. Avoid cholinesterase inhibitors (harmful) and use antipsychotics only in treatment-resistant severe crises.</li>
+                <li>Non-pharmacological interventions (behavioral management, caregiver support, environmental modification) frequently provide superior outcomes compared to pharmacotherapy alone.</li>
+                <li>Early palliative care discussions enable advance planning while executive function remains preserved. FTD typically progresses over 8–10 years; late-stage comfort-focused care appropriate in final months.</li>
+                <li>Monitor disease progression using FBI, NPI, CDR-SB, and ACE-III; plasma NfL provides potential objective biomarker tracking. Clinical trials increasingly available offer hope for disease modification in coming years.</li>
+            </ul>
+        </div>
+
+        <h2 class="ba-h2">References</h2>
+
+        <div class="ba-references">
+            <div class="ba-ref-title">Peer-Reviewed Literature</div>
+            <div class="ba-ref-list">
+                <ol>
+                    <li>Rascovsky K, Hodges JR, Knopman D, et al. Sensitivity of revised diagnostic criteria for the behavioural variant of frontotemporal dementia. Brain. 2011;134(Pt 9):2456-2477. doi:10.1093/brain/awr179</li>
+                    <li>Neary D, Snowden JS, Gustafson L, et al. Frontotemporal lobar degeneration: a consensus on clinical diagnostic criteria. Neurology. 1998;51(6):1546-1554. doi:10.1212/wnl.51.6.1546</li>
+                    <li>Bang J, Spina S, Miller BL. Frontotemporal dementia. Lancet. 2015;386(10004):1672-1682. doi:10.1016/S0140-6736(15)00461-4</li>
+                    <li>DeJesus-Hernandez M, Mackenzie IR, Boeve BF, et al. Expanded GGGGCC hexanucleotide repeat in noncoding region of C9ORF72 causes chromosome 9p-linked FTD and ALS. Neuron. 2011;72(2):245-256. doi:10.1016/j.neuron.2011.09.011</li>
+                    <li>Renton AE, Majounie E, Waite A, et al. A hexanucleotide repeat expansion in C9ORF72 is the cause of chromosome 9p21-linked ALS-FTD. Neuron. 2011;72(2):257-268. doi:10.1016/j.neuron.2011.09.010</li>
+                    <li>Mackenzie IR, Neumann M, Bigio EH, et al. Nomenclature and neuropathology of frontotemporal lobar degeneration: an update on the non-tau frontotemporal degenerations. J Neuropathol Exp Neurol. 2010;69(12):1131-1150. doi:10.1097/NEN.0b013e3181f7d7da</li>
+                    <li>Khan BK, Yokoyama JS, Takada LT, et al. Atypical, slowly progressive behavioural variant frontotemporal dementia associated with C9ORF72 hexanucleotide expansion. J Neurol Neurosurg Psychiatry. 2012;83(10):1015-1020. doi:10.1136/jnnp-2012-302650</li>
+                    <li>Rabinovici GD, Miller BL. Frontotemporal lobar degeneration: epidemiology, pathophysiology, diagnosis and management. CNS Drugs. 2010;24(5):375-398. doi:10.2165/11534420-000000000-00000</li>
+                    <li>Geschwind MD, Dronge V, Halstead W, et al. Creutzfeldt-Jakob disease in the United States: 1979-1998. JAMA. 2002;288(21):2715-2719. doi:10.1001/jama.288.21.2715</li>
+                    <li>Seelaar H, Rohrer JD, Pijnenburg YA, Fox NC, van Swieten JC. Recent advances in frontotemporal lobar degeneration. J Neurol. 2011;258(4):615-627. doi:10.1007/s00415-010-5873-2</li>
+                    <li>Bocchetta M, Bignardi G, Cash DM, et al. Granulin mutation carriers show pre-disease stage neurodegeneration. Brain. 2016;139(Pt 12):3208-3220. doi:10.1093/brain/aww248</li>
+                    <li>Benussi A, Archetti S, Cotelli MS, et al. Progranulin Leu271Leu rs5848 polymorphism is an independent risk factor for frontotemporal dementia. J Alzheimers Dis. 2013;34(1):243-249. doi:10.3233/JAD-121539</li>
+                    <li>Rohrer JD, Guerreiro R, Vandrovcova J, et al. The heritability of frontotemporal dementia. Neurology. 2009;73(18):1451-1456. doi:10.1212/WNL.0b013e3181bf997a</li>
+                    <li>Snowden JS, Bathgate D, Varma A, Blackshaw A, Gibbons ZC, Neary D. Distinct behavioural profiles in frontotemporal dementia and semantic dementia. J Neurol Neurosurg Psychiatry. 2001;70(3):323-332. doi:10.1136/jnnp.70.3.323</li>
+                    <li>Hodges JR, Patterson K, Oxbury S, Funnell E. Semantic dementia: progressive fluent nonsyntactic speech with temporal lobe atrophy. Brain. 1992;115(Pt 6):1783-1806. doi:10.1093/brain/115.6.1783</li>
+                    <li>Gorno-Tempini ML, Hillis AE, Weintraub S, et al. Classification of primary progressive aphasia and its variants. Neurology. 2011;76(11):1006-1014. doi:10.1212/WNL.0b013e31821103e6</li>
+                    <li>Onyike CU, Diehl-Schmid J. The epidemiology of frontotemporal dementia. Int Rev Psychiatry. 2013;25(2):130-137. doi:10.3109/09540261.2012.736365</li>
+                    <li>Kertesz A, Hillis A. Frontotemporal dementia and primary progressive aphasia: a comparative study. Int J Geriatr Psychiatry. 2002;17(3):275-280. doi:10.1002/gps.636</li>
+                    <li>Goldman JS, Farmer JM, Wood EM, et al. Comparison of family histories in FTLD subtypes and related tauopathies. Neurology. 2005;65(11):1817-1819. doi:10.1212/01.wnl.0000187068.92184.05</li>
+                    <li>Whitwell JL, Przybelski SA, Weigand SD, et al. 3D maps from multiple MRI illustrate changing atrophy patterns as subjects progress from mild cognitive impairment into dementia. Brain. 2007;130(Pt 7):1777-1786. doi:10.1093/brain/awm112</li>
+                    <li>Pressman PS, Miller BL. Diagnosis and management of behavioral variant frontotemporal dementia. Biol Psychiatry. 2014;75(7):574-581. doi:10.1016/j.biopsych.2013.11.015</li>
+                    <li>Olney NC, Spina S, Miller BL. Frontotemporal dementia. Neurol Clin. 2017;35(2):339-374. doi:10.1016/j.ncl.2017.01.008</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="ba-footer">
+            <p><strong>Disclosure:</strong> This article represents current evidence as of March 2026 and is intended for educational purposes for healthcare practitioners. Clinical decision-making should incorporate individual patient factors and current practice guidelines.</p>
+            <p><strong>Continuing Medical Education:</strong> PsychoPharmRef provides peer-reviewed clinical content for physician continuing education. Articles undergo editorial review and represent synthesis of evidence literature with expert commentary.</p>
+            <a href="../index.html" class="back-link">← Back to Blog</a>
+        </div>
+    </div>
+</body>
+</html>
