@@ -69,12 +69,16 @@
       </li>
 
       <!-- Blog -->
-      <li class="nav-group nav-group--disabled" data-group="blog">
-        <button class="nav-parent-btn" disabled>
+      <li class="nav-group" data-group="blog">
+        <button class="nav-parent-btn">
           <span class="nav-icon">&#9998;</span>
           <span class="nav-parent-label">Blog</span>
-          <span class="nav-soon">soon</span>
+          <span class="nav-caret">&#9658;</span>
         </button>
+        <ul class="nav-sub">
+          <li><a href="#" class="nav-link nav-sub-link" data-section="blog-index">All Posts</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="blog-smoking">Smoking Cessation</a></li>
+        </ul>
       </li>
     </ul>
 
@@ -154,12 +158,13 @@
             <button class="btn-sub" onclick="switchSection('brain-regions')">Brain Regions</button>
           </div>
         </div>
-        <div class="info-card info-card--topic info-card--soon">
+        <div class="info-card info-card--topic">
           <div class="ic-icon">&#9998;</div>
           <h3>Blog</h3>
-          <p>Clinical commentary, pharmacology explainers, and case-based learning. Coming soon.</p>
+          <p>Clinical commentary, pharmacology explainers, and case-based learning.</p>
           <div class="ic-sub-links">
-            <span class="btn-sub btn-sub--disabled">Coming Soon</span>
+            <button class="btn-sub" onclick="switchSection('blog-index')">All Posts</button>
+            <button class="btn-sub" onclick="switchSection('blog-smoking')">Smoking Cessation</button>
           </div>
         </div>
       </div>
@@ -2553,6 +2558,415 @@
       </div>
 
     </section><!-- end med-taper -->
+
+    <!-- ── Blog Index ─────────────────────────────────────────────────────── -->
+    <section id="blog-index" class="section">
+      <div class="section-header">
+        <h2>Blog</h2>
+        <p class="section-sub">Clinical commentary, pharmacology explainers, and evidence-based practice insights.</p>
+      </div>
+      <div class="blog-post-grid">
+        <div class="blog-post-card" onclick="switchSection('blog-smoking')">
+          <div class="bpc-category">Addiction Medicine</div>
+          <h3 class="bpc-title">Rewiring Addiction: A Clinical Guide to Smoking Cessation</h3>
+          <p class="bpc-excerpt">Tobacco dependence is a chronic disease with only a 5% cold-turkey success rate. This guide synthesizes the neurobiology, pharmacotherapy, behavioral interventions, and systemic supports needed to maximize your patients' quit rates.</p>
+          <div class="bpc-meta">
+            <span class="bpc-date">March 2026</span>
+            <span class="bpc-read">12 min read</span>
+          </div>
+          <span class="bpc-cta">Read article &#8594;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Blog: Smoking Cessation ──────────────────────────────────────── -->
+    <section id="blog-smoking" class="section blog-article">
+
+      <!-- Article Header -->
+      <div class="ba-header">
+        <div class="ba-category">Addiction Medicine</div>
+        <h1 class="ba-title">Rewiring Addiction: A Clinical Guide to Smoking Cessation</h1>
+        <p class="ba-subtitle">Synthesizing neurobiology, pharmacology, and systemic interventions to maximize quit rates</p>
+        <div class="ba-meta">
+          <span>March 2026</span>
+          <span>&nbsp;&middot;&nbsp;</span>
+          <span>12 min read</span>
+          <span>&nbsp;&middot;&nbsp;</span>
+          <span>PsychoPharmRef Editorial</span>
+        </div>
+      </div>
+
+      <div class="ba-body">
+
+        <!-- Intro -->
+        <p class="ba-lead">Tobacco dependence is a chronic disease that requires repeated interventions and multiple quit attempts. While over 70% of people who smoke want to quit, unaided attempts have a meager success rate of around 5%, with 65% relapsing within a year. As a clinician, you are in a prime position to change these odds.</p>
+
+        <!-- Visual: Key Stats -->
+        <div class="ba-stat-row">
+          <div class="ba-stat-card ba-stat-card--alert">
+            <div class="ba-stat-num">5%</div>
+            <div class="ba-stat-label">Success rate of unassisted cold-turkey quitting</div>
+          </div>
+          <div class="ba-stat-card ba-stat-card--alert">
+            <div class="ba-stat-num">65%</div>
+            <div class="ba-stat-label">Relapse rate within one year for that successful 5%</div>
+          </div>
+          <div class="ba-stat-card ba-stat-card--good">
+            <div class="ba-stat-num">55%+</div>
+            <div class="ba-stat-label">Success rate with combined pharmacotherapy + behavioral support</div>
+          </div>
+          <div class="ba-stat-card ba-stat-card--good">
+            <div class="ba-stat-num">70–75%</div>
+            <div class="ba-stat-label">Proportion of smokers who want to quit</div>
+          </div>
+        </div>
+
+        <!-- Visual: Biological ROI Timeline -->
+        <h2 class="ba-h2">The Biological ROI of Quitting</h2>
+        <p>The moment a patient stops smoking, their body begins repairing itself. The timeline of recovery provides powerful motivational material for the clinical encounter.</p>
+
+        <div class="ba-timeline">
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot"></div>
+            <div class="ba-tl-time">20 min</div>
+            <div class="ba-tl-text">Heart rate drops to normal</div>
+          </div>
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot"></div>
+            <div class="ba-tl-time">24 hr</div>
+            <div class="ba-tl-text">Nicotine levels drop to zero; carbon monoxide normalizes</div>
+          </div>
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot"></div>
+            <div class="ba-tl-time">1–12 mo</div>
+            <div class="ba-tl-text">Coughing and shortness of breath decrease</div>
+          </div>
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot"></div>
+            <div class="ba-tl-time">1–2 yr</div>
+            <div class="ba-tl-text">Risk of heart attack drops dramatically</div>
+          </div>
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot"></div>
+            <div class="ba-tl-time">5–10 yr</div>
+            <div class="ba-tl-text">Mouth, throat &amp; larynx cancer risk cut in half; stroke risk decreases</div>
+          </div>
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot"></div>
+            <div class="ba-tl-time">10 yr</div>
+            <div class="ba-tl-text">Lung cancer risk is half that of a continuing smoker</div>
+          </div>
+          <div class="ba-tl-item ba-tl-item--last">
+            <div class="ba-tl-dot ba-tl-dot--last"></div>
+            <div class="ba-tl-time">15 yr</div>
+            <div class="ba-tl-text">Coronary heart disease risk normalizes to that of a non-smoker</div>
+          </div>
+        </div>
+
+        <!-- The Neurobiological Trap -->
+        <h2 class="ba-h2">The Neurobiological Trap of Unassisted Quitting</h2>
+        <p>Nicotine withdrawal sets in just 4 hours after the last cigarette, triggering a severe dopamine deficit. Each cigarette delivers a predictable, high-amplitude dopamine spike via mesolimbic circuitry. When nicotine is absent, the brain — wired to expect that spike — generates the craving state. Sheer willpower rarely overcomes this chemical deficit.</p>
+
+        <div class="ba-insight-box">
+          <div class="ba-insight-icon">&#129504;</div>
+          <div>
+            <strong>The Dopamine Deficit Model</strong><br>
+            Tobacco dependence exploits predictable dopamine release patterns. Every 4 hours without nicotine, the mesolimbic reward system signals severe deficit. The goal of pharmacotherapy is to break this cycle — either by stimulating the receptor with a partial agonist (varenicline), elevating baseline catecholamines (bupropion), or providing controlled venous nicotine replacement (NRT).
+          </div>
+        </div>
+
+        <!-- Section 1: 5 A's -->
+        <h2 class="ba-h2">1. The Clinical Framework: The 5 A's</h2>
+        <p>Brief clinical interventions are highly effective. The U.S. Public Health Service recommends the <strong>5 A's</strong> framework as the standard of care for every encounter with a tobacco-using patient.</p>
+
+        <div class="ba-5a-grid">
+          <div class="ba-5a-card">
+            <div class="ba-5a-num">1</div>
+            <div class="ba-5a-letter">Ask</div>
+            <div class="ba-5a-desc">Identify and document tobacco use status at every patient visit.</div>
+          </div>
+          <div class="ba-5a-card">
+            <div class="ba-5a-num">2</div>
+            <div class="ba-5a-letter">Advise</div>
+            <div class="ba-5a-desc">Urge every tobacco user to quit in a clear, strong, and personalized manner. Brief advice alone increases quit attempts.</div>
+          </div>
+          <div class="ba-5a-card">
+            <div class="ba-5a-num">3</div>
+            <div class="ba-5a-letter">Assess</div>
+            <div class="ba-5a-desc">Determine the patient's willingness to make a quit attempt at this time.</div>
+          </div>
+          <div class="ba-5a-card">
+            <div class="ba-5a-num">4</div>
+            <div class="ba-5a-letter">Assist</div>
+            <div class="ba-5a-desc">Provide counseling and offer pharmacological treatments. Prescribe and explain the options.</div>
+          </div>
+          <div class="ba-5a-card">
+            <div class="ba-5a-num">5</div>
+            <div class="ba-5a-letter">Arrange</div>
+            <div class="ba-5a-desc">Schedule follow-up contact, preferably within the first week after the quit date, to prevent relapse.</div>
+          </div>
+        </div>
+
+        <!-- Section 2: Effectiveness Ladder -->
+        <h2 class="ba-h2">2. Scaling Success: The Effectiveness Ladder</h2>
+        <p>The choice of intervention has a dramatic effect on success rates. The data below makes a compelling case for stacking interventions — combining pharmacotherapy with behavioral support creates a synergistic multiplier effect.</p>
+
+        <div class="ba-bar-chart">
+          <div class="ba-bar-row">
+            <div class="ba-bar-label">Unassisted Cold Turkey</div>
+            <div class="ba-bar-track">
+              <div class="ba-bar-fill" style="width:5%;background:#c0392b"></div>
+              <span class="ba-bar-pct">5%</span>
+            </div>
+          </div>
+          <div class="ba-bar-row">
+            <div class="ba-bar-label">Pharmacotherapy Monotherapy<br><small>(e.g., Bupropion)</small></div>
+            <div class="ba-bar-track">
+              <div class="ba-bar-fill" style="width:20%;background:#2980b9"></div>
+              <span class="ba-bar-pct">20%</span>
+            </div>
+          </div>
+          <div class="ba-bar-row">
+            <div class="ba-bar-label">Clinical Hypnosis<br><small>(Single-session)</small></div>
+            <div class="ba-bar-track">
+              <div class="ba-bar-fill" style="width:23%;background:#8e44ad"></div>
+              <span class="ba-bar-pct">23%</span>
+            </div>
+          </div>
+          <div class="ba-bar-row">
+            <div class="ba-bar-label">The Stacked Protocol<br><small>(Combined NRT + Counseling)</small></div>
+            <div class="ba-bar-track">
+              <div class="ba-bar-fill" style="width:55%;background:#27ae60"></div>
+              <span class="ba-bar-pct">55%+</span>
+            </div>
+          </div>
+        </div>
+        <p class="ba-chart-note">Abstinence rates vary by study design, duration, and population. Values represent commonly cited estimates from meta-analyses and landmark trials.</p>
+
+        <!-- Section 3: Pharmacotherapy -->
+        <h2 class="ba-h2">3. The Pharmacotherapy Arsenal</h2>
+        <p>All three first-line FDA-approved pharmacotherapies work by mitigating nicotine withdrawal and blocking the reinforcing effects of smoking. They differ in mechanism, efficacy, and contraindication profile.</p>
+
+        <!-- Varenicline vs Bupropion Table -->
+        <h3 class="ba-h3">Varenicline (Chantix) vs. Bupropion (Wellbutrin SR/Zyban)</h3>
+        <div class="ba-table-wrap">
+          <table class="ba-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th style="color:#2cb8b0">Varenicline (Chantix)</th>
+                <th style="color:#5b8dee">Bupropion (Zyban / Wellbutrin SR)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Mechanism</td><td>Partial agonist at &alpha;4&beta;2 nicotinic acetylcholine receptors</td><td>NE/DA reuptake inhibitor; nicotinic receptor antagonist</td></tr>
+              <tr><td>Primary Effect</td><td>Stimulates dopamine release while blocking nicotine from binding</td><td>Elevates baseline dopamine/norepinephrine to offset withdrawal</td></tr>
+              <tr class="ba-tr-highlight"><td>Efficacy</td><td><strong>Superior — OR = 1.79 over bupropion</strong> at 9–12 weeks (EAGLES trial)</td><td>Doubles abstinence vs. placebo; ~20% success rate</td></tr>
+              <tr><td>Common Side Effects</td><td>Nausea, abnormal dreams, fatigue</td><td>Insomnia, dry mouth, anxiety</td></tr>
+              <tr><td>Neuropsychiatric Safety</td><td>Confirmed safe in psychiatric patients (EAGLES trial)</td><td>Confirmed safe in psychiatric patients (EAGLES trial)</td></tr>
+              <tr><td>Key Contraindications</td><td>Hypersensitivity; caution in renal impairment</td><td>Seizure disorder or risk; eating disorders; MAOIs; severe hepatic/renal disease</td></tr>
+              <tr><td>Additional Benefit</td><td>First-line; superior long-term abstinence</td><td>Attenuates post-cessation weight gain; useful in comorbid depression</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- NRT Section -->
+        <h3 class="ba-h3">Nicotine Replacement Therapy (NRT)</h3>
+        <p>NRT increases the chance of quitting by approximately 55% over placebo. Critically, <strong>combining a long-acting NRT with a short-acting NRT is significantly more effective than a single formulation</strong>. Varying delivery methods keeps the dopamine reward system off-balance and prevents the brain from adapting to a predictable spike pattern.</p>
+
+        <div class="ba-table-wrap">
+          <table class="ba-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Transdermal Patch</th>
+                <th>Gum &amp; Lozenge</th>
+                <th>Nasal / Oral Spray &amp; Inhaler</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Speed to Peak Level</td><td>2–4 hours (Slow)</td><td>20–30 minutes (Medium)</td><td>5–10 minutes (Fast)</td></tr>
+              <tr><td>Duration of Action</td><td>16–24 hours (Sustained)</td><td>Acute / Short-acting</td><td>Acute / Short-acting</td></tr>
+              <tr><td>Habit Replacement</td><td>None</td><td>Satisfies oral fixation</td><td>Satisfies hand-to-mouth ritual</td></tr>
+              <tr class="ba-tr-highlight"><td>Best Use</td><td>Baseline prevention of waking withdrawal</td><td>Breakthrough cravings during day</td><td>Rapid craving rescue</td></tr>
+              <tr><td>Key Side Effects</td><td>Skin irritation, vivid dreams</td><td>Hiccups, mouth irritation</td><td>Coughing, watery eyes, runny nose</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ba-insight-box">
+          <div class="ba-insight-icon">&#128161;</div>
+          <div>
+            <strong>The Huberman Protocol — Disrupting Dopamine Predictability</strong><br>
+            Tobacco dependence relies on predictable, high-amplitude dopamine spikes. A stacked alternating NRT protocol — a long-acting patch for baseline plus <em>alternating weekly</em> between gum and nasal spray for breakthrough cravings — disrupts this pattern. Because the absorption kinetics change each week, the brain cannot adapt to a single dopamine release pattern, drastically reducing severe cravings.
+          </div>
+        </div>
+
+        <!-- Section 4: Cold Turkey Debate -->
+        <h2 class="ba-h2">4. The Cessation Paradox: Abrupt vs. Gradual Reduction</h2>
+        <p>Patients often ask whether they should gradually reduce or quit abruptly. The evidence is clear — and counterintuitive.</p>
+
+        <div class="ba-compare-row">
+          <div class="ba-compare-card ba-compare-card--winner">
+            <div class="ba-compare-badge">Recommended</div>
+            <div class="ba-compare-title">Abrupt Cessation</div>
+            <div class="ba-compare-pct" style="color:#27ae60">49%</div>
+            <div class="ba-compare-sub">Success at 4 weeks</div>
+            <p class="ba-compare-note">Set a specific quit date and stop completely. Higher success even among patients who <em>preferred</em> gradual reduction.</p>
+          </div>
+          <div class="ba-compare-card">
+            <div class="ba-compare-badge" style="background:rgba(255,255,255,0.06);color:var(--text-muted)">Alternative</div>
+            <div class="ba-compare-title">Gradual Reduction</div>
+            <div class="ba-compare-pct" style="color:#e67e22">39.2%</div>
+            <div class="ba-compare-sub">Success at 4 weeks</div>
+            <p class="ba-compare-note">Patients assigned to abrupt cessation succeeded at higher rates even if they stated a preference for gradual reduction.</p>
+          </div>
+        </div>
+        <p class="ba-chart-note">Source: Lindson-Hawley et al., <em>Annals of Internal Medicine</em>, 2016. Randomized controlled non-inferiority trial. At 6 months, 22% of the abrupt-cessation group remained abstinent vs. 15.5% of the gradual-reduction group.</p>
+
+        <!-- Section 5: Behavioral -->
+        <h2 class="ba-h2">5. Psychological Therapies</h2>
+        <p>Medication addresses chemical dependency. Behavioral therapies target the social, contextual, and psychological dimensions — the learned habit loop that persists long after nicotine is cleared.</p>
+
+        <div class="ba-therapy-grid">
+          <div class="ba-therapy-card">
+            <div class="ba-therapy-icon">&#129488;</div>
+            <h4 class="ba-therapy-title">CBT &amp; Motivational Interviewing</h4>
+            <p>Help patients identify triggers, cope with cravings, and manage negative affect. Motivational interviewing combined with behavioral support shows significant benefit over brief advice alone in systematic reviews.</p>
+          </div>
+          <div class="ba-therapy-card">
+            <div class="ba-therapy-icon">&#127775;</div>
+            <h4 class="ba-therapy-title">Clinical Hypnosis</h4>
+            <p>Unlike stage hypnosis, clinical hypnosis directs the patient's own neuroplasticity toward a behavioral goal. A single specific hypnosis session yields a <strong>23% success rate</strong> (Dr. David Spiegel, Stanford). Accessible via validated apps (e.g., Reveri).</p>
+          </div>
+          <div class="ba-therapy-card">
+            <div class="ba-therapy-icon">&#129496;</div>
+            <h4 class="ba-therapy-title">ACT &amp; Mindfulness</h4>
+            <p>Acceptance and Commitment Therapy (ACT) teaches patients to observe cravings and negative affect without reacting habitually. ACT delivered via smartphone app (e.g., iCanQuit) shows significant benefit over standard cessation apps in RCTs.</p>
+          </div>
+        </div>
+
+        <!-- Section 6: Support Systems -->
+        <h2 class="ba-h2">6. Support Systems &amp; Treatment Extenders</h2>
+        <p>You don't need to provide all behavioral support yourself. Leverage the infrastructure built around tobacco cessation.</p>
+
+        <div class="ba-support-grid">
+          <div class="ba-support-card">
+            <div class="ba-support-num">1-800-QUIT-NOW</div>
+            <h4>State Quitlines</h4>
+            <p>Evidence-based coaching and free NRT. Quitlines increase quit rates by <strong>~60%</strong> compared to minimal counseling. Over 10 million calls handled in 15 years of operation.</p>
+          </div>
+          <div class="ba-support-card">
+            <div class="ba-support-num">3–6×</div>
+            <h4>EHR eReferrals &amp; Warm Handoffs</h4>
+            <p>Integrating eReferrals directly into the EHR increases quitline referrals 3-to-6-fold vs. handing a pamphlet. A warm handoff — directly connecting the patient during the visit — drastically increases engagement.</p>
+          </div>
+          <div class="ba-support-card">
+            <div class="ba-support-num">Free</div>
+            <h4>Digital Health Resources</h4>
+            <p>quitSTART app, smokefree.gov, National Texting Portal (text QUITNOW to 333888). These expand your reach without increasing your clinical time burden.</p>
+          </div>
+        </div>
+
+        <!-- Section 7: Special Populations -->
+        <h2 class="ba-h2">7. Special Clinical Populations</h2>
+
+        <div class="ba-pop-grid">
+          <div class="ba-pop-card">
+            <div class="ba-pop-icon">&#129370;</div>
+            <h4>Pregnancy</h4>
+            <ul class="ba-pop-list">
+              <li>Prioritize person-to-person psychosocial interventions as first-line.</li>
+              <li>NRT is Category C/D — risk/benefit must weigh medication risk against the severe harm of continued tobacco exposure (stillbirth, neurobehavioral deficits).</li>
+              <li>Varenicline and bupropion: limited safety data in pregnancy — use with caution and individualize.</li>
+            </ul>
+          </div>
+          <div class="ba-pop-card">
+            <div class="ba-pop-icon">&#129504;</div>
+            <h4>Psychiatric Comorbidities</h4>
+            <ul class="ba-pop-list">
+              <li>The landmark <strong>EAGLES trial</strong> confirmed that both varenicline and bupropion do <em>not</em> significantly increase neuropsychiatric risks compared to placebo.</li>
+              <li>This applies even in patients with severe depression or anxiety.</li>
+              <li>Psychiatric patients have higher smoking rates — cessation support is especially important in this population.</li>
+            </ul>
+          </div>
+          <div class="ba-pop-card">
+            <div class="ba-pop-icon">&#128118;</div>
+            <h4>Youth &amp; Adolescents</h4>
+            <ul class="ba-pop-list">
+              <li>Nicotine exposure between ages 10–25 causes lasting harm to brain development and cognitive ability.</li>
+              <li>E-cigarette/vaping addiction is rapidly rising and is often harder to quit than traditional combustibles due to higher nicotine delivery.</li>
+              <li>FDA-approved pharmacotherapies lack pediatric trials — behavioral interventions are primary.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- The Stacked Protocol Summary -->
+        <h2 class="ba-h2">The Synthesis: The Stacked Protocol</h2>
+        <p>Tobacco dependence is a multi-dimensional disease. Treating it effectively requires layering interventions across all three domains simultaneously to achieve up to 55%+ success rates.</p>
+
+        <div class="ba-stacked-grid">
+          <div class="ba-stacked-card" style="--sc:#2cb8b0">
+            <div class="ba-stacked-icon">&#128138;</div>
+            <h4 class="ba-stacked-title">Chemical</h4>
+            <p class="ba-stacked-sub">Pharmacotherapy &amp; NRT</p>
+            <ul class="ba-stacked-list">
+              <li>Varenicline (first-line, superior efficacy)</li>
+              <li><em>OR</em> Long-acting patch + short-acting gum/spray</li>
+              <li>Bupropion if comorbid depression or varenicline contraindicated</li>
+            </ul>
+          </div>
+          <div class="ba-stacked-card" style="--sc:#8e44ad">
+            <div class="ba-stacked-icon">&#127775;</div>
+            <h4 class="ba-stacked-title">Behavioral</h4>
+            <p class="ba-stacked-sub">Psychological Rewiring</p>
+            <ul class="ba-stacked-list">
+              <li>Clinical hypnosis (Reveri app) — 23% single-session rate</li>
+              <li>CBT / Motivational Interviewing</li>
+              <li>ACT-based smartphone apps (iCanQuit)</li>
+            </ul>
+          </div>
+          <div class="ba-stacked-card" style="--sc:#e67e22">
+            <div class="ba-stacked-icon">&#127760;</div>
+            <h4 class="ba-stacked-title">Systemic</h4>
+            <p class="ba-stacked-sub">Infrastructure &amp; Support</p>
+            <ul class="ba-stacked-list">
+              <li>Warm handoff to 1-800-QUIT-NOW</li>
+              <li>EHR eReferral to state quitline</li>
+              <li>Free digital resources (smokefree.gov, quitSTART)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ba-summary-box">
+          <h3>&#9889; Clinical Summary</h3>
+          <p>To maximize your patients' chances of quitting: <strong>(1)</strong> recommend an abrupt quit date; <strong>(2)</strong> prescribe Varenicline or combination NRT (patch + alternating short-acting) unless contraindicated; <strong>(3)</strong> provide a warm handoff to a state quitline or an evidence-based digital platform; and <strong>(4)</strong> arrange follow-up within the first week after the quit date.</p>
+        </div>
+
+        <!-- References -->
+        <div class="ba-references">
+          <h3 class="ba-ref-title">References</h3>
+          <ol class="ba-ref-list">
+            <li>American Cancer Society. "Health Benefits of Quitting Smoking Over Time." 2025.</li>
+            <li>Fiore MC, Baker TB. "10 Million Calls and Counting: Progress and Promise of Tobacco Quitlines." <em>Am J Prev Med.</em> 2021;60(3 Suppl 2):S103–S106.</li>
+            <li>García-Gómez L, et al. "Smoking Cessation Treatments: Current Psychological and Pharmacological Options." <em>Rev Investig Clín.</em> 2019;71:7–16.</li>
+            <li>Jackson S, et al. "Mindfulness for Smoking Cessation." <em>Cochrane Database Syst Rev.</em> 2022;4:CD013696.</li>
+            <li>Patel AR, Panchal JR, Desai CK. "Efficacy of Varenicline versus Bupropion for Smoking Cessation." <em>Indian J Psychiatry.</em> 2023;65(5):526–533.</li>
+            <li>Rahimi F, Massoudifar A, Rahimi R. "Smoking Cessation Pharmacotherapy; Varenicline or Bupropion?" <em>DARU J Pharm Sci.</em> 2024;32:901–906.</li>
+            <li>Smith DK, Miller DE, Mounsey A. "'Cold Turkey' Works Best for Smoking Cessation." <em>J Fam Pract.</em> 2017;66(3):174–176.</li>
+            <li>U.S. Public Health Service. <em>USPHS Clinical Practice Guideline: Treating Tobacco Use and Dependence.</em> 2008.</li>
+            <li>Huberman Lab. "How to Quit Smoking, Vaping or Dipping Tobacco." YouTube.</li>
+            <li>CDC. "1-800-QUIT-NOW: 15 Years of Helping People Quit." 2019.</li>
+          </ol>
+        </div>
+
+      </div><!-- end ba-body -->
+
+      <div class="ba-footer">
+        <button class="btn-primary" onclick="switchSection('blog-index')">&#8592; Back to Blog</button>
+      </div>
+
+    </section><!-- end blog-smoking -->
 
   </main>
 

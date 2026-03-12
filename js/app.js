@@ -206,7 +206,7 @@ const SECTION_GROUP = {
   'receptor-binding': 'psychopharm', 'glossary': 'psychopharm',
   'qt-risk': 'tools', 'refill-calendar': 'tools', 'med-compare': 'tools', 'med-taper': 'tools',
   'cog-domains': 'insights', 'neuro-circuits': 'insights', 'brain-regions': 'insights',
-  'fda-search': null, 'overview': null
+  'fda-search': null, 'overview': null, 'blog-index': 'blog', 'blog-smoking': 'blog'
 };
 
 function expandGroup(groupId) {
