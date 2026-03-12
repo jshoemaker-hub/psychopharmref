@@ -614,7 +614,6 @@
             <h3 class="ba-h3">Adult Depression (Ages 18–64)</h3>
             <ul>
                 <li><strong>Prevalence:</strong> ~5–7% annual prevalence; ~12–20% lifetime</li>
-                <li><strong>Gender-related patterns:</strong> Note: gender not discussed per instructions, but socioeconomic disparities marked</li>
                 <li><strong>Work and family dysfunction:</strong> Major source of presenteeism; often drives treatment-seeking</li>
                 <li><strong>Racial/ethnic disparities:</strong> Black Americans show higher rates of MDD but lower treatment rates; Latino populations experience barriers including language, stigma, and immigration-related stress; Asian Americans often present with somatic symptoms</li>
                 <li><strong>Healthcare access:</strong> Uninsured or underinsured individuals receive later diagnoses and less specialized treatment</li>
@@ -644,10 +643,6 @@
                 </div>
             </div>
 
-            <div class="ba-insight-box">
-                <span class="ba-insight-icon">⚠️</span>
-                <strong>Disparity Alert:</strong> African American and Latino patients are significantly less likely to receive mental health treatment despite equal or higher depression rates. Language barriers, medical mistrust, and differential diagnosis (misattribution to substance use or personality disorder) perpetuate undertreatment.
-            </div>
 
             <!-- SECTION 3: PATHOPHYSIOLOGY -->
             <h2 class="ba-h2">3. Pathophysiology: Mechanisms and Models</h2>
@@ -911,45 +906,35 @@
             <p><strong>Diagnostic criteria:</strong> Depressed mood for most days for ≥2 years (≥1 year in children/adolescents); ≥2 additional symptoms (poor appetite, hypersomnia/insomnia, low energy, low self-worth, poor concentration, hopelessness); never without symptoms for >2 months; functional impairment but usually mild to moderate.</p>
             <p><strong>Key distinctions from MDD:</strong> Dysthymia is chronic but less severe; two-thirds of dysthymia patients experience superimposed MDD episodes ("double depression"). Treatment-resistance is common in dysthymia alone; combination pharmacotherapy or augmentation more frequently needed.</p>
 
-            <div class="diagram-container">
-                <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" width="100%">
-                    <!-- Title -->
-                    <text x="350" y="25" font-size="16" font-weight="bold" text-anchor="middle" fill="var(--text)" font-family="var(--font)">Depression Severity Spectrum and Subtypes</text>
-
-                    <!-- Severity scale on Y-axis -->
-                    <text x="20" y="80" font-size="10" fill="var(--text-muted)" font-family="var(--font)">Severe</text>
-                    <text x="20" y="150" font-size="10" fill="var(--text-muted)" font-family="var(--font)">Moderate</text>
-                    <text x="20" y="220" font-size="10" fill="var(--text-muted)" font-family="var(--font)">Mild</text>
-
-                    <!-- Y-axis line -->
-                    <line x1="40" y1="60" x2="40" y2="230" stroke="var(--border)" stroke-width="2"/>
-
-                    <!-- X-axis line -->
-                    <line x1="40" y1="230" x2="680" y2="230" stroke="var(--border)" stroke-width="2"/>
-
-                    <!-- Time labels -->
-                    <text x="150" y="260" font-size="10" fill="var(--text-muted)" font-family="var(--font)">2 weeks</text>
-                    <text x="350" y="260" font-size="10" fill="var(--text-muted)" font-family="var(--font)">6 months</text>
-                    <text x="550" y="260" font-size="10" fill="var(--text-muted)" font-family="var(--font)">2 years+</text>
-
-                    <!-- MDD episode -->
-                    <path d="M 100 70 Q 150 50 150 70 L 180 220 Q 200 230 220 220" stroke="var(--red)" stroke-width="3" fill="none"/>
-                    <text x="100" y="45" font-size="11" font-weight="bold" fill="var(--red)" font-family="var(--font)">MDD Episode</text>
-
-                    <!-- Dysthymia baseline -->
-                    <line x1="40" y1="190" x2="680" y2="190" stroke="var(--orange)" stroke-width="3" stroke-dasharray="5,5"/>
-                    <text x="680" y="185" font-size="11" font-weight="bold" fill="var(--orange)" font-family="var(--font)">Dysthymia</text>
-
-                    <!-- Double depression (dysthymia + MDD spike) -->
-                    <line x1="300" y1="190" x2="500" y2="190" stroke="var(--orange)" stroke-width="2"/>
-                    <path d="M 350 190 Q 400 80 450 190" stroke="var(--red)" stroke-width="3" fill="none"/>
-                    <text x="350" y="150" font-size="10" font-weight="bold" fill="var(--red)" font-family="var(--font)">MDD Episode</text>
-                    <text x="350" y="165" font-size="10" font-weight="bold" fill="var(--orange)" font-family="var(--font)">on dysthymic</text>
-                    <text x="350" y="180" font-size="10" font-weight="bold" fill="var(--orange)" font-family="var(--font)">baseline</text>
-
-                    <!-- Legend box -->
-                    <rect x="50" y="280" width="600" height="20" fill="none" stroke="none"/>
-                </svg>
+            <div class="diagram-container" style="padding:0;">
+                <p style="font-size:13px;font-weight:700;text-align:center;margin-bottom:16px;color:var(--text);">Depression Severity Spectrum and Subtypes</p>
+                <div style="display:grid;grid-template-columns:120px 1fr 1fr 1fr;gap:2px;font-size:12px;font-family:var(--font);">
+                    <!-- Header row -->
+                    <div style="background:var(--bg2);padding:10px 12px;font-weight:700;color:var(--text-muted);border-radius:6px 0 0 0;"></div>
+                    <div style="background:var(--bg2);padding:10px 12px;font-weight:700;color:var(--text);text-align:center;border-left:3px solid var(--orange);">Mild–Moderate MDD</div>
+                    <div style="background:var(--bg2);padding:10px 12px;font-weight:700;color:var(--text);text-align:center;border-left:3px solid var(--red);">Severe MDD</div>
+                    <div style="background:var(--bg2);padding:10px 12px;font-weight:700;color:var(--text);text-align:center;border-left:3px solid var(--accent2);border-radius:0 6px 0 0;">Persistent Depressive (Dysthymia)</div>
+                    <!-- Duration -->
+                    <div style="background:var(--card);padding:10px 12px;font-weight:600;color:var(--text-muted);">Duration</div>
+                    <div style="background:var(--card);padding:10px 12px;text-align:center;border-left:3px solid var(--orange);">≥2 weeks to months</div>
+                    <div style="background:var(--card);padding:10px 12px;text-align:center;border-left:3px solid var(--red);">Weeks to months</div>
+                    <div style="background:var(--card);padding:10px 12px;text-align:center;border-left:3px solid var(--accent2);">≥2 years (continuous)</div>
+                    <!-- Severity -->
+                    <div style="background:var(--bg2);padding:10px 12px;font-weight:600;color:var(--text-muted);">Severity</div>
+                    <div style="background:var(--bg2);padding:10px 12px;text-align:center;border-left:3px solid var(--orange);">Functional but impaired</div>
+                    <div style="background:var(--bg2);padding:10px 12px;text-align:center;border-left:3px solid var(--red);">Marked impairment; may require hospitalization</div>
+                    <div style="background:var(--bg2);padding:10px 12px;text-align:center;border-left:3px solid var(--accent2);">Chronic low-grade; rarely disabling alone</div>
+                    <!-- Key features -->
+                    <div style="background:var(--card);padding:10px 12px;font-weight:600;color:var(--text-muted);">Key Features</div>
+                    <div style="background:var(--card);padding:10px 12px;text-align:center;border-left:3px solid var(--orange);">5+ DSM criteria; depressed mood or anhedonia required</div>
+                    <div style="background:var(--card);padding:10px 12px;text-align:center;border-left:3px solid var(--red);">Psychosis, catatonia, or severe suicidality possible</div>
+                    <div style="background:var(--card);padding:10px 12px;text-align:center;border-left:3px solid var(--accent2);">≥2 symptoms; "double depression" = MDD superimposed</div>
+                    <!-- Treatment -->
+                    <div style="background:var(--bg2);padding:10px 12px;font-weight:600;color:var(--text-muted);border-radius:0 0 0 6px;">Treatment</div>
+                    <div style="background:var(--bg2);padding:10px 12px;text-align:center;border-left:3px solid var(--orange);">Psychotherapy ± antidepressant</div>
+                    <div style="background:var(--bg2);padding:10px 12px;text-align:center;border-left:3px solid var(--red);">Antidepressant ± augmentation; ECT if refractory</div>
+                    <div style="background:var(--bg2);padding:10px 12px;text-align:center;border-left:3px solid var(--accent2);border-radius:0 0 6px 0;">Long-term antidepressant; augmentation often needed</div>
+                </div>
             </div>
 
             <!-- SECTION 5: DIFFERENTIAL DIAGNOSIS -->
