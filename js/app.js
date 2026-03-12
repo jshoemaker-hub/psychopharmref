@@ -258,8 +258,11 @@ document.querySelectorAll('.nav-parent-btn').forEach(btn => {
 // Sub-link navigation
 document.querySelectorAll('.nav-sub-link').forEach(link => {
   link.addEventListener('click', e => {
-    e.preventDefault();
-    switchSection(link.dataset.section);
+    if (link.dataset.section) {
+      e.preventDefault();
+      switchSection(link.dataset.section);
+    }
+    // else: no data-section → href navigates normally to external blog page
   });
 });
 
