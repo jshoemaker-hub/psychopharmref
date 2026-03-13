@@ -52,6 +52,7 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="med-compare">Med Comparison</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="med-taper">Taper / Start</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="cdr-tool">CDR Staging</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="asd-tool">ASD Severity</a></li>
         </ul>
       </li>
 
@@ -3184,6 +3185,585 @@
       })();
       </script>
     </section><!-- end cdr-tool -->
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         ASD SEVERITY RATING TOOL
+         ══════════════════════════════════════════════════════════════════════ -->
+    <section id="asd-tool" class="section">
+      <div class="section-header">
+        <h2>Autism Spectrum Disorder Severity Rating Tool</h2>
+        <p class="section-sub">DSM-5 severity level assessment across both core domains (Social Communication and Restricted/Repetitive Behaviors), with clinical interpretation, support needs mapping, and screening instrument guidance.</p>
+      </div>
+
+      <!-- Clinical Warning -->
+      <div class="mt-warning">
+        <span class="mt-warning-icon">&#9888;</span>
+        <div>
+          <strong>Clinical Use Only</strong> — DSM-5 severity levels are specified independently for each core domain and reflect the current level of support required, not a fixed trait. Severity may change over time with development, intervention, and environmental context. This tool does not replace comprehensive diagnostic evaluation (ADOS-2, ADI-R, clinical interview). Co-occurring conditions (intellectual disability, ADHD, anxiety) independently affect functional presentation and must be assessed separately.
+        </div>
+      </div>
+
+      <style>
+        /* ── ASD Tool Styles ── */
+        .asd-tool-grid { display: grid; grid-template-columns: 1fr; gap: 22px; margin: 20px 0; }
+        .asd-domain-panel {
+          background: var(--bg);
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          padding: 0;
+          overflow: hidden;
+        }
+        .asd-domain-header {
+          padding: 14px 20px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-weight: 700;
+          font-size: 1.08rem;
+          color: white;
+        }
+        .asd-domain-header--sc { background: #4a7c35; }
+        .asd-domain-header--rrb { background: #8b6914; }
+        .asd-domain-icon { font-size: 20px; }
+        .asd-domain-body { padding: 16px 20px; }
+        .asd-levels { display: flex; flex-direction: column; gap: 8px; }
+        .asd-level {
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          padding: 14px 16px;
+          border: 2px solid var(--border);
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.15s;
+          background: var(--bg);
+        }
+        .asd-level:hover { background: var(--bg2); }
+        .asd-level.asd-sel {
+          border-color: var(--accent);
+          background: rgba(74,124,53,0.05);
+        }
+        .asd-level input[type="radio"] {
+          margin-top: 4px;
+          flex-shrink: 0;
+          accent-color: var(--accent);
+        }
+        .asd-level-content { flex: 1; }
+        .asd-level-top {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 4px;
+        }
+        .asd-level-badge {
+          display: inline-block;
+          padding: 2px 10px;
+          border-radius: 10px;
+          font-weight: 700;
+          font-size: 0.82rem;
+          color: white;
+        }
+        .asd-badge-1 { background: #3a6e28; }
+        .asd-badge-2 { background: #8b6914; }
+        .asd-badge-3 { background: #c04030; }
+        .asd-level-name { font-weight: 700; font-size: 0.95rem; color: var(--text); }
+        .asd-level-desc { font-size: 0.84rem; color: #6b6050; line-height: 1.5; margin-top: 4px; }
+        .asd-level-example {
+          font-size: 0.82rem;
+          color: #6b6050;
+          font-style: italic;
+          margin-top: 6px;
+          padding-top: 6px;
+          border-top: 1px dashed var(--border);
+        }
+
+        /* Results */
+        .asd-results {
+          background: var(--bg);
+          border: 2px solid var(--border);
+          border-radius: 10px;
+          padding: 24px;
+          margin-top: 24px;
+          display: none;
+        }
+        .asd-results.asd-visible { display: block; }
+        .asd-results-title {
+          font-size: 1.15rem;
+          font-weight: 700;
+          margin-bottom: 16px;
+          color: var(--text);
+        }
+        .asd-score-row {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 14px;
+          margin-bottom: 20px;
+        }
+        .asd-score-card {
+          text-align: center;
+          padding: 18px 14px;
+          border-radius: 8px;
+          background: var(--bg2);
+          border: 1px solid var(--border);
+        }
+        .asd-score-card--primary {
+          border-width: 2px;
+        }
+        .asd-score-val {
+          font-size: 1.6rem;
+          font-weight: 800;
+          line-height: 1.1;
+        }
+        .asd-score-sublabel {
+          font-size: 0.92rem;
+          font-weight: 600;
+          margin-top: 2px;
+        }
+        .asd-score-label {
+          font-size: 0.78rem;
+          margin-top: 6px;
+          opacity: 0.8;
+        }
+
+        .asd-interp-section {
+          margin-bottom: 18px;
+        }
+        .asd-interp-box {
+          padding: 16px 18px;
+          border-radius: 8px;
+          margin-bottom: 10px;
+          line-height: 1.5;
+        }
+        .asd-interp-box h4 { margin: 0 0 6px; font-size: 1rem; }
+        .asd-interp-box p { font-size: 0.88rem; margin: 0 0 6px; }
+        .asd-interp-1 { background: rgba(58,110,40,0.08); border-left: 4px solid #3a6e28; }
+        .asd-interp-2 { background: rgba(139,105,20,0.08); border-left: 4px solid #8b6914; }
+        .asd-interp-3 { background: rgba(192,64,48,0.08); border-left: 4px solid #c04030; }
+
+        .asd-supports-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          gap: 12px;
+          margin-top: 14px;
+        }
+        .asd-support-card {
+          padding: 14px;
+          border-radius: 8px;
+          background: var(--bg2);
+          border: 1px solid var(--border);
+        }
+        .asd-support-card h5 {
+          margin: 0 0 6px;
+          font-size: 0.88rem;
+          color: var(--accent);
+        }
+        .asd-support-card ul {
+          margin: 0; padding: 0 0 0 16px;
+          font-size: 0.82rem;
+          line-height: 1.6;
+          color: #231e14;
+        }
+
+        .asd-screening-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 14px;
+          font-size: 0.84rem;
+        }
+        .asd-screening-table th, .asd-screening-table td {
+          padding: 8px 10px;
+          border: 1px solid var(--border);
+          text-align: left;
+        }
+        .asd-screening-table th { background: var(--bg2); font-weight: 600; }
+
+        .asd-ref-note {
+          font-size: 0.78rem;
+          color: #6b6050;
+          margin-top: 16px;
+          padding-top: 12px;
+          border-top: 1px solid var(--border);
+          line-height: 1.5;
+        }
+
+        .asd-btn-row { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+
+        @media(min-width:900px) {
+          .asd-tool-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media print {
+          .asd-btn-row, .mt-warning, .section-sub { display: none; }
+          .asd-results { display: block !important; border: 1px solid #999; }
+        }
+      </style>
+
+      <!-- Domain rating panels -->
+      <div class="asd-tool-grid" id="asd-tool-grid">
+
+        <!-- Domain A: Social Communication -->
+        <div class="asd-domain-panel">
+          <div class="asd-domain-header asd-domain-header--sc">
+            <span class="asd-domain-icon">&#128483;</span>
+            Domain A: Social Communication &amp; Interaction
+          </div>
+          <div class="asd-domain-body">
+            <div class="asd-levels">
+              <label class="asd-level" tabindex="0">
+                <input type="radio" name="asd-sc" value="1">
+                <div class="asd-level-content">
+                  <div class="asd-level-top">
+                    <span class="asd-level-badge asd-badge-1">Level 1</span>
+                    <span class="asd-level-name">Requiring Support</span>
+                  </div>
+                  <div class="asd-level-desc">Without supports in place, deficits in social communication cause noticeable impairments. Difficulty initiating social interactions and clear examples of atypical or unsuccessful responses to social overtures of others. May appear to have decreased interest in social interactions.</div>
+                  <div class="asd-level-example">Example: Speaks in full sentences, engages in communication, but to-and-fro conversation fails; attempts to make friends are odd and typically unsuccessful.</div>
+                </div>
+              </label>
+
+              <label class="asd-level" tabindex="0">
+                <input type="radio" name="asd-sc" value="2">
+                <div class="asd-level-content">
+                  <div class="asd-level-top">
+                    <span class="asd-level-badge asd-badge-2">Level 2</span>
+                    <span class="asd-level-name">Requiring Substantial Support</span>
+                  </div>
+                  <div class="asd-level-desc">Marked deficits in verbal and nonverbal social communication skills; social impairments apparent even with supports in place; limited initiation of social interactions; and reduced or abnormal responses to social overtures from others.</div>
+                  <div class="asd-level-example">Example: Speaks simple sentences, interaction limited to narrow special interests, markedly odd nonverbal communication.</div>
+                </div>
+              </label>
+
+              <label class="asd-level" tabindex="0">
+                <input type="radio" name="asd-sc" value="3">
+                <div class="asd-level-content">
+                  <div class="asd-level-top">
+                    <span class="asd-level-badge asd-badge-3">Level 3</span>
+                    <span class="asd-level-name">Requiring Very Substantial Support</span>
+                  </div>
+                  <div class="asd-level-desc">Severe deficits in verbal and nonverbal social communication skills cause severe impairments in functioning, very limited initiation of social interactions, and minimal response to social overtures from others.</div>
+                  <div class="asd-level-example">Example: Few words of intelligible speech, rarely initiates interaction, makes unusual approaches to meet needs only, responds to only very direct social approaches.</div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Domain B: Restricted/Repetitive Behaviors -->
+        <div class="asd-domain-panel">
+          <div class="asd-domain-header asd-domain-header--rrb">
+            <span class="asd-domain-icon">&#128260;</span>
+            Domain B: Restricted &amp; Repetitive Behaviors
+          </div>
+          <div class="asd-domain-body">
+            <div class="asd-levels">
+              <label class="asd-level" tabindex="0">
+                <input type="radio" name="asd-rrb" value="1">
+                <div class="asd-level-content">
+                  <div class="asd-level-top">
+                    <span class="asd-level-badge asd-badge-1">Level 1</span>
+                    <span class="asd-level-name">Requiring Support</span>
+                  </div>
+                  <div class="asd-level-desc">Inflexibility of behavior causes significant interference with functioning in one or more contexts. Difficulty switching between activities. Problems of organization and planning hamper independence.</div>
+                  <div class="asd-level-example">Functional impact: Executive function difficulties (task-switching, planning, organization) are often the most impairing features. Rigidity may be less visible externally but causes substantial internal distress.</div>
+                </div>
+              </label>
+
+              <label class="asd-level" tabindex="0">
+                <input type="radio" name="asd-rrb" value="2">
+                <div class="asd-level-content">
+                  <div class="asd-level-top">
+                    <span class="asd-level-badge asd-badge-2">Level 2</span>
+                    <span class="asd-level-name">Requiring Substantial Support</span>
+                  </div>
+                  <div class="asd-level-desc">Inflexibility of behavior, difficulty coping with change, or other restricted/repetitive behaviors appear frequently enough to be obvious to the casual observer and interfere with functioning in a variety of contexts. Distress and/or difficulty changing focus or action.</div>
+                  <div class="asd-level-example">Functional impact: Behavioral inflexibility creates significant difficulty with transitions. Distress when expected patterns are disrupted may manifest as dysregulation across multiple settings.</div>
+                </div>
+              </label>
+
+              <label class="asd-level" tabindex="0">
+                <input type="radio" name="asd-rrb" value="3">
+                <div class="asd-level-content">
+                  <div class="asd-level-top">
+                    <span class="asd-level-badge asd-badge-3">Level 3</span>
+                    <span class="asd-level-name">Requiring Very Substantial Support</span>
+                  </div>
+                  <div class="asd-level-desc">Inflexibility of behavior, extreme difficulty coping with change, or other restricted/repetitive behaviors markedly interfere with functioning in all spheres. Great distress/difficulty changing focus or action.</div>
+                  <div class="asd-level-example">Functional impact: Extreme inflexibility, intense sensory behaviors, great difficulty redirecting. Self-injurious behavior or aggression may occur with communication frustration or sensory overload.</div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end asd-tool-grid -->
+
+      <!-- Additional specifiers -->
+      <div class="ref-card" style="margin-top:16px">
+        <h3 class="ref-card-title">&#128203; DSM-5 Diagnostic Specifiers</h3>
+        <p style="font-size:0.88rem;color:#6b6050;margin-bottom:14px;">Optional specifiers documented alongside severity level to provide a complete diagnostic formulation.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;">
+          <label class="asd-level" style="border-width:1px;padding:10px 12px;cursor:default;">
+            <input type="checkbox" id="asd-spec-id" style="accent-color:var(--accent);margin-top:2px;">
+            <div class="asd-level-content">
+              <div class="asd-level-name" style="font-size:0.88rem;">With or without intellectual impairment</div>
+              <div class="asd-level-desc">Specify current intellectual functioning level. ~33% of individuals with ASD have co-occurring intellectual disability (IQ &lt;70).</div>
+            </div>
+          </label>
+          <label class="asd-level" style="border-width:1px;padding:10px 12px;cursor:default;">
+            <input type="checkbox" id="asd-spec-lang" style="accent-color:var(--accent);margin-top:2px;">
+            <div class="asd-level-content">
+              <div class="asd-level-name" style="font-size:0.88rem;">With or without language impairment</div>
+              <div class="asd-level-desc">Specify current language functioning (e.g., no intelligible speech, phrase speech only, full sentences with pragmatic deficits).</div>
+            </div>
+          </label>
+          <label class="asd-level" style="border-width:1px;padding:10px 12px;cursor:default;">
+            <input type="checkbox" id="asd-spec-med" style="accent-color:var(--accent);margin-top:2px;">
+            <div class="asd-level-content">
+              <div class="asd-level-name" style="font-size:0.88rem;">Associated with known medical/genetic condition</div>
+              <div class="asd-level-desc">Document associated conditions (e.g., Fragile X, Rett syndrome, tuberous sclerosis, chromosomal abnormalities).</div>
+            </div>
+          </label>
+          <label class="asd-level" style="border-width:1px;padding:10px 12px;cursor:default;">
+            <input type="checkbox" id="asd-spec-cat" style="accent-color:var(--accent);margin-top:2px;">
+            <div class="asd-level-content">
+              <div class="asd-level-name" style="font-size:0.88rem;">Associated with catatonia</div>
+              <div class="asd-level-desc">Catatonia can co-occur with ASD. Specify if catatonic features are present (refer to DSM-5 catatonia criteria).</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="asd-btn-row">
+        <button class="cdr-calc-btn" id="asd-calc-btn">Generate Assessment &#9656;</button>
+        <button class="cdr-reset-btn" id="asd-reset-btn">Reset All</button>
+        <button class="cdr-print-btn" id="asd-print-btn">&#128438; Print / Save PDF</button>
+      </div>
+      <div class="cdr-error" id="asd-error"></div>
+
+      <!-- Results -->
+      <div class="asd-results" id="asd-results">
+        <div class="asd-results-title">ASD Severity Assessment Results</div>
+
+        <!-- Score cards -->
+        <div class="asd-score-row" id="asd-score-row"></div>
+
+        <!-- Domain interpretations -->
+        <div class="asd-interp-section" id="asd-interp-section"></div>
+
+        <!-- Support needs mapping -->
+        <div id="asd-supports"></div>
+
+        <!-- Screening & assessment instruments reference -->
+        <details style="margin-top:18px;cursor:pointer;">
+          <summary style="font-weight:700;font-size:0.95rem;padding:8px 0;">Screening &amp; Assessment Instruments Reference</summary>
+          <table class="asd-screening-table">
+            <thead>
+              <tr><th>Instrument</th><th>Type</th><th>Age Range</th><th>Administration</th><th>Key Features</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>M-CHAT-R/F</strong></td><td>Screening</td><td>16–30 months</td><td>Parent questionnaire + follow-up</td><td>20 items; sensitivity 0.85, specificity 0.99 with follow-up; AAP-recommended universal screen</td></tr>
+              <tr><td><strong>ADOS-2</strong></td><td>Diagnostic</td><td>12 months – adult</td><td>Semi-structured observation (40–60 min)</td><td>Gold standard; 5 modules by age/language; calibrated severity scores (CSS 1–10); requires trained clinician</td></tr>
+              <tr><td><strong>ADI-R</strong></td><td>Diagnostic</td><td>Mental age ≥2 years</td><td>Caregiver interview (1.5–2.5 hrs)</td><td>93 items; lifetime and current behavior; strong psychometrics; used alongside ADOS-2</td></tr>
+              <tr><td><strong>SRS-2</strong></td><td>Screening/Severity</td><td>2.5 years – adult</td><td>Questionnaire (15–20 min)</td><td>65 items; T-scores: ≤59 normal, 60–65 mild, 66–75 moderate, ≥76 severe; tracks treatment response</td></tr>
+              <tr><td><strong>SCQ</strong></td><td>Screening</td><td>≥4 years (mental age ≥2)</td><td>Parent questionnaire (10 min)</td><td>40 items based on ADI-R; cutoff ≥15 suggests further evaluation; Lifetime and Current forms</td></tr>
+              <tr><td><strong>CARS-2</strong></td><td>Diagnostic/Severity</td><td>≥2 years</td><td>Clinician rating (5–10 min)</td><td>15 items; Standard (ST) and High-Functioning (HF) versions; scores: &lt;30 non-ASD, 30–36.5 mild-moderate, ≥37 severe</td></tr>
+              <tr><td><strong>ASRS</strong></td><td>Screening</td><td>2–18 years</td><td>Parent/teacher (15 min)</td><td>70 items; DSM-5 aligned; T-score ≥60 elevated; peer-comparison and DSM-scale scores</td></tr>
+              <tr><td><strong>RAADS-R</strong></td><td>Screening (adults)</td><td>≥18 years</td><td>Self-report + clinician (30 min)</td><td>80 items; cutoff ≥65; designed for adults who may have been missed in childhood; sensitivity 0.97</td></tr>
+              <tr><td><strong>CAT-Q</strong></td><td>Camouflaging measure</td><td>≥16 years</td><td>Self-report (10 min)</td><td>25 items; measures compensation, masking, assimilation; useful for identifying underdiagnosed females</td></tr>
+            </tbody>
+          </table>
+        </details>
+
+        <!-- Pharmacotherapy quick reference -->
+        <details style="margin-top:12px;cursor:pointer;">
+          <summary style="font-weight:700;font-size:0.95rem;padding:8px 0;">Pharmacotherapy Reference by Target Symptom</summary>
+          <table class="asd-screening-table">
+            <thead>
+              <tr><th>Target Symptom</th><th>First-Line</th><th>Alternatives</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Irritability / Aggression</strong></td><td>Risperidone (age ≥5), Aripiprazole (age ≥6)</td><td>N-acetylcysteine (adjunct)</td><td>Only FDA-approved medications for ASD-associated irritability; monitor metabolic parameters</td></tr>
+              <tr><td><strong>Hyperactivity / Inattention</strong></td><td>Methylphenidate (low dose)</td><td>Guanfacine ER, Atomoxetine</td><td>Lower response rate than in ADHD alone (~50% vs 75%); higher side-effect sensitivity; start low, go slow</td></tr>
+              <tr><td><strong>Anxiety / Repetitive behaviors</strong></td><td>SSRIs (fluoxetine, sertraline)</td><td>Buspirone</td><td>Limited RCT evidence in ASD; clinical experience supports use; watch for activation/agitation</td></tr>
+              <tr><td><strong>Sleep disturbance</strong></td><td>Melatonin (1–5 mg)</td><td>Trazodone, Clonidine</td><td>Melatonin has strongest evidence base in ASD; address sleep hygiene first</td></tr>
+              <tr><td><strong>Self-injurious behavior</strong></td><td>Risperidone, Aripiprazole</td><td>Naltrexone, Clonidine</td><td>Behavioral intervention is first-line; medication as adjunct for severe/refractory cases</td></tr>
+            </tbody>
+          </table>
+        </details>
+
+        <div class="asd-ref-note">
+          <strong>Reference:</strong> American Psychiatric Association. Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition (DSM-5). Arlington, VA: APA; 2013.<br>
+          <strong>Note:</strong> Severity levels are rated independently for each domain and reflect current support needs, not inherent capacity. Levels may differ across the two domains and may change over time. Co-occurring intellectual disability, language impairment, and other conditions should be specified separately. The tool generates a clinical summary—it does not replace comprehensive evaluation.
+        </div>
+      </div>
+
+      <script>
+      (function(){
+        /* ── ASD Severity Rating Engine ── */
+        var DOMAINS = [{key:'sc', label:'Social Communication & Interaction'}, {key:'rrb', label:'Restricted & Repetitive Behaviors'}];
+        var LEVEL_NAMES = {1:'Level 1 — Requiring Support', 2:'Level 2 — Requiring Substantial Support', 3:'Level 3 — Requiring Very Substantial Support'};
+        var LEVEL_SHORT = {1:'Level 1', 2:'Level 2', 3:'Level 3'};
+        var SUPPORT_LABELS = {1:'Requiring Support', 2:'Requiring Substantial Support', 3:'Requiring Very Substantial Support'};
+
+        // Highlight selected
+        document.querySelectorAll('#asd-tool-grid .asd-level input').forEach(function(radio){
+          radio.addEventListener('change', function(){
+            var panel = this.closest('.asd-domain-panel');
+            panel.querySelectorAll('.asd-level').forEach(function(l){ l.classList.remove('asd-sel'); });
+            this.closest('.asd-level').classList.add('asd-sel');
+          });
+        });
+
+        // Keyboard
+        document.querySelectorAll('#asd-tool-grid .asd-level').forEach(function(lbl){
+          lbl.addEventListener('keydown', function(e){
+            if(e.key==='Enter'||e.key===' '){ e.preventDefault(); this.querySelector('input').click(); }
+          });
+        });
+
+        var SC_INTERP = {
+          1: {cls:'asd-interp-1', title:'Social Communication — Level 1', body:'Without supports, deficits cause noticeable impairments. The individual can speak in full sentences and engages in communication, but reciprocal conversation is impaired. Attempts at social interaction may be atypical or unsuccessful. Social motivation may appear reduced. In women and girls, social camouflaging may mask deficits; assess for the internal cost of maintaining a neurotypical presentation (chronic anxiety, exhaustion, burnout).'},
+          2: {cls:'asd-interp-2', title:'Social Communication — Level 2', body:'Marked deficits in verbal and nonverbal communication are apparent even with supports in place. Social initiations are limited and responses to others are reduced or qualitatively abnormal. Communication is often restricted to narrow special interests. Nonverbal communication (eye contact, gestures, facial expression) is markedly atypical. Structured support across educational, vocational, and social settings is typically required.'},
+          3: {cls:'asd-interp-3', title:'Social Communication — Level 3', body:'Severe deficits in both verbal and nonverbal social communication cause severe functional impairments. Initiation of social interaction is very limited, with minimal response to social overtures from others. Many individuals at this level have limited or no functional speech and may require augmentative and alternative communication (AAC) systems. Social interactions are typically restricted to direct physical or highly concrete exchanges.'}
+        };
+
+        var RRB_INTERP = {
+          1: {cls:'asd-interp-1', title:'Restricted/Repetitive Behaviors — Level 1', body:'Inflexibility causes significant interference in at least one context. Executive function difficulties—particularly task-switching, organization, and planning—are commonly the most functionally impairing features. Rigidity in routines and difficulty with transitions create substantial internal distress, though they may be less externally visible. Independent functioning is possible but requires significant effort.'},
+          2: {cls:'asd-interp-2', title:'Restricted/Repetitive Behaviors — Level 2', body:'Restricted/repetitive behaviors are obvious to casual observers and interfere with functioning across multiple contexts. Behavioral inflexibility creates significant difficulty with transitions and changes in routine. Distress when expected patterns are disrupted may manifest as behavioral dysregulation. Significant accommodations and structured support are needed to manage daily routines and transitions.'},
+          3: {cls:'asd-interp-3', title:'Restricted/Repetitive Behaviors — Level 3', body:'Restricted/repetitive behaviors markedly interfere with functioning in all spheres. Extreme inflexibility, intense sensory-seeking or sensory-avoidant behaviors, and great difficulty redirecting from focused interests characterize the presentation. Self-injurious behavior and aggression may occur, particularly with communication frustration, sensory overload, or routine disruption. 24-hour supervised care is typically required.'}
+        };
+
+        var SUPPORTS = {
+          1: {
+            title: 'Level 1 Support Recommendations',
+            categories: [
+              {name:'Behavioral/Therapeutic', items:['Social skills training (group-based)','CBT adapted for ASD','Executive function coaching','Occupational therapy (sensory strategies)']},
+              {name:'Educational/Vocational', items:['Workplace accommodations','Self-advocacy skill development','Organizational support tools','Transition planning (adolescent/adult)']},
+              {name:'Pharmacotherapy Targets', items:['Anxiety (SSRIs)','ADHD symptoms (stimulants, guanfacine)','Depression','Sleep (melatonin)']},
+              {name:'Monitoring', items:['Burnout/camouflaging assessment','Comorbid mental health screening','Annual functional review','Quality of life measures']}
+            ]
+          },
+          2: {
+            title: 'Level 2 Support Recommendations',
+            categories: [
+              {name:'Behavioral/Therapeutic', items:['ABA-based behavioral intervention','Speech-language therapy','Occupational therapy (sensory + adaptive)','Social communication intervention']},
+              {name:'Educational/Vocational', items:['Structured educational program with support','Vocational training with job coaching','Visual schedules and supports','Transition planning with supported living options']},
+              {name:'Pharmacotherapy Targets', items:['Irritability/aggression (risperidone, aripiprazole)','Hyperactivity (methylphenidate, guanfacine)','Anxiety/repetitive behaviors (SSRIs)','Sleep (melatonin, trazodone)']},
+              {name:'Monitoring', items:['Behavioral data tracking','Adaptive functioning assessment (Vineland-3)','Regular medication review','Caregiver support needs']}
+            ]
+          },
+          3: {
+            title: 'Level 3 Support Recommendations',
+            categories: [
+              {name:'Behavioral/Therapeutic', items:['Comprehensive ABA programming (high intensity)','AAC assessment and implementation','Sensory integration therapy','Functional behavior analysis (FBA) for challenging behaviors']},
+              {name:'Educational/Residential', items:['Specialized educational placement','1:1 or small group instruction','Long-term residential care planning','24-hour supervision and support']},
+              {name:'Pharmacotherapy Targets', items:['Irritability/SIB (risperidone, aripiprazole)','Severe aggression (consider clozapine for refractory)','Sleep disruption (melatonin + adjuncts)','Seizures (comorbid epilepsy in ~20-30%)']},
+              {name:'Monitoring', items:['Safety planning (SIB, elopement, pica)','Medical comorbidity screening','Nutritional assessment','Caregiver burden and respite needs']}
+            ]
+          }
+        };
+
+        function getOverallLevel(sc, rrb){
+          return Math.max(sc, rrb);
+        }
+
+        document.getElementById('asd-calc-btn').addEventListener('click', function(){
+          var errEl = document.getElementById('asd-error');
+          var scRadio = document.querySelector('input[name="asd-sc"]:checked');
+          var rrbRadio = document.querySelector('input[name="asd-rrb"]:checked');
+
+          if(!scRadio || !rrbRadio){
+            var missing = [];
+            if(!scRadio) missing.push('Social Communication');
+            if(!rrbRadio) missing.push('Restricted/Repetitive Behaviors');
+            errEl.textContent = 'Please rate both domains: ' + missing.join(', ');
+            errEl.style.display = 'block';
+            return;
+          }
+          errEl.style.display = 'none';
+
+          var sc = parseInt(scRadio.value);
+          var rrb = parseInt(rrbRadio.value);
+          var overall = getOverallLevel(sc, rrb);
+
+          // Specifiers
+          var specifiers = [];
+          if(document.getElementById('asd-spec-id').checked) specifiers.push('With intellectual impairment');
+          if(document.getElementById('asd-spec-lang').checked) specifiers.push('With language impairment');
+          if(document.getElementById('asd-spec-med').checked) specifiers.push('Associated with known medical/genetic condition');
+          if(document.getElementById('asd-spec-cat').checked) specifiers.push('Associated with catatonia');
+
+          // Score cards
+          var colors = {1:'#3a6e28', 2:'#8b6914', 3:'#c04030'};
+          var scoreRow = document.getElementById('asd-score-row');
+          var specText = specifiers.length > 0 ? '<div style="font-size:0.78rem;margin-top:8px;color:#6b6050;text-align:left;"><strong>Specifiers:</strong> '+specifiers.join('; ')+'</div>' : '';
+
+          scoreRow.innerHTML =
+            '<div class="asd-score-card asd-score-card--primary" style="border-color:'+colors[sc]+'">'+
+              '<div class="asd-score-val" style="color:'+colors[sc]+'">'+sc+'</div>'+
+              '<div class="asd-score-sublabel" style="color:'+colors[sc]+'">'+SUPPORT_LABELS[sc]+'</div>'+
+              '<div class="asd-score-label">Social Communication</div>'+
+            '</div>'+
+            '<div class="asd-score-card asd-score-card--primary" style="border-color:'+colors[rrb]+'">'+
+              '<div class="asd-score-val" style="color:'+colors[rrb]+'">'+rrb+'</div>'+
+              '<div class="asd-score-sublabel" style="color:'+colors[rrb]+'">'+SUPPORT_LABELS[rrb]+'</div>'+
+              '<div class="asd-score-label">Restricted/Repetitive Behaviors</div>'+
+            '</div>'+
+            '<div class="asd-score-card" style="background:'+colors[overall]+';color:white;border-color:'+colors[overall]+'">'+
+              '<div class="asd-score-val" style="color:white">'+overall+'</div>'+
+              '<div class="asd-score-sublabel" style="color:rgba(255,255,255,0.9)">'+SUPPORT_LABELS[overall]+'</div>'+
+              '<div class="asd-score-label" style="color:rgba(255,255,255,0.8)">Overall Support Level</div>'+
+            '</div>';
+
+          // Diagnostic formulation
+          var formulation = '<div style="padding:14px 16px;border-radius:8px;background:var(--bg2);border:1px solid var(--border);margin-bottom:16px;">' +
+            '<div style="font-weight:700;font-size:0.95rem;margin-bottom:6px;">Diagnostic Formulation</div>' +
+            '<div style="font-size:0.9rem;"><strong>299.00 (F84.0) Autism Spectrum Disorder</strong></div>' +
+            '<div style="font-size:0.85rem;margin-top:4px;">Social communication: ' + LEVEL_NAMES[sc] + '</div>' +
+            '<div style="font-size:0.85rem;">Restricted/repetitive behaviors: ' + LEVEL_NAMES[rrb] + '</div>' +
+            (specifiers.length > 0 ? '<div style="font-size:0.85rem;margin-top:4px;">' + specifiers.join('; ') + '</div>' : '') +
+            '</div>';
+
+          // Domain interpretations
+          var interpHTML = formulation +
+            '<div class="asd-interp-box '+SC_INTERP[sc].cls+'"><h4>'+SC_INTERP[sc].title+'</h4><p>'+SC_INTERP[sc].body+'</p></div>' +
+            '<div class="asd-interp-box '+RRB_INTERP[rrb].cls+'"><h4>'+RRB_INTERP[rrb].title+'</h4><p>'+RRB_INTERP[rrb].body+'</p></div>';
+          document.getElementById('asd-interp-section').innerHTML = interpHTML;
+
+          // Support recommendations (based on overall level)
+          var sup = SUPPORTS[overall];
+          var supHTML = '<div style="margin-top:14px;"><div style="font-weight:700;font-size:1rem;margin-bottom:10px;">'+sup.title+'</div><div class="asd-supports-grid">';
+          sup.categories.forEach(function(cat){
+            supHTML += '<div class="asd-support-card"><h5>'+cat.name+'</h5><ul>';
+            cat.items.forEach(function(item){ supHTML += '<li>'+item+'</li>'; });
+            supHTML += '</ul></div>';
+          });
+          supHTML += '</div></div>';
+          document.getElementById('asd-supports').innerHTML = supHTML;
+
+          // Show
+          document.getElementById('asd-results').classList.add('asd-visible');
+          document.getElementById('asd-results').scrollIntoView({behavior:'smooth', block:'start'});
+        });
+
+        // Reset
+        document.getElementById('asd-reset-btn').addEventListener('click', function(){
+          document.querySelectorAll('#asd-tool-grid input[type="radio"]').forEach(function(r){ r.checked = false; });
+          document.querySelectorAll('#asd-tool-grid .asd-level').forEach(function(l){ l.classList.remove('asd-sel'); });
+          document.querySelectorAll('#asd-tool .asd-level input[type="checkbox"]').forEach(function(c){ c.checked = false; });
+          document.getElementById('asd-spec-id').checked = false;
+          document.getElementById('asd-spec-lang').checked = false;
+          document.getElementById('asd-spec-med').checked = false;
+          document.getElementById('asd-spec-cat').checked = false;
+          document.getElementById('asd-results').classList.remove('asd-visible');
+          document.getElementById('asd-error').style.display = 'none';
+        });
+
+        // Print
+        document.getElementById('asd-print-btn').addEventListener('click', function(){ window.print(); });
+      })();
+      </script>
+    </section><!-- end asd-tool -->
 
     <!-- ── Blog Index ─────────────────────────────────────────────────────── -->
     <section id="blog-index" class="section">
