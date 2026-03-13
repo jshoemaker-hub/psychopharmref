@@ -19,6 +19,7 @@
   --red:        #c04030;
   --yellow:     #8b6914;
   --orange:     #b05a20;
+  --sidebar-w:  240px;
   --font:       'Segoe UI', system-ui, sans-serif;
 }
 
@@ -310,3 +311,11 @@ svg { display: block; width: 100%; height: auto; }
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ── Responsive: hide sidebar on mobile ──────────────────────────────────── */
+@media (max-width: 768px) {
+  :root { --sidebar-w: 0px; }
+  #sidebar { display: none; }
+  #content { margin-left: 0; }
+  .container { padding: 20px 16px 40px; }
+}
