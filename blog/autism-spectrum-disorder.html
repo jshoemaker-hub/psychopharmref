@@ -71,6 +71,7 @@
           <li><a href="../index.html#refill-calendar" class="nav-link nav-sub-link">Refill Calendar</a></li>
           <li><a href="../index.html#med-compare" class="nav-link nav-sub-link">Med Comparison</a></li>
           <li><a href="../index.html#med-taper" class="nav-link nav-sub-link">Taper / Start</a></li>
+          <li><a href="../index.html#cdr-tool" class="nav-link nav-sub-link">CDR Staging</a></li>
         </ul>
       </li>
 
@@ -375,6 +376,189 @@
                     <strong>Mechanistic Assessment:</strong> Detailed evaluation of specific cognitive mechanisms (executive function, theory of mind, sensory processing, attention patterns) rather than summary scores would identify individual profiles.
                 </div>
             </div>
+
+            <!-- SECTION: DSM-5 SEVERITY LEVELS -->
+            <h2 class="ba-h2">DSM-5 Severity Levels of Autism Spectrum Disorder</h2>
+
+            <p>The DSM-5 (2013) introduced a three-level severity classification system for ASD, assessed independently across both diagnostic domains: social communication and restricted/repetitive behaviors. Severity is specified at the time of diagnosis and reflects the level of support required, not a fixed trait—individuals may shift between levels over the lifespan in response to development, intervention, environmental demands, and comorbid conditions. In clinical practice, severity level informs service planning, educational accommodations, and prognostic counseling, though it should be understood as a descriptive framework rather than a rigid categorical boundary.</p>
+
+            <div class="diagram-wrap">
+                <svg viewBox="0 0 820 580" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="sev-arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#4a7c35"/>
+                        </marker>
+                        <linearGradient id="sev-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#3a6e28;stop-opacity:0.15"/>
+                            <stop offset="50%" style="stop-color:#8b6914;stop-opacity:0.15"/>
+                            <stop offset="100%" style="stop-color:#c04030;stop-opacity:0.15"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Title -->
+                    <text x="410" y="25" text-anchor="middle" font-weight="bold" font-size="14" font-family="Segoe UI, sans-serif">DSM-5 Severity Levels for Autism Spectrum Disorder</text>
+                    <text x="410" y="45" text-anchor="middle" font-size="11" font-family="Segoe UI, sans-serif" fill="#6b6050">Assessed independently for social communication &amp; restricted/repetitive behaviors</text>
+
+                    <!-- Support gradient bar -->
+                    <rect x="30" y="60" width="760" height="12" rx="6" fill="url(#sev-gradient)" stroke="#ccc" stroke-width="0.5"/>
+                    <text x="30" y="85" font-size="9" font-family="Segoe UI, sans-serif" fill="#6b6050">Lower support needs</text>
+                    <text x="790" y="85" text-anchor="end" font-size="9" font-family="Segoe UI, sans-serif" fill="#6b6050">Higher support needs</text>
+
+                    <!-- Level 1 -->
+                    <g>
+                        <rect x="15" y="100" width="255" height="350" rx="6" fill="#fefcf8" stroke="#3a6e28" stroke-width="2"/>
+                        <rect x="15" y="100" width="255" height="40" rx="6" fill="#3a6e28"/>
+                        <rect x="15" y="128" width="255" height="12" fill="#3a6e28"/>
+                        <text x="142" y="126" text-anchor="middle" fill="white" font-weight="bold" font-size="13" font-family="Segoe UI, sans-serif">Level 1: Requiring Support</text>
+
+                        <text x="30" y="165" font-size="11" font-weight="bold" font-family="Segoe UI, sans-serif" fill="#3a6e28">Social Communication</text>
+                        <text x="30" y="182" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Without supports, deficits cause</text>
+                        <text x="30" y="195" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">noticeable impairments</text>
+                        <text x="30" y="212" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Difficulty initiating social interactions</text>
+                        <text x="30" y="229" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Atypical or unsuccessful responses</text>
+                        <text x="30" y="246" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">to social overtures of others</text>
+                        <text x="30" y="263" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">May appear to have decreased</text>
+                        <text x="30" y="276" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">interest in social interactions</text>
+
+                        <line x1="30" y1="290" x2="255" y2="290" stroke="#e2dbd0" stroke-width="1"/>
+
+                        <text x="30" y="308" font-size="11" font-weight="bold" font-family="Segoe UI, sans-serif" fill="#3a6e28">Restricted/Repetitive Behaviors</text>
+                        <text x="30" y="325" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Inflexibility causes significant</text>
+                        <text x="30" y="338" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">interference with functioning in</text>
+                        <text x="30" y="351" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">one or more contexts</text>
+                        <text x="30" y="368" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Difficulty switching between activities</text>
+                        <text x="30" y="385" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Problems of organization and</text>
+                        <text x="30" y="398" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">planning hamper independence</text>
+
+                        <line x1="30" y1="412" x2="255" y2="412" stroke="#e2dbd0" stroke-width="1"/>
+
+                        <text x="30" y="430" font-size="10" font-weight="bold" font-family="Segoe UI, sans-serif" fill="#3a6e28">Clinical Example</text>
+                        <text x="30" y="443" font-size="9" font-family="Segoe UI, sans-serif" fill="#6b6050" font-style="italic">Speaks in full sentences, engages in</text>
+                        <text x="30" y="455" font-size="9" font-family="Segoe UI, sans-serif" fill="#6b6050" font-style="italic">communication, but to-and-fro</text>
+                        <text x="30" y="467" font-size="9" font-family="Segoe UI, sans-serif" fill="#6b6050" font-style="italic">conversation fails; attempts to make</text>
+                        <text x="30" y="479" font-size="9" font-family="Segoe UI, sans-serif" fill="#6b6050" font-style="italic">friends are odd and typically unsuccessful</text>
+                    </g>
+
+                    <!-- Arrow 1→2 -->
+                    <path d="M 270 275 L 280 275" marker-end="url(#sev-arrow)" stroke="#4a7c35" stroke-width="2" fill="none"/>
+
+                    <!-- Level 2 -->
+                    <g>
+                        <rect x="283" y="100" width="255" height="350" rx="6" fill="#fefcf8" stroke="#8b6914" stroke-width="2"/>
+                        <rect x="283" y="100" width="255" height="40" rx="6" fill="#8b6914"/>
+                        <rect x="283" y="128" width="255" height="12" fill="#8b6914"/>
+                        <text x="410" y="126" text-anchor="middle" fill="white" font-weight="bold" font-size="12" font-family="Segoe UI, sans-serif">Level 2: Requiring Substantial Support</text>
+
+                        <text x="298" y="165" font-size="11" font-weight="bold" font-family="Segoe UI, sans-serif" fill="#8b6914">Social Communication</text>
+                        <text x="298" y="182" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Marked deficits in verbal and</text>
+                        <text x="298" y="195" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">nonverbal social communication</text>
+                        <text x="298" y="212" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Social impairments apparent even</text>
+                        <text x="298" y="229" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">with supports in place</text>
+                        <text x="298" y="246" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Limited initiation of social interactions</text>
+                        <text x="298" y="263" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Reduced or abnormal responses to</text>
+                        <text x="298" y="276" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">social overtures from others</text>
+
+                        <line x1="298" y1="290" x2="523" y2="290" stroke="#e2dbd0" stroke-width="1"/>
+
+                        <text x="298" y="308" font-size="11" font-weight="bold" font-family="Segoe UI, sans-serif" fill="#8b6914">Restricted/Repetitive Behaviors</text>
+                        <text x="298" y="325" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Inflexibility, difficulty coping with</text>
+                        <text x="298" y="338" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">change, or RRBs appear frequently</text>
+                        <text x="298" y="351" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">enough to be obvious to casual observer</text>
+                        <text x="298" y="368" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Interfere with functioning in a</text>
+                        <text x="298" y="385" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">variety of contexts</text>
+                        <text x="298" y="398" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Distress changing focus or action</text>
+
+                        <line x1="298" y1="412" x2="523" y2="412" stroke="#e2dbd0" stroke-width="1"/>
+
+                        <text x="298" y="430" font-size="10" font-weight="bold" font-family="Segoe UI, sans-serif" fill="#8b6914">Clinical Example</text>
+                        <text x="298" y="443" font-size="9" font-family="Segoe UI, sans-serif" fill="#6b6050" font-style="italic">Speaks simple sentences, interaction</text>
+                        <text x="298" y="455" font-size="9" font-family="Segoe UI, sans-serif" fill="#6b6050" font-style="italic">limited to narrow special interests,</text>
+                        <text x="298" y="467" font-size="9" font-family="Segoe UI, sans-serif" fill="#6b6050" font-style="italic">markedly odd nonverbal communication</text>
+                    </g>
+
+                    <!-- Arrow 2→3 -->
+                    <path d="M 538 275 L 548 275" marker-end="url(#sev-arrow)" stroke="#4a7c35" stroke-width="2" fill="none"/>
+
+                    <!-- Level 3 -->
+                    <g>
+                        <rect x="551" y="100" width="255" height="350" rx="6" fill="#fefcf8" stroke="#c04030" stroke-width="2"/>
+                        <rect x="551" y="100" width="255" height="40" rx="6" fill="#c04030"/>
+                        <rect x="551" y="128" width="255" height="12" fill="#c04030"/>
+                        <text x="678" y="126" text-anchor="middle" fill="white" font-weight="bold" font-size="11" font-family="Segoe UI, sans-serif">Level 3: Requiring Very Substantial Support</text>
+
+                        <text x="566" y="165" font-size="11" font-weight="bold" font-family="Segoe UI, sans-serif" fill="#c04030">Social Communication</text>
+                        <text x="566" y="182" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Severe deficits in verbal and</text>
+                        <text x="566" y="195" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">nonverbal social communication</text>
+                        <text x="566" y="212" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Very limited initiation of social</text>
+                        <text x="566" y="229" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">interactions</text>
+                        <text x="566" y="246" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Minimal response to social</text>
+                        <text x="566" y="263" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">overtures from others</text>
+                        <text x="566" y="276" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Severe impairments in functioning</text>
+
+                        <line x1="566" y1="290" x2="791" y2="290" stroke="#e2dbd0" stroke-width="1"/>
+
+                        <text x="566" y="308" font-size="11" font-weight="bold" font-family="Segoe UI, sans-serif" fill="#c04030">Restricted/Repetitive Behaviors</text>
+                        <text x="566" y="325" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Inflexibility of behavior, extreme</text>
+                        <text x="566" y="338" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">difficulty coping with change</text>
+                        <text x="566" y="355" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">RRBs markedly interfere with</text>
+                        <text x="566" y="368" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">functioning in all spheres</text>
+                        <text x="566" y="385" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">Great distress/difficulty changing</text>
+                        <text x="566" y="398" font-size="9.5" font-family="Segoe UI, sans-serif" fill="#231e14">focus or action</text>
+
+                        <line x1="566" y1="412" x2="791" y2="412" stroke="#e2dbd0" stroke-width="1"/>
+
+                        <text x="566" y="430" font-size="10" font-weight="bold" font-family="Segoe UI, sans-serif" fill="#c04030">Clinical Example</text>
+                        <text x="566" y="443" font-size="9" font-family="Segoe UI, sans-serif" fill="#6b6050" font-style="italic">Few words of intelligible speech,</text>
+                        <text x="566" y="455" font-size="9" font-family="Segoe UI, sans-serif" fill="#6b6050" font-style="italic">rarely initiates interaction, makes</text>
+                        <text x="566" y="467" font-size="9" font-family="Segoe UI, sans-serif" fill="#6b6050" font-style="italic">unusual approaches to meet needs</text>
+                        <text x="566" y="479" font-size="9" font-family="Segoe UI, sans-serif" fill="#6b6050" font-style="italic">only, responds to very direct</text>
+                        <text x="566" y="491" font-size="9" font-family="Segoe UI, sans-serif" fill="#6b6050" font-style="italic">social approaches only</text>
+                    </g>
+
+                    <!-- Bottom: Key Clinical Notes -->
+                    <rect x="30" y="470" width="760" height="100" rx="6" fill="rgba(74, 124, 53, 0.05)" stroke="#ccc" stroke-width="1"/>
+                    <text x="410" y="492" text-anchor="middle" font-weight="bold" font-size="12" font-family="Segoe UI, sans-serif">Key Clinical Considerations</text>
+
+                    <text x="50" y="514" font-size="10" font-family="Segoe UI, sans-serif" fill="#231e14">&#8226; Severity is specified separately for social communication and restricted/repetitive behaviors—levels may differ across domains</text>
+                    <text x="50" y="530" font-size="10" font-family="Segoe UI, sans-serif" fill="#231e14">&#8226; Severity level may change over time in response to development, intervention, and environmental context</text>
+                    <text x="50" y="546" font-size="10" font-family="Segoe UI, sans-serif" fill="#231e14">&#8226; Level descriptors reflect current functioning with supports in place, not inherent capacity or potential</text>
+                    <text x="50" y="562" font-size="10" font-family="Segoe UI, sans-serif" fill="#231e14">&#8226; Co-occurring conditions (intellectual disability, anxiety, ADHD) independently affect functional presentation</text>
+                </svg>
+            </div>
+
+            <h3 class="ba-h3">Level 1 — "Requiring Support"</h3>
+
+            <p>Level 1 ASD represents the mildest severity classification under the DSM-5 framework. These individuals are typically verbal and may demonstrate average to above-average intellectual ability. Without supports, deficits in social communication cause noticeable impairments: they may struggle with the reciprocal nature of conversation, have difficulty reading social cues, and make atypical attempts at forming relationships. Many individuals at this level were previously diagnosed with Asperger syndrome under the DSM-IV, a designation that was subsumed into the ASD spectrum with the DSM-5 revision.</p>
+
+            <p>Restricted and repetitive behaviors at Level 1 cause significant interference in at least one context. Executive function difficulties—particularly with task-switching, organization, and planning—are commonly the most functionally impairing features. Rigidity in routines and difficulty with transitions may be less externally visible but create substantial internal distress. Many adults at this level maintain employment and independent living, though often with significant effort and at the cost of considerable fatigue ("masking" or "camouflaging").</p>
+
+            <div class="ba-insight-box">
+                <span class="ba-insight-icon">💡</span>
+                <strong>Clinical Pearl:</strong> Level 1 ASD is frequently underdiagnosed in women and girls, who may demonstrate more effective social camouflaging. Diagnosis is often delayed until adolescence or adulthood when social demands exceed compensatory capacity. Always assess for the internal cost of maintaining a neurotypical presentation—chronic anxiety, exhaustion, and burnout are common indicators of unrecognized ASD.
+            </div>
+
+            <h3 class="ba-h3">Level 2 — "Requiring Substantial Support"</h3>
+
+            <p>Level 2 ASD is characterized by marked deficits in social communication that remain apparent even with supports in place. Individuals at this level typically speak in simple sentences, and their social interactions are often limited to narrow special interests. Nonverbal communication is markedly atypical—eye contact, gestures, facial expression, and body orientation may be unusual or absent. Initiation of social interaction is limited, and responses to others' social approaches are reduced or qualitatively abnormal.</p>
+
+            <p>Restricted and repetitive behaviors at Level 2 are obvious to casual observers and interfere with functioning across multiple contexts. Behavioral inflexibility creates significant difficulty with transitions and changes in routine. Distress when expected patterns are disrupted may manifest as behavioral dysregulation. Individuals at this level typically require substantial support for daily living activities and are unlikely to live fully independently. Educational and vocational settings generally require significant accommodations and structured support.</p>
+
+            <h3 class="ba-h3">Level 3 — "Requiring Very Substantial Support"</h3>
+
+            <p>Level 3 represents the most severe presentation of ASD. Social communication is profoundly impaired, with severe deficits in both verbal and nonverbal domains. Many individuals at this level have limited or no functional speech, relying on augmentative and alternative communication (AAC) systems when available. Initiation of social interaction is very limited, and responses to social approaches from others are minimal—often restricted to direct physical or highly concrete interactions.</p>
+
+            <p>Restricted and repetitive behaviors at Level 3 markedly interfere with functioning across all domains. Extreme inflexibility, intense sensory-seeking or sensory-avoidant behaviors, and great difficulty redirecting from focused interests or activities characterize the behavioral profile. Self-injurious behavior and aggression may occur, particularly in the context of communication frustration, sensory overload, or disrupted routines. These individuals require very substantial support throughout the day, including 24-hour supervision, and are dependent on caregivers for all activities of daily living.</p>
+
+            <div class="ba-insight-box">
+                <span class="ba-insight-icon">💡</span>
+                <strong>Clinical Pearl:</strong> When assessing severity, distinguish between deficits intrinsic to the autism presentation and those attributable to co-occurring intellectual disability, which is present in approximately 33% of individuals with ASD. An individual with Level 3 social communication severity but only Level 1 restricted/repetitive behavior severity illustrates why the DSM-5 requires independent severity ratings across the two core domains. Treatment planning should address each domain according to its specific severity level.
+            </div>
+
+            <h3 class="ba-h3">Clinical Implications for Severity-Based Treatment Planning</h3>
+
+            <p>Severity level directly informs the intensity and type of intervention recommended. Level 1 individuals may benefit most from social skills training, cognitive-behavioral therapy adapted for ASD, executive function coaching, and workplace accommodations. Pharmacotherapy targets co-occurring conditions (anxiety, ADHD, depression) rather than core ASD features. Level 2 individuals typically require structured behavioral interventions (ABA-based approaches), speech-language therapy, occupational therapy for sensory and adaptive needs, and substantial educational or vocational support. Level 3 individuals require comprehensive, high-intensity behavioral and developmental programming, AAC assessment and implementation, and long-term care planning.</p>
+
+            <p>Across all severity levels, pharmacological management targets specific symptom domains rather than ASD itself. Irritability and aggression may respond to risperidone or aripiprazole (the only two FDA-approved medications for ASD-associated irritability). Hyperactivity and inattention may improve with methylphenidate, guanfacine, or atomoxetine. Anxiety and repetitive behaviors are often addressed with SSRIs, though evidence in ASD populations is more limited. The principle of "start low, go slow" is especially pertinent in ASD, as medication sensitivity and atypical side-effect profiles are common across all severity levels.</p>
 
             <!-- SECTION 3: PRESENTATIONS AND PATHOPHYSIOLOGY -->
             <h2 class="ba-h2">3. Heterogeneous Presentations and Underlying Neurobiological Mechanisms</h2>
