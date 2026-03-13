@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First-Break Psychosis Workup | PsychoPharmRef</title>
+  <link rel="stylesheet" href="blog.css">
+  <style>
+.btn-primary {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background-color 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+.btn-primary:hover {
+      background-color: var(--green);
+    }
+.text-center {
+      text-align: center;
+    }
+/* SVG responsive sizing fix */
+.diagram-wrapper svg, .diagram-container svg, .svg-container svg, .svg-diagram svg, .diagram-wrap svg, .diagram svg, .ba-body svg { width: 100%; height: auto; max-width: 820px; }
+  </style>
+</head>
+<body>
+  <div class="blog-article">
+    <a href="/blog/" class="back-link">← Back to Blog</a>
+
+    <header class="ba-header">
+      <span class="ba-category">Psychotic Disorders</span>
+      <h1 class="ba-title">First-Break Psychosis Workup: A Clinical Checklist for Medical and Psychiatric Evaluation</h1>
+      <p class="ba-subtitle">Comprehensive diagnostic approach to first-episode psychosis—from basic laboratory screening to expanded investigation of atypical presentations</p>
+      <div class="ba-meta">
+        <span>📅 March 2026</span>
+        <span>👤 For Physicians & Psychiatrists</span>
+        <span>⏱️ 12 min read</span>
+      </div>
+    </header>
+
+    <main class="ba-body">
+      <div class="ba-lead">
+        <strong>Key Takeaway:</strong> First-episode psychosis (FEP) demands systematic medical workup before attributing symptoms purely to a primary psychotic disorder. Duration of untreated psychosis (DUP) predicts functional outcomes; early detection and intervention reduce long-term disability. A basic workup addresses common medical causes; expanded investigation rules out rare but critical secondary etiologies.
+      </div>
+
+      <!-- Section 1: When is FEP Workup Indicated -->
+      <h2 class="ba-h2">1. When Is a First-Break Psychosis Workup Indicated?</h2>
+
+      <h3 class="ba-h3">Defining First-Episode Psychosis (FEP)</h3>
+      <p>First-episode psychosis is the initial presentation of psychotic symptoms in an individual with no prior history of treated psychosis. Key distinctions:</p>
+      <ul>
+        <li><strong>First psychotic episode</strong>—The inaugural presentation of hallucinations, delusions, or thought disorganization meeting psychotic criterion for &gt;1 week</li>
+        <li><strong>Prodromal vs. psychotic</strong>—FEP begins when frank psychosis emerges, not at earlier subclinical stages</li>
+        <li><strong>Age of onset</strong>—Median onset 15–35 years; ~75% present by age 40</li>
+        <li><strong>Gender patterns</strong>—Males typically 2–3 years earlier than females</li>
+      </ul>
+
+      <h3 class="ba-h3">Why Urgency Matters: Duration of Untreated Psychosis (DUP)</h3>
+      <p>DUP—the interval from symptom onset to initiation of antipsychotic treatment—is one of the strongest predictors of FEP outcome:</p>
+
+      <div class="ba-stat-row">
+        <div class="ba-stat-card ba-stat-card--good">
+          <div class="ba-stat-num">3–6 months</div>
+          <div class="ba-stat-label">Optimal intervention window for best functional outcomes</div>
+        </div>
+        <div class="ba-stat-card ba-stat-card--alert">
+          <div class="ba-stat-num">2+ years</div>
+          <div class="ba-stat-label">Associated with worse symptom remission, cognitive recovery, and social reintegration</div>
+        </div>
+      </div>
+
+      <p>The relationship between DUP and outcome is non-linear but robust: earlier treatment initiation correlates with:</p>
+      <ul>
+        <li>Higher remission rates of positive symptoms</li>
+        <li>Better cognitive preservation and less neurocognitive decline</li>
+        <li>Greater likelihood of employment and social functioning at 1–2 years</li>
+        <li>Reduced need for hospitalization and crisis interventions</li>
+      </ul>
+
+      <div class="diagram-container">
+        <svg viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;">
+          <!-- Title -->
+          <text x="350" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#4a7c35">Duration of Untreated Psychosis (DUP) & Functional Outcomes</text>
+
+          <!-- Y-axis label -->
+          <text x="30" y="80" font-size="12" fill="#6b6050">Functional Outcome</text>
+          <text x="15" y="260" font-size="11" fill="#6b6050" text-anchor="middle">(Global function score)</text>
+
+          <!-- X-axis label -->
+          <text x="420" y="330" font-size="12" fill="#6b6050">Months of Untreated Psychosis</text>
+
+          <!-- Axes -->
+          <line x1="60" y1="40" x2="60" y2="300" stroke="#cfc8ba" stroke-width="2"/>
+          <line x1="60" y1="300" x2="650" y2="300" stroke="#cfc8ba" stroke-width="2"/>
+
+          <!-- Y-axis ticks and labels -->
+          <line x1="50" y1="60" x2="60" y2="60" stroke="#cfc8ba" stroke-width="1"/>
+          <text x="45" y="65" font-size="10" text-anchor="end" fill="#6b6050">100</text>
+
+          <line x1="50" y1="130" x2="60" y2="130" stroke="#cfc8ba" stroke-width="1"/>
+          <text x="45" y="135" font-size="10" text-anchor="end" fill="#6b6050">75</text>
+
+          <line x1="50" y1="200" x2="60" y2="200" stroke="#cfc8ba" stroke-width="1"/>
+          <text x="45" y="205" font-size="10" text-anchor="end" fill="#6b6050">50</text>
+
+          <line x1="50" y1="270" x2="60" y2="270" stroke="#cfc8ba" stroke-width="1"/>
+          <text x="45" y="275" font-size="10" text-anchor="end" fill="#6b6050">25</text>
+
+          <!-- X-axis ticks and labels -->
+          <line x1="100" y1="300" x2="100" y2="310" stroke="#cfc8ba" stroke-width="1"/>
+          <text x="100" y="325" font-size="10" text-anchor="middle" fill="#6b6050">0</text>
+
+          <line x1="200" y1="300" x2="200" y2="310" stroke="#cfc8ba" stroke-width="1"/>
+          <text x="200" y="325" font-size="10" text-anchor="middle" fill="#6b6050">6</text>
+
+          <line x1="300" y1="300" x2="300" y2="310" stroke="#cfc8ba" stroke-width="1"/>
+          <text x="300" y="325" font-size="10" text-anchor="middle" fill="#6b6050">12</text>
+
+          <line x1="400" y1="300" x2="400" y2="310" stroke="#cfc8ba" stroke-width="1"/>
+          <text x="400" y="325" font-size="10" text-anchor="middle" fill="#6b6050">24</text>
+
+          <line x1="500" y1="300" x2="500" y2="310" stroke="#cfc8ba" stroke-width="1"/>
+          <text x="500" y="325" font-size="10" text-anchor="middle" fill="#6b6050">36</text>
+
+          <line x1="600" y1="300" x2="600" y2="310" stroke="#cfc8ba" stroke-width="1"/>
+          <text x="600" y="325" font-size="10" text-anchor="middle" fill="#6b6050">48</text>
+
+          <!-- Outcome curve (quadratic decline) -->
+          <path d="M 100 70 Q 300 85 650 280" stroke="#c04030" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+          <!-- Shaded regions -->
+          <!-- Optimal window (0-6 months) -->
+          <rect x="100" y="40" width="100" height="260" fill="#3a6e28" opacity="0.1"/>
+          <text x="150" y="320" font-size="10" text-anchor="middle" fill="#3a6e28" font-weight="bold">Optimal DUP</text>
+
+          <!-- Warning zone (6-12 months) -->
+          <rect x="200" y="40" width="100" height="260" fill="#8b6914" opacity="0.08"/>
+
+          <!-- Poor outcomes (24+ months) -->
+          <rect x="400" y="40" width="250" height="260" fill="#c04030" opacity="0.08"/>
+          <text x="525" y="320" font-size="10" text-anchor="middle" fill="#c04030" font-weight="bold">Poor Outcomes Zone</text>
+
+          <!-- Legend -->
+          <circle cx="120" cy="50" r="4" fill="#c04030"/>
+          <text x="130" y="55" font-size="11" fill="#231e14">Outcome trajectory</text>
+        </svg>
+      </div>
+
+      <h3 class="ba-h3">Red Flags vs. Expected Presentation</h3>
+      <p>While primary schizophrenia and bipolar disorder account for ~60% of first psychotic episodes, secondary causes must be excluded:</p>
+
+      <div class="ba-insight-box">
+        <span class="ba-insight-icon">🚩</span>
+        <h4>Red Flags Suggesting Secondary Psychosis</h4>
+        <p>Acute onset (hours to days), age &lt;15 or &gt;40 years, prominent medical symptoms (fever, rash, movement disorder), focal neurological signs, rapid deterioration in consciousness or cognition, previous head trauma, known substance abuse, family history of neurological disease, and abnormal basic labs.</p>
+      </div>
+
+      <!-- Section 2: Where Does FEP Workup Occur -->
+      <h2 class="ba-h2">2. Where Does the FEP Workup Typically Occur?</h2>
+
+      <div class="diagram-container">
+        <svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;">
+          <!-- Title -->
+          <text x="350" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#4a7c35">Setting of Care Decision Tree for FEP</text>
+
+          <!-- Decision point: Presentation -->
+          <rect x="250" y="50" width="200" height="50" fill="#e2dbd0" stroke="#4a7c35" stroke-width="2" rx="4"/>
+          <text x="350" y="75" font-size="13" font-weight="bold" text-anchor="middle" fill="#231e14">First Psychotic Symptoms</text>
+          <text x="350" y="92" font-size="11" text-anchor="middle" fill="#231e14">Acute Presentation</text>
+
+          <!-- Arrow down -->
+          <line x1="350" y1="100" x2="350" y2="140" stroke="#4a7c35" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+          <!-- Safety assessment -->
+          <rect x="220" y="140" width="260" height="50" fill="#e8f4e8" stroke="#3a6e28" stroke-width="2" rx="4"/>
+          <text x="350" y="165" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Safety Assessment</text>
+          <text x="350" y="182" font-size="10" text-anchor="middle" fill="#231e14">Risk of harm to self or others?</text>
+
+          <!-- Yes branch -->
+          <line x1="220" y1="190" x2="150" y2="230" stroke="#c04030" stroke-width="2" marker-end="url(#arrowhead-red)"/>
+          <text x="170" y="215" font-size="11" font-weight="bold" fill="#c04030">Yes</text>
+
+          <!-- No branch -->
+          <line x1="480" y1="190" x2="550" y2="230" stroke="#3a6e28" stroke-width="2" marker-end="url(#arrowhead-green)"/>
+          <text x="520" y="215" font-size="11" font-weight="bold" fill="#3a6e28">No/Stable</text>
+
+          <!-- ED/Inpatient -->
+          <rect x="50" y="230" width="200" height="60" fill="#f4e8e0" stroke="#c04030" stroke-width="2" rx="4"/>
+          <text x="150" y="255" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">ED / Inpatient Psych Unit</text>
+          <text x="150" y="273" font-size="10" text-anchor="middle" fill="#231e14">Acute stabilization</text>
+          <text x="150" y="286" font-size="10" text-anchor="middle" fill="#231e14">Full medical workup</text>
+
+          <!-- Outpatient/CSC -->
+          <rect x="450" y="230" width="200" height="60" fill="#e8f4e8" stroke="#3a6e28" stroke-width="2" rx="4"/>
+          <text x="550" y="255" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Outpatient / CSC Program</text>
+          <text x="550" y="273" font-size="10" text-anchor="middle" fill="#231e14">NAVIGATE, OnTrackNY</text>
+          <text x="550" y="286" font-size="10" text-anchor="middle" fill="#231e14">Systematic workup timeline</text>
+
+          <!-- Arrows to workup -->
+          <line x1="150" y1="290" x2="150" y2="340" stroke="#c04030" stroke-width="2" marker-end="url(#arrowhead-red)"/>
+          <line x1="550" y1="290" x2="550" y2="340" stroke="#3a6e28" stroke-width="2" marker-end="url(#arrowhead-green)"/>
+
+          <!-- Workup Phase -->
+          <rect x="50" y="340" width="200" height="50" fill="#ece6db" stroke="#8b6914" stroke-width="2" rx="4"/>
+          <text x="150" y="360" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Basic Workup</text>
+          <text x="150" y="378" font-size="10" text-anchor="middle" fill="#231e14">Labs, exam, imaging</text>
+
+          <rect x="450" y="340" width="200" height="50" fill="#ece6db" stroke="#8b6914" stroke-width="2" rx="4"/>
+          <text x="550" y="360" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Basic + Expanded Workup</text>
+          <text x="550" y="378" font-size="10" text-anchor="middle" fill="#231e14">As indicated by history/exam</text>
+
+          <!-- SVG marker definitions -->
+          <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <polygon points="0 0, 10 3, 0 6" fill="#4a7c35"/>
+            </marker>
+            <marker id="arrowhead-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <polygon points="0 0, 10 3, 0 6" fill="#c04030"/>
+            </marker>
+            <marker id="arrowhead-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <polygon points="0 0, 10 3, 0 6" fill="#3a6e28"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+
+      <h3 class="ba-h3">Emergency Department (ED)</h3>
+      <p>Most appropriate for acute, severe presentations with safety concerns. ED physicians perform initial stabilization, vital signs, and basic labs. Psychiatric consultation typically follows; transfer to inpatient psychiatry or crisis stabilization unit arranged based on safety and acuity.</p>
+
+      <h3 class="ba-h3">Inpatient Psychiatric Unit</h3>
+      <p>Indicated when active suicidality, homicidality, grave disability, or severe behavioral dyscontrol present. Inpatient teams have capacity for 24/7 monitoring, serial assessments, and rapid diagnostic testing. Ideal for complex medical-psychiatric presentations requiring coordinated workup.</p>
+
+      <h3 class="ba-h3">Outpatient Settings &amp; Coordinated Specialty Care (CSC) Programs</h3>
+      <p>For stable patients with less acute presentations, CSC programs (NAVIGATE, OnTrackNY, PREP in California) provide integrated, evidence-based care within 2 weeks of referral. These programs employ:</p>
+      <ul>
+        <li><strong>Team-based care</strong>—Psychiatry, psychology, vocational specialists, peer support</li>
+        <li><strong>Rapid access</strong>—Goal of medication initiation within 30 days</li>
+        <li><strong>Structured medical workup</strong>—Coordinated protocols with baseline labs, imaging, and specialist referral as needed</li>
+        <li><strong>Functional support</strong>—Employment, education, housing, family support from day one</li>
+      </ul>
+
+      <!-- Section 3: The Basic Workup -->
+      <h2 class="ba-h2">3. The Basic FEP Workup: Essential Laboratory and Clinical Evaluation</h2>
+
+      <h3 class="ba-h3">Laboratory Tests (First-Line)</h3>
+      <p>Every patient with FEP should undergo the following battery within the first evaluation:</p>
+
+      <div class="ba-table-wrap">
+        <table class="ba-table">
+          <thead>
+            <tr>
+              <th>Test</th>
+              <th>Purpose</th>
+              <th>Clinical Yield</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Complete Blood Count (CBC)</strong></td>
+              <td>Screen for infection, anemia, hematologic malignancy</td>
+              <td>Identifies WBC elevation (infection), lymphopenia (immunosuppression), or abnormal counts</td>
+            </tr>
+            <tr>
+              <td><strong>Comprehensive Metabolic Panel (CMP)</strong></td>
+              <td>Assess renal function, electrolytes, liver function, glucose</td>
+              <td>Hyponatremia (SIADH), hyperglycemia, renal impairment; baseline before antipsychotics</td>
+            </tr>
+            <tr>
+              <td><strong>Thyroid Stimulating Hormone (TSH)</strong></td>
+              <td>Rule out hyperthyroidism or hypothyroidism</td>
+              <td>Thyroid disease causes &gt;2% of secondary psychosis; TSH elevation common in severe hypothyroidism</td>
+            </tr>
+            <tr>
+              <td><strong>Urinalysis &amp; Urine Drug Screen (UDS)</strong></td>
+              <td>Detect substance use (stimulants, hallucinogens, cannabis)</td>
+              <td>Substance-induced psychosis in ~20–30% of first-episode cases; requires 14–60 day abstinence to resolve</td>
+            </tr>
+            <tr>
+              <td><strong>Rapid Plasma Reagin (RPR) or VDRL</strong></td>
+              <td>Screen for neurosyphilis</td>
+              <td>Treponema pallidum causes neurosyphilis psychosis; requires penicillin therapy if positive + CSF involvement</td>
+            </tr>
+            <tr>
+              <td><strong>HIV Antibody Test</strong></td>
+              <td>Detect HIV infection</td>
+              <td>HIV-associated dementia and opportunistic infections can present as psychosis in &lt;2% of FEP</td>
+            </tr>
+            <tr>
+              <td><strong>Vitamin B12 &amp; Folate</strong></td>
+              <td>Identify deficiency-related neuropsychiatric symptoms</td>
+              <td>B12 deficiency linked to psychosis, delirium, peripheral neuropathy; folate interacts with neurotransmitter synthesis</td>
+            </tr>
+            <tr>
+              <td><strong>Erythrocyte Sedimentation Rate (ESR) &amp; C-Reactive Protein (CRP)</strong></td>
+              <td>Nonspecific markers of systemic inflammation</td>
+              <td>Elevated in infection, autoimmune disease, CNS inflammation; moderately elevated in ~30% of first-episode patients</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="ba-h3">Clinical Neurological and Mental Status Examination</h3>
+      <div class="ba-stacked-grid">
+        <div class="ba-stacked-card">
+          <div class="ba-stacked-icon">🧠</div>
+          <div class="ba-stacked-title">Neurological Exam</div>
+          <div class="ba-stacked-sub">Systematic assessment for focal deficits</div>
+          <ul class="ba-stacked-list">
+            <li>Cranial nerves (II–XII)</li>
+            <li>Motor tone, strength, gait</li>
+            <li>Reflexes and Babinski sign</li>
+            <li>Cerebellar signs (ataxia, dysmetria)</li>
+            <li>Sensory testing</li>
+          </ul>
+        </div>
+        <div class="ba-stacked-card">
+          <div class="ba-stacked-icon">📋</div>
+          <div class="ba-stacked-title">Mental Status Exam</div>
+          <div class="ba-stacked-sub">Syndromic and cognitive assessment</div>
+          <ul class="ba-stacked-list">
+            <li>Orientation to person, place, time</li>
+            <li>Attention and concentration</li>
+            <li>Memory (registration, recall)</li>
+            <li>Executive function</li>
+            <li>Thought process and content</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="ba-h3">Structural Brain Imaging</h3>
+      <p><strong>Head CT (non-contrast):</strong> Rapid screening tool; rule out acute hemorrhage, mass, midline shift. Standard first-line when MRI unavailable or contraindicated. Sensitivity ~95% for acute stroke, 85% for tumor &gt;1 cm.</p>
+      <p><strong>Brain MRI (3T preferred):</strong> Superior resolution for parenchymal abnormalities, demyelinating disease, small tumors, midbrain lesions. Indicated if:</p>
+      <ul>
+        <li>First episode with focal neurological signs</li>
+        <li>Atypical features (catatonia, seizures, rapid progression)</li>
+        <li>Age &lt;20 or &gt;40</li>
+        <li>Failed initial antipsychotic response</li>
+      </ul>
+
+      <!-- Section 4: Expanded Workup -->
+      <h2 class="ba-h2">4. Expanded Workup for Atypical Presentations and Diagnostic Uncertainty</h2>
+
+      <div class="ba-insight-box">
+        <span class="ba-insight-icon">⚠️</span>
+        <h4>Indications for Expanded Workup</h4>
+        <p>Age &lt;15 or &gt;40, acute onset with fever/rash, focal neurological signs, seizures, rapid deterioration, catatonia, preceding head trauma, family history of autoimmune/neurological disease, failed standard antipsychotic response, or atypical cognitive pattern.</p>
+      </div>
+
+      <h3 class="ba-h3">Immunological and Autoimmune Markers</h3>
+      <div class="ba-stacked-grid">
+        <div class="ba-stacked-card">
+          <div class="ba-stacked-icon">🔬</div>
+          <div class="ba-stacked-title">Antinuclear Antibody (ANA)</div>
+          <div class="ba-stacked-sub">Systemic lupus erythematosus screening</div>
+          <ul class="ba-stacked-list">
+            <li>Positive in ~40% of SLE; cerebritis causes acute psychosis</li>
+            <li>Can precede rash or other systemic features</li>
+            <li>Confirmatory: complement levels (C3, C4), anti-dsDNA</li>
+          </ul>
+        </div>
+        <div class="ba-stacked-card">
+          <div class="ba-stacked-icon">🧪</div>
+          <div class="ba-stacked-title">Anti-NMDA Receptor Antibody</div>
+          <div class="ba-stacked-sub">Auto-immune encephalitis screening</div>
+          <ul class="ba-stacked-list">
+            <li>Psychosis + movement disorder + seizures = encephalitis until proven otherwise</li>
+            <li>Test serum &amp; CSF; CSF more sensitive</li>
+            <li>Responds to immunotherapy (IVIG, plasmapheresis, rituximab)</li>
+          </ul>
+        </div>
+        <div class="ba-stacked-card">
+          <div class="ba-stacked-icon">⚕️</div>
+          <div class="ba-stacked-title">Other Autoimmune Markers</div>
+          <div class="ba-stacked-sub">Multi-test panel for rare etiologies</div>
+          <ul class="ba-stacked-list">
+            <li>Anti-GABA<sub>B</sub>, anti-LGI1, anti-Caspr2</li>
+            <li>Vasculitis panel (ANCA, anti-GBM)</li>
+            <li>Testing via specialized labs (Mayo, Quest immunology)</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="ba-h3">Metabolic and Genetic Disorders</h3>
+      <div class="ba-stacked-grid">
+        <div class="ba-stacked-card">
+          <div class="ba-stacked-icon">🥄</div>
+          <div class="ba-stacked-title">Ceruloplasmin &amp; Serum Copper</div>
+          <div class="ba-stacked-sub">Wilson's disease screening</div>
+          <ul class="ba-stacked-list">
+            <li>Wilson's: hepatic, neuropsychiatric, ophthalmic forms</li>
+            <li>Psychosis, tremor, dystonia common presentation age 15–35</li>
+            <li>Low ceruloplasmin &lt;20 mg/dL highly specific (high sensitivity too)</li>
+          </ul>
+        </div>
+        <div class="ba-stacked-card">
+          <div class="ba-stacked-icon">⚗️</div>
+          <div class="ba-stacked-title">Heavy Metals (Lead, Mercury)</div>
+          <div class="ba-stacked-sub">Occupational/environmental exposure screening</div>
+          <ul class="ba-stacked-list">
+            <li>Lead encephalopathy: psychosis, ataxia, hypertension</li>
+            <li>Mercury: tremor, personality changes, psychosis</li>
+            <li>Serum &amp; 24-hour urine, or RBC lead levels</li>
+          </ul>
+        </div>
+        <div class="ba-stacked-card">
+          <div class="ba-stacked-icon">📊</div>
+          <div class="ba-stacked-title">Homocysteine &amp; Methylation</div>
+          <div class="ba-stacked-sub">One-carbon metabolism assessment</div>
+          <ul class="ba-stacked-list">
+            <li>Elevated homocysteine linked to psychosis risk</li>
+            <li>MTHFR variants may impair B-vitamin metabolism</li>
+            <li>Limited clinical yield; research utility</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="ba-h3">Neurophysiological Testing</h3>
+      <p><strong>Electroencephalography (EEG):</strong> Indicated if seizures suspected, catatonia present, or rapid behavioral changes. Sensitivity ~50–70% for seizure detection; may show nonconvulsive status epilepticus or focal abnormalities suggestive of encephalitis.</p>
+
+      <p><strong>Continuous EEG monitoring:</strong> Recommended if catatonia present to exclude nonconvulsive seizures, which may mimic psychosis.</p>
+
+      <h3 class="ba-h3">Lumbar Puncture (CSF Analysis)</h3>
+      <p>Obtained when CNS infection, autoimmune encephalitis, or meningitis suspected. CSF studies include:</p>
+      <ul>
+        <li>Cell count, protein, glucose</li>
+        <li>Gram stain and bacterial culture</li>
+        <li>Viral PCR panel (HSV-1/2, EBV, CMV, enterovirus)</li>
+        <li>Antibody titers (anti-NMDA, anti-GABAb, anti-LGI1) if available</li>
+        <li>CSF-specific IgG index or oligoclonal bands (demyelinating disease)</li>
+      </ul>
+
+      <h3 class="ba-h3">Advanced Neuroimaging</h3>
+      <p><strong>MRI with Contrast:</strong> Gadolinium enhancement reveals blood–brain barrier disruption (infection, inflammation, tumor). Standard for suspected encephalitis, multiple sclerosis, meningitis.</p>
+
+      <p><strong>MRI with Specific Sequences:</strong></p>
+      <ul>
+        <li><strong>Diffusion-weighted imaging (DWI):</strong> Acute stroke, encephalitis</li>
+        <li><strong>Fluid-attenuated inversion recovery (FLAIR):</strong> White matter abnormalities, demyelination</li>
+        <li><strong>Susceptibility-weighted imaging (SWI):</strong> Microhemorrhages, vascular malformations</li>
+      </ul>
+
+      <h3 class="ba-h3">Neuropsychological Testing</h3>
+      <p>Formal battery (MMSE, Montreal Cognitive Assessment, or full neuropsych workup) indicated when:</p>
+      <ul>
+        <li>Cognitive decline is a prominent feature</li>
+        <li>Age &lt;20 or &gt;40 (atypical for primary schizophrenia)</li>
+        <li>Rapidly progressive course</li>
+        <li>Differential diagnosis includes dementia, delirium, or acquired cognitive disorder</li>
+      </ul>
+
+      <!-- Section 5: Test-to-Pathology Mapping -->
+      <h2 class="ba-h2">5. What Each Test Rules In or Out: Diagnostic Pathology Mapping</h2>
+
+      <div class="diagram-container">
+        <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;">
+          <!-- Title -->
+          <text x="400" y="25" font-size="16" font-weight="bold" text-anchor="middle" fill="#4a7c35">Test-to-Pathology Mapping: FEP Workup</text>
+
+          <!-- Central circle: Psychosis -->
+          <circle cx="400" cy="300" r="80" fill="#e2dbd0" stroke="#4a7c35" stroke-width="2"/>
+          <text x="400" y="295" font-size="13" font-weight="bold" text-anchor="middle" fill="#231e14">First-Episode</text>
+          <text x="400" y="312" font-size="13" font-weight="bold" text-anchor="middle" fill="#231e14">Psychosis</text>
+
+          <!-- Test circles around center -->
+
+          <!-- TSH/Free T4 -->
+          <circle cx="150" cy="100" r="45" fill="#fef4e8" stroke="#8b6914" stroke-width="1.5"/>
+          <text x="150" y="95" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">TSH/T4</text>
+          <text x="150" y="110" font-size="12" text-anchor="middle" fill="#6b6050">Thyroid</text>
+          <text x="150" y="122" font-size="12" text-anchor="middle" fill="#6b6050">Disease</text>
+          <line x="200" y="140" x1="350" y1="260" stroke="#8b6914" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+          <!-- RPR/VDRL -->
+          <circle cx="100" cy="300" r="45" fill="#fef4e8" stroke="#c04030" stroke-width="1.5"/>
+          <text x="100" y="295" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">RPR/VDRL</text>
+          <text x="100" y="310" font-size="12" text-anchor="middle" fill="#6b6050">Neuro-</text>
+          <text x="100" y="322" font-size="12" text-anchor="middle" fill="#6b6050">syphilis</text>
+          <line x="145" y="300" x1="320" y1="300" stroke="#c04030" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+          <!-- HIV -->
+          <circle cx="150" cy="500" r="45" fill="#fef4e8" stroke="#c04030" stroke-width="1.5"/>
+          <text x="150" y="495" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">HIV Antibody</text>
+          <text x="150" y="510" font-size="12" text-anchor="middle" fill="#6b6050">HIV Dementia</text>
+          <text x="150" y="522" font-size="12" text-anchor="middle" fill="#6b6050">Infection</text>
+          <line x="195" y="460" x1="355" y1="340" stroke="#c04030" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+          <!-- UDS -->
+          <circle cx="400" cy="550" r="45" fill="#fef4e8" stroke="#8b6914" stroke-width="1.5"/>
+          <text x="400" y="545" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">UDS</text>
+          <text x="400" y="560" font-size="12" text-anchor="middle" fill="#6b6050">Substance-</text>
+          <text x="400" y="572" font-size="12" text-anchor="middle" fill="#6b6050">Induced</text>
+          <line x="400" y="505" x1="400" y1="380" stroke="#8b6914" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+          <!-- MRI -->
+          <circle cx="650" cy="500" r="45" fill="#fef4e8" stroke="#3a6e28" stroke-width="1.5"/>
+          <text x="650" y="495" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">MRI ± Contrast</text>
+          <text x="650" y="510" font-size="12" text-anchor="middle" fill="#6b6050">Brain tumor,</text>
+          <text x="650" y="522" font-size="12" text-anchor="middle" fill="#6b6050">Stroke, MS</text>
+          <line x="605" y="460" x1="445" y1="340" stroke="#3a6e28" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+          <!-- CSF / LP -->
+          <circle cx="700" cy="300" r="45" fill="#fef4e8" stroke="#3a6e28" stroke-width="1.5"/>
+          <text x="700" y="295" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">CSF Panel</text>
+          <text x="700" y="310" font-size="12" text-anchor="middle" fill="#6b6050">Infection,</text>
+          <text x="700" y="322" font-size="12" text-anchor="middle" fill="#6b6050">Encephalitis</text>
+          <line x="655" y="300" x1="480" y1="300" stroke="#3a6e28" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+          <!-- Anti-NMDA -->
+          <circle cx="650" cy="100" r="45" fill="#fef4e8" stroke="#3a6e28" stroke-width="1.5"/>
+          <text x="650" y="95" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Anti-NMDA</text>
+          <text x="650" y="110" font-size="12" text-anchor="middle" fill="#6b6050">Auto-immune</text>
+          <text x="650" y="122" font-size="12" text-anchor="middle" fill="#6b6050">Encephalitis</text>
+          <line x="605" y="140" x1="445" y1="260" stroke="#3a6e28" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+          <!-- B12/Folate -->
+          <circle cx="400" cy="50" r="45" fill="#fef4e8" stroke="#8b6914" stroke-width="1.5"/>
+          <text x="400" y="45" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">B12/Folate</text>
+          <text x="400" y="60" font-size="12" text-anchor="middle" fill="#6b6050">Vitamin</text>
+          <text x="400" y="72" font-size="12" text-anchor="middle" fill="#6b6050">Deficiency</text>
+          <line x="400" y="95" x1="400" y1="220" stroke="#8b6914" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+          <!-- Ceruloplasmin -->
+          <circle cx="100" cy="100" r="45" fill="#fef4e8" stroke="#c04030" stroke-width="1.5"/>
+          <text x="100" y="95" font-size="10" font-weight="bold" text-anchor="middle" fill="#231e14">Cerulo-</text>
+          <text x="100" y="108" font-size="10" font-weight="bold" text-anchor="middle" fill="#231e14">plasmin</text>
+          <text x="100" y="123" font-size="12" text-anchor="middle" fill="#6b6050">Wilson's</text>
+          <line x="140" y="135" x1="355" y1="245" stroke="#c04030" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+          <!-- Legend -->
+          <text x="50" y="590" font-size="10" fill="#6b6050">Dashed lines = diagnostic associations</text>
+        </svg>
+      </div>
+
+      <h3 class="ba-h3">Comprehensive Test-Pathology Table</h3>
+      <div class="ba-table-wrap">
+        <table class="ba-table">
+          <thead>
+            <tr>
+              <th>Diagnostic Test(s)</th>
+              <th>Rules In</th>
+              <th>Rules Out / Likelihood Ratio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>TSH, Free T4</strong></td>
+              <td>Hyperthyroidism (agitation, tremor, psychosis); Hypothyroidism (depression, apathy, psychosis)</td>
+              <td>Negative result makes thyroid-induced psychosis unlikely; prevalence ~2–3% of FEP</td>
+            </tr>
+            <tr>
+              <td><strong>RPR/VDRL</strong></td>
+              <td>Treponema pallidum infection; if +, CSF testing confirms neurosyphilis (tertiary syphilis psychosis)</td>
+              <td>Negative (nontreponemal) effectively rules out syphilis as primary etiology; rare (0.5–2% of FEP in high-risk populations)</td>
+            </tr>
+            <tr>
+              <td><strong>HIV Antibody ± RNA</strong></td>
+              <td>HIV infection; later stages associated with dementia, opportunistic CNS infection (toxoplasmosis, CMV, PML)</td>
+              <td>Negative test rules out HIV; psychosis occurs late (CD4 &lt;200 typically); prevalence ~1–3% of FEP depending on population</td>
+            </tr>
+            <tr>
+              <td><strong>Urine Drug Screen</strong></td>
+              <td>Recent substance use (amphetamines, cocaine, PCP, LSD, cannabis); substrate of psychosis diagnosis</td>
+              <td>Negative does not exclude substance-induced if use &gt;48–72 hrs prior; ~20–30% of FEP has concurrent or recent substance use</td>
+            </tr>
+            <tr>
+              <td><strong>B12, Folate, Methylmalonic acid, Homocysteine</strong></td>
+              <td>B12 deficiency (pernicious anemia, subacute combined degeneration, neuropsychiatric syndrome)</td>
+              <td>Low levels associated with psychosis, delirium, neuropathy; ~5–10% of psychiatric populations have deficiency</td>
+            </tr>
+            <tr>
+              <td><strong>CBC with differential</strong></td>
+              <td>Infection (elevated WBC), lymphoma (abnormal cells), anemia (contributing to delirium)</td>
+              <td>Normal CBC reduces likelihood of acute infection or hematologic malignancy; non-specific</td>
+            </tr>
+            <tr>
+              <td><strong>CMP, glucose</strong></td>
+              <td>Hyponatremia (SIADH, intoxication), hyperglycemia (metabolic syndrome, diabetes), renal impairment</td>
+              <td>Baseline assessment before antipsychotics; abnormalities may explain acute mental status change</td>
+            </tr>
+            <tr>
+              <td><strong>Ceruloplasmin, Slit-lamp exam</strong></td>
+              <td>Wilson's disease: low ceruloplasmin (&lt;20 mg/dL), Kayser-Fleischer rings on slit-lamp, elevated copper</td>
+              <td>Wilson's rare (1 in 30,000) but highly treatable; suspect if age &lt;30, movement disorder, liver disease</td>
+            </tr>
+            <tr>
+              <td><strong>Head CT or MRI</strong></td>
+              <td>Intracranial mass, hemorrhage, stroke, hydrocephalus, demyelination, focal lesion</td>
+              <td>Normal imaging does not exclude autoimmune/infectious causes; yields abnormality in ~10–20% of FEP</td>
+            </tr>
+            <tr>
+              <td><strong>Lumbar Puncture + CSF studies</strong></td>
+              <td>Meningitis (elevated protein &gt;100, low glucose &lt;40% serum), encephalitis, HSV, autoimmune disease</td>
+              <td>CSF obtained when fever, stiff neck, seizures, encephalitis suspected; abnormal LP in ~5% of FEP with atypical features</td>
+            </tr>
+            <tr>
+              <td><strong>Anti-NMDA, Anti-GABAb, Anti-LGI1 (serum/CSF)</strong></td>
+              <td>Auto-immune encephalitis; psychosis + movement disorder + seizures classic triad</td>
+              <td>Positive in ~1–3% of psychotic first episodes; CSF more specific than serum; highly treatable with immunotherapy</td>
+            </tr>
+            <tr>
+              <td><strong>ANA, complement, anti-dsDNA</strong></td>
+              <td>Systemic lupus erythematosus (SLE) cerebritis as cause of acute psychosis</td>
+              <td>ANA positive in ~40% of SLE; SLE-induced psychosis rare (&lt;1% of FEP) but more common in younger patients</td>
+            </tr>
+            <tr>
+              <td><strong>EEG</strong></td>
+              <td>Nonconvulsive seizures, focal abnormalities (spike-and-wave, slowing), encephalitis pattern</td>
+              <td>Normal EEG does not exclude seizure disorder; low sensitivity for subclinical seizures; abnormal in ~30–50% of atypical FEP</td>
+            </tr>
+            <tr>
+              <td><strong>Neuropsych testing</strong></td>
+              <td>Cognitive impairment pattern: dementia (global decline), delirium (attention/executive deficits), specific deficits</td>
+              <td>Useful for differential diagnosis; schizophrenia shows relatively preserved memory with executive/processing speed decline</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section 6: Clinical Differential and Workup Algorithm -->
+      <h2 class="ba-h2">6. Differential Diagnosis Wheel: Secondary Causes of First-Episode Psychosis</h2>
+
+      <div class="diagram-container">
+        <svg viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;">
+          <!-- Title -->
+          <text x="350" y="25" font-size="16" font-weight="bold" text-anchor="middle" fill="#4a7c35">Differential Diagnosis of FEP: Organized by Etiology</text>
+
+          <!-- Central circle -->
+          <circle cx="350" cy="350" r="60" fill="#e2dbd0" stroke="#4a7c35" stroke-width="2"/>
+          <text x="350" y="345" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">First-Episode</text>
+          <text x="350" y="362" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Psychosis</text>
+
+          <!-- Medical/Metabolic (top-left) -->
+          <circle cx="120" cy="120" r="55" fill="#ece6db" stroke="#8b6914" stroke-width="2"/>
+          <text x="120" y="110" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Medical/</text>
+          <text x="120" y="128" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Metabolic</text>
+          <text x="120" y="152" font-size="12" text-anchor="middle" fill="#6b6050">• Thyroid</text>
+          <text x="120" y="165" font-size="12" text-anchor="middle" fill="#6b6050">• B12 deficiency</text>
+          <line x="170" y="160" x1="310" y1="310" stroke="#8b6914" stroke-width="1.5"/>
+
+          <!-- Infectious (top) -->
+          <circle cx="350" cy="80" r="55" fill="#ece6db" stroke="#c04030" stroke-width="2"/>
+          <text x="350" y="70" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Infectious</text>
+          <text x="350" y="88" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Disease</text>
+          <text x="350" y="112" font-size="12" text-anchor="middle" fill="#6b6050">• Neurosyphilis</text>
+          <text x="350" y="125" font-size="12" text-anchor="middle" fill="#6b6050">• HIV dementia</text>
+          <line x="350" y="135" x1="350" y1="290" stroke="#c04030" stroke-width="1.5"/>
+
+          <!-- Autoimmune/Inflammatory (top-right) -->
+          <circle cx="580" cy="120" r="55" fill="#ece6db" stroke="#3a6e28" stroke-width="2"/>
+          <text x="580" y="110" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Autoimmune/</text>
+          <text x="580" y="128" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Inflammatory</text>
+          <text x="580" y="152" font-size="12" text-anchor="middle" fill="#6b6050">• Anti-NMDA</text>
+          <text x="580" y="165" font-size="12" text-anchor="middle" fill="#6b6050">• SLE cerebritis</text>
+          <line x="530" y="160" x1="390" y1="310" stroke="#3a6e28" stroke-width="1.5"/>
+
+          <!-- Neurological (right) -->
+          <circle cx="630" cy="350" r="55" fill="#ece6db" stroke="#3a6e28" stroke-width="2"/>
+          <text x="630" y="340" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Neurological</text>
+          <text x="630" y="363" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Disorder</text>
+          <text x="630" y="387" font-size="12" text-anchor="middle" fill="#6b6050">• Seizures</text>
+          <text x="630" y="400" font-size="12" text-anchor="middle" fill="#6b6050">• Brain tumor/MS</text>
+          <line x="575" y="350" x1="410" y1="350" stroke="#3a6e28" stroke-width="1.5"/>
+
+          <!-- Substance-Related (bottom-right) -->
+          <circle cx="580" cy="580" r="55" fill="#ece6db" stroke="#8b6914" stroke-width="2"/>
+          <text x="580" y="570" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Substance-</text>
+          <text x="580" y="588" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Induced</text>
+          <text x="580" y="612" font-size="12" text-anchor="middle" fill="#6b6050">• Stimulants</text>
+          <text x="580" y="625" font-size="12" text-anchor="middle" fill="#6b6050">• Hallucinogens</text>
+          <line x="530" y="540" x1="390" y1="390" stroke="#8b6914" stroke-width="1.5"/>
+
+          <!-- Toxic (bottom) -->
+          <circle cx="350" cy="620" r="55" fill="#ece6db" stroke="#c04030" stroke-width="2"/>
+          <text x="350" y="610" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Toxic</text>
+          <text x="350" y="632" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Exposure</text>
+          <text x="350" y="656" font-size="12" text-anchor="middle" fill="#6b6050">• Heavy metals</text>
+          <line x="350" y="565" x1="350" y1="410" stroke="#c04030" stroke-width="1.5"/>
+
+          <!-- Genetic/Metabolic (bottom-left) -->
+          <circle cx="120" cy="580" r="55" fill="#ece6db" stroke="#c04030" stroke-width="2"/>
+          <text x="120" y="568" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Genetic/</text>
+          <text x="120" y="588" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Metabolic</text>
+          <text x="120" y="612" font-size="12" text-anchor="middle" fill="#6b6050">• Wilson's</text>
+          <text x="120" y="625" font-size="12" text-anchor="middle" fill="#6b6050">• Porphyria</text>
+          <line x="170" y="540" x1="310" y1="390" stroke="#c04030" stroke-width="1.5"/>
+
+          <!-- Primary Psychotic Disorders (left) -->
+          <circle cx="70" cy="350" r="55" fill="#e8f4e8" stroke="#3a6e28" stroke-width="3"/>
+          <text x="70" y="340" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Primary</text>
+          <text x="70" y="360" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Psychotic</text>
+          <text x="70" y="380" font-size="10" text-anchor="middle" fill="#231e14">Disorders</text>
+          <text x="70" y="400" font-size="12" text-anchor="middle" fill="#6b6050">(schizo-</text>
+          <text x="70" y="410" font-size="12" text-anchor="middle" fill="#6b6050">phrenia,</text>
+          <text x="70" y="420" font-size="12" text-anchor="middle" fill="#6b6050">bipolar I)</text>
+          <line x="125" y="350" x1="290" y1="350" stroke="#3a6e28" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <!-- Section 7: Practical FEP Workup Algorithm -->
+      <h2 class="ba-h2">7. Clinical Workup Algorithm: Basic to Expanded Strategy</h2>
+
+      <div class="diagram-container">
+        <svg viewBox="0 0 750 850" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;">
+          <!-- Title -->
+          <text x="375" y="25" font-size="16" font-weight="bold" text-anchor="middle" fill="#4a7c35">FEP Workup Algorithm: From Basic to Expanded Evaluation</text>
+
+          <!-- Step 1: Presentation -->
+          <rect x="225" y="50" width="300" height="50" fill="#e2dbd0" stroke="#4a7c35" stroke-width="2" rx="4"/>
+          <text x="375" y="70" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Step 1: Clinical Presentation Assessment</text>
+          <text x="375" y="92" font-size="10" text-anchor="middle" fill="#231e14">Age, acuity, medical history, substance use, neurological signs</text>
+          <line x="375" y="100" x1="375" y1="140" stroke="#4a7c35" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+          <!-- Step 2: Basic Labs -->
+          <rect x="150" y="140" width="450" height="100" fill="#fefcf8" stroke="#8b6914" stroke-width="2" rx="4"/>
+          <text x="375" y="160" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Step 2: BASIC WORKUP (All Patients)</text>
+          <text x="190" y="185" font-size="10" fill="#231e14">□ CBC  □ CMP  □ TSH  □ UA/UDS</text>
+          <text x="190" y="205" font-size="10" fill="#231e14">□ RPR/VDRL  □ HIV  □ B12/Folate  □ ESR/CRP</text>
+          <text x="190" y="225" font-size="10" fill="#231e14">□ Neuro exam  □ MSE  □ Head CT or MRI</text>
+          <line x="375" y="240" x1="375" y1="280" stroke="#4a7c35" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+          <!-- Step 3: Red Flags -->
+          <rect x="150" y="280" width="450" height="80" fill="#f4e8e0" stroke="#c04030" stroke-width="2" rx="4"/>
+          <text x="375" y="300" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Step 3: Red Flags Present?</text>
+          <text x="190" y="325" font-size="12" fill="#231e14">Age &lt;15 or &gt;40? Acute onset (hours)? Fever/rash? Focal neuro signs?</text>
+          <text x="190" y="340" font-size="12" fill="#231e14">Seizures? Rapid deterioration? Movement disorder? Catatonia?</text>
+
+          <!-- No red flags path (left) -->
+          <line x="150" y="320" x1="100" y1="320" stroke="#3a6e28" stroke-width="2" marker-end="url(#arrowhead-green)"/>
+          <text x="100" y="310" font-size="10" font-weight="bold" fill="#3a6e28">No</text>
+
+          <!-- Yes red flags path (right) -->
+          <line x="600" y="320" x1="650" y1="320" stroke="#c04030" stroke-width="2" marker-end="url(#arrowhead-red)"/>
+          <text x="650" y="310" font-size="10" font-weight="bold" fill="#c04030">Yes</text>
+
+          <!-- Left branch: Routine workup -->
+          <rect x="10" y="390" width="170" height="80" fill="#e8f4e8" stroke="#3a6e28" stroke-width="1.5" rx="4"/>
+          <text x="95" y="415" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Routine FEP Care</text>
+          <text x="95" y="435" font-size="12" text-anchor="middle" fill="#231e14">Initiate antipsychotic</text>
+          <text x="95" y="450" font-size="12" text-anchor="middle" fill="#231e14">Monitor response</text>
+          <text x="95" y="465" font-size="12" text-anchor="middle" fill="#231e14">Cognitive therapy</text>
+          <line x="95" y="390" x1="95" y1="280" stroke="#3a6e28" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+          <!-- Right branch: Expanded workup -->
+          <rect x="570" y="390" width="170" height="150" fill="#ece6db" stroke="#c04030" stroke-width="1.5" rx="4"/>
+          <text x="655" y="415" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Expanded Workup</text>
+          <text x="655" y="435" font-size="12" text-anchor="middle" fill="#231e14">□ EEG if seizures</text>
+          <text x="655" y="450" font-size="12" text-anchor="middle" fill="#231e14">□ LP/CSF</text>
+          <text x="655" y="465" font-size="12" text-anchor="middle" fill="#231e14">□ MRI ± contrast</text>
+          <text x="655" y="480" font-size="12" text-anchor="middle" fill="#231e14">□ Anti-NMDA</text>
+          <text x="655" y="495" font-size="12" text-anchor="middle" fill="#231e14">□ Ceruloplasmin</text>
+          <text x="655" y="510" font-size="12" text-anchor="middle" fill="#231e14">□ Neuro consult</text>
+          <line x="655" y="390" x1="655" y1="280" stroke="#c04030" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+          <!-- Step 4: Reassess response -->
+          <rect x="150" y="620" width="450" height="70" fill="#fefcf8" stroke="#8b6914" stroke-width="2" rx="4"/>
+          <text x="375" y="645" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Step 4: Reassess at 4–6 Weeks</text>
+          <text x="375" y="665" font-size="10" text-anchor="middle" fill="#231e14">Partial/full response? → Continue treatment</text>
+          <text x="375" y="680" font-size="10" text-anchor="middle" fill="#231e14">No response? → Reconsider differential, consider expanded workup</text>
+          <line x="375" y="620" x1="375" y1="580" stroke="#4a7c35" stroke-width="2" marker-end="url(#arrowhead)"/>
+          <line x="95" y="470" x1="260" y1="620" stroke="#3a6e28" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <line x="655" y="540" x1="490" y1="620" stroke="#c04030" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+          <!-- Step 5: Outcome -->
+          <rect x="200" y="750" width="350" height="80" fill="#e2dbd0" stroke="#4a7c35" stroke-width="2" rx="4"/>
+          <text x="375" y="775" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Step 5: Optimize Treatment &amp; Support</text>
+          <text x="375" y="800" font-size="10" text-anchor="middle" fill="#231e14">Antipsychotic dose/choice, psychosocial intervention,</text>
+          <text x="375" y="820" font-size="10" text-anchor="middle" fill="#231e14">CSC program enrollment, family psychoeducation, vocational support</text>
+
+          <!-- SVG marker definitions -->
+          <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <polygon points="0 0, 10 3, 0 6" fill="#4a7c35"/>
+            </marker>
+            <marker id="arrowhead-red" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <polygon points="0 0, 10 3, 0 6" fill="#c04030"/>
+            </marker>
+            <marker id="arrowhead-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <polygon points="0 0, 10 3, 0 6" fill="#3a6e28"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+
+      <!-- Clinical Pearls Section -->
+      <h2 class="ba-h2">8. Clinical Pearls &amp; Implementation Tips</h2>
+
+      <div class="ba-summary-box">
+        <h3>Quick-Reference Checklist for Clinical Practice</h3>
+        <ul>
+          <li><strong>Universal screening:</strong> CBC, CMP, TSH, UA/UDS, RPR, HIV, B12, ESR/CRP, and neuroimaging in all FEP presentations</li>
+          <li><strong>DUP matters:</strong> Every month of delay in treatment worsens long-term functional outcomes—prioritize rapid assessment and initiation</li>
+          <li><strong>Red flags trigger expansion:</strong> Age extremes, acute onset, fever, focal neurology, or family history of neurological disease warrant expanded workup at baseline</li>
+          <li><strong>CSF testing:</strong> Lumbar puncture is low-risk, high-yield when encephalitis or infection suspected; do not delay if clinical suspicion high</li>
+          <li><strong>Antibody panels:</strong> Anti-NMDA and other autoimmune markers now widely available; consider in treatment-resistant first episodes or atypical features</li>
+          <li><strong>Neuropsych testing:</strong> Useful for differential diagnosis at baseline if cognitive impairment prominent; schizophrenia typically preserves memory</li>
+          <li><strong>CSC enrollment:</strong> Streamlines coordinated workup, speeds antipsychotic initiation, and improves long-term outcomes—refer all eligible FEP patients</li>
+          <li><strong>Reassess if no response:</strong> 4–6 week non-response to adequate antipsychotic dose should prompt reconsideration of diagnosis and expanded workup</li>
+        </ul>
+      </div>
+
+      <h3 class="ba-h3">Risk Stratification for Expanded Workup</h3>
+      <div class="ba-stat-row">
+        <div class="ba-stat-card">
+          <div class="ba-stat-num">Low Risk</div>
+          <div class="ba-stat-label">Age 18–35, insidious onset, positive family history of schizophrenia, normal neuro exam, normal basic labs → proceed with standard FEP care</div>
+        </div>
+        <div class="ba-stat-card ba-stat-card--alert">
+          <div class="ba-stat-num">High Risk</div>
+          <div class="ba-stat-label">Age extremes, acute presentation, fever/rash, focal signs, seizures, catatonia, rapid cognitive decline → prioritize expanded workup before antipsychotic initiation</div>
+        </div>
+      </div>
+
+      <h3 class="ba-h3">When to Consult Specialists</h3>
+      <div class="ba-stacked-grid">
+        <div class="ba-stacked-card">
+          <div class="ba-stacked-icon">🧬</div>
+          <div class="ba-stacked-title">Neurology</div>
+          <div class="ba-stacked-sub">Focal neurological signs, seizures, movement disorder</div>
+        </div>
+        <div class="ba-stacked-card">
+          <div class="ba-stacked-icon">🏥</div>
+          <div class="ba-stacked-title">Internal Medicine</div>
+          <div class="ba-stacked-sub">Systemic symptoms, metabolic abnormalities, medical complexity</div>
+        </div>
+        <div class="ba-stacked-card">
+          <div class="ba-stacked-icon">💉</div>
+          <div class="ba-stacked-title">Immunology/Rheumatology</div>
+          <div class="ba-stacked-sub">ANA positive, autoimmune encephalitis suspected</div>
+        </div>
+        <div class="ba-stacked-card">
+          <div class="ba-stacked-icon">🦠</div>
+          <div class="ba-stacked-title">Infectious Disease</div>
+          <div class="ba-stacked-sub">RPR+, HIV+, CSF abnormalities, fever, meningeal signs</div>
+        </div>
+      </div>
+
+      <!-- Section 8: Outcome Monitoring and Follow-Up -->
+      <h2 class="ba-h2">9. Outcomes &amp; Monitoring: Timeline for FEP Care</h2>
+
+      <div class="ba-timeline">
+        <div class="ba-tl-item">
+          <div class="ba-tl-dot"></div>
+          <div>
+            <div class="ba-tl-time">Week 0: Presentation</div>
+            <div class="ba-tl-text">Initial assessment, basic workup, safety evaluation. Diagnostic formulation. Antipsychotic initiation if appropriate.</div>
+          </div>
+        </div>
+
+        <div class="ba-tl-item">
+          <div class="ba-tl-dot"></div>
+          <div>
+            <div class="ba-tl-time">Weeks 1–2: Early Response</div>
+            <div class="ba-tl-text">Dosage optimization, side effect monitoring. Baseline symptom severity (PANSS or SOPS). Family psychoeducation begins.</div>
+          </div>
+        </div>
+
+        <div class="ba-tl-item">
+          <div class="ba-tl-dot"></div>
+          <div>
+            <div class="ba-tl-time">Weeks 3–6: Therapeutic Window</div>
+            <div class="ba-tl-text">Peak therapeutic response should emerge. 20–30% reduction in psychotic symptoms typical. Evaluate need for adjunctive treatment.</div>
+          </div>
+        </div>
+
+        <div class="ba-tl-item">
+          <div class="ba-tl-dot"></div>
+          <div>
+            <div class="ba-tl-time">Weeks 6–12: Consolidation</div>
+            <div class="ba-tl-text">Continue antipsychotic monotherapy. Psychotherapy and vocational engagement. Repeat labs (metabolic panel). Cognitive remediation begins.</div>
+          </div>
+        </div>
+
+        <div class="ba-tl-item">
+          <div class="ba-tl-dot"></div>
+          <div>
+            <div class="ba-tl-time">3–6 Months: Functional Recovery</div>
+            <div class="ba-tl-text">Return to work/school. Symptom remission target &gt;20% baseline severity. Neuropsych testing for cognitive phenotype. Re-evaluate if limited response.</div>
+          </div>
+        </div>
+
+        <div class="ba-tl-item">
+          <div class="ba-tl-dot"></div>
+          <div>
+            <div class="ba-tl-time">6–12 Months: Maintenance</div>
+            <div class="ba-tl-text">Sustained remission, functional integration, family support. Annual labs and metabolic monitoring. Plan for maintenance vs. discontinuation.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- References Section -->
+      <section class="ba-references">
+        <h3 class="ba-ref-title">References</h3>
+        <ol class="ba-ref-list">
+          <li>Correll CU, Galling B, Pawar A, et al. Comparison of Early Intervention Services vs Treatment as Usual for Early-Phase Psychosis: A Systematic Review and Meta-analysis. <em>JAMA Psychiatry</em>. 2018;75(6):555–565. doi:10.1001/jamapsychiatry.2018.0623</li>
+
+          <li>Insel TR. Rethinking schizophrenia. <em>Nature</em>. 2010;468(7321):187–193. doi:10.1038/nature09552</li>
+
+          <li>Perkins DO, Lieberman JA, Gu H, et al. Predictors of antipsychotic treatment response in patients with first-episode schizophrenia, schizoaffective and schizophreniform disorders. <em>Br J Psychiatry</em>. 2004;185:18–24. doi:10.1192/bjp.185.1.18</li>
+
+          <li>Marshall M, Lewis S, Lockwood A, Drake R, Jones P, Croudace T. Association between duration of untreated psychosis and outcome in cohorts of first-episode patients: a systematic review. <em>Arch Gen Psychiatry</em>. 2005;62(9):975–983. doi:10.1001/archpsyc.62.9.975</li>
+
+          <li>McGorry PD, Killackey E, Yung AR. Early intervention in psychosis: concepts, evidence and future directions. <em>World J Psychiatry</em>. 2008;7(3):148–156.</li>
+
+          <li>Amminger GP, McGorry PD. Update on omega-3 polyunsaturated fatty acids in early-stage psychotic disorders. <em>Neuropsychobiology</em>. 2012;66(2):95–101. doi:10.1159/000338616</li>
+
+          <li>Yung AR, McGorry PD. The prodromal phase of first-episode psychosis: past and current conceptualizations. <em>Schizophr Bull</em>. 1996;22(2):353–370. doi:10.1093/schbul/22.2.353</li>
+
+          <li>Mathalon DH, Haselgrove H, Ford JM. Behavioral and cognitive consequences of schizotypy. <em>Schizophr Bull</em>. 2003;29(4):803–817. doi:10.1093/oxfordjournals.schbul.a007046</li>
+
+          <li>Dalmau J, Armangué T, Planagumà J, et al. An Update on Anti-NMDA Receptor Encephalitis for the Clinician: Mechanisms of Disease, Diagnostic Advances, and Immunotherapy. <em>J Neurol Neurosurg Psychiatry</em>. 2019;90(5):552–560. doi:10.1136/jnnp-2018-318913</li>
+
+          <li>Larsen TK, Melle I, Auestad B, et al. Early Detection of Psychosis: Positive Effects on 5-Year Outcome. <em>Psychol Med</em>. 2011;41(6):1461–1469. doi:10.1017/S0033291710001716</li>
+
+          <li>Caroff SN, Mann SC, Campbell EC. Atypical Antipsychotics and the Neuroleptic Malignant Syndrome. <em>Psychiatr Ann</em>. 2000;30(5):314–321.</li>
+
+          <li>Chaudhury S, Bhat PS, Nagarajegowda A, Sharma P, Ohaeri JU. Antipsychotics in First-Episode Psychosis: What Clinicians Need to Know. <em>Curr Psychiatry Rep</em>. 2021;23(2):8. doi:10.1007/s11920-020-01213-7</li>
+
+          <li>Thorup A, Petersen L, Jeppesen P, et al. Integrated Treatment for First-Episode Psychosis in Denmark: Outcome at 5-Year Follow-up. <em>Br J Psychiatry</em>. 2015;207(4):311–316. doi:10.1192/bjp.bp.114.150946</li>
+
+          <li>Leucht S, Davis JM, Engel RR, Kissling W, Kane JM. Definitions of response and remission in antipsychotic drug trials: recommendations for the use in clinical practice and research. <em>Acta Psychiatr Scand</em>. 2006;114(6):432–441. doi:10.1111/j.1600-0447.2006.00881.x</li>
+
+          <li>Kane JM, Perkins DO, Simpson GM, et al. Antipsychotic Treatment of Schizophrenia: A Review. <em>J Clin Psychiatry</em>. 2003;64(Suppl 12):5–17.</li>
+
+          <li>McGlashan TH, Addington J, Cannon T. The North American Prodrome Longitudinal Study (NAPLS): Schema, Rationale, and Methods. <em>Schizophr Bull</em>. 2007;33(3):662–672. doi:10.1093/schbul/sbl018</li>
+
+          <li>Andreasen NC, Pressler M, Nopoulos P, Miller D, Ho BC. Antipsychotic Dose Reduction in Schizophrenia-How Low Can You Go? <em>Curr Neuropharmacol</em>. 2010;8(3):189–198.</li>
+
+          <li>Mueser KT, McGurk SR. Schizophrenia. <em>Lancet</em>. 2004;363(9426):2063–2072. doi:10.1016/S0140-6736(04)16458-1</li>
+
+          <li>Norman RMG, Manchanda R, Malla AK, et al. Symptom and Functional Time to Stable Recovery in First-Episode Psychosis. <em>Psychol Med</em>. 2011;41(6):1145–1155. doi:10.1017/S0033291710002011</li>
+
+          <li>Orban C, Schwartze D, König T, Schultze-Lutter F, Riecher-Rössler A, Walther S. Early sensorimotor abnormalities as predictor of psychosis transition. <em>Transl Psychiatry</em>. 2019;9(1):249. doi:10.1038/s41398-019-0581-8</li>
+        </ol>
+      </section>
+
+      <!-- Footer Section -->
+      <footer class="ba-footer">
+        <p><strong>Disclaimer:</strong> This article is intended for educational purposes for healthcare providers. Clinical decision-making should incorporate individual patient factors, local guidelines, and specialist consultation as appropriate. Always follow institutional protocols for first-episode psychosis evaluation and treatment.</p>
+        <p style="margin-top: 1rem;">Last updated: March 2026 | PsychoPharmRef Clinical Resource</p>
+        <a href="/blog/" class="back-link" style="display: block; margin-top: 1rem;">← Back to Blog</a>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
