@@ -586,7 +586,7 @@
 
             <!-- LAI Initiation Protocol Diagram -->
             <div class="diagram-wrapper">
-                <svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 800 660" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <style>
                             .init-day { font-size: 11px; font-weight: 600; fill: #231e14; }
@@ -601,37 +601,44 @@
                         </marker>
                     </defs>
 
-                    <!-- Paliperidone Protocol -->
-                    <text class="init-day" x="20" y="30">PALIPERIDONE SUSTENNA INITIATION</text>
-                    <rect class="init-box" x="20" y="45" width="760" height="90" rx="4"/>
-                    <text class="init-text" x="40" y="65">Day 0: IM 150 mg eq gluteal (loading dose)</text>
-                    <text class="init-text" x="40" y="90">Day 8: IM 100 mg eq gluteal (second loading dose)</text>
-                    <text class="init-text" x="40" y="115">Day 15+: Begin monthly injections</text>
-                    <rect class="oral-bar" x="40" y="130" width="120" height="15"/>
-                    <text class="init-text" x="45" y="142">Minimal/no oral</text>
+                    <!-- Paliperidone Sustenna Protocol -->
+                    <text class="init-day" x="20" y="30">INVEGA SUSTENNA (PALIPERIDONE PALMITATE) INITIATION</text>
+                    <rect class="init-box" x="20" y="45" width="760" height="110" rx="4"/>
+                    <text class="init-text" x="40" y="65" font-weight="600" fill="#231e14">Day 1: 234 mg IM deltoid (loading dose)</text>
+                    <text class="init-text" x="40" y="88" font-weight="600" fill="#231e14">Day 8: 156 mg IM deltoid (second loading dose)</text>
+                    <text class="init-text" x="40" y="111">Week 5 (&#177;7 days): Begin monthly maintenance (39&#8211;234 mg eq, deltoid or gluteal)</text>
+                    <text class="init-text" x="40" y="134">Recommended maintenance dose: 117 mg. Use 1.5-inch 22G needle regardless of weight.</text>
+                    <rect class="inject-bar" x="40" y="148" width="60" height="12" rx="2"/>
+                    <text class="init-text" x="110" y="159" font-size="10">No oral overlap required</text>
 
-                    <!-- Aripiprazole Protocol -->
-                    <text class="init-day" x="20" y="170">ARIPIPRAZOLE ABILIFY MAINTENA INITIATION</text>
-                    <rect class="init-box" x="20" y="185" width="760" height="90" rx="4"/>
-                    <text class="init-text" x="40" y="205">Day 0: IM 300-400 mg deltoid (loading dose)</text>
-                    <text class="init-text" x="40" y="230">Oral overlap: 5-7 days with oral aripiprazole</text>
-                    <text class="init-text" x="40" y="255">Days 8+: Monthly injections; discontinue oral</text>
-                    <rect class="oral-bar" x="40" y="270" width="110" height="15"/>
-                    <text class="init-text" x="45" y="282">5-7 days</text>
+                    <!-- Aripiprazole Maintena Protocol -->
+                    <text class="init-day" x="20" y="185">ABILIFY MAINTENA (ARIPIPRAZOLE) INITIATION</text>
+                    <rect class="init-box" x="20" y="200" width="760" height="100" rx="4"/>
+                    <text class="init-text" x="40" y="220" font-weight="600" fill="#231e14">Day 0: 400 mg IM deltoid or gluteal</text>
+                    <text class="init-text" x="40" y="243">Continue oral aripiprazole 10&#8211;20 mg/day for 14 consecutive days after first injection</text>
+                    <text class="init-text" x="40" y="266">Month 2+: 400 mg monthly (may reduce to 300 mg if adverse effects)</text>
+                    <rect class="oral-bar" x="40" y="283" width="130" height="12" rx="2"/>
+                    <text class="init-text" x="180" y="293" font-size="10">14-day oral overlap</text>
 
-                    <!-- Risperidone Protocol -->
-                    <text class="init-day" x="20" y="310">RISPERIDONE RISPERDAL CONSTA INITIATION</text>
-                    <rect class="init-box" x="20" y="325" width="760" height="90" rx="4"/>
-                    <text class="init-text" x="40" y="345">Day 0: IM 25 mg deltoid or gluteal (initial)</text>
-                    <text class="init-text" x="40" y="370">Oral overlap: 3 weeks minimum with oral risperidone</text>
-                    <text class="init-text" x="40" y="395">Week 4+: Biweekly injections; discontinue oral</text>
-                    <rect class="oral-bar" x="40" y="410" width="180" height="15"/>
-                    <text class="init-text" x="45" y="422">3 weeks</text>
+                    <!-- Risperidone Consta Protocol -->
+                    <text class="init-day" x="20" y="330">RISPERDAL CONSTA (RISPERIDONE) INITIATION</text>
+                    <rect class="init-box" x="20" y="345" width="760" height="100" rx="4"/>
+                    <text class="init-text" x="40" y="365" font-weight="600" fill="#231e14">Day 0: 25 mg IM deltoid or gluteal (biweekly)</text>
+                    <text class="init-text" x="40" y="388">Continue oral risperidone for minimum 3 weeks after first injection (delayed release)</text>
+                    <text class="init-text" x="40" y="411">Week 4+: Biweekly injections (25&#8211;50 mg); discontinue oral</text>
+                    <rect class="oral-bar" x="40" y="428" width="200" height="12" rx="2"/>
+                    <text class="init-text" x="250" y="438" font-size="10">3-week oral overlap (mandatory)</text>
 
-                    <!-- Olanzapine Protocol -->
-                    <text class="init-day" x="20" y="450">OLANZAPINE ZYPREXA RELPREVV INITIATION</text>
-                    <text class="init-text" x="20" y="475">Dose by oral target: 10mg/d&#8594;210mg/2wk or 405mg/4wk; 15mg/d&#8594;300mg/2wk; 20mg/d&#8594;300mg/2wk</text>
-                    <text class="init-text" x="20" y="495">First 8 wks loading dose, then maintenance. IM gluteal only. REMS: 3-hr post-injection observation</text>
+                    <!-- Olanzapine Relprevv Protocol -->
+                    <text class="init-day" x="20" y="475">ZYPREXA RELPREVV (OLANZAPINE PAMOATE) INITIATION</text>
+                    <rect class="init-box" x="20" y="490" width="760" height="150" rx="4"/>
+                    <text class="init-text" x="40" y="510" font-weight="600" fill="#231e14">Dose based on target oral Zyprexa dose (IM gluteal only):</text>
+                    <text class="init-text" x="40" y="533">10 mg/day oral &#8594; 210 mg/2wk or 405 mg/4wk (first 8 wks) &#8594; 150 mg/2wk or 300 mg/4wk (maintenance)</text>
+                    <text class="init-text" x="40" y="556">15 mg/day oral &#8594; 300 mg/2wk (first 8 wks) &#8594; 210 mg/2wk or 405 mg/4wk (maintenance)</text>
+                    <text class="init-text" x="40" y="579">20 mg/day oral &#8594; 300 mg/2wk (first 8 wks) &#8594; 300 mg/2wk (maintenance)</text>
+                    <text class="init-text" x="40" y="607" fill="#c04030" font-weight="600">REMS REQUIRED: 3-hour post-injection observation for delirium/sedation syndrome at certified facility</text>
+                    <rect x="40" y="620" width="95" height="12" rx="2" fill="#c04030" opacity="0.15"/>
+                    <text class="init-text" x="45" y="630" font-size="10" fill="#c04030">REMS monitoring</text>
                 </svg>
             </div>
 
