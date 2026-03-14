@@ -4443,6 +4443,64 @@
           .sr-intensity-row {
             grid-template-columns: 1fr;
           }
+          .sr-clinical-fields {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        /* ── Clinical Assessment Fields ── */
+        .sr-clinical-fields {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 20px;
+          margin-top: 24px;
+          padding-top: 20px;
+          border-top: 2px solid var(--border);
+        }
+        .sr-field-group {
+          background: var(--bg2);
+          border: 1px solid var(--border);
+          border-radius: 6px;
+          padding: 16px;
+        }
+        .sr-field-group-title {
+          font-weight: 600;
+          font-size: 14px;
+          color: var(--text);
+          margin-bottom: 12px;
+          padding-bottom: 8px;
+          border-bottom: 1px solid var(--border);
+        }
+        .sr-radio-field {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 8px;
+          font-size: 14px;
+        }
+        .sr-radio-field input[type="radio"] {
+          cursor: pointer;
+          accent-color: var(--accent);
+        }
+        .sr-radio-field label {
+          cursor: pointer;
+          margin: 0;
+        }
+        .sr-mod-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 8px;
+          font-size: 14px;
+        }
+        .sr-mod-item input[type="checkbox"] {
+          cursor: pointer;
+          accent-color: var(--accent);
+          flex-shrink: 0;
+        }
+        .sr-mod-item label {
+          cursor: pointer;
+          margin: 0;
         }
       </style>
     
@@ -5464,7 +5522,73 @@
               </div>
             </div>
           </form>
-    
+
+          <!-- Clinical Assessment Fields -->
+          <div class="sr-clinical-fields">
+            <!-- Location -->
+            <div class="sr-field-group">
+              <div class="sr-field-group-title">Assessment Location</div>
+              <div class="sr-radio-field">
+                <input type="radio" id="loc_outpatient" name="sr_location" value="Outpatient">
+                <label for="loc_outpatient">Outpatient</label>
+              </div>
+              <div class="sr-radio-field">
+                <input type="radio" id="loc_inpatient" name="sr_location" value="Inpatient (General)">
+                <label for="loc_inpatient">Inpatient — General</label>
+              </div>
+              <div class="sr-radio-field">
+                <input type="radio" id="loc_high_sec" name="sr_location" value="Inpatient (High Security)">
+                <label for="loc_high_sec">Inpatient — High Security</label>
+              </div>
+            </div>
+
+            <!-- Overall Risk Assessment -->
+            <div class="sr-field-group">
+              <div class="sr-field-group-title">Overall Risk Assessment</div>
+              <div class="sr-radio-field">
+                <input type="radio" id="risk_high" name="sr_overall_risk" value="High">
+                <label for="risk_high" style="color:#c04030;font-weight:600;">High Risk</label>
+              </div>
+              <div class="sr-radio-field">
+                <input type="radio" id="risk_medium" name="sr_overall_risk" value="Medium">
+                <label for="risk_medium" style="color:#d4850a;font-weight:600;">Medium Risk</label>
+              </div>
+              <div class="sr-radio-field">
+                <input type="radio" id="risk_low" name="sr_overall_risk" value="Low">
+                <label for="risk_low" style="color:var(--accent);font-weight:600;">Low Risk</label>
+              </div>
+            </div>
+
+            <!-- Modifiable Factors -->
+            <div class="sr-field-group">
+              <div class="sr-field-group-title">Modifiable Factors</div>
+              <div class="sr-mod-item">
+                <input type="checkbox" id="mod_medications" name="mod_medications">
+                <label for="mod_medications">Medications</label>
+              </div>
+              <div class="sr-mod-item">
+                <input type="checkbox" id="mod_therapy" name="mod_therapy">
+                <label for="mod_therapy">Therapy</label>
+              </div>
+              <div class="sr-mod-item">
+                <input type="checkbox" id="mod_sobriety" name="mod_sobriety">
+                <label for="mod_sobriety">Sobriety</label>
+              </div>
+              <div class="sr-mod-item">
+                <input type="checkbox" id="mod_symptom_tx" name="mod_symptom_tx">
+                <label for="mod_symptom_tx">Symptom treatment</label>
+              </div>
+              <div class="sr-mod-item">
+                <input type="checkbox" id="mod_access_care" name="mod_access_care">
+                <label for="mod_access_care">Access to care</label>
+              </div>
+              <div class="sr-mod-item">
+                <input type="checkbox" id="mod_support" name="mod_support">
+                <label for="mod_support">Further support</label>
+              </div>
+            </div>
+          </div>
+
           <div class="sr-button-group">
             <button class="sr-btn sr-btn-primary" id="sr-risk-summary">Generate Summary</button>
             <button class="sr-btn sr-btn-secondary" id="sr-risk-copy" style="display: none;">Copy Summary</button>
@@ -5907,22 +6031,40 @@
             }
           }
     
+          // Clinical assessment fields
+          summary += 'CLINICAL ASSESSMENT\n';
+          summary += '────────────────────────────────────────────\n';
+
+          const locRadio = document.querySelector('input[name="sr_location"]:checked');
+          summary += `Location:             ${locRadio ? locRadio.value : 'Not specified'}\n`;
+
+          const riskRadio = document.querySelector('input[name="sr_overall_risk"]:checked');
+          summary += `Overall Risk Level:   ${riskRadio ? riskRadio.value : 'Not specified'}\n\n`;
+
+          const modItems = ['mod_medications', 'mod_therapy', 'mod_sobriety', 'mod_symptom_tx', 'mod_access_care', 'mod_support'];
+          const checkedMods = modItems.filter(id => document.getElementById(id)?.checked);
+          if (checkedMods.length > 0) {
+            summary += 'Modifiable Factors Identified:\n';
+            checkedMods.forEach(id => {
+              const label = document.querySelector(`label[for="${id}"]`);
+              if (label) summary += `  ✓ ${label.textContent.trim()}\n`;
+            });
+          } else {
+            summary += 'Modifiable Factors: None identified\n';
+          }
+          summary += '\n';
+
           // Risk profile determination
           const totalRisk = document.querySelectorAll('[id^="rf_"]:checked').length;
           const totalProtect = document.querySelectorAll('[id^="pf_"]:checked').length;
           const totalWarning = document.querySelectorAll('[id^="ws_"]:checked').length;
-    
-          let profile = 'OVERALL RISK PROFILE';
-          if (totalRisk >= 8) profile += ': ELEVATED RISK';
-          else if (totalRisk >= 5) profile += ': MODERATE RISK';
-          else if (totalRisk >= 2) profile += ': LOW-MODERATE RISK';
-          else profile += ': MINIMAL IDENTIFIED RISK';
-    
-          summary += profile + '\n';
-          summary += `Risk factors present: ${totalRisk}\n`;
+
+          summary += 'SUMMARY COUNTS\n';
+          summary += '────────────────────────────────────────────\n';
+          summary += `Risk factors present:       ${totalRisk}\n`;
           summary += `Protective factors present: ${totalProtect}\n`;
-          summary += `Warning signs present: ${totalWarning}\n`;
-    
+          summary += `Warning signs present:      ${totalWarning}\n`;
+
           summary += '\n────────────────────────────────────────────\n';
           summary += 'Generated by PsychoPharmRef Suicide Risk Assessment Tools\n';
           summary += '────────────────────────────────────────────';
