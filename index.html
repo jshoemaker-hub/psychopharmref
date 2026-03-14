@@ -7130,17 +7130,20 @@
           }
     
           function updateScores() {
-            // Calculate domain scores
-            const domainScores = {};
+            // Calculate total from individual question scores (not domain sums, since questions map to multiple domains)
             let totalScore = 0;
-    
+            Object.keys(scores).forEach(q => {
+              totalScore += scores[q] || 0;
+            });
+
+            // Calculate domain scores (for domain analysis display only)
+            const domainScores = {};
             Object.keys(domainConfig).forEach(domain => {
               let domainScore = 0;
               domainConfig[domain].questions.forEach(q => {
                 domainScore += scores[q] || 0;
               });
               domainScores[domain] = domainScore;
-              totalScore += domainScore;
             });
     
             // Update total score display
