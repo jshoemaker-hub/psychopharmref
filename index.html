@@ -176,7 +176,7 @@
     <div class="sidebar-footer">
       <a href="#" class="sf-link" onclick="switchSection('fda-search');return false;">References &amp; Methods</a>
       <a href="#" class="sf-link" id="sf-disclaimer-link" onclick="document.getElementById('warning-modal').classList.remove('hidden');return false;">Legal Disclaimer</a>
-      <span class="sf-contact">Contact — coming soon</span>
+      <a href="#" class="sf-link" onclick="switchSection('contact');return false;">Contact</a>
     </div>
   </nav>
 
@@ -11148,6 +11148,205 @@ Anxiety/Depression (G2,G3,G4,G6): ${marderAnxiety}/28`;
       </div>
 
     </section><!-- end blog-weight -->
+
+
+    <!-- ── Contact ─────────────────────────────────────────────────────────── -->
+    <section id="contact" class="section">
+      <div class="section-header">
+        <h2>Contact</h2>
+        <p>Questions, feedback, or suggestions? Send a message below.</p>
+      </div>
+
+      <style>
+        .ct-form-wrap {
+          max-width: 560px;
+          margin: 0 auto;
+        }
+        .ct-field {
+          margin-bottom: 1.2rem;
+        }
+        .ct-field label {
+          display: block;
+          font-weight: 600;
+          color: var(--text);
+          margin-bottom: 0.35rem;
+          font-size: 0.95rem;
+        }
+        .ct-field input[type="email"],
+        .ct-field textarea {
+          width: 100%;
+          padding: 0.65rem 0.8rem;
+          border: 1px solid var(--border);
+          border-radius: 6px;
+          background: #fff;
+          font-family: inherit;
+          font-size: 0.95rem;
+          color: var(--text);
+          box-sizing: border-box;
+          transition: border-color 0.2s;
+        }
+        .ct-field input[type="email"]:focus,
+        .ct-field textarea:focus {
+          outline: none;
+          border-color: var(--accent);
+          box-shadow: 0 0 0 2px rgba(74,124,53,0.15);
+        }
+        .ct-field textarea {
+          min-height: 160px;
+          resize: vertical;
+        }
+        .ct-honeypot {
+          position: absolute;
+          left: -9999px;
+          opacity: 0;
+          height: 0;
+          width: 0;
+          overflow: hidden;
+          tab-index: -1;
+        }
+        .ct-btn-group {
+          display: flex;
+          gap: 0.75rem;
+          margin-top: 1.2rem;
+        }
+        .ct-btn {
+          padding: 0.6rem 1.6rem;
+          border: none;
+          border-radius: 6px;
+          font-size: 0.95rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+        .ct-btn-send {
+          background: var(--accent);
+          color: #fff;
+        }
+        .ct-btn-send:hover {
+          background: #3d6a2b;
+        }
+        .ct-btn-send:disabled {
+          background: var(--border);
+          cursor: not-allowed;
+        }
+        .ct-btn-clear {
+          background: var(--bg2);
+          color: var(--text);
+          border: 1px solid var(--border);
+        }
+        .ct-btn-clear:hover {
+          background: #ddd8ce;
+        }
+        .ct-status {
+          margin-top: 1rem;
+          padding: 0.75rem 1rem;
+          border-radius: 6px;
+          font-size: 0.9rem;
+          display: none;
+        }
+        .ct-status-success {
+          background: #e8f5e3;
+          color: #2d5a1e;
+          border: 1px solid #a3d48e;
+        }
+        .ct-status-error {
+          background: #fdecea;
+          color: #8b2015;
+          border: 1px solid #e8a9a4;
+        }
+        .ct-note {
+          margin-top: 1.5rem;
+          font-size: 0.85rem;
+          color: #7a7265;
+          line-height: 1.5;
+        }
+      </style>
+
+      <div class="ct-form-wrap">
+        <form id="ct-form" action="https://formspree.io/f/xdawdpkq" method="POST">
+          <!-- Honeypot: hidden from humans, bots fill it in -->
+          <div class="ct-honeypot" aria-hidden="true">
+            <label>Do not fill this out if you are human
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+            </label>
+          </div>
+
+          <!-- Formspree: redirect back after submission -->
+          <input type="hidden" name="_next" value="">
+          <!-- Formspree: set reply-to from sender's email -->
+          <input type="hidden" name="_subject" value="PsychoPharmRef Contact Form">
+
+          <div class="ct-field">
+            <label for="ct-email">Your Email</label>
+            <input type="email" id="ct-email" name="email" required placeholder="you@example.com" autocomplete="email">
+          </div>
+
+          <div class="ct-field">
+            <label for="ct-message">Message</label>
+            <textarea id="ct-message" name="message" required placeholder="Your question, feedback, or suggestion..."></textarea>
+          </div>
+
+          <div class="ct-btn-group">
+            <button type="submit" class="ct-btn ct-btn-send" id="ct-submit">Send Message</button>
+            <button type="reset" class="ct-btn ct-btn-clear">Clear</button>
+          </div>
+        </form>
+
+        <div id="ct-status" class="ct-status"></div>
+
+        <p class="ct-note">Your email is used only to respond to your message and is never shared or stored beyond what is necessary for correspondence. No attachments are accepted.</p>
+      </div>
+
+      <script>
+        (function(){
+          var form = document.getElementById('ct-form');
+          var statusEl = document.getElementById('ct-status');
+          var submitBtn = document.getElementById('ct-submit');
+
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Check honeypot
+            var honey = form.querySelector('input[name="_gotcha"]');
+            if (honey && honey.value) {
+              statusEl.className = 'ct-status ct-status-success';
+              statusEl.textContent = 'Message sent successfully!';
+              statusEl.style.display = 'block';
+              form.reset();
+              return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            var data = new FormData(form);
+
+            fetch(form.action, {
+              method: 'POST',
+              body: data,
+              headers: { 'Accept': 'application/json' }
+            }).then(function(response) {
+              if (response.ok) {
+                statusEl.className = 'ct-status ct-status-success';
+                statusEl.textContent = 'Message sent successfully! Thank you for reaching out.';
+                statusEl.style.display = 'block';
+                form.reset();
+              } else {
+                throw new Error('Form submission failed');
+              }
+            }).catch(function() {
+              statusEl.className = 'ct-status ct-status-error';
+              statusEl.textContent = 'Something went wrong. Please try again or email directly.';
+              statusEl.style.display = 'block';
+            }).finally(function() {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Send Message';
+              setTimeout(function(){ statusEl.style.display = 'none'; }, 5000);
+            });
+          });
+        })();
+      </script>
+    </section><!-- end contact -->
 
   </main>
 
