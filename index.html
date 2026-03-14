@@ -7075,14 +7075,16 @@
           'use strict';
     
           // Domain configurations
+          // Each question assigned to ONE primary domain so domain scores sum to 30
+          // Cross-domain involvement noted in clinical commentary only
           const domainConfig = {
             orientation: { maxPoints: 3, questions: ['1', '2', '3'] },
-            executive: { maxPoints: 10, questions: ['5a', '5b', '9-markers', '9-time', '11-name', '11-work', '11-when', '11-state'] },
-            attention: { maxPoints: 5, questions: ['5a', '5b', '10-triangle', '10-largest'] },
+            executive: { maxPoints: 3, questions: ['5a', '5b'] },
+            attention: { maxPoints: 2, questions: ['10-triangle', '10-largest'] },
             memory: { maxPoints: 13, questions: ['7-apple', '7-pen', '7-tie', '7-house', '7-car', '11-name', '11-work', '11-when', '11-state'] },
             workingmemory: { maxPoints: 2, questions: ['8-648', '8-8537'] },
             language: { maxPoints: 3, questions: ['6'] },
-            visuospatial: { maxPoints: 6, questions: ['9-markers', '9-time', '10-triangle', '10-largest'] }
+            visuospatial: { maxPoints: 4, questions: ['9-markers', '9-time'] }
           };
     
           const scores = {
@@ -7295,22 +7297,22 @@
             summary += `COGNITIVE DOMAIN ANALYSIS\n`;
             summary += `${'─'.repeat(50)}\n`;
             summary += `Orientation/Temporal-Spatial: ${domainScores.orientation}/3\n`;
-            summary += `Executive Functioning:        ${domainScores.executive}/10\n`;
-            summary += `Attention & Concentration:    ${domainScores.attention}/5\n`;
+            summary += `Executive Functioning:        ${domainScores.executive}/3\n`;
+            summary += `Attention & Concentration:    ${domainScores.attention}/2\n`;
             summary += `Memory (Episodic Retrieval):  ${domainScores.memory}/13\n`;
             summary += `Working Memory:               ${domainScores.workingmemory}/2\n`;
             summary += `Language/Processing Speed:    ${domainScores.language}/3\n`;
-            summary += `Visuospatial/Construction:    ${domainScores.visuospatial}/6\n\n`;
-    
+            summary += `Visuospatial/Construction:    ${domainScores.visuospatial}/4\n\n`;
+
             // Impaired domains with commentary
             const impairedDomains = [];
             if (domainScores.orientation < 3) impairedDomains.push('orientation');
-            if (domainScores.executive < 10) impairedDomains.push('executive');
-            if (domainScores.attention < 5) impairedDomains.push('attention');
+            if (domainScores.executive < 3) impairedDomains.push('executive');
+            if (domainScores.attention < 2) impairedDomains.push('attention');
             if (domainScores.memory < 13) impairedDomains.push('memory');
             if (domainScores.workingmemory < 2) impairedDomains.push('workingmemory');
             if (domainScores.language < 3) impairedDomains.push('language');
-            if (domainScores.visuospatial < 6) impairedDomains.push('visuospatial');
+            if (domainScores.visuospatial < 4) impairedDomains.push('visuospatial');
     
             if (impairedDomains.length > 0) {
               summary += `IMPAIRED DOMAINS (Clinical Commentary)\n`;
@@ -7321,9 +7323,9 @@
                 summary += `Temporal disorientation often precedes spatial disorientation in Alzheimer's disease.\n`;
               }
               if (impairedDomains.includes('executive')) {
-                summary += `\nExecutive: Involves prefrontal cortex (dorsolateral), anterior cingulate.\n`;
-                summary += `Deficits manifest as impaired calculation, poor planning, difficulty with narrative\n`;
-                summary += `organization. Classical frontal-subcortical circuit involvement.\n`;
+                summary += `\nExecutive (Q5 Calculation): Involves prefrontal cortex (dorsolateral), anterior cingulate.\n`;
+                summary += `Deficits manifest as impaired calculation and multi-step reasoning.\n`;
+                summary += `Note: Clock drawing (Q9) and story recall (Q11) also engage executive function.\n`;
               }
               if (impairedDomains.includes('attention')) {
                 summary += `\nAttention: Involves frontal/parietal networks, reticular activating system.\n`;
