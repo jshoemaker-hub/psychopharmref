@@ -10435,29 +10435,43 @@ Anxiety/Depression (G2,G3,G4,G6): ${marderAnxiety}/28`;
         const q3Value = getRadioValue('q3');
         const symptomCount = getCheckedSymptoms().length;
 
-        // Screen negative if both Q1 and Q2 are "no"
-        if (q1Value === 'no' && q2Value === 'no') {
-          displayNegativeScreen();
+        // Q3 is only enabled if at least one stem question is "Yes"
+        const stemPassed = (q1Value === 'yes' || q2Value === 'yes');
+
+        if (!stemPassed) {
           q3Group.classList.add('ci-disabled');
           symptomsContainer.classList.add('ci-disabled');
+          // Show negative only if both stems are explicitly answered "No"
+          if (q1Value === 'no' && q2Value === 'no') {
+            displayNegativeScreen();
+          } else {
+            // Not all stems answered yet — show default
+            scoreText.textContent = '—';
+            riskBadge.innerHTML = '';
+            probabilityText.textContent = '';
+          }
           return;
         }
 
+        // At least one stem is "Yes" — enable Q3
         q3Group.classList.remove('ci-disabled');
 
-        // Screen negative if Q3 is "no"
-        if (q3Value === 'no') {
-          displayNegativeScreen();
+        // Symptoms only enabled if Q3 is explicitly "Yes"
+        if (q3Value === 'yes') {
+          symptomsContainer.classList.remove('ci-disabled');
+          const riskData = calculateRisk(symptomCount);
+          displayRisk(riskData, symptomCount);
+        } else {
           symptomsContainer.classList.add('ci-disabled');
-          return;
+          if (q3Value === 'no') {
+            displayNegativeScreen();
+          } else {
+            // Q3 not yet answered
+            scoreText.textContent = '—';
+            riskBadge.innerHTML = '';
+            probabilityText.textContent = '';
+          }
         }
-
-        // Both stem and gate passed, enable symptoms
-        symptomsContainer.classList.remove('ci-disabled');
-
-        // Calculate risk level based on symptom count
-        const riskData = calculateRisk(symptomCount);
-        displayRisk(riskData, symptomCount);
       }
 
       function getRadioValue(name) {
