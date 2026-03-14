@@ -54,6 +54,10 @@ Updates the sidebar navigation across index.html and all 42+ blog HTML files.
 8. SLUMS Exam
 9. PANSS
 10. Catatonia (BFCRS)
+11. CIDI Bipolar Screen
+12. PCL-5 (PTSD)
+13. YMRS (Mania)
+14. Y-BOCS (OCD)
 
 ## Important
 - Always use a reliable marker (the previous nav item) for insertion

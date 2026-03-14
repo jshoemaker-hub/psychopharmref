@@ -57,6 +57,10 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="slums-tool">SLUMS Exam</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="panss-tool">PANSS</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="bfcrs-tool">Catatonia (BFCRS)</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="cidi-tool">CIDI Bipolar Screen</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="pcl5-tool">PCL-5 (PTSD)</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="ymrs-tool">YMRS (Mania)</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="ybocs-tool">Y-BOCS (OCD)</a></li>
         </ul>
       </li>
 
@@ -9961,6 +9965,4460 @@ Anxiety/Depression (G2,G3,G4,G6): ${marderAnxiety}/28`;
     })();
   </script>
 </section><!-- end bfcrs-tool -->
+
+<section id="cidi-tool" class="section">
+  <div class="section-header">
+    <h2>CIDI 3.0 Bipolar Screening Scale</h2>
+    <p>
+      The CIDI 3.0 Bipolar Screening Scale is a brief, validated screening tool for bipolar disorder in primary care and general clinical settings. It uses stem questions about mood elevation and irritability, followed by a gate question and symptom assessment to estimate the probability of bipolar disorder. Not a diagnostic instrument—results should inform further clinical evaluation.
+    </p>
+  </div>
+
+  <div class="ci-warning mt-warning">
+    <strong>Clinical Note:</strong> This screening tool is designed to identify individuals at risk for bipolar disorder based on DSM-5 Criterion A and B symptoms. A positive screen does not establish diagnosis and should prompt comprehensive psychiatric evaluation including detailed history, substance use assessment, and medical workup to rule out secondary causes of mood elevation (e.g., hyperthyroidism, stimulant use, medical illness).
+  </div>
+
+  <style>
+    /* CIDI 3.0 Bipolar Screening Scale (ci- prefix) */
+
+    .ci-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .ci-section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 24px;
+      margin-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    .ci-question-group {
+      margin-bottom: 20px;
+      padding: 12px;
+      background-color: var(--bg2);
+      border-left: 4px solid var(--accent);
+      border-radius: 4px;
+    }
+
+    .ci-question-text {
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .ci-question-number {
+      display: inline-block;
+      font-weight: 600;
+      color: var(--accent);
+      margin-right: 6px;
+    }
+
+    .ci-radio-group,
+    .ci-checkbox-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-left: 12px;
+    }
+
+    .ci-radio-option,
+    .ci-checkbox-option {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ci-radio-option input[type="radio"],
+    .ci-checkbox-option input[type="checkbox"] {
+      cursor: pointer;
+      width: 16px;
+      height: 16px;
+      accent-color: var(--accent);
+    }
+
+    .ci-radio-option label,
+    .ci-checkbox-option label {
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .ci-symptoms-list {
+      margin-left: 12px;
+    }
+
+    .ci-symptom-item {
+      margin-bottom: 12px;
+    }
+
+    .ci-symptom-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .ci-symptom-label:hover {
+      background-color: rgba(74, 124, 53, 0.05);
+    }
+
+    .ci-symptom-label input[type="checkbox"] {
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .ci-symptom-text {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .ci-disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .ci-score-display {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #f9f7f3;
+      border: 2px solid var(--border);
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .ci-score-title {
+      font-size: 0.9rem;
+      color: var(--accent2);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .ci-score-result {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .ci-risk-level {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .ci-risk-very-low {
+      color: #2d5a2d;
+      background-color: #e8f5e9;
+      padding: 8px 12px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .ci-risk-low {
+      color: #558b2f;
+      background-color: #f1f8e9;
+      padding: 8px 12px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .ci-risk-moderate {
+      color: #f57f17;
+      background-color: #fff3e0;
+      padding: 8px 12px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .ci-risk-high {
+      color: #d32f2f;
+      background-color: #ffebee;
+      padding: 8px 12px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .ci-risk-very-high {
+      color: #b71c1c;
+      background-color: #ffcdd2;
+      padding: 8px 12px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .ci-risk-negative {
+      color: #2d5a2d;
+      background-color: #e8f5e9;
+      padding: 8px 12px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .ci-probability {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    .ci-button-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .ci-btn {
+      padding: 12px 24px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .ci-btn-primary {
+      background-color: var(--accent);
+      color: white;
+    }
+
+    .ci-btn-primary:hover {
+      background-color: #3d6627;
+      box-shadow: 0 2px 6px rgba(74, 124, 53, 0.3);
+    }
+
+    .ci-btn-primary:active {
+      transform: scale(0.98);
+    }
+
+    .ci-btn-secondary {
+      background-color: var(--accent2);
+      color: white;
+    }
+
+    .ci-btn-secondary:hover {
+      background-color: #6d540f;
+      box-shadow: 0 2px 6px rgba(139, 105, 20, 0.3);
+    }
+
+    .ci-btn-secondary:active {
+      transform: scale(0.98);
+    }
+
+    .ci-help-text {
+      font-size: 0.85rem;
+      color: #999;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    .ci-screen-negative-message {
+      background-color: #e8f5e9;
+      border: 2px solid #2d5a2d;
+      border-radius: 6px;
+      padding: 16px;
+      margin-top: 20px;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #2d5a2d;
+    }
+  </style>
+
+  <div class="ci-container">
+    <!-- STEM QUESTIONS -->
+    <div class="ci-section-title">Stem Questions</div>
+
+    <div class="ci-question-group">
+      <div class="ci-question-text">
+        <span class="ci-question-number">Q1.</span>
+        Have you ever had a period lasting several days or longer when you felt much more excited and full of energy than usual?
+      </div>
+      <div class="ci-radio-group">
+        <div class="ci-radio-option">
+          <input type="radio" id="q1-yes" name="q1" value="yes" />
+          <label for="q1-yes">Yes</label>
+        </div>
+        <div class="ci-radio-option">
+          <input type="radio" id="q1-no" name="q1" value="no" />
+          <label for="q1-no">No</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="ci-question-group">
+      <div class="ci-question-text">
+        <span class="ci-question-number">Q2.</span>
+        Have you ever had a period lasting several days or longer when most of the time you were so irritable or grouchy that you either started arguments, shouted at people, or hit people?
+      </div>
+      <div class="ci-radio-group">
+        <div class="ci-radio-option">
+          <input type="radio" id="q2-yes" name="q2" value="yes" />
+          <label for="q2-yes">Yes</label>
+        </div>
+        <div class="ci-radio-option">
+          <input type="radio" id="q2-no" name="q2" value="no" />
+          <label for="q2-no">No</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRITERION B GATE -->
+    <div class="ci-question-group" id="ci-q3-group">
+      <div class="ci-question-text">
+        <span class="ci-question-number">Q3.</span>
+        Did you ever have any of the following changes during your episodes of being excited and full of energy or very irritable or grouchy?
+      </div>
+      <div class="ci-radio-group">
+        <div class="ci-radio-option">
+          <input type="radio" id="q3-yes" name="q3" value="yes" />
+          <label for="q3-yes">Yes</label>
+        </div>
+        <div class="ci-radio-option">
+          <input type="radio" id="q3-no" name="q3" value="no" />
+          <label for="q3-no">No</label>
+        </div>
+      </div>
+      <div class="ci-help-text">If "No," screening is negative—skip symptom questions below.</div>
+    </div>
+
+    <!-- CRITERION B SYMPTOMS -->
+    <div class="ci-section-title">Criterion B Symptoms (If Q3 = Yes)</div>
+
+    <div id="ci-symptoms-container" class="ci-symptoms-list ci-disabled">
+      <div class="ci-question-group">
+        <div class="ci-question-text">During these episodes, did any of the following happen:</div>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="symptoms" value="irritability" />
+          <span class="ci-symptom-text">
+            Were you so irritable that you shouted at people or started fights or arguments?
+          </span>
+        </label>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="symptoms" value="restlessness" />
+          <span class="ci-symptom-text">
+            Did you become so restless or wound up that you paced up and down or couldn't stand still?
+          </span>
+        </label>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="symptoms" value="disinhibition" />
+          <span class="ci-symptom-text">
+            Did you do anything else that was unusual for you—like talking about things you would normally keep private, or acting in ways that you would usually find embarrassing?
+          </span>
+        </label>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="symptoms" value="grandiosity" />
+          <span class="ci-symptom-text">
+            Did you ever have a period when you thought you were a very important person, or that you had special powers or talents that most people don't have?
+          </span>
+        </label>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="symptoms" value="goal-directed" />
+          <span class="ci-symptom-text">
+            Were you much more active than usual—for example, taking on many new projects or activities?
+          </span>
+        </label>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="symptoms" value="concentration" />
+          <span class="ci-symptom-text">
+            Did you find it much harder to concentrate than is normal for you?
+          </span>
+        </label>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="symptoms" value="racing" />
+          <span class="ci-symptom-text">
+            Did your thoughts seem to jump from one thing to another, or race through your head so fast you couldn't keep track of them?
+          </span>
+        </label>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="symptoms" value="sleep" />
+          <span class="ci-symptom-text">
+            Did you need less sleep than usual—for example, sleeping 4 hours or less without feeling tired the next day?
+          </span>
+        </label>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="symptoms" value="spending" />
+          <span class="ci-symptom-text">
+            Did you spend so much more money than usual that it caused you financial trouble?
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <!-- SCORE DISPLAY -->
+    <div class="ci-score-display">
+      <div class="ci-score-title">Screen Result</div>
+      <div class="ci-score-result" id="ci-score-text">—</div>
+      <div id="ci-risk-badge" class="ci-risk-level"></div>
+      <div class="ci-probability" id="ci-probability-text"></div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="ci-button-group">
+      <button class="ci-btn ci-btn-primary" id="ci-report-btn">Generate Report & Copy</button>
+      <button class="ci-btn ci-btn-secondary" id="ci-reset-btn">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const q1Radio = document.querySelectorAll('input[name="q1"]');
+      const q2Radio = document.querySelectorAll('input[name="q2"]');
+      const q3Radio = document.querySelectorAll('input[name="q3"]');
+      const symptomsCheckboxes = document.querySelectorAll('input[name="symptoms"]');
+      const q3Group = document.getElementById('ci-q3-group');
+      const symptomsContainer = document.getElementById('ci-symptoms-container');
+      const reportBtn = document.getElementById('ci-report-btn');
+      const resetBtn = document.getElementById('ci-reset-btn');
+      const scoreText = document.getElementById('ci-score-text');
+      const riskBadge = document.getElementById('ci-risk-badge');
+      const probabilityText = document.getElementById('ci-probability-text');
+
+      // Symptom labels for report
+      const symptomLabels = {
+        irritability: 'Extreme irritability (shouting, fights, arguments)',
+        restlessness: 'Restlessness or agitation (pacing, inability to sit still)',
+        disinhibition: 'Unusual or embarrassing behavior (oversharing, disinhibition)',
+        grandiosity: 'Inflated self-esteem or special powers/talents',
+        'goal-directed': 'Increased goal-directed activity (multiple new projects)',
+        concentration: 'Difficulty concentrating',
+        racing: 'Racing or jumping thoughts',
+        sleep: 'Decreased need for sleep (≤4 hours without fatigue)',
+        spending: 'Excessive spending with financial consequences'
+      };
+
+      function updateDisplay() {
+        const q1Value = getRadioValue('q1');
+        const q2Value = getRadioValue('q2');
+        const q3Value = getRadioValue('q3');
+        const symptomCount = getCheckedSymptoms().length;
+
+        // Screen negative if both Q1 and Q2 are "no"
+        if (q1Value === 'no' && q2Value === 'no') {
+          displayNegativeScreen();
+          q3Group.classList.add('ci-disabled');
+          symptomsContainer.classList.add('ci-disabled');
+          return;
+        }
+
+        q3Group.classList.remove('ci-disabled');
+
+        // Screen negative if Q3 is "no"
+        if (q3Value === 'no') {
+          displayNegativeScreen();
+          symptomsContainer.classList.add('ci-disabled');
+          return;
+        }
+
+        // Both stem and gate passed, enable symptoms
+        symptomsContainer.classList.remove('ci-disabled');
+
+        // Calculate risk level based on symptom count
+        const riskData = calculateRisk(symptomCount);
+        displayRisk(riskData, symptomCount);
+      }
+
+      function getRadioValue(name) {
+        const selected = document.querySelector(`input[name="${name}"]:checked`);
+        return selected ? selected.value : null;
+      }
+
+      function getCheckedSymptoms() {
+        return Array.from(symptomsCheckboxes).filter(cb => cb.checked);
+      }
+
+      function displayNegativeScreen() {
+        scoreText.textContent = 'Screen Negative';
+        riskBadge.innerHTML = '<span class="ci-risk-negative">Negative Screen</span>';
+        probabilityText.textContent = 'No evidence of bipolar disorder on screening.';
+      }
+
+      function calculateRisk(symptomCount) {
+        if (symptomCount === 9) {
+          return { level: 'Very High Risk', probability: '≥80%', class: 'ci-risk-very-high' };
+        } else if (symptomCount >= 7) {
+          return { level: 'High Risk', probability: '50–79%', class: 'ci-risk-high' };
+        } else if (symptomCount === 6) {
+          return { level: 'Moderate Risk', probability: '25–49%', class: 'ci-risk-moderate' };
+        } else if (symptomCount === 5) {
+          return { level: 'Low Risk', probability: '5–24%', class: 'ci-risk-low' };
+        } else {
+          return { level: 'Very Low Risk', probability: '<5%', class: 'ci-risk-very-low' };
+        }
+      }
+
+      function displayRisk(riskData, symptomCount) {
+        scoreText.textContent = `${symptomCount}/9 Symptoms`;
+        riskBadge.innerHTML = `<span class="${riskData.class}">${riskData.level}</span>`;
+        probabilityText.textContent = `Probability of bipolar disorder: ${riskData.probability}`;
+      }
+
+      function generateReport() {
+        const q1Value = getRadioValue('q1');
+        const q2Value = getRadioValue('q2');
+        const q3Value = getRadioValue('q3');
+        const checkedSymptoms = getCheckedSymptoms();
+        const symptomCount = checkedSymptoms.length;
+
+        // Determine screen result
+        let screenResult;
+        if (q1Value === 'no' && q2Value === 'no') {
+          screenResult = 'Negative (stem criteria not met)';
+        } else if (q3Value === 'no') {
+          screenResult = 'Negative (Criterion B gate not met)';
+        } else {
+          const riskData = calculateRisk(symptomCount);
+          screenResult = `Positive: ${riskData.level} (${riskData.probability})`;
+        }
+
+        // Build symptom list
+        let symptomList = '';
+        if (checkedSymptoms.length > 0) {
+          symptomList = checkedSymptoms
+            .map(cb => `  - ${symptomLabels[cb.value]}`)
+            .join('\n');
+        }
+
+        const today = new Date().toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+
+        const report = `CIDI 3.0 Bipolar Screening Scale
+Date: ${today}
+
+Stem Questions:
+  Euphoria (Q1—elevated mood): ${q1Value ? q1Value.toUpperCase() : 'Not answered'}
+  Irritability (Q2—irritable mood): ${q2Value ? q2Value.toUpperCase() : 'Not answered'}
+  Criterion B Gate (Q3): ${q3Value ? q3Value.toUpperCase() : 'Not answered'}
+
+Screen Result: ${screenResult}
+
+${checkedSymptoms.length > 0 ? `Criterion B Symptoms Endorsed (${symptomCount}/9):\n${symptomList}\n\n` : ''}Clinical Interpretation:
+${
+  q1Value === 'no' && q2Value === 'no'
+    ? 'No evidence of mood elevation or significant irritability. Bipolar disorder screening negative.'
+    : q3Value === 'no'
+      ? 'Mood elevation or irritability reported, but no supporting Criterion B symptoms. Screening negative for bipolar disorder.'
+      : symptomCount === 0
+        ? 'Mood elevation/irritability endorsed but no associated symptoms. Low probability of bipolar disorder.'
+        : symptomCount < 5
+          ? 'Limited symptom endorsement. Consider broader differential diagnosis for mood disturbance.'
+          : symptomCount < 7
+            ? 'Moderate symptom burden. Recommend comprehensive psychiatric evaluation and assessment for bipolar II or cyclothymia.'
+            : 'High symptom burden with significant mood dysregulation. Recommend urgent psychiatric evaluation and consideration of bipolar I or II disorder. Assess safety and need for inpatient evaluation.'
+}`;
+
+        // Copy to clipboard
+        navigator.clipboard.writeText(report).then(() => {
+          const originalText = reportBtn.textContent;
+          reportBtn.textContent = 'Copied!';
+          setTimeout(() => {
+            reportBtn.textContent = originalText;
+          }, 2000);
+        });
+      }
+
+      function reset() {
+        if (!confirm('Reset all answers and scores?')) {
+          return;
+        }
+        q1Radio.forEach(r => (r.checked = false));
+        q2Radio.forEach(r => (r.checked = false));
+        q3Radio.forEach(r => (r.checked = false));
+        symptomsCheckboxes.forEach(cb => (cb.checked = false));
+        scoreText.textContent = '—';
+        riskBadge.innerHTML = '';
+        probabilityText.textContent = '';
+        q3Group.classList.add('ci-disabled');
+        symptomsContainer.classList.add('ci-disabled');
+      }
+
+      // Event listeners
+      q1Radio.forEach(r => r.addEventListener('change', updateDisplay));
+      q2Radio.forEach(r => r.addEventListener('change', updateDisplay));
+      q3Radio.forEach(r => r.addEventListener('change', updateDisplay));
+      symptomsCheckboxes.forEach(cb => cb.addEventListener('change', updateDisplay));
+      reportBtn.addEventListener('click', generateReport);
+      resetBtn.addEventListener('click', reset);
+    })();
+  </script>
+</section><!-- end cidi-tool -->
+
+<section id="pcl5-tool" class="section">
+  <div class="section-header">
+    <h2>PCL-5 (PTSD Checklist for DSM-5)</h2>
+    <p>A 20-item self-report measure assessing PTSD symptoms according to DSM-5 criteria. Items are rated 0-4 based on distress in the past month. Total scores range from 0-80, with scores ≥33 suggesting possible PTSD diagnosis.</p>
+  </div>
+
+  <div class="pc-warning mt-warning">
+    <strong>Clinical Note:</strong> The PCL-5 is a screening tool only and does not replace clinical interview and assessment. Provisional PTSD diagnosis shown here requires confirmation through comprehensive evaluation. Use for initial assessment and treatment monitoring. A reliable change of 5 points or clinically meaningful change of 10 points indicates significant symptom shift.
+  </div>
+
+  <style>
+    .pc-instructions {
+      background: var(--bg2);
+      border-left: 4px solid var(--accent);
+      padding: 15px;
+      margin-bottom: 20px;
+      font-size: 0.95em;
+      line-height: 1.6;
+    }
+
+    .pc-cluster-container {
+      margin-bottom: 20px;
+    }
+
+    .pc-cluster-header {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 12px 15px;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      transition: background-color 0.2s;
+    }
+
+    .pc-cluster-header:hover {
+      background: #dcd5cb;
+    }
+
+    .pc-cluster-header h3 {
+      margin: 0;
+      font-size: 1em;
+      color: var(--text);
+      flex: 1;
+    }
+
+    .pc-cluster-label {
+      font-size: 0.85em;
+      color: #666;
+      margin-right: 10px;
+    }
+
+    .pc-cluster-toggle {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    .pc-cluster-items {
+      display: none;
+      padding: 15px;
+      background: #fafaf8;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+      margin-bottom: 10px;
+    }
+
+    .pc-cluster-items.active {
+      display: block;
+    }
+
+    .pc-item-group {
+      margin-bottom: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #e0dbd0;
+    }
+
+    .pc-item-group:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .pc-item-label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 500;
+      color: var(--text);
+      font-size: 0.95em;
+    }
+
+    .pc-item-label strong {
+      color: var(--accent);
+    }
+
+    .pc-radio-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .pc-radio-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    .pc-radio-wrapper input[type="radio"] {
+      margin-right: 6px;
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+    }
+
+    .pc-radio-wrapper label {
+      cursor: pointer;
+      margin: 0;
+      font-size: 0.9em;
+      color: var(--text);
+    }
+
+    .pc-scores-box {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 20px;
+      border-radius: 4px;
+      margin: 25px 0;
+    }
+
+    .pc-score-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95em;
+    }
+
+    .pc-score-row:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .pc-score-label {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .pc-score-value {
+      color: var(--accent);
+      font-weight: 600;
+      min-width: 60px;
+      text-align: right;
+    }
+
+    .pc-total-score {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: var(--accent);
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .pc-severity {
+      font-weight: 600;
+      padding: 10px;
+      border-radius: 3px;
+      margin: 15px 0;
+      text-align: center;
+    }
+
+    .pc-severity-minimal {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .pc-severity-mild {
+      background: #d1ecf1;
+      color: #0c5460;
+    }
+
+    .pc-severity-moderate {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .pc-severity-moderately-severe {
+      background: #f8d7da;
+      color: #721c24;
+    }
+
+    .pc-severity-severe {
+      background: #f5c6cb;
+      color: #721c24;
+    }
+
+    .pc-criteria-box {
+      background: #fafaf8;
+      border-left: 4px solid var(--accent2);
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 3px;
+    }
+
+    .pc-criteria-title {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+      font-size: 0.95em;
+    }
+
+    .pc-criterion {
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e0dbd0;
+      font-size: 0.9em;
+    }
+
+    .pc-criterion:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .pc-criterion-label {
+      color: var(--text);
+    }
+
+    .pc-criterion-status {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 0.85em;
+      font-weight: 600;
+      margin-left: 8px;
+    }
+
+    .pc-criterion-met {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .pc-criterion-not-met {
+      background: #f8d7da;
+      color: #721c24;
+    }
+
+    .pc-button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .pc-btn {
+      padding: 12px 24px;
+      font-size: 1em;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .pc-btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .pc-btn-primary:hover {
+      background: #3a6c2a;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .pc-btn-secondary {
+      background: #cfc8ba;
+      color: var(--text);
+    }
+
+    .pc-btn-secondary:hover {
+      background: #b8b1a3;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .pc-btn:active {
+      transform: translateY(1px);
+    }
+
+    .pc-form {
+      margin-top: 20px;
+    }
+  </style>
+
+  <div class="pc-form">
+    <div class="pc-instructions">
+      <strong>Instructions:</strong> Below is a list of problems that people sometimes have in response to a very stressful experience. Please read each problem carefully and then select one of the numbers to indicate how much you have been bothered by that problem in the past month.
+    </div>
+
+    <!-- Cluster B: Intrusion (Items 1-5) -->
+    <div class="pc-cluster-container">
+      <div class="pc-cluster-header" data-cluster="B">
+        <h3><span class="pc-cluster-label">Cluster B — Intrusion</span>Items 1–5</h3>
+        <span class="pc-cluster-toggle">+</span>
+      </div>
+      <div class="pc-cluster-items active" id="pc-cluster-B">
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>1.</strong> Repeated, disturbing, and unwanted memories of the stressful experience?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-1" value="0" id="pc-1-0" data-cluster="B">
+              <label for="pc-1-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-1" value="1" id="pc-1-1" data-cluster="B">
+              <label for="pc-1-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-1" value="2" id="pc-1-2" data-cluster="B">
+              <label for="pc-1-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-1" value="3" id="pc-1-3" data-cluster="B">
+              <label for="pc-1-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-1" value="4" id="pc-1-4" data-cluster="B">
+              <label for="pc-1-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>2.</strong> Repeated, disturbing dreams of the stressful experience?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-2" value="0" id="pc-2-0" data-cluster="B">
+              <label for="pc-2-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-2" value="1" id="pc-2-1" data-cluster="B">
+              <label for="pc-2-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-2" value="2" id="pc-2-2" data-cluster="B">
+              <label for="pc-2-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-2" value="3" id="pc-2-3" data-cluster="B">
+              <label for="pc-2-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-2" value="4" id="pc-2-4" data-cluster="B">
+              <label for="pc-2-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>3.</strong> Suddenly feeling or acting as if the stressful experience were actually happening again (as if you were actually back there reliving it)?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-3" value="0" id="pc-3-0" data-cluster="B">
+              <label for="pc-3-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-3" value="1" id="pc-3-1" data-cluster="B">
+              <label for="pc-3-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-3" value="2" id="pc-3-2" data-cluster="B">
+              <label for="pc-3-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-3" value="3" id="pc-3-3" data-cluster="B">
+              <label for="pc-3-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-3" value="4" id="pc-3-4" data-cluster="B">
+              <label for="pc-3-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>4.</strong> Feeling very upset when something reminded you of the stressful experience?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-4" value="0" id="pc-4-0" data-cluster="B">
+              <label for="pc-4-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-4" value="1" id="pc-4-1" data-cluster="B">
+              <label for="pc-4-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-4" value="2" id="pc-4-2" data-cluster="B">
+              <label for="pc-4-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-4" value="3" id="pc-4-3" data-cluster="B">
+              <label for="pc-4-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-4" value="4" id="pc-4-4" data-cluster="B">
+              <label for="pc-4-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>5.</strong> Having strong physical reactions when something reminded you of the stressful experience (for example, heart pounding, trouble breathing, sweating)?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-5" value="0" id="pc-5-0" data-cluster="B">
+              <label for="pc-5-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-5" value="1" id="pc-5-1" data-cluster="B">
+              <label for="pc-5-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-5" value="2" id="pc-5-2" data-cluster="B">
+              <label for="pc-5-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-5" value="3" id="pc-5-3" data-cluster="B">
+              <label for="pc-5-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-5" value="4" id="pc-5-4" data-cluster="B">
+              <label for="pc-5-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cluster C: Avoidance (Items 6-7) -->
+    <div class="pc-cluster-container">
+      <div class="pc-cluster-header" data-cluster="C">
+        <h3><span class="pc-cluster-label">Cluster C — Avoidance</span>Items 6–7</h3>
+        <span class="pc-cluster-toggle">+</span>
+      </div>
+      <div class="pc-cluster-items" id="pc-cluster-C">
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>6.</strong> Avoiding memories, thoughts, or feelings related to the stressful experience?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-6" value="0" id="pc-6-0" data-cluster="C">
+              <label for="pc-6-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-6" value="1" id="pc-6-1" data-cluster="C">
+              <label for="pc-6-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-6" value="2" id="pc-6-2" data-cluster="C">
+              <label for="pc-6-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-6" value="3" id="pc-6-3" data-cluster="C">
+              <label for="pc-6-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-6" value="4" id="pc-6-4" data-cluster="C">
+              <label for="pc-6-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>7.</strong> Avoiding external reminders of the stressful experience (for example, people, places, conversations, activities, objects, or situations)?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-7" value="0" id="pc-7-0" data-cluster="C">
+              <label for="pc-7-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-7" value="1" id="pc-7-1" data-cluster="C">
+              <label for="pc-7-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-7" value="2" id="pc-7-2" data-cluster="C">
+              <label for="pc-7-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-7" value="3" id="pc-7-3" data-cluster="C">
+              <label for="pc-7-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-7" value="4" id="pc-7-4" data-cluster="C">
+              <label for="pc-7-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cluster D: Negative Cognitions/Mood (Items 8-14) -->
+    <div class="pc-cluster-container">
+      <div class="pc-cluster-header" data-cluster="D">
+        <h3><span class="pc-cluster-label">Cluster D — Negative Cognitions/Mood</span>Items 8–14</h3>
+        <span class="pc-cluster-toggle">+</span>
+      </div>
+      <div class="pc-cluster-items" id="pc-cluster-D">
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>8.</strong> Trouble remembering important parts of the stressful experience?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-8" value="0" id="pc-8-0" data-cluster="D">
+              <label for="pc-8-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-8" value="1" id="pc-8-1" data-cluster="D">
+              <label for="pc-8-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-8" value="2" id="pc-8-2" data-cluster="D">
+              <label for="pc-8-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-8" value="3" id="pc-8-3" data-cluster="D">
+              <label for="pc-8-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-8" value="4" id="pc-8-4" data-cluster="D">
+              <label for="pc-8-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>9.</strong> Having strong negative beliefs about yourself, other people, or the world (for example, having thoughts such as: I am bad, there is something seriously wrong with me, no one can be trusted, the world is completely dangerous)?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-9" value="0" id="pc-9-0" data-cluster="D">
+              <label for="pc-9-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-9" value="1" id="pc-9-1" data-cluster="D">
+              <label for="pc-9-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-9" value="2" id="pc-9-2" data-cluster="D">
+              <label for="pc-9-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-9" value="3" id="pc-9-3" data-cluster="D">
+              <label for="pc-9-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-9" value="4" id="pc-9-4" data-cluster="D">
+              <label for="pc-9-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>10.</strong> Blaming yourself or someone else for the stressful experience or what happened after it?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-10" value="0" id="pc-10-0" data-cluster="D">
+              <label for="pc-10-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-10" value="1" id="pc-10-1" data-cluster="D">
+              <label for="pc-10-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-10" value="2" id="pc-10-2" data-cluster="D">
+              <label for="pc-10-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-10" value="3" id="pc-10-3" data-cluster="D">
+              <label for="pc-10-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-10" value="4" id="pc-10-4" data-cluster="D">
+              <label for="pc-10-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>11.</strong> Having strong negative feelings such as fear, horror, anger, guilt, or shame?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-11" value="0" id="pc-11-0" data-cluster="D">
+              <label for="pc-11-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-11" value="1" id="pc-11-1" data-cluster="D">
+              <label for="pc-11-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-11" value="2" id="pc-11-2" data-cluster="D">
+              <label for="pc-11-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-11" value="3" id="pc-11-3" data-cluster="D">
+              <label for="pc-11-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-11" value="4" id="pc-11-4" data-cluster="D">
+              <label for="pc-11-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>12.</strong> Loss of interest in activities that you used to enjoy?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-12" value="0" id="pc-12-0" data-cluster="D">
+              <label for="pc-12-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-12" value="1" id="pc-12-1" data-cluster="D">
+              <label for="pc-12-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-12" value="2" id="pc-12-2" data-cluster="D">
+              <label for="pc-12-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-12" value="3" id="pc-12-3" data-cluster="D">
+              <label for="pc-12-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-12" value="4" id="pc-12-4" data-cluster="D">
+              <label for="pc-12-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>13.</strong> Feeling distant or cut off from other people?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-13" value="0" id="pc-13-0" data-cluster="D">
+              <label for="pc-13-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-13" value="1" id="pc-13-1" data-cluster="D">
+              <label for="pc-13-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-13" value="2" id="pc-13-2" data-cluster="D">
+              <label for="pc-13-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-13" value="3" id="pc-13-3" data-cluster="D">
+              <label for="pc-13-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-13" value="4" id="pc-13-4" data-cluster="D">
+              <label for="pc-13-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>14.</strong> Trouble experiencing positive feelings (for example, being unable to feel happiness or have loving feelings for people close to you)?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-14" value="0" id="pc-14-0" data-cluster="D">
+              <label for="pc-14-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-14" value="1" id="pc-14-1" data-cluster="D">
+              <label for="pc-14-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-14" value="2" id="pc-14-2" data-cluster="D">
+              <label for="pc-14-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-14" value="3" id="pc-14-3" data-cluster="D">
+              <label for="pc-14-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-14" value="4" id="pc-14-4" data-cluster="D">
+              <label for="pc-14-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cluster E: Arousal/Reactivity (Items 15-20) -->
+    <div class="pc-cluster-container">
+      <div class="pc-cluster-header" data-cluster="E">
+        <h3><span class="pc-cluster-label">Cluster E — Arousal/Reactivity</span>Items 15–20</h3>
+        <span class="pc-cluster-toggle">+</span>
+      </div>
+      <div class="pc-cluster-items" id="pc-cluster-E">
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>15.</strong> Irritable behavior, angry outbursts, or acting aggressively?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-15" value="0" id="pc-15-0" data-cluster="E">
+              <label for="pc-15-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-15" value="1" id="pc-15-1" data-cluster="E">
+              <label for="pc-15-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-15" value="2" id="pc-15-2" data-cluster="E">
+              <label for="pc-15-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-15" value="3" id="pc-15-3" data-cluster="E">
+              <label for="pc-15-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-15" value="4" id="pc-15-4" data-cluster="E">
+              <label for="pc-15-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>16.</strong> Taking too many risks or doing things that could cause you harm?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-16" value="0" id="pc-16-0" data-cluster="E">
+              <label for="pc-16-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-16" value="1" id="pc-16-1" data-cluster="E">
+              <label for="pc-16-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-16" value="2" id="pc-16-2" data-cluster="E">
+              <label for="pc-16-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-16" value="3" id="pc-16-3" data-cluster="E">
+              <label for="pc-16-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-16" value="4" id="pc-16-4" data-cluster="E">
+              <label for="pc-16-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>17.</strong> Being "superalert" or watchful or on guard?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-17" value="0" id="pc-17-0" data-cluster="E">
+              <label for="pc-17-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-17" value="1" id="pc-17-1" data-cluster="E">
+              <label for="pc-17-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-17" value="2" id="pc-17-2" data-cluster="E">
+              <label for="pc-17-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-17" value="3" id="pc-17-3" data-cluster="E">
+              <label for="pc-17-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-17" value="4" id="pc-17-4" data-cluster="E">
+              <label for="pc-17-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>18.</strong> Feeling jumpy or easily startled?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-18" value="0" id="pc-18-0" data-cluster="E">
+              <label for="pc-18-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-18" value="1" id="pc-18-1" data-cluster="E">
+              <label for="pc-18-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-18" value="2" id="pc-18-2" data-cluster="E">
+              <label for="pc-18-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-18" value="3" id="pc-18-3" data-cluster="E">
+              <label for="pc-18-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-18" value="4" id="pc-18-4" data-cluster="E">
+              <label for="pc-18-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>19.</strong> Having difficulty concentrating?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-19" value="0" id="pc-19-0" data-cluster="E">
+              <label for="pc-19-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-19" value="1" id="pc-19-1" data-cluster="E">
+              <label for="pc-19-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-19" value="2" id="pc-19-2" data-cluster="E">
+              <label for="pc-19-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-19" value="3" id="pc-19-3" data-cluster="E">
+              <label for="pc-19-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-19" value="4" id="pc-19-4" data-cluster="E">
+              <label for="pc-19-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pc-item-group">
+          <label class="pc-item-label"><strong>20.</strong> Trouble falling or staying asleep?</label>
+          <div class="pc-radio-group">
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-20" value="0" id="pc-20-0" data-cluster="E">
+              <label for="pc-20-0">0 — Not at all</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-20" value="1" id="pc-20-1" data-cluster="E">
+              <label for="pc-20-1">1 — A little bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-20" value="2" id="pc-20-2" data-cluster="E">
+              <label for="pc-20-2">2 — Moderately</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-20" value="3" id="pc-20-3" data-cluster="E">
+              <label for="pc-20-3">3 — Quite a bit</label>
+            </div>
+            <div class="pc-radio-wrapper">
+              <input type="radio" name="pc-item-20" value="4" id="pc-20-4" data-cluster="E">
+              <label for="pc-20-4">4 — Extremely</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scores & Results -->
+    <div class="pc-scores-box">
+      <div class="pc-total-score">
+        Total Score: <span id="pc-total">0</span> / 80
+      </div>
+
+      <div id="pc-severity" class="pc-severity"></div>
+
+      <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border);">
+        <div class="pc-score-row">
+          <span class="pc-score-label">Cluster B – Intrusion (Items 1–5):</span>
+          <span class="pc-score-value"><span id="pc-clusterB">0</span> / 20</span>
+        </div>
+        <div class="pc-score-row">
+          <span class="pc-score-label">Cluster C – Avoidance (Items 6–7):</span>
+          <span class="pc-score-value"><span id="pc-clusterC">0</span> / 8</span>
+        </div>
+        <div class="pc-score-row">
+          <span class="pc-score-label">Cluster D – Negative Cognitions/Mood (Items 8–14):</span>
+          <span class="pc-score-value"><span id="pc-clusterD">0</span> / 28</span>
+        </div>
+        <div class="pc-score-row">
+          <span class="pc-score-label">Cluster E – Arousal/Reactivity (Items 15–20):</span>
+          <span class="pc-score-value"><span id="pc-clusterE">0</span> / 24</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc-criteria-box">
+      <div class="pc-criteria-title">DSM-5 PTSD Diagnostic Criteria Status</div>
+      <div class="pc-criterion">
+        <span class="pc-criterion-label">Criterion B (≥1 intrusion symptom, items 1–5):</span>
+        <span class="pc-criterion-status pc-criterion-not-met" id="pc-crit-b">Not Met</span>
+        <span style="font-size: 0.85em; color: #666;">(<span id="pc-crit-b-count">0</span>/5)</span>
+      </div>
+      <div class="pc-criterion">
+        <span class="pc-criterion-label">Criterion C (≥1 avoidance symptom, items 6–7):</span>
+        <span class="pc-criterion-status pc-criterion-not-met" id="pc-crit-c">Not Met</span>
+        <span style="font-size: 0.85em; color: #666;">(<span id="pc-crit-c-count">0</span>/2)</span>
+      </div>
+      <div class="pc-criterion">
+        <span class="pc-criterion-label">Criterion D (≥2 negative cognition symptoms, items 8–14):</span>
+        <span class="pc-criterion-status pc-criterion-not-met" id="pc-crit-d">Not Met</span>
+        <span style="font-size: 0.85em; color: #666;">(<span id="pc-crit-d-count">0</span>/7)</span>
+      </div>
+      <div class="pc-criterion">
+        <span class="pc-criterion-label">Criterion E (≥2 arousal symptoms, items 15–20):</span>
+        <span class="pc-criterion-status pc-criterion-not-met" id="pc-crit-e">Not Met</span>
+        <span style="font-size: 0.85em; color: #666;">(<span id="pc-crit-e-count">0</span>/6)</span>
+      </div>
+      <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e0dbd0;">
+        <strong>Provisional PTSD Diagnosis (All 4 criteria met):</strong>
+        <span class="pc-criterion-status pc-criterion-not-met" id="pc-diagnosis">Not Met</span>
+      </div>
+      <div style="margin-top: 10px; font-size: 0.9em; color: #666;">
+        Cut-off Score Interpretation (≥33): <span id="pc-cutoff">Below threshold</span>
+      </div>
+    </div>
+
+    <div class="pc-button-group">
+      <button type="button" class="pc-btn pc-btn-primary" id="pc-report-btn">Generate Report & Copy</button>
+      <button type="button" class="pc-btn pc-btn-secondary" id="pc-reset-btn">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // Initialize cluster toggles
+      const clusterHeaders = document.querySelectorAll('.pc-cluster-header');
+      clusterHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+          const clusterId = this.getAttribute('data-cluster');
+          const clusterItems = document.getElementById('pc-cluster-' + clusterId);
+          const toggle = this.querySelector('.pc-cluster-toggle');
+
+          clusterItems.classList.toggle('active');
+          toggle.textContent = clusterItems.classList.contains('active') ? '−' : '+';
+        });
+      });
+
+      // Real-time scoring
+      const allInputs = document.querySelectorAll('input[type="radio"]');
+      allInputs.forEach(input => {
+        input.addEventListener('change', updateScores);
+      });
+
+      function updateScores() {
+        let clusterB = 0, clusterC = 0, clusterD = 0, clusterE = 0;
+
+        // Calculate cluster totals
+        for (let i = 1; i <= 5; i++) {
+          const val = parseInt(getSelectedValue(`pc-item-${i}`) || 0);
+          clusterB += val;
+        }
+        for (let i = 6; i <= 7; i++) {
+          const val = parseInt(getSelectedValue(`pc-item-${i}`) || 0);
+          clusterC += val;
+        }
+        for (let i = 8; i <= 14; i++) {
+          const val = parseInt(getSelectedValue(`pc-item-${i}`) || 0);
+          clusterD += val;
+        }
+        for (let i = 15; i <= 20; i++) {
+          const val = parseInt(getSelectedValue(`pc-item-${i}`) || 0);
+          clusterE += val;
+        }
+
+        const total = clusterB + clusterC + clusterD + clusterE;
+
+        // Update display
+        document.getElementById('pc-total').textContent = total;
+        document.getElementById('pc-clusterB').textContent = clusterB;
+        document.getElementById('pc-clusterC').textContent = clusterC;
+        document.getElementById('pc-clusterD').textContent = clusterD;
+        document.getElementById('pc-clusterE').textContent = clusterE;
+
+        // Update severity
+        updateSeverity(total);
+
+        // Update diagnostic criteria
+        updateCriteria();
+      }
+
+      function getSelectedValue(name) {
+        const selected = document.querySelector(`input[name="${name}"]:checked`);
+        return selected ? selected.value : null;
+      }
+
+      function updateSeverity(total) {
+        const severityDiv = document.getElementById('pc-severity');
+        let level = '', css = '';
+
+        if (total <= 10) {
+          level = 'Minimal symptoms (0–10)';
+          css = 'pc-severity-minimal';
+        } else if (total <= 20) {
+          level = 'Mild symptoms (11–20)';
+          css = 'pc-severity-mild';
+        } else if (total <= 32) {
+          level = 'Moderate symptoms (21–32)';
+          css = 'pc-severity-moderate';
+        } else if (total <= 51) {
+          level = 'Moderately severe symptoms (33–51)';
+          css = 'pc-severity-moderately-severe';
+        } else {
+          level = 'Severe symptoms (52–80)';
+          css = 'pc-severity-severe';
+        }
+
+        severityDiv.textContent = level;
+        severityDiv.className = `pc-severity ${css}`;
+
+        // Update cut-off
+        const cutoffSpan = document.getElementById('pc-cutoff');
+        cutoffSpan.textContent = total >= 33 ? 'Above threshold (≥33)' : 'Below threshold (<33)';
+      }
+
+      function updateCriteria() {
+        // Criterion B: count ≥2 in items 1-5
+        let critBCount = 0;
+        for (let i = 1; i <= 5; i++) {
+          const val = parseInt(getSelectedValue(`pc-item-${i}`) || 0);
+          if (val >= 2) critBCount++;
+        }
+        const critBMet = critBCount >= 1;
+        updateCriterionDisplay('pc-crit-b', critBMet, critBCount, 5);
+
+        // Criterion C: count ≥2 in items 6-7
+        let critCCount = 0;
+        for (let i = 6; i <= 7; i++) {
+          const val = parseInt(getSelectedValue(`pc-item-${i}`) || 0);
+          if (val >= 2) critCCount++;
+        }
+        const critCMet = critCCount >= 1;
+        updateCriterionDisplay('pc-crit-c', critCMet, critCCount, 2);
+
+        // Criterion D: count ≥2 in items 8-14
+        let critDCount = 0;
+        for (let i = 8; i <= 14; i++) {
+          const val = parseInt(getSelectedValue(`pc-item-${i}`) || 0);
+          if (val >= 2) critDCount++;
+        }
+        const critDMet = critDCount >= 2;
+        updateCriterionDisplay('pc-crit-d', critDMet, critDCount, 7);
+
+        // Criterion E: count ≥2 in items 15-20
+        let critECount = 0;
+        for (let i = 15; i <= 20; i++) {
+          const val = parseInt(getSelectedValue(`pc-item-${i}`) || 0);
+          if (val >= 2) critECount++;
+        }
+        const critEMet = critECount >= 2;
+        updateCriterionDisplay('pc-crit-e', critEMet, critECount, 6);
+
+        // Overall diagnosis: all 4 criteria must be met
+        const diagnosisMet = critBMet && critCMet && critDMet && critEMet;
+        const diagnosisSpan = document.getElementById('pc-diagnosis');
+        diagnosisSpan.textContent = diagnosisMet ? 'Met' : 'Not Met';
+        diagnosisSpan.className = diagnosisMet
+          ? 'pc-criterion-status pc-criterion-met'
+          : 'pc-criterion-status pc-criterion-not-met';
+      }
+
+      function updateCriterionDisplay(elemId, met, count, total) {
+        const elem = document.getElementById(elemId);
+        elem.textContent = met ? 'Met' : 'Not Met';
+        elem.className = met
+          ? 'pc-criterion-status pc-criterion-met'
+          : 'pc-criterion-status pc-criterion-not-met';
+
+        const countElem = document.getElementById(elemId + '-count');
+        if (countElem) countElem.textContent = count;
+      }
+
+      // Generate report
+      document.getElementById('pc-report-btn').addEventListener('click', function() {
+        const clusterB = parseInt(document.getElementById('pc-clusterB').textContent);
+        const clusterC = parseInt(document.getElementById('pc-clusterC').textContent);
+        const clusterD = parseInt(document.getElementById('pc-clusterD').textContent);
+        const clusterE = parseInt(document.getElementById('pc-clusterE').textContent);
+        const total = parseInt(document.getElementById('pc-total').textContent);
+        const severity = document.getElementById('pc-severity').textContent;
+
+        // Count endorsed symptoms (≥2)
+        let critBCount = 0, critCCount = 0, critDCount = 0, critECount = 0;
+        for (let i = 1; i <= 5; i++) {
+          if (parseInt(getSelectedValue(`pc-item-${i}`) || 0) >= 2) critBCount++;
+        }
+        for (let i = 6; i <= 7; i++) {
+          if (parseInt(getSelectedValue(`pc-item-${i}`) || 0) >= 2) critCCount++;
+        }
+        for (let i = 8; i <= 14; i++) {
+          if (parseInt(getSelectedValue(`pc-item-${i}`) || 0) >= 2) critDCount++;
+        }
+        for (let i = 15; i <= 20; i++) {
+          if (parseInt(getSelectedValue(`pc-item-${i}`) || 0) >= 2) critECount++;
+        }
+
+        const critBMet = critBCount >= 1 ? 'Met' : 'Not Met';
+        const critCMet = critCCount >= 1 ? 'Met' : 'Not Met';
+        const critDMet = critDCount >= 2 ? 'Met' : 'Not Met';
+        const critEMet = critECount >= 2 ? 'Met' : 'Not Met';
+
+        const allMetCriteria = (critBCount >= 1) && (critCCount >= 1) && (critDCount >= 2) && (critECount >= 2);
+        const diagnosisStatus = allMetCriteria ? 'Met' : 'Not Met';
+
+        // Get current date
+        const today = new Date();
+        const dateStr = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        let report = `PCL-5 (PTSD Checklist for DSM-5)\nDate: ${dateStr}\n\nTotal Score: ${total}/80\nSeverity: ${severity}\n\nCluster Scores:\n  B - Intrusion (Items 1-5): ${clusterB}/20\n  C - Avoidance (Items 6-7): ${clusterC}/8\n  D - Negative Cognitions/Mood (Items 8-14): ${clusterD}/28\n  E - Arousal/Reactivity (Items 15-20): ${clusterE}/24\n\nProvisional PTSD Diagnosis: ${diagnosisStatus}\n  Criterion B (≥1 intrusion symptom): ${critBMet} (${critBCount}/5 endorsed)\n  Criterion C (≥1 avoidance symptom): ${critCMet} (${critCCount}/2 endorsed)\n  Criterion D (≥2 negative cognition symptoms): ${critDMet} (${critDCount}/7 endorsed)\n  Criterion E (≥2 arousal symptoms): ${critEMet} (${critECount}/6 endorsed)\n\nCut-off Score (≥33): ${total >= 33 ? 'Above threshold' : 'Below threshold'}\n\nIndividual Item Scores:\n`;
+
+        const itemLabels = [
+          '1. Repeated, disturbing, and unwanted memories',
+          '2. Repeated, disturbing dreams',
+          '3. Feeling as if stressful experience is happening again',
+          '4. Feeling very upset when reminded',
+          '5. Strong physical reactions when reminded',
+          '6. Avoiding memories, thoughts, or feelings',
+          '7. Avoiding external reminders',
+          '8. Trouble remembering important parts',
+          '9. Strong negative beliefs',
+          '10. Blaming yourself or someone else',
+          '11. Strong negative feelings',
+          '12. Loss of interest in activities',
+          '13. Feeling distant or cut off',
+          '14. Trouble experiencing positive feelings',
+          '15. Irritable behavior or angry outbursts',
+          '16. Taking too many risks',
+          '17. Being superalert or watchful',
+          '18. Feeling jumpy or easily startled',
+          '19. Having difficulty concentrating',
+          '20. Trouble falling or staying asleep'
+        ];
+
+        for (let i = 1; i <= 20; i++) {
+          const score = getSelectedValue(`pc-item-${i}`) || '—';
+          report += `  Item ${itemLabels[i-1]}: ${score}\n`;
+        }
+
+        navigator.clipboard.writeText(report).then(() => {
+          const originalText = this.textContent;
+          this.textContent = 'Copied!';
+          setTimeout(() => {
+            this.textContent = originalText;
+          }, 2000);
+        });
+      });
+
+      // Reset button
+      document.getElementById('pc-reset-btn').addEventListener('click', function() {
+        if (confirm('Are you sure you want to reset all responses?')) {
+          document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.checked = false;
+          });
+          updateScores();
+        }
+      });
+
+      // Initial call
+      updateScores();
+    })();
+  </script>
+</section><!-- end pcl5-tool -->
+
+
+<section id="ymrs-tool" class="section">
+  <div class="section-header">
+    <h2>YMRS (Young Mania Rating Scale)</h2>
+    <p>
+      The Young Mania Rating Scale (YMRS) is an 11-item clinician-administered scale
+      for assessing the severity of manic symptoms in adults. Total score ranges from 0 to 60,
+      with higher scores indicating greater manic severity. Useful for baseline assessment and
+      monitoring treatment response in bipolar I and bipolar II disorders.
+    </p>
+  </div>
+
+  <div class="ym-warning mt-warning">
+    <strong>Clinical Use:</strong> This tool is for clinician assessment during interview.
+    Ratings should reflect the patient's behavior, speech, and reported subjective experience
+    during the assessment period. Not a substitute for full clinical evaluation.
+  </div>
+
+  <style>
+    /* YMRS Tool Styles - ym- prefix */
+    .ym-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .ym-item-group {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .ym-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .ym-item-num {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 30px;
+    }
+
+    .ym-item-title {
+      flex: 1;
+      margin: 0 8px;
+      font-size: 15px;
+    }
+
+    .ym-item-maxscore {
+      font-size: 13px;
+      color: #666;
+      background: #fff;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .ym-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .ym-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .ym-option:hover {
+      background-color: rgba(74, 124, 53, 0.08);
+    }
+
+    .ym-option input[type="radio"] {
+      margin-top: 4px;
+      cursor: pointer;
+      accent-color: var(--accent);
+    }
+
+    .ym-option label {
+      cursor: pointer;
+      flex: 1;
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .ym-score-display {
+      background: #fff;
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 24px 0;
+      text-align: center;
+    }
+
+    .ym-total-score {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .ym-max-label {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    .ym-severity-label {
+      font-size: 16px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .ym-severity-remission {
+      background: #e8f5e9;
+      color: #1b5e20;
+    }
+
+    .ym-severity-mild {
+      background: #fff3e0;
+      color: #e65100;
+    }
+
+    .ym-severity-moderate {
+      background: #ffe0b2;
+      color: #e65100;
+    }
+
+    .ym-severity-severe {
+      background: #ffcdd2;
+      color: #b71c1c;
+    }
+
+    .ym-button-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin: 24px 0;
+      flex-wrap: wrap;
+    }
+
+    .ym-button {
+      padding: 12px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .ym-button-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .ym-button-primary:hover {
+      background: #3d6429;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(74, 124, 53, 0.2);
+    }
+
+    .ym-button-secondary {
+      background: #d0ccc0;
+      color: var(--text);
+    }
+
+    .ym-button-secondary:hover {
+      background: #c0bab0;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .ym-summary-section {
+      background: #f9f7f2;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      margin-top: 24px;
+      display: none;
+    }
+
+    .ym-summary-section.ym-show {
+      display: block;
+    }
+
+    .ym-summary-title {
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    .ym-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 12px;
+    }
+
+    .ym-summary-item {
+      background: #fff;
+      padding: 10px;
+      border-radius: 4px;
+      border-left: 3px solid var(--accent);
+      font-size: 13px;
+    }
+
+    .ym-summary-item-label {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .ym-summary-item-score {
+      color: var(--accent);
+      font-weight: 700;
+      margin-left: 4px;
+    }
+  </style>
+
+  <div class="ym-container">
+    <form id="ym-form">
+      <!-- Item 1: Elevated Mood (0-4) -->
+      <div class="ym-item-group">
+        <div class="ym-item-header">
+          <span class="ym-item-num">1</span>
+          <span class="ym-item-title">Elevated Mood</span>
+          <span class="ym-item-maxscore">0–4</span>
+        </div>
+        <div class="ym-options">
+          <div class="ym-option">
+            <input type="radio" id="ym-item1-0" name="ym-item1" value="0" checked>
+            <label for="ym-item1-0"><strong>0</strong> = Absent</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item1-1" name="ym-item1" value="1">
+            <label for="ym-item1-1"><strong>1</strong> = Mildly or possibly increased on questioning</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item1-2" name="ym-item1" value="2">
+            <label for="ym-item1-2"><strong>2</strong> = Definite subjective elevation; optimistic, self-confident; cheerful; appropriate to content</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item1-3" name="ym-item1" value="3">
+            <label for="ym-item1-3"><strong>3</strong> = Elevated; inappropriate to content; humorous</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item1-4" name="ym-item1" value="4">
+            <label for="ym-item1-4"><strong>4</strong> = Euphoric; inappropriate laughter; singing</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2: Increased Motor Activity-Energy (0-4) -->
+      <div class="ym-item-group">
+        <div class="ym-item-header">
+          <span class="ym-item-num">2</span>
+          <span class="ym-item-title">Increased Motor Activity–Energy</span>
+          <span class="ym-item-maxscore">0–4</span>
+        </div>
+        <div class="ym-options">
+          <div class="ym-option">
+            <input type="radio" id="ym-item2-0" name="ym-item2" value="0" checked>
+            <label for="ym-item2-0"><strong>0</strong> = Absent</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item2-1" name="ym-item2" value="1">
+            <label for="ym-item2-1"><strong>1</strong> = Subjectively increased</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item2-2" name="ym-item2" value="2">
+            <label for="ym-item2-2"><strong>2</strong> = Animated; gestures increased</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item2-3" name="ym-item2" value="3">
+            <label for="ym-item2-3"><strong>3</strong> = Excessive energy; hyperactive at times; restless (can be calmed)</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item2-4" name="ym-item2" value="4">
+            <label for="ym-item2-4"><strong>4</strong> = Motor excitement; continuous hyperactivity (cannot be calmed)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3: Sexual Interest (0-4) -->
+      <div class="ym-item-group">
+        <div class="ym-item-header">
+          <span class="ym-item-num">3</span>
+          <span class="ym-item-title">Sexual Interest</span>
+          <span class="ym-item-maxscore">0–4</span>
+        </div>
+        <div class="ym-options">
+          <div class="ym-option">
+            <input type="radio" id="ym-item3-0" name="ym-item3" value="0" checked>
+            <label for="ym-item3-0"><strong>0</strong> = Normal; not increased</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item3-1" name="ym-item3" value="1">
+            <label for="ym-item3-1"><strong>1</strong> = Mildly or possibly increased</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item3-2" name="ym-item3" value="2">
+            <label for="ym-item3-2"><strong>2</strong> = Definite subjective increase on questioning</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item3-3" name="ym-item3" value="3">
+            <label for="ym-item3-3"><strong>3</strong> = Spontaneous sexual content; elaborates on sexual matters; hypersexual by self-report</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item3-4" name="ym-item3" value="4">
+            <label for="ym-item3-4"><strong>4</strong> = Overt sexual acts (toward patients, staff, or interviewer)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4: Sleep (0-4) -->
+      <div class="ym-item-group">
+        <div class="ym-item-header">
+          <span class="ym-item-num">4</span>
+          <span class="ym-item-title">Sleep</span>
+          <span class="ym-item-maxscore">0–4</span>
+        </div>
+        <div class="ym-options">
+          <div class="ym-option">
+            <input type="radio" id="ym-item4-0" name="ym-item4" value="0" checked>
+            <label for="ym-item4-0"><strong>0</strong> = Reports no decrease in sleep</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item4-1" name="ym-item4" value="1">
+            <label for="ym-item4-1"><strong>1</strong> = Sleeping less than normal amount by up to one hour</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item4-2" name="ym-item4" value="2">
+            <label for="ym-item4-2"><strong>2</strong> = Sleeping less than normal by more than one hour</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item4-3" name="ym-item4" value="3">
+            <label for="ym-item4-3"><strong>3</strong> = Reports decreased need for sleep</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item4-4" name="ym-item4" value="4">
+            <label for="ym-item4-4"><strong>4</strong> = Denies need for sleep</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 5: Irritability (0-8, double weighted) -->
+      <div class="ym-item-group">
+        <div class="ym-item-header">
+          <span class="ym-item-num">5</span>
+          <span class="ym-item-title">Irritability</span>
+          <span class="ym-item-maxscore">0–8</span>
+        </div>
+        <div class="ym-options">
+          <div class="ym-option">
+            <input type="radio" id="ym-item5-0" name="ym-item5" value="0" checked>
+            <label for="ym-item5-0"><strong>0</strong> = Absent</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item5-2" name="ym-item5" value="2">
+            <label for="ym-item5-2"><strong>2</strong> = Subjectively increased</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item5-4" name="ym-item5" value="4">
+            <label for="ym-item5-4"><strong>4</strong> = Irritable at times during interview; recent episodes of anger or annoyance on ward</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item5-6" name="ym-item5" value="6">
+            <label for="ym-item5-6"><strong>6</strong> = Frequently irritable during interview; short, curt throughout</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item5-8" name="ym-item5" value="8">
+            <label for="ym-item5-8"><strong>8</strong> = Hostile, uncooperative; interview impossible</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 6: Speech (Rate/Amount) (0-8, double weighted) -->
+      <div class="ym-item-group">
+        <div class="ym-item-header">
+          <span class="ym-item-num">6</span>
+          <span class="ym-item-title">Speech (Rate/Amount)</span>
+          <span class="ym-item-maxscore">0–8</span>
+        </div>
+        <div class="ym-options">
+          <div class="ym-option">
+            <input type="radio" id="ym-item6-0" name="ym-item6" value="0" checked>
+            <label for="ym-item6-0"><strong>0</strong> = No increase</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item6-2" name="ym-item6" value="2">
+            <label for="ym-item6-2"><strong>2</strong> = Feels talkative</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item6-4" name="ym-item6" value="4">
+            <label for="ym-item6-4"><strong>4</strong> = Increased rate or amount at times, verbose at times</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item6-6" name="ym-item6" value="6">
+            <label for="ym-item6-6"><strong>6</strong> = Push; consistently increased rate and amount; difficult to interrupt</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item6-8" name="ym-item6" value="8">
+            <label for="ym-item6-8"><strong>8</strong> = Pressured; uninterruptible, continuous speech</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 7: Language-Thought Disorder (0-4) -->
+      <div class="ym-item-group">
+        <div class="ym-item-header">
+          <span class="ym-item-num">7</span>
+          <span class="ym-item-title">Language–Thought Disorder</span>
+          <span class="ym-item-maxscore">0–4</span>
+        </div>
+        <div class="ym-options">
+          <div class="ym-option">
+            <input type="radio" id="ym-item7-0" name="ym-item7" value="0" checked>
+            <label for="ym-item7-0"><strong>0</strong> = Absent</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item7-1" name="ym-item7" value="1">
+            <label for="ym-item7-1"><strong>1</strong> = Circumstantial; mild distractibility; quick thoughts</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item7-2" name="ym-item7" value="2">
+            <label for="ym-item7-2"><strong>2</strong> = Distractible; loses goal of thought; changes topics frequently; racing thoughts</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item7-3" name="ym-item7" value="3">
+            <label for="ym-item7-3"><strong>3</strong> = Flight of ideas; tangentiality; difficult to follow; rhyming; echolalia</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item7-4" name="ym-item7" value="4">
+            <label for="ym-item7-4"><strong>4</strong> = Incoherent; communication impossible</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 8: Content (0-8, double weighted) -->
+      <div class="ym-item-group">
+        <div class="ym-item-header">
+          <span class="ym-item-num">8</span>
+          <span class="ym-item-title">Content</span>
+          <span class="ym-item-maxscore">0–8</span>
+        </div>
+        <div class="ym-options">
+          <div class="ym-option">
+            <input type="radio" id="ym-item8-0" name="ym-item8" value="0" checked>
+            <label for="ym-item8-0"><strong>0</strong> = Normal</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item8-2" name="ym-item8" value="2">
+            <label for="ym-item8-2"><strong>2</strong> = Questionable plans, new interests</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item8-4" name="ym-item8" value="4">
+            <label for="ym-item8-4"><strong>4</strong> = Special project(s); hyperreligious</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item8-6" name="ym-item8" value="6">
+            <label for="ym-item8-6"><strong>6</strong> = Grandiose or paranoid ideas; ideas of reference</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item8-8" name="ym-item8" value="8">
+            <label for="ym-item8-8"><strong>8</strong> = Delusions; hallucinations</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 9: Disruptive-Aggressive Behavior (0-8, double weighted) -->
+      <div class="ym-item-group">
+        <div class="ym-item-header">
+          <span class="ym-item-num">9</span>
+          <span class="ym-item-title">Disruptive–Aggressive Behavior</span>
+          <span class="ym-item-maxscore">0–8</span>
+        </div>
+        <div class="ym-options">
+          <div class="ym-option">
+            <input type="radio" id="ym-item9-0" name="ym-item9" value="0" checked>
+            <label for="ym-item9-0"><strong>0</strong> = Absent, cooperative</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item9-2" name="ym-item9" value="2">
+            <label for="ym-item9-2"><strong>2</strong> = Sarcastic; loud at times, guarded</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item9-4" name="ym-item9" value="4">
+            <label for="ym-item9-4"><strong>4</strong> = Demanding; threats on ward</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item9-6" name="ym-item9" value="6">
+            <label for="ym-item9-6"><strong>6</strong> = Threatens interviewer; shouting; interview difficult</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item9-8" name="ym-item9" value="8">
+            <label for="ym-item9-8"><strong>8</strong> = Assaultive; destructive; interview impossible</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 10: Appearance (0-4) -->
+      <div class="ym-item-group">
+        <div class="ym-item-header">
+          <span class="ym-item-num">10</span>
+          <span class="ym-item-title">Appearance</span>
+          <span class="ym-item-maxscore">0–4</span>
+        </div>
+        <div class="ym-options">
+          <div class="ym-option">
+            <input type="radio" id="ym-item10-0" name="ym-item10" value="0" checked>
+            <label for="ym-item10-0"><strong>0</strong> = Appropriate dress and grooming</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item10-1" name="ym-item10" value="1">
+            <label for="ym-item10-1"><strong>1</strong> = Minimally unkempt</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item10-2" name="ym-item10" value="2">
+            <label for="ym-item10-2"><strong>2</strong> = Poorly groomed; moderately disheveled; overdressed</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item10-3" name="ym-item10" value="3">
+            <label for="ym-item10-3"><strong>3</strong> = Disheveled; partly undressed; garish make-up</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item10-4" name="ym-item10" value="4">
+            <label for="ym-item10-4"><strong>4</strong> = Completely unkempt; decorated; bizarre garb</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 11: Insight (0-4) -->
+      <div class="ym-item-group">
+        <div class="ym-item-header">
+          <span class="ym-item-num">11</span>
+          <span class="ym-item-title">Insight</span>
+          <span class="ym-item-maxscore">0–4</span>
+        </div>
+        <div class="ym-options">
+          <div class="ym-option">
+            <input type="radio" id="ym-item11-0" name="ym-item11" value="0" checked>
+            <label for="ym-item11-0"><strong>0</strong> = Present; admits illness; agrees with need for treatment</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item11-1" name="ym-item11" value="1">
+            <label for="ym-item11-1"><strong>1</strong> = Possibly ill</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item11-2" name="ym-item11" value="2">
+            <label for="ym-item11-2"><strong>2</strong> = Admits behavior change, but denies illness</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item11-3" name="ym-item11" value="3">
+            <label for="ym-item11-3"><strong>3</strong> = Admits possible change in behavior, but denies illness</label>
+          </div>
+          <div class="ym-option">
+            <input type="radio" id="ym-item11-4" name="ym-item11" value="4">
+            <label for="ym-item11-4"><strong>4</strong> = Denies any behavior change</label>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- Score Display -->
+    <div class="ym-score-display">
+      <div class="ym-total-score" id="ym-total-score">0</div>
+      <div class="ym-max-label">/ 60</div>
+      <div class="ym-severity-label" id="ym-severity-level">Remission</div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="ym-button-group">
+      <button type="button" class="ym-button ym-button-primary" id="ym-report-btn">Generate Report & Copy</button>
+      <button type="button" class="ym-button ym-button-secondary" id="ym-reset-btn">Reset</button>
+    </div>
+
+    <!-- Summary Section -->
+    <div class="ym-summary-section" id="ym-summary">
+      <div class="ym-summary-title">Item Scores</div>
+      <div class="ym-summary-grid" id="ym-summary-grid">
+        <!-- Populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const ITEM_CONFIG = {
+        'ym-item1': { name: 'Elevated Mood', max: 4 },
+        'ym-item2': { name: 'Increased Motor Activity–Energy', max: 4 },
+        'ym-item3': { name: 'Sexual Interest', max: 4 },
+        'ym-item4': { name: 'Sleep', max: 4 },
+        'ym-item5': { name: 'Irritability', max: 8 },
+        'ym-item6': { name: 'Speech (Rate/Amount)', max: 8 },
+        'ym-item7': { name: 'Language–Thought Disorder', max: 4 },
+        'ym-item8': { name: 'Content', max: 8 },
+        'ym-item9': { name: 'Disruptive–Aggressive Behavior', max: 8 },
+        'ym-item10': { name: 'Appearance', max: 4 },
+        'ym-item11': { name: 'Insight', max: 4 }
+      };
+
+      const form = document.getElementById('ym-form');
+      const totalScoreEl = document.getElementById('ym-total-score');
+      const severityEl = document.getElementById('ym-severity-level');
+      const reportBtn = document.getElementById('ym-report-btn');
+      const resetBtn = document.getElementById('ym-reset-btn');
+      const summarySection = document.getElementById('ym-summary');
+      const summaryGrid = document.getElementById('ym-summary-grid');
+
+      function calculateScore() {
+        let total = 0;
+        const scores = {};
+
+        for (let itemNum = 1; itemNum <= 11; itemNum++) {
+          const itemName = `ym-item${itemNum}`;
+          const selected = form.querySelector(`input[name="${itemName}"]:checked`);
+          const score = selected ? parseInt(selected.value, 10) : 0;
+          total += score;
+          scores[itemNum] = score;
+        }
+
+        return { total, scores };
+      }
+
+      function getSeverityLevel(total) {
+        if (total < 12) return { level: 'Remission', class: 'ym-severity-remission' };
+        if (total < 20) return { level: 'Mild mania', class: 'ym-severity-mild' };
+        if (total < 26) return { level: 'Moderate mania', class: 'ym-severity-moderate' };
+        return { level: 'Severe mania', class: 'ym-severity-severe' };
+      }
+
+      function updateDisplay() {
+        const { total, scores } = calculateScore();
+        const severity = getSeverityLevel(total);
+
+        totalScoreEl.textContent = total;
+        severityEl.textContent = severity.level;
+        severityEl.className = `ym-severity-label ${severity.class}`;
+
+        // Update summary grid
+        summaryGrid.innerHTML = '';
+        for (let itemNum = 1; itemNum <= 11; itemNum++) {
+          const config = ITEM_CONFIG[`ym-item${itemNum}`];
+          const score = scores[itemNum];
+          const summaryItem = document.createElement('div');
+          summaryItem.className = 'ym-summary-item';
+          summaryItem.innerHTML = `
+            <div class="ym-summary-item-label">${itemNum}. ${config.name}</div>
+            <div class="ym-summary-item-score">${score}/${config.max}</div>
+          `;
+          summaryGrid.appendChild(summaryItem);
+        }
+
+        summarySection.classList.add('ym-show');
+      }
+
+      function generateReport() {
+        const { total, scores } = calculateScore();
+        const severity = getSeverityLevel(total);
+
+        // Get current date in YYYY-MM-DD format
+        const today = new Date();
+        const dateStr = today.toISOString().split('T')[0];
+
+        const lines = [
+          'Young Mania Rating Scale (YMRS)',
+          `Date: ${dateStr}`,
+          '',
+          `Total Score: ${total}/60`,
+          `Severity: ${severity.level}`,
+          '',
+          'Individual Item Scores:',
+          `  1. Elevated Mood: ${scores[1]}/4`,
+          `  2. Increased Motor Activity–Energy: ${scores[2]}/4`,
+          `  3. Sexual Interest: ${scores[3]}/4`,
+          `  4. Sleep: ${scores[4]}/4`,
+          `  5. Irritability: ${scores[5]}/8`,
+          `  6. Speech (Rate/Amount): ${scores[6]}/8`,
+          `  7. Language–Thought Disorder: ${scores[7]}/4`,
+          `  8. Content: ${scores[8]}/8`,
+          `  9. Disruptive–Aggressive Behavior: ${scores[9]}/8`,
+          `  10. Appearance: ${scores[10]}/4`,
+          `  11. Insight: ${scores[11]}/4`,
+          '',
+          `Clinical Note: Score of ${total} indicates ${severity.level.toLowerCase()}.`
+        ];
+
+        return lines.join('\n');
+      }
+
+      function copyReport() {
+        const report = generateReport();
+        navigator.clipboard.writeText(report).then(() => {
+          const orig = reportBtn.textContent;
+          reportBtn.textContent = 'Copied!';
+          setTimeout(() => {
+            reportBtn.textContent = orig;
+          }, 2000);
+        }).catch(err => {
+          console.error('Failed to copy:', err);
+        });
+      }
+
+      function resetForm() {
+        if (confirm('Reset all scores? This action cannot be undone.')) {
+          form.reset();
+          updateDisplay();
+        }
+      }
+
+      // Event listeners
+      form.addEventListener('change', updateDisplay);
+      reportBtn.addEventListener('click', copyReport);
+      resetBtn.addEventListener('click', resetForm);
+
+      // Initial display
+      updateDisplay();
+    })();
+  </script>
+</section><!-- end ymrs-tool -->
+
+
+<section id="ybocs-tool" class="section">
+  <div class="section-header">
+    <h2>Y-BOCS (Yale-Brown Obsessive Compulsive Scale)</h2>
+    <p>Comprehensive assessment of obsessive-compulsive symptoms and severity. The Y-BOCS includes a symptom checklist to identify current and past obsessions and compulsions, plus a 10-item severity scale (items 1–10) that measures time occupied, interference, distress, resistance, and control. Supplemental items (1b, 6b) and investigational items (11–19) provide additional clinical context but are not included in the total score.</p>
+  </div>
+
+  <div class="yb-warning mt-warning">
+    <strong>Clinical Note:</strong> The Y-BOCS is a clinician-administered scale. This tool supports structured scoring and documentation. Interpret scores in clinical context: 0–7 Subclinical, 8–15 Mild, 16–23 Moderate, 24–31 Severe, 32–40 Extreme OCD.
+  </div>
+
+  <style>
+    .yb-tab-container {
+      margin: 1.5rem 0;
+    }
+
+    .yb-tab-buttons {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .yb-tab-btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .yb-tab-btn.yb-active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .yb-tab-btn:hover {
+      color: var(--accent);
+    }
+
+    .yb-tab-content {
+      display: none;
+    }
+
+    .yb-tab-content.yb-active {
+      display: block;
+    }
+
+    .yb-checklist-category {
+      margin-bottom: 2rem;
+      padding: 1.25rem;
+      background: var(--bg2);
+      border-left: 4px solid var(--accent);
+      border-radius: 4px;
+    }
+
+    .yb-category-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .yb-checklist-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+      align-items: center;
+    }
+
+    .yb-checklist-label {
+      flex: 1;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .yb-checkbox-pair {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .yb-checkbox-pair label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    .yb-checkbox-pair input[type="checkbox"] {
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+    }
+
+    .yb-severity-item {
+      margin-bottom: 2rem;
+      padding: 1.25rem;
+      background: var(--bg2);
+      border-radius: 4px;
+    }
+
+    .yb-item-header {
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+    }
+
+    .yb-item-subheader {
+      font-size: 0.85rem;
+      color: #666;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .yb-radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .yb-radio-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+    }
+
+    .yb-radio-option:hover {
+      background-color: rgba(74, 124, 53, 0.05);
+    }
+
+    .yb-radio-option input[type="radio"] {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      flex-shrink: 0;
+      accent-color: var(--accent);
+    }
+
+    .yb-radio-label {
+      flex: 1;
+      cursor: pointer;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    .yb-investigational-section {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #f9f7f2;
+      border-left: 4px solid var(--accent2);
+      border-radius: 4px;
+    }
+
+    .yb-investigational-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent2);
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .yb-investigational-title::before {
+      content: "▼";
+      display: inline-block;
+      width: 1em;
+      transition: transform 0.3s ease;
+    }
+
+    .yb-investigational-title.yb-collapsed::before {
+      transform: rotate(-90deg);
+    }
+
+    .yb-investigational-items {
+      margin-top: 1rem;
+      max-height: 2000px;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .yb-investigational-items.yb-collapsed {
+      max-height: 0;
+    }
+
+    .yb-score-display {
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, rgba(74, 124, 53, 0.08), rgba(139, 105, 20, 0.05));
+      border-left: 4px solid var(--accent);
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .yb-score-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .yb-score-label {
+      font-weight: 600;
+    }
+
+    .yb-score-value {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .yb-severity-level {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 1rem;
+    }
+
+    .yb-severity-label {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .yb-severity-badge {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 4px;
+      font-weight: 700;
+      margin-left: 0.5rem;
+    }
+
+    .yb-button-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .yb-btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .yb-btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .yb-btn-primary:hover {
+      background: #3d6530;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(74, 124, 53, 0.3);
+    }
+
+    .yb-btn-secondary {
+      background: var(--accent2);
+      color: white;
+    }
+
+    .yb-btn-secondary:hover {
+      background: #6f5310;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(139, 105, 20, 0.3);
+    }
+  </style>
+
+  <div class="yb-tab-container">
+    <div class="yb-tab-buttons">
+      <button class="yb-tab-btn yb-active" data-tab="checklist">Symptom Checklist</button>
+      <button class="yb-tab-btn" data-tab="severity">Severity Scale</button>
+    </div>
+
+    <!-- TAB 1: SYMPTOM CHECKLIST -->
+    <div id="yb-tab-checklist" class="yb-tab-content yb-active">
+      <p style="margin-bottom: 1.5rem; font-style: italic; color: #666;">
+        Check each symptom that the patient has experienced. Mark <strong>Current</strong> if present in the past week; mark <strong>Past</strong> if experienced previously but not currently.
+      </p>
+
+      <!-- AGGRESSIVE OBSESSIONS -->
+      <div class="yb-checklist-category">
+        <div class="yb-category-title">Aggressive Obsessions</div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Fear might harm self</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-agg-harm-self" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-agg-harm-self" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Fear might harm others</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-agg-harm-others" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-agg-harm-others" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Violent or horrific images</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-agg-violent" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-agg-violent" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Fear of blurting out obscenities or insults</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-agg-blurt" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-agg-blurt" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Fear of doing something else embarrassing</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-agg-embarrass" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-agg-embarrass" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Fear will act on unwanted impulses</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-agg-impulses" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-agg-impulses" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Fear will steal things</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-agg-steal" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-agg-steal" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Fear will harm others because not careful enough</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-agg-careless" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-agg-careless" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Fear will be responsible for something terrible happening</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-agg-responsible" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-agg-responsible" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Other aggressive obsessions</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-agg-other" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-agg-other" data-type="past"> Past</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTAMINATION OBSESSIONS -->
+      <div class="yb-checklist-category">
+        <div class="yb-category-title">Contamination Obsessions</div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Concerns with bodily waste or secretions</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-cont-bodily" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-cont-bodily" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Concern with dirt or germs</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-cont-germs" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-cont-germs" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Excessive concern with environmental contaminants</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-cont-environ" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-cont-environ" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Excessive concern with household items</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-cont-household" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-cont-household" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Excessive concern with animals</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-cont-animals" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-cont-animals" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Bothered by sticky substances or residues</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-cont-sticky" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-cont-sticky" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Concerned will get ill because of contaminant</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-cont-get-ill" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-cont-get-ill" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Concerned will get others ill by spreading contaminant</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-cont-spread" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-cont-spread" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">No concern with consequences other than how it might feel</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-cont-feel" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-cont-feel" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Other contamination obsessions</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-cont-other" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-cont-other" data-type="past"> Past</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEXUAL OBSESSIONS -->
+      <div class="yb-checklist-category">
+        <div class="yb-category-title">Sexual Obsessions</div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Forbidden or perverse sexual thoughts, images, or impulses</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-sex-forbidden" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-sex-forbidden" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Content involves children or incest</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-sex-children" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-sex-children" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Content involves homosexuality</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-sex-homo" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-sex-homo" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Sexual behavior toward others</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-sex-behavior" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-sex-behavior" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Other sexual obsessions</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-sex-other" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-sex-other" data-type="past"> Past</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOARDING/SAVING OBSESSIONS -->
+      <div class="yb-checklist-category">
+        <div class="yb-category-title">Hoarding/Saving Obsessions</div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Hoarding/saving (distinct from hobbies and monetary/sentimental value)</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-hoard-save" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-hoard-save" data-type="past"> Past</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- RELIGIOUS OBSESSIONS -->
+      <div class="yb-checklist-category">
+        <div class="yb-category-title">Religious Obsessions</div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Concerned with sacrilege and blasphemy</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-rel-sacrilege" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-rel-sacrilege" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Excess concern with right/wrong, morality</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-rel-morality" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-rel-morality" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Other religious obsessions</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-rel-other" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-rel-other" data-type="past"> Past</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SYMMETRY/EXACTNESS OBSESSIONS -->
+      <div class="yb-checklist-category">
+        <div class="yb-category-title">Symmetry or Exactness Obsessions</div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Accompanied by magical thinking</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-sym-magic" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-sym-magic" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Not accompanied by magical thinking</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-sym-no-magic" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-sym-no-magic" data-type="past"> Past</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOMATIC OBSESSIONS -->
+      <div class="yb-checklist-category">
+        <div class="yb-category-title">Somatic Obsessions</div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Concern with illness or disease</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-som-illness" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-som-illness" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Excessive concern with body part or appearance</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-som-body" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-som-body" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Other somatic obsessions</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-som-other" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-som-other" data-type="past"> Past</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- MISCELLANEOUS OBSESSIONS -->
+      <div class="yb-checklist-category">
+        <div class="yb-category-title">Miscellaneous Obsessions</div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Need to know or remember</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-misc-know" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-misc-know" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Fear of saying certain things</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-misc-say" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-misc-say" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Fear of not saying just the right thing</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-misc-right" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-misc-right" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Fear of losing things</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-misc-lose" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-misc-lose" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Intrusive (non-violent) images</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-misc-images" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-misc-images" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Intrusive nonsense sounds, words, or music</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-misc-sounds" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-misc-sounds" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Bothered by certain sounds/noises</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-misc-noises" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-misc-noises" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Lucky/unlucky numbers</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-misc-numbers" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-misc-numbers" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Colors with special significance / Superstitious fears</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-obs-misc-colors" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-obs-misc-colors" data-type="past"> Past</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPULSIONS -->
+      <h3 style="margin-top: 2.5rem; margin-bottom: 1.5rem; color: var(--accent); font-size: 1.1rem;">Compulsions</h3>
+
+      <!-- CLEANING/WASHING COMPULSIONS -->
+      <div class="yb-checklist-category">
+        <div class="yb-category-title">Cleaning/Washing Compulsions</div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Excessive or ritualized handwashing</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-clean-hand" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-clean-hand" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Excessive or ritualized showering, bathing, toothbrushing, grooming, or toilet routine</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-clean-shower" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-clean-shower" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Other measures to prevent or remove contact with contaminants</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-clean-prevent" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-clean-prevent" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Other cleaning/washing compulsions</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-clean-other" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-clean-other" data-type="past"> Past</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHECKING COMPULSIONS -->
+      <div class="yb-checklist-category">
+        <div class="yb-category-title">Checking Compulsions</div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Checking locks, stove, appliances, etc.</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-check-locks" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-check-locks" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Checking that did not/will not harm others</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-check-harm-others" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-check-harm-others" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Checking that did not/will not harm self</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-check-harm-self" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-check-harm-self" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Checking that nothing terrible did/will happen</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-check-terrible" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-check-terrible" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Checking that did not make mistake</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-check-mistake" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-check-mistake" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Checking tied to somatic obsessions</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-check-somatic" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-check-somatic" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Other checking compulsions</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-check-other" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-check-other" data-type="past"> Past</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPEATING RITUALS -->
+      <div class="yb-checklist-category">
+        <div class="yb-category-title">Repeating Rituals</div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Re-reading or re-writing</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-repeat-read" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-repeat-read" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Need to repeat routine activities</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-repeat-routine" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-repeat-routine" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Other repeating rituals</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-repeat-other" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-repeat-other" data-type="past"> Past</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- COUNTING COMPULSIONS -->
+      <div class="yb-checklist-category">
+        <div class="yb-category-title">Counting Compulsions</div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Counting compulsions</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-count" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-count" data-type="past"> Past</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ORDERING/ARRANGING -->
+      <div class="yb-checklist-category">
+        <div class="yb-category-title">Ordering/Arranging Compulsions</div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Ordering/arranging compulsions</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-order" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-order" data-type="past"> Past</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOARDING/COLLECTING -->
+      <div class="yb-checklist-category">
+        <div class="yb-category-title">Hoarding/Collecting Compulsions</div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Hoarding/collecting compulsions</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-hoard" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-hoard" data-type="past"> Past</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- MISCELLANEOUS COMPULSIONS -->
+      <div class="yb-checklist-category">
+        <div class="yb-category-title">Miscellaneous Compulsions</div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Excessive listmaking</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-misc-list" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-misc-list" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Need to tell, ask, or confess</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-misc-tell" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-misc-tell" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Need to touch, tap, or rub</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-misc-touch" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-misc-touch" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Rituals involving blinking or staring</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-misc-blink" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-misc-blink" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Measures (not checking) to prevent harm to self</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-misc-prevent-self" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-misc-prevent-self" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Measures (not checking) to prevent harm to others</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-misc-prevent-others" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-misc-prevent-others" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Measures (not checking) to prevent terrible consequences</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-misc-prevent-consequences" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-misc-prevent-consequences" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Ritualized eating behaviors</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-misc-eating" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-misc-eating" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Superstitious behaviors</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-misc-superstition" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-misc-superstition" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Trichotillomania</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-misc-trich" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-misc-trich" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Other self-damaging or self-mutilating behaviors</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-misc-self-harm" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-misc-self-harm" data-type="past"> Past</label>
+          </div>
+        </div>
+        <div class="yb-checklist-item">
+          <label class="yb-checklist-label">Other miscellaneous compulsions</label>
+          <div class="yb-checkbox-pair">
+            <label><input type="checkbox" class="yb-comp-misc-other" data-type="current"> Current</label>
+            <label><input type="checkbox" class="yb-comp-misc-other" data-type="past"> Past</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: SEVERITY SCALE -->
+    <div id="yb-tab-severity" class="yb-tab-content">
+      <p style="margin-bottom: 1.5rem; font-style: italic; color: #666;">
+        Rate each item on the 0–4 scale using the anchor descriptions provided. Select one response per item. The total score (Items 1–10) ranges from 0 to 40.
+      </p>
+
+      <h3 style="margin-top: 2rem; margin-bottom: 1.5rem; color: var(--accent); font-size: 1.1rem;">Obsessions (Items 1–5)</h3>
+
+      <!-- ITEM 1 -->
+      <div class="yb-severity-item">
+        <div class="yb-item-header">1. Time Occupied by Obsessive Thoughts</div>
+        <div class="yb-radio-group">
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-1" value="0" id="yb-item-1-0">
+            <label for="yb-item-1-0" class="yb-radio-label">
+              <strong>0 = None</strong> — No obsessive thoughts.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-1" value="1" id="yb-item-1-1">
+            <label for="yb-item-1-1" class="yb-radio-label">
+              <strong>1 = Mild</strong> — Less than 1 hour per day or occasional intrusion, does not interfere significantly with daily functioning.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-1" value="2" id="yb-item-1-2">
+            <label for="yb-item-1-2" class="yb-radio-label">
+              <strong>2 = Moderate</strong> — 1 to 3 hours per day or frequent intrusion; some interference with functioning.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-1" value="3" id="yb-item-1-3">
+            <label for="yb-item-1-3" class="yb-radio-label">
+              <strong>3 = Severe</strong> — Greater than 3 and up to 8 hours per day or very frequent intrusion; significant impairment.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-1" value="4" id="yb-item-1-4">
+            <label for="yb-item-1-4" class="yb-radio-label">
+              <strong>4 = Extreme</strong> — Greater than 8 hours per day or near constant intrusion; severe functional impairment.
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 1b (supplemental) -->
+      <div class="yb-severity-item" style="background: #f5f0e8; border-left-color: var(--accent2);">
+        <div class="yb-item-header" style="color: var(--accent2);">1b. Obsession-Free Interval <span style="font-size: 0.85rem; font-weight: normal;">(not included in total score)</span></div>
+        <div class="yb-radio-group">
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-1b" value="0" id="yb-item-1b-0">
+            <label for="yb-item-1b-0" class="yb-radio-label">
+              <strong>0 = No symptoms</strong>
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-1b" value="1" id="yb-item-1b-1">
+            <label for="yb-item-1b-1" class="yb-radio-label">
+              <strong>1 = Long interval</strong> — More than 8 consecutive hours/day symptom-free.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-1b" value="2" id="yb-item-1b-2">
+            <label for="yb-item-1b-2" class="yb-radio-label">
+              <strong>2 = Moderately long interval</strong> — More than 3 and up to 8 consecutive hours/day symptom-free.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-1b" value="3" id="yb-item-1b-3">
+            <label for="yb-item-1b-3" class="yb-radio-label">
+              <strong>3 = Short interval</strong> — 1 to 3 consecutive hours/day symptom-free.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-1b" value="4" id="yb-item-1b-4">
+            <label for="yb-item-1b-4" class="yb-radio-label">
+              <strong>4 = Extremely short interval</strong> — Less than 1 consecutive hour/day symptom-free.
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 2 -->
+      <div class="yb-severity-item">
+        <div class="yb-item-header">2. Interference Due to Obsessive Thoughts</div>
+        <div class="yb-radio-group">
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-2" value="0" id="yb-item-2-0">
+            <label for="yb-item-2-0" class="yb-radio-label">
+              <strong>0 = None</strong> — No interference with social or occupational activities.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-2" value="1" id="yb-item-2-1">
+            <label for="yb-item-2-1" class="yb-radio-label">
+              <strong>1 = Mild</strong> — Slight interference; overall performance not impaired.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-2" value="2" id="yb-item-2-2">
+            <label for="yb-item-2-2" class="yb-radio-label">
+              <strong>2 = Moderate</strong> — Definite interference; still manageable with effort.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-2" value="3" id="yb-item-2-3">
+            <label for="yb-item-2-3" class="yb-radio-label">
+              <strong>3 = Severe</strong> — Substantial impairment in social or occupational performance.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-2" value="4" id="yb-item-2-4">
+            <label for="yb-item-2-4" class="yb-radio-label">
+              <strong>4 = Extreme</strong> — Incapacitating; unable to function in affected domains.
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 3 -->
+      <div class="yb-severity-item">
+        <div class="yb-item-header">3. Distress Associated with Obsessive Thoughts</div>
+        <div class="yb-radio-group">
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-3" value="0" id="yb-item-3-0">
+            <label for="yb-item-3-0" class="yb-radio-label">
+              <strong>0 = None</strong> — Thoughts cause no distress.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-3" value="1" id="yb-item-3-1">
+            <label for="yb-item-3-1" class="yb-radio-label">
+              <strong>1 = Mild</strong> — Not too disturbing; manageable anxiety.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-3" value="2" id="yb-item-3-2">
+            <label for="yb-item-3-2" class="yb-radio-label">
+              <strong>2 = Moderate</strong> — Disturbing, but still manageable.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-3" value="3" id="yb-item-3-3">
+            <label for="yb-item-3-3" class="yb-radio-label">
+              <strong>3 = Severe</strong> — Very disturbing; significant anxiety.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-3" value="4" id="yb-item-3-4">
+            <label for="yb-item-3-4" class="yb-radio-label">
+              <strong>4 = Extreme</strong> — Disabling distress; near constant anguish.
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 4 -->
+      <div class="yb-severity-item">
+        <div class="yb-item-header">4. Resistance Against Obsessions</div>
+        <div class="yb-item-subheader">How much effort does the patient exert to resist the obsessions?</div>
+        <div class="yb-radio-group">
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-4" value="0" id="yb-item-4-0">
+            <label for="yb-item-4-0" class="yb-radio-label">
+              <strong>0 = Makes effort to always resist</strong> — Or symptoms so minimal that resistance is not needed.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-4" value="1" id="yb-item-4-1">
+            <label for="yb-item-4-1" class="yb-radio-label">
+              <strong>1 = Tries to resist most of the time</strong>
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-4" value="2" id="yb-item-4-2">
+            <label for="yb-item-4-2" class="yb-radio-label">
+              <strong>2 = Makes some effort to resist</strong>
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-4" value="3" id="yb-item-4-3">
+            <label for="yb-item-4-3" class="yb-radio-label">
+              <strong>3 = Yields without attempting to control</strong> — But does so with reluctance.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-4" value="4" id="yb-item-4-4">
+            <label for="yb-item-4-4" class="yb-radio-label">
+              <strong>4 = Completely yields to obsessions</strong> — Willingly; no attempt at resistance.
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 5 -->
+      <div class="yb-severity-item">
+        <div class="yb-item-header">5. Degree of Control Over Obsessive Thoughts</div>
+        <div class="yb-item-subheader">How much can the patient stop or divert the obsessions?</div>
+        <div class="yb-radio-group">
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-5" value="0" id="yb-item-5-0">
+            <label for="yb-item-5-0" class="yb-radio-label">
+              <strong>0 = Complete control</strong> — Can stop obsessions with no difficulty.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-5" value="1" id="yb-item-5-1">
+            <label for="yb-item-5-1" class="yb-radio-label">
+              <strong>1 = Much control</strong> — Usually able to stop or divert with effort and concentration.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-5" value="2" id="yb-item-5-2">
+            <label for="yb-item-5-2" class="yb-radio-label">
+              <strong>2 = Moderate control</strong> — Sometimes able to stop or divert.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-5" value="3" id="yb-item-5-3">
+            <label for="yb-item-5-3" class="yb-radio-label">
+              <strong>3 = Little control</strong> — Rarely successful; can only divert attention with difficulty.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-5" value="4" id="yb-item-5-4">
+            <label for="yb-item-5-4" class="yb-radio-label">
+              <strong>4 = No control</strong> — Completely involuntary; rarely able to alter thinking.
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 2.5rem; margin-bottom: 1.5rem; color: var(--accent); font-size: 1.1rem;">Compulsions (Items 6–10)</h3>
+
+      <!-- ITEM 6 -->
+      <div class="yb-severity-item">
+        <div class="yb-item-header">6. Time Spent Performing Compulsive Behaviors</div>
+        <div class="yb-radio-group">
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-6" value="0" id="yb-item-6-0">
+            <label for="yb-item-6-0" class="yb-radio-label">
+              <strong>0 = None</strong> — No compulsive behaviors.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-6" value="1" id="yb-item-6-1">
+            <label for="yb-item-6-1" class="yb-radio-label">
+              <strong>1 = Mild</strong> — Spends less than 1 hour per day or occasional performance.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-6" value="2" id="yb-item-6-2">
+            <label for="yb-item-6-2" class="yb-radio-label">
+              <strong>2 = Moderate</strong> — 1 to 3 hours per day or frequent performance.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-6" value="3" id="yb-item-6-3">
+            <label for="yb-item-6-3" class="yb-radio-label">
+              <strong>3 = Severe</strong> — More than 3 and up to 8 hours per day or very frequent performance.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-6" value="4" id="yb-item-6-4">
+            <label for="yb-item-6-4" class="yb-radio-label">
+              <strong>4 = Extreme</strong> — More than 8 hours per day or near constant performance.
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 6b (supplemental) -->
+      <div class="yb-severity-item" style="background: #f5f0e8; border-left-color: var(--accent2);">
+        <div class="yb-item-header" style="color: var(--accent2);">6b. Compulsion-Free Interval <span style="font-size: 0.85rem; font-weight: normal;">(not included in total score)</span></div>
+        <div class="yb-radio-group">
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-6b" value="0" id="yb-item-6b-0">
+            <label for="yb-item-6b-0" class="yb-radio-label">
+              <strong>0 = No symptoms</strong>
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-6b" value="1" id="yb-item-6b-1">
+            <label for="yb-item-6b-1" class="yb-radio-label">
+              <strong>1 = Long interval</strong> — More than 8 consecutive hours/day symptom-free.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-6b" value="2" id="yb-item-6b-2">
+            <label for="yb-item-6b-2" class="yb-radio-label">
+              <strong>2 = Moderately long interval</strong> — More than 3 and up to 8 consecutive hours/day.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-6b" value="3" id="yb-item-6b-3">
+            <label for="yb-item-6b-3" class="yb-radio-label">
+              <strong>3 = Short interval</strong> — 1 to 3 consecutive hours/day symptom-free.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-6b" value="4" id="yb-item-6b-4">
+            <label for="yb-item-6b-4" class="yb-radio-label">
+              <strong>4 = Extremely short interval</strong> — Less than 1 consecutive hour/day symptom-free.
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 7 -->
+      <div class="yb-severity-item">
+        <div class="yb-item-header">7. Interference Due to Compulsive Behaviors</div>
+        <div class="yb-radio-group">
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-7" value="0" id="yb-item-7-0">
+            <label for="yb-item-7-0" class="yb-radio-label">
+              <strong>0 = None</strong> — No interference with activities.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-7" value="1" id="yb-item-7-1">
+            <label for="yb-item-7-1" class="yb-radio-label">
+              <strong>1 = Mild</strong> — Slight interference; overall performance not impaired.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-7" value="2" id="yb-item-7-2">
+            <label for="yb-item-7-2" class="yb-radio-label">
+              <strong>2 = Moderate</strong> — Definite interference; still manageable.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-7" value="3" id="yb-item-7-3">
+            <label for="yb-item-7-3" class="yb-radio-label">
+              <strong>3 = Severe</strong> — Substantial impairment in social or occupational performance.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-7" value="4" id="yb-item-7-4">
+            <label for="yb-item-7-4" class="yb-radio-label">
+              <strong>4 = Extreme</strong> — Incapacitating.
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 8 -->
+      <div class="yb-severity-item">
+        <div class="yb-item-header">8. Distress Associated with Compulsive Behavior</div>
+        <div class="yb-radio-group">
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-8" value="0" id="yb-item-8-0">
+            <label for="yb-item-8-0" class="yb-radio-label">
+              <strong>0 = None</strong> — No anxiety if compulsions are prevented.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-8" value="1" id="yb-item-8-1">
+            <label for="yb-item-8-1" class="yb-radio-label">
+              <strong>1 = Mild</strong> — Only slightly anxious if compulsions prevented or during performance.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-8" value="2" id="yb-item-8-2">
+            <label for="yb-item-8-2" class="yb-radio-label">
+              <strong>2 = Moderate</strong> — Anxiety would mount but remain manageable if compulsions prevented.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-8" value="3" id="yb-item-8-3">
+            <label for="yb-item-8-3" class="yb-radio-label">
+              <strong>3 = Severe</strong> — Prominent and very disturbing increase in anxiety if interrupted.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-8" value="4" id="yb-item-8-4">
+            <label for="yb-item-8-4" class="yb-radio-label">
+              <strong>4 = Extreme</strong> — Incapacitating anxiety from any intervention.
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 9 -->
+      <div class="yb-severity-item">
+        <div class="yb-item-header">9. Resistance Against Compulsions</div>
+        <div class="yb-item-subheader">How much effort does the patient exert to resist the compulsions?</div>
+        <div class="yb-radio-group">
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-9" value="0" id="yb-item-9-0">
+            <label for="yb-item-9-0" class="yb-radio-label">
+              <strong>0 = Makes effort to always resist</strong> — Or symptoms so minimal that resistance is not needed.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-9" value="1" id="yb-item-9-1">
+            <label for="yb-item-9-1" class="yb-radio-label">
+              <strong>1 = Tries to resist most of the time</strong>
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-9" value="2" id="yb-item-9-2">
+            <label for="yb-item-9-2" class="yb-radio-label">
+              <strong>2 = Makes some effort to resist</strong>
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-9" value="3" id="yb-item-9-3">
+            <label for="yb-item-9-3" class="yb-radio-label">
+              <strong>3 = Yields without attempting to control</strong> — But does so with reluctance.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-9" value="4" id="yb-item-9-4">
+            <label for="yb-item-9-4" class="yb-radio-label">
+              <strong>4 = Completely yields to compulsions</strong> — Willingly; no attempt at resistance.
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 10 -->
+      <div class="yb-severity-item">
+        <div class="yb-item-header">10. Degree of Control Over Compulsive Behavior</div>
+        <div class="yb-item-subheader">How much voluntary control can the patient exert?</div>
+        <div class="yb-radio-group">
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-10" value="0" id="yb-item-10-0">
+            <label for="yb-item-10-0" class="yb-radio-label">
+              <strong>0 = Complete control</strong> — Can stop compulsions with no difficulty.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-10" value="1" id="yb-item-10-1">
+            <label for="yb-item-10-1" class="yb-radio-label">
+              <strong>1 = Much control</strong> — Experiences pressure but usually able to exercise voluntary control.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-10" value="2" id="yb-item-10-2">
+            <label for="yb-item-10-2" class="yb-radio-label">
+              <strong>2 = Moderate control</strong> — Strong pressure to perform; can control only with difficulty.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-10" value="3" id="yb-item-10-3">
+            <label for="yb-item-10-3" class="yb-radio-label">
+              <strong>3 = Little control</strong> — Very strong drive; must carry to completion; can only delay with difficulty.
+            </label>
+          </div>
+          <div class="yb-radio-option">
+            <input type="radio" name="yb-item-10" value="4" id="yb-item-10-4">
+            <label for="yb-item-10-4" class="yb-radio-label">
+              <strong>4 = No control</strong> — Drive completely involuntary and overpowering.
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- INVESTIGATIONAL ITEMS SECTION -->
+      <div class="yb-investigational-section">
+        <div class="yb-investigational-title" onclick="this.classList.toggle('yb-collapsed'); this.nextElementSibling.classList.toggle('yb-collapsed');">
+          Investigational Items (Items 11–19, not included in total score)
+        </div>
+
+        <div class="yb-investigational-items">
+          <!-- ITEM 11 -->
+          <div class="yb-severity-item">
+            <div class="yb-item-header">11. Insight Into Obsessions and Compulsions</div>
+            <div class="yb-radio-group">
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-11" value="0" id="yb-item-11-0">
+                <label for="yb-item-11-0" class="yb-radio-label">
+                  <strong>0 = Excellent insight</strong> — Fully rational; recognizes obsessions are irrational.
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-11" value="1" id="yb-item-11-1">
+                <label for="yb-item-11-1" class="yb-radio-label">
+                  <strong>1 = Good insight</strong> — Mostly recognizes irrationality; some doubt.
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-11" value="2" id="yb-item-11-2">
+                <label for="yb-item-11-2" class="yb-radio-label">
+                  <strong>2 = Fair insight</strong> — Uncertain whether thoughts are rational or irrational.
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-11" value="3" id="yb-item-11-3">
+                <label for="yb-item-11-3" class="yb-radio-label">
+                  <strong>3 = Poor insight</strong> — Overvalued ideas present; believes obsessions may be rational.
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-11" value="4" id="yb-item-11-4">
+                <label for="yb-item-11-4" class="yb-radio-label">
+                  <strong>4 = Lacks insight</strong> — Delusional; convinced obsessions are rational.
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 12 -->
+          <div class="yb-severity-item">
+            <div class="yb-item-header">12. Avoidance</div>
+            <div class="yb-radio-group">
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-12" value="0" id="yb-item-12-0">
+                <label for="yb-item-12-0" class="yb-radio-label">
+                  <strong>0 = No deliberate avoidance</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-12" value="1" id="yb-item-12-1">
+                <label for="yb-item-12-1" class="yb-radio-label">
+                  <strong>1 = Mild avoidance</strong> — Minimal, occasional avoidance.
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-12" value="2" id="yb-item-12-2">
+                <label for="yb-item-12-2" class="yb-radio-label">
+                  <strong>2 = Moderate avoidance</strong> — Some avoidance; clearly present.
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-12" value="3" id="yb-item-12-3">
+                <label for="yb-item-12-3" class="yb-radio-label">
+                  <strong>3 = Severe avoidance</strong> — Much avoidance; prominent.
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-12" value="4" id="yb-item-12-4">
+                <label for="yb-item-12-4" class="yb-radio-label">
+                  <strong>4 = Extreme avoidance</strong> — Very extensive; pervasive.
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 13 -->
+          <div class="yb-severity-item">
+            <div class="yb-item-header">13. Degree of Indecisiveness</div>
+            <div class="yb-radio-group">
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-13" value="0" id="yb-item-13-0">
+                <label for="yb-item-13-0" class="yb-radio-label">
+                  <strong>0 = None</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-13" value="1" id="yb-item-13-1">
+                <label for="yb-item-13-1" class="yb-radio-label">
+                  <strong>1 = Mild</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-13" value="2" id="yb-item-13-2">
+                <label for="yb-item-13-2" class="yb-radio-label">
+                  <strong>2 = Moderate</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-13" value="3" id="yb-item-13-3">
+                <label for="yb-item-13-3" class="yb-radio-label">
+                  <strong>3 = Severe</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-13" value="4" id="yb-item-13-4">
+                <label for="yb-item-13-4" class="yb-radio-label">
+                  <strong>4 = Extreme</strong> — Unable to make any decisions.
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 14 -->
+          <div class="yb-severity-item">
+            <div class="yb-item-header">14. Overvalued Sense of Responsibility</div>
+            <div class="yb-radio-group">
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-14" value="0" id="yb-item-14-0">
+                <label for="yb-item-14-0" class="yb-radio-label">
+                  <strong>0 = None</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-14" value="1" id="yb-item-14-1">
+                <label for="yb-item-14-1" class="yb-radio-label">
+                  <strong>1 = Mild</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-14" value="2" id="yb-item-14-2">
+                <label for="yb-item-14-2" class="yb-radio-label">
+                  <strong>2 = Moderate</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-14" value="3" id="yb-item-14-3">
+                <label for="yb-item-14-3" class="yb-radio-label">
+                  <strong>3 = Severe</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-14" value="4" id="yb-item-14-4">
+                <label for="yb-item-14-4" class="yb-radio-label">
+                  <strong>4 = Extreme</strong> — Delusional sense of responsibility.
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 15 -->
+          <div class="yb-severity-item">
+            <div class="yb-item-header">15. Pervasive Slowness/Disturbance of Inertia</div>
+            <div class="yb-radio-group">
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-15" value="0" id="yb-item-15-0">
+                <label for="yb-item-15-0" class="yb-radio-label">
+                  <strong>0 = None</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-15" value="1" id="yb-item-15-1">
+                <label for="yb-item-15-1" class="yb-radio-label">
+                  <strong>1 = Mild</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-15" value="2" id="yb-item-15-2">
+                <label for="yb-item-15-2" class="yb-radio-label">
+                  <strong>2 = Moderate</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-15" value="3" id="yb-item-15-3">
+                <label for="yb-item-15-3" class="yb-radio-label">
+                  <strong>3 = Severe</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-15" value="4" id="yb-item-15-4">
+                <label for="yb-item-15-4" class="yb-radio-label">
+                  <strong>4 = Extreme</strong>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 16 -->
+          <div class="yb-severity-item">
+            <div class="yb-item-header">16. Pathological Doubting</div>
+            <div class="yb-radio-group">
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-16" value="0" id="yb-item-16-0">
+                <label for="yb-item-16-0" class="yb-radio-label">
+                  <strong>0 = None</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-16" value="1" id="yb-item-16-1">
+                <label for="yb-item-16-1" class="yb-radio-label">
+                  <strong>1 = Mild</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-16" value="2" id="yb-item-16-2">
+                <label for="yb-item-16-2" class="yb-radio-label">
+                  <strong>2 = Moderate</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-16" value="3" id="yb-item-16-3">
+                <label for="yb-item-16-3" class="yb-radio-label">
+                  <strong>3 = Severe</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-16" value="4" id="yb-item-16-4">
+                <label for="yb-item-16-4" class="yb-radio-label">
+                  <strong>4 = Extreme</strong>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 17 -->
+          <div class="yb-severity-item">
+            <div class="yb-item-header">17. Global Severity Rating</div>
+            <div class="yb-radio-group">
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-17" value="0" id="yb-item-17-0">
+                <label for="yb-item-17-0" class="yb-radio-label">
+                  <strong>0 = No illness</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-17" value="1" id="yb-item-17-1">
+                <label for="yb-item-17-1" class="yb-radio-label">
+                  <strong>1 = Slight</strong> — Doubtful, transient; no functional impairment.
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-17" value="2" id="yb-item-17-2">
+                <label for="yb-item-17-2" class="yb-radio-label">
+                  <strong>2 = Mild</strong> — Symptoms present, little functional impairment.
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-17" value="3" id="yb-item-17-3">
+                <label for="yb-item-17-3" class="yb-radio-label">
+                  <strong>3 = Moderate</strong> — Moderate symptoms, functions with effort.
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-17" value="4" id="yb-item-17-4">
+                <label for="yb-item-17-4" class="yb-radio-label">
+                  <strong>4 = Moderate-Severe</strong> — Limited functioning.
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-17" value="5" id="yb-item-17-5">
+                <label for="yb-item-17-5" class="yb-radio-label">
+                  <strong>5 = Severe</strong> — Functions mainly with assistance.
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-17" value="6" id="yb-item-17-6">
+                <label for="yb-item-17-6" class="yb-radio-label">
+                  <strong>6 = Extremely severe</strong> — Completely nonfunctional.
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 18 -->
+          <div class="yb-severity-item">
+            <div class="yb-item-header">18. Global Improvement</div>
+            <div class="yb-radio-group">
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-18" value="0" id="yb-item-18-0">
+                <label for="yb-item-18-0" class="yb-radio-label">
+                  <strong>0 = Very much worse</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-18" value="1" id="yb-item-18-1">
+                <label for="yb-item-18-1" class="yb-radio-label">
+                  <strong>1 = Much worse</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-18" value="2" id="yb-item-18-2">
+                <label for="yb-item-18-2" class="yb-radio-label">
+                  <strong>2 = Minimally worse</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-18" value="3" id="yb-item-18-3">
+                <label for="yb-item-18-3" class="yb-radio-label">
+                  <strong>3 = No change</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-18" value="4" id="yb-item-18-4">
+                <label for="yb-item-18-4" class="yb-radio-label">
+                  <strong>4 = Minimally improved</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-18" value="5" id="yb-item-18-5">
+                <label for="yb-item-18-5" class="yb-radio-label">
+                  <strong>5 = Much improved</strong>
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-18" value="6" id="yb-item-18-6">
+                <label for="yb-item-18-6" class="yb-radio-label">
+                  <strong>6 = Very much improved</strong>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 19 -->
+          <div class="yb-severity-item">
+            <div class="yb-item-header">19. Reliability of Rating</div>
+            <div class="yb-radio-group">
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-19" value="0" id="yb-item-19-0">
+                <label for="yb-item-19-0" class="yb-radio-label">
+                  <strong>0 = Excellent</strong> — Patient fully cooperative and reliable.
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-19" value="1" id="yb-item-19-1">
+                <label for="yb-item-19-1" class="yb-radio-label">
+                  <strong>1 = Good</strong> — Patient mostly cooperative.
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-19" value="2" id="yb-item-19-2">
+                <label for="yb-item-19-2" class="yb-radio-label">
+                  <strong>2 = Fair</strong> — Patient somewhat evasive or uncooperative.
+                </label>
+              </div>
+              <div class="yb-radio-option">
+                <input type="radio" name="yb-item-19" value="3" id="yb-item-19-3">
+                <label for="yb-item-19-3" class="yb-radio-label">
+                  <strong>3 = Poor</strong> — Patient unreliable or uncooperative.
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCORE DISPLAY -->
+      <div class="yb-score-display">
+        <div class="yb-score-row">
+          <span class="yb-score-label">Obsession Subtotal (Items 1–5):</span>
+          <span class="yb-score-value" id="yb-obs-subtotal">0</span>/20
+        </div>
+        <div class="yb-score-row">
+          <span class="yb-score-label">Compulsion Subtotal (Items 6–10):</span>
+          <span class="yb-score-value" id="yb-comp-subtotal">0</span>/20
+        </div>
+        <div class="yb-score-row" style="font-size: 1.1rem; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 2px solid var(--border);">
+          <span class="yb-score-label">Total Score (Items 1–10):</span>
+          <span class="yb-score-value" id="yb-total-score">0</span>/40
+        </div>
+        <div class="yb-severity-level">
+          <span class="yb-severity-label">Severity:</span>
+          <span class="yb-severity-badge" id="yb-severity-badge">Subclinical</span>
+        </div>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="yb-button-group">
+        <button class="yb-btn yb-btn-primary" id="yb-generate-btn">Generate Report & Copy</button>
+        <button class="yb-btn yb-btn-secondary" id="yb-reset-btn">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      // ============================================================
+      // TAB SWITCHING
+      // ============================================================
+      document.querySelectorAll('.yb-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tab = btn.dataset.tab;
+
+          // Remove active from all buttons and contents
+          document.querySelectorAll('.yb-tab-btn').forEach(b => b.classList.remove('yb-active'));
+          document.querySelectorAll('.yb-tab-content').forEach(c => c.classList.remove('yb-active'));
+
+          // Add active to clicked button and corresponding content
+          btn.classList.add('yb-active');
+          document.getElementById(`yb-tab-${tab}`).classList.add('yb-active');
+        });
+      });
+
+      // ============================================================
+      // SCORING - SEVERITY SCALE TAB
+      // ============================================================
+      const items = {
+        obs: ['1', '2', '3', '4', '5'],
+        comp: ['6', '7', '8', '9', '10'],
+        supp: ['1b', '6b'],
+        invest: ['11', '12', '13', '14', '15', '16', '17', '18', '19']
+      };
+
+      function getSelectedValue(itemNum) {
+        const radio = document.querySelector(`input[name="yb-item-${itemNum}"]:checked`);
+        return radio ? parseInt(radio.value) : 0;
+      }
+
+      function updateScores() {
+        // Obsession subtotal (items 1-5)
+        const obsScores = items.obs.map(num => getSelectedValue(num));
+        const obsSubtotal = obsScores.reduce((a, b) => a + b, 0);
+        document.getElementById('yb-obs-subtotal').textContent = obsSubtotal;
+
+        // Compulsion subtotal (items 6-10)
+        const compScores = items.comp.map(num => getSelectedValue(num));
+        const compSubtotal = compScores.reduce((a, b) => a + b, 0);
+        document.getElementById('yb-comp-subtotal').textContent = compSubtotal;
+
+        // Total (items 1-10)
+        const total = obsSubtotal + compSubtotal;
+        document.getElementById('yb-total-score').textContent = total;
+
+        // Severity level
+        let severity = 'Subclinical';
+        if (total >= 8 && total <= 15) severity = 'Mild';
+        else if (total >= 16 && total <= 23) severity = 'Moderate';
+        else if (total >= 24 && total <= 31) severity = 'Severe';
+        else if (total >= 32) severity = 'Extreme';
+
+        document.getElementById('yb-severity-badge').textContent = severity;
+      }
+
+      // Add listeners to all radio buttons
+      document.querySelectorAll('input[type="radio"][name^="yb-item-"]').forEach(radio => {
+        radio.addEventListener('change', updateScores);
+      });
+
+      // ============================================================
+      // GENERATE REPORT & COPY
+      // ============================================================
+      document.getElementById('yb-generate-btn').addEventListener('click', () => {
+        const obsSubtotal = parseInt(document.getElementById('yb-obs-subtotal').textContent);
+        const compSubtotal = parseInt(document.getElementById('yb-comp-subtotal').textContent);
+        const totalScore = parseInt(document.getElementById('yb-total-score').textContent);
+        const severity = document.getElementById('yb-severity-badge').textContent;
+
+        // Get individual item scores
+        const obsItems = {};
+        items.obs.forEach(num => {
+          obsItems[num] = getSelectedValue(num);
+        });
+
+        const compItems = {};
+        items.comp.forEach(num => {
+          compItems[num] = getSelectedValue(num);
+        });
+
+        const suppItems = {};
+        items.supp.forEach(num => {
+          suppItems[num] = getSelectedValue(num);
+        });
+
+        const investItems = {};
+        items.invest.forEach(num => {
+          investItems[num] = getSelectedValue(num);
+        });
+
+        // Get symptom checklist data
+        const obsessionsCurrentList = [];
+        const obsessionsPastList = [];
+        const compulsionsCurrentList = [];
+        const compulsionsPastList = [];
+
+        document.querySelectorAll('input[type="checkbox"][class^="yb-obs-"]').forEach(cb => {
+          if (cb.checked) {
+            const label = cb.closest('.yb-checklist-item').querySelector('.yb-checklist-label').textContent.trim();
+            if (cb.dataset.type === 'current') obsessionsCurrentList.push(label);
+            else obsessionsPastList.push(label);
+          }
+        });
+
+        document.querySelectorAll('input[type="checkbox"][class^="yb-comp-"]').forEach(cb => {
+          if (cb.checked) {
+            const label = cb.closest('.yb-checklist-item').querySelector('.yb-checklist-label').textContent.trim();
+            if (cb.dataset.type === 'current') compulsionsCurrentList.push(label);
+            else compulsionsPastList.push(label);
+          }
+        });
+
+        const today = new Date().toISOString().split('T')[0];
+
+        const report = `Yale-Brown Obsessive Compulsive Scale (Y-BOCS)
+Date: ${today}
+
+SEVERITY SCALE
+Obsession Subtotal (Items 1-5): ${obsSubtotal}/20
+Compulsion Subtotal (Items 6-10): ${compSubtotal}/20
+Total Score: ${totalScore}/40
+Severity: ${severity}
+
+Core Item Scores:
+  Obsessions:
+    1. Time Occupied: ${obsItems['1']}
+    2. Interference: ${obsItems['2']}
+    3. Distress: ${obsItems['3']}
+    4. Resistance: ${obsItems['4']}
+    5. Control: ${obsItems['5']}
+  Compulsions:
+    6. Time Spent: ${compItems['6']}
+    7. Interference: ${compItems['7']}
+    8. Distress: ${compItems['8']}
+    9. Resistance: ${compItems['9']}
+    10. Control: ${compItems['10']}
+
+Supplemental Items (not in total):
+  1b. Obsession-Free Interval: ${suppItems['1b']}
+  6b. Compulsion-Free Interval: ${suppItems['6b']}
+
+Investigational Items:
+  11. Insight: ${investItems['11']}
+  12. Avoidance: ${investItems['12']}
+  13. Indecisiveness: ${investItems['13']}
+  14. Overvalued Responsibility: ${investItems['14']}
+  15. Pervasive Slowness: ${investItems['15']}
+  16. Pathological Doubting: ${investItems['16']}
+  17. Global Severity: ${investItems['17']}
+  18. Global Improvement: ${investItems['18']}
+  19. Reliability: ${investItems['19']}
+
+SYMPTOM CHECKLIST
+Current Obsessions: ${obsessionsCurrentList.length > 0 ? obsessionsCurrentList.join('; ') : 'None endorsed'}
+Past Obsessions: ${obsessionsPastList.length > 0 ? obsessionsPastList.join('; ') : 'None endorsed'}
+Current Compulsions: ${compulsionsCurrentList.length > 0 ? compulsionsCurrentList.join('; ') : 'None endorsed'}
+Past Compulsions: ${compulsionsPastList.length > 0 ? compulsionsPastList.join('; ') : 'None endorsed'}`;
+
+        navigator.clipboard.writeText(report).then(() => {
+          const btn = document.getElementById('yb-generate-btn');
+          const orig = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = orig; }, 2000);
+        });
+      });
+
+      // ============================================================
+      // RESET BUTTON
+      // ============================================================
+      document.getElementById('yb-reset-btn').addEventListener('click', () => {
+        if (confirm('Are you sure you want to reset all Y-BOCS scores and checkboxes?')) {
+          // Clear all radio buttons
+          document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.checked = false;
+          });
+
+          // Clear all checkboxes
+          document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.checked = false;
+          });
+
+          // Reset score display
+          document.getElementById('yb-obs-subtotal').textContent = '0';
+          document.getElementById('yb-comp-subtotal').textContent = '0';
+          document.getElementById('yb-total-score').textContent = '0';
+          document.getElementById('yb-severity-badge').textContent = 'Subclinical';
+        }
+      });
+    })();
+  </script>
+</section><!-- end ybocs-tool -->
+
 
 
 
