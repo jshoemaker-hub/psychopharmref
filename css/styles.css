@@ -3325,10 +3325,162 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #b0a898; }
 
-/* ── Responsive ────────────────────────────────────────────────────────── */
+/* ── Mobile hamburger button ───────────────────────────────────────────── */
+#mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 200;
+  width: 44px;
+  height: 44px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  padding: 0;
+}
+#mobile-menu-btn span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.2s;
+}
+/* Overlay behind sidebar on mobile */
+#sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 99;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+#sidebar-overlay.overlay-visible {
+  opacity: 1;
+}
+
+/* ── Responsive: tablet (≤900px) ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  .section { padding: 24px 20px 40px; }
+  .stats-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+}
+
+/* ── Responsive: mobile (≤768px) ──────────────────────────────────────── */
 @media (max-width: 768px) {
-  :root { --sidebar-w: 0px; }
-  #sidebar { display: none; }
-  #content { margin-left: 0; }
-  .section { padding: 20px 16px 40px; }
+  /* Show hamburger button */
+  #mobile-menu-btn {
+    display: flex;
+  }
+
+  /* Sidebar: hidden off-screen by default, slides in */
+  #sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    width: 280px;
+    display: flex;
+  }
+  #sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  /* Overlay visible when sidebar open */
+  #sidebar-overlay {
+    display: block;
+    pointer-events: none;
+  }
+  #sidebar-overlay.overlay-visible {
+    pointer-events: auto;
+  }
+
+  /* Content takes full width */
+  #content {
+    margin-left: 0;
+  }
+
+  /* Section padding — leave room for hamburger button */
+  .section {
+    padding: 64px 16px 40px;
+    max-width: 100%;
+  }
+
+  /* Section headers */
+  .section-header h2 {
+    font-size: 20px;
+  }
+
+  /* Prevent body scroll when sidebar open */
+  body.sidebar-is-open {
+    overflow: hidden;
+  }
+
+  /* Drug table: horizontal scroll */
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Stats grid */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  /* Receptor binding detail layout */
+  .ki-detail-layout {
+    flex-direction: column;
+  }
+
+  /* Clinical tool forms — better touch targets */
+  input[type="radio"],
+  input[type="checkbox"] {
+    min-width: 18px;
+    min-height: 18px;
+  }
+
+  /* Warning boxes */
+  .mt-warning {
+    font-size: 13px;
+    padding: 12px 14px;
+  }
+
+  /* Table controls */
+  .table-controls {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .table-controls input {
+    min-width: unset;
+    width: 100%;
+  }
+}
+
+/* ── Responsive: small mobile (≤480px) ────────────────────────────────── */
+@media (max-width: 480px) {
+  .section {
+    padding: 60px 12px 32px;
+  }
+
+  .section-header h2 {
+    font-size: 18px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .stat-card {
+    padding: 12px 10px;
+  }
+
+  /* Collapsible accordion headers — easier to tap */
+  button, .ci-btn, .pc-btn, .ym-btn, .yb-btn {
+    min-height: 44px;
+  }
 }

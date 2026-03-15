@@ -47,6 +47,12 @@
   </style>
 </head>
 <body>
+  <!-- Mobile hamburger button -->
+  <button id="mobile-menu-btn" aria-label="Open navigation menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div id="sidebar-overlay"></div>
+
   <!-- Sidebar Navigation -->
   <nav id="sidebar">
     <div class="sidebar-header">
@@ -951,5 +957,20 @@ document.querySelectorAll('.nav-parent-btn').forEach(btn => {
 })();
 </script>
 
+
+  <script>
+  (function() {
+    var btn = document.getElementById('mobile-menu-btn');
+    var sidebar = document.getElementById('sidebar');
+    var overlay = document.getElementById('sidebar-overlay');
+    if (!btn || !sidebar || !overlay) return;
+    function open() { sidebar.classList.add('sidebar-open'); overlay.classList.add('overlay-visible'); document.body.classList.add('sidebar-is-open'); }
+    function close() { sidebar.classList.remove('sidebar-open'); overlay.classList.remove('overlay-visible'); document.body.classList.remove('sidebar-is-open'); }
+    btn.addEventListener('click', function() { sidebar.classList.contains('sidebar-open') ? close() : open(); });
+    overlay.addEventListener('click', close);
+    // Close sidebar when clicking nav links on mobile
+    sidebar.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { if (window.innerWidth <= 768) close(); }); });
+  })();
+  </script>
 </body>
 </html>
