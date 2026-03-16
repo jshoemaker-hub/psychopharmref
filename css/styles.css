@@ -712,6 +712,79 @@ td {
   flex-shrink: 0;
 }
 
+/* ── FDA Black Box Warnings ───────────────────────────────────────────── */
+.modal-bbw h4 {
+  color: #b91c1c;
+}
+.bbw-container {
+  background: #fef2f2;
+  border: 2px solid #b91c1c;
+  border-radius: 4px;
+  padding: 12px;
+}
+.bbw-item {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #7f1d1d;
+  padding: 6px 0 6px 20px;
+  position: relative;
+}
+.bbw-item::before {
+  content: "\26A0";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  font-size: 13px;
+}
+.bbw-item + .bbw-item {
+  border-top: 1px solid #fecaca;
+}
+
+/* ── Common Side Effects ─────────────────────────────────────────────── */
+.se-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.se-category {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.se-system {
+  min-width: 130px;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--accent2);
+  padding-top: 4px;
+  flex-shrink: 0;
+}
+.se-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.se-tag {
+  display: inline-block;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 2px 8px;
+  font-size: 12px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .se-category {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .se-system {
+    min-width: unset;
+  }
+}
+
 /* ── Receptor Glossary ─────────────────────────────────────────────────── */
 .glossary-controls {
   display: flex;

@@ -3312,3 +3312,841 @@ const CIRCUIT_CONDITIONS_MAP = {
   'Papez Circuit (Hippocampal Memory)':   ['Alzheimer Disease', 'Delirium', 'Amnesia', 'MCI'],
   'Cholinergic Basal Forebrain':          ['Alzheimer Disease', 'Delirium', 'MCI', 'Memory Impairment'],
 };
+
+
+// ─── FDA Safety Data: Black Box Warnings & Common Side Effects ───────────────
+const FDA_SAFETY_DATA = {
+
+// ── SSRIs ────────────────────────────────────────────────────────────────────
+fluoxetine: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['headache', 'insomnia', 'somnolence', 'tremor', 'anxiety', 'nervousness'],
+    'GI': ['nausea', 'diarrhea', 'anorexia', 'dry mouth'],
+    'Sexual': ['decreased libido', 'erectile dysfunction', 'anorgasmia'],
+    'Other': ['asthenia', 'diaphoresis', 'rash']
+  }
+},
+sertraline: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['headache', 'insomnia', 'somnolence', 'tremor', 'dizziness'],
+    'GI': ['nausea', 'diarrhea', 'dyspepsia', 'dry mouth'],
+    'Sexual': ['decreased libido', 'erectile dysfunction', 'anorgasmia'],
+    'Other': ['diaphoresis', 'fatigue']
+  }
+},
+escitalopram: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.', 'QT prolongation at doses above 20 mg/day; dose-dependent risk of torsades de pointes.'],
+  sideEffects: {
+    'CNS': ['insomnia', 'somnolence', 'tremor', 'headache', 'dizziness'],
+    'GI': ['nausea', 'diarrhea', 'dry mouth'],
+    'Cardiovascular': ['QT prolongation'],
+    'Sexual': ['sexual dysfunction'],
+    'Other': ['diaphoresis', 'fatigue']
+  }
+},
+paroxetine: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.', 'Cardiovascular malformations associated with first trimester exposure; avoid in pregnancy when possible.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'insomnia', 'tremor', 'headache', 'dizziness'],
+    'GI': ['nausea', 'constipation', 'dry mouth', 'diarrhea'],
+    'Sexual': ['sexual dysfunction', 'decreased libido', 'anorgasmia'],
+    'Metabolic/Endocrine': ['weight gain', 'hyponatremia'],
+    'Other': ['diaphoresis', 'asthenia']
+  }
+},
+citalopram: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.', 'Dose-dependent QT prolongation; maximum recommended dose 40 mg/day (20 mg in elderly).'],
+  sideEffects: {
+    'CNS': ['somnolence', 'insomnia', 'tremor', 'headache'],
+    'GI': ['nausea', 'dry mouth', 'diarrhea'],
+    'Cardiovascular': ['QT prolongation'],
+    'Sexual': ['sexual dysfunction'],
+    'Other': ['diaphoresis', 'fatigue']
+  }
+},
+fluvoxamine: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'insomnia', 'headache', 'tremor', 'dizziness', 'nervousness'],
+    'GI': ['nausea', 'diarrhea', 'dry mouth', 'vomiting'],
+    'Sexual': ['sexual dysfunction'],
+    'Other': ['diaphoresis', 'asthenia']
+  }
+},
+
+// ── SNRIs ────────────────────────────────────────────────────────────────────
+venlafaxine: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['headache', 'somnolence', 'insomnia', 'tremor', 'dizziness', 'nervousness'],
+    'GI': ['nausea', 'anorexia', 'constipation', 'dry mouth'],
+    'Cardiovascular': ['hypertension', 'tachycardia'],
+    'Sexual': ['sexual dysfunction', 'decreased libido'],
+    'Other': ['diaphoresis', 'asthenia']
+  }
+},
+duloxetine: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.', 'Hepatotoxicity risk; contraindicated in chronic liver disease or hepatic cirrhosis.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'headache', 'dizziness', 'insomnia', 'tremor'],
+    'GI': ['nausea', 'dry mouth', 'constipation', 'diarrhea'],
+    'Cardiovascular': ['hypertension'],
+    'Sexual': ['sexual dysfunction'],
+    'Other': ['diaphoresis', 'fatigue']
+  }
+},
+desvenlafaxine: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['headache', 'somnolence', 'insomnia', 'dizziness', 'tremor'],
+    'GI': ['nausea', 'dry mouth', 'constipation'],
+    'Cardiovascular': ['hypertension'],
+    'Sexual': ['sexual dysfunction'],
+    'Other': ['diaphoresis', 'asthenia']
+  }
+},
+milnacipran: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['headache', 'somnolence', 'dizziness', 'insomnia'],
+    'GI': ['nausea', 'constipation', 'dry mouth'],
+    'Cardiovascular': ['hypertension', 'palpitations', 'tachycardia'],
+    'Sexual': ['sexual dysfunction'],
+    'Other': ['diaphoresis', 'hot flushes']
+  }
+},
+levomilnacipran: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['headache', 'somnolence', 'dizziness', 'insomnia'],
+    'GI': ['nausea', 'constipation', 'vomiting', 'dry mouth'],
+    'Cardiovascular': ['hypertension', 'palpitations', 'tachycardia'],
+    'Sexual': ['sexual dysfunction', 'erectile dysfunction'],
+    'Other': ['diaphoresis', 'fatigue']
+  }
+},
+
+// ── TCAs ─────────────────────────────────────────────────────────────────────
+amitriptyline: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'dizziness', 'tremor', 'headache', 'confusion'],
+    'GI': ['dry mouth', 'constipation', 'nausea'],
+    'Cardiovascular': ['orthostatic hypotension', 'tachycardia', 'QT prolongation'],
+    'Sexual': ['sexual dysfunction', 'erectile dysfunction'],
+    'Metabolic/Endocrine': ['weight gain'],
+    'Other': ['blurred vision', 'urinary retention', 'diaphoresis']
+  }
+},
+nortriptyline: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'dizziness', 'tremor', 'headache'],
+    'GI': ['dry mouth', 'constipation'],
+    'Cardiovascular': ['orthostatic hypotension', 'tachycardia'],
+    'Sexual': ['sexual dysfunction'],
+    'Other': ['blurred vision', 'urinary retention']
+  }
+},
+imipramine: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'dizziness', 'tremor', 'headache', 'confusion'],
+    'GI': ['dry mouth', 'constipation', 'nausea'],
+    'Cardiovascular': ['orthostatic hypotension', 'tachycardia', 'QT prolongation'],
+    'Sexual': ['sexual dysfunction', 'erectile dysfunction'],
+    'Metabolic/Endocrine': ['weight gain'],
+    'Other': ['blurred vision', 'urinary retention', 'diaphoresis']
+  }
+},
+doxepin: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'dizziness', 'headache', 'tremor'],
+    'GI': ['dry mouth', 'constipation', 'nausea'],
+    'Cardiovascular': ['orthostatic hypotension', 'tachycardia'],
+    'Sexual': ['sexual dysfunction'],
+    'Other': ['blurred vision', 'weight gain']
+  }
+},
+
+// ── MAOIs ────────────────────────────────────────────────────────────────────
+phenelzine: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.', 'Hypertensive crisis risk with tyramine-containing foods, sympathomimetics, and serotonergic drugs; strict dietary restrictions required.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'headache', 'tremor', 'dizziness', 'insomnia'],
+    'GI': ['dry mouth', 'constipation', 'nausea'],
+    'Cardiovascular': ['orthostatic hypotension'],
+    'Sexual': ['sexual dysfunction', 'anorgasmia'],
+    'Metabolic/Endocrine': ['weight gain'],
+    'Other': ['diaphoresis', 'edema']
+  }
+},
+tranylcypromine: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.', 'Hypertensive crisis risk with tyramine-containing foods, sympathomimetics, and serotonergic drugs; strict dietary restrictions required.'],
+  sideEffects: {
+    'CNS': ['insomnia', 'somnolence', 'tremor', 'headache', 'dizziness'],
+    'GI': ['dry mouth', 'constipation', 'nausea'],
+    'Cardiovascular': ['orthostatic hypotension'],
+    'Sexual': ['sexual dysfunction'],
+    'Other': ['diaphoresis']
+  }
+},
+
+// ── Other Antidepressants ────────────────────────────────────────────────────
+bupropion: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.', 'Dose-dependent seizure risk; contraindicated in seizure disorders, eating disorders, and abrupt discontinuation of alcohol or sedatives.'],
+  sideEffects: {
+    'CNS': ['insomnia', 'headache', 'tremor', 'agitation', 'dizziness'],
+    'GI': ['dry mouth', 'nausea', 'constipation'],
+    'Cardiovascular': ['hypertension', 'tachycardia'],
+    'Other': ['diaphoresis', 'weight loss']
+  }
+},
+mirtazapine: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'dizziness', 'headache'],
+    'GI': ['increased appetite', 'dry mouth', 'constipation'],
+    'Metabolic/Endocrine': ['weight gain', 'hyperlipidemia'],
+    'Other': ['asthenia']
+  }
+},
+trazodone: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'dizziness', 'headache'],
+    'GI': ['dry mouth', 'nausea', 'constipation'],
+    'Cardiovascular': ['orthostatic hypotension'],
+    'Sexual': ['priapism'],
+    'Other': ['blurred vision', 'fatigue']
+  }
+},
+vilazodone: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'headache', 'dizziness', 'insomnia'],
+    'GI': ['diarrhea', 'nausea', 'dry mouth', 'vomiting'],
+    'Sexual': ['sexual dysfunction'],
+    'Other': ['tremor', 'fatigue']
+  }
+},
+vortioxetine: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['headache', 'dizziness'],
+    'GI': ['nausea', 'vomiting', 'dry mouth', 'constipation', 'diarrhea'],
+    'Sexual': ['sexual dysfunction'],
+    'Other': ['pruritus']
+  }
+},
+gepirone: {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['dizziness', 'somnolence', 'headache', 'insomnia'],
+    'GI': ['nausea', 'diarrhea', 'dry mouth'],
+    'Other': ['tremor']
+  }
+},
+esketamine: {
+  blackBoxWarnings: ['Sedation, dissociation, and abuse potential; available only through a restricted REMS program requiring administration in certified healthcare settings with patient monitoring.', 'Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['dissociation', 'somnolence', 'sedation', 'dizziness', 'headache', 'vertigo'],
+    'GI': ['nausea', 'vomiting', 'dry mouth'],
+    'Cardiovascular': ['hypertension', 'tachycardia'],
+    'Other': ['anxiety', 'blurred vision']
+  }
+},
+brexanolone: {
+  blackBoxWarnings: ['Excessive sedation and sudden loss of consciousness; available only through a restricted REMS program requiring IV administration as a 60-hour inpatient infusion with continuous monitoring.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'sedation', 'dizziness', 'presyncope', 'headache'],
+    'GI': ['dry mouth'],
+    'Cardiovascular': ['flushing'],
+    'Other': ['hot flushes']
+  }
+},
+zuranolone: {
+  blackBoxWarnings: ['CNS depressant effects including somnolence, dizziness, and impaired concentration; patients should not drive or operate machinery for at least 12 hours after dosing.', 'Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'dizziness', 'sedation', 'headache'],
+    'GI': ['diarrhea', 'nausea'],
+    'Other': ['fatigue', 'nasopharyngitis']
+  }
+},
+'dextromethorphan-bupropion': {
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.', 'Dose-dependent seizure risk from bupropion component; contraindicated in seizure disorders and eating disorders.'],
+  sideEffects: {
+    'CNS': ['dizziness', 'headache', 'somnolence'],
+    'GI': ['diarrhea', 'nausea', 'dry mouth'],
+    'Other': ['diaphoresis']
+  }
+},
+
+// ── First-Generation Antipsychotics (FGAs) ───────────────────────────────────
+haloperidol: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  sideEffects: {
+    'CNS': ['extrapyramidal symptoms', 'akathisia', 'tardive dyskinesia', 'sedation', 'dystonia'],
+    'Cardiovascular': ['orthostatic hypotension', 'QT prolongation'],
+    'Metabolic/Endocrine': ['hyperprolactinemia', 'gynecomastia', 'amenorrhea'],
+    'GI': ['dry mouth', 'constipation'],
+    'Other': ['photosensitivity']
+  }
+},
+chlorpromazine: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  sideEffects: {
+    'CNS': ['sedation', 'extrapyramidal symptoms', 'tardive dyskinesia', 'akathisia'],
+    'Cardiovascular': ['orthostatic hypotension', 'QT prolongation'],
+    'Metabolic/Endocrine': ['weight gain', 'hyperprolactinemia'],
+    'GI': ['constipation', 'dry mouth'],
+    'Other': ['photosensitivity', 'corneal deposits']
+  }
+},
+fluphenazine: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  sideEffects: {
+    'CNS': ['extrapyramidal symptoms', 'akathisia', 'tardive dyskinesia', 'dystonia'],
+    'Cardiovascular': ['orthostatic hypotension'],
+    'Metabolic/Endocrine': ['hyperprolactinemia'],
+    'GI': ['constipation', 'dry mouth']
+  }
+},
+trifluoperazine: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  sideEffects: {
+    'CNS': ['extrapyramidal symptoms', 'akathisia', 'tardive dyskinesia', 'dystonia'],
+    'Cardiovascular': ['orthostatic hypotension'],
+    'Metabolic/Endocrine': ['hyperprolactinemia'],
+    'GI': ['constipation', 'dry mouth']
+  }
+},
+perphenazine: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  sideEffects: {
+    'CNS': ['extrapyramidal symptoms', 'akathisia', 'tardive dyskinesia', 'sedation'],
+    'Cardiovascular': ['orthostatic hypotension'],
+    'Metabolic/Endocrine': ['hyperprolactinemia'],
+    'GI': ['constipation', 'dry mouth']
+  }
+},
+thiothixene: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  sideEffects: {
+    'CNS': ['extrapyramidal symptoms', 'akathisia', 'tardive dyskinesia', 'sedation'],
+    'Cardiovascular': ['orthostatic hypotension'],
+    'Metabolic/Endocrine': ['hyperprolactinemia'],
+    'GI': ['constipation', 'dry mouth']
+  }
+},
+pimozide: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.', 'Dose-dependent QT prolongation; baseline ECG and periodic monitoring required.'],
+  sideEffects: {
+    'CNS': ['extrapyramidal symptoms', 'akathisia', 'tardive dyskinesia', 'sedation'],
+    'Cardiovascular': ['orthostatic hypotension', 'QT prolongation'],
+    'Metabolic/Endocrine': ['hyperprolactinemia'],
+    'GI': ['constipation', 'dry mouth']
+  }
+},
+thioridazine: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.', 'Dose-dependent QT prolongation and risk of torsades de pointes; reserved for patients who fail other antipsychotics.'],
+  sideEffects: {
+    'CNS': ['sedation', 'extrapyramidal symptoms', 'tardive dyskinesia'],
+    'Cardiovascular': ['orthostatic hypotension', 'QT prolongation'],
+    'Metabolic/Endocrine': ['weight gain', 'hyperprolactinemia'],
+    'GI': ['constipation', 'dry mouth'],
+    'Other': ['retinal pigmentation', 'photosensitivity']
+  }
+},
+loxapine: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  sideEffects: {
+    'CNS': ['extrapyramidal symptoms', 'akathisia', 'tardive dyskinesia', 'sedation'],
+    'Cardiovascular': ['orthostatic hypotension'],
+    'Metabolic/Endocrine': ['weight gain'],
+    'GI': ['constipation', 'dry mouth']
+  }
+},
+molindone: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  sideEffects: {
+    'CNS': ['extrapyramidal symptoms', 'akathisia', 'tardive dyskinesia', 'sedation'],
+    'Cardiovascular': ['orthostatic hypotension'],
+    'GI': ['constipation', 'dry mouth']
+  }
+},
+
+// ── Second-Generation Antipsychotics (SGAs) ──────────────────────────────────
+risperidone: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.', 'Cerebrovascular adverse events (stroke, TIA) reported in elderly patients with dementia.'],
+  sideEffects: {
+    'CNS': ['sedation', 'extrapyramidal symptoms', 'akathisia', 'tremor', 'insomnia'],
+    'Cardiovascular': ['orthostatic hypotension', 'tachycardia'],
+    'Metabolic/Endocrine': ['weight gain', 'hyperprolactinemia', 'hyperglycemia'],
+    'GI': ['constipation', 'nausea', 'dry mouth']
+  }
+},
+olanzapine: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  sideEffects: {
+    'CNS': ['sedation', 'akathisia', 'tremor', 'dizziness'],
+    'Cardiovascular': ['orthostatic hypotension', 'tachycardia'],
+    'Metabolic/Endocrine': ['weight gain', 'hyperglycemia', 'dyslipidemia', 'hyperprolactinemia'],
+    'GI': ['constipation', 'dry mouth', 'increased appetite'],
+    'Other': ['elevated liver enzymes']
+  }
+},
+quetiapine: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.', 'Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['sedation', 'dizziness', 'headache'],
+    'Cardiovascular': ['orthostatic hypotension', 'tachycardia'],
+    'Metabolic/Endocrine': ['weight gain', 'hyperglycemia', 'dyslipidemia'],
+    'GI': ['dry mouth', 'constipation'],
+    'Other': ['cataracts (monitor lens)']
+  }
+},
+aripiprazole: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.', 'Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['akathisia', 'insomnia', 'sedation', 'headache', 'anxiety'],
+    'Cardiovascular': ['orthostatic hypotension'],
+    'Metabolic/Endocrine': ['weight gain'],
+    'GI': ['nausea', 'constipation', 'vomiting']
+  }
+},
+clozapine: {
+  blackBoxWarnings: ['Severe neutropenia (agranulocytosis); requires enrollment in Clozapine REMS program with mandatory ANC monitoring.', 'Myocarditis and cardiomyopathy; highest risk in first month of treatment. Monitor for tachycardia, chest pain, dyspnea.', 'Seizure risk, especially at doses >600 mg/day; dose-dependent.', 'Severe orthostatic hypotension with or without syncope; can cause cardiorespiratory arrest during initial titration.', 'Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  sideEffects: {
+    'CNS': ['sedation', 'dizziness', 'seizures', 'tremor', 'headache'],
+    'Cardiovascular': ['orthostatic hypotension', 'tachycardia', 'myocarditis'],
+    'Metabolic/Endocrine': ['weight gain', 'hyperglycemia', 'dyslipidemia', 'metabolic syndrome'],
+    'GI': ['constipation', 'hypersalivation', 'nausea', 'dry mouth'],
+    'Hematologic': ['neutropenia', 'agranulocytosis', 'leukopenia'],
+    'Other': ['fever', 'elevated liver enzymes', 'enuresis']
+  }
+},
+ziprasidone: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.', 'QT prolongation risk; avoid in patients with known QT prolongation or recent MI.'],
+  sideEffects: {
+    'CNS': ['sedation', 'akathisia', 'headache', 'dizziness', 'extrapyramidal symptoms'],
+    'Cardiovascular': ['orthostatic hypotension', 'QT prolongation'],
+    'Metabolic/Endocrine': ['weight gain (minimal)'],
+    'GI': ['nausea', 'constipation', 'dyspepsia']
+  }
+},
+lurasidone: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.', 'Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'akathisia', 'parkinsonism', 'headache'],
+    'Cardiovascular': ['orthostatic hypotension'],
+    'Metabolic/Endocrine': ['weight gain (minimal)', 'hyperprolactinemia'],
+    'GI': ['nausea', 'vomiting']
+  }
+},
+asenapine: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  sideEffects: {
+    'CNS': ['akathisia', 'somnolence', 'parkinsonism', 'dizziness'],
+    'Cardiovascular': ['orthostatic hypotension'],
+    'Metabolic/Endocrine': ['weight gain'],
+    'GI': ['oral hypoesthesia', 'nausea']
+  }
+},
+paliperidone: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  sideEffects: {
+    'CNS': ['akathisia', 'somnolence', 'extrapyramidal symptoms', 'tremor', 'headache'],
+    'Cardiovascular': ['orthostatic hypotension', 'tachycardia'],
+    'Metabolic/Endocrine': ['weight gain', 'hyperprolactinemia', 'hyperglycemia'],
+    'GI': ['constipation', 'nausea']
+  }
+},
+iloperidone: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  sideEffects: {
+    'CNS': ['dizziness', 'somnolence', 'tremor'],
+    'Cardiovascular': ['orthostatic hypotension', 'tachycardia', 'QT prolongation'],
+    'Metabolic/Endocrine': ['weight gain'],
+    'GI': ['dry mouth', 'nausea']
+  }
+},
+brexpiprazole: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.', 'Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['akathisia', 'headache', 'sedation', 'tremor'],
+    'Cardiovascular': ['orthostatic hypotension'],
+    'Metabolic/Endocrine': ['weight gain'],
+    'GI': ['constipation', 'diarrhea', 'nausea']
+  }
+},
+cariprazine: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.', 'Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  sideEffects: {
+    'CNS': ['akathisia', 'parkinsonism', 'headache', 'somnolence', 'insomnia'],
+    'Cardiovascular': ['orthostatic hypotension'],
+    'Metabolic/Endocrine': ['weight gain'],
+    'GI': ['nausea', 'vomiting', 'constipation']
+  }
+},
+lumateperone: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  sideEffects: {
+    'CNS': ['sedation', 'somnolence', 'dizziness'],
+    'Metabolic/Endocrine': ['weight gain (minimal)'],
+    'GI': ['nausea', 'dry mouth']
+  }
+},
+pimavanserin: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.', 'QT prolongation risk; avoid in patients with known QT prolongation.'],
+  sideEffects: {
+    'CNS': ['confusion', 'hallucinations', 'headache'],
+    'Cardiovascular': ['QT prolongation'],
+    'GI': ['nausea', 'constipation'],
+    'Other': ['peripheral edema']
+  }
+},
+
+// ── Mood Stabilizers ─────────────────────────────────────────────────────────
+lithium: {
+  blackBoxWarnings: ['Lithium toxicity is closely related to serum levels and can occur at therapeutic doses; facilities for prompt and accurate serum lithium monitoring must be available.'],
+  sideEffects: {
+    'CNS': ['tremor', 'cognitive dulling', 'memory impairment', 'ataxia', 'headache'],
+    'GI': ['nausea', 'vomiting', 'diarrhea'],
+    'Cardiovascular': ['ECG changes', 'bradycardia'],
+    'Metabolic/Endocrine': ['hypothyroidism', 'hyperparathyroidism', 'weight gain'],
+    'Renal': ['nephrogenic diabetes insipidus', 'polyuria', 'polydipsia', 'reduced GFR'],
+    'Other': ['acne', 'alopecia', 'leukocytosis']
+  }
+},
+valproate: {
+  blackBoxWarnings: ['Hepatotoxicity including fatal hepatic failure; highest risk in children under 2 and patients on polytherapy. Monitor LFTs frequently, especially in first 6 months.', 'Major congenital malformations including neural tube defects; contraindicated for migraine prophylaxis in pregnancy. Pregnancy category X.', 'Life-threatening pancreatitis reported; discontinue immediately if pancreatitis is diagnosed.'],
+  sideEffects: {
+    'CNS': ['sedation', 'tremor', 'ataxia', 'dizziness', 'headache'],
+    'GI': ['nausea', 'vomiting', 'diarrhea', 'abdominal pain'],
+    'Metabolic/Endocrine': ['weight gain', 'alopecia', 'polycystic ovary syndrome'],
+    'Hematologic': ['thrombocytopenia', 'leukopenia'],
+    'Other': ['hyperammonemia', 'elevated liver enzymes']
+  }
+},
+lamotrigine: {
+  blackBoxWarnings: ['Serious skin rashes including Stevens-Johnson syndrome and toxic epidermal necrolysis, especially with rapid titration or concurrent valproate; risk is reduced with slow dose escalation.'],
+  sideEffects: {
+    'CNS': ['dizziness', 'ataxia', 'diplopia', 'blurred vision', 'headache', 'somnolence'],
+    'GI': ['nausea', 'vomiting'],
+    'Other': ['rash', 'insomnia']
+  }
+},
+carbamazepine: {
+  blackBoxWarnings: ['Serious dermatologic reactions including SJS and TEN; risk strongly associated with HLA-B*1502 allele. Screen patients of Asian ancestry before initiating.', 'Aplastic anemia and agranulocytosis; monitor CBC at baseline and periodically.'],
+  sideEffects: {
+    'CNS': ['dizziness', 'ataxia', 'diplopia', 'blurred vision', 'sedation', 'headache'],
+    'GI': ['nausea', 'vomiting'],
+    'Hematologic': ['leukopenia', 'thrombocytopenia'],
+    'Metabolic/Endocrine': ['hyponatremia', 'weight gain'],
+    'Other': ['rash', 'elevated liver enzymes']
+  }
+},
+oxcarbazepine: {
+  blackBoxWarnings: [],
+  sideEffects: {
+    'CNS': ['dizziness', 'ataxia', 'diplopia', 'somnolence', 'headache', 'tremor'],
+    'GI': ['nausea', 'vomiting'],
+    'Metabolic/Endocrine': ['hyponatremia'],
+    'Other': ['rash', 'fatigue']
+  }
+},
+topiramate: {
+  blackBoxWarnings: ['Oral clefts (cleft lip/palate) reported with first trimester exposure; avoid in pregnancy when possible.'],
+  sideEffects: {
+    'CNS': ['cognitive impairment', 'word-finding difficulty', 'dizziness', 'sedation', 'paresthesia'],
+    'GI': ['anorexia', 'nausea', 'weight loss'],
+    'Metabolic/Endocrine': ['metabolic acidosis', 'kidney stones'],
+    'Other': ['acute myopia', 'secondary angle-closure glaucoma']
+  }
+},
+gabapentin: {
+  blackBoxWarnings: [],
+  sideEffects: {
+    'CNS': ['somnolence', 'dizziness', 'ataxia', 'fatigue', 'headache'],
+    'GI': ['nausea', 'dry mouth'],
+    'Other': ['peripheral edema', 'weight gain', 'blurred vision']
+  }
+},
+pregabalin: {
+  blackBoxWarnings: [],
+  sideEffects: {
+    'CNS': ['somnolence', 'dizziness', 'ataxia', 'confusion', 'tremor'],
+    'GI': ['dry mouth', 'nausea'],
+    'Metabolic/Endocrine': ['weight gain'],
+    'Other': ['peripheral edema', 'blurred vision']
+  }
+},
+
+// ── Benzodiazepines ──────────────────────────────────────────────────────────
+alprazolam: {
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
+  sideEffects: {
+    'CNS': ['sedation', 'dizziness', 'ataxia', 'memory impairment', 'cognitive impairment'],
+    'Other': ['dependence', 'fatigue']
+  }
+},
+clonazepam: {
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
+  sideEffects: {
+    'CNS': ['sedation', 'dizziness', 'ataxia', 'cognitive impairment', 'depression'],
+    'Other': ['dependence', 'fatigue']
+  }
+},
+diazepam: {
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
+  sideEffects: {
+    'CNS': ['sedation', 'dizziness', 'ataxia', 'memory impairment', 'confusion'],
+    'Other': ['dependence', 'fatigue']
+  }
+},
+lorazepam: {
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
+  sideEffects: {
+    'CNS': ['sedation', 'dizziness', 'weakness', 'ataxia', 'memory impairment'],
+    'Other': ['dependence']
+  }
+},
+oxazepam: {
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
+  sideEffects: {
+    'CNS': ['sedation', 'dizziness', 'ataxia', 'memory impairment'],
+    'Other': ['dependence']
+  }
+},
+chlordiazepoxide: {
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
+  sideEffects: {
+    'CNS': ['sedation', 'dizziness', 'ataxia', 'confusion'],
+    'GI': ['nausea', 'constipation'],
+    'Other': ['dependence']
+  }
+},
+clorazepate: {
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
+  sideEffects: {
+    'CNS': ['sedation', 'dizziness', 'ataxia', 'memory impairment'],
+    'Other': ['dependence']
+  }
+},
+midazolam: {
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'IV/IM administration carries risk of respiratory depression and arrest; resuscitation equipment must be available.'],
+  sideEffects: {
+    'CNS': ['sedation', 'amnesia', 'dizziness', 'headache'],
+    'Cardiovascular': ['hypotension', 'bradycardia'],
+    'Respiratory': ['respiratory depression']
+  }
+},
+triazolam: {
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Complex sleep behaviors including sleep-walking and sleep-driving reported.'],
+  sideEffects: {
+    'CNS': ['sedation', 'dizziness', 'amnesia', 'headache'],
+    'Other': ['dependence', 'rebound insomnia']
+  }
+},
+estazolam: {
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.'],
+  sideEffects: {
+    'CNS': ['sedation', 'dizziness', 'headache', 'memory impairment'],
+    'Other': ['dependence', 'rebound insomnia']
+  }
+},
+flurazepam: {
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.'],
+  sideEffects: {
+    'CNS': ['sedation', 'dizziness', 'ataxia', 'memory impairment', 'hangover effect'],
+    'Other': ['dependence', 'rebound insomnia']
+  }
+},
+
+// ── Sleep Agents ─────────────────────────────────────────────────────────────
+zolpidem: {
+  blackBoxWarnings: ['Complex sleep behaviors including sleep-walking, sleep-driving, and sleep-eating; may result in serious injury or death. Discontinue if complex sleep behavior occurs.'],
+  sideEffects: {
+    'CNS': ['drowsiness', 'dizziness', 'headache', 'amnesia'],
+    'GI': ['nausea'],
+    'Other': ['next-day impairment']
+  }
+},
+eszopiclone: {
+  blackBoxWarnings: ['Complex sleep behaviors including sleep-walking, sleep-driving, and sleep-eating; may result in serious injury or death. Discontinue if complex sleep behavior occurs.'],
+  sideEffects: {
+    'CNS': ['headache', 'dizziness', 'somnolence'],
+    'GI': ['unpleasant taste', 'dry mouth', 'nausea'],
+    'Other': ['next-day impairment']
+  }
+},
+temazepam: {
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Complex sleep behaviors including sleep-walking and sleep-driving reported.'],
+  sideEffects: {
+    'CNS': ['sedation', 'dizziness', 'headache', 'memory impairment'],
+    'Other': ['dependence', 'rebound insomnia', 'hangover effect']
+  }
+},
+ramelteon: {
+  blackBoxWarnings: [],
+  sideEffects: {
+    'CNS': ['somnolence', 'dizziness', 'headache', 'fatigue'],
+    'GI': ['nausea'],
+    'Metabolic/Endocrine': ['prolactin elevation']
+  }
+},
+suvorexant: {
+  blackBoxWarnings: ['Complex sleep behaviors including sleep-walking, sleep-driving, and sleep-eating; may result in serious injury or death. Discontinue if complex sleep behavior occurs.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'headache', 'dizziness'],
+    'Other': ['next-day impairment', 'sleep paralysis']
+  }
+},
+doxylamine: {
+  blackBoxWarnings: [],
+  sideEffects: {
+    'CNS': ['somnolence', 'dizziness', 'headache', 'confusion'],
+    'GI': ['dry mouth', 'nausea', 'constipation'],
+    'Other': ['anticholinergic effects']
+  }
+},
+
+// ── Stimulants & Wakefulness Agents ──────────────────────────────────────────
+methylphenidate: {
+  blackBoxWarnings: ['High potential for abuse and dependence (Schedule II). Assess risk before prescribing and monitor for signs of misuse, abuse, and addiction.'],
+  sideEffects: {
+    'CNS': ['insomnia', 'nervousness', 'headache', 'tremor', 'dizziness'],
+    'Cardiovascular': ['increased heart rate', 'elevated blood pressure', 'palpitations'],
+    'GI': ['decreased appetite', 'nausea', 'abdominal pain', 'weight loss'],
+    'Other': ['growth suppression in children']
+  }
+},
+dexmethylphenidate: {
+  blackBoxWarnings: ['High potential for abuse and dependence (Schedule II). Assess risk before prescribing and monitor for signs of misuse, abuse, and addiction.'],
+  sideEffects: {
+    'CNS': ['insomnia', 'nervousness', 'headache', 'anxiety'],
+    'Cardiovascular': ['increased heart rate', 'elevated blood pressure', 'palpitations'],
+    'GI': ['decreased appetite', 'nausea', 'weight loss'],
+    'Other': ['growth suppression in children']
+  }
+},
+'amphetamine-mixed-salts': {
+  blackBoxWarnings: ['High potential for abuse and dependence (Schedule II). Assess risk before prescribing and monitor for signs of misuse, abuse, and addiction.', 'Sudden death reported in patients with pre-existing structural cardiac abnormalities; assess cardiac history before initiation.'],
+  sideEffects: {
+    'CNS': ['insomnia', 'nervousness', 'headache', 'anxiety', 'tremor'],
+    'Cardiovascular': ['increased heart rate', 'elevated blood pressure', 'palpitations'],
+    'GI': ['decreased appetite', 'dry mouth', 'nausea', 'weight loss'],
+    'Other': ['growth suppression in children']
+  }
+},
+dextroamphetamine: {
+  blackBoxWarnings: ['High potential for abuse and dependence (Schedule II). Assess risk before prescribing and monitor for signs of misuse, abuse, and addiction.', 'Sudden death reported in patients with pre-existing structural cardiac abnormalities; assess cardiac history before initiation.'],
+  sideEffects: {
+    'CNS': ['insomnia', 'nervousness', 'headache', 'anxiety', 'tremor'],
+    'Cardiovascular': ['increased heart rate', 'elevated blood pressure', 'palpitations'],
+    'GI': ['decreased appetite', 'dry mouth', 'nausea', 'weight loss'],
+    'Other': ['growth suppression in children']
+  }
+},
+lisdexamfetamine: {
+  blackBoxWarnings: ['High potential for abuse and dependence (Schedule II). Assess risk before prescribing and monitor for signs of misuse, abuse, and addiction.', 'Sudden death reported in patients with pre-existing structural cardiac abnormalities; assess cardiac history before initiation.'],
+  sideEffects: {
+    'CNS': ['insomnia', 'nervousness', 'headache', 'anxiety', 'irritability'],
+    'Cardiovascular': ['increased heart rate', 'elevated blood pressure', 'palpitations'],
+    'GI': ['decreased appetite', 'dry mouth', 'nausea', 'weight loss'],
+    'Other': ['growth suppression in children']
+  }
+},
+modafinil: {
+  blackBoxWarnings: ['Serious dermatologic reactions including SJS and TEN reported; discontinue at first sign of rash.'],
+  sideEffects: {
+    'CNS': ['headache', 'insomnia', 'nervousness', 'dizziness', 'anxiety'],
+    'Cardiovascular': ['elevated blood pressure', 'palpitations'],
+    'GI': ['nausea', 'anorexia', 'dry mouth'],
+    'Other': ['rhinitis']
+  }
+},
+armodafinil: {
+  blackBoxWarnings: ['Serious dermatologic reactions including SJS and TEN reported; discontinue at first sign of rash.'],
+  sideEffects: {
+    'CNS': ['headache', 'insomnia', 'dizziness', 'anxiety'],
+    'Cardiovascular': ['elevated blood pressure', 'palpitations'],
+    'GI': ['nausea', 'dry mouth'],
+    'Other': ['rash']
+  }
+},
+solriamfetol: {
+  blackBoxWarnings: [],
+  sideEffects: {
+    'CNS': ['headache', 'insomnia', 'anxiety', 'dizziness'],
+    'Cardiovascular': ['increased heart rate', 'elevated blood pressure'],
+    'GI': ['nausea', 'decreased appetite', 'dry mouth']
+  }
+},
+
+// ── Anxiolytics & Other ─────────────────────────────────────────────────────
+buspirone: {
+  blackBoxWarnings: [],
+  sideEffects: {
+    'CNS': ['dizziness', 'drowsiness', 'headache', 'nervousness', 'insomnia'],
+    'GI': ['nausea'],
+    'Other': ['restlessness']
+  }
+},
+hydroxyzine: {
+  blackBoxWarnings: [],
+  sideEffects: {
+    'CNS': ['somnolence', 'dizziness', 'headache'],
+    'GI': ['dry mouth'],
+    'Other': ['QT prolongation (rare)']
+  }
+},
+diphenhydramine: {
+  blackBoxWarnings: [],
+  sideEffects: {
+    'CNS': ['somnolence', 'dizziness', 'confusion', 'cognitive impairment'],
+    'GI': ['dry mouth', 'constipation'],
+    'Other': ['urinary retention', 'blurred vision']
+  }
+},
+propranolol: {
+  blackBoxWarnings: ['Abrupt cessation may exacerbate angina and precipitate MI in patients with coronary artery disease; taper gradually over 1-2 weeks.'],
+  sideEffects: {
+    'Cardiovascular': ['bradycardia', 'hypotension', 'heart failure exacerbation'],
+    'CNS': ['fatigue', 'dizziness', 'depression'],
+    'Respiratory': ['bronchospasm'],
+    'Metabolic/Endocrine': ['masking of hypoglycemia symptoms'],
+    'GI': ['nausea', 'diarrhea']
+  }
+},
+clonidine: {
+  blackBoxWarnings: ['Rebound hypertension may occur with abrupt discontinuation; taper gradually.'],
+  sideEffects: {
+    'Cardiovascular': ['hypotension', 'bradycardia'],
+    'CNS': ['sedation', 'dizziness', 'fatigue', 'headache'],
+    'GI': ['dry mouth', 'constipation']
+  }
+},
+guanfacine: {
+  blackBoxWarnings: ['Rebound hypertension may occur with abrupt discontinuation; taper gradually.'],
+  sideEffects: {
+    'Cardiovascular': ['hypotension', 'bradycardia', 'syncope'],
+    'CNS': ['sedation', 'somnolence', 'dizziness', 'fatigue'],
+    'GI': ['dry mouth', 'constipation']
+  }
+},
+trihexyphenidyl: {
+  blackBoxWarnings: [],
+  sideEffects: {
+    'CNS': ['dizziness', 'nervousness', 'confusion', 'memory impairment'],
+    'GI': ['dry mouth', 'nausea', 'constipation'],
+    'Cardiovascular': ['tachycardia'],
+    'Other': ['blurred vision', 'urinary retention', 'mydriasis']
+  }
+}
+
+};

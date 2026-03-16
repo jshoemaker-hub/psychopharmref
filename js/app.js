@@ -411,9 +411,42 @@ function openDrugModal(id) {
     </div>
   </div>` : ''}
     ${drug.mechanism ? `<div class="modal-section"><h4>Mechanism</h4><div style="font-size:13px;color:var(--text-muted);line-height:1.7">${drug.mechanism}</div></div>` : ''}
+    ${buildBlackBoxHTML(drug.id)}
+    ${buildSideEffectsHTML(drug.id)}
   `;
 
   modal.classList.remove('hidden');
+}
+
+/* ── FDA Safety Data Helpers ──────────────────────────────────────────────── */
+function buildBlackBoxHTML(drugId) {
+  const safety = typeof FDA_SAFETY_DATA !== 'undefined' ? FDA_SAFETY_DATA[drugId] : null;
+  if (!safety || !safety.blackBoxWarnings || !safety.blackBoxWarnings.length) return '';
+  return `
+  <div class="modal-section modal-bbw">
+    <h4>&#9888; FDA Black Box Warnings</h4>
+    <div class="bbw-container">
+      ${safety.blackBoxWarnings.map(w => `<div class="bbw-item">${w}</div>`).join('')}
+    </div>
+  </div>`;
+}
+
+function buildSideEffectsHTML(drugId) {
+  const safety = typeof FDA_SAFETY_DATA !== 'undefined' ? FDA_SAFETY_DATA[drugId] : null;
+  if (!safety || !safety.sideEffects) return '';
+  const systems = Object.keys(safety.sideEffects);
+  if (!systems.length) return '';
+  return `
+  <div class="modal-section">
+    <h4>Common Side Effects</h4>
+    <div class="se-grid">
+      ${systems.map(sys => `
+        <div class="se-category">
+          <div class="se-system">${sys}</div>
+          <div class="se-list">${safety.sideEffects[sys].map(se => `<span class="se-tag">${se}</span>`).join('')}</div>
+        </div>`).join('')}
+    </div>
+  </div>`;
 }
 
 document.getElementById('modal-close').addEventListener('click', () => {
