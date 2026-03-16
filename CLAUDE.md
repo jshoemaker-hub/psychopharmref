@@ -61,6 +61,7 @@ Each clinical tool follows this exact pattern:
 - `pc-` → PCL-5 (PTSD)
 - `ym-` → YMRS (Mania)
 - `yb-` → Y-BOCS (OCD)
+- `ai-` → AIMS (Dyskinesia)
 
 ### Copy-to-Clipboard Pattern
 Never use `alert()`. Always use button text feedback:
@@ -84,7 +85,7 @@ navigator.clipboard.writeText(text).then(() => {
 - Blog sidebar uses: `<li><a href="../index.html#section-id" class="nav-link nav-sub-link">Label</a></li>`
 
 ### Sidebar Navigation (index.html)
-- Clinical Tools group includes: QT Risk Tool, Refill Calendar, Med Comparison, Taper/Start, CDR Staging, ASD Severity, Suicide Risk, SLUMS Exam, PANSS, Catatonia (BFCRS), CIDI Bipolar Screen, PCL-5 (PTSD), YMRS (Mania), Y-BOCS (OCD)
+- Clinical Tools group includes: QT Risk Tool, Refill Calendar, Med Comparison, Taper/Start, CDR Staging, ASD Severity, Suicide Risk, SLUMS Exam, PANSS, Catatonia (BFCRS), CIDI Bipolar Screen, PCL-5 (PTSD), YMRS (Mania), Y-BOCS (OCD), AIMS (Dyskinesia)
 - When adding a tool, also add to sidebar nav under Clinical Tools
 
 ## Git Workflow
