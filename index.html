@@ -64,17 +64,23 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="cdr-tool">CDR Staging</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="slums-tool">SLUMS Exam</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="asd-tool">ASD Severity</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="adl-tool">ADL / IADL</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="asrs-tool">ASRS (ADHD)</a></li>
 
           <li class="nav-sub-divider">Mood &amp; Anxiety Scales</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="cidi-tool">CIDI Bipolar Screen</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="ymrs-tool">YMRS (Mania)</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="pcl5-tool">PCL-5 (PTSD)</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="ybocs-tool">Y-BOCS (OCD)</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="msibpd-tool">MSI-BPD</a></li>
 
           <li class="nav-sub-divider">Psychosis &amp; Movement</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="panss-tool">PANSS</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="bfcrs-tool">Catatonia (BFCRS)</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="aims-tool">AIMS (Dyskinesia)</a></li>
+
+          <li class="nav-sub-divider">Sleep</li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="ess-tool">Epworth (Sleepiness)</a></li>
 
           <li class="nav-sub-divider">Safety</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="suicide-risk-tools">Suicide Risk</a></li>
@@ -15499,6 +15505,559 @@ Past Compulsions: ${compulsionsPastList.length > 0 ? compulsionsPastList.join(';
   </script>
 
 </section><!-- end aims-tool -->
+
+
+<section id="adl-tool" class="section">
+  <div class="section-header">
+    <h2>ADL / IADL Functional Assessment</h2>
+    <p>Evaluate activities of daily living (ADL) and instrumental activities of daily living (IADL) to assess functional independence and care needs.</p>
+  </div>
+
+  <div class="mt-warning">
+    <strong>Clinical Note:</strong> This checklist is for screening and documentation purposes. Score each item based on current functional status. Results should inform care planning and resource allocation.
+  </div>
+
+  <style>
+    .ad-container { display: flex; flex-direction: column; gap: 2rem; }
+    .ad-checklist-section { background-color: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; }
+    .ad-section-title { font-size: 1.1rem; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+    .ad-summary { background-color: #fff; border-left: 4px solid var(--accent); padding: 1rem; margin-bottom: 1.5rem; border-radius: 4px; font-size: 0.95rem; color: var(--text); }
+    .ad-summary-line { margin: 0.25rem 0; }
+    .ad-summary-label { font-weight: 600; color: var(--accent); }
+    .ad-table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+    .ad-table thead { background-color: #f5f1e8; border-bottom: 2px solid var(--border); }
+    .ad-table th { padding: 0.75rem; text-align: left; font-weight: 600; color: var(--text); font-size: 0.9rem; }
+    .ad-table td { padding: 0.75rem; border-bottom: 1px solid var(--border); color: var(--text); }
+    .ad-table tbody tr:hover { background-color: #f9f7f2; }
+    .ad-item-name { font-weight: 500; min-width: 150px; }
+    .ad-option { display: flex; align-items: center; gap: 0.5rem; }
+    .ad-option input[type="radio"] { cursor: pointer; accent-color: var(--accent); }
+    .ad-option label { cursor: pointer; margin: 0; font-size: 0.9rem; }
+    .ad-footnote { font-size: 0.8rem; color: #666; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+    .ad-button-group { display: flex; gap: 1rem; margin-top: 2rem; }
+    .ad-generate-btn, .ad-reset-btn { padding: 0.75rem 1.5rem; border: none; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
+    .ad-generate-btn { background-color: var(--accent); color: white; }
+    .ad-generate-btn:hover { background-color: #3d6429; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(74,124,53,0.2); }
+    .ad-reset-btn { background-color: var(--accent2); color: white; }
+    .ad-reset-btn:hover { background-color: #6f5410; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(139,105,20,0.2); }
+  </style>
+
+  <div class="ad-container">
+    <!-- ADL Section -->
+    <div class="ad-checklist-section">
+      <div class="ad-section-title">Activities of Daily Living (ADL)</div>
+      <div class="ad-summary">
+        <div class="ad-summary-line">
+          <span class="ad-summary-label">ADL Summary:</span>
+          <span id="ad-adl-independent">0</span> Independent,
+          <span id="ad-adl-help">0</span> Needs Help,
+          <span id="ad-adl-dependent">0</span> Dependent,
+          <span id="ad-adl-cannot">0</span> Cannot Do
+        </div>
+      </div>
+      <table class="ad-table">
+        <thead>
+          <tr><th>Activity</th><th style="width:20%">Independent</th><th style="width:20%">Needs Help</th><th style="width:20%">Dependent</th><th style="width:20%">Cannot Do</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="ad-item-name">Bathing</td><td><div class="ad-option"><input type="radio" name="ad-bathing" value="Independent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-bathing" value="Needs Help" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-bathing" value="Dependent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-bathing" value="Cannot Do" class="ad-adl-item"><label>&#10003;</label></div></td></tr>
+          <tr><td class="ad-item-name">Dressing</td><td><div class="ad-option"><input type="radio" name="ad-dressing" value="Independent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-dressing" value="Needs Help" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-dressing" value="Dependent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-dressing" value="Cannot Do" class="ad-adl-item"><label>&#10003;</label></div></td></tr>
+          <tr><td class="ad-item-name">Grooming</td><td><div class="ad-option"><input type="radio" name="ad-grooming" value="Independent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-grooming" value="Needs Help" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-grooming" value="Dependent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-grooming" value="Cannot Do" class="ad-adl-item"><label>&#10003;</label></div></td></tr>
+          <tr><td class="ad-item-name">Mouth Care</td><td><div class="ad-option"><input type="radio" name="ad-mouth-care" value="Independent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-mouth-care" value="Needs Help" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-mouth-care" value="Dependent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-mouth-care" value="Cannot Do" class="ad-adl-item"><label>&#10003;</label></div></td></tr>
+          <tr><td class="ad-item-name">Toileting</td><td><div class="ad-option"><input type="radio" name="ad-toileting" value="Independent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-toileting" value="Needs Help" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-toileting" value="Dependent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-toileting" value="Cannot Do" class="ad-adl-item"><label>&#10003;</label></div></td></tr>
+          <tr><td class="ad-item-name">Transferring (Bed/Chair)</td><td><div class="ad-option"><input type="radio" name="ad-transferring" value="Independent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-transferring" value="Needs Help" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-transferring" value="Dependent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-transferring" value="Cannot Do" class="ad-adl-item"><label>&#10003;</label></div></td></tr>
+          <tr><td class="ad-item-name">Walking</td><td><div class="ad-option"><input type="radio" name="ad-walking" value="Independent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-walking" value="Needs Help" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-walking" value="Dependent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-walking" value="Cannot Do" class="ad-adl-item"><label>&#10003;</label></div></td></tr>
+          <tr><td class="ad-item-name">Climbing Stairs</td><td><div class="ad-option"><input type="radio" name="ad-stairs" value="Independent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-stairs" value="Needs Help" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-stairs" value="Dependent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-stairs" value="Cannot Do" class="ad-adl-item"><label>&#10003;</label></div></td></tr>
+          <tr><td class="ad-item-name">Eating</td><td><div class="ad-option"><input type="radio" name="ad-eating" value="Independent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-eating" value="Needs Help" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-eating" value="Dependent" class="ad-adl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-eating" value="Cannot Do" class="ad-adl-item"><label>&#10003;</label></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- IADL Section -->
+    <div class="ad-checklist-section">
+      <div class="ad-section-title">Instrumental Activities of Daily Living (IADL)</div>
+      <div class="ad-summary">
+        <div class="ad-summary-line">
+          <span class="ad-summary-label">IADL Summary:</span>
+          <span id="ad-iadl-independent">0</span> Independent,
+          <span id="ad-iadl-help">0</span> Needs Help,
+          <span id="ad-iadl-dependent">0</span> Dependent,
+          <span id="ad-iadl-cannot">0</span> Cannot Do
+        </div>
+      </div>
+      <table class="ad-table">
+        <thead>
+          <tr><th>Activity</th><th style="width:20%">Independent</th><th style="width:20%">Needs Help</th><th style="width:20%">Dependent</th><th style="width:20%">Cannot Do</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="ad-item-name">Shopping</td><td><div class="ad-option"><input type="radio" name="ad-shopping" value="Independent" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-shopping" value="Needs Help" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-shopping" value="Dependent" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-shopping" value="Cannot Do" class="ad-iadl-item"><label>&#10003;</label></div></td></tr>
+          <tr><td class="ad-item-name">Cooking</td><td><div class="ad-option"><input type="radio" name="ad-cooking" value="Independent" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-cooking" value="Needs Help" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-cooking" value="Dependent" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-cooking" value="Cannot Do" class="ad-iadl-item"><label>&#10003;</label></div></td></tr>
+          <tr><td class="ad-item-name">Managing Medications</td><td><div class="ad-option"><input type="radio" name="ad-medications" value="Independent" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-medications" value="Needs Help" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-medications" value="Dependent" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-medications" value="Cannot Do" class="ad-iadl-item"><label>&#10003;</label></div></td></tr>
+          <tr><td class="ad-item-name">Using Phone / Looking Up Numbers</td><td><div class="ad-option"><input type="radio" name="ad-phone" value="Independent" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-phone" value="Needs Help" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-phone" value="Dependent" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-phone" value="Cannot Do" class="ad-iadl-item"><label>&#10003;</label></div></td></tr>
+          <tr><td class="ad-item-name">Doing Housework</td><td><div class="ad-option"><input type="radio" name="ad-housework" value="Independent" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-housework" value="Needs Help" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-housework" value="Dependent" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-housework" value="Cannot Do" class="ad-iadl-item"><label>&#10003;</label></div></td></tr>
+          <tr><td class="ad-item-name">Doing Laundry</td><td><div class="ad-option"><input type="radio" name="ad-laundry" value="Independent" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-laundry" value="Needs Help" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-laundry" value="Dependent" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-laundry" value="Cannot Do" class="ad-iadl-item"><label>&#10003;</label></div></td></tr>
+          <tr><td class="ad-item-name">Driving / Using Public Transportation</td><td><div class="ad-option"><input type="radio" name="ad-driving" value="Independent" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-driving" value="Needs Help" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-driving" value="Dependent" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-driving" value="Cannot Do" class="ad-iadl-item"><label>&#10003;</label></div></td></tr>
+          <tr><td class="ad-item-name">Managing Finances*</td><td><div class="ad-option"><input type="radio" name="ad-finances" value="Independent" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-finances" value="Needs Help" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-finances" value="Dependent" class="ad-iadl-item"><label>&#10003;</label></div></td><td><div class="ad-option"><input type="radio" name="ad-finances" value="Cannot Do" class="ad-iadl-item"><label>&#10003;</label></div></td></tr>
+        </tbody>
+      </table>
+      <div class="ad-footnote">* Financial management should never be done by the same person who is providing care.</div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="ad-button-group">
+      <button class="ad-generate-btn" id="ad-generate-btn">Generate Report</button>
+      <button class="ad-reset-btn" id="ad-reset-btn">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var ADL_ITEMS = ['bathing','dressing','grooming','mouth-care','toileting','transferring','walking','stairs','eating'];
+      var ADL_LABELS = ['Bathing','Dressing','Grooming','Mouth Care','Toileting','Transferring (Bed/Chair)','Walking','Climbing Stairs','Eating'];
+      var IADL_ITEMS = ['shopping','cooking','medications','phone','housework','laundry','driving','finances'];
+      var IADL_LABELS = ['Shopping','Cooking','Managing Medications','Using Phone / Looking Up Numbers','Doing Housework','Doing Laundry','Driving / Using Public Transportation','Managing Finances'];
+
+      function countLevels(items) {
+        var c = { Independent:0, 'Needs Help':0, Dependent:0, 'Cannot Do':0 };
+        items.forEach(function(k) {
+          var el = document.querySelector('input[name="ad-' + k + '"]:checked');
+          if (el) c[el.value]++;
+        });
+        return c;
+      }
+
+      function updateSummary() {
+        var a = countLevels(ADL_ITEMS);
+        document.getElementById('ad-adl-independent').textContent = a.Independent;
+        document.getElementById('ad-adl-help').textContent = a['Needs Help'];
+        document.getElementById('ad-adl-dependent').textContent = a.Dependent;
+        document.getElementById('ad-adl-cannot').textContent = a['Cannot Do'];
+        var b = countLevels(IADL_ITEMS);
+        document.getElementById('ad-iadl-independent').textContent = b.Independent;
+        document.getElementById('ad-iadl-help').textContent = b['Needs Help'];
+        document.getElementById('ad-iadl-dependent').textContent = b.Dependent;
+        document.getElementById('ad-iadl-cannot').textContent = b['Cannot Do'];
+      }
+
+      function generateReport() {
+        var d = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+        var r = 'ADL / IADL Functional Assessment\nDate: ' + d + '\n\n';
+        r += 'ACTIVITIES OF DAILY LIVING (ADL)\n';
+        var ac = { Independent:0,'Needs Help':0,Dependent:0,'Cannot Do':0 }, an = 0;
+        ADL_ITEMS.forEach(function(k,i) {
+          var el = document.querySelector('input[name="ad-' + k + '"]:checked');
+          if (el) { r += ADL_LABELS[i] + ': ' + el.value + '\n'; ac[el.value]++; an++; }
+        });
+        r += 'ADL Summary: ' + ac.Independent + ' Independent, ' + ac['Needs Help'] + ' Needs Help, ' + ac.Dependent + ' Dependent, ' + ac['Cannot Do'] + ' Cannot Do\n\n';
+        r += 'INSTRUMENTAL ACTIVITIES OF DAILY LIVING (IADL)\n';
+        var ic = { Independent:0,'Needs Help':0,Dependent:0,'Cannot Do':0 }, inum = 0;
+        IADL_ITEMS.forEach(function(k,i) {
+          var el = document.querySelector('input[name="ad-' + k + '"]:checked');
+          if (el) { r += IADL_LABELS[i] + ': ' + el.value + '\n'; ic[el.value]++; inum++; }
+        });
+        r += 'IADL Summary: ' + ic.Independent + ' Independent, ' + ic['Needs Help'] + ' Needs Help, ' + ic.Dependent + ' Dependent, ' + ic['Cannot Do'] + ' Cannot Do\n\n';
+        var tot = an + inum;
+        r += 'Overall: ' + tot + '/17 items rated | ' + (ac.Independent+ic.Independent) + ' Independent, ' + (ac['Needs Help']+ic['Needs Help']) + ' Needs Help, ' + (ac.Dependent+ic.Dependent) + ' Dependent, ' + (ac['Cannot Do']+ic['Cannot Do']) + ' Cannot Do';
+        navigator.clipboard.writeText(r).then(function() {
+          var btn = document.getElementById('ad-generate-btn');
+          var orig = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(function(){ btn.textContent = orig; }, 2000);
+        });
+      }
+
+      document.querySelectorAll('.ad-adl-item, .ad-iadl-item').forEach(function(el) {
+        el.addEventListener('change', updateSummary);
+      });
+      document.getElementById('ad-generate-btn').addEventListener('click', generateReport);
+      document.getElementById('ad-reset-btn').addEventListener('click', function() {
+        if (confirm('Reset all ADL/IADL responses?')) {
+          document.querySelectorAll('.ad-adl-item, .ad-iadl-item').forEach(function(r){ r.checked = false; });
+          updateSummary();
+        }
+      });
+      updateSummary();
+    })();
+  </script>
+
+</section><!-- end adl-tool -->
+
+
+<!-- ── MSI-BPD ─────────────────────────────────────────────────────── -->
+<section id="msibpd-tool" class="section">
+  <div class="section-header">
+    <h2>McLean Screening Instrument for BPD (MSI-BPD)</h2>
+    <p>10-item self-report screening tool for Borderline Personality Disorder. A score of 7 or higher warrants further diagnostic evaluation.</p>
+  </div>
+
+  <div class="mt-warning">
+    <strong>Clinical Use:</strong> This is a screening tool, not a diagnostic instrument. A positive result should prompt comprehensive psychiatric evaluation. Use alongside clinical interview and other diagnostic criteria.
+  </div>
+
+  <style>
+    .mb-container { max-width: 750px; }
+    .mb-question-card { background-color: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 16px; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 16px; }
+    .mb-question-number { flex-shrink: 0; font-weight: bold; color: var(--accent); min-width: 28px; padding-top: 2px; }
+    .mb-question-text { flex-grow: 1; color: var(--text); font-size: 14px; line-height: 1.5; }
+    .mb-radio-group { display: flex; gap: 20px; flex-shrink: 0; align-items: center; padding-top: 2px; }
+    .mb-radio-option { display: flex; align-items: center; gap: 6px; }
+    .mb-radio-option input[type="radio"] { cursor: pointer; accent-color: var(--accent); }
+    .mb-radio-option label { cursor: pointer; color: var(--text); font-size: 14px; user-select: none; }
+    .mb-score-display { background-color: var(--bg2); border: 2px solid var(--accent); border-radius: 6px; padding: 20px; text-align: center; margin: 24px 0; }
+    .mb-score-number { font-size: 36px; font-weight: bold; color: var(--accent); margin-bottom: 4px; }
+    .mb-score-label { font-size: 14px; color: var(--text); }
+    .mb-interpretation { font-size: 14px; color: var(--text); font-weight: 500; margin-top: 12px; padding: 12px; border-radius: 4px; }
+    .mb-interpretation.mb-negative { background-color: rgba(74,124,53,0.1); border-left: 4px solid var(--accent); }
+    .mb-interpretation.mb-positive { background-color: rgba(139,105,20,0.1); border-left: 4px solid var(--accent2); }
+    .mb-button-group { display: flex; gap: 12px; margin-top: 24px; }
+    .mb-button { padding: 10px 24px; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; color: white; }
+    .mb-button-primary { background-color: var(--accent); }
+    .mb-button-primary:hover { background-color: #3d6a2b; }
+    .mb-button-secondary { background-color: var(--accent2); }
+    .mb-button-secondary:hover { background-color: #6f5410; }
+  </style>
+
+  <div class="mb-container">
+    <div id="msibpd-questions">
+      <div class="mb-question-card"><div class="mb-question-number">1.</div><div class="mb-question-text">Have any of your closest relationships been troubled by a lot of arguments or repeated breakups?</div><div class="mb-radio-group"><div class="mb-radio-option"><input type="radio" name="mb-q1" value="1" id="mb-q1y" class="mb-item"><label for="mb-q1y">Yes</label></div><div class="mb-radio-option"><input type="radio" name="mb-q1" value="0" id="mb-q1n" class="mb-item"><label for="mb-q1n">No</label></div></div></div>
+      <div class="mb-question-card"><div class="mb-question-number">2.</div><div class="mb-question-text">Have you deliberately hurt yourself physically (e.g., punched yourself, cut yourself, burned yourself)? How about made a suicide attempt?</div><div class="mb-radio-group"><div class="mb-radio-option"><input type="radio" name="mb-q2" value="1" id="mb-q2y" class="mb-item"><label for="mb-q2y">Yes</label></div><div class="mb-radio-option"><input type="radio" name="mb-q2" value="0" id="mb-q2n" class="mb-item"><label for="mb-q2n">No</label></div></div></div>
+      <div class="mb-question-card"><div class="mb-question-number">3.</div><div class="mb-question-text">Have you had at least two other problems with impulsivity (e.g., eating binges and spending sprees, drinking too much and verbal outbursts)?</div><div class="mb-radio-group"><div class="mb-radio-option"><input type="radio" name="mb-q3" value="1" id="mb-q3y" class="mb-item"><label for="mb-q3y">Yes</label></div><div class="mb-radio-option"><input type="radio" name="mb-q3" value="0" id="mb-q3n" class="mb-item"><label for="mb-q3n">No</label></div></div></div>
+      <div class="mb-question-card"><div class="mb-question-number">4.</div><div class="mb-question-text">Have you been extremely moody?</div><div class="mb-radio-group"><div class="mb-radio-option"><input type="radio" name="mb-q4" value="1" id="mb-q4y" class="mb-item"><label for="mb-q4y">Yes</label></div><div class="mb-radio-option"><input type="radio" name="mb-q4" value="0" id="mb-q4n" class="mb-item"><label for="mb-q4n">No</label></div></div></div>
+      <div class="mb-question-card"><div class="mb-question-number">5.</div><div class="mb-question-text">Have you felt very angry a lot of the time? How about often acted in an angry or sarcastic manner?</div><div class="mb-radio-group"><div class="mb-radio-option"><input type="radio" name="mb-q5" value="1" id="mb-q5y" class="mb-item"><label for="mb-q5y">Yes</label></div><div class="mb-radio-option"><input type="radio" name="mb-q5" value="0" id="mb-q5n" class="mb-item"><label for="mb-q5n">No</label></div></div></div>
+      <div class="mb-question-card"><div class="mb-question-number">6.</div><div class="mb-question-text">Have you often been distrustful of other people?</div><div class="mb-radio-group"><div class="mb-radio-option"><input type="radio" name="mb-q6" value="1" id="mb-q6y" class="mb-item"><label for="mb-q6y">Yes</label></div><div class="mb-radio-option"><input type="radio" name="mb-q6" value="0" id="mb-q6n" class="mb-item"><label for="mb-q6n">No</label></div></div></div>
+      <div class="mb-question-card"><div class="mb-question-number">7.</div><div class="mb-question-text">Have you frequently felt unreal or as if things around you were unreal?</div><div class="mb-radio-group"><div class="mb-radio-option"><input type="radio" name="mb-q7" value="1" id="mb-q7y" class="mb-item"><label for="mb-q7y">Yes</label></div><div class="mb-radio-option"><input type="radio" name="mb-q7" value="0" id="mb-q7n" class="mb-item"><label for="mb-q7n">No</label></div></div></div>
+      <div class="mb-question-card"><div class="mb-question-number">8.</div><div class="mb-question-text">Have you chronically felt empty?</div><div class="mb-radio-group"><div class="mb-radio-option"><input type="radio" name="mb-q8" value="1" id="mb-q8y" class="mb-item"><label for="mb-q8y">Yes</label></div><div class="mb-radio-option"><input type="radio" name="mb-q8" value="0" id="mb-q8n" class="mb-item"><label for="mb-q8n">No</label></div></div></div>
+      <div class="mb-question-card"><div class="mb-question-number">9.</div><div class="mb-question-text">Have you often felt that you had no idea of who you are or that you have no identity?</div><div class="mb-radio-group"><div class="mb-radio-option"><input type="radio" name="mb-q9" value="1" id="mb-q9y" class="mb-item"><label for="mb-q9y">Yes</label></div><div class="mb-radio-option"><input type="radio" name="mb-q9" value="0" id="mb-q9n" class="mb-item"><label for="mb-q9n">No</label></div></div></div>
+      <div class="mb-question-card"><div class="mb-question-number">10.</div><div class="mb-question-text">Have you made desperate efforts to avoid feeling abandoned or being abandoned (e.g., repeatedly called someone to reassure yourself that he or she still cared, begged them not to leave you, clung to them physically)?</div><div class="mb-radio-group"><div class="mb-radio-option"><input type="radio" name="mb-q10" value="1" id="mb-q10y" class="mb-item"><label for="mb-q10y">Yes</label></div><div class="mb-radio-option"><input type="radio" name="mb-q10" value="0" id="mb-q10n" class="mb-item"><label for="mb-q10n">No</label></div></div></div>
+    </div>
+
+    <div class="mb-score-display">
+      <div class="mb-score-number"><span id="mb-score">0</span> / 10</div>
+      <div class="mb-score-label">Total Score</div>
+      <div class="mb-interpretation mb-negative" id="mb-interp">Answer questions to see interpretation</div>
+    </div>
+
+    <div class="mb-button-group">
+      <button type="button" class="mb-button mb-button-primary" id="mb-report-btn">Generate Report</button>
+      <button type="button" class="mb-button mb-button-secondary" id="mb-reset-btn">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var LABELS = ['Troubled relationships','Self-harm / suicide attempt','Impulsivity problems','Extreme moodiness','Frequent anger','Distrustfulness','Unreality / derealization','Chronic emptiness','Identity confusion','Fear of abandonment'];
+
+      function update() {
+        var score = 0, answered = 0;
+        for (var i = 1; i <= 10; i++) {
+          var el = document.querySelector('input[name="mb-q' + i + '"]:checked');
+          if (el) { score += parseInt(el.value); answered++; }
+        }
+        document.getElementById('mb-score').textContent = score;
+        var interp = document.getElementById('mb-interp');
+        if (answered === 10) {
+          if (score >= 7) { interp.textContent = 'Positive screen \u2014 symptoms highly consistent with BPD; further evaluation warranted'; interp.className = 'mb-interpretation mb-positive'; }
+          else { interp.textContent = 'Below screening threshold'; interp.className = 'mb-interpretation mb-negative'; }
+        } else { interp.textContent = answered + ' / 10 answered'; interp.className = 'mb-interpretation mb-negative'; }
+      }
+
+      function report() {
+        var d = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+        var r = 'McLean Screening Instrument for BPD (MSI-BPD)\nDate: ' + d + '\n\n';
+        var score = 0;
+        for (var i = 1; i <= 10; i++) {
+          var el = document.querySelector('input[name="mb-q' + i + '"]:checked');
+          if (el) { var v = parseInt(el.value); score += v; r += i + '. ' + LABELS[i-1] + ': ' + (v ? 'Yes' : 'No') + '\n'; }
+        }
+        r += '\nTotal Score: ' + score + ' / 10\n';
+        r += 'Interpretation: ' + (score >= 7 ? 'Positive screen \u2014 symptoms highly consistent with BPD; further evaluation warranted' : 'Below screening threshold');
+        navigator.clipboard.writeText(r).then(function(){ var b = document.getElementById('mb-report-btn'); var o = b.textContent; b.textContent = 'Copied!'; setTimeout(function(){ b.textContent = o; }, 2000); });
+      }
+
+      document.querySelectorAll('.mb-item').forEach(function(el){ el.addEventListener('change', update); });
+      document.getElementById('mb-report-btn').addEventListener('click', report);
+      document.getElementById('mb-reset-btn').addEventListener('click', function() {
+        if (confirm('Reset all MSI-BPD responses?')) { document.querySelectorAll('.mb-item').forEach(function(r){ r.checked = false; }); update(); }
+      });
+      update();
+    })();
+  </script>
+</section><!-- end msibpd-tool -->
+
+
+<!-- ── ASRS v1.1 ─────────────────────────────────────────────────────── -->
+<section id="asrs-tool" class="section">
+  <div class="section-header">
+    <h2>Adult ADHD Self-Report Scale (ASRS v1.1)</h2>
+    <p>18-item screening tool for adult ADHD. Part A (6 items) is the primary screener; Part B (12 items) provides supplemental diagnostic information.</p>
+  </div>
+
+  <div class="mt-warning">
+    <strong>Clinical Use:</strong> A positive Part A screen (4+ items in the shaded range) warrants comprehensive ADHD evaluation. Part B frequency counts provide additional clinical cues. Not a substitute for professional diagnosis.
+  </div>
+
+  <style>
+    .as-container { display: flex; flex-direction: column; gap: 2rem; }
+    .as-part { background-color: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; }
+    .as-part-title { font-size: 1.1rem; font-weight: 600; color: var(--accent); margin-bottom: 0.25rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+    .as-part-desc { color: var(--text); font-size: 0.85rem; margin-bottom: 1.5rem; opacity: 0.8; }
+    .as-item { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    .as-item:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .as-q-text { color: var(--text); font-size: 0.95rem; font-weight: 500; margin-bottom: 0.75rem; }
+    .as-q-num { display: inline-block; background-color: var(--accent); color: white; width: 24px; height: 24px; border-radius: 50%; text-align: center; line-height: 24px; font-size: 0.8rem; font-weight: bold; margin-right: 0.5rem; }
+    .as-radio-row { display: flex; gap: 0; width: 100%; }
+    .as-radio-cell { flex: 1; text-align: center; padding: 8px 4px; border: 1px solid var(--border); font-size: 0.8rem; }
+    .as-radio-cell label { display: block; cursor: pointer; font-size: 0.78rem; color: var(--text); margin-top: 4px; }
+    .as-radio-cell input[type="radio"] { accent-color: var(--accent); cursor: pointer; }
+    .as-shaded { background-color: #fff3cd; }
+    .as-unshaded { background-color: #fff; }
+    .as-summary { background-color: white; border: 1px solid var(--accent); border-radius: 6px; padding: 1rem; margin-top: 1.5rem; }
+    .as-summary-line { color: var(--text); font-size: 0.95rem; margin-bottom: 0.5rem; font-weight: 500; }
+    .as-positive { color: #b91c1c; font-weight: 600; }
+    .as-negative { color: var(--accent); font-weight: 600; }
+    .as-freq-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.75rem; margin-top: 1rem; }
+    .as-freq-box { background: white; border: 1px solid var(--border); border-radius: 4px; padding: 0.75rem; text-align: center; }
+    .as-freq-label { font-size: 0.78rem; color: var(--text); opacity: 0.7; font-weight: 500; }
+    .as-freq-count { font-size: 1.4rem; font-weight: 600; color: var(--accent); margin-top: 0.25rem; }
+    .as-button-group { display: flex; gap: 1rem; margin-top: 1.5rem; }
+    .as-btn { padding: 0.75rem 1.5rem; font-size: 0.95rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.2s; color: white; }
+    .as-btn-primary { background-color: var(--accent); }
+    .as-btn-primary:hover { background-color: #3d6429; }
+    .as-btn-secondary { background-color: var(--accent2); }
+    .as-btn-secondary:hover { background-color: #6f5410; }
+  </style>
+
+  <div class="as-container">
+    <!-- Part A -->
+    <div class="as-part">
+      <div class="as-part-title">Part A: Screener (6 items)</div>
+      <p class="as-part-desc">Shaded cells indicate responses in the clinical range. For Q1-3, "Sometimes" or higher is clinical. For Q4-6, "Often" or higher is clinical.</p>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">1</span>How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-1" value="0" class="as-a-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-1" value="1" class="as-a-item"><label>Rarely</label></div><div class="as-radio-cell as-shaded"><input type="radio" name="asrs-1" value="2" class="as-a-item"><label>Sometimes</label></div><div class="as-radio-cell as-shaded"><input type="radio" name="asrs-1" value="3" class="as-a-item"><label>Often</label></div><div class="as-radio-cell as-shaded"><input type="radio" name="asrs-1" value="4" class="as-a-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">2</span>How often do you have difficulty getting things in order when you have to do a task that requires organization?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-2" value="0" class="as-a-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-2" value="1" class="as-a-item"><label>Rarely</label></div><div class="as-radio-cell as-shaded"><input type="radio" name="asrs-2" value="2" class="as-a-item"><label>Sometimes</label></div><div class="as-radio-cell as-shaded"><input type="radio" name="asrs-2" value="3" class="as-a-item"><label>Often</label></div><div class="as-radio-cell as-shaded"><input type="radio" name="asrs-2" value="4" class="as-a-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">3</span>How often do you have problems remembering appointments or obligations?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-3" value="0" class="as-a-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-3" value="1" class="as-a-item"><label>Rarely</label></div><div class="as-radio-cell as-shaded"><input type="radio" name="asrs-3" value="2" class="as-a-item"><label>Sometimes</label></div><div class="as-radio-cell as-shaded"><input type="radio" name="asrs-3" value="3" class="as-a-item"><label>Often</label></div><div class="as-radio-cell as-shaded"><input type="radio" name="asrs-3" value="4" class="as-a-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">4</span>When you have a task that requires a lot of thought, how often do you avoid or delay getting started?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-4" value="0" class="as-a-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-4" value="1" class="as-a-item"><label>Rarely</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-4" value="2" class="as-a-item"><label>Sometimes</label></div><div class="as-radio-cell as-shaded"><input type="radio" name="asrs-4" value="3" class="as-a-item"><label>Often</label></div><div class="as-radio-cell as-shaded"><input type="radio" name="asrs-4" value="4" class="as-a-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">5</span>How often do you fidget or squirm with your hands or feet when you have to sit down for a long time?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-5" value="0" class="as-a-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-5" value="1" class="as-a-item"><label>Rarely</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-5" value="2" class="as-a-item"><label>Sometimes</label></div><div class="as-radio-cell as-shaded"><input type="radio" name="asrs-5" value="3" class="as-a-item"><label>Often</label></div><div class="as-radio-cell as-shaded"><input type="radio" name="asrs-5" value="4" class="as-a-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">6</span>How often do you feel overly active and compelled to do things, like you were driven by a motor?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-6" value="0" class="as-a-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-6" value="1" class="as-a-item"><label>Rarely</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-6" value="2" class="as-a-item"><label>Sometimes</label></div><div class="as-radio-cell as-shaded"><input type="radio" name="asrs-6" value="3" class="as-a-item"><label>Often</label></div><div class="as-radio-cell as-shaded"><input type="radio" name="asrs-6" value="4" class="as-a-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-summary">
+        <div class="as-summary-line">Part A Screening: <span id="as-parta-count">&mdash;</span></div>
+        <div class="as-summary-line">Result: <span id="as-parta-result">&mdash;</span></div>
+      </div>
+    </div>
+
+    <!-- Part B -->
+    <div class="as-part">
+      <div class="as-part-title">Part B: Supplemental Symptoms (12 items)</div>
+      <p class="as-part-desc">Additional items to support diagnostic assessment. Scoring is frequency distribution only (no clinical threshold).</p>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">7</span>How often do you make careless mistakes when you have to work on a boring or difficult project?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-7" value="0" class="as-b-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-7" value="1" class="as-b-item"><label>Rarely</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-7" value="2" class="as-b-item"><label>Sometimes</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-7" value="3" class="as-b-item"><label>Often</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-7" value="4" class="as-b-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">8</span>How often do you have difficulty keeping your attention when you are doing boring or repetitive work?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-8" value="0" class="as-b-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-8" value="1" class="as-b-item"><label>Rarely</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-8" value="2" class="as-b-item"><label>Sometimes</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-8" value="3" class="as-b-item"><label>Often</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-8" value="4" class="as-b-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">9</span>How often do you have difficulty concentrating on what people say to you, even when they are speaking to you directly?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-9" value="0" class="as-b-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-9" value="1" class="as-b-item"><label>Rarely</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-9" value="2" class="as-b-item"><label>Sometimes</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-9" value="3" class="as-b-item"><label>Often</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-9" value="4" class="as-b-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">10</span>How often do you misplace or have difficulty finding things at home or at work?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-10" value="0" class="as-b-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-10" value="1" class="as-b-item"><label>Rarely</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-10" value="2" class="as-b-item"><label>Sometimes</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-10" value="3" class="as-b-item"><label>Often</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-10" value="4" class="as-b-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">11</span>How often are you distracted by activity or noise around you?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-11" value="0" class="as-b-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-11" value="1" class="as-b-item"><label>Rarely</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-11" value="2" class="as-b-item"><label>Sometimes</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-11" value="3" class="as-b-item"><label>Often</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-11" value="4" class="as-b-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">12</span>How often do you leave your seat in meetings or other situations in which you are expected to remain seated?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-12" value="0" class="as-b-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-12" value="1" class="as-b-item"><label>Rarely</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-12" value="2" class="as-b-item"><label>Sometimes</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-12" value="3" class="as-b-item"><label>Often</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-12" value="4" class="as-b-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">13</span>How often do you feel restless or fidgety?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-13" value="0" class="as-b-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-13" value="1" class="as-b-item"><label>Rarely</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-13" value="2" class="as-b-item"><label>Sometimes</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-13" value="3" class="as-b-item"><label>Often</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-13" value="4" class="as-b-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">14</span>How often do you have difficulty unwinding and relaxing when you have time to yourself?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-14" value="0" class="as-b-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-14" value="1" class="as-b-item"><label>Rarely</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-14" value="2" class="as-b-item"><label>Sometimes</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-14" value="3" class="as-b-item"><label>Often</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-14" value="4" class="as-b-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">15</span>How often do you find yourself talking too much when you are in social situations?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-15" value="0" class="as-b-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-15" value="1" class="as-b-item"><label>Rarely</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-15" value="2" class="as-b-item"><label>Sometimes</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-15" value="3" class="as-b-item"><label>Often</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-15" value="4" class="as-b-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">16</span>When you're in a conversation, how often do you find yourself finishing the sentences of the people you are talking to, before they can finish them themselves?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-16" value="0" class="as-b-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-16" value="1" class="as-b-item"><label>Rarely</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-16" value="2" class="as-b-item"><label>Sometimes</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-16" value="3" class="as-b-item"><label>Often</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-16" value="4" class="as-b-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">17</span>How often do you have difficulty waiting your turn in situations when turn taking is required?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-17" value="0" class="as-b-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-17" value="1" class="as-b-item"><label>Rarely</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-17" value="2" class="as-b-item"><label>Sometimes</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-17" value="3" class="as-b-item"><label>Often</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-17" value="4" class="as-b-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-item"><div class="as-q-text"><span class="as-q-num">18</span>How often do you interrupt others when they are busy?</div><div class="as-radio-row"><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-18" value="0" class="as-b-item"><label>Never</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-18" value="1" class="as-b-item"><label>Rarely</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-18" value="2" class="as-b-item"><label>Sometimes</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-18" value="3" class="as-b-item"><label>Often</label></div><div class="as-radio-cell as-unshaded"><input type="radio" name="asrs-18" value="4" class="as-b-item"><label>Very Often</label></div></div></div>
+
+      <div class="as-summary">
+        <div class="as-summary-line">Part B Frequency Distribution:</div>
+        <div class="as-freq-grid">
+          <div class="as-freq-box"><div class="as-freq-label">Never</div><div class="as-freq-count" id="as-freq-0">&mdash;</div></div>
+          <div class="as-freq-box"><div class="as-freq-label">Rarely</div><div class="as-freq-count" id="as-freq-1">&mdash;</div></div>
+          <div class="as-freq-box"><div class="as-freq-label">Sometimes</div><div class="as-freq-count" id="as-freq-2">&mdash;</div></div>
+          <div class="as-freq-box"><div class="as-freq-label">Often</div><div class="as-freq-count" id="as-freq-3">&mdash;</div></div>
+          <div class="as-freq-box"><div class="as-freq-label">Very Often</div><div class="as-freq-count" id="as-freq-4">&mdash;</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="as-button-group">
+      <button type="button" id="as-report-btn" class="as-btn as-btn-primary">Generate Report</button>
+      <button type="button" id="as-reset-btn" class="as-btn as-btn-secondary">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var LABELS = {1:'Trouble wrapping up details',2:'Difficulty organizing',3:'Problems remembering appointments',4:'Avoid/delay starting tasks requiring thought',5:'Fidget or squirm when sitting',6:'Feel overly active, driven by a motor',7:'Careless mistakes on boring projects',8:'Difficulty keeping attention on boring work',9:'Difficulty concentrating when others speak',10:'Misplace or difficulty finding things',11:'Distracted by activity or noise',12:'Leave seat in meetings',13:'Feel restless or fidgety',14:'Difficulty unwinding and relaxing',15:'Talk too much in social situations',16:'Finish sentences of others',17:'Difficulty waiting your turn',18:'Interrupt others'};
+      var RESP = {0:'Never',1:'Rarely',2:'Sometimes',3:'Often',4:'Very Often'};
+
+      function updateA() {
+        var clinical = 0, answered = 0;
+        for (var i = 1; i <= 3; i++) { var el = document.querySelector('input[name="asrs-'+i+'"]:checked'); if (el) { answered++; if (parseInt(el.value) >= 2) clinical++; } }
+        for (var i = 4; i <= 6; i++) { var el = document.querySelector('input[name="asrs-'+i+'"]:checked'); if (el) { answered++; if (parseInt(el.value) >= 3) clinical++; } }
+        var cEl = document.getElementById('as-parta-count');
+        var rEl = document.getElementById('as-parta-result');
+        if (answered === 6) {
+          cEl.textContent = clinical + '/6 items in clinical range';
+          rEl.innerHTML = clinical >= 4 ? '<span class="as-positive">Positive screen \u2014 \u22654 items in clinical range</span>' : '<span class="as-negative">Below threshold \u2014 &lt;4 items in clinical range</span>';
+        } else { cEl.textContent = '\u2014'; rEl.textContent = '\u2014'; }
+      }
+
+      function updateB() {
+        var fc = {0:0,1:0,2:0,3:0,4:0};
+        for (var i = 7; i <= 18; i++) { var el = document.querySelector('input[name="asrs-'+i+'"]:checked'); if (el) fc[el.value]++; }
+        for (var k = 0; k <= 4; k++) document.getElementById('as-freq-'+k).textContent = fc[k] || '\u2014';
+      }
+
+      function update() { updateA(); updateB(); }
+
+      function report() {
+        var d = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+        var r = 'Adult ADHD Self-Report Scale (ASRS v1.1)\nDate: ' + d + '\n\nPART A (Screener)\n';
+        for (var i = 1; i <= 6; i++) { var el = document.querySelector('input[name="asrs-'+i+'"]:checked'); if (el) r += i + '. ' + LABELS[i] + ': ' + RESP[el.value] + '\n'; }
+        var clinical = 0;
+        for (var i = 1; i <= 3; i++) { var el = document.querySelector('input[name="asrs-'+i+'"]:checked'); if (el && parseInt(el.value) >= 2) clinical++; }
+        for (var i = 4; i <= 6; i++) { var el = document.querySelector('input[name="asrs-'+i+'"]:checked'); if (el && parseInt(el.value) >= 3) clinical++; }
+        r += '\nPart A Result: ' + clinical + '/6 items in clinical range \u2014 ' + (clinical >= 4 ? 'Positive screen' : 'Below threshold') + '\n\nPART B (Supplemental)\n';
+        var fc = {0:0,1:0,2:0,3:0,4:0};
+        for (var i = 7; i <= 18; i++) { var el = document.querySelector('input[name="asrs-'+i+'"]:checked'); if (el) { r += i + '. ' + LABELS[i] + ': ' + RESP[el.value] + '\n'; fc[el.value]++; } }
+        r += '\nPart B Frequency: ' + (fc[0]||0) + ' Never, ' + (fc[1]||0) + ' Rarely, ' + (fc[2]||0) + ' Sometimes, ' + (fc[3]||0) + ' Often, ' + (fc[4]||0) + ' Very Often';
+        navigator.clipboard.writeText(r).then(function(){ var b = document.getElementById('as-report-btn'); var o = b.textContent; b.textContent = 'Copied!'; setTimeout(function(){ b.textContent = o; }, 2000); });
+      }
+
+      document.querySelectorAll('.as-a-item, .as-b-item').forEach(function(el){ el.addEventListener('change', update); });
+      document.getElementById('as-report-btn').addEventListener('click', report);
+      document.getElementById('as-reset-btn').addEventListener('click', function() {
+        if (confirm('Reset all ASRS responses?')) { document.querySelectorAll('.as-a-item, .as-b-item').forEach(function(r){ r.checked = false; }); update(); }
+      });
+      update();
+    })();
+  </script>
+</section><!-- end asrs-tool -->
+
+
+<!-- ── Epworth Sleepiness Scale ─────────────────────────────────────── -->
+<section id="ess-tool" class="section">
+  <div class="section-header">
+    <h2>Epworth Sleepiness Scale (ESS)</h2>
+    <p>Assess daytime sleepiness across 8 common situations. A simple screening tool to identify excessive daytime somnolence.</p>
+  </div>
+
+  <div class="mt-warning">
+    <strong>Clinical Note:</strong> This tool screens for daytime sleepiness and is not diagnostic. Elevated scores warrant formal sleep evaluation and physician consultation.
+  </div>
+
+  <style>
+    .es-container { background-color: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; }
+    .es-instructions { font-size: 0.9rem; color: var(--text); margin-bottom: 1.5rem; line-height: 1.5; }
+    .es-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+    .es-table th { background-color: var(--accent); color: white; padding: 10px 12px; text-align: center; font-weight: 600; font-size: 0.85rem; border: 1px solid var(--border); }
+    .es-table th:first-child { text-align: left; width: 40%; }
+    .es-table td { padding: 12px; border: 1px solid var(--border); color: var(--text); font-size: 0.9rem; }
+    .es-table td:first-child { font-weight: 500; }
+    .es-table td:not(:first-child) { text-align: center; }
+    .es-table tbody tr:nth-child(even) { background-color: rgba(74,124,53,0.03); }
+    .es-table tbody tr:hover { background-color: #f9f7f2; }
+    .es-table input[type="radio"] { accent-color: var(--accent); cursor: pointer; width: 18px; height: 18px; }
+    .es-score-box { background: white; border: 2px solid var(--accent); border-radius: 8px; padding: 20px; text-align: center; margin-bottom: 1.5rem; }
+    .es-score-num { font-size: 36px; font-weight: 700; color: var(--accent); }
+    .es-score-max { font-size: 14px; color: var(--text); margin-bottom: 12px; }
+    .es-interp { font-size: 0.95rem; font-weight: 600; padding: 12px; border-radius: 4px; margin-top: 12px; }
+    .es-interp.es-normal { background-color: rgba(74,124,53,0.1); border-left: 4px solid var(--accent); color: var(--text); }
+    .es-interp.es-average { background-color: rgba(139,105,20,0.1); border-left: 4px solid var(--accent2); color: var(--text); }
+    .es-interp.es-excessive { background-color: rgba(185,28,28,0.1); border-left: 4px solid #b91c1c; color: var(--text); }
+    .es-buttons { display: flex; gap: 12px; margin-top: 1.5rem; }
+    .es-btn { padding: 0.75rem 1.5rem; font-size: 0.95rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.2s; color: white; }
+    .es-btn-primary { background-color: var(--accent); }
+    .es-btn-primary:hover { background-color: #3d6429; }
+    .es-btn-secondary { background-color: var(--accent2); }
+    .es-btn-secondary:hover { background-color: #6f5410; }
+  </style>
+
+  <div class="es-container">
+    <p class="es-instructions"><strong>Instructions:</strong> Rate each situation for your likelihood of dozing off or falling asleep, not just feeling tired. Even if you haven't done some recently, estimate how they would affect you.</p>
+
+    <table class="es-table">
+      <thead>
+        <tr><th>Situation</th><th>Would never nod off (0)</th><th>Slight chance (1)</th><th>Moderate chance (2)</th><th>High chance (3)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1. Sitting and reading</td><td><input type="radio" name="ess-1" value="0" class="es-item"></td><td><input type="radio" name="ess-1" value="1" class="es-item"></td><td><input type="radio" name="ess-1" value="2" class="es-item"></td><td><input type="radio" name="ess-1" value="3" class="es-item"></td></tr>
+        <tr><td>2. Watching TV</td><td><input type="radio" name="ess-2" value="0" class="es-item"></td><td><input type="radio" name="ess-2" value="1" class="es-item"></td><td><input type="radio" name="ess-2" value="2" class="es-item"></td><td><input type="radio" name="ess-2" value="3" class="es-item"></td></tr>
+        <tr><td>3. Sitting, inactive, in a public place (e.g., meeting, theater, dinner event)</td><td><input type="radio" name="ess-3" value="0" class="es-item"></td><td><input type="radio" name="ess-3" value="1" class="es-item"></td><td><input type="radio" name="ess-3" value="2" class="es-item"></td><td><input type="radio" name="ess-3" value="3" class="es-item"></td></tr>
+        <tr><td>4. As a passenger in a car for an hour or more without a break</td><td><input type="radio" name="ess-4" value="0" class="es-item"></td><td><input type="radio" name="ess-4" value="1" class="es-item"></td><td><input type="radio" name="ess-4" value="2" class="es-item"></td><td><input type="radio" name="ess-4" value="3" class="es-item"></td></tr>
+        <tr><td>5. Lying down to rest when circumstances permit</td><td><input type="radio" name="ess-5" value="0" class="es-item"></td><td><input type="radio" name="ess-5" value="1" class="es-item"></td><td><input type="radio" name="ess-5" value="2" class="es-item"></td><td><input type="radio" name="ess-5" value="3" class="es-item"></td></tr>
+        <tr><td>6. Sitting and talking to someone</td><td><input type="radio" name="ess-6" value="0" class="es-item"></td><td><input type="radio" name="ess-6" value="1" class="es-item"></td><td><input type="radio" name="ess-6" value="2" class="es-item"></td><td><input type="radio" name="ess-6" value="3" class="es-item"></td></tr>
+        <tr><td>7. Sitting quietly after a meal without alcohol</td><td><input type="radio" name="ess-7" value="0" class="es-item"></td><td><input type="radio" name="ess-7" value="1" class="es-item"></td><td><input type="radio" name="ess-7" value="2" class="es-item"></td><td><input type="radio" name="ess-7" value="3" class="es-item"></td></tr>
+        <tr><td>8. In a car, while stopped for a few minutes in traffic or at a light</td><td><input type="radio" name="ess-8" value="0" class="es-item"></td><td><input type="radio" name="ess-8" value="1" class="es-item"></td><td><input type="radio" name="ess-8" value="2" class="es-item"></td><td><input type="radio" name="ess-8" value="3" class="es-item"></td></tr>
+      </tbody>
+    </table>
+
+    <div class="es-score-box">
+      <div class="es-score-num" id="es-score">0</div>
+      <div class="es-score-max">/ 24</div>
+      <div class="es-interp es-normal" id="es-interp">Answer all items to see interpretation</div>
+    </div>
+
+    <div class="es-buttons">
+      <button type="button" class="es-btn es-btn-primary" id="es-report-btn">Generate Report</button>
+      <button type="button" class="es-btn es-btn-secondary" id="es-reset-btn">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var SITS = ['Sitting and reading','Watching TV','Sitting, inactive, in a public place (e.g., meeting, theater, dinner event)','As a passenger in a car for an hour or more without a break','Lying down to rest when circumstances permit','Sitting and talking to someone','Sitting quietly after a meal without alcohol','In a car, while stopped for a few minutes in traffic or at a light'];
+      var RESP = ['Would never nod off','Slight chance','Moderate chance','High chance'];
+
+      function interp(s) {
+        if (s <= 7) return {text:'Unlikely that you are abnormally sleepy', cls:'es-normal'};
+        if (s <= 9) return {text:'Average amount of daytime sleepiness', cls:'es-average'};
+        if (s <= 15) return {text:'Excessive daytime sleepiness \u2014 further evaluation recommended', cls:'es-excessive'};
+        return {text:'Excessive daytime sleepiness \u2014 strongly consider seeking medical attention', cls:'es-excessive'};
+      }
+
+      function update() {
+        var total = 0, answered = 0;
+        for (var i = 1; i <= 8; i++) { var el = document.querySelector('input[name="ess-'+i+'"]:checked'); if (el) { total += parseInt(el.value); answered++; } }
+        document.getElementById('es-score').textContent = total;
+        var ip = document.getElementById('es-interp');
+        if (answered === 8) { var r = interp(total); ip.textContent = r.text; ip.className = 'es-interp ' + r.cls; }
+        else { ip.textContent = answered + ' / 8 answered'; ip.className = 'es-interp es-normal'; }
+      }
+
+      function report() {
+        var d = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+        var r = 'Epworth Sleepiness Scale (ESS)\nDate: ' + d + '\n\n';
+        var total = 0;
+        for (var i = 1; i <= 8; i++) { var el = document.querySelector('input[name="ess-'+i+'"]:checked'); if (el) { var v = parseInt(el.value); total += v; r += (i) + '. ' + SITS[i-1] + ': ' + v + ' (' + RESP[v] + ')\n'; } }
+        r += '\nTotal Score: ' + total + ' / 24\n';
+        r += 'Interpretation: ' + interp(total).text;
+        navigator.clipboard.writeText(r).then(function(){ var b = document.getElementById('es-report-btn'); var o = b.textContent; b.textContent = 'Copied!'; setTimeout(function(){ b.textContent = o; }, 2000); });
+      }
+
+      document.querySelectorAll('.es-item').forEach(function(el){ el.addEventListener('change', update); });
+      document.getElementById('es-report-btn').addEventListener('click', report);
+      document.getElementById('es-reset-btn').addEventListener('click', function() {
+        if (confirm('Reset all ESS responses?')) { document.querySelectorAll('.es-item').forEach(function(r){ r.checked = false; }); update(); }
+      });
+      update();
+    })();
+  </script>
+</section><!-- end ess-tool -->
 
 
 
