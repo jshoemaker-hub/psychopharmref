@@ -1835,6 +1835,22 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
   font-size: 12px;
   color: var(--text-muted);
 }
+.rc-copy-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 6px 16px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.rc-copy-btn:hover {
+  opacity: 0.85;
+}
 
 /* ── References & Methods Section ──────────────────────────────────────── */
 .ref-card {

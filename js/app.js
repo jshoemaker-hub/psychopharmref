@@ -1513,11 +1513,14 @@ function calcDaysBetween() {
   const earlier = d1 <= d2 ? d1 : d2;
   const later   = d1 <= d2 ? d2 : d1;
 
+  const copyText = `Days Between Dates\n${diff} days\nFrom ${fmtDate(earlier)} to ${fmtDate(later)}\n${Math.floor(diff / 7)} weeks and ${diff % 7} days — ~${(diff / 30.44).toFixed(1)} months`;
+
   res.className = 'rc-result';
   res.innerHTML = `
     <div class="rc-big-num">${diff} <span class="rc-big-unit">days</span></div>
     <div class="rc-detail">From <strong>${fmtDate(earlier)}</strong> to <strong>${fmtDate(later)}</strong></div>
     <div class="rc-detail">${Math.floor(diff / 7)} weeks and ${diff % 7} days &bull; ~${(diff / 30.44).toFixed(1)} months</div>
+    <button class="rc-copy-btn" onclick="rcCopy(this, \`${copyText.replace(/`/g, '\\`')}\`)">Copy</button>
   `;
 }
 
@@ -1549,6 +1552,8 @@ function calcUsage() {
   const perMonth      = avgPerDay * 30.44;
   const pillsPerMonth = pillsPerDay * 30.44;
 
+  const ucCopy = `Usage Calculator\nPeriod: ${fmtDate(start)} to ${fmtDate(end)} (${days} days)\nPrescribed: ${qty} pills x ${dose} ${unit}${remaining > 0 ? ' | Remaining: ' + remaining + ' pills' : ''}\nPills Used: ${pillsUsed.toFixed(1)}\nAvg Daily Dose: ${avgPerDay.toFixed(2)} ${unit}/day\nPills/Day Avg: ${pillsPerDay.toFixed(2)}\nProjected Monthly Total: ${perMonth.toFixed(1)} ${unit}\nProjected Pills/Month: ${pillsPerMonth.toFixed(1)}`;
+
   res.className = 'rc-result';
   res.innerHTML = `
     <div class="rc-stats-grid">
@@ -1564,6 +1569,7 @@ function calcUsage() {
       Prescribed: <strong>${qty} pills × ${dose} ${unit}</strong>
       ${remaining > 0 ? `&bull; Remaining at count: <strong>${remaining} pills</strong>` : ''}
     </div>
+    <button class="rc-copy-btn" onclick="rcCopy(this, \`${ucCopy.replace(/`/g, '\\`')}\`)">Copy</button>
   `;
 }
 
@@ -1590,10 +1596,17 @@ function calcForwardRefills() {
     </tr>`;
   }).join('');
 
+  const fwdCopyLines = Array.from({ length: 6 }, (_, i) => {
+    const n = i + 1;
+    return `Fill #${n}: ${fmtDate(addDays(start, daysVal * n))} (${daysVal} days after ${fmtDate(addDays(start, daysVal * (n - 1)))})`;
+  }).join('\n');
+  const fwdCopy = `Forward Refill Dates\nStarting from fill on ${fmtDate(start)}, every ${daysVal} days:\n${fwdCopyLines}`;
+
   res.className = 'rc-result';
   res.innerHTML = `
     <div class="rc-detail" style="margin-bottom:10px">Starting from fill on <strong>${fmtDate(start)}</strong>, every <strong>${daysVal} days</strong>:</div>
     <table class="rc-fill-table"><tbody>${rows}</tbody></table>
+    <button class="rc-copy-btn" onclick="rcCopy(this, \`${fwdCopy.replace(/`/g, '\\`')}\`)">Copy</button>
   `;
 }
 
@@ -1619,12 +1632,27 @@ function calcReverseRefills() {
     </tr>`;
   }).join('');
 
+  const revCopyLines = Array.from({ length: 6 }, (_, i) => {
+    const n = i + 1;
+    return `Fill -${n}: ${fmtDate(addDays(latest, -daysVal * n))} (${daysVal} days before ${fmtDate(addDays(latest, -daysVal * (n - 1)))})`;
+  }).join('\n');
+  const revCopy = `Reverse Refill Tracker\nWorking back from ${fmtDate(latest)}, every ${daysVal} days:\n${revCopyLines}\nNote: Expected dates based on consistent fill interval. Actual fill dates may vary.`;
+
   res.className = 'rc-result';
   res.innerHTML = `
     <div class="rc-detail" style="margin-bottom:10px">Working back from <strong>${fmtDate(latest)}</strong>, every <strong>${daysVal} days</strong>:</div>
     <table class="rc-fill-table"><tbody>${rows}</tbody></table>
     <div class="rc-detail" style="margin-top:10px;font-style:italic;color:var(--text-muted)">These are <em>expected</em> dates based on a consistent fill interval. Actual fill dates may vary.</div>
+    <button class="rc-copy-btn" onclick="rcCopy(this, \`${revCopy.replace(/`/g, '\\`')}\`)">Copy</button>
   `;
+}
+
+function rcCopy(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = orig; }, 2000);
+  });
 }
 
 function showRCError(el, msg) {
