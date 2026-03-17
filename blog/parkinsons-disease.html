@@ -1269,7 +1269,21 @@
         </main>
 
         <!-- Footer -->
-        <footer class="ba-footer">
+        
+        <!-- Newsletter CTA -->
+        <div class="nl-blog-cta">
+          <h4>PsychoPharmRef Newsletter</h4>
+          <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
+          <form class="nl-form" onsubmit="handleNewsletterSignup(event, this)">
+            <div class="nl-input-row">
+              <input type="email" class="nl-email" placeholder="Enter your email" required>
+              <button type="submit" class="nl-btn">Subscribe</button>
+            </div>
+            <div class="nl-note">Biweekly. Unsubscribe anytime. No spam.</div>
+          </form>
+        </div>
+
+<footer class="ba-footer">
             <div style="margin-bottom: 15px;">
                 <a href="../index.html" class="btn-primary">← Back to Blog</a>
             </div>

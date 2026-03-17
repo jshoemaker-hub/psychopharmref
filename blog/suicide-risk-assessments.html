@@ -718,7 +718,21 @@
             </section>
         </main>
 
-        <footer class="ba-footer">
+        
+        <!-- Newsletter CTA -->
+        <div class="nl-blog-cta">
+          <h4>PsychoPharmRef Newsletter</h4>
+          <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
+          <form class="nl-form" onsubmit="handleNewsletterSignup(event, this)">
+            <div class="nl-input-row">
+              <input type="email" class="nl-email" placeholder="Enter your email" required>
+              <button type="submit" class="nl-btn">Subscribe</button>
+            </div>
+            <div class="nl-note">Biweekly. Unsubscribe anytime. No spam.</div>
+          </form>
+        </div>
+
+<footer class="ba-footer">
             <div>
                 <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">
                     <strong>Disclaimer:</strong> This article is for educational purposes and professional peer discussion. Clinical decisions should be individualized and based on current evidence and guidelines.

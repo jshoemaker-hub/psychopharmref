@@ -1130,7 +1130,21 @@
       </div><!-- end ba-body -->
     </article>
 
-    <div class="ba-footer">
+    
+        <!-- Newsletter CTA -->
+        <div class="nl-blog-cta">
+          <h4>PsychoPharmRef Newsletter</h4>
+          <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
+          <form class="nl-form" onsubmit="handleNewsletterSignup(event, this)">
+            <div class="nl-input-row">
+              <input type="email" class="nl-email" placeholder="Enter your email" required>
+              <button type="submit" class="nl-btn">Subscribe</button>
+            </div>
+            <div class="nl-note">Biweekly. Unsubscribe anytime. No spam.</div>
+          </form>
+        </div>
+
+            <div class="ba-footer">
       <p style="font-size: 0.9em; color: var(--text-muted);">PsychoPharmRef — Clinical reference for prescribing clinicians. Not intended for patient self-management.</p>
       <a href="../index.html" class="back-link" style="margin-top: 16px;">&#8592; Back to PsychoPharmRef</a>
     </div>

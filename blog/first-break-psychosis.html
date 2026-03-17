@@ -1116,7 +1116,21 @@
       </section>
 
       <!-- Footer Section -->
-      <footer class="ba-footer">
+      
+        <!-- Newsletter CTA -->
+        <div class="nl-blog-cta">
+          <h4>PsychoPharmRef Newsletter</h4>
+          <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
+          <form class="nl-form" onsubmit="handleNewsletterSignup(event, this)">
+            <div class="nl-input-row">
+              <input type="email" class="nl-email" placeholder="Enter your email" required>
+              <button type="submit" class="nl-btn">Subscribe</button>
+            </div>
+            <div class="nl-note">Biweekly. Unsubscribe anytime. No spam.</div>
+          </form>
+        </div>
+
+<footer class="ba-footer">
         <p><strong>Disclaimer:</strong> This article is intended for educational purposes for healthcare providers. Clinical decision-making should incorporate individual patient factors, local guidelines, and specialist consultation as appropriate. Always follow institutional protocols for first-episode psychosis evaluation and treatment.</p>
         <p style="margin-top: 1rem;">Last updated: March 2026 | PsychoPharmRef Clinical Resource</p>
         <a href="/blog/" class="back-link" style="display: block; margin-top: 1rem;">← Back to Blog</a>
