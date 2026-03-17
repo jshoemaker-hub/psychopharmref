@@ -1647,6 +1647,123 @@ function calcReverseRefills() {
   `;
 }
 
+// 5. Medication Sync
+function calcMedSync() {
+  const res = document.getElementById('ms-result');
+
+  const nameA  = document.getElementById('ms-nameA').value.trim() || 'Med A';
+  const fillAv = document.getElementById('ms-fillA').value;
+  const daysA  = parseInt(document.getElementById('ms-daysA').value);
+  const qtyA   = parseFloat(document.getElementById('ms-qtyA').value);
+  const doseA  = parseFloat(document.getElementById('ms-doseA').value);
+
+  const nameB  = document.getElementById('ms-nameB').value.trim() || 'Med B';
+  const fillBv = document.getElementById('ms-fillB').value;
+  const daysB  = parseInt(document.getElementById('ms-daysB').value);
+  const qtyB   = parseFloat(document.getElementById('ms-qtyB').value);
+  const doseB  = parseFloat(document.getElementById('ms-doseB').value);
+
+  if (!fillAv || !fillBv || !daysA || !daysB || !qtyA || !qtyB || !doseA || !doseB) {
+    showRCError(res, 'Please fill in all required fields for both medications (fill date, days supply, quantity, and daily dose).');
+    return;
+  }
+
+  const fillA = parseLocalDate(fillAv);
+  const fillB = parseLocalDate(fillBv);
+  const dueA  = addDays(fillA, daysA);
+  const dueB  = addDays(fillB, daysB);
+
+  const targetVal = document.getElementById('ms-target').value;
+  let target;
+  if (targetVal) {
+    target = parseLocalDate(targetVal);
+    if (target <= dueA && target <= dueB) {
+      showRCError(res, 'Preferred sync date must be after at least one medication\'s current depletion date (' + fmtDate(dueA < dueB ? dueA : dueB) + ').');
+      return;
+    }
+  } else {
+    target = dueA > dueB ? dueA : dueB;
+  }
+
+  const futureCount = parseInt(document.getElementById('ms-future').value) || 4;
+
+  // Build sync plan for each med
+  function buildPlan(name, fillDate, daysSupply, qty, dailyDose, dueDate) {
+    const shortDays = daysBetween(dueDate, target);
+    let syncFill = null;
+    let firstFullDate;
+
+    if (shortDays > 0 && shortDays < daysSupply) {
+      // Needs a short fill
+      const shortQty = Math.ceil(dailyDose * shortDays);
+      syncFill = {
+        date: dueDate,
+        days: shortDays,
+        qty: shortQty,
+        isShort: true
+      };
+      firstFullDate = target;
+    } else if (shortDays <= 0) {
+      // Already aligns or is the latest — full fill on target
+      firstFullDate = target;
+    } else {
+      // shortDays >= daysSupply — too far, just do a full fill at due
+      firstFullDate = dueDate;
+    }
+
+    // Build future fills from the target date onward
+    const fills = [];
+    if (syncFill) fills.push(syncFill);
+    for (let i = 0; i < futureCount; i++) {
+      const d = addDays(firstFullDate, i * daysSupply);
+      fills.push({ date: d, days: daysSupply, qty: qty, isShort: false });
+    }
+
+    return { name, dueDate, fills, syncFill, daysSupply, dailyDose };
+  }
+
+  const planA = buildPlan(nameA, fillA, daysA, qtyA, doseA, dueA);
+  const planB = buildPlan(nameB, fillB, daysB, qtyB, doseB, dueB);
+
+  // Render results
+  function renderPlan(plan) {
+    let html = '<div style="margin-bottom:16px">';
+    html += '<strong style="color:var(--accent)">' + plan.name + '</strong>';
+    html += '<div class="rc-detail">Current depletion: <strong>' + fmtDate(plan.dueDate) + '</strong></div>';
+    if (plan.syncFill) {
+      html += '<div class="rc-detail" style="color:var(--accent2);font-weight:600">&#9888; Short fill needed: <strong>' + plan.syncFill.qty + ' units</strong> (' + plan.syncFill.days + ' days) on <strong>' + fmtDate(plan.syncFill.date) + '</strong></div>';
+    }
+    html += '<table style="width:100%;border-collapse:collapse;margin-top:8px;font-size:0.88rem">';
+    html += '<tr style="background:var(--bg2);font-weight:600"><td style="padding:6px 8px;border:1px solid var(--border)">Fill #</td><td style="padding:6px 8px;border:1px solid var(--border)">Date</td><td style="padding:6px 8px;border:1px solid var(--border)">Days</td><td style="padding:6px 8px;border:1px solid var(--border)">Qty</td><td style="padding:6px 8px;border:1px solid var(--border)">Type</td></tr>';
+    plan.fills.forEach(function(f, idx) {
+      var bg = f.isShort ? 'background:rgba(139,105,20,0.1)' : '';
+      html += '<tr style="' + bg + '"><td style="padding:6px 8px;border:1px solid var(--border)">' + (idx + 1) + '</td><td style="padding:6px 8px;border:1px solid var(--border)">' + fmtDate(f.date) + '</td><td style="padding:6px 8px;border:1px solid var(--border)">' + f.days + '</td><td style="padding:6px 8px;border:1px solid var(--border)">' + f.qty + '</td><td style="padding:6px 8px;border:1px solid var(--border)">' + (f.isShort ? 'Short Fill' : 'Full') + '</td></tr>';
+    });
+    html += '</table></div>';
+    return html;
+  }
+
+  // Build plain text for copy
+  function planText(plan) {
+    var lines = plan.name + '\n';
+    lines += 'Current depletion: ' + fmtDate(plan.dueDate) + '\n';
+    if (plan.syncFill) {
+      lines += 'SHORT FILL: ' + plan.syncFill.qty + ' units (' + plan.syncFill.days + ' days) on ' + fmtDate(plan.syncFill.date) + '\n';
+    }
+    lines += 'Fill #  Date                    Days  Qty   Type\n';
+    plan.fills.forEach(function(f, idx) {
+      var dateStr = fmtDate(f.date);
+      lines += (idx + 1) + '       ' + dateStr + '  ' + f.days + '    ' + f.qty + '    ' + (f.isShort ? 'Short' : 'Full') + '\n';
+    });
+    return lines;
+  }
+
+  var copyText = 'Medication Sync Plan\nDate: ' + fmtDate(new Date()) + '\nTarget Sync Date: ' + fmtDate(target) + '\n\n' + planText(planA) + '\n' + planText(planB) + '\nAfter the sync fill, both medications align on ' + fmtDate(target) + ' and remain synced going forward.';
+
+  res.className = 'rc-result';
+  res.innerHTML = '<div class="rc-detail" style="font-weight:600;margin-bottom:12px">&#128197; Target Sync Date: <strong>' + fmtDate(target) + '</strong></div>' + renderPlan(planA) + renderPlan(planB) + '<div class="rc-detail" style="margin-top:12px;font-style:italic">After the sync fill, both medications align on <strong>' + fmtDate(target) + '</strong> and stay synced every ' + (daysA === daysB ? daysA + ' days' : daysA + '/' + daysB + ' days') + '.</div>' + '<button class="rc-copy-btn" onclick="rcCopy(this, `' + copyText.replace(/`/g, '\\`').replace(/\n/g, '\\n') + '`)">Copy</button>';
+}
+
 function rcCopy(btn, text) {
   navigator.clipboard.writeText(text).then(() => {
     const orig = btn.textContent;

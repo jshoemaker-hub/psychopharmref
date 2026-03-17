@@ -927,6 +927,41 @@
         <div id="rev-result" class="rc-result hidden"></div>
       </div>
 
+      <!-- 5. Medication Sync ─────────────────────────────────────────────── -->
+      <div class="rc-card">
+        <h3 class="rc-card-title">&#128260; Medication Sync</h3>
+        <p class="rc-card-sub">Align two medications to a common refill date using a one-time short fill. Enter each medication's last fill date, days supply, quantity dispensed, and daily dose.</p>
+
+        <div style="margin-bottom:18px">
+          <strong style="color:var(--accent)">Medication A</strong>
+          <div class="rc-row rc-wrap" style="margin-top:6px">
+            <div class="rc-field"><label>Name (optional)</label><input type="text" id="ms-nameA" placeholder="e.g. Lisinopril"></div>
+            <div class="rc-field"><label>Last Fill Date</label><input type="date" id="ms-fillA"></div>
+            <div class="rc-field"><label>Days Supply</label><input type="number" id="ms-daysA" placeholder="e.g. 30" min="1" max="365"></div>
+            <div class="rc-field"><label>Qty Dispensed</label><input type="number" id="ms-qtyA" placeholder="e.g. 30" min="1"></div>
+            <div class="rc-field"><label>Daily Dose (units/day)</label><input type="number" id="ms-doseA" placeholder="e.g. 1" min="0.01" step="any"></div>
+          </div>
+        </div>
+
+        <div style="margin-bottom:18px">
+          <strong style="color:var(--accent)">Medication B</strong>
+          <div class="rc-row rc-wrap" style="margin-top:6px">
+            <div class="rc-field"><label>Name (optional)</label><input type="text" id="ms-nameB" placeholder="e.g. Metformin"></div>
+            <div class="rc-field"><label>Last Fill Date</label><input type="date" id="ms-fillB"></div>
+            <div class="rc-field"><label>Days Supply</label><input type="number" id="ms-daysB" placeholder="e.g. 30" min="1" max="365"></div>
+            <div class="rc-field"><label>Qty Dispensed</label><input type="number" id="ms-qtyB" placeholder="e.g. 60" min="1"></div>
+            <div class="rc-field"><label>Daily Dose (units/day)</label><input type="number" id="ms-doseB" placeholder="e.g. 2" min="0.01" step="any"></div>
+          </div>
+        </div>
+
+        <div class="rc-row" style="margin-bottom:12px">
+          <div class="rc-field"><label>Preferred Sync Date (optional)</label><input type="date" id="ms-target"><span style="font-size:0.78rem;color:#888;margin-top:4px;display:block">Leave blank to auto-align to the latest depletion date</span></div>
+          <div class="rc-field"><label>Future Fills to Show</label><input type="number" id="ms-future" value="4" min="1" max="12"></div>
+          <button class="rc-btn" onclick="calcMedSync()">Sync</button>
+        </div>
+        <div id="ms-result" class="rc-result hidden"></div>
+      </div>
+
     </section><!-- end refill-calendar -->
 
     <!-- ── Cognitive Domains ─────────────────────────────────────────────── -->
