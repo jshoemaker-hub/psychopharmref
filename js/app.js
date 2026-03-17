@@ -2445,26 +2445,3 @@ function initMedTaper() {
 
   overlay.addEventListener('click', closeSidebar);
 })()
-
-/* ── Newsletter Sign-Up Handler ───────────────────────────────────────── */
-function handleNewsletterSignup(e, form) {
-  e.preventDefault();
-  const email = form.querySelector('.nl-email');
-  const btn = form.querySelector('.nl-btn');
-  if (!email || !email.value) return;
-
-  // TODO: Replace with Beehiiv embed or API call once account is created
-  // For now, store locally and show confirmation
-  const orig = btn.textContent;
-  btn.textContent = 'Subscribed!';
-  btn.disabled = true;
-  email.disabled = true;
-  email.value = '';
-  email.placeholder = 'Thank you! We\'ll be in touch.';
-  setTimeout(() => {
-    btn.textContent = orig;
-    btn.disabled = false;
-    email.disabled = false;
-    email.placeholder = 'Enter your email';
-  }, 4000);
-}

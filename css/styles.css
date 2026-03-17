@@ -3588,58 +3588,17 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
   color: rgba(255,255,255,0.85);
   margin: 0;
 }
-.nl-form {
+/* Beehiiv embed container */
+.nl-embed {
   flex-shrink: 0;
-  min-width: 280px;
+  min-width: 300px;
 }
-.nl-input-row {
-  display: flex;
-  gap: 8px;
-}
-.nl-email {
-  flex: 1;
-  padding: 10px 14px;
-  border: 2px solid rgba(255,255,255,0.3);
-  border-radius: 4px;
-  background: rgba(255,255,255,0.12);
-  color: #fff;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.2s;
-}
-.nl-email::placeholder {
-  color: rgba(255,255,255,0.55);
-}
-.nl-email:focus {
-  border-color: rgba(255,255,255,0.7);
-  background: rgba(255,255,255,0.18);
-}
-.nl-btn {
-  padding: 10px 20px;
-  background: #fff;
-  color: var(--accent);
+.nl-embed iframe {
+  width: 100%;
+  max-width: 480px;
+  height: 160px;
   border: none;
   border-radius: 4px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.2s, transform 0.1s;
-}
-.nl-btn:hover {
-  background: #f0ede6;
-  transform: translateY(-1px);
-}
-.nl-btn:disabled {
-  opacity: 0.8;
-  cursor: default;
-  transform: none;
-}
-.nl-note {
-  font-size: 11px;
-  color: rgba(255,255,255,0.5);
-  margin-top: 8px;
-  text-align: right;
 }
 
 /* Blog newsletter CTA */
@@ -3662,13 +3621,13 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
   color: rgba(255,255,255,0.8);
   margin-bottom: 14px;
 }
-.nl-blog-cta .nl-input-row {
+.nl-blog-cta .nl-embed {
+  min-width: unset;
+  display: flex;
   justify-content: center;
-  max-width: 420px;
-  margin: 0 auto;
 }
-.nl-blog-cta .nl-note {
-  text-align: center;
+.nl-blog-cta .nl-embed iframe {
+  max-width: 420px;
 }
 
 @media (max-width: 768px) {
@@ -3678,11 +3637,11 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
     padding: 24px 20px;
     text-align: center;
   }
-  .nl-form {
+  .nl-embed {
     min-width: unset;
     width: 100%;
   }
-  .nl-note {
-    text-align: center;
+  .nl-embed iframe {
+    max-width: 100%;
   }
 }
