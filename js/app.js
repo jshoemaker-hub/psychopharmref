@@ -54,10 +54,50 @@ const SIDE_EFFECT_PROFILES = {
 };
 
 // Compute a 0–100 side effect risk score for a drug given a profile key.
-// Returns null if the drug has no receptorKi data.
+// Returns null if the drug has no receptorKi data (except cardiacQT which
+// can also use the qtInterval flag).
 function sideEffectScore(drug, seKey) {
   const profile = SIDE_EFFECT_PROFILES[seKey];
-  if (!profile || !drug.receptorKi) return null;
+  if (!profile) return null;
+
+  // ── Special handling for Cardiac / QT Effects ──
+  // QT prolongation is primarily driven by hERG (IKr) channel blockade,
+  // not H1/alpha1 binding. The qtInterval flag reflects clinical evidence
+  // of documented QT risk. Receptor affinities for alpha1/H1 contribute
+  // secondary cardiovascular risk (orthostasis, reflex tachycardia).
+  if (seKey === 'cardiacQT') {
+    const hasKi = drug.receptorKi != null;
+    const hasQtFlag = drug.qtInterval != null;
+    if (!hasKi && !hasQtFlag) return null;
+
+    // Receptor-based component (0–100): H1 + alpha1 binding
+    let receptorScore = 0;
+    if (hasKi) {
+      const ki = drug.receptorKi;
+      let wSum = 0, wTotal = 0;
+      for (const [receptor, weight] of Object.entries(profile.receptors)) {
+        const kiVal = ki[receptor];
+        const pkiVal = (kiVal && kiVal < 10000) ? (9 - Math.log10(kiVal)) : 5;
+        const normalized = Math.max(0, (pkiVal - 5) / 4);
+        wSum += normalized * weight;
+        wTotal += weight;
+      }
+      receptorScore = wTotal > 0 ? (wSum / wTotal) * 100 : 0;
+    }
+
+    // Blend: qtInterval flag is the primary signal (weight 0.7),
+    // receptor binding is the secondary signal (weight 0.3).
+    // qtInterval true → base 75; false → base 0; undefined → receptor only.
+    if (hasQtFlag) {
+      const qtBase = drug.qtInterval ? 75 : 0;
+      return Math.round(qtBase * 0.7 + receptorScore * 0.3);
+    }
+    // No qtInterval field at all → fall back to receptor score only
+    return hasKi ? Math.round(receptorScore) : null;
+  }
+
+  // ── Standard receptor-based scoring for all other side effects ──
+  if (!drug.receptorKi) return null;
   const ki = drug.receptorKi;
   let weightedSum = 0;
   let totalWeight = 0;
