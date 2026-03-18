@@ -9,56 +9,44 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="blog.css">
 
-    <style>
-        /* SVG responsive fix */
-        svg { max-width: 100%; height: auto; }
-
-        /* Button styling */
-        .btn-primary {
+  <style>
+.btn-primary {
+            display: inline-block;
             background-color: var(--accent);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
             font-weight: 600;
-            transition: background-color 0.2s ease;
+            font-size: 14px;
+            transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
         }
-        .btn-primary:hover {
-            background-color: #3d6529;
+.btn-primary:hover {
+            background-color: var(--green);
         }
-
-        /* Reference styling */
-        .reference {
-            vertical-align: super;
-            font-size: 0.8em;
+.reference {
             color: var(--accent);
             font-weight: 600;
             cursor: pointer;
         }
-        .reference:hover {
-            text-decoration: underline;
-        }
-
-        /* Highlight styling */
-        .highlight {
-            background-color: rgba(74, 124, 53, 0.1);
-            padding: 0 3px;
+.highlight {
+            background-color: rgba(139, 105, 20, 0.15);
+            padding: 2px 4px;
             border-radius: 2px;
-            font-weight: 500;
         }
-    </style>
+/* SVG responsive sizing fix */
+.diagram-wrapper > div, .diagram-container > div, .svg-container > div, .svg-diagram > div, .diagram-wrap > div, .diagram > div { width: 100%; }
+.diagram-wrapper svg, .diagram-container svg, .svg-container svg, .svg-diagram svg, .diagram-wrap svg, .diagram svg, .ba-body svg { width: 100%; height: auto; max-width: 820px; }
+  </style>
 </head>
 <body>
-    <!-- Mobile menu button -->
-    <div class="mobile-header">
-        <button id="mobile-menu-btn" class="mobile-menu-btn">☰</button>
-        <div class="mobile-logo">PsychoPharmRef</div>
-    </div>
-
-    <!-- Sidebar overlay for mobile -->
-    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+  <!-- Mobile hamburger button -->
+  <button id="mobile-menu-btn" aria-label="Open navigation menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div id="sidebar-overlay"></div>
 
     <!-- Sidebar Navigation -->
     <nav id="sidebar">
@@ -238,32 +226,32 @@
         </div>
     </nav>
 
-    <!-- Main content -->
-    <main>
-        <div class="blog-container">
-            <article class="blog-article">
-                <!-- Article Header -->
-                <div class="ba-header">
-                    <div class="ba-category">Neuroimmunology</div>
-                    <h1 class="ba-title">Infectious Disease and Psychiatry: When Pathogens Target the Mind</h1>
-                    <p class="ba-subtitle">A clinician's guide to the psychiatric manifestations of 15 infectious agents — from neurosyphilis to long COVID</p>
-                    <div class="ba-meta">
-                        <span class="ba-date">March 2026</span>
-                        <span class="ba-divider">•</span>
-                        <span class="ba-reading-time">~25 min read</span>
-                        <span class="ba-divider">•</span>
-                        <span class="ba-audience">For Clinicians</span>
-                    </div>
-                </div>
+  <!-- Main Content -->
+  <main id="content">
+    <div class="container">
+    <article class="blog-article">
+        <header class="ba-header">
+            <span class="ba-category">Neuroimmunology</span>
+            <h1 class="ba-title">Infectious Disease and Psychiatry: When Pathogens Target the Mind</h1>
+            <p class="ba-subtitle">A clinician&#8217;s guide to the psychiatric manifestations of 15 infectious agents&#8212;from neurosyphilis to long COVID</p>
+            <div class="ba-meta">
+                <span class="ba-meta-item">&#128197; March 2026</span>
+                <span class="ba-meta-item">&#9201;&#65039; 25 min read</span>
+                <span class="ba-meta-item">&#128104;&#8205;&#9877;&#65039; For Clinicians</span>
+            </div>
+        </header>
+
+        <div class="ba-body">
+            <a href="../index.html" class="back-link">&larr; Back to Blog</a>
 
                 <!-- Clinical Summary Callout -->
-                <div class="ba-key-point">
-                    <p><strong>Clinical Summary:</strong> Infectious agents have been linked to psychiatric symptoms for centuries, from the institutional recognition of neurosyphilis to modern understanding of long COVID neuropsychiatry. This review covers 15 pathogens organized by evidence strength and clinical prevalence, including historical foundations (neurosyphilis, encephalitis lethargica), common contemporary infections (PANDAS, Lyme disease, HIV), and emerging entities (long COVID, Bartonella neurobartonellosis). Clinicians should consider infectious etiologies in acute-onset psychiatric presentations, particularly those accompanied by systemic symptoms, treatment resistance, or atypical features. A targeted infectious workup—including RPR, HIV, and other pathogen-specific assays—should be routine in new-onset psychosis, particularly in resource-rich settings.</p>
-                </div>
+                <blockquote class="ba-callout">
+                    <strong>Clinical Summary:</strong> Infectious agents have been linked to psychiatric symptoms for centuries, from the institutional recognition of neurosyphilis to modern understanding of long COVID neuropsychiatry. This review covers 15 pathogens organized by evidence strength and clinical prevalence, including historical foundations (neurosyphilis, encephalitis lethargica), common contemporary infections (PANDAS, Lyme disease, HIV), and emerging entities (long COVID, Bartonella neurobartonellosis). Clinicians should consider infectious etiologies in acute-onset psychiatric presentations, particularly those accompanied by systemic symptoms, treatment resistance, or atypical features. A targeted infectious workup&#8212;including RPR, HIV, and other pathogen-specific assays&#8212;should be routine in new-onset psychosis, particularly in resource-rich settings.
+                </blockquote>
 
                 <!-- Historical Foundations Section -->
                 <h2 class="ba-h2">Historical Foundations: When Infection Was the Evidence</h2>
-                <hr>
+                <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
 
                 <p class="ba-paragraph">The linkage between infection and psychiatric illness is neither new nor speculative. In the early 20th century, before antibiotics and modern neurology, the association was so obvious that clinicians had a diagnosis for it: <span class="highlight">general paresis of the insane (GPI)</span>, a tertiary manifestation of neurosyphilis. Patients with GPI presented with psychosis, personality change, grandiosity, irritability, and progressive cognitive decline—a syndrome so common in asylums that it accounted for approximately 15% of psychiatric admissions. The condition was incurable and progressive, ultimately fatal.</p>
 
@@ -275,7 +263,7 @@
 
                 <!-- Common/Frequent Pathogens Section -->
                 <h2 class="ba-h2">Common and Frequently Discussed Pathogens</h2>
-                <hr>
+                <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
 
                 <h3 class="ba-h3">PANDAS and PANS: Streptococcal and Beyond</h3>
 
@@ -335,7 +323,7 @@
 
                 <!-- Less Common/Rare Pathogens Section -->
                 <h2 class="ba-h2">Less Common and Emerging Pathogens</h2>
-                <hr>
+                <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
 
                 <h3 class="ba-h3">Babesia: Tick-Borne Parasite and Psychiatric Manifestations</h3>
 
@@ -395,7 +383,7 @@
 
                 <!-- Unifying Mechanisms Section -->
                 <h2 class="ba-h2">Unifying Mechanisms: How Pathogens Disrupt Psychiatric Health</h2>
-                <hr>
+                <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
 
                 <p class="ba-paragraph">Despite pathogenic heterogeneity, several unifying mechanisms explain how infections cause psychiatric illness:</p>
 
@@ -421,7 +409,7 @@
 
                 <!-- Clinical Implications Section -->
                 <h2 class="ba-h2">Clinical Implications: Recognition, Workup, and Management</h2>
-                <hr>
+                <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
 
                 <h3 class="ba-h3">When to Suspect Infectious Etiology</h3>
 
@@ -457,7 +445,7 @@
 
                 <!-- Future Directions Section -->
                 <h2 class="ba-h2">Future Directions: Precision Psychiatry and Pathogen Integration</h2>
-                <hr>
+                <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
 
                 <p class="ba-paragraph">The field of infection-associated psychiatry is rapidly evolving. Emerging directions include:</p>
 
@@ -507,33 +495,61 @@
                     </ol>
                 </div>
 
-            </article>
 
-            <!-- Newsletter CTA -->
-            <div class="nl-blog-cta">
-                <h4>PsychoPharmRef Newsletter</h4>
-                <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
-                <a href="https://subscribe-forms.beehiiv.com/5f2b3081-aa41-452c-95c8-69a5ae899cf8" target="_blank" rel="noopener" class="nl-subscribe-btn">Subscribe — it's free</a>
-            </div>
+<footer class="ba-footer">
+            <p><strong>PsychoPharmRef Clinical Review</strong> | A resource for medical professionals | Data current as of March 2026</p>
+            <p style="margin-top: 15px; font-size: 12px;">This article is intended for educational purposes for healthcare professionals. Clinical decision-making should incorporate individual patient assessment, current guidelines, and shared decision-making.</p>
+        </footer>
+    </div><!-- end ba-body -->
+    </article>
 
-        </div>
-    </main>
+    <!-- Newsletter CTA -->
+    <div class="nl-blog-cta">
+      <h4>PsychoPharmRef Newsletter</h4>
+      <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
+      <a href="https://subscribe-forms.beehiiv.com/5f2b3081-aa41-452c-95c8-69a5ae899cf8" target="_blank" rel="noopener" class="nl-subscribe-btn">Subscribe — it's free</a>
+    </div>
 
-    <!-- Footer scripts -->
-    <script>
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('open');
-            document.getElementById('sidebar-overlay').classList.toggle('active');
-        });
-        document.getElementById('sidebar-overlay').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.remove('open');
-            this.classList.remove('active');
-        });
-        document.querySelectorAll('.nav-parent-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                this.closest('.nav-group').classList.toggle('open');
-            });
-        });
-    </script>
+    </div>
+  </main>
+
+<script>
+// Sidebar nav group toggle
+document.querySelectorAll('.nav-parent-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    const group = btn.closest('.nav-group');
+    const isOpen = group.classList.contains('open');
+    document.querySelectorAll('.nav-group').forEach(g => g.classList.remove('open'));
+    if (!isOpen) group.classList.add('open');
+  });
+});
+
+// Highlight current page in sidebar
+(function() {
+  const currentFile = window.location.pathname.split('/').pop();
+  document.querySelectorAll('#sidebar .nav-sub-link').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentFile) {
+      link.classList.add('active');
+      setTimeout(() => link.scrollIntoView({ block: 'center', behavior: 'smooth' }), 100);
+    }
+  });
+})();
+</script>
+
+  <script>
+  (function() {
+    var btn = document.getElementById('mobile-menu-btn');
+    var sidebar = document.getElementById('sidebar');
+    var overlay = document.getElementById('sidebar-overlay');
+    if (!btn || !sidebar || !overlay) return;
+    function open() { sidebar.classList.add('sidebar-open'); overlay.classList.add('overlay-visible'); document.body.classList.add('sidebar-is-open'); }
+    function close() { sidebar.classList.remove('sidebar-open'); overlay.classList.remove('overlay-visible'); document.body.classList.remove('sidebar-is-open'); }
+    btn.addEventListener('click', function() { sidebar.classList.contains('sidebar-open') ? close() : open(); });
+    overlay.addEventListener('click', close);
+    sidebar.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { if (window.innerWidth <= 768) close(); }); });
+  })();
+  </script>
 </body>
 </html>
