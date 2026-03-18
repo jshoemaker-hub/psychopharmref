@@ -6,8 +6,7 @@
   <title>Psychopharmacology Reference</title>
   <link rel="stylesheet" href="css/styles.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-  <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
-</head>
+  </head>
 <body>
 
   <!-- Mobile hamburger button -->
@@ -278,7 +277,7 @@
             <p>AI-assisted reviews of newly published psychiatric research, FDA approvals, and guideline updates — distilled into clinically actionable summaries. Free, independent, no pharma funding.</p>
           </div>
           <div class="nl-embed">
-            <iframe src="https://subscribe-forms.beehiiv.com/5f2b3081-aa41-452c-95c8-69a5ae899cf8" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no"></iframe>
+            <iframe src="https://subscribe-forms.beehiiv.com/5f2b3081-aa41-452c-95c8-69a5ae899cf8" class="beehiiv-embed" data-test-id="beehiiv-embed" width="100%" height="220" style="border-radius:4px; border:none; min-height:200px;" frameborder="0" scrolling="no"></iframe>
           </div>
         </div>
       </div>
@@ -6314,6 +6313,22 @@
             </div>
           </div>
           <div class="sl-q-text">"Please name as many animals as you can in one minute."</div>
+
+          <!-- 1-Minute Timer -->
+          <div class="sl-timer-wrap" id="sl-timer-wrap">
+            <div class="sl-timer-ring-container">
+              <svg class="sl-timer-ring" viewBox="0 0 120 120">
+                <circle class="sl-timer-track" cx="60" cy="60" r="52" fill="none" stroke="var(--border)" stroke-width="8"/>
+                <circle class="sl-timer-progress" id="sl-timer-progress" cx="60" cy="60" r="52" fill="none" stroke="var(--accent)" stroke-width="8" stroke-linecap="round" stroke-dasharray="326.73" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+              </svg>
+              <div class="sl-timer-display" id="sl-timer-display">1:00</div>
+            </div>
+            <div class="sl-timer-buttons">
+              <button type="button" class="sl-timer-btn sl-timer-start" id="sl-timer-start">Start</button>
+              <button type="button" class="sl-timer-btn sl-timer-reset" id="sl-timer-reset">Reset</button>
+            </div>
+          </div>
+
           <div class="sl-q-scoring">
             <div class="sl-radio-group">
               <label class="sl-radio-label">
@@ -7106,6 +7121,59 @@
           background-color: #d0d0d0;
         }
     
+        /* Q6 Timer */
+        .sl-timer-wrap {
+          display: flex;
+          align-items: center;
+          gap: 1.25rem;
+          background: linear-gradient(135deg, #f9f7f2, #ece6db);
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          padding: 16px 20px;
+          margin-bottom: 1rem;
+        }
+        .sl-timer-ring-container {
+          position: relative;
+          width: 100px;
+          height: 100px;
+          flex-shrink: 0;
+        }
+        .sl-timer-ring { width: 100%; height: 100%; }
+        .sl-timer-display {
+          position: absolute;
+          top: 50%; left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: var(--text);
+          font-variant-numeric: tabular-nums;
+        }
+        .sl-timer-display.sl-timer-done {
+          color: #b91c1c;
+          animation: sl-pulse 0.6s ease-in-out 3;
+        }
+        @keyframes sl-pulse {
+          0%, 100% { transform: translate(-50%, -50%) scale(1); }
+          50% { transform: translate(-50%, -50%) scale(1.15); }
+        }
+        .sl-timer-buttons { display: flex; flex-direction: column; gap: 8px; }
+        .sl-timer-btn {
+          padding: 8px 20px;
+          border: none;
+          border-radius: 5px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+          min-width: 80px;
+        }
+        .sl-timer-start { background-color: var(--accent); color: white; }
+        .sl-timer-start:hover { background-color: #3d6429; }
+        .sl-timer-start.sl-timer-running { background-color: var(--accent2); }
+        .sl-timer-start.sl-timer-running:hover { background-color: #6f5410; }
+        .sl-timer-reset { background-color: #e0dbd2; color: var(--text); }
+        .sl-timer-reset:hover { background-color: #d0cbc2; }
+
         .sl-action-buttons {
           display: flex;
           gap: 1rem;
@@ -7480,9 +7548,103 @@
           } else {
             init();
           }
+
+          // ── Q6 Animal Naming 1-Minute Timer ──
+          (function() {
+            var TOTAL = 60;
+            var remaining = TOTAL;
+            var interval = null;
+            var running = false;
+            var circumference = 2 * Math.PI * 52; // matches r=52 in SVG
+
+            var display = document.getElementById('sl-timer-display');
+            var progress = document.getElementById('sl-timer-progress');
+            var startBtn = document.getElementById('sl-timer-start');
+            var resetBtn = document.getElementById('sl-timer-reset');
+
+            function fmt(sec) {
+              var m = Math.floor(sec / 60);
+              var s = sec % 60;
+              return m + ':' + (s < 10 ? '0' : '') + s;
+            }
+
+            function render() {
+              display.textContent = fmt(remaining);
+              var pct = remaining / TOTAL;
+              progress.setAttribute('stroke-dashoffset', circumference * (1 - pct));
+              // Color shifts: green → gold → red
+              if (remaining <= 10) {
+                progress.setAttribute('stroke', '#b91c1c');
+              } else if (remaining <= 20) {
+                progress.setAttribute('stroke', 'var(--accent2)');
+              } else {
+                progress.setAttribute('stroke', 'var(--accent)');
+              }
+            }
+
+            function tick() {
+              if (remaining <= 0) {
+                stop();
+                display.classList.add('sl-timer-done');
+                display.textContent = '0:00';
+                startBtn.textContent = 'Done';
+                startBtn.disabled = true;
+                startBtn.style.opacity = '0.5';
+                return;
+              }
+              remaining--;
+              render();
+            }
+
+            function start() {
+              if (remaining <= 0) return;
+              running = true;
+              display.classList.remove('sl-timer-done');
+              startBtn.textContent = 'Pause';
+              startBtn.classList.add('sl-timer-running');
+              interval = setInterval(tick, 1000);
+            }
+
+            function pause() {
+              running = false;
+              clearInterval(interval);
+              interval = null;
+              startBtn.textContent = 'Resume';
+              startBtn.classList.remove('sl-timer-running');
+            }
+
+            function stop() {
+              running = false;
+              clearInterval(interval);
+              interval = null;
+            }
+
+            function reset() {
+              stop();
+              remaining = TOTAL;
+              display.classList.remove('sl-timer-done');
+              startBtn.textContent = 'Start';
+              startBtn.classList.remove('sl-timer-running');
+              startBtn.disabled = false;
+              startBtn.style.opacity = '';
+              render();
+            }
+
+            if (startBtn) {
+              startBtn.addEventListener('click', function() {
+                if (running) pause(); else start();
+              });
+            }
+            if (resetBtn) {
+              resetBtn.addEventListener('click', reset);
+            }
+
+            render();
+          })();
+
         })();
       </script>
-    
+
     </section><!-- end slums-tool -->
 
 <br>
