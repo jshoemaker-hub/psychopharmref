@@ -3642,8 +3642,31 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
   display: flex;
   justify-content: center;
 }
-.nl-blog-cta .nl-embed iframe {
-  max-width: 420px;
+/* Subscribe button (replaces broken Beehiiv iframe) */
+.nl-subscribe-btn {
+  display: inline-block;
+  padding: 12px 32px;
+  background: #fff;
+  color: #2d5a1e;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.02em;
+  margin-top: 4px;
+}
+.nl-subscribe-btn:hover {
+  background: #f0ece4;
+  transform: translateY(-1px);
+}
+.nl-blog-cta .nl-subscribe-btn {
+  margin-top: 8px;
+}
+.nl-signup-inner .nl-subscribe-btn {
+  white-space: nowrap;
 }
 
 @media (max-width: 768px) {
