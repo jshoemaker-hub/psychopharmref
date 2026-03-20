@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f5f0e8"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#4a7c35"/>
+  <rect x="0" y="622" width="1200" height="8" fill="#4a7c35"/>
+  <text x="600" y="220" font-family="'Segoe UI',system-ui,sans-serif" font-size="72" font-weight="700" fill="#231e14" text-anchor="middle">PsychoPharm<tspan fill="#4a7c35">Ref</tspan></text>
+  <text x="600" y="290" font-family="'Segoe UI',system-ui,sans-serif" font-size="28" fill="#6b6050" text-anchor="middle">Clinical Psychopharmacology Reference</text>
+  <line x1="400" y1="320" x2="800" y2="320" stroke="#cfc8ba" stroke-width="2"/>
+  <text x="600" y="380" font-family="'Segoe UI',system-ui,sans-serif" font-size="22" fill="#8b6914" text-anchor="middle">91 Medications  |  56 Blog Posts  |  15+ Clinical Tools</text>
+  <text x="600" y="430" font-family="'Segoe UI',system-ui,sans-serif" font-size="20" fill="#6b6050" text-anchor="middle">Receptor Binding  |  P450 Interactions  |  PK Curves  |  Rating Scales</text>
+  <text x="600" y="530" font-family="'Segoe UI',system-ui,sans-serif" font-size="18" fill="#6b6050" text-anchor="middle">By Jerad Shoemaker, MD  |  psychopharmref.com</text>
+</svg>

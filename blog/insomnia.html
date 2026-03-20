@@ -19,6 +19,9 @@
   <meta property="og:description" content="Insomnia: A Comprehensive Clinical Guide | PsychoPharmRef">
   <meta property="og:url" content="https://psychopharmref.com/blog/insomnia.html">
   <meta property="og:site_name" content="PsychoPharmRef">
+  <meta property="og:image" content="https://psychopharmref.com/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary">
   <meta name="author" content="Jerad Shoemaker, MD">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -84,6 +87,20 @@
     }
   }
   </script>
+<style>
+.ba-related { margin-top: 30px; padding-top: 20px; border-top: 2px solid var(--border, #cfc8ba); }
+.ba-related h4 { font-size: 15px; font-weight: 700; color: var(--text, #231e14); margin-bottom: 12px; }
+.ba-related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.ba-related-link { display: block; padding: 10px 14px; background: var(--bg2, #ece6db); border: 1px solid var(--border, #cfc8ba); border-radius: 5px; text-decoration: none; color: var(--text, #231e14); font-size: 13px; font-weight: 600; transition: border-color 0.15s, background 0.15s; line-height: 1.35; }
+.ba-related-link:hover { border-color: var(--accent, #4a7c35); background: var(--card, #fefcf8); }
+.ba-share-row { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
+.ba-share-btn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 5px; font-size: 12px; font-weight: 600; text-decoration: none; color: #fff; transition: opacity 0.15s; }
+.ba-share-btn:hover { opacity: 0.85; }
+.ba-share-btn--x { background: #000; }
+.ba-share-btn--li { background: #0A66C2; }
+.ba-share-btn--email { background: #6b6050; }
+.ba-share-btn--copy { background: #4a7c35; cursor: pointer; border: none; }
+</style>
 </head>
 <body>
   <!-- Mobile hamburger button -->
@@ -1350,6 +1367,23 @@
 
   
         <!-- Newsletter CTA -->
+        
+          <!-- Related Posts & Share -->
+          <div class="ba-related">
+            <h4>Related Articles</h4>
+            <div class="ba-related-grid">
+            <a href="sleep-medications-review.html" class="ba-related-link">Sleep Medications: A Clinical Review Across Generations | Psyc...</a>
+            <a href="seasonal-affective-disorder.html" class="ba-related-link">Seasonal Affective Disorder: Clinical Recognition and Manageme...</a>
+            <a href="psychotherapy-overview.html" class="ba-related-link">Evidence-Based Psychotherapy: A Clinician's Guide to Major Mod...</a>
+            </div>
+            <div class="ba-share-row">
+              <a href="https://twitter.com/intent/tweet?text=Insomnia: A Comprehensive Clinical Guide | PsychoPharmRef&amp;url=https://psychopharmref.com/blog/insomnia.html" target="_blank" rel="noopener" class="ba-share-btn ba-share-btn--x">Share on X</a>
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://psychopharmref.com/blog/insomnia.html" target="_blank" rel="noopener" class="ba-share-btn ba-share-btn--li">Share on LinkedIn</a>
+              <a href="mailto:?subject=Insomnia: A Comprehensive Clinical Guide | PsychoPharmRef&amp;body=Check out this article: https://psychopharmref.com/blog/insomnia.html" class="ba-share-btn ba-share-btn--email">Email</a>
+              <button class="ba-share-btn ba-share-btn--copy" onclick="navigator.clipboard.writeText('https://psychopharmref.com/blog/insomnia.html').then(function(){var b=this;b.textContent='Copied!';setTimeout(function(){b.textContent='Copy Link'},2000)}.bind(this))">Copy Link</button>
+            </div>
+          </div>
+
         <div class="nl-blog-cta">
           <h4>PsychoPharmRef Newsletter</h4>
           <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
