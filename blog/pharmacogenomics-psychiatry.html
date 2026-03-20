@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-74FWZ3Q6BS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-74FWZ3Q6BS');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pharmacogenomics in Psychiatry: CYP450 Testing and Clinical Interpretation | PsychoPharmRef</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Pharmacogenomics in Psychiatry: CYP450 Testing and Clinical Interpretation | PsychoPharmRef">
+  <meta property="og:description" content="From CYP2D6 metabolizer phenotypes to combinatorial panels — when to test, how to interpret, and what the evidence actually shows">
+  <meta property="og:url" content="https://psychopharmref.com/blog/pharmacogenomics-psychiatry.html">
+  <meta property="og:site_name" content="PsychoPharmRef">
+  <meta property="og:image" content="https://psychopharmref.com/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary">
+  <meta name="author" content="Jerad Shoemaker, MD">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="canonical" href="https://psychopharmref.com/blog/pharmacogenomics-psychiatry.html">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="blog.css">
+  <style>
+.btn-primary {
+      display: inline-block;
+      background-color: var(--accent);
+      color: #fefcf8;
+      padding: 12px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      font-size: 1em;
+    }
+.btn-primary:hover {
+      background-color: var(--green);
+      box-shadow: 0 2px 8px rgba(74, 124, 53, 0.2);
+    }
+/* SVG responsive sizing fix */
+.diagram-wrapper > div, .diagram-container > div, .svg-container > div, .svg-diagram > div, .diagram-wrap > div, .diagram > div { width: 100%; }
+.diagram-wrapper svg, .diagram-container svg, .svg-container svg, .svg-diagram svg, .diagram-wrap svg, .diagram svg, .ba-body svg { width: 100%; height: auto; max-width: 820px; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Pharmacogenomics in Psychiatry: CYP450 Testing and Clinical Interpretation | PsychoPharmRef",
+    "description": "From CYP2D6 metabolizer phenotypes to combinatorial panels — when to test, how to interpret, and what the evidence actually shows",
+    "url": "https://psychopharmref.com/blog/pharmacogenomics-psychiatry.html",
+    "author": {
+      "@type": "Person",
+      "name": "Jerad Shoemaker, MD",
+      "jobTitle": "Psychiatrist"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "PsychoPharmRef"
+    },
+    "datePublished": "2026-03-20",
+    "medicalAudience": {
+      "@type": "MedicalAudience",
+      "audienceType": "Clinician"
+    }
+  }
+  </script>
+<style>
+.ba-related { margin-top: 30px; padding-top: 20px; border-top: 2px solid var(--border, #cfc8ba); }
+.ba-related h4 { font-size: 15px; font-weight: 700; color: var(--text, #231e14); margin-bottom: 12px; }
+.ba-related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.ba-related-link { display: block; padding: 10px 14px; background: var(--bg2, #ece6db); border: 1px solid var(--border, #cfc8ba); border-radius: 5px; text-decoration: none; color: var(--text, #231e14); font-size: 13px; font-weight: 600; transition: border-color 0.15s, background 0.15s; line-height: 1.35; }
+.ba-related-link:hover { border-color: var(--accent, #4a7c35); background: var(--card, #fefcf8); }
+.ba-share-row { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
+.ba-share-btn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 5px; font-size: 12px; font-weight: 600; text-decoration: none; color: #fff; transition: opacity 0.15s; }
+.ba-share-btn:hover { opacity: 0.85; }
+.ba-share-btn--x { background: #000; }
+.ba-share-btn--li { background: #0A66C2; }
+.ba-share-btn--email { background: #6b6050; }
+.ba-share-btn--copy { background: #4a7c35; cursor: pointer; border: none; }
+</style>
+<style>
+.ba-action-bar { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0 14px; padding: 6px 0; border-bottom: 1px solid var(--border, #cfc8ba); }
+.ba-act-btn { display: inline-flex; align-items: center; gap: 3px; padding: 4px 9px; border-radius: 4px; font-size: 11px; font-weight: 600; border: 1px solid var(--border, #cfc8ba); background: var(--bg2, #ece6db); color: var(--text, #231e14); cursor: pointer; text-decoration: none; transition: background 0.15s, border-color 0.15s; }
+.ba-act-btn:hover { background: var(--accent, #4a7c35); color: #fff; border-color: var(--accent, #4a7c35); }
+.ba-act-btn svg { width: 12px; height: 12px; fill: currentColor; flex-shrink: 0; }
+.ba-share-drop { position: relative; display: inline-block; }
+.ba-share-menu { display: none; position: absolute; top: 100%; left: 0; z-index: 10; background: #fff; border: 1px solid var(--border, #cfc8ba); border-radius: 5px; box-shadow: 0 4px 12px rgba(0,0,0,0.12); min-width: 160px; margin-top: 4px; padding: 4px 0; }
+.ba-share-menu.ba-open { display: block; }
+.ba-share-menu a, .ba-share-menu button { display: flex; align-items: center; gap: 8px; width: 100%; padding: 8px 14px; font-size: 12.5px; font-weight: 500; color: var(--text, #231e14); text-decoration: none; border: none; background: none; cursor: pointer; text-align: left; }
+.ba-share-menu a:hover, .ba-share-menu button:hover { background: var(--bg2, #ece6db); }
+</style>
+</head>
+<body>
+  <!-- Mobile hamburger button -->
+  <button id="mobile-menu-btn" aria-label="Open navigation menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div id="sidebar-overlay"></div>
+
+  <!-- Sidebar Navigation -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo"><a href="../index.html" style="text-decoration:none;color:inherit;">PsychoPharm<span>Ref</span></a></div>
+      <div class="logo-sub">Clinical Reference</div>
+    </div>
+
+    <ul class="nav-links">
+      <!-- Home -->
+      <li>
+        <a href="../index.html" class="nav-link" data-section="overview">
+          <span class="nav-icon">&#8962;</span> Home
+        </a>
+      </li>
+
+      <!-- Psychopharmacology -->
+      <li class="nav-group" data-group="psychopharm">
+        <button class="nav-parent-btn">
+          <span class="nav-icon">&#128138;</span>
+          <span class="nav-parent-label">Psychopharmacology</span>
+          <span class="nav-caret">&#9658;</span>
+        </button>
+        <ul class="nav-sub">
+          <li><a href="../index.html#drug-table" class="nav-link nav-sub-link">Drug Database</a></li>
+          <li><a href="../index.html#p450" class="nav-link nav-sub-link">P450 Interactions</a></li>
+          <li><a href="../index.html#receptor-binding" class="nav-link nav-sub-link">Receptor Binding</a></li>
+          <li><a href="../index.html#glossary" class="nav-link nav-sub-link">Receptor Glossary</a></li>
+          <li><a href="../index.html#pk-curves" class="nav-link nav-sub-link">PK Curves</a></li>
+        </ul>
+      </li>
+
+      <!-- Clinical Tools -->
+      <li class="nav-group" data-group="tools">
+        <button class="nav-parent-btn">
+          <span class="nav-icon">&#128295;</span>
+          <span class="nav-parent-label">Clinical Tools</span>
+          <span class="nav-caret">&#9658;</span>
+        </button>
+        <ul class="nav-sub">
+          <li class="nav-sub-divider">Medication Tools</li>
+          <li><a href="../index.html#qt-risk" class="nav-link nav-sub-link">QT Risk Tool</a></li>
+          <li><a href="../index.html#refill-calendar" class="nav-link nav-sub-link">Refill Calendar</a></li>
+          <li><a href="../index.html#med-compare" class="nav-link nav-sub-link">Med Comparison</a></li>
+          <li><a href="../index.html#med-taper" class="nav-link nav-sub-link">Taper / Start</a></li>
+
+          <li class="nav-sub-divider">Cognitive &amp; Neurodevelopmental</li>
+          <li><a href="../index.html#cdr-tool" class="nav-link nav-sub-link">CDR Staging</a></li>
+          <li><a href="../index.html#slums-tool" class="nav-link nav-sub-link">SLUMS Exam</a></li>
+          <li><a href="../index.html#asd-tool" class="nav-link nav-sub-link">ASD Severity</a></li>
+          <li><a href="../index.html#adl-tool" class="nav-link nav-sub-link">ADL / IADL</a></li>
+          <li><a href="../index.html#asrs-tool" class="nav-link nav-sub-link">ASRS (ADHD)</a></li>
+
+          <li class="nav-sub-divider">Mood &amp; Anxiety Scales</li>
+          <li><a href="../index.html#cidi-tool" class="nav-link nav-sub-link">CIDI Bipolar Screen</a></li>
+          <li><a href="../index.html#ymrs-tool" class="nav-link nav-sub-link">YMRS (Mania)</a></li>
+          <li><a href="../index.html#pcl5-tool" class="nav-link nav-sub-link">PCL-5 (PTSD)</a></li>
+          <li><a href="../index.html#ybocs-tool" class="nav-link nav-sub-link">Y-BOCS (OCD)</a></li>
+          <li><a href="../index.html#msibpd-tool" class="nav-link nav-sub-link">MSI-BPD</a></li>
+
+          <li class="nav-sub-divider">Psychosis &amp; Movement</li>
+          <li><a href="../index.html#panss-tool" class="nav-link nav-sub-link">PANSS</a></li>
+          <li><a href="../index.html#bfcrs-tool" class="nav-link nav-sub-link">Catatonia (BFCRS)</a></li>
+          <li><a href="../index.html#aims-tool" class="nav-link nav-sub-link">AIMS (Dyskinesia)</a></li>
+
+          <li class="nav-sub-divider">Sleep</li>
+          <li><a href="../index.html#ess-tool" class="nav-link nav-sub-link">Epworth (Sleepiness)</a></li>
+
+          <li class="nav-sub-divider">Safety</li>
+          <li><a href="../index.html#suicide-risk-tools" class="nav-link nav-sub-link">Suicide Risk</a></li>
+        </ul>
+      </li>
+
+      <!-- Clinical Insights -->
+      <li class="nav-group" data-group="insights">
+        <button class="nav-parent-btn">
+          <span class="nav-icon">&#129504;</span>
+          <span class="nav-parent-label">Clinical Insights</span>
+          <span class="nav-caret">&#9658;</span>
+        </button>
+        <ul class="nav-sub">
+          <li><a href="../index.html#cog-domains" class="nav-link nav-sub-link">Cognitive Domains</a></li>
+          <li><a href="../index.html#neuro-circuits" class="nav-link nav-sub-link">Neuropsych Circuits</a></li>
+          <li><a href="../index.html#brain-regions" class="nav-link nav-sub-link">Brain Regions</a></li>
+        </ul>
+      </li>
+
+      <!-- Blog -->
+      <li class="nav-group open" data-group="blog">
+        <button class="nav-parent-btn">
+          <span class="nav-icon">&#9998;</span>
+          <span class="nav-parent-label">Blog</span>
+          <span class="nav-caret">&#9658;</span>
+        </button>
+        <ul class="nav-sub">
+          <li><a href="../index.html#blog-index" class="nav-link nav-sub-link">All Posts</a></li>
+
+          <li class="nav-sub-divider">Addiction Medicine</li>
+          <li><a href="smoking-cessation.html" class="nav-link nav-sub-link">Smoking Cessation</a></li>
+          <li><a href="alcohol-use-disorder.html" class="nav-link nav-sub-link">Alcohol Use Disorder</a></li>
+          <li><a href="opioid-use-disorder.html" class="nav-link nav-sub-link">Opioid Use Disorder</a></li>
+          <li><a href="stimulant-substance-disorders.html" class="nav-link nav-sub-link">Stimulant &amp; Sedative Disorders</a></li>
+          <li><a href="cannabis-psychiatry.html" class="nav-link nav-sub-link">Cannabis &amp; Psychiatry</a></li>
+
+          <li class="nav-sub-divider">Anxiety &amp; Trauma</li>
+          <li><a href="panic-attacks-gad.html" class="nav-link nav-sub-link">Panic &amp; GAD</a></li>
+          <li><a href="ptsd-cptsd.html" class="nav-link nav-sub-link">PTSD &amp; cPTSD</a></li>
+          <li><a href="obsessive-compulsive-disorder.html" class="nav-link nav-sub-link">OCD</a></li>
+          <li><a href="social-anxiety-phobias.html" class="nav-link nav-sub-link">Social Anxiety &amp; Phobias</a></li>
+
+          <li class="nav-sub-divider">Mood Disorders</li>
+          <li><a href="bipolar-disorder.html" class="nav-link nav-sub-link">Bipolar Disorder</a></li>
+          <li><a href="major-depressive-disorder.html" class="nav-link nav-sub-link">MDD &amp; Dysthymia</a></li>
+          <li><a href="seasonal-affective-disorder.html" class="nav-link nav-sub-link">Seasonal Affective Disorder</a></li>
+
+          <li class="nav-sub-divider">Stress &amp; Adjustment</li>
+          <li><a href="adjustment-disorder.html" class="nav-link nav-sub-link">Adjustment Disorder</a></li>
+          <li><a href="personality-disorders.html" class="nav-link nav-sub-link">Personality Disorders</a></li>
+          <li><a href="eating-disorders.html" class="nav-link nav-sub-link">Eating Disorders</a></li>
+
+          <li class="nav-sub-divider">Psychotic Disorders</li>
+          <li><a href="schizophrenia.html" class="nav-link nav-sub-link">Schizophrenia</a></li>
+          <li><a href="first-break-psychosis.html" class="nav-link nav-sub-link">First Break Psychosis</a></li>
+
+          <li class="nav-sub-divider">Neurodevelopmental</li>
+          <li><a href="adult-adhd.html" class="nav-link nav-sub-link">Adult ADHD</a></li>
+          <li><a href="autism-spectrum-disorder.html" class="nav-link nav-sub-link">Autism Spectrum Disorder</a></li>
+
+          <li class="nav-sub-divider">Movement &amp; Neurodegeneration</li>
+          <li><a href="parkinsons-disease.html" class="nav-link nav-sub-link">Parkinson&#8217;s Disease</a></li>
+          <li><a href="alzheimers-disease.html" class="nav-link nav-sub-link">Alzheimer&#8217;s Disease</a></li>
+          <li><a href="frontotemporal-dementia.html" class="nav-link nav-sub-link">Frontotemporal Dementia</a></li>
+          <li><a href="antipsychotic-movement-disorders.html" class="nav-link nav-sub-link">Movement Disorders</a></li>
+          <li><a href="psychiatric-medication-tremors.html" class="nav-link nav-sub-link">Medication Tremors</a></li>
+
+          <li class="nav-sub-divider">Neuropsychiatry</li>
+          <li><a href="traumatic-brain-injury.html" class="nav-link nav-sub-link">TBI &amp; CTE</a></li>
+          <li><a href="delirium.html" class="nav-link nav-sub-link">Delirium</a></li>
+          <li><a href="catatonia.html" class="nav-link nav-sub-link">Catatonia</a></li>
+
+          <li class="nav-sub-divider">Neuromodulation &amp; Somatic Therapies</li>
+          <li><a href="electroconvulsive-therapy.html" class="nav-link nav-sub-link">ECT &amp; Neuromodulation</a></li>
+          <li><a href="ketamine-esketamine.html" class="nav-link nav-sub-link">Ketamine &amp; Esketamine</a></li>
+
+          <li class="nav-sub-divider">Sleep Medicine</li>
+          <li><a href="insomnia.html" class="nav-link nav-sub-link">Insomnia</a></li>
+          <li><a href="sleep-medications-review.html" class="nav-link nav-sub-link">Sleep Medications</a></li>
+
+          <li class="nav-sub-divider">Psychopharmacology</li>
+          <li><a href="antipsychotic-review.html" class="nav-link nav-sub-link">Antipsychotics Review</a></li>
+          <li><a href="antidepressant-review.html" class="nav-link nav-sub-link">Antidepressants Review</a></li>
+          <li><a href="long-acting-injectables.html" class="nav-link nav-sub-link">Long-Acting Injectables</a></li>
+          <li><a href="mood-stabilizer-medications.html" class="nav-link nav-sub-link">Mood Stabilizers</a></li>
+          <li><a href="benzodiazepine-pharmacology.html" class="nav-link nav-sub-link">Benzodiazepines</a></li>
+          <li><a href="clozapine-clinical-guide.html" class="nav-link nav-sub-link">Clozapine Guide</a></li>
+          <li><a href="pharmacogenomics-psychiatry.html" class="nav-link nav-sub-link">Pharmacogenomics</a></li>
+          <li><a href="neuroscience-foundations.html" class="nav-link nav-sub-link">Neuroscience Foundations</a></li>
+
+          <li class="nav-sub-divider">Neuroimmunology</li>
+          <li><a href="psychoneuroimmunology.html" class="nav-link nav-sub-link">Psychoneuroimmunology</a></li>
+          <li><a href="infectious-disease-psychiatry.html" class="nav-link nav-sub-link">Infectious Disease &amp; Psychiatry</a></li>
+          <li class="nav-sub-divider">Environmental Psychiatry</li>
+          <li><a href="heavy-metals-environmental-toxins.html" class="nav-link nav-sub-link">Heavy Metals &amp; Toxins</a></li>
+          <li class="nav-sub-divider">Nutritional Psychiatry</li>
+          <li><a href="obesity-weight-loss.html" class="nav-link nav-sub-link">Obesity &amp; Weight Loss</a></li>
+          <li><a href="folate-b12-mma.html" class="nav-link nav-sub-link">Folate, B12 &amp; MMA</a></li>
+          <li><a href="vitamin-d.html" class="nav-link nav-sub-link">Vitamin D</a></li>
+          <li><a href="magnesium-supplementation.html" class="nav-link nav-sub-link">Magnesium</a></li>
+
+          <li class="nav-sub-divider">Perinatal Psychiatry</li>
+          <li><a href="pregnancy-breastfeeding.html" class="nav-link nav-sub-link">Pregnancy &amp; Breastfeeding</a></li>
+
+          <li class="nav-sub-divider">Geriatric Psychiatry</li>
+          <li><a href="geriatric-psychiatry.html" class="nav-link nav-sub-link">Geriatric Psychiatry</a></li>
+
+          <li class="nav-sub-divider">Dissociation</li>
+          <li><a href="dissociative-disorders.html" class="nav-link nav-sub-link">Dissociative Disorders</a></li>
+
+          <li class="nav-sub-divider">Clinical Practice</li>
+          <li><a href="suicide-risk-assessments.html" class="nav-link nav-sub-link">Suicide Risk Assessment</a></li>
+          <li><a href="grief-bereavement.html" class="nav-link nav-sub-link">Grief &amp; Bereavement</a></li>
+          <li><a href="medication-changes.html" class="nav-link nav-sub-link">Medication Changes</a></li>
+          <li><a href="history-psychiatric-medications.html" class="nav-link nav-sub-link">Psych Med History</a></li>
+          <li><a href="capacity-evaluation.html" class="nav-link nav-sub-link">Capacity Evaluation</a></li>
+          <li><a href="surrogate-decision-makers.html" class="nav-link nav-sub-link">Surrogate Decision-Makers</a></li>
+          <li><a href="legal-precedents-psychiatry.html" class="nav-link nav-sub-link">Legal Frameworks</a></li>
+          <li><a href="court-testimony-psychiatry.html" class="nav-link nav-sub-link">Court Testimony</a></li>
+          <li><a href="medical-note-writing.html" class="nav-link nav-sub-link">Medical Note Writing</a></li>
+          <li><a href="psychiatric-interview.html" class="nav-link nav-sub-link">Psychiatric Interview</a></li>
+          <li><a href="psychotherapy-overview.html" class="nav-link nav-sub-link">Psychotherapy Overview</a></li>
+          <li><a href="emergency-psychiatry.html" class="nav-link nav-sub-link">Emergency Psychiatry</a></li>
+          <li><a href="serotonin-syndrome-nms.html" class="nav-link nav-sub-link">SS vs NMS</a></li>
+          <li><a href="psychiatric-ethics.html" class="nav-link nav-sub-link">Psychiatric Ethics</a></li>
+          <li><a href="motivational-interviewing.html" class="nav-link nav-sub-link">Motivational Interviewing</a></li>
+          <li><a href="telepsychiatry.html" class="nav-link nav-sub-link">Telepsychiatry</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <a href="../index.html#fda-search" class="sf-link">References &amp; Methods</a>
+      <span class="sf-contact">Contact &mdash; coming soon</span>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="content">
+    <div class="container">
+  <div class="container">
+    <a href="../index.html" class="back-link">&#8592; Back to PsychoPharmRef</a>
+          <div class="ba-action-bar">
+            <button class="ba-act-btn" onclick="window.print()" title="Print this article"><svg viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg> Print</button>
+            <div class="ba-share-drop">
+              <button class="ba-act-btn" onclick="this.nextElementSibling.classList.toggle('ba-open')" title="Share this article"><svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg> Share</button>
+              <div class="ba-share-menu" id="share-menu-pharmacogenomics-psychiatry">
+                <a href="https://twitter.com/intent/tweet?text=Pharmacogenomics%20in%20Psychiatry%3A%20Clinical%20Interpretation%20%7C%20PsychoPharmRef&amp;url=https%3A%2F%2Fpsychopharmref.com%2Fblog%2Fpharmacogenomics-psychiatry.html" target="_blank" rel="noopener">X (Twitter)</a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://psychopharmref.com/blog/pharmacogenomics-psychiatry.html" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:?subject=Pharmacogenomics in Psychiatry | PsychoPharmRef&amp;body=Check out this article: https://psychopharmref.com/blog/pharmacogenomics-psychiatry.html">Email</a>
+                <button onclick="navigator.clipboard.writeText('https://psychopharmref.com/blog/pharmacogenomics-psychiatry.html').then(function(){this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link'}.bind(this),2000)}.bind(this))">Copy Link</button>
+              </div>
+            </div>
+          </div>
+
+
+    <article class="blog-article">
+      <header class="ba-header">
+        <div class="ba-category">Psychopharmacology</div>
+        <h1 class="ba-title">Pharmacogenomics in Psychiatry: CYP450 Testing, Clinical Utility, and Interpretation</h1>
+        <p class="ba-subtitle">From CYP2D6 metabolizer phenotypes to combinatorial panels — when to test, how to interpret, and what the evidence actually shows</p>
+        <div class="ba-meta">
+          <span>Published: March 2026</span>
+          <span>For Prescribing Clinicians</span>
+          <span>25 min read</span>
+                <span class="ba-meta-item">✍️ Jerad Shoemaker, MD</span>
+        </div>
+      </header>
+
+      <div class="ba-body">
+        <div class="ba-lead">
+          Pharmacogenomic testing in psychiatry has evolved rapidly over the past two decades, with commercial panels now offering comprehensive CYP450 genotyping, serotonin transporter polymorphisms, and other biomarkers at the point of care. Yet evidence for their clinical utility remains mixed: while genetic variation in drug-metabolizing enzymes is real and measurable, translating genotype into optimized medication selection and dosing has proven far more complex than initially anticipated. This review synthesizes the history of pharmacogenomics in psychiatry, core concepts in pharmacokinetic and pharmacodynamic genetics, interpretation of commercial testing panels, appraisal of clinical trial evidence (including the large GUIDED trial), FDA guidance, and practical recommendations for when and how to implement testing in clinical practice.
+        </div>
+
+        <!-- Clinical Summary Box -->
+        <div class="ba-insight-box ba-insight-box--summary" style="background-color: #e8f3e2; border-color: #4a7c35; border-left: 6px solid #4a7c35; margin: 32px 0;">
+          <div style="font-weight: 700; font-size: 1.05em; margin-bottom: 12px; color: #2d5a1f;">Clinical Summary</div>
+          <p style="margin-bottom: 0; font-size: 0.95em; line-height: 1.6; color: #231e14;">Pharmacogenomic testing identifies genetic variants in drug-metabolizing enzymes (CYP2D6, CYP2C19, CYP3A4, CYP1A2) and drug targets (serotonin transporter, receptor genes). While test results correlate with drug metabolism rates, clinical outcomes in large randomized trials show modest benefits of pharmacogenomic-guided treatment compared to treatment-as-usual. This review provides clinicians with practical guidance on test selection, interpretation of metabolizer phenotypes, integration with clinical decision-making, and realistic expectations regarding treatment response improvement.</p>
+        </div>
+
+        <!-- SECTION 1: HISTORY -->
+        <h2 class="ba-h2">1. History and Emergence of Psychiatric Pharmacogenomics</h2>
+
+        <div class="ba-timeline">
+
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot"></div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">1950s–1970s</div>
+              <strong>Discovery of CYP450 Enzyme Polymorphisms</strong>
+              Early observations that patients had dramatically different plasma levels of the same drug dose led to the discovery of genetic polymorphisms in the cytochrome P450 system. Twin studies demonstrated heritability of drug metabolism rates. Initial focus was on "debrisoquine hydroxylase" polymorphism, now known as CYP2D6.
+            </div>
+          </div>
+
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot"></div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">1977</div>
+              <strong>Mahgoub et al. Describe "Slow" and "Fast" Metabolizers</strong>
+              Population studies revealed bimodal distribution of debrisoquine metabolism, classifying people as poor metabolizers (PM), intermediate metabolizers (IM), extensive/normal metabolizers (EM), or ultra-rapid metabolizers (UM). This classification framework persists today.
+            </div>
+          </div>
+
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot"></div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">1985–2000</div>
+              <strong>Molecular Identification and Genetic Mapping</strong>
+              Molecular cloning of CYP450 genes and identification of specific mutations (gene deletions, splicing variants, point mutations) enabled direct genetic testing. CYP2D6, CYP2C19, CYP3A4, CYP1A2 were fully characterized.
+            </div>
+          </div>
+
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot"></div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">2000s–2010s</div>
+              <strong>Commercial Pharmacogenomic Panel Development</strong>
+              Companies such as GeneSight (Myriad), Genomind, Tempus, and others developed commercial panels testing multiple CYP450 genes plus serotonin transporter (SLC6A4), receptor genes (HTR2A, COMT, MTHFR), and other biomarkers. Marketing targeting mental health providers increased test uptake dramatically.
+            </div>
+          </div>
+
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot"></div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">2019</div>
+              <strong>GUIDED Trial: First Large RCT of Pharmacogenomic-Guided Treatment</strong>
+              The Genomics Used to Improve DEpression Outcomes (GUIDED) trial randomized 1,167 patients with major depression to either pharmacogenomic-guided treatment or treatment-as-usual. Results were sobering: pharmacogenomic-guided group showed modest benefit (42% response vs. 38% controls at 12 weeks; NNT ~25), not substantially better than clinical judgment. Trial raised questions about clinical utility of routine testing.
+            </div>
+          </div>
+
+          <div class="ba-tl-item">
+            <div class="ba-tl-dot"></div>
+            <div class="ba-tl-text">
+              <div class="ba-tl-time">2021–2026</div>
+              <strong>Refined FDA Guidance and Debate Over Utility</strong>
+              FDA published updated guidance on clinical implementation, recommending testing in specific high-risk scenarios (treatment resistance, unusual side effects, polypharmacy) rather than routine screening. Debate continues regarding economic justification and clinical benefit.
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SECTION 2: PHARMACOKINETIC GENES -->
+        <h2 class="ba-h2">2. Pharmacokinetic Genes: CYP450 and Drug Metabolism</h2>
+
+        <h3 class="ba-h3">CYP2D6: The "Poor Metabolizer" Gene</h3>
+        <p>
+          CYP2D6 is the most psychiatrically relevant CYP450 enzyme, metabolizing ~25% of all drugs including many antidepressants (tricyclics, venlafaxine, fluoxetine, paroxetine), antipsychotics (risperidone, aripiprazole, haloperidol), and beta-blockers. CYP2D6 displays the most dramatic genetic variation: copy number variations (deletions producing PMs, duplications/multiplications producing UMs), point mutations, and splice site variants.
+        </p>
+        <p>
+          <strong>Metabolizer Phenotypes:</strong>
+        </p>
+        <ul style="margin: 16px 0;">
+          <li><strong>Poor Metabolizer (PM):</strong> ~7% of Caucasians, ~3% East Asians. Two loss-of-function alleles. Cannot metabolize CYP2D6 substrates efficiently; plasma levels are elevated 2-4 fold. Risk of side effects at standard doses. Codeine is inactive (prodrug requiring CYP2D6 activation to morphine), so PMs derive no analgesic benefit.</li>
+          <li><strong>Intermediate Metabolizer (IM):</strong> ~30% of population. One functional + one non-functional allele. Partially reduced metabolism; plasma levels elevated 1.5–2 fold.</li>
+          <li><strong>Extensive/Normal Metabolizer (EM):</strong> ~60% of population. Two functional alleles. Normal metabolism; standard dosing appropriate.</li>
+          <li><strong>Ultra-Rapid Metabolizer (UM):</strong> 5–10% depending on ethnicity; higher in Middle East/North Africa. Three or more functional copies (gene duplication). Rapid metabolism; standard doses produce subtherapeutic levels.</li>
+        </ul>
+        <p>
+          <strong>Clinical Implications:</strong> A poor metabolizer on fluoxetine 20 mg daily may achieve levels equivalent to a normal metabolizer on 60 mg daily. Dose reduction (25–50% of standard) is often necessary. Conversely, an ultra-rapid metabolizer may require higher-than-standard doses. Guidelines recommend phenotype-guided dose adjustments.
+        </p>
+
+        <h3 class="ba-h3">CYP2C19: Antidepressant and Anxiolytic Metabolism</h3>
+        <p>
+          CYP2C19 metabolizes citalopram, escitalopram, sertraline, tricyclics, and benzodiazepines. Genetic variation is less extreme than CYP2D6 but clinically meaningful. Poor metabolizers (PM) occur in ~2–4% of Caucasians, ~50–60% of East Asians (due to founder effects). CYP2C19*2 and *3 are the primary loss-of-function alleles.
+        </p>
+        <p>
+          <strong>Clinical Implications:</strong> Citalopram/escitalopram-treated PMs have higher serum levels and increased QT prolongation risk; FDA recommends lower doses in PMs (maximum 20 mg/day citalopram, 10 mg/day escitalopram) regardless of ethnicity. Sertraline exhibits less dramatic differences across phenotypes.
+        </p>
+
+        <h3 class="ba-h3">CYP3A4 and CYP1A2</h3>
+        <p>
+          CYP3A4 is the most abundant hepatic enzyme, metabolizing ~50% of all drugs including quetiapine, aripiprazole, and many others. However, genetic variation is minimal; instead, CYP3A4 is highly susceptible to environmental induction (carbamazepine, phenytoin, rifampin) and inhibition (ketoconazole, grapefruit juice, protease inhibitors). Genetic testing for CYP3A4 is less useful than CYP2D6/2C19.
+        </p>
+        <p>
+          CYP1A2 metabolizes clozapine and some antidepressants; genetic variation exists but is less clinically dramatic. Smoking is a major inducer of CYP1A2, making smoking status more predictive than genotype.
+        </p>
+
+        <div class="diagram-container" style="margin: 32px 0; padding: 20px; background: #f5f3f0; border-radius: 8px;">
+          <div style="font-weight: 600; margin-bottom: 12px; color: #231e14;">CYP2D6 Metabolizer Phenotype Spectrum</div>
+          <svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg">
+            <!-- Spectrum line -->
+            <line x1="80" y1="160" x2="680" y2="160" stroke="#231e14" stroke-width="3"/>
+
+            <!-- Poor Metabolizer -->
+            <circle cx="120" cy="160" r="25" fill="#ff6b6b"/>
+            <text x="120" y="165" font-size="12" font-weight="bold" text-anchor="middle" fill="#fff">PM</text>
+            <text x="120" y="200" font-size="11" font-weight="600" text-anchor="middle" fill="#231e14">Poor</text>
+            <text x="120" y="215" font-size="10" text-anchor="middle" fill="#231e14">2-4x elevated levels</text>
+            <text x="120" y="230" font-size="10" text-anchor="middle" fill="#231e14">7% Caucasians</text>
+            <text x="120" y="245" font-size="10" text-anchor="middle" fill="#231e14">Lower doses needed</text>
+
+            <!-- Intermediate Metabolizer -->
+            <circle cx="280" cy="160" r="25" fill="#ffa500"/>
+            <text x="280" y="165" font-size="12" font-weight="bold" text-anchor="middle" fill="#fff">IM</text>
+            <text x="280" y="200" font-size="11" font-weight="600" text-anchor="middle" fill="#231e14">Intermediate</text>
+            <text x="280" y="215" font-size="10" text-anchor="middle" fill="#231e14">1.5–2x elevated levels</text>
+            <text x="280" y="230" font-size="10" text-anchor="middle" fill="#231e14">30% population</text>
+            <text x="280" y="245" font-size="10" text-anchor="middle" fill="#231e14">Moderate dose adjustment</text>
+
+            <!-- Extensive Metabolizer -->
+            <circle cx="440" cy="160" r="25" fill="#4a7c35"/>
+            <text x="440" y="165" font-size="12" font-weight="bold" text-anchor="middle" fill="#fff">EM</text>
+            <text x="440" y="200" font-size="11" font-weight="600" text-anchor="middle" fill="#231e14">Normal</text>
+            <text x="440" y="215" font-size="10" text-anchor="middle" fill="#231e14">Standard levels</text>
+            <text x="440" y="230" font-size="10" text-anchor="middle" fill="#231e14">60% population</text>
+            <text x="440" y="245" font-size="10" text-anchor="middle" fill="#231e14">Standard dosing</text>
+
+            <!-- Ultra-Rapid Metabolizer -->
+            <circle cx="600" cy="160" r="25" fill="#2d5a1f"/>
+            <text x="600" y="165" font-size="12" font-weight="bold" text-anchor="middle" fill="#fff">UM</text>
+            <text x="600" y="200" font-size="11" font-weight="600" text-anchor="middle" fill="#231e14">Ultra-Rapid</text>
+            <text x="600" y="215" font-size="10" text-anchor="middle" fill="#231e14">Subtherapeutic levels</text>
+            <text x="600" y="230" font-size="10" text-anchor="middle" fill="#231e14">5–10% (ethnicity-dependent)</text>
+            <text x="600" y="245" font-size="10" text-anchor="middle" fill="#231e14">Higher doses needed</text>
+
+            <!-- Arrow showing spectrum -->
+            <path d="M 60 140 L 720 140" fill="none" stroke="#ccc" stroke-width="1" stroke-dasharray="5,5"/>
+            <text x="390" y="135" font-size="12" font-style="italic" text-anchor="middle" fill="#666">← DECREASING METABOLISM   INCREASING METABOLISM →</text>
+          </svg>
+        </div>
+
+        <!-- SECTION 3: COMMERCIAL PANELS -->
+        <h2 class="ba-h2">3. Commercial Pharmacogenomic Panels: What They Test and How They Report</h2>
+
+        <h3 class="ba-h3">Major Players: GeneSight, Genomind, Tempus</h3>
+        <p>
+          <strong>GeneSight (Myriad):</strong> Tests CYP2D6, CYP2C19, CYP3A4/5, CYP1A2, SLC6A4, HTR2A, MTHFR, and others. Reports phenotypes and drug-specific recommendations. Color-coded: green (optimal metabolism expected), yellow (caution — increased levels or reduced effect), red (significant risk).
+        </p>
+        <p>
+          <strong>Genomind:</strong> Similar scope (CYP2D6, CYP2C19, CYP3A4/5, CYP1A2, SLC6A4, etc.). Reports include medication lists organized by green/yellow/red ratings and dosing recommendations.
+        </p>
+        <p>
+          <strong>Tempus:</strong> Additional focus on cancer pharmacogenomics and immunotherapy biomarkers (outside psychiatry scope).
+        </p>
+        <p>
+          These panels produce color-coded reports clinicians receive in real-time, often with medication-specific recommendations. However, reports sometimes overstate clinical certainty: a "red" medication doesn't mean contraindication, merely increased risk requiring monitoring or dose adjustment.
+        </p>
+
+        <h3 class="ba-h3">Pharmacodynamic Genes: Limited Clinical Utility</h3>
+        <p>
+          Many commercial panels include tests for serotonin transporter promoter polymorphism (5-HTTLPR), HTR2A, COMT, MTHFR, and BDNF variants. Evidence for clinical utility of these pharmacodynamic markers is far weaker than CYP450 genes.
+        </p>
+        <p>
+          <strong>SLC6A4 (5-HTTLPR):</strong> Long/short alleles affect serotonin transporter expression. Some studies suggest short-allele carriers have higher SSRI response rates, but meta-analyses show inconsistent results and poor predictive value. FDA does not recommend routine testing.
+        </p>
+        <p>
+          <strong>COMT Val158Met:</strong> Affects catecholamine metabolism. Associations with treatment response are weak and inconsistent. Not FDA-recommended.
+        </p>
+        <p>
+          <strong>MTHFR:</strong> Methylenetetrahydrofolate reductase gene; controversial. Some clinicians use MTHFR status to recommend methylated folate supplements, but evidence for improved psychiatric outcomes is lacking. Not recommended by major guidelines.
+        </p>
+
+        <!-- SECTION 4: CLINICAL EVIDENCE AND TRIALS -->
+        <h2 class="ba-h2">4. Clinical Evidence: The GUIDED Trial and Beyond</h2>
+
+        <h3 class="ba-h3">The GUIDED Trial (2019): Mixed Results, Important Limitations</h3>
+        <p>
+          The landmark GUIDED trial (Genomics Used to Improve DEpression Outcomes) enrolled 1,167 adults with moderate-to-severe MDD and randomized them to either pharmacogenomic-guided treatment (PGx group) or treatment-as-usual (TAU group). Both groups received 12 weeks of treatment with medication adjustment at weeks 4 and 8.
+        </p>
+        <p>
+          <strong>Results:</strong> At 12 weeks, 42% of the PGx group vs. 38% of the TAU group achieved 50%+ symptom improvement (p=0.12, not statistically significant at the pre-specified primary endpoint). Post-hoc analysis showed 42% vs. 38% response rates, suggesting a modest advantage (NNT ~25). Remission rates were similar. The PGx group had numerically fewer side effects but the difference was not statistically significant.
+        </p>
+        <p>
+          <strong>Critical Limitations and Interpretation:</strong> The GUIDED trial did not provide a verdict of "no benefit" but rather showed modest benefit of uncertain clinical significance. Limitations include: (1) Short follow-up (12 weeks; longer exposure might show greater benefit); (2) High baseline response rates in TAU group (38%) suggesting clinicians were already making good choices; (3) High dropout rates (>30%) limiting power; (4) Single-site bias; (5) Test results provided without structured guidelines for implementation, raising questions about whether full potential of testing was realized. Some psychiatrists argue GUIDED failed to implement pharmacogenomic guidance optimally.
+        </p>
+
+        <h3 class="ba-h3">IMPACT Trial and Other Evidence</h3>
+        <p>
+          The IMPACT trial (Improving Mood Pathways for Teens) randomized 1,182 adolescents with depression to pharmacogenomic-guided vs. usual care over 12 weeks. Results were similar to GUIDED: modest numerical advantage for PGx (45% vs. 41% response, not statistically significant). Meta-analyses of randomized trials show consistent small effects favoring pharmacogenomic-guided treatment, with pooled NNT ~20-30 — meaning treating 20–30 patients with pharmacogenomic testing to see one additional responder.
+        </p>
+
+        <h3 class="ba-h3">FDA Position and CPIC/PharmGKB Guidelines</h3>
+        <p>
+          The FDA published updated guidance (2023) acknowledging pharmacogenomic testing utility but recommending targeted use rather than routine screening. The Clinical Pharmacogenetics Implementation Consortium (CPIC) and Pharmacogene Variation (PharmGKB) database provide evidence-based recommendations:
+        </p>
+        <ul style="margin: 16px 0;">
+          <li><strong>Level A Evidence (Strong):</strong> CYP2D6 and codeine (avoid in PMs — no analgesic effect); CYP2C19 and citalopram/escitalopram (dose reduction in PMs)</li>
+          <li><strong>Level B Evidence (Moderate):</strong> CYP2D6 and tricyclics (consider dose reduction in PMs); CYP2D6 and fluoxetine (dose reduction in PMs)</li>
+          <li><strong>Level C Evidence (Weak/Uncertain):</strong> Most other psychiatric medication-gene combinations lack sufficient evidence for routine recommendations</li>
+        </ul>
+
+        <div class="ba-stat-row">
+          <div class="ba-stat-card">
+            <div class="ba-stat-label">GUIDED Trial NNT (PGx vs. TAU)</div>
+            <div class="ba-stat-value">~25</div>
+          </div>
+          <div class="ba-stat-card">
+            <div class="ba-stat-label">PM Frequency (CYP2D6, Caucasians)</div>
+            <div class="ba-stat-value">7%</div>
+          </div>
+          <div class="ba-stat-card">
+            <div class="ba-stat-label">EM Frequency (CYP2D6)</div>
+            <div class="ba-stat-value">60%</div>
+          </div>
+        </div>
+
+        <!-- SECTION 5: PRACTICAL GUIDANCE -->
+        <h2 class="ba-h2">5. When to Test: Clinical Decision-Making and Practical Recommendations</h2>
+
+        <h3 class="ba-h3">Recommended Testing Scenarios (Evidence-Based)</h3>
+        <ul style="margin: 16px 0;">
+          <li><strong>Treatment Resistance:</strong> Multiple failed medication trials despite adequate dosing and duration. Pharmacogenomic testing may identify poor metabolizer status, suggesting dose adjustments with previous agents.</li>
+          <li><strong>Unusual Side Effects:</strong> Severe side effects at standard doses; could indicate poor metabolizer status with elevated levels.</li>
+          <li><strong>Polypharmacy:</strong> Patient on multiple medications with overlapping CYP450 pathways; testing can identify high-risk combinations.</li>
+          <li><strong>Genetic Risk Factors:</strong> Family history of poor medication response or adverse events.</li>
+          <li><strong>Specific Medications with Evidence:</strong> Codeine, citalopram/escitalopram use in patients of East Asian ancestry (higher PM frequency, regulatory guidance for dose reduction).</li>
+          <li><strong>Medications with Narrow Therapeutic Index:</strong> Tricyclics, some antipsychotics (risperidone, aripiprazole).</li>
+        </ul>
+
+        <h3 class="ba-h3">Not Recommended for Routine Screening</h3>
+        <p>
+          Pharmacogenomic testing is <strong>not</strong> recommended as a universal/routine first-line screening tool. Reasons: (1) Cost (~$1000-3000 per test); (2) Modest clinical benefit in randomized trials (NNT ~25); (3) Most patients respond well to standard dosing; (4) Clinical judgment and trial-and-error often efficient; (5) Environmental factors (smoking, diet, medications) often more predictive than genotype for CYP3A4.
+        </p>
+
+        <h3 class="ba-h3">Interpreting Results: The Pitfall of Over-Interpretation</h3>
+        <p>
+          Common pitfalls in using pharmacogenomic results include:
+        </p>
+        <ul style="margin: 16px 0;">
+          <li><strong>Red Flag as Absolute Contraindication:</strong> A "red" rating doesn't mean "don't prescribe"; it means use with caution, monitor closely, consider dose adjustment.</li>
+          <li><strong>Over-Reliance on Pharmacodynamic Markers:</strong> SLC6A4, COMT, MTHFR lack strong evidence; clinical judgment supersedes these markers.</li>
+          <li><strong>Ignoring Drug-Drug Interactions:</strong> Two "green" medications can become problematic if one is a CYP3A4 inhibitor affecting the other's metabolism.</li>
+          <li><strong>Treating Genotype Rather Than Phenotype:</strong> Environmental inducers/inhibitors often matter more than genotype (smoking effect on CYP1A2, grapefruit juice on CYP3A4).</li>
+          <li><strong>Setting False Expectations:</strong> Testing should not be presented as "the answer" to treatment resistance; it is one tool among many.</li>
+        </ul>
+
+        <div class="ba-insight-box">
+          <div class="ba-insight-icon">&#9881;</div>
+          <div>
+            <strong>The Pharmacogenomics Utility Debate: Where We Stand</strong>
+            <p style="margin-bottom: 0;">Pharmacogenomic testing provides real, measurable biological information (genotype predicts drug metabolism) but translates to modest clinical benefit in practice. The gap between biological significance and clinical utility reflects the reality that medication response is multifactorial: genetics accounts for perhaps 10-30% of variance in response; environment, adherence, comorbidities, and therapeutic relationship are equally or more important. Enthusiasm for genomic medicine should be tempered by humility regarding biology's role in complex psychiatric outcomes. Testing is most useful in targeted scenarios (suspected poor metabolizer, unusual side effects, polypharmacy) rather than routine screening. Future work on polygenic risk scores, gene-environment interactions, and combination of genetic + clinical biomarkers may improve predictive power.</p>
+          </div>
+        </div>
+
+        <!-- SECTION 6: REFERENCES -->
+        <div class="ba-references">
+          <div class="ba-ref-title">References</div>
+          <ol class="ba-ref-list">
+            <li>Mahgoub A, Dring LG, Idle JR, Lancaster R, Smith RL. Polymorphic hydroxylation of debrisoquine in man. <em>Lancet.</em> 1977;2(8038):584–586.</li>
+            <li>Evans WE, Relling MV. Moving towards individualized medicine with pharmacogenomics. <em>Nature.</em> 2004;429(6990):464–468.</li>
+            <li>Kirchheiner J, Nickchen K, Bauer M, et al. Pharmacogenetics of antidepressants and antipsychotics: the contribution of allelic variations to the phenotype of drug response. <em>Mol Psychiatry.</em> 2004;9(5):442–473.</li>
+            <li>Ramsey LB, Johnson SG, Whirl-Carrillo M, et al. The Clinical Pharmacogenetics Implementation Consortium: CPIC guideline for CYP2C19 and citalopram and escitalopram dosing. <em>Clin Pharmacol Ther.</em> 2016;100(6):663–671.</li>
+            <li>Hicks JK, Swen JJ, Thorn CF, et al. Clinical Pharmacogenetics Implementation Consortium guideline for CYP2D6 and CYP2C19 genotypes and dosing of tricyclic antidepressants: 2016 update. <em>Clin Pharmacol Ther.</em> 2017;102(1):37–44.</li>
+            <li>Winner J, Carhart-Harris R, Rickard JA, et al. GeneSight® and Myriad pharmacogenomic testing for psychiatric medications: Clinical utility and cost-effectiveness. <em>Psychiatry Res.</em> 2020;293:113402.</li>
+            <li>Greden JF, Parikh SV, Rothschild AJ, et al. Impact of pharmacogenomics on clinical outcomes in major depressive disorder in the GUIDED trial. <em>Neuropsychopharmacology.</em> 2019;44(12):2149–2155.</li>
+            <li>Kelley SE, Carrera GF. Pharmacogenomics in psychiatric practice: A review of the evidence base for predicting medication response and adverse effects. <em>J Psychiatr Pract.</em> 2021;27(5):375–387.</li>
+            <li>Bousman CA, Muller DJ. Personalised psychiatry as a clinical reality. <em>Lancet Psychiatry.</em> 2017;4(9):660–661.</li>
+            <li>Bradley P, Shiekh M, Mehra V, et al. Improved efficacy with targeted pharmacogenetic-guided treatment of patients with depression and anxiety: A randomized clinical trial demonstrating clinical utility. <em>J Psychiatr Res.</em> 2018;96:100–107.</li>
+            <li>Lung SY, Lin JJ, Liu HC, et al. Pharmacogenomics of antipsychotics: Efficacy and adverse effects. <em>Curr Pharm Des.</em> 2017;23(11):1591–1602.</li>
+            <li>Schatzberg AF, Nemeroff CB. (eds). <em>The American Psychiatric Publishing Textbook of Psychopharmacology.</em> 5th ed. Arlington, VA: American Psychiatric Publishing; 2017.</li>
+            <li>FDA. Guidance for Industry: Pharmacogenomics Data Submissions. Silver Spring, MD: FDA; 2018. Updated 2023.</li>
+            <li>Fabbri C, Kasper S, Kautzky A, et al. Pharmacogenomics and personalized medicine in mental disorders: focus on psychopharmacogenomics. <em>Prog Neuropsychopharmacol Biol Psychiatry.</em> 2021;106:110062.</li>
+            <li>Whirl-Carrillo M, Huddart R, Chambers MC, et al. Pharmacogene Variation Consortium: a comprehensive resource for integrating pharmacogenomics research and clinical translation. <em>Clin Pharmacol Ther.</em> 2021;109(3):573–579.</li>
+            <li>Bousman CA, Benattia I, Bigos KL, et al. Review and consensus on pharmacogenomics in psychiatry. <em>Lancet Psychiatry.</em> 2023;10(4):313–326.</li>
+            <li>Meyer JM. Pharmacogenomics for psychiatry: personalized medical management. <em>J Dual Diagnosis.</em> 2018;14(1):87–107.</li>
+          </ol>
+        </div>
+
+      </div><!-- /ba-body -->
+    </article>
+
+
+        <!-- Newsletter CTA -->
+
+          <!-- Related Posts & Share -->
+          <div class="ba-related">
+            <h4>Related Articles</h4>
+            <div class="ba-related-grid">
+            <a href="antidepressant-review.html" class="ba-related-link">Antidepressants Review: Mechanisms, Efficacy, and Clinical Selection | Psych...</a>
+            <a href="antipsychotic-review.html" class="ba-related-link">Antipsychotics Review: First and Second Generation | Psychopharmacology...</a>
+            <a href="neuroscience-foundations.html" class="ba-related-link">Neuroscience Foundations: Neurotransmitters and Neural Circuits | Psych...</a>
+            <a href="medication-changes.html" class="ba-related-link">Medication Changes: Starting, Tapering, and Cross-Tapering | Psychopharmac...</a>
+            </div>
+            <div class="ba-share-row">
+              <a href="https://twitter.com/intent/tweet?text=Pharmacogenomics%20in%20Psychiatry%3A%20Clinical%20Utility%20%7C%20PsychoPharmRef&amp;url=https%3A%2F%2Fpsychopharmref.com%2Fblog%2Fpharmacogenomics-psychiatry.html" target="_blank" rel="noopener" class="ba-share-btn ba-share-btn--x">Share on X</a>
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://psychopharmref.com/blog/pharmacogenomics-psychiatry.html" target="_blank" rel="noopener" class="ba-share-btn ba-share-btn--li">Share on LinkedIn</a>
+              <a href="mailto:?subject=Pharmacogenomics in Psychiatry | PsychoPharmRef&amp;body=Check out this article: https://psychopharmref.com/blog/pharmacogenomics-psychiatry.html" class="ba-share-btn ba-share-btn--email">Email</a>
+              <button class="ba-share-btn ba-share-btn--copy" onclick="navigator.clipboard.writeText('https://psychopharmref.com/blog/pharmacogenomics-psychiatry.html').then(function(){var b=this;b.textContent='Copied!';setTimeout(function(){b.textContent='Copy Link'},2000)}.bind(this))">Copy Link</button>
+            </div>
+          </div>
+
+        <div class="nl-blog-cta">
+          <h4>PsychoPharmRef Newsletter</h4>
+          <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
+          <a href="https://subscribe-forms.beehiiv.com/5f2b3081-aa41-452c-95c8-69a5ae899cf8" target="_blank" rel="noopener" class="nl-subscribe-btn">Subscribe — it's free</a>
+        </div>
+
+            <footer class="ba-footer">
+      <p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 16px;">This reference is intended for licensed healthcare professionals. Clinical decisions should integrate individual patient factors and current evidence.</p>
+      <a href="../index.html" class="btn-primary">Return to PsychoPharmRef</a>
+    </footer>
+
+  </div><!-- /container -->
+    </div>
+  </main>
+
+<script>
+// Sidebar nav group toggle
+document.querySelectorAll('.nav-parent-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    const group = btn.closest('.nav-group');
+    const isOpen = group.classList.contains('open');
+    document.querySelectorAll('.nav-group').forEach(g => g.classList.remove('open'));
+    if (!isOpen) group.classList.add('open');
+  });
+});
+
+// Highlight current page in sidebar
+(function() {
+  const currentFile = window.location.pathname.split('/').pop();
+  document.querySelectorAll('#sidebar .nav-sub-link').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentFile) {
+      link.classList.add('active');
+      // Scroll active link into view in sidebar
+      setTimeout(() => link.scrollIntoView({ block: 'center', behavior: 'smooth' }), 100);
+    }
+  });
+})();
+</script>
+
+
+  <script>
+  (function() {
+    var btn = document.getElementById('mobile-menu-btn');
+    var sidebar = document.getElementById('sidebar');
+    var overlay = document.getElementById('sidebar-overlay');
+    if (!btn || !sidebar || !overlay) return;
+    function open() { sidebar.classList.add('sidebar-open'); overlay.classList.add('overlay-visible'); document.body.classList.add('sidebar-is-open'); }
+    function close() { sidebar.classList.remove('sidebar-open'); overlay.classList.remove('overlay-visible'); document.body.classList.remove('sidebar-is-open'); }
+    btn.addEventListener('click', function() { sidebar.classList.contains('sidebar-open') ? close() : open(); });
+    overlay.addEventListener('click', close);
+    // Close sidebar when clicking nav links on mobile
+    sidebar.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { if (window.innerWidth <= 768) close(); }); });
+  })();
+  </script>
+</body>
+</html>
