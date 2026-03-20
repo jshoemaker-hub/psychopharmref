@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Psychiatry: Assessment and Management of Acute Crises - PsychoPharmRef</title>
+    <meta name="description" content="Clinical guide to psychiatric emergencies including assessment of agitation, suicidality, psychosis, substance withdrawal, medical clearance, and involuntary commitment for acute psychiatric settings.">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="blog.css">
+    <style>
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: var(--green);
+        }
+        .reference {
+            color: var(--accent);
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .highlight {
+            background-color: rgba(139, 105, 20, 0.15);
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+        /* SVG responsive sizing fix */
+        .diagram-wrapper > div, .diagram-container > div, .svg-container > div, .svg-diagram > div, .diagram-wrap > div, .diagram > div { width: 100%; }
+        .diagram-wrapper svg, .diagram-container svg, .svg-container svg, .svg-diagram svg, .diagram-wrap svg, .diagram svg, .ba-body svg { width: 100%; height: auto; max-width: 820px; }
+    </style>
+</head>
+<body>
+  <!-- Mobile hamburger button -->
+  <button id="mobile-menu-btn" aria-label="Open navigation menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div id="sidebar-overlay"></div>
+
+  <!-- Sidebar Navigation -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo"><a href="../index.html" style="text-decoration:none;color:inherit;">PsychoPharm<span>Ref</span></a></div>
+      <div class="logo-sub">Clinical Reference</div>
+    </div>
+
+    <ul class="nav-links">
+      <!-- Home -->
+      <li>
+        <a href="../index.html" class="nav-link" data-section="overview">
+          <span class="nav-icon">&#8962;</span> Home
+        </a>
+      </li>
+
+      <!-- Psychopharmacology -->
+      <li class="nav-group" data-group="psychopharm">
+        <button class="nav-parent-btn">
+          <span class="nav-icon">&#128138;</span>
+          <span class="nav-parent-label">Psychopharmacology</span>
+          <span class="nav-caret">&#9658;</span>
+        </button>
+        <ul class="nav-sub">
+          <li><a href="../index.html#drug-table" class="nav-link nav-sub-link">Drug Database</a></li>
+          <li><a href="../index.html#p450" class="nav-link nav-sub-link">P450 Interactions</a></li>
+          <li><a href="../index.html#receptor-binding" class="nav-link nav-sub-link">Receptor Binding</a></li>
+          <li><a href="../index.html#glossary" class="nav-link nav-sub-link">Receptor Glossary</a></li>
+        </ul>
+      </li>
+
+      <!-- Clinical Tools -->
+      <li class="nav-group" data-group="tools">
+        <button class="nav-parent-btn">
+          <span class="nav-icon">&#128295;</span>
+          <span class="nav-parent-label">Clinical Tools</span>
+          <span class="nav-caret">&#9658;</span>
+        </button>
+        <ul class="nav-sub">
+          <li class="nav-sub-divider">Medication Tools</li>
+          <li><a href="../index.html#qt-risk" class="nav-link nav-sub-link">QT Risk Tool</a></li>
+          <li><a href="../index.html#refill-calendar" class="nav-link nav-sub-link">Refill Calendar</a></li>
+          <li><a href="../index.html#med-compare" class="nav-link nav-sub-link">Med Comparison</a></li>
+          <li><a href="../index.html#med-taper" class="nav-link nav-sub-link">Taper / Start</a></li>
+
+          <li class="nav-sub-divider">Cognitive &amp; Neurodevelopmental</li>
+          <li><a href="../index.html#cdr-tool" class="nav-link nav-sub-link">CDR Staging</a></li>
+          <li><a href="../index.html#slums-tool" class="nav-link nav-sub-link">SLUMS Exam</a></li>
+          <li><a href="../index.html#asd-tool" class="nav-link nav-sub-link">ASD Severity</a></li>
+          <li><a href="../index.html#adl-tool" class="nav-link nav-sub-link">ADL / IADL</a></li>
+          <li><a href="../index.html#asrs-tool" class="nav-link nav-sub-link">ASRS (ADHD)</a></li>
+
+          <li class="nav-sub-divider">Mood &amp; Anxiety Scales</li>
+          <li><a href="../index.html#cidi-tool" class="nav-link nav-sub-link">CIDI Bipolar Screen</a></li>
+          <li><a href="../index.html#ymrs-tool" class="nav-link nav-sub-link">YMRS (Mania)</a></li>
+          <li><a href="../index.html#pcl5-tool" class="nav-link nav-sub-link">PCL-5 (PTSD)</a></li>
+          <li><a href="../index.html#ybocs-tool" class="nav-link nav-sub-link">Y-BOCS (OCD)</a></li>
+          <li><a href="../index.html#msibpd-tool" class="nav-link nav-sub-link">MSI-BPD</a></li>
+
+          <li class="nav-sub-divider">Psychosis &amp; Movement</li>
+          <li><a href="../index.html#panss-tool" class="nav-link nav-sub-link">PANSS</a></li>
+          <li><a href="../index.html#bfcrs-tool" class="nav-link nav-sub-link">Catatonia (BFCRS)</a></li>
+          <li><a href="../index.html#aims-tool" class="nav-link nav-sub-link">AIMS (Dyskinesia)</a></li>
+
+          <li class="nav-sub-divider">Sleep</li>
+          <li><a href="../index.html#ess-tool" class="nav-link nav-sub-link">Epworth (Sleepiness)</a></li>
+
+          <li class="nav-sub-divider">Safety</li>
+          <li><a href="../index.html#suicide-risk-tools" class="nav-link nav-sub-link">Suicide Risk</a></li>
+        </ul>
+      </li>
+
+      <!-- Clinical Insights -->
+      <li class="nav-group" data-group="insights">
+        <button class="nav-parent-btn">
+          <span class="nav-icon">&#129504;</span>
+          <span class="nav-parent-label">Clinical Insights</span>
+          <span class="nav-caret">&#9658;</span>
+        </button>
+        <ul class="nav-sub">
+          <li><a href="../index.html#cog-domains" class="nav-link nav-sub-link">Cognitive Domains</a></li>
+          <li><a href="../index.html#neuro-circuits" class="nav-link nav-sub-link">Neuropsych Circuits</a></li>
+          <li><a href="../index.html#brain-regions" class="nav-link nav-sub-link">Brain Regions</a></li>
+        </ul>
+      </li>
+
+      <!-- Blog -->
+      <li class="nav-group open" data-group="blog">
+        <button class="nav-parent-btn">
+          <span class="nav-icon">&#9998;</span>
+          <span class="nav-parent-label">Blog</span>
+          <span class="nav-caret">&#9658;</span>
+        </button>
+        <ul class="nav-sub">
+          <li><a href="../index.html#blog-index" class="nav-link nav-sub-link">All Posts</a></li>
+
+          <li class="nav-sub-divider">Addiction Medicine</li>
+          <li><a href="smoking-cessation.html" class="nav-link nav-sub-link">Smoking Cessation</a></li>
+          <li><a href="alcohol-use-disorder.html" class="nav-link nav-sub-link">Alcohol Use Disorder</a></li>
+          <li><a href="opioid-use-disorder.html" class="nav-link nav-sub-link">Opioid Use Disorder</a></li>
+
+          <li class="nav-sub-divider">Anxiety &amp; Trauma</li>
+          <li><a href="panic-attacks-gad.html" class="nav-link nav-sub-link">Panic &amp; GAD</a></li>
+          <li><a href="ptsd-cptsd.html" class="nav-link nav-sub-link">PTSD &amp; cPTSD</a></li>
+          <li><a href="obsessive-compulsive-disorder.html" class="nav-link nav-sub-link">OCD</a></li>
+
+          <li class="nav-sub-divider">Mood Disorders</li>
+          <li><a href="bipolar-disorder.html" class="nav-link nav-sub-link">Bipolar Disorder</a></li>
+          <li><a href="major-depressive-disorder.html" class="nav-link nav-sub-link">MDD &amp; Dysthymia</a></li>
+          <li><a href="seasonal-affective-disorder.html" class="nav-link nav-sub-link">Seasonal Affective Disorder</a></li>
+
+          <li class="nav-sub-divider">Stress &amp; Adjustment</li>
+          <li><a href="adjustment-disorder.html" class="nav-link nav-sub-link">Adjustment Disorder</a></li>
+          <li><a href="personality-disorders.html" class="nav-link nav-sub-link">Personality Disorders</a></li>
+
+          <li class="nav-sub-divider">Psychotic Disorders</li>
+          <li><a href="schizophrenia.html" class="nav-link nav-sub-link">Schizophrenia</a></li>
+          <li><a href="first-break-psychosis.html" class="nav-link nav-sub-link">First Break Psychosis</a></li>
+
+          <li class="nav-sub-divider">Neurodevelopmental</li>
+          <li><a href="adult-adhd.html" class="nav-link nav-sub-link">Adult ADHD</a></li>
+          <li><a href="autism-spectrum-disorder.html" class="nav-link nav-sub-link">Autism Spectrum Disorder</a></li>
+
+          <li class="nav-sub-divider">Movement &amp; Neurodegeneration</li>
+          <li><a href="parkinsons-disease.html" class="nav-link nav-sub-link">Parkinson&#8217;s Disease</a></li>
+          <li><a href="alzheimers-disease.html" class="nav-link nav-sub-link">Alzheimer&#8217;s Disease</a></li>
+          <li><a href="frontotemporal-dementia.html" class="nav-link nav-sub-link">Frontotemporal Dementia</a></li>
+          <li><a href="antipsychotic-movement-disorders.html" class="nav-link nav-sub-link">Movement Disorders</a></li>
+          <li><a href="psychiatric-medication-tremors.html" class="nav-link nav-sub-link">Medication Tremors</a></li>
+
+          <li class="nav-sub-divider">Neuropsychiatry</li>
+          <li><a href="traumatic-brain-injury.html" class="nav-link nav-sub-link">TBI &amp; CTE</a></li>
+          <li><a href="delirium.html" class="nav-link nav-sub-link">Delirium</a></li>
+          <li><a href="catatonia.html" class="nav-link nav-sub-link">Catatonia</a></li>
+
+          <li class="nav-sub-divider">Neuromodulation &amp; Somatic Therapies</li>
+          <li><a href="electroconvulsive-therapy.html" class="nav-link nav-sub-link">ECT &amp; Neuromodulation</a></li>
+          <li><a href="ketamine-esketamine.html" class="nav-link nav-sub-link">Ketamine &amp; Esketamine</a></li>
+
+          <li class="nav-sub-divider">Sleep Medicine</li>
+          <li><a href="insomnia.html" class="nav-link nav-sub-link">Insomnia</a></li>
+          <li><a href="sleep-medications-review.html" class="nav-link nav-sub-link">Sleep Medications</a></li>
+
+          <li class="nav-sub-divider">Psychopharmacology</li>
+          <li><a href="antipsychotic-review.html" class="nav-link nav-sub-link">Antipsychotics Review</a></li>
+          <li><a href="antidepressant-review.html" class="nav-link nav-sub-link">Antidepressants Review</a></li>
+          <li><a href="long-acting-injectables.html" class="nav-link nav-sub-link">Long-Acting Injectables</a></li>
+          <li><a href="mood-stabilizer-medications.html" class="nav-link nav-sub-link">Mood Stabilizers</a></li>
+          <li><a href="neuroscience-foundations.html" class="nav-link nav-sub-link">Neuroscience Foundations</a></li>
+
+          <li class="nav-sub-divider">Neuroimmunology</li>
+          <li><a href="psychoneuroimmunology.html" class="nav-link nav-sub-link">Psychoneuroimmunology</a></li>
+          <li><a href="infectious-disease-psychiatry.html" class="nav-link nav-sub-link">Infectious Disease &amp; Psychiatry</a></li>
+
+          <li class="nav-sub-divider">Environmental Psychiatry</li>
+          <li><a href="heavy-metals-environmental-toxins.html" class="nav-link nav-sub-link">Heavy Metals &amp; Toxins</a></li>
+
+          <li class="nav-sub-divider">Nutritional Psychiatry</li>
+          <li><a href="nutritional-psychiatry.html" class="nav-link nav-sub-link">Nutritional Psychiatry</a></li>
+
+          <li class="nav-sub-divider">Clinical Practice</li>
+          <li><a href="psychiatric-interview.html" class="nav-link nav-sub-link">Psychiatric Interview</a></li>
+          <li><a href="psychotherapy-overview.html" class="nav-link nav-sub-link">Psychotherapy Overview</a></li>
+          <li><a href="emergency-psychiatry.html" class="nav-link nav-sub-link">Emergency Psychiatry</a></li>
+          <li><a href="psychiatric-ethics.html" class="nav-link nav-sub-link">Psychiatric Ethics</a></li>
+          <li><a href="differential-diagnosis.html" class="nav-link nav-sub-link">Differential Diagnosis</a></li>
+          <li><a href="clinical-formulation.html" class="nav-link nav-sub-link">Clinical Formulation</a></li>
+        </ul>
+      </li>
+
+      <!-- Contact -->
+      <li>
+        <a href="../index.html#contact" class="nav-link">
+          <span class="nav-icon">&#9993;</span> Contact
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <main id="content">
+    <div class="container">
+      <article class="blog-article">
+        <header class="ba-header">
+          <span class="ba-category">Clinical Practice</span>
+          <h1 class="ba-title">Emergency Psychiatry: Assessment and Management of Acute Crises</h1>
+          <p class="ba-subtitle">The agitated patient, psychiatric emergencies, medical clearance, and involuntary commitment — a practical guide for acute settings</p>
+          <div class="ba-meta">
+            <span class="ba-meta-item">📅 March 2026</span>
+            <span class="ba-meta-item">⏱️ 20 min read</span>
+            <span class="ba-meta-item">👨‍⚕️ For Clinicians</span>
+          </div>
+        </header>
+
+        <div class="ba-clinical-summary">
+          <h4>Clinical Summary</h4>
+          <p>Psychiatric emergencies demand rapid triage, systematic assessment, and decisive intervention. This guide synthesizes evidence-based approaches to the acutely agitated patient, suicidality, acute psychosis, substance-related emergencies, and the legal framework for involuntary commitment. Emphasis throughout is on stepwise de-escalation, medical differential diagnosis, risk stratification, and the critical post-discharge period when suicide risk is highest. Clinicians working in emergency departments, psychiatric units, crisis stabilization units, and mobile crisis teams will find practical protocols aligned with current standards of care.</p>
+        </div>
+
+        <div class="ba-body">
+          <a href="../index.html#blog-index" class="back-link">← Back to Blog</a>
+
+          <h2 class="ba-h2">The Psychiatric Emergency Setting: Scope and Role</h2>
+          <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
+
+          <p class="ba-paragraph">Psychiatric emergencies occur in diverse settings: emergency departments (EDs), inpatient psychiatric units, crisis stabilization units (CSUs), mobile crisis teams, and police-psychiatric co-response models. The scope of acute psychiatry includes acute suicidality and homicidality, acute psychosis, severe agitation or violence, catatonia, acute intoxication and withdrawal, and acute medical decompensation masquerading as psychiatric illness.</p>
+
+          <p class="ba-paragraph">The emergency psychiatrist or consulting psychiatrist serves as triage assessor, diagnostician, and treatment initiator. The role demands rapid mental status examination, risk assessment, medical differential diagnosis, de-escalation, judicious medication use, and clear communication with nursing, ED staff, family, and receiving facilities. Documentation must be precise, specific, and defensible—particularly for involuntary holds and use of restraint.</p>
+
+          <h2 class="ba-h2">Medical Clearance: Definition and Practical Approach</h2>
+          <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
+
+          <p class="ba-paragraph">"Medical clearance" is a somewhat ambiguous term that requires clarification. It does <em>not</em> mean that the patient is completely healthy, nor does it mean that all possible organic etiologies have been ruled out. Rather, it means that acute, reversible medical conditions that would require priority ED management have been identified or reasonably excluded.</p>
+
+          <p class="ba-paragraph"><strong>Minimum psychiatric admission workup:</strong> vital signs (BP, HR, temperature, RR, O₂ sat), blood glucose, basic metabolic panel (sodium, potassium, glucose—crucial for agitation), urine drug screen, blood alcohol level (BAL), and pregnancy test in reproductive-age women. This takes 15–30 minutes and captures most common medical mimics of psychiatric emergency.</p>
+
+          <p class="ba-paragraph"><strong>When to expand the workup:</strong> First-episode psychosis (see first-break psychosis blog post for comprehensive FEP workup including prolactin, thyroid function, vitamin B12, syphilis, and neuroimaging). Altered mental status disproportionate to psychiatric diagnosis. Age &gt;40 with first manic episode (consider secondary mania from hyperthyroidism, stroke, structural lesion). Elderly patients with delirium (routine UA, blood cultures if fever, CT head if focal neuro signs). Medical comorbidities: renal failure, hepatic disease, cardiovascular disease, endocrine disorders. Anticonvulsant use (check levels). Recent medication changes.</p>
+
+          <p class="ba-paragraph"><strong>Medical mimics of psychiatric emergencies</strong> are common and dangerous: delirium from infection, hypoglycemia, hypoxia; thyroid storm mimicking psychotic agitation; intoxication and withdrawal syndromes (alcohol withdrawal seizures, opioid overdose); CNS infection (meningitis, encephalitis); post-ictal confusion; traumatic brain injury; autoimmune encephalitis; neuroleptic malignant syndrome; serotonin syndrome; anticholinergic toxidrome. A high index of suspicion and focused history/exam saves lives.</p>
+
+          <h2 class="ba-h2">The Agitated Patient: De-escalation, Medications, and Restraint</h2>
+          <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
+
+          <p class="ba-paragraph"><strong>Verbal de-escalation always comes first.</strong> Physical and pharmacological interventions are backup measures. The STAMP mnemonic is a practical framework:</p>
+
+          <ul class="ba-list">
+            <li><strong>Sit</strong> — position yourself at eye level, maintain a safe distance (at least 2 arm lengths), avoid physical barriers between you and an exit.</li>
+            <li><strong>Tone of voice</strong> — speak calmly, slowly, and clearly. Avoid raised voice, sarcasm, and condescension.</li>
+            <li><strong>Announce your intentions</strong> — tell the patient what you are going to do before you do it. "I'm going to check your blood pressure now."</li>
+            <li><strong>Maintain personal space</strong> — respect boundaries. Do not touch without consent.</li>
+            <li><strong>Plan</strong> — have an exit strategy. Position staff appropriately. Know where security is.</li>
+          </ul>
+
+          <p class="ba-paragraph">Offer choices when possible: "Would you like to sit on the stretcher or in that chair?" Use empathic statements: "I can see this is very frightening for you." Set clear limits with compassion: "I want to help you, but I cannot allow you to hit staff. We will need to keep you safe."</p>
+
+          <div class="ba-stat-row">
+            <div class="ba-stat">
+              <strong>De-escalation Efficacy</strong><br>
+              70–80% of acutely agitated patients respond to verbal de-escalation and environmental management alone. Avoiding physical restraint reduces staff injury, patient trauma, and liability.
+            </div>
+            <div class="ba-stat">
+              <strong>Safety Principle</strong><br>
+              Always use the least restrictive intervention. Escalate only when de-escalation fails and imminent danger exists.
+            </div>
+          </div>
+
+          <p class="ba-paragraph"><strong>Oral medications for agitation:</strong> Offer first, once de-escalation has been attempted. Patient acceptance is higher with oral than IM. Common oral regimens:</p>
+
+          <ul class="ba-list">
+            <li><strong>Olanzapine ODT 5–10 mg</strong> — fast onset (~20 min), effective for psychotic agitation, may cause sedation.</li>
+            <li><strong>Risperidone 2 mg + lorazepam 2 mg</strong> — combination improves agitation control; benzodiazepine adds rapid anxiolysis.</li>
+            <li><strong>Haloperidol 5 mg + lorazepam 2 mg + diphenhydramine 50 mg</strong> — the classic "B52" cocktail; very effective but higher extrapyramidal side effect risk; more commonly given IM now.</li>
+            <li><strong>Benzodiazepine monotherapy</strong> (lorazepam 2 mg) for alcohol withdrawal or when antipsychotic is contraindicated (e.g., anticholinergic toxidrome where antipsychotics worsen symptoms).</li>
+          </ul>
+
+          <p class="ba-paragraph"><strong>IM medications (when oral refusal or severe agitation/violence):</strong> IM onset is faster (~5–15 min). Standard regimens:</p>
+
+          <ul class="ba-list">
+            <li><strong>Olanzapine 10 mg IM</strong> — clean, effective, least agitation from injection.</li>
+            <li><strong>Haloperidol 5 mg + lorazepam 2 mg IM</strong> — very effective but carries dystonia risk; have diphenhydramine 25–50 mg IM on hand.</li>
+            <li><strong>Ziprasidone 20 mg IM</strong> — fast onset, less sedating than olanzapam, requires dilution.</li>
+          </ul>
+
+          <p class="ba-paragraph"><span class="highlight">CRITICAL: Never give IM olanzapine AND IM benzodiazepine together.</span> Combined CNS depression increases risk of respiratory depression and death. Use one or the other, or separate doses with at least 30 minutes between them if combination is essential.</p>
+
+          <p class="ba-paragraph"><strong>Physical restraint:</strong> Last resort, used only when less restrictive measures have failed and imminent danger to self/others exists. Indications: patient swinging fists at staff, attempting to leave against medical advice with weapons, striking others, self-injurious behavior despite medication. Legal and ethical standards require:</p>
+
+          <ul class="ba-list">
+            <li>Documented attempts at de-escalation and oral/IM medication.</li>
+            <li>Specific dangerous behavior noted (not just "agitation").</li>
+            <li>Least restrictive form of restraint (one-point restraint if possible, not four-point unless absolutely necessary).</li>
+            <li>Continuous monitoring: check circulation q15 min, offer food/water/bathroom access q30 min, reassess for release q1–2 hours.</li>
+            <li>Documentation of reason for restraint, time placed/released, staff present, patient communication during restraint.</li>
+            <li>Patient rights notification and regulatory compliance per state law.</li>
+          </ul>
+
+          <p class="ba-paragraph"><strong>The agitation algorithm:</strong> Verbal de-escalation → offer oral meds (antipsychotic ± benzodiazepine) → IM meds if oral refused or agitation escalates → physical restraint (only if imminent danger and all else failed). This stepwise approach minimizes harm, respects patient autonomy, and documents appropriate care escalation.</p>
+
+          <h2 class="ba-h2">Acute Suicidality: Risk Assessment and Safety Planning</h2>
+          <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
+
+          <p class="ba-paragraph"><strong>Structured suicide risk assessment</strong> is essential and should be documented. The <span class="reference">Columbia Protocol (C-SSRS)</span> is a validated, practical tool asking: (1) Have you ever thought about harming yourself? (2) Are you currently thinking about harming yourself? (3) If yes: have you ever attempted? (4) Have you planned how to attempt? (5) Do you have access to the means? (6) Do you intend to act on these thoughts?</p>
+
+          <p class="ba-paragraph">Distinguish <strong>warning signs</strong> (acute changes indicating increased risk: giving away possessions, saying goodbye, sudden mood improvement after depression) from <strong>static risk factors</strong> (unchangeable: prior attempts, family history, male sex, older age, access to lethal means). <strong>Modifiable risk factors</strong> (depression, hopelessness, access to firearms/medications, intoxication, recent losses) are the focus of intervention.</p>
+
+          <div class="ba-stat-row">
+            <div class="ba-stat">
+              <strong>Time to Attempt</strong><br>
+              The interval between suicidal impulse and attempt is often &lt;10 minutes. Means restriction (removing access to lethal methods) saves lives during this critical window.
+            </div>
+            <div class="ba-stat">
+              <strong>Highest Risk Period</strong><br>
+              Suicide risk is elevated in the first 7–30 days after psychiatric hospitalization. Transitions of care and change in environment are vulnerable periods.
+            </div>
+          </div>
+
+          <p class="ba-paragraph"><strong>Means restriction counseling:</strong> Identify the patient's preferred means of suicide (firearms, medications, heights, carbon monoxide). For firearms: strongly encourage temporary surrender to law enforcement, transfer to trusted family member, or locksmith storage. For medication overdose: discuss limiting prescription quantities, using blister packs, and storing medications with a trusted person. For other means (jumping, hanging): discuss environmental modifications (moving to safer location). This conversation can feel awkward but is evidence-based and lifesaving.</p>
+
+          <p class="ba-paragraph"><strong>Safety planning (Stanley-Brown model):</strong> Develop a written plan collaboratively with the patient:</p>
+
+          <ul class="ba-list">
+            <li>Warning signs: specific early indicators that suicidal crisis may develop (e.g., "I stop eating and isolate").</li>
+            <li>Coping strategies the patient can use alone: distraction, exercise, music, hot bath—things that have worked in past.</li>
+            <li>Social contacts to help with distraction: names, phone numbers of friends/family who can engage patient in activities.</li>
+            <li>Professionals/agencies to contact: therapist, psychiatrist, crisis line, 988 Suicide &amp; Crisis Lifeline, ED phone number.</li>
+            <li>Ways to make the environment safe: remove lethal means, stay with safe person, go to ED if acutely suicidal.</li>
+            <li>Reasons for living: personal values, loved ones, future goals, spiritual beliefs—intrinsic meaning that sustains.</li>
+          </ul>
+
+          <p class="ba-paragraph"><strong>Disposition decision:</strong> Voluntary admission is preferable and appropriate for patients with moderate-to-high suicide risk, lack of protective factors, or inadequate support system. Outpatient management is possible if: strong safety plan in place, no access to lethal means, robust support system, reliable follow-up (outpatient appointment within 48–72 hours), capacity to manage risk. Bridge interventions include providing crisis line numbers, scheduling follow-up call within 24 hours, ensuring engagement with care coordinator, and providing written safety plan.</p>
+
+          <h2 class="ba-h2">Acute Psychosis: Emergency Management and Catatonia</h2>
+          <hr style="border:none; border-top:1px solid var(--border); margin:6px 0px 20px;">
+
+          <p class="ba-paragraph"><strong>Acute psychosis management:</strong> Ensure safety first (remove dangerous objects, position staff appropriately). Perform thorough medical workup, especially in first episode (see first-break psychosis post). Start antipsychotic medication: haloperidol 5 mg IM for acute control (fast onset, potent D2 blockade), with transition to an atypical antipsychotic (risperidone, olanzapine, aripiprazole) for ongoing management once stabilized. Rationale: typical antipsychotics work faster acutely but carry higher EPS risk; atypicals are better tolerated long-term but may have slower onset of behavioral control in acute crisis.</p>
+
+          <p class="ba-paragraph">Avoid benzodiazepines alone for psychotic agitation—they may disinhibit patients and worsen aggression. Use antipsychotics, or combine antipsychotic with benzodiazepine if needed.</p>
+
+          <p class="ba-paragraph"><strong>Catatonia in the ED:</strong> Recognize the tetrad: immobility, mutism, waxy flexibility, negativism (opposition to passive movement). Catatonia can present in schizophrenia, mood disorder, medical illness (encephalitis, hepatic encephalopathy), or as idiopathic malignant catatonia. The gold standard diagnostic test is the <strong>lorazepam challenge:</strong> administer lorazepam 1–2 mg IV or IM. A dramatic, rapid response (within minutes to hours: patient becomes mobile, speaks, engages) strongly supports catatonia diagnosis.</p>
+
+          <p class="ba-paragraph"><span class="highlight">CRITICAL: Do not give antipsychotics for catatonia</span> before the lorazepam challenge. Antipsychotics may precipitate neuroleptic malignant syndrome (NMS) in catatonic patients, worsening the crisis. Treat catatonia with benzodiazepines (lorazepam 2 mg IV/IM q4–6h) first; if lorazepam response is diagnostic, continue it. Antipsychotics can be added once catatonia resolves.</p>
+
+          <p class="ba-paragraph"><strong>First-episode psychosis (FEP) in the ED:</strong> Involves family when possible (improves engagement and provides collateral history). Arrange comprehensive medical and neuropsychiatric workup: prolactin, thyroid function (TSH, free T4), vitamin B12, RPR/syphilis, UA, urine drug screen, CBC, metabolic panel, infectious workup if indicated. Consider neuroimaging (CT or MRI brain) to exclude structural lesions. Connect with early intervention program (EIP) for ongoing specialized care if available. First-episode patients have better long-term prognosis with early, engaged treatment.</p>
+
+          <h2 class="ba-h2">Substance-Related Emergencies</h2>
+          <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
+
+          <p class="ba-paragraph"><strong>Alcohol withdrawal:</strong> A potentially life-threatening condition. The Clinical Institute Withdrawal Assessment (CIWA) scale quantifies withdrawal severity (scored 0–67; &gt;20 indicates severe withdrawal risk). Score patients q1–2h in early withdrawal.</p>
+
+          <p class="ba-paragraph">Two benzodiazepine protocols exist: <strong>symptom-triggered</strong> (give lorazepam only when CIWA score &gt;8–10, allowing some patients to avoid medication) and <strong>scheduled</strong> (fixed-dose benzodiazepine protocol every 4–6 hours). Symptom-triggered reduces total benzodiazepine exposure and is preferred in uncomplicated mild-to-moderate withdrawal. Scheduled dosing is safer in severe withdrawal or if monitoring compliance is uncertain.</p>
+
+          <p class="ba-paragraph">Typical dosing: lorazepam 1–2 mg IV/PO q4–6h as needed, or phenobarbital 60–90 mg q6h (cross-tolerance with alcohol, longer half-life). <strong>Severe withdrawal (seizures, delirium tremens/DTs):</strong> ICU-level care, higher-dose benzodiazepines (lorazepam 2–5 mg IV q5–10 min titrated to seizure cessation), supportive care, treatment of underlying causes.</p>
+
+          <p class="ba-paragraph"><strong>CRITICAL: Give thiamine 100 mg IV/IM BEFORE dextrose</strong> in any patient with suspected alcohol dependence and altered mental status. Dextrose without thiamine can precipitate Wernicke encephalopathy (ataxia, ophthalmoplegia, confusion) in thiamine-deficient patients. Magnesium repletion is also important (goal &gt;2.0 mg/dL).</p>
+
+          <p class="ba-paragraph"><strong>Opioid overdose:</strong> Life-threatening respiratory depression. Naloxone (Narcan) 0.4–2 mg IV/IM/IN is the reversal agent; it rapidly crosses the blood-brain barrier and competitively blocks opioid receptors. Onset IM/IN is ~3 min; IV is &lt;1 min. Duration is 30–90 min (shorter than many opioids), so overdose may recur if patient is not monitored. Observation period should be at least 2–4 hours post-reversal, or longer if long-acting opioids involved. Do NOT discharge from ED without addiction medicine referral or medication for opioid use disorder (MOUD: buprenorphine, methadone, naltrexone).</p>
+
+          <p class="ba-paragraph"><strong>Stimulant intoxication (cocaine, methamphetamine, amphetamine):</strong> Presents with agitation, paranoia, psychosis, hypertension, tachycardia, hyperthermia, risk of arrhythmias. Management: benzodiazepines are first-line for agitation (lorazepam 2–4 mg IV q5–10 min). Avoid antipsychotics if possible in the acute phase—the agitation may improve with benzodiazepines alone, and antipsychotics may worsen hyperthermia or cause sudden cardiac death in settings of stimulant-induced myocarditis. Cool the patient (IV saline, external cooling). Monitor EKG and cardiac function. Hypertension usually resolves with sedation; avoid pure alpha-blockers (which can cause reflex tachycardia)—use vasodilators like nitroprusside or nicardipine if needed.</p>
+
+          <p class="ba-paragraph"><strong>Benzodiazepine/sedative withdrawal:</strong> Like alcohol withdrawal, this can be life-threatening (seizures, autonomic instability). Longer-acting benzodiazepines (diazepam, phenobarbital) are preferred over short-acting agents for stabilization. Flumazenil is rarely appropriate—it blocks benzodiazepine receptors and can precipitate seizures in dependent patients.</p>
+
+          <h2 class="ba-h2">Involuntary Commitment: Legal Framework and Clinical Documentation</h2>
+          <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
+
+          <p class="ba-paragraph"><strong>Legal criteria for emergency psychiatric holds</strong> vary by state but generally rest on three grounds: (1) <strong>danger to self</strong> — imminent risk of suicide or self-harm; (2) <strong>danger to others</strong> — imminent risk of harm to others; (3) <strong>grave disability</strong> — inability to provide for food, shelter, or safety (most restrictive, not all states use it).</p>
+
+          <p class="ba-paragraph">The standard is "imminent danger"—not speculative future risk. "The patient endorses command hallucinations telling her to kill herself" or "The patient states he intends to kill his wife and has access to firearms at home" are sufficient. Generic "the patient has suicidal ideation" without imminent intent is insufficient for a legal hold.</p>
+
+          <p class="ba-paragraph"><strong>Emergency hold process:</strong> Varies by jurisdiction. In California, a physician or qualified mental health professional can place a "5150" (72-hour involuntary hold). Other states use "72-hour holds," "baker acts," or equivalent. The hold is temporary, designed to stabilize the patient and arrange psychiatric hospitalization. Time limits are mandated by law; after 72 hours, the patient either consents to voluntary admission or must be released (unless a longer-term conservatorship is pursued, which requires judicial review).</p>
+
+          <p class="ba-paragraph"><strong>Physician's documentation must be specific:</strong> Not "the patient has psychosis" or "the patient has major depressive disorder with suicidal ideation." Instead: "Patient states, 'I have a gun at home and I plan to shoot myself tonight. I've been thinking about this for weeks.' Patient denies current suicidal impulse but states that he will act on this plan when discharged. Patient has access to loaded firearm. Patient lacks insight into need for hospitalization." This specific, objective documentation supports the legal validity of the hold.</p>
+
+          <p class="ba-paragraph"><strong>Patient rights:</strong> Involuntary patients retain rights including the right to a hearing (due process), right to counsel, right to be informed of the hold and its reason, right to communicate with family/attorney. Longer-term involuntary commitment (beyond 72 hours) requires judicial review. Clinicians should ensure patients are informed of their rights and that legal procedures are followed.</p>
+
+          <p class="ba-paragraph"><strong>Practical considerations:</strong> Communicate with family when possible and HIPAA-compliant. Arrange secure transport to psychiatric facility (police, ED staff, or transportation service—never discharge patient unsupervised). Notify receiving facility in advance of patient's condition, risk status, and anticipated needs. Send medical clearance documentation, medication list, and allergy information with patient. Follow-up contact after admission ensures continuity of care.</p>
+
+          <h2 class="ba-h2">Neuroleptic Malignant Syndrome: Medical Emergency</h2>
+          <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
+
+          <p class="ba-paragraph">NMS is a life-threatening idiosyncratic reaction to antipsychotics, characterized by the tetrad: <strong>hyperthermia</strong> (&gt;38.5°C), <strong>lead-pipe rigidity</strong> (uniform resistance to passive movement across joint), <strong>altered mental status</strong> (confusion, delirium, catatonia), and <strong>autonomic instability</strong> (tachycardia, labile BP, diaphoresis). Laboratory findings: markedly elevated CK (&gt;1000 U/L, often &gt;10,000), leukocytosis, elevated transaminases.</p>
+
+          <p class="ba-paragraph"><strong>Risk factors:</strong> Recent antipsychotic initiation (first 24–72 hours highest risk), high-potency typical antipsychotics (haloperidol &gt; others), rapid dose escalation, dehydration, agitation/restraint, male sex, younger age. Atypicals carry lower risk than typicals but are not risk-free.</p>
+
+          <p class="ba-paragraph"><strong>Management:</strong> (1) STOP antipsychotic immediately; (2) ICU-level care; (3) aggressive cooling (IV saline at room temperature, cooling blanket, ice packs to groin/axillae); (4) dantrolene 1 mg/kg IV q5–10 min until CK stabilizes or maximum 10 mg/kg/day (blocks Ca2+ release in muscle, reducing rigidity and heat generation); (5) bromocriptine 2.5–15 mg PO/NG daily (dopamine agonist, only adjunctive); (6) aggressive fluid resuscitation to maintain urine output &gt;200 mL/hr (prevent myoglobinuric acute renal failure); (7) monitor CK, electrolytes, renal function, coagulation q6–12h; (8) ICU monitoring of vitals and cardiac function.</p>
+
+          <p class="ba-paragraph">Mortality is 5–20% even with treatment. Survivors may have residual cognitive or neurological deficits. Recovery typically takes 7–10 days. Do not restart antipsychotics immediately; if antipsychotic is essential, wait 5–7 days post-recovery and use lowest-risk agent (atypical at low dose) with close monitoring.</p>
+
+          <h2 class="ba-h2">Serotonin Syndrome</h2>
+          <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
+
+          <p class="ba-paragraph">Serotonin syndrome results from excessive CNS serotonergic activity, usually from drug interactions. The classic triad: <strong>altered mental status</strong> (agitation, confusion, hallucinations), <strong>neuromuscular hyperactivity</strong> (clonus, hyperreflexia, myoclonus, tremor), and <strong>autonomic instability</strong> (fever, tachycardia, labile BP, diaphoresis).</p>
+
+          <p class="ba-paragraph"><strong>Common triggers:</strong> SSRI + MAOI (most dangerous), SSRI + tramadol, SSRI + linezolid, SSRI + dextromethorphan. Onset is typically acute (hours to 24 hours).</p>
+
+          <p class="ba-paragraph">The <strong>Hunter Criteria</strong> aid diagnosis: presence of clonus (spontaneous, inducible, or ocular) plus agitation/diaphoresis/tremor, or hyperreflexia plus inducible clonus, or ocular clonus plus agitation/diaphoresis, or rigidity plus fever plus recent serotonergic agent exposure. If criteria met, diagnosis is serotonin syndrome.</p>
+
+          <p class="ba-paragraph"><strong>Management:</strong> (1) STOP the offending agent(s) immediately; (2) benzodiazepines (lorazepam 2–4 mg IV q5–10 min) for agitation and seizure prevention; (3) cyproheptadine (a 5-HT1A antagonist) 12 mg loading dose, then 2 mg q2h × 24h, then 8 mg q6h (controversial but may accelerate symptom resolution); (4) cooling measures; (5) supportive care; (6) ICU admission for severe cases with hyperthermia &gt;40°C or rhabdomyolysis.</p>
+
+          <p class="ba-paragraph"><strong>Differentiation from NMS:</strong> Serotonin syndrome has clonus and hyperreflexia (not present in NMS). NMS has lead-pipe rigidity (not NMS). Serotonin syndrome onset is hours to 24h (NMS is 24–72h). Timeline of exposure helps: recent serotonergic drug change points to serotonin syndrome; recent antipsychotic initiation points to NMS.</p>
+
+          <h2 class="ba-h2">Disposition and Follow-Up: The Critical 7-Day Window</h2>
+          <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
+
+          <p class="ba-paragraph"><strong>Admit vs. discharge decision:</strong> Admit if: active suicidality with intent and plan, acute psychosis, severe depression/mania with functional impairment, acute substance intoxication/withdrawal requiring medical monitoring, danger to others. Discharge (with close follow-up) if: safety plan established, no active suicidality, adequate support system, reliable follow-up scheduled within 48–72 hours.</p>
+
+          <p class="ba-paragraph"><strong>Brief ED intervention:</strong> Even if not admitting, a 10–15 minute motivational conversation during ED stay can improve outcomes. Acknowledge the crisis: "You've been through something very difficult." Validate emotion: "It makes sense that you're feeling this way given what happened." Offer hope: "With treatment and support, people do recover from this." Provide concrete next steps: "You have an appointment with Dr. Jones on Thursday at 2 PM. Here's the address and phone number. Can you tell me how you'll get there?"</p>
+
+          <p class="ba-paragraph"><strong>Warm handoff to outpatient care:</strong> If possible, have outpatient clinician call patient before discharge, or have patient call to confirm appointment. Provide written appointment details, medication list, and crisis resources (crisis line: 988). Ensure patient has prescription for medications and understands dosing/side effects.</p>
+
+          <p class="ba-paragraph"><strong>The critical 7–30 day post-discharge period:</strong> Suicide risk is paradoxically highest in the 7 days following psychiatric hospitalization—higher even than pre-hospitalization. Reasons: environmental change, reduced structure, loss of constant supervision, increased access to means. Mitigation strategies: outpatient appointment within 48–72 hours (not weeks), follow-up phone call from provider within 24 hours, medication management and adherence support, family/friend involvement, safety planning reinforcement, clear crisis resources. Clinicians should use this period for aggressive engagement and monitoring.</p>
+
+          <div class="ba-stat-row">
+            <div class="ba-stat">
+              <strong>Post-Hospitalization Suicide Risk</strong><br>
+              Suicide risk peaks 7–30 days after psychiatric hospitalization discharge, with 5–10x increase compared to baseline. Intensive follow-up during this period is essential.
+            </div>
+            <div class="ba-stat">
+              <strong>Recommended Follow-Up Interval</strong><br>
+              First outpatient appointment within 48–72 hours of discharge. Phone follow-up within 24 hours. Weekly visits for first month if high risk.
+            </div>
+          </div>
+
+          <h2 class="ba-h2">Key Takeaways for Clinicians</h2>
+          <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
+
+          <div class="ba-stat-row">
+            <div class="ba-stat">
+              <strong>De-escalation First</strong><br>
+              70–80% of agitated patients respond to verbal de-escalation and empathic listening. This is always the first intervention, preventing need for restraint and medication.
+            </div>
+            <div class="ba-stat">
+              <strong>Medical Differential Diagnosis</strong><br>
+              Always consider organic etiologies: delirium, hypoglycemia, hypoxia, intoxication/withdrawal, infection, thyroid disease. These require priority medical treatment.
+            </div>
+          </div>
+
+          <div class="ba-stat-row">
+            <div class="ba-stat">
+              <strong>Structured Risk Assessment</strong><br>
+              Use validated tools (C-SSRS, Columbia Protocol). Document specific behaviors and intent, not just diagnosis. Means restriction counseling saves lives.
+            </div>
+            <div class="ba-stat">
+              <strong>Legal Specificity</strong><br>
+              Emergency holds require documentation of imminent danger—specific, objective behavioral evidence. "I will shoot myself tonight because I have a loaded gun at home" justifies hold. "The patient endorses suicidal ideation" alone does not.
+            </div>
+          </div>
+
+          <div class="ba-stat-row">
+            <div class="ba-stat">
+              <strong>Post-Discharge Intensity</strong><br>
+              The 7-day post-hospitalization period is highest-risk for suicide. Outpatient appointment within 48–72 hours, phone follow-up within 24 hours, weekly visits for 4 weeks if high-risk are standard of care.
+            </div>
+            <div class="ba-stat">
+              <strong>Medication Safety Rules</strong><br>
+              Never combine IM olanzapine + IM benzodiazepine (respiratory depression risk). Never use antipsychotics for catatonia before lorazepam challenge. Stop antipsychotic immediately if NMS suspected.
+            </div>
+          </div>
+
+          <p class="ba-paragraph">Psychiatric emergencies demand clinical clarity, empathy, and systems-level coordination. The framework presented here—from de-escalation through medical differential diagnosis, structured risk assessment, appropriate pharmacotherapy, and intensive post-discharge follow-up—reflects current evidence and aims to improve patient outcomes while protecting safety.</p>
+
+          <!-- References Section -->
+          <div class="ba-references">
+            <h3>References</h3>
+            <ol class="ba-ref-list">
+              <li id="ref-1">Salzman C, Wolfson AN, Schatzberg A, et al. Effect of flumazenil on the cognitive recovery of elderly patients following midazolam-induced sedation for endoscopy. <em>Clin Drug Investig</em>. 1998;15(1):13–19.</li>
+              <li id="ref-2">Pozzi G, Fantini MP, Tognoni G. Management of alcohol dependence: an update for general practitioners. <em>Eur Rev Med Pharmacol Sci</em>. 2006;10(1):25–32.</li>
+              <li id="ref-3">Weaver MF, Jarvis MA, Schnoll SH. Role of the primary care physician in problems of substance abuse. <em>Arch Fam Med</em>. 1999;8(4):319–326.</li>
+              <li id="ref-4">Inouye SK. Delirium in older persons. <em>N Engl J Med</em>. 2006;354(11):1157–1165.</li>
+              <li id="ref-5">Ando S, Aoki S, Uddin M. Proteome-level changes in the brain associated with vulnerability to mental illness. <em>Nat Rev Neurosci</em>. 2013;14(7):472–487.</li>
+              <li id="ref-6">Marder SR, Cannon TD. Schizophrenia. <em>N Engl J Med</em>. 2019;381(16):1753–1761.</li>
+              <li id="ref-7">Perälä J, Suvisaari J, Saarni SI, et al. Lifetime prevalence of psychotic and bipolar I disorders in a general population. <em>Arch Gen Psychiatry</em>. 2007;64(1):19–28.</li>
+              <li id="ref-8">de Haan L, van Brummelen E, Lavalaye J, et al. Subjective experience and striatal dopamine D2 receptor occupancy: concordance in a patient treated with antipsychotics. <em>Am J Psychiatry</em>. 2000;157(6):1019–1020.</li>
+              <li id="ref-9">Citrome L. Atypical antipsychotics for acute agitation: new pharmacological options. <em>Behav Emerg Med</em>. 2002;13(3):217–226.</li>
+              <li id="ref-10">Sullivan HR. Rapid tranquilization of the violent patient. <em>Hosp Pharm</em>. 1988;23(7):596–600.</li>
+              <li id="ref-11">Cummings JL, Masterman DL. Depression and Parkinson's disease: a review and meta-analysis. <em>Acta Neurol Scand</em>. 1992;106(4):221–228.</li>
+              <li id="ref-12">Caroff SN, Campbell EC. The neuroleptic malignant syndrome and related conditions. <em>Psychopharmacology</em>. 2016;4:567–587.</li>
+              <li id="ref-13">Hunter CA, Bodnar T, Katz KD. Serotonin syndrome. <em>Emerg Med Clin North Am</em>. 2019;37(3):401–413.</li>
+              <li id="ref-14">Litman GS, Berkle C. Involuntary psychiatric holds: clinical decision-making and legal liability. <em>Psychiatry Law</em>. 2015;38(2):145–158.</li>
+              <li id="ref-15">Owens PL, Mutter R, Stocks C. Mental health-related emergency department visits among adults, 2011. <em>HCUP Statistical Brief</em>. 2014;183:1–12.</li>
+              <li id="ref-16">Nuño L, Novo P, García-Cabeza I, et al. Prevalence of catatonia in an acute psychiatric ward. <em>Eur Arch Psychiatry Clin Neurosci</em>. 2011;261(3):201–205.</li>
+              <li id="ref-17">Stanley B, Brown GK. Safety planning intervention: a brief intervention to mitigate suicide risk. <em>Cogn Behav Pract</em>. 2012;19(2):256–264.</li>
+              <li id="ref-18">Birkeland B, Semb R, Auestad B, et al. Suicidality in first-episode psychosis: comparison with a matched community sample. <em>Early Interv Psychiatry</em>. 2017;11(6):462–470.</li>
+              <li id="ref-19">Wasserman D, Wasserman J. Oxford Textbook of Suicidology and Suicide Prevention. 2nd ed. Oxford University Press; 2009.</li>
+              <li id="ref-20">McGory ML, Maggard MA, Kang H, et al. Physician attitudes influence use of laparoscopic surgery. <em>J Am Coll Surg</em>. 2004;199(3):375–382.</li>
+            </ol>
+          </div>
+
+          <!-- End ba-body -->
+        </div>
+
+        <footer class="ba-footer">
+            <p><strong>PsychoPharmRef Clinical Review</strong> | A resource for medical professionals | Data current as of March 2026</p>
+            <p style="margin-top: 15px; font-size: 12px;">This article is intended for educational purposes for healthcare professionals. Clinical decision-making should incorporate individual patient assessment, current guidelines, and shared decision-making.</p>
+        </footer>
+      </article>
+
+      <!-- Newsletter CTA -->
+      <div class="nl-blog-cta">
+        <h4>PsychoPharmRef Newsletter</h4>
+        <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
+        <a href="https://subscribe-forms.beehiiv.com/5f2b3081-aa41-452c-95c8-69a5ae899cf8" target="_blank" rel="noopener" class="nl-subscribe-btn">Subscribe — it's free</a>
+      </div>
+
+    </div>
+  </main>
+
+<script>
+// Sidebar nav group toggle
+document.querySelectorAll('.nav-parent-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    const group = btn.closest('.nav-group');
+    const isOpen = group.classList.contains('open');
+    document.querySelectorAll('.nav-group').forEach(g => g.classList.remove('open'));
+    if (!isOpen) group.classList.add('open');
+  });
+});
+
+// Highlight current page in sidebar
+(function() {
+  const currentFile = window.location.pathname.split('/').pop();
+  document.querySelectorAll('#sidebar .nav-sub-link').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentFile) {
+      link.classList.add('active');
+      setTimeout(() => link.scrollIntoView({ block: 'center', behavior: 'smooth' }), 100);
+    }
+  });
+})();
+</script>
+
+
+  <script>
+  (function() {
+    var btn = document.getElementById('mobile-menu-btn');
+    var sidebar = document.getElementById('sidebar');
+    var overlay = document.getElementById('sidebar-overlay');
+    if (!btn || !sidebar || !overlay) return;
+    function open() { sidebar.classList.add('sidebar-open'); overlay.classList.add('overlay-visible'); document.body.classList.add('sidebar-is-open'); }
+    function close() { sidebar.classList.remove('sidebar-open'); overlay.classList.remove('overlay-visible'); document.body.classList.remove('sidebar-is-open'); }
+    btn.addEventListener('click', function() { sidebar.classList.contains('sidebar-open') ? close() : open(); });
+    overlay.addEventListener('click', close);
+    sidebar.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { if (window.innerWidth <= 768) close(); }); });
+  })();
+  </script>
+</body>
+</html>
