@@ -1566,13 +1566,14 @@ function calcDaysBetween() {
 
 // 2. Usage Calculator
 function calcUsage() {
-  const startVal = document.getElementById('uc-start').value;
-  const endVal   = document.getElementById('uc-end').value;
-  const qty      = parseFloat(document.getElementById('uc-qty').value);
-  const dose     = parseFloat(document.getElementById('uc-dose').value);
-  const unit     = document.getElementById('uc-unit').value;
+  const startVal  = document.getElementById('uc-start').value;
+  const endVal    = document.getElementById('uc-end').value;
+  const qty       = parseFloat(document.getElementById('uc-qty').value);
+  const dose      = parseFloat(document.getElementById('uc-dose').value);
+  const unit      = document.getElementById('uc-unit').value;
+  const rxRate    = parseFloat(document.getElementById('uc-rxrate').value) || 0;
   const remaining = parseFloat(document.getElementById('uc-remaining').value) || 0;
-  const res      = document.getElementById('uc-result');
+  const res       = document.getElementById('uc-result');
 
   if (!startVal || !endVal || !qty || !dose) {
     showRCError(res, 'Please fill in all required fields (fill date, end date, quantity, and dose strength).');
@@ -1592,10 +1593,35 @@ function calcUsage() {
   const perMonth      = avgPerDay * 30.44;
   const pillsPerMonth = pillsPerDay * 30.44;
 
-  const ucCopy = `Usage Calculator\nPeriod: ${fmtDate(start)} to ${fmtDate(end)} (${days} days)\nPrescribed: ${qty} pills x ${dose} ${unit}${remaining > 0 ? ' | Remaining: ' + remaining + ' pills' : ''}\nPills Used: ${pillsUsed.toFixed(1)}\nAvg Daily Dose: ${avgPerDay.toFixed(2)} ${unit}/day\nPills/Day Avg: ${pillsPerDay.toFixed(2)}\nProjected Monthly Total: ${perMonth.toFixed(1)} ${unit}\nProjected Pills/Month: ${pillsPerMonth.toFixed(1)}`;
+  // Over/underuse percentage
+  let usageBannerHTML = '';
+  let usagePctCopy = '';
+  if (rxRate > 0) {
+    const expectedPills = rxRate * days;
+    const pctDiff = ((pillsUsed - expectedPills) / expectedPills) * 100;
+    const absPct = Math.abs(pctDiff).toFixed(1);
+    let label, cls, icon;
+    if (Math.abs(pctDiff) < 3) {
+      label = 'On track'; cls = 'rc-usage-on'; icon = '\u2713';
+    } else if (pctDiff > 0) {
+      label = absPct + '% overuse'; cls = 'rc-usage-over'; icon = '\u25B2';
+    } else {
+      label = absPct + '% underuse'; cls = 'rc-usage-under'; icon = '\u25BC';
+    }
+    usageBannerHTML = `
+      <div class="rc-usage-banner ${cls}">
+        <span class="rc-usage-icon">${icon}</span>
+        <span class="rc-usage-pct">${label}</span>
+        <span class="rc-usage-detail">\u2014 used ${pillsUsed.toFixed(1)} pills over ${days} days vs. expected ${expectedPills.toFixed(1)} at ${rxRate}/day</span>
+      </div>`;
+    usagePctCopy = `\nPrescribed Rate: ${rxRate} pills/day (${(rxRate * dose).toFixed(1)} ${unit}/day)\nExpected: ${expectedPills.toFixed(1)} pills over ${days} days\nActual: ${pillsUsed.toFixed(1)} pills\nAdherence: ${label}`;
+  }
+
+  const ucCopy = `Usage Calculator\nPeriod: ${fmtDate(start)} to ${fmtDate(end)} (${days} days)\nPrescribed: ${qty} pills x ${dose} ${unit}${remaining > 0 ? ' | Remaining: ' + remaining + ' pills' : ''}\nPills Used: ${pillsUsed.toFixed(1)}\nAvg Daily Dose: ${avgPerDay.toFixed(2)} ${unit}/day\nPills/Day Avg: ${pillsPerDay.toFixed(2)}\nProjected Monthly Total: ${perMonth.toFixed(1)} ${unit}\nProjected Pills/Month: ${pillsPerMonth.toFixed(1)}${usagePctCopy}`;
 
   res.className = 'rc-result';
   res.innerHTML = `
+    ${usageBannerHTML}
     <div class="rc-stats-grid">
       <div class="rc-stat"><div class="rc-stat-val">${days}</div><div class="rc-stat-lbl">Days in Period</div></div>
       <div class="rc-stat"><div class="rc-stat-val">${pillsUsed.toFixed(1)}</div><div class="rc-stat-lbl">Pills Used</div></div>
@@ -1605,9 +1631,10 @@ function calcUsage() {
       <div class="rc-stat"><div class="rc-stat-val">${pillsPerMonth.toFixed(1)}</div><div class="rc-stat-lbl">Projected Pills/Month</div></div>
     </div>
     <div class="rc-detail" style="margin-top:10px">
-      Period: <strong>${fmtDate(start)}</strong> → <strong>${fmtDate(end)}</strong> &bull;
-      Prescribed: <strong>${qty} pills × ${dose} ${unit}</strong>
-      ${remaining > 0 ? `&bull; Remaining at count: <strong>${remaining} pills</strong>` : ''}
+      Period: <strong>${fmtDate(start)}</strong> \u2192 <strong>${fmtDate(end)}</strong> &bull;
+      Prescribed: <strong>${qty} pills \u00d7 ${dose} ${unit}</strong>
+      ${rxRate > 0 ? `&bull; Rx rate: <strong>${rxRate} pills/day</strong>` : ''}
+      ${remaining > 0 ? `&bull; Remaining: <strong>${remaining} pills</strong>` : ''}
     </div>
     <button class="rc-copy-btn" onclick="rcCopy(this, \`${ucCopy.replace(/`/g, '\\`')}\`)">Copy</button>
   `;
