@@ -243,7 +243,7 @@ function getColor(receptor) {
 // Map each section to its parent group
 const SECTION_GROUP = {
   'drug-table': 'psychopharm', 'p450': 'psychopharm',
-  'receptor-binding': 'psychopharm', 'glossary': 'psychopharm',
+  'receptor-binding': 'psychopharm', 'glossary': 'psychopharm', 'pk-curves': 'psychopharm',
   'qt-risk': 'tools', 'refill-calendar': 'tools', 'med-compare': 'tools', 'med-taper': 'tools',
   'cog-domains': 'insights', 'neuro-circuits': 'insights', 'brain-regions': 'insights',
   'fda-search': null, 'overview': null, 'blog-index': 'blog', 'blog-smoking': 'blog', 'blog-weight': 'blog'

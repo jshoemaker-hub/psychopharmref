@@ -42,6 +42,7 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="p450">P450 Interactions</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="receptor-binding">Receptor Binding</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="glossary">Receptor Glossary</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="pk-curves">PK Curves</a></li>
         </ul>
       </li>
 
@@ -480,7 +481,7 @@
       <!-- Class Bar Charts -->
       <div class="section-divider">
         <h3>Class Comparisons — pKi by Receptor</h3>
-        <p class="section-sub">Each chart shows all drugs in a class. Y-axis: pKi = &minus;log<sub>10</sub>(Ki nM). Higher bar = stronger affinity.</p>
+        <p class="section-sub">Each chart shows all drugs in a class. Y-axis: pKi = &minus;log<sub>10</sub>(Ki nM). Higher bar = stronger affinity. Switch to treemap view for an area-based hierarchy that can be easier to compare across many drugs.</p>
       </div>
 
       <div class="class-select-row">
@@ -501,12 +502,312 @@
           <option value="Antihistamine">Antihistamines</option>
           <option value="Benzodiazepine">Benzodiazepines</option>
         </select>
+        <div class="rb-view-toggle">
+          <button class="rb-vt-btn rb-vt-active" id="rb-view-bar" onclick="switchRBView('bar')">Bar Chart</button>
+          <button class="rb-vt-btn" id="rb-view-tree" onclick="switchRBView('tree')">Treemap</button>
+        </div>
         <div class="receptor-toggles" id="receptor-toggles"></div>
       </div>
 
-      <div class="bar-chart-wrap">
+      <div class="bar-chart-wrap" id="bar-chart-wrap">
         <canvas id="bar-chart" height="340"></canvas>
       </div>
+
+      <!-- Treemap View -->
+      <div id="treemap-wrap" style="display:none;">
+        <div id="treemap-container"></div>
+        <div class="rb-tm-legend" id="rb-tm-legend"></div>
+      </div>
+
+      <style>
+        .rb-view-toggle { display: inline-flex; border: 1px solid var(--border); border-radius: 5px; overflow: hidden; margin-left: 12px; }
+        .rb-vt-btn { padding: 5px 14px; font-size: 12px; border: none; background: var(--bg2); color: var(--text); cursor: pointer; transition: all 0.15s; }
+        .rb-vt-btn:first-child { border-right: 1px solid var(--border); }
+        .rb-vt-btn.rb-vt-active { background: var(--accent); color: #fff; }
+        #treemap-container { min-height: 460px; border: 1px solid var(--border); border-radius: 6px; background: #fefdfb; overflow: hidden; }
+        /* Drug outer tile */
+        .rb-tm-drug { position: absolute; box-sizing: border-box; border: 2px solid rgba(255,255,255,0.85); border-radius: 4px; overflow: hidden; }
+        .rb-tm-drug:hover { z-index: 2; border-color: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        /* Drug name label floating over the nested tiles */
+        .rb-tm-drug-label { position: absolute; top: 0; left: 0; right: 0; z-index: 3; padding: 3px 5px; background: rgba(35,30,20,0.65); pointer-events: none; }
+        .rb-tm-drug-name { font-size: 11px; font-weight: 700; color: #fff; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        /* Receptor sub-tiles inside each drug */
+        .rb-tm-rec { position: absolute; box-sizing: border-box; border: 1px solid rgba(255,255,255,0.5); overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; transition: opacity 0.1s; }
+        .rb-tm-rec:hover { opacity: 0.8; }
+        .rb-tm-rec-name { font-size: 9px; font-weight: 600; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.5); line-height: 1.1; pointer-events: none; }
+        .rb-tm-rec-val { font-size: 8px; color: rgba(255,255,255,0.8); text-shadow: 0 1px 2px rgba(0,0,0,0.4); pointer-events: none; }
+        /* Legend and tooltip */
+        .rb-tm-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; padding: 8px 0; }
+        .rb-tm-leg-item { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: var(--text); }
+        .rb-tm-leg-swatch { width: 12px; height: 12px; border-radius: 2px; border: 1px solid rgba(0,0,0,0.15); }
+        .rb-tm-tooltip { position: absolute; background: rgba(35,30,20,0.93); color: #fff; font-size: 12px; padding: 8px 12px; border-radius: 5px; pointer-events: none; z-index: 20; white-space: nowrap; line-height: 1.6; box-shadow: 0 3px 12px rgba(0,0,0,0.3); }
+      </style>
+
+      <script>
+      (function(){
+        /* ── Treemap: Squarified Layout ─── */
+        /* Each drug gets a tile sized by its total pKi across active receptors.
+           Color = receptor with the highest pKi for that drug.
+           Hover shows full receptor breakdown. */
+
+        var RECEPTOR_COLORS_TM = {
+          SERT:'#2196F3', NET:'#00897B', DAT:'#FF9800', '5HT1A':'#9C27B0',
+          '5HT2A':'#E91E63', '5HT2C':'#F06292', D1:'#F44336', D2:'#D32F2F',
+          D3:'#C62828', H1:'#795548', alpha1:'#607D8B', alpha2:'#78909C', M1:'#FF7043'
+        };
+
+        function getReceptorColorTM(r) { return RECEPTOR_COLORS_TM[r] || '#888'; }
+
+        /* Squarified treemap algorithm */
+        function squarify(items, rect) {
+          if (!items.length) return [];
+          var results = [];
+          layoutStrip(items.slice().sort(function(a,b){ return b.value - a.value; }), rect, results);
+          return results;
+        }
+
+        function layoutStrip(items, rect, results) {
+          if (items.length === 0) return;
+          if (items.length === 1) {
+            results.push({ item: items[0], x: rect.x, y: rect.y, w: rect.w, h: rect.h });
+            return;
+          }
+
+          var total = items.reduce(function(s, i){ return s + i.value; }, 0);
+          if (total <= 0) return;
+
+          var isWide = rect.w >= rect.h;
+          var side = isWide ? rect.h : rect.w;
+          var strip = [];
+          var stripSum = 0;
+          var bestAR = Infinity;
+
+          for (var i = 0; i < items.length; i++) {
+            strip.push(items[i]);
+            stripSum += items[i].value;
+            var stripW = (stripSum / total) * (isWide ? rect.w : rect.h);
+            var worstAR = 0;
+            var runSum = 0;
+            for (var j = 0; j < strip.length; j++) {
+              runSum += strip[j].value;
+              var itemH = (strip[j].value / stripSum) * side;
+              var ar = Math.max(stripW / itemH, itemH / stripW);
+              if (ar > worstAR) worstAR = ar;
+            }
+            if (worstAR > bestAR && strip.length > 1) {
+              strip.pop();
+              stripSum -= items[i].value;
+              break;
+            }
+            bestAR = worstAR;
+          }
+
+          // Lay out the strip
+          var stripFrac = stripSum / total;
+          var stripDim = isWide ? rect.w * stripFrac : rect.h * stripFrac;
+          var offset = 0;
+          strip.forEach(function(it) {
+            var frac = it.value / stripSum;
+            var itemDim = side * frac;
+            if (isWide) {
+              results.push({ item: it, x: rect.x, y: rect.y + offset, w: stripDim, h: itemDim });
+            } else {
+              results.push({ item: it, x: rect.x + offset, y: rect.y, w: itemDim, h: stripDim });
+            }
+            offset += itemDim;
+          });
+
+          // Recurse for remaining items
+          var remaining = items.slice(strip.length);
+          var newRect;
+          if (isWide) {
+            newRect = { x: rect.x + stripDim, y: rect.y, w: rect.w - stripDim, h: rect.h };
+          } else {
+            newRect = { x: rect.x, y: rect.y + stripDim, w: rect.w, h: rect.h - stripDim };
+          }
+          layoutStrip(remaining, newRect, results);
+        }
+
+        /* ── Render Treemap (nested: drug → receptor sub-tiles) ─── */
+        window.renderTreemap = function() {
+          var container = document.getElementById('treemap-container');
+          container.innerHTML = '';
+          container.style.position = 'relative';
+
+          var cls = document.getElementById('class-select').value;
+          var meds = MEDICATIONS.filter(function(m){ return m.class === cls && m.receptorKi; });
+          var activeRec = activeReceptors;
+
+          if (!meds.length) {
+            container.innerHTML = '<div style="padding:40px;text-align:center;color:#999;">No receptor data for this class.</div>';
+            return;
+          }
+
+          // Build items: each drug with receptor breakdown
+          var items = [];
+          meds.forEach(function(m) {
+            var totalPki = 0;
+            var breakdown = [];
+            RECEPTOR_LIST.forEach(function(r) {
+              if (!activeRec.has(r)) return;
+              var ki = m.receptorKi[r];
+              if (ki && ki < 10000) {
+                var pki = 9 - Math.log10(ki);
+                totalPki += pki;
+                breakdown.push({ r: r, pki: pki, ki: ki, action: getReceptorAction(m.id, r), value: pki });
+              }
+            });
+            if (totalPki > 0) {
+              breakdown.sort(function(a,b){ return b.pki - a.pki; });
+              items.push({ id: m.id, name: m.name, value: totalPki, breakdown: breakdown });
+            }
+          });
+
+          if (!items.length) {
+            container.innerHTML = '<div style="padding:40px;text-align:center;color:#999;">No significant binding for selected receptors.</div>';
+            return;
+          }
+
+          var W = container.clientWidth || 800;
+          var H = 460;
+          container.style.height = H + 'px';
+
+          // Outer treemap: one tile per drug
+          var drugTiles = squarify(items, { x: 0, y: 0, w: W, h: H });
+
+          drugTiles.forEach(function(tile) {
+            var it = tile.item;
+            var el = document.createElement('div');
+            el.className = 'rb-tm-drug';
+            el.style.cssText = 'left:' + tile.x + 'px;top:' + tile.y + 'px;width:' + tile.w + 'px;height:' + tile.h + 'px;background:#e8e4dc;';
+
+            // Drug name label bar at top
+            var labelH = 18;
+            if (tile.w > 40 && tile.h > 30) {
+              var label = document.createElement('div');
+              label.className = 'rb-tm-drug-label';
+              var nameSpan = document.createElement('span');
+              nameSpan.className = 'rb-tm-drug-name';
+              nameSpan.textContent = it.name;
+              if (tile.w < 80) nameSpan.style.fontSize = '9px';
+              label.appendChild(nameSpan);
+              el.appendChild(label);
+            } else {
+              labelH = 0;
+            }
+
+            // Inner treemap: receptor sub-tiles within the drug tile
+            var innerRect = { x: 0, y: labelH, w: tile.w - 4, h: tile.h - labelH - 4 };
+            if (innerRect.w > 4 && innerRect.h > 4 && it.breakdown.length > 0) {
+              var subTiles = squarify(it.breakdown, innerRect);
+              subTiles.forEach(function(sub) {
+                var rec = sub.item;
+                var recEl = document.createElement('div');
+                recEl.className = 'rb-tm-rec';
+                recEl.style.cssText = 'left:' + (sub.x + 2) + 'px;top:' + (sub.y + 2) + 'px;width:' + sub.w + 'px;height:' + sub.h + 'px;background:' + getReceptorColorTM(rec.r) + ';';
+
+                // Show receptor name if sub-tile is big enough
+                if (sub.w > 28 && sub.h > 18) {
+                  var rName = document.createElement('div');
+                  rName.className = 'rb-tm-rec-name';
+                  rName.textContent = rec.r;
+                  if (sub.w < 44 || sub.h < 24) rName.style.fontSize = '7.5px';
+                  recEl.appendChild(rName);
+
+                  // Show pKi value if there's room
+                  if (sub.w > 38 && sub.h > 30) {
+                    var rVal = document.createElement('div');
+                    rVal.className = 'rb-tm-rec-val';
+                    rVal.textContent = rec.pki.toFixed(1);
+                    recEl.appendChild(rVal);
+                  }
+                }
+                el.appendChild(recEl);
+              });
+            }
+
+            // Tooltip on hover (on the drug tile)
+            el.addEventListener('mouseenter', function(e) {
+              var existing = container.querySelector('.rb-tm-tooltip');
+              if (existing) existing.remove();
+              var tip = document.createElement('div');
+              tip.className = 'rb-tm-tooltip';
+              var html = '<strong>' + it.name + '</strong><br>';
+              it.breakdown.forEach(function(b) {
+                html += '<span style="color:' + getReceptorColorTM(b.r) + '">\u25CF</span> ' +
+                  b.r + ': pKi ' + b.pki.toFixed(2) + ' (Ki ' + b.ki + ' nM) \u2014 ' + b.action + '<br>';
+              });
+              html += '<em style="color:#ccc">Total pKi: ' + it.value.toFixed(2) + '</em>';
+              tip.innerHTML = html;
+              // Position tooltip to the right or left of the tile
+              var tipLeft = tile.x + tile.w + 8;
+              if (tipLeft + 280 > W) tipLeft = tile.x - 280;
+              if (tipLeft < 0) tipLeft = 4;
+              tip.style.left = tipLeft + 'px';
+              tip.style.top = Math.max(0, tile.y) + 'px';
+              container.appendChild(tip);
+            });
+            el.addEventListener('mouseleave', function() {
+              var existing = container.querySelector('.rb-tm-tooltip');
+              if (existing) existing.remove();
+            });
+
+            container.appendChild(el);
+          });
+
+          // Legend
+          var legEl = document.getElementById('rb-tm-legend');
+          legEl.innerHTML = '';
+          var usedReceptors = {};
+          items.forEach(function(it) {
+            it.breakdown.forEach(function(b) { usedReceptors[b.r] = true; });
+          });
+          RECEPTOR_LIST.forEach(function(r) {
+            if (!usedReceptors[r] || !activeRec.has(r)) return;
+            var item = document.createElement('div');
+            item.className = 'rb-tm-leg-item';
+            item.innerHTML = '<div class="rb-tm-leg-swatch" style="background:' + getReceptorColorTM(r) + '"></div>' + r;
+            legEl.appendChild(item);
+          });
+        };
+
+        /* ── View Toggle ─── */
+        window.switchRBView = function(view) {
+          var barWrap = document.getElementById('bar-chart-wrap');
+          var treeWrap = document.getElementById('treemap-wrap');
+          var btnBar = document.getElementById('rb-view-bar');
+          var btnTree = document.getElementById('rb-view-tree');
+
+          if (view === 'tree') {
+            barWrap.style.display = 'none';
+            treeWrap.style.display = '';
+            btnBar.classList.remove('rb-vt-active');
+            btnTree.classList.add('rb-vt-active');
+            renderTreemap();
+          } else {
+            barWrap.style.display = '';
+            treeWrap.style.display = 'none';
+            btnTree.classList.remove('rb-vt-active');
+            btnBar.classList.add('rb-vt-active');
+            renderBarChart();
+          }
+        };
+
+        /* Hook into class-select and receptor toggle changes to update treemap */
+        var origToggle = window.toggleReceptor;
+        window.toggleReceptor = function(receptor, btn) {
+          origToggle(receptor, btn);
+          if (document.getElementById('treemap-wrap').style.display !== 'none') {
+            renderTreemap();
+          }
+        };
+        document.getElementById('class-select').addEventListener('change', function() {
+          if (document.getElementById('treemap-wrap').style.display !== 'none') {
+            setTimeout(renderTreemap, 50);
+          }
+        });
+      })();
+      </script>
     </section>
 
     <!-- ── Receptor Glossary ─────────────────────────────────────────────── -->
@@ -523,6 +824,548 @@
 
       <div id="glossary-grid"></div>
     </section>
+
+    <section id="pk-curves" class="section">
+      <div class="section-header">
+        <h2>Pharmacokinetic Curve Comparison</h2>
+        <p class="section-sub">Compare estimated plasma concentration curves across medications. Select a category, then choose up to 8 drugs to overlay. Peak height is scaled by primary receptor binding affinity (lower Ki = stronger binding = taller peak). The dot on each curve marks one half-life after peak concentration.</p>
+      </div>
+
+      <style>
+        .pk-wrap { max-width: 1100px; margin: 0 auto; }
+        .pk-top-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 14px; }
+        .pk-top-row label { font-size: 13px; font-weight: 600; color: var(--text); display: block; margin-bottom: 4px; }
+        .pk-top-row select { padding: 6px 10px; border: 1px solid var(--border); border-radius: 4px; background: #fff; font-size: 13px; color: var(--text); }
+        .pk-btn { padding: 6px 14px; border: 1px solid var(--border); border-radius: 4px; background: var(--bg2); font-size: 12px; cursor: pointer; color: var(--text); }
+        .pk-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .pk-btn-row { display: flex; gap: 6px; align-items: flex-end; }
+        .pk-drug-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 4px 10px; background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; margin-bottom: 16px; max-height: 180px; overflow-y: auto; }
+        .pk-drug-grid label { font-size: 12.5px; cursor: pointer; display: flex; align-items: center; gap: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 2px 0; color: var(--text); }
+        .pk-drug-grid label:hover { color: var(--accent); }
+        .pk-drug-grid input[type="checkbox"] { accent-color: var(--accent); margin: 0; flex-shrink: 0; }
+        .pk-graph-box { background: #fefdfb; border: 1px solid var(--border); border-radius: 6px; position: relative; width: 100%; }
+        .pk-graph-box canvas { display: block; width: 100%; }
+        .pk-legend-row { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 12px; }
+        .pk-leg { display: flex; align-items: center; gap: 6px; font-size: 12px; cursor: pointer; padding: 4px 8px; border-radius: 4px; border: 1px solid transparent; transition: opacity 0.2s; }
+        .pk-leg:hover { border-color: var(--border); }
+        .pk-leg.dimmed { opacity: 0.35; text-decoration: line-through; }
+        .pk-leg-swatch { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+        .pk-leg-name { font-weight: 600; }
+        .pk-leg-detail { color: #888; font-size: 11px; }
+        .pk-note { font-size: 11.5px; color: #999; margin-top: 14px; line-height: 1.5; }
+        .pk-tooltip { position: absolute; background: rgba(35,30,20,0.92); color: #fff; font-size: 12px; padding: 8px 12px; border-radius: 5px; pointer-events: none; z-index: 10; white-space: nowrap; line-height: 1.5; }
+        @media (max-width: 700px) {
+          .pk-drug-grid { grid-template-columns: repeat(2, 1fr); }
+          .pk-top-row { flex-direction: column; }
+        }
+      </style>
+
+      <div class="pk-wrap">
+        <!-- Controls -->
+        <div class="pk-top-row">
+          <div>
+            <label for="pk-cat-sel">Category</label>
+            <select id="pk-cat-sel">
+              <option value="">All Categories</option>
+              <option value="Antidepressant">Antidepressants</option>
+              <option value="Antipsychotic">Antipsychotics</option>
+              <option value="Anxiolytic">Anxiolytics</option>
+              <option value="Mood Stabilizer">Mood Stabilizers</option>
+              <option value="Sleep">Sleep Aids</option>
+              <option value="Stimulant">Stimulants</option>
+            </select>
+          </div>
+          <div>
+            <label for="pk-time-sel">Time Window</label>
+            <select id="pk-time-sel">
+              <option value="0">Auto</option>
+              <option value="6">6 hours</option>
+              <option value="12">12 hours</option>
+              <option value="24">24 hours</option>
+              <option value="48">48 hours</option>
+              <option value="72">72 hours</option>
+              <option value="168">1 week</option>
+            </select>
+          </div>
+          <div class="pk-btn-row">
+            <button class="pk-btn" id="pk-top5">Top 5</button>
+            <button class="pk-btn" id="pk-clear">Clear</button>
+            <button class="pk-btn" id="pk-zoom-reset">Reset Zoom</button>
+          </div>
+        </div>
+
+        <!-- Drug checkboxes -->
+        <div class="pk-drug-grid" id="pk-drug-grid"></div>
+
+        <!-- Graph -->
+        <div class="pk-graph-box" id="pk-graph-box">
+          <canvas id="pk-cv"></canvas>
+          <div class="pk-tooltip" id="pk-tip" style="display:none;"></div>
+        </div>
+
+        <!-- Legend -->
+        <div class="pk-legend-row" id="pk-legend-row"></div>
+
+        <!-- Note -->
+        <p class="pk-note">Curves use a simplified Bateman equation (single-compartment oral absorption model). Peak height is proportional to primary receptor binding affinity. Actual pharmacokinetics vary with food, genetics, formulation, drug interactions, and individual metabolism. Not for clinical dosing decisions.</p>
+      </div>
+
+      <script>
+      (function(){
+        'use strict';
+
+        /* ── Color palettes by category — maximally distinct within each group ─── */
+        var COLORS = {
+          Antidepressant:   ['#1565C0','#E91E63','#00897B','#FF6F00','#6A1B9A','#2E7D32','#C62828','#00ACC1'],
+          Antipsychotic:    ['#D32F2F','#1976D2','#F57C00','#388E3C','#7B1FA2','#00838F','#C2185B','#AFB42B'],
+          Anxiolytic:       ['#7B1FA2','#E65100','#0277BD','#2E7D32','#AD1457','#F9A825','#00695C','#4527A0'],
+          'Mood Stabilizer':['#2E7D32','#C62828','#1565C0','#F57C00','#6A1B9A','#00838F','#AD1457','#827717'],
+          Sleep:            ['#283593','#C62828','#00695C','#E65100','#6A1B9A','#0277BD','#AD1457','#33691E'],
+          Stimulant:        ['#E65100','#1565C0','#2E7D32','#AD1457','#00838F','#C62828','#6A1B9A','#F9A825'],
+          Other:            ['#546E7A','#8D6E63','#37474F','#6D4C41','#78909C','#795548','#455A64','#A1887F']
+        };
+
+        var drugs = [];          // processed med objects
+        var picked = [];         // array of drug ids currently selected
+        var hidden = {};         // id → true if toggled off in legend
+        var colorOf = {};        // id → hex color
+        var zoomFactor = 1;
+
+        /* ── DOM refs ─── */
+        var catSel   = document.getElementById('pk-cat-sel');
+        var timeSel  = document.getElementById('pk-time-sel');
+        var grid     = document.getElementById('pk-drug-grid');
+        var cv       = document.getElementById('pk-cv');
+        var gfx      = cv.getContext('2d');
+        var box      = document.getElementById('pk-graph-box');
+        var legRow   = document.getElementById('pk-legend-row');
+        var tip      = document.getElementById('pk-tip');
+
+        /* ── Helpers ─── */
+        function parseHL(obj) {
+          if (!obj || !obj.drug) return null;
+          var s = obj.drug;
+          // Try to get the first number
+          var m = s.match(/([\d.]+)/);
+          if (!m) return null;
+          var v = parseFloat(m[1]);
+          if (/day/i.test(s)) v *= 24;
+          return v > 0 ? v : null;
+        }
+
+        function primaryRec(ki) {
+          if (!ki) return null;
+          var best = null, bestVal = Infinity;
+          for (var r in ki) {
+            if (typeof ki[r] === 'number' && ki[r] < bestVal) { bestVal = ki[r]; best = r; }
+          }
+          return best ? { name: best, ki: bestVal } : null;
+        }
+
+        /* Bateman equation: C(t) = A * (e^(-ke*t) - e^(-ka*t)) */
+        /* Solve for ka so the curve peaks exactly at tmax using Newton's method */
+        function solveKa(tmax, ke) {
+          if (tmax <= 0 || ke <= 0) return 5 * ke;
+          var ka = 5 * ke; // initial guess: ka much larger than ke
+          for (var i = 0; i < 50; i++) {
+            var diff = ka - ke;
+            if (Math.abs(diff) < 1e-10) { ka = ke * 1.01; continue; }
+            var f = Math.log(ka / ke) / diff - tmax;
+            var fp = (1 / ka * diff - Math.log(ka / ke)) / (diff * diff);
+            if (Math.abs(fp) < 1e-15) break;
+            var step = f / fp;
+            ka = ka - step;
+            if (ka <= ke) ka = ke * 1.5; // keep ka > ke
+            if (Math.abs(f) < 0.001) break;
+          }
+          return ka > ke ? ka : ke * 3;
+        }
+
+        function batemanCurve(tmax, halfLife, numPoints, tEnd) {
+          var ke = Math.log(2) / halfLife;         // elimination rate
+          var ka = solveKa(tmax, ke);              // absorption rate → peaks at tmax
+          var pts = [];
+          // First find peak value for normalization
+          var peakVal = 0;
+          for (var i = 0; i <= numPoints; i++) {
+            var t = (i / numPoints) * tEnd;
+            var c = (ka / (ka - ke)) * (Math.exp(-ke * t) - Math.exp(-ka * t));
+            if (c > peakVal) peakVal = c;
+          }
+          // Now build normalized points
+          for (var i = 0; i <= numPoints; i++) {
+            var t = (i / numPoints) * tEnd;
+            var c = (ka / (ka - ke)) * (Math.exp(-ke * t) - Math.exp(-ka * t));
+            pts.push({ t: t, c: peakVal > 0 ? c / peakVal : 0 });
+          }
+          return pts;
+        }
+
+        function peakPct(ki) {
+          // Lower Ki = stronger binding = taller peak
+          if (!ki || ki >= 10000) return 15;
+          return Math.min(100, Math.max(15, 100 * (1 - Math.log10(Math.max(0.01, ki)) / 4)));
+        }
+
+        /* ── Load meds ─── */
+        function loadMeds() {
+          if (typeof MEDICATIONS === 'undefined') return;
+          drugs = [];
+          MEDICATIONS.forEach(function(m) {
+            var hl = parseHL(m.halfLife);
+            if (!m.tmax || !hl || !m.receptorKi) return;
+            var pr = primaryRec(m.receptorKi);
+            drugs.push({
+              id: m.id, name: m.name, brand: m.brandName,
+              cat: m.category, cls: m.class,
+              tmax: m.tmax, hl: hl,
+              pr: pr, peak: peakPct(pr ? pr.ki : 10000)
+            });
+          });
+          drugs.sort(function(a,b){ return a.name.localeCompare(b.name); });
+        }
+
+        /* ── Populate checkbox grid ─── */
+        function fillGrid() {
+          var cat = catSel.value;
+          var list = cat ? drugs.filter(function(d){ return d.cat === cat; }) : drugs;
+          grid.innerHTML = '';
+          list.forEach(function(d) {
+            var lbl = document.createElement('label');
+            var cb = document.createElement('input');
+            cb.type = 'checkbox';
+            cb.value = d.id;
+            cb.checked = picked.indexOf(d.id) >= 0;
+            cb.addEventListener('change', function() {
+              if (cb.checked) {
+                if (picked.length >= 8) { cb.checked = false; return; }
+                picked.push(d.id);
+                assignColor(d);
+              } else {
+                picked = picked.filter(function(x){ return x !== d.id; });
+                delete hidden[d.id];
+              }
+              buildLegend();
+              render();
+            });
+            lbl.appendChild(cb);
+            lbl.appendChild(document.createTextNode(' ' + d.name));
+            grid.appendChild(lbl);
+          });
+        }
+
+        function assignColor(d) {
+          if (colorOf[d.id]) return;
+          var pal = COLORS[d.cat] || COLORS.Other;
+          var idx = picked.filter(function(pid) {
+            var dd = drugs.find(function(x){ return x.id === pid; });
+            return dd && dd.cat === d.cat;
+          }).length - 1;
+          colorOf[d.id] = pal[idx % pal.length];
+        }
+
+        /* ── Legend ─── */
+        function buildLegend() {
+          legRow.innerHTML = '';
+          picked.forEach(function(id) {
+            var d = drugs.find(function(x){ return x.id === id; });
+            if (!d) return;
+            var el = document.createElement('div');
+            el.className = 'pk-leg' + (hidden[id] ? ' dimmed' : '');
+            el.innerHTML = '<div class="pk-leg-swatch" style="background:' + (colorOf[id]||'#999') + '"></div>' +
+              '<span class="pk-leg-name">' + d.name + '</span>' +
+              '<span class="pk-leg-detail">Tmax ' + d.tmax + 'h &middot; t&frac12; ' + d.hl.toFixed(1) + 'h' +
+              (d.pr ? ' &middot; ' + d.pr.name : '') + '</span>';
+            el.addEventListener('click', function() {
+              hidden[id] = !hidden[id];
+              el.classList.toggle('dimmed');
+              render();
+            });
+            legRow.appendChild(el);
+          });
+        }
+
+        /* ── Resize canvas ─── */
+        function sizeCanvas() {
+          var w = box.clientWidth;
+          var h = Math.max(340, Math.min(500, w * 0.48));
+          var dpr = window.devicePixelRatio || 1;
+          cv.width = w * dpr;
+          cv.height = h * dpr;
+          cv.style.width = w + 'px';
+          cv.style.height = h + 'px';
+          gfx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        /* ── Render ─── */
+        function render() {
+          sizeCanvas();
+          var W = box.clientWidth;
+          var H = parseInt(cv.style.height);
+          var pad = { t: 30, r: 20, b: 44, l: 56 };
+          var gW = W - pad.l - pad.r;
+          var gH = H - pad.t - pad.b;
+
+          // Clear
+          gfx.fillStyle = '#fefdfb';
+          gfx.fillRect(0, 0, W, H);
+
+          // Determine max time
+          var maxT = 0;
+          picked.forEach(function(id) {
+            var d = drugs.find(function(x){ return x.id === id; });
+            if (d && !hidden[id]) maxT = Math.max(maxT, d.tmax + d.hl * 2.5);
+          });
+          var tVal = parseFloat(timeSel.value);
+          if (tVal > 0) maxT = tVal;
+          if (maxT <= 0) maxT = 24;
+          maxT = maxT / zoomFactor;
+
+          // No drugs selected message
+          if (picked.length === 0) {
+            gfx.fillStyle = '#bbb';
+            gfx.font = '15px sans-serif';
+            gfx.textAlign = 'center';
+            gfx.fillText('Select medications above to compare PK curves', W/2, H/2);
+            drawAxes(W, H, pad, gW, gH, maxT);
+            return;
+          }
+
+          drawAxes(W, H, pad, gW, gH, maxT);
+
+          // Draw each curve
+          picked.forEach(function(id) {
+            if (hidden[id]) return;
+            var d = drugs.find(function(x){ return x.id === id; });
+            if (!d) return;
+            var col = colorOf[id] || '#999';
+            var pts = batemanCurve(d.tmax, d.hl, 300, maxT);
+            var scale = d.peak / 100;
+
+            // Line
+            gfx.save();
+            gfx.beginPath();
+            pts.forEach(function(p, i) {
+              var x = pad.l + (p.t / maxT) * gW;
+              var y = pad.t + gH - (p.c * scale) * gH;
+              if (i === 0) gfx.moveTo(x, y); else gfx.lineTo(x, y);
+            });
+            gfx.strokeStyle = col;
+            gfx.lineWidth = 2.5;
+            gfx.globalAlpha = 0.85;
+            gfx.stroke();
+
+            // Fill under curve
+            gfx.lineTo(pad.l + gW, pad.t + gH);
+            gfx.lineTo(pad.l, pad.t + gH);
+            gfx.closePath();
+            gfx.fillStyle = col;
+            gfx.globalAlpha = 0.08;
+            gfx.fill();
+            gfx.restore();
+
+            // Half-life dot
+            var dotT = d.tmax + d.hl;
+            if (dotT <= maxT) {
+              var ke2 = Math.log(2) / d.hl;
+              var ka2 = solveKa(d.tmax, ke2);
+              var cDot = (ka2 / (ka2 - ke2)) * (Math.exp(-ke2 * dotT) - Math.exp(-ka2 * dotT));
+              // Normalize
+              var cPeak = 0;
+              for (var tt = 0; tt < maxT; tt += 0.1) {
+                var cc = (ka2 / (ka2 - ke2)) * (Math.exp(-ke2 * tt) - Math.exp(-ka2 * tt));
+                if (cc > cPeak) cPeak = cc;
+              }
+              var cNorm = cPeak > 0 ? cDot / cPeak : 0;
+              var dx = pad.l + (dotT / maxT) * gW;
+              var dy = pad.t + gH - (cNorm * scale) * gH;
+              gfx.beginPath();
+              gfx.arc(dx, dy, 5, 0, Math.PI * 2);
+              gfx.fillStyle = col;
+              gfx.fill();
+              gfx.strokeStyle = '#fff';
+              gfx.lineWidth = 2;
+              gfx.stroke();
+            }
+          });
+        }
+
+        function drawAxes(W, H, pad, gW, gH, maxT) {
+          gfx.strokeStyle = '#cfc8ba';
+          gfx.lineWidth = 1;
+
+          // X-axis
+          gfx.beginPath();
+          gfx.moveTo(pad.l, pad.t + gH);
+          gfx.lineTo(pad.l + gW, pad.t + gH);
+          gfx.stroke();
+
+          // Y-axis
+          gfx.beginPath();
+          gfx.moveTo(pad.l, pad.t);
+          gfx.lineTo(pad.l, pad.t + gH);
+          gfx.stroke();
+
+          // Grid + labels
+          gfx.font = '11px sans-serif';
+          gfx.fillStyle = '#999';
+
+          // Y gridlines (0-100%)
+          gfx.textAlign = 'right';
+          for (var pct = 0; pct <= 100; pct += 20) {
+            var y = pad.t + gH - (pct / 100) * gH;
+            gfx.fillText(pct + '%', pad.l - 8, y + 4);
+            if (pct > 0 && pct < 100) {
+              gfx.strokeStyle = '#eae6df';
+              gfx.lineWidth = 0.5;
+              gfx.beginPath();
+              gfx.moveTo(pad.l + 1, y);
+              gfx.lineTo(pad.l + gW, y);
+              gfx.stroke();
+            }
+          }
+
+          // X gridlines
+          gfx.textAlign = 'center';
+          var step = maxT <= 6 ? 1 : maxT <= 12 ? 2 : maxT <= 24 ? 4 : maxT <= 48 ? 6 : maxT <= 72 ? 12 : 24;
+          for (var t = 0; t <= maxT; t += step) {
+            var x = pad.l + (t / maxT) * gW;
+            var label = t < 24 ? t + 'h' : (t % 24 === 0 ? (t/24) + 'd' : t + 'h');
+            gfx.fillText(label, x, pad.t + gH + 18);
+            if (t > 0) {
+              gfx.strokeStyle = '#eae6df';
+              gfx.lineWidth = 0.5;
+              gfx.beginPath();
+              gfx.moveTo(x, pad.t);
+              gfx.lineTo(x, pad.t + gH);
+              gfx.stroke();
+            }
+          }
+
+          // Axis titles
+          gfx.fillStyle = '#666';
+          gfx.font = 'bold 12px sans-serif';
+          gfx.textAlign = 'center';
+          gfx.fillText('Time', pad.l + gW / 2, H - 6);
+          gfx.save();
+          gfx.translate(14, pad.t + gH / 2);
+          gfx.rotate(-Math.PI / 2);
+          gfx.fillText('Relative Concentration', 0, 0);
+          gfx.restore();
+        }
+
+        /* ── Tooltip on hover ─── */
+        cv.addEventListener('mousemove', function(e) {
+          var rect = cv.getBoundingClientRect();
+          var mx = e.clientX - rect.left;
+          var my = e.clientY - rect.top;
+          var W = box.clientWidth;
+          var H = parseInt(cv.style.height);
+          var pad = { t: 30, r: 20, b: 44, l: 56 };
+          var gW = W - pad.l - pad.r;
+          var gH = H - pad.t - pad.b;
+
+          var maxT = 0;
+          picked.forEach(function(id) {
+            var d = drugs.find(function(x){ return x.id === id; });
+            if (d && !hidden[id]) maxT = Math.max(maxT, d.tmax + d.hl * 2.5);
+          });
+          var tVal = parseFloat(timeSel.value);
+          if (tVal > 0) maxT = tVal;
+          if (maxT <= 0) maxT = 24;
+          maxT = maxT / zoomFactor;
+
+          if (mx < pad.l || mx > W - pad.r || my < pad.t || my > pad.t + gH) {
+            tip.style.display = 'none'; return;
+          }
+
+          var tHover = ((mx - pad.l) / gW) * maxT;
+          var lines = [];
+          picked.forEach(function(id) {
+            if (hidden[id]) return;
+            var d = drugs.find(function(x){ return x.id === id; });
+            if (!d) return;
+            var ke = Math.log(2) / d.hl;
+            var ka = solveKa(d.tmax, ke);
+            var c = (ka / (ka - ke)) * (Math.exp(-ke * tHover) - Math.exp(-ka * tHover));
+            // Normalize
+            var cPeak = 0;
+            for (var tt = 0; tt < maxT; tt += 0.1) {
+              var cc = (ka / (ka - ke)) * (Math.exp(-ke * tt) - Math.exp(-ka * tt));
+              if (cc > cPeak) cPeak = cc;
+            }
+            var pct = cPeak > 0 ? (c / cPeak) * d.peak : 0;
+            if (pct < 0) pct = 0;
+            lines.push('<span style="color:' + (colorOf[id]||'#999') + '">\u25CF</span> ' +
+              d.name + ': ' + pct.toFixed(1) + '%');
+          });
+
+          if (lines.length === 0) { tip.style.display = 'none'; return; }
+          tip.innerHTML = '<strong>t = ' + tHover.toFixed(1) + 'h</strong><br>' + lines.join('<br>');
+          tip.style.display = 'block';
+          var tipX = mx + 14;
+          var tipY = my - 10;
+          if (tipX + 200 > W) tipX = mx - 200;
+          if (tipY < 0) tipY = 10;
+          tip.style.left = tipX + 'px';
+          tip.style.top = tipY + 'px';
+        });
+
+        cv.addEventListener('mouseleave', function() { tip.style.display = 'none'; });
+
+        /* ── Zoom ─── */
+        cv.addEventListener('wheel', function(e) {
+          e.preventDefault();
+          var delta = e.deltaY < 0 ? 1.15 : 0.87;
+          zoomFactor = Math.max(0.3, Math.min(5, zoomFactor * delta));
+          render();
+        }, { passive: false });
+
+        /* ── Events ─── */
+        catSel.addEventListener('change', fillGrid);
+        timeSel.addEventListener('change', render);
+        document.getElementById('pk-clear').addEventListener('click', function() {
+          picked = []; hidden = {}; colorOf = {};
+          grid.querySelectorAll('input').forEach(function(cb){ cb.checked = false; });
+          buildLegend(); render();
+        });
+        document.getElementById('pk-top5').addEventListener('click', function() {
+          picked = []; hidden = {}; colorOf = {};
+          var cat = catSel.value;
+          var list = cat ? drugs.filter(function(d){ return d.cat === cat; }) : drugs;
+          list.slice(0, 5).forEach(function(d) {
+            picked.push(d.id);
+            assignColor(d);
+          });
+          fillGrid(); buildLegend(); render();
+        });
+        document.getElementById('pk-zoom-reset').addEventListener('click', function() {
+          zoomFactor = 1; render();
+        });
+        window.addEventListener('resize', render);
+
+        /* ── Deferred init ─── */
+        function go() {
+          if (typeof MEDICATIONS === 'undefined') return false;
+          loadMeds();
+          if (drugs.length === 0) return false;
+          fillGrid();
+          render();
+          return true;
+        }
+
+        if (!go()) {
+          // Poll until data.js is loaded
+          var iv = setInterval(function() {
+            if (go()) clearInterval(iv);
+          }, 150);
+          // Safety timeout
+          setTimeout(function() { clearInterval(iv); }, 15000);
+        }
+      })();
+      </script>
+    </section><!-- end pk-curves -->
+
 
     <!-- ── FDA References ───────────────────────────────────────────────── -->
     <section id="fda-search" class="section">

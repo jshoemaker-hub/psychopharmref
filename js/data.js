@@ -914,6 +914,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '24–72 hr', metabolites: 'Norfluoxetine: 4–16 days' },
+    tmax: 6,
     p450: {
       substrate: ['CYP2D6','CYP2C9'],
       inhibits: { 'CYP2D6': 'strong', 'CYP2C9': 'moderate', 'CYP2C19': 'moderate', 'CYP3A4': 'weak' },
@@ -946,6 +947,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '26 hr', metabolites: 'N-desmethylsertraline: ~66 hr (weak)' },
+    tmax: 6,
     p450: {
       substrate: ['CYP2D6','CYP2C19','CYP3A4'],
       inhibits: { 'CYP2D6': 'moderate', 'CYP2C19': 'weak' },
@@ -977,6 +979,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: true, name: 'S-citalopram (this drug is the active enantiomer of citalopram)' },
     halfLife: { drug: '27–32 hr', metabolites: 'None significant' },
+    tmax: 4,
     p450: {
       substrate: ['CYP2C19','CYP3A4'],
       inhibits: { 'CYP2D6': 'weak' },
@@ -1004,6 +1007,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '21 hr', metabolites: 'None significant' },
+    tmax: 5,
     p450: {
       substrate: ['CYP2D6'],
       inhibits: { 'CYP2D6': 'strong', 'CYP3A4': 'weak' },
@@ -1036,6 +1040,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: true, name: 'Escitalopram (S-citalopram)' },
     halfLife: { drug: '35 hr', metabolites: 'Desmethylcitalopram: weak, ~50 hr' },
+    tmax: 4,
     p450: {
       substrate: ['CYP2C19','CYP3A4'],
       inhibits: { 'CYP2D6': 'weak' },
@@ -1062,6 +1067,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '15–22 hr', metabolites: 'None significant' },
+    tmax: 4,
     p450: {
       substrate: ['CYP1A2','CYP2D6'],
       inhibits: { 'CYP1A2': 'strong', 'CYP2C19': 'strong', 'CYP2C9': 'moderate', 'CYP3A4': 'moderate' },
@@ -1091,6 +1097,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '5 hr', metabolites: 'O-desmethylvenlafaxine (desvenlafaxine): 11 hr' },
+    tmax: 2,
     p450: {
       substrate: ['CYP2D6','CYP3A4'],
       inhibits: { 'CYP2D6': 'weak' },
@@ -1120,6 +1127,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: true, name: '(-)-duloxetine; this drug is the S-enantiomer' },
     halfLife: { drug: '12 hr', metabolites: 'None clinically significant' },
+    tmax: 6,
     p450: {
       substrate: ['CYP1A2','CYP2D6'],
       inhibits: { 'CYP2D6': 'moderate' },
@@ -1151,6 +1159,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '11 hr', metabolites: 'None significant' },
+    tmax: 7.5,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: { 'CYP2D6': 'weak' },
@@ -1179,6 +1188,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '10–28 hr', metabolites: 'Nortriptyline: 20–100 hr' },
+    tmax: 4,
     p450: {
       substrate: ['CYP1A2','CYP2C19','CYP2D6','CYP3A4'],
       inhibits: { 'CYP2D6': 'weak' },
@@ -1205,6 +1215,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '20–100 hr', metabolites: '10-OH-nortriptyline: active' },
+    tmax: 5,
     p450: {
       substrate: ['CYP2D6'],
       inhibits: { 'CYP2D6': 'weak' },
@@ -1231,6 +1242,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '11–25 hr', metabolites: 'Desipramine: 12–76 hr' },
+    tmax: 2,
     p450: {
       substrate: ['CYP1A2','CYP2C19','CYP2D6','CYP3A4'],
       inhibits: { 'CYP2D6': 'weak' },
@@ -1260,6 +1272,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '11–12 hr', metabolites: 'Irreversible MAO-A/B inhibition persists 2–3 weeks' },
+    tmax: 2,
     p450: {
       substrate: [],
       inhibits: {},
@@ -1284,6 +1297,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '2–3 hr', metabolites: 'Irreversible MAO-A/B inhibition persists 1–2 weeks' },
+    tmax: 1.5,
     p450: {
       substrate: ['CYP2A6'],
       inhibits: { 'CYP2A6': 'strong', 'CYP2C19': 'moderate' },
@@ -1310,6 +1324,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '21 hr', metabolites: 'Hydroxybupropion: 20 hr; threohydrobupropion: 37 hr' },
+    tmax: 3,
     p450: {
       substrate: ['CYP2B6'],
       inhibits: { 'CYP2D6': 'strong' },
@@ -1338,6 +1353,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '20–40 hr', metabolites: 'None significant' },
+    tmax: 2,
     p450: {
       substrate: ['CYP1A2','CYP2D6','CYP3A4'],
       inhibits: {},
@@ -1364,6 +1380,7 @@ const MEDICATIONS = [
     category: 'Sleep',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '7–10 hr', metabolites: 'mCPP (active, 5HT2C agonist): 4–8 hr' },
+    tmax: 1,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: { 'CYP3A4': 'weak' },
@@ -1390,6 +1407,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '25 hr', metabolites: 'None significant' },
+    tmax: 4.5,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: { 'CYP2C8': 'weak', 'CYP2D6': 'weak' },
@@ -1418,6 +1436,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '21–24 hr', metabolites: 'Reduced haloperidol (less active)' },
+    tmax: 4,
     p450: {
       substrate: ['CYP2D6','CYP3A4'],
       inhibits: { 'CYP2D6': 'moderate' },
@@ -1446,6 +1465,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '16–30 hr', metabolites: 'Multiple active metabolites' },
+    tmax: 3,
     p450: {
       substrate: ['CYP2D6','CYP1A2'],
       inhibits: { 'CYP2D6': 'moderate' },
@@ -1475,6 +1495,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '14–24 hr (oral)', metabolites: 'None significant' },
+    tmax: 2,
     p450: {
       substrate: ['CYP2D6'],
       inhibits: { 'CYP2D6': 'weak' },
@@ -1504,6 +1525,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '3 hr (20 hr in CYP2D6 PMs)', metabolites: '9-OH-risperidone (paliperidone): 21 hr' },
+    tmax: 1,
     p450: {
       substrate: ['CYP2D6','CYP3A4'],
       inhibits: {},
@@ -1532,6 +1554,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '21–54 hr', metabolites: 'N-desmethylolanzapine: weak' },
+    tmax: 6,
     p450: {
       substrate: ['CYP1A2','CYP2D6'],
       inhibits: { 'CYP1A2': 'weak' },
@@ -1562,6 +1585,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '6–7 hr', metabolites: 'Norquetiapine (active, NET inhibition): 12 hr' },
+    tmax: 1.5,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -1592,6 +1616,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '75 hr', metabolites: 'Dehydro-aripiprazole (active): 94 hr' },
+    tmax: 4,
     p450: {
       substrate: ['CYP2D6','CYP3A4'],
       inhibits: {},
@@ -1623,6 +1648,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '12 hr', metabolites: 'N-desmethylclozapine (active): 20 hr' },
+    tmax: 2.5,
     p450: {
       substrate: ['CYP1A2','CYP2D6','CYP3A4'],
       inhibits: { 'CYP2D6': 'weak' },
@@ -1650,6 +1676,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '7 hr', metabolites: 'None significant (aldehyde oxidase primary)' },
+    tmax: 5,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -1678,6 +1705,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '18–40 hr', metabolites: 'ID-14283 and ID-14326 (active)' },
+    tmax: 3,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -1705,6 +1733,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '24 hr', metabolites: 'N-desmethylasenapine (less active)' },
+    tmax: 1,
     p450: {
       substrate: ['CYP1A2'],
       inhibits: { 'CYP2D6': 'weak' },
@@ -1735,6 +1764,7 @@ const MEDICATIONS = [
     category: 'Mood Stabilizer',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '18–24 hr', metabolites: 'Not applicable (monovalent cation)' },
+    tmax: 2,
     p450: {
       substrate: [],
       inhibits: {},
@@ -1760,6 +1790,7 @@ const MEDICATIONS = [
     category: 'Mood Stabilizer',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '9–16 hr', metabolites: '2-en-valproate (active): variable' },
+    tmax: 3,
     p450: {
       substrate: ['CYP2C9','CYP2C19'],
       inhibits: { 'CYP2C9': 'moderate', 'CYP2C19': 'weak' },
@@ -1786,6 +1817,7 @@ const MEDICATIONS = [
     category: 'Mood Stabilizer',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '25–33 hr (monotherapy)', metabolites: 'None significant' },
+    tmax: 2.5,
     p450: {
       substrate: [],
       inhibits: {},
@@ -1811,6 +1843,7 @@ const MEDICATIONS = [
     category: 'Mood Stabilizer',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '12–17 hr (after autoinduction)', metabolites: 'CBZ-10,11-epoxide (active): 5–8 hr' },
+    tmax: 6,
     p450: {
       substrate: ['CYP3A4','CYP2C8'],
       inhibits: {},
@@ -1839,6 +1872,7 @@ const MEDICATIONS = [
     category: 'Sleep',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '1.5–2.4 hr', metabolites: 'None significant' },
+    tmax: 1.5,
     p450: {
       substrate: ['CYP3A4','CYP2C9'],
       inhibits: {},
@@ -1863,6 +1897,7 @@ const MEDICATIONS = [
     category: 'Sleep',
     activeEnantiomer: { has: true, name: 'S-zopiclone (active enantiomer of zopiclone)' },
     halfLife: { drug: '6 hr', metabolites: 'Desmethyleszopiclone (less active): 9 hr' },
+    tmax: 1,
     p450: {
       substrate: ['CYP3A4','CYP2E1'],
       inhibits: {},
@@ -1887,6 +1922,7 @@ const MEDICATIONS = [
     category: 'Sleep',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '8–20 hr', metabolites: 'None significant (direct glucuronidation)' },
+    tmax: 1.5,
     p450: {
       substrate: [],
       inhibits: {},
@@ -1911,6 +1947,7 @@ const MEDICATIONS = [
     category: 'Sleep',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '1–2.6 hr', metabolites: 'M-II (active, 20× more potent at MT receptors): 2–5 hr' },
+    tmax: 0.75,
     p450: {
       substrate: ['CYP1A2','CYP3A4','CYP2C9'],
       inhibits: {},
@@ -1935,6 +1972,7 @@ const MEDICATIONS = [
     category: 'Sleep',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '12 hr', metabolites: 'None significant' },
+    tmax: 2,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -1961,6 +1999,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '~8 hr', metabolites: 'None significant' },
+    tmax: 2,
     p450: {
       substrate: [],
       inhibits: {},
@@ -1984,6 +2023,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: true, name: '(1S,2R)-enantiomer of milnacipran' },
     halfLife: { drug: '12 hr', metabolites: 'None significant' },
+    tmax: 6,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -2009,6 +2049,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '66 hr', metabolites: 'None significant' },
+    tmax: 7,
     p450: {
       substrate: ['CYP2D6', 'CYP3A4'],
       inhibits: {},
@@ -2034,6 +2075,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '~5 hr (ER formulation)', metabolites: 'None significant' },
+    tmax: 3,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -2059,6 +2101,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: true, name: 'S-enantiomer of ketamine' },
     halfLife: { drug: '7–12 hr', metabolites: 'Noresketamine: ~8 hr' },
+    tmax: 0.33,
     p450: {
       substrate: ['CYP2B6', 'CYP3A4'],
       inhibits: {},
@@ -2084,6 +2127,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '9 hr', metabolites: 'None significant' },
+    tmax: 1,
     p450: {
       substrate: [],
       inhibits: {},
@@ -2108,6 +2152,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '20–24 hr', metabolites: 'None significant' },
+    tmax: 5,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -2133,6 +2178,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: 'DXM ~21 hr (with CYP2D6 inhibition); bupropion ~21 hr', metabolites: 'None significant' },
+    tmax: 4,
     p450: {
       substrate: ['CYP2D6', 'CYP2B6'],
       inhibits: { 'CYP2D6': 'moderate' },
@@ -2159,6 +2205,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '8–24 hr', metabolites: 'Desmethyldoxepin: 33–80 hr' },
+    tmax: 3.5,
     p450: {
       substrate: ['CYP2D6', 'CYP1A2', 'CYP3A4'],
       inhibits: { 'CYP2D6': 'weak' },
@@ -2185,6 +2232,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '7–18 hr', metabolites: 'None significant' },
+    tmax: 3,
     p450: {
       substrate: ['CYP1A2'],
       inhibits: {},
@@ -2209,6 +2257,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '9–12 hr', metabolites: '7-Hydroxyperphenazine: ~20 hr' },
+    tmax: 3,
     p450: {
       substrate: ['CYP2D6'],
       inhibits: {},
@@ -2233,6 +2282,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '~34 hr', metabolites: 'None significant' },
+    tmax: 3,
     p450: {
       substrate: ['CYP1A2'],
       inhibits: {},
@@ -2256,6 +2306,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '55 hr', metabolites: 'None significant' },
+    tmax: 6,
     p450: {
       substrate: ['CYP3A4', 'CYP1A2'],
       inhibits: {},
@@ -2280,6 +2331,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '10–36 hr', metabolites: 'None significant' },
+    tmax: 3,
     p450: {
       substrate: ['CYP2D6'],
       inhibits: { 'CYP2D6': 'moderate' },
@@ -2303,6 +2355,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '8–12 hr', metabolites: 'None significant' },
+    tmax: 2,
     p450: {
       substrate: ['CYP1A2', 'CYP2D6', 'CYP3A4'],
       inhibits: {},
@@ -2327,6 +2380,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '~1.5 hr (parent); active metabolites ~24 hr', metabolites: 'Active metabolites: ~24 hr' },
+    tmax: 1.5,
     p450: {
       substrate: ['CYP2D6'],
       inhibits: {},
@@ -2352,6 +2406,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: true, name: '9-Hydroxyrisperidone (active metabolite of risperidone)' },
     halfLife: { drug: '23 hr', metabolites: 'None (primarily renal elimination)' },
+    tmax: 24,
     p450: {
       substrate: ['CYP3A4', 'CYP2D6'],
       inhibits: {},
@@ -2376,6 +2431,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '18 hr', metabolites: 'P88, P95: 26–37 hr' },
+    tmax: 3,
     p450: {
       substrate: ['CYP2D6', 'CYP3A4'],
       inhibits: {},
@@ -2399,6 +2455,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '91 hr', metabolites: 'None significant' },
+    tmax: 4,
     p450: {
       substrate: ['CYP2D6', 'CYP3A4'],
       inhibits: {},
@@ -2424,6 +2481,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '2–4 days', metabolites: 'DCAR: 1–3 days; DDCAR: 1–3 weeks' },
+    tmax: 4,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -2449,6 +2507,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '18 hr', metabolites: 'None significant' },
+    tmax: 2,
     p450: {
       substrate: ['CYP3A4', 'CYP2C8'],
       inhibits: {},
@@ -2473,6 +2532,7 @@ const MEDICATIONS = [
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '57 hr', metabolites: 'Active metabolite: ~200 hr' },
+    tmax: 6,
     p450: {
       substrate: ['CYP3A4', 'CYP3A5'],
       inhibits: {},
@@ -2498,6 +2558,7 @@ const MEDICATIONS = [
     category: 'Mood Stabilizer',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: 'Parent very short; MHD (active metabolite): 8–10 hr', metabolites: 'MHD (eslicarbazepine): 8–10 hr' },
+    tmax: 4.5,
     p450: {
       substrate: [],
       inhibits: { 'CYP2C19': 'moderate' },
@@ -2522,6 +2583,7 @@ const MEDICATIONS = [
     category: 'Mood Stabilizer',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '21 hr', metabolites: 'None active' },
+    tmax: 2,
     p450: {
       substrate: ['CYP2C19', 'CYP3A4'],
       inhibits: { 'CYP2C19': 'weak' },
@@ -2549,6 +2611,7 @@ const MEDICATIONS = [
     category: 'Mood Stabilizer',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '5–7 hr', metabolites: 'None active' },
+    tmax: 3,
     p450: {
       substrate: [],
       inhibits: {},
@@ -2577,6 +2640,7 @@ const MEDICATIONS = [
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '6–12 hr', metabolites: 'Alpha-hydroxyalprazolam: 6–12 hr (less active)' },
+    tmax: 1.5,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -2602,6 +2666,7 @@ const MEDICATIONS = [
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '18–50 hr', metabolites: 'None active' },
+    tmax: 3,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -2627,6 +2692,7 @@ const MEDICATIONS = [
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '20–70 hr', metabolites: 'Nordiazepam (active): 36–200 hr; desmethyldiazepam' },
+    tmax: 1,
     p450: {
       substrate: ['CYP2C19', 'CYP3A4'],
       inhibits: {},
@@ -2654,6 +2720,7 @@ const MEDICATIONS = [
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '10–20 hr', metabolites: 'None active (direct glucuronidation)' },
+    tmax: 2,
     p450: {
       substrate: [],
       inhibits: {},
@@ -2680,6 +2747,7 @@ const MEDICATIONS = [
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '4–15 hr', metabolites: 'None active (direct glucuronidation)' },
+    tmax: 3,
     p450: {
       substrate: [],
       inhibits: {},
@@ -2705,6 +2773,7 @@ const MEDICATIONS = [
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '5–30 hr', metabolites: 'Demoxepam, desmethylchlordiazepoxide, nordiazepam: up to 200 hr' },
+    tmax: 2,
     p450: {
       substrate: ['CYP3A4', 'CYP2C19'],
       inhibits: {},
@@ -2730,6 +2799,7 @@ const MEDICATIONS = [
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: 'Parent very short (prodrug); nordiazepam: 36–200 hr', metabolites: 'Nordiazepam: 36–200 hr' },
+    tmax: 1,
     p450: {
       substrate: [],
       inhibits: {},
@@ -2756,6 +2826,7 @@ const MEDICATIONS = [
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '1.5–2.5 hr', metabolites: '1-Hydroxymidazolam: ~1 hr' },
+    tmax: 0.5,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -2781,6 +2852,7 @@ const MEDICATIONS = [
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '1.5–5.5 hr', metabolites: 'None active' },
+    tmax: 1.5,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -2805,6 +2877,7 @@ const MEDICATIONS = [
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '10–24 hr', metabolites: 'None active' },
+    tmax: 2,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -2829,6 +2902,7 @@ const MEDICATIONS = [
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '2–3 hr (parent)', metabolites: 'Desalkylflurazepam (active): 47–100 hr' },
+    tmax: 1,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -2855,6 +2929,7 @@ const MEDICATIONS = [
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '2–3 hr', metabolites: '1-PP (active): alpha2/D2 antagonist' },
+    tmax: 1,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -2878,6 +2953,7 @@ const MEDICATIONS = [
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '6 hr', metabolites: 'None active' },
+    tmax: 1.5,
     p450: {
       substrate: [],
       inhibits: {},
@@ -2906,6 +2982,7 @@ const MEDICATIONS = [
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '3–6 hr', metabolites: 'None active' },
+    tmax: 1.5,
     p450: {
       substrate: ['CYP1A2', 'CYP2D6'],
       inhibits: {},
@@ -2935,6 +3012,7 @@ const MEDICATIONS = [
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '12–16 hr', metabolites: 'None active' },
+    tmax: 3,
     p450: {
       substrate: ['CYP2D6'],
       inhibits: {},
@@ -2959,6 +3037,7 @@ const MEDICATIONS = [
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: 'IR: 17 hr; ER: ~18 hr', metabolites: 'None significant' },
+    tmax: 3,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -2985,6 +3064,7 @@ const MEDICATIONS = [
     category: 'Sleep',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '10 hr', metabolites: 'None active' },
+    tmax: 2.5,
     p450: {
       substrate: ['CYP2D6', 'CYP1A2'],
       inhibits: {},
@@ -3011,6 +3091,7 @@ const MEDICATIONS = [
     category: 'Stimulant',
     activeEnantiomer: { has: true, name: 'd-threo enantiomer (active)' },
     halfLife: { drug: '2–3 hr (IR)', metabolites: 'Ritalinic acid (inactive)' },
+    tmax: 2,
     p450: {
       substrate: [],
       inhibits: {},
@@ -3035,6 +3116,7 @@ const MEDICATIONS = [
     category: 'Stimulant',
     activeEnantiomer: { has: true, name: 'd-threo-methylphenidate (active enantiomer of methylphenidate)' },
     halfLife: { drug: '~2.2 hr', metabolites: 'None significant' },
+    tmax: 1.5,
     p450: {
       substrate: [],
       inhibits: {},
@@ -3059,6 +3141,7 @@ const MEDICATIONS = [
     category: 'Stimulant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: 'd-amphetamine: 10–12 hr; l-amphetamine: 11–14 hr', metabolites: 'None significant' },
+    tmax: 3,
     p450: {
       substrate: ['CYP2D6'],
       inhibits: { 'CYP2D6': 'weak' },
@@ -3084,6 +3167,7 @@ const MEDICATIONS = [
     category: 'Stimulant',
     activeEnantiomer: { has: true, name: 'd-amphetamine (active enantiomer)' },
     halfLife: { drug: '10–12 hr', metabolites: 'None significant' },
+    tmax: 3,
     p450: {
       substrate: ['CYP2D6'],
       inhibits: {},
@@ -3108,6 +3192,7 @@ const MEDICATIONS = [
     category: 'Stimulant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: 'Parent: <1 hr; d-amphetamine produced: 10–12 hr', metabolites: 'd-Amphetamine: 10–12 hr' },
+    tmax: 3.5,
     p450: {
       substrate: [],
       inhibits: {},
@@ -3133,6 +3218,7 @@ const MEDICATIONS = [
     category: 'Stimulant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '12–15 hr', metabolites: 'Modafinil acid/sulfone (inactive)' },
+    tmax: 2.5,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: { 'CYP2C19': 'moderate' },
@@ -3159,6 +3245,7 @@ const MEDICATIONS = [
     category: 'Stimulant',
     activeEnantiomer: { has: true, name: 'R-enantiomer of modafinil' },
     halfLife: { drug: '13–15 hr', metabolites: 'None significant' },
+    tmax: 2,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: { 'CYP2C19': 'moderate' },
@@ -3185,6 +3272,7 @@ const MEDICATIONS = [
     category: 'Stimulant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '7 hr', metabolites: 'None active' },
+    tmax: 2,
     p450: {
       substrate: [],
       inhibits: {},
@@ -3211,6 +3299,7 @@ const MEDICATIONS = [
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '20–25 hr', metabolites: 'Cetirizine: 8–10 hr' },
+    tmax: 2,
     p450: {
       substrate: ['CYP2D6'],
       inhibits: { 'CYP2D6': 'weak' },
@@ -3236,6 +3325,7 @@ const MEDICATIONS = [
     category: 'Other',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '4–8 hr', metabolites: 'None active' },
+    tmax: 2,
     p450: {
       substrate: ['CYP2D6', 'CYP3A4'],
       inhibits: { 'CYP2D6': 'moderate' },
@@ -3261,6 +3351,7 @@ const MEDICATIONS = [
     category: 'Other',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '3–4 hr', metabolites: 'None significant' },
+    tmax: 1.5,
     p450: {
       substrate: ['CYP2D6'],
       inhibits: {},
