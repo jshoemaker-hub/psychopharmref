@@ -1912,7 +1912,8 @@ function initMedCompare() {
       }
     }
     if (drugs.length < 2) {
-      alert('Please select at least 2 medications to compare.');
+      const mcErr = document.getElementById('mc-results');
+      if (mcErr) { mcErr.style.display = ''; mcErr.innerHTML = '<div class="mt-warning" style="margin:12px 0">Please select at least 2 medications to compare.</div>'; }
       return;
     }
     mcCurrentDrugs = drugs;
@@ -2569,7 +2570,8 @@ function initMedTaper() {
     const startDate  = document.getElementById('mt-start-date').value;
 
     if (!drugName || isNaN(startVal) || isNaN(stepSize) || isNaN(interval) || !startDate) {
-      alert('Please fill in: Medication, Starting Dose, Step Size, Interval, and Start Date.');
+      const mtRes = document.getElementById('mt-result');
+      if (mtRes) { mtRes.className = 'mt-result'; mtRes.innerHTML = '<div class="mt-warning">Please fill in: Medication, Starting Dose, Step Size, Interval, and Start Date.</div>'; }
       return;
     }
 
@@ -2607,7 +2609,8 @@ function initMedTaper() {
     const startDate  = document.getElementById('mt-cross-date').value;
 
     if (!drugAName || !drugBName || isNaN(aStart) || isNaN(bStart) || isNaN(aStep) || isNaN(bStep) || isNaN(interval) || !startDate) {
-      alert('Please fill in all required fields for both drugs.');
+      const ctRes = document.getElementById('mt-cross-result');
+      if (ctRes) { ctRes.className = 'mt-result'; ctRes.innerHTML = '<div class="mt-warning">Please fill in all required fields for both drugs.</div>'; }
       return;
     }
 

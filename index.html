@@ -3,7 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Psychopharmacology Reference</title>
+  <title>PsychoPharmRef — Psychopharmacology Reference for Clinicians</title>
+  <meta name="description" content="Free clinical psychopharmacology reference with 91 medications, receptor binding profiles, P450 interactions, 15+ clinical rating scales, PK curve visualization, and 56 evidence-based blog posts for psychiatrists and medical students.">
+  <meta name="author" content="Jerad Shoemaker, MD">
+  <meta name="keywords" content="psychopharmacology, psychiatry, receptor binding, drug interactions, clinical tools, SSRI, antipsychotic, mood stabilizer, psychiatric medications, medical education">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PsychoPharmRef — Psychopharmacology Reference for Clinicians">
+  <meta property="og:description" content="Free clinical psychopharmacology reference: 91 medications, receptor binding, P450 interactions, 15+ clinical tools, PK curves, and 56 evidence-based psychiatry blog posts.">
+  <meta property="og:url" content="https://psychopharmref.com">
+  <meta property="og:site_name" content="PsychoPharmRef">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="PsychoPharmRef — Psychopharmacology Reference for Clinicians">
+  <meta name="twitter:description" content="Free clinical psychopharmacology reference: 91 medications, receptor binding, P450 interactions, 15+ clinical tools, and 56 evidence-based psychiatry blog posts.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+
   <link rel="stylesheet" href="css/styles.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   </head>
@@ -8402,10 +8423,11 @@
                 feedback.classList.remove('sl-show');
               }, 2000);
             }).catch(() => {
-              alert('Failed to copy summary to clipboard.');
+              var fb = document.querySelector('.sl-copy-feedback');
+              if (fb) { fb.textContent = 'Copy failed'; fb.classList.add('sl-show'); setTimeout(function(){ fb.classList.remove('sl-show'); }, 2000); }
             });
           }
-    
+
           // Initialize on page load
           if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', init);
@@ -9814,7 +9836,7 @@
         const totalScore = positiveScore + negativeScore;
 
         if (totalScore === 0) {
-          alert('Please rate all items before generating a report.'); return;
+          var psWarn = document.querySelector('.ps-score-display'); if (psWarn) psWarn.innerHTML = '<div class="mt-warning">Please rate all items before generating a report.</div>';
           return;
         }
 
@@ -9875,7 +9897,7 @@ Note: Interpret in clinical context alongside CGI-S rating. No formal severity c
         const compositeIndex = positiveScore - negativeScore;
 
         if (totalScore === 0) {
-          alert('Please rate all items before generating a report.'); return;
+          var psWarn2 = document.querySelector('.ps-score-display'); if (psWarn2) psWarn2.innerHTML = '<div class="mt-warning">Please rate all items before generating a report.</div>';
           return;
         }
 
@@ -16514,7 +16536,8 @@ Past Compulsions: ${compulsionsPastList.length > 0 ? compulsionsPastList.join(';
             btn.textContent = originalText;
           }, 2000);
         }).catch(() => {
-          alert('Failed to copy to clipboard');
+          btn.textContent = 'Copy failed';
+          setTimeout(() => { btn.textContent = originalText; }, 2000);
         });
       }
 
