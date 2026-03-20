@@ -34,9 +34,36 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 
   <link rel="stylesheet" href="css/styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="canonical" href="https://psychopharmref.com/">
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "PsychoPharmRef",
+    "url": "https://psychopharmref.com",
+    "description": "Free clinical psychopharmacology reference with 91 medications, receptor binding profiles, P450 interactions, 15+ clinical rating scales, and 56 evidence-based blog posts.",
+    "applicationCategory": "MedicalApplication",
+    "operatingSystem": "Web",
+    "author": {
+      "@type": "Person",
+      "name": "Jerad Shoemaker, MD",
+      "jobTitle": "Psychiatrist"
+    },
+    "audience": {
+      "@type": "MedicalAudience",
+      "audienceType": "Clinician"
+    },
+    "isAccessibleForFree": true
+  }
+  </script>
   </head>
 <body>
+
+  <!-- Skip to content (accessibility) -->
+  <a href="#content" class="skip-link">Skip to main content</a>
 
   <!-- Mobile hamburger button -->
   <button id="mobile-menu-btn" aria-label="Open navigation menu">
@@ -45,7 +72,7 @@
   <div id="sidebar-overlay"></div>
 
   <!-- Sidebar Navigation -->
-  <nav id="sidebar">
+  <nav id="sidebar" aria-label="Main navigation">
     <div class="sidebar-header">
       <div class="logo">PsychoPharm<span>Ref</span></div>
       <div class="logo-sub">Clinical Reference</div>
@@ -255,7 +282,7 @@
   </nav>
 
   <!-- Main Content -->
-  <main id="content">
+  <main id="content" role="main" aria-label="Clinical reference content">
 
     <!-- ── Overview ─────────────────────────────────────────────────────── -->
     <section id="overview" class="section active">

@@ -1,3 +1,37 @@
+/* ── Skip Link (Accessibility) ────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 10000;
+  background: #231e14;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 0 0 6px 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #4a7c35;
+  outline-offset: 2px;
+}
+
+/* ── Focus Indicators (Accessibility) ─────────────────────────────────── */
+:focus-visible {
+  outline: 3px solid #4a7c35;
+  outline-offset: 2px;
+}
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid #4a7c35;
+  outline-offset: 2px;
+}
+
 /* ── Reset & Variables ─────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -3721,4 +3755,81 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
   .nl-embed iframe {
     max-width: 100%;
   }
+}
+
+/* ── Print Stylesheet ─────────────────────────────────────────────────── */
+@media print {
+  /* Hide non-content elements */
+  #sidebar,
+  #sidebar-overlay,
+  #mobile-menu-btn,
+  .skip-link,
+  .nav-links,
+  .sidebar-header,
+  .sidebar-footer,
+  .filter-panel,
+  .nl-blog-cta,
+  .nl-subscribe-btn,
+  .back-link,
+  .rc-copy-btn,
+  .pk-wrap,
+  .rb-view-toggle,
+  .ba-footer,
+  button,
+  .mt-warning { display: none !important; }
+
+  /* Reset layout for print */
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+  #content,
+  main {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* Blog article print */
+  .blog-article,
+  .ba-body,
+  .container {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .ba-header {
+    border-bottom: 2px solid #000;
+    padding-bottom: 10pt;
+    margin-bottom: 12pt;
+  }
+  .ba-title { font-size: 18pt; }
+  .ba-h2 { font-size: 14pt; page-break-after: avoid; }
+  .ba-h3 { font-size: 12pt; page-break-after: avoid; }
+  .ba-paragraph, .ba-body p { font-size: 11pt; orphans: 3; widows: 3; }
+
+  /* Tables */
+  table { page-break-inside: avoid; border-collapse: collapse; }
+  th, td { border: 1px solid #999; padding: 4pt 6pt; font-size: 10pt; }
+
+  /* Links: show URL */
+  .ba-body a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #666;
+  }
+
+  /* Charts/canvas: hide (not printable) */
+  canvas { display: none; }
+
+  /* Rating scale reports: keep visible for print */
+  .rc-result,
+  .rc-stats-grid { page-break-inside: avoid; }
 }
