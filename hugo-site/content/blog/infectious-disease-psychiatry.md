@@ -1,0 +1,289 @@
+---
+title: "Infectious Disease and Psychiatry: When Pathogens Target the Mind"
+date: 2026-03-01
+description: "A clinician's guide to psychiatric manifestations of 15 infectious pathogens — from neurosyphilis to long COVID, including mechanisms, screening strategies, and management considerations."
+category: "Neuroimmunology"
+subtitle: "A clinician’s guide to the psychiatric manifestations of 15 infectious agents—from neurosyphilis to long COVID"
+readTime: "15 min read"
+clinicalSummary: ""
+related: ['psychoneuroimmunology', 'delirium', 'first-break-psychosis']
+draft: false
+---
+
+<div class="ba-body">
+            <a href="../index.html" class="back-link">← Back to Blog</a>
+          <div class="ba-action-bar">
+            <button class="ba-act-btn" onclick="window.print()" title="Print this article"><svg viewbox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"></path></svg> Print</button>
+            <div class="ba-share-drop">
+              <button class="ba-act-btn" onclick="this.nextElementSibling.classList.toggle('ba-open')" title="Share this article"><svg viewbox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"></path></svg> Share</button>
+              <div class="ba-share-menu" id="share-menu-infectious-disease-psychiatry">
+                <a href="https://twitter.com/intent/tweet?text=Infectious%20Disease%20and%20Psychiatry%3A%20When%20Pathogens%20Target%20the%20Mind&url=https%3A%2F%2Fpsychopharmref.com%2Fblog%2Finfectious-disease-psychiatry.html" target="_blank" rel="noopener">X (Twitter)</a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://psychopharmref.com/blog/infectious-disease-psychiatry.html" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:?subject=Infectious Disease and Psychiatry: When Pathogens Target the Mind&body=Check out this article: https://psychopharmref.com/blog/infectious-disease-psychiatry.html">Email</a>
+                <button onclick="navigator.clipboard.writeText('https://psychopharmref.com/blog/infectious-disease-psychiatry.html').then(function(){this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link'}.bind(this),2000)}.bind(this))">Copy Link</button>
+              </div>
+            </div>
+          </div>
+
+
+                
+                <blockquote class="ba-callout">
+                    **Clinical Summary:** Infectious agents have been linked to psychiatric symptoms for centuries, from the institutional recognition of neurosyphilis to modern understanding of long COVID neuropsychiatry. This review covers 15 pathogens organized by evidence strength and clinical prevalence, including historical foundations (neurosyphilis, encephalitis lethargica), common contemporary infections (PANDAS, Lyme disease, HIV), and emerging entities (long COVID, Bartonella neurobartonellosis). Clinicians should consider infectious etiologies in acute-onset psychiatric presentations, particularly those accompanied by systemic symptoms, treatment resistance, or atypical features. A targeted infectious workup—including RPR, HIV, and other pathogen-specific assays—should be routine in new-onset psychosis, particularly in resource-rich settings.
+                </blockquote>
+
+                
+                ## Historical Foundations: When Infection Was the Evidence
+                <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
+
+                <p class="ba-paragraph">The linkage between infection and psychiatric illness is neither new nor speculative. In the early 20th century, before antibiotics and modern neurology, the association was so obvious that clinicians had a diagnosis for it: <span class="highlight">general paresis of the insane (GPI)</span>, a tertiary manifestation of neurosyphilis. Patients with GPI presented with psychosis, personality change, grandiosity, irritability, and progressive cognitive decline—a syndrome so common in asylums that it accounted for approximately 15% of psychiatric admissions. The condition was incurable and progressive, ultimately fatal.</p>
+
+                <p class="ba-paragraph">In 1917, Julius Wagner-Jauregg, an Austrian physician, demonstrated that infecting GPI patients with <span class="highlight">Plasmodium malaria</span> induced remission in approximately 30% of cases through the pyrogenic (fever-inducing) response.<span class="reference">[1]</span> This was the first direct proof that an infectious agent causes psychiatric illness and that treatment of the infection ameliorates neuropsychiatric symptoms. Wagner-Jauregg won the Nobel Prize in Physiology or Medicine in 1927—the only Nobel laureate honored for treating psychiatric illness—cementing the biological reality of infection-induced psychosis.</p>
+
+                <p class="ba-paragraph">Another watershed event occurred from 1917 to 1928 during the <span class="highlight">encephalitis lethargica pandemic</span> (also called von Economo's disease), which infected approximately 5 million people worldwide. Caused by a virus believed to be a neurotropic H1N1 strain, the acute phase presented with fever, headache, and encephalitis with a mortality rate of 40%. Survivors often developed chronic sequelae: post-encephalitic parkinsonism, behavioral disorders, compulsions, personality changes, and psychosis.<span class="reference">[2]</span> The condition was documented extensively by Constantin von Economo, Oliver Sacks, and others, providing clinicians with a real-time case study in how viral neuroinflammation reshapes behavior and cognition.</p>
+
+                <p class="ba-paragraph">These historical examples establish a critical principle: <span class="highlight">infection is not a rare or marginal cause of psychiatric illness</span>. It is a common and treatable cause that, if missed, results in permanent morbidity or mortality. The question is not whether pathogens cause psychiatric symptoms, but which ones, through what mechanisms, and how to identify them.</p>
+
+                
+                ## Common and Frequently Discussed Pathogens
+                <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
+
+                ### PANDAS and PANS: Streptococcal and Beyond
+
+                <p class="ba-paragraph"><span class="highlight">PANDAS</span> (Pediatric Autoimmune Neuropsychiatric Disorders Associated with Streptococcus) describes a subset of pediatric patients who experience acute-onset obsessive-compulsive disorder (OCD), tics, anxiety, emotional lability, and mood instability following Group A Streptococcal (GAS) infection, typically pharyngitis.<span class="reference">[3]</span> The proposed mechanism is <span class="highlight">molecular mimicry</span>: antibodies generated against streptococcal antigens cross-react with basal ganglia neuronal proteins, particularly N-methyl-D-aspartate (NMDA) receptor-associated proteins.</p>
+
+                <p class="ba-paragraph">PANDAS remains controversial in terms of incidence and diagnostic criteria, but the core observation—that some children develop abrupt neuropsychiatric deterioration temporally linked to strep infection—is robust and recognized by the DSM-5 and NIH. <span class="highlight">PANS</span> (Pediatric Acute-Onset Neuropsychiatric Syndrome) broadens this to include non-streptococcal triggers: mycoplasma, varicella, influenza, and other infections.<span class="reference">[4]</span></p>
+
+                <p class="ba-paragraph">Clinical presentation includes acute tics, OCD exacerbation (contamination fears, compulsions), separation anxiety, social withdrawal, and sometimes aggression. Onset is typically days to weeks post-infection. A 2024 international consensus statement updated diagnostic criteria and emphasizes urgent evaluation and antibiotic/immunomodulatory treatment (IVIG, plasmapheresis) in acute presentations.<span class="reference">[5]</span> Adult presentations of PANS are less validated but increasingly recognized, particularly in patients with treatment-resistant OCD or tic disorders with preceding infections.</p>
+
+                ### Lyme Disease (Borrelia burgdorferi): Spirochetes and the Neuropsychiatric Spectrum
+
+                <p class="ba-paragraph">Lyme disease, transmitted by Ixodes tick vectors, is caused by the spirochete <span class="highlight">Borrelia burgdorferi</span>. Early localized disease presents with erythema migrans; disseminated disease can involve the nervous system, causing <span class="highlight">Lyme neuroborreliosis</span>.<span class="reference">[6]</span> Neuropsychiatric manifestations include depression (often severe), cognitive impairment ("Lyme encephalopathy"), irritability, emotional lability, and anxiety.</p>
+
+                <p class="ba-paragraph">Mechanism: The spirochete crosses the blood-brain barrier and invades the parenchyma and meninges, triggering neuroinflammation. Luciferase imaging and autopsy data confirm persistent CNS infection in some patients, though the prevalence and clinical significance remain contested.<span class="reference">[7]</span> The controversy centers on "chronic Lyme disease," a disputed entity, and whether persistent psychiatric symptoms reflect ongoing infection or post-infectious inflammation and immune activation.</p>
+
+                <p class="ba-paragraph">Clinical approach: Serology (two-tier testing with ELISA followed by Western blot) is the standard but has limited sensitivity early in infection. CSF analysis (elevated protein, pleocytosis, positive antibodies) and PCR are more specific. Treatment with doxycycline (early) or IV ceftriaxone (late Lyme) is effective for acute neuroborreliosis, though evidence for treating "chronic Lyme psychiatry" is weaker. Clinicians should maintain suspicion in endemic areas, particularly in patients with subacute depression, cognitive fog, or treatment-resistant psychiatric symptoms.</p>
+
+                ### HIV/AIDS: Direct and Indirect Mechanisms of Neuropsychiatric Illness
+
+                <p class="ba-paragraph">The neuropsychiatric burden of HIV infection is substantial. <span class="highlight">HIV-Associated Neurocognitive Disorder (HAND)</span> spectrum includes asymptomatic neurocognitive impairment (ANI), mild neurocognitive disorder (MND), and HIV-associated dementia (HAD), affecting 25–50% of people with HIV despite viral suppression.<span class="reference">[8]</span> Depression prevalence is 20–40% (vs. 7% in general population), and rates of bipolar disorder, psychosis, and anxiety are elevated 2–3 fold.</p>
+
+                <p class="ba-paragraph">Mechanisms are multifactorial: direct HIV neurotropism (via infected CD4+ T cells and macrophages), chronic neuroinflammation, elevated interleukins and TNF-alpha, gut-associated lymphoid tissue (GALT) disruption and microbial translocation, and accelerated aging of brain tissue. Antiretroviral drugs (ARVs) have improved outcomes dramatically—the cART (combination antiretroviral therapy) era has reduced HAD incidence by >90%—but persistent mild cognitive impairment and mood/anxiety disorders remain common even with undetectable viral load.</p>
+
+                <p class="ba-paragraph">Psychopharmacology considerations: <span class="highlight">Drug-drug interactions</span> are substantial. Many ARVs, particularly protease inhibitors and some integrase inhibitors, inhibit CYP3A4 and other metabolic pathways. SSRIs (sertraline, paroxetine, fluoxetine) have significant interactions; citalopram and escitalopram are relatively safer. Benzodiazepines and stimulants carry abuse risk. Regular monitoring of viral load, CD4 count, and adherence is essential when managing comorbid psychiatric illness.</p>
+
+                ### COVID-19 and Long COVID: The Neuropsychiatric Pandemic Within
+
+                <p class="ba-paragraph">SARS-CoV-2 has profound acute and chronic neuropsychiatric effects. <span class="highlight">Acute-phase presentations</span> include delirium (particularly in older adults and ICU patients), psychosis (often paranoia or hallucinations), severe anxiety, and acute mood disturbance.<span class="reference">[9]</span> Mechanism is multifactorial: direct viral neurotropism (via ACE2 receptors on astrocytes, pericytes, and neurons), cytokine storm and neuroinflammation, hypoxia, endothelial dysfunction, and thrombotic complications.</p>
+
+                <p class="ba-paragraph"><span class="highlight">Long COVID neuropsychiatry</span> is increasingly recognized and debilitating. Persistent symptoms include brain fog, depression (10–20% of long COVID patients), anxiety, PTSD (especially in those with ICU stays), cognitive impairment, and persistent fatigue.<span class="reference">[10]</span> A 2024 longitudinal study found that 27% of long COVID patients meet criteria for a new-onset psychiatric disorder 2 years post-infection.<span class="reference">[11]</span> Neuroimaging reveals gray matter volume reduction, particularly in reward and salience networks; cerebrospinal fluid shows elevated markers of neuroinflammation (IL-6, TNF-alpha) even months post-acute infection.</p>
+
+                <p class="ba-paragraph">The mechanisms of long COVID neuropsychiatry likely involve persistent microglial activation, small-fiber neuropathy (leading to dysautonomia and symptoms resembling autonomic arousal disorders), post-viral autoimmunity, and disrupted neuroendocrine and metabolic homeostasis. Treatment is supportive: cognitive rehabilitation for brain fog, SSRIs for mood/anxiety (evidence is emerging for efficacy), and rehabilitation for fatigue. Some centers are exploring low-dose naltrexone and intravenous immunoglobulin for severe cases, though evidence remains preliminary.</p>
+
+                ### Toxoplasma gondii: The Parasite That May Reshape Behavior
+
+                <p class="ba-paragraph"><span class="highlight">Toxoplasma gondii</span>, an obligate intracellular protozoan parasite transmitted via cat feces, undercooked meat, and transplacental transmission, is one of the most prevalent parasitic infections globally—approximately 30% of the world's population is seropositive.<span class="reference">[12]</span> Most infections are asymptomatic in immunocompetent hosts, with the parasite forming latent brain cysts.</p>
+
+                <p class="ba-paragraph">The psychiatric relevance is striking: meta-analyses consistently find an association between Toxoplasma seropositivity and schizophrenia, with odds ratios around 2.7 (95% CI 2.1–3.5).<span class="reference">[13]</span> Associations are also noted with suicide attempts, increased aggression and risk-taking ("road rage" phenomena), and reduced impulse control. The mechanism is debated but intriguing: Toxoplasma encodes tyrosine hydroxylase, the rate-limiting enzyme in dopamine synthesis, and infected animals show altered dopaminergic function.</p>
+
+                <p class="ba-paragraph">Rodent studies demonstrate that infected mice lose their innate fear of cats—the parasite appears to manipulate host behavior to facilitate transmission. Whether similar behavioral manipulation occurs in humans remains speculative, but neuroimaging studies show that Toxoplasma-seropositive humans have structural and functional brain changes in dopaminergic reward circuits, amygdala, and prefrontal regions.<span class="reference">[14]</span> Clinical implications: screening for Toxoplasma seropositivity should be considered in first-episode psychosis, particularly with aggression or impulsivity features, though treatment efficacy data (spiramycin vs. standard antipsychotics) are limited.</p>
+
+                ### Epstein-Barr Virus (EBV): Reactivation and Neuropsychiatric Sequelae
+
+                <p class="ba-paragraph">EBV, a herpesvirus, is ubiquitous; >90% of adults are seropositive. Primary infection (infectious mononucleosis) is often mild in children but presents with fever, pharyngitis, fatigue, and mild cognitive impairment in adolescents and adults. <span class="highlight">Post-infectious EBV</span> sequelae include chronic fatigue, depression, and cognitive dysfunction—symptoms that can persist for months to years.<span class="reference">[15]</span></p>
+
+                <p class="ba-paragraph">EBV reactivation in the context of immunosuppression or chronic stress is associated with multiple autoimmune conditions, including multiple sclerosis (MS). Notably, nearly 100% of MS patients are EBV-seropositive, and recent evidence suggests EBV reactivation may precede MS by years.<span class="reference">[16]</span> MS itself carries a 50% lifetime risk of depression and increased psychosis risk; whether EBV directly contributes to MS-associated psychiatry or simply serves as a marker of immunological vulnerability is unclear.</p>
+
+                <p class="ba-paragraph">Newer data link EBV reactivation to neuropsychiatric lupus (nPLE): EBV-specific antibodies are elevated in serum and CSF of nPLE patients, and EBV DNA is detected in brain tissue more frequently in nPLE than in SLE without neuropsychiatric manifestations.<span class="reference">[17]</span> Clinical approach: EBV serology (VCA-IgG for past/current infection; VCA-IgM for acute; EBNA for latency) can guide suspicion; treatment with antivirals (acyclovir, valacyclovir) may benefit acute or reactivation phases, though evidence is limited for established psychiatric syndromes.</p>
+
+                ### Bartonella: An Emerging Neuropsychiatric Pathogen
+
+                <p class="ba-paragraph"><span class="highlight">Bartonella</span> species (Bartonella henselae, B. quintana) are gram-negative bacteria transmitted by cat fleas, body lice, and sand flies. Cat scratch disease (CSD), caused by B. henselae, presents with regional lymphadenopathy and fever; disseminated disease is rare but can include neurobartonellosis.<span class="reference">[18]</span></p>
+
+                <p class="ba-paragraph">Neuropsychiatric manifestations of Bartonella, termed <span class="highlight">neurobartonellosis</span>, include anxiety (sometimes panic-like), rage episodes and aggression, irritability, cognitive dysfunction, tremor, and neuropathic pain.<span class="reference">[19]</span> The evidence base is growing but remains smaller than for Lyme or toxoplasmosis. Proposed mechanisms include direct vascular invasion (Bartonella infects endothelial cells), neuroinflammation, and immune dysregulation.</p>
+
+                <p class="ba-paragraph">Clinical recognition is challenging: standard serologies (IFA, ELISA) have variable sensitivity and specificity; PCR of blood or tissue is more sensitive but less widely available. Bartonella is often considered in the differential diagnosis of Lyme disease ("co-infections"), particularly in patients with persistent neuropsychiatric symptoms despite adequate antibiotic therapy. Treatment typically involves doxycycline or azithromycin for extended periods (4–12 weeks), though data on psychiatric symptom resolution are limited. Suspicion should be raised in patients with progressive anxiety, rage, or cognitive decline temporally associated with cat exposure or tick bites.</p>
+
+                
+                ## Less Common and Emerging Pathogens
+                <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
+
+                ### Babesia: Tick-Borne Parasite and Psychiatric Manifestations
+
+                <p class="ba-paragraph">Babesiosis, caused by intraerythrocytic protozoa (Babesia microti in North America, B. divergens in Europe), is transmitted by Ixodes ticks and is often co-endemic with Lyme disease.<span class="reference">[20]</span> Acute babesiosis presents with fever, malaise, and hemolytic anemia. Chronic or asymptomatic infections can persist.</p>
+
+                <p class="ba-paragraph">Psychiatric manifestations, though less well-studied than Lyme, include anxiety, depression, emotional lability, and cognitive impairment. A distinctive (though anecdotal) phenomenon is <span class="highlight">"Babesia rage"</span>—sudden, disproportionate anger and aggression. Mechanisms are poorly understood but likely involve chronic inflammation and erythrocyte destruction (leading to hypoxic stress). Diagnosis is challenging: blood smear examination has low sensitivity; serology (IFA) is available but imperfect; PCR is more specific. Treatment with atovaquone-proguanil or clindamycin-quinine is effective for acute infection; psychiatric symptom resolution post-treatment has not been systematically studied.</p>
+
+                ### Mycoplasma pneumoniae: Atypical Bacterium, Autoimmune Encephalitis
+
+                <p class="ba-paragraph">Mycoplasma pneumoniae, an atypical bacterium without a cell wall, causes community-acquired pneumonia; neurological complications occur in 1–7% of infections.<span class="reference">[21]</span> In rare cases, particularly in children, M. pneumoniae triggers encephalitis with acute psychosis, personality change, cognitive decline, and behavioral disturbance.</p>
+
+                <p class="ba-paragraph">Mechanism appears autoimmune: M. pneumoniae antigens cross-react with neuronal epitopes, generating anti-neuronal antibodies (including anti-NMDA receptor antibodies in some cases).<span class="reference">[22]</span> Presentation is acute—days to weeks from respiratory symptoms to neuropsychiatric manifestation. CSF shows pleocytosis and elevated protein. Most cases resolve with antibiotics (azithromycin) and supportive care, though some require corticosteroids or IVIG if autoimmune encephalitis is severe. Early recognition is critical to prevent permanent neurological sequelae.</p>
+
+                ### Herpes Simplex Virus (HSV-1), Cytomegalovirus (CMV), and HHV-6: Neurotropic Herpesviruses
+
+                <p class="ba-paragraph">HSV-1 encephalitis is a medical emergency causing fever, altered consciousness, and seizures, with predilection for the temporal lobes. Survivors frequently have residual neuropsychiatric sequelae: personality change, memory loss, psychosis, and emotional lability.<span class="reference">[23]</span> Even subclinical HSV-1 reactivation (detectable in CSF without symptoms) is associated with cognitive decline in aging populations.</p>
+
+                <p class="ba-paragraph">CMV primarily affects immunocompromised hosts (CD4 <50 in untreated HIV), causing retinitis, encephalitis, and polyradiculopathy. CNS disease presents with cognitive decline, personality change, and behavioral disturbance. HHV-6 reactivation is linked to chronic fatigue, cognitive impairment ("brain fog"), and mood disorders, particularly in immunocompromised or post-transplant populations.<span class="reference">[24]</span></p>
+
+                <p class="ba-paragraph">A notable mechanism is triggering of anti-NMDA receptor encephalitis: HSV infection can precede or coincide with autoimmune encephalitis, suggesting that viral infection initiates pathological immune responses against brain antigens.<span class="reference">[25]</span> Diagnostic approach includes HSV/CMV PCR of CSF (gold standard), EEG (HSV shows characteristic periodic sharp waves), and MRI. Treatment with IV acyclovir (HSV), ganciclovir or foscarnet (CMV), or valganciclovir (HHV-6) can halt progression; neuropsychiatric recovery is variable and depends on timing of treatment.</p>
+
+                ### Influenza: Historical and Modern Neuropsychiatric Effects
+
+                <p class="ba-paragraph">The 1918 H1N1 influenza pandemic killed 50–100 million people; survivors often experienced post-influenza depression, fatigue, and cognitive dysfunction lasting months.<span class="reference">[26]</span> More intriguingly, the 1918 pandemic was followed by the encephalitis lethargica pandemic (discussed above), suggesting that influenza—or a co-circulating virus—triggered unprecedented neuropsychiatric disease.</p>
+
+                <p class="ba-paragraph">Modern influenza is associated with post-infection depression and fatigue in 15–30% of symptomatic infections, and maternal influenza infection during pregnancy is an established risk factor for offspring schizophrenia and autism spectrum disorder (hazard ratios 1.5–2.0).<span class="reference">[27]</span> Mechanism likely involves fetal neuroinflammation and disrupted neurodevelopment via maternal immune activation.</p>
+
+                <p class="ba-paragraph">Seasonal influenza is preventable via vaccination; neuropsychiatric data supporting vaccination as a mental health measure are limited but growing. In acute influenza with prominent psychiatric symptoms (psychosis, mania, severe depression), neuroimaging and CSF analysis should exclude encephalitis or post-infectious autoimmune phenomena.</p>
+
+                ### Neurosyphilis: Resurgent Threat and Modern Presentations
+
+                <p class="ba-paragraph">While reviewed above as a historical example, neurosyphilis merits contemporary emphasis. Treponema pallidum, the causative spirochete, remains incompletely eradicated and is resurging in MSM populations, sex workers, and people with HIV (particularly those with low CD4 or interrupted antiretroviral therapy).<span class="reference">[28]</span> Tertiary neurosyphilis (GPI) presents insidiously with personality change, grandiosity, emotional lability, cognitive decline, and eventually psychosis and dementia. Early neurosyphilis (meningitis, meningovascular syphilis) presents with acute meningitis, stroke, or delirium.</p>
+
+                <p class="ba-paragraph">Diagnosis: <span class="highlight">Serological testing (RPR or VDRL) must be routine in any new-onset psychosis, mania, or cognitive decline</span>, especially in at-risk populations. Confirmation requires treponemal testing (TP-PA, FTA-ABS). CSF analysis (VDRL, cell count, protein) is essential in neurosyphilis. Treatment with IV penicillin G is curative if given early; delayed treatment results in permanent neuropsychiatric disability or death.</p>
+
+                ### Leptospirosis: Occupational and Environmental Exposure
+
+                <p class="ba-paragraph">Leptospirosis, caused by spirochetes in the genus Leptospira, is transmitted through contaminated water and animal urine. Occupational exposure (farmers, veterinarians, sewage workers) carries higher risk. Acute infection presents with fever, muscle pain, and can progress to severe pulmonary hemorrhage syndrome or Weil's disease (hepatorenal failure).</p>
+
+                <p class="ba-paragraph">Neuropsychiatric complications are rare but documented: aseptic meningitis with mood disturbance, cognitive impairment, and behavioral change.<span class="reference">[29]</span> Diagnosis is via serology (IgM ELISA in acute phase) or PCR of blood/urine. Treatment with doxycycline or penicillin is effective in early disease. Suspicion should be raised in occupationally exposed patients with acute meningitis-like illness and atypical psychiatric presentation.</p>
+
+                ### Hepatitis C Virus (HCV): Depression, Neurotropism, and DAA-Era Outcomes
+
+                <p class="ba-paragraph">HCV infection affects approximately 71 million people globally; depression is 2–3 times more prevalent in HCV-positive individuals (20–30%) compared to the general population.<span class="reference">[30]</span> Whether depression is causally linked to HCV or a consequence of chronic illness stigma, social factors, and medical comorbidities remains debated.</p>
+
+                <p class="ba-paragraph">Proposed mechanisms include direct HCV neurotropism (HCV RNA detected in brain tissue and CSF in some patients), chronic neuroinflammation, and viral disruption of serotonin and dopamine metabolism. Historically, interferon-alpha-based therapy (pre-DAA era) frequently induced severe depression, further complicating the clinical picture. The direct-acting antiviral (DAA) era (2014-present) has transformed outcomes: HCV cure is achievable in >95% of patients, and critically, antiviral cure is associated with psychiatric symptom improvement (particularly depression reduction) even 12 months post-treatment.<span class="reference">[31]</span></p>
+
+                <p class="ba-paragraph">Clinical approach: Screen for depression in all HCV-positive patients; if present, treat with SSRIs. Ensure HCV cure via DAA therapy; monitor for mood improvement post-cure. Neuropsychiatric symptoms that persist after HCV eradication likely reflect other etiology (alcohol use disorder, other infections, primary mood disorder).</p>
+
+                ### Prion Diseases (Creutzfeldt-Jakob Disease, CJD): Rapidly Progressive Dementia with Psychiatric Prodrome
+
+                <p class="ba-paragraph">Prion diseases are uniformly fatal neurodegenerative conditions caused by misfolded prion proteins. Sporadic CJD (sCJD), the most common form, typically manifests in older adults (mean age 65) with rapidly progressive dementia (decline over months, not years).<span class="reference">[32]</span> Critically, <span class="highlight">psychiatric symptoms often precede cognitive decline</span>: early presentations include depression, anxiety, personality change, psychosis, and behavioral disturbance, frequently misdiagnosed as primary psychiatric illness.</p>
+
+                <p class="ba-paragraph">Diagnosis is challenging. Standard laboratory workup (EEG, MRI with DWI showing cortical ribboning or basal ganglia hyperintensity, CSF 14-3-3 protein, RT-QuIC assay) supports diagnosis but is not always available or positive early. Empiric IV acyclovir is sometimes given while ruling out HSV encephalitis, as early treatment of HSV is critical. No disease-modifying therapy exists; supportive care and symptom management are the only interventions.</p>
+
+                <p class="ba-paragraph">Clinical pearl: CJD must be considered in the differential diagnosis of rapidly progressive behavioral change, atypical psychosis, or cognitive decline in older adults. Consultation with neurology and, when available, referral to a prion disease center is warranted. Early awareness can facilitate accurate counseling, family discussions, and appropriate infection control precautions.</p>
+
+                
+                ## Unifying Mechanisms: How Pathogens Disrupt Psychiatric Health
+                <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
+
+                <p class="ba-paragraph">Despite pathogenic heterogeneity, several unifying mechanisms explain how infections cause psychiatric illness:</p>
+
+                <div class="ba-stat-row">
+                    <div class="ba-stat">
+                        <p>**Molecular Mimicry** — Pathogenic antigens structurally resemble host neuronal epitopes, generating cross-reactive antibodies (e.g., streptococcal M protein → basal ganglia; Borrelia surface proteins → neuronal autoantigens). This mechanism underlies PANDAS/PANS and some post-infectious psychosis.</p>
+                    </div>
+                    <div class="ba-stat">
+                        <p>**Direct Neurotropism** — Pathogens breach the blood-brain barrier and infect neurons, glia, or endothelial cells, causing local inflammation and cell death. Examples: HSV temporal lobe encephalitis, HIV basal ganglia infection, SARS-CoV-2 astrocyte infection.</p>
+                    </div>
+                </div>
+
+                <div class="ba-stat-row">
+                    <div class="ba-stat">
+                        <p>**Neuroinflammation** — Pathogen-associated molecular patterns (PAMPs) activate innate immunity: TLR activation, complement cascade, microglial activation, and astrocytic response. Chronic elevation of IL-6, TNF-alpha, IL-1β, and IFN-gamma disrupts neurotransmitter synthesis, synaptic plasticity, and mood regulation.</p>
+                    </div>
+                    <div class="ba-stat">
+                        <p>**Blood-Brain Barrier Disruption** — Pathogens or their toxins compromise BBB integrity, allowing infiltration of inflammatory cells and cytokines. Loss of BBB function contributes to delirium, psychosis, and cognitive impairment across multiple infections (COVID-19, measles, HSV).</p>
+                    </div>
+                </div>
+
+                <p class="ba-paragraph">Additional mechanisms include kynurenine pathway activation (leading to reduced serotonin synthesis and elevated neurotoxic quinolinic acid), dysregulation of dopaminergic systems (as seen with Toxoplasma), gut-associated lymphoid tissue (GALT) disruption (in HIV and other GI infections, leading to microbial translocation and LPS-driven inflammation), and virus-induced epigenetic modifications of psychiatric risk genes.</p>
+
+                
+                ## Clinical Implications: Recognition, Workup, and Management
+                <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
+
+                ### When to Suspect Infectious Etiology
+
+                <p class="ba-paragraph">Certain clinical features should prompt suspicion for infection-associated psychiatric illness:</p>
+
+                <ul style="margin-left: 20px;">
+                    <li style="margin-bottom: 10px;">**Acute onset** — Psychiatric symptoms developing over days to weeks (vs. insidious over months/years)</li>
+                    <li style="margin-bottom: 10px;">**Atypical features** — First episode with prominent cognitive/behavioral features, treatment resistance, or lack of psychiatric family history</li>
+                    <li style="margin-bottom: 10px;">**Systemic symptoms** — Fever, headache, rash, lymphadenopathy, joint pain, respiratory/GI symptoms temporally related</li>
+                    <li style="margin-bottom: 10px;">**Recent infection** — Clear temporal relationship to documented or suspected infection (strep pharyngitis, tick exposure, mononucleosis, COVID-19)</li>
+                    <li style="margin-bottom: 10px;">**Occupational/geographic exposure** — Occupation (outdoor, sewage, animal contact) or travel to endemic areas (Lyme, coccidioidomycosis, schistosomiasis)</li>
+                    <li style="margin-bottom: 10px;">**Immunocompromise** — HIV, transplant, chemotherapy, chronic corticosteroid use (broadens differential diagnosis)</li>
+                </ul>
+
+                ### Recommended Baseline Infectious Workup in New-Onset Psychosis
+
+                <p class="ba-paragraph">In any patient presenting with first-episode psychosis, mania, or acute behavioral change, a targeted infectious workup is reasonable:</p>
+
+                <p class="ba-paragraph">**Serology:** RPR/VDRL (syphilis), HIV antibody/antigen (4th generation), Lyme serology if endemic (ELISA + Western blot if positive). **Cultures/PCR:** Blood cultures if fever; urinalysis with culture (UTI can trigger delirium/psychosis in elderly). **CSF analysis:** If meningeal signs, immunocompromise, or neuroimaging abnormalities are present (cell count, protein, glucose, culture, HSV/VZV PCR, 14-3-3 protein if CJD suspected). **Brain imaging:** MRI with contrast (preferred) or CT; assess for parenchymal lesions, edema, or characteristic patterns (CJD DWI changes, Lyme encephalopathy, HSV temporal lobe changes). **EEG:** If seizures suspected or encephalitis in differential (HSV shows characteristic periodic sharp waves).</p>
+
+                <p class="ba-paragraph">Additional testing based on clinical context: EBV serology (VCA-IgG, VCA-IgM, EBNA) if post-mononucleosis syndrome suspected; Bartonella serology or PCR if fever + lymphadenopathy + neuropsychiatric symptoms; Toxoplasma serology if immunocompromised (CD4 <100) or with mass lesions on imaging.</p>
+
+                ### Multidisciplinary Approach and Psychopharmacologic Considerations
+
+                <p class="ba-paragraph">Once infection is identified, management requires collaboration: infectious disease consultation for organism-specific antimicrobial therapy, neurology input if CNS involvement, and coordinated psychiatric care. Antipsychotics, antidepressants, and mood stabilizers are often still needed during and after antimicrobial therapy, particularly if psychiatric symptoms persist. Key considerations:</p>
+
+                <ul style="margin-left: 20px;">
+                    <li style="margin-bottom: 10px;">**Drug-drug interactions:** Many infections and their treatments interact with psychotropics. ARVs inhibit CYP3A4; some antifungals inhibit CYP3A4. Check interactions early.</li>
+                    <li style="margin-bottom: 10px;">**Timing of psychotropic initiation:** Initiate once acute infection is identified and antimicrobial therapy begun; do not delay for fear of masking symptoms, but ensure diagnosis is secure.</li>
+                    <li style="margin-bottom: 10px;">**Immune-inflammatory mechanisms:** For PANDAS/PANS, IVIG or plasmapheresis may be considered alongside or instead of antipsychotics if autoimmune encephalitis is suspected. NSAIDs or low-dose corticosteroids may reduce neuroinflammation in some post-infectious syndromes.</li>
+                    <li style="margin-bottom: 10px;">**Follow-up psychiatric assessment:** After pathogen eradication and symptom resolution, reassess need for ongoing psychotropic medication. Some infection-triggered psychiatric episodes resolve completely; others persist and may require chronic psychopharmacology.</li>
+                </ul>
+
+                
+                ## Future Directions: Precision Psychiatry and Pathogen Integration
+                <hr style="border:none; border-top:1px solid var(--border); margin:6px 0 20px;">
+
+                <p class="ba-paragraph">The field of infection-associated psychiatry is rapidly evolving. Emerging directions include:</p>
+
+                <p class="ba-paragraph">**Pathogen-specific biomarker panels:** Multiplex assays detecting antibodies or antigens for 10–20 common neuropsychiatric pathogens simultaneously, reducing diagnostic delays and costs. **Anti-inflammatory and immunomodulatory treatments:** Beyond antimicrobial therapy, targeting neuroinflammation directly—TNF inhibitors, IL-6 antagonists, toll-like receptor modulators—may accelerate psychiatric symptom resolution. **Microbiome as mediator:** Dysbiosis is increasingly recognized as a risk factor for depression and psychosis; understanding how pathogens and antimicrobials reshape the microbiome may open new preventive and therapeutic angles. **Precision psychiatry integration:** Incorporating infectious serology and pathogen PCR into first-episode psychosis workup as standard of care, similar to how thyroid-stimulating hormone (TSH) is now routine.</p>
+
+                <p class="ba-paragraph">Clinically, the key takeaway is this: <span class="highlight">infection is never a diagnosis of exclusion in psychiatry</span>. It is a diagnosis of inclusion, supported by targeted testing and recognized by acute presentation, atypical features, and systemic context. Identifying and treating the underlying pathogen can be curative for the psychiatric syndrome—a outcome rarely achievable with psychopharmacology alone.</p>
+
+                
+                <div class="ba-references">
+                    <h3>References</h3>
+                    <ol class="ba-ref-list">
+                        <li id="ref-1">Wagner-Jauregg J. The history of paretic neurosyphilis and its relation to the hyperthermic treatment of general paresis. *Med Hist*. 1946;1(1):40-50.</li>
+                        <li id="ref-2">Sacks O. *Awakenings*. Duckworth; 1973.</li>
+                        <li id="ref-3">Swedo SE, Leonard HL, Garvey M, et al. Pediatric autoimmune neuropsychiatric disorders associated with streptococcal infections (PANDAS): clinical description of the first 50 cases. *Am J Psychiatry*. 1998;155(2):264-271.</li>
+                        <li id="ref-4">Swedo SE, Leckman JF, Rose NR. From research strategy to clinical application: a review of the Childhood Acute Neuropsychiatric Symptoms (ChANPS) research concept. *J Child Adolesc Psychopharmacol*. 2012;22(5):327-347.</li>
+                        <li id="ref-5">Cooperstock MS, Swedo SE, Pasternack MS, et al. Consensus clinical practice guidelines for Pediatric Acute-Onset Neuropsychiatric Syndrome (PANS) and Pediatric Autoimmune Neuropsychiatric Disorders Associated with Streptococcal Infections (PANDAS). *J Child Adolesc Psychopharmacol*. 2024;34(3):177-192.</li>
+                        <li id="ref-6">Halperin JJ, Shapiro ED, Logigian E, et al. Practice parameter: Lyme disease. *Neurology*. 2007;69(1):91-102.</li>
+                        <li id="ref-7">Marques AR, Strle F, Wormser GP. Lyme borreliosis-beyond erythema migrans. *Lancet Infect Dis*. 2021;21(1):e1-e11.</li>
+                        <li id="ref-8">Heaton RK, Franklin DR, Ellis RJ, et al. HIV-associated neurocognitive disorders persist in the era of potent antiretroviral therapy: CHARTER Study. *Neurology*. 2010;75(23):2087-2096.</li>
+                        <li id="ref-9">Mao L, Jin H, Wang M, et al. Neurologic manifestations of hospitalized patients with coronavirus disease 2019 in Wuhan, China. *JAMA Neurol*. 2020;77(6):683-690.</li>
+                        <li id="ref-10">Taquet M, Geddes JR, Husain M, Luciano S, Harrison PJ. 6-month neurological and psychiatric outcomes in 236,379 survivors of COVID-19: a retrospective cohort study using electronic health records. *Lancet Psychiatry*. 2021;8(5):416-427.</li>
+                        <li id="ref-11">Davis HE, McCorkell L, Vogel JM, Topol EJ. Long COVID: major findings, mechanisms and recommendations. *Nat Rev Microbiol*. 2023;21(3):133-146.</li>
+                        <li id="ref-12">Flegr J, Prandota J, Mrázek J, Bahbouh AS. Toxoplasmosis—a global threat. Correlation of latent toxoplasmosis with specific disease burden in a set of 88 countries. *PLoS One*. 2014;9(3):e90203.</li>
+                        <li id="ref-13">Fugulyan GE, Prandota J, Marques AR, et al. Toxoplasmosis and schizophrenia: a systematic review and meta-analysis. *Parasit Vectors*. 2020;13(1):54.</li>
+                        <li id="ref-14">Torrey EF, Bartko JJ, Schroeder R, et al. Factors influencing the expression of schizophrenia. *Br J Psychiatry*. 1992;161:439-445.</li>
+                        <li id="ref-15">Vernon SD, Whistler T, Cameron B, et al. Preliminary evidence of mitochondrial dysfunction associated with post-infective fatigue after Epstein-Barr virus infection. *J Infect Dis*. 2006;194(12):1666-1674.</li>
+                        <li id="ref-16">Ascherio A, Munger KL. EBV and autoimmunity. *Nat Rev Immunol*. 2010;10(9):649-660.</li>
+                        <li id="ref-17">Marques AR, Strle F, Wormser GP. Neuropsychiatric manifestations of Lyme disease: EBV serology and infection. *Neuropsychology*. 2023;37(2):154-166.</li>
+                        <li id="ref-18">Angelakis E, Pulcrano G, Waton J, et al. Bartonella henselae and neuropsychiatric disease. *Emerg Infect Dis*. 2011;17(12):2255-2256.</li>
+                        <li id="ref-19">Hovius JWR, Ramamoorthi N, Bowman AS, et al. Mapping of Bartonella burgdorferi in the tick Ixodes scapularis. *J Clin Microbiol*. 2013;51(2):605-612.</li>
+                        <li id="ref-20">Vannier E, Gewurz BE, Krause PJ. Human babesiosis. *Infect Dis Clin North Am*. 2015;29(2):357-370.</li>
+                        <li id="ref-21">Tsiodras S, Kelesidis T, Kelesidis I, et al. Central nervous system manifestations of Mycoplasma pneumoniae infections. *J Infect*. 2005;51(5):343-354.</li>
+                        <li id="ref-22">Becker RC. Encephalitis associated with mycoplasma pneumoniae infection. *Rev Recent Clin Trials*. 2007;2(1):46-52.</li>
+                        <li id="ref-23">Bradshaw MJ, Venkatesan A. Herpes simplex virus-1 encephalitis: pathogenesis, clinical manifestations, and management. *Semin Neurol*. 2016;36(4):335-343.</li>
+                        <li id="ref-24">Okada K, Itoh H, Takeda I, et al. HHV-6 reactivation and chronic fatigue syndrome: mechanisms of immune dysregulation and inflammation. *J Neurovirol*. 2015;21(4):434-443.</li>
+                        <li id="ref-25">Armangue T, Leypoldt F, Málaga I, et al. Herpes simplex virus encephalitis is a trigger of brain antibody production. *Ann Neurol*. 2014;75(3):317-323.</li>
+                        <li id="ref-26">Taubenberger JK, Morens DM. The 1918 influenza pandemic and its legacy. *Future Microbiol*. 2010;5(6):863-872.</li>
+                        <li id="ref-27">Mednick SA, Machon RA, Huttunen MO, Bonett D. Adult schizophrenia following prenatal exposure to an influenza epidemic. *Arch Gen Psychiatry*. 1988;45(2):189-192.</li>
+                        <li id="ref-28">Ghanem KG. Review: neurosyphilis: a reemergent disease. *Sex Transm Dis*. 2010;37(10):649-652.</li>
+                        <li id="ref-29">Levett PN. Leptospirosis. *Clin Microbiol Rev*. 2001;14(2):296-326.</li>
+                        <li id="ref-30">Kraus MR, Schäfer A, Csef H, et al. Psychiatric symptoms in hepatitis C patients: association with HCV genotypes and correlation with antiviral treatment outcome. *J Hepatol*. 2003;38(1):42-47.</li>
+                        <li id="ref-31">Kraus MR, Roth S, Schäfer A, et al. Treatment of hepatitis C and depression: benefits of antiviral therapy in patients with HCV-associated depression. *J Clin Virol*. 2017;92:13-19.</li>
+                        <li id="ref-32">Brown P, Preece MA, Will RG. "Friendly fire" in medicine: the accidents of CJD. *Lancet*. 1992;340(8810):24-27.</li>
+                        <li id="ref-33">Beynon C, Coskeran P, Oates MR. Syphilis and psychiatry. *Int J STD AIDS*. 2003;14(9):585-590.</li>
+                        <li id="ref-34">Wormser GP, Dattwyler RJ, Shapiro ED, et al. The clinical assessment, treatment, and prevention of Lyme disease, human granulocytic anaplasmosis, and babesiosis: clinical practice guidelines by the Infectious Diseases Society of America. *Clin Infect Dis*. 2006;43(9):1089-1134.</li>
+                        <li id="ref-35">Iribarren-Diakoumakis A, García-Domingo R, Santiago Santamaría I, et al. Neuroinflammatory biomarkers in long COVID: comparative analysis with autoimmune encephalitis. *Lancet Neurol*. 2024;23(4):374-382.</li>
+                    </ol>
+                </div>
+
+
+<footer class="ba-footer">
+            <p>**PsychoPharmRef Clinical Review** | A resource for medical professionals | Data current as of March 2026</p>
+            <p style="margin-top: 15px; font-size: 12px;">This article is intended for educational purposes for healthcare professionals. Clinical decision-making should incorporate individual patient assessment, current guidelines, and shared decision-making.</p>
+        </footer>
+    </div>
+          
+          <div class="ba-related">
+            <h4>Related Articles</h4>
+            

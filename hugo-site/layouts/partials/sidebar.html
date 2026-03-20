@@ -1,0 +1,201 @@
+<!-- Sidebar Navigation -->
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo"><a href="{{ "/" | relURL }}" style="text-decoration:none;color:inherit;">PsychoPharm<span>Ref</span></a></div>
+    <div class="logo-sub">Clinical Reference</div>
+  </div>
+
+  <ul class="nav-links">
+    <!-- Home -->
+    <li>
+      <a href="{{ "/" | relURL }}" class="nav-link" data-section="overview">
+        <span class="nav-icon">&#8962;</span> Home
+      </a>
+    </li>
+
+    <!-- Psychopharmacology -->
+    <li class="nav-group" data-group="psychopharm">
+      <button class="nav-parent-btn">
+        <span class="nav-icon">&#128138;</span>
+        <span class="nav-parent-label">Psychopharmacology</span>
+        <span class="nav-caret">&#9658;</span>
+      </button>
+      <ul class="nav-sub">
+        <li><a href="/#drug-table" class="nav-link nav-sub-link">Drug Database</a></li>
+        <li><a href="/#p450" class="nav-link nav-sub-link">P450 Interactions</a></li>
+        <li><a href="/#receptor-binding" class="nav-link nav-sub-link">Receptor Binding</a></li>
+        <li><a href="/#glossary" class="nav-link nav-sub-link">Receptor Glossary</a></li>
+        <li><a href="/#pk-curves" class="nav-link nav-sub-link">PK Curves</a></li>
+      </ul>
+    </li>
+
+    <!-- Clinical Tools -->
+    <li class="nav-group" data-group="tools">
+      <button class="nav-parent-btn">
+        <span class="nav-icon">&#128295;</span>
+        <span class="nav-parent-label">Clinical Tools</span>
+        <span class="nav-caret">&#9658;</span>
+      </button>
+      <ul class="nav-sub">
+        <li class="nav-sub-divider">Medication Tools</li>
+        <li><a href="/#qt-risk" class="nav-link nav-sub-link">QT Risk Tool</a></li>
+        <li><a href="/#refill-calendar" class="nav-link nav-sub-link">Refill Calendar</a></li>
+        <li><a href="/#med-compare" class="nav-link nav-sub-link">Med Comparison</a></li>
+        <li><a href="/#med-taper" class="nav-link nav-sub-link">Taper / Start</a></li>
+
+        <li class="nav-sub-divider">Cognitive &amp; Neurodevelopmental</li>
+        <li><a href="/#cdr-tool" class="nav-link nav-sub-link">CDR Staging</a></li>
+        <li><a href="/#slums-tool" class="nav-link nav-sub-link">SLUMS Exam</a></li>
+        <li><a href="/#asd-tool" class="nav-link nav-sub-link">ASD Severity</a></li>
+        <li><a href="/#adl-tool" class="nav-link nav-sub-link">ADL / IADL</a></li>
+        <li><a href="/#asrs-tool" class="nav-link nav-sub-link">ASRS (ADHD)</a></li>
+
+        <li class="nav-sub-divider">Mood &amp; Anxiety Scales</li>
+        <li><a href="/#cidi-tool" class="nav-link nav-sub-link">CIDI Bipolar Screen</a></li>
+        <li><a href="/#ymrs-tool" class="nav-link nav-sub-link">YMRS (Mania)</a></li>
+        <li><a href="/#pcl5-tool" class="nav-link nav-sub-link">PCL-5 (PTSD)</a></li>
+        <li><a href="/#ybocs-tool" class="nav-link nav-sub-link">Y-BOCS (OCD)</a></li>
+        <li><a href="/#msibpd-tool" class="nav-link nav-sub-link">MSI-BPD</a></li>
+
+        <li class="nav-sub-divider">Psychosis &amp; Movement</li>
+        <li><a href="/#panss-tool" class="nav-link nav-sub-link">PANSS</a></li>
+        <li><a href="/#bfcrs-tool" class="nav-link nav-sub-link">Catatonia (BFCRS)</a></li>
+        <li><a href="/#aims-tool" class="nav-link nav-sub-link">AIMS (Dyskinesia)</a></li>
+
+        <li class="nav-sub-divider">Sleep</li>
+        <li><a href="/#ess-tool" class="nav-link nav-sub-link">Epworth (Sleepiness)</a></li>
+
+        <li class="nav-sub-divider">Safety</li>
+        <li><a href="/#suicide-risk-tools" class="nav-link nav-sub-link">Suicide Risk</a></li>
+      </ul>
+    </li>
+
+    <!-- Clinical Insights -->
+    <li class="nav-group" data-group="insights">
+      <button class="nav-parent-btn">
+        <span class="nav-icon">&#129504;</span>
+        <span class="nav-parent-label">Clinical Insights</span>
+        <span class="nav-caret">&#9658;</span>
+      </button>
+      <ul class="nav-sub">
+        <li><a href="/#cog-domains" class="nav-link nav-sub-link">Cognitive Domains</a></li>
+        <li><a href="/#neuro-circuits" class="nav-link nav-sub-link">Neuropsych Circuits</a></li>
+        <li><a href="/#brain-regions" class="nav-link nav-sub-link">Brain Regions</a></li>
+      </ul>
+    </li>
+
+    <!-- Blog -->
+    <li class="nav-group open" data-group="blog">
+      <button class="nav-parent-btn">
+        <span class="nav-icon">&#9998;</span>
+        <span class="nav-parent-label">Blog</span>
+        <span class="nav-caret">&#9658;</span>
+      </button>
+      <ul class="nav-sub">
+        <li><a href="{{ "/blog" | relURL }}" class="nav-link nav-sub-link">All Posts</a></li>
+
+        <li class="nav-sub-divider">Addiction Medicine</li>
+        <li><a href="{{ "/blog/smoking-cessation" | relURL }}" class="nav-link nav-sub-link">Smoking Cessation</a></li>
+        <li><a href="{{ "/blog/alcohol-use-disorder" | relURL }}" class="nav-link nav-sub-link">Alcohol Use Disorder</a></li>
+        <li><a href="{{ "/blog/opioid-use-disorder" | relURL }}" class="nav-link nav-sub-link">Opioid Use Disorder</a></li>
+        <li><a href="{{ "/blog/cannabis-psychiatry" | relURL }}" class="nav-link nav-sub-link">Cannabis &amp; Psychiatry</a></li>
+        <li><a href="{{ "/blog/stimulant-substance-disorders" | relURL }}" class="nav-link nav-sub-link">Stimulant &amp; Other SUDs</a></li>
+
+        <li class="nav-sub-divider">Anxiety &amp; Trauma</li>
+        <li><a href="{{ "/blog/panic-attacks-gad" | relURL }}" class="nav-link nav-sub-link">Panic &amp; GAD</a></li>
+        <li><a href="{{ "/blog/ptsd-cptsd" | relURL }}" class="nav-link nav-sub-link">PTSD &amp; cPTSD</a></li>
+        <li><a href="{{ "/blog/obsessive-compulsive-disorder" | relURL }}" class="nav-link nav-sub-link">OCD</a></li>
+        <li><a href="{{ "/blog/social-anxiety-phobias" | relURL }}" class="nav-link nav-sub-link">Social Anxiety &amp; Phobias</a></li>
+
+        <li class="nav-sub-divider">Mood Disorders</li>
+        <li><a href="{{ "/blog/bipolar-disorder" | relURL }}" class="nav-link nav-sub-link">Bipolar Disorder</a></li>
+        <li><a href="{{ "/blog/major-depressive-disorder" | relURL }}" class="nav-link nav-sub-link">MDD &amp; Dysthymia</a></li>
+        <li><a href="{{ "/blog/seasonal-affective-disorder" | relURL }}" class="nav-link nav-sub-link">Seasonal Affective Disorder</a></li>
+
+        <li class="nav-sub-divider">Stress &amp; Adjustment</li>
+        <li><a href="{{ "/blog/adjustment-disorder" | relURL }}" class="nav-link nav-sub-link">Adjustment Disorder</a></li>
+        <li><a href="{{ "/blog/personality-disorders" | relURL }}" class="nav-link nav-sub-link">Personality Disorders</a></li>
+        <li><a href="{{ "/blog/eating-disorders" | relURL }}" class="nav-link nav-sub-link">Eating Disorders</a></li>
+        <li><a href="{{ "/blog/dissociative-disorders" | relURL }}" class="nav-link nav-sub-link">Dissociative Disorders</a></li>
+
+        <li class="nav-sub-divider">Psychotic Disorders</li>
+        <li><a href="{{ "/blog/schizophrenia" | relURL }}" class="nav-link nav-sub-link">Schizophrenia</a></li>
+        <li><a href="{{ "/blog/first-break-psychosis" | relURL }}" class="nav-link nav-sub-link">First Break Psychosis</a></li>
+
+        <li class="nav-sub-divider">Neurodevelopmental</li>
+        <li><a href="{{ "/blog/adult-adhd" | relURL }}" class="nav-link nav-sub-link">Adult ADHD</a></li>
+        <li><a href="{{ "/blog/autism-spectrum-disorder" | relURL }}" class="nav-link nav-sub-link">Autism Spectrum Disorder</a></li>
+
+        <li class="nav-sub-divider">Movement &amp; Neurodegeneration</li>
+        <li><a href="{{ "/blog/parkinsons-disease" | relURL }}" class="nav-link nav-sub-link">Parkinson&#8217;s Disease</a></li>
+        <li><a href="{{ "/blog/alzheimers-disease" | relURL }}" class="nav-link nav-sub-link">Alzheimer&#8217;s Disease</a></li>
+        <li><a href="{{ "/blog/frontotemporal-dementia" | relURL }}" class="nav-link nav-sub-link">Frontotemporal Dementia</a></li>
+        <li><a href="{{ "/blog/antipsychotic-movement-disorders" | relURL }}" class="nav-link nav-sub-link">Movement Disorders</a></li>
+        <li><a href="{{ "/blog/psychiatric-medication-tremors" | relURL }}" class="nav-link nav-sub-link">Medication Tremors</a></li>
+
+        <li class="nav-sub-divider">Neuropsychiatry</li>
+        <li><a href="{{ "/blog/traumatic-brain-injury" | relURL }}" class="nav-link nav-sub-link">TBI &amp; CTE</a></li>
+        <li><a href="{{ "/blog/delirium" | relURL }}" class="nav-link nav-sub-link">Delirium</a></li>
+        <li><a href="{{ "/blog/catatonia" | relURL }}" class="nav-link nav-sub-link">Catatonia</a></li>
+
+        <li class="nav-sub-divider">Neuromodulation &amp; Somatic Therapies</li>
+        <li><a href="{{ "/blog/electroconvulsive-therapy" | relURL }}" class="nav-link nav-sub-link">ECT &amp; Neuromodulation</a></li>
+        <li><a href="{{ "/blog/ketamine-esketamine" | relURL }}" class="nav-link nav-sub-link">Ketamine &amp; Esketamine</a></li>
+
+        <li class="nav-sub-divider">Sleep Medicine</li>
+        <li><a href="{{ "/blog/insomnia" | relURL }}" class="nav-link nav-sub-link">Insomnia</a></li>
+        <li><a href="{{ "/blog/sleep-medications-review" | relURL }}" class="nav-link nav-sub-link">Sleep Medications</a></li>
+
+        <li class="nav-sub-divider">Psychopharmacology</li>
+        <li><a href="{{ "/blog/antipsychotic-review" | relURL }}" class="nav-link nav-sub-link">Antipsychotics Review</a></li>
+        <li><a href="{{ "/blog/antidepressant-review" | relURL }}" class="nav-link nav-sub-link">Antidepressants Review</a></li>
+        <li><a href="{{ "/blog/long-acting-injectables" | relURL }}" class="nav-link nav-sub-link">Long-Acting Injectables</a></li>
+        <li><a href="{{ "/blog/mood-stabilizer-medications" | relURL }}" class="nav-link nav-sub-link">Mood Stabilizers</a></li>
+        <li><a href="{{ "/blog/benzodiazepine-pharmacology" | relURL }}" class="nav-link nav-sub-link">Benzodiazepines</a></li>
+        <li><a href="{{ "/blog/clozapine-clinical-guide" | relURL }}" class="nav-link nav-sub-link">Clozapine Guide</a></li>
+        <li><a href="{{ "/blog/pharmacogenomics-psychiatry" | relURL }}" class="nav-link nav-sub-link">Pharmacogenomics</a></li>
+        <li><a href="{{ "/blog/neuroscience-foundations" | relURL }}" class="nav-link nav-sub-link">Neuroscience Foundations</a></li>
+
+        <li class="nav-sub-divider">Neuroimmunology</li>
+        <li><a href="{{ "/blog/psychoneuroimmunology" | relURL }}" class="nav-link nav-sub-link">Psychoneuroimmunology</a></li>
+        <li><a href="{{ "/blog/infectious-disease-psychiatry" | relURL }}" class="nav-link nav-sub-link">Infectious Disease &amp; Psychiatry</a></li>
+
+        <li class="nav-sub-divider">Environmental Psychiatry</li>
+        <li><a href="{{ "/blog/heavy-metals-environmental-toxins" | relURL }}" class="nav-link nav-sub-link">Heavy Metals &amp; Toxins</a></li>
+
+        <li class="nav-sub-divider">Nutritional Psychiatry</li>
+        <li><a href="{{ "/blog/obesity-weight-loss" | relURL }}" class="nav-link nav-sub-link">Obesity &amp; Weight Loss</a></li>
+        <li><a href="{{ "/blog/folate-b12-mma" | relURL }}" class="nav-link nav-sub-link">Folate, B12 &amp; MMA</a></li>
+        <li><a href="{{ "/blog/vitamin-d" | relURL }}" class="nav-link nav-sub-link">Vitamin D</a></li>
+        <li><a href="{{ "/blog/magnesium-supplementation" | relURL }}" class="nav-link nav-sub-link">Magnesium</a></li>
+
+        <li class="nav-sub-divider">Perinatal Psychiatry</li>
+        <li><a href="{{ "/blog/pregnancy-breastfeeding" | relURL }}" class="nav-link nav-sub-link">Pregnancy &amp; Breastfeeding</a></li>
+
+        <li class="nav-sub-divider">Clinical Practice</li>
+        <li><a href="{{ "/blog/suicide-risk-assessments" | relURL }}" class="nav-link nav-sub-link">Suicide Risk Assessment</a></li>
+        <li><a href="{{ "/blog/grief-bereavement" | relURL }}" class="nav-link nav-sub-link">Grief &amp; Bereavement</a></li>
+        <li><a href="{{ "/blog/medication-changes" | relURL }}" class="nav-link nav-sub-link">Medication Changes</a></li>
+        <li><a href="{{ "/blog/history-psychiatric-medications" | relURL }}" class="nav-link nav-sub-link">Psych Med History</a></li>
+        <li><a href="{{ "/blog/capacity-evaluation" | relURL }}" class="nav-link nav-sub-link">Capacity Evaluation</a></li>
+        <li><a href="{{ "/blog/surrogate-decision-makers" | relURL }}" class="nav-link nav-sub-link">Surrogate Decision-Makers</a></li>
+        <li><a href="{{ "/blog/legal-precedents-psychiatry" | relURL }}" class="nav-link nav-sub-link">Legal Frameworks</a></li>
+        <li><a href="{{ "/blog/court-testimony-psychiatry" | relURL }}" class="nav-link nav-sub-link">Court Testimony</a></li>
+        <li><a href="{{ "/blog/medical-note-writing" | relURL }}" class="nav-link nav-sub-link">Medical Note Writing</a></li>
+        <li><a href="{{ "/blog/psychiatric-interview" | relURL }}" class="nav-link nav-sub-link">Psychiatric Interview</a></li>
+        <li><a href="{{ "/blog/psychotherapy-overview" | relURL }}" class="nav-link nav-sub-link">Psychotherapy Overview</a></li>
+        <li><a href="{{ "/blog/emergency-psychiatry" | relURL }}" class="nav-link nav-sub-link">Emergency Psychiatry</a></li>
+        <li><a href="{{ "/blog/serotonin-syndrome-nms" | relURL }}" class="nav-link nav-sub-link">SS vs NMS</a></li>
+        <li><a href="{{ "/blog/psychiatric-ethics" | relURL }}" class="nav-link nav-sub-link">Psychiatric Ethics</a></li>
+        <li><a href="{{ "/blog/motivational-interviewing" | relURL }}" class="nav-link nav-sub-link">Motivational Interviewing</a></li>
+        <li><a href="{{ "/blog/telepsychiatry" | relURL }}" class="nav-link nav-sub-link">Telepsychiatry</a></li>
+        <li><a href="{{ "/blog/geriatric-psychiatry" | relURL }}" class="nav-link nav-sub-link">Geriatric Psychiatry</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="sidebar-footer">
+    <a href="/#fda-search" class="sf-link">References &amp; Methods</a>
+    <span class="sf-contact">Contact &mdash; coming soon</span>
+  </div>
+</nav>

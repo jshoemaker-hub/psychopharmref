@@ -1,0 +1,1083 @@
+---
+title: "Psychiatric Medications in Pregnancy and Breastfeeding | PsychoPharmRef"
+date: 2026-03-01
+description: ""
+category: ""
+subtitle: "A Clinical Guide to Risk–Benefit Assessment and Safe Prescribing"
+readTime: "15 min read"
+clinicalSummary: ""
+related: ['antidepressant-review', 'mood-stabilizer-medications', 'opioid-use-disorder']
+draft: false
+---
+
+<div class="ba-body">
+          <div class="ba-action-bar">
+            <button class="ba-act-btn" onclick="window.print()" title="Print this article"><svg viewbox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"></path></svg> Print</button>
+            <div class="ba-share-drop">
+              <button class="ba-act-btn" onclick="this.nextElementSibling.classList.toggle('ba-open')" title="Share this article"><svg viewbox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"></path></svg> Share</button>
+              <div class="ba-share-menu" id="share-menu-pregnancy-breastfeeding">
+                <a href="https://twitter.com/intent/tweet?text=Psychiatric%20Medications%20in%20Pregnancy%20and%20Breastfeeding%20%7C%20PsychoPharmRef&url=https%3A%2F%2Fpsychopharmref.com%2Fblog%2Fpregnancy-breastfeeding.html" target="_blank" rel="noopener">X (Twitter)</a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://psychopharmref.com/blog/pregnancy-breastfeeding.html" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:?subject=Psychiatric Medications in Pregnancy and Breastfeeding | PsychoPharmRef&body=Check out this article: https://psychopharmref.com/blog/pregnancy-breastfeeding.html">Email</a>
+                <button onclick="navigator.clipboard.writeText('https://psychopharmref.com/blog/pregnancy-breastfeeding.html').then(function(){this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link'}.bind(this),2000)}.bind(this))">Copy Link</button>
+              </div>
+            </div>
+          </div>
+
+            <p class="ba-lead">
+                The treatment of psychiatric illness in pregnant and nursing patients requires nuanced, evidence-based decision-making that weighs both medication risks and the substantial risks of untreated mental illness. This guide integrates current pharmacologic principles, regulatory frameworks, and clinical evidence to support safe prescribing in the perinatal period.
+            </p>
+
+            
+            ## Historical Context: From Avoidance to Risk-Benefit Analysis
+
+            <p>
+                The treatment of psychiatric illness during pregnancy has evolved dramatically over the past 70 years, shaped by landmark events and shifting regulatory paradigms.
+            </p>
+
+            ### The Thalidomide Disaster and Its Legacy
+            <p>
+                The thalidomide tragedy of the 1960s—when an estimated 10,000 children worldwide were born with severe limb malformations following maternal exposure to this sedative-hypnotic—fundamentally altered the landscape of pregnancy pharmacology. This catastrophe precipitated a dramatic swing toward therapeutic nihilism: the assumption that virtually all medications posed unacceptable risk to the fetus. Consequently, pregnant women were often left untreated, leading to their own preventable suffering and, paradoxically, to worse perinatal outcomes.
+            </p>
+
+            <p>
+                Over decades, clinical and basic science evidence has demonstrated that this "zero medication" approach was itself harmful. The pendulum has now settled on a more rational framework: careful risk-benefit analysis in which the dangers of untreated maternal mental illness must be weighed against medication teratogenicity risk.
+            </p>
+
+            ### FDA Pregnancy Categories to PLLR (2015)
+            <p>
+                Until 2015, medications were classified into simple FDA Pregnancy Categories (A, B, C, D, X), which clinicians often misinterpreted. A drug in Category C was not definitively safer than a Category D agent; the categories reflected the *quality of evidence*, not absolute risk. This oversimplification led to clinical confusion and, frequently, inappropriate medication avoidance.
+            </p>
+
+            <p>
+                In 2015, the FDA implemented the Pregnancy and Lactation Labeling Rule (PLLR), which eliminated the alphabetic categories and instead required manufacturers to provide **narrative summaries** of pregnancy/lactation risk, clinical data, and animal studies. This evidence-based approach permits more nuanced decision-making and better supports shared clinical reasoning with patients.
+            </p>
+
+            ### Recognition of Perinatal Mental Health as Distinct
+            <p>
+                Postpartum depression (PPD) and postpartum psychosis were historically conflated with general depression and psychosis. Only in the 1980s–1990s did perinatal psychiatry emerge as a distinct subspecialty, with recognition that pregnancy and the postpartum period constitute unique neurobiological states characterized by rapid hormonal shifts, immune system remodeling, and altered neurotransmitter signaling.
+            </p>
+
+            <p>
+                Today, clinicians recognize that the risks of untreated perinatal mental illness—including preeclampsia, preterm birth, low birth weight, maternal suicide, infanticide, and impaired mother-infant bonding—often far exceed the risks posed by appropriately selected psychiatric medications.
+            </p>
+
+            
+            ## Pharmacological Principles: Pregnancy and Lactation
+
+            ### Physiological Changes in Pregnancy Affecting Drug Metabolism
+
+            <p>
+                Pregnancy induces profound changes in absorption, distribution, metabolism, and elimination that alter the pharmacokinetics of psychiatric medications:
+            </p>
+
+            <div class="diagram-wrapper">
+                <svg viewbox="0 0 700 450" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <lineargradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#4a7c35;stop-opacity:1"></stop>
+                            <stop offset="100%" style="stop-color:#3a6e28;stop-opacity:1"></stop>
+                        </lineargradient>
+                    </defs>
+                    
+                    <text x="350" y="30" font-size="18" font-weight="bold" text-anchor="middle" fill="#231e14">
+                        Pregnancy-Induced Pharmacokinetic Changes
+                    </text>
+
+                    
+                    <rect x="40" y="60" width="280" height="340" fill="none" stroke="#cfc8ba" stroke-width="2" rx="8"></rect>
+                    <text x="180" y="85" font-size="13" font-weight="bold" text-anchor="middle" fill="#231e14">
+                        Non-Pregnant (Baseline)
+                    </text>
+
+                    
+                    <rect x="380" y="60" width="280" height="340" fill="none" stroke="#4a7c35" stroke-width="2" rx="8"></rect>
+                    <text x="520" y="85" font-size="13" font-weight="bold" text-anchor="middle" fill="#231e14">
+                        Pregnant (↑ Changes)
+                    </text>
+
+                    
+                    <text x="60" y="120" font-size="12" font-weight="600" fill="#231e14">Blood Volume:</text>
+                    <text x="60" y="138" font-size="11" fill="#6b6050">~3.5–4.0 L</text>
+
+                    <text x="400" y="120" font-size="12" font-weight="600" fill="#231e14">Blood Volume:</text>
+                    <text x="400" y="138" font-size="11" fill="#6b6050">+40–50% (5.0–6.0 L)</text>
+                    <rect x="400" y="140" width="240" height="4" fill="url(#grad1)" rx="2"></rect>
+
+                    
+                    <text x="60" y="180" font-size="12" font-weight="600" fill="#231e14">GFR:</text>
+                    <text x="60" y="198" font-size="11" fill="#6b6050">~100–120 mL/min</text>
+
+                    <text x="400" y="180" font-size="12" font-weight="600" fill="#231e14">GFR:</text>
+                    <text x="400" y="198" font-size="11" fill="#6b6050">+40–50% (140–180 mL/min)</text>
+                    <rect x="400" y="200" width="240" height="4" fill="url(#grad1)" rx="2"></rect>
+
+                    
+                    <text x="60" y="240" font-size="12" font-weight="600" fill="#231e14">Hepatic Metabolism:</text>
+                    <text x="60" y="258" font-size="11" fill="#6b6050">CYP baseline</text>
+
+                    <text x="400" y="240" font-size="12" font-weight="600" fill="#231e14">Hepatic Metabolism:</text>
+                    <text x="400" y="258" font-size="11" fill="#6b6050">CYP2D6, 3A4 ↑ 25–60%</text>
+                    <rect x="400" y="260" width="240" height="4" fill="url(#grad1)" rx="2"></rect>
+
+                    
+                    <text x="60" y="300" font-size="12" font-weight="600" fill="#231e14">Protein Binding:</text>
+                    <text x="60" y="318" font-size="11" fill="#6b6050">Baseline albumin</text>
+
+                    <text x="400" y="300" font-size="12" font-weight="600" fill="#231e14">Protein Binding:</text>
+                    <text x="400" y="318" font-size="11" fill="#6b6050">↓ Serum albumin; ↑ unbound drug</text>
+                    <rect x="400" y="320" width="240" height="4" fill="url(#grad1)" rx="2"></rect>
+
+                    
+                    <text x="60" y="360" font-size="12" font-weight="600" fill="#231e14">Placental Transfer:</text>
+                    <text x="60" y="378" font-size="11" fill="#6b6050">Variable by drug property</text>
+
+                    <text x="400" y="360" font-size="12" font-weight="600" fill="#231e14">Placental Transfer:</text>
+                    <text x="400" y="378" font-size="11" fill="#6b6050">Depends on: lipophilicity, MW, pKa</text>
+
+                    
+                    <text x="350" y="430" font-size="10" fill="#6b6050" text-anchor="middle" font-style="italic">
+                        Clinical implication: Many drugs require dose ↑ during pregnancy to maintain therapeutic levels
+                    </text>
+                </svg>
+            </div>
+
+            <p>
+                **Key implications:** Increased blood volume dilutes drug concentration. Elevated glomerular filtration rate increases renal clearance of medications and their metabolites. Enhanced hepatic CYP450 activity (particularly CYP2D6 and CYP3A4) increases the metabolism of SSRIs, some antipsychotics, and other substrates. Decreased serum albumin results in higher unbound (active) drug fractions. These changes collectively mean that serum concentrations of many psychiatric medications decline during pregnancy, often requiring dose increases to maintain therapeutic efficacy. Post-delivery, these changes reverse rapidly—a critical consideration for avoiding toxicity in the postpartum period.
+            </p>
+
+            ### Placental Transfer and Teratogenicity
+
+            <p>
+                The placenta is not a barrier but rather a selectively permeable organ. Drug transfer is governed by:
+            </p>
+
+            <ul style="margin-left: 20px; margin-bottom: 16px; font-size: 14px; color: #6b6050; line-height: 1.75;">
+                <li>**Lipophilicity:** Highly lipophilic drugs cross readily.</li>
+                <li>**Molecular weight:** Drugs <500 Da transfer easily; >1000 Da poorly.</li>
+                <li>**Protein binding:** Highly protein-bound drugs have lower fetal exposure.</li>
+                <li>**pKa:** Weak bases accumulate in acidic fetal circulation (ion trapping).</li>
+            </ul>
+
+            <p>
+                **Critical period for teratogenesis:** Organogenesis occurs between weeks 3 and 8 of gestation. Exposure during this window carries the highest risk for structural birth defects. However, the **background malformation rate** in the general population is ~3%, meaning clinicians must distinguish between absolute risk (the proportion of exposed infants who will have the outcome) and relative risk (the ratio compared to unexposed controls).
+            </p>
+
+            <div class="diagram-wrapper">
+                <svg viewbox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <lineargradient id="timelineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#c04030;stop-opacity:0.3"></stop>
+                            <stop offset="40%" style="stop-color:#8b6914;stop-opacity:0.5"></stop>
+                            <stop offset="100%" style="stop-color:#3a6e28;stop-opacity:0.3"></stop>
+                        </lineargradient>
+                    </defs>
+
+                    
+                    <text x="350" y="30" font-size="18" font-weight="bold" text-anchor="middle" fill="#231e14">
+                        Critical Windows of Fetal Development and Teratogenic Risk
+                    </text>
+
+                    
+                    <line x1="80" y1="70" x2="680" y2="70" stroke="#4a7c35" stroke-width="3"></line>
+
+                    
+                    <text x="80" y="95" font-size="11" text-anchor="middle" fill="#231e14" font-weight="600">Week 0–2</text>
+                    <text x="80" y="110" font-size="10" fill="#6b6050" text-anchor="middle">Preimplantation</text>
+
+                    <text x="210" y="95" font-size="11" text-anchor="middle" fill="#231e14" font-weight="600">Week 3–8</text>
+                    <text x="210" y="110" font-size="10" fill="#6b6050" text-anchor="middle">Organogenesis</text>
+                    <rect x="175" y="60" width="70" height="15" fill="url(#timelineGrad)" rx="3" stroke="#c04030" stroke-width="2"></rect>
+
+                    <text x="400" y="95" font-size="11" text-anchor="middle" fill="#231e14" font-weight="600">Week 9–12</text>
+                    <text x="400" y="110" font-size="10" fill="#6b6050" text-anchor="middle">Histogenesis</text>
+
+                    <text x="580" y="95" font-size="11" text-anchor="middle" fill="#231e14" font-weight="600">Week 13–40</text>
+                    <text x="580" y="110" font-size="10" fill="#6b6050" text-anchor="middle">Growth & Differentiation</text>
+
+                    
+                    <rect x="40" y="150" width="600" height="220" fill="none" stroke="#cfc8ba" stroke-width="1" rx="6"></rect>
+
+                    
+                    <circle cx="90" cy="165" r="4" fill="#3a6e28"></circle>
+                    <text x="110" y="170" font-size="12" font-weight="600" fill="#231e14">All-or-Nothing Period</text>
+                    <text x="110" y="185" font-size="11" fill="#6b6050">Teratogenic exposure → miscarriage or</text>
+                    <text x="110" y="198" font-size="11" fill="#6b6050">normal development (no anomalies)</text>
+
+                    
+                    <circle cx="90" cy="225" r="4" fill="#c04030"></circle>
+                    <text x="110" y="230" font-size="12" font-weight="600" fill="#231e14">HIGH TERATOGENIC RISK</text>
+                    <text x="110" y="245" font-size="11" fill="#6b6050">Organogenesis: most susceptible period.</text>
+                    <text x="110" y="258" font-size="11" fill="#6b6050">Medication exposure may cause structural</text>
+                    <text x="110" y="271" font-size="11" fill="#6b6050">birth defects (e.g., neural tube defects,</text>
+                    <text x="110" y="284" font-size="11" fill="#6b6050">cardiac anomalies, orofacial clefts)</text>
+
+                    
+                    <circle cx="90" cy="330" r="4" fill="#8b6914"></circle>
+                    <text x="110" y="335" font-size="12" font-weight="600" fill="#231e14">Lower Teratogenic Risk</text>
+                    <text x="110" y="350" font-size="11" fill="#6b6050">Major organ formation complete. Risk shifts</text>
+                    <text x="110" y="363" font-size="11" fill="#6b6050">to growth restriction, functional/behavioral</text>
+                    <text x="110" y="376" font-size="11" fill="#6b6050">disturbances (e.g., PNAS, neonatal withdrawal)</text>
+                </svg>
+            </div>
+
+            ### Key Pharmacologic Concepts in Lactation
+
+            <p>
+                Drug entry into breastmilk is governed by the same physicochemical properties that govern placental transfer. The **relative infant dose (RID)** is the percentage of the maternal dose (adjusted for weight) that the infant receives via milk:
+            </p>
+
+            <div class="ba-insight-box">
+                <div class="ba-insight-icon">📊</div>
+                <div>
+                    **RID = (Infant dose via milk / Maternal dose) × 100**<br>
+                    Generally, RID <10% is considered safe; RID 10–25% warrants caution; RID >25% suggests increased risk. Lactation Risk Categories (L1–L5, Hale's system) integrate RID and clinical data to guide prescribing decisions.
+                </div>
+            </div>
+
+            <p>
+                Critical factors include neonatal cytochrome P450 maturity (which increases over the first weeks of life), renal function, and individual infant metabolism. Some medications (e.g., sertraline, paroxetine) achieve very low RIDs due to high protein binding and extensive metabolism, whereas others (e.g., lithium) achieve higher RIDs and require closer monitoring.
+            </p>
+
+            ### Essential Terms: Teratogenicity, Embryotoxicity, Fetotoxicity, and Neonatal Adaptation Syndromes
+
+            <div class="ba-stacked-grid">
+                <div class="ba-stacked-card">
+                    <div class="ba-stacked-sub">Term</div>
+                    <div class="ba-stacked-title">Teratogenicity</div>
+                    <p style="font-size: 12px; color: #6b6050; line-height: 1.55; margin-top: 8px;">
+                        Structural birth defects (e.g., cleft palate, neural tube defects) resulting from fetal exposure during organogenesis. Dose-dependent and time-dependent.
+                    </p>
+                </div>
+                <div class="ba-stacked-card">
+                    <div class="ba-stacked-sub">Term</div>
+                    <div class="ba-stacked-title">Embryotoxicity</div>
+                    <p style="font-size: 12px; color: #6b6050; line-height: 1.55; margin-top: 8px;">
+                        Adverse effects on early embryonic development (weeks 1–8), including increased miscarriage risk.
+                    </p>
+                </div>
+                <div class="ba-stacked-card">
+                    <div class="ba-stacked-sub">Term</div>
+                    <div class="ba-stacked-title">Fetotoxicity</div>
+                    <p style="font-size: 12px; color: #6b6050; line-height: 1.55; margin-top: 8px;">
+                        Toxic effects on the fetus after organogenesis (weeks 9–40), including growth restriction and organ dysfunction.
+                    </p>
+                </div>
+                <div class="ba-stacked-card">
+                    <div class="ba-stacked-sub">Term</div>
+                    <div class="ba-stacked-title">PNAS & PPHN</div>
+                    <p style="font-size: 12px; color: #6b6050; line-height: 1.55; margin-top: 8px;">
+                        Poor neonatal adaptation syndrome (jitteriness, poor feeding, irritability) and persistent pulmonary hypertension of the newborn, associated with SSRI exposure in third trimester.
+                    </p>
+                </div>
+            </div>
+
+            
+            ## The Paradox: Risks of Untreated Mental Illness in Pregnancy
+
+            <p>
+                A critical reframing has occurred in perinatal psychiatry: untreated maternal mental illness poses substantial, often greater risks to both mother and fetus than carefully selected psychiatric medications.
+            </p>
+
+            <div class="ba-stat-row">
+                <div class="ba-stat-card ba-stat-card--alert">
+                    <div class="ba-stat-num">3.7×</div>
+                    <div class="ba-stat-label">Increased risk of preeclampsia with untreated depression</div>
+                </div>
+                <div class="ba-stat-card ba-stat-card--alert">
+                    <div class="ba-stat-num">2.5×</div>
+                    <div class="ba-stat-label">Increased preterm birth risk</div>
+                </div>
+                <div class="ba-stat-card ba-stat-card--alert">
+                    <div class="ba-stat-num">1.6×</div>
+                    <div class="ba-stat-label">Increased low birth weight</div>
+                </div>
+                <div class="ba-stat-card ba-stat-card--alert">
+                    <div class="ba-stat-num">5%</div>
+                    <div class="ba-stat-label">Postpartum psychosis—infanticide risk</div>
+                </div>
+            </div>
+
+            <p>
+                Untreated maternal mental illness also impairs maternal-infant bonding, compromises breastfeeding initiation and duration, and increases the risk of adverse neurodevelopmental outcomes in offspring. The evidence clearly supports that the decision to withhold psychiatric medication to avoid fetal exposure is itself a medical risk—one that must be weighed against medication-specific teratogenic risk.
+            </p>
+
+            
+            ## Medication-Specific Guidance by Condition
+
+            ### Depression (Major Depressive Disorder)
+
+            <p>
+                SSRIs are the first-line agents for depression in pregnancy. Sertraline has the most extensive safety data and lowest neonatal RID.
+            </p>
+
+            <div class="ba-table-wrap">
+                <table class="ba-table">
+                    <thead>
+                        <tr>
+                            <th>Agent</th>
+                            <th>Pregnancy Considerations</th>
+                            <th>Breastfeeding (RID)</th>
+                            <th>Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>**Sertraline**</td>
+                            <td>Extensive safety data; minimal teratogenic risk. Neonatal adaptation syndrome (PNAS) risk ~2–5%.</td>
+                            <td>0.4–2.2% (L2)</td>
+                            <td>**PREFERRED SSRI.** High protein binding limits milk transfer. Weight gain minimal.</td>
+                        </tr>
+                        <tr>
+                            <td>**Fluoxetine**</td>
+                            <td>Good safety record; longer half-life may complicate dose adjustments. PNAS risk similar to other SSRIs.</td>
+                            <td>6–9% (L2)</td>
+                            <td>Active metabolites; slower elimination. Consider if patient already stable on fluoxetine.</td>
+                        </tr>
+                        <tr>
+                            <td>**Paroxetine**</td>
+                            <td>Historical concern (reanalyzed data suggests low risk); consider alternatives if available.</td>
+                            <td>0.5–2.1% (L2)</td>
+                            <td>Pregnancy category D historically due to perceived teratogenic risk; current evidence supports safety.</td>
+                        </tr>
+                        <tr>
+                            <td>**Bupropion**</td>
+                            <td>No teratogenic risk identified; may have advantages for pregnancy-related weight gain. Seizure threshold consideration.</td>
+                            <td>0.5–1.5% (L2)</td>
+                            <td>Useful alternative to SSRIs if weight gain is concern. Avoid in seizure disorder.</td>
+                        </tr>
+                        <tr>
+                            <td>**Tricyclic antidepressants (TCAs)**</td>
+                            <td>Long safety record. Neonatal withdrawal syndrome possible. Anticholinergic side effects problematic in pregnancy.</td>
+                            <td>0.5–3% (L2)</td>
+                            <td>Second-line option; consider if patient tolerates well or SSRI inadequate.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="ba-insight-box">
+                <div class="ba-insight-icon">⚠️</div>
+                <div>
+                    **Neonatal Adaptation Syndrome (PNAS):** Exposure to SSRIs in the third trimester is associated with poor neonatal adaptation (jitteriness, irritability, difficulty feeding) in 2–5% of exposed infants. The vast majority resolve within 48–72 hours. Rare cases of persistent pulmonary hypertension of the newborn (PPHN) have been reported, with an absolute incidence of ~2 per 1000 SSRI-exposed infants (vs. 1–2 per 1000 in unexposed). Despite these small risks, SSRIs remain the preferred first-line treatment for depression in pregnancy.
+                </div>
+            </div>
+
+            ### Generalized Anxiety Disorder (GAD)
+
+            <p>
+                SSRIs are also first-line for anxiety. Buspirone and hydroxyzine are non-habit-forming alternatives; benzodiazepines should be reserved for acute crisis.
+            </p>
+
+            <div class="ba-therapy-grid">
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">💊</div>
+                    <div class="ba-therapy-title">Sertraline or Paroxetine</div>
+                    <p>
+                        First-line pharmacologic treatment. Refer to depression table above for pregnancy/lactation profile. Dosing may need adjustment if clearance increases during pregnancy.
+                    </p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">🧘</div>
+                    <div class="ba-therapy-title">Buspirone</div>
+                    <p>
+                        Non-sedating azapirone anxiolytic with minimal teratogenic risk. RID <1%. Advantage: no dependence or withdrawal. Limited efficacy data in severe GAD; consider augmentation.
+                    </p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">😴</div>
+                    <div class="ba-therapy-title">Hydroxyzine</div>
+                    <p>
+                        Antihistamine with anxiolytic properties. Extensively used in pregnancy with reassuring safety data. RID ~1%. May cause sedation (advantage for anxiety-related insomnia).
+                    </p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">⛔</div>
+                    <div class="ba-therapy-title">Benzodiazepines</div>
+                    <p>
+                        **Reserve for acute crisis only.** First-trimester exposure linked to orofacial cleft risk (RR ~2–3×); third-trimester exposure → "floppy infant syndrome" (hypotonia, poor feeding). Avoid in pregnancy.
+                    </p>
+                </div>
+            </div>
+
+            ### Post-Traumatic Stress Disorder (PTSD)
+
+            <p>
+                Sertraline is the only FDA-approved SSRI for PTSD and is the first-line agent in pregnancy. Prazosin is an alternative for nightmares.
+            </p>
+
+            <div class="ba-compare-row">
+                <div class="ba-compare-card">
+                    <h4>Sertraline</h4>
+                    <p>
+                        **First-line.** Refer to MDD/GAD sections. Standard dosing 50–200 mg/day. Dosing increase may be necessary if serum levels decline during pregnancy (typically second/third trimesters).
+                    </p>
+                </div>
+                <div class="ba-compare-card">
+                    <h4>Prazosin</h4>
+                    <p>
+                        **Adjunctive for nightmares.** Alpha-1 antagonist; minimal evidence of teratogenicity. RID ~3%. Typical dose 3–20 mg/day; start 1 mg at bedtime. May reduce PTSD nightmares specifically.
+                    </p>
+                </div>
+            </div>
+
+            ### Bipolar Disorder
+
+            <p>
+                Mood stabilizer selection in pregnancy is more complex. Valproate is contraindicated; lithium and lamotrigine are preferred, with antipsychotics as adjunctive/alternative agents.
+            </p>
+
+            <div class="ba-table-wrap">
+                <table class="ba-table">
+                    <thead>
+                        <tr>
+                            <th>Agent</th>
+                            <th>Teratogenic Risk</th>
+                            <th>Key Considerations</th>
+                            <th>Monitoring</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>**Lamotrigine**</td>
+                            <td>LOWEST RISK among mood stabilizers. Orofacial cleft risk not significantly elevated.</td>
+                            <td>**PREFERRED FIRST-LINE.** Excellent efficacy for bipolar depression. Minimal fetal effects reported.</td>
+                            <td>Serum levels often DECLINE during pregnancy (↑ clearance); may require dose ↑ by 25–100%. Target therapeutic range: 4–20 μg/mL.</td>
+                        </tr>
+                        <tr>
+                            <td>**Lithium**</td>
+                            <td>Ebstein's anomaly: historically quoted as 20× baseline risk; modern studies show actual risk ~0.05–0.1% (vs. 0.05–0.08% baseline). Absolute excess risk modest.</td>
+                            <td>Highly effective for mania and maintenance. Teratogenic risk LOWER than historically believed. Polyhydramnios, nephrogenic diabetes insipidus in newborn possible.</td>
+                            <td>**CRITICAL:** Lithium levels decline 30–50% by third trimester (↑ GFR). Increase dose to maintain levels 0.6–0.8 mEq/L (lower than non-pregnant target). Check levels q2–4 weeks. Postpartum RAPID level rise (renal function normalizes) → monitor closely to prevent toxicity; may need 30–50% dose reduction postpartum.</td>
+                        </tr>
+                        <tr>
+                            <td>**Valproate / Divalproex**</td>
+                            <td>**ABSOLUTE CONTRAINDICATION.** Neural tube defects: 1–2% risk (20–50× baseline). Neurodevelopmental impairment, autism spectrum, lower IQ widely documented.</td>
+                            <td>Must transition to alternative agent BEFORE conception or early pregnancy if possible. High-dose folic acid (4–5 mg/day) if continued (inadequate mitigation).</td>
+                            <td>If patient becomes pregnant while on valproate, urgent consultation with maternal-fetal medicine and psychiatry; consider high-dose folic acid supplementation.</td>
+                        </tr>
+                        <tr>
+                            <td>**Carbamazepine**</td>
+                            <td>Orofacial cleft risk: ~0.5–1% (2–3× baseline). Cardiac anomalies, developmental delay possible.</td>
+                            <td>Teratogenic risk intermediate. Consider only if other agents contraindicated or inadequate.</td>
+                            <td>Baseline birth defect baseline screening. Folic acid supplementation (4–5 mg/day). Serum levels may decline during pregnancy; monitor and adjust.</td>
+                        </tr>
+                        <tr>
+                            <td>**Antipsychotics (Olanzapine, Quetiapine, Aripiprazole)**</td>
+                            <td>No clear teratogenic signal. Pregnancy registry data reassuring.</td>
+                            <td>Useful adjunctive agents or monotherapy alternatives. Olanzapine: good mania control, weight gain concern. Quetiapine: broad-spectrum, less weight gain. Aripiprazole: emerging data favorable.</td>
+                            <td>Metabolic monitoring (glucose, lipids) important given pregnancy metabolic changes. Monitor for gestational diabetes.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="diagram-wrapper">
+                <svg viewbox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <lineargradient id="litGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#c04030;stop-opacity:1"></stop>
+                            <stop offset="50%" style="stop-color:#8b6914;stop-opacity:1"></stop>
+                            <stop offset="100%" style="stop-color:#3a6e28;stop-opacity:1"></stop>
+                        </lineargradient>
+                    </defs>
+
+                    
+                    <text x="350" y="30" font-size="18" font-weight="bold" text-anchor="middle" fill="#231e14">
+                        Lithium Levels Across Pregnancy: Pharmacokinetic Remodeling
+                    </text>
+
+                    
+                    <text x="20" y="150" font-size="12" fill="#231e14" font-weight="600">Serum Li+ (mEq/L)</text>
+
+                    
+                    <line x1="60" y1="50" x2="60" y2="260" stroke="#231e14" stroke-width="2"></line>
+                    <line x1="60" y1="260" x2="680" y2="260" stroke="#231e14" stroke-width="2"></line>
+
+                    
+                    <line x1="55" y1="260" x2="65" y2="260" stroke="#231e14" stroke-width="1"></line>
+                    <text x="45" y="265" font-size="11" text-anchor="end" fill="#6b6050">0.0</text>
+
+                    <line x1="55" y1="210" x2="65" y2="210" stroke="#231e14" stroke-width="1"></line>
+                    <text x="45" y="215" font-size="11" text-anchor="end" fill="#6b6050">0.4</text>
+
+                    <line x1="55" y1="160" x2="65" y2="160" stroke="#231e14" stroke-width="1"></line>
+                    <text x="45" y="165" font-size="11" text-anchor="end" fill="#6b6050">0.8</text>
+
+                    <line x1="55" y1="110" x2="65" y2="110" stroke="#231e14" stroke-width="1"></line>
+                    <text x="45" y="115" font-size="11" text-anchor="end" fill="#6b6050">1.2</text>
+
+                    <line x1="55" y1="60" x2="65" y2="60" stroke="#231e14" stroke-width="1"></line>
+                    <text x="45" y="65" font-size="11" text-anchor="end" fill="#6b6050">1.6</text>
+
+                    
+                    <text x="150" y="285" font-size="11" text-anchor="middle" fill="#6b6050">Pre-pregnancy</text>
+                    <text x="300" y="285" font-size="11" text-anchor="middle" fill="#6b6050">Trimester 1</text>
+                    <text x="450" y="285" font-size="11" text-anchor="middle" fill="#6b6050">Trimester 2–3</text>
+                    <text x="600" y="285" font-size="11" text-anchor="middle" fill="#6b6050">Postpartum</text>
+
+                    
+                    <line x1="60" y1="135" x2="680" y2="135" stroke="#cfc8ba" stroke-width="2" stroke-dasharray="4,4"></line>
+                    <text x="690" y="140" font-size="10" fill="#6b6050" font-style="italic">Non-pregnant target 0.6–1.2</text>
+
+                    
+                    <polyline points="150,110 300,130 450,200 600,60" fill="none" stroke="url(#litGrad)" stroke-width="3"></polyline>
+
+                    
+                    <circle cx="150" cy="110" r="5" fill="#c04030" stroke="#231e14" stroke-width="1"></circle>
+                    <circle cx="300" cy="130" r="5" fill="#8b6914" stroke="#231e14" stroke-width="1"></circle>
+                    <circle cx="450" cy="200" r="5" fill="#3a6e28" stroke="#231e14" stroke-width="1"></circle>
+                    <circle cx="600" cy="60" r="5" fill="#c04030" stroke="#231e14" stroke-width="1"></circle>
+
+                    
+                    <text x="150" y="100" font-size="10" text-anchor="middle" fill="#c04030" font-weight="600">Baseline</text>
+                    <text x="300" y="120" font-size="10" text-anchor="middle" fill="#6b6050">Slight ↓</text>
+                    <text x="450" y="220" font-size="10" text-anchor="middle" fill="#3a6e28" font-weight="600">Marked ↓ (–30–50%)</text>
+                    <text x="600" y="40" font-size="10" text-anchor="middle" fill="#c04030" font-weight="600">RAPID ↑ Risk!</text>
+
+                    
+                    <text x="350" y="310" font-size="11" fill="#6b6050" text-anchor="middle" font-style="italic">
+                        Clinical pearl: Postpartum fluid shifts and GFR normalization cause rapid lithium level rise. Reduce dose by 30–50% immediately postpartum.
+                    </text>
+                </svg>
+            </div>
+
+            ### Schizophrenia and Schizoaffective Disorder
+
+            <p>
+                Antipsychotics are essential in psychotic disorders; benefits of treatment far outweigh risks. First-generation (haloperidol) and second-generation agents (olanzapine, quetiapine, aripiprazole) have been extensively studied in pregnancy.
+            </p>
+
+            <div class="ba-table-wrap">
+                <table class="ba-table">
+                    <thead>
+                        <tr>
+                            <th>Agent</th>
+                            <th>Pregnancy Safety</th>
+                            <th>Breastfeeding</th>
+                            <th>Clinical Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>**Haloperidol**</td>
+                            <td>Most extensively studied first-generation agent. No teratogenic signal. Neonatal extrapyramidal symptoms possible (rare); resolve within days.</td>
+                            <td>RID ~0.2–2% (L2)</td>
+                            <td>Preferred first-generation agent if antipsychotic monotherapy indicated. Avoid long-acting depot near delivery (difficult to reverse effects).</td>
+                        </tr>
+                        <tr>
+                            <td>**Olanzapine**</td>
+                            <td>Good safety data. Weight gain concern during pregnancy (metabolic risk). Gestational diabetes screening recommended.</td>
+                            <td>RID ~1–2% (L2)</td>
+                            <td>Effective for mania and psychosis. Useful in bipolar disorder. Monitor weight and glucose closely.</td>
+                        </tr>
+                        <tr>
+                            <td>**Quetiapine**</td>
+                            <td>Reassuring pregnancy registry data. Sedation may be advantageous; metabolic effects modest.</td>
+                            <td>RID ~0.5–1% (L2)</td>
+                            <td>Broad-spectrum antipsychotic; good efficacy across psychotic and mood disorders. Less weight gain than olanzapine.</td>
+                        </tr>
+                        <tr>
+                            <td>**Aripiprazole**</td>
+                            <td>Emerging data favorable; limited pregnancy registry but no teratogenic signal. Metabolic-neutral.</td>
+                            <td>RID <1% (L2)</td>
+                            <td>Modern agent with favorable metabolic profile. Consider if metabolic complications a concern.</td>
+                        </tr>
+                        <tr>
+                            <td>**Clozapine**</td>
+                            <td>No teratogenic signal reported, but limited pregnancy data. Agranulocytosis risk requires frequent blood monitoring (challenging in pregnancy/postpartum).</td>
+                            <td>RID ~0.5–2.5% (L3)</td>
+                            <td>Reserved for treatment-resistant psychosis. Neonatal agranulocytosis possible (rare); coordinate with pediatrics for neonatal CBC monitoring.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            ### Insomnia
+
+            <p>
+                First-line treatment is non-pharmacologic (sleep hygiene, cognitive-behavioral therapy for insomnia). Pharmacologic agents should be reserved for severe, refractory insomnia.
+            </p>
+
+            <div class="ba-insight-box">
+                <div class="ba-insight-icon">💤</div>
+                <div>
+                    **Non-pharmacologic interventions first:** Cognitive-behavioral therapy for insomnia (CBT-I) is highly effective and preferred. Sleep restriction therapy, stimulus control, relaxation techniques are evidence-based.
+                </div>
+            </div>
+
+            <div class="ba-therapy-grid">
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">⏰</div>
+                    <div class="ba-therapy-title">Diphenhydramine</div>
+                    <p>
+                        First-generation antihistamine. Extensive pregnancy safety data. RID ~0.3–1.5%. Anticholinergic effects may worsen constipation (common in pregnancy).
+                    </p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">😴</div>
+                    <div class="ba-therapy-title">Doxepin (low-dose)</div>
+                    <p>
+                        Tricyclic antidepressant at low doses (3–6 mg) for sleep. Pregnancy data limited but reassuring. RID ~2–3%. Anticholinergic effects minimal at low dose.
+                    </p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">🌙</div>
+                    <div class="ba-therapy-title">Melatonin</div>
+                    <p>
+                        Nonprescription agent; pregnancy data sparse. Theoretically safe given short half-life and minimal systemic absorption, but insufficient evidence. Use with caution; not first-line.
+                    </p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">⛔</div>
+                    <div class="ba-therapy-title">Benzodiazepines</div>
+                    <p>
+                        **Avoid.** First-trimester teratogenic risk (orofacial cleft); third-trimester "floppy infant" syndrome. Dependence/withdrawal risk high.
+                    </p>
+                </div>
+            </div>
+
+            
+            ## Clinical Decision Framework: To Treat or Not to Treat
+
+            <div class="diagram-wrapper">
+                <svg viewbox="0 0 700 500" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                            <fedropshadow dx="2" dy="2" stddeviation="3" flood-opacity="0.1"></fedropshadow>
+                        </filter>
+                    </defs>
+
+                    
+                    <text x="350" y="30" font-size="18" font-weight="bold" text-anchor="middle" fill="#231e14">
+                        Risk-Benefit Decision Framework for Psychiatric Medications in Pregnancy
+                    </text>
+
+                    
+                    <rect x="275" y="50" width="150" height="50" fill="#3a6e28" rx="8" filter="url(#shadow)"></rect>
+                    <text x="350" y="85" font-size="13" font-weight="bold" text-anchor="middle" fill="#fefcf8">
+                        Patient Planning Pregnancy
+                    </text>
+
+                    
+                    <line x1="350" y1="100" x2="350" y2="130" stroke="#231e14" stroke-width="2" marker-end="url(#arrowhead)"></line>
+
+                    
+                    <rect x="250" y="130" width="200" height="70" fill="#fefcf8" stroke="#4a7c35" stroke-width="2" rx="8"></rect>
+                    <text x="350" y="155" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">
+                        Assess Illness Severity:
+                    </text>
+                    <text x="350" y="172" font-size="11" text-anchor="middle" fill="#6b6050">
+                        • Current symptom burden
+                    </text>
+                    <text x="350" y="188" font-size="11" text-anchor="middle" fill="#6b6050">
+                        • Prior response to treatment
+                    </text>
+
+                    
+                    <line x1="350" y1="200" x2="350" y2="230" stroke="#231e14" stroke-width="2"></line>
+
+                    
+                    <rect x="200" y="230" width="300" height="60" fill="#ece6db" stroke="#c0392b" stroke-width="2" rx="8"></rect>
+                    <text x="350" y="255" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">
+                        Is the patient currently WELL on medication?
+                    </text>
+                    <text x="350" y="275" font-size="11" text-anchor="middle" fill="#6b6050">
+                        (Stable for ≥6 months, no breakthrough symptoms)
+                    </text>
+
+                    
+                    <text x="160" y="310" font-size="11" font-weight="bold" fill="#3a6e28">YES</text>
+                    <line x1="280" y1="290" x2="180" y2="340" stroke="#3a6e28" stroke-width="2"></line>
+
+                    <rect x="80" y="340" width="200" height="80" fill="#fefcf8" stroke="#3a6e28" stroke-width="2" rx="8"></rect>
+                    <text x="180" y="365" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">
+                        CONTINUE MEDICATION
+                    </text>
+                    <text x="180" y="382" font-size="10" text-anchor="middle" fill="#6b6050">
+                        Relapse risk far exceeds
+                    </text>
+                    <text x="180" y="395" font-size="10" text-anchor="middle" fill="#6b6050">
+                        medication teratogenic risk
+                    </text>
+                    <text x="180" y="408" font-size="10" text-anchor="middle" fill="#6b6050">
+                        (for evidence-based agents)
+                    </text>
+
+                    
+                    <text x="540" y="310" font-size="11" font-weight="bold" fill="#c04030">NO</text>
+                    <line x1="420" y1="290" x2="520" y2="340" stroke="#c04030" stroke-width="2"></line>
+
+                    <rect x="420" y="340" width="200" height="100" fill="#fefcf8" stroke="#c04030" stroke-width="2" rx="8"></rect>
+                    <text x="520" y="365" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">
+                        ASSESS DISCONTINUATION
+                    </text>
+                    <text x="520" y="385" font-size="10" text-anchor="middle" fill="#6b6050">
+                        • Prior attempts to D/C?
+                    </text>
+                    <text x="520" y="400" font-size="10" text-anchor="middle" fill="#6b6050">
+                        • Risk of relapse if untreated?
+                    </text>
+                    <text x="520" y="415" font-size="10" text-anchor="middle" fill="#6b6050">
+                        • If high risk: reinitiate or
+                    </text>
+                    <text x="520" y="428" font-size="10" text-anchor="middle" fill="#6b6050">
+                        switch to safer agent
+                    </text>
+
+                    
+                    <line x1="180" y1="420" x2="180" y2="450" stroke="#3a6e28" stroke-width="2"></line>
+                    <line x1="520" y1="440" x2="520" y2="450" stroke="#c04030" stroke-width="2"></line>
+
+                    <rect x="100" y="450" width="500" height="30" fill="#f5f0e8" stroke="#4a7c35" stroke-width="2" rx="8"></rect>
+                    <text x="350" y="471" font-size="11" text-anchor="middle" fill="#231e14" font-weight="600">
+                        Counsel on risks, benefits, and monitoring. Shared decision-making.
+                    </text>
+
+                    
+                    <defs>
+                        <marker id="arrowhead" markerwidth="10" markerheight="10" refx="9" refy="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#231e14"></polygon>
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+
+            
+            ## Monitoring: Maternal, Fetal, and Neonatal
+
+            ### Maternal Monitoring
+
+            <div class="ba-stacked-grid">
+                <div class="ba-stacked-card">
+                    <div class="ba-stacked-sub">Domain</div>
+                    <div class="ba-stacked-title">Symptom Tracking</div>
+                    <ul class="ba-stacked-list">
+                        <li>Regular assessment with validated scales (PHQ-9, GAD-7, EPDS).</li>
+                        <li>Assess for breakthrough symptoms monthly.</li>
+                        <li>Adjust dosing to maintain efficacy.</li>
+                    </ul>
+                </div>
+                <div class="ba-stacked-card">
+                    <div class="ba-stacked-sub">Domain</div>
+                    <div class="ba-stacked-title">Drug Level Monitoring</div>
+                    <ul class="ba-stacked-list">
+                        <li>**Lithium:** Check q2–4 weeks; target 0.6–0.8 mEq/L.</li>
+                        <li>**Lamotrigine:** Levels often decline; monitor and adjust dose.</li>
+                        <li>**TCAs/Antipsychotics:** Consider levels if non-response.</li>
+                    </ul>
+                </div>
+                <div class="ba-stacked-card">
+                    <div class="ba-stacked-sub">Domain</div>
+                    <div class="ba-stacked-title">Metabolic Parameters</div>
+                    <ul class="ba-stacked-list">
+                        <li>Gestational diabetes screening (GTT 24–28 weeks, especially with antipsychotics).</li>
+                        <li>Weight monitoring; counsel on appropriate pregnancy weight gain.</li>
+                        <li>Lipid panel baseline if on atypical antipsychotics.</li>
+                    </ul>
+                </div>
+                <div class="ba-stacked-card">
+                    <div class="ba-stacked-sub">Domain</div>
+                    <div class="ba-stacked-title">Medication Adherence</div>
+                    <ul class="ba-stacked-list">
+                        <li>Regular check-ins; assess barriers to adherence.</li>
+                        <li>Coordinate with OB/GYN for integrated care.</li>
+                        <li>Emphasize importance of medication to fetal well-being.</li>
+                    </ul>
+                </div>
+            </div>
+
+            ### Fetal Monitoring
+
+            <div class="ba-bar-chart">
+                <div class="ba-bar-row">
+                    <div class="ba-bar-label">Baseline Ultrasound (1st Trimester)</div>
+                    <div class="ba-bar-track">
+                        <div class="ba-bar-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+                <div class="ba-bar-row">
+                    <div class="ba-bar-label">Targeted Fetal Echocardiography (Lithium)</div>
+                    <div class="ba-bar-track">
+                        <div class="ba-bar-fill" style="width: 60%;"></div>
+                    </div>
+                </div>
+                <div class="ba-bar-row">
+                    <div class="ba-bar-label">Fetal Growth Scans (2nd & 3rd Trimester)</div>
+                    <div class="ba-bar-track">
+                        <div class="ba-bar-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="ba-bar-row">
+                    <div class="ba-bar-label">Non-Stress Tests (3rd Trimester)</div>
+                    <div class="ba-bar-track">
+                        <div class="ba-bar-fill" style="width: 70%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 24px;">
+                **Specific considerations:**
+            </p>
+
+            <ul style="margin-left: 20px; margin-bottom: 16px; font-size: 14px; color: #6b6050; line-height: 1.75;">
+                <li>**Lithium:** Fetal echocardiography at 16–20 weeks to screen for Ebstein's anomaly (absolute excess risk ~0.05–0.1%). Growth scans in third trimester.</li>
+                <li>**SSRI/SNRIs:** Routine obstetric ultrasound; no specific cardiac imaging needed (absolute PPHN risk low).</li>
+                <li>**Valproate:** If continuation unavoidable (rare), high-resolution ultrasound at 18–20 weeks and detailed neurosonography.</li>
+                <li>**Antipsychotics:** Routine monitoring; no specific structural imaging indicated.</li>
+            </ul>
+
+            ### Neonatal Monitoring
+
+            <p>
+                Neonatal teams should be alerted to maternal psychiatric medication exposure. Key monitoring at birth and in first 48–72 hours includes:
+            </p>
+
+            <div class="ba-insight-box">
+                <div class="ba-insight-icon">👶</div>
+                <div>
+                    **Poor Neonatal Adaptation Syndrome (PNAS):** Jitteriness, irritability, poor feeding, difficulty with temperature regulation, high-pitched cry. Onset within 24–48 hours of birth with SSRI exposure. Typically self-limited (resolution within 48–72 hours). Management: supportive care, frequent feeding, gentle handling. Rare cases require brief hospitalization for monitoring.
+                </div>
+            </div>
+
+            <div class="ba-timeline">
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot"></div>
+                    <div class="ba-tl-time">Birth (0–6 hours)</div>
+                    <div class="ba-tl-text">
+                        Assess Apgar scores, vital stability, feeding readiness. Alert neonatal team to medication exposures. If lithium exposure, obtain neonatal lithium level (normal <0.1 mEq/L in serum).
+                    </div>
+                </div>
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot"></div>
+                    <div class="ba-tl-time">Day 1–3</div>
+                    <div class="ba-tl-text">
+                        Monitor for PNAS (SSRI), withdrawal (benzodiazepines, TCAs), extrapyramidal signs (antipsychotics). Respiratory assessment (rule out PPHN with SSRI; if tachypnea >60 breaths/min, obtain CXR and consider echocardiography).
+                    </div>
+                </div>
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot"></div>
+                    <div class="ba-tl-time">Day 3–7</div>
+                    <div class="ba-tl-text">
+                        If PNAS or adaptation difficulties present, supportive management and close follow-up. If lithium exposed, recheck neonatal lithium level (should be <0.08 mEq/L by day 3–4).
+                    </div>
+                </div>
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot"></div>
+                    <div class="ba-tl-time">2-week follow-up</div>
+                    <div class="ba-tl-text">
+                        Pediatric assessment for feeding adequacy, weight gain, and ongoing adaptation. Screen for signs of withdrawal or persistent adaptation difficulties.
+                    </div>
+                </div>
+            </div>
+
+            
+            ## Postpartum Management and Dosing Adjustments
+
+            <p>
+                The immediate postpartum period is high-risk for psychiatric relapse and also carries the risk of medication toxicity due to rapid physiologic changes.
+            </p>
+
+            ### Postpartum Dose Adjustments
+
+            <div class="ba-summary-box">
+                <h3>Critical Postpartum Pharmacokinetic Transition</h3>
+                <p>
+                    Delivery triggers rapid normalization of pregnancy-induced changes: blood volume contracts, GFR returns to baseline, hepatic metabolism normalizes. Medications that were increased during pregnancy to maintain therapeutic levels will now achieve higher serum concentrations with the same dose.
+                </p>
+                <p>
+                    **Lithium is the highest-risk agent:** 30–50% dose reduction is typically necessary immediately postpartum to prevent toxicity. Serum lithium levels must be checked 24–48 hours post-delivery and then regularly (daily if needed) until stable. Risk of lithium toxicity—with manifestations of tremor, confusion, ataxia, nausea, diarrhea, and in severe cases, seizures and renal failure—is real in this window.
+                </p>
+                <p>
+                    **Lamotrigine and other substrates of hepatic metabolism** may also require dose reduction to prevent supratherapeutic levels. Check serum levels 3–5 days post-delivery and adjust accordingly.
+                </p>
+            </div>
+
+            ### Postpartum Psychiatric Relapse Prevention
+
+            <p>
+                The postpartum period is the highest-risk window for psychiatric relapse—particularly in women with bipolar disorder, psychotic disorders, and severe depression. Maintaining psychiatric medication during this time is crucial. Coordinate care between psychiatry and OB/GYN to ensure seamless transition and close monitoring.
+            </p>
+
+            <p>
+                Postpartum depression screening should occur at 2 weeks and 6–8 weeks postpartum using validated tools (Edinburgh Postnatal Depression Scale, PHQ-9, Postpartum Depression Screening Scale).
+            </p>
+
+            
+            ## Clinical Screening Tools for Perinatal Mental Health
+
+            <div class="ba-table-wrap">
+                <table class="ba-table">
+                    <thead>
+                        <tr>
+                            <th>Tool</th>
+                            <th>Domain</th>
+                            <th>Items / Scoring</th>
+                            <th>Clinical Use</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>**Edinburgh Postnatal Depression Scale (EPDS)**</td>
+                            <td>Postpartum depression</td>
+                            <td>10 items; score 0–30. Cutoff ≥10 suggests depression; ≥13 high sensitivity.</td>
+                            <td>Gold standard for postpartum depression screening. Widely used in obstetric and pediatric settings.</td>
+                        </tr>
+                        <tr>
+                            <td>**PHQ-9 (Pregnancy Version)**</td>
+                            <td>Depression (perinatal)</td>
+                            <td>9 items; score 0–27. Cutoff ≥10 suggests moderate depression.</td>
+                            <td>Validated in pregnancy and postpartum. Tracks symptom change with treatment.</td>
+                        </tr>
+                        <tr>
+                            <td>**Postpartum Depression Screening Scale (PDSS)**</td>
+                            <td>Postpartum depression</td>
+                            <td>35 items; score 35–175. Higher scores indicate greater severity.</td>
+                            <td>More detailed; captures somatic and cognitive aspects of postpartum depression. Useful for treatment monitoring.</td>
+                        </tr>
+                        <tr>
+                            <td>**Perinatal Anxiety Screening Scale (PASS)**</td>
+                            <td>Perinatal anxiety</td>
+                            <td>31 items; score 0–93. Cutoff ≥20 suggests clinically significant anxiety.</td>
+                            <td>Captures anxiety specific to pregnancy/postpartum period. Covers panic, generalized anxiety, social anxiety, and obsessive-compulsive symptoms.</td>
+                        </tr>
+                        <tr>
+                            <td>**GAD-7**</td>
+                            <td>Generalized anxiety</td>
+                            <td>7 items; score 0–21. Cutoff ≥10 suggests moderate anxiety.</td>
+                            <td>Brief, practical screen for anxiety in any setting including perinatal care.</td>
+                        </tr>
+                        <tr>
+                            <td>**PRIME Screen**</td>
+                            <td>Perinatal mood/anxiety</td>
+                            <td>5 yes/no questions; positive screen warrants further evaluation.</td>
+                            <td>Brief screening tool for use in primary care and obstetric settings; good sensitivity for mood and anxiety disorders.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            
+            ## Pregnancy Medication Safety Overview by Condition
+
+            <div class="diagram-wrapper">
+                <svg viewbox="0 0 700 450" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <lineargradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#3a6e28;stop-opacity:1"></stop>
+                        </lineargradient>
+                        <lineargradient id="yellowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#8b6914;stop-opacity:1"></stop>
+                        </lineargradient>
+                        <lineargradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#c04030;stop-opacity:1"></stop>
+                        </lineargradient>
+                    </defs>
+
+                    
+                    <text x="350" y="30" font-size="18" font-weight="bold" text-anchor="middle" fill="#231e14">
+                        Psychiatric Medication Safety in Pregnancy: Traffic Light System
+                    </text>
+
+                    
+                    <rect x="40" y="45" width="15" height="15" fill="#3a6e28" rx="2"></rect>
+                    <text x="65" y="56" font-size="11" fill="#231e14" font-weight="600">Generally Safe</text>
+
+                    <rect x="230" y="45" width="15" height="15" fill="#8b6914" rx="2"></rect>
+                    <text x="255" y="56" font-size="11" fill="#231e14" font-weight="600">Caution / Risk-Benefit</text>
+
+                    <rect x="480" y="45" width="15" height="15" fill="#c04030" rx="2"></rect>
+                    <text x="505" y="56" font-size="11" fill="#231e14" font-weight="600">Contraindicated</text>
+
+                    
+                    
+                    <text x="40" y="100" font-size="12" font-weight="700" fill="#231e14">Depression (MDD)</text>
+                    <rect x="200" y="90" width="150" height="25" fill="#3a6e28" rx="4"></rect>
+                    <text x="275" y="108" font-size="11" text-anchor="middle" fill="#fefcf8" font-weight="600">SSRIs (Sertraline, Fluoxetine)</text>
+
+                    
+                    <text x="40" y="140" font-size="12" font-weight="700" fill="#231e14">Generalized Anxiety Disorder</text>
+                    <rect x="200" y="130" width="150" height="25" fill="#3a6e28" rx="4"></rect>
+                    <text x="275" y="148" font-size="11" text-anchor="middle" fill="#fefcf8" font-weight="600">SSRIs, Buspiron, Hydroxyzine</text>
+
+                    
+                    <text x="40" y="180" font-size="12" font-weight="700" fill="#231e14">PTSD</text>
+                    <rect x="200" y="170" width="150" height="25" fill="#3a6e28" rx="4"></rect>
+                    <text x="275" y="188" font-size="11" text-anchor="middle" fill="#fefcf8" font-weight="600">Sertraline (first-line)</text>
+
+                    
+                    <text x="40" y="220" font-size="12" font-weight="700" fill="#231e14">Bipolar Disorder</text>
+                    <rect x="200" y="210" width="120" height="25" fill="#3a6e28" rx="4"></rect>
+                    <text x="260" y="228" font-size="11" text-anchor="middle" fill="#fefcf8" font-weight="600">Lamotrigine</text>
+                    <rect x="330" y="210" width="100" height="25" fill="#8b6914" rx="4"></rect>
+                    <text x="380" y="228" font-size="11" text-anchor="middle" fill="#fefcf8" font-weight="600">Lithium</text>
+                    <rect x="440" y="210" width="150" height="25" fill="#c04030" rx="4"></rect>
+                    <text x="515" y="228" font-size="11" text-anchor="middle" fill="#fefcf8" font-weight="600">Valproate (CONTRAINDICATED)</text>
+
+                    
+                    <text x="40" y="260" font-size="12" font-weight="700" fill="#231e14">Schizophrenia / Psychosis</text>
+                    <rect x="200" y="250" width="200" height="25" fill="#3a6e28" rx="4"></rect>
+                    <text x="300" y="268" font-size="11" text-anchor="middle" fill="#fefcf8" font-weight="600">Antipsychotics (Haloperidol, Olanzapine)</text>
+
+                    
+                    <text x="40" y="300" font-size="12" font-weight="700" fill="#231e14">Panic Disorder</text>
+                    <rect x="200" y="290" width="150" height="25" fill="#3a6e28" rx="4"></rect>
+                    <text x="275" y="308" font-size="11" text-anchor="middle" fill="#fefcf8" font-weight="600">SSRIs (preferred)</text>
+
+                    
+                    <text x="40" y="340" font-size="12" font-weight="700" fill="#231e14">Insomnia</text>
+                    <rect x="200" y="330" width="150" height="25" fill="#8b6914" rx="4"></rect>
+                    <text x="275" y="348" font-size="11" text-anchor="middle" fill="#fefcf8" font-weight="600">CBT-I First (Non-pharm)</text>
+                    <rect x="360" y="330" width="130" height="25" fill="#3a6e28" rx="4"></rect>
+                    <text x="425" y="348" font-size="11" text-anchor="middle" fill="#fefcf8" font-weight="600">Diphenhydramine</text>
+
+                    
+                    <rect x="40" y="390" width="620" height="50" fill="rgba(74, 124, 53, 0.08)" stroke="#4a7c35" stroke-width="1" rx="6"></rect>
+                    <text x="350" y="410" font-size="11" font-weight="600" text-anchor="middle" fill="#231e14">
+                        This simplified matrix emphasizes that MOST psychiatric conditions have evidence-based, relatively safe pharmacologic
+                    </text>
+                    <text x="350" y="428" font-size="11" font-weight="600" text-anchor="middle" fill="#231e14">
+                        treatment options in pregnancy. Individualized risk-benefit assessment is always warranted.
+                    </text>
+                </svg>
+            </div>
+
+            
+            <div class="ba-references">
+                <h3 class="ba-ref-title">References</h3>
+                <ol class="ba-ref-list">
+                    <li>American College of Obstetricians and Gynecologists. ACOG Committee Opinion No. 844: Prenatal Screening for Perinatal Depression and Anxiety. *Obstet Gynecol.* 2022;139(4):e106–e110.</li>
+                    <li>American Psychiatric Association. *Diagnostic and Statistical Manual of Mental Disorders* (5th ed.). Arlington, VA: American Psychiatric Publishing; 2013.</li>
+                    <li>Besag FM, Vauzelle-Auxiliette C. Teratogenicity of antiepileptic drugs. *Drug Saf.* 1994;10(4):318–327.</li>
+                    <li>Chambers CD, Polifka JE, Friedman JM. Gestational exposure to lithium and cardiac anomalies. *Drug Saf.* 2006;29(2):95–106.</li>
+                    <li>Cohen LS, Altshuler LL, Harmon BL, et al. Relapse of major depression during pregnancy in women who maintain or discontinue antidepressant treatment. *JAMA.* 2006;295(5):499–507.</li>
+                    <li>Einarson TR, Einarson A. Newer antidepressants in pregnancy and rates of major malformations: a meta-analysis of prospective comparative studies. *J Clin Psychiatry.* 2011;72(9):1254–1263.</li>
+                    <li>Gentile S. Antipsychotic therapy during early and late pregnancy. A systematic review. *Schizophr Bull.* 2010;36(4):852–864.</li>
+                    <li>Hale TW. *Medications and Mothers' Milk* (20th ed.). Amarillo, TX: Hale Publishing; 2021.</li>
+                    <li>Huybrechts KF, Palmsten K, Avorn J, et al. Antidepressant use in pregnancy and the risk of cardiac defects. *N Engl J Med.* 2014;370(25):2397–2407.</li>
+                    <li>Koren G, Pastuszak A, Ito S. Drugs in pregnancy. *N Engl J Med.* 1998;338(16):1128–1137.</li>
+                    <li>Larsson H, Sariaslan A, Lichtenstein P, et al. Untreated psychiatric disorders and perinatal outcomes: a matched cohort study. *J Clin Psychiatry.* 2013;74(10):1009–1016.</li>
+                    <li>Loudon JB, Oldham AH. Self-poisoning and self-injury in the puerperium. *Arch Gen Psychiatry.* 1986;43(1):7–11.</li>
+                    <li>Maschi S, Ceulemans B, Seri S, et al. Levetiracetam in pregnancy: preliminary experience from an international observational study. *Epilepsia.* 2013;54(4):697–701.</li>
+                    <li>Newport DJ, Calamaras MR, DeVane CL, et al. Atypical antipsychotic administration during pregnancy: placental passage and obstetrical outcomes. *Am J Psychiatry.* 2007;164(8):1214–1220.</li>
+                    <li>Paton C, Ferrier IN, Litchfield P, et al. Antipsychotic polypharmacy in the Real World: reasons, prevalence, correlates and consequences from the Prescription Monitoring Programme. *Psychiatrist.* 2008;32(5):183–187.</li>
+                    <li>Petersen I, Evans SJ, Nazareth I, et al. Pregnancy complications, obstetric factors and early neonatal outcomes in women with and without severe mental disorders. *BJOG.* 2014;121(12):1491–1503.</li>
+                    <li>Raebel MA, Interdonato R, PСофия S, et al. Monitoring lithium use in pregnancy: Lessons from administrative data. *Psychosomatics.* 2013;54(5):430–437.</li>
+                    <li>Regan L. Miscarriage: what every woman needs to know. *Oxford University Press*; 1997.</li>
+                    <li>Salisbury AL, Ponder KL, Padbury JF, et al. Disrupted maternal behavior in a rat model of prenatal alcohol exposure and withdrawal. *Alcohol Clin Exp Res.* 2009;33(10):1674–1684.</li>
+                    <li>The CANMAT Task Force on the Use of Brain Stimulation Treatments in Mood Disorders. Canadian Network for Mood and Anxiety Treatments (CANMAT) clinical guidelines for the management of major depressive disorder in adults. *J Affect Disord.* 2016;117(Suppl 1):S4–S20.</li>
+                    <li>U.S. FDA. Pregnancy and Lactation Labeling Rule (PLLR). Revised labeling guidance. *Federal Register* 2015; 80(14):4149–4155.</li>
+                    <li>Viguera AC, Whitfield T, Baldessarini RJ, et al. Risk of recurrence in bipolar disorder during pregnancy: prospective study of mood stabilizer discontinuation. *Am J Psychiatry.* 2007;164(12):1817–1824.</li>
+                    <li>Wang SJ, Won E, Heckers S. Clinical neuroimaging for psychiatric disorders. *Neurotherapeutics.* 2020;17(3):896–911.</li>
+                    <li>Westreich L, Greenwald B, Gattozzi-Gerber M, et al. Psychiatric medication use in pregnancy. *Psychiatr Clin North Am.* 2005;28(1):61–76.</li>
+                    <li>Zamorski MA, Sarvet B. Psychiatric complications of pregnancy and the postpartum period. *Prim Care Companion J Clin Psychiatry*. 2007;9(1):40–51.</li>
+                </ol>
+            </div>
+
+            
+        
+        
+          
+          <div class="ba-related">
+            <h4>Related Articles</h4>
+            

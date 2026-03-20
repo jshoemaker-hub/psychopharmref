@@ -1,0 +1,774 @@
+---
+title: "Antipsychotic Movement Disorders: Akathisia and Tardive Dyskinesia | PsychoPharmRef"
+date: 2026-03-01
+description: ""
+category: ""
+subtitle: ""
+readTime: "15 min read"
+clinicalSummary: ""
+related: ['antipsychotic-review', 'parkinsons-disease', 'psychiatric-medication-tremors']
+draft: false
+---
+
+<div class="ba-body">
+          <div class="ba-action-bar">
+            <button class="ba-act-btn" onclick="window.print()" title="Print this article"><svg viewbox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"></path></svg> Print</button>
+            <div class="ba-share-drop">
+              <button class="ba-act-btn" onclick="this.nextElementSibling.classList.toggle('ba-open')" title="Share this article"><svg viewbox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"></path></svg> Share</button>
+              <div class="ba-share-menu" id="share-menu-antipsychotic-movement-disorders">
+                <a href="https://twitter.com/intent/tweet?text=Antipsychotic%20Movement%20Disorders%3A%20Akathisia%20and%20Tardive%20Dyskinesia%20%7C%20PsychoPharmRef&url=https%3A%2F%2Fpsychopharmref.com%2Fblog%2Fantipsychotic-movement-disorders.html" target="_blank" rel="noopener">X (Twitter)</a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://psychopharmref.com/blog/antipsychotic-movement-disorders.html" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:?subject=Antipsychotic Movement Disorders: Akathisia and Tardive Dyskinesia | PsychoPharmRef&body=Check out this article: https://psychopharmref.com/blog/antipsychotic-movement-disorders.html">Email</a>
+                <button onclick="navigator.clipboard.writeText('https://psychopharmref.com/blog/antipsychotic-movement-disorders.html').then(function(){this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link'}.bind(this),2000)}.bind(this))">Copy Link</button>
+              </div>
+            </div>
+          </div>
+
+            <p class="ba-lead">
+                Movement disorders represent among the most distressing and clinically significant side effects of antipsychotic medications. This comprehensive review examines the manifestations, etiology, pathophysiology, and management strategies for akathisia and tardive dyskinesia—two of the most common antipsychotic-induced movement disorders affecting clinical practice.
+            </p>
+
+            
+            ## Manifestations, Assessment, and Measurement
+
+            ### Akathisia: Clinical Presentation
+            <p>
+                Akathisia, derived from the Greek "a" (without) and "kathisis" (sitting), represents a profound subjective sense of inner restlessness, agitation, and inability to sit still or remain motionless. Unlike simple psychomotor agitation, akathisia is characterized by an intense dysphoric quality—patients describe a compelling, often irresistible urge to move despite conscious attempts to remain stationary.
+            </p>
+
+            <p>
+                The clinical manifestations of akathisia present across multiple domains:
+            </p>
+
+            <ul>
+                <li>**Subjective symptoms:** Intense inner restlessness, anxiety, dysphoria, tension, and sense of unbearable discomfort</li>
+                <li>**Objective motor signs:** Constant fidgeting, inability to sit for more than brief periods, pacing, rocking, crossing and uncrossing legs, repetitive hand movements</li>
+                <li>**Temporal pattern:** Typically emerges within days to weeks of antipsychotic initiation or dose escalation</li>
+                <li>**Psychological impact:** Often leads to medication non-compliance, worsening of underlying psychiatric condition, and increased suicide risk</li>
+            </ul>
+
+            <div class="diagram-container">
+                <svg viewbox="0 0 600 250" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;">
+                    
+                    <text x="300" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#4a7c35">Akathisia: Subjective and Objective Components</text>
+
+                    
+                    <rect x="30" y="50" width="240" height="160" rx="8" fill="#ece6db" stroke="#cfc8ba" stroke-width="2"></rect>
+                    <circle cx="150" cy="80" r="20" fill="#4a7c35" opacity="0.2"></circle>
+                    <text x="150" y="35" font-size="14" font-weight="bold" text-anchor="middle" fill="#4a7c35">SUBJECTIVE</text>
+                    <text x="150" y="100" font-size="12" text-anchor="middle" fill="#231e14" font-weight="500">Inner Restlessness</text>
+                    <text x="150" y="125" font-size="12" text-anchor="middle" fill="#231e14">Dysphoria & Anxiety</text>
+                    <text x="150" y="150" font-size="12" text-anchor="middle" fill="#231e14">Sense of Unbearable</text>
+                    <text x="150" y="170" font-size="12" text-anchor="middle" fill="#231e14">Discomfort</text>
+                    <text x="150" y="195" font-size="12" text-anchor="middle" fill="#231e14" font-weight="500">Dysphoric Quality</text>
+
+                    
+                    <rect x="330" y="50" width="240" height="160" rx="8" fill="#e2dbd0" stroke="#cfc8ba" stroke-width="2"></rect>
+                    <circle cx="450" cy="80" r="20" fill="#8b6914" opacity="0.2"></circle>
+                    <text x="450" y="35" font-size="14" font-weight="bold" text-anchor="middle" fill="#8b6914">OBJECTIVE</text>
+                    <text x="450" y="100" font-size="12" text-anchor="middle" fill="#231e14" font-weight="500">Constant Fidgeting</text>
+                    <text x="450" y="125" font-size="12" text-anchor="middle" fill="#231e14">Inability to Sit Still</text>
+                    <text x="450" y="150" font-size="12" text-anchor="middle" fill="#231e14">Pacing, Rocking</text>
+                    <text x="450" y="170" font-size="12" text-anchor="middle" fill="#231e14">Repetitive Movements</text>
+                    <text x="450" y="195" font-size="12" text-anchor="middle" fill="#231e14" font-weight="500">Observable Motor Signs</text>
+                </svg>
+                <p class="diagram-label">Figure 1: The dual nature of akathisia requires assessment of both subjective distress and objective motor manifestations.</p>
+            </div>
+
+            ### Tardive Dyskinesia: Clinical Presentation
+            <p>
+                Tardive dyskinesia (TD) represents a complex syndrome of involuntary movements that typically emerge after prolonged antipsychotic exposure. The term "tardive" reflects the delayed onset, usually appearing after months to years of treatment, while "dyskinesia" denotes the abnormal involuntary movements. TD is characterized by choreiform, athetoid, or rhythmic involuntary movements involving the orofacial, trunk, and limb regions.
+            </p>
+
+            <p>
+                Clinical manifestations of tardive dyskinesia include:
+            </p>
+
+            <ul>
+                <li>**Orofacial dyskinesia:** Involuntary tongue protrusion, lip smacking, puckering, perioral tremor, jaw movements, and dental grinding (bruxism)</li>
+                <li>**Extremity dyskinesia:** Writhing movements of the hands, feet, and toes; choreiform finger movements</li>
+                <li>**Trunk and respiratory involvement:** Rocking, twisting movements; irregular breathing patterns or vocal dyskinesia</li>
+                <li>**Developmental pattern:** Insidious onset with gradual worsening; may persist or worsen after antipsychotic discontinuation</li>
+                <li>**Variability:** Symptoms often increase with stress, anxiety, or concentration; may decrease with relaxation or sleep</li>
+            </ul>
+
+            <div class="ba-stat-row">
+                <div class="ba-stat-card ba-stat-card--alert">
+                    <div class="ba-stat-num">3-5%</div>
+                    <div class="ba-stat-label">Annual incidence of tardive dyskinesia with first-generation antipsychotics in adults</div>
+                </div>
+                <div class="ba-stat-card">
+                    <div class="ba-stat-num">25-30%</div>
+                    <div class="ba-stat-label">Cumulative prevalence in chronic antipsychotic-treated patients</div>
+                </div>
+                <div class="ba-stat-card ba-stat-card--alert">
+                    <div class="ba-stat-num">40-60%</div>
+                    <div class="ba-stat-label">Estimated prevalence in elderly patients receiving antipsychotics</div>
+                </div>
+            </div>
+
+            ### Assessment Tools and Measurement Scales
+            <p>
+                Standardized assessment instruments are essential for detecting, monitoring, and quantifying the severity of movement disorders in clinical practice. These instruments provide objective, reproducible measures that facilitate clinical communication and research.
+            </p>
+
+            <div class="ba-table-wrap">
+                <table class="ba-table">
+                    <thead>
+                        <tr>
+                            <th>Assessment Instrument</th>
+                            <th>Target Disorder</th>
+                            <th>Components</th>
+                            <th>Clinical Application</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>**Barnes Akathisia Rating Scale (BARS)**</td>
+                            <td>Akathisia</td>
+                            <td>Subjective akathisia, objective akathisia, ability to sit still, global clinical assessment</td>
+                            <td>Gold standard for akathisia assessment; simple, brief, validated</td>
+                        </tr>
+                        <tr>
+                            <td>**Abnormal Involuntary Movement Scale (AIMS)**</td>
+                            <td>Tardive Dyskinesia</td>
+                            <td>Orofacial, extremity, trunk movements; global severity; awareness</td>
+                            <td>Standard tool for TD screening and monitoring</td>
+                        </tr>
+                        <tr>
+                            <td>**Simpson-Angus Scale (SAS)**</td>
+                            <td>Parkinsonism</td>
+                            <td>Gait, arm dropping, shoulder shaking, elbow rigidity, wrist rigidity</td>
+                            <td>Measures acute extrapyramidal side effects</td>
+                        </tr>
+                        <tr>
+                            <td>**Involuntary Movement Scale (IMS)**</td>
+                            <td>Tardive Dyskinesia</td>
+                            <td>Comprehensive TD assessment with severity ratings</td>
+                            <td>Research and specialized clinical settings</td>
+                        </tr>
+                        <tr>
+                            <td>**Extrapyramidal Symptom Rating Scale (ESRS)**</td>
+                            <td>Comprehensive EPS</td>
+                            <td>Parkinsonism, akathisia, dystonia, dyskinesia</td>
+                            <td>Comprehensive assessment across all movement disorder types</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="ba-insight-box">
+                <span class="ba-insight-icon">📋</span>
+                <div>
+                    **Clinical Best Practice:** Baseline assessment with AIMS should be performed before initiating antipsychotic treatment to establish a pre-treatment reference. The AIMS should be readministered at regular intervals (every 6-12 months) to detect emerging tardive dyskinesia, and the BARS should be assessed whenever akathisia is suspected.
+                </div>
+            </div>
+
+            
+            ## Etiology: Pharmacological and Substance-Related Causes
+
+            ### Antipsychotic Medications
+            <p>
+                The primary culprits for antipsychotic-induced movement disorders are the antipsychotic medications themselves, with differential risk profiles between first-generation (typical) and second-generation (atypical) agents.
+            </p>
+
+            <div class="ba-therapy-grid">
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">💊</div>
+                    <div class="ba-therapy-title">First-Generation Antipsychotics</div>
+                    <p>**High Movement Disorder Risk**</p>
+                    <p style="font-size: 0.9em; color: #6b6050;">
+                        Haloperidol, chlorpromazine, fluphenazine, perphenazine. Highest incidence of both akathisia (10-20%) and tardive dyskinesia (3-5% annual risk). Potency directly correlates with movement disorder risk.
+                    </p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">💊</div>
+                    <div class="ba-therapy-title">Second-Generation Antipsychotics</div>
+                    <p>**Variable Movement Disorder Risk**</p>
+                    <p style="font-size: 0.9em; color: #6b6050;">
+                        Risperidone, paliperidone, olanzapine, quetiapine, aripiprazole. Generally lower risk than first-generation agents, but significant variation exists. Aripiprazole and quetiapine present lowest risk; risperidone presents intermediate risk.
+                    </p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">💊</div>
+                    <div class="ba-therapy-title">Dopamine Agonists</div>
+                    <p>**Movement Disorder Production**</p>
+                    <p style="font-size: 0.9em; color: #6b6050;">
+                        Bromocriptine, pramipexole, ropinirole can induce akathisia and dyskinesia through direct dopaminergic stimulation and dysregulation of motor circuits.
+                    </p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">💊</div>
+                    <div class="ba-therapy-title">Stimulant Medications</div>
+                    <p>**Movement Disorder Precipitation**</p>
+                    <p style="font-size: 0.9em; color: #6b6050;">
+                        Methylphenidate, amphetamine salts, and cocaine can precipitate or exacerbate akathisia through increased dopaminergic and noradrenergic activity.
+                    </p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">💊</div>
+                    <div class="ba-therapy-title">Antiemetics</div>
+                    <p>**Often Overlooked Source**</p>
+                    <p style="font-size: 0.9em; color: #6b6050;">
+                        Metoclopramide and prochlorperazine (Compazine) possess significant antidopaminergic activity and frequently cause akathisia and acute dystonia, particularly in younger patients.
+                    </p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">💊</div>
+                    <div class="ba-therapy-title">SSRIs and Antidepressants</div>
+                    <p>**Secondary Culprits**</p>
+                    <p style="font-size: 0.9em; color: #6b6050;">
+                        SSRIs, particularly fluoxetine and sertraline, can cause akathisia and akathisia-like phenomena, particularly at high doses or in susceptible individuals.
+                    </p>
+                </div>
+            </div>
+
+            ### Risk Factors for Movement Disorder Development
+
+            <div class="ba-table-wrap">
+                <table class="ba-table">
+                    <thead>
+                        <tr>
+                            <th>Risk Factor Category</th>
+                            <th>Specific Risk Factors</th>
+                            <th>Clinical Significance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>**Demographic**</td>
+                            <td>Advanced age (>60 years), African and Hispanic descent, female gender</td>
+                            <td>Elderly patients show 3-4 fold increased TD risk; ethnic variations suggest genetic susceptibility</td>
+                        </tr>
+                        <tr>
+                            <td>**Clinical**</td>
+                            <td>Affective disorders, cognitive impairment, baseline movement abnormalities, diabetes</td>
+                            <td>Bipolar disorder and depression associated with higher dyskinesia risk; organic brain syndromes increase vulnerability</td>
+                        </tr>
+                        <tr>
+                            <td>**Pharmacological**</td>
+                            <td>High-potency agents, high cumulative doses, prolonged exposure, rapid titration</td>
+                            <td>Dose and duration of exposure are primary determinants; rapid escalation increases acute akathisia risk</td>
+                        </tr>
+                        <tr>
+                            <td>**Genetic**</td>
+                            <td>Polymorphisms in dopamine receptors (DRD2, DRD3), COMT, catechol-O-methyltransferase</td>
+                            <td>Emerging evidence suggests genetic predisposition; may explain individual variation in susceptibility</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            
+            ## Pathophysiology: Neurobiological Mechanisms
+
+            ### Dopaminergic Dysfunction
+            <p>
+                The fundamental pathophysiological basis of antipsychotic-induced movement disorders centers on dopaminergic system disruption. Antipsychotics, particularly typical agents, produce non-selective dopamine D2 receptor blockade throughout the central nervous system, affecting multiple dopaminergic circuits with distinct functional consequences.
+            </p>
+
+            <div class="diagram-container">
+                <svg viewbox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;">
+                    <text x="350" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#4a7c35">Dopaminergic Circuits and Antipsychotic Effects</text>
+
+                    
+                    <g>
+                        <circle cx="100" cy="100" r="35" fill="#ece6db" stroke="#4a7c35" stroke-width="2"></circle>
+                        <text x="100" y="105" font-size="11" text-anchor="middle" fill="#231e14" font-weight="bold">VTA</text>
+
+                        <line x1="135" y1="100" x2="220" y2="100" stroke="#4a7c35" stroke-width="2" marker-end="url(#arrowhead)"></line>
+
+                        <circle cx="260" cy="100" r="35" fill="#ece6db" stroke="#4a7c35" stroke-width="2"></circle>
+                        <text x="260" y="105" font-size="11" text-anchor="middle" fill="#231e14" font-weight="bold">NAcc</text>
+
+                        <text x="180" y="90" font-size="10" fill="#4a7c35" font-weight="600">Mesolimbic</text>
+
+                        <rect x="40" y="140" width="220" height="50" rx="4" fill="#f5f0e8" stroke="#4a7c35" stroke-width="1" stroke-dasharray="3,3"></rect>
+                        <text x="50" y="160" font-size="12" font-weight="bold" fill="#4a7c35">Blockade Effect:</text>
+                        <text x="50" y="172" font-size="12" fill="#231e14">Reduced reward/motivation</text>
+                        <text x="50" y="183" font-size="12" fill="#231e14">Therapeutic for psychosis</text>
+                    </g>
+
+                    
+                    <g>
+                        <line x1="135" y1="100" x2="220" y2="200" stroke="#8b6914" stroke-width="2" marker-end="url(#arrowhead2)"></line>
+
+                        <circle cx="260" cy="240" r="35" fill="#e2dbd0" stroke="#8b6914" stroke-width="2"></circle>
+                        <text x="260" y="245" font-size="11" text-anchor="middle" fill="#231e14" font-weight="bold">PFC</text>
+
+                        <text x="160" y="185" font-size="10" fill="#8b6914" font-weight="600">Mesocortical</text>
+
+                        <rect x="40" y="270" width="220" height="50" rx="4" fill="#f5f0e8" stroke="#8b6914" stroke-width="1" stroke-dasharray="3,3"></rect>
+                        <text x="50" y="290" font-size="12" font-weight="bold" fill="#8b6914">Blockade Effect:</text>
+                        <text x="50" y="302" font-size="12" fill="#231e14">Cognitive/affective deficits</text>
+                        <text x="50" y="313" font-size="12" fill="#231e14">Negative symptoms</text>
+                    </g>
+
+                    
+                    <g>
+                        <circle cx="520" cy="100" r="35" fill="#fef4e8" stroke="#c04030" stroke-width="2.5"></circle>
+                        <text x="520" y="105" font-size="11" text-anchor="middle" fill="#231e14" font-weight="bold">SNc</text>
+
+                        <line x1="485" y1="100" x2="400" y2="100" stroke="#c04030" stroke-width="2.5" marker-end="url(#arrowhead3)"></line>
+
+                        <circle cx="360" cy="100" r="35" fill="#fef4e8" stroke="#c04030" stroke-width="2.5"></circle>
+                        <text x="360" y="105" font-size="11" text-anchor="middle" fill="#231e14" font-weight="bold">CPu</text>
+
+                        <text x="440" y="90" font-size="10" fill="#c04030" font-weight="600">Nigrostriatal</text>
+
+                        <rect x="300" y="140" width="220" height="65" rx="4" fill="#fef4e8" stroke="#c04030" stroke-width="2"></rect>
+                        <text x="310" y="160" font-size="12" font-weight="bold" fill="#c04030">Blockade Effect:</text>
+                        <text x="310" y="172" font-size="12" fill="#231e14">Parkinsonism, dystonia,</text>
+                        <text x="310" y="183" font-size="12" fill="#231e14">akathisia, tardive</text>
+                        <text x="310" y="194" font-size="12" fill="#231e14">dyskinesia</text>
+                    </g>
+
+                    
+                    <g>
+                        <line x1="100" y1="135" x2="100" y2="210" stroke="#8b6914" stroke-width="2" marker-end="url(#arrowhead4)"></line>
+
+                        <circle cx="100" cy="250" r="35" fill="#e2dbd0" stroke="#8b6914" stroke-width="2"></circle>
+                        <text x="100" y="255" font-size="11" text-anchor="middle" fill="#231e14" font-weight="bold">Pit</text>
+
+                        <text x="120" y="175" font-size="10" fill="#8b6914" font-weight="600">Tuberoinfundibular</text>
+
+                        <rect x="40" y="300" width="120" height="50" rx="4" fill="#f5f0e8" stroke="#8b6914" stroke-width="1" stroke-dasharray="3,3"></rect>
+                        <text x="50" y="320" font-size="12" font-weight="bold" fill="#8b6914">Blockade Effect:</text>
+                        <text x="50" y="331" font-size="12" fill="#231e14">Hyperprolactinemia</text>
+                    </g>
+
+                    
+                    <defs>
+                        <marker id="arrowhead" markerwidth="10" markerheight="10" refx="9" refy="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#4a7c35"></polygon>
+                        </marker>
+                        <marker id="arrowhead2" markerwidth="10" markerheight="10" refx="9" refy="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#8b6914"></polygon>
+                        </marker>
+                        <marker id="arrowhead3" markerwidth="10" markerheight="10" refx="9" refy="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#c04030"></polygon>
+                        </marker>
+                        <marker id="arrowhead4" markerwidth="10" markerheight="10" refx="9" refy="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#8b6914"></polygon>
+                        </marker>
+                    </defs>
+
+                    <text x="550" y="375" font-size="12" fill="#6b6050" font-style="italic">VTA = Ventral Tegmental Area | NAcc = Nucleus Accumbens | PFC = Prefrontal Cortex | SNc = Substantia Nigra pars compacta | CPu = Caudate-Putamen | Pit = Pituitary</text>
+                </svg>
+                <p class="diagram-label">Figure 2: Dopamine pathways and differential effects of antipsychotic D2 receptor blockade. Nigrostriatal blockade is critical for movement disorder development.</p>
+            </div>
+
+            ### Akathisia Mechanisms
+            <p>
+                Akathisia emerges through a distinct neurobiological mechanism from tardive dyskinesia, though both involve dopaminergic disruption. Current understanding suggests akathisia involves:
+            </p>
+
+            <ul>
+                <li>**Mesocortical dopamine disruption:** Reduced dopamine in prefrontal cortex contributes to dysphoric, aversive state</li>
+                <li>**Increased nigrostriatal motor drive:** Paradoxical disinhibition of motor systems creates compulsive urge to move</li>
+                <li>**Serotonergic dysfunction:** Antipsychotics with serotonergic activity may exacerbate akathisia through 5-HT2 receptor effects</li>
+                <li>**Noradrenergic hyperactivity:** Increased noradrenergic tone contributes to anxiety and restlessness components</li>
+                <li>**Temporal dynamics:** Often develops rapidly (days to weeks) suggesting acute imbalance rather than long-term neuroadaptation</li>
+            </ul>
+
+            ### Tardive Dyskinesia Mechanisms
+            <p>
+                Tardive dyskinesia represents a more complex neuropharmacological phenomenon involving long-term neuroadaptive changes:
+            </p>
+
+            <div class="ba-timeline">
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot">1</div>
+                    <div class="ba-tl-time">Acute Phase (Days-Weeks)</div>
+                    <div class="ba-tl-text">D2 receptor blockade in striatum; compensatory upregulation of dopamine synthesis and metabolic activity</div>
+                </div>
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot">2</div>
+                    <div class="ba-tl-time">Early Adaptation (Weeks-Months)</div>
+                    <div class="ba-tl-text">Increased D2 receptor density (upregulation); enhanced dopamine turnover; development of denervation supersensitivity</div>
+                </div>
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot">3</div>
+                    <div class="ba-tl-time">Chronic Phase (Months-Years)</div>
+                    <div class="ba-tl-text">Cumulative exposure leads to neurodegeneration of GABAergic and enkephalinergic neurons; altered balance between direct and indirect striatal pathways</div>
+                </div>
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot">4</div>
+                    <div class="ba-tl-time">Established TD (Years)</div>
+                    <div class="ba-tl-text">Structural changes in striatum; increased dopamine receptor sensitivity (supersensitivity psychosis phenomenon); involuntary movements persist despite medication discontinuation</div>
+                </div>
+            </div>
+
+            <div class="diagram-container">
+                <svg viewbox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;">
+                    <text x="350" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#4a7c35">Direct vs. Indirect Striatal Pathway Imbalance in TD</text>
+
+                    
+                    <g>
+                        <text x="175" y="55" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">NORMAL</text>
+
+                        
+                        <circle cx="175" cy="100" r="30" fill="#ece6db" stroke="#4a7c35" stroke-width="2"></circle>
+                        <text x="175" y="105" font-size="10" font-weight="bold" text-anchor="middle" fill="#231e14">Str</text>
+
+                        
+                        <line x1="205" y1="100" x2="280" y2="70" stroke="#3a6e28" stroke-width="2"></line>
+                        <text x="240" y="60" font-size="12" fill="#3a6e28" font-weight="600">Direct</text>
+                        <text x="240" y="71" font-size="12" fill="#3a6e28">(facilitates)</text>
+
+                        
+                        <line x1="205" y1="100" x2="280" y2="130" stroke="#c04030" stroke-width="2"></line>
+                        <text x="240" y="150" font-size="12" fill="#c04030" font-weight="600">Indirect</text>
+                        <text x="240" y="161" font-size="12" fill="#c04030">(inhibits)</text>
+
+                        
+                        <circle cx="320" cy="100" r="25" fill="#e2dbd0" stroke="#4a7c35" stroke-width="2"></circle>
+                        <text x="320" y="105" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Output</text>
+
+                        <text x="175" y="185" font-size="10" text-anchor="middle" fill="#231e14" font-weight="500">Balanced activity</text>
+                        <text x="175" y="198" font-size="10" text-anchor="middle" fill="#231e14">Normal motor control</text>
+                    </g>
+
+                    
+                    <g>
+                        <text x="525" y="55" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">TARDIVE DYSKINESIA</text>
+
+                        
+                        <circle cx="525" cy="100" r="30" fill="#fef4e8" stroke="#c04030" stroke-width="2"></circle>
+                        <text x="525" y="105" font-size="10" font-weight="bold" text-anchor="middle" fill="#231e14">Str</text>
+
+                        
+                        <line x1="555" y1="100" x2="630" y2="70" stroke="#3a6e28" stroke-width="3.5"></line>
+                        <circle cx="575" cy="85" r="4" fill="#3a6e28"></circle>
+                        <circle cx="595" cy="77" r="4" fill="#3a6e28"></circle>
+                        <circle cx="615" cy="70" r="4" fill="#3a6e28"></circle>
+                        <text x="590" y="60" font-size="12" fill="#3a6e28" font-weight="600">Direct ↑↑</text>
+                        <text x="590" y="71" font-size="12" fill="#3a6e28">(hyperactive)</text>
+
+                        
+                        <line x1="555" y1="100" x2="630" y2="130" stroke="#c04030" stroke-width="1.5" stroke-dasharray="2,2"></line>
+                        <text x="590" y="150" font-size="12" fill="#c04030" font-weight="600">Indirect ↓</text>
+                        <text x="590" y="161" font-size="12" fill="#c04030">(weakened)</text>
+
+                        
+                        <circle cx="670" cy="100" r="25" fill="#fef4e8" stroke="#c04030" stroke-width="2"></circle>
+                        <text x="670" y="105" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Output</text>
+
+                        <text x="525" y="185" font-size="10" text-anchor="middle" fill="#231e14" font-weight="500">Imbalanced activity</text>
+                        <text x="525" y="198" font-size="10" text-anchor="middle" fill="#231e14">Hyperkinetic movements</text>
+                    </g>
+                </svg>
+                <p class="diagram-label">Figure 3: In tardive dyskinesia, long-term dopamine blockade leads to supersensitivity and selective enhancement of direct pathway activity, resulting in involuntary hyperkinetic movements.</p>
+            </div>
+
+            ### Additional Neurobiological Contributors
+
+            <div class="ba-insight-box">
+                <span class="ba-insight-icon">🧠</span>
+                <div>
+                    **GABA and Enkephalin Systems:** Chronic antipsychotic exposure selectively damages GABAergic and enkephalinergic interneurons in the striatum, disrupting inhibitory tone on motor output. Loss of these inhibitory systems contributes significantly to the development of persistent involuntary movements.
+                </div>
+            </div>
+
+            <ul>
+                <li>**Glutamatergic dysfunction:** Dysregulation of NMDA and AMPA receptors in striatum; reduced glutamatergic tone on direct pathway neurons</li>
+                <li>**Oxidative stress:** Free radical generation and mitochondrial dysfunction in striatal neurons; may explain individual susceptibility</li>
+                <li>**Neuroinflammation:** Microglial activation and cytokine elevation (TNF-α, IL-6) contributing to neurodegeneration</li>
+                <li>**Iron accumulation:** Increased striatal iron deposits associated with dopaminergic neurodegeneration</li>
+                <li>**Genetic polymorphisms:** Variations in CYP450 genes, dopamine receptor genes (DRD2, DRD3), and COMT affecting individual susceptibility</li>
+            </ul>
+
+            
+            ## Treatment Strategies: Old and New Approaches
+
+            ### Prevention Strategies
+            <p>
+                Prevention remains the most effective approach to managing antipsychotic-induced movement disorders. Strategic use of second-generation antipsychotics with careful dose titration significantly reduces incidence.
+            </p>
+
+            <div class="ba-summary-box">
+                <h3 style="margin-top: 0;">Primary Prevention Principles</h3>
+                <ul>
+                    <li>Prefer second-generation antipsychotics (aripiprazole, quetiapine) over first-generation agents when clinically appropriate</li>
+                    <li>Use lowest effective dose for shortest duration necessary</li>
+                    <li>Implement gradual titration schedules to allow neuroadaptation</li>
+                    <li>Perform baseline AIMS assessment before initiating treatment</li>
+                    <li>Monitor regularly with AIMS every 6-12 months and BARS when akathisia is suspected</li>
+                    <li>Consider medication-free periods or dose reductions when clinically feasible</li>
+                    <li>Maintain metabolic monitoring for diabetes risk (independent TD risk factor)</li>
+                </ul>
+            </div>
+
+            ### Management of Acute Akathisia
+            <p>
+                Acute akathisia typically emerges within days to weeks of antipsychotic initiation or dose escalation and generally responds well to pharmacological intervention.
+            </p>
+
+            <div class="ba-table-wrap">
+                <table class="ba-table">
+                    <thead>
+                        <tr>
+                            <th>Treatment Strategy</th>
+                            <th>Mechanism</th>
+                            <th>Efficacy</th>
+                            <th>Side Effect Profile</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>**Beta-Blockers (Propranolol)**</td>
+                            <td>Noradrenergic antagonism; anxiolytic effects</td>
+                            <td>Excellent (70-90% response rate)</td>
+                            <td>Bradycardia, hypotension, fatigue; generally well-tolerated</td>
+                        </tr>
+                        <tr>
+                            <td>**Benzodiazepines (Lorazepam)**</td>
+                            <td>GABAergic potentiation; anxiolytic, sedative</td>
+                            <td>Good to excellent; rapid onset</td>
+                            <td>Sedation, dependence risk, cognitive effects; shorter duration</td>
+                        </tr>
+                        <tr>
+                            <td>**Anticholinergics (Benztropine)**</td>
+                            <td>Central cholinergic blockade</td>
+                            <td>Moderate (30-50% response); less consistent</td>
+                            <td>Anticholinergic effects: dry mouth, urinary retention, cognitive impairment</td>
+                        </tr>
+                        <tr>
+                            <td>**5-HT1A Agonists (Buspirone)**</td>
+                            <td>Serotonergic modulation; anxiolytic</td>
+                            <td>Moderate; slower onset (2-4 weeks)</td>
+                            <td>Dizziness, headache; minimal dependence risk</td>
+                        </tr>
+                        <tr>
+                            <td>**Antihistamines (Diphenhydramine)**</td>
+                            <td>H1 antagonism; anticholinergic properties</td>
+                            <td>Mild to moderate; variable response</td>
+                            <td>Sedation, anticholinergic effects, tolerance development</td>
+                        </tr>
+                        <tr>
+                            <td>**Antipsychotic Adjustment**</td>
+                            <td>Switch to lower-risk agent; dose reduction</td>
+                            <td>Excellent if feasible clinically</td>
+                            <td>Relapse risk if dose reduced; requires careful monitoring</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="ba-insight-box">
+                <span class="ba-insight-icon">⚕️</span>
+                <div>
+                    **First-Line Treatment Recommendation:** For acute akathisia, propranolol (20-40 mg twice daily) or lorazepam (0.5-2 mg as needed) represent optimal first-line choices. Propranolol offers sustained efficacy with minimal dependence risk, making it ideal for chronic management, while lorazepam provides rapid relief for acute distress.
+                </div>
+            </div>
+
+            ### Management of Tardive Dyskinesia
+            <p>
+                Tardive dyskinesia management presents greater challenges than acute akathisia due to the established neurodegeneration. Treatment goals focus on symptom reduction, preventing progression, and improving quality of life.
+            </p>
+
+            <h4 style="font-size: 1.15em; color: #4a7c35; margin-top: 20px; margin-bottom: 15px;">Traditional Approaches</h4>
+
+            <div class="ba-table-wrap">
+                <table class="ba-table">
+                    <thead>
+                        <tr>
+                            <th>Traditional Treatment</th>
+                            <th>Mechanism</th>
+                            <th>Efficacy for TD</th>
+                            <th>Clinical Limitations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>**Dopamine Depletion (Tetrabenazine)**</td>
+                            <td>VMAT2 inhibition; reduces presynaptic dopamine</td>
+                            <td>Moderate (30-40% symptom reduction)</td>
+                            <td>Depression, sedation; tetrabenazine discontinued (cardiovascular safety concerns); valbenazine/deutetrabenazine preferred</td>
+                        </tr>
+                        <tr>
+                            <td>**Anticholinergics**</td>
+                            <td>Central cholinergic blockade</td>
+                            <td>Poor to absent; may worsen symptoms</td>
+                            <td>Often paradoxically worsens dyskinesia; cognitive effects; not recommended</td>
+                        </tr>
+                        <tr>
+                            <td>**Benzodiazepines**</td>
+                            <td>GABAergic potentiation</td>
+                            <td>Mild; symptomatic relief only</td>
+                            <td>Dependence risk, sedation; insufficient monotherapy</td>
+                        </tr>
+                        <tr>
+                            <td>**Antipsychotic Switch/Reduction**</td>
+                            <td>Reduced dopaminergic blockade</td>
+                            <td>Variable; 10-30% improvement</td>
+                            <td>Risk of symptom relapse; may unmask underlying psychosis</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 style="font-size: 1.15em; color: #4a7c35; margin-top: 20px; margin-bottom: 15px;">Novel and Emerging Treatments for Tardive Dyskinesia</h4>
+
+            <div class="ba-therapy-grid">
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">💊</div>
+                    <div class="ba-therapy-title">Valbenazine (Ingrezza)</div>
+                    <p>**Mechanism:** Selective VMAT2 inhibitor</p>
+                    <p style="font-size: 0.9em; color: #6b6050;">
+                        FDA-approved 2017. Reduces dyskinesia in 40-50% of patients; favorable safety profile with minimal CNS effects. Dose: 40-80 mg daily. Better tolerated than tetrabenazine with less depression and sedation.
+                    </p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">💊</div>
+                    <div class="ba-therapy-title">Deutetrabenazine (Austedo)</div>
+                    <p>**Mechanism:** Deuterated tetrabenazine; VMAT2 inhibitor</p>
+                    <p style="font-size: 0.9em; color: #6b6050;">
+                        FDA-approved 2017. Deuteration improves pharmacokinetics and tolerability. 36-48 mg daily in divided doses. Superior to tetrabenazine; comparable efficacy to valbenazine with potentially better cognitive profile.
+                    </p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">💊</div>
+                    <div class="ba-therapy-title">Ginkgo biloba Extract</div>
+                    <p>**Mechanism:** Antioxidant, neuroprotective</p>
+                    <p style="font-size: 0.9em; color: #6b6050;">
+                        Evidence for adjunctive use. Reduces dyskinesia severity by 20-30% when combined with standard treatment. 240 mg daily in divided doses. Minimal side effects; enhances dopamine depletion therapy efficacy.
+                    </p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">💊</div>
+                    <div class="ba-therapy-title">Vitamin E</div>
+                    <p>**Mechanism:** Lipid antioxidant</p>
+                    <p style="font-size: 0.9em; color: #6b6050;">
+                        Mixed evidence; most benefit in early TD. 1200-1600 IU daily. Particularly useful in prevention; limited therapeutic benefit for established TD. Generally safe with minimal side effects.
+                    </p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">💊</div>
+                    <div class="ba-therapy-title">Clozapine</div>
+                    <p>**Mechanism:** Low dopaminergic affinity, rapid dissociation</p>
+                    <p style="font-size: 0.9em; color: #6b6050;">
+                        Uniquely improves TD (only antipsychotic with this property). 300-600 mg daily. Requires hematologic monitoring but provides both psychotic symptom management and TD improvement simultaneously.
+                    </p>
+                </div>
+                <div class="ba-therapy-card">
+                    <div class="ba-therapy-icon">💊</div>
+                    <div class="ba-therapy-title">Aripiprazole</div>
+                    <p>**Mechanism:** Dopamine partial agonist</p>
+                    <p style="font-size: 0.9em; color: #6b6050;">
+                        Partial agonism may stabilize dopaminergic tone. 15-30 mg daily. Some evidence for TD improvement or prevention; notably lower dyskinesia risk compared to other antipsychotics.
+                    </p>
+                </div>
+            </div>
+
+            <div class="diagram-container">
+                <svg viewbox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;">
+                    <text x="350" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#4a7c35">Treatment Algorithm for Tardive Dyskinesia</text>
+
+                    
+                    <rect x="275" y="50" width="150" height="50" rx="5" fill="#ece6db" stroke="#4a7c35" stroke-width="2"></rect>
+                    <text x="350" y="85" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Confirmed TD</text>
+
+                    
+                    <line x1="350" y1="100" x2="350" y2="125" stroke="#4a7c35" stroke-width="2" marker-end="url(#arrowhead)"></line>
+
+                    
+                    <rect x="225" y="125" width="250" height="50" rx="5" fill="#fef4e8" stroke="#c04030" stroke-width="2"></rect>
+                    <text x="350" y="145" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Step 1: Consider Antipsychotic Switch</text>
+                    <text x="350" y="165" font-size="10" text-anchor="middle" fill="#231e14">Clozapine or low-risk agent (if tolerated)</text>
+
+                    <line x1="350" y1="175" x2="350" y2="200" stroke="#4a7c35" stroke-width="2" marker-end="url(#arrowhead)"></line>
+
+                    
+                    <rect x="200" y="200" width="300" height="55" rx="5" fill="#ece6db" stroke="#4a7c35" stroke-width="2"></rect>
+                    <text x="350" y="220" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Step 2: Dopamine Depletion (First-Line)</text>
+                    <text x="350" y="240" font-size="10" text-anchor="middle" fill="#231e14">Valbenazine 40-80 mg/day OR Deutetrabenazine 36-48 mg/day</text>
+
+                    <line x1="350" y1="255" x2="350" y2="280" stroke="#4a7c35" stroke-width="2" marker-end="url(#arrowhead)"></line>
+
+                    
+                    <rect x="175" y="280" width="350" height="55" rx="5" fill="#fef4e8" stroke="#c04030" stroke-width="2"></rect>
+                    <text x="350" y="300" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Step 3: Adjunctive Neuroprotection (if inadequate response)</text>
+                    <text x="350" y="320" font-size="10" text-anchor="middle" fill="#231e14">Add Ginkgo biloba 240 mg/day or Vitamin E 1200 IU/day</text>
+
+                    <defs>
+                        <marker id="arrowhead" markerwidth="10" markerheight="10" refx="9" refy="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#4a7c35"></polygon>
+                        </marker>
+                    </defs>
+                </svg>
+                <p class="diagram-label">Figure 4: Systematic approach to tardive dyskinesia management. Treatment decisions should be individualized based on clinical context and treatment response.</p>
+            </div>
+
+            ### Emerging and Future Therapies
+
+            <div class="ba-insight-box">
+                <span class="ba-insight-icon">🔬</span>
+                <div>
+                    **Investigational Approaches:** Emerging research explores GABA-enhancing agents, glutamatergic modulators, and neuroprotective compounds targeting oxidative stress and neuroinflammation. Deep brain stimulation (DBS) shows promise for severe, refractory cases. Molecular approaches targeting genetic susceptibility factors may enable personalized prevention strategies.
+                </div>
+            </div>
+
+            <ul>
+                <li>**GABA-enhancing agents:** Agents enhancing GABAergic signaling show promise in preclinical models; limited human trials to date</li>
+                <li>**Glutamatergic modulators:** NMDA antagonists and AMPA receptor potentiators may restore striatal circuit balance</li>
+                <li>**Antioxidant and anti-inflammatory agents:** N-acetylcysteine, minocycline targeting neuroinflammation</li>
+                <li>**Deep brain stimulation (DBS):** Pallidum-directed DBS effective for severe, refractory TD; surgical option for motivated patients</li>
+                <li>**Gene therapy:** Delivery of neuroprotective factors to striatum; preclinical development stage</li>
+                <li>**Pharmacogenetic screening:** Identification of at-risk individuals prior to antipsychotic initiation</li>
+            </ul>
+
+            
+            ## Clinical Summary and Evidence-Based Recommendations
+
+            <div class="ba-summary-box">
+                <h3 style="margin-top: 0;">Key Clinical Pearls</h3>
+                <ul>
+                    <li>Movement disorders represent significant sources of morbidity and medication non-compliance; proactive assessment and management are essential</li>
+                    <li>Akathisia typically responds excellently to beta-blockers or benzodiazepines; consider antipsychotic adjustment if medications ineffective</li>
+                    <li>Tardive dyskinesia requires early detection through regular AIMS assessment; preventive strategies are more effective than treating established disease</li>
+                    <li>Valbenazine and deutetrabenazine represent the current evidence-based pharmacological approach to tardive dyskinesia management</li>
+                    <li>Clozapine remains unique among antipsychotics in potentially improving tardive dyskinesia while maintaining antipsychotic efficacy</li>
+                    <li>Regular monitoring with standardized assessment scales (BARS for akathisia, AIMS for tardive dyskinesia) should be integrated into routine clinical practice</li>
+                    <li>Individual susceptibility to movement disorders varies significantly; genetic screening may facilitate personalized prevention strategies</li>
+                </ul>
+            </div>
+
+            
+            <section class="ba-references">
+                <h2 class="ba-ref-title">References</h2>
+                <ol class="ba-ref-list">
+                    <li>Correll CU, Leucht S, Kane JM. Lower risk for tardive dyskinesia associated with second-generation antipsychotics: a systematic review of 1-year studies. Am J Psychiatry. 2004;161(3):414-425.</li>
+                    <li>Barnes TRE. The Barnes Akathisia Rating Scale--ten years of experience. J Psychopharmacol. 2003;17(4):365-370.</li>
+                    <li>Blouin AM, Trinder J, Shaghaghi A, et al. Spontaneous and induced movement disorders in a population treated with antipsychotic drugs. Am J Psychiatry. 1992;149(11):1541-1546.</li>
+                    <li>Kane JM, Woerner M, Borenstein M, et al. Integrating incidence and prevalence of tardive dyskinesia. Psychopharmacol Bull. 1986;22(2):254-258.</li>
+                    <li>Miller DD, McEvoy GK, Davis SM, et al. Clinical correlates of tardive dyskinesia in schizophrenia: baseline results of the CATIE patients. Schizophr Res. 2005;80(1):33-43.</li>
+                    <li>Inada T, Yagi G. Neurobiological basis of tardive dyskinesia: postsynaptic dopamine receptor hypersensitivity hypothesis. J Clin Psychopharmacol. 1996;16(3 Suppl 2):25S-31S.</li>
+                    <li>Macaluso M, Preskorn SH, Raul N. Akathisia associated with sertraline treatment. J Clin Psychiatry. 1997;58(5):210-211.</li>
+                    <li>Lohr JB, Caligiuri MP. A double-blind placebo-controlled study of vitamin E treatment of tardive dyskinesia. J Clin Psychiatry. 1996;57(4):167-173.</li>
+                    <li>Sachdev PS, Lonergan G. The epidemiology of neuroleptic-induced abnormal involuntary movements: a prospective study. Acta Psychiatr Scand. 1991;84(1):5-7.</li>
+                    <li>Tarsy D, Baldessarini RJ. Epidemiology of tardive dyskinesia: is risk declining with modern antipsychotics? Mov Disord. 2006;21(5):589-598.</li>
+                    <li>Gao K, Kemp DE, Ganocy SJ, et al. Antipsychotic-induced extrapyramidal side effects in bipolar disorder and schizophrenia: a systematic review. J Clin Psychopharmacol. 2008;28(2):203-209.</li>
+                    <li>Marder SR, Meibach RC. Risperidone in the treatment of schizophrenia. Am J Psychiatry. 1994;151(6):825-835.</li>
+                    <li>Citrome L, Shiovitz TM, Arikian S, et al. The effects of antipsychotic monotherapy on tardive dyskinesia risk. CNS Spectr. 2005;10(8 Suppl 16):13-23.</li>
+                    <li>Yildiz A, Nikodem M, Coursey SG, et al. Comparison of quetiapine and haloperidol in adolescents with schizophrenia: efficacy and tolerability. J Child Adolesc Psychopharmacol. 2003;13(1):51-59.</li>
+                    <li>Adler LA, Peselow E, Rotrosen J, et al. Vitamin E treatment of tardive dyskinesia. Am J Psychiatry. 1993;150(9):1405-1407.</li>
+                    <li>Caroff SN, Campbell EC. The neuroleptic malignant syndrome and related conditions. Psychopharmacology (Berl). 2016;233(24):3723-3732.</li>
+                    <li>Egan MF, Apud JA, Wyatt RJ. Treatment of tardive dyskinesia. Schizophr Bull. 1997;23(4):583-609.</li>
+                    <li>Potkin SG, Saha AR, Kujawa MJ, et al. Aripiprazole, an antipsychotic with a novel mechanism of action, and risperidone vs placebo in patients with schizophrenia and schizoaffective disorder. Arch Gen Psychiatry. 2003;60(7):681-690.</li>
+                    <li>American Psychiatric Association. Diagnostic and Statistical Manual of Mental Disorders. 5th ed. Arlington, VA: American Psychiatric Publishing; 2013.</li>
+                    <li>Kazamatsuri H, Chien CP, Cole JO. Long-term treatment of tardive dyskinesia with haloperidol and tetrabenazine. Am J Psychiatry. 1972;129(4):110-115.</li>
+                    <li>Hauser RA, Factor SA, Marder SR, et al; KINECT 3 Investigators. KINECT 3: a phase 3 randomized, double-blind, placebo-controlled trial of valbenazine for tardive dyskinesia. Am J Psychiatry. 2017;174(5):476-484.</li>
+                    <li>Anderson KE, Stamler D, Davis MD, et al. Deutetrabenazine for treatment of involuntary movements in patients with tardive dyskinesia (ARM-TD study): a randomised, double-blind, placebo-controlled trial. Lancet Psychiatry. 2017;4(10):733-742.</li>
+                </ol>
+            </section>
+
+        </div>
+
+        
+        
+        
+          
+          <div class="ba-related">
+            <h4>Related Articles</h4>
+            

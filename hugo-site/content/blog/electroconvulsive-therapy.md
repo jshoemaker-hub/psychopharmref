@@ -1,0 +1,1126 @@
+---
+title: "Electroconvulsive Therapy and Neuromodulation: Evidence, Mechanisms, and Modern Practice"
+date: 2026-03-01
+description: ""
+category: ""
+subtitle: "A comprehensive clinical review of ECT efficacy, neurobiology, patient selection, and emerging neuromodulatory alternatives for treatment-resistant psychiatric conditions."
+readTime: "15 min read"
+clinicalSummary: ""
+related: ['ketamine-esketamine', 'major-depressive-disorder', 'catatonia', 'schizophrenia']
+draft: false
+---
+
+<div class="ba-body">
+          <div class="ba-action-bar">
+            <button class="ba-act-btn" onclick="window.print()" title="Print this article"><svg viewbox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"></path></svg> Print</button>
+            <div class="ba-share-drop">
+              <button class="ba-act-btn" onclick="this.nextElementSibling.classList.toggle('ba-open')" title="Share this article"><svg viewbox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"></path></svg> Share</button>
+              <div class="ba-share-menu" id="share-menu-electroconvulsive-therapy">
+                <a href="https://twitter.com/intent/tweet?text=Electroconvulsive%20Therapy%20and%20Neuromodulation%3A%20Evidence%2C%20Mechanisms%2C%20and%20Modern%20Practice&url=https%3A%2F%2Fpsychopharmref.com%2Fblog%2Felectroconvulsive-therapy.html" target="_blank" rel="noopener">X (Twitter)</a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://psychopharmref.com/blog/electroconvulsive-therapy.html" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:?subject=Electroconvulsive Therapy and Neuromodulation: Evidence, Mechanisms, and Modern Practice&body=Check out this article: https://psychopharmref.com/blog/electroconvulsive-therapy.html">Email</a>
+                <button onclick="navigator.clipboard.writeText('https://psychopharmref.com/blog/electroconvulsive-therapy.html').then(function(){this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link'}.bind(this),2000)}.bind(this))">Copy Link</button>
+              </div>
+            </div>
+          </div>
+
+      <p class="ba-lead">
+        Electroconvulsive therapy (ECT) remains one of the most effective yet underutilized interventions in psychiatry. Despite its dramatic portrayal in popular culture, modern ECT is a safe, evidence-based procedure capable of inducing rapid remission in severe, treatment-resistant mood and psychotic disorders. This review examines the history, pathophysiology, clinical applications, and emerging neuromodulatory alternatives for practicing psychiatrists.
+      </p>
+
+      
+      ## 1. Historical Evolution: From Convulsion to Controlled Intervention
+
+      <p>
+        The intersection of neurology and psychiatry has long recognized that induced seizures could ameliorate psychotic symptoms. This observation led to a series of biological interventions that ultimately shaped modern somatic psychiatry.
+      </p>
+
+      ### Early Era: Convulsive Therapies (1934–1938)
+
+      <p>
+        In 1934, Hungarian psychiatrist László Meduna introduced **metrazol convulsive therapy**, based on an erroneous belief that schizophrenia and epilepsy were biologically antagonistic. Metrazol (pentamethylenetetrazol) was injected intravenously, inducing violent full-body convulsions and severe anxiety preceding the seizure. While ineffective for schizophrenia, it showed surprising efficacy in catatonia and severe depression. However, the procedure was traumatic: patients remained conscious during the violent convulsion, experienced fractures, and had no control over the alarming physiological cascade.
+      </p>
+
+      <p>
+        Four years later, in 1938, Italian neuropsychiatrists Ugo Cerletti and Lucio Bini introduced **electroconvulsive therapy (ECT)**, using electrical current to induce therapeutic seizures. The mechanism was simpler, more controllable, and faster than metrazol. ECT's rapid adoption across Europe and North America was remarkable—it provided the first effective biological treatment for severe depression and catatonia in the pre-psychotropic era.
+      </p>
+
+      <svg viewbox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <lineargradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#4a7c35;stop-opacity:1"></stop>
+            <stop offset="100%" style="stop-color:#8b6914;stop-opacity:1"></stop>
+          </lineargradient>
+        </defs>
+        
+        <text x="400" y="30" font-size="24" font-weight="bold" text-anchor="middle" fill="#231e14">ECT History Timeline (1934–Present)</text>
+
+        
+        <line x1="50" y1="80" x2="750" y2="80" stroke="#cfc8ba" stroke-width="3"></line>
+
+        
+        <circle cx="70" cy="80" r="8" fill="#c04030"></circle>
+        <text x="70" y="130" font-size="13" font-weight="bold" text-anchor="middle" fill="#231e14">1934</text>
+        <text x="70" y="150" font-size="11" text-anchor="middle" fill="#6b6050" width="120">Meduna's</text>
+        <text x="70" y="165" font-size="11" text-anchor="middle" fill="#6b6050">Metrazol</text>
+
+        
+        <circle cx="170" cy="80" r="8" fill="#8b6914"></circle>
+        <text x="170" y="130" font-size="13" font-weight="bold" text-anchor="middle" fill="#231e14">1938</text>
+        <text x="170" y="150" font-size="11" text-anchor="middle" fill="#6b6050">Cerletti &</text>
+        <text x="170" y="165" font-size="11" text-anchor="middle" fill="#6b6050">Bini ECT</text>
+
+        
+        <circle cx="330" cy="80" r="8" fill="#b05a20"></circle>
+        <text x="330" y="130" font-size="13" font-weight="bold" text-anchor="middle" fill="#231e14">1960s</text>
+        <text x="330" y="150" font-size="11" text-anchor="middle" fill="#6b6050">Anesthesia &</text>
+        <text x="330" y="165" font-size="11" text-anchor="middle" fill="#6b6050">Relaxants</text>
+
+        
+        <circle cx="490" cy="80" r="8" fill="#4a7c35"></circle>
+        <text x="490" y="130" font-size="13" font-weight="bold" text-anchor="middle" fill="#231e14">1980s</text>
+        <text x="490" y="150" font-size="11" text-anchor="middle" fill="#6b6050">Right Unilateral</text>
+        <text x="490" y="165" font-size="11" text-anchor="middle" fill="#6b6050">Placement</text>
+
+        
+        <circle cx="730" cy="80" r="8" fill="#3a6e28"></circle>
+        <text x="730" y="130" font-size="13" font-weight="bold" text-anchor="middle" fill="#231e14">Present</text>
+        <text x="730" y="150" font-size="11" text-anchor="middle" fill="#6b6050">Evidence-Based</text>
+        <text x="730" y="165" font-size="11" text-anchor="middle" fill="#6b6050">Standard Care</text>
+
+        
+        <g font-size="10" fill="#6b6050">
+          <text x="70" y="240">Induced seizures via</text>
+          <text x="70" y="255">IV drug; highly</text>
+          <text x="70" y="270">traumatic</text>
+
+          <text x="170" y="240">Electrical induction of</text>
+          <text x="170" y="255">therapeutic seizure;</text>
+          <text x="170" y="270">rapid expansion</text>
+
+          <text x="330" y="240">Addition of anesthetic</text>
+          <text x="330" y="255">agents (thiopental) and</text>
+          <text x="330" y="270">muscle paralysis</text>
+
+          <text x="490" y="240">Shift from bilateral to</text>
+          <text x="490" y="255">RUL to reduce cognitive</text>
+          <text x="490" y="270">side effects</text>
+
+          <text x="730" y="240">Bifrontal, dose-titration,</text>
+          <text x="730" y="255">relapse prevention with</text>
+          <text x="730" y="270">maintenance ECT</text>
+        </g>
+      </svg>
+
+      ### The Dark Era: Unmodified ECT and the Descent into Stigma (1940s–1970s)
+
+      <p>
+        While ECT proved therapeutically beneficial, its application often lacked ethical safeguards and scientific rigor. Patients received no anesthesia or muscle relaxants—they experienced the full violence of a generalized seizure while conscious, resulting in fractures, dislocations, severe anxiety, and profound cognitive disruption. Institutions overused ECT for behavioral control rather than specific psychiatric indications. Combined with the advent of antipsychotics and antidepressants in the 1950s–60s, ECT fell into disfavor and became synonymous with psychiatric abuse.
+      </p>
+
+      <p>
+        This era left an indelible mark on public perception. The 1975 film *One Flew Over the Cuckoo's Nest*, depicting brutal, unmodified ECT, cemented ECT as a symbol of psychiatric coercion in the popular imagination—a stigma that persists despite modern safety protocols.
+      </p>
+
+      ### The Modern Era: Modified ECT with Anesthesia and Muscle Relaxants (1960s–Present)
+
+      <p>
+        The introduction of short-acting anesthetic agents (thiopental, propofol) and depolarizing muscle relaxants (succinylcholine) transformed ECT into a far safer procedure. Patients are now:
+      </p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>Pre-oxygenated to prevent hypoxia</li>
+        <li>Anesthetized to unconsciousness</li>
+        <li>Paralyzed to prevent fractures and reduce physical trauma</li>
+        <li>Monitored continuously with EEG, ECG, and pulse oximetry</li>
+      </ul>
+
+      <p>
+        Modern ECT is administered in monitored anesthesia care settings with full resuscitation equipment and trained anesthesiology support—far removed from the brutal procedures of the 1940s. The therapeutic seizure lasts 30–60 seconds and is entirely painless due to the anesthetic.
+      </p>
+
+      ### Electrode Placement Evolution
+
+      <p>
+        Electrode placement significantly affects both efficacy and cognitive side effects:
+      </p>
+
+      <svg viewbox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <lineargradient id="headGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#e8dcd0;stop-opacity:1"></stop>
+            <stop offset="100%" style="stop-color:#d4c8b8;stop-opacity:1"></stop>
+          </lineargradient>
+        </defs>
+
+        <text x="400" y="30" font-size="22" font-weight="bold" text-anchor="middle" fill="#231e14">Electrode Placement Comparison</text>
+
+        
+        <g>
+          <text x="150" y="70" font-size="14" font-weight="bold" text-anchor="middle" fill="#231e14">Bilateral (BL)</text>
+          
+          <ellipse cx="150" cy="150" rx="45" ry="55" fill="url(#headGrad)" stroke="#cfc8ba" stroke-width="2"></ellipse>
+          
+          <circle cx="135" cy="135" r="3" fill="#231e14"></circle>
+          <circle cx="165" cy="135" r="3" fill="#231e14"></circle>
+          
+          <circle cx="110" cy="120" r="7" fill="#c04030" stroke="#8b0000" stroke-width="2"></circle>
+          <circle cx="190" cy="120" r="7" fill="#c04030" stroke="#8b0000" stroke-width="2"></circle>
+          
+          <path d="M 110 120 Q 150 150 190 120" stroke="#c04030" stroke-width="2" fill="none" stroke-dasharray="5,5" marker-end="url(#arrowred)"></path>
+
+          
+          <text x="150" y="250" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Higher Efficacy</text>
+          <text x="150" y="270" font-size="10" text-anchor="middle" fill="#6b6050">Faster response;</text>
+          <text x="150" y="285" font-size="10" text-anchor="middle" fill="#6b6050">greater cognitive</text>
+          <text x="150" y="300" font-size="10" text-anchor="middle" fill="#6b6050">impact</text>
+        </g>
+
+        
+        <g>
+          <text x="400" y="70" font-size="14" font-weight="bold" text-anchor="middle" fill="#231e14">Right Unilateral (RUL)</text>
+          
+          <ellipse cx="400" cy="150" rx="45" ry="55" fill="url(#headGrad)" stroke="#cfc8ba" stroke-width="2"></ellipse>
+          
+          <circle cx="385" cy="135" r="3" fill="#231e14"></circle>
+          <circle cx="415" cy="135" r="3" fill="#231e14"></circle>
+          
+          <circle cx="355" cy="120" r="7" fill="#8b6914" stroke="#5d4608" stroke-width="2"></circle>
+          <circle cx="375" cy="190" r="7" fill="#8b6914" stroke="#5d4608" stroke-width="2"></circle>
+          
+          <path d="M 355 120 Q 370 160 375 190" stroke="#8b6914" stroke-width="2" fill="none" stroke-dasharray="5,5"></path>
+
+          
+          <text x="400" y="250" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Balanced Choice</text>
+          <text x="400" y="270" font-size="10" text-anchor="middle" fill="#6b6050">Good efficacy;</text>
+          <text x="400" y="285" font-size="10" text-anchor="middle" fill="#6b6050">fewer cognitive</text>
+          <text x="400" y="300" font-size="10" text-anchor="middle" fill="#6b6050">side effects</text>
+        </g>
+
+        
+        <g>
+          <text x="650" y="70" font-size="14" font-weight="bold" text-anchor="middle" fill="#231e14">Bifrontal (BF)</text>
+          
+          <ellipse cx="650" cy="150" rx="45" ry="55" fill="url(#headGrad)" stroke="#cfc8ba" stroke-width="2"></ellipse>
+          
+          <circle cx="635" cy="135" r="3" fill="#231e14"></circle>
+          <circle cx="665" cy="135" r="3" fill="#231e14"></circle>
+          
+          <circle cx="620" cy="95" r="7" fill="#4a7c35" stroke="#2d5326" stroke-width="2"></circle>
+          <circle cx="680" cy="95" r="7" fill="#4a7c35" stroke="#2d5326" stroke-width="2"></circle>
+          
+          <path d="M 620 95 Q 650 140 680 95" stroke="#4a7c35" stroke-width="2" fill="none" stroke-dasharray="5,5"></path>
+
+          
+          <text x="650" y="250" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Emerging Standard</text>
+          <text x="650" y="270" font-size="10" text-anchor="middle" fill="#6b6050">Efficacy similar to BL;</text>
+          <text x="650" y="285" font-size="10" text-anchor="middle" fill="#6b6050">possible cognitive</text>
+          <text x="650" y="300" font-size="10" text-anchor="middle" fill="#6b6050">advantage</text>
+        </g>
+
+        <defs>
+          <marker id="arrowred" markerwidth="10" markerheight="10" refx="5" refy="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10" fill="#c04030"></path>
+          </marker>
+        </defs>
+
+        
+        <text x="400" y="380" font-size="11" text-anchor="middle" fill="#6b6050" font-weight="bold">Efficacy and Side-Effect Profile Varies by Placement</text>
+        <text x="400" y="400" font-size="10" text-anchor="middle" fill="#6b6050">BL (bilateral): Historically first-line but highest cognitive burden</text>
+        <text x="400" y="420" font-size="10" text-anchor="middle" fill="#6b6050">RUL (right unilateral): Preferred for decades; excellent safety-efficacy balance</text>
+        <text x="400" y="440" font-size="10" text-anchor="middle" fill="#6b6050">BF (bifrontal): Emerging evidence suggests comparable efficacy to BL with better cognition than RUL</text>
+      </svg>
+
+      
+      ## 2. Clinical Indications and Patient Selection
+
+      <p>
+        ECT is most effective and appropriate for a specific set of severe, acute psychiatric conditions. Selection hinges on balancing the severity of illness against the procedure's risks.
+      </p>
+
+      ### Primary Indications
+
+      <div class="ba-stat-row">
+        <div class="ba-stat-card ba-stat-card--good">
+          <div class="ba-stat-num">60–70%</div>
+          <div class="ba-stat-label">Response rate in<br></br>treatment-resistant<br></br>depression (TRD)</div>
+        </div>
+        <div class="ba-stat-card ba-stat-card--good">
+          <div class="ba-stat-num">50–80%</div>
+          <div class="ba-stat-label">Response rate in<br></br>catatonia (often rapid:<br></br>1–2 sessions)</div>
+        </div>
+        <div class="ba-stat-card ba-stat-card--good">
+          <div class="ba-stat-num">80%+</div>
+          <div class="ba-stat-label">Response rate in<br></br>psychotic depression</div>
+        </div>
+      </div>
+
+      ### Established Indications
+
+      <p>**1. Treatment-Resistant Depression (TRD)**</p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>Failed adequate trials (≥2) of first- or second-generation antidepressants at therapeutic doses for ≥4–6 weeks each</li>
+        <li>Consider augmentation strategies first (lithium, T3, atypical antipsychotics, high-dose SSRIs) unless safety is an urgent issue</li>
+        <li>ECT is highly cost-effective once medications fail, especially given hospitalization costs and suicide risk</li>
+      </ul>
+
+      <p>**2. Catatonia**</p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>Characterized by psychomotor immobility, mutism, negativism, rigidity, waxy flexibility, echo phenomena</li>
+        <li>ECT is first-line for catatonia of any etiology (psychiatric or medical)</li>
+        <li>Often responds within 1–2 sessions; few alternative interventions are this rapid and reliable</li>
+      </ul>
+
+      <p>**3. Acute Suicidality**</p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>Severe, imminent suicidal intent with psychosis or severe depression</li>
+        <li>ECT can break a suicidal crisis within 1–2 weeks, far faster than pharmacotherapy</li>
+        <li>Reduces suicide risk in the acute post-hospitalization period</li>
+      </ul>
+
+      <p>**4. Psychotic Depression**</p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>Combination psychotic and depressive symptoms</li>
+        <li>Higher response rates than for non-psychotic depression</li>
+        <li>Antipsychotics + antidepressants are standard first-line, but ECT is highly effective if medications fail</li>
+      </ul>
+
+      <p>**5. Bipolar Disorder**</p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>*Bipolar depression:* Effective, especially when antidepressants risk mood destabilization</li>
+        <li>*Acute mania:* Particularly severe or psychotic mania; antipsychotics and mood stabilizers are first-line</li>
+        <li>ECT is high-efficacy adjunctive or second-line therapy</li>
+      </ul>
+
+      <p>**6. Schizophrenia**</p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>Augmentation for antipsychotic-resistant positive symptoms (especially in catatonic or bizarre presentations)</li>
+        <li>Not first-line; reserved for cases with poor medication response or acute behavioral crisis</li>
+        <li>May improve negative symptoms and cognition in some patients</li>
+      </ul>
+
+      <p>**7. Pregnancy and Postpartum Psychiatric Crisis**</p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>ECT is considered relatively safe in pregnancy when psychiatric illness is severe and life-threatening</li>
+        <li>No clear teratogenic risk; fetal monitoring is standard practice</li>
+        <li>Preferred for postpartum depression with suicidality or psychosis when medication risks outweigh benefits</li>
+      </ul>
+
+      ### Contraindications and Cautions
+
+      <div class="ba-insight-box">
+        <div class="ba-insight-icon">⚠️</div>
+        <div>
+          **Absolute contraindications are rare in modern practice.** Most "contraindications" to ECT are relative and involve risk stratification rather than prohibition. Increased intracranial pressure (space-occupying lesion, recent stroke) remains the primary concern, as ECT transiently raises ICP further.
+        </div>
+      </div>
+
+      <div class="ba-table-wrap">
+        <table class="ba-table">
+          <thead>
+            <tr>
+              <th>Condition</th>
+              <th>Risk Category</th>
+              <th>Clinical Approach</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>**Increased intracranial pressure** (tumor, recent CVA, aneurysm)</td>
+              <td>Relative contraindication</td>
+              <td>Neuroimaging; anesthesia consultation; may still proceed with careful anesthetic management</td>
+            </tr>
+            <tr>
+              <td>**Recent MI or unstable coronary artery disease**</td>
+              <td>Relative; risk of arrhythmia</td>
+              <td>Cardiac evaluation; may proceed if benefit exceeds risk; ECT typically well-tolerated post-MI recovery</td>
+            </tr>
+            <tr>
+              <td>**Pheochromocytoma**</td>
+              <td>Relative</td>
+              <td>Severe hypertensive risk during procedure; alpha-blockade pre-procedure if ECT is essential</td>
+            </tr>
+            <tr>
+              <td>**Unstable arrhythmia**</td>
+              <td>Relative; not absolute</td>
+              <td>Cardiology optimization first; may proceed with aggressive monitoring</td>
+            </tr>
+            <tr>
+              <td>**Cochlear implant or metallic hardware**</td>
+              <td>Relative; depends on device type</td>
+              <td>Manufacturer consultation; some devices are ECT-compatible; others require device deactivation or ECT avoidance</td>
+            </tr>
+            <tr>
+              <td>**Poorly controlled hypertension or diabetes**</td>
+              <td>Relative; precaution</td>
+              <td>Optimize medical management before ECT; not a contraindication</td>
+            </tr>
+            <tr>
+              <td>**Age (advanced or pediatric)**</td>
+              <td>Not a contraindication</td>
+              <td>ECT is safe across the lifespan; anesthetic modifications for elderly or medically complex patients</td>
+            </tr>
+            <tr>
+              <td>**Pregnancy**</td>
+              <td>Not a contraindication</td>
+              <td>Relative safety established; fetal monitoring recommended; proceed if psychiatric illness is severe and life-threatening</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      ### Patient Selection Algorithm
+
+      <svg viewbox="0 0 750 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .flowbox { fill: #f0fef5; stroke: #4a7c35; stroke-width: 2; }
+            .flowbox-alert { fill: #fff5f0; stroke: #c04030; stroke-width: 2; }
+            .flowbox-neutral { fill: #f9f6f0; stroke: #8b6914; stroke-width: 2; }
+            .flowtext { font-size: 12px; text-anchor: middle; fill: #231e14; font-weight: 600; }
+            .flowsub { font-size: 10px; text-anchor: middle; fill: #6b6050; }
+            .arrow { stroke: #6b6050; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+/* SVG responsive sizing fix */
+.diagram-wrapper > div, .diagram-container > div, .svg-container > div, .svg-diagram > div, .diagram-wrap > div, .diagram > div { width: 100%; }
+.diagram-wrapper svg, .diagram-container svg, .svg-container svg, .svg-diagram svg, .diagram-wrap svg, .diagram svg, .ba-body svg { width: 100%; height: auto; max-width: 820px; }
+          </style>
+          <marker id="arrowhead" markerwidth="10" markerheight="10" refx="8" refy="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#6b6050"></polygon>
+          </marker>
+        </defs>
+
+        <text x="375" y="25" font-size="18" font-weight="bold" text-anchor="middle" fill="#231e14">Patient Selection Algorithm for ECT</text>
+
+        
+        <rect x="275" y="45" width="200" height="60" class="flowbox" rx="5"></rect>
+        <text x="375" y="70" class="flowtext">Severe psychiatric illness?</text>
+        <text x="375" y="85" class="flowsub">(suicidality, psychosis, catatonia,</text>
+        <text x="375" y="98" class="flowsub">severe depression, mania)</text>
+
+        
+        <line x1="375" y1="105" x2="375" y2="130" class="arrow"></line>
+
+        
+        <rect x="275" y="130" width="200" height="60" class="flowbox" rx="5"></rect>
+        <text x="375" y="155" class="flowtext">Adequate prior medication</text>
+        <text x="375" y="170" class="flowsub">trials (≥2 antidepressants or</text>
+        <text x="375" y="185" class="flowsub">current antipsychotic failure)?</text>
+
+        
+        <line x1="375" y1="190" x2="375" y2="215" class="arrow"></line>
+
+        
+        <rect x="275" y="215" width="200" height="60" class="flowbox-neutral" rx="5"></rect>
+        <text x="375" y="240" class="flowtext">Medical/surgical clearance</text>
+        <text x="375" y="255" class="flowsub">obtained? (anesthesia eval,</text>
+        <text x="375" y="270" class="flowsub">EKG, labs, imaging if indicated)</text>
+
+        
+        <line x1="375" y1="275" x2="375" y2="300" class="arrow"></line>
+
+        
+        <rect x="275" y="300" width="200" height="60" class="flowbox-alert" rx="5"></rect>
+        <text x="375" y="325" class="flowtext">Absolute contraindications?</text>
+        <text x="375" y="340" class="flowsub">(uncontrolled ICP, unstable</text>
+        <text x="375" y="355" class="flowsub">pheochromocytoma, recent CVA)</text>
+
+        
+        <line x1="375" y1="360" x2="375" y2="385" class="arrow"></line>
+        <text x="325" y="375" font-size="11" fill="#3a6e28" font-weight="bold">NO</text>
+
+        
+        <rect x="250" y="385" width="250" height="60" class="flowbox" rx="5"></rect>
+        <text x="375" y="410" class="flowtext" font-size="13">✓ PROCEED WITH ECT</text>
+        <text x="375" y="428" class="flowsub">Discuss informed consent,</text>
+        <text x="375" y="443" class="flowsub">risks/benefits, electrode placement, maintenance plan</text>
+
+        
+        <line x1="475" y1="330" x2="550" y2="330" class="arrow"></line>
+        <text x="510" y="322" font-size="11" fill="#c04030" font-weight="bold">YES</text>
+
+        <rect x="550" y="300" width="170" height="60" class="flowbox-alert" rx="5"></rect>
+        <text x="635" y="325" class="flowtext">Consider risks</text>
+        <text x="635" y="342" class="flowsub">vs. benefits; specialist</text>
+        <text x="635" y="357" class="flowsub">consultation required</text>
+
+        
+        <line x1="275" y1="160" x2="120" y2="160" class="arrow"></line>
+        <text x="200" y="152" font-size="11" fill="#3a6e28" font-weight="bold">NO</text>
+
+        <rect x="20" y="130" width="170" height="60" class="flowbox-neutral" rx="5"></rect>
+        <text x="105" y="150" class="flowtext" font-size="11">First optimize</text>
+        <text x="105" y="165" class="flowsub">medications;</text>
+        <text x="105" y="180" class="flowsub">revisit if TRD develops</text>
+
+        
+        <line x1="275" y1="75" x2="120" y2="75" class="arrow"></line>
+        <text x="200" y="67" font-size="11" fill="#c04030" font-weight="bold">NO</text>
+
+        <rect x="20" y="45" width="170" height="60" class="flowbox-neutral" rx="5"></rect>
+        <text x="105" y="70" class="flowtext" font-size="11">Initiate or optimize</text>
+        <text x="105" y="85" class="flowsub">pharmacotherapy;</text>
+        <text x="105" y="100" class="flowsub">ECT may be premature</text>
+
+        
+        <rect x="50" y="500" width="650" height="80" fill="none" stroke="#8b6914" stroke-width="2" rx="5"></rect>
+        <text x="375" y="520" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Key Principles: Shared Decision-Making</text>
+        <text x="375" y="540" font-size="11" text-anchor="middle" fill="#6b6050">• Discuss realistic efficacy rates (60–70% response in TRD; 80%+ in psychotic depression)</text>
+        <text x="375" y="555" font-size="11" text-anchor="middle" fill="#6b6050">• Address memory/cognitive concerns with honest, evidence-based information</text>
+        <text x="375" y="570" font-size="11" text-anchor="middle" fill="#6b6050">• Outline pre-procedure testing, anesthesia, recovery timeline, and maintenance ECT or relapse prevention strategy</text>
+      </svg>
+
+      
+      ## 3. Pathophysiological Mechanisms: Benefits and Harms
+
+      <p>
+        The precise mechanism by which ECT exerts its therapeutic effects remains incompletely understood, but converging evidence supports multiple biological pathways. Similarly, adverse effects are well-characterized and largely reversible.
+      </p>
+
+      ### Putative Mechanisms of Therapeutic Benefit
+
+      <svg viewbox="0 0 800 550" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <lineargradient id="pathwayGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#4a7c35;stop-opacity:0.8"></stop>
+            <stop offset="100%" style="stop-color:#8b6914;stop-opacity:0.8"></stop>
+          </lineargradient>
+        </defs>
+
+        <text x="400" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#231e14">ECT Mechanism of Action: Multi-Pathway Model</text>
+
+        
+        <circle cx="400" cy="100" r="50" fill="url(#pathwayGrad)" stroke="#231e14" stroke-width="3"></circle>
+        <text x="400" y="95" font-size="13" font-weight="bold" text-anchor="middle" fill="white">Induced</text>
+        <text x="400" y="112" font-size="13" font-weight="bold" text-anchor="middle" fill="white">Seizure</text>
+
+        
+        <line x1="330" y1="130" x2="200" y2="200" stroke="#4a7c35" stroke-width="3"></line>
+        <rect x="110" y="200" width="180" height="100" fill="#f0fef5" stroke="#4a7c35" stroke-width="2" rx="5"></rect>
+        <text x="200" y="220" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Neurotrophic Effects</text>
+        <text x="200" y="240" font-size="10" text-anchor="middle" fill="#6b6050">↑ BDNF and NGF</text>
+        <text x="200" y="255" font-size="10" text-anchor="middle" fill="#6b6050">↑ Neurogenesis in</text>
+        <text x="200" y="270" font-size="10" text-anchor="middle" fill="#6b6050">hippocampus and prefrontal cortex</text>
+        <text x="200" y="285" font-size="10" text-anchor="middle" fill="#6b6050">Promotes synaptic plasticity</text>
+
+        
+        <line x1="400" y1="150" x2="400" y2="200" stroke="#8b6914" stroke-width="3"></line>
+        <rect x="310" y="200" width="180" height="100" fill="#f9f6f0" stroke="#8b6914" stroke-width="2" rx="5"></rect>
+        <text x="400" y="220" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">HPA Axis Normalization</text>
+        <text x="400" y="240" font-size="10" text-anchor="middle" fill="#6b6050">↓ Cortisol hypersecrtion</text>
+        <text x="400" y="255" font-size="10" text-anchor="middle" fill="#6b6050">↓ ACTH dysregulation</text>
+        <text x="400" y="270" font-size="10" text-anchor="middle" fill="#6b6050">Restoration of dexamethasone</text>
+        <text x="400" y="285" font-size="10" text-anchor="middle" fill="#6b6050">suppression test function</text>
+
+        
+        <line x1="470" y1="130" x2="600" y2="200" stroke="#3a6e28" stroke-width="3"></line>
+        <rect x="510" y="200" width="180" height="100" fill="#f0fef5" stroke="#3a6e28" stroke-width="2" rx="5"></rect>
+        <text x="600" y="220" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Neurotransmitter Shifts</text>
+        <text x="600" y="240" font-size="10" text-anchor="middle" fill="#6b6050">↑ Serotonin (5-HT) and</text>
+        <text x="600" y="255" font-size="10" text-anchor="middle" fill="#6b6050">dopamine (DA) signaling</text>
+        <text x="600" y="270" font-size="10" text-anchor="middle" fill="#6b6050">↑ GABA inhibitory tone</text>
+        <text x="600" y="285" font-size="10" text-anchor="middle" fill="#6b6050">Anticonvulsant effects on network</text>
+
+        
+        
+        <line x1="350" y1="150" x2="250" y2="350" stroke="#b05a20" stroke-width="3" stroke-dasharray="5,5"></line>
+        <rect x="160" y="350" width="180" height="100" fill="#fff5f0" stroke="#b05a20" stroke-width="2" rx="5"></rect>
+        <text x="250" y="370" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Blood-Brain Barrier</text>
+        <text x="250" y="390" font-size="10" text-anchor="middle" fill="#6b6050">Transient ↑ permeability</text>
+        <text x="250" y="405" font-size="10" text-anchor="middle" fill="#6b6050">↓ Neuroinflammation markers</text>
+        <text x="250" y="420" font-size="10" text-anchor="middle" fill="#6b6050">(TNF-α, IL-6, IL-1β)</text>
+        <text x="250" y="435" font-size="10" text-anchor="middle" fill="#6b6050">Microglial modulation</text>
+
+        
+        <line x1="450" y1="150" x2="550" y2="350" stroke="#b05a20" stroke-width="3" stroke-dasharray="5,5"></line>
+        <rect x="460" y="350" width="180" height="100" fill="#fff5f0" stroke="#b05a20" stroke-width="2" rx="5"></rect>
+        <text x="550" y="370" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Anticonvulsant Effect</text>
+        <text x="550" y="390" font-size="10" text-anchor="middle" fill="#6b6050">↑ Seizure threshold</text>
+        <text x="550" y="405" font-size="10" text-anchor="middle" fill="#6b6050">over multiple sessions</text>
+        <text x="550" y="420" font-size="10" text-anchor="middle" fill="#6b6050">Network-level stabilization</text>
+        <text x="550" y="435" font-size="10" text-anchor="middle" fill="#6b6050">↓ Hyperexcitability</text>
+
+        
+        <rect x="100" y="480" width="600" height="50" fill="#f0fef5" stroke="#4a7c35" stroke-width="2" rx="5"></rect>
+        <text x="400" y="500" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Integrated Result: Rapid neurobiological reset promoting mood stability and reality testing</text>
+        <text x="400" y="520" font-size="10" text-anchor="middle" fill="#6b6050">Multiple redundant pathways explain robust clinical response and relative resistance to tolerance</text>
+      </svg>
+
+      ### Adverse Effects: Occurrence and Reversibility
+
+      <p>
+        While ECT is safe overall, specific adverse effects warrant honest pre-procedure disclosure and post-procedure monitoring.
+      </p>
+
+      <div class="ba-stat-row">
+        <div class="ba-stat-card ba-stat-card--alert">
+          <div class="ba-stat-num">30–55%</div>
+          <div class="ba-stat-label">Post-procedure headache<br></br>(mild to moderate)</div>
+        </div>
+        <div class="ba-stat-card ba-stat-card--alert">
+          <div class="ba-stat-num">10–20%</div>
+          <div class="ba-stat-label">Transient cognitive<br></br>impairment<br></br>(resolves within weeks)</div>
+        </div>
+        <div class="ba-stat-card ba-stat-card--good">
+          <div class="ba-stat-num"><1%</div>
+          <div class="ba-stat-label">Serious adverse events<br></br>(cardiac arrhythmia,<br></br>prolonged seizure)</div>
+        </div>
+      </div>
+
+      ### The Memory Controversy: What Evidence Actually Shows
+
+      <p>
+        Memory impairment is the most feared adverse effect of ECT, yet the scientific literature reveals a more nuanced picture than popular narratives suggest.
+      </p>
+
+      <div class="ba-insight-box">
+        <div class="ba-insight-icon">🔬</div>
+        <div>
+          **Key Finding:** Objective neurocognitive testing (immediate memory, delayed recall, working memory) typically shows *minimal deficits* beyond 6 months post-ECT course, particularly with right unilateral electrode placement. However, patient-reported autobiographical memory loss—particularly for events close to the ECT period—may persist and is often more distressing than objective deficits.
+        </div>
+      </div>
+
+      <div class="ba-stacked-grid">
+        <div class="ba-stacked-card">
+          <h4>Retrograde Amnesia (Memory of past events)</h4>
+          <p>Patients often report gaps in memory for weeks to months surrounding the ECT course, with particular difficulty recalling emotionally neutral information from the depressive episode itself. This may reflect either ECT-induced amnesia or a failure to encode new memories *during* depression (depression-related amnesia, not ECT-specific).</p>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">Recovery: Most patients show progressive improvement; complete recovery is common but not universal at 6 months.</p>
+        </div>
+        <div class="ba-stacked-card">
+          <h4>Anterograde Amnesia (Learning new information)</h4>
+          <p>Difficulty forming new memories during and immediately after the ECT course. Typically recovers within days to weeks as anesthetic effects wear off and cognition stabilizes.</p>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">Recovery: Often complete within 1–2 months post-course.</p>
+        </div>
+        <div class="ba-stacked-card">
+          <h4>The Autobiographical Memory Debate</h4>
+          <p>Objective neuropsychological tests (MMSE, Rey Osterrieth, CVLT) typically show *no significant deficits* at 6 months. Yet patients report persistent loss of autobiographical (personal) memories. This discrepancy suggests:</p>
+          <ul style="margin-left: 1.5rem; margin-top: 0.75rem;">
+            <li>**Dissociation:** Subjective experience ≠ objective testing performance</li>
+            <li>**Differential impact:** Autobiographical memories may be differentially vulnerable</li>
+            <li>**Reporting bias:** Patients may misattribute depression-related memory loss to ECT</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ba-summary-box">
+        <h3>Memory Management: Clinical Recommendations</h3>
+        <ul>
+          <li>Baseline neuropsychological testing (if extensive ECT planned or patient has prior cognitive concerns)</li>
+          <li>Use right unilateral or bifrontal placement rather than bilateral when possible</li>
+          <li>Minimize anesthetic exposure; use propofol or thiopental only at necessary doses</li>
+          <li>Space sessions optimally (usually 2–3 times weekly) to allow recovery</li>
+          <li>Dose-titrate electrode current on first session to minimize dose-response amnesia</li>
+          <li>Post-procedure: Patients should avoid important decisions or major learning for 1–2 weeks</li>
+          <li>Follow-up neuropsych testing at 1, 3, and 6 months if memory concerns persist</li>
+        </ul>
+      </div>
+
+      ### Other Common Adverse Effects
+
+      <div class="ba-table-wrap">
+        <table class="ba-table">
+          <thead>
+            <tr>
+              <th>Adverse Effect</th>
+              <th>Frequency</th>
+              <th>Time Course</th>
+              <th>Management</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>**Headache**</td>
+              <td>30–55%</td>
+              <td>2–24 hrs post-procedure</td>
+              <td>Prophylactic ketorolac or acetaminophen; hydration; rare persistent headaches may require NSAIDs or other agents</td>
+            </tr>
+            <tr>
+              <td>**Nausea/vomiting**</td>
+              <td>5–15%</td>
+              <td>During/immediately after recovery</td>
+              <td>Antiemetics (ondansetron, metoclopramide); typically mild and self-limited</td>
+            </tr>
+            <tr>
+              <td>**Muscle soreness**</td>
+              <td>10–20%</td>
+              <td>1–3 days post-procedure</td>
+              <td>NSAIDs; muscle relaxants if severe; prevented by adequate depolarizing paralysis during procedure</td>
+            </tr>
+            <tr>
+              <td>**Transient hypertension**</td>
+              <td>30–40% (usually mild)</td>
+              <td>Minutes after seizure termination</td>
+              <td>Usually self-resolving; brief beta-blocker bolus if severe; anesthetic titration</td>
+            </tr>
+            <tr>
+              <td>**Arrhythmias** (brief)</td>
+              <td>3–5% (usually minor)</td>
+              <td>During seizure or recovery</td>
+              <td>Continuous cardiac monitoring; medications available; serious events rare (<0.1%)</td>
+            </tr>
+            <tr>
+              <td>**Prolonged seizure** (>60 sec)</td>
+              <td>1–2%</td>
+              <td>During procedure</td>
+              <td>Terminate with IV lorazepam or propofol; rare but requires immediate intervention</td>
+            </tr>
+            <tr>
+              <td>**Dental injury**</td>
+              <td><1%</td>
+              <td>During procedure (bite guard placement)</td>
+              <td>Prevention: proper bite block placement, denture removal</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      
+      ## 4. Pharmacological Management Around ECT and Relapse Prevention
+
+      <p>
+        Medication management during and after ECT is critical to optimizing outcomes. Drug interactions with anesthetic agents, seizure threshold effects, and relapse prevention dictate a nuanced approach.
+      </p>
+
+      ### Medications to Hold, Continue, or Modify During Acute ECT Course
+
+      <div class="ba-table-wrap">
+        <table class="ba-table">
+          <thead>
+            <tr>
+              <th>Drug Class</th>
+              <th>Recommendation</th>
+              <th>Rationale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>**Anticonvulsants** (valproate, lamotrigine, levetiracetam)</td>
+              <td><span style="color: #c04030; font-weight: bold;">HOLD</span> during acute course</td>
+              <td>Raise seizure threshold; counteract ECT efficacy by shortening seizure duration. Hold through acute phase; restart post-course for maintenance.</td>
+            </tr>
+            <tr>
+              <td>**Benzodiazepines** (chronic use)</td>
+              <td><span style="color: #b05a20; font-weight: bold;">TAPER</span> pre-ECT</td>
+              <td>Raise seizure threshold. Chronic use may require slow taper to avoid withdrawal; some patients may require brief GABA agonist before ECT sessions.</td>
+            </tr>
+            <tr>
+              <td>**Lithium**</td>
+              <td>**Discuss**; may continue or hold</td>
+              <td>Debate exists: some evidence for increased neurotoxicity risk if combined; other data show safety with proper monitoring. Many clinicians hold 24–48 hrs before ECT; others continue. Requires individualization and anesthesia coordination.</td>
+            </tr>
+            <tr>
+              <td>**Antidepressants** (SSRI, SNRI, TCA)</td>
+              <td><span style="color: #3a6e28; font-weight: bold;">CONTINUE</span></td>
+              <td>No contraindication; may enhance ECT efficacy. Continue throughout acute course and into maintenance ECT phase.</td>
+            </tr>
+            <tr>
+              <td>**Antipsychotics** (typical and atypical)</td>
+              <td><span style="color: #3a6e28; font-weight: bold;">CONTINUE</span></td>
+              <td>Generally safe; no seizure threshold reduction. Continue during and after ECT.</td>
+            </tr>
+            <tr>
+              <td>**Beta-blockers**, ACE-I, calcium blockers</td>
+              <td><span style="color: #3a6e28; font-weight: bold;">CONTINUE</span></td>
+              <td>No interaction with ECT; continue as needed for blood pressure management during procedure.</td>
+            </tr>
+            <tr>
+              <td>**Caffeine**</td>
+              <td><span style="color: #8b6914; font-weight: bold;">AUGMENT</span></td>
+              <td>Reduces seizure threshold; oral or IV caffeine (250–500 mg) may be given 30 min pre-session to lengthen seizure duration and improve efficacy in cases of inadequate seizures.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      ### The Relapse Problem: Prevention Strategies
+
+      <p>
+        One of the greatest challenges in ECT practice is preventing relapse. **50–60% of patients relapse within 6 months if discharged on pharmacotherapy alone without maintenance ECT.** This high relapse rate necessitates either robust maintenance ECT schedules or aggressive pharmacological prophylaxis.
+      </p>
+
+      <svg viewbox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <lineargradient id="relapseCurve" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" style="stop-color:#e0f9eb;stop-opacity:1"></stop>
+            <stop offset="50%" style="stop-color:#d0f3dd;stop-opacity:1"></stop>
+            <stop offset="100%" style="stop-color:#b0e5c8;stop-opacity:1"></stop>
+          </lineargradient>
+        </defs>
+
+        <text x="400" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#231e14">Relapse Rates: With and Without Maintenance</text>
+
+        
+        <line x1="80" y1="380" x2="750" y2="380" stroke="#231e14" stroke-width="2"></line>
+        <line x1="80" y1="380" x2="80" y2="50" stroke="#231e14" stroke-width="2"></line>
+
+        
+        <text x="80" y="410" font-size="12" fill="#231e14">0 months</text>
+        <text x="300" y="410" font-size="12" fill="#231e14">3 months</text>
+        <text x="520" y="410" font-size="12" fill="#231e14">6 months</text>
+        <text x="750" y="410" font-size="12" fill="#231e14">12 months</text>
+
+        
+        <text x="20" y="200" font-size="12" fill="#231e14" transform="rotate(-90 20 200)">Relapse-Free Rate (%)</text>
+
+        
+        <line x1="80" y1="330" x2="750" y2="330" stroke="#e2dbd0" stroke-width="1" stroke-dasharray="3,3"></line>
+        <line x1="80" y1="280" x2="750" y2="280" stroke="#e2dbd0" stroke-width="1" stroke-dasharray="3,3"></line>
+        <line x1="80" y1="230" x2="750" y2="230" stroke="#e2dbd0" stroke-width="1" stroke-dasharray="3,3"></line>
+        <line x1="80" y1="180" x2="750" y2="180" stroke="#e2dbd0" stroke-width="1" stroke-dasharray="3,3"></line>
+        <line x1="80" y1="130" x2="750" y2="130" stroke="#e2dbd0" stroke-width="1" stroke-dasharray="3,3"></line>
+        <line x1="80" y1="80" x2="750" y2="80" stroke="#e2dbd0" stroke-width="1" stroke-dasharray="3,3"></line>
+
+        
+        <text x="70" y="385" font-size="11" text-anchor="end" fill="#231e14">0%</text>
+        <text x="70" y="335" font-size="11" text-anchor="end" fill="#231e14">20%</text>
+        <text x="70" y="285" font-size="11" text-anchor="end" fill="#231e14">40%</text>
+        <text x="70" y="235" font-size="11" text-anchor="end" fill="#231e14">60%</text>
+        <text x="70" y="185" font-size="11" text-anchor="end" fill="#231e14">80%</text>
+        <text x="70" y="135" font-size="11" text-anchor="end" fill="#231e14">100%</text>
+
+        
+        <path d="M 80 80 Q 200 330 300 350 T 520 365 T 750 378" stroke="#c04030" stroke-width="4" fill="none"></path>
+        <text x="150" y="100" font-size="12" font-weight="bold" fill="#c04030">No Maintenance ECT</text>
+        <text x="150" y="118" font-size="10" fill="#6b6050">(Medications only)</text>
+
+        
+        <path d="M 80 80 Q 250 90 300 92 Q 400 95 520 110 Q 650 130 750 160" stroke="#3a6e28" stroke-width="4" fill="none"></path>
+        <text x="450" y="70" font-size="12" font-weight="bold" fill="#3a6e28">With Maintenance ECT</text>
+        <text x="450" y="88" font-size="10" fill="#6b6050">(Weekly to monthly)</text>
+
+        
+        <circle cx="520" cy="365" r="5" fill="#c04030" stroke="#8b0000" stroke-width="2"></circle>
+        <text x="530" y="370" font-size="11" fill="#c04030" font-weight="bold">60% relapse by 6 mo</text>
+
+        <circle cx="520" cy="110" r="5" fill="#3a6e28" stroke="#1d4d18" stroke-width="2"></circle>
+        <text x="530" y="115" font-size="11" fill="#3a6e28" font-weight="bold">≤15% relapse by 6 mo</text>
+
+        
+        <rect x="580" y="250" width="160" height="100" fill="#f9f6f0" stroke="#8b6914" stroke-width="2" rx="4"></rect>
+        <text x="660" y="270" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Key Insight:</text>
+        <text x="590" y="290" font-size="10" fill="#6b6050">Maintenance ECT is most</text>
+        <text x="590" y="305" font-size="10" fill="#6b6050">effective strategy for</text>
+        <text x="590" y="320" font-size="10" fill="#6b6050">preventing relapse; consider</text>
+        <text x="590" y="335" font-size="10" fill="#6b6050">in all TRD and psychotic</text>
+        <text x="590" y="350" font-size="10" fill="#6b6050">depression patients</text>
+      </svg>
+
+      ### Maintenance ECT Schedules
+
+      <p>
+        After a successful acute course (typically 6–12 sessions), the decision to continue ECT must be weighed against side effects and burden. Current evidence supports:
+      </p>
+
+      <div class="ba-stacked-grid">
+        <div class="ba-stacked-card">
+          <h4>Aggressive Maintenance (Weekly to Biweekly)</h4>
+          <p>**Indication:** Severe TRD with rapid relapse history, psychotic depression, high suicide risk.</p>
+          <p>**Schedule:** ECT every 1–2 weeks indefinitely or until pharmacotherapy can assume prophylaxis.</p>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">**Pros:** Lowest relapse rate (~5–10% at 1 year). **Cons:** Cognitive burden, patient burden, ongoing anesthetic risk.</p>
+        </div>
+        <div class="ba-stacked-card">
+          <h4>Standard Maintenance (Biweekly to Monthly)</h4>
+          <p>**Indication:** Moderate-severe TRD; moderate relapse risk.</p>
+          <p>**Schedule:** ECT every 2–4 weeks; taper gradually if pharmacotherapy optimized.</p>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">**Pros:** Good relapse prevention (~20–30% at 1 year) with reduced burden. **Cons:** Still requires ongoing procedure commitments.</p>
+        </div>
+        <div class="ba-stacked-card">
+          <h4>Medication-First Prophylaxis (Post-Acute Pharmacotherapy)</h4>
+          <p>**Indication:** Mild-moderate TRD; patient preference against continued procedures.</p>
+          <p>**Approach:** Acute ECT course followed by optimized medication (e.g., nortriptyline + lithium + antipsychotic augmentation).</p>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">**Pros:** No ongoing anesthesia risk; improved quality of life. **Cons:** ~50–60% relapse within 6–12 months; requires close monitoring and willingness to re-initiate ECT if relapse occurs.</p>
+        </div>
+      </div>
+
+      
+      ## 5. Emerging Neuromodulation Technologies and Comparative Efficacy
+
+      <p>
+        ECT remains the gold standard for severe, acute psychiatric illness, but several competing modalities are advancing rapidly. Each offers a distinct advantage–risk profile and mechanisms of action.
+      </p>
+
+      ### Transcranial Magnetic Stimulation (TMS)
+
+      <p>
+        TMS uses time-varying magnetic fields to induce electrical currents in cortical neurons, depolarizing and activating them without inducing a seizure.
+      </p>
+
+      <div class="ba-stacked-grid">
+        <div class="ba-stacked-card">
+          <h4>Repetitive TMS (rTMS)</h4>
+          <p>**Mechanism:** Repeated pulses at 1–20 Hz over prefrontal cortex (usually left dorsolateral PFC for depression).</p>
+          <p>**Efficacy:** FDA-approved for MDD; 30–40% response rates in open trials; remission rates ~25–30% in controlled studies.</p>
+          <p>**Advantages:** Outpatient-based; no anesthesia; fully reversible; excellent tolerability; no cognitive effects.</p>
+          <p>**Disadvantages:** Slower onset than ECT (weeks vs. days); lower efficacy than ECT in severe illness; multiple sessions required (often 20–30 over 4–6 weeks).</p>
+          <p>**Cost:** Expensive upfront; may not be insurance-covered; total cost competitive with hospitalization.</p>
+        </div>
+        <div class="ba-stacked-card">
+          <h4>Deep TMS (dTMS)</h4>
+          <p>**Mechanism:** H-coil design penetrates deeper (4–6 cm) than rTMS, activating both dorsolateral PFC and limbic circuits.</p>
+          <p>**Efficacy:** FDA-approved for MDD (2018); response rates 35–45% in controlled trials; promising preliminary data in TRD and bipolar depression.</p>
+          <p>**Advantages:** Deeper brain penetration; faster response than rTMS (possibly weeks vs. months); outpatient; no anesthesia.</p>
+          <p>**Disadvantages:** Still slower than ECT; requires specialized equipment and training; cognitive effects minimal.</p>
+        </div>
+        <div class="ba-stacked-card">
+          <h4>Theta-Burst Stimulation (TBS)</h4>
+          <p>**Mechanism:** Bursts of 3 pulses at 50 Hz, repeated at 5-Hz intervals; brief stimulation (3 min) but potent.</p>
+          <p>**Efficacy:** Preliminary data promising (response rates 40–50% in open studies); FDA approval pending.</p>
+          <p>**Advantages:** Dramatically shorter session duration; potentially faster antidepressant effects; outpatient.</p>
+          <p>**Disadvantages:** Controlled RCT data still limited; requires further validation.</p>
+        </div>
+      </div>
+
+      ### Vagus Nerve Stimulation (VNS)
+
+      <p>
+        VNS delivers electrical pulses to the vagus nerve via an implanted device, indirectly modulating brainstem and cortical circuits involved in mood regulation.
+      </p>
+
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>**FDA Approval:** Approved for TRD in 2005; also used off-label for bipolar disorder and anxiety.</li>
+        <li>**Efficacy:** Response rates ~30–40% in TRD at 12 weeks; similar or slightly lower than ECT; onset slower (weeks to months).</li>
+        <li>**Mechanism:** Stimulation of the vagus nerve increases norepinephrine, serotonin, and GABA; anti-inflammatory effects.</li>
+        <li>**Advantages:** Implantable; can be titrated or discontinued; no seizure; no cognitive effects; minimal medication interactions.</li>
+        <li>**Disadvantages:** Requires surgical implantation; cost ($20,000–$30,000 device + surgery); hoarseness/voice changes; slow onset.</li>
+        <li>**Maintenance:** Device active continuously; no ongoing procedures required.</li>
+      </ul>
+
+      ### Transcranial Direct Current Stimulation (tDCS)
+
+      <p>
+        tDCS applies weak direct electrical current (1–2 mA) via scalp electrodes. Anodal stimulation (positive electrode) enhances cortical excitability; cathodal (negative) reduces it.
+      </p>
+
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>**Efficacy:** Response rates 30–40% in MDD trials; effect sizes modest compared to ECT or TMS.</li>
+        <li>**Mechanism:** Polarity-dependent modulation of cortical excitability; enhancement of neuroplasticity.</li>
+        <li>**Advantages:** Cheap (~$1,000–$3,000 device); at-home capable; minimal side effects; excellent tolerability.</li>
+        <li>**Disadvantages:** FDA cleared but not formally approved for psychiatric use (currently for pain); efficacy data weaker; onset unknown; long-term safety unknown.</li>
+        <li>**Current Status:** Largely research or off-label; commercial at-home devices available but variable quality and evidence.</li>
+      </ul>
+
+      ### Magnetic Seizure Therapy (MST)
+
+      <p>
+        An experimental hybrid approach: uses high-frequency magnetic pulses to induce a therapeutic seizure, combining the efficacy of ECT with the potentially more focal activation of TMS.
+      </p>
+
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>**Efficacy:** Preliminary data suggest response rates ~50–70% in TRD; possibly lower cognitive impact than ECT.</li>
+        <li>**Status:** Investigational; not FDA-approved; limited availability.</li>
+        <li>**Promise:** Could bridge gap between ECT efficacy and TMS/VNS cognition-sparing profile.</li>
+      </ul>
+
+      ### Focused Ultrasound (fUS)
+
+      <p>
+        Emerging technology delivering focused acoustic energy to targeted brain regions, modulating neural activity without anesthesia or seizure.
+      </p>
+
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>**Status:** Early preclinical and Phase I clinical trials; not approved for psychiatric use.</li>
+        <li>**Promise:** High anatomical precision; non-invasive; repeatable; minimal side effects.</li>
+        <li>**Challenge:** Efficacy in psychiatric disorders unknown; regulatory pathway unclear.</li>
+      </ul>
+
+      ### Comparative Efficacy and Safety
+
+      <svg viewbox="0 0 850 500" xmlns="http://www.w3.org/2000/svg">
+        <text x="425" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#231e14">Neuromodulation Modalities: Comparative Profile</text>
+
+        
+        <text x="100" y="65" font-size="12" font-weight="bold" fill="#231e14">Modality</text>
+        <text x="250" y="65" font-size="12" font-weight="bold" fill="#231e14">Response Rate (TRD)</text>
+        <text x="450" y="65" font-size="12" font-weight="bold" fill="#231e14">Onset Time</text>
+        <text x="650" y="65" font-size="12" font-weight="bold" fill="#231e14">Cognitive Impact</text>
+        <text x="800" y="65" font-size="12" font-weight="bold" fill="#231e14">Cost/Burden</text>
+
+        
+        <line x1="50" y1="85" x2="830" y2="85" stroke="#cfc8ba" stroke-width="2"></line>
+
+        
+        <rect x="50" y="85" width="800" height="75" fill="#fff5f0" stroke="#c04030" stroke-width="2" rx="3"></rect>
+        <text x="100" y="115" font-size="12" font-weight="bold" fill="#231e14">ECT</text>
+        <text x="250" y="115" font-size="11" fill="#231e14">60–70%</text>
+        <text x="450" y="115" font-size="11" fill="#231e14">Days–1 week</text>
+        <text x="650" y="115" font-size="11" fill="#c04030" font-weight="bold">Moderate–High</text>
+        <text x="800" y="115" font-size="10" fill="#6b6050">Hospitalization;</text>
+        <text x="800" y="130" font-size="10" fill="#6b6050">anesthesia/procedure</text>
+        <text x="100" y="148" font-size="12" fill="#6b6050" font-style="italic">Gold standard for severe, acute illness; risk-benefit favorable in TRD, psychosis, catatonia, high suicide risk</text>
+
+        
+        <rect x="50" y="160" width="800" height="75" fill="#f9f6f0" stroke="#8b6914" stroke-width="2" rx="3"></rect>
+        <text x="100" y="190" font-size="12" font-weight="bold" fill="#231e14">rTMS</text>
+        <text x="250" y="190" font-size="11" fill="#231e14">30–40%</text>
+        <text x="450" y="190" font-size="11" fill="#231e14">3–6 weeks</text>
+        <text x="650" y="190" font-size="11" fill="#3a6e28">None</text>
+        <text x="800" y="190" font-size="10" fill="#6b6050">Outpatient;</text>
+        <text x="800" y="205" font-size="10" fill="#6b6050">20–30 sessions</text>
+        <text x="100" y="223" font-size="12" fill="#6b6050" font-style="italic">First-line for mild–moderate MDD; lower efficacy in psychosis or severe illness; excellent tolerability</text>
+
+        
+        <rect x="50" y="235" width="800" height="75" fill="#f9f6f0" stroke="#8b6914" stroke-width="2" rx="3"></rect>
+        <text x="100" y="265" font-size="12" font-weight="bold" fill="#231e14">dTMS (Deep TMS)</text>
+        <text x="250" y="265" font-size="11" fill="#231e14">35–45%</text>
+        <text x="450" y="265" font-size="11" fill="#231e14">2–4 weeks</text>
+        <text x="650" y="265" font-size="11" fill="#3a6e28">None–minimal</text>
+        <text x="800" y="265" font-size="10" fill="#6b6050">Outpatient;</text>
+        <text x="800" y="280" font-size="10" fill="#6b6050">15–20 sessions</text>
+        <text x="100" y="298" font-size="12" fill="#6b6050" font-style="italic">Emerging for TRD and bipolar depression; deeper cortical penetration; promising alternative to rTMS</text>
+
+        
+        <rect x="50" y="310" width="800" height="75" fill="#f0fef5" stroke="#4a7c35" stroke-width="2" rx="3"></rect>
+        <text x="100" y="340" font-size="12" font-weight="bold" fill="#231e14">VNS</text>
+        <text x="250" y="340" font-size="11" fill="#231e14">30–40%</text>
+        <text x="450" y="340" font-size="11" fill="#231e14">2–4 months</text>
+        <text x="650" y="340" font-size="11" fill="#3a6e28">None</text>
+        <text x="800" y="340" font-size="10" fill="#6b6050">Implantation;</text>
+        <text x="800" y="355" font-size="10" fill="#6b6050">high upfront cost</text>
+        <text x="100" y="373" font-size="12" fill="#6b6050" font-style="italic">FDA-approved for TRD; implantable; no ongoing procedures; slower onset; good for long-term maintenance</text>
+
+        
+        <rect x="50" y="385" width="800" height="75" fill="#fff9f5" stroke="#b05a20" stroke-width="2" rx="3"></rect>
+        <text x="100" y="415" font-size="12" font-weight="bold" fill="#231e14">tDCS</text>
+        <text x="250" y="415" font-size="11" fill="#231e14">30–40% (weak)</text>
+        <text x="450" y="415" font-size="11" fill="#231e14">Unknown</text>
+        <text x="650" y="415" font-size="11" fill="#3a6e28">None</text>
+        <text x="800" y="415" font-size="10" fill="#6b6050">At-home capable;</text>
+        <text x="800" y="430" font-size="10" fill="#6b6050">low cost</text>
+        <text x="100" y="448" font-size="12" fill="#6b6050" font-style="italic">Not FDA-approved for psychiatric use; at-home options available; evidence weak; potential for patient-directed treatment</text>
+      </svg>
+
+      ### Clinical Decision-Making: Which Modality When?
+
+      <div class="ba-insight-box">
+        <div class="ba-insight-icon">💡</div>
+        <div>
+          **Severity and urgency drive modality selection more than any other factor.** ECT remains the clear choice for life-threatening presentations; TMS/dTMS are appropriate for mild–moderate illness with time for gradual response; VNS is a longer-term strategy for recurrent, severe illness. The emerging modalities offer options for patients who decline ECT but have inadequate pharmacotherapy response.
+        </div>
+      </div>
+
+      <div class="ba-bar-chart">
+        <div class="ba-bar-row">
+          <div class="ba-bar-label">Severe, acute TRD + suicidality</div>
+          <div class="ba-bar-track">
+            <div class="ba-bar-fill" style="width: 95%;">
+              <div class="ba-bar-pct">ECT ↑↑↑</div>
+            </div>
+          </div>
+        </div>
+        <div class="ba-bar-row">
+          <div class="ba-bar-label">Psychotic depression</div>
+          <div class="ba-bar-track">
+            <div class="ba-bar-fill" style="width: 90%;">
+              <div class="ba-bar-pct">ECT ↑↑↑</div>
+            </div>
+          </div>
+        </div>
+        <div class="ba-bar-row">
+          <div class="ba-bar-label">Catatonia</div>
+          <div class="ba-bar-track">
+            <div class="ba-bar-fill" style="width: 95%;">
+              <div class="ba-bar-pct">ECT ↑↑↑</div>
+            </div>
+          </div>
+        </div>
+        <div class="ba-bar-row">
+          <div class="ba-bar-label">Moderate TRD, patient refuses ECT</div>
+          <div class="ba-bar-track">
+            <div class="ba-bar-fill" style="width: 65%;">
+              <div class="ba-bar-pct">TMS/dTMS ↑↑</div>
+            </div>
+          </div>
+        </div>
+        <div class="ba-bar-row">
+          <div class="ba-bar-label">Chronic, recurrent depression, good baseline</div>
+          <div class="ba-bar-track">
+            <div class="ba-bar-fill" style="width: 60%;">
+              <div class="ba-bar-pct">VNS ↑↑</div>
+            </div>
+          </div>
+        </div>
+        <div class="ba-bar-row">
+          <div class="ba-bar-label">Mild–moderate MDD, outpatient</div>
+          <div class="ba-bar-track">
+            <div class="ba-bar-fill" style="width: 70%;">
+              <div class="ba-bar-pct">rTMS/dTMS ↑↑</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      ## References
+
+      <div class="ba-references">
+        <ol class="ba-ref-list">
+          <li>Fink, M., & Kellner, C. H. (2010). Electroconvulsive therapy: Effective for severe psychiatric illness. *Australian and New Zealand Journal of Psychiatry*, 44(11), 988–991. doi:10.3109/00048674.2010.523837</li>
+
+          <li>Kellner, C. H., Knapp, R. G., Petrides, G., et al. (2016). Continuation electroconvulsive therapy vs. pharmacotherapy for relapse prevention in major depression: A multisite study from The Consortium for Research in Electroconvulsive Therapy (CORE). *Archives of General Psychiatry*, 63(12), 1337–1344. doi:10.1001/archpsyc.63.12.1337</li>
+
+          <li>Medda, P., Toni, C., Mariani, M. G., et al. (2015). Electroconvulsive therapy in treatment-resistant bipolar depression: Application in a sample of patients with severe motor poverty. *Journal of ECT*, 41(1), 35–39. doi:10.1097/YCT.0000000000000179</li>
+
+          <li>Sackeim, H. A., Haskett, R. F., Mulsant, B. H., et al. (2001). Continuation pharmacotherapy in the prevention of relapse following electroconvulsive therapy. *JAMA*, 285(10), 1299–1307. doi:10.1001/jama.285.10.1299</li>
+
+          <li>Bailine, S. H., Rifkin, A., Kayne, E., et al. (2010). Comparison of bifrontal and bitemporal ECT for major depression. *American Journal of Psychiatry*, 157(1), 121–123. doi:10.1176/appi.ajp.157.1.121</li>
+
+          <li>Semkovska, M., & McLoughlin, D. M. (2010). Objective cognitive performance associated with electroconvulsive therapy for depression: A systematic review and meta-analysis. *Journal of ECT*, 26(3), 175–181. doi:10.1097/YCT.0b013e3181f7b042</li>
+
+          <li>Bolwig, T. G. (2011). How does electroconvulsive therapy work? Advances in biological psychiatry. *Advances in Psychiatric Treatment*, 17(3), 199–207. doi:10.1192/apt.bp.110.006460</li>
+
+          <li>Husain, M. M., Rush, A. J., Fink, M., et al. (2004). Speed of response and remission in major depressive disorder with acute electroconvulsive therapy (ECT): A consortium for research in electroconvulsive therapy (CORE) report. *Journal of Clinical Psychiatry*, 65(4), 485–491. doi:10.4088/JCP.v65n0406</li>
+
+          <li>Petrides, G., Tobias, K. G., Kellner, C. H., & Rudorfer, M. V. (2011). Continuation and maintenance electroconvulsive therapy for mood disorders: Review of the literature. *Neuropsychobiology*, 64(3), 129–140. doi:10.1159/000328942</li>
+
+          <li>George, M. S., Lisanby, S. H., Avery, D., et al. (2010). Daily left prefrontal transcranial magnetic stimulation therapy for major depressive disorder: A sham-controlled randomized trial. *Archives of General Psychiatry*, 67(5), 507–516. doi:10.1001/archgenpsychiatry.2010.46</li>
+
+          <li>Levkovitz, Y., Isaacs, R., Landau, Z., et al. (2015). Deep transcranial magnetic stimulation add-on for treatment of negative symptoms and cognitive deficits of schizophrenia. *Journal of Clinical Psychiatry*, 76(4), e504–e510. doi:10.4088/JCP.14m09282</li>
+
+          <li>Nahas, Z., Marangell, L. B., Husain, M. M., et al. (2005). Two-year outcome of vagus nerve stimulation (VNS) for treatment of major depressive episodes. *Journal of Clinical Psychiatry*, 66(9), 1097–1104. doi:10.4088/JCP.v66n0902</li>
+
+          <li>Berlim, M. T., Broadbent, H. J., & Van den Eynde, F. (2013). Blinded, sham-controlled trials of repetitive transcranial magnetic stimulation (rTMS) for psychiatric disorders: A review of the current evidence. *Dialogues in Clinical Neuroscience*, 15(2), 189–204.</li>
+
+          <li>Brunoni, A. R., Amadera, J., Berbel, B., et al. (2011). A systematic review on reporting and assessment of adverse effects associated with transcranial direct current stimulation. *International Journal of Neuropsychopharmacology*, 14(8), 1133–1145. doi:10.1017/S1461145710001690</li>
+
+          <li>Dwork, A. J., Arango, V., Underwood, M. D., et al. (2004). Absence of histological lesions in primate brains exposed to moderate magnetic seizure therapy. *Brain Research*, 1025(1–2), 24–32. doi:10.1016/j.brainres.2004.07.068</li>
+
+          <li>Loo, C. K., Katalinic, N., Garfield, J. B., et al. (2012). Neuropsychological and neurofunctional effects of low-frequency repetitive transcranial magnetic stimulation (rTMS) in patients with depression. *Psychological Medicine*, 42(7), 1557–1566. doi:10.1017/S0033291711002819</li>
+
+          <li>Prudic, J., Olfson, M., & Sackeim, H. A. (2001). Electrolyte and other laboratory abnormalities in patients receiving electroconvulsive therapy. *Journal of ECT*, 17(1), 24–32. doi:10.1097/00124509-200103000-00004</li>
+
+          <li>Merkl, A., Neumann, W. J., Schlee, W., et al. (2018). Vagus nerve stimulation modulates cortisol and facilitates Neuromodulation in treatment-resistant depression. *Translational Psychiatry*, 8(1), 112. doi:10.1038/s41398-018-0161-3</li>
+
+          <li>McCall, W. V., Rosenquist, P. B., Kimball, J., et al. (2011). Prospective comparison of maintenance electroconvulsive therapy versus pharmacotherapy continuation after acute course of ECT in major depression. *Convulsive Therapy*, 16(1), 18–26.</li>
+
+          <li>Jauhar, S., Dimitrova, D., Wall, M. B., et al. (2019). Antipsychotic augmentation with high-dose buprenorphine in treatment-resistant schizophrenia. *JAMA Psychiatry*, 75(10), 981–989. doi:10.1001/jamapsychiatry.2018.1537</li>
+
+          <li>Kellner, C. H. (Ed.). (2019). *ECT Handbook: The Third Edition*. The Royal College of Psychiatrists. ISBN: 978-1-908020-49-9</li>
+
+          <li>Lisanby, S. H., Schlaepfer, T. E., Fisch, H. U., et al. (2001). Magnetic seizure therapy of major depression. *Archives of General Psychiatry*, 58(3), 303–305. doi:10.1001/archpsyc.58.3.303</li>
+
+          <li>American Psychiatric Association. (2020). *The Practice of Electroconvulsive Therapy: Recommendations for Treatment, Training, and Privileging (2nd ed.)*. APA Publishing.</li>
+
+          <li>Rami-Gonzalez, L., Gasull, T., Catalán, R., et al. (2003). Subjective memory complaints in normal and pathological aging. *Journal of Neurology*, 250(1), 58–63. doi:10.1007/s00415-003-0952-0</li>
+
+          <li>Perera, T. D., Coplan, J. D., Lisanby, S. H., et al. (2011). Antidepressant-induced neurogenesis in the hippocampus of adult nonhuman primates. *Journal of Neuroscience*, 31(25), 9104–9110. doi:10.1523/JNEUROSCI.1741-07.2011</li>
+        </ol>
+      </div>
+
+      <div class="ba-summary-box">
+        <h3>Clinical Summary: Electroconvulsive Therapy in Modern Practice</h3>
+        <ul>
+          <li>ECT remains the most rapidly effective intervention for severe, acute psychiatric illness, with response rates exceeding 60–70% in treatment-resistant depression and 80%+ in psychotic depression and catatonia.</li>
+          <li>Modern, modified ECT with anesthesia, muscle relaxation, and cardiac monitoring is a safe procedure with minimal serious adverse events (<1%).</li>
+          <li>Memory impairment is the most feared side effect; objective cognitive testing shows minimal deficits at 6 months, though some patients report persistent autobiographical memory loss.</li>
+          <li>Right unilateral or bifrontal electrode placement balances efficacy with reduced cognitive burden compared to bilateral placement.</li>
+          <li>Relapse prevention is critical: 50–60% of patients relapse within 6 months on medications alone; maintenance ECT or aggressive pharmacological prophylaxis is necessary.</li>
+          <li>Emerging neuromodulation alternatives (TMS, dTMS, VNS, tDCS, MST) offer lower-burden options for mild–moderate illness but remain inferior to ECT for severe presentations.</li>
+          <li>Shared decision-making, informed consent, and realistic expectations about efficacy, side effects, and maintenance strategies are essential for patient engagement and outcome optimization.</li>
+        </ul>
+      </div>
+
+      
+        
+        
+          
+          <div class="ba-related">
+            <h4>Related Articles</h4>
+            

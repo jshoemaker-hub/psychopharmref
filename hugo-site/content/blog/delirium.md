@@ -1,0 +1,1039 @@
+---
+title: "Delirium: Recognition, Assessment, and Management | PsychoPharmRef"
+date: 2026-03-01
+description: ""
+category: "Neuropsychiatry"
+subtitle: "A comprehensive clinical guide to understanding delirium pathophysiology, differential diagnosis, evidence-based assessment, and treatment approaches for practicing clinicians"
+readTime: "15 min read"
+clinicalSummary: ""
+related: ['alzheimers-disease', 'catatonia', 'first-break-psychosis', 'emergency-psychiatry']
+draft: false
+---
+
+<div class="ba-body">
+            <p class="ba-lead">
+                Delirium is an acute medical syndrome characterized by disturbed consciousness, fluctuating mental status, and inattention, often precipitated by underlying systemic illness or medication. Despite being the most common psychiatric complication of general medical illness and hospitalization, delirium remains underrecognized and inadequately managed in many clinical settings. This comprehensive review synthesizes current evidence on delirium epidemiology, pathophysiology, diagnostic assessment, and evidence-based management strategies for acute and general medical care professionals.
+            </p>
+
+            
+            <div class="ba-stat-row">
+                <div class="ba-stat-card">
+                    <div class="ba-stat-num">10-50%</div>
+                    <div class="ba-stat-label">Hospital Prevalence</div>
+                </div>
+                <div class="ba-stat-card ba-stat-card--alert">
+                    <div class="ba-stat-num">80%</div>
+                    <div class="ba-stat-label">ICU Patient Rate</div>
+                </div>
+                <div class="ba-stat-card">
+                    <div class="ba-stat-num">2-10 days</div>
+                    <div class="ba-stat-label">Typical Duration</div>
+                </div>
+                <div class="ba-stat-card ba-stat-card--alert">
+                    <div class="ba-stat-num">30%</div>
+                    <div class="ba-stat-label">6-Month Mortality (ICU)</div>
+                </div>
+            </div>
+
+            
+            <h2>Introduction: Delirium as a Medical Emergency</h2>
+            <p>
+                Delirium is a medical syndrome—not a disease itself—reflecting acute global brain dysfunction. The term encompasses a final common pathway of multiple medical, surgical, and psychiatric etiologies manifesting as acute inattention, disorganized thinking, and altered consciousness. Modern understanding recognizes delirium as a medical emergency requiring urgent identification of precipitants and aggressive management.
+            </p>
+            <p>
+                The high prevalence, diagnostic complexity, and substantial morbidity and mortality associated with delirium necessitate sophisticated clinical approaches. This review provides clinicians with evidence-based frameworks for recognition, differential diagnosis, risk stratification, and multimodal management.
+            </p>
+
+            
+            <h2>Historical Context and Evolution of Delirium Recognition</h2>
+
+            <h3>Ancient and Classical Period</h3>
+            <p>
+                Descriptions of acute mental disturbance consistent with delirium appear throughout classical medical literature. Hippocratic physicians recognized the prognostic significance of acute mental status changes in febrile illness. Galen documented the distinction between mania (sustained altered behavior) and delirium (acute fluctuating confusion), establishing early nosological differentiation.
+            </p>
+
+            <h3>Modern Psychiatric Era</h3>
+            <p>
+                The 19th and early 20th centuries witnessed systematic clinical description of acute confusional states. Kraepelin distinguished delirium from primary psychiatric illness, emphasizing its association with medical conditions. However, delirium was often relegated to medical services and overlooked by psychiatry until recently, creating a historical therapeutic gap in psychiatric care of delirious patients.
+            </p>
+
+            <div class="ba-timeline">
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot"></div>
+                    <div class="ba-tl-time">1959</div>
+                    <div class="ba-tl-text">**DSM-I** includes "acute brain syndrome" reflecting growing recognition of organic mental disturbances</div>
+                </div>
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot"></div>
+                    <div class="ba-tl-time">1980</div>
+                    <div class="ba-tl-text">**DSM-III** formally introduces "delirium" diagnostic criteria, distinguishing from dementia</div>
+                </div>
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot"></div>
+                    <div class="ba-tl-time">1990</div>
+                    <div class="ba-tl-text">**Inouye et al.** develop Confusion Assessment Method (CAM), revolutionizing delirium detection</div>
+                </div>
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot"></div>
+                    <div class="ba-tl-time">2013</div>
+                    <div class="ba-tl-text">**DSM-5** refines delirium criteria, expanding from DSM-IV with emphasis on temporal onset and fluctuation</div>
+                </div>
+            </div>
+
+            
+            <h2>DSM-5 Diagnostic Criteria and Clinical Definition</h2>
+
+            <p>
+                The DSM-5 defines delirium as a neurobehavioral syndrome with five core diagnostic criteria that must be present together:
+            </p>
+
+            <div class="ba-insight-box">
+                <div class="ba-insight-icon">⚕️</div>
+                <div class="ba-insight-title">DSM-5 Delirium Criteria (Must have all five)</div>
+                <div class="ba-insight-content">
+                    **A. Disturbed attention and awareness:** Reduced ability to direct, focus, sustain, and shift attention; reduced awareness of environment<br><br>
+                    **B. Additional cognitive disturbance:** Memory deficit, disorientation, language disturbance, visuospatial ability impairment, or perception disturbance<br><br>
+                    **C. Acute onset and fluctuating course:** Hours to days, with symptoms fluctuating throughout the day<br><br>
+                    **D. Evidence of underlying medical cause:** History, physical examination, or laboratory findings indicate medical condition, substance intoxication/withdrawal, medication side effect, or combination thereof<br><br>
+                    **E. Exclusion criterion:** Does not occur in context of severely reduced level of consciousness (coma)
+                </div>
+            </div>
+
+            
+            <h2>Types and Subtypes of Delirium</h2>
+
+            <h3>Psychomotor Subtyping</h3>
+            <p>
+                Delirium is classified into three psychomotor subtypes based on level of alertness and activity:
+            </p>
+
+            <div class="ba-compare-row">
+                <div class="ba-compare-card">
+                    <h4 style="color:#c04030;">Hyperactive Delirium (20-30%)</h4>
+                    <p>**Features:** Increased arousal, agitation, restlessness, loud verbalization, combativeness, rapid speech and thoughts</p>
+                    <p>**Recognition:** Easier to identify, more disruptive to staff</p>
+                    <p>**Prognosis:** Often slightly better outcomes than hypoactive</p>
+                </div>
+                <div class="ba-compare-card">
+                    <h4 style="color:#8b6914;">Hypoactive Delirium (20-25%)</h4>
+                    <p>**Features:** Decreased arousal, lethargy, apathy, slow speech, withdrawn behavior, psychomotor retardation</p>
+                    <p>**Recognition:** Often missed, mistaken for depression or sleep</p>
+                    <p>**Prognosis:** Associated with higher mortality rates</p>
+                </div>
+                <div class="ba-compare-card">
+                    <h4 style="color:#4a7c35;">Mixed Delirium (45-50%)</h4>
+                    <p>**Features:** Alternating between hyperactive and hypoactive presentations within hours or across days</p>
+                    <p>**Recognition:** Challenging due to variable presentation</p>
+                    <p>**Prognosis:** Intermediate outcomes</p>
+                </div>
+            </div>
+
+            <h3>Etiological Categories</h3>
+            <p>
+                Delirium manifests from diverse physiological derangements. Common etiological categories include:
+            </p>
+
+            <ul style="margin: 20px 0; padding-left: 20px; line-height: 1.8;">
+                <li>**Infections:** Pneumonia, UTI, sepsis, meningitis, encephalitis</li>
+                <li>**Medication effects:** Anticholinergics, benzodiazepines, opioids, corticosteroids, anticonvulsants</li>
+                <li>**Metabolic derangement:** Hyponatremia, hypercalcemia, hypoglycemia, hepatic encephalopathy, uremia</li>
+                <li>**Hypoxia/hypotension:** Cardiac failure, pulmonary embolism, anemia, shock states</li>
+                <li>**CNS insult:** Stroke, TIA, ICH, seizures, trauma, anoxia</li>
+                <li>**Substance intoxication/withdrawal:** Alcohol, benzodiazepines, anticholinergics</li>
+                <li>**Surgical/procedural stress:** Postoperative delirium, particularly after cardiac and orthopedic surgery</li>
+                <li>**Environmental factors:** Sleep deprivation, sensory deprivation, ICU setting, immobility</li>
+            </ul>
+
+            
+            <div class="diagram-wrapper">
+                <svg viewbox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" class="svg-diagram">
+                    
+                    <text x="400" y="30" font-size="24" font-weight="bold" text-anchor="middle" fill="#231e14">
+                        Delirium Pathophysiology Cascade
+                    </text>
+
+                    
+                    <rect x="50" y="60" width="300" height="80" fill="#f5f0e8" stroke="#cfc8ba" stroke-width="2" rx="4"></rect>
+                    <text x="200" y="85" font-size="14" font-weight="bold" text-anchor="middle" fill="#231e14">PRECIPITANTS</text>
+                    <text x="200" y="105" font-size="12" text-anchor="middle" fill="#6b6050">Infection, Medication, Metabolic</text>
+                    <text x="200" y="125" font-size="12" text-anchor="middle" fill="#6b6050">Derangement, Hypoxia, CNS Insult</text>
+
+                    
+                    <path d="M 200 140 L 200 180" stroke="#4a7c35" stroke-width="3" fill="none" marker-end="url(#arrowhead)"></path>
+
+                    
+                    <rect x="50" y="180" width="300" height="100" fill="#f5f0e8" stroke="#cfc8ba" stroke-width="2" rx="4"></rect>
+                    <text x="200" y="205" font-size="14" font-weight="bold" text-anchor="middle" fill="#231e14">NEUROCHEMICAL DYSFUNCTION</text>
+                    <text x="200" y="225" font-size="12" text-anchor="middle" fill="#6b6050">↓ Acetylcholine (primary)</text>
+                    <text x="200" y="245" font-size="12" text-anchor="middle" fill="#6b6050">↑ Dopamine, Serotonin, GABA dysregulation</text>
+                    <text x="200" y="265" font-size="12" text-anchor="middle" fill="#6b6050">Inflammatory cytokine elevation</text>
+
+                    
+                    <path d="M 200 280 L 200 320" stroke="#4a7c35" stroke-width="3" fill="none" marker-end="url(#arrowhead)"></path>
+
+                    
+                    <rect x="50" y="320" width="300" height="100" fill="#f5f0e8" stroke="#cfc8ba" stroke-width="2" rx="4"></rect>
+                    <text x="200" y="345" font-size="14" font-weight="bold" text-anchor="middle" fill="#231e14">FUNCTIONAL DISRUPTION</text>
+                    <text x="200" y="365" font-size="12" text-anchor="middle" fill="#6b6050">Attention/executive dysfunction</text>
+                    <text x="200" y="385" font-size="12" text-anchor="middle" fill="#6b6050">Thalamocortical disruption</text>
+                    <text x="200" y="405" font-size="12" text-anchor="middle" fill="#6b6050">Sleep-wake cycle derangement</text>
+
+                    
+                    <path d="M 200 420 L 200 460" stroke="#4a7c35" stroke-width="3" fill="none" marker-end="url(#arrowhead)"></path>
+
+                    
+                    <rect x="50" y="460" width="300" height="80" fill="#c04030" stroke="#231e14" stroke-width="2" rx="4"></rect>
+                    <text x="200" y="485" font-size="14" font-weight="bold" text-anchor="middle" fill="white">DELIRIUM</text>
+                    <text x="200" y="510" font-size="12" text-anchor="middle" fill="white">Acute fluctuating confusion with inattention</text>
+
+                    
+                    <text x="450" y="55" font-size="14" font-weight="bold" fill="#231e14">PREDISPOSING FACTORS:</text>
+                    <text x="450" y="80" font-size="12" fill="#6b6050">• Age >65 years</text>
+                    <text x="450" y="100" font-size="12" fill="#6b6050">• Pre-existing cognitive impairment</text>
+                    <text x="450" y="120" font-size="12" fill="#6b6050">• Severe illness</text>
+                    <text x="450" y="140" font-size="12" fill="#6b6050">• Sensory impairment</text>
+                    <text x="450" y="160" font-size="12" fill="#6b6050">• Polypharmacy</text>
+                    <text x="450" y="180" font-size="12" fill="#6b6050">• Depression/substance abuse</text>
+
+                    <text x="450" y="230" font-size="14" font-weight="bold" fill="#231e14">MODULATING FACTORS:</text>
+                    <text x="450" y="255" font-size="12" fill="#6b6050">• Sleep deprivation</text>
+                    <text x="450" y="275" font-size="12" fill="#6b6050">• Immobility</text>
+                    <text x="450" y="295" font-size="12" fill="#6b6050">• Sensory overstimulation</text>
+                    <text x="450" y="315" font-size="12" fill="#6b6050">• Psychosocial stress</text>
+                    <text x="450" y="335" font-size="12" fill="#6b6050">• Unfamiliar environment</text>
+                    <text x="450" y="355" font-size="12" fill="#6b6050">• Disrupted routine</text>
+
+                    
+                    <defs>
+                        <marker id="arrowhead" markerwidth="10" markerheight="10" refx="5" refy="5" orient="auto">
+                            <polygon points="0 0, 10 5, 0 10" fill="#4a7c35"></polygon>
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+
+            
+            <h2>Neurobiological Mechanisms of Delirium</h2>
+
+            <h3>The Cholinergic Hypothesis</h3>
+            <p>
+                The most well-supported mechanistic framework centers on cholinergic deficiency. Multiple lines of evidence implicate reduced acetylcholine availability at cortical and thalamic cholinergic receptors as central to delirium pathogenesis:
+            </p>
+            <ul style="margin: 15px 0; padding-left: 20px;">
+                <li>Anticholinergic medications reliably precipitate or worsen delirium</li>
+                <li>Cholinesterase inhibitors (physostigmine, donepezil) may reverse delirium</li>
+                <li>Inflammation reduces cholinergic tone via microglial activation</li>
+                <li>Aging is associated with reduced cholinergic neuronal density and function</li>
+            </ul>
+
+            <h3>Inflammatory and Cytokine Mechanisms</h3>
+            <p>
+                Systemic and neuroinflammatory processes contribute substantially to delirium pathogenesis. Peripheral infections or inflammatory conditions activate microglial cells, which release pro-inflammatory cytokines (IL-1β, TNF-α, IL-6) that disrupt the blood-brain barrier and impair glutamatergic and GABAergic neurotransmission. Elevated cerebrospinal fluid cytokine concentrations correlate with delirium severity.
+            </p>
+
+            <h3>Monoamine Dysregulation</h3>
+            <p>
+                Delirium involves excess dopaminergic and serotonergic activity and relative GABAergic insufficiency. Dopaminergic hyperactivity particularly characterizes hyperactive delirium, while reduced dopamine may underlie hypoactive presentations. Serotonergic dysregulation contributes to perceptual disturbance and affective instability.
+            </p>
+
+            <h3>Thalamocortical Disruption</h3>
+            <p>
+                The thalamus serves as a critical relay station for attentional filtering. Delirium involves impaired thalamocortical connectivity and disrupted gating mechanisms, preventing effective sensory filtering and integration. This mechanistic understanding explains the prominence of inattention, disorganization, and perceptual disturbance across delirium presentations.
+            </p>
+
+            
+            <h2>Critical Differential Diagnosis: Parsing Delirium from Confounders</h2>
+
+            <p>
+                Accurate differentiation from superficially similar conditions is essential for appropriate management. The following represents the most clinically relevant differential considerations:
+            </p>
+
+            <div class="diagram-wrapper">
+                <svg viewbox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" class="svg-diagram">
+                    
+                    <text x="400" y="30" font-size="22" font-weight="bold" text-anchor="middle" fill="#231e14">
+                        Delirium vs. Similar Syndromes: Differential Features
+                    </text>
+
+                    
+                    <text x="100" y="70" font-size="13" font-weight="bold" fill="#231e14">FEATURE</text>
+                    <text x="200" y="70" font-size="13" font-weight="bold" fill="#231e14">DELIRIUM</text>
+                    <text x="350" y="70" font-size="13" font-weight="bold" fill="#231e14">DEMENTIA</text>
+                    <text x="500" y="70" font-size="13" font-weight="bold" fill="#231e14">PSYCHOSIS</text>
+                    <text x="680" y="70" font-size="13" font-weight="bold" fill="#231e14">CATATONIA</text>
+
+                    
+                    <line x1="20" y1="80" x2="780" y2="80" stroke="#cfc8ba" stroke-width="2"></line>
+
+                    
+                    <text x="100" y="110" font-size="12" font-weight="600" fill="#231e14">Onset</text>
+                    <rect x="160" y="95" width="130" height="30" fill="#f5f0e8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="225" y="115" font-size="11" text-anchor="middle" fill="#231e14">Acute (hrs-days)</text>
+
+                    <rect x="310" y="95" width="130" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="375" y="115" font-size="11" text-anchor="middle" fill="#231e14">Insidious (mo-yrs)</text>
+
+                    <rect x="460" y="95" width="130" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="525" y="115" font-size="11" text-anchor="middle" fill="#231e14">Acute/subacute</text>
+
+                    <rect x="610" y="95" width="140" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="680" y="115" font-size="11" text-anchor="middle" fill="#231e14">Acute/fluctuating</text>
+
+                    
+                    <text x="100" y="150" font-size="12" font-weight="600" fill="#231e14">Attention</text>
+                    <rect x="160" y="135" width="130" height="30" fill="#f5f0e8" stroke="#c04030" stroke-width="2" rx="2"></rect>
+                    <text x="225" y="155" font-size="11" text-anchor="middle" fill="#231e14">MARKEDLY ↓</text>
+
+                    <rect x="310" y="135" width="130" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="375" y="155" font-size="11" text-anchor="middle" fill="#231e14">Relatively spared</text>
+
+                    <rect x="460" y="135" width="130" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="525" y="155" font-size="11" text-anchor="middle" fill="#231e14">Usually normal</text>
+
+                    <rect x="610" y="135" width="140" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="680" y="155" font-size="11" text-anchor="middle" fill="#231e14">Variable/reduced</text>
+
+                    
+                    <text x="100" y="190" font-size="12" font-weight="600" fill="#231e14">Consciousness</text>
+                    <rect x="160" y="175" width="130" height="30" fill="#f5f0e8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="225" y="195" font-size="11" text-anchor="middle" fill="#231e14">Fluctuates acutely</text>
+
+                    <rect x="310" y="175" width="130" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="375" y="195" font-size="11" text-anchor="middle" fill="#231e14">Normal (early)</text>
+
+                    <rect x="460" y="175" width="130" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="525" y="195" font-size="11" text-anchor="middle" fill="#231e14">Normal/clear</text>
+
+                    <rect x="610" y="175" width="140" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="680" y="195" font-size="11" text-anchor="middle" fill="#231e14">Alert but immobile</text>
+
+                    
+                    <text x="100" y="230" font-size="12" font-weight="600" fill="#231e14">Sleep-Wake</text>
+                    <rect x="160" y="215" width="130" height="30" fill="#f5f0e8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="225" y="235" font-size="11" text-anchor="middle" fill="#231e14">Severely disrupted</text>
+
+                    <rect x="310" y="215" width="130" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="375" y="235" font-size="11" text-anchor="middle" fill="#231e14">Relatively normal</text>
+
+                    <rect x="460" y="215" width="130" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="525" y="235" font-size="11" text-anchor="middle" fill="#231e14">Disrupted (variable)</text>
+
+                    <rect x="610" y="215" width="140" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="680" y="235" font-size="11" text-anchor="middle" fill="#231e14">Can sleep</text>
+
+                    
+                    <text x="100" y="270" font-size="12" font-weight="600" fill="#231e14">Medical Cause</text>
+                    <rect x="160" y="255" width="130" height="30" fill="#f5f0e8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="225" y="275" font-size="11" text-anchor="middle" fill="#231e14">Present (required)</text>
+
+                    <rect x="310" y="255" width="130" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="375" y="275" font-size="11" text-anchor="middle" fill="#231e14">Usually not acute</text>
+
+                    <rect x="460" y="255" width="130" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="525" y="275" font-size="11" text-anchor="middle" fill="#231e14">Psychiatric only</text>
+
+                    <rect x="610" y="255" width="140" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="680" y="275" font-size="11" text-anchor="middle" fill="#231e14">Often medical</text>
+
+                    
+                    <text x="100" y="310" font-size="12" font-weight="600" fill="#231e14">Hallucinations</text>
+                    <rect x="160" y="295" width="130" height="30" fill="#f5f0e8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="225" y="315" font-size="11" text-anchor="middle" fill="#231e14">Simple, visual</text>
+
+                    <rect x="310" y="295" width="130" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="375" y="315" font-size="11" text-anchor="middle" fill="#231e14">Rare, late-stage</text>
+
+                    <rect x="460" y="295" width="130" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="525" y="315" font-size="11" text-anchor="middle" fill="#231e14">Complex, auditory</text>
+
+                    <rect x="610" y="295" width="140" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="680" y="315" font-size="11" text-anchor="middle" fill="#231e14">Absent</text>
+
+                    
+                    <text x="100" y="350" font-size="12" font-weight="600" fill="#231e14">Delusions</text>
+                    <rect x="160" y="335" width="130" height="30" fill="#f5f0e8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="225" y="355" font-size="11" text-anchor="middle" fill="#231e14">Paranoid, transient</text>
+
+                    <rect x="310" y="335" width="130" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="375" y="355" font-size="11" text-anchor="middle" fill="#231e14">Absent</text>
+
+                    <rect x="460" y="335" width="130" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="525" y="355" font-size="11" text-anchor="middle" fill="#231e14">Organized, fixed</text>
+
+                    <rect x="610" y="335" width="140" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="680" y="355" font-size="11" text-anchor="middle" fill="#231e14">Absent</text>
+
+                    
+                    <text x="100" y="390" font-size="12" font-weight="600" fill="#231e14">Fluctuation</text>
+                    <rect x="160" y="375" width="130" height="30" fill="#f5f0e8" stroke="#c04030" stroke-width="2" rx="2"></rect>
+                    <text x="225" y="395" font-size="11" text-anchor="middle" fill="#231e14">MARKED (defining)</text>
+
+                    <rect x="310" y="375" width="130" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="375" y="395" font-size="11" text-anchor="middle" fill="#231e14">Gradual decline</text>
+
+                    <rect x="460" y="375" width="130" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="525" y="395" font-size="11" text-anchor="middle" fill="#231e14">Stable (chronic)</text>
+
+                    <rect x="610" y="375" width="140" height="30" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="2"></rect>
+                    <text x="680" y="395" font-size="11" text-anchor="middle" fill="#231e14">Waxy flexibility</text>
+                </svg>
+            </div>
+
+            <h3>Catatonia as Delirium Mimic</h3>
+            <p>
+                Catatonia—characterized by psychomotor immobility, waxy flexibility, mutism, or negativism—represents a distinct neuropsychiatric syndrome often overlooked in delirium assessment. While catatonia frequently co-occurs with medical illness (particularly in ICU settings), it differs from delirium in maintaining relatively preserved consciousness and awareness, despite profound psychomotor abnormality. The Bush-Francis Catatonia Rating Scale facilitates diagnostic distinction. Critically, catatonic features may be primary psychiatric phenomena or secondary to neuroleptic malignant syndrome—requiring careful syndromal parsing.
+            </p>
+
+            
+            <h2>Delirium Assessment and Screening Tools</h2>
+
+            <p>
+                Systematic assessment tools dramatically improve delirium detection. The following represent evidence-based instruments applicable across clinical settings:
+            </p>
+
+            <h3>Confusion Assessment Method (CAM)</h3>
+            <p>
+                The CAM remains the gold-standard screening tool for delirium in non-ICU settings. Diagnostic algorithm requires:
+            </p>
+
+            <div class="diagram-wrapper">
+                <svg viewbox="0 0 700 500" xmlns="http://www.w3.org/2000/svg" class="svg-diagram">
+                    <text x="350" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#231e14">
+                        CAM Algorithm for Delirium Detection
+                    </text>
+
+                    
+                    <ellipse cx="350" cy="70" rx="40" ry="25" fill="#4a7c35" stroke="#231e14" stroke-width="2"></ellipse>
+                    <text x="350" y="75" font-size="12" font-weight="bold" text-anchor="middle" fill="white">START</text>
+
+                    
+                    <path d="M 350 95 L 350 130" stroke="#231e14" stroke-width="2" fill="none" marker-end="url(#arrow)"></path>
+
+                    
+                    <rect x="180" y="130" width="340" height="60" fill="#f5f0e8" stroke="#4a7c35" stroke-width="2" rx="4"></rect>
+                    <text x="350" y="155" font-size="13" font-weight="bold" text-anchor="middle" fill="#231e14">Feature 1: ACUTE ONSET</text>
+                    <text x="350" y="175" font-size="11" text-anchor="middle" fill="#6b6050">AND fluctuating course during the day</text>
+
+                    
+                    <path d="M 180 160 L 100 160" stroke="#c04030" stroke-width="2" fill="none" marker-end="url(#arrowred)"></path>
+                    <text x="130" y="155" font-size="11" font-weight="bold" fill="#c04030">NO</text>
+                    <rect x="20" y="130" width="80" height="60" fill="#fefcf8" stroke="#c04030" stroke-width="2" rx="4"></rect>
+                    <text x="60" y="165" font-size="11" text-anchor="middle" fill="#231e14">NOT DELIRIUM</text>
+
+                    
+                    <path d="M 350 190 L 350 225" stroke="#4a7c35" stroke-width="2" fill="none" marker-end="url(#arrow)"></path>
+                    <text x="370" y="210" font-size="11" font-weight="bold" fill="#4a7c35">YES</text>
+
+                    
+                    <rect x="180" y="225" width="340" height="60" fill="#f5f0e8" stroke="#4a7c35" stroke-width="2" rx="4"></rect>
+                    <text x="350" y="250" font-size="13" font-weight="bold" text-anchor="middle" fill="#231e14">Feature 2: INATTENTION</text>
+                    <text x="350" y="270" font-size="11" text-anchor="middle" fill="#6b6050">Reduced ability to focus/sustain/shift attention</text>
+
+                    
+                    <path d="M 520 255 L 600 255" stroke="#c04030" stroke-width="2" fill="none" marker-end="url(#arrowred)"></path>
+                    <text x="550" y="250" font-size="11" font-weight="bold" fill="#c04030">NO</text>
+                    <rect x="600" y="225" width="80" height="60" fill="#fefcf8" stroke="#c04030" stroke-width="2" rx="4"></rect>
+                    <text x="640" y="260" font-size="11" text-anchor="middle" fill="#231e14">NOT DELIRIUM</text>
+
+                    
+                    <path d="M 350 285 L 350 320" stroke="#4a7c35" stroke-width="2" fill="none" marker-end="url(#arrow)"></path>
+                    <text x="370" y="305" font-size="11" font-weight="bold" fill="#4a7c35">YES</text>
+
+                    
+                    <rect x="180" y="320" width="340" height="60" fill="#f5f0e8" stroke="#4a7c35" stroke-width="2" rx="4"></rect>
+                    <text x="350" y="340" font-size="13" font-weight="bold" text-anchor="middle" fill="#231e14">Feature 3: ADDITIONAL COGNITIVE CHANGE</text>
+                    <text x="350" y="360" font-size="11" text-anchor="middle" fill="#6b6050">Disorganization, memory deficit, orientation impairment</text>
+
+                    
+                    <path d="M 180 350 L 100 350" stroke="#c04030" stroke-width="2" fill="none" marker-end="url(#arrowred)"></path>
+                    <text x="130" y="345" font-size="11" font-weight="bold" fill="#c04030">NO</text>
+                    <rect x="20" y="320" width="80" height="60" fill="#fefcf8" stroke="#c04030" stroke-width="2" rx="4"></rect>
+                    <text x="60" y="355" font-size="11" text-anchor="middle" fill="#231e14">NOT DELIRIUM</text>
+
+                    
+                    <path d="M 350 380 L 350 415" stroke="#4a7c35" stroke-width="2" fill="none" marker-end="url(#arrow)"></path>
+                    <text x="370" y="400" font-size="11" font-weight="bold" fill="#4a7c35">YES</text>
+
+                    
+                    <rect x="200" y="415" width="300" height="60" fill="#4a7c35" stroke="#231e14" stroke-width="2" rx="4"></rect>
+                    <text x="350" y="440" font-size="14" font-weight="bold" text-anchor="middle" fill="white">DELIRIUM PRESENT</text>
+                    <text x="350" y="460" font-size="11" text-anchor="middle" fill="white">Assess for medical etiology urgently</text>
+
+                    
+                    <defs>
+                        <marker id="arrow" markerwidth="10" markerheight="10" refx="5" refy="5" orient="auto">
+                            <polygon points="0 0, 10 5, 0 10" fill="#4a7c35"></polygon>
+                        </marker>
+                        <marker id="arrowred" markerwidth="10" markerheight="10" refx="5" refy="5" orient="auto">
+                            <polygon points="0 0, 10 5, 0 10" fill="#c04030"></polygon>
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+
+            <h3>Other Assessment Instruments</h3>
+            <div class="ba-table-wrap">
+                <table class="ba-table">
+                    <thead>
+                        <tr>
+                            <th>Instrument</th>
+                            <th>Administration</th>
+                            <th>Clinical Use</th>
+                            <th>Sensitivity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>**CAM-ICU**</td>
+                            <td>2-3 minutes</td>
+                            <td>ICU sedated patients using RASS score</td>
+                            <td>95-98%</td>
+                        </tr>
+                        <tr>
+                            <td>**iCAM-ICU**</td>
+                            <td>1-2 minutes</td>
+                            <td>ICU rapid screening version</td>
+                            <td>90-95%</td>
+                        </tr>
+                        <tr>
+                            <td>**Delirium Rating Scale-Revised**</td>
+                            <td>10-15 minutes</td>
+                            <td>Severity quantification, serial assessment</td>
+                            <td>85-90%</td>
+                        </tr>
+                        <tr>
+                            <td>**Memorial Delirium Assessment Scale**</td>
+                            <td>10 minutes</td>
+                            <td>Detailed severity, helpful for complex cases</td>
+                            <td>85%</td>
+                        </tr>
+                        <tr>
+                            <td>**4AT (Four A's Test)**</td>
+                            <td>2-3 minutes</td>
+                            <td>Rapid screening in older patients</td>
+                            <td>85-95%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            
+            <h2>Non-Pharmacological Management of Delirium</h2>
+
+            <p>
+                Evidence strongly supports multicomponent, non-pharmacological interventions as first-line treatment for delirium. The Hospital Elder Life Program (HELP) and similar approaches consistently reduce delirium incidence and severity.
+            </p>
+
+            <div class="diagram-wrapper">
+                <svg viewbox="0 0 750 500" xmlns="http://www.w3.org/2000/svg" class="svg-diagram">
+                    <text x="375" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#231e14">
+                        Non-Pharmacological Intervention Framework (HELP Protocol)
+                    </text>
+
+                    
+                    <circle cx="375" cy="150" r="50" fill="#4a7c35" stroke="#231e14" stroke-width="2"></circle>
+                    <text x="375" y="155" font-size="13" font-weight="bold" text-anchor="middle" fill="white">DELIRIUM</text>
+                    <text x="375" y="170" font-size="13" font-weight="bold" text-anchor="middle" fill="white">PREVENTION</text>
+
+                    
+                    <rect x="50" y="280" width="140" height="100" fill="#f5f0e8" stroke="#4a7c35" stroke-width="2" rx="4"></rect>
+                    <text x="120" y="305" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Cognitive</text>
+                    <text x="120" y="320" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Stimulation</text>
+                    <text x="120" y="340" font-size="10" text-anchor="middle" fill="#6b6050">Reorientation</text>
+                    <text x="120" y="353" font-size="10" text-anchor="middle" fill="#6b6050">Conversation</text>
+                    <text x="120" y="366" font-size="10" text-anchor="middle" fill="#6b6050">Clock/calendar</text>
+                    <line x1="120" y1="280" x2="325" y2="180" stroke="#cfc8ba" stroke-width="2"></line>
+
+                    
+                    <rect x="210" y="280" width="140" height="100" fill="#f5f0e8" stroke="#4a7c35" stroke-width="2" rx="4"></rect>
+                    <text x="280" y="305" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Sleep</text>
+                    <text x="280" y="320" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Enhancement</text>
+                    <text x="280" y="340" font-size="10" text-anchor="middle" fill="#6b6050">Quiet environment</text>
+                    <text x="280" y="353" font-size="10" text-anchor="middle" fill="#6b6050">Dim lighting</text>
+                    <text x="280" y="366" font-size="10" text-anchor="middle" fill="#6b6050">No noctural disruption</text>
+                    <line x1="280" y1="280" x2="360" y2="190" stroke="#cfc8ba" stroke-width="2"></line>
+
+                    
+                    <rect x="370" y="280" width="140" height="100" fill="#f5f0e8" stroke="#4a7c35" stroke-width="2" rx="4"></rect>
+                    <text x="440" y="310" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Early Mobility</text>
+                    <text x="440" y="340" font-size="10" text-anchor="middle" fill="#6b6050">Ambulation</text>
+                    <text x="440" y="353" font-size="10" text-anchor="middle" fill="#6b6050">Physical therapy</text>
+                    <text x="440" y="366" font-size="10" text-anchor="middle" fill="#6b6050">Exercises</text>
+                    <line x1="440" y1="280" x2="390" y2="190" stroke="#cfc8ba" stroke-width="2"></line>
+
+                    
+                    <rect x="530" y="280" width="140" height="100" fill="#f5f0e8" stroke="#4a7c35" stroke-width="2" rx="4"></rect>
+                    <text x="600" y="305" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Sensory</text>
+                    <text x="600" y="320" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Optimization</text>
+                    <text x="600" y="340" font-size="10" text-anchor="middle" fill="#6b6050">Hearing aids</text>
+                    <text x="600" y="353" font-size="10" text-anchor="middle" fill="#6b6050">Glasses</text>
+                    <text x="600" y="366" font-size="10" text-anchor="middle" fill="#6b6050">Appropriate lighting</text>
+                    <line x1="600" y1="280" x2="425" y2="190" stroke="#cfc8ba" stroke-width="2"></line>
+
+                    
+                    <text x="375" y="430" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Additional Essential Elements</text>
+                    <text x="375" y="450" font-size="11" text-anchor="middle" fill="#6b6050">Nutrition optimization • Fluid/electrolyte management • Medication review & deprescribing</text>
+                    <text x="375" y="468" font-size="11" text-anchor="middle" fill="#6b6050">Family engagement • Infection prevention • Pain management • Urinary/bowel continence care</text>
+                </svg>
+            </div>
+
+            <h3>Key Non-Pharmacological Strategies</h3>
+            <div class="ba-insight-box">
+                <div class="ba-insight-icon">💡</div>
+                <div class="ba-insight-title">Evidence-Based Non-Medication Approaches</div>
+                <div class="ba-insight-content">
+                    **Environmental optimization:** Minimize noise, maintain consistent day-night lighting, establish familiar routines, involve family members in care<br><br>
+                    **Sleep hygiene:** Avoid unnecessary nocturnal disruptions, provide warm milk or herbal tea, use white noise or earplugs as tolerated<br><br>
+                    **Reorientation:** Frequent orientation to person, place, time; visual aids (large calendar, clock); familiar objects from home<br><br>
+                    **Mobilization:** Early, frequent physical activity; stand at bedside if possible; active or passive range-of-motion exercises<br><br>
+                    **Psychosocial support:** Regular family/visitor contact; psychiatric or psychology consultation; therapeutic presence and reassurance<br><br>
+                    **Polypharmacy reduction:** Systematic deprescribing of unnecessary medications, particularly anticholinergics and benzodiazepines
+                </div>
+            </div>
+
+            
+            <h2>Pharmacological Management of Delirium</h2>
+
+            <p>
+                While non-pharmacological approaches form the cornerstone of delirium management, pharmacotherapy is indicated when patients pose danger to themselves or others, or when behavioral symptoms prevent medical care. Current evidence supports selective use of antipsychotics as first-line agents, with other classes reserved for specific clinical scenarios.
+            </p>
+
+            <h3>Antipsychotics in Delirium: Evidence and Clinical Approach</h3>
+            <p>
+                The role of antipsychotics in delirium has become increasingly nuanced. Recent high-quality evidence (particularly the MIND-USA and PRE-DELIRIUM trials) suggests that routine antipsychotic use may not improve outcomes and can increase adverse effects. However, antipsychotics remain appropriate for specific indications:
+            </p>
+
+            <div class="ba-compare-row">
+                <div class="ba-compare-card">
+                    <h4 style="color:#4a7c35;">Acceptable Indications for Antipsychotics</h4>
+                    <ul style="padding-left: 15px; font-size: 12px; line-height: 1.6;">
+                        <li>Dangerous/violent behavior requiring sedation</li>
+                        <li>Severe agitation interfering with medical care</li>
+                        <li>Psychotic symptoms (hallucinations, delusions)</li>
+                        <li>Hyperactive delirium unresponsive to non-pharmacological measures</li>
+                    </ul>
+                </div>
+                <div class="ba-compare-card">
+                    <h4 style="color:#c04030;">Situations Favoring Caution/Avoidance</h4>
+                    <ul style="padding-left: 15px; font-size: 12px; line-height: 1.6;">
+                        <li>Mild-moderate delirium amenable to supportive care</li>
+                        <li>Baseline QT prolongation or cardiac conduction abnormalities</li>
+                        <li>Neuroleptic sensitivity (Parkinson's disease, LBD)</li>
+                        <li>Hypoactive delirium (worsening)—risks outweigh benefits</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Antipsychotic Selection and Dosing</h3>
+            <p>
+                When antipsychotics are indicated, evidence supports the following approach:
+            </p>
+
+            <div class="ba-table-wrap">
+                <table class="ba-table">
+                    <thead>
+                        <tr>
+                            <th>Agent</th>
+                            <th>Starting Dose</th>
+                            <th>Typical Dosing</th>
+                            <th>Clinical Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>**Haloperidol**</td>
+                            <td>0.5-1 mg IV/IM</td>
+                            <td>2-5 mg IV/IM q4-6h</td>
+                            <td>Rapid onset, QT monitoring essential. First-line in critical care.</td>
+                        </tr>
+                        <tr>
+                            <td>**Olanzapine**</td>
+                            <td>2.5-5 mg PO/IM</td>
+                            <td>5-10 mg daily divided</td>
+                            <td>Metabolic effects, longer half-life. Use in medically stable patients.</td>
+                        </tr>
+                        <tr>
+                            <td>**Quetiapine**</td>
+                            <td>25 mg BID</td>
+                            <td>50-200 mg daily divided</td>
+                            <td>Lower extrapyramidal side effects, less QT risk. PO only.</td>
+                        </tr>
+                        <tr>
+                            <td>**Risperidone**</td>
+                            <td>0.5-1 mg daily</td>
+                            <td>1-4 mg daily divided</td>
+                            <td>Good efficacy, moderate orthostatic risk. PO only.</td>
+                        </tr>
+                        <tr>
+                            <td>**Aripiprazole**</td>
+                            <td>5 mg daily</td>
+                            <td>10-15 mg daily</td>
+                            <td>Partial agonist, activating. Limited IV/IM options.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Alternative Pharmacological Agents</h3>
+            <p>
+                For specific delirium subtypes or situations, alternative agents merit consideration:
+            </p>
+
+            <ul style="margin: 15px 0; padding-left: 20px; line-height: 1.8;">
+                <li>**Cholinesterase inhibitors (donepezil, physostigmine):** Emerging evidence supports these for delirium, particularly in cases with profound cholinergic insufficiency. Physostigmine 1-2 mg IV may provide rapid reversal of anticholinergic delirium.</li>
+                <li>**Benzodiazepines:** Limited role; primarily for alcohol/benzodiazepine withdrawal delirium or adjunctive sedation in ICU. Avoid as monotherapy due to paradoxical worsening.</li>
+                <li>**Dexmedetomidine:** Alpha-2 agonist providing sedation with preserved cognition; emerging favorable data in ICU delirium with less delirium-prolonging effects than propofol.</li>
+                <li>**Methylphenidate:** Stimulant useful for hypoactive delirium in specific contexts (minimal metabolic derangement, adequate renal/cardiac function).</li>
+            </ul>
+
+            <h3>Antipsychotic Decision Tree</h3>
+            <div class="diagram-wrapper">
+                <svg viewbox="0 0 800 550" xmlns="http://www.w3.org/2000/svg" class="svg-diagram">
+                    <text x="400" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#231e14">
+                        Antipsychotic Use in Delirium: Clinical Decision Algorithm
+                    </text>
+
+                    
+                    <ellipse cx="400" cy="80" rx="60" ry="30" fill="#231e14" stroke="#4a7c35" stroke-width="2"></ellipse>
+                    <text x="400" y="85" font-size="12" font-weight="bold" text-anchor="middle" fill="white">Delirium Diagnosed</text>
+
+                    <path d="M 400 110 L 400 150" stroke="#231e14" stroke-width="2" fill="none" marker-end="url(#arrowblack)"></path>
+
+                    
+                    <rect x="240" y="150" width="320" height="50" fill="#f5f0e8" stroke="#231e14" stroke-width="2" rx="4"></rect>
+                    <text x="400" y="160" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Dangerous behavior or severe agitation</text>
+                    <text x="400" y="177" font-size="11" text-anchor="middle" fill="#6b6050">preventing medical care?</text>
+
+                    
+                    <path d="M 240 175 L 150 175" stroke="#8b6914" stroke-width="2" fill="none" marker-end="url(#arrowyellow)"></path>
+                    <text x="190" y="170" font-size="11" font-weight="bold" fill="#8b6914">NO</text>
+
+                    <rect x="50" y="155" width="100" height="40" fill="#f5f0e8" stroke="#8b6914" stroke-width="2" rx="4"></rect>
+                    <text x="100" y="175" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Continue non-pharm</text>
+                    <text x="100" y="188" font-size="10" text-anchor="middle" fill="#6b6050">measures</text>
+
+                    
+                    <path d="M 400 200 L 400 240" stroke="#4a7c35" stroke-width="2" fill="none" marker-end="url(#arrowgreen)"></path>
+                    <text x="420" y="220" font-size="11" font-weight="bold" fill="#4a7c35">YES</text>
+
+                    
+                    <rect x="240" y="240" width="320" height="50" fill="#f5f0e8" stroke="#231e14" stroke-width="2" rx="4"></rect>
+                    <text x="400" y="250" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">QT prolongation or cardiac</text>
+                    <text x="400" y="267" font-size="11" text-anchor="middle" fill="#6b6050">conduction abnormalities?</text>
+
+                    
+                    <path d="M 560 265 L 650 265" stroke="#4a7c35" stroke-width="2" fill="none" marker-end="url(#arrowgreen)"></path>
+                    <text x="600" y="260" font-size="11" font-weight="bold" fill="#4a7c35">YES</text>
+
+                    <rect x="650" y="245" width="120" height="40" fill="#f5f0e8" stroke="#4a7c35" stroke-width="2" rx="4"></rect>
+                    <text x="710" y="260" font-size="10" font-weight="bold" text-anchor="middle" fill="#231e14">Avoid haloperidol</text>
+                    <text x="710" y="273" font-size="9" text-anchor="middle" fill="#6b6050">Use olanzapine/quetiapine</text>
+
+                    
+                    <path d="M 400 290 L 400 330" stroke="#8b6914" stroke-width="2" fill="none" marker-end="url(#arrowyellow)"></path>
+                    <text x="420" y="310" font-size="11" font-weight="bold" fill="#8b6914">NO</text>
+
+                    
+                    <rect x="240" y="330" width="320" height="50" fill="#f5f0e8" stroke="#231e14" stroke-width="2" rx="4"></rect>
+                    <text x="400" y="340" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Hyperactive delirium?</text>
+                    <text x="400" y="357" font-size="11" text-anchor="middle" fill="#6b6050">Psychotic features present?</text>
+
+                    
+                    <path d="M 240 355 L 150 355" stroke="#4a7c35" stroke-width="2" fill="none" marker-end="url(#arrowgreen)"></path>
+                    <text x="190" y="350" font-size="11" font-weight="bold" fill="#4a7c35">YES</text>
+
+                    <rect x="30" y="330" width="120" height="50" fill="#f5f0e8" stroke="#4a7c35" stroke-width="2" rx="4"></rect>
+                    <text x="90" y="350" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Haloperidol or</text>
+                    <text x="90" y="365" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Olanzapine</text>
+                    <text x="90" y="377" font-size="9" text-anchor="middle" fill="#6b6050">(lowest effective dose)</text>
+
+                    
+                    <path d="M 400 380 L 400 420" stroke="#c04030" stroke-width="2" fill="none" marker-end="url(#arrowred)"></path>
+                    <text x="420" y="400" font-size="11" font-weight="bold" fill="#c04030">NO</text>
+
+                    
+                    <rect x="240" y="420" width="320" height="50" fill="#f5f0e8" stroke="#c04030" stroke-width="3" rx="4"></rect>
+                    <text x="400" y="435" font-size="12" font-weight="bold" text-anchor="middle" fill="#231e14">Hypoactive delirium</text>
+                    <text x="400" y="452" font-size="11" text-anchor="middle" fill="#231e14">AVOID antipsychotics if possible</text>
+
+                    <path d="M 400 470 L 400 510" stroke="#c04030" stroke-width="2" fill="none" marker-end="url(#arrowred)"></path>
+
+                    <rect x="240" y="510" width="320" height="30" fill="#f5f0e8" stroke="#c04030" stroke-width="2" rx="4"></rect>
+                    <text x="400" y="530" font-size="11" text-anchor="middle" fill="#231e14">Consider methylphenidate or dexmedetomidine</text>
+
+                    <defs>
+                        <marker id="arrowgreen" markerwidth="10" markerheight="10" refx="5" refy="5" orient="auto">
+                            <polygon points="0 0, 10 5, 0 10" fill="#4a7c35"></polygon>
+                        </marker>
+                        <marker id="arrowyellow" markerwidth="10" markerheight="10" refx="5" refy="5" orient="auto">
+                            <polygon points="0 0, 10 5, 0 10" fill="#8b6914"></polygon>
+                        </marker>
+                        <marker id="arrowred" markerwidth="10" markerheight="10" refx="5" refy="5" orient="auto">
+                            <polygon points="0 0, 10 5, 0 10" fill="#c04030"></polygon>
+                        </marker>
+                        <marker id="arrowblack" markerwidth="10" markerheight="10" refx="5" refy="5" orient="auto">
+                            <polygon points="0 0, 10 5, 0 10" fill="#231e14"></polygon>
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+
+            
+            <h2>Medications that Precipitate or Worsen Delirium</h2>
+
+            <div class="ba-warning-box" style="background-color: #f5f0e8; border-left: 4px solid #c04030; padding: 20px; margin: 20px 0; border-radius: 4px;">
+                <p style="margin: 0; font-weight: bold; color: #c04030; margin-bottom: 15px;">High-Risk Medications to Avoid or Minimize:</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li>**Anticholinergic drugs:** Antihistamines (hydroxyzine, diphenhydramine), antimuscarinics (benztropine, trihexyphenidyl), tricyclic antidepressants, atropine, scopolamine patches</li>
+                    <li>**Benzodiazepines:** Particularly long-acting agents (diazepam, chlordiazepoxide); paradoxically worsen delirium despite apparent sedation</li>
+                    <li>**Opioids:** Accumulate in renal dysfunction; metabolites may precipitate delirium despite pain relief</li>
+                    <li>**Corticosteroids:** Both acute high-dose exposure and chronic use increase delirium risk, particularly psychiatric manifestations</li>
+                    <li>**Anticonvulsants:** Phenytoin, valproate, phenobarbital</li>
+                    <li>**NSAIDs:** Renal dysfunction and electrolyte disturbance; particularly problematic in elderly</li>
+                    <li>**Cardiovascular agents:** Beta-blockers (especially lipophilic types), calcium channel blockers, clonidine, digoxin (in toxicity)</li>
+                    <li>**Antimicrobials:** Fluoroquinolones, antiretrovirals, antifungals</li>
+                </ul>
+            </div>
+
+            <h3>Deprescribing Strategy in Delirium</h3>
+            <p>
+                One of the highest-yield interventions in delirium management is systematic medication review and deprescribing. A logical approach includes:
+            </p>
+            <ol style="margin: 15px 0; padding-left: 20px; line-height: 1.8;">
+                <li>List all current medications with start dates and indications</li>
+                <li>Identify medications with anticholinergic or CNS-depressant properties</li>
+                <li>Assess necessity of each medication given acute medical situation</li>
+                <li>Prioritize discontinuation of medications with highest delirium risk and lowest acute necessity</li>
+                <li>Taper long-acting agents gradually where appropriate (benzodiazepines, some anticonvulsants)</li>
+                <li>Monitor closely for withdrawal syndromes (alcohol, benzodiazepines)</li>
+            </ol>
+
+            
+            <h2>Natural Course, Resolution, and Prognostic Factors</h2>
+
+            <h3>Temporal Trajectory</h3>
+            <p>
+                Delirium typically follows a characteristic temporal pattern:
+            </p>
+
+            <div class="ba-timeline">
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot"></div>
+                    <div class="ba-tl-time">Onset</div>
+                    <div class="ba-tl-text">Acute presentation, often with preceding prodrome of sleep disturbance or anxiety (hours to 1-2 days)</div>
+                </div>
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot"></div>
+                    <div class="ba-tl-time">Peak severity</div>
+                    <div class="ba-tl-text">Usually within 24-72 hours of recognized delirium; may fluctuate substantially throughout day</div>
+                </div>
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot"></div>
+                    <div class="ba-tl-time">Resolution phase</div>
+                    <div class="ba-tl-text">Hours to weeks depending on etiology and underlying medical condition; may persist after medical stabilization</div>
+                </div>
+                <div class="ba-tl-item">
+                    <div class="ba-tl-dot"></div>
+                    <div class="ba-tl-time">Post-delirium period</div>
+                    <div class="ba-tl-text">Extended cognitive recovery; memory gaps for delirium period common; emotional sequelae frequent</div>
+                </div>
+            </div>
+
+            <h3>Factors Influencing Recovery Timeline</h3>
+            <p>
+                Duration and resolution of delirium depend on multiple factors:
+            </p>
+
+            <div class="ba-compare-row">
+                <div class="ba-compare-card">
+                    <h4 style="color:#4a7c35;">Favorable Prognostic Factors</h4>
+                    <ul style="padding-left: 15px; font-size: 12px; line-height: 1.6;">
+                        <li>Single, identifiable precipitant</li>
+                        <li>Rapid treatment response</li>
+                        <li>Absence of dementia</li>
+                        <li>Good baseline functional status</li>
+                        <li>Resolution of underlying infection/metabolic derangement</li>
+                        <li>Early mobilization and non-pharm interventions</li>
+                    </ul>
+                </div>
+                <div class="ba-compare-card">
+                    <h4 style="color:#c04030;">Unfavorable Prognostic Factors</h4>
+                    <ul style="padding-left: 15px; font-size: 12px; line-height: 1.6;">
+                        <li>Multiple precipitants</li>
+                        <li>Profound underlying illness (sepsis, respiratory failure)</li>
+                        <li>Pre-existing cognitive impairment</li>
+                        <li>Advanced age >80 years</li>
+                        <li>Hypoactive subtype</li>
+                        <li>Inadequate treatment of underlying cause</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Long-Term Consequences</h3>
+            <p>
+                Growing evidence indicates that delirium, particularly severe or prolonged episodes, carries lasting cognitive and functional consequences beyond the acute illness. Post-delirium cognitive impairment may persist for months to years, manifesting as executive dysfunction, memory deficits, and processing slowing even after full medical recovery. ICU survivors with delirium show accelerated cognitive decline in subsequent years and increased dementia risk. Psychological consequences include PTSD-like symptoms, anxiety, depression, and reduced quality of life. These observations underscore the importance of aggressive delirium prevention and treatment, with long-term neuropsychological follow-up for severe cases.
+            </p>
+
+            
+            <h2>Delirium Prevention: The HELP Protocol and Evidence-Based Strategies</h2>
+
+            <p>
+                Primary prevention of delirium offers substantial advantages over management of established disease. The Hospital Elder Life Program (HELP) demonstrates 30-40% reduction in incident delirium through systematic, multicomponent intervention.
+            </p>
+
+            <div class="diagram-wrapper">
+                <svg viewbox="0 0 750 480" xmlns="http://www.w3.org/2000/svg" class="svg-diagram">
+                    <text x="375" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#231e14">
+                        Comprehensive Delirium Prevention Bundle (HELP Protocol)
+                    </text>
+
+                    
+                    <circle cx="375" cy="140" r="45" fill="#4a7c35" stroke="#231e14" stroke-width="2"></circle>
+                    <text x="375" y="140" font-size="12" font-weight="bold" text-anchor="middle" fill="white">DELIRIUM</text>
+                    <text x="375" y="155" font-size="12" font-weight="bold" text-anchor="middle" fill="white">PREVENTION</text>
+
+                    
+                    <rect x="30" y="230" width="130" height="90" fill="#f5f0e8" stroke="#4a7c35" stroke-width="2" rx="4"></rect>
+                    <text x="95" y="250" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Orientation &</text>
+                    <text x="95" y="263" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Reorientation</text>
+                    <ul style="font-size: 9px; line-height: 1.3; margin: 10px 5px; padding-left: 10px; color: #6b6050;">
+                        <li>Daily reorientation</li>
+                        <li>Large clock/calendar</li>
+                        <li>Familiar photos</li>
+                    </ul>
+                    <line x1="95" y1="230" x2="330" y2="180" stroke="#cfc8ba" stroke-width="2"></line>
+
+                    
+                    <rect x="165" y="230" width="130" height="90" fill="#f5f0e8" stroke="#4a7c35" stroke-width="2" rx="4"></rect>
+                    <text x="230" y="250" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Sleep</text>
+                    <text x="230" y="263" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Optimization</text>
+                    <ul style="font-size: 9px; line-height: 1.3; margin: 10px 5px; padding-left: 10px; color: #6b6050;">
+                        <li>Quiet environment</li>
+                        <li>No noctural vitals</li>
+                        <li>Sleep aids (music)</li>
+                    </ul>
+                    <line x1="230" y1="230" x2="360" y2="180" stroke="#cfc8ba" stroke-width="2"></line>
+
+                    
+                    <rect x="300" y="230" width="130" height="90" fill="#f5f0e8" stroke="#4a7c35" stroke-width="2" rx="4"></rect>
+                    <text x="365" y="250" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Cognitive</text>
+                    <text x="365" y="263" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Stimulation</text>
+                    <ul style="font-size: 9px; line-height: 1.3; margin: 10px 5px; padding-left: 10px; color: #6b6050;">
+                        <li>Conversation</li>
+                        <li>Games/puzzles</li>
+                        <li>Reminiscence</li>
+                    </ul>
+                    <line x1="365" y1="230" x2="390" y2="180" stroke="#cfc8ba" stroke-width="2"></line>
+
+                    
+                    <rect x="435" y="230" width="130" height="90" fill="#f5f0e8" stroke="#4a7c35" stroke-width="2" rx="4"></rect>
+                    <text x="500" y="250" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Early</text>
+                    <text x="500" y="263" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Mobilization</text>
+                    <ul style="font-size: 9px; line-height: 1.3; margin: 10px 5px; padding-left: 10px; color: #6b6050;">
+                        <li>Daily ambulation</li>
+                        <li>PT/OT referral</li>
+                        <li>Range of motion</li>
+                    </ul>
+                    <line x1="500" y1="230" x2="420" y2="180" stroke="#cfc8ba" stroke-width="2"></line>
+
+                    
+                    <rect x="570" y="230" width="140" height="90" fill="#f5f0e8" stroke="#4a7c35" stroke-width="2" rx="4"></rect>
+                    <text x="640" y="250" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Nutrition &</text>
+                    <text x="640" y="263" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Hydration</text>
+                    <ul style="font-size: 9px; line-height: 1.3; margin: 10px 5px; padding-left: 10px; color: #6b6050;">
+                        <li>Electrolyte monitoring</li>
+                        <li>Thiamine, B12</li>
+                        <li>Adequate intake</li>
+                    </ul>
+                    <line x1="640" y1="230" x2="420" y2="180" stroke="#cfc8ba" stroke-width="2"></line>
+
+                    
+                    <text x="375" y="360" font-size="13" font-weight="bold" text-anchor="middle" fill="#231e14">RISK STRATIFICATION AND TARGETING</text>
+
+                    <rect x="50" y="380" width="300" height="80" fill="#f5f0e8" stroke="#8b6914" stroke-width="2" rx="4"></rect>
+                    <text x="200" y="400" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">HIGH-RISK PATIENTS</text>
+                    <text x="200" y="418" font-size="9" text-anchor="middle" fill="#6b6050">Age >70 years, pre-existing cognitive impairment,</text>
+                    <text x="200" y="430" font-size="9" text-anchor="middle" fill="#6b6050">severe underlying illness, multiple comorbidities,</text>
+                    <text x="200" y="442" font-size="9" text-anchor="middle" fill="#6b6050">sensory impairment, substance abuse history</text>
+
+                    <rect x="400" y="380" width="300" height="80" fill="#f5f0e8" stroke="#4a7c35" stroke-width="2" rx="4"></rect>
+                    <text x="550" y="400" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">INTENSIVE PREVENTION IN HIGH-RISK</text>
+                    <text x="550" y="418" font-size="9" text-anchor="middle" fill="#6b6050">All HELP interventions, plus medication review,</text>
+                    <text x="550" y="430" font-size="9" text-anchor="middle" fill="#6b6050">aggressive infection prevention, optimized pain</text>
+                    <text x="550" y="442" font-size="9" text-anchor="middle" fill="#6b6050">management, continuous pulse oximetry as indicated</text>
+                </svg>
+            </div>
+
+            <h3>Specific Prevention Strategies by Risk Group</h3>
+            <p>
+                **Older adults undergoing elective surgery:** Preoperative cognitive assessment, medication review, family involvement in perioperative planning, post-operative early mobilization, avoidance of benzodiazepine premedication
+            </p>
+            <p>
+                **Hospitalized elderly without acute delirium:** Daily CAM screening, proactive HELP protocol elements, medication deprescribing, infection/metabolic monitoring
+            </p>
+            <p>
+                **ICU patients:** Daily sedation interruption trials, spontaneous breathing trials, early mobilization within hemodynamic tolerance, delirium assessment via CAM-ICU, medication optimization
+            </p>
+            <p>
+                **Patients with dementia or delirium history:** Intensive non-pharmacological preventive measures, family/caregiver presence, familiar environmental cues, medication vigilance
+            </p>
+
+            
+            <h2>Key Clinical Learning Points: Summary</h2>
+
+            <div class="ba-summary-box" style="background-color: #f5f0e8; border: 2px solid #4a7c35; padding: 20px; border-radius: 4px; margin: 20px 0;">
+                <p style="margin: 0 0 15px 0; font-weight: bold; color: #4a7c35; font-size: 14px;">Essential Clinical Pearls on Delirium</p>
+
+                <p style="margin: 10px 0;">**1. Recognize delirium's prevalence and underrecognition:** Delirium is the most common psychiatric complication of medical hospitalization but remains frequently missed. Maintain high clinical suspicion, particularly in elderly patients and ICU settings.</p>
+
+                <p style="margin: 10px 0;">**2. Distinguish inattention as the cardinal feature:** While multiple cognitive disturbances occur in delirium, attention impairment is the pathognomonic finding. CAM or similar tools should be routine screening.</p>
+
+                <p style="margin: 10px 0;">**3. Delirium is a medical emergency:** Acute onset of confusion demands urgent search for underlying etiology. This differs fundamentally from dementia (insidious) and primary psychiatric illness (no acute precipitant).</p>
+
+                <p style="margin: 10px 0;">**4. Non-pharmacological management is first-line:** HELP protocol elements reduce incident delirium by 30-40%. Environmental optimization, cognitive stimulation, sleep hygiene, and early mobilization should precede medications.</p>
+
+                <p style="margin: 10px 0;">**5. Antipsychotics have limited role:** Recent evidence does not support routine antipsychotic use. Reserve for dangerous behavior, severe agitation interfering with care, or prominent psychotic features. Hypoactive delirium particularly does not benefit from antipsychotics.</p>
+
+                <p style="margin: 10px 0;">**6. Medication review is essential:** Anticholinergics, benzodiazepines, and opioids frequently precipitate delirium. Aggressive deprescribing of unnecessary medications is often therapeutic.</p>
+
+                <p style="margin: 10px 0;">**7. Hypoactive delirium carries worse prognosis:** The quiet, withdrawn presentation is easily missed by staff but carries higher mortality. Maintain vigilance for reduced consciousness/responsiveness.</p>
+
+                <p style="margin: 10px 0;">**8. Delirium has lasting consequences:** Post-delirium cognitive impairment, psychological distress, and functional decline may persist for months/years. Long-term follow-up is warranted for severe cases.</p>
+
+                <p style="margin: 10px 0;">**9. Prevention is superior to treatment:** The HELP protocol and similar approaches reduce delirium incidence substantially. Risk stratification should identify high-risk patients for intensive preventive interventions.</p>
+
+                <p style="margin: 10px 0;">**10. Family engagement optimizes outcomes:** Involving family/caregivers in orientation, reorientation, and non-pharmacological management improves delirium outcomes. Consider visitor facilitation as therapeutic intervention.</p>
+            </div>
+
+            
+            <h2>References and Further Reading</h2>
+            <ol style="font-size: 12px; line-height: 1.8; padding-left: 20px;">
+                <li>Inouye SK, van Dyck CH, Alessi CA, et al. Clarifying confusion: The Confusion Assessment Method. A new method for detection of delirium. Ann Intern Med. 1990;113(12):941-948.</li>
+                <li>American Psychiatric Association. Diagnostic and Statistical Manual of Mental Disorders. 5th ed. Arlington, VA: American Psychiatric Publishing; 2013.</li>
+                <li>Ely EW, Inouye SK, Bernard GR, et al. Delirium in mechanically ventilated patients: validity and reliability of the confusion assessment method for the intensive care unit (CAM-ICU). JAMA. 2001;286(21):2703-2710.</li>
+                <li>Girard TD, Jackson JC, Pandharipande PP, et al. Delirium as a predictor of long-term cognitive impairment in survivors of critical illness. Crit Care Med. 2010;38(7):1513-1520.</li>
+                <li>Inouye SK, Bogardus ST, Charpentier PA, et al. A multicomponent intervention to prevent delirium in hospitalized older adults. N Engl J Med. 1999;340(9):669-676.</li>
+                <li>Flaherty JH, Steeves BL. Complicated delirium: when more than the most common precipitants are involved. Am Fam Physician. 2000;61(4):1033-1040.</li>
+                <li>Breitbart W, Alici Y. Agitation and delirium at the end of life: "We couldn't manage him." JAMA. 2008;300(24):2898-2910.</li>
+                <li>Pandharipande P, Shintani A, Peterson J, et al. Lorazepam is an independent risk factor for transitioning to delirium in intensive care unit patients. Anesthesiology. 2006;104(1):21-26.</li>
+                <li>Saxena S, Lawley D. Delirium in the elderly: a practical approach. Postgrad Med J. 2009;85(1009):642-651.</li>
+                <li>Barr J, Fraser GL, Puntillo K, et al. Clinical practice guidelines for the management of pain, agitation, and delirium in adult patients in the intensive care unit. Crit Care Med. 2013;41(1):263-306.</li>
+                <li>Grover S, Avasthi A, Sharma A. Delirium: a review of literature. J Neurosci Rural Pract. 2011;2(1):60-66.</li>
+                <li>MacLullich AM, Beaglehole A, Hall RJ, et al. Delirium and long-term function in older people after hospitalization. Age Ageing. 2017;46(4):690-696.</li>
+                <li>Hshieh TT, Yue J, Oh E, et al. Effectiveness of multicomponent nonpharmacological delirium interventions: a meta-analysis. JAMA Intern Med. 2015;175(4):512-520.</li>
+                <li>Siddiqi N, Harrison JK, Clegg A, et al. Interventions for preventing delirium in hospitalised non-ICU patients. Cochrane Database Syst Rev. 2016;(3):CD005563.</li>
+                <li>Al-Qadheeb NS, Skrobik Y. Preventing delirium in the critically ill. Expert Rev Respir Med. 2010;4(3):395-408.</li>
+                <li>van Dyck CH, Albers JW, Alessi CA, et al. Delirium in older hospitalized patients: evaluation and management. J Am Geriatr Soc. 1999;47(4):450-456.</li>
+                <li>Ely EW, Shintani A, Truman B, et al. Delirium as a predictor of mortality in mechanically ventilated patients in the intensive care unit. JAMA. 2004;291(14):1753-1762.</li>
+                <li>Marcantonio ER. Delirium in hospitalized older adults. N Engl J Med. 2011;364(15):1456-1465.</li>
+                <li>Siddiqi N, Stockdale R, Britton AM, et al. Interventions for preventing delirium in hospitalised patients. Cochrane Database Syst Rev. 2007;(2):CD005563.</li>
+                <li>Davis DH, Muniz Terrera G, Keage H, et al. Delirium is a strong risk factor for dementia in the oldest-old: a population-based cohort study. Brain. 2012;135(Pt 9):2809-2816.</li>
+            </ol>
+
+            
+        
+        
+          
+          <div class="ba-related">
+            <h4>Related Articles</h4>
+            

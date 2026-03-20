@@ -1,0 +1,1079 @@
+---
+title: "Insomnia: A Comprehensive Clinical Guide | PsychoPharmRef"
+date: 2026-03-01
+description: ""
+category: "Sleep Medicine"
+subtitle: "Evidence-based diagnosis, treatment pathways, and integration with psychiatric care"
+readTime: "Read time: 18 minutes"
+clinicalSummary: ""
+related: ['sleep-medications-review', 'seasonal-affective-disorder', 'psychotherapy-overview']
+draft: false
+---
+
+<div class="ba-body">
+          <div class="ba-action-bar">
+            <button class="ba-act-btn" onclick="window.print()" title="Print this article"><svg viewbox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"></path></svg> Print</button>
+            <div class="ba-share-drop">
+              <button class="ba-act-btn" onclick="this.nextElementSibling.classList.toggle('ba-open')" title="Share this article"><svg viewbox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"></path></svg> Share</button>
+              <div class="ba-share-menu" id="share-menu-insomnia">
+                <a href="https://twitter.com/intent/tweet?text=Insomnia%3A%20A%20Comprehensive%20Clinical%20Guide%20%7C%20PsychoPharmRef&url=https%3A%2F%2Fpsychopharmref.com%2Fblog%2Finsomnia.html" target="_blank" rel="noopener">X (Twitter)</a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://psychopharmref.com/blog/insomnia.html" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:?subject=Insomnia: A Comprehensive Clinical Guide | PsychoPharmRef&body=Check out this article: https://psychopharmref.com/blog/insomnia.html">Email</a>
+                <button onclick="navigator.clipboard.writeText('https://psychopharmref.com/blog/insomnia.html').then(function(){this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link'}.bind(this),2000)}.bind(this))">Copy Link</button>
+              </div>
+            </div>
+          </div>
+
+
+    <p class="ba-lead">
+      Insomnia remains one of the most prevalent sleep disorders encountered in clinical practice, affecting 10–15% of the general population chronically. For psychiatrists, sleep disturbance often presents as a cardinal symptom across mood, anxiety, and psychotic disorders, making competency in insomnia assessment and management essential. This guide synthesizes current evidence on insomnia phenotypes, non-pharmacological interventions, medication options, and the role of sleep medicine consultation, with emphasis on clinical decision-making in psychopharmacological practice.
+    </p>
+
+    
+    ## Understanding Normal Sleep Architecture
+
+    <p>
+      Before addressing insomnia, clinicians must understand the architecture of normal sleep. Sleep progresses through distinct stages—Non-REM 1, 2, and 3 (or slow-wave sleep, SWS), and REM sleep—in predictable cycles of approximately 90 minutes. Each stage subserves distinct physiological and cognitive functions. N3 sleep is associated with memory consolidation, metabolic regulation, and glymphatic clearance; REM sleep supports emotional processing, procedural learning, and cortisol suppression at morning awakening.
+    </p>
+
+    <div class="svg-container">
+      <svg viewbox="0 0 600 350" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .sleep-label { font-family: var(--font); font-size: 12px; fill: var(--text); }
+            .sleep-axis { stroke: var(--text-muted); stroke-width: 2; }
+            .n1-color { fill: var(--yellow); opacity: 0.6; }
+            .n2-color { fill: var(--accent2); opacity: 0.6; }
+            .n3-color { fill: var(--green); opacity: 0.6; }
+            .rem-color { fill: var(--orange); opacity: 0.6; }
+            .grid { stroke: var(--border); stroke-width: 1; }
+          </style>
+        </defs>
+        
+        <rect width="600" height="350" fill="var(--bg)"></rect>
+        
+        <line x1="50" y1="280" x2="550" y2="280" class="sleep-axis"></line>
+        <line x1="50" y1="280" x2="50" y2="40" class="sleep-axis"></line>
+        
+        <line x1="50" y1="200" x2="550" y2="200" class="grid"></line>
+        <line x1="50" y1="120" x2="550" y2="120" class="grid"></line>
+        
+        <text x="30" y="285" class="sleep-label">Wake</text>
+        <text x="20" y="205" class="sleep-label">N1/N2</text>
+        <text x="20" y="125" class="sleep-label">N3</text>
+        <text x="25" y="45" class="sleep-label">REM</text>
+        
+        <polygon points="50,280 120,250 150,200 180,140 210,150 240,190 270,150 300,120 330,150 360,190 390,150 420,160 450,200 480,180 510,220 550,240 550,280 50,280" class="n2-color"></polygon>
+        <polygon points="120,250 150,200 180,140 210,150 240,190 270,150 300,120 330,150 360,190 390,150 420,160 450,200 480,180 510,220" style="fill: var(--green); opacity: 0.6;"></polygon>
+        <polygon points="180,140 210,150 240,190 270,150 300,120 330,150 360,190 390,150" style="fill: var(--orange); opacity: 0.6;"></polygon>
+        
+        <text x="80" y="310" class="sleep-label">Cycle 1</text>
+        <text x="240" y="310" class="sleep-label">Cycle 2</text>
+        <text x="400" y="310" class="sleep-label">Cycle 3</text>
+        
+        <text x="275" y="330" class="sleep-label" text-anchor="middle" style="font-weight: 600;">Time (hours)</text>
+        
+        <rect x="50" y="10" width="15" height="15" class="n2-color"></rect>
+        <text x="70" y="22" class="sleep-label">N1/N2</text>
+        <rect x="150" y="10" width="15" height="15" style="fill: var(--green); opacity: 0.6;"></rect>
+        <text x="170" y="22" class="sleep-label">N3 (SWS)</text>
+        <rect x="280" y="10" width="15" height="15" style="fill: var(--orange); opacity: 0.6;"></rect>
+        <text x="300" y="22" class="sleep-label">REM</text>
+      </svg>
+      <p class="svg-caption">Normal sleep architecture showing ultradian 90-minute cycles with progression through sleep stages over 7–8 hours</p>
+    </div>
+
+    <p>
+      Insomnia, by definition, represents a dissociation between sleep opportunity and sleep production. The core complaint is difficulty initiating sleep (sleep onset insomnia), difficulty maintaining sleep (sleep maintenance insomnia), or early morning awakening (terminal insomnia), coupled with daytime functional impairment. Importantly, insomnia is a symptom and a disorder; it occurs both as a standalone primary insomnia and as a feature of underlying psychiatric, medical, or neurological conditions.
+    </p>
+
+    
+    ## Circadian Rhythms and the Two-Process Model of Sleep
+
+    <p>
+      Sleep timing is governed by the interaction of two biological processes: the circadian (C) process, driven by the suprachiasmatic nucleus and synchronized to light–dark cycles, and the homeostatic (S) process, which accumulates sleep pressure in proportion to prior wakefulness. Understanding these processes is critical for targeted intervention.
+    </p>
+
+    <div class="svg-container">
+      <svg viewbox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .proc-label { font-family: var(--font); font-size: 12px; fill: var(--text); }
+            .proc-axis { stroke: var(--text-muted); stroke-width: 2; }
+            .proc-curve { fill: none; stroke-width: 2; }
+            .circ-curve { stroke: var(--accent); }
+            .sleep-curve { stroke: var(--accent2); }
+            .time-marker { stroke: var(--border); stroke-width: 1; }
+          </style>
+        </defs>
+        
+        <rect width="600" height="300" fill="var(--bg)"></rect>
+        
+        <line x1="50" y1="230" x2="550" y2="230" class="proc-axis"></line>
+        <line x1="50" y1="230" x2="50" y2="50" class="proc-axis"></line>
+        
+        <line x1="50" y1="150" x2="550" y2="150" class="time-marker"></line>
+        
+        <path d="M 50,130 Q 150,70 250,130 Q 350,180 450,130 Q 550,70 550,130" class="circ-curve proc-curve" stroke-dasharray="5,5"></path>
+        
+        <path d="M 50,220 L 150,200 L 250,160 L 350,200 L 450,160 L 550,220" class="sleep-curve proc-curve"></path>
+        
+        <line x1="150" y1="230" x2="150" y2="235" class="time-marker"></line>
+        <line x1="250" y1="230" x2="250" y2="235" class="time-marker"></line>
+        <line x1="350" y1="230" x2="350" y2="235" class="time-marker"></line>
+        <line x1="450" y1="230" x2="450" y2="235" class="time-marker"></line>
+        
+        <text x="150" y="250" class="proc-label" text-anchor="middle">Sleep</text>
+        <text x="250" y="250" class="proc-label" text-anchor="middle">Wake</text>
+        <text x="350" y="250" class="proc-label" text-anchor="middle">Wake</text>
+        <text x="450" y="250" class="proc-label" text-anchor="middle">Sleep</text>
+        
+        <text x="20" y="140" class="proc-label" text-anchor="end">Drive</text>
+        
+        <line x1="50" y1="25" x2="80" y2="25" class="circ-curve proc-curve" stroke-dasharray="5,5"></line>
+        <text x="90" y="30" class="proc-label">Circadian Process (C)</text>
+        <line x1="300" y1="25" x2="330" y2="25" class="sleep-curve proc-curve"></line>
+        <text x="340" y="30" class="proc-label">Homeostatic Process (S)</text>
+      </svg>
+      <p class="svg-caption">Two-process model: Circadian process provides circadian "gate" for sleep timing; homeostatic process accumulates during wakefulness</p>
+    </div>
+
+    <p>
+      Clinically, this model explains why sleep onset insomnia often results from circadian phase misalignment (e.g., sleep-onset insomnia in delayed sleep phase disorder), while early morning awakening may reflect circadian phase advancement (as in depression). Interventions targeting the circadian process (light exposure, melatonin timing) differ fundamentally from those addressing sleep pressure (stimulus control, sleep restriction).
+    </p>
+
+    
+    ## Insomnia Descriptors and Clinical Phenotypes
+
+    <p>
+      Standardized terminology enables precise communication and tailored treatment selection. The following descriptors characterize insomnia presentations:
+    </p>
+
+    <div class="ba-table-wrap">
+      <table class="ba-table">
+        <thead>
+          <tr>
+            <th>Descriptor</th>
+            <th>Definition</th>
+            <th>Typical Associations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>**Sleep Onset Insomnia**</td>
+            <td>Difficulty falling asleep; prolonged sleep latency (>30 min)</td>
+            <td>Anxiety, racing thoughts, circadian phase delay, substance use</td>
+          </tr>
+          <tr>
+            <td>**Sleep Maintenance Insomnia**</td>
+            <td>Frequent nocturnal awakenings; difficulty returning to sleep</td>
+            <td>OSA, PLMD, depression, PTSD, polyuria, pain syndromes</td>
+          </tr>
+          <tr>
+            <td>**Early Morning Awakening (Terminal Insomnia)**</td>
+            <td>Awakening 2–3 hours earlier than desired; cannot return to sleep</td>
+            <td>Major depression, bipolar disorder, advanced circadian phase</td>
+          </tr>
+          <tr>
+            <td>**Sleep Efficiency**</td>
+            <td>Ratio of actual sleep time to time in bed; <85% suggests insomnia</td>
+            <td>Global marker of sleep quality across phenotypes</td>
+          </tr>
+          <tr>
+            <td>**Sleep Latency**</td>
+            <td>Time from lights-out to sleep onset; >30 min abnormal</td>
+            <td>Central measure in sleep onset insomnia; responsive to CBT-I</td>
+          </tr>
+          <tr>
+            <td>**Total Sleep Time (TST)**</td>
+            <td>Cumulative sleep per 24 hours; <6 h suggests severe insomnia</td>
+            <td>Impaired daytime functioning, cognitive impairment, mortality risk</td>
+          </tr>
+          <tr>
+            <td>**Circadian Phase Disorders**</td>
+            <td>Mismatch between endogenous circadian rhythm and desired sleep time</td>
+            <td>Delayed/Advanced phase types; shift work disorder; social jet lag</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ba-stat-row">
+      <div class="ba-stat-card ba-stat-card--alert">
+        <div class="ba-stat-num">30–50%</div>
+        <div class="ba-stat-label">Of primary insomnia cases show mixed phenotypes (onset + maintenance)</div>
+      </div>
+      <div class="ba-stat-card ba-stat-card--good">
+        <div class="ba-stat-num">85%+</div>
+        <div class="ba-stat-label">Sleep efficiency threshold—values below indicate significant insomnia</div>
+      </div>
+    </div>
+
+    
+    ## Non-Pharmacological Interventions: First-Line Approaches
+
+    ### Sleep Hygiene and Lifestyle Modifications
+
+    <p>
+      Although often overstated, sleep hygiene—the constellation of behaviors and environmental factors that support sleep—remains foundational. Unlike CBT-I, which is active and problem-focused, sleep hygiene is passive and preventive, yet essential for all patients. Comprehensive sleep hygiene review should precede any pharmacological intervention.
+    </p>
+
+    <div class="svg-container">
+      <svg viewbox="0 0 600 450" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .hyg-title { font-family: var(--font); font-size: 14px; fill: var(--text); font-weight: 600; }
+            .hyg-label { font-family: var(--font); font-size: 12px; fill: var(--text-muted); }
+            .hyg-icon { font-size: 24px; }
+          </style>
+        </defs>
+        
+        <rect width="600" height="450" fill="var(--bg)"></rect>
+        
+        <text x="300" y="25" class="hyg-title" text-anchor="middle" style="font-size: 16px;">Sleep Hygiene Framework</text>
+
+        
+        <rect x="20" y="40" width="260" height="190" rx="8" fill="var(--bg2)" stroke="var(--border)" stroke-width="1"></rect>
+        <text x="150" y="60" class="hyg-title" text-anchor="middle">Bedroom Environment</text>
+        <circle cx="40" cy="80" r="4" fill="var(--accent)"></circle>
+        <text x="50" y="85" class="hyg-label">Temperature: 65–68°F (18–20°C)</text>
+        <circle cx="40" cy="105" r="4" fill="var(--accent)"></circle>
+        <text x="50" y="110" class="hyg-label">Darkness: <5 lux; blackout curtains</text>
+        <circle cx="40" cy="130" r="4" fill="var(--accent)"></circle>
+        <text x="50" y="135" class="hyg-label">Quiet: <30 dB; white noise if needed</text>
+        <circle cx="40" cy="155" r="4" fill="var(--accent)"></circle>
+        <text x="50" y="160" class="hyg-label">Bed comfort: Supportive, clean bedding</text>
+        <circle cx="40" cy="180" r="4" fill="var(--accent)"></circle>
+        <text x="50" y="185" class="hyg-label">Reserve bed for sleep only</text>
+        <circle cx="40" cy="205" r="4" fill="var(--accent)"></circle>
+        <text x="50" y="210" class="hyg-label">Remove clocks from view</text>
+
+        
+        <rect x="320" y="40" width="260" height="190" rx="8" fill="var(--bg2)" stroke="var(--border)" stroke-width="1"></rect>
+        <text x="450" y="60" class="hyg-title" text-anchor="middle">Schedule & Behavior</text>
+        <circle cx="340" cy="80" r="4" fill="var(--accent)"></circle>
+        <text x="350" y="85" class="hyg-label">Consistent sleep/wake times (±30 min)</text>
+        <circle cx="340" cy="105" r="4" fill="var(--accent)"></circle>
+        <text x="350" y="110" class="hyg-label">Avoid naps or limit to <20 min, <3 PM</text>
+        <circle cx="340" cy="130" r="4" fill="var(--accent)"></circle>
+        <text x="350" y="135" class="hyg-label">Morning bright light exposure (10+ lux)</text>
+        <circle cx="340" cy="155" r="4" fill="var(--accent)"></circle>
+        <text x="350" y="160" class="hyg-label">Exercise 4–6 hours before bed</text>
+        <circle cx="340" cy="180" r="4" fill="var(--accent)"></circle>
+        <text x="350" y="185" class="hyg-label">Avoid screens 1–2 hours before bed</text>
+        <circle cx="340" cy="205" r="4" fill="var(--accent)"></circle>
+        <text x="350" y="210" class="hyg-label">Limit evening fluid intake</text>
+
+        
+        <rect x="20" y="240" width="560" height="180" rx="8" fill="var(--bg2)" stroke="var(--border)" stroke-width="1"></rect>
+        <text x="300" y="260" class="hyg-title" text-anchor="middle">Substances & Stimuli to Avoid</text>
+
+        
+        <rect x="40" y="280" width="140" height="110" rx="6" fill="rgba(58, 110, 40, 0.1)" stroke="var(--green)" stroke-width="2"></rect>
+        <text x="110" y="300" class="hyg-title" text-anchor="middle" style="font-size: 13px;">☕ Caffeine</text>
+        <text x="50" y="320" class="hyg-label">Cutoff: ≥6 PM</text>
+        <text x="50" y="337" class="hyg-label">Half-life: 5–6 hours</text>
+        <text x="50" y="354" class="hyg-label">Sources: Coffee, tea, colas, chocolate</text>
+        <text x="50" y="371" class="hyg-label">Peak effect: 30–60 min</text>
+        <text x="50" y="388" class="hyg-label">Individual variability: ×5–10</text>
+
+        
+        <rect x="200" y="280" width="140" height="110" rx="6" fill="rgba(192, 64, 48, 0.1)" stroke="var(--red)" stroke-width="2"></rect>
+        <text x="270" y="300" class="hyg-title" text-anchor="middle" style="font-size: 13px;">🍷 Alcohol</text>
+        <text x="210" y="320" class="hyg-label">Impairs sleep architecture</text>
+        <text x="210" y="337" class="hyg-label">Reduces REM density</text>
+        <text x="210" y="354" class="hyg-label">Increases middle-night awakenings</text>
+        <text x="210" y="371" class="hyg-label">Avoid within 3–4 hours of sleep</text>
+        <text x="210" y="388" class="hyg-label">Rebound insomnia on cessation</text>
+
+        
+        <rect x="360" y="280" width="220" height="110" rx="6" fill="rgba(139, 105, 20, 0.1)" stroke="var(--accent2)" stroke-width="2"></rect>
+        <text x="470" y="300" class="hyg-title" text-anchor="middle" style="font-size: 13px;">Other Stimulants</text>
+        <text x="370" y="320" class="hyg-label">Nicotine: Stimulant; avoid >2–3 PM</text>
+        <text x="370" y="337" class="hyg-label">Cannabis: May impair sleep architecture</text>
+        <text x="370" y="354" class="hyg-label">Energy drinks: High caffeine equivalents</text>
+        <text x="370" y="371" class="hyg-label">Stimulating conversations/news: <1 h pre-bed</text>
+        <text x="370" y="388" class="hyg-label">Work/stress tasks: Complete by 8 PM</text>
+      </svg>
+      <p class="svg-caption">Comprehensive sleep hygiene framework covering environment, schedule, and substance avoidance</p>
+    </div>
+
+    ### Over-the-Counter and Supplement Options
+
+    <p>
+      Patients often self-treat with over-the-counter agents. Clinicians should be familiar with efficacy, risks, and appropriate counseling for these options:
+    </p>
+
+    <div class="ba-therapy-grid">
+      <div class="ba-therapy-card">
+        <div class="ba-therapy-icon">🌙</div>
+        <div class="ba-therapy-title">Melatonin (0.5–10 mg)</div>
+        <p>**Mechanism:** MT1/MT2 receptor agonist; synchronizes circadian phase.</p>
+        <p>**Evidence:** Modest benefit for circadian phase disorders; limited data for primary insomnia.</p>
+        <p>**Timing:** 30–120 min before desired sleep onset.</p>
+        <p>**Profile:** Safe, non-habit forming; variable bioavailability.</p>
+      </div>
+
+      <div class="ba-therapy-card">
+        <div class="ba-therapy-icon">✨</div>
+        <div class="ba-therapy-title">Magnesium (200–400 mg)</div>
+        <p>**Mechanism:** NMDA antagonist; supports GABA signaling.</p>
+        <p>**Evidence:** Limited RCT data; often used as adjunct; may improve sleep quality.</p>
+        <p>**Caution:** Laxative effect at doses >400 mg; check renal function.</p>
+        <p>**Forms:** Glycinate, threonate preferred over oxide.</p>
+      </div>
+
+      <div class="ba-therapy-card">
+        <div class="ba-therapy-icon">🌿</div>
+        <div class="ba-therapy-title">Valerian Root (400–900 mg)</div>
+        <p>**Mechanism:** GABAergic and serotonergic effects; poorly understood.</p>
+        <p>**Evidence:** Weak RCT support; heterogeneous study designs.</p>
+        <p>**Latency:** 2–4 weeks for effect; requires consistent dosing.</p>
+        <p>**Issue:** Hepatotoxicity concerns at high doses; variable quality.</p>
+      </div>
+
+      <div class="ba-therapy-card">
+        <div class="ba-therapy-icon">🍃</div>
+        <div class="ba-therapy-title">L-Theanine (100–200 mg)</div>
+        <p>**Mechanism:** Increases alpha waves; reduces glutamatergic activity.</p>
+        <p>**Evidence:** Small trials suggesting improved sleep latency and quality.</p>
+        <p>**Profile:** Generally safe; non-sedating relaxant.</p>
+        <p>**Timing:** 30–60 min before bed.</p>
+      </div>
+
+      <div class="ba-therapy-card">
+        <div class="ba-therapy-icon">🥝</div>
+        <div class="ba-therapy-title">Passionflower & Hops</div>
+        <p>**Mechanism:** GABA modulation; anxiolytic properties.</p>
+        <p>**Evidence:** Mixed RCT data; some support for anxiety-related insomnia.</p>
+        <p>**Duration:** Effects build over 2–4 weeks.</p>
+        <p>**Profile:** Herbal formulations often combined with other agents.</p>
+      </div>
+
+      <div class="ba-therapy-card">
+        <div class="ba-therapy-icon">🧘</div>
+        <div class="ba-therapy-title">CBT-Tailored Supplements</div>
+        <p>**Rationale:** Used adjunctively during CBT-I trials.</p>
+        <p>**Examples:** Multi-ingredient sleep formulations; often lack rigorous evidence.</p>
+        <p>**Counseling:** Emphasize as complement to behavioral work, not replacement.</p>
+        <p>**Cost:** High out-of-pocket; insurance rarely covers.</p>
+      </div>
+    </div>
+
+    <div class="ba-insight-box">
+      <div class="ba-insight-icon">💡</div>
+      <div>
+        <p>**Clinical Pearl:** OTC agents are rarely sufficient monotherapy for moderate-to-severe insomnia. However, in mild cases or as adjuncts to behavioral interventions, melatonin (for circadian phase disorders), magnesium, and L-theanine have reasonable safety profiles and modest evidence. Always assess for drug–supplement interactions, especially with MAOIs, SSRIs, and sedating agents.</p>
+      </div>
+    </div>
+
+    
+    ## Cognitive-Behavioral Therapy for Insomnia (CBT-I)
+
+    <p>
+      CBT-I is the gold-standard, evidence-based psychological intervention for insomnia, with meta-analyses demonstrating superiority to pharmacotherapy over the long term. Unlike general cognitive-behavioral therapy, CBT-I is highly structured, manualized, and protocol-driven, emphasizing behavioral mechanisms over pure cognitive work.
+    </p>
+
+    ### Core CBT-I Components
+
+    <p>
+      The following five elements form the foundation of CBT-I. Typically delivered in 6–8 weekly sessions by trained therapists, CBT-I can be adapted for group or digital delivery.
+    </p>
+
+    <div class="svg-container">
+      <svg viewbox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .cbt-title { font-family: var(--font); font-size: 13px; fill: var(--text); font-weight: 600; }
+            .cbt-label { font-family: var(--font); font-size: 11px; fill: var(--text-muted); }
+            .cbt-box { fill: var(--bg2); stroke: var(--border); stroke-width: 1; }
+            .cbt-accent { fill: var(--accent); stroke: none; }
+            .cbt-center { fill: var(--accent); }
+          </style>
+        </defs>
+        
+        <rect width="600" height="500" fill="var(--bg)"></rect>
+
+        
+        <text x="300" y="25" class="cbt-title" text-anchor="middle" style="font-size: 15px;">CBT-I Component Flowchart</text>
+
+        
+        <circle cx="300" cy="120" r="50" class="cbt-center"></circle>
+        <text x="300" y="115" class="cbt-label" text-anchor="middle" style="fill: white; font-weight: 600;">CBT-I</text>
+        <text x="300" y="130" class="cbt-label" text-anchor="middle" style="fill: white;">Patient</text>
+
+        
+        <rect x="20" y="200" width="120" height="100" rx="6" class="cbt-box"></rect>
+        <text x="80" y="225" class="cbt-title" text-anchor="middle">Sleep Diary</text>
+        <text x="30" y="245" class="cbt-label">• Bedtime</text>
+        <text x="30" y="260" class="cbt-label">• Wake time</text>
+        <text x="30" y="275" class="cbt-label">• Sleep latency</text>
+        <text x="30" y="290" class="cbt-label">• NWAK (# awakenings)</text>
+        <line x1="80" y1="190" x2="200" y2="150" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrowhead)"></line>
+
+        
+        <rect x="160" y="200" width="120" height="100" rx="6" class="cbt-box"></rect>
+        <text x="220" y="225" class="cbt-title" text-anchor="middle">Stimulus Control</text>
+        <text x="170" y="245" class="cbt-label">• Bed ≠ awake</text>
+        <text x="170" y="260" class="cbt-label">• Leave bed if >20 min awake</text>
+        <text x="170" y="275" class="cbt-label">• Sleep ≠ daytime activity</text>
+        <text x="170" y="290" class="cbt-label">• Consistent schedule</text>
+        <line x1="220" y1="190" x2="280" y2="150" stroke="var(--accent)" stroke-width="2"></line>
+
+        
+        <rect x="300" y="200" width="120" height="100" rx="6" class="cbt-box"></rect>
+        <text x="360" y="225" class="cbt-title" text-anchor="middle">Sleep Restriction</text>
+        <text x="310" y="245" class="cbt-label">• Match TIB to TST</text>
+        <text x="310" y="260" class="cbt-label">• Advance bedtime gradually</text>
+        <text x="310" y="275" class="cbt-label">• Prevents over-napping</text>
+        <text x="310" y="290" class="cbt-label">• 85%+ efficiency target</text>
+        <line x1="360" y1="190" x2="320" y2="150" stroke="var(--accent)" stroke-width="2"></line>
+
+        
+        <rect x="440" y="200" width="140" height="100" rx="6" class="cbt-box"></rect>
+        <text x="510" y="225" class="cbt-title" text-anchor="middle">Cognitive Work</text>
+        <text x="450" y="245" class="cbt-label">• Identify sleep catastrophizing</text>
+        <text x="450" y="260" class="cbt-label">• Challenge perfectionistic beliefs</text>
+        <text x="450" y="275" class="cbt-label">• Reframe "failed" sleep nights</text>
+        <text x="450" y="290" class="cbt-label">• Paradox techniques</text>
+        <line x1="510" y1="190" x2="360" y2="150" stroke="var(--accent)" stroke-width="2"></line>
+
+        
+        <rect x="230" y="350" width="140" height="100" rx="6" class="cbt-box"></rect>
+        <text x="300" y="375" class="cbt-title" text-anchor="middle">Relaxation Training</text>
+        <text x="240" y="395" class="cbt-label">• Progressive muscle relaxation</text>
+        <text x="240" y="410" class="cbt-label">• Diaphragmatic breathing</text>
+        <text x="240" y="425" class="cbt-label">• Mindfulness/meditation</text>
+        <text x="240" y="440" class="cbt-label">• Imagery techniques</text>
+        <line x1="300" y1="350" x2="300" y2="170" stroke="var(--accent)" stroke-width="2"></line>
+
+        
+        <defs>
+          <marker id="arrowhead" markerwidth="10" markerheight="10" refx="9" refy="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="var(--accent)"></polygon>
+          </marker>
+        </defs>
+
+        
+        <rect x="150" y="480" width="300" height="30" rx="4" class="cbt-box" style="stroke: var(--accent); stroke-width: 2;"></rect>
+        <text x="300" y="502" class="cbt-title" text-anchor="middle">Outcome: Sleep consolidation, reduced anxiety, improved efficiency</text>
+      </svg>
+      <p class="svg-caption">CBT-I components integrated through manualized, 6–8 session protocol</p>
+    </div>
+
+    <div class="ba-stacked-grid">
+      <div class="ba-stacked-card">
+        <div class="ba-stacked-icon">📓</div>
+        <div class="ba-stacked-title">Sleep Diary</div>
+        <div class="ba-stacked-sub">Baseline assessment and ongoing progress monitoring</div>
+        <ul class="ba-stacked-list">
+          <li>Daily log of sleep times, latency, arousals</li>
+          <li>Calculates sleep efficiency: TST ÷ TIB</li>
+          <li>Guides treatment intensification/relaxation</li>
+          <li>Identifies patterns (e.g., weekend inconsistency)</li>
+        </ul>
+      </div>
+
+      <div class="ba-stacked-card">
+        <div class="ba-stacked-icon">🔗</div>
+        <div class="ba-stacked-title">Stimulus Control</div>
+        <div class="ba-stacked-sub">Reestablish bed-sleep association</div>
+        <ul class="ba-stacked-list">
+          <li>Use bed only for sleep (and intimacy)</li>
+          <li>If awake >20 min, leave bed immediately</li>
+          <li>Return only when sleepy</li>
+          <li>Maintain consistent schedule</li>
+        </ul>
+      </div>
+
+      <div class="ba-stacked-card">
+        <div class="ba-stacked-icon">⏰</div>
+        <div class="ba-stacked-title">Sleep Restriction</div>
+        <div class="ba-stacked-sub">Consolidate fragmented sleep</div>
+        <ul class="ba-stacked-list">
+          <li>Initially restrict TIB to actual TST</li>
+          <li>Increases sleep pressure and consolidation</li>
+          <li>Advance bedtime by 15 min increments</li>
+          <li>Target ≥85% sleep efficiency</li>
+        </ul>
+      </div>
+
+      <div class="ba-stacked-card">
+        <div class="ba-stacked-icon">🧠</div>
+        <div class="ba-stacked-title">Cognitive Restructuring</div>
+        <div class="ba-stacked-sub">Address unhelpful sleep beliefs</div>
+        <ul class="ba-stacked-list">
+          <li>Identify catastrophic thoughts ("I'll collapse")</li>
+          <li>Challenge perfectionism ("Must get 8 hrs")</li>
+          <li>Reframe performance anxiety</li>
+          <li>Introduce "paradox" (try to stay awake)</li>
+        </ul>
+      </div>
+
+      <div class="ba-stacked-card">
+        <div class="ba-stacked-icon">🕉️</div>
+        <div class="ba-stacked-title">Relaxation Training</div>
+        <div class="ba-stacked-sub">Reduce presleep arousal</div>
+        <ul class="ba-stacked-list">
+          <li>Progressive muscle relaxation (Jacobson)</li>
+          <li>Diaphragmatic breathing (4-7-8 technique)</li>
+          <li>Mindfulness meditation (10–20 min)</li>
+          <li>Autogenic/imagery techniques</li>
+        </ul>
+      </div>
+
+      <div class="ba-stacked-card">
+        <div class="ba-stacked-icon">📈</div>
+        <div class="ba-stacked-title">Integration & Progress</div>
+        <div class="ba-stacked-sub">Session-to-session implementation</div>
+        <ul class="ba-stacked-list">
+          <li>Homework: daily diary, behavioral assignments</li>
+          <li>Review/troubleshoot adherence barriers</li>
+          <li>Gradual sleep expansion with consolidation</li>
+          <li>Maintenance: relapse prevention plan</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ba-insight-box">
+      <div class="ba-insight-icon">📊</div>
+      <div>
+        <p>**Evidence Summary:** Meta-analyses show CBT-I produces effect sizes of 0.6–1.2 (medium-to-large) for sleep latency and wake time, sustained at 6–12 month follow-up. Long-term remission rates exceed those of hypnotic medications. For psychiatrists, CBT-I is especially valuable in mood and anxiety disorders, as it addresses both the insomnia and reduces depressive rumination and anxious arousal.</p>
+      </div>
+    </div>
+
+    
+    ## Pharmacological Management of Insomnia
+
+    <p>
+      While CBT-I is first-line, pharmacotherapy plays a legitimate role in acute insomnia, as a bridge during behavioral intervention, or in treatment-resistant cases. Modern options extend beyond sedating antihistamines and benzodiazepines, offering receptor-selective and mechanism-specific agents. The following taxonomy organizes options by mechanism:
+    </p>
+
+    <div class="svg-container">
+      <svg viewbox="0 0 650 500" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .med-title { font-family: var(--font); font-size: 12px; fill: var(--text); font-weight: 600; }
+            .med-label { font-family: var(--font); font-size: 10px; fill: var(--text-muted); }
+            .med-box { fill: var(--bg2); stroke: var(--border); stroke-width: 1; }
+            .med-bz { fill: rgba(192, 64, 48, 0.1); stroke: var(--red); stroke-width: 1.5; }
+            .med-dora { fill: rgba(58, 110, 40, 0.1); stroke: var(--green); stroke-width: 1.5; }
+            .med-z { fill: rgba(139, 105, 20, 0.1); stroke: var(--accent2); stroke-width: 1.5; }
+            .med-mel { fill: rgba(74, 124, 53, 0.1); stroke: var(--accent); stroke-width: 1.5; }
+          </style>
+        </defs>
+        
+        <rect width="650" height="500" fill="var(--bg)"></rect>
+
+        
+        <text x="325" y="25" class="med-title" text-anchor="middle" style="font-size: 14px;">Insomnia Pharmacotherapy: Mechanism Comparison</text>
+
+        
+        <rect x="15" y="50" width="150" height="120" rx="6" class="med-bz"></rect>
+        <text x="90" y="70" class="med-title" text-anchor="middle">Benzodiazepines</text>
+        <text x="25" y="90" class="med-label">Mechanism: GABA-A</text>
+        <text x="25" y="105" class="med-label">Examples: triazolam,</text>
+        <text x="25" y="118" class="med-label">temazepam, estazolam</text>
+        <text x="25" y="135" class="med-label">Onset: 15–30 min</text>
+        <text x="25" y="150" class="med-label">⚠️ Risk: Dependence,</text>
+        <text x="25" y="162" class="med-label">tolerance, rebound</text>
+
+        
+        <rect x="185" y="50" width="150" height="120" rx="6" class="med-z"></rect>
+        <text x="260" y="70" class="med-title" text-anchor="middle">Z-Drugs (Non-Bz)</text>
+        <text x="195" y="90" class="med-label">Mechanism: GABA-A α1</text>
+        <text x="195" y="105" class="med-label">Examples: zolpidem,</text>
+        <text x="195" y="118" class="med-label">zaleplon, eszopiclone</text>
+        <text x="195" y="135" class="med-label">Onset: 15–30 min</text>
+        <text x="195" y="150" class="med-label">⚠️ Risk: Habituation,</text>
+        <text x="195" y="162" class="med-label">complex sleep behaviors</text>
+
+        
+        <rect x="355" y="50" width="150" height="120" rx="6" class="med-dora"></rect>
+        <text x="430" y="70" class="med-title" text-anchor="middle">DORAs</text>
+        <text x="365" y="90" class="med-label">Mechanism: OX-R antagonist</text>
+        <text x="365" y="105" class="med-label">Examples: suvorexant,</text>
+        <text x="365" y="118" class="med-label">lemborexant, daridorexant</text>
+        <text x="365" y="135" class="med-label">Onset: 30–60 min</text>
+        <text x="365" y="150" class="med-label">✓ Advantage:</text>
+        <text x="365" y="162" class="med-label">No dependence risk</text>
+
+        
+        <rect x="525" y="50" width="110" height="120" rx="6" class="med-mel"></rect>
+        <text x="580" y="70" class="med-title" text-anchor="middle">Melatonin Agonists</text>
+        <text x="535" y="90" class="med-label">Mechanism: MT1/MT2</text>
+        <text x="535" y="105" class="med-label">Example: ramelteon</text>
+        <text x="535" y="118" class="med-label">Onset: 30–45 min</text>
+        <text x="535" y="135" class="med-label">✓ Safe: No abuse</text>
+        <text x="535" y="150" class="med-label">potential</text>
+
+        
+        <text x="15" y="200" class="med-label" style="font-weight: 600;">BZ: Fast onset, cheap; high dependence potential. Use short-term only.</text>
+        <text x="15" y="220" class="med-label" style="font-weight: 600;">Z-drugs: Similar to BZ but more selective; still habit-forming. Phase out after 2–4 weeks.</text>
+        <text x="15" y="240" class="med-label" style="font-weight: 600;">DORAs: Newer class; targets arousal system directly; preferred for maintenance therapy.</text>
+        <text x="15" y="260" class="med-label" style="font-weight: 600;">Melatonin agonists: Best for circadian phase disorders; minimal side effects.</text>
+
+        
+        <text x="15" y="295" class="med-title" style="font-weight: 600;">Other Agents in Psychiatric Practice:</text>
+
+        <rect x="15" y="310" width="200" height="110" rx="6" class="med-box"></rect>
+        <text x="115" y="330" class="med-title" text-anchor="middle">Tricyclic Antidepressants</text>
+        <text x="25" y="350" class="med-label">• Amitriptyline, doxepin</text>
+        <text x="25" y="365" class="med-label">• Antihistaminergic effects</text>
+        <text x="25" y="380" class="med-label">• Useful in depression + insomnia</text>
+        <text x="25" y="395" class="med-label">• Side effects limit use in elderly</text>
+        <text x="25" y="410" class="med-label">• Tolerance develops over months</text>
+
+        <rect x="235" y="310" width="200" height="110" rx="6" class="med-box"></rect>
+        <text x="335" y="330" class="med-title" text-anchor="middle">Atypical Antipsychotics</text>
+        <text x="245" y="350" class="med-label">• Quetiapine, olanzapine</text>
+        <text x="245" y="365" class="med-label">• Adjunctive in bipolar/psychosis</text>
+        <text x="245" y="380" class="med-label">• Histamine antagonism induces sleep</text>
+        <text x="245" y="395" class="med-label">• Metabolic risks at high doses</text>
+        <text x="245" y="410" class="med-label">• Not first-line for primary insomnia</text>
+
+        <rect x="455" y="310" width="180" height="110" rx="6" class="med-box"></rect>
+        <text x="545" y="330" class="med-title" text-anchor="middle">SSRIs (Paroxetine)</text>
+        <text x="465" y="350" class="med-label">• Paroxetine 10–20 mg has sedation</text>
+        <text x="465" y="365" class="med-label">• Use when depression + insomnia</text>
+        <text x="465" y="380" class="med-label">• Avoid in bipolar depression</text>
+        <text x="465" y="395" class="med-label">• Takes 2–4 weeks for effect</text>
+        <text x="465" y="410" class="med-label">• Not hypnotic-class efficacy</text>
+      </svg>
+      <p class="svg-caption">Comparative mechanisms and clinical profiles of insomnia pharmacotherapy</p>
+    </div>
+
+    ### Medication Selection Principles
+
+    <div class="ba-summary-box">
+      <h4>Key Principles for Pharmacotherapy in Insomnia</h4>
+      <ul>
+        <li>Assess comorbid psychiatric condition (depression, anxiety, psychosis) to guide agent selection</li>
+        <li>Distinguish insomnia phenotype (onset vs. maintenance vs. early awakening) to optimize medication timing</li>
+        <li>Use shortest duration possible; limit benzodiazepines and Z-drugs to acute/short-term (<4 weeks)</li>
+        <li>Prefer DORAs or melatonin agonists for maintenance therapy (>4 weeks)</li>
+        <li>Avoid antihistamines (diphenhydramine) due to tolerance and anticholinergic effects</li>
+        <li>Monitor for rebound insomnia on withdrawal; taper slowly over 1–2 weeks</li>
+        <li>Screen for sleep apnea before initiating any sedating agent (risk of respiratory depression)</li>
+        <li>Combine pharmacotherapy with behavioral interventions for maximum efficacy</li>
+      </ul>
+    </div>
+
+    
+    ## When to Refer for Sleep Medicine Evaluation and Polysomnography
+
+    <p>
+      Not all insomnia requires sleep medicine referral. However, specific presentations warrant specialized evaluation, including polysomnography (PSG), the gold-standard diagnostic test for sleep disorders. Polysomnography measures electroencephalography (EEG), electro-oculography (EOG), chin electromyography (EMG), airflow, respiratory effort, oxygen saturation, and leg movements, enabling precise staging and artifact detection.
+    </p>
+
+    <div class="svg-container">
+      <svg viewbox="0 0 650 480" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .dt-title { font-family: var(--font); font-size: 13px; fill: var(--text); font-weight: 600; }
+            .dt-label { font-family: var(--font); font-size: 11px; fill: var(--text-muted); }
+            .dt-box { fill: var(--bg2); stroke: var(--border); stroke-width: 1; }
+            .dt-alert { fill: rgba(192, 64, 48, 0.1); stroke: var(--red); stroke-width: 1.5; }
+            .dt-good { fill: rgba(58, 110, 40, 0.1); stroke: var(--green); stroke-width: 1.5; }
+/* SVG responsive sizing fix */
+.diagram-wrapper > div, .diagram-container > div, .svg-container > div, .svg-diagram > div, .diagram-wrap > div, .diagram > div { width: 100%; }
+.diagram-wrapper svg, .diagram-container svg, .svg-container svg, .svg-diagram svg, .diagram-wrap svg, .diagram svg, .ba-body svg { width: 100%; height: auto; max-width: 820px; }
+          </style>
+        </defs>
+        
+        <rect width="650" height="480" fill="var(--bg)"></rect>
+
+        
+        <text x="325" y="25" class="dt-title" text-anchor="middle" style="font-size: 14px;">Sleep Medicine Referral Decision Tree</text>
+
+        
+        <rect x="225" y="50" width="200" height="40" rx="4" class="dt-box" style="stroke: var(--accent); stroke-width: 2;"></rect>
+        <text x="325" y="77" class="dt-title" text-anchor="middle">Patient with Sleep Complaint</text>
+
+        
+        <line x1="325" y1="90" x2="325" y2="120" stroke="var(--border)" stroke-width="2" marker-end="url(#arrowhead)"></line>
+
+        
+        <rect x="175" y="120" width="300" height="60" rx="4" class="dt-box"></rect>
+        <text x="325" y="140" class="dt-title" text-anchor="middle">Initial Assessment: Phenotype, Duration, Severity</text>
+        <text x="185" y="160" class="dt-label">Sleep history, daytime impact, screen for apnea risk (STOP-BANG),</text>
+        <text x="185" y="172" class="dt-label">periodic leg movement hx, nightmare/RBD features, medication review</text>
+
+        
+        <line x1="325" y1="180" x2="325" y2="210" stroke="var(--border)" stroke-width="2"></line>
+
+        
+        
+        <rect x="20" y="210" width="280" height="180" rx="4" class="dt-alert"></rect>
+        <text x="160" y="235" class="dt-title" text-anchor="middle" style="color: var(--red);">REFER FOR PSG / SLEEP SPECIALIST</text>
+        <text x="30" y="260" class="dt-label" style="color: var(--text);">✓ Suspected obstructive sleep apnea (STOP-BANG ≥3)</text>
+        <text x="30" y="275" class="dt-label" style="color: var(--text);">✓ Suspected periodic leg movement disorder (PLMD)</text>
+        <text x="30" y="290" class="dt-label" style="color: var(--text);">✓ Probable REM behavior disorder (acting out dreams)</text>
+        <text x="30" y="305" class="dt-label" style="color: var(--text);">✓ Suspected narcolepsy (EDS, sleep attacks, cataplexy)</text>
+        <text x="30" y="320" class="dt-label" style="color: var(--text);">✓ Circadian rhythm sleep disorder (social jet lag, shift work)</text>
+        <text x="30" y="335" class="dt-label" style="color: var(--text);">✓ Insomnia refractory to 2–3 trials of therapy</text>
+        <text x="30" y="350" class="dt-label" style="color: var(--text);">✓ Parasomnia or nocturnal seizure concerns</text>
+        <text x="30" y="365" class="dt-label" style="color: var(--text);">✓ Insomnia + severe daytime dysfunction</text>
+        <text x="30" y="380" class="dt-label" style="color: var(--text);">✓ Inadequate response to standard pharmacotherapy</text>
+
+        
+        <rect x="350" y="210" width="280" height="180" rx="4" class="dt-good"></rect>
+        <text x="490" y="235" class="dt-title" text-anchor="middle" style="color: var(--green);">MANAGE AS PRIMARY INSOMNIA</text>
+        <text x="360" y="260" class="dt-label" style="color: var(--text);">✓ Insomnia onset/maintenance pattern</text>
+        <text x="360" y="275" class="dt-label" style="color: var(--text);">✓ Low apnea risk (STOP-BANG <3)</text>
+        <text x="360" y="290" class="dt-label" style="color: var(--text);">✓ No PLMD / RBD / narcolepsy features</text>
+        <text x="360" y="305" class="dt-label" style="color: var(--text);">✓ Circadian rhythm intact</text>
+        <text x="360" y="320" class="dt-label" style="color: var(--text);">✓ First or second treatment attempt</text>
+        <text x="360" y="335" class="dt-label" style="color: var(--text);">Implementation:</text>
+        <text x="370" y="350" class="dt-label">1. Sleep hygiene + CBT-I</text>
+        <text x="370" y="365" class="dt-label">2. Consider pharmacotherapy</text>
+        <text x="370" y="380" class="dt-label">3. Reassess at 4–6 weeks</text>
+
+        
+        <defs>
+          <marker id="arrowhead" markerwidth="10" markerheight="10" refx="9" refy="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="var(--border)"></polygon>
+          </marker>
+        </defs>
+
+        
+        <text x="325" y="430" class="dt-title" text-anchor="middle" style="font-size: 12px;">Benefits of Polysomnography:</text>
+        <text x="40" y="455" class="dt-label">• Diagnose OSA, PLMD, narcolepsy, RBD</text>
+        <text x="40" y="470" class="dt-label">• Quantify apnea index (AHI), oxygen desaturation, sleep fragmentation</text>
+        <text x="340" y="455" class="dt-label">• Guide CPAP/oral appliance therapy in OSA</text>
+        <text x="340" y="470" class="dt-label">• Rule out secondary causes of insomnia</text>
+      </svg>
+      <p class="svg-caption">Clinical decision tree for sleep medicine referral and polysomnography indication</p>
+    </div>
+
+    ### Key Sleep Disorders Diagnosed by Polysomnography
+
+    <div class="ba-table-wrap">
+      <table class="ba-table">
+        <thead>
+          <tr>
+            <th>Disorder</th>
+            <th>PSG Diagnostic Criteria</th>
+            <th>Clinical Pearls</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>**Obstructive Sleep Apnea (OSA)**</td>
+            <td>AHI ≥5; apnea = ≥10 sec airflow cessation with ongoing effort</td>
+            <td>Risk factors: male, obesity, neck circumference, HTN. Daytime somnolence may be absent. Screening tool: STOP-BANG.</td>
+          </tr>
+          <tr>
+            <td>**Central Sleep Apnea**</td>
+            <td>Central apnea index ≥5; loss of airflow with loss of respiratory effort</td>
+            <td>Associated with heart failure, opioid use, high altitude. Rarer than OSA. Different treatment (adaptive servo-ventilation, not CPAP).</td>
+          </tr>
+          <tr>
+            <td>**Periodic Leg Movement Disorder (PLMD)**</td>
+            <td>Leg movement index ≥15/hr (≥5/hr if symptomatic); stereotyped, rhythmic movements</td>
+            <td>Often comorbid with OSA. Associated with RLS. Iron deficiency, dopaminergic agents implicated. Respond to dopamine agonists or gabapentin.</td>
+          </tr>
+          <tr>
+            <td>**REM Behavior Disorder (RBD)**</td>
+            <td>Loss of REM atonia with phasic chin EMG elevation; behavioral events during REM</td>
+            <td>Prodrome for synucleinopathy (Parkinson's, DLB, MSA). Ask about acting out dreams, injuries, spouse witness. Screen with RBDQ.</td>
+          </tr>
+          <tr>
+            <td>**Narcolepsy Type 1**</td>
+            <td>Sleep latency <8 min; SOREM(s) at start of ≥2 naps; low CSF hypocretin-1 (<110 pg/mL)</td>
+            <td>Features: EDS, cataplexy (sudden muscle weakness with emotion), sleep paralysis, hypnagogic hallucinations. Genetic predisposition (HLA-DQ2/DQ8).</td>
+          </tr>
+          <tr>
+            <td>**Narcolepsy Type 2**</td>
+            <td>Sleep latency <8 min; SOREM(s); normal CSF hypocretin or not tested</td>
+            <td>No cataplexy. More heterogeneous. May overlap with idiopathic hypersomnia.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ba-insight-box">
+      <div class="ba-insight-icon">🔍</div>
+      <div>
+        <p>**Practical Tip:** In psychiatry, screening for OSA before initiating sedating medications is essential. A positive STOP-BANG score (Snoring, Tiredness, Observed apneas, blood Pressure, BMI, Age, Neck circumference, Gender) should trigger sleep medicine consultation prior to or concurrent with psychiatric treatment. Sedative-hypnotics can suppress arousal responses in OSA, worsening hypoxemia.</p>
+      </div>
+    </div>
+
+    
+    ## Insomnia in Psychiatric Disorders
+
+    <p>
+      Sleep disturbance is a cardinal feature of many psychiatric disorders. Understanding disease-specific sleep phenotypes improves diagnostic accuracy and treatment selection.
+    </p>
+
+    ### Depression-Related Sleep Disturbance
+
+    <p>
+      Major depressive disorder (MDD) presents with multiple sleep patterns. The prototypical "endogenous" depression features early morning awakening (2–3 hours earlier than desired), shortened REM latency (<60 minutes, normal >90 minutes), and increased REM density. Alternatively, patients with depression may present with hypersomnia, insomnia with maintenance difficulties, or mixed patterns.
+    </p>
+
+    <div class="ba-compare-row">
+      <div class="ba-compare-card">
+        **Depression Phenotypes**
+        <div style="margin-top: 0.8rem;">
+          <strong style="color: var(--red);">• Melancholic:</strong> Early awakening, anhedonia, psychomotor changes<br></br>
+          <strong style="color: var(--accent2);">• Atypical:</strong> Hypersomnia, hyperphagia, mood reactivity<br></br>
+          <strong style="color: var(--orange);">• Mixed:</strong> Variable insomnia + depressive mood
+        </div>
+      </div>
+      <div class="ba-compare-card">
+        **Treatment Approach**
+        <div style="margin-top: 0.8rem;">
+          **First-line:** SSRI/SNRI + CBT (both mood and sleep)<br></br>
+          **Consider:** Sedating TCA (amitriptyline) if insomnia prominent<br></br>
+          **Avoid:** Activating agents (fluoxetine, sertraline) if sleep-onset problems
+        </div>
+      </div>
+    </div>
+
+    ### Bipolar-Related Sleep Disturbance
+
+    <p>
+      In bipolar mania and hypomania, the cardinal sleep feature is **markedly decreased need for sleep**—the patient reports feeling rested after 2–3 hours of sleep without fatigue. This differs from insomnia (where sleep is unavailable) and is pathognomonic for mood elevation. Sleep deprivation itself can trigger or exacerbate mania ("bipolar switch"), making sleep optimization critical in bipolar maintenance therapy.
+    </p>
+
+    <div class="ba-compare-row">
+      <div class="ba-compare-card">
+        **Mania/Hypomania Sleep Pattern**
+        <div style="margin-top: 0.8rem;">
+          <strong style="color: var(--red);">Decreased need:</strong> 2–3 h sufficient<br></br>
+          <strong style="color: var(--red);">Not tired:</strong> High energy, goal-directed<br></br>
+          <strong style="color: var(--red);">Racing thoughts:</strong> Sleep onset difficulty<br></br>
+          <strong style="color: var(--red);">Risk:</strong> Sleep deprivation → escalation
+        </div>
+      </div>
+      <div class="ba-compare-card">
+        **Bipolar Depression Sleep Pattern**
+        <div style="margin-top: 0.8rem;">
+          <strong style="color: var(--accent);">Hypersomnia:</strong> 10–14 h nightly<br></br>
+          <strong style="color: var(--accent);">Anhedonia:</strong> Even excessive sleep unsatisfying<br></br>
+          <strong style="color: var(--accent);">Fragmented REM:</strong> Increased REM pressure<br></br>
+          <strong style="color: var(--accent);">Suicidality:</strong> Higher in bipolar depression
+        </div>
+      </div>
+    </div>
+
+    ### PTSD-Related Sleep Disturbance
+
+    <p>
+      Post-traumatic stress disorder (PTSD) features hyperarousal and threat vigilance that profoundly disrupt sleep. Patients report nightmare disorder (trauma-content dreams), non-REM parasomnia (shouting, thrashing), sleep initiation difficulty (hypervigilance), and frequent awakenings. REM density may be abnormally elevated early in the night.
+    </p>
+
+    <div class="ba-therapy-grid">
+      <div class="ba-therapy-card">
+        <div class="ba-therapy-icon">😰</div>
+        <div class="ba-therapy-title">Nightmare Disorder in PTSD</div>
+        <p>**Features:** Recurrent, vivid nightmares with trauma content; patient awakens and is alert (unlike sleep terrors).</p>
+        <p>**Mechanism:** Dysregulated REM sleep, intrusive memory consolidation.</p>
+        <p>**Treatment:** Prazosin (alpha-1 blocker) reduces nightmare intensity and frequency; psychotherapy (IRT, CPT-C).</p>
+      </div>
+
+      <div class="ba-therapy-card">
+        <div class="ba-therapy-icon">🚨</div>
+        <div class="ba-therapy-title">Hyperarousal & Sleep Initiation</div>
+        <p>**Features:** Heightened arousal threshold; difficulty "turning off" despite fatigue.</p>
+        <p>**Mechanism:** Amygdala hyperactivity, impaired prefrontal regulation of threat response.</p>
+        <p>**Treatment:** Relaxation (progressive muscle relaxation, diaphragmatic breathing), trauma-focused psychotherapy (PE, EMDR).</p>
+      </div>
+
+      <div class="ba-therapy-card">
+        <div class="ba-therapy-icon">🛏️</div>
+        <div class="ba-therapy-title">CBT-I + Trauma Therapy</div>
+        <p>**Integration:** Sleep restriction may worsen nightmares initially; combine cautiously with trauma processing.</p>
+        <p>**Timing:** Establish safety and stabilization before intensive CBT-I.</p>
+        <p>**Medications:** Prazosin 1–10 mg qhs; SSRIs for PTSD; avoid benzodiazepines (relapse risk).</p>
+      </div>
+    </div>
+
+    ### Anxiety Disorders and Insomnia
+
+    <p>
+      Generalized anxiety disorder, social anxiety, and panic disorder all feature presleep anxiety, racing thoughts, and sleep-onset insomnia. The anxious patient becomes hyperaware of sleep process ("performance anxiety"), worsening the problem. CBT-I's cognitive work (challenging catastrophic thoughts) is particularly valuable here.
+    </p>
+
+    ### Shift Work Sleep Disorder
+
+    <p>
+      Shift work imposes circadian misalignment—the patient's intrinsic sleep-wake cycle conflicts with work schedule demands. This produces insomnia (if sleep time is displaced earlier than the circadian phase), excessive sleepiness (if work time falls in the circadian sleep phase), or both. Unlike primary insomnia, the problem is phase, not homeostatic sleep pressure.
+    </p>
+
+    <div class="ba-summary-box">
+      <h4>Shift Work Sleep Disorder Management</h4>
+      <ul>
+        <li>Assess shift pattern (fixed, rotating, on-call) and frequency</li>
+        <li>Bright light therapy timed to desired circadian phase (morning light for delayed phase; evening light for advanced phase)</li>
+        <li>Melatonin 0.5–2 mg 30–120 min before desired sleep onset (not time-released; immediate release preferred)</li>
+        <li>Strategic napping: 20 min before night shift increases alertness without sleep inertia</li>
+        <li>Caffeine during night shift (early in shift to avoid next-day carryover)</li>
+        <li>Schedule stability: Rotating shifts in forward direction (day → evening → night) easier than backward rotation</li>
+        <li>Sleep hygiene: Dark sleep space during day; consider eye shades, white noise machines</li>
+      </ul>
+    </div>
+
+    ### Dementia-Related Sleep Disturbance
+
+    <p>
+      Alzheimer's disease and other dementias feature profound sleep fragmentation and circadian rhythm disruption, partly from pathological changes in the suprachiasmatic nucleus. "Sundowning"—increased confusion, agitation, and behavioral disturbance in late afternoon/evening—reflects circadian phase desynchronization and reduced light cues to entrain circadian rhythms.
+    </p>
+
+    <div class="ba-insight-box">
+      <div class="ba-insight-icon">🧓</div>
+      <div>
+        <p>**Clinical Approach to Dementia Sleep:** Prioritize non-pharmacological interventions: structured daytime activities with morning bright light exposure, consistent sleep schedule, reduction of disruptive nighttime care, and multicomponent sleep hygiene (cool, dark bedroom). Melatonin and light therapy show modest benefit. Avoid anticholinergic sedatives (diphenhydramine, tricyclics); prefer short-term low-dose benzodiazepines (with caution due to delirium risk) or trazodone.</p>
+      </div>
+    </div>
+
+    ### Paradoxical Insomnia (Sleep State Misperception)
+
+    <p>
+      A subset of patients reports severe insomnia but polysomnography shows near-normal sleep architecture and duration. This mismatch—subjective sleep complaint without objective findings—is termed paradoxical insomnia or sleep state misperception. The patient's perception of wakefulness during sleep is inaccurate, possibly reflecting microarousals, elevated cortical activity during sleep, or impaired metacognitive awareness of sleep.
+    </p>
+
+    <p>
+      Treatment emphasizes reassurance (the sleep is occurring), cognitive restructuring (challenging catastrophic beliefs about sleep loss), and avoidance of excessive medication or diagnostic testing. CBT-I's cognitive components are particularly useful.
+    </p>
+
+    
+    ## Integrated Clinical Approach: Case Example
+
+    <p>
+      Consider a 45-year-old male with major depression, presenting with insomnia. He reports 2 months of early morning awakening at 4 AM, unable to return to sleep. Daytime mood is worst in early morning. STOP-BANG score is 1 (low OSA risk). He has adequate sleep hygiene but high occupational stress.
+    </p>
+
+    <div class="ba-timeline">
+      <div class="ba-tl-item">
+        <div class="ba-tl-dot"></div>
+        <div class="ba-tl-time">Week 1–2: Assessment & Initiation</div>
+        <div class="ba-tl-text">Diagnose MDD with early morning awakening phenotype. Start SSRI (sertraline 50 mg) or SNRI (venlafaxine XR 75 mg). Refer for CBT-I; emphasize sleep diary. Consider light therapy (10,000 lux × 30 min at 6 AM) to advance circadian phase.</div>
+      </div>
+      <div class="ba-tl-item">
+        <div class="ba-tl-dot"></div>
+        <div class="ba-tl-time">Week 2–4: Titration & Behavioral Work</div>
+        <div class="ba-tl-text">Increase antidepressant dose. Begin CBT-I sessions: establish sleep schedule with consistent wake time (non-negotiable), stimulus control, and sleep restriction if sleep efficiency <85%. Address catastrophic thoughts ("If I don't sleep, I'll fail at work"). Consider short-term melatonin (1–2 mg at 9 PM, ~2.5 hours pre-sleep) if continued early awakening.</div>
+      </div>
+      <div class="ba-tl-item">
+        <div class="ba-tl-dot"></div>
+        <div class="ba-tl-time">Week 4–8: Optimization</div>
+        <div class="ba-tl-text">Antidepressant at effective dose (sertraline 100–150 mg or venlafaxine XR 150–225 mg). Sleep improvement should begin; if inadequate, consider adding short-term low-dose benzodiazepine (0.5 mg lorazepam qhs × 2–4 weeks) or DORA (lemborexant 5–10 mg). Continue CBT-I; advance sleep window as consolidation improves.</div>
+      </div>
+      <div class="ba-tl-item">
+        <div class="ba-tl-dot"></div>
+        <div class="ba-tl-time">Week 8–12: Consolidation & Maintenance</div>
+        <div class="ba-tl-text">Depression improving; insomnia resolving. Taper off short-term hypnotic if used. Continue antidepressant and CBT-I. Establish maintenance plan: light therapy, consistent sleep schedule, exercise, stress management. Plan for relapse prevention.</div>
+      </div>
+      <div class="ba-tl-item">
+        <div class="ba-tl-dot"></div>
+        <div class="ba-tl-time">Follow-up (3–6 months)</div>
+        <div class="ba-tl-text">Monitor mood and sleep; continue antidepressant. Sleep usually remains improved even after medication discontinuation if CBT-I skills are retained. If relapse, intensify behavioral intervention before adding medication.</div>
+      </div>
+    </div>
+
+    <div class="ba-insight-box">
+      <div class="ba-insight-icon">✨</div>
+      <div>
+        <p>**Why This Approach Works:** Treating the underlying depression directly addresses one of the root causes of the early morning awakening phenotype. Combining pharmacotherapy with CBT-I ensures both immediate symptom relief (antidepressant, light therapy, short-term hypnotic) and long-term mastery (behavioral skills). The sleep diary provides objective feedback and motivation. Tapering the hypnotic once sleep consolidates prevents dependence while reinforcing the patient's confidence in sleep capacity.</p>
+      </div>
+    </div>
+
+    
+    ## References
+
+    <div class="ba-references">
+      <h3 class="ba-ref-title">Foundational & Clinical Reviews</h3>
+      <ul class="ba-ref-list">
+        <li>Riemann D, Krone LB, Wulff K, Nissen C. The neurobiology, investigation, and treatment of chronic insomnia. *Lancet Neurol*. 2020;19(11):913-931.</li>
+        <li>Wamsley EJ, Payne JD, Stickgold R. Cognitive training during sleep. *Nat Rev Neurosci*. 2012;13(2):137-137.</li>
+        <li>Morin CM, Espie CA. Insomnia: A Clinical Guide to Assessment and Treatment. Springer; 2003.</li>
+        <li>Sateia MJ. International Classification of Sleep Disorders (ICSD-3). Darien, IL: American Academy of Sleep Medicine; 2014.</li>
+        <li>American Psychiatric Association. Diagnostic and Statistical Manual of Mental Disorders. 5th ed. Arlington, VA: American Psychiatric Publishing; 2013.</li>
+      </ul>
+
+      <h3 class="ba-ref-title">CBT-I & Behavioral Interventions</h3>
+      <ul class="ba-ref-list">
+        <li>Spielman AJ, Saskin P, Thorpy MJ. Sleep restriction: a procedure for initiating low-dose antidepressant treatment of insomnia. In: Chase MH, Weitzman ED, eds. Sleep Disorders: Basic and Clinical Research. New York: Spectrum; 1983:283-288.</li>
+        <li>Bootzin RR. Stimulus control treatment for insomnia. *Proc Annu Conv Am Psychol Assoc*. 1972;7:395-396.</li>
+        <li>Trinder J, Paxton SJ, Montgomery I, Fraser G. Endocrine responses to total sleep deprivation and rebound sleep in humans. *Psychoneuroendocrinology*. 1988;13(4):284-294.</li>
+        <li>Espie CA, Kyle SD, Suni E. The cognitive behavioral treatment of insomnia. *Sleep Med Clin*. 2019;14(3):373-383.</li>
+        <li>Hofmann SG, Asnaani A, Vonk IJJ, Sawyer AT, Fang A. The efficacy of cognitive behavioral therapy: a review of meta-analyses. *Cogn Ther Res*. 2012;36(5):427-440.</li>
+      </ul>
+
+      <h3 class="ba-ref-title">Pharmacotherapy & Mechanisms</h3>
+      <ul class="ba-ref-list">
+        <li>Sateia MJ, Doghramji K, Hauri PJ, Morin CM. Evaluation of chronic insomnia: an American Academy of Sleep Medicine review. *Sleep*. 2000;23(2):243-308.</li>
+        <li>Schutte-Rodin S, Broch L, Buysse D, Dorsey C, Sateia M. Clinical Guideline for the Evaluation and Management of Chronic Insomnia in Adults. *J Clin Sleep Med*. 2008;4(5):487-504.</li>
+        <li>Krystal AD, Preskorn SH, Feyer P. Efficacy and tolerability of doxepin 1 mg, 3 mg, and 6 mg administered at bedtime in patients with primary insomnia. *Sleep*. 2010;33(11):1553-1561.</li>
+        <li>Winokur A, Sateia MJ, Hayes JB, Chung F, Rapoport DM, Roehrs T. Effective and long-term management of sleep disorders. *Sleep Med Rev*. 2005;9(2):141-156.</li>
+        <li>Citrome L. Quantifying the benefit of low-dose quetiapine in the treatment of psychiatric and sleep disorders. *Ann Clin Psychiatry*. 2010;22(2):100-108.</li>
+      </ul>
+
+      <h3 class="ba-ref-title">Sleep Medicine & Diagnostics</h3>
+      <ul class="ba-ref-list">
+        <li>Chung F, Yegneswaran B, Liao P, et al. STOP-BANG questionnaire: a practical tool for screening of obstructive sleep apnea. *Anesthesiology*. 2008;108(5):812-821.</li>
+        <li>Kuna ST, Reboussin DM, Borradaile KE, et al. Long-term effect of weight loss on obstructive sleep apnea severity in obese patients with type 2 diabetes. *Sleep*. 2013;36(5):641-649.</li>
+        <li>Peppard PE, Young T, Barnet JH, Palta M, Hagen EW, Hla KM. Increased prevalence of sleep-disordered breathing in adults. *Am J Epidemiol*. 2013;177(9):1006-1014.</li>
+        <li>Garcia-Borreguero D, Silber MH. Clinical presentation and management of restless legs syndrome (RLS). *NeuroRx*. 2006;3(2):226-236.</li>
+        <li>Boeve BF. REM sleep behavior disorder: updated review of the core features, the RBD-neurodegenerative disease association, evolving concepts of the etiology, and future directions. *Ann NY Acad Sci*. 2010;1184(1):15-54.</li>
+      </ul>
+
+      <h3 class="ba-ref-title">Sleep in Psychiatric Disorders</h3>
+      <ul class="ba-ref-list">
+        <li>Steiger A, Kimura M. Wake and sleep EEG provide biomarkers in depression. *J Psychiatr Res*. 2010;44(4):242-252.</li>
+        <li>Riemann D, Berger M, Voderholzer U. Sleep and depression—results from psychobiological studies: an overview. *Biol Psychiatry*. 2001;49(8):618-629.</li>
+        <li>Bares M, Brunovsky M, Kopecek M, et al. Early change in S100B and IL-6 in relation to behavioral therapy response in first-episode schizophrenia. *Schizophr Res*. 2011;126(1-3):n/a.</li>
+        <li>Harvey AG, Jones C, Schmidt DA. Sleep and posttraumatic stress disorder: a review. *J Clin Sleep Med*. 2011;7(2):169-183.</li>
+        <li>Wass H, Blennow K, Zetterberg H. Fluid biomarkers in Alzheimer's disease. *Cold Spring Harb Perspect Biol*. 2023;15(4):a041357.</li>
+      </ul>
+
+      <h3 class="ba-ref-title">Supplements & OTC Agents</h3>
+      <ul class="ba-ref-list">
+        <li>Ferracioli-Oda E, Qawasmi A, Bloch MH. Meta-analysis: melatonin for the treatment of primary sleep disorders. *PLoS ONE*. 2013;8(5):e63773.</li>
+        <li>Abbasi B, Kimiagar M, Sadeghniiat K, Shirazi MM, Hedayati M, Rashidkhani B. The effect of magnesium supplementation on primary insomnia in elderly: a double-blind placebo-controlled clinical trial. *J Gerontol A Biol Sci Med Sci*. 2012;67(10):1064-1070.</li>
+        <li>Bent S, Padula A, Neuhaus J. Safety and efficacy of citrus aurantium for weight loss. *Am J Clin Nutr*. 2004;80(3):539-549.</li>
+        <li>Jäger AK, Saaby L. Tashinone IIA, a new cardiovascular risk marker in Salvia miltiorrhiza. *J Ethnopharmacol*. 2011;135(2):374-376.</li>
+      </ul>
+
+      <h3 class="ba-ref-title">Circadian Neurobiology</h3>
+      <ul class="ba-ref-list">
+        <li>Borbély AA, Achermann P. Sleep homeostasis and models of sleep regulation. *J Biol Rhythms*. 1999;14(6):557-568.</li>
+        <li>Saper CB, Fuller PM, Pedersen NP, Lu J, Scammell TE. Sleep state switching. *Neuron*. 2010;68(6):1023-1042.</li>
+        <li>Takahashi JS. Transcriptional architecture of the circadian clock. *Nat Rev Genet*. 2017;18(3):164-179.</li>
+      </ul>
+    </div>
+
+    
+    ## Summary & Clinical Pearls
+
+    <div class="ba-summary-box" style="background-color: rgba(74, 124, 53, 0.08); border: 2px solid var(--accent);">
+      <h4 style="color: var(--accent); font-size: 1.2rem;">Key Takeaways for Clinical Practice</h4>
+      <ul>
+        <li>**Phenotype matters:** Sleep onset, maintenance, and early morning awakening insomnia require distinct approaches. Match therapy to phenotype.</li>
+        <li>**CBT-I is gold-standard:** Superior long-term outcomes to pharmacotherapy. Refer early; patients benefit from 6–8 manualized sessions.</li>
+        <li>**Know your medications:** Distinguish benzodiazepines/Z-drugs (short-term only) from DORAs and melatonin agonists (maintenance-appropriate). Screen for OSA before sedating agents.</li>
+        <li>**Sleep hygiene is necessary but insufficient:** Address bedroom environment, schedule consistency, substance use, and light exposure as foundation. Alone, rarely resolves insomnia.</li>
+        <li>**Comorbid psychiatric illness drives treatment:** Depression → address with antidepressant + light therapy; bipolar mania → target sleep need decrease directly; PTSD → trauma-focused therapy + prazosin.</li>
+        <li>**Know when to refer:** Suspected OSA, PLMD, RBD, narcolepsy, or refractory insomnia warrant sleep medicine evaluation and polysomnography.</li>
+        <li>**Avoid polypharmacy:** Combine behavioral intervention with one pharmacological agent; titrate and taper systematically. Reassess need for medication at 4–6 weeks.</li>
+        <li>**Sleep deprivation escalates mood in bipolar disorder:** Maintaining sleep architecture is preventive. Consider mood stabilizer + sleep-focused intervention concurrently.</li>
+        <li>**Rebound insomnia is real:** Taper hypnotics over 1–2 weeks to minimize rebound; reinforce behavioral skills during withdrawal.</li>
+        <li>**Paradoxical insomnia exists:** Reassure, avoid over-investigation, use CBT-I cognitive work. Over-medication worsens outcomes.</li>
+      </ul>
+    </div>
+
+    <p style="margin-top: 2rem; font-size: 0.95rem; color: var(--text-muted);">
+      This clinical guide synthesizes evidence for the psychiatrist managing insomnia across diverse presentations and comorbidities. Sleep is a fundamental determinant of mood regulation, cognitive function, and physiological homeostasis. Competency in insomnia assessment and treatment is essential to modern psychiatric practice.
+    </p>
+
+  </div>
+
+  
+        
+        
+          
+          <div class="ba-related">
+            <h4>Related Articles</h4>
+            

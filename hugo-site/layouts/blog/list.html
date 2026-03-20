@@ -1,0 +1,39 @@
+{{ define "main" }}
+<article class="blog-article">
+  <header class="ba-header">
+    <h1 class="ba-title">PsychoPharmRef Blog</h1>
+    <p class="ba-subtitle">Evidence-based clinical insights for psychiatrists and clinicians</p>
+  </header>
+
+  <div class="ba-body">
+    <a href="{{ "/" | relURL }}" class="back-link">← Back to Home</a>
+
+    <div class="blog-post-grid">
+    {{ range .Pages.ByDate.Reverse }}
+      <a href="{{ .Permalink }}" class="blog-post-card">
+        <div class="bpc-category">{{ .Params.category }}</div>
+        <h3 class="bpc-title">{{ .Title }}</h3>
+        <p class="bpc-excerpt">{{ .Description }}</p>
+        <span class="bpc-cta">Read article →</span>
+      </a>
+    {{ end }}
+    </div>
+  </div>
+
+  <footer class="ba-footer">
+    <p><strong>PsychoPharmRef</strong> | A resource for medical professionals | Data current as of {{ now.Format "January 2006" }}</p>
+  </footer>
+</article>
+{{ end }}
+
+{{ define "head" }}
+<style>
+.blog-post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin: 30px 0; }
+.blog-post-card { display: flex; flex-direction: column; background: var(--card, #fefcf8); border: 1px solid var(--border, #cfc8ba); border-radius: 10px; padding: 20px; text-decoration: none; color: var(--text, #231e14); transition: border-color 0.15s, background 0.15s, transform 0.15s; }
+.blog-post-card:hover { border-color: var(--accent, #4a7c35); background: var(--bg, #f5f0e8); transform: translateY(-2px); }
+.bpc-category { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent, #4a7c35); font-weight: 700; margin-bottom: 10px; }
+.bpc-title { font-size: 1.1rem; font-weight: 700; color: var(--text, #231e14); line-height: 1.3; margin-bottom: 10px; }
+.bpc-excerpt { font-size: 13px; color: var(--text-muted, #6b6050); line-height: 1.6; margin-bottom: 12px; flex-grow: 1; }
+.bpc-cta { font-size: 12px; font-weight: 600; color: var(--accent, #4a7c35); }
+</style>
+{{ end }}

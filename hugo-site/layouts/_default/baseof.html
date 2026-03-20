@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  {{ if site.Params.ga4ID }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.Params.ga4ID }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.Params.ga4ID }}');
+  </script>
+  {{ end }}
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Title }} - PsychoPharmRef</title>
+  <meta name="description" content="{{ .Description | default .Summary | truncate 160 }}">
+  <meta name="author" content="{{ site.Params.author }}">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ .Title }}">
+  <meta property="og:description" content="{{ .Description | default .Summary | truncate 200 }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:site_name" content="PsychoPharmRef">
+  <meta property="og:image" content="{{ "og-image.svg" | absURL }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ .Title }}">
+  <meta name="twitter:description" content="{{ .Description | default .Summary | truncate 200 }}">
+  <meta name="twitter:image" content="{{ "og-image.svg" | absURL }}">
+
+  <link rel="canonical" href="{{ .Permalink }}">
+  <link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | absURL }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32.png" | absURL }}">
+  <link rel="stylesheet" href="{{ "css/styles.css" | absURL }}">
+  <link rel="stylesheet" href="{{ "css/blog.css" | absURL }}">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ .Title }}",
+    "description": "{{ .Description | default .Summary | truncate 300 }}",
+    "url": "{{ .Permalink }}",
+    "datePublished": "{{ .Date.Format "2006-01-02" }}",
+    "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+    "author": {
+      "@type": "Person",
+      "name": "{{ site.Params.author }}",
+      "jobTitle": "{{ site.Params.authorJobTitle }}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "PsychoPharmRef"
+    }
+  }
+  </script>
+
+  {{ block "head" . }}{{ end }}
+</head>
+<body>
+  <a href="#content" class="skip-link">Skip to main content</a>
+
+  <button id="mobile-menu-btn" aria-label="Open navigation menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div id="sidebar-overlay"></div>
+
+  {{ partial "sidebar.html" . }}
+
+  <main id="content" role="main" aria-label="Article content">
+    <div class="container">
+      {{ block "main" . }}{{ end }}
+    </div>
+  </main>
+
+  {{ partial "scripts.html" . }}
+</body>
+</html>

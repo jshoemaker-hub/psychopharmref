@@ -1,0 +1,35 @@
+baseURL = "https://psychopharmref.com"
+languageCode = "en-us"
+title = "PsychoPharmRef — Psychopharmacology Reference for Clinicians"
+theme = ""
+defaultContentLanguage = "en"
+
+[params]
+  description = "Free clinical psychopharmacology reference with 91 medications, receptor binding profiles, P450 interactions, 15+ clinical tools, and 68 evidence-based blog posts."
+  author = "Jerad Shoemaker, MD"
+  authorJobTitle = "Psychiatrist"
+  ga4ID = "G-74FWZ3Q6BS"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[minify]
+  minifyOutput = true
+  [minify.tdewolff]
+    [minify.tdewolff.html]
+      keepEndTags = true
+      keepWhitespace = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+  page = ["HTML"]
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"

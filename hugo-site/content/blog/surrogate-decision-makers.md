@@ -1,0 +1,390 @@
+---
+title: "Medical Surrogate Decision-Makers: History, Law, and Clinical Practice | PsychoPharmRef"
+date: 2026-03-01
+description: ""
+category: "Clinical Practice"
+subtitle: "A comprehensive guide to surrogate decision-making hierarchies, landmark legal cases, and Washington State's statutory framework under RCW 7.70.065"
+readTime: "15 min read"
+clinicalSummary: ""
+related: ['capacity-evaluation', 'legal-precedents-psychiatry', 'psychiatric-ethics']
+draft: false
+---
+
+<div class="ba-body">
+            <p class="ba-lead">
+                When a patient loses the cognitive or communicative ability to make medical decisions, the responsibility shifts to a surrogate—another person authorized to make decisions on the patient's behalf. Surrogate decision-making has evolved from informal family arrangements into a highly codified legal framework balancing respect for patient autonomy, protection of vulnerable individuals, and practical clinical necessity. This review synthesizes the historical evolution of surrogate authority, major legal precedents, and the specific statutory requirements clinicians must understand to navigate this essential aspect of medical practice, particularly within Washington State's comprehensive RCW 7.70.065 framework.
+            </p>
+
+            
+            <h2>Introduction</h2>
+            <p>
+                The question of who decides when a patient cannot is among medicine's most profound ethical and legal challenges. Every hospital, every clinical practice, faces situations where informed consent cannot be obtained directly from the patient. In these moments, clinicians must identify and work with a surrogate—ideally someone who knew the patient's values and preferences, or someone whose judgment can be relied upon to act in the patient's best interest. The legal frameworks governing surrogate authority vary significantly across jurisdictions, but most American states have now adopted some version of a statutory surrogate hierarchy, standardizing the process and providing clinicians with clear guidance about whom to approach and in what order.
+            </p>
+
+            <p>
+                Understanding surrogate decision-making law is not optional for any clinician. You will encounter patients who lack capacity. You will need to obtain consent or authorization for treatment. Knowing the statutory framework—who can serve, what their obligations are, what constitutes valid delegation of authority, and what to do when no surrogate is readily available—separates competent, legally defensible practice from practices that expose patients and institutions to unnecessary risk.
+            </p>
+
+            
+            <div class="ba-stat-row">
+                <div class="ba-stat-card">
+                    <div class="ba-stat-num">1976</div>
+                    <div class="ba-stat-label">In Re Quinlan: First Major Surrogate Case</div>
+                </div>
+                <div class="ba-stat-card ba-stat-card--alert">
+                    <div class="ba-stat-num">1990</div>
+                    <div class="ba-stat-label">Cruzan v. Director, Missouri Dept of Health</div>
+                </div>
+                <div class="ba-stat-card">
+                    <div class="ba-stat-num">44+</div>
+                    <div class="ba-stat-label">States Adopted UHCDA Model Legislation</div>
+                </div>
+                <div class="ba-stat-card ba-stat-card--alert">
+                    <div class="ba-stat-num">11</div>
+                    <div class="ba-stat-label">Tiers in Washington RCW 7.70.065 Hierarchy</div>
+                </div>
+            </div>
+
+            
+            <h2>Historical Evolution of Surrogate Decision-Making</h2>
+
+            <h3>Pre-1970s: Informal Authority and Guardianship</h3>
+            <p>
+                Before the modern era of surrogate decision-making law, the situation for incapacitated patients was far less structured. Medical decision-making authority devolved informally to family members—typically spouses or adult children—who were assumed to have both the right and the responsibility to authorize treatment on a family member's behalf. This common law tradition held that family members had inherent authority to consent for relatives lacking capacity, without formal judicial involvement.
+            </p>
+
+            <p>
+                However, when family conflicts arose, when treatment decisions involved refusal of life-sustaining interventions, or when no clear family hierarchy existed, clinicians had to turn to the courts. A patient or family member could petition for guardianship—a formal legal process establishing one person as a conservator or guardian with authority to make financial and medical decisions on behalf of an incapacitated adult. These proceedings were time-consuming, expensive, and often adversarial. For many patients, guardianship was the only legally recognized pathway for surrogate decision-making; for many families, it remained an inaccessible option.
+            </p>
+
+            <h3>1976 — In Re Quinlan: The Birth of Substituted Judgment</h3>
+            <p>
+                The watershed moment came in 1976 with the New Jersey Supreme Court's decision in In Re Quinlan. Karen Quinlan, a young woman in a persistent vegetative state following an overdose, was maintained on life support despite having no realistic hope of regaining consciousness. Her parents sought to withdraw the ventilator; however, the hospital resisted, citing ethical and legal uncertainty about whether family-authorized withdrawal of life-sustaining treatment was permissible.
+            </p>
+
+            <p>
+                The Quinlan court issued a landmark decision: it recognized the right to refuse treatment as constitutionally grounded, and it held that family members could exercise this right on behalf of an incapacitated patient using the "substituted judgment" doctrine. Rather than requiring guardianship, the court allowed the family to advocate for what the patient would have wanted, based on the patient's known values, expressed wishes, or character. This case fundamentally shifted the legal landscape, establishing that surrogate authority need not depend on formal court appointment. The family's moral and legal authority to decide on behalf of an incapacitated relative was recognized as inherent.
+            </p>
+
+            <h3>1990 — Cruzan v. Director, Missouri Department of Health</h3>
+            <p>
+                Fourteen years after Quinlan, the U.S. Supreme Court weighed in on surrogate decision-making in Cruzan v. Director, Missouri Department of Health. Nancy Cruzan, a young woman in a persistent vegetative state following an automobile accident, had no written advance directive. Her parents sought to withdraw artificial nutrition and hydration; Missouri's hospital ethics committee refused without "clear and convincing evidence" of the patient's wishes.
+            </p>
+
+            <p>
+                The Cruzan decision confirmed that a constitutional liberty interest exists in the right to refuse unwanted medical treatment, even life-sustaining treatment. However, the court also ruled that states may impose evidentiary standards on surrogate decision-makers, requiring proof that the surrogate's decision reflects the patient's authentic wishes. States could require "clear and convincing evidence"—a high legal standard—before allowing treatment withdrawal based on substituted judgment. The decision preserved family authority while allowing states to set the procedural guardrails around it.
+            </p>
+
+            <h3>1990 — The Patient Self-Determination Act</h3>
+            <p>
+                In the same year as Cruzan, Congress passed the Patient Self-Determination Act (PSDA), a federal law requiring hospitals and other health care facilities to inform all patients of their rights to make advance directives—written documents expressing health care preferences and naming surrogate decision-makers. The PSDA shifted the cultural and legal emphasis from reactive surrogate decision-making (choosing what to do when incapacity occurred) to proactive planning. It mandated that health care institutions ask patients about advance directives and document their responses. This remains a foundational requirement for all health care organizations receiving federal funds (which includes virtually all hospitals and major medical practices).
+            </p>
+
+            <h3>1993 — The Uniform Health-Care Decisions Act</h3>
+            <p>
+                As states began codifying surrogate decision-making rules in the decades following Quinlan and Cruzan, significant variation emerged. Some states recognized only guardianship; others recognized family authority; still others created statutory hierarchies. In 1993, the National Conference of Commissioners on Uniform State Laws (NCCUSL) promulgated the Uniform Health-Care Decisions Act (UHCDA), model legislation designed to standardize surrogate decision-making across jurisdictions. The UHCDA established a statutory hierarchy of surrogate decision-makers, prioritizing documented preferences (advance directives, health care powers of attorney) and then placing surrogates in a ranked order: spouse/domestic partner, adult children, parents, siblings, and then other relatives or close friends.
+            </p>
+
+            <p>
+                The UHCDA was widely adopted—44 states and the District of Columbia have adopted legislation based on or modeled on the UHCDA framework. Washington State adopted and substantially expanded the UHCDA model, with modifications to include more tiers, specific provisions for close friends, and clarifications about the substituted judgment and best interests standards.
+            </p>
+
+            <h3>2005 — The Terri Schiavo Case and Public Awareness</h3>
+            <p>
+                In 2005, the Terri Schiavo case thrust surrogate decision-making into national consciousness. Terri Schiavo, a woman in a minimally conscious state for 15 years, became the subject of a bitter legal battle between her husband (who sought to withdraw artificial nutrition and hydration based on Terri's prior statements about not wanting to live in a vegetative state) and her parents (who opposed withdrawal). The case generated unprecedented media coverage, legislative intervention at the state and federal levels, and deep polarization along political and religious lines.
+            </p>
+
+            <p>
+                The Schiavo case, decided in favor of the husband's surrogate authority, reaffirmed that spouses hold strong surrogate authority and that substituted judgment based on a patient's prior statements is constitutionally and legally protected. However, the public acrimony surrounding the case also highlighted the vulnerability of surrogate decision-making law to emotional and political pressures. In response, many states strengthened documentation requirements and ethics consultation provisions.
+            </p>
+
+            <h3>2010s–Present: Recognition of Nontraditional Families and Expansion of Surrogate Categories</h3>
+            <p>
+                Over the past 15 years, surrogate decision-making law has evolved to recognize the reality of contemporary family structures. Many people lack traditional family relationships—some are unmarried, some are estranged from biological family, some have built chosen families with close friends or long-term partners. At the same time, the legal recognition of same-sex marriage and domestic partnerships created new categories of spousal-equivalent relationships that needed statutory accommodation.
+            </p>
+
+            <p>
+                Washington State exemplifies this trend. In 2019, the Washington Legislature passed HB 1175, amending RCW 7.70.065 to expand the surrogate hierarchy and, crucially, to include a formal mechanism for "close friends" to serve as surrogates when no family members are available or willing. This amendment recognized that not all meaningful relationships are familial, and that some individuals' authentic preferences and values are best known to lifelong friends rather than estranged relatives.
+            </p>
+
+            
+            <h2>Washington State's Statutory Framework: RCW 7.70.065</h2>
+
+            <h3>The Surrogate Hierarchy</h3>
+            <p>
+                Washington's Revised Code of Washington (RCW) Chapter 7.70 establishes the comprehensive legal framework for surrogate decision-making. The centerpiece is RCW 7.70.065, which defines a statutory hierarchy of individuals authorized to make medical decisions on behalf of patients who lack the capacity to make their own medical decisions. The hierarchy exists to provide clear guidance to clinicians about whom to approach and in what sequence.
+            </p>
+
+            <p>
+                The first principle in the hierarchy is that the patient's own previously expressed wishes—either through an advance directive, a health care power of attorney, or documented statements about values and preferences—take absolute precedence. Only if no such directive exists does the statutory hierarchy come into play. The hierarchy is as follows:
+            </p>
+
+            <svg class="svg-diagram" viewbox="0 0 800 1000" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .hier-title { font-size: 18px; font-weight: bold; fill: #231e14; }
+                        .hier-label { font-size: 13px; fill: white; font-weight: 600; }
+                        .hier-desc { font-size: 12px; fill: #231e14; }
+                        .hier-box { stroke-width: 2; }
+                        .hier-line { stroke: #4a7c35; stroke-width: 2; }
+                        .hier-decision { font-size: 13px; fill: #231e14; font-weight: 500; }
+                    </style>
+                </defs>
+
+                <text class="hier-title" x="400" y="30" text-anchor="middle">Washington RCW 7.70.065 Surrogate Hierarchy</text>
+
+                
+                <ellipse cx="400" cy="70" rx="80" ry="25" fill="#ece6db" stroke="#4a7c35" stroke-width="2"></ellipse>
+                <text class="hier-decision" x="400" y="78" text-anchor="middle">Patient Incapacitated?</text>
+
+                
+                <line x1="400" y1="95" x2="400" y2="125" class="hier-line"></line>
+
+                
+                <rect class="hier-box" x="250" y="125" width="300" height="60" fill="#4a7c35" stroke="#4a7c35"></rect>
+                <text class="hier-label" x="400" y="145" text-anchor="middle">Advance Directive / Health Care Power of Attorney</text>
+                <text class="hier-label" x="400" y="165" text-anchor="middle">(if exists, use this first)</text>
+
+                
+                <line x1="400" y1="185" x2="400" y2="215" class="hier-line"></line>
+
+                
+                <rect class="hier-box" x="250" y="215" width="300" height="50" fill="#6b8f44" stroke="#4a7c35"></rect>
+                <text class="hier-label" x="400" y="235" text-anchor="middle">1. Guardian or Conservator</text>
+                <text class="hier-label" x="400" y="250" text-anchor="middle">(court-appointed)</text>
+
+                
+                <line x1="400" y1="265" x2="400" y2="295" class="hier-line"></line>
+
+                
+                <rect class="hier-box" x="250" y="295" width="300" height="50" fill="#7a9a54" stroke="#4a7c35"></rect>
+                <text class="hier-label" x="400" y="315" text-anchor="middle">2. Health Care Agent (from Power of Attorney)</text>
+                <text class="hier-label" x="400" y="330" text-anchor="middle">if no guardian</text>
+
+                
+                <line x1="400" y1="345" x2="400" y2="375" class="hier-line"></line>
+
+                
+                <rect class="hier-box" x="250" y="375" width="300" height="50" fill="#89a563" stroke="#4a7c35"></rect>
+                <text class="hier-label" x="400" y="395" text-anchor="middle">3. Spouse or Registered Domestic Partner</text>
+                <text class="hier-label" x="400" y="410" text-anchor="middle">if no agent</text>
+
+                
+                <line x1="400" y1="425" x2="400" y2="455" class="hier-line"></line>
+
+                
+                <rect class="hier-box" x="250" y="455" width="300" height="50" fill="#98b072" stroke="#4a7c35"></rect>
+                <text class="hier-label" x="400" y="475" text-anchor="middle">4. Adult Children (18 and older)</text>
+                <text class="hier-label" x="400" y="490" text-anchor="middle">if spouse unavailable</text>
+
+                
+                <line x1="400" y1="505" x2="400" y2="535" class="hier-line"></line>
+
+                
+                <rect class="hier-box" x="250" y="535" width="300" height="50" fill="#a7bb81" stroke="#4a7c35"></rect>
+                <text class="hier-label" x="400" y="555" text-anchor="middle">5. Parent(s)</text>
+                <text class="hier-label" x="400" y="570" text-anchor="middle">if no adult children</text>
+
+                
+                <line x1="400" y1="585" x2="400" y2="615" class="hier-line"></line>
+
+                
+                <rect class="hier-box" x="250" y="615" width="300" height="50" fill="#b6c690" stroke="#4a7c35"></rect>
+                <text class="hier-label" x="400" y="635" text-anchor="middle">6. Siblings (18 and older)</text>
+                <text class="hier-label" x="400" y="650" text-anchor="middle">if no parents</text>
+
+                
+                <line x1="400" y1="665" x2="400" y2="695" class="hier-line"></line>
+
+                
+                <rect class="hier-box" x="250" y="695" width="300" height="50" fill="#c5d19f" stroke="#4a7c35"></rect>
+                <text class="hier-label" x="400" y="715" text-anchor="middle">7. Grandchildren (18 and older)</text>
+                <text class="hier-label" x="400" y="730" text-anchor="middle">if no siblings</text>
+
+                
+                <line x1="400" y1="745" x2="400" y2="775" class="hier-line"></line>
+
+                
+                <rect class="hier-box" x="250" y="775" width="300" height="50" fill="#d4dcae" stroke="#4a7c35"></rect>
+                <text class="hier-label" x="400" y="795" text-anchor="middle">8. Nieces and Nephews (18 and older)</text>
+                <text class="hier-label" x="400" y="810" text-anchor="middle">if no grandchildren</text>
+
+                
+                <line x1="400" y1="825" x2="400" y2="855" class="hier-line"></line>
+
+                
+                <rect class="hier-box" x="250" y="855" width="300" height="50" fill="#e3e7bd" stroke="#4a7c35"></rect>
+                <text class="hier-label" x="400" y="875" text-anchor="middle">9. Aunts and Uncles (18 and older)</text>
+                <text class="hier-label" x="400" y="890" text-anchor="middle">if no nieces/nephews</text>
+
+                
+                <line x1="400" y1="905" x2="400" y2="935" class="hier-line"></line>
+
+                
+                <rect class="hier-box" x="250" y="935" width="300" height="50" fill="#8b6914" stroke="#8b6914"></rect>
+                <text class="hier-label" x="400" y="955" text-anchor="middle">10. Close Friend (with signed declaration)</text>
+                <text class="hier-label" x="400" y="970" text-anchor="middle">if no relatives available</text>
+            </svg>
+
+            <h3>Practical Application of the Hierarchy</h3>
+            <p>
+                When a patient lacks capacity, the clinician's first action is to check whether the patient has an advance directive, health care power of attorney, or other documented expression of health care preferences. If such a document exists, it takes precedence over the statutory hierarchy. The named agent or the expressed preferences in the directive control the decision-making process.
+            </p>
+
+            <p>
+                If no advance directive exists, the clinician must identify whether a court-appointed guardian exists for the patient. If one does, the guardian has authority. If no guardian exists, the clinician approaches the next available tier in the hierarchy. For spouses, domestic partners, adult children, parents, and other family members, there is no requirement for documentation; the relationship itself confers surrogate authority.
+            </p>
+
+            <h3>The Unanimity Rule</h3>
+            <p>
+                An important feature of Washington's statute is the unanimity rule: when multiple individuals exist at the same tier in the hierarchy (e.g., multiple adult children, multiple siblings), all must agree on the surrogate decision. If they cannot reach consensus, the clinician cannot rely on surrogate authority from that tier and must escalate the matter to hospital ethics committees or seek court guidance. This requirement reflects the principle that surrogacy should reflect the patient's likely wishes or best interests—a determination that gains legitimacy when multiple family members concur.
+            </p>
+
+            <h3>Substituted Judgment vs. Best Interests Standard</h3>
+            <p>
+                Washington law recognizes two distinct standards for surrogate decision-making. The substituted judgment standard asks what decision the patient would make if they had capacity, based on the patient's known values, prior statements, religious beliefs, life patterns, and expressed preferences. This standard privileges the patient's autonomy, attempting to honor their authentic self even in incapacity.
+            </p>
+
+            <p>
+                When the patient's wishes are unknown or cannot be reliably determined, Washington law permits surrogates to apply the best interests standard. This asks what decision would most benefit the patient, considering factors such as the benefits and burdens of treatment, the patient's pain and suffering, the likelihood of recovery, the patient's personal values and preferences as best known, and other relevant circumstances. The best interests standard is more paternalistic but protects patients who have never had the opportunity to express their preferences.
+            </p>
+
+            <h3>Statutory Limitations on Surrogate Authority</h3>
+            <p>
+                Washington law imposes specific limitations on what surrogates can authorize. Notably, a surrogate cannot authorize the administration of medication for purposes of capital punishment, sterilization except in specific medical contexts, psychosurgery, or organ transplantation without clear and convincing evidence of the patient's prior wishes. Additionally, under Washington's Death with Dignity Act (RCW 70.245), surrogates cannot authorize physician-assisted dying on behalf of an incapacitated patient. Only the patient themselves, exercising capacity, can authorize medical aid in dying.
+            </p>
+
+            
+            <h2>The Close Friend Provision: Requirements and Limitations</h2>
+
+            <p>
+                One of Washington's innovations is statutory recognition of close friends as surrogates of last resort. This acknowledges the reality that some individuals lack meaningful family relationships but have deep, committed friendships that constitute the primary relational context for understanding their values and preferences.
+            </p>
+
+            <p>
+                To serve as a surrogate under Washington law, a close friend must satisfy several requirements. First, they must execute a declaration under penalty of perjury, signed and dated, attesting to their close friendship with the patient. The declaration must affirm that to the best of the signer's knowledge, no family members exist in any of the nine prior tiers of the hierarchy, or that existing family members are unwilling or unavailable to serve as surrogate. The declaration is valid for six months from the date of signature, after which a new declaration must be obtained if surrogate authority is still needed.
+            </p>
+
+            <p>
+                Additional exclusions prevent conflicts of interest. A close friend cannot be the patient's attending or treating physician, a hospital employee, an employee of a long-term care facility where the patient resides, or a paid caregiver or home health aide. These restrictions ensure that the surrogate's authority flows from genuine relationship, not from professional proximity or financial interest.
+            </p>
+
+            <p>
+                Importantly, providers and health care facilities enjoy good faith immunity if they rely on a purportedly valid close friend declaration in good faith, even if the declaration is later found to be invalid or if family members subsequently challenge it. This protection encourages clinicians to work with available surrogates without fear of liability, as long as they have made reasonable efforts to verify the declaration's validity and have documented their process.
+            </p>
+
+            
+            <h2>When No Surrogate Is Available</h2>
+
+            <p>
+                In some cases, no surrogate can be identified. The patient has no living family members, no close friends who are willing and able to serve, and no court-appointed guardian. How should the clinician proceed?
+            </p>
+
+            <p>
+                Washington law provides for court-appointed guardianship under Chapter 11.130 RCW as the mechanism of last resort. A clinician or hospital can petition the court for emergency guardianship, which expedites the usual guardianship process. The court will appoint a guardian ad litem to investigate the patient's circumstances and make a recommendation to the court. In emergency situations, the court can appoint a temporary emergency guardian pending a fuller guardianship proceeding.
+            </p>
+
+            <p>
+                Additionally, many hospitals maintain ethics committees or ethics consultants who can provide guidance when surrogate authority is unclear, contested, or absent. Ethics committees can facilitate conversations between family members, clarify the patient's known values and preferences, consult legal counsel, and help develop a decision-making process that is both ethically sound and legally defensible. For complex cases involving vulnerable populations—unaccompanied minors, homeless individuals with no known family or friends, patients with severe psychiatric illness and no surrogates—ethics consultation is standard practice.
+            </p>
+
+            <p>
+                Washington also has specific statutory provisions for unaccompanied minors lacking parental authority. The Department of Children, Youth, and Families (DCYF) can be involved to establish guardianship or to authorize medical decisions in emergency contexts. Similar provisions exist for certain populations under dependency proceedings.
+            </p>
+
+            
+            <h2>Related Legal Frameworks and Complementary Authorities</h2>
+
+            <p>
+                Surrogate decision-making law exists within a broader ecosystem of advance planning and health care autonomy statutes. Understanding how these different legal mechanisms interact is essential for comprehensive practice.
+            </p>
+
+            <p>
+                **Advance Directives (RCW 70.122):** Washington's Living Will statute allows competent individuals to execute written directives expressing their wishes regarding life-sustaining treatment. These directives can specify whether the patient wishes to receive or refuse CPR, mechanical ventilation, artificial nutrition and hydration, and other interventions in the event of terminal illness or permanent unconsciousness. An executed advance directive takes precedence over all statutory surrogates.
+            </p>
+
+            <p>
+                **Durable Powers of Attorney for Health Care (RCW 11.125):** This statute permits competent individuals to designate a health care agent—often called a health care power of attorney or health care proxy—to make medical decisions on their behalf if they lose capacity. This can be broader than an advance directive, empowering the agent to make decisions about specific treatments as situations arise, rather than pre-deciding categories of intervention. A properly executed health care power of attorney is the second-highest authority after the patient's own contemporaneous wishes.
+            </p>
+
+            <p>
+                **Mental Health Directives (RCW 71.32):** This statute allows individuals with mental illness to execute directives that take effect in the event of psychiatric crisis. A mental health directive can specify preferences regarding hospitalization, medication, restraint, seclusion, and other psychiatric interventions. It can name a surrogate to make mental health decisions. These directives are particularly valuable for individuals with psychotic disorders, bipolar disorder, or recurrent mood disorders who want to preserve autonomy over treatment even during acute episodes when capacity may be impaired.
+            </p>
+
+            <p>
+                **Nursing Home Patient Rights (WAC 388-97-0240):** Washington's Nursing Home Patient Rights rules provide additional protections for long-term care residents, including specific procedures for decision-making when residents lack capacity and clarifications about when the facility must consult ethics committees or seek court authority.
+            </p>
+
+            
+            <h2>Clinical Recommendations and Best Practices</h2>
+
+            <p>
+                Competent practice in surrogate decision-making requires both legal knowledge and clinical judgment. The following recommendations reflect evidence-based best practices:
+            </p>
+
+            <p>
+                **Proactive Advance Planning:** Every clinician should encourage competent patients to complete advance directives, health care powers of attorney, and mental health directives. The time to clarify a patient's values and designate a surrogate is when the patient is well and thinking clearly, not in the midst of acute illness or incapacity. Resources such as Honoring Choices PNW (a program of the Washington State Medical Association and community partners) provide free, accessible materials to facilitate these conversations.
+            </p>
+
+            <p>
+                **Careful Documentation of Capacity Determinations:** When you assess that a patient lacks capacity for a particular decision, document this carefully in the medical record. Note the specific decision in question, your findings regarding the patient's understanding, appreciation, reasoning, and ability to express a choice, and your conclusion about capacity. This documentation provides the foundation for justifying reliance on surrogate decision-making.
+            </p>
+
+            <p>
+                **Identify and Verify Surrogates:** Do not assume surrogate authority. Ask the patient or family members directly: "Is there an advance directive or health care power of attorney?" "Are you the legal surrogate?" Verify documentation when available. In cases where surrogate authority is unclear—for example, when a close friend presents and claims surrogate status—request the signed declaration and verify that the attestation is genuine and within the six-month validity window.
+            </p>
+
+            <p>
+                **Clarify the Patient's Known Wishes:** Even in discussions with surrogates, center the conversation on what the patient would have wanted. Ask the surrogate: "Did [patient] ever express preferences about this kind of situation?" "What did [patient] value most?" "How did [patient] approach medical decisions?" Substituted judgment should guide decision-making when the patient's wishes are known or knowable.
+            </p>
+
+            <p>
+                **Consult Ethics Committees for Complex Cases:** For situations involving family conflict, contested surrogate authority, decisions at the end of life, decisions that deviate from the surrogate's personal values, or any case where you feel ethically uncertain, involve your hospital's ethics committee or ethics consultant. Ethics consultation does not slow decision-making; it clarifies it and provides institutional support for defensible decisions.
+            </p>
+
+            <p>
+                **Provide Clear Communication and Education:** Surrogates are often distressed, grieving, and uncertain about their responsibilities. Explain the decision-making framework, clarify that the surrogate's role is to represent the patient's values (not to impose the surrogate's own preferences), provide clear information about options, and support the surrogate's decision-making process. Families appreciate clinicians who take time to ensure understanding.
+            </p>
+
+            
+            <h2>Conclusion</h2>
+
+            <p>
+                Surrogate decision-making has evolved from an ad hoc, often disputed authority into a highly structured legal framework that protects both patient autonomy and vulnerable individuals. Washington's RCW 7.70.065, informed by the Uniform Health-Care Decisions Act and refined through decades of case law and legislative amendment, provides a clear hierarchy of surrogate authority while allowing for the nuances of contemporary family structures and relationships.
+            </p>
+
+            <p>
+                For clinicians, this framework offers clarity: know the hierarchy, verify surrogate authority, center decisions on the patient's known wishes, and consult ethics resources when uncertainty arises. For patients and families, understanding surrogate decision-making law is an incentive to engage in advance planning—to document preferences, name surrogates, and ensure that one's authentic values guide medical decisions even in the event of incapacity. The transition from informal family authority to codified law reflects medicine's maturation as a field, and the law's increasing respect for patient autonomy even when that autonomy must be exercised through surrogate delegation.
+            </p>
+
+            
+            <section class="ba-references">
+                <h2 class="ba-ref-title">References</h2>
+                <ol class="ba-ref-list">
+                    <li>In Re Quinlan, 70 N.J. 10, 355 A.2d 647 (1976). Landmark case establishing family surrogate authority and substituted judgment doctrine.</li>
+                    <li>Cruzan v. Director, Missouri Department of Health, 497 U.S. 261 (1990). U.S. Supreme Court affirming constitutional right to refuse treatment; allows state-imposed evidentiary standards on surrogate decisions.</li>
+                    <li>Patient Self-Determination Act of 1990, 42 U.S.C. § 1395cc (as codified). Federal law requiring health care facilities to inform patients of advance directive rights.</li>
+                    <li>National Conference of Commissioners on Uniform State Laws. Uniform Health-Care Decisions Act (1993). Model legislation adopted by 44+ states; establishes statutory surrogate hierarchies.</li>
+                    <li>Revised Code of Washington (RCW) Chapter 7.70: Health Care Decision Making by Surrogate. Comprehensive statute governing surrogate decision-making in Washington State.</li>
+                    <li>RCW 7.70.065: Surrogate Decision-Making. Establishes the statutory hierarchy of surrogates and the substituted judgment / best interests standards.</li>
+                    <li>Washington House Bill 1175 (2019). Amendment to RCW 7.70.065 expanding surrogate hierarchy to include close friends.</li>
+                    <li>RCW 70.122: Living Wills. Washington's Advance Directive statute.</li>
+                    <li>RCW 11.125: Durable Powers of Attorney for Health Care. Washington's Health Care Power of Attorney statute.</li>
+                    <li>RCW 71.32: Mental Health Advance Directives. Washington statute governing psychiatric advance directives.</li>
+                    <li>RCW 11.130: Guardianship and Conservatorship. Washington statute governing court-appointed guardianship.</li>
+                    <li>WAC 388-97-0240: Nursing Home Patient Rights. Washington Administrative Code establishing rights and protections for long-term care residents.</li>
+                    <li>RCW 70.245: Death with Dignity Act. Washington statute governing physician-assisted dying; surrogates cannot authorize aid in dying.</li>
+                    <li>Washington State Medical Association and Honoring Choices PNW. Advance Care Planning Resources. Community-based program promoting advance directive completion and health care planning.</li>
+                    <li>Appleton JB, Tossing SJ. End-of-life decision-making and surrogate law. In: Appelbaum PS, ed. Legal Foundations of Medical Practice. Oxford University Press; 2010.</li>
+                    <li>Beauchamp TL, Childress JF. Principles of Biomedical Ethics. 8th ed. Oxford University Press; 2019.</li>
+                    <li>American Medical Association Code of Medical Ethics. Opinions regarding surrogate decision-making, advance directives, and end-of-life care.</li>
+                </ol>
+            </section>
+
+
+        
+        
+          
+          <div class="ba-related">
+            <h4>Related Articles</h4>
+            

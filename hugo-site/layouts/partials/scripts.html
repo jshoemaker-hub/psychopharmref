@@ -1,0 +1,41 @@
+<script>
+// Sidebar nav group toggle
+document.querySelectorAll('.nav-parent-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    const group = btn.closest('.nav-group');
+    const isOpen = group.classList.contains('open');
+    document.querySelectorAll('.nav-group').forEach(g => g.classList.remove('open'));
+    if (!isOpen) group.classList.add('open');
+  });
+});
+
+// Highlight current page in sidebar
+(function() {
+  const currentPath = window.location.pathname;
+  document.querySelectorAll('#sidebar .nav-sub-link').forEach(link => {
+    const href = link.getAttribute('href');
+    // Match either exact path or with/without trailing slash
+    if (href === currentPath || href === currentPath + '/' || href + '/' === currentPath) {
+      link.classList.add('active');
+      // Scroll active link into view in sidebar
+      setTimeout(() => link.scrollIntoView({ block: 'center', behavior: 'smooth' }), 100);
+    }
+  });
+})();
+</script>
+
+<script>
+(function() {
+  var btn = document.getElementById('mobile-menu-btn');
+  var sidebar = document.getElementById('sidebar');
+  var overlay = document.getElementById('sidebar-overlay');
+  if (!btn || !sidebar || !overlay) return;
+  function open() { sidebar.classList.add('sidebar-open'); overlay.classList.add('overlay-visible'); document.body.classList.add('sidebar-is-open'); }
+  function close() { sidebar.classList.remove('sidebar-open'); overlay.classList.remove('overlay-visible'); document.body.classList.remove('sidebar-is-open'); }
+  btn.addEventListener('click', function() { sidebar.classList.contains('sidebar-open') ? close() : open(); });
+  overlay.addEventListener('click', close);
+  // Close sidebar when clicking nav links on mobile
+  sidebar.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { if (window.innerWidth <= 768) close(); }); });
+})();
+</script>
