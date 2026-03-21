@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div style="max-width:900px;margin:40px auto;padding:0 20px;">
+  <h1 style="font-size:28px;margin-bottom:8px;">PsychoPharmRef Clinical Tools</h1>
+  <p style="font-size:15px;color:var(--text-muted);margin-bottom:30px;">Interactive clinical decision support tools for psychiatry. Free, evidence-based, designed for point-of-care use.</p>
+
+  {{ $categories := slice "Psychopharmacology" "Clinical Tools" "Rating Scales" "Clinical Insights" }}
+  {{ range $cat := $categories }}
+  <h2 style="font-size:18px;color:var(--accent2);margin:30px 0 12px;border-bottom:2px solid var(--border);padding-bottom:6px;">{{ $cat }}</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:20px;">
+    {{ range where $.Pages "Params.category" $cat }}
+    <a href="{{ .Permalink }}" style="display:block;padding:14px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--text);transition:border-color 0.15s;">
+      <div style="font-size:14px;font-weight:600;margin-bottom:4px;">{{ .Title }}</div>
+      <div style="font-size:12px;color:var(--text-muted);line-height:1.4;">{{ .Description | truncate 120 }}</div>
+    </a>
+    {{ end }}
+  </div>
+  {{ end }}
+</div>
+{{ end }}
