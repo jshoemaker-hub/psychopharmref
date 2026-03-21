@@ -18870,7 +18870,7 @@ Past Compulsions: ${compulsionsPastList.length > 0 ? compulsionsPastList.join(';
         if (drugMatches.length) {
           html += '<div class="us-group-label">Medications</div>';
           drugMatches.forEach(function(m) {
-            html += '<div class="us-item" tabindex="0" onclick="switchSection(\'drug-table\');openDrugModal(\'' + m.id + '\');document.getElementById(\'us-results\').classList.remove(\'open\');document.getElementById(\'us-input\').value=\'\';">' +
+            html += '<div class="us-item" tabindex="0" onclick="switchSection(\'drug-table\');openDrugModal(\'' + m.id + '\');document.getElementById(\'us-results\').classList.remove(\'open\');">' +
               '<span class="us-item-type us-item-type--drug">Drug</span>' +
               '<span class="us-item-title">' + hl(m.name, terms) + '</span>' +
               '<span class="us-item-sub">' + m.brandName + ' &bull; ' + m.class + '</span>' +
@@ -18907,7 +18907,7 @@ Past Compulsions: ${compulsionsPastList.length > 0 ? compulsionsPastList.join(';
       if (toolMatches.length) {
         html += '<div class="us-group-label">Tools & Scales</div>';
         toolMatches.forEach(function(t) {
-          html += '<div class="us-item" tabindex="0" onclick="switchSection(\'' + t.section + '\');document.getElementById(\'us-results\').classList.remove(\'open\');document.getElementById(\'us-input\').value=\'\';">' +
+          html += '<div class="us-item" tabindex="0" onclick="switchSection(\'' + t.section + '\');document.getElementById(\'us-results\').classList.remove(\'open\');">' +
             '<span class="us-item-type us-item-type--tool">Tool</span>' +
             '<span class="us-item-title">' + hl(t.title, terms) + '</span>' +
             '<span class="us-item-sub">' + t.cat + '</span>' +
