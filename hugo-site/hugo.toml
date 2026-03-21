@@ -1,7 +1,6 @@
 baseURL = "https://psychopharmref.com"
 languageCode = "en-us"
 title = "PsychoPharmRef — Psychopharmacology Reference for Clinicians"
-theme = ""
 defaultContentLanguage = "en"
 
 [params]
@@ -10,8 +9,14 @@ defaultContentLanguage = "en"
   authorJobTitle = "Psychiatrist"
   ga4ID = "G-74FWZ3Q6BS"
 
-[markup.goldmark.renderer]
-  unsafe = true
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        block = true
+        title = true
 
 [minify]
   minifyOutput = true

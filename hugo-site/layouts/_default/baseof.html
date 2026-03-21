@@ -37,6 +37,27 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32.png" | absURL }}">
   <link rel="stylesheet" href="{{ "css/styles.css" | absURL }}">
   <link rel="stylesheet" href="{{ "css/blog.css" | absURL }}">
+  <style>
+    .ba-action-bar{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 14px;padding:6px 0;border-bottom:1px solid var(--border,#cfc8ba)}
+    .ba-act-btn{display:inline-flex;align-items:center;gap:3px;padding:4px 9px;border-radius:4px;font-size:11px;font-weight:600;border:1px solid var(--border,#cfc8ba);background:var(--bg2,#ece6db);color:var(--text,#231e14);cursor:pointer;text-decoration:none;transition:background .15s,border-color .15s}
+    .ba-act-btn:hover{background:var(--accent,#4a7c35);color:#fff;border-color:var(--accent,#4a7c35)}
+    .ba-act-btn svg{width:12px;height:12px;fill:currentColor;flex-shrink:0}
+    .ba-share-drop{position:relative;display:inline-block}
+    .ba-share-menu{display:none;position:absolute;top:100%;left:0;z-index:10;background:#fff;border:1px solid var(--border,#cfc8ba);border-radius:5px;box-shadow:0 4px 12px rgba(0,0,0,.12);min-width:160px;margin-top:4px;padding:4px 0}
+    .ba-share-menu.ba-open{display:block}
+    .ba-share-menu a,.ba-share-menu button{display:flex;align-items:center;gap:8px;width:100%;padding:8px 14px;font-size:12.5px;font-weight:500;color:var(--text,#231e14);text-decoration:none;border:none;background:none;cursor:pointer;text-align:left}
+    .ba-share-menu a:hover,.ba-share-menu button:hover{background:var(--bg2,#ece6db)}
+    .ba-related{margin-top:30px;padding-top:20px;border-top:2px solid var(--border,#cfc8ba)}
+    .ba-related h4{font-size:15px;font-weight:700;margin-bottom:12px}
+    .ba-related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+    .ba-related-link{display:block;padding:10px 14px;background:var(--bg2,#ece6db);border:1px solid var(--border,#cfc8ba);border-radius:5px;text-decoration:none;color:var(--text,#231e14);font-size:13px;font-weight:600;transition:border-color .15s}
+    .ba-related-link:hover{border-color:var(--accent,#4a7c35);background:var(--card,#fefcf8)}
+    .ba-share-row{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+    .ba-share-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:5px;font-size:12px;font-weight:600;text-decoration:none;color:#fff;transition:opacity .15s}
+    .ba-share-btn:hover{opacity:.85}
+    .ba-share-btn--x{background:#000}
+    .ba-share-btn--li{background:#0A66C2}
+  </style>
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
