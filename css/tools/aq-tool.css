@@ -1,0 +1,389 @@
+
+/* AQ Autism Screening Tool Styles — aq- prefix */
+.aq-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Version toggle */
+.aq-version-toggle {
+  display: flex;
+  gap: 0;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.aq-version-btn {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  background: var(--bg2);
+  color: var(--text-muted, #6b6050);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-align: center;
+}
+.aq-version-btn.aq-active {
+  background: var(--accent);
+  color: #fff;
+}
+.aq-version-btn:hover:not(.aq-active) {
+  background: var(--bg3, #e2dbd0);
+}
+
+/* Domain sections */
+.aq-domain {
+  margin-bottom: 24px;
+}
+.aq-domain-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 6px 6px 0 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+.aq-domain-icon {
+  font-size: 18px;
+}
+.aq-domain-count {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+/* Column headers */
+.aq-column-headers {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--bg3, #e2dbd0);
+  border: 1px solid var(--border);
+  border-top: none;
+}
+.aq-column-spacer {
+  min-width: 28px;
+  flex-shrink: 0;
+}
+.aq-column-text-spacer {
+  flex: 1;
+}
+.aq-column-labels {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.aq-column-label {
+  min-width: 52px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted, #6b6050);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0 6px;
+}
+
+/* Item groups */
+.aq-item-group {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-top: none;
+  padding: 12px 16px;
+}
+.aq-item-group:last-child {
+  border-radius: 0 0 6px 6px;
+}
+.aq-item-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.aq-item-num {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 28px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.aq-item-text {
+  flex: 1;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.45;
+}
+.aq-item-score-dir {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+.aq-item-score-dir--agree {
+  color: var(--accent);
+  background: rgba(74,124,53,0.1);
+}
+.aq-item-score-dir--disagree {
+  color: #2a7ab5;
+  background: rgba(42,122,181,0.1);
+}
+
+/* Radio buttons */
+.aq-radios {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.aq-radio-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  padding: 6px 6px;
+  border-radius: 4px;
+  transition: background 0.15s;
+  min-width: 52px;
+}
+.aq-radio-label:hover {
+  background: rgba(74,124,53,0.08);
+}
+.aq-radio-label input[type="radio"] {
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.aq-radio-text {
+  font-size: 10px;
+  color: var(--text-muted, #6b6050);
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Score Display */
+.aq-score-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 28px 0 20px;
+  justify-content: center;
+}
+.aq-score-card {
+  background: var(--card, #fefcf8);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 22px;
+  text-align: center;
+  min-width: 150px;
+}
+.aq-score-card--total {
+  border-top: 3px solid var(--accent);
+  flex: 1;
+  max-width: 220px;
+}
+.aq-score-card--domain {
+  border-top: 3px solid var(--accent2, #8b6914);
+  flex: 1;
+  max-width: 180px;
+}
+.aq-score-num {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+}
+.aq-score-max {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-muted, #6b6050);
+}
+.aq-score-label {
+  font-size: 11px;
+  color: var(--text-muted, #6b6050);
+  margin-top: 4px;
+}
+.aq-result {
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 8px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  display: inline-block;
+}
+.aq-result--low { background: rgba(74,124,53,0.12); color: #3a6e28; }
+.aq-result--elevated { background: rgba(176,90,32,0.12); color: #b05a20; }
+.aq-result--high { background: rgba(192,64,48,0.12); color: #c04030; }
+
+/* Domain score bar chart (AQ-50 only) */
+.aq-bar-chart {
+  margin: 20px 0;
+}
+.aq-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.aq-bar-label {
+  width: 160px;
+  flex-shrink: 0;
+  font-size: 12px;
+  color: var(--text-muted, #6b6050);
+  text-align: right;
+}
+.aq-bar-track {
+  flex: 1;
+  background: var(--bg3, #e2dbd0);
+  border-radius: 4px;
+  height: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.aq-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+.aq-bar-fill--social { background: #c04030; }
+.aq-bar-fill--switch { background: #b05a20; }
+.aq-bar-fill--detail { background: #8b6914; }
+.aq-bar-fill--comm { background: #6a4c93; }
+.aq-bar-fill--imag { background: #2a7ab5; }
+.aq-bar-pct {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Buttons */
+.aq-button-group {
+  display: flex;
+  gap: 12px;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+.aq-button {
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.aq-button-primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.aq-button-primary:hover {
+  background: var(--green, #3a6e28);
+}
+.aq-button-secondary {
+  background: var(--bg2);
+  color: var(--text);
+}
+.aq-button-secondary:hover {
+  background: var(--bg3, #e2dbd0);
+}
+
+/* Interpretation */
+.aq-interp {
+  margin-top: 28px;
+  padding: 16px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.aq-interp-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.aq-interp-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 16px;
+  font-size: 13px;
+}
+.aq-interp-range {
+  font-weight: 700;
+  color: var(--text);
+}
+.aq-interp-desc {
+  color: var(--text-muted, #6b6050);
+}
+
+/* Progress indicator */
+.aq-progress {
+  font-size: 12px;
+  color: var(--text-muted, #6b6050);
+  margin-bottom: 16px;
+  text-align: center;
+}
+.aq-progress-bar {
+  height: 4px;
+  background: var(--bg3, #e2dbd0);
+  border-radius: 2px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+.aq-progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .aq-item-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .aq-radios {
+    justify-content: space-between;
+  }
+  .aq-radio-label {
+    min-width: 0;
+    flex: 1;
+    padding: 6px 4px;
+  }
+  .aq-column-headers {
+    display: none;
+  }
+  .aq-score-card {
+    min-width: 110px;
+  }
+  .aq-bar-row {
+    flex-wrap: wrap;
+  }
+  .aq-bar-label {
+    width: 100%;
+    text-align: left;
+  }
+  .aq-version-btn {
+    font-size: 12px;
+    padding: 10px 8px;
+  }
+}

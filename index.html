@@ -130,6 +130,7 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="cdr-tool">CDR Staging</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="slums-tool">SLUMS Exam</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="asd-tool">ASD Severity</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="aq-tool">Autism Screening (AQ)</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="adl-tool">ADL / IADL</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="asrs-tool">ASRS (ADHD)</a></li>
 
@@ -150,6 +151,9 @@
 
           <li class="nav-sub-divider">Safety</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="suicide-risk-tools">Suicide Risk</a></li>
+
+          <li class="nav-sub-divider">Wellness</li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="bat-tool">Burnout (BAT)</a></li>
         </ul>
       </li>
 
@@ -10250,7 +10254,195 @@
   </div>
 </section><!-- end ess-tool -->
 
+<section id="bat-tool" data-lazy-tool="bat-tool" class="section">
+  <div class="section-header">
+    <h2>Burnout Assessment Tool (BAT)</h2>
+    <p>
+      The Burnout Assessment Tool (BAT) is a validated 23-item (work-related) or 22-item (general)
+      self-report measure of burnout across four core dimensions: exhaustion, mental distance,
+      cognitive impairment, and emotional impairment. An additional 10-item secondary symptoms scale
+      covers psychological and psychosomatic complaints. Developed by Schaufeli, De Witte &amp; Desart (2019)
+      at KU Leuven. Scored 1–5 (Never to Always); domain mean scores are reported.
+    </p>
+  </div>
 
+  <div class="bo-warning mt-warning">
+    <strong>Clinical Use:</strong> The BAT is a screening instrument, not a diagnostic tool.
+    Elevated scores warrant further clinical evaluation. This tool is for healthcare professionals
+    and should be interpreted within the context of a comprehensive clinical assessment.
+    Reference: Schaufeli, W.B., De Witte, H. &amp; Desart, S. (2019). <em>BAT – Test Manual.</em> KU Leuven.
+  </div>
+
+  <div class="bo-container">
+    <!-- Version Toggle -->
+    <div class="bo-version-toggle">
+      <button type="button" class="bo-version-btn bo-active" id="bo-work-btn">Work-Related Version (23 items)</button>
+      <button type="button" class="bo-version-btn" id="bo-general-btn">General Version (22 items)</button>
+    </div>
+
+    <!-- Dynamic Form Container -->
+    <div id="bo-form-container"></div>
+
+    <!-- Score Display -->
+    <div class="bo-score-display">
+      <div class="bo-score-card bo-score-card--total">
+        <div class="bo-score-num" id="bo-total-num">0.00</div>
+        <div class="bo-score-label" id="bo-total-max">/ 5.00</div>
+        <div class="bo-severity bo-severity-low" id="bo-severity">No/very low risk</div>
+      </div>
+      <div class="bo-score-card bo-score-card--exhaustion">
+        <div class="bo-score-num" id="bo-exh-num">0.00</div>
+        <div class="bo-score-label">Exhaustion</div>
+      </div>
+      <div class="bo-score-card bo-score-card--distance">
+        <div class="bo-score-num" id="bo-md-num">0.00</div>
+        <div class="bo-score-label">Mental Distance</div>
+      </div>
+      <div class="bo-score-card bo-score-card--cognitive">
+        <div class="bo-score-num" id="bo-ci-num">0.00</div>
+        <div class="bo-score-label">Cognitive Impairment</div>
+      </div>
+      <div class="bo-score-card bo-score-card--emotional">
+        <div class="bo-score-num" id="bo-ei-num">0.00</div>
+        <div class="bo-score-label">Emotional Impairment</div>
+      </div>
+      <div class="bo-score-card bo-score-card--secondary">
+        <div class="bo-score-num" id="bo-sec-num">0.00</div>
+        <div class="bo-score-label">Secondary Symptoms</div>
+      </div>
+    </div>
+
+    <!-- Domain Bar Chart -->
+    <div class="bo-bar-chart" id="bo-bar-chart"></div>
+
+    <!-- Buttons -->
+    <div class="bo-button-group">
+      <button type="button" class="bo-button bo-button-primary" id="bo-report-btn">Generate Report &amp; Copy</button>
+      <button type="button" class="bo-button bo-button-secondary" id="bo-reset-btn">Reset</button>
+    </div>
+
+    <!-- Interpretation Guide -->
+    <div class="bo-interp">
+      <div class="bo-interp-title">Interpretation Guide (Mean Scores)</div>
+      <div class="bo-interp-grid">
+        <span class="bo-interp-range">1.00 – 1.49</span>
+        <span class="bo-interp-desc">No/very low risk of burnout</span>
+        <span class="bo-interp-range">1.50 – 2.49</span>
+        <span class="bo-interp-desc">Low risk — some burnout symptoms present</span>
+        <span class="bo-interp-range">2.50 – 3.49</span>
+        <span class="bo-interp-desc">At risk — clinically meaningful burnout symptoms</span>
+        <span class="bo-interp-range">3.50 – 4.49</span>
+        <span class="bo-interp-desc">High risk — significant burnout warranting intervention</span>
+        <span class="bo-interp-range">4.50 – 5.00</span>
+        <span class="bo-interp-desc">Very high risk — severe burnout, urgent clinical attention</span>
+      </div>
+    </div>
+  </div>
+</section><!-- end bat-tool -->
+
+<section id="aq-tool" data-lazy-tool="aq-tool" class="section">
+  <div class="section-header">
+    <h2>Autism Screening (AQ)</h2>
+    <p>
+      The Autism Spectrum Quotient (AQ) is a self-report screening instrument developed by
+      Baron-Cohen et al. (2001) at the Autism Research Centre, University of Cambridge. The AQ-10
+      is a brief 10-item screener for rapid identification of adults who may benefit from a full
+      autism evaluation. The AQ-50 provides a comprehensive 50-item assessment across five domains:
+      social skills, attention switching, attention to detail, communication, and imagination.
+      Items are scored 0 or 1 based on endorsement direction; higher scores indicate greater autistic traits.
+    </p>
+  </div>
+
+  <div class="mt-warning">
+    <strong>Clinical Use:</strong> The AQ is a screening instrument, not a diagnostic tool.
+    Elevated scores warrant formal diagnostic evaluation using DSM-5 criteria and clinical interview.
+    This tool is for healthcare professionals and should be interpreted within the context of a
+    comprehensive clinical assessment.<br>
+    Reference: Baron-Cohen, S., Wheelwright, S., Skinner, R., Martin, J., &amp; Clubley, E. (2001).
+    <em>The Autism-Spectrum Quotient (AQ): Evidence from Asperger syndrome/high-functioning autism, males and females, scientists and mathematicians.</em>
+    Journal of Autism and Developmental Disorders, 31(1), 5–17.
+  </div>
+
+  <div class="aq-container">
+    <!-- Version Toggle -->
+    <div class="aq-version-toggle">
+      <button type="button" class="aq-version-btn aq-active" id="aq-10-btn">AQ-10 Short Screener (10 items)</button>
+      <button type="button" class="aq-version-btn" id="aq-50-btn">AQ-50 Full Assessment (50 items)</button>
+    </div>
+
+    <!-- Progress Indicator -->
+    <div class="aq-progress">
+      <span id="aq-progress-text">0 of 10 items answered</span>
+      <div class="aq-progress-bar">
+        <div class="aq-progress-fill" id="aq-progress-fill" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Dynamic Form Container -->
+    <div id="aq-form-container"></div>
+
+    <!-- Score Display -->
+    <div class="aq-score-display">
+      <div class="aq-score-card aq-score-card--total">
+        <div class="aq-score-num" id="aq-total-num">0</div>
+        <div class="aq-score-max" id="aq-total-max">/ 10</div>
+        <div class="aq-result aq-result--low" id="aq-result">Low</div>
+      </div>
+    </div>
+
+    <!-- Domain Score Cards (AQ-50 only) -->
+    <div class="aq-score-display" id="aq-domain-scores" style="display: none;">
+      <div class="aq-score-card aq-score-card--domain" style="border-top-color: #c04030;">
+        <div class="aq-score-num" id="aq-social-num">0</div>
+        <div class="aq-score-label">Social Skills <span class="aq-score-max">/ 10</span></div>
+      </div>
+      <div class="aq-score-card aq-score-card--domain" style="border-top-color: #b05a20;">
+        <div class="aq-score-num" id="aq-switch-num">0</div>
+        <div class="aq-score-label">Attention Switching <span class="aq-score-max">/ 10</span></div>
+      </div>
+      <div class="aq-score-card aq-score-card--domain" style="border-top-color: #8b6914;">
+        <div class="aq-score-num" id="aq-detail-num">0</div>
+        <div class="aq-score-label">Attention to Detail <span class="aq-score-max">/ 10</span></div>
+      </div>
+      <div class="aq-score-card aq-score-card--domain" style="border-top-color: #6a4c93;">
+        <div class="aq-score-num" id="aq-comm-num">0</div>
+        <div class="aq-score-label">Communication <span class="aq-score-max">/ 10</span></div>
+      </div>
+      <div class="aq-score-card aq-score-card--domain" style="border-top-color: #2a7ab5;">
+        <div class="aq-score-num" id="aq-imag-num">0</div>
+        <div class="aq-score-label">Imagination <span class="aq-score-max">/ 10</span></div>
+      </div>
+    </div>
+
+    <!-- Domain Bar Chart (AQ-50 only) -->
+    <div class="aq-bar-chart" id="aq-bar-chart" style="display: none;"></div>
+
+    <!-- Buttons -->
+    <div class="aq-button-group">
+      <button type="button" class="aq-button aq-button-primary" id="aq-report-btn">Generate Report &amp; Copy</button>
+      <button type="button" class="aq-button aq-button-secondary" id="aq-reset-btn">Reset</button>
+    </div>
+
+    <!-- Interpretation Guide -->
+    <div class="aq-interp">
+      <div class="aq-interp-title">Interpretation Guide</div>
+      <div class="aq-interp-grid">
+        <span class="aq-interp-range" style="grid-column: 1 / -1; font-size: 12px; color: var(--accent); margin-top: 4px;">AQ-10 (Short Screener)</span>
+        <span class="aq-interp-range">0 – 5</span>
+        <span class="aq-interp-desc">Low — few autistic traits endorsed</span>
+        <span class="aq-interp-range">6 – 10</span>
+        <span class="aq-interp-desc">Elevated — consider referral for comprehensive autism evaluation</span>
+        <span class="aq-interp-range" style="grid-column: 1 / -1; font-size: 12px; color: var(--accent); margin-top: 8px;">AQ-50 (Full Assessment)</span>
+        <span class="aq-interp-range">0 – 25</span>
+        <span class="aq-interp-desc">Low — non-significant autistic traits</span>
+        <span class="aq-interp-range">26 – 31</span>
+        <span class="aq-interp-desc">Borderline/Elevated — above average autistic traits, consider further evaluation</span>
+        <span class="aq-interp-range">32 – 50</span>
+        <span class="aq-interp-desc">Clinically significant — strong indication, formal evaluation recommended</span>
+      </div>
+    </div>
+  </div>
+</section><!-- end aq-tool -->
 
 
 
@@ -10615,6 +10807,8 @@
       { title: 'ASRS (ADHD)', section: 'asrs-tool', cat: 'Rating Scale' },
       { title: 'ADL / IADL', section: 'adl-tool', cat: 'Rating Scale' },
       { title: 'Epworth Sleepiness', section: 'ess-tool', cat: 'Rating Scale' },
+      { title: 'Burnout (BAT)', section: 'bat-tool', cat: 'Rating Scale' },
+      { title: 'Autism Screening (AQ)', section: 'aq-tool', cat: 'Rating Scale' },
     ];
 
     var timer;

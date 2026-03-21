@@ -1,0 +1,385 @@
+
+/* BAT (Burnout Assessment Tool) Styles — bo- prefix */
+.bo-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Version toggle */
+.bo-version-toggle {
+  display: flex;
+  gap: 0;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.bo-version-btn {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  background: var(--bg2);
+  color: var(--text-muted, #6b6050);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-align: center;
+}
+.bo-version-btn.bo-active {
+  background: var(--accent);
+  color: #fff;
+}
+.bo-version-btn:hover:not(.bo-active) {
+  background: var(--bg3, #e2dbd0);
+}
+
+/* Domain sections */
+.bo-domain {
+  margin-bottom: 28px;
+}
+.bo-domain-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 6px 6px 0 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+.bo-domain-header-secondary {
+  background: var(--accent2, #8b6914);
+}
+.bo-domain-icon {
+  font-size: 18px;
+}
+.bo-domain-count {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+/* Item groups */
+.bo-item-group {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-top: none;
+  padding: 14px 16px;
+}
+.bo-item-group:last-child {
+  border-radius: 0 0 6px 6px;
+}
+.bo-item-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.bo-item-num {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 28px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.bo-item-text {
+  flex: 1;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.45;
+}
+.bo-item-short {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  background: rgba(74,124,53,0.1);
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+/* Radio button row */
+.bo-radios {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.bo-radio-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: background 0.15s;
+  min-width: 52px;
+}
+.bo-radio-label:hover {
+  background: rgba(74,124,53,0.08);
+}
+.bo-radio-label input[type="radio"] {
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.bo-radio-text {
+  font-size: 10px;
+  color: var(--text-muted, #6b6050);
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Column headers for radio options */
+.bo-column-headers {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--bg3, #e2dbd0);
+  border: 1px solid var(--border);
+  border-top: none;
+}
+.bo-column-spacer {
+  min-width: 28px;
+  flex-shrink: 0;
+}
+.bo-column-text-spacer {
+  flex: 1;
+}
+.bo-column-labels {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.bo-column-label {
+  min-width: 52px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted, #6b6050);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0 8px;
+}
+
+/* Score Display */
+.bo-score-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 28px 0 20px;
+  justify-content: center;
+}
+.bo-score-card {
+  background: var(--card, #fefcf8);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  text-align: center;
+  min-width: 140px;
+  flex: 1;
+  max-width: 200px;
+}
+.bo-score-card--total {
+  border-top: 3px solid var(--accent);
+}
+.bo-score-card--exhaustion {
+  border-top: 3px solid #c04030;
+}
+.bo-score-card--distance {
+  border-top: 3px solid #b05a20;
+}
+.bo-score-card--cognitive {
+  border-top: 3px solid #8b6914;
+}
+.bo-score-card--emotional {
+  border-top: 3px solid #6a4c93;
+}
+.bo-score-card--secondary {
+  border-top: 3px solid #2a7ab5;
+}
+.bo-score-num {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+}
+.bo-score-label {
+  font-size: 11px;
+  color: var(--text-muted, #6b6050);
+  margin-top: 4px;
+}
+.bo-severity {
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 6px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  display: inline-block;
+}
+.bo-severity-low { background: rgba(74,124,53,0.12); color: #3a6e28; }
+.bo-severity-moderate { background: rgba(139,105,20,0.12); color: #8b6914; }
+.bo-severity-high { background: rgba(176,90,32,0.12); color: #b05a20; }
+.bo-severity-very-high { background: rgba(192,64,48,0.12); color: #c04030; }
+
+/* Bar chart for domain scores */
+.bo-bar-chart {
+  margin: 20px 0;
+}
+.bo-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.bo-bar-label {
+  width: 140px;
+  flex-shrink: 0;
+  font-size: 12px;
+  color: var(--text-muted, #6b6050);
+  text-align: right;
+}
+.bo-bar-track {
+  flex: 1;
+  background: var(--bg3, #e2dbd0);
+  border-radius: 4px;
+  height: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.bo-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+  min-width: 0;
+}
+.bo-bar-fill--exhaustion { background: #c04030; }
+.bo-bar-fill--distance { background: #b05a20; }
+.bo-bar-fill--cognitive { background: #8b6914; }
+.bo-bar-fill--emotional { background: #6a4c93; }
+.bo-bar-fill--psychological { background: #2a7ab5; }
+.bo-bar-fill--psychosomatic { background: #5a8a6a; }
+.bo-bar-pct {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Buttons */
+.bo-button-group {
+  display: flex;
+  gap: 12px;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+.bo-button {
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.bo-button-primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.bo-button-primary:hover {
+  background: var(--green, #3a6e28);
+}
+.bo-button-secondary {
+  background: var(--bg2);
+  color: var(--text);
+}
+.bo-button-secondary:hover {
+  background: var(--bg3, #e2dbd0);
+}
+
+/* Interpretation guide */
+.bo-interp {
+  margin-top: 28px;
+  padding: 16px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.bo-interp-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.bo-interp-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 16px;
+  font-size: 13px;
+}
+.bo-interp-range {
+  font-weight: 700;
+  color: var(--text);
+}
+.bo-interp-desc {
+  color: var(--text-muted, #6b6050);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bo-item-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .bo-radios {
+    justify-content: space-between;
+  }
+  .bo-radio-label {
+    min-width: 0;
+    flex: 1;
+    padding: 6px 4px;
+  }
+  .bo-column-headers {
+    display: none;
+  }
+  .bo-score-card {
+    min-width: 110px;
+  }
+  .bo-bar-row {
+    flex-wrap: wrap;
+  }
+  .bo-bar-label {
+    width: 100%;
+    text-align: left;
+  }
+  .bo-version-btn {
+    font-size: 12px;
+    padding: 10px 8px;
+  }
+}
+@media (max-width: 480px) {
+  .bo-score-display {
+    gap: 10px;
+  }
+  .bo-score-card {
+    min-width: 90px;
+    padding: 12px 10px;
+  }
+  .bo-score-num {
+    font-size: 1.4rem;
+  }
+}
