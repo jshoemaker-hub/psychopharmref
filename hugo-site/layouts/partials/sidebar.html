@@ -93,6 +93,12 @@
       </button>
       <ul class="nav-sub">
         <li><a href="{{ "/blog" | relURL }}" class="nav-link nav-sub-link">All Posts</a></li>
+        <li style="padding:4px 8px 8px;">
+          <div class="blog-search-wrap">
+            <input type="text" id="blog-search-input" class="blog-search-input" placeholder="Search articles..." autocomplete="off">
+            <div id="blog-search-results" class="blog-search-results"></div>
+          </div>
+        </li>
 
         <li class="nav-sub-divider">Addiction Medicine</li>
         <li><a href="{{ "/blog/smoking-cessation" | relURL }}" class="nav-link nav-sub-link">Smoking Cessation</a></li>

@@ -17207,6 +17207,11 @@ Past Compulsions: ${compulsionsPastList.length > 0 ? compulsionsPastList.join(';
         <h2>Blog</h2>
         <p class="section-sub">Clinical commentary, pharmacology explainers, and evidence-based practice insights.</p>
       </div>
+      <div style="margin:0 0 20px;max-width:500px;">
+        <input type="text" id="spa-blog-search" placeholder="Search 68 articles by topic, condition, or medication..." autocomplete="off"
+          style="width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:#fff;color:var(--text);"
+          oninput="(function(q){var cards=document.querySelectorAll('#blog-index .blog-post-card');var terms=q.toLowerCase().trim().split(/\s+/);cards.forEach(function(c){if(!q.trim()){c.style.display='';return;}var t=c.textContent.toLowerCase();c.style.display=terms.every(function(w){return t.indexOf(w)>=0})?'':'none';});})(this.value)">
+      </div>
       <!-- Addiction Medicine -->
       <div class="blog-topic-section">
         <div class="blog-topic-label">Addiction Medicine</div>

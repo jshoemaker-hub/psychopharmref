@@ -39,3 +39,110 @@ document.querySelectorAll('.nav-parent-btn').forEach(btn => {
   sidebar.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { if (window.innerWidth <= 768) close(); }); });
 })();
 </script>
+
+<!-- Blog Search -->
+<script>
+(function() {
+  var input = document.getElementById('blog-search-input');
+  var results = document.getElementById('blog-search-results');
+  if (!input || !results) return;
+
+  var searchIndex = null;
+  var debounceTimer = null;
+
+  // Load the search index on first focus
+  input.addEventListener('focus', function() {
+    if (searchIndex) return;
+    fetch('/index.json')
+      .then(function(r) { return r.json(); })
+      .then(function(data) { searchIndex = data; })
+      .catch(function() {
+        // Fallback: build index from sidebar links
+        searchIndex = [];
+        document.querySelectorAll('#sidebar .nav-sub-link[href*="/blog/"]').forEach(function(a) {
+          searchIndex.push({
+            title: a.textContent.trim(),
+            url: a.getAttribute('href'),
+            description: '',
+            category: '',
+            content: ''
+          });
+        });
+      });
+  });
+
+  input.addEventListener('input', function() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(doSearch, 150);
+  });
+
+  // Close results on click outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.blog-search-wrap')) {
+      results.classList.remove('active');
+    }
+  });
+
+  // Keyboard navigation
+  input.addEventListener('keydown', function(e) {
+    var items = results.querySelectorAll('.blog-sr-item');
+    var active = results.querySelector('.blog-sr-item:focus');
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (!active && items.length) items[0].focus();
+      else if (active && active.nextElementSibling) active.nextElementSibling.focus();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (active && active.previousElementSibling) active.previousElementSibling.focus();
+      else input.focus();
+    } else if (e.key === 'Escape') {
+      results.classList.remove('active');
+      input.blur();
+    }
+  });
+
+  function doSearch() {
+    var q = input.value.trim().toLowerCase();
+    if (!q || q.length < 2 || !searchIndex) {
+      results.classList.remove('active');
+      results.innerHTML = '';
+      return;
+    }
+
+    var terms = q.split(/\s+/);
+    var matches = searchIndex.filter(function(item) {
+      var haystack = (item.title + ' ' + item.description + ' ' + item.category + ' ' + item.content).toLowerCase();
+      return terms.every(function(term) { return haystack.indexOf(term) >= 0; });
+    });
+
+    if (matches.length === 0) {
+      results.innerHTML = '<div class="blog-sr-empty">No articles found</div>';
+      results.classList.add('active');
+      return;
+    }
+
+    // Score: title matches worth more than content matches
+    matches.sort(function(a, b) {
+      var aTitle = terms.filter(function(t) { return a.title.toLowerCase().indexOf(t) >= 0; }).length;
+      var bTitle = terms.filter(function(t) { return b.title.toLowerCase().indexOf(t) >= 0; }).length;
+      return bTitle - aTitle;
+    });
+
+    results.innerHTML = matches.slice(0, 10).map(function(item) {
+      var title = highlightTerms(item.title, terms);
+      var cat = item.category ? '<span class="blog-sr-cat">' + item.category + '</span>' : '';
+      return '<a href="' + item.url + '" class="blog-sr-item"><span class="blog-sr-title">' + title + '</span>' + cat + '</a>';
+    }).join('');
+    results.classList.add('active');
+  }
+
+  function highlightTerms(text, terms) {
+    terms.forEach(function(term) {
+      if (term.length < 2) return;
+      var regex = new RegExp('(' + term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      text = text.replace(regex, '<mark>$1</mark>');
+    });
+    return text;
+  }
+})();
+</script>
