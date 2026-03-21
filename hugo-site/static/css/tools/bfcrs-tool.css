@@ -283,4 +283,12 @@
     .bf-btn-primary {
       background-color: var(--accent);
     }
-  
+
+    /* ── Missing CSS Classes (aliases) ── */
+    .bf-collapsible {
+      /* Alias for .bf-fieldset — inherits its styles */
+    }
+
+    .bf-legend-toggle {
+      /* Alias for .bf-legend — inherits its styles */
+    }

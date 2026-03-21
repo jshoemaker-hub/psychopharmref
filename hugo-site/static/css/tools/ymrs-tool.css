@@ -213,4 +213,9 @@
       font-weight: 700;
       margin-left: 4px;
     }
+
+    /* ── Missing CSS Classes (aliases) ── */
+    .ym-warning {
+      /* Alias for .mt-warning — inherits its styles */
+    }
   

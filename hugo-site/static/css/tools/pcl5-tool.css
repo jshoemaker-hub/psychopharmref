@@ -289,4 +289,9 @@
     .pc-form {
       margin-top: 20px;
     }
+
+    /* ── Missing CSS Classes (aliases) ── */
+    .pc-warning {
+      /* Alias for .mt-warning — inherits its styles */
+    }
   

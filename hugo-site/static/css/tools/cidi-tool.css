@@ -258,4 +258,9 @@
       font-weight: 600;
       color: #2d5a2d;
     }
+
+    /* ── Missing CSS Classes (aliases) ── */
+    .ci-warning {
+      /* Alias for .mt-warning — inherits its styles */
+    }
   

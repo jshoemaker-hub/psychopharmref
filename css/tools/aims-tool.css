@@ -353,4 +353,9 @@
         width: 100%;
       }
     }
+
+    /* ── Missing CSS Classes (aliases) ── */
+    .ai-warning {
+      /* Alias for .mt-warning — inherits its styles */
+    }
   

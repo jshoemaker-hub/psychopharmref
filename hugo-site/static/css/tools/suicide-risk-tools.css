@@ -603,4 +603,12 @@
           cursor: pointer;
           margin: 0;
         }
-      
+
+        /* ── Missing CSS Classes (aliases and utilities) ── */
+        .sr-intensity-select {
+          /* Inherits from .sr-select */
+        }
+
+        .sr-warning-box {
+          /* HTML div wrapper, uses default styling */
+        }

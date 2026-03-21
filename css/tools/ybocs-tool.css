@@ -274,3 +274,5 @@
       box-shadow: 0 4px 12px rgba(139, 105, 20, 0.3);
     }
   
+/* Warning box - inherits from global .mt-warning */
+.yb-warning { }

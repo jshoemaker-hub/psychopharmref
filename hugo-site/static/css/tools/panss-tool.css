@@ -389,4 +389,67 @@
         gap: 0.25rem;
       }
     }
-  
+
+    /* PANSS-6 Score Display Elements */
+    .ps-6-scores {
+      /* Container for PANSS-6 scores */
+    }
+
+    .ps-6-positive {
+      /* Positive subscale score display */
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .ps-6-negative {
+      /* Negative subscale score display */
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .ps-6-total {
+      /* Total PANSS-6 score display */
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* PANSS-30 Score Display Elements */
+    .ps-30-scores {
+      /* Container for PANSS-30 scores */
+    }
+
+    .ps-30-positive {
+      /* Positive scale score (P1-P7) */
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .ps-30-negative {
+      /* Negative scale score (N1-N7) */
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .ps-30-general {
+      /* General psychopathology score (G1-G16) */
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .ps-30-total {
+      /* Total PANSS-30 score */
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .ps-30-composite {
+      /* Composite Index (Marder factor) */
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .ps-30-severity {
+      /* Severity rating interpretation */
+      font-weight: 600;
+      color: var(--text);
+    }

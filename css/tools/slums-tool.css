@@ -538,4 +538,32 @@
             gap: 0.5rem;
           }
         }
-      
+
+        /* Checkbox input styling */
+        .sl-q-check {
+          cursor: pointer;
+          accent-color: var(--accent);
+          width: 18px;
+          height: 18px;
+        }
+
+        /* Radio input styling */
+        .sl-q-radio {
+          cursor: pointer;
+          accent-color: var(--accent);
+          width: 18px;
+          height: 18px;
+        }
+
+        /* Timer SVG track (background circle) */
+        .sl-timer-track {
+          stroke: var(--border);
+          stroke-width: 8;
+        }
+
+        /* Timer SVG progress (animated circle) */
+        .sl-timer-progress {
+          stroke: var(--accent);
+          stroke-width: 8;
+          stroke-linecap: round;
+        }
