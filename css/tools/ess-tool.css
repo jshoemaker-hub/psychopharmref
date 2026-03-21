@@ -1,0 +1,26 @@
+
+    .es-container { background-color: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; }
+    .es-instructions { font-size: 0.9rem; color: var(--text); margin-bottom: 1.5rem; line-height: 1.5; }
+    .es-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+    .es-table th { background-color: var(--accent); color: white; padding: 10px 12px; text-align: center; font-weight: 600; font-size: 0.85rem; border: 1px solid var(--border); }
+    .es-table th:first-child { text-align: left; width: 40%; }
+    .es-table td { padding: 12px; border: 1px solid var(--border); color: var(--text); font-size: 0.9rem; }
+    .es-table td:first-child { font-weight: 500; }
+    .es-table td:not(:first-child) { text-align: center; }
+    .es-table tbody tr:nth-child(even) { background-color: rgba(74,124,53,0.03); }
+    .es-table tbody tr:hover { background-color: #f9f7f2; }
+    .es-table input[type="radio"] { accent-color: var(--accent); cursor: pointer; width: 18px; height: 18px; }
+    .es-score-box { background: white; border: 2px solid var(--accent); border-radius: 8px; padding: 20px; text-align: center; margin-bottom: 1.5rem; }
+    .es-score-num { font-size: 36px; font-weight: 700; color: var(--accent); }
+    .es-score-max { font-size: 14px; color: var(--text); margin-bottom: 12px; }
+    .es-interp { font-size: 0.95rem; font-weight: 600; padding: 12px; border-radius: 4px; margin-top: 12px; }
+    .es-interp.es-normal { background-color: rgba(74,124,53,0.1); border-left: 4px solid var(--accent); color: var(--text); }
+    .es-interp.es-average { background-color: rgba(139,105,20,0.1); border-left: 4px solid var(--accent2); color: var(--text); }
+    .es-interp.es-excessive { background-color: rgba(185,28,28,0.1); border-left: 4px solid #b91c1c; color: var(--text); }
+    .es-buttons { display: flex; gap: 12px; margin-top: 1.5rem; }
+    .es-btn { padding: 0.75rem 1.5rem; font-size: 0.95rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.2s; color: white; }
+    .es-btn-primary { background-color: var(--accent); }
+    .es-btn-primary:hover { background-color: #3d6429; }
+    .es-btn-secondary { background-color: var(--accent2); }
+    .es-btn-secondary:hover { background-color: #6f5410; }
+  

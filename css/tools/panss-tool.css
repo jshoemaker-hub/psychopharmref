@@ -1,0 +1,392 @@
+
+    /* PANSS Tool Styles - ps- prefix */
+
+    .ps-section-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .ps-warning {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background-color: #fff8e6;
+      border-left: 4px solid var(--accent2, #8b6914);
+      border-radius: 4px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .ps-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--border, #cfc8ba);
+    }
+
+    .ps-tab-btn {
+      padding: 0.75rem 1.25rem;
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: var(--text, #231e14);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .ps-tab-btn:hover {
+      color: var(--accent, #4a7c35);
+    }
+
+    .ps-tab-btn.ps-tab-active {
+      border-bottom-color: var(--accent, #4a7c35);
+      color: var(--accent, #4a7c35);
+    }
+
+    .ps-tab-content {
+      display: none;
+    }
+
+    .ps-tab-content.ps-tab-active {
+      display: block;
+    }
+
+    .ps-form-container {
+      background-color: var(--bg2, #ece6db);
+      padding: 1.5rem;
+      border-radius: 6px;
+    }
+
+    .ps-section-group {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border, #cfc8ba);
+    }
+
+    .ps-section-group:last-child {
+      border-bottom: none;
+    }
+
+    .ps-subscale-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text, #231e14);
+      margin: 0 0 1rem 0;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent, #4a7c35);
+    }
+
+    .ps-subscale-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .ps-subscale-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background-color: rgba(74, 124, 53, 0.08);
+      border: 1px solid var(--border, #cfc8ba);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .ps-subscale-header:hover {
+      background-color: rgba(74, 124, 53, 0.12);
+    }
+
+    .ps-subscale-header.ps-subscale-open {
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
+    }
+
+    .ps-subscale-header .ps-subscale-title {
+      margin: 0;
+      border: none;
+      padding: 0;
+      font-size: 1rem;
+    }
+
+    .ps-subscale-toggle {
+      font-size: 0.8rem;
+      transition: transform 0.2s ease;
+    }
+
+    .ps-subscale-header.ps-subscale-open .ps-subscale-toggle {
+      transform: rotate(180deg);
+    }
+
+    .ps-subscale-items {
+      display: none;
+      background-color: white;
+      border: 1px solid var(--border, #cfc8ba);
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+      padding: 1rem;
+    }
+
+    .ps-subscale-items.ps-subscale-expanded {
+      display: block;
+    }
+
+    .ps-item {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .ps-item:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+
+    .ps-item-label {
+      display: block;
+      font-weight: 600;
+      color: var(--text, #231e14);
+      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+    }
+
+    .ps-item-description {
+      display: block;
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+
+    .ps-rating-row {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .ps-rating-group {
+      position: relative;
+    }
+
+    .ps-radio {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .ps-radio-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background-color: white;
+      border: 2px solid var(--border, #cfc8ba);
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text, #231e14);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .ps-radio:hover + .ps-radio-label {
+      background-color: #f9f6f0;
+      border-color: var(--accent, #4a7c35);
+    }
+
+    .ps-radio:checked + .ps-radio-label {
+      background-color: var(--accent, #4a7c35);
+      color: white;
+      border-color: var(--accent, #4a7c35);
+    }
+
+    .ps-score-display {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background-color: white;
+      border: 2px solid var(--accent, #4a7c35);
+      border-radius: 6px;
+    }
+
+    .ps-score-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .ps-score-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .ps-score-box {
+      flex: 1;
+      min-width: 150px;
+      padding: 1rem;
+      background-color: var(--bg2, #ece6db);
+      border-radius: 4px;
+      border: 1px solid var(--border, #cfc8ba);
+    }
+
+    .ps-score-box.ps-total-score {
+      background-color: rgba(74, 124, 53, 0.1);
+      border: 2px solid var(--accent, #4a7c35);
+    }
+
+    .ps-score-label {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .ps-score-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent, #4a7c35);
+    }
+
+    .ps-interpretation-note {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: #f9f6f0;
+      border-left: 4px solid var(--accent2, #8b6914);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    .ps-severity-box {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background-color: #f9f6f0;
+      border-left: 4px solid var(--accent2, #8b6914);
+      border-radius: 4px;
+    }
+
+    .ps-severity-label {
+      font-weight: 600;
+      color: var(--text, #231e14);
+      margin-bottom: 0.5rem;
+      display: block;
+      font-size: 0.95rem;
+    }
+
+    .ps-severity-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    .ps-marder-box {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background-color: white;
+      border: 1px solid var(--border, #cfc8ba);
+      border-radius: 4px;
+    }
+
+    .ps-marder-title {
+      font-weight: 600;
+      color: var(--text, #231e14);
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .ps-marder-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.9rem;
+    }
+
+    .ps-marder-item:last-child {
+      border-bottom: none;
+    }
+
+    .ps-marder-label {
+      color: #333;
+    }
+
+    .ps-marder-positive, .ps-marder-negative, .ps-marder-disorg, .ps-marder-hostile, .ps-marder-anxiety {
+      font-weight: 600;
+      color: var(--accent, #4a7c35);
+    }
+
+    .ps-button-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+    }
+
+    .ps-btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .ps-btn-primary {
+      background-color: var(--accent, #4a7c35);
+      color: white;
+    }
+
+    .ps-btn-primary:hover {
+      background-color: #3d6a2c;
+      transform: translateY(-1px);
+    }
+
+    .ps-btn-secondary {
+      background-color: #ddd;
+      color: var(--text, #231e14);
+    }
+
+    .ps-btn-secondary:hover {
+      background-color: #ccc;
+      transform: translateY(-1px);
+    }
+
+    .ps-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .ps-rating-row {
+        gap: 0.3rem;
+      }
+
+      .ps-radio-label {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+      }
+
+      .ps-score-row {
+        flex-direction: column;
+      }
+
+      .ps-score-box {
+        min-width: auto;
+      }
+
+      .ps-button-group {
+        flex-direction: column;
+      }
+
+      .ps-btn {
+        width: 100%;
+      }
+
+      .ps-marder-item {
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+    }
+  

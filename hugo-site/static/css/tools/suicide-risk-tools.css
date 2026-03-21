@@ -1,0 +1,606 @@
+
+        .sr-tab-bar {
+          display: flex;
+          gap: 8px;
+          margin-bottom: 24px;
+          border-bottom: 2px solid var(--border);
+          flex-wrap: wrap;
+        }
+    
+        .sr-tab-btn {
+          padding: 12px 18px;
+          border: 2px solid var(--border);
+          background: white;
+          color: var(--text);
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 500;
+          transition: all 0.2s ease;
+          border-radius: 4px 4px 0 0;
+          border-bottom: none;
+        }
+    
+        .sr-tab-btn:hover {
+          background: var(--bg2);
+        }
+    
+        .sr-tab-btn.sr-active {
+          background: var(--accent);
+          color: white;
+          border-color: var(--accent);
+        }
+    
+        .sr-tab-content {
+          display: none;
+        }
+    
+        .sr-tab-content.sr-active {
+          display: block;
+        }
+    
+        .sr-tool-container {
+          background: white;
+          border: 1px solid var(--border);
+          border-radius: 4px;
+          padding: 20px;
+        }
+    
+        /* C-SSRS Screen Styles */
+        .sr-question-group {
+          margin-bottom: 20px;
+          padding-bottom: 20px;
+          border-bottom: 1px solid var(--border);
+        }
+    
+        .sr-question-group:last-child {
+          border-bottom: none;
+        }
+    
+        .sr-question-label {
+          display: block;
+          margin-bottom: 8px;
+          font-weight: 500;
+          color: var(--text);
+        }
+    
+        .sr-helper-text {
+          display: block;
+          font-size: 13px;
+          color: #666;
+          margin-bottom: 8px;
+          font-style: italic;
+        }
+    
+        .sr-radio-group {
+          display: flex;
+          gap: 20px;
+        }
+    
+        .sr-radio-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+    
+        .sr-radio-wrapper input[type="radio"] {
+          cursor: pointer;
+        }
+    
+        .sr-radio-wrapper label {
+          cursor: pointer;
+          margin: 0;
+        }
+    
+        .sr-hidden {
+          display: none !important;
+        }
+    
+        .sr-result-box {
+          margin-top: 24px;
+          padding: 16px;
+          border-radius: 4px;
+          border-left: 4px solid var(--border);
+        }
+    
+        .sr-result-high {
+          background: rgba(192, 64, 48, 0.1);
+          border-left-color: #c04030;
+        }
+    
+        .sr-result-moderate {
+          background: rgba(212, 133, 10, 0.1);
+          border-left-color: #d4850a;
+        }
+    
+        .sr-result-low {
+          background: rgba(139, 105, 20, 0.15);
+          border-left-color: var(--accent2);
+        }
+    
+        .sr-result-none {
+          background: rgba(74, 124, 53, 0.1);
+          border-left-color: var(--accent);
+        }
+    
+        .sr-result-title {
+          font-weight: 600;
+          font-size: 16px;
+          margin-bottom: 8px;
+        }
+    
+        .sr-result-high .sr-result-title {
+          color: #c04030;
+        }
+    
+        .sr-result-moderate .sr-result-title {
+          color: #d4850a;
+        }
+    
+        .sr-result-low .sr-result-title {
+          color: var(--accent2);
+        }
+    
+        .sr-result-none .sr-result-title {
+          color: var(--accent);
+        }
+    
+        .sr-result-guidance {
+          font-size: 14px;
+          color: var(--text);
+          line-height: 1.5;
+        }
+    
+        /* Full Assessment Accordion */
+        .sr-accordion {
+          border: 1px solid var(--border);
+          border-radius: 4px;
+          margin-bottom: 16px;
+        }
+    
+        .sr-accordion-header {
+          padding: 16px;
+          background: var(--bg2);
+          cursor: pointer;
+          font-weight: 500;
+          color: var(--text);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border: none;
+          width: 100%;
+          text-align: left;
+          transition: background 0.2s ease;
+        }
+    
+        .sr-accordion-header:hover {
+          background: #ddd4cc;
+        }
+    
+        .sr-accordion-header.sr-open {
+          background: var(--accent2);
+          color: white;
+        }
+    
+        .sr-accordion-header::after {
+          content: '▼';
+          font-size: 12px;
+          transition: transform 0.2s ease;
+        }
+    
+        .sr-accordion-header.sr-open::after {
+          transform: rotate(180deg);
+        }
+    
+        .sr-accordion-content {
+          display: none;
+          padding: 20px;
+          border-top: 1px solid var(--border);
+        }
+    
+        .sr-accordion-content.sr-open {
+          display: block;
+        }
+    
+        /* Risk & Protective Factors Layout */
+        .sr-factor-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 24px;
+          margin-bottom: 24px;
+        }
+    
+        .sr-factor-column h4 {
+          margin-top: 0;
+          margin-bottom: 12px;
+          color: var(--text);
+          font-size: 15px;
+          font-weight: 600;
+        }
+    
+        .sr-factor-category {
+          margin-bottom: 16px;
+        }
+    
+        .sr-factor-category-title {
+          font-weight: 600;
+          font-size: 13px;
+          color: var(--accent);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          margin-bottom: 8px;
+        }
+    
+        .sr-checkbox-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
+          margin-bottom: 8px;
+        }
+    
+        .sr-checkbox-item input[type="checkbox"] {
+          margin-top: 3px;
+          cursor: pointer;
+          flex-shrink: 0;
+        }
+    
+        .sr-checkbox-item label {
+          cursor: pointer;
+          margin: 0;
+          font-size: 14px;
+          flex: 1;
+        }
+    
+        .sr-checkbox-sublevel {
+          margin-left: 28px;
+          margin-top: 4px;
+          font-size: 13px;
+          color: #666;
+        }
+    
+        .sr-text-area {
+          width: 100%;
+          min-height: 100px;
+          padding: 10px;
+          border: 1px solid var(--border);
+          border-radius: 4px;
+          font-family: inherit;
+          font-size: 14px;
+          resize: vertical;
+        }
+    
+        .sr-ideation-level {
+          margin-bottom: 16px;
+          padding: 12px;
+          background: var(--bg2);
+          border-left: 4px solid var(--accent);
+          border-radius: 2px;
+        }
+    
+        .sr-ideation-level-number {
+          display: inline-block;
+          background: var(--accent);
+          color: white;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          text-align: center;
+          line-height: 24px;
+          font-weight: 600;
+          font-size: 12px;
+          margin-right: 8px;
+        }
+    
+        .sr-ideation-question {
+          font-weight: 600;
+          margin-bottom: 6px;
+          color: var(--text);
+        }
+    
+        .sr-ideation-description {
+          font-size: 13px;
+          color: #666;
+          margin-bottom: 8px;
+        }
+    
+        .sr-dual-checkbox {
+          display: flex;
+          gap: 20px;
+          align-items: center;
+        }
+    
+        .sr-checkbox-inline {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 13px;
+        }
+    
+        .sr-intensity-row {
+          display: grid;
+          grid-template-columns: 200px 1fr;
+          gap: 16px;
+          align-items: center;
+          margin-bottom: 12px;
+        }
+    
+        .sr-intensity-label {
+          font-weight: 500;
+          font-size: 14px;
+          color: var(--text);
+        }
+    
+        .sr-select {
+          padding: 8px 12px;
+          border: 1px solid var(--border);
+          border-radius: 4px;
+          font-size: 14px;
+          background: white;
+          cursor: pointer;
+        }
+    
+        .sr-behavior-row {
+          display: grid;
+          grid-template-columns: 1fr 120px 120px 80px;
+          gap: 16px;
+          align-items: center;
+          margin-bottom: 12px;
+        }
+    
+        .sr-behavior-label {
+          font-weight: 500;
+          font-size: 14px;
+          color: var(--text);
+        }
+    
+        .sr-behavior-input {
+          padding: 6px 10px;
+          border: 1px solid var(--border);
+          border-radius: 4px;
+          font-size: 13px;
+        }
+    
+        .sr-lethality-section {
+          background: var(--bg2);
+          padding: 16px;
+          border-radius: 4px;
+          margin-bottom: 16px;
+        }
+    
+        .sr-lethality-row {
+          display: grid;
+          grid-template-columns: 150px 1fr 150px;
+          gap: 16px;
+          align-items: center;
+          margin-bottom: 12px;
+        }
+    
+        .sr-lethality-label {
+          font-weight: 500;
+          font-size: 13px;
+        }
+    
+        /* Tool 3 Risk Factors Layout */
+        .sr-panel-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 20px;
+          margin-bottom: 24px;
+        }
+    
+        .sr-panel {
+          background: var(--bg2);
+          border: 1px solid var(--border);
+          border-radius: 4px;
+          padding: 16px;
+        }
+    
+        .sr-panel-title {
+          font-weight: 600;
+          font-size: 15px;
+          color: var(--text);
+          margin-bottom: 12px;
+          padding-bottom: 8px;
+          border-bottom: 2px solid var(--border);
+        }
+    
+        .sr-panel-category {
+          margin-bottom: 12px;
+        }
+    
+        .sr-panel-category-title {
+          font-weight: 600;
+          font-size: 12px;
+          color: var(--accent);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          margin-bottom: 8px;
+        }
+    
+        .sr-panel-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 6px;
+        }
+    
+        .sr-panel-item input[type="checkbox"] {
+          cursor: pointer;
+          flex-shrink: 0;
+        }
+    
+        .sr-panel-item label {
+          cursor: pointer;
+          margin: 0;
+          font-size: 13px;
+        }
+    
+        .sr-summary-stats {
+          background: var(--accent);
+          color: white;
+          padding: 12px;
+          border-radius: 4px;
+          font-size: 13px;
+          margin-bottom: 12px;
+          text-align: center;
+        }
+    
+        .sr-button-group {
+          display: flex;
+          gap: 12px;
+          margin-top: 24px;
+          flex-wrap: wrap;
+        }
+    
+        .sr-btn {
+          padding: 10px 16px;
+          border: none;
+          border-radius: 4px;
+          font-size: 14px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+    
+        .sr-btn-primary {
+          background: var(--accent);
+          color: white;
+        }
+    
+        .sr-btn-primary:hover {
+          background: #3d6a2b;
+        }
+    
+        .sr-btn-secondary {
+          background: var(--bg2);
+          color: var(--text);
+          border: 1px solid var(--border);
+        }
+    
+        .sr-btn-secondary:hover {
+          background: #ddd4cc;
+        }
+    
+        .sr-summary-pre {
+          background: #f5f5f5;
+          border: 1px solid var(--border);
+          border-radius: 4px;
+          padding: 12px;
+          overflow-x: auto;
+          font-family: 'Segoe UI', system-ui, sans-serif;
+          font-size: 12px;
+          line-height: 1.5;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+          cursor: pointer;
+        }
+    
+        .sr-copy-confirmation {
+          display: inline-block;
+          background: var(--accent);
+          color: white;
+          padding: 6px 12px;
+          border-radius: 4px;
+          font-size: 12px;
+          margin-left: 8px;
+          opacity: 0;
+          transition: opacity 0.2s ease;
+        }
+    
+        .sr-copy-confirmation.sr-show {
+          opacity: 1;
+        }
+    
+        .sr-reference {
+          margin-top: 20px;
+          padding-top: 16px;
+          border-top: 1px solid var(--border);
+          font-size: 12px;
+          color: #666;
+          line-height: 1.6;
+        }
+    
+        @media (max-width: 768px) {
+          .sr-factor-grid {
+            grid-template-columns: 1fr;
+          }
+    
+          .sr-panel-grid {
+            grid-template-columns: 1fr;
+          }
+    
+          .sr-tab-btn {
+            flex: 1;
+            min-width: 100px;
+          }
+    
+          .sr-behavior-row {
+            grid-template-columns: 1fr;
+          }
+    
+          .sr-lethality-row {
+            grid-template-columns: 1fr;
+          }
+    
+          .sr-intensity-row {
+            grid-template-columns: 1fr;
+          }
+          .sr-clinical-fields {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        /* ── Clinical Assessment Fields ── */
+        .sr-clinical-fields {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 20px;
+          margin-top: 24px;
+          padding-top: 20px;
+          border-top: 2px solid var(--border);
+        }
+        .sr-field-group {
+          background: var(--bg2);
+          border: 1px solid var(--border);
+          border-radius: 6px;
+          padding: 16px;
+        }
+        .sr-field-group-title {
+          font-weight: 600;
+          font-size: 14px;
+          color: var(--text);
+          margin-bottom: 12px;
+          padding-bottom: 8px;
+          border-bottom: 1px solid var(--border);
+        }
+        .sr-radio-field {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 8px;
+          font-size: 14px;
+        }
+        .sr-radio-field input[type="radio"] {
+          cursor: pointer;
+          accent-color: var(--accent);
+        }
+        .sr-radio-field label {
+          cursor: pointer;
+          margin: 0;
+        }
+        .sr-mod-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 8px;
+          font-size: 14px;
+        }
+        .sr-mod-item input[type="checkbox"] {
+          cursor: pointer;
+          accent-color: var(--accent);
+          flex-shrink: 0;
+        }
+        .sr-mod-item label {
+          cursor: pointer;
+          margin: 0;
+        }
+      

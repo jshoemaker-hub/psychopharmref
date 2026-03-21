@@ -278,6 +278,21 @@ function switchSection(id) {
   // Lazy-render charts when section becomes active
   if (id === 'receptor-binding') renderBarChart();
 
+  // Lazy-load tool CSS/JS on first visit
+  if (sec && sec.dataset.lazyTool && !sec.dataset.lazyLoaded) {
+    const toolId = sec.dataset.lazyTool;
+    // Load CSS
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'css/tools/' + toolId + '.css';
+    document.head.appendChild(link);
+    // Load JS
+    const script = document.createElement('script');
+    script.src = 'js/tools/' + toolId + '.js';
+    document.body.appendChild(script);
+    sec.dataset.lazyLoaded = 'true';
+  }
+
   // Scroll main content to top
   document.getElementById('content').scrollTop = 0;
 

@@ -1,0 +1,541 @@
+
+        /* ── SLUMS Tool Styles ── */
+    
+        .sl-patient-info {
+          background-color: var(--bg2);
+          border: 1px solid var(--border);
+          border-radius: 6px;
+          padding: 1.5rem;
+          margin-bottom: 2rem;
+        }
+    
+        .sl-patient-info h3 {
+          margin-top: 0;
+          margin-bottom: 1rem;
+          font-size: 1.1rem;
+          color: var(--text);
+        }
+    
+        .sl-education-group {
+          border: none;
+          padding: 0;
+          margin: 0;
+        }
+    
+        .sl-education-group legend {
+          font-weight: 600;
+          color: var(--text);
+          margin-bottom: 0.75rem;
+          font-size: 0.95rem;
+        }
+    
+        .sl-radio-label {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-bottom: 0.5rem;
+          cursor: pointer;
+          font-size: 0.95rem;
+          color: var(--text);
+        }
+    
+        .sl-radio-label input[type="radio"] {
+          cursor: pointer;
+          accent-color: var(--accent);
+        }
+    
+        /* Questions Container */
+        .sl-questions-container {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+          margin-bottom: 3rem;
+        }
+    
+        /* Question Card */
+        .sl-question-card {
+          background: white;
+          border: 1px solid var(--border);
+          border-radius: 6px;
+          padding: 1.5rem;
+          border-left: 4px solid var(--accent);
+        }
+    
+        .sl-question-card.sl-domain-orientation { border-left-color: #5a7db8; }
+        .sl-question-card.sl-domain-executive { border-left-color: #b85a5a; }
+        .sl-question-card.sl-domain-attention { border-left-color: #5aacb8; }
+        .sl-question-card.sl-domain-memory { border-left-color: #5a7db8; }
+        .sl-question-card.sl-domain-workingmemory { border-left-color: #5a7db8; }
+        .sl-question-card.sl-domain-language { border-left-color: #9a5ab8; }
+        .sl-question-card.sl-domain-visuospatial { border-left-color: #7ab86e; }
+        .sl-question-card.sl-domain-registration { border-left-color: #888; }
+    
+        .sl-q-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 0.75rem;
+        }
+    
+        .sl-q-number {
+          font-size: 1.3rem;
+          font-weight: 700;
+          color: var(--accent);
+        }
+    
+        .sl-q-info {
+          display: flex;
+          gap: 0.75rem;
+          align-items: center;
+        }
+    
+        .sl-domain-badge {
+          display: inline-block;
+          padding: 0.35rem 0.75rem;
+          border-radius: 4px;
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: white;
+          text-transform: uppercase;
+        }
+    
+        .sl-badge-orientation { background-color: #5a7db8; }
+        .sl-badge-executive { background-color: #b85a5a; }
+        .sl-badge-attention { background-color: #5aacb8; }
+        .sl-badge-memory { background-color: #5a7db8; }
+        .sl-badge-workingmemory { background-color: #5a7db8; }
+        .sl-badge-language { background-color: #9a5ab8; }
+        .sl-badge-visuospatial { background-color: #7ab86e; }
+    
+        .sl-q-points {
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: #666;
+          background-color: #f5f5f5;
+          padding: 0.35rem 0.6rem;
+          border-radius: 3px;
+        }
+    
+        .sl-q-text {
+          font-size: 0.95rem;
+          color: var(--text);
+          margin-bottom: 1rem;
+          font-style: italic;
+        }
+    
+        .sl-q-scoring {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+    
+        .sl-checkbox-label,
+        .sl-radio-label {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          cursor: pointer;
+          font-size: 0.9rem;
+          color: var(--text);
+        }
+    
+        .sl-checkbox-label input[type="checkbox"],
+        .sl-checkbox-label input[type="radio"],
+        .sl-radio-label input[type="radio"] {
+          cursor: pointer;
+          accent-color: var(--accent);
+          width: 18px;
+          height: 18px;
+        }
+    
+        .sl-practice-item input {
+          cursor: not-allowed;
+          opacity: 0.5;
+        }
+    
+        .sl-practice-label {
+          color: #999;
+          font-style: italic;
+        }
+    
+        /* Subquestions */
+        .sl-subquestion {
+          background-color: #f9f9f9;
+          padding: 0.75rem 1rem;
+          border-radius: 4px;
+          margin-bottom: 0.75rem;
+        }
+    
+        .sl-subq-label {
+          display: block;
+          font-size: 0.9rem;
+          font-weight: 600;
+          color: var(--text);
+          margin-bottom: 0.5rem;
+        }
+    
+        /* Registration Objects */
+        .sl-registration-objects {
+          background-color: #f0f8f0;
+          padding: 1rem;
+          border-radius: 6px;
+          display: flex;
+          gap: 1rem;
+          margin: 1rem 0;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+    
+        .sl-object {
+          background-color: white;
+          border: 2px solid var(--accent);
+          border-radius: 4px;
+          padding: 0.75rem 1.25rem;
+          font-weight: 600;
+          color: var(--accent);
+          font-size: 0.95rem;
+        }
+    
+        .sl-domain-note {
+          margin-top: 0.75rem;
+          color: #666;
+          font-size: 0.85rem;
+        }
+    
+        /* Radio Group */
+        .sl-radio-group {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+    
+        .sl-radio-group .sl-radio-label {
+          padding: 0.5rem 0;
+        }
+    
+        /* Shapes */
+        .sl-shapes-display {
+          display: flex;
+          gap: 2rem;
+          justify-content: center;
+          margin: 1.5rem 0;
+          padding: 1.5rem;
+          background-color: #f9f9f9;
+          border-radius: 6px;
+        }
+    
+        .sl-shape {
+          color: var(--text);
+          min-width: 60px;
+          min-height: 60px;
+        }
+    
+        /* Story Block */
+        .sl-story-block {
+          background-color: #f9f9f9;
+          border-left: 4px solid var(--accent2);
+          padding: 1rem 1.25rem;
+          margin: 1rem 0;
+          font-style: italic;
+          color: var(--text);
+          line-height: 1.6;
+        }
+    
+        /* ── Results Section ── */
+        .sl-results-section {
+          display: none;
+          margin-top: 3rem;
+        }
+    
+        .sl-results-section.sl-show {
+          display: block;
+        }
+    
+        /* Score Card */
+        .sl-score-card {
+          background: linear-gradient(135deg, var(--bg2) 0%, white 100%);
+          border: 2px solid var(--accent);
+          border-radius: 8px;
+          padding: 2rem;
+          text-align: center;
+          margin-bottom: 2rem;
+        }
+    
+        .sl-score-display {
+          display: flex;
+          align-items: baseline;
+          justify-content: center;
+          gap: 0.5rem;
+          margin-bottom: 1rem;
+        }
+    
+        .sl-score-number {
+          font-size: 3.5rem;
+          font-weight: 700;
+          color: var(--accent);
+        }
+    
+        .sl-score-label {
+          font-size: 1.2rem;
+          color: #666;
+        }
+    
+        .sl-interpretation {
+          padding-top: 1rem;
+          border-top: 1px solid var(--border);
+        }
+    
+        .sl-interp-category {
+          font-size: 1.3rem;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+        }
+    
+        .sl-interp-note {
+          font-size: 0.9rem;
+          color: #666;
+        }
+    
+        .sl-interp-normal .sl-interp-category { color: #4a7c35; }
+        .sl-interp-mncd .sl-interp-category { color: #d4850a; }
+        .sl-interp-dementia .sl-interp-category { color: #c04030; }
+    
+        /* Domain Analysis */
+        .sl-domain-analysis {
+          background-color: var(--bg2);
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          padding: 2rem;
+          margin-bottom: 2rem;
+        }
+    
+        .sl-domain-analysis h3 {
+          margin-top: 0;
+          margin-bottom: 1.5rem;
+          color: var(--text);
+        }
+    
+        .sl-domain-item {
+          background: white;
+          border: 1px solid var(--border);
+          border-radius: 6px;
+          padding: 1.25rem;
+          margin-bottom: 1.25rem;
+        }
+    
+        .sl-domain-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 0.75rem;
+        }
+    
+        .sl-domain-name {
+          font-weight: 600;
+          color: var(--text);
+          font-size: 0.95rem;
+        }
+    
+        .sl-domain-score {
+          font-size: 0.9rem;
+          font-weight: 700;
+          color: var(--accent);
+          background-color: #f5f5f5;
+          padding: 0.35rem 0.75rem;
+          border-radius: 4px;
+        }
+    
+        .sl-domain-bar {
+          height: 8px;
+          background-color: #e0e0e0;
+          border-radius: 4px;
+          overflow: hidden;
+          margin-bottom: 0.75rem;
+        }
+    
+        .sl-domain-progress {
+          height: 100%;
+          background-color: #4a7c35;
+          transition: width 0.3s ease;
+        }
+    
+        .sl-domain-progress.sl-warning { background-color: #d4850a; }
+        .sl-domain-progress.sl-critical { background-color: #c04030; }
+    
+        .sl-domain-note-text {
+          font-size: 0.85rem;
+          color: #666;
+          line-height: 1.5;
+          display: none;
+        }
+    
+        .sl-domain-note-text.sl-show {
+          display: block;
+        }
+    
+        /* Summary Section */
+        .sl-summary-section {
+          background-color: var(--bg2);
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          padding: 2rem;
+          margin-bottom: 2rem;
+        }
+    
+        .sl-summary-section h3 {
+          margin-top: 0;
+          margin-bottom: 1rem;
+          color: var(--text);
+        }
+    
+        .sl-summary-text {
+          background: white;
+          border: 1px solid var(--border);
+          border-radius: 6px;
+          padding: 1rem;
+          font-family: 'Courier New', monospace;
+          font-size: 0.85rem;
+          overflow-x: auto;
+          color: var(--text);
+          line-height: 1.5;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        }
+    
+        .sl-copy-feedback {
+          font-size: 0.85rem;
+          color: #4a7c35;
+          font-weight: 600;
+          margin-bottom: 0.75rem;
+          display: none;
+        }
+    
+        .sl-copy-feedback.sl-show {
+          display: block;
+        }
+    
+        /* Buttons */
+        .sl-btn {
+          padding: 0.75rem 1.5rem;
+          font-size: 0.95rem;
+          font-weight: 600;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+    
+        .sl-btn-copy {
+          background-color: var(--accent);
+          color: white;
+          margin-bottom: 1rem;
+        }
+    
+        .sl-btn-copy:hover {
+          background-color: #3a6c25;
+          box-shadow: 0 2px 8px rgba(74, 124, 53, 0.3);
+        }
+    
+        .sl-btn-reset {
+          background-color: #e0e0e0;
+          color: var(--text);
+        }
+    
+        .sl-btn-reset:hover {
+          background-color: #d0d0d0;
+        }
+    
+        /* Q6 Timer */
+        .sl-timer-wrap {
+          display: flex;
+          align-items: center;
+          gap: 1.25rem;
+          background: linear-gradient(135deg, #f9f7f2, #ece6db);
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          padding: 16px 20px;
+          margin-bottom: 1rem;
+        }
+        .sl-timer-ring-container {
+          position: relative;
+          width: 100px;
+          height: 100px;
+          flex-shrink: 0;
+        }
+        .sl-timer-ring { width: 100%; height: 100%; }
+        .sl-timer-display {
+          position: absolute;
+          top: 50%; left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: var(--text);
+          font-variant-numeric: tabular-nums;
+        }
+        .sl-timer-display.sl-timer-done {
+          color: #b91c1c;
+          animation: sl-pulse 0.6s ease-in-out 3;
+        }
+        @keyframes sl-pulse {
+          0%, 100% { transform: translate(-50%, -50%) scale(1); }
+          50% { transform: translate(-50%, -50%) scale(1.15); }
+        }
+        .sl-timer-buttons { display: flex; flex-direction: column; gap: 8px; }
+        .sl-timer-btn {
+          padding: 8px 20px;
+          border: none;
+          border-radius: 5px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+          min-width: 80px;
+        }
+        .sl-timer-start { background-color: var(--accent); color: white; }
+        .sl-timer-start:hover { background-color: #3d6429; }
+        .sl-timer-start.sl-timer-running { background-color: var(--accent2); }
+        .sl-timer-start.sl-timer-running:hover { background-color: #6f5410; }
+        .sl-timer-reset { background-color: #e0dbd2; color: var(--text); }
+        .sl-timer-reset:hover { background-color: #d0cbc2; }
+
+        .sl-action-buttons {
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          margin-top: 2rem;
+        }
+    
+        /* Responsive */
+        @media (max-width: 768px) {
+          .sl-q-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+          }
+    
+          .sl-q-info {
+            width: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+          }
+    
+          .sl-shapes-display {
+            gap: 1rem;
+          }
+    
+          .sl-score-display {
+            flex-direction: column;
+            gap: 0;
+          }
+    
+          .sl-score-number {
+            font-size: 2.5rem;
+          }
+    
+          .sl-domain-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+          }
+        }
+      

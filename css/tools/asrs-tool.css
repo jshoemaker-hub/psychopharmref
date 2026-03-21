@@ -1,0 +1,30 @@
+
+    .as-container { display: flex; flex-direction: column; gap: 2rem; }
+    .as-part { background-color: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; }
+    .as-part-title { font-size: 1.1rem; font-weight: 600; color: var(--accent); margin-bottom: 0.25rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+    .as-part-desc { color: var(--text); font-size: 0.85rem; margin-bottom: 1.5rem; opacity: 0.8; }
+    .as-item { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    .as-item:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .as-q-text { color: var(--text); font-size: 0.95rem; font-weight: 500; margin-bottom: 0.75rem; }
+    .as-q-num { display: inline-block; background-color: var(--accent); color: white; width: 24px; height: 24px; border-radius: 50%; text-align: center; line-height: 24px; font-size: 0.8rem; font-weight: bold; margin-right: 0.5rem; }
+    .as-radio-row { display: flex; gap: 0; width: 100%; }
+    .as-radio-cell { flex: 1; text-align: center; padding: 8px 4px; border: 1px solid var(--border); font-size: 0.8rem; }
+    .as-radio-cell label { display: block; cursor: pointer; font-size: 0.78rem; color: var(--text); margin-top: 4px; }
+    .as-radio-cell input[type="radio"] { accent-color: var(--accent); cursor: pointer; }
+    .as-shaded { background-color: #fff3cd; }
+    .as-unshaded { background-color: #fff; }
+    .as-summary { background-color: white; border: 1px solid var(--accent); border-radius: 6px; padding: 1rem; margin-top: 1.5rem; }
+    .as-summary-line { color: var(--text); font-size: 0.95rem; margin-bottom: 0.5rem; font-weight: 500; }
+    .as-positive { color: #b91c1c; font-weight: 600; }
+    .as-negative { color: var(--accent); font-weight: 600; }
+    .as-freq-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.75rem; margin-top: 1rem; }
+    .as-freq-box { background: white; border: 1px solid var(--border); border-radius: 4px; padding: 0.75rem; text-align: center; }
+    .as-freq-label { font-size: 0.78rem; color: var(--text); opacity: 0.7; font-weight: 500; }
+    .as-freq-count { font-size: 1.4rem; font-weight: 600; color: var(--accent); margin-top: 0.25rem; }
+    .as-button-group { display: flex; gap: 1rem; margin-top: 1.5rem; }
+    .as-btn { padding: 0.75rem 1.5rem; font-size: 0.95rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.2s; color: white; }
+    .as-btn-primary { background-color: var(--accent); }
+    .as-btn-primary:hover { background-color: #3d6429; }
+    .as-btn-secondary { background-color: var(--accent2); }
+    .as-btn-secondary:hover { background-color: #6f5410; }
+  

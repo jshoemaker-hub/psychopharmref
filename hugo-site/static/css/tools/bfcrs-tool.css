@@ -1,0 +1,286 @@
+
+    /* Bush-Francis Catatonia Rating Scale Styling */
+    .bf-warning {
+      background-color: #fef3cd;
+      border: 1px solid #ffc107;
+      border-radius: 4px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .bf-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .bf-tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+
+    .bf-tab-btn:hover {
+      color: var(--accent);
+    }
+
+    .bf-tab-btn.bf-active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .bf-tab-content {
+      display: none;
+    }
+
+    .bf-tab-content.bf-active {
+      display: block;
+    }
+
+    .bf-tab-desc {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .bf-form {
+      margin-bottom: 24px;
+    }
+
+    .bf-item {
+      padding: 14px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .bf-item:last-child {
+      border-bottom: none;
+    }
+
+    .bf-item-label {
+      display: block;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
+
+    .bf-item-desc {
+      font-size: 0.85rem;
+      color: #666;
+      margin: 4px 0 10px 0;
+      line-height: 1.4;
+    }
+
+    .bf-toggles {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .bf-toggles label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .bf-toggles input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: var(--accent);
+    }
+
+    .bf-radios {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .bf-radios label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .bf-radios input[type="radio"] {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      accent-color: var(--accent);
+    }
+
+    .bf-item-binary .bf-radios {
+      gap: 20px;
+    }
+
+    .bf-binary-note {
+      font-size: 0.8rem;
+      color: #999;
+      font-weight: normal;
+    }
+
+    .bf-fieldset {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .bf-legend {
+      padding: 0 8px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--accent);
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bf-legend::before {
+      content: '▼';
+      display: inline-block;
+      transition: transform 0.2s;
+      font-size: 0.8rem;
+    }
+
+    .bf-fieldset.bf-collapsed .bf-legend::before {
+      transform: rotate(-90deg);
+    }
+
+    .bf-fieldset.bf-collapsed .bf-fieldset-content {
+      display: none;
+    }
+
+    .bf-fieldset-content {
+      margin-top: 12px;
+    }
+
+    .bf-score-box {
+      background-color: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .bf-score-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .bf-score-line:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .bf-score-number {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--accent);
+    }
+
+    .bf-score-max {
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    .bf-interpretation {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .bf-interpretation.negative {
+      color: #28a745;
+    }
+
+    .bf-interpretation.positive {
+      color: #dc3545;
+    }
+
+    .bf-interpretation.mild {
+      color: #ffc107;
+    }
+
+    .bf-interpretation.moderate {
+      color: #fd7e14;
+    }
+
+    .bf-interpretation.severe {
+      color: #dc3545;
+    }
+
+    .bf-interpretation.extreme {
+      color: #721c24;
+    }
+
+    .bf-subtype-box {
+      margin-top: 12px;
+      padding: 10px;
+      background: rgba(74, 124, 53, 0.05);
+      border-left: 3px solid var(--accent);
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .bf-malignant-warning {
+      margin-top: 12px;
+      padding: 12px;
+      background: #f8d7da;
+      border: 1px solid #f5c6cb;
+      border-radius: 4px;
+      color: #721c24;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .bf-items-list {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .bf-btn {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .bf-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .bf-btn-primary {
+      background-color: var(--accent);
+    }
+  
