@@ -40,108 +40,65 @@ document.querySelectorAll('.nav-parent-btn').forEach(btn => {
 })();
 </script>
 
-<!-- Blog Search -->
+<!-- Unified Search (Hugo blog pages — articles only) -->
 <script>
 (function() {
-  var input = document.getElementById('blog-search-input');
-  var results = document.getElementById('blog-search-results');
+  var input = document.getElementById('us-input');
+  var results = document.getElementById('us-results');
   if (!input || !results) return;
 
   var searchIndex = null;
-  var debounceTimer = null;
+  var timer = null;
 
-  // Load the search index on first focus
   input.addEventListener('focus', function() {
     if (searchIndex) return;
     fetch('/index.json')
       .then(function(r) { return r.json(); })
       .then(function(data) { searchIndex = data; })
       .catch(function() {
-        // Fallback: build index from sidebar links
         searchIndex = [];
         document.querySelectorAll('#sidebar .nav-sub-link[href*="/blog/"]').forEach(function(a) {
-          searchIndex.push({
-            title: a.textContent.trim(),
-            url: a.getAttribute('href'),
-            description: '',
-            category: '',
-            content: ''
-          });
+          var cat = '';
+          var prev = a.closest('li');
+          while (prev && prev.previousElementSibling) {
+            prev = prev.previousElementSibling;
+            if (prev.classList && prev.classList.contains('nav-sub-divider')) { cat = prev.textContent.trim(); break; }
+          }
+          searchIndex.push({ title: a.textContent.trim(), url: a.getAttribute('href'), category: cat, description: '', content: '' });
         });
       });
   });
 
-  input.addEventListener('input', function() {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(doSearch, 150);
-  });
-
-  // Close results on click outside
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('.blog-search-wrap')) {
-      results.classList.remove('active');
-    }
-  });
-
-  // Keyboard navigation
+  input.addEventListener('input', function() { clearTimeout(timer); timer = setTimeout(doSearch, 120); });
+  document.addEventListener('click', function(e) { if (!e.target.closest('.us-wrap')) results.classList.remove('open'); });
   input.addEventListener('keydown', function(e) {
-    var items = results.querySelectorAll('.blog-sr-item');
-    var active = results.querySelector('.blog-sr-item:focus');
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      if (!active && items.length) items[0].focus();
-      else if (active && active.nextElementSibling) active.nextElementSibling.focus();
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      if (active && active.previousElementSibling) active.previousElementSibling.focus();
-      else input.focus();
-    } else if (e.key === 'Escape') {
-      results.classList.remove('active');
-      input.blur();
-    }
+    var items = results.querySelectorAll('.us-item');
+    var focused = results.querySelector('.us-item:focus');
+    if (e.key === 'ArrowDown') { e.preventDefault(); if (!focused && items.length) items[0].focus(); else if (focused && focused.nextElementSibling) focused.nextElementSibling.focus(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); if (focused && focused.previousElementSibling) focused.previousElementSibling.focus(); else input.focus(); }
+    else if (e.key === 'Escape') { results.classList.remove('open'); input.blur(); }
   });
 
   function doSearch() {
     var q = input.value.trim().toLowerCase();
-    if (!q || q.length < 2 || !searchIndex) {
-      results.classList.remove('active');
-      results.innerHTML = '';
-      return;
-    }
-
+    if (!q || q.length < 2 || !searchIndex) { results.classList.remove('open'); results.innerHTML = ''; return; }
     var terms = q.split(/\s+/);
     var matches = searchIndex.filter(function(item) {
-      var haystack = (item.title + ' ' + item.description + ' ' + item.category + ' ' + item.content).toLowerCase();
-      return terms.every(function(term) { return haystack.indexOf(term) >= 0; });
-    });
+      var hay = (item.title + ' ' + item.description + ' ' + item.category + ' ' + (item.content || '')).toLowerCase();
+      return terms.every(function(t) { return hay.indexOf(t) >= 0; });
+    }).slice(0, 10);
 
-    if (matches.length === 0) {
-      results.innerHTML = '<div class="blog-sr-empty">No articles found</div>';
-      results.classList.add('active');
-      return;
-    }
-
-    // Score: title matches worth more than content matches
-    matches.sort(function(a, b) {
-      var aTitle = terms.filter(function(t) { return a.title.toLowerCase().indexOf(t) >= 0; }).length;
-      var bTitle = terms.filter(function(t) { return b.title.toLowerCase().indexOf(t) >= 0; }).length;
-      return bTitle - aTitle;
-    });
-
-    results.innerHTML = matches.slice(0, 10).map(function(item) {
-      var title = highlightTerms(item.title, terms);
-      var cat = item.category ? '<span class="blog-sr-cat">' + item.category + '</span>' : '';
-      return '<a href="' + item.url + '" class="blog-sr-item"><span class="blog-sr-title">' + title + '</span>' + cat + '</a>';
+    if (!matches.length) { results.innerHTML = '<div class="us-empty">No results for "' + q + '"</div>'; results.classList.add('open'); return; }
+    results.innerHTML = '<div class="us-group-label">Blog Articles</div>' + matches.map(function(item) {
+      var title = hl(item.title, terms);
+      var cat = item.category ? '<span class="us-item-sub">' + item.category + '</span>' : '';
+      return '<a href="' + item.url + '" class="us-item"><span class="us-item-type us-item-type--blog">Article</span><span class="us-item-title">' + title + '</span>' + cat + '</a>';
     }).join('');
-    results.classList.add('active');
+    results.classList.add('open');
   }
 
-  function highlightTerms(text, terms) {
-    terms.forEach(function(term) {
-      if (term.length < 2) return;
-      var regex = new RegExp('(' + term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
-      text = text.replace(regex, '<mark>$1</mark>');
-    });
+  function hl(text, terms) {
+    terms.forEach(function(t) { if (t.length < 2) return; text = text.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<mark>$1</mark>'); });
     return text;
   }
 })();

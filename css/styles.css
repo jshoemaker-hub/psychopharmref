@@ -32,6 +32,85 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
+/* ── Unified Search (sidebar) ─────────────────────────────────────────── */
+.us-wrap {
+  padding: 8px 14px 10px;
+  position: relative;
+}
+.us-input {
+  width: 100%;
+  padding: 7px 10px 7px 28px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  font-size: 12.5px;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236b6050' stroke-width='2.5'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='16.5' y1='16.5' x2='21' y2='21'/%3E%3C/svg%3E") 8px center no-repeat;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.us-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(74, 124, 53, 0.15);
+}
+.us-input::placeholder { color: #a09888; }
+.us-results {
+  display: none;
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 100%;
+  z-index: 200;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  max-height: 380px;
+  overflow-y: auto;
+}
+.us-results.open { display: block; }
+.us-group-label {
+  padding: 6px 12px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+}
+.us-item {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 12.5px;
+  line-height: 1.35;
+  border-bottom: 1px solid #f0ece4;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.us-item:last-child { border-bottom: none; }
+.us-item:hover, .us-item:focus { background: var(--bg2); }
+.us-item-title { font-weight: 600; display: block; }
+.us-item-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+.us-item-type {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-right: 4px;
+}
+.us-item-type--drug { background: rgba(74, 124, 53, 0.12); color: var(--accent); }
+.us-item-type--blog { background: rgba(139, 105, 20, 0.12); color: var(--accent2); }
+.us-item-type--tool { background: rgba(96, 125, 139, 0.12); color: #546e7a; }
+.us-empty { padding: 16px 12px; text-align: center; font-size: 12px; color: #999; }
+.us-results mark { background: rgba(74, 124, 53, 0.2); color: inherit; padding: 0 1px; border-radius: 2px; }
+
 /* ── Reset & Variables ─────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
