@@ -245,6 +245,11 @@ const SECTION_GROUP = {
   'drug-table': 'psychopharm', 'p450': 'psychopharm',
   'receptor-binding': 'psychopharm', 'glossary': 'psychopharm', 'pk-curves': 'psychopharm',
   'qt-risk': 'tools', 'refill-calendar': 'tools', 'med-compare': 'tools', 'med-taper': 'tools',
+  'cdr-tool': 'tools', 'slums-tool': 'tools', 'asd-tool': 'tools', 'aq-tool': 'tools',
+  'adl-tool': 'tools', 'asrs-tool': 'tools', 'cidi-tool': 'tools', 'ymrs-tool': 'tools',
+  'pcl5-tool': 'tools', 'ybocs-tool': 'tools', 'msibpd-tool': 'tools', 'panss-tool': 'tools',
+  'bfcrs-tool': 'tools', 'aims-tool': 'tools', 'suicide-risk-tools': 'tools',
+  'ess-tool': 'tools', 'bat-tool': 'tools',
   'cog-domains': 'insights', 'neuro-circuits': 'insights', 'brain-regions': 'insights',
   'fda-search': null, 'overview': null, 'blog-index': 'blog', 'blog-smoking': 'blog', 'blog-weight': 'blog'
 };
