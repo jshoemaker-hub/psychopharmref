@@ -284,11 +284,11 @@ function switchSection(id) {
     // Load CSS
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/tools/' + toolId + '.css';
+    link.href = 'css/tools/' + toolId + '.css?v=20260321';
     document.head.appendChild(link);
     // Load JS
     const script = document.createElement('script');
-    script.src = 'js/tools/' + toolId + '.js';
+    script.src = 'js/tools/' + toolId + '.js?v=20260321';
     document.body.appendChild(script);
     sec.dataset.lazyLoaded = 'true';
   }
