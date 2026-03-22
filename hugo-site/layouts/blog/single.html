@@ -120,6 +120,25 @@
   </div>
   {{ end }}
 
+  <!-- Comments (hosted on Vercel) -->
+  <div style="margin-top:40px; padding-top:30px; border-top:2px solid var(--border, #cfc8ba);">
+    <iframe
+      src="https://blog-comments-peach.vercel.app/embed/{{ .File.ContentBaseName }}"
+      style="width:100%; min-height:600px; border:none; color-scheme:light;"
+      loading="lazy"
+      title="Comments"
+      id="comments-iframe"
+    ></iframe>
+    <script>
+      window.addEventListener('message', function(e) {
+        if (e.data && e.data.type === 'resize-comments') {
+          var iframe = document.getElementById('comments-iframe');
+          if (iframe) iframe.style.height = (e.data.height + 20) + 'px';
+        }
+      });
+    </script>
+  </div>
+
   <footer class="ba-footer">
     <p><strong>PsychoPharmRef Clinical Review</strong> | A resource for medical professionals | Data current as of {{ now.Format "January 2006" }}</p>
     <p style="margin-top: 15px; font-size: 12px;">This article is intended for educational purposes for healthcare professionals.</p>
