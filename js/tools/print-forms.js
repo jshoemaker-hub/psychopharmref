@@ -339,6 +339,115 @@
       interpretation: 'None / Low Risk / Moderate Risk / High Risk based on responses'
     },
 
+    'cssrs-full': {
+      title: 'Columbia-Suicide Severity Rating Scale (C-SSRS) — Full Version',
+      reference: 'Posner K, et al. Am J Psychiatry. 2011;168(12):1266-1277',
+      sectionA: {
+        title: 'Section A: Risk & Protective Factors',
+        riskCategories: {
+          'Suicidal & Self-Injury Behavior': [
+            'Actual attempt (lifetime)',
+            'Actual attempt (past month)',
+            'Interrupted attempt (lifetime)',
+            'Interrupted attempt (past month)',
+            'Aborted attempt (lifetime)',
+            'Aborted attempt (past month)',
+            'Preparatory acts/behavior (lifetime)',
+            'Preparatory acts/behavior (past month)',
+            'Non-suicidal self-injury (lifetime)',
+            'Non-suicidal self-injury (past month)'
+          ],
+          'Suicidal Ideation': [
+            'Wish to be dead',
+            'Non-specific active suicidal thoughts',
+            'Active ideation with any methods',
+            'Active ideation with some intent',
+            'Active ideation with specific plan and intent'
+          ],
+          'Activating Events': [
+            'Recent major loss or stressor',
+            'Pending legal problems/incarceration',
+            'Current or anticipated social isolation'
+          ],
+          'Treatment History': [
+            'Prior psychiatric treatment',
+            'Hopeless about treatment',
+            'Not compliant with treatment',
+            'Not connected to treatment'
+          ],
+          'Clinical Status': [
+            'Hopelessness',
+            'Helplessness',
+            'Feeling trapped',
+            'Major depressive episode',
+            'Mixed affective episode',
+            'Command hallucinations to hurt self',
+            'Highly impulsive behavior',
+            'Substance abuse/intoxication',
+            'Agitation/restlessness',
+            'Perceived burden on others',
+            'Chronic physical pain',
+            'Homicidal ideation',
+            'Aggressive behavior towards others',
+            'Access to lethal means',
+            'Refuses to agree to safety plan',
+            'History of sexual abuse',
+            'Family history of suicide'
+          ]
+        },
+        protectiveFactors: [
+          'Identifies reasons for living',
+          'Responsibility to family/children',
+          'Supportive social network/family',
+          'Fear of death or dying',
+          'Spiritual/religious beliefs',
+          'Purposeful sense of work or duty',
+          'Positive therapeutic relationship',
+          'Other (specify)'
+        ]
+      },
+      sectionB: {
+        title: 'Section B: Suicidal Ideation',
+        items: [
+          { num: 1, text: 'Wish to be Dead — "Have you wished you were dead or wished you could go to sleep and not wake up?"' },
+          { num: 2, text: 'Non-Specific Active Suicidal Thoughts — "Have you actually had any thoughts of killing yourself?"' },
+          { num: 3, text: 'Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act — "Have you been thinking about how you might do this?"' },
+          { num: 4, text: 'Active Suicidal Ideation with Some Intent to Act, without Specific Plan — "Have you had these thoughts and had some intention of acting on them?"' },
+          { num: 5, text: 'Active Suicidal Ideation with Specific Plan and Intent — "Have you started to work out or worked out the details of how to kill yourself? Do you intend to carry out this plan?"' }
+        ],
+        timeframes: ['Lifetime', 'Past Month']
+      },
+      sectionC: {
+        title: 'Section C: Intensity of Ideation',
+        note: 'Rate most severe ideation identified in Section B',
+        items: [
+          { num: 1, text: 'Frequency — How many times? (1=Less than once a week, 2=Once a week, 3=2-5 times/week, 4=Daily or almost daily, 5=Many times each day)' },
+          { num: 2, text: 'Duration — How long do they last? (1=Fleeting/few seconds, 2=Short periods/minutes, 3=An hour or longer, 4=Most of the day, 5=Persistent/continuous)' },
+          { num: 3, text: 'Controllability — Can you stop thinking about it? (1=Easily able to, 2=Can with some difficulty, 3=Can with great difficulty, 4=Unable to control, 5=Does not attempt to control)' },
+          { num: 4, text: 'Deterrents — Are there things stopping you from acting? (1=Definitely would not attempt, 2=Probably would not, 3=Uncertain, 4=Probably would, 5=Definitely would)' },
+          { num: 5, text: 'Reasons for Ideation — (1=To get attention/revenge, 2=Way of ending pain but ambivalent, 3=Both ending pain AND getting attention, 4=To end/stop the pain, primarily, 5=Complete relief, fully intent)' }
+        ]
+      },
+      sectionD: {
+        title: 'Section D: Suicidal Behavior',
+        items: [
+          { text: 'Actual Attempt', timeframes: ['Lifetime', 'Past 3 Months'], hasCount: true },
+          { text: 'Interrupted Attempt', timeframes: ['Lifetime', 'Past 3 Months'], hasCount: true },
+          { text: 'Aborted Attempt', timeframes: ['Lifetime', 'Past 3 Months'], hasCount: true },
+          { text: 'Preparatory Acts or Behavior', timeframes: ['Lifetime', 'Past 3 Months'], hasCount: true },
+          { text: 'Non-Suicidal Self-Injurious Behavior', timeframes: ['Lifetime', 'Past 3 Months'], hasCount: false }
+        ]
+      },
+      sectionE: {
+        title: 'Section E: Lethality',
+        attempts: ['Most Recent Attempt', 'Most Lethal Attempt', 'Initial/First Attempt'],
+        actualLethality: '0 = No physical damage / 1 = Minor (superficial) / 2 = Moderate / 3 = Moderately severe (medical attention) / 4 = Severe (ICU/surgery) / 5 = Death',
+        potentialLethality: '0 = Behavior unlikely to result in injury / 1 = Likely minor / 2 = Likely moderate or greater'
+      },
+      scoring: 'C-SSRS Full assessment — multi-section qualitative and quantitative',
+      interpretation: 'Clinical judgment based on aggregate risk profile across all sections'
+    },
+
     'bat-work': {
       title: 'Burnout Assessment Tool — Work Version (BAT-W)',
       reference: 'Schaufeli WB, De Witte H, Desart S. BAT Manual. KU Leuven. 2019',
@@ -995,6 +1104,90 @@
         });
         break;
 
+      case 'cssrs-full':
+        // Section A: Risk & Protective Factors
+        html += '<div class="pf-print-section-header" style="font-size: 13px; font-weight: bold;">' + form.sectionA.title + '</div>';
+        Object.keys(form.sectionA.riskCategories).forEach(function(cat) {
+          html += '<div style="font-size: 11px; font-weight: bold; margin: 8px 0 4px 0; color: #333;">' + cat + '</div>';
+          form.sectionA.riskCategories[cat].forEach(function(item, idx) {
+            html += '<div class="pf-print-item" style="padding: 2px 0;">' +
+              '<div class="pf-print-item-text" style="font-size: 11px;">' + item + '</div>' +
+              '<div class="pf-print-item-boxes"><span class="pf-print-box">☐</span></div>' +
+            '</div>';
+          });
+        });
+        html += '<div style="font-size: 11px; font-weight: bold; margin: 10px 0 4px 0; color: #333;">Protective Factors</div>';
+        form.sectionA.protectiveFactors.forEach(function(item) {
+          html += '<div class="pf-print-item" style="padding: 2px 0;">' +
+            '<div class="pf-print-item-text" style="font-size: 11px;">' + item + '</div>' +
+            '<div class="pf-print-item-boxes"><span class="pf-print-box">☐</span></div>' +
+          '</div>';
+        });
+
+        // Section B: Suicidal Ideation
+        html += '<div class="pf-print-section-header" style="font-size: 13px; font-weight: bold; margin-top: 16px;">' + form.sectionB.title + '</div>';
+        html += '<div style="font-size: 10px; color: #555; margin-bottom: 6px;">For each level, mark Lifetime and/or Past Month</div>';
+        form.sectionB.items.forEach(function(item) {
+          html += '<div class="pf-print-item" style="padding: 4px 0; align-items: flex-start;">' +
+            '<div class="pf-print-item-num" style="font-weight: bold;">' + item.num + '.</div>' +
+            '<div class="pf-print-item-text" style="font-size: 11px;">' + item.text + '</div>' +
+            '<div class="pf-print-item-boxes" style="min-width: 120px; flex-direction: column; gap: 2px; font-size: 10px;">' +
+              '<span style="display: flex; align-items: center; gap: 4px;">☐ Lifetime</span>' +
+              '<span style="display: flex; align-items: center; gap: 4px;">☐ Past Month</span>' +
+            '</div>' +
+          '</div>';
+        });
+
+        // Section C: Intensity of Ideation
+        html += '<div class="pf-print-section-header" style="font-size: 13px; font-weight: bold; margin-top: 16px;">' + form.sectionC.title + '</div>';
+        html += '<div style="font-size: 10px; color: #555; margin-bottom: 6px;">' + form.sectionC.note + '</div>';
+        form.sectionC.items.forEach(function(item) {
+          html += '<div class="pf-print-item" style="padding: 4px 0; align-items: flex-start;">' +
+            '<div class="pf-print-item-num" style="font-weight: bold;">' + item.num + '.</div>' +
+            '<div class="pf-print-item-text" style="font-size: 11px;">' + item.text + '</div>' +
+            '<div class="pf-print-item-boxes">' +
+              '<span class="pf-print-circle">1</span>' +
+              '<span class="pf-print-circle">2</span>' +
+              '<span class="pf-print-circle">3</span>' +
+              '<span class="pf-print-circle">4</span>' +
+              '<span class="pf-print-circle">5</span>' +
+            '</div>' +
+          '</div>';
+        });
+
+        // Section D: Suicidal Behavior
+        html += '<div class="pf-print-section-header" style="font-size: 13px; font-weight: bold; margin-top: 16px;">' + form.sectionD.title + '</div>';
+        html += '<div style="font-size: 10px; color: #555; margin-bottom: 6px;">Mark timeframe and enter total count if applicable</div>';
+        form.sectionD.items.forEach(function(item) {
+          html += '<div class="pf-print-item" style="padding: 4px 0; align-items: flex-start;">' +
+            '<div class="pf-print-item-text" style="font-size: 11px; font-weight: bold;">' + item.text + '</div>' +
+            '<div class="pf-print-item-boxes" style="min-width: 180px; flex-direction: column; gap: 2px; font-size: 10px;">' +
+              '<span style="display: flex; align-items: center; gap: 4px;">☐ Lifetime  ☐ Past 3 Months</span>' +
+              (item.hasCount ? '<span style="display: flex; align-items: center; gap: 4px;">Total count: ______</span>' : '') +
+            '</div>' +
+          '</div>';
+        });
+
+        // Section E: Lethality
+        html += '<div class="pf-print-section-header" style="font-size: 13px; font-weight: bold; margin-top: 16px;">' + form.sectionE.title + '</div>';
+        html += '<div style="font-size: 9px; color: #555; margin-bottom: 4px;">Actual Lethality: ' + form.sectionE.actualLethality + '</div>';
+        html += '<div style="font-size: 9px; color: #555; margin-bottom: 6px;">Potential Lethality (if actual = 0): ' + form.sectionE.potentialLethality + '</div>';
+        form.sectionE.attempts.forEach(function(attempt) {
+          html += '<div class="pf-print-item" style="padding: 4px 0; align-items: flex-start;">' +
+            '<div class="pf-print-item-text" style="font-size: 11px; font-weight: bold;">' + attempt + '</div>' +
+            '<div class="pf-print-item-boxes" style="min-width: 220px; flex-direction: column; gap: 2px; font-size: 10px;">' +
+              '<span>Date: __________  Actual: ____  Potential: ____</span>' +
+            '</div>' +
+          '</div>';
+        });
+
+        // Notes area
+        html += '<div style="margin-top: 14px; border-top: 1px solid #999; padding-top: 8px;">' +
+          '<div style="font-size: 11px; font-weight: bold; margin-bottom: 4px;">Clinical Notes / Behavior Description:</div>' +
+          '<div style="border: 1px solid #999; height: 70px; width: 100%;"></div>' +
+        '</div>';
+        break;
+
       case 'bat-work':
       case 'bat-general':
         var batDomains = {};
@@ -1043,6 +1236,7 @@
       case 'aims': return 28;
       case 'ess': return 24;
       case 'suicide-risk': return 'Assessment';
+      case 'cssrs-full': return 'Assessment';
       case 'bat-work': return 115;
       case 'bat-general': return 110;
       default: return '—';
