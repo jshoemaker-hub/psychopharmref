@@ -249,7 +249,7 @@ const SECTION_GROUP = {
   'adl-tool': 'tools', 'asrs-tool': 'tools', 'cidi-tool': 'tools', 'ymrs-tool': 'tools',
   'pcl5-tool': 'tools', 'ybocs-tool': 'tools', 'msibpd-tool': 'tools', 'panss-tool': 'tools',
   'bfcrs-tool': 'tools', 'aims-tool': 'tools', 'suicide-risk-tools': 'tools',
-  'ess-tool': 'tools', 'bat-tool': 'tools',
+  'ess-tool': 'tools', 'bat-tool': 'tools', 'print-forms': 'tools',
   'cog-domains': 'insights', 'neuro-circuits': 'insights', 'brain-regions': 'insights',
   'fda-search': null, 'overview': null, 'blog-index': 'blog', 'blog-smoking': 'blog', 'blog-weight': 'blog'
 };

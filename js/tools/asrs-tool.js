@@ -42,6 +42,21 @@
       document.getElementById('as-reset-btn').addEventListener('click', function() {
         if (confirm('Reset all ASRS responses?')) { document.querySelectorAll('.as-a-item, .as-b-item').forEach(function(r){ r.checked = false; }); update(); }
       });
+
+      // Add print button
+      (function addPrintBtn() {
+        var sec = document.getElementById('asrs-tool');
+        if (!sec) return;
+        var header = sec.querySelector('.section-header');
+        if (!header) return;
+        var btn = document.createElement('button');
+        btn.className = 'pf-inline-btn';
+        btn.onclick = function() { if (typeof printBlankForm === 'function') printBlankForm('asrs'); };
+        btn.innerHTML = '🖨️ Print Blank Form';
+        btn.title = 'Print a blank version of this form';
+        header.appendChild(btn);
+      })();
+
       update();
     })();
   

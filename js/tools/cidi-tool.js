@@ -194,5 +194,19 @@ ${
       symptomsCheckboxes.forEach(cb => cb.addEventListener('change', updateDisplay));
       reportBtn.addEventListener('click', generateReport);
       resetBtn.addEventListener('click', reset);
+
+      // Add print button
+      (function addPrintBtn() {
+        var sec = document.getElementById('cidi-tool');
+        if (!sec) return;
+        var header = sec.querySelector('.section-header');
+        if (!header) return;
+        var btn = document.createElement('button');
+        btn.className = 'pf-inline-btn';
+        btn.onclick = function() { if (typeof printBlankForm === 'function') printBlankForm('cidi'); };
+        btn.innerHTML = '🖨️ Print Blank Form';
+        btn.title = 'Print a blank version of this form';
+        header.appendChild(btn);
+      })();
     })();
   

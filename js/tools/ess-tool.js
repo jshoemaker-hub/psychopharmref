@@ -34,6 +34,21 @@
       document.getElementById('es-reset-btn').addEventListener('click', function() {
         if (confirm('Reset all ESS responses?')) { document.querySelectorAll('.es-item').forEach(function(r){ r.checked = false; }); update(); }
       });
+
+      // Add print button
+      (function addPrintBtn() {
+        var sec = document.getElementById('ess-tool');
+        if (!sec) return;
+        var header = sec.querySelector('.section-header');
+        if (!header) return;
+        var btn = document.createElement('button');
+        btn.className = 'pf-inline-btn';
+        btn.onclick = function() { if (typeof printBlankForm === 'function') printBlankForm('epworth'); };
+        btn.innerHTML = '🖨️ Print Blank Form';
+        btn.title = 'Print a blank version of this form';
+        header.appendChild(btn);
+      })();
+
       update();
     })();
   

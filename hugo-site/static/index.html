@@ -154,6 +154,9 @@
 
           <li class="nav-sub-divider">Wellness</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="bat-tool">Burnout (BAT)</a></li>
+
+          <li class="nav-sub-divider">Resources</li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="print-forms">Printable Forms</a></li>
         </ul>
       </li>
 
@@ -1568,6 +1571,7 @@
       <div class="section-header">
         <h2>QT Prolongation Risk Tool</h2>
         <p class="section-sub">QTc calculator, Tisdale risk scoring, drug reference lists, and monitoring guidance. For educational use — always verify with current clinical resources.</p>
+        <button class="pf-inline-btn" onclick="printBlankForm('tisdale-qt')" title="Print a blank version of this form">🖨️ Print Blank Form</button>
       </div>
 
       <!-- ── Education accordion ──────────────────────────────────────────── -->
@@ -10449,6 +10453,158 @@
 
 
 
+
+    <!-- ── Printable Clinical Forms ─────────────────────────────────────── -->
+<!-- ────────────────────────────────────────────────────────────────────────
+     Printable Clinical Forms Section
+     Paste into index.html
+     ──────────────────────────────────────────────────────────────────────── -->
+
+<section id="print-forms" class="section">
+  <div class="section-header">
+    <h2>Printable Clinical Forms</h2>
+    <p>Download and print blank rating scales for bedside or clinic use.</p>
+  </div>
+
+  <!-- Load print-forms CSS and JS -->
+  <link rel="stylesheet" href="css/tools/print-forms.css">
+  <script src="js/tools/print-forms.js"></script>
+
+  <!-- Medication Tools -->
+  <div class="pf-category-group">
+    <div class="pf-category-title">Medication Safety & Monitoring</div>
+    <div class="pf-grid">
+      <div class="pf-card">
+        <div class="pf-card-title">Tisdale QT Risk Score</div>
+        <div class="pf-card-ref">Tisdale JE, et al. Circ Cardiovasc Qual Outcomes. 2013;6(4):479-487</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">Checklist for QT-prolonging drug risk stratification in acute care settings.</p>
+        <button class="pf-btn" onclick="printBlankForm('tisdale-qt')">Print Blank Form</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cognitive & Neurodevelopmental -->
+  <div class="pf-category-group">
+    <div class="pf-category-title">Cognitive & Neurodevelopmental</div>
+    <div class="pf-grid">
+      <div class="pf-card">
+        <div class="pf-card-title">Clinical Dementia Rating (CDR)</div>
+        <div class="pf-card-ref">Morris JC. Neurology. 1993;43(11):2412-2414</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">Clinician-administered staging scale for dementia severity across 6 cognitive domains.</p>
+        <button class="pf-btn" onclick="printBlankForm('cdr')">Print Blank Form</button>
+      </div>
+      <div class="pf-card">
+        <div class="pf-card-title">Autism Quotient (AQ-10)</div>
+        <div class="pf-card-ref">Baron-Cohen S, et al. J Autism Dev Disord. 2001;31(1):5-17</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">10-item screening for autism spectrum traits. Cutoff ≥6 suggests referral for evaluation.</p>
+        <button class="pf-btn" onclick="printBlankForm('aq-10')">Print Blank Form</button>
+      </div>
+      <div class="pf-card">
+        <div class="pf-card-title">ASRS v1.1 (Adult ADHD)</div>
+        <div class="pf-card-ref">Kessler RC, et al. Psychol Med. 2005;35(2):245-256</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">18-item self-report ADHD screening with Part A (6 items) and Part B (12 supplemental).</p>
+        <button class="pf-btn" onclick="printBlankForm('asrs')">Print Blank Form</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mood & Anxiety -->
+  <div class="pf-category-group">
+    <div class="pf-category-title">Mood & Anxiety</div>
+    <div class="pf-grid">
+      <div class="pf-card">
+        <div class="pf-card-title">CIDI 3.0 Bipolar Screening</div>
+        <div class="pf-card-ref">Kessler RC, et al. Am J Psychiatry. 2006;163(10):1762-1769</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">Structured bipolar disorder screening with stem questions and 9 Criterion B symptoms.</p>
+        <button class="pf-btn" onclick="printBlankForm('cidi')">Print Blank Form</button>
+      </div>
+      <div class="pf-card">
+        <div class="pf-card-title">Young Mania Rating Scale (YMRS)</div>
+        <div class="pf-card-ref">Young RC, et al. Br J Psychiatry. 1978;133:429-435</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">Clinician-rated 11-item scale for assessing manic symptom severity (0-60).</p>
+        <button class="pf-btn" onclick="printBlankForm('ymrs')">Print Blank Form</button>
+      </div>
+      <div class="pf-card">
+        <div class="pf-card-title">PCL-5 (PTSD Checklist)</div>
+        <div class="pf-card-ref">Weathers FW, et al. National Center for PTSD. 2013</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">20-item PTSD symptom checklist across 4 DSM-5 clusters. Cutoff ≥33 suggests PTSD.</p>
+        <button class="pf-btn" onclick="printBlankForm('pcl5')">Print Blank Form</button>
+      </div>
+      <div class="pf-card">
+        <div class="pf-card-title">Y-BOCS (OCD Severity)</div>
+        <div class="pf-card-ref">Goodman WK, et al. Arch Gen Psychiatry. 1989;46(11):1006-1011</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">Clinician-rated 10-item scale for obsessive-compulsive symptom severity (0-40).</p>
+        <button class="pf-btn" onclick="printBlankForm('ybocs')">Print Blank Form</button>
+      </div>
+      <div class="pf-card">
+        <div class="pf-card-title">MSI-BPD (Borderline Screening)</div>
+        <div class="pf-card-ref">Zanarini MC, et al. J Clin Psychiatry. 2003;64(5):566-569</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">10-item self-report screening for borderline personality disorder. Cutoff ≥7 positive.</p>
+        <button class="pf-btn" onclick="printBlankForm('msibpd')">Print Blank Form</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Psychosis & Movement -->
+  <div class="pf-category-group">
+    <div class="pf-category-title">Psychosis & Movement Disorders</div>
+    <div class="pf-grid">
+      <div class="pf-card">
+        <div class="pf-card-title">PANSS-6 (Brief Psychosis)</div>
+        <div class="pf-card-ref">Kay SR, et al. Schizophr Bull. 1987;13(2):261-276</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">6-item abbreviated PANSS with positive, negative, and composite subscales (0-42).</p>
+        <button class="pf-btn" onclick="printBlankForm('panss-6')">Print Blank Form</button>
+      </div>
+      <div class="pf-card">
+        <div class="pf-card-title">PANSS-30 (Full Psychosis)</div>
+        <div class="pf-card-ref">Kay SR, et al. Schizophr Bull. 1987;13(2):261-276</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">Comprehensive 30-item scale with positive, negative, and general psychopathology subscales.</p>
+        <button class="pf-btn" onclick="printBlankForm('panss-30')">Print Blank Form</button>
+      </div>
+      <div class="pf-card">
+        <div class="pf-card-title">BFCRS (Catatonia Rating)</div>
+        <div class="pf-card-ref">Bush G, et al. Acta Psychiatr Scand. 1996;93(2):129-137</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">CSI (14 items) + CRS (23 items) for catatonia screening and severity assessment.</p>
+        <button class="pf-btn" onclick="printBlankForm('bfcrs')">Print Blank Form</button>
+      </div>
+      <div class="pf-card">
+        <div class="pf-card-title">AIMS (Dyskinesia Rating)</div>
+        <div class="pf-card-ref">Guy W. ECDEU Assessment Manual. 1976</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">10-item scale assessing abnormal involuntary movements from antipsychotic exposure (0-28).</p>
+        <button class="pf-btn" onclick="printBlankForm('aims')">Print Blank Form</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sleep -->
+  <div class="pf-category-group">
+    <div class="pf-category-title">Sleep & Alertness</div>
+    <div class="pf-grid">
+      <div class="pf-card">
+        <div class="pf-card-title">Epworth Sleepiness Scale (ESS)</div>
+        <div class="pf-card-ref">Johns MW. Sleep. 1991;14(6):540-545</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">8-item self-report of daytime sleepiness across common situations (0-24).</p>
+        <button class="pf-btn" onclick="printBlankForm('ess')">Print Blank Form</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Safety -->
+  <div class="pf-category-group">
+    <div class="pf-category-title">Safety & Risk Assessment</div>
+    <div class="pf-grid">
+      <div class="pf-card">
+        <div class="pf-card-title">Suicide Risk Assessment</div>
+        <div class="pf-card-ref">Posner K, et al. J Clin Psychiatry. 2011;72(2):233-239</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">C-SSRS screening + risk/protective factors for comprehensive suicide risk assessment.</p>
+        <button class="pf-btn" onclick="printBlankForm('suicide-risk')">Print Blank Form</button>
+      </div>
+    </div>
+  </div>
+
+</section><!-- end print-forms -->
+
+
     <!-- ── Blog Index ─────────────────────────────────────────────────────── -->
     <section id="blog-index" class="section">
       <div class="section-header">
@@ -10810,6 +10966,7 @@
       { title: 'Epworth Sleepiness', section: 'ess-tool', cat: 'Rating Scale' },
       { title: 'Burnout (BAT)', section: 'bat-tool', cat: 'Rating Scale' },
       { title: 'Autism Screening (AQ)', section: 'aq-tool', cat: 'Rating Scale' },
+      { title: 'Printable Clinical Forms', section: 'print-forms', cat: 'Clinical Tools' },
     ];
 
     var timer;

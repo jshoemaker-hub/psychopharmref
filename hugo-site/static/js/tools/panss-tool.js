@@ -286,5 +286,29 @@ Anxiety/Depression (G2,G3,G4,G6): ${marderAnxiety}/28`;
         }
       });
 
+      // Add print buttons
+      (function addPrintBtns() {
+        var sec = document.getElementById('panss-tool');
+        if (!sec) return;
+        var header = sec.querySelector('.section-header');
+        if (!header) return;
+        var btnDiv = document.createElement('div');
+        btnDiv.style.display = 'flex';
+        btnDiv.style.gap = '8px';
+        var btn1 = document.createElement('button');
+        btn1.className = 'pf-inline-btn';
+        btn1.onclick = function() { if (typeof printBlankForm === 'function') printBlankForm('panss-6'); };
+        btn1.innerHTML = '🖨️ Print PANSS-6';
+        btn1.title = 'Print a blank version of the PANSS-6 form';
+        var btn2 = document.createElement('button');
+        btn2.className = 'pf-inline-btn';
+        btn2.onclick = function() { if (typeof printBlankForm === 'function') printBlankForm('panss-30'); };
+        btn2.innerHTML = '🖨️ Print PANSS-30';
+        btn2.title = 'Print a blank version of the PANSS-30 form';
+        btnDiv.appendChild(btn1);
+        btnDiv.appendChild(btn2);
+        header.appendChild(btnDiv);
+      })();
+
     })();
   

@@ -401,6 +401,30 @@
   reportBtn.addEventListener('click', copyReport);
   resetBtn.addEventListener('click', resetForm);
 
+  // Add print buttons
+  (function addPrintBtns() {
+    var sec = document.getElementById('bat-tool');
+    if (!sec) return;
+    var header = sec.querySelector('.section-header');
+    if (!header) return;
+    var btnDiv = document.createElement('div');
+    btnDiv.style.display = 'flex';
+    btnDiv.style.gap = '8px';
+    var btn1 = document.createElement('button');
+    btn1.className = 'pf-inline-btn';
+    btn1.onclick = function() { if (typeof printBlankForm === 'function') printBlankForm('bat-work'); };
+    btn1.innerHTML = '🖨️ Print BAT Work';
+    btn1.title = 'Print a blank version of the BAT Work form';
+    var btn2 = document.createElement('button');
+    btn2.className = 'pf-inline-btn';
+    btn2.onclick = function() { if (typeof printBlankForm === 'function') printBlankForm('bat-general'); };
+    btn2.innerHTML = '🖨️ Print BAT General';
+    btn2.title = 'Print a blank version of the BAT General form';
+    btnDiv.appendChild(btn1);
+    btnDiv.appendChild(btn2);
+    header.appendChild(btnDiv);
+  })();
+
   /* ── Init ──────────────────────────────────────────────────────────── */
   renderForm();
   updateScores();

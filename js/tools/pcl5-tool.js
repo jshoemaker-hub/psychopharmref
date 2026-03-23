@@ -232,6 +232,20 @@
         }
       });
 
+      // Add print button
+      (function addPrintBtn() {
+        var sec = document.getElementById('pcl5-tool');
+        if (!sec) return;
+        var header = sec.querySelector('.section-header');
+        if (!header) return;
+        var btn = document.createElement('button');
+        btn.className = 'pf-inline-btn';
+        btn.onclick = function() { if (typeof printBlankForm === 'function') printBlankForm('pcl5'); };
+        btn.innerHTML = '🖨️ Print Blank Form';
+        btn.title = 'Print a blank version of this form';
+        header.appendChild(btn);
+      })();
+
       // Initial call
       updateScores();
     })();
