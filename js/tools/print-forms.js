@@ -337,6 +337,113 @@
       ],
       scoring: 'Screen: Yes/No gateway questions',
       interpretation: 'None / Low Risk / Moderate Risk / High Risk based on responses'
+    },
+
+    'bat-work': {
+      title: 'Burnout Assessment Tool — Work Version (BAT-W)',
+      reference: 'Schaufeli WB, De Witte H, Desart S. BAT Manual. KU Leuven. 2019',
+      domains: {
+        'Exhaustion (8 items)': [
+          'At work, I feel mentally exhausted',
+          'Everything I do at work requires a great deal of effort',
+          'After a day at work, I find it hard to recover my energy',
+          'At work, I feel physically exhausted',
+          'When I get up in the morning, I lack the energy to start a new day at work',
+          'I want to be active at work, but somehow I am unable to manage',
+          'When I exert myself at work, I quickly get tired',
+          'At the end of my working day, I feel mentally exhausted and drained'
+        ],
+        'Mental Distance (5 items)': [
+          'I struggle to find any enthusiasm for my work',
+          'At work, I do not think much about what I am doing and I function on autopilot',
+          'I feel a strong aversion towards my job',
+          'I feel indifferent about my job',
+          "I'm cynical about what my work means to others"
+        ],
+        'Cognitive Impairment (5 items)': [
+          'At work, I have trouble staying focused',
+          'At work I struggle to think clearly',
+          "I'm forgetful and distracted at work",
+          'When I\'m working, I have trouble concentrating',
+          'I make mistakes in my work because I have my mind on other things'
+        ],
+        'Emotional Impairment (5 items)': [
+          'At work, I feel unable to control my emotions',
+          'I do not recognize myself in the way I react emotionally at work',
+          "During my work I become irritable when things don't go my way",
+          'I get upset or sad at work without knowing why',
+          'At work I may overreact unintentionally'
+        ],
+        'Secondary — Psychological (5 items)': [
+          'I have trouble falling or staying asleep',
+          'I tend to worry',
+          'I feel tense and stressed',
+          'I feel anxious and/or suffer from panic attacks',
+          'Noise and crowds disturb me'
+        ],
+        'Secondary — Psychosomatic (5 items)': [
+          'I suffer from palpitations or chest pain',
+          'I suffer from stomach and/or intestinal complaints',
+          'I suffer from headaches',
+          'I suffer from muscle pain, for example in the neck, shoulder or back',
+          'I often get sick'
+        ]
+      },
+      scoring: '1 = Never, 2 = Rarely, 3 = Sometimes, 4 = Often, 5 = Always',
+      interpretation: 'Domain mean ≥3.0 indicates elevated burnout symptoms'
+    },
+
+    'bat-general': {
+      title: 'Burnout Assessment Tool — General Version (BAT-G)',
+      reference: 'Schaufeli WB, De Witte H, Desart S. BAT Manual. KU Leuven. 2019',
+      domains: {
+        'Exhaustion (8 items)': [
+          'I feel mentally exhausted',
+          'Everything I do requires a great deal of effort',
+          'At the end of the day, I find it hard to recover my energy',
+          'I feel physically exhausted',
+          'When I get up in the morning, I lack the energy to start a new day',
+          'I want to be active, but somehow I am unable to manage',
+          'When I exert myself, I quickly get tired',
+          'At the end of my day, I feel mentally exhausted and drained'
+        ],
+        'Mental Distance (4 items)': [
+          'I struggle to find any enthusiasm for my work',
+          'I feel a strong aversion towards my job',
+          'I feel indifferent about my job',
+          "I'm cynical about what my work means to others"
+        ],
+        'Cognitive Impairment (5 items)': [
+          'I have trouble staying focused',
+          'I struggle to think clearly',
+          "I'm forgetful and distracted",
+          'I have trouble concentrating',
+          'I make mistakes because I have my mind on other things'
+        ],
+        'Emotional Impairment (5 items)': [
+          'I feel unable to control my emotions',
+          'I do not recognize myself in the way I react emotionally',
+          "I become irritable when things don't go my way",
+          'I get upset or sad without knowing why',
+          'I may overreact unintentionally'
+        ],
+        'Secondary — Psychological (5 items)': [
+          'I have trouble falling or staying asleep',
+          'I tend to worry',
+          'I feel tense and stressed',
+          'I feel anxious and/or suffer from panic attacks',
+          'Noise and crowds disturb me'
+        ],
+        'Secondary — Psychosomatic (5 items)': [
+          'I suffer from palpitations or chest pain',
+          'I suffer from stomach and/or intestinal complaints',
+          'I suffer from headaches',
+          'I suffer from muscle pain, for example in the neck, shoulder or back',
+          'I often get sick'
+        ]
+      },
+      scoring: '1 = Never, 2 = Rarely, 3 = Sometimes, 4 = Often, 5 = Always',
+      interpretation: 'Domain mean ≥3.0 indicates elevated burnout symptoms'
     }
   };
 
@@ -887,6 +994,32 @@
           </div>`;
         });
         break;
+
+      case 'bat-work':
+      case 'bat-general':
+        var batDomains = {};
+        form.items.forEach(function(item) {
+          if (!batDomains[item.domain]) batDomains[item.domain] = [];
+          batDomains[item.domain].push(item);
+        });
+        Object.keys(batDomains).forEach(function(domain) {
+          html += '<div class="pf-print-section-header" style="margin-top: 12px;">' + domain + '</div>';
+          batDomains[domain].forEach(function(item, idx) {
+            html += '<div class="pf-print-item">' +
+              '<div class="pf-print-item-num">' + item.num + '.</div>' +
+              '<div class="pf-print-item-text">' + item.text + '</div>' +
+              '<div class="pf-print-item-boxes">' +
+                '<span class="pf-print-circle">1</span>' +
+                '<span class="pf-print-circle">2</span>' +
+                '<span class="pf-print-circle">3</span>' +
+                '<span class="pf-print-circle">4</span>' +
+                '<span class="pf-print-circle">5</span>' +
+              '</div>' +
+            '</div>';
+          });
+        });
+        html += '<div style="margin-top: 10px; font-size: 10px; color: #555;">Scale: 1 = Never, 2 = Rarely, 3 = Sometimes, 4 = Often, 5 = Always</div>';
+        break;
     }
 
     html += '</div>';
@@ -910,6 +1043,8 @@
       case 'aims': return 28;
       case 'ess': return 24;
       case 'suicide-risk': return 'Assessment';
+      case 'bat-work': return 115;
+      case 'bat-general': return 110;
       default: return '—';
     }
   }
