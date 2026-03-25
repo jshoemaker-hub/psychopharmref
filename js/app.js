@@ -289,12 +289,22 @@ function switchSection(id) {
     // Load CSS
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/tools/' + toolId + '.css?v=20260321';
+    link.href = 'css/tools/' + toolId + '.css?v=20260324';
     document.head.appendChild(link);
-    // Load JS
-    const script = document.createElement('script');
-    script.src = 'js/tools/' + toolId + '.js?v=20260321';
-    document.body.appendChild(script);
+    // Load shared tool-utils.js once (first tool activation), then the tool JS
+    function loadToolScript() {
+      const script = document.createElement('script');
+      script.src = 'js/tools/' + toolId + '.js?v=20260324';
+      document.body.appendChild(script);
+    }
+    if (!window.ToolUtils) {
+      const utils = document.createElement('script');
+      utils.src = 'js/tools/tool-utils.js?v=20260324';
+      utils.onload = loadToolScript;
+      document.body.appendChild(utils);
+    } else {
+      loadToolScript();
+    }
     sec.dataset.lazyLoaded = 'true';
   }
 

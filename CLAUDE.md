@@ -40,16 +40,35 @@ psychopharm/
 
 ### Clinical Tool Pattern
 Each clinical tool follows this exact pattern:
-1. Section wrapper: `<section id="toolname-tool" class="section">`
+1. Section wrapper: `<section id="toolname-tool" data-lazy-tool="toolname-tool" class="section">`
 2. Section header with `<h2>` and `<p>` description
 3. Warning box: `<div class="mt-warning">`
-4. Inline `<style>` with **prefixed CSS classes** (e.g., `ps-` for PANSS, `bf-` for BFCRS, `sl-` for SLUMS)
-5. Form with radio buttons / checkboxes for scoring
-6. Score display area with real-time updates
-7. Generate Report button → copies to clipboard (button text changes to "Copied!" for 2s)
-8. Reset button with confirmation
-9. Inline `<script>` wrapped in IIFE: `(function(){ ... })()`
-10. Closing: `</section><!-- end toolname-tool -->`
+4. HTML form with radio buttons / checkboxes for scoring
+5. Score display area with real-time updates
+6. Generate Report button → copies to clipboard (button text changes to "Copied!" for 2s)
+7. Reset button with confirmation
+8. Closing: `</section><!-- end toolname-tool -->`
+
+**Tool files are external** (lazy-loaded on first visit):
+- CSS: `css/tools/toolname-tool.css` — prefixed classes (e.g., `ps-` for PANSS)
+- JS: `js/tools/toolname-tool.js` — wrapped in IIFE: `(function(){ ... })()`
+- Shared utils: `js/tools/tool-utils.js` — loaded automatically before any tool JS
+
+### Shared Tool Utilities (`js/tools/tool-utils.js`)
+New tools should use `ToolUtils` instead of reimplementing common patterns:
+```javascript
+// Copy to clipboard with button feedback
+ToolUtils.copyWithButton(reportText, buttonElement);
+
+// Copy to clipboard with message element feedback
+ToolUtils.copyWithMessage(reportText, messageElement);
+
+// Reset with confirmation
+ToolUtils.confirmReset('Reset all scores?', function() { form.reset(); });
+
+// Consistent date stamp for reports ("March 24, 2026")
+var dateStr = ToolUtils.dateStamp();
+```
 
 **CSS prefix registry** (to avoid conflicts):
 - `sl-` → SLUMS Examination
@@ -62,15 +81,17 @@ Each clinical tool follows this exact pattern:
 - `ym-` → YMRS (Mania)
 - `yb-` → Y-BOCS (OCD)
 - `ai-` → AIMS (Dyskinesia)
+- `adl-` → ADL / IADL
+- `aq-` → Autism Screening (AQ)
+- `asrs-` → ASRS (ADHD)
+- `bat-` → BAT (Brief Anxiety)
+- `es-` → Epworth Sleepiness Scale
+- `msibpd-` → MSI-BPD
 
 ### Copy-to-Clipboard Pattern
-Never use `alert()`. Always use button text feedback:
+Never use `alert()`. Always use `ToolUtils.copyWithButton()` for new tools:
 ```javascript
-navigator.clipboard.writeText(text).then(() => {
-  const orig = btn.textContent;
-  btn.textContent = 'Copied!';
-  setTimeout(() => { btn.textContent = orig; }, 2000);
-});
+ToolUtils.copyWithButton(text, btn);  // shows "Copied!" for 2s
 ```
 
 ### Report Summaries
@@ -80,9 +101,10 @@ navigator.clipboard.writeText(text).then(() => {
 
 ### Blog Posts
 - Located in `blog/` directory as standalone `.html` files
-- Each has its own complete sidebar nav with links back to `../index.html#section-id`
-- When adding a new sidebar nav item, it must be updated in **all 42+ blog files** plus `index.html`
-- Blog sidebar uses: `<li><a href="../index.html#section-id" class="nav-link nav-sub-link">Label</a></li>`
+- **Sidebar is shared**: all blog posts load `blog/sidebar.html` dynamically via `fetch()`
+- When adding a new sidebar nav item, update **only `blog/sidebar.html`** (and `index.html` for the main site)
+- Blog sidebar link format: `<li><a href="../index.html#section-id" class="nav-link nav-sub-link">Label</a></li>`
+- Blog links within sidebar: `<li><a href="filename.html" class="nav-link nav-sub-link">Title</a></li>`
 
 ### Sidebar Navigation (index.html)
 - Clinical Tools group includes: QT Risk Tool, Refill Calendar, Med Comparison, Taper/Start, CDR Staging, ASD Severity, Suicide Risk, SLUMS Exam, PANSS, Catatonia (BFCRS), CIDI Bipolar Screen, PCL-5 (PTSD), YMRS (Mania), Y-BOCS (OCD), AIMS (Dyskinesia)
@@ -97,5 +119,6 @@ git -c user.name="Jerad Shoemaker" -c user.email="jshoemakerhwc@gmail.com" commi
 - Domain scoring in tools: each question maps to ONE primary domain to avoid double-counting
 - Binary items in rating scales (e.g., BFCRS items 12, 17-21) are scored 0 or 3 only
 - Validate HTML after every insertion using the Python HTMLParser tag checker
-- Use Python scripts for batch modifications across all 42+ blog files
+- Blog sidebar is shared (`blog/sidebar.html`) — edit once, not 77 files
+- Use Python scripts for batch modifications across blog files when needed
 - Large tool sections (~1000+ lines) should be built via Agent tool, then inserted via Python

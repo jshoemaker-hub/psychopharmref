@@ -66,6 +66,7 @@
 /* SVG responsive sizing fix */
 .diagram-wrapper > div, .diagram-container > div, .svg-container > div, .svg-diagram > div, .diagram-wrap > div, .diagram > div { width: 100%; }
 .diagram-wrapper svg, .diagram-container svg, .svg-container svg, .svg-diagram svg, .diagram-wrap svg, .diagram svg, .ba-body svg { width: 100%; height: auto; max-width: 820px; }
+.ba-act-btn svg, .ba-share-btn svg, .ba-share-menu svg { width: 12px; height: 12px; max-width: none; fill: currentColor; flex-shrink: 0; }
   </style>
   <script type="application/ld+json">
   {
@@ -125,218 +126,32 @@
 
   <!-- Sidebar Navigation -->
   <nav id="sidebar">
-    <div class="sidebar-header">
-      <div class="logo"><a href="../index.html" style="text-decoration:none;color:inherit;">PsychoPharm<span>Ref</span></a></div>
-      <div class="logo-sub">Clinical Reference</div>
-    </div>
-
-    <ul class="nav-links">
-      <!-- Home -->
-      <li>
-        <a href="../index.html" class="nav-link" data-section="overview">
-          <span class="nav-icon">&#8962;</span> Home
-        </a>
-      </li>
-
-      <!-- Psychopharmacology -->
-      <li class="nav-group" data-group="psychopharm">
-        <button class="nav-parent-btn">
-          <span class="nav-icon">&#128138;</span>
-          <span class="nav-parent-label">Psychopharmacology</span>
-          <span class="nav-caret">&#9658;</span>
-        </button>
-        <ul class="nav-sub">
-          <li><a href="../index.html#drug-table" class="nav-link nav-sub-link">Drug Database</a></li>
-          <li><a href="../index.html#p450" class="nav-link nav-sub-link">P450 Interactions</a></li>
-          <li><a href="../index.html#receptor-binding" class="nav-link nav-sub-link">Receptor Binding</a></li>
-          <li><a href="../index.html#glossary" class="nav-link nav-sub-link">Receptor Glossary</a></li>
-          <li><a href="../index.html#pk-curves" class="nav-link nav-sub-link">PK Curves</a></li>
-        </ul>
-      </li>
-
-      <!-- Clinical Tools -->
-      <li class="nav-group" data-group="tools">
-        <button class="nav-parent-btn">
-          <span class="nav-icon">&#128295;</span>
-          <span class="nav-parent-label">Clinical Tools</span>
-          <span class="nav-caret">&#9658;</span>
-        </button>
-        <ul class="nav-sub">
-          <li class="nav-sub-divider">Medication Tools</li>
-          <li><a href="../index.html#qt-risk" class="nav-link nav-sub-link">QT Risk Tool</a></li>
-          <li><a href="../index.html#refill-calendar" class="nav-link nav-sub-link">Refill Calendar</a></li>
-          <li><a href="../index.html#med-compare" class="nav-link nav-sub-link">Med Comparison</a></li>
-          <li><a href="../index.html#med-taper" class="nav-link nav-sub-link">Taper / Start</a></li>
-
-          <li class="nav-sub-divider">Cognitive &amp; Neurodevelopmental</li>
-          <li><a href="../index.html#cdr-tool" class="nav-link nav-sub-link">CDR Staging</a></li>
-          <li><a href="../index.html#slums-tool" class="nav-link nav-sub-link">SLUMS Exam</a></li>
-          <li><a href="../index.html#asd-tool" class="nav-link nav-sub-link">ASD Severity</a></li>
-          <li><a href="../index.html#aq-tool" class="nav-link nav-sub-link">Autism Screening (AQ)</a></li>
-          <li><a href="../index.html#adl-tool" class="nav-link nav-sub-link">ADL / IADL</a></li>
-          <li><a href="../index.html#asrs-tool" class="nav-link nav-sub-link">ASRS (ADHD)</a></li>
-
-          <li class="nav-sub-divider">Mood &amp; Anxiety Scales</li>
-          <li><a href="../index.html#cidi-tool" class="nav-link nav-sub-link">CIDI Bipolar Screen</a></li>
-          <li><a href="../index.html#ymrs-tool" class="nav-link nav-sub-link">YMRS (Mania)</a></li>
-          <li><a href="../index.html#pcl5-tool" class="nav-link nav-sub-link">PCL-5 (PTSD)</a></li>
-          <li><a href="../index.html#ybocs-tool" class="nav-link nav-sub-link">Y-BOCS (OCD)</a></li>
-          <li><a href="../index.html#msibpd-tool" class="nav-link nav-sub-link">MSI-BPD</a></li>
-
-          <li class="nav-sub-divider">Psychosis &amp; Movement</li>
-          <li><a href="../index.html#panss-tool" class="nav-link nav-sub-link">PANSS</a></li>
-          <li><a href="../index.html#bfcrs-tool" class="nav-link nav-sub-link">Catatonia (BFCRS)</a></li>
-          <li><a href="../index.html#aims-tool" class="nav-link nav-sub-link">AIMS (Dyskinesia)</a></li>
-
-          <li class="nav-sub-divider">Sleep</li>
-          <li><a href="../index.html#ess-tool" class="nav-link nav-sub-link">Epworth (Sleepiness)</a></li>
-
-          <li class="nav-sub-divider">Safety</li>
-          <li><a href="../index.html#suicide-risk-tools" class="nav-link nav-sub-link">Suicide Risk</a></li>
-
-          <li class="nav-sub-divider">Resources</li>
-          <li><a href="../index.html#print-forms" class="nav-link nav-sub-link">Printable Forms</a></li>
-        </ul>
-      </li>
-
-      <!-- Clinical Insights -->
-      <li class="nav-group" data-group="insights">
-        <button class="nav-parent-btn">
-          <span class="nav-icon">&#129504;</span>
-          <span class="nav-parent-label">Clinical Insights</span>
-          <span class="nav-caret">&#9658;</span>
-        </button>
-        <ul class="nav-sub">
-          <li><a href="../index.html#cog-domains" class="nav-link nav-sub-link">Cognitive Domains</a></li>
-          <li><a href="../index.html#neuro-circuits" class="nav-link nav-sub-link">Neuropsych Circuits</a></li>
-          <li><a href="../index.html#brain-regions" class="nav-link nav-sub-link">Brain Regions</a></li>
-        </ul>
-      </li>
-
-      <!-- Blog -->
-      <li class="nav-group open" data-group="blog">
-        <button class="nav-parent-btn">
-          <span class="nav-icon">&#9998;</span>
-          <span class="nav-parent-label">Blog</span>
-          <span class="nav-caret">&#9658;</span>
-        </button>
-        <ul class="nav-sub">
-          <li><a href="../index.html#blog-index" class="nav-link nav-sub-link">All Posts</a></li>
-
-          <li class="nav-sub-divider">Addiction Medicine</li>
-          <li><a href="smoking-cessation.html" class="nav-link nav-sub-link">Smoking Cessation</a></li>
-          <li><a href="alcohol-use-disorder.html" class="nav-link nav-sub-link">Alcohol Use Disorder</a></li>
-          <li><a href="opioid-use-disorder.html" class="nav-link nav-sub-link">Opioid Use Disorder</a></li>
-          <li><a href="cannabis-psychiatry.html" class="nav-link nav-sub-link">Cannabis &amp; Psychiatry</a></li>
-          <li><a href="stimulant-substance-disorders.html" class="nav-link nav-sub-link">Stimulant &amp; Other SUDs</a></li>
-
-          <li class="nav-sub-divider">Anxiety &amp; Trauma</li>
-          <li><a href="panic-attacks-gad.html" class="nav-link nav-sub-link">Panic &amp; GAD</a></li>
-          <li><a href="ptsd-cptsd.html" class="nav-link nav-sub-link">PTSD &amp; cPTSD</a></li>
-          <li><a href="obsessive-compulsive-disorder.html" class="nav-link nav-sub-link">OCD</a></li>
-          <li><a href="social-anxiety-phobias.html" class="nav-link nav-sub-link">Social Anxiety &amp; Phobias</a></li>
-
-          <li class="nav-sub-divider">Mood Disorders</li>
-          <li><a href="bipolar-disorder.html" class="nav-link nav-sub-link">Bipolar Disorder</a></li>
-          <li><a href="major-depressive-disorder.html" class="nav-link nav-sub-link">MDD &amp; Dysthymia</a></li>
-          <li><a href="seasonal-affective-disorder.html" class="nav-link nav-sub-link">Seasonal Affective Disorder</a></li>
-
-          <li class="nav-sub-divider">Stress &amp; Adjustment</li>
-          <li><a href="adjustment-disorder.html" class="nav-link nav-sub-link">Adjustment Disorder</a></li>
-          <li><a href="personality-disorders.html" class="nav-link nav-sub-link">Personality Disorders</a></li>
-          <li><a href="eating-disorders.html" class="nav-link nav-sub-link">Eating Disorders</a></li>
-          <li><a href="dissociative-disorders.html" class="nav-link nav-sub-link">Dissociative Disorders</a></li>
-
-          <li class="nav-sub-divider">Psychotic Disorders</li>
-          <li><a href="schizophrenia.html" class="nav-link nav-sub-link">Schizophrenia</a></li>
-          <li><a href="first-break-psychosis.html" class="nav-link nav-sub-link">First Break Psychosis</a></li>
-
-          <li class="nav-sub-divider">Neurodevelopmental</li>
-          <li><a href="adult-adhd.html" class="nav-link nav-sub-link">Adult ADHD</a></li>
-          <li><a href="autism-spectrum-disorder.html" class="nav-link nav-sub-link">Autism Spectrum Disorder</a></li>
-
-          <li class="nav-sub-divider">Movement &amp; Neurodegeneration</li>
-          <li><a href="parkinsons-disease.html" class="nav-link nav-sub-link">Parkinson&#8217;s Disease</a></li>
-          <li><a href="alzheimers-disease.html" class="nav-link nav-sub-link">Alzheimer&#8217;s Disease</a></li>
-          <li><a href="frontotemporal-dementia.html" class="nav-link nav-sub-link">Frontotemporal Dementia</a></li>
-          <li><a href="antipsychotic-movement-disorders.html" class="nav-link nav-sub-link">Movement Disorders</a></li>
-          <li><a href="psychiatric-medication-tremors.html" class="nav-link nav-sub-link">Medication Tremors</a></li>
-
-          <li class="nav-sub-divider">Neuropsychiatry</li>
-          <li><a href="traumatic-brain-injury.html" class="nav-link nav-sub-link">TBI &amp; CTE</a></li>
-          <li><a href="delirium.html" class="nav-link nav-sub-link">Delirium</a></li>
-          <li><a href="catatonia.html" class="nav-link nav-sub-link">Catatonia</a></li>
-
-          <li class="nav-sub-divider">Neuromodulation &amp; Somatic Therapies</li>
-          <li><a href="electroconvulsive-therapy.html" class="nav-link nav-sub-link">ECT &amp; Neuromodulation</a></li>
-          <li><a href="ketamine-esketamine.html" class="nav-link nav-sub-link">Ketamine &amp; Esketamine</a></li>
-
-          <li class="nav-sub-divider">Sleep Medicine</li>
-          <li><a href="insomnia.html" class="nav-link nav-sub-link">Insomnia</a></li>
-          <li><a href="sleep-medications-review.html" class="nav-link nav-sub-link">Sleep Medications</a></li>
-
-          <li class="nav-sub-divider">Psychopharmacology</li>
-          <li><a href="antipsychotic-review.html" class="nav-link nav-sub-link">Antipsychotics Review</a></li>
-          <li><a href="antidepressant-review.html" class="nav-link nav-sub-link">Antidepressants Review</a></li>
-          <li><a href="long-acting-injectables.html" class="nav-link nav-sub-link">Long-Acting Injectables</a></li>
-          <li><a href="mood-stabilizer-medications.html" class="nav-link nav-sub-link">Mood Stabilizers</a></li>
-          <li><a href="benzodiazepine-pharmacology.html" class="nav-link nav-sub-link">Benzodiazepines</a></li>
-          <li><a href="clozapine-clinical-guide.html" class="nav-link nav-sub-link">Clozapine Guide</a></li>
-          <li><a href="pharmacogenomics-psychiatry.html" class="nav-link nav-sub-link">Pharmacogenomics</a></li>
-          <li><a href="neuroscience-foundations.html" class="nav-link nav-sub-link">Neuroscience Foundations</a></li>
-
-
-          <li class="nav-sub-divider">Neuroimmunology</li>
-          <li><a href="psychoneuroimmunology.html" class="nav-link nav-sub-link">Psychoneuroimmunology</a></li>
-          <li><a href="infectious-disease-psychiatry.html" class="nav-link nav-sub-link">Infectious Disease &amp; Psychiatry</a></li>
-          <li class="nav-sub-divider">Environmental Psychiatry</li>
-          <li><a href="heavy-metals-environmental-toxins.html" class="nav-link nav-sub-link">Heavy Metals &amp; Toxins</a></li>
-          <li class="nav-sub-divider">Nutritional Psychiatry</li>
-          <li><a href="obesity-weight-loss.html" class="nav-link nav-sub-link">Obesity &amp; Weight Loss</a></li>
-          <li><a href="folate-b12-mma.html" class="nav-link nav-sub-link">Folate, B12 &amp; MMA</a></li>
-          <li><a href="vitamin-d.html" class="nav-link nav-sub-link">Vitamin D</a></li>
-          <li><a href="magnesium-supplementation.html" class="nav-link nav-sub-link">Magnesium</a></li>
-          <li><a href="natural-methods-depression-anxiety.html" class="nav-link nav-sub-link">Natural Methods</a></li>
-
-          <li class="nav-sub-divider">Perinatal Psychiatry</li>
-          <li><a href="pregnancy-breastfeeding.html" class="nav-link nav-sub-link">Pregnancy &amp; Breastfeeding</a></li>
-
-          <li class="nav-sub-divider">Clinical Practice</li>
-          <li><a href="suicide-risk-assessments.html" class="nav-link nav-sub-link">Suicide Risk Assessment</a></li>
-          <li><a href="grief-bereavement.html" class="nav-link nav-sub-link">Grief &amp; Bereavement</a></li>
-          <li><a href="medication-changes.html" class="nav-link nav-sub-link">Medication Changes</a></li>
-          <li><a href="history-psychiatric-medications.html" class="nav-link nav-sub-link">Psych Med History</a></li>
-          <li><a href="capacity-evaluation.html" class="nav-link nav-sub-link">Capacity Evaluation</a></li>
-          <li><a href="surrogate-decision-makers.html" class="nav-link nav-sub-link">Surrogate Decision-Makers</a></li>
-          <li><a href="legal-precedents-psychiatry.html" class="nav-link nav-sub-link">Legal Frameworks</a></li>
-          <li><a href="court-testimony-psychiatry.html" class="nav-link nav-sub-link">Court Testimony</a></li>
-          <li><a href="medical-note-writing.html" class="nav-link nav-sub-link">Medical Note Writing</a></li>
-          <li><a href="psychiatric-interview.html" class="nav-link nav-sub-link">Psychiatric Interview</a></li>
-          <li><a href="psychotherapy-overview.html" class="nav-link nav-sub-link">Psychotherapy Overview</a></li>
-          <li><a href="emergency-psychiatry.html" class="nav-link nav-sub-link">Emergency Psychiatry</a></li>
-          <li><a href="serotonin-syndrome-nms.html" class="nav-link nav-sub-link">SS vs NMS</a></li>
-          <li><a href="psychiatric-ethics.html" class="nav-link nav-sub-link">Psychiatric Ethics</a></li>
-          <li><a href="motivational-interviewing.html" class="nav-link nav-sub-link">Motivational Interviewing</a></li>
-          <li><a href="telepsychiatry.html" class="nav-link nav-sub-link">Telepsychiatry</a></li>
-          <li><a href="geriatric-psychiatry.html" class="nav-link nav-sub-link">Geriatric Psychiatry</a></li>
-          <li class="nav-sub-divider">Medical Education &amp; Foundations</li>
-          <li><a href="science-of-learning.html" class="nav-link nav-sub-link">Science of Learning</a></li>
-          <li><a href="behavioral-modification.html" class="nav-link nav-sub-link">Behavioral Modification</a></li>
-          <li><a href="pharmacokinetics.html" class="nav-link nav-sub-link">Pharmacokinetics</a></li>
-          <li><a href="reading-journal-articles.html" class="nav-link nav-sub-link">Reading Journal Articles</a></li>
-          <li><a href="organ-dysfunction-psychiatry.html" class="nav-link nav-sub-link">Organ Dysfunction &amp; Psychiatry</a></li>
-          <li><a href="psychosomatic-conditions.html" class="nav-link nav-sub-link">Psychosomatic Conditions</a></li>
-          <li><a href="medical-statistics.html" class="nav-link nav-sub-link">Medical Statistics</a></li>
-          <li><a href="medication-discovery.html" class="nav-link nav-sub-link">Medication Discovery</a></li>
-        </ul>
-      </li>
-    </ul>
-
-    <div class="sidebar-footer">
-      <a href="../index.html#fda-search" class="sf-link">References &amp; Methods</a>
-      <span class="sf-contact">Contact &mdash; coming soon</span>
-    </div>
+    <!-- Sidebar loaded dynamically from shared sidebar.html -->
   </nav>
+  <script>
+  (function() {
+    fetch('sidebar.html')
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        var sidebar = document.getElementById('sidebar');
+        sidebar.innerHTML = html;
+        // Re-attach nav-group toggle listeners after sidebar loads
+        sidebar.querySelectorAll('.nav-parent-btn').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            var group = btn.closest('.nav-group');
+            if (group) group.classList.toggle('open');
+          });
+        });
+        // Highlight current page in sidebar
+        var currentPage = location.pathname.split('/').pop();
+        sidebar.querySelectorAll('.nav-sub-link').forEach(function(link) {
+          if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+          }
+        });
+      });
+  })();
+  </script>
 
   <!-- Main Content -->
   <main id="content">
