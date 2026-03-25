@@ -3,8 +3,17 @@
     var results = document.getElementById('us-results');
     if (!input || !results) return;
 
-    // Build blog index from sidebar links
-    var blogIndex = [];
+    // ── Blog content index (loaded from JSON) ────────────────────────────
+    var blogContentIndex = null;  // will be an array once loaded
+
+    // Load the pre-built blog content index
+    fetch('js/blog-index.json')
+      .then(function(r) { return r.ok ? r.json() : []; })
+      .then(function(data) { blogContentIndex = data; })
+      .catch(function() { blogContentIndex = []; });
+
+    // Build title-only blog index from sidebar links (fallback & category source)
+    var blogSidebarMap = {};
     document.querySelectorAll('#sidebar .nav-sub-link').forEach(function(a) {
       var href = a.getAttribute('href') || '';
       if (href.indexOf('blog/') >= 0 || href.indexOf('/blog/') >= 0) {
@@ -17,7 +26,9 @@
             break;
           }
         }
-        blogIndex.push({ title: a.textContent.trim(), url: href, category: cat });
+        // Extract filename from href like "blog/foo.html"
+        var fname = href.replace(/.*\//, '');
+        blogSidebarMap[fname] = { title: a.textContent.trim(), url: href, category: cat };
       }
     });
 
@@ -106,19 +117,23 @@
         }
       }
 
-      // 2. Search blog posts
-      var blogMatches = blogIndex.filter(function(b) {
-        var hay = (b.title + ' ' + b.category).toLowerCase();
-        return terms.every(function(t) { return hay.indexOf(t) >= 0; });
-      }).slice(0, 5);
+      // 2. Search blog posts (full-text via content index)
+      var blogMatches = searchBlogs(terms, 6);
 
       if (blogMatches.length) {
         html += '<div class="us-group-label">Blog Articles</div>';
         blogMatches.forEach(function(b) {
+          var matchInfo = '';
+          if (b.matchType === 'content') {
+            // Show matching keywords as context hint
+            var matched = b.matchedKeywords.slice(0, 3).join(', ');
+            matchInfo = '<span class="us-item-match">Mentions: ' + matched + '</span>';
+          }
           html += '<a href="' + b.url + '" class="us-item">' +
             '<span class="us-item-type us-item-type--blog">Article</span>' +
             '<span class="us-item-title">' + hl(b.title, terms) + '</span>' +
             (b.category ? '<span class="us-item-sub">' + b.category + '</span>' : '') +
+            matchInfo +
             '</a>';
         });
         totalMatches += blogMatches.length;
@@ -143,11 +158,96 @@
       }
 
       if (totalMatches === 0) {
-        html = '<div class="us-empty">No results for "' + q + '"</div>';
+        html = '<div class="us-empty">No results for &ldquo;' + escHtml(q) + '&rdquo;</div>';
       }
 
       results.innerHTML = html;
       results.classList.add('open');
+    }
+
+    /**
+     * Search blog posts by title, description, AND content keywords.
+     * Returns results sorted: title matches first, then keyword matches ranked by relevance.
+     */
+    function searchBlogs(terms, limit) {
+      var scored = [];
+
+      if (blogContentIndex) {
+        // Full-text search against the pre-built index
+        blogContentIndex.forEach(function(entry) {
+          var titleHay = entry.title.toLowerCase();
+          var descHay = (entry.desc || '').toLowerCase();
+          var kw = entry.keywords || [];
+          var score = 0;
+          var matchedKw = [];
+          var matchType = 'content';
+
+          // Title match (highest priority)
+          var titleMatch = terms.every(function(t) { return titleHay.indexOf(t) >= 0; });
+          if (titleMatch) { score += 100; matchType = 'title'; }
+
+          // Description match
+          var descMatch = terms.every(function(t) { return descHay.indexOf(t) >= 0; });
+          if (descMatch) score += 50;
+
+          // Keyword match — each term that matches any keyword adds score
+          terms.forEach(function(t) {
+            var found = false;
+            for (var i = 0; i < kw.length; i++) {
+              if (kw[i].indexOf(t) >= 0) {
+                matchedKw.push(kw[i]);
+                // Higher score for keywords near the top (more frequent in the article)
+                score += 10 - Math.min(i / 10, 5);
+                found = true;
+                break;
+              }
+            }
+          });
+
+          // Only include if ALL terms matched somewhere
+          var allTermsFound = terms.every(function(t) {
+            if (titleHay.indexOf(t) >= 0) return true;
+            if (descHay.indexOf(t) >= 0) return true;
+            for (var i = 0; i < kw.length; i++) {
+              if (kw[i].indexOf(t) >= 0) return true;
+            }
+            return false;
+          });
+
+          if (allTermsFound && score > 0) {
+            // Look up sidebar info for this file (URL and category)
+            var sidebar = blogSidebarMap[entry.file] || {};
+            scored.push({
+              title: entry.title,
+              url: sidebar.url || ('blog/' + entry.file),
+              category: sidebar.category || '',
+              score: score,
+              matchType: matchType,
+              matchedKeywords: matchedKw
+            });
+          }
+        });
+      } else {
+        // Fallback: sidebar-only search (index hasn't loaded yet)
+        Object.keys(blogSidebarMap).forEach(function(fname) {
+          var b = blogSidebarMap[fname];
+          var hay = (b.title + ' ' + b.category).toLowerCase();
+          if (terms.every(function(t) { return hay.indexOf(t) >= 0; })) {
+            scored.push({
+              title: b.title,
+              url: b.url,
+              category: b.category,
+              score: 100,
+              matchType: 'title',
+              matchedKeywords: []
+            });
+          }
+        });
+      }
+
+      // Sort by score descending
+      scored.sort(function(a, b) { return b.score - a.score; });
+      return scored.slice(0, limit);
     }
 
     function hl(text, terms) {
@@ -157,5 +257,9 @@
         text = text.replace(re, '<mark>$1</mark>');
       });
       return text;
+    }
+
+    function escHtml(s) {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
   })();
