@@ -617,6 +617,17 @@ td {
 .receptor-drug-selector select:focus { border-color: var(--accent); }
 .receptor-drug-selector select option { background: var(--bg2); }
 
+.rb-empty-state {
+  padding: 24px 20px;
+  color: var(--text-muted);
+  font-size: 14px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.rb-empty-state.hidden { display: none; }
+
 .chart-panel {
   display: flex;
   flex-wrap: wrap;

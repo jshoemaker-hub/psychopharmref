@@ -883,8 +883,12 @@ function renderPieChart(drug) {
 
 document.getElementById('drug-select').addEventListener('change', e => {
   const drug = MEDICATIONS.find(m => m.id === e.target.value);
-  if (drug) renderPieChart(drug);
-  else {
+  const emptyState = document.getElementById('pie-empty-state');
+  if (drug) {
+    if (emptyState) emptyState.classList.add('hidden');
+    renderPieChart(drug);
+  } else {
+    if (emptyState) emptyState.classList.remove('hidden');
     document.getElementById('pie-container').classList.add('hidden');
     document.getElementById('no-receptor-data').classList.add('hidden');
   }
