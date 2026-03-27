@@ -172,6 +172,8 @@ html, body {
   font-weight: 700;
   color: var(--text);
   letter-spacing: -0.3px;
+  margin: 0;
+  padding: 0;
 }
 .logo span { color: var(--accent); }
 .logo-sub {
