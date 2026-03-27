@@ -305,6 +305,36 @@
           <p style="margin: 0; font-size: 0.95em; line-height: 1.5;">(1) <strong>PHQ-9/GAD-7 Integration:</strong> Configure Epic to automatically administer PHQ-9 (depression screening) and GAD-7 (anxiety screening) at initial psychiatric visits and periodic follow-ups. Scores auto-populate the assessment, reducing manual scoring errors. (2) <strong>Medication Templates:</strong> Create SmartPhrases for medication counseling: ".clozapine-counseling" expands to a pre-written consent and side effect discussion. (3) <strong>Allergy Alerts:</strong> Ensure all psychiatric patients have documented allergies to prior failed medications and augmentation agents, triggering alerts if prescribers try to re-order. (4) <strong>EPCS for Controlled Substances:</strong> All psychiatrists should have EPCS (Electronic Prescribing of Controlled Substances) capability for benzodiazepines and stimulants, reducing phone authorization time and enabling remote prescribing. (5) <strong>Appointment Blocks:</strong> Set calendar blocks for different visit types (intake, follow-up, psychotherapy, medication management) with appropriate durations to prevent overbook and reduce no-show rates. (6) <strong>Prior Authorization Flagging:</strong> Create order sets that include pre-configured authorization requests for restrictive medications (clozapine, long-acting injectables, ketamine) to reduce approval delays.</p>
         </div>
 
+        <h3 class="ba-h3">Note Writing in Epic: Pulling Forward, SmartPhrases, and Efficient Documentation</h3>
+        <p>
+          One of the most common questions from physicians new to Epic—or transferring between Epic-based institutions—is how to efficiently populate a new progress note from prior documentation. Epic offers several methods for pulling content forward, each suited to different clinical contexts. Understanding these workflows can significantly reduce documentation time and help clinicians focus on the clinical encounter rather than keyboard mechanics.
+        </p>
+
+        <h4 style="font-size: 1.05em; font-weight: 700; color: var(--text); margin: 20px 0 10px;">Copy Previous / Pull Forward (Full Note Import)</h4>
+        <p>
+          This is the most commonly used method for bringing in an entire prior note or selected sections, with automatic refreshing of dynamic elements like vitals, medications, and dates when using templates. To use it: open the patient's chart and start a new note (typically via the Notes activity or the encounter workspace). Look for a button at the top of the note editor—usually an icon resembling a sheet of paper with an arrow, sometimes labeled "Copy Previous," "Pull Forward," or similar. Click it, then select the previous note or date of service you want to pull from. The content imports into your new note, where you can edit and update as needed. Some organizational builds surface this option directly when creating the note, or under a Templates button → Patient Specific → select the prior date of service. This is the fastest way to start a follow-up note with a familiar structure already in place.
+        </p>
+
+        <h4 style="font-size: 1.05em; font-weight: 700; color: var(--text); margin: 20px 0 10px;">Highlight and Insert (Section-Specific Import)</h4>
+        <p>
+          When you need specific sections rather than an entire note—say, just the social history or a particular assessment paragraph—this method avoids the bulk import and associated editing overhead. While in Chart Review or viewing a previous note, highlight the text you want. Right-click the highlighted text and choose "Insert into Note" or "Copy to New Note" (the exact label varies by build). This inserts the selected content directly into your open note without the formatting inconsistencies that standard copy-paste can introduce. This approach is particularly useful for pulling forward a well-written assessment or plan from a prior visit while building the rest of the note fresh.
+        </p>
+
+        <h4 style="font-size: 1.05em; font-weight: 700; color: var(--text); margin: 20px 0 10px;">SmartPhrases and SmartLinks (Template-Based Auto-Population)</h4>
+        <p>
+          SmartPhrases (dot phrases) are arguably the most powerful documentation tool in Epic. Many organizations create shared SmartPhrases (e.g., <code>.prog</code>, <code>.followup</code>, <code>.psycheval</code>) that serve as complete note templates. Within these templates, SmartLinks (prefixed with <code>@</code>) automatically pull dynamic patient data into the note: <code>@PMH@</code> inserts the active problem list, <code>@MED@</code> pulls the current medication list, <code>@VS@</code> imports the most recent vitals. To use a SmartPhrase, simply type a period followed by the phrase name in a new note (e.g., <code>.myprogressnote</code>) and press Space or Enter. The template expands with all SmartLinks auto-populated. Clinicians can create and manage personal SmartPhrases via Personalize → My SmartPhrases. For psychiatric practice, building specialty-specific SmartPhrases with embedded PHQ-9 scores, GAD-7 trends, medication reconciliation, and structured risk assessment fields can reduce per-note documentation time by several minutes.
+        </p>
+
+        <h4 style="font-size: 1.05em; font-weight: 700; color: var(--text); margin: 20px 0 10px;">NoteWriter and Section-Specific Copy</h4>
+        <p>
+          Some Epic environments use NoteWriter—a point-and-click template system where clinicians select findings, assessments, and plans from pre-configured menus rather than free-text typing. In NoteWriter-based workflows, individual sections may offer a "Copy from Previous" option that imports prior encounter data for that specific section. Similarly, structured flowsheets (commonly used in inpatient and procedural settings) sometimes allow hovering over a column or time entry and selecting "Copy from Previous" to carry forward values.
+        </p>
+
+        <div class="ba-insight-box" style="background-color: #f0f7f4; border-color: #4a7c35; border-left: 6px solid #4a7c35; margin: 24px 0; padding: 16px;">
+          <div style="font-weight: 700; margin-bottom: 12px; color: #2d5a1f;">Best Practices for Pulling Notes Forward</div>
+          <p style="margin: 0; font-size: 0.95em; line-height: 1.5;"><strong>Always review and update pulled-forward content before signing.</strong> Many organizations have explicit policies against excessive copy-forward to prevent "note bloat" and compliance violations. Regulatory auditors and malpractice attorneys specifically look for cloned notes with outdated information. Use triple asterisks (<code>***</code>) in templates as placeholders that force you to stop and edit specific sections before signing. Remember that inpatient versus outpatient builds may have slightly different button placements and labels for these features—if something doesn't match what you expect, check with your Epic superuser, trainer, or IT analyst for site-specific workflows. Many organizations also maintain internal quick-reference guides or short training videos for note documentation that are well worth reviewing during onboarding.</p>
+        </div>
+
         <!-- SECTION 4: OTHER MAJOR EHR SYSTEMS -->
         <h2 class="ba-h2">4. Other Major EHR Systems and Market Comparisons</h2>
 
