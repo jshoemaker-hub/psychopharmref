@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L2L4BVD8QC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-L2L4BVD8QC');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EKG Findings in Psychiatric Practice: QT Prolongation, Drug Interactions, and Clinical Monitoring | PsychoPharmRef</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="EKG Findings in Psychiatric Practice: QT Prolongation, Drug Interactions, and Clinical Monitoring | PsychoPharmRef">
+  <meta property="og:description" content="Drug-induced arrhythmias, QTc monitoring protocols, EKG abnormalities from psychiatric medications, and when to order baseline EKGs">
+  <meta property="og:url" content="https://psychopharmref.com/blog/ekg-findings-psychiatry.html">
+  <meta property="og:site_name" content="PsychoPharmRef">
+  <meta property="og:image" content="https://psychopharmref.com/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary">
+  <meta name="author" content="Jerad Shoemaker, MD">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="https://psychopharmref.com/blog/ekg-findings-psychiatry.html">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="blog.css">
+  <style>
+.btn-primary {
+      display: inline-block;
+      background-color: var(--accent);
+      color: #fefcf8;
+      padding: 12px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      font-size: 1em;
+    }
+.btn-primary:hover {
+      background-color: var(--green);
+      box-shadow: 0 2px 8px rgba(74, 124, 53, 0.2);
+    }
+/* SVG responsive sizing fix */
+.diagram-wrapper > div, .diagram-container > div, .svg-container > div, .svg-diagram > div, .diagram-wrap > div, .diagram > div { width: 100%; }
+.diagram-wrapper svg, .diagram-container svg, .svg-container svg, .svg-diagram svg, .diagram-wrap svg, .diagram svg, .ba-body svg { width: 100%; height: auto; max-width: 820px; }
+.ba-act-btn svg, .ba-share-btn svg, .ba-share-menu svg { width: 12px; height: 12px; max-width: none; fill: currentColor; flex-shrink: 0; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "EKG Findings in Psychiatric Practice: QT Prolongation, Drug Interactions, and Clinical Monitoring | PsychoPharmRef",
+    "description": "Drug-induced arrhythmias, QTc monitoring protocols, EKG abnormalities from psychiatric medications, and when to order baseline EKGs",
+    "url": "https://psychopharmref.com/blog/ekg-findings-psychiatry.html",
+    "author": {
+      "@type": "Person",
+      "name": "Jerad Shoemaker, MD",
+      "jobTitle": "Psychiatrist"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "PsychoPharmRef"
+    },
+    "datePublished": "2026-03-26",
+    "medicalAudience": {
+      "@type": "MedicalAudience",
+      "audienceType": "Clinician"
+    }
+  }
+  </script>
+<style>
+.ba-related { margin-top: 30px; padding-top: 20px; border-top: 2px solid var(--border, #cfc8ba); }
+.ba-related h4 { font-size: 15px; font-weight: 700; color: var(--text, #231e14); margin-bottom: 12px; }
+.ba-related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.ba-related-link { display: block; padding: 10px 14px; background: var(--bg2, #ece6db); border: 1px solid var(--border, #cfc8ba); border-radius: 5px; text-decoration: none; color: var(--text, #231e14); font-size: 13px; font-weight: 600; transition: border-color 0.15s, background 0.15s; line-height: 1.35; }
+.ba-related-link:hover { border-color: var(--accent, #4a7c35); background: var(--card, #fefcf8); }
+.ba-share-row { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
+.ba-share-btn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 5px; font-size: 12px; font-weight: 600; text-decoration: none; color: #fff; transition: opacity 0.15s; }
+.ba-share-btn:hover { opacity: 0.85; }
+.ba-share-btn--x { background: #000; }
+.ba-share-btn--li { background: #0A66C2; }
+.ba-share-btn--email { background: #6b6050; }
+.ba-share-btn--copy { background: #4a7c35; cursor: pointer; border: none; }
+</style>
+<style>
+.ba-action-bar { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0 14px; padding: 6px 0; border-bottom: 1px solid var(--border, #cfc8ba); }
+.ba-act-btn { display: inline-flex; align-items: center; gap: 3px; padding: 4px 9px; border-radius: 4px; font-size: 11px; font-weight: 600; border: 1px solid var(--border, #cfc8ba); background: var(--bg2, #ece6db); color: var(--text, #231e14); cursor: pointer; text-decoration: none; transition: background 0.15s, border-color 0.15s; }
+.ba-act-btn:hover { background: var(--accent, #4a7c35); color: #fff; border-color: var(--accent, #4a7c35); }
+.ba-act-btn svg { width: 12px; height: 12px; fill: currentColor; flex-shrink: 0; }
+.ba-share-drop { position: relative; display: inline-block; }
+.ba-share-menu { display: none; position: absolute; top: 100%; left: 0; z-index: 10; background: #fff; border: 1px solid var(--border, #cfc8ba); border-radius: 5px; box-shadow: 0 4px 12px rgba(0,0,0,0.12); min-width: 160px; margin-top: 4px; padding: 4px 0; }
+.ba-share-menu.ba-open { display: block; }
+.ba-share-menu a, .ba-share-menu button { display: flex; align-items: center; gap: 8px; width: 100%; padding: 8px 14px; font-size: 12.5px; font-weight: 500; color: var(--text, #231e14); text-decoration: none; border: none; background: none; cursor: pointer; text-align: left; }
+.ba-share-menu a:hover, .ba-share-menu button:hover { background: var(--bg2, #ece6db); }
+
+/* EKG-specific table styles */
+.ba-med-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95em; }
+.ba-med-table th { background-color: #e8f3e2; border: 1px solid var(--border); padding: 12px; font-weight: 700; text-align: left; color: #231e14; }
+.ba-med-table td { border: 1px solid var(--border); padding: 10px 12px; }
+.ba-med-table tr:nth-child(even) { background-color: #fefcf8; }
+.ba-med-table tr:hover { background-color: #f5f0e8; }
+
+.ba-insight-box { padding: 18px 20px; border-radius: 6px; margin: 24px 0; }
+.ba-insight-box--warning { background-color: #fff3e0; border-left: 6px solid #ff9800; }
+.ba-insight-box--summary { background-color: #e8f3e2; border-left: 6px solid #4a7c35; }
+.ba-insight-box--info { background-color: #e3f2fd; border-left: 6px solid #2196f3; }
+
+.ba-stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 24px 0; }
+.ba-stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 18px; text-align: center; }
+.ba-stat-label { font-size: 0.85em; font-weight: 600; color: #666; margin-bottom: 8px; }
+.ba-stat-value { font-size: 1.8em; font-weight: 700; color: var(--accent); }
+</style>
+</head>
+<body>
+<!--[if IE]>
+<div style="position:fixed;top:0;left:0;right:0;z-index:99999;background:#8b6914;color:#fff;padding:16px 24px;font-family:system-ui,sans-serif;font-size:15px;text-align:center;line-height:1.5;">
+  This site requires a modern browser to display correctly. Please open it in <strong>Microsoft Edge</strong>, <strong>Google Chrome</strong>, or <strong>Firefox</strong>.
+  <br><small>Internet Explorer does not support the CSS and JavaScript features used on this page.</small>
+</div>
+<![endif]-->
+  <!-- Mobile hamburger button -->
+  <button id="mobile-menu-btn" aria-label="Open navigation menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div id="sidebar-overlay"></div>
+
+  <!-- Sidebar Navigation -->
+  <nav id="sidebar">
+    <!-- Sidebar loaded dynamically from shared sidebar.html -->
+  </nav>
+  <script>
+  (function() {
+    fetch('sidebar.html')
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        var sidebar = document.getElementById('sidebar');
+        sidebar.innerHTML = html;
+        // Re-attach nav-group toggle listeners after sidebar loads
+        sidebar.querySelectorAll('.nav-parent-btn').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            var group = btn.closest('.nav-group');
+            if (group) group.classList.toggle('open');
+          });
+        });
+        // Highlight current page in sidebar
+        var currentPage = location.pathname.split('/').pop();
+        sidebar.querySelectorAll('.nav-sub-link').forEach(function(link) {
+          if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+          }
+        });
+      });
+  })();
+  </script>
+
+  <!-- Main Content -->
+  <main id="content">
+    <div class="container">
+  <div class="container">
+    <a href="../index.html" class="back-link">&#8592; Back to PsychoPharmRef</a>
+          <div class="ba-action-bar">
+            <button class="ba-act-btn" onclick="window.print()" title="Print this article"><svg viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg> Print</button>
+            <div class="ba-share-drop">
+              <button class="ba-act-btn" onclick="this.nextElementSibling.classList.toggle('ba-open')" title="Share this article"><svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg> Share</button>
+              <div class="ba-share-menu" id="share-menu-ekg-findings-psychiatry">
+                <a href="https://twitter.com/intent/tweet?text=EKG%20Findings%20in%20Psychiatric%20Practice%3A%20QT%20Prolongation%20and%20Clinical%20Monitoring%20%7C%20PsychoPharmRef&amp;url=https%3A%2F%2Fpsychopharmref.com%2Fblog%2Fekg-findings-psychiatry.html" target="_blank" rel="noopener">X (Twitter)</a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://psychopharmref.com/blog/ekg-findings-psychiatry.html" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:?subject=EKG Findings in Psychiatric Practice | PsychoPharmRef&amp;body=Check out this article: https://psychopharmref.com/blog/ekg-findings-psychiatry.html">Email</a>
+                <button onclick="navigator.clipboard.writeText('https://psychopharmref.com/blog/ekg-findings-psychiatry.html').then(function(){this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link'}.bind(this),2000)}.bind(this))">Copy Link</button>
+              </div>
+            </div>
+          </div>
+
+    <article class="blog-article">
+      <header class="ba-header">
+        <div class="ba-category">Clinical Practice</div>
+        <h1 class="ba-title">EKG Findings in Psychiatric Practice: QT Prolongation, Drug Interactions, and Clinical Monitoring</h1>
+        <p class="ba-subtitle">Drug-induced arrhythmias, psychotropic medications that affect cardiac electrophysiology, and evidence-based monitoring protocols for psychiatrists</p>
+        <div class="ba-meta">
+          <span>Published: March 2026</span>
+          <span>For Prescribing Clinicians</span>
+          <span>34 min read</span>
+                <span class="ba-meta-item">✍️ Jerad Shoemaker, MD</span>
+        </div>
+      </header>
+
+      <div class="ba-body">
+        <div class="ba-lead">
+          Electrocardiography (EKG) occupies an often-overlooked intersection between psychiatry and cardiology. While psychiatrists prescribe medications daily without routine cardiac monitoring, many commonly used psychotropic drugs can prolong cardiac repolarization, increase the risk of sudden cardiac death, and cause arrhythmias in vulnerable patients. The history of psychiatric psychopharmacology includes cautionary tales: thioridazine withdrawal leading to lethal torsades de pointes, droperidol's FDA black box warning, the recognition that ziprasidone and haloperidol IV prolong QT interval, and citalopram's FDA warning limiting doses due to QT prolongation. Contemporary psychiatry operates in an era of heightened awareness about drug-induced QT prolongation, yet many clinicians lack fundamental EKG literacy required for safe prescribing. This clinical review provides psychiatrists with essential knowledge of cardiac electrophysiology, EKG interpretation basics, drug-induced QT prolongation mechanisms, practical monitoring guidelines, and clinical decision-making frameworks for managing QTc abnormalities and other EKG findings in psychiatric patients.
+        </div>
+
+        <!-- Clinical Summary Box -->
+        <div class="ba-insight-box ba-insight-box--summary" style="background-color: #e8f3e2; border-color: #4a7c35; border-left: 6px solid #4a7c35; margin: 32px 0;">
+          <div style="font-weight: 700; font-size: 1.05em; margin-bottom: 12px; color: #2d5a1f;">Clinical Summary</div>
+          <p style="margin-bottom: 0; font-size: 0.95em; line-height: 1.6; color: #231e14;">This comprehensive EKG review for psychiatrists covers: (1) Historical perspective on sudden cardiac deaths from psychiatric medications, regulatory responses (FDA black box warnings), and the QTc monitoring era; (2) EKG fundamentals: 12-lead anatomy, wave morphology and duration (PR, QRS, QT), normal intervals, basic rate and rhythm assessment; (3) Cardiac electrophysiology: ion channels (sodium, potassium, calcium), action potential phases, repolarization mechanisms, hERG potassium channel blockade as the common mechanism for drug-induced QT prolongation, repolarization reserve concept; (4) QTc prolongation as the most critical EKG abnormality in psychiatry: medications that prolong QT (antipsychotics: ziprasidone, haloperidol IV, thioridazine; antidepressants: citalopram, escitalopram, tricyclics; others: methadone, lithium), torsades de pointes mechanism and mortality risk, Tisdale risk stratification score, monitoring guidelines, baseline EKG indications, risk factors (female sex, hypokalemia, hypomagnesemia, bradycardia, structural heart disease, drug interactions); (5) Other EKG abnormalities in psychiatric practice: tachycardia from clozapine and stimulants, bradycardia from lithium, T-wave changes from lithium, Brugada-like patterns from tricyclics, AV conduction delays, bundle branch blocks, ST changes, eating disorder findings (bradycardia, low voltage, U waves), TCA overdose signature (wide QRS, RAD, terminal R wave in aVR); (6) Clinical decision-making: baseline EKG criteria, monitoring frequency, QTc >500ms management, cardiology consultation indications.</p>
+        </div>
+
+        <!-- SECTION 1: WHERE PSYCHIATRY AND CARDIOLOGY OVERLAP -->
+        <h2 class="ba-h2">1. Where Psychiatry and Cardiology Overlap: A History of Sudden Cardiac Deaths</h2>
+
+        <p>
+          The intersection of psychiatry and cardiology is not new. For decades, psychiatrists prescribed medications with known cardiac effects without systematic cardiac monitoring. In 1963, thioridazine became the first antipsychotic to receive FDA black box warning for QT prolongation. Numerous cases documented sudden cardiac death in thioridazine-treated patients, often occurring after dose escalation or abrupt medication discontinuation (paradoxically, withdrawal of QT-prolonging drugs can sometimes unmask lethal torsades de pointes). Thioridazine remains notorious for its cardiac risk, yet continued to be prescribed widely because alternatives were limited.
+        </p>
+
+        <p>
+          In the 1990s and 2000s, droperidol (an intravenous antipsychotic used in emergency departments and ICUs) was linked to sudden cardiac deaths. The FDA issued a black box warning in 2001 after reports of fatal arrhythmias, even though droperidol was often used in single low doses. This warning paradoxically created access challenges for anesthesiology and emergency medicine, which had used droperidol effectively for decades with careful monitoring, yet the cardiac risk prompted widespread restriction.
+        </p>
+
+        <p>
+          As newer antipsychotics (second-generation agents) gained FDA approval in the 1990s–2000s, clinicians expected improved cardiac safety. However, ziprasidone (approved 2001) was demonstrated to prolong QTc interval in dose-dependent manner. Similarly, haloperidol, long considered "safe" by comparison to first-generation drugs, was found to carry significant QT prolongation risk when administered intravenously at high doses. Citalopram (the most prescribed antidepressant in the United States), was found to dose-dependently prolong QTc, prompting FDA dosage restrictions (40 mg/day maximum for most patients; 20 mg/day for age ≥60 years or those with liver disease) in 2011.
+        </p>
+
+        <p>
+          These historical episodes underscored a critical insight: psychiatric medications across multiple drug classes (antipsychotics, antidepressants, mood stabilizers, and others) can affect cardiac repolarization, and without adequate EKG monitoring and clinical risk stratification, psychiatrists unknowingly exposed patients to sudden cardiac death risk. Contemporary psychiatric practice now emphasizes QTc monitoring for high-risk medications and patients, yet many prescribers remain inadequately trained in EKG interpretation and risk assessment.
+        </p>
+
+        <h3 class="ba-h3">Why Psychiatrists Need EKG Literacy</h3>
+        <p>
+          EKG literacy is essential for psychiatrists because: (1) Many psychiatric medications carry cardiac risks that manifest on EKG before clinical symptoms; (2) Risk factors for drug-induced arrhythmias (female sex, electrolyte abnormalities, structural heart disease, drug interactions) are common in psychiatric populations; (3) Early recognition of QTc prolongation or other EKG abnormalities can prevent sudden cardiac death; (4) Cardiology consultation, when indicated, requires psychiatrists to communicate EKG findings clearly and understand cardiologists' recommendations; (5) Informed consent discussions about psychiatric medications should include realistic discussion of cardiac risks based on individual patient factors.
+        </p>
+
+        <!-- SECTION 2: EKG BASICS FOR PSYCHIATRISTS -->
+        <h2 class="ba-h2">2. EKG Basics for Psychiatrists: Waves, Intervals, and Interpretation</h2>
+
+        <h3 class="ba-h3">The 12-Lead EKG: Anatomy and Electrode Placement</h3>
+        <p>
+          A standard 12-lead EKG records electrical activity from 12 different perspectives of the heart: 6 precordial (chest) leads (V1–V6) and 6 limb leads (I, II, III, aVR, aVL, aVF). The precordial leads are placed across the anterior chest wall in a standardized pattern: V1 (4th intercostal space at right sternal border), V2 (4th intercostal space at left sternal border), V3 (midway between V2 and V4), V4 (5th intercostal space at midclavicular line), V5 (anterior axillary line at 5th intercostal), V6 (midaxillary line at 5th intercostal). Limb leads are derived from electrodes on the arms and legs using mathematical calculations.
+        </p>
+
+        <p>
+          For psychiatrists, understanding the standard format is sufficient: each lead represents electrical activity from a specific cardiac region, and abnormalities localize to the region represented by that lead. For example, ST elevation in leads II, III, aVF suggests inferior myocardial infarction; ST elevation in V1–V4 suggests anterior infarction.
+        </p>
+
+        <h3 class="ba-h3">Cardiac Waves and Their Meaning</h3>
+        <p>
+          <strong>P Wave:</strong> Represents atrial depolarization (electrical activation of the atria). Normal P wave duration is <120 ms (0.12 seconds) and amplitude <2.5 mm in limb leads. Abnormal P waves (tall peaked, prolonged, biphasic) suggest atrial pathology.
+        </p>
+
+        <p>
+          <strong>QRS Complex:</strong> Represents ventricular depolarization. The QRS interval (duration) normally is <120 ms (<0.12 seconds). Each component: Q wave = initial negative deflection, R wave = initial positive deflection, S wave = negative deflection after R wave. (A lead may not have all three components.) Wide QRS complexes (≥120 ms) suggest bundle branch blocks, ventricular rhythms, or drug effects (e.g., tricyclic antidepressants at toxic doses).
+        </p>
+
+        <p>
+          <strong>T Wave:</strong> Represents ventricular repolarization. T waves are normally upright in most leads (except aVR, sometimes V1). T-wave abnormalities (inversion, flattening, prolonged duration) can indicate ischemia, electrolyte imbalance (notably hypokalemia with prominent U wave), or drug effects.
+        </p>
+
+        <p>
+          <strong>U Wave:</strong> A small positive deflection that follows the T wave; represents repolarization of the ventricular conduction system. Prominent U waves are characteristic of hypokalemia and can be seen with QT-prolonging drugs.
+        </p>
+
+        <h3 class="ba-h3">Critical Intervals and Their Normal Values</h3>
+        <p>
+          <strong>PR Interval:</strong> Measured from the beginning of the P wave to the beginning of the QRS. Normal range: 120–200 ms (0.12–0.20 seconds). Represents atrial depolarization plus AV node conduction delay. Prolonged PR interval (>200 ms) indicates first-degree AV block; progressive prolongation with dropped beats = second-degree AV block.
+        </p>
+
+        <p>
+          <strong>QRS Duration:</strong> Measured from the beginning of the Q wave to the end of the S wave. Normal: <120 ms (<0.12 seconds). A QRS ≥120 ms indicates bundle branch block or ventricular dysrhythmia. Drugs like tricyclic antidepressants, antipsychotics, and other antimuscarinic agents can widen the QRS, particularly at high doses or in overdose.
+        </p>
+
+        <p>
+          <strong>QT Interval:</strong> Measured from the beginning of the QRS to the end of the T wave (including U waves if prominent). This interval represents the entire ventricular depolarization and repolarization cycle. The QT interval varies with heart rate (faster heart rate = shorter QT). To standardize, the QTc (corrected QT) is calculated using Bazett formula: QTc = QT / √(RR interval in seconds). Normal QTc: <450 ms in men, <460 ms in women. QTc >500 ms is considered severely prolonged and carries high arrhythmia risk.
+        </p>
+
+        <h3 class="ba-h3">Rate and Rhythm Assessment</h3>
+        <p>
+          <strong>Rate:</strong> Normal sinus rate is 60–100 bpm at rest. Tachycardia (>100 bpm) or bradycardia (<60 bpm) can be seen with psychiatric medications. Clozapine and tricyclic antidepressants commonly cause tachycardia; lithium and cholinesterase inhibitors cause bradycardia.
+        </p>
+
+        <p>
+          <strong>Rhythm:</strong> Normal rhythm is regular sinus rhythm with each QRS preceded by a P wave at consistent intervals. Irregular rhythms (atrial fibrillation, premature beats, AV blocks) should be identified and characterized. Psychiatric medications rarely cause primary arrhythmias but can precipitate them in susceptible patients.
+        </p>
+
+        <h3 class="ba-h3">Axis Assessment Basics</h3>
+        <p>
+          The QRS axis represents the overall direction of ventricular depolarization in the frontal plane. Normal axis is -30° to +90° (estimated by examining leads I and aVF: if both are positive, axis is normal). Right axis deviation (RAD) occurs when the axis is >+90°; left axis deviation (LAD) is <-30°. Extreme axis deviation (>180° to -90°, called "north-west" axis) is rare and seen in very specific conditions including tricyclic antidepressant overdose, emphysema, and lateral MI. RAD is nonspecific and can be seen with chronic lung disease, left ventricular hypertrophy, or simply normal variation in body habitus.
+        </p>
+
+        <div class="ba-stat-row">
+          <div class="ba-stat-card">
+            <div class="ba-stat-label">Normal PR Interval</div>
+            <div class="ba-stat-value">120–200 ms</div>
+          </div>
+          <div class="ba-stat-card">
+            <div class="ba-stat-label">Normal QRS Duration</div>
+            <div class="ba-stat-value"><120 ms</div>
+          </div>
+          <div class="ba-stat-card">
+            <div class="ba-stat-label">Normal QTc (Men)</div>
+            <div class="ba-stat-value"><450 ms</div>
+          </div>
+          <div class="ba-stat-card">
+            <div class="ba-stat-label">Normal QTc (Women)</div>
+            <div class="ba-stat-value"><460 ms</div>
+          </div>
+        </div>
+
+        <!-- SECTION 3: UNDERLYING CARDIAC ELECTROPHYSIOLOGY -->
+        <h2 class="ba-h2">3. Underlying Cardiac Electrophysiology: Ion Channels and Action Potentials</h2>
+
+        <h3 class="ba-h3">Cardiac Ion Channels and Depolarization/Repolarization</h3>
+        <p>
+          The heartbeat is generated by orchestrated movement of ions (sodium Na+, potassium K+, and calcium Ca2+) across the cardiac myocyte membrane. Specialized ion channels open and close in sequence, allowing these ions to flow down their electrochemical gradients. This ionic flow generates the electrical activity that propagates across the heart and triggers mechanical contraction.
+        </p>
+
+        <p>
+          <strong>Sodium Channels:</strong> Fast sodium channels are responsible for rapid depolarization (phase 0 of the action potential). These channels open when the cell is at rest, allowing Na+ to rush into the cell. Drugs like tricyclic antidepressants block these channels, slowing depolarization and widening the QRS.
+        </p>
+
+        <p>
+          <strong>Potassium Channels:</strong> Delayed rectifier potassium channels (particularly the rapidly activating IKr channel, also called hERG channel after the human ether-a-go-go-related gene) are the primary repolarizing current. These channels open late in the action potential and allow K+ to leave the cell, restoring negative charge and terminating the action potential. Blockade of these channels prolongs action potential duration and QT interval.
+        </p>
+
+        <p>
+          <strong>Calcium Channels:</strong> L-type calcium channels are responsible for the plateau phase of the ventricular action potential. Some psychiatric medications weakly affect calcium channels, contributing to conduction effects.
+        </p>
+
+        <h3 class="ba-h3">The Cardiac Action Potential and Five Phases</h3>
+        <p>
+          <strong>Phase 0 (Depolarization):</strong> Rapid influx of sodium through fast Na+ channels, causing the membrane potential to rapidly depolarize from -90 mV toward +30 mV. This phase corresponds to the QRS on EKG. Drugs blocking sodium channels (e.g., tricyclics) slow this phase, widening QRS.
+        </p>
+
+        <p>
+          <strong>Phase 1 (Early Repolarization):</strong> Sodium channels inactivate, and early potassium currents activate, beginning to restore negative charge.
+        </p>
+
+        <p>
+          <strong>Phase 2 (Plateau):</strong> Calcium influx balances potassium efflux, maintaining a plateau at +20 mV. This prolonged plateau phase (0.1–0.3 seconds) is unique to cardiac muscle and is essential for coordinated contraction.
+        </p>
+
+        <p>
+          <strong>Phase 3 (Repolarization):</strong> Calcium channels inactivate, and delayed rectifier potassium currents (hERG, IKr) dominate, causing rapid repolarization back toward -90 mV. This phase corresponds to the T wave on EKG. Blockade of hERG/IKr channels slows repolarization, prolonging phase 3 and the QT interval.
+        </p>
+
+        <p>
+          <strong>Phase 4 (Resting Potential):</strong> The cell rests at -90 mV, maintained by Na+/K+ ATPase and active potassium influx.
+        </p>
+
+        <h3 class="ba-h3">hERG Potassium Channel Blockade: The Common Mechanism for Drug-Induced QT Prolongation</h3>
+        <p>
+          The hERG potassium channel (encoded by the human ether-a-go-go-related gene) is responsible for the rapidly activating delayed rectifier current (IKr), which is essential for normal repolarization. Importantly, the hERG channel is a common pharmacological target for many unrelated drug classes. Antipsychotics, antidepressants, antiarrhythmics, antihistamines, antibiotics, antifungals, antiretrovirals, and even some antiemetics block hERG channels.
+        </p>
+
+        <p>
+          When a drug blocks hERG channels, repolarization slows, the action potential duration lengthens, and the QT interval on EKG prolongs. If multiple drugs that block hERG are used concurrently (polypharmacy), or if the patient has underlying risk factors that compromise repolarization reserve (female sex, electrolyte abnormalities, bradycardia, structural heart disease), the risk of dangerous arrhythmias (torsades de pointes) increases markedly. Understanding which psychiatric medications block hERG is essential for risk stratification.
+        </p>
+
+        <h3 class="ba-h3">The Concept of Repolarization Reserve</h3>
+        <p>
+          Healthy hearts have inherent "repolarization reserve"—a safety margin that allows the heart to tolerate some degree of potassium channel blockade without manifest QT prolongation or arrhythmia. This reserve is maintained by redundancy in repolarizing currents and appropriate autonomic tone. However, certain conditions deplete repolarization reserve: female sex (hormonal effects on ion channels), hypokalemia (reduces potassium gradient, slowing repolarization), hypomagnesemia (required for proper channel function), bradycardia (longer diastolic intervals allow more drug binding), structural heart disease (myocardial hypertrophy, fibrosis, or scarring alters electrophysiology), and interactions with other QT-prolonging drugs. When repolarization reserve is compromised, even modest hERG blockade from a single psychiatric medication can precipitate life-threatening arrhythmias.
+        </p>
+
+        <!-- SECTION 4: QTc PROLONGATION -->
+        <h2 class="ba-h2">4. QTc Prolongation: The Most Important EKG Finding in Psychiatry</h2>
+
+        <h3 class="ba-h3">Which Psychiatric Medications Prolong QTc?</h3>
+
+        <table class="ba-med-table">
+          <thead>
+            <tr>
+              <th>Drug Class/Agent</th>
+              <th>Mechanism</th>
+              <th>Relative Risk</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Antipsychotics</strong></td>
+              <td colspan="3" style="font-weight: 600; background-color: #f0f0f0;">Higher QT Risk</td>
+            </tr>
+            <tr>
+              <td>Thioridazine</td>
+              <td>hERG blockade</td>
+              <td>Very High</td>
+              <td>Longest QT of all antipsychotics; baseline EKG mandatory; QTc >500ms = contraindication</td>
+            </tr>
+            <tr>
+              <td>Ziprasidone</td>
+              <td>hERG blockade</td>
+              <td>High</td>
+              <td>Dose-dependent; prolongs QTc 10-20 ms on average; risk at IM doses; baseline EKG recommended</td>
+            </tr>
+            <tr>
+              <td>Haloperidol (especially IV)</td>
+              <td>hERG blockade</td>
+              <td>High (IV > oral)</td>
+              <td>IV haloperidol at high doses (>50 mg/day) carries substantial QT risk; oral haloperidol risk lower but not absent</td>
+            </tr>
+            <tr>
+              <td>Paliperidone</td>
+              <td>hERG blockade</td>
+              <td>Moderate-High</td>
+              <td>Both immediate-release and ER formulations; IM depot also prolongs QT</td>
+            </tr>
+            <tr>
+              <td>Iloperidone</td>
+              <td>hERG blockade</td>
+              <td>Moderate-High</td>
+              <td>Dose-dependent; prolongs QTc 10-15 ms at therapeutic doses</td>
+            </tr>
+            <tr>
+              <td>Quetiapine</td>
+              <td>hERG blockade</td>
+              <td>Low-Moderate</td>
+              <td>Modest QT effect at therapeutic doses; higher risk at overdose</td>
+            </tr>
+            <tr>
+              <td>Risperidone</td>
+              <td>hERG blockade</td>
+              <td>Low-Moderate</td>
+              <td>Minimal QT effect at standard doses; risk increases at higher doses or in vulnerable populations</td>
+            </tr>
+            <tr>
+              <td>Olanzapine</td>
+              <td>hERG blockade (weak)</td>
+              <td>Low</td>
+              <td>Among the lowest antipsychotic QT risk; generally considered cardiologically safe</td>
+            </tr>
+            <tr>
+              <td>Aripiprazole</td>
+              <td>hERG blockade (weak)</td>
+              <td>Low</td>
+              <td>Minimal QT effect; considered one of the safest antipsychotics cardiologically</td>
+            </tr>
+            <tr>
+              <td><strong>Antidepressants</strong></td>
+              <td colspan="3" style="font-weight: 600; background-color: #f0f0f0;">Variable QT Risk</td>
+            </tr>
+            <tr>
+              <td>Citalopram</td>
+              <td>hERG blockade</td>
+              <td>Moderate</td>
+              <td>Dose-dependent; FDA restricted dosing: 40 mg/day max (20 mg/day age ≥60 or with liver disease) due to QT risk; baseline EKG recommended for doses >20 mg/day</td>
+            </tr>
+            <tr>
+              <td>Escitalopram</td>
+              <td>hERG blockade</td>
+              <td>Moderate</td>
+              <td>Similar to citalopram; FDA restricted: 10 mg/day max age ≥60; baseline EKG recommended</td>
+            </tr>
+            <tr>
+              <td>Tricyclic Antidepressants (TCAs)</td>
+              <td>hERG blockade + Na+ channel blockade</td>
+              <td>Moderate-High</td>
+              <td>Prolong QTc and widen QRS; risk increases with doses and especially in overdose; amitriptyline, imipramine, clomipramine most significant; baseline EKG reasonable for doses >100 mg/day</td>
+            </tr>
+            <tr>
+              <td>Sertraline</td>
+              <td>Minimal hERG effect</td>
+              <td>Low</td>
+              <td>Minimal QT risk; generally safe cardiologically</td>
+            </tr>
+            <tr>
+              <td>Paroxetine</td>
+              <td>Minimal hERG effect</td>
+              <td>Low</td>
+              <td>Minimal QT risk; generally safe cardiologically</td>
+            </tr>
+            <tr>
+              <td>Fluoxetine</td>
+              <td>Minimal hERG effect</td>
+              <td>Low</td>
+              <td>Minimal QT risk; generally safe cardiologically</td>
+            </tr>
+            <tr>
+              <td><strong>Other Psychiatric Drugs</strong></td>
+              <td colspan="3" style="font-weight: 600; background-color: #f0f0f0;"></td>
+            </tr>
+            <tr>
+              <td>Methadone</td>
+              <td>hERG blockade</td>
+              <td>Moderate-High</td>
+              <td>Dose-dependent QT prolongation; baseline EKG recommended; monitor during dose increases</td>
+            </tr>
+            <tr>
+              <td>Lithium</td>
+              <td>T-wave changes, QTc effect variable</td>
+              <td>Low</td>
+              <td>Primary effect is T-wave flattening/inversion; QTc effect modest; baseline EKG reasonable; monitor renal function</td>
+            </tr>
+            <tr>
+              <td>Benzodiazepines</td>
+              <td>None known</td>
+              <td>None</td>
+              <td>No QT prolongation; cardiologically safe</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="ba-h3">Torsades de Pointes: Mechanism and Mortality Risk</h3>
+        <p>
+          Torsades de pointes ("twisting of the points") is a polymorphic ventricular tachycardia characterized by QRS complexes that appear to twist around the baseline. It is a consequence of prolonged QT interval and early afterdepolarizations (EADs), abnormal electrical activity that occurs during phase 2–3 of the action potential, often triggered by premature beats in the setting of prolonged repolarization.
+        </p>
+
+        <p>
+          The mechanism: In the setting of QT prolongation, the relative refractory period (when the cardiac tissue is partially excitable) extends into the T wave. A premature atrial or ventricular beat occurring on the T wave (vulnerable period) can trigger an EAD and initiate torsades. Once initiated, torsades typically degenerates into ventricular fibrillation (VF), causing sudden cardiac arrest and death if not immediately treated with defibrillation.
+        </p>
+
+        <p>
+          Key risk factors for torsades in the setting of QT prolongation include: (1) Female sex (female hormones prolong action potential duration and QT); (2) Bradycardia (longer diastolic intervals allow more drug binding to ion channels and more prolongation); (3) Electrolyte abnormalities, especially hypokalemia and hypomagnesemia; (4) Structural heart disease (myocardial infarction, cardiomyopathy, hypertrophy); (5) Renal or hepatic impairment (prolongs drug metabolism and clearance); (6) Drug interactions (concurrent QT-prolonging agents); (7) Recent initiation or dose increase of QT-prolonging medication.
+        </p>
+
+        <p>
+          Notably, torsades can occur suddenly and without warning, even in patients whose QTc is only modestly prolonged (>450–500 ms). Patients may report palpitations, syncope, or dyspnea before collapse. Mortality if torsades degenerates to VF without prompt defibrillation is >50%.
+        </p>
+
+        <h3 class="ba-h3">Tisdale Risk Score: Stratifying QT Prolongation Risk</h3>
+        <p>
+          The Tisdale Risk Score is a validated clinical tool that quantifies the risk of drug-induced QT prolongation in hospitalized patients. While originally developed for inpatient use, its principles apply to all psychiatric settings. The score integrates patient factors and medication factors to estimate risk.
+        </p>
+
+        <p>
+          <strong>Scoring System (simplified):</strong> Points are awarded for: (1) Age ≥68 years (1 pt); (2) Female sex (1 pt); (3) Hypokalemia (3 pts if <3.0 mEq/L, 1 pt if 3.0–3.5 mEq/L); (4) Hypomagnesemia (2 pts if <1.7 mg/dL); (5) Baseline QTc ≥450 ms (2 pts); (6) Hepatic cirrhosis (1 pt); (7) Heart failure (1 pt); (8) Acute myocardial infarction (2 pts); (9) Use of diuretics (1 pt); (10) Specific QT-prolonging medications (1–3 pts depending on drug); (11) Multiple QT-prolonging medications (3 pts for ≥2 drugs). Total risk interpretation: <6 points = low risk (<1% incidence of QT prolongation), 6–10 points = moderate risk (2–5% incidence), >10 points = high risk (>5% incidence, up to 10% with highest scores).
+        </p>
+
+        <p>
+          For psychiatrists, the value of Tisdale scoring is identifying high-risk patients (particularly those with female sex, older age, hypokalemia, low baseline QTc, or on multiple QT-prolonging drugs) who warrant baseline EKG, frequent monitoring, and often alternative medication selection.
+        </p>
+
+        <h3 class="ba-h3">Monitoring Guidelines and Baseline EKG Indications</h3>
+        <p>
+          <strong>Baseline EKG is recommended for patients starting:</strong>
+        </p>
+        <ul style="margin: 16px 0;">
+          <li>Thioridazine (mandatory before initiation)</li>
+          <li>Ziprasidone (at high-risk doses or in vulnerable patients)</li>
+          <li>Haloperidol IV (mandatory before high-dose IV use)</li>
+          <li>Paliperidone or iloperidone (recommended)</li>
+          <li>Citalopram or escitalopram (if dose >20 mg/day or age ≥60 years)</li>
+          <li>Tricyclic antidepressants (if dose >100 mg/day or in older adults)</li>
+          <li>Methadone (recommended before treatment)</li>
+          <li>Any patient with baseline risk factors (female sex, older age, hypokalemia, bradycardia, structural heart disease, family history of sudden cardiac death)</li>
+        </ul>
+
+        <p>
+          <strong>Monitoring Frequency:</strong> After baseline EKG, follow-up EKGs are typically obtained at: (1) 1 week after medication initiation (peak drug levels reached); (2) 1 month after initiation (equilibrium reached); (3) After any dose increase; (4) Annually for patients on stable high-risk medications; (5) More frequently if QTc is borderline (450–500 ms) or if additional QT-prolonging drugs are added; (6) Urgently if the patient develops palpitations, syncope, or dyspnea.
+        </p>
+
+        <h3 class="ba-h3">Risk Factors for QT Prolongation in Psychiatric Patients</h3>
+
+        <div class="ba-insight-box ba-insight-box--warning" style="background-color: #fff3e0; border-left: 6px solid #ff9800;">
+          <div style="font-weight: 700; font-size: 1.05em; margin-bottom: 12px; color: #e65100;">High-Risk Situations for Drug-Induced Torsades</div>
+          <ul style="margin-bottom: 0; padding-left: 20px;">
+            <li><strong>Female sex:</strong> Women have longer baseline QTc and higher torsades risk (2–3× higher)</li>
+            <li><strong>Hypokalemia (K+ <3.5 mEq/L):</strong> Severely depletes repolarization reserve; requires aggressive repletion</li>
+            <li><strong>Hypomagnesemia (Mg <1.7 mg/dL):</strong> Impairs potassium channel function; often coexists with hypokalemia</li>
+            <li><strong>Bradycardia (HR <50 bpm):</strong> Lengthens repolarization period; increases drug binding to ion channels</li>
+            <li><strong>Structural heart disease:</strong> Myocardial scarring, hypertrophy, or prior MI alters electrophysiology</li>
+            <li><strong>Renal impairment (eGFR <30):</strong> Impairs drug clearance; increases steady-state plasma levels</li>
+            <li><strong>Hepatic cirrhosis:</strong> Impairs metabolism; pro-arrhythmic metabolic state</li>
+            <li><strong>Polypharmacy with multiple QT-prolonging drugs:</strong> Additive hERG blockade; synergistic QT prolongation</li>
+            <li><strong>Drug interactions inhibiting CYP metabolism:</strong> Examples: CYP3A4 inhibitors (ketoconazole, ritonavir, grapefruit juice) increase levels of many QT drugs</li>
+            <li><strong>Baseline QTc >450 ms:</strong> Already elevated risk for further prolongation</li>
+            <li><strong>Anorexia nervosa or bulimia:</strong> Often accompanied by electrolyte abnormalities (hypokalemia, hypomagnesemia), malnutrition, and prolonged QT</li>
+          </ul>
+        </div>
+
+        <h3 class="ba-h3">When QTc Is >500 ms: Management Decisions</h3>
+        <p>
+          QTc >500 ms is considered severely prolonged and carries high arrhythmia risk. Management options:
+        </p>
+
+        <p>
+          <strong>1. Discontinue the offending medication:</strong> If QTc rises to >500 ms, the highest-risk QT-prolonging drug should be discontinued if clinically tolerable. Alternative medications with lower cardiac risk should be selected.
+        </p>
+
+        <p>
+          <strong>2. Aggressive electrolyte repletion:</strong> If hypokalemia or hypomagnesemia coexist, these must be corrected. Target potassium >4.0 mEq/L and magnesium >2.0 mg/dL in this setting. Repletion often reduces QTc by 30–50 ms.
+        </p>
+
+        <p>
+          <strong>3. Remove other QT-prolonging medications:</strong> If the patient is on multiple QT-prolonging drugs (e.g., ziprasidone + citalopram), discontinue or switch one to a cardiologically safer alternative.
+        </p>
+
+        <p>
+          <strong>4. Optimize heart rate and hemodynamics:</strong> If the patient has bradycardia, assess for causes (hypothyroidism, beta-blockers, cardiac disease) and treat as appropriate. A slower heart rate prolongs repolarization; mild tachycardia can shorten QT.
+        </p>
+
+        <p>
+          <strong>5. Cardiology referral:</strong> Consider urgent cardiology consultation if QTc is severely prolonged (>550 ms), if symptoms suggest arrhythmia (palpitations, syncope), or if the clinical situation is complex (multiple comorbidities, polypharmacy, prior arrhythmias).
+        </p>
+
+        <p>
+          <strong>6. Telemetry monitoring:</strong> In inpatient settings, continuous cardiac monitoring is indicated for QTc >500 ms, especially if risk factors are present.
+        </p>
+
+        <!-- SECTION 5: OTHER EKG FINDINGS -->
+        <h2 class="ba-h2">5. Other EKG Findings in Psychiatric Practice</h2>
+
+        <h3 class="ba-h3">Sinus Tachycardia</h3>
+        <p>
+          Resting heart rate >100 bpm is a common EKG finding in psychiatric patients, particularly those on:
+        </p>
+        <ul style="margin: 16px 0;">
+          <li><strong>Clozapine:</strong> Tachycardia in 25% of patients; mechanism unclear but related to alpha-adrenergic antagonism; usually persists but is benign if asymptomatic</li>
+          <li><strong>Tricyclic antidepressants:</strong> Anticholinergic-mediated tachycardia; worsened by orthostatic hypotension</li>
+          <li><strong>Stimulant medications:</strong> Amphetamines, methylphenidate; sympathomimetic effects; risk increases with doses and in vulnerable patients</li>
+          <li><strong>Selective serotonin reuptake inhibitors:</strong> Occasionally cause tachycardia, possibly through 5-HT1A effects on autonomic tone</li>
+        </ul>
+
+        <p>
+          Management: Tachycardia alone (without symptoms or underlying cardiac disease) is usually not an indication to discontinue medication. Assess for underlying causes (anxiety, pain, infection, hyperthyroidism, dehydration). If the patient is symptomatic (palpitations, dyspnea, chest pain), evaluate with EKG, troponin, and possibly echocardiography to rule out structural disease.
+        </p>
+
+        <h3 class="ba-h3">Sinus Bradycardia</h3>
+        <p>
+          Resting heart rate <60 bpm is less common in psychiatric populations but can occur with:
+        </p>
+        <ul style="margin: 16px 0;">
+          <li><strong>Lithium:</strong> Bradycardia in ~10–20% of patients; mechanism unclear; may reflect direct cardiac effects or TSH elevation (hypothyroidism)</li>
+          <li><strong>Cholinesterase inhibitors:</strong> Used for cognitive enhancement; cholinergic effects increase vagal tone</li>
+          <li><strong>Beta-blockers:</strong> Sometimes used for anxiety or tremor control</li>
+        </ul>
+
+        <p>
+          Management: Asymptomatic bradycardia (e.g., HR 55 bpm) in healthy young adults may be physiologic. However, if bradycardia is symptomatic (dizziness, dyspnea, syncope) or if the rate is very slow (<50 bpm), evaluate for causes: check TSH (lithium-induced hypothyroidism), assess for cardiac disease (obtain troponin, echocardiogram if concerned), and consider reducing the offending drug or adding a chronotropic agent (theophylline, isoproterenol) if medication continuation is essential.
+        </p>
+
+        <h3 class="ba-h3">T-Wave Abnormalities</h3>
+        <p>
+          <strong>Lithium:</strong> Classic EKG finding with lithium is diffuse T-wave flattening or inversion, often accompanied by PR and QTc prolongation. The T-wave changes are usually benign and reversible upon lithium discontinuation. However, some patients on long-term lithium develop persistent T-wave changes even after discontinuation, raising concern for direct myocardial effects. Baseline EKG is reasonable for patients starting lithium; annual or biennial EKGs are reasonable for long-term lithium users.
+        </p>
+
+        <p>
+          <strong>Other causes of T-wave abnormalities:</strong> Electrolyte abnormalities (hypokalemia causes prominent U waves and T-wave depression), myocardial ischemia or infarction, pulmonary embolism, CNS events (subarachnoid hemorrhage can cause dramatic "cerebral T waves"—deep T-wave inversions in multiple leads), ventricular hypertrophy.
+        </p>
+
+        <h3 class="ba-h3">Brugada-Like Pattern</h3>
+        <p>
+          Brugada syndrome is a genetic disorder of sodium channel function that predisposes to sudden cardiac death. The EKG shows characteristic "coved" ST elevation in leads V1–V2, followed by negative T waves. Some psychiatric medications can produce Brugada-like EKG patterns without underlying Brugada syndrome:
+        </p>
+        <ul style="margin: 16px 0;">
+          <li><strong>Tricyclic antidepressants:</strong> Particularly at high doses; sodium channel blockade mimics Brugada pattern</li>
+          <li><strong>Lithium:</strong> Can accentuate ST changes</li>
+          <li><strong>Antipsychotics:</strong> Rarely reported with haloperidol</li>
+        </ul>
+
+        <p>
+          Clinical significance: A newly appearing Brugada pattern in a patient starting a psychiatric medication (especially TCAs) warrants discontinuation and cardiology evaluation to distinguish drug-induced pattern from underlying Brugada syndrome (genetic form carries sudden death risk).
+        </p>
+
+        <h3 class="ba-h3">AV Conduction Delays and Bundle Branch Blocks</h3>
+        <p>
+          <strong>First-degree AV block (PR >200 ms):</strong> Can occur with antipsychotics, antidepressants (especially TCAs), and lithium. Usually asymptomatic and benign; does not require medication discontinuation if asymptomatic.
+        </p>
+
+        <p>
+          <strong>Second-degree AV block (progressive PR prolongation with occasional dropped beats, or fixed 2:1 conduction):</strong> Rare with psychiatric medications but reported with antipsychotics and TCAs, particularly at high doses. Requires cardiac evaluation and possible pacemaker consideration if symptomatic.
+        </p>
+
+        <p>
+          <strong>Bundle branch blocks (QRS ≥120 ms):</strong> Can be seen with TCAs and antipsychotics at high doses. Right bundle branch block (RBBB) pattern is more common than left bundle branch block (LBBB). If newly appearing during psychiatric medication treatment, obtain baseline comparison EKGs and assess for progression. If symptomatic (syncope, dyspnea), cardiology evaluation is warranted.
+        </p>
+
+        <h3 class="ba-h3">ST-Segment Changes</h3>
+        <p>
+          ST elevation or depression can reflect myocardial ischemia, infarction, pericarditis, or in some cases, psychiatric medication effects. Clozapine, in rare cases (incidence ~0.01%), can cause myocarditis in the first weeks of treatment; myocarditis presents with chest pain, troponin elevation, and often ST changes. Any new ST changes warrant troponin, CK-MB, and cardiology evaluation to rule out acute coronary syndrome or myocarditis.
+        </p>
+
+        <h3 class="ba-h3">EKG Findings in Eating Disorders</h3>
+        <p>
+          Patients with anorexia nervosa (especially severe, long-standing cases) present with characteristic EKG abnormalities reflecting severe malnutrition and electrolyte depletion:
+        </p>
+        <ul style="margin: 16px 0;">
+          <li><strong>Bradycardia:</strong> Often marked (resting HR 40–50 bpm), reflecting severe metabolic suppression; usually reverses with nutritional rehabilitation</li>
+          <li><strong>Low voltage:</strong> Low amplitude QRS and T waves across all leads, reflecting myocardial atrophy from malnutrition</li>
+          <li><strong>Prolonged QT:</strong> From electrolyte abnormalities (hypokalemia, hypomagnesemia, hypophosphatemia)</li>
+          <li><strong>Prominent U waves:</strong> Signature of hypokalemia</li>
+          <li><strong>ST depression and T-wave flattening</strong></li>
+          <li><strong>Nonspecific ST-T changes</strong></li>
+        </ul>
+
+        <p>
+          Clinical pearls: These EKG changes are often reversible with nutritional rehabilitation and electrolyte repletion, yet they carry arrhythmia risk during refeeding (refeeding syndrome can cause fatal arrhythmias). Psychiatric patients with eating disorders require baseline EKG, electrolyte monitoring, and cautious nutritional rehabilitation. Adding any QT-prolonging psychiatric medication in the context of anorexia nervosa significantly elevates torsades risk.
+        </p>
+
+        <h3 class="ba-h3">EKG Signature of Tricyclic Antidepressant Overdose</h3>
+        <p>
+          TCA overdose produces a characteristic EKG pattern that is pathognomonic and diagnostically important:
+        </p>
+        <ul style="margin: 16px 0;">
+          <li><strong>Wide QRS complex:</strong> QRS ≥120 ms or even >200 ms in severe overdose; reflects massive sodium channel blockade</li>
+          <li><strong>Prolonged PR interval:</strong> From AV node depression</li>
+          <li><strong>Prolonged QT interval:</strong> From potassium channel effects</li>
+          <li><strong>Right axis deviation (RAD):</strong> QRS axis shifts rightward, often >90°</li>
+          <li><strong>Terminal R wave in aVR:</strong> A prominent R wave (or R') in lead aVR (which normally shows only a small r wave) is characteristic and sometimes called "aVR sign" of TCA toxicity; reflects delayed depolarization of the right ventricular outflow tract</li>
+          <li><strong>Sinus tachycardia or dysrhythmias:</strong> Ventricular ectopy common in severe overdose</li>
+        </ul>
+
+        <p>
+          Recognition of this pattern (especially the combination of wide QRS + RAD + aVR R wave) in an unconscious patient can immediately raise suspicion of TCA overdose and prompt life-saving interventions (sodium bicarbonate therapy to narrow QRS, seizure prophylaxis, intensive care monitoring for arrhythmias).
+        </p>
+
+        <!-- SECTION 6: WHEN TO ORDER AND HOW TO MONITOR -->
+        <h2 class="ba-h2">6. When to Order EKGs and Clinical Decision-Making Framework</h2>
+
+        <h3 class="ba-h3">Baseline EKG: Systematic Approach</h3>
+
+        <div class="ba-insight-box ba-insight-box--info" style="background-color: #e3f2fd; border-left: 6px solid #2196f3;">
+          <div style="font-weight: 700; font-size: 1.05em; margin-bottom: 12px; color: #1565c0;">When to Order Baseline EKG Before Starting Psychiatric Medication</div>
+          <p style="margin-bottom: 12px;"><strong>Always/Mandatory:</strong></p>
+          <ul style="margin: 12px 0 12px 20px;">
+            <li>Thioridazine (any dose)</li>
+            <li>Haloperidol IV at any dose</li>
+            <li>Any patient with known or suspected cardiac disease</li>
+            <li>Any patient with family history of sudden cardiac death</li>
+          </ul>
+          <p style="margin-bottom: 12px;"><strong>Strongly Recommended:</strong></p>
+          <ul style="margin: 12px 0 12px 20px;">
+            <li>Ziprasidone (especially if dose >120 mg/day or if multiple risk factors)</li>
+            <li>Paliperidone or iloperidone</li>
+            <li>Citalopram or escitalopram if dose >20 mg/day or age ≥60</li>
+            <li>Tricyclic antidepressants if dose >100 mg/day or age >65</li>
+            <li>Methadone</li>
+            <li>Female patients ≥50 years</li>
+            <li>Any patient with female sex + additional risk factors (hypokalemia, bradycardia, family history)</li>
+            <li>Patients with chronic kidney disease (eGFR <30 mL/min)</li>
+            <li>Patients with hepatic cirrhosis</li>
+            <li>Patients with structural heart disease (CAD, prior MI, cardiomyopathy, HF)</li>
+            <li>Patients with history of arrhythmia or syncope</li>
+            <li>Patients with anorexia nervosa or other eating disorder</li>
+          </ul>
+          <p style="margin-bottom: 0;"><strong>Consider if present:</strong></p>
+          <ul style="margin: 12px 0 0 20px;">
+            <li>Haloperidol (oral, if dose >15 mg/day)</li>
+            <li>Quetiapine (if dose >400 mg/day or risk factors)</li>
+            <li>Risperidone (if risk factors present)</li>
+            <li>Any patient with hypokalemia or hypomagnesemia</li>
+            <li>Any patient already on another QT-prolonging drug (including non-psychiatric: antihistamines, antifungals, antibiotics)</li>
+          </ul>
+        </div>
+
+        <h3 class="ba-h3">Monitoring Frequency After Baseline EKG</h3>
+        <p>
+          <strong>High-Risk Patients (QTc >450–480 ms at baseline, or QTc <450 ms but Tisdale score >10):</strong>
+        </p>
+        <ul style="margin: 16px 0;">
+          <li>Repeat EKG at 1 week after medication initiation</li>
+          <li>Repeat EKG at 4 weeks after initiation</li>
+          <li>Repeat EKG after any dose increase</li>
+          <li>Annual EKGs while on stable high-risk medication</li>
+          <li>Repeat EKG if additional QT-prolonging drug is added</li>
+          <li>Urgent EKG if patient develops palpitations, syncope, or dyspnea</li>
+        </ul>
+
+        <p>
+          <strong>Moderate-Risk Patients (Tisdale 6–10, or on moderate-risk QT drugs like ziprasidone at standard doses):</strong>
+        </p>
+        <ul style="margin: 16px 0;">
+          <li>Repeat EKG at 4 weeks after initiation</li>
+          <li>Repeat EKG after significant dose increases</li>
+          <li>Biennial EKGs (every 2 years) while on stable medication</li>
+        </ul>
+
+        <p>
+          <strong>Lower-Risk Patients (Tisdale <6, on low-risk drugs like aripiprazole or sertraline):</strong>
+        </p>
+        <ul style="margin: 16px 0;">
+          <li>Baseline EKG optional (obtain if any risk factors present)</li>
+          <li>Routine follow-up EKGs not necessary unless clinical change</li>
+          <li>Annual EKGs if patient age >65 or female with additional risk factors</li>
+        </ul>
+
+        <h3 class="ba-h3">Cardiology Consultation Indications</h3>
+        <p>
+          Refer to cardiology if:
+        </p>
+        <ul style="margin: 16px 0;">
+          <li>QTc >500 ms</li>
+          <li>QTc >480 ms plus symptoms (palpitations, syncope, dyspnea)</li>
+          <li>New bundle branch block or second-degree AV block on psychiatric medication</li>
+          <li>Troponin elevation or chest pain (possible myocarditis or acute coronary syndrome)</li>
+          <li>Suspected arrhythmia (palpitations, syncope, documented dysrhythmia)</li>
+          <li>Pre-existing cardiac disease and need to start high-risk psychotropic medication</li>
+          <li>Eating disorder with EKG abnormalities and planned psychiatric treatment</li>
+          <li>Complex polypharmacy with multiple QT-prolonging drugs</li>
+        </ul>
+
+        <h3 class="ba-h3">Clinical Decision-Making Framework: Integrating Risk and Benefit</h3>
+
+        <p>
+          <strong>Step 1: Assess the Patient's Cardiac Risk Profile</strong>
+        </p>
+        <p>
+          Calculate or estimate Tisdale score. Identify risk factors: age, sex, electrolyte status, baseline QTc, structural heart disease, renal/hepatic function, baseline heart rate.
+        </p>
+
+        <p>
+          <strong>Step 2: Identify the Psychiatric Indication and Select Medication</strong>
+        </p>
+        <p>
+          For a given psychiatric condition (e.g., first-episode schizophrenia), identify the appropriate medication class and specific agents. Rank medications by efficacy and cardiac safety. Example: For first-episode schizophrenia, aripiprazole or risperidone are excellent first-line choices with low cardiac risk; if these fail, consider higher-risk agents (ziprasidone, paliperidone) only if benefit justifies risk.
+        </p>
+
+        <p>
+          <strong>Step 3: Obtain Baseline EKG if Indicated</strong>
+        </p>
+        <p>
+          Based on medication, patient age/sex, and risk factors, obtain baseline EKG. Measure QTc using standard Bazett formula (ideally manually, as automated measurements can be inaccurate). If QTc >460 ms (women) or >450 ms (men), reassess whether the planned medication is appropriate or whether a lower-risk alternative exists.
+        </p>
+
+        <p>
+          <strong>Step 4: Optimize Modifiable Risk Factors</strong>
+        </p>
+        <p>
+          Check electrolytes (especially potassium and magnesium). Correct any abnormalities before initiating QT-prolonging medication. If the patient has bradycardia, investigate causes and optimize as appropriate. Advise patient on avoiding other QT-prolonging medications (over-the-counter antihistamines, certain antibiotics).
+        </p>
+
+        <p>
+          <strong>Step 5: Titrate the Medication and Monitor</strong>
+        </p>
+        <p>
+          Initiate medication at standard starting dose and titrate per guidelines. Schedule follow-up EKG at 1–4 weeks depending on risk profile. Educate patient on warning symptoms (palpitations, syncope, dyspnea) and provide clear instructions to seek immediate care if symptoms develop.
+        </p>
+
+        <p>
+          <strong>Step 6: Interpret Follow-Up EKGs and Make Adjustments</strong>
+        </p>
+        <p>
+          If follow-up QTc is normal (<450 ms men, <460 ms women), continue medication as tolerated. If QTc is borderline (450–480 ms), continue monitoring closely and consider dose reduction or alternative drug if other risk factors emerge. If QTc is >480 ms and rising, or if QTc >500 ms, discontinue the medication and switch to a lower-risk alternative. If the patient develops symptoms (palpitations, syncope), obtain urgent EKG, troponin, and cardiology evaluation regardless of QTc value.
+        </p>
+
+        <h3 class="ba-h3">Special Scenarios and Decision-Making</h3>
+
+        <p>
+          <strong>Scenario 1: Patient with Treatment-Resistant Schizophrenia Requires Clozapine, but Has Baseline QTc 480 ms</strong>
+        </p>
+        <p>
+          Clozapine has minimal QT-prolonging effects; it is not on the high-risk list despite REMS monitoring for other reasons (agranulocytosis). Proceeding with clozapine is reasonable; obtain baseline EKG, monitor cardiac symptoms, and recheck EKG at 4 weeks. The clinical benefit (clozapine's unique efficacy in TRS) likely outweighs modest QT prolongation risk from clozapine itself.
+        </p>
+
+        <p>
+          <strong>Scenario 2: Patient on Citalopram (20 mg/day) Requires Antipsychotic for New-Onset Psychosis; Options Are Ziprasidone or Quetiapine</strong>
+        </p>
+        <p>
+          Both ziprasidone and quetiapine have hERG blockade; using either with citalopram creates potential for additive QT prolongation (polypharmacy risk). Best option: Switch citalopram to sertraline (minimal cardiac risk) or fluoxetine (minimal cardiac risk), then start ziprasidone or quetiapine. Alternative: Discontinue citalopram, start antipsychotic only, reassess mood at 4 weeks. Least ideal: Continue citalopram + ziprasidone while obtaining baseline EKG, frequent monitoring, and accepting elevated torsades risk.
+        </p>
+
+        <p>
+          <strong>Scenario 3: Female Patient Age 72 with Anorexia Nervosa, HR 48 bpm, K+ 3.1 mEq/L, Requires Treatment for Severe Depression</strong>
+        </p>
+        <p>
+          This patient has maximal cardiac risk (female, older age, eating disorder, bradycardia, hypokalemia). Any QT-prolonging antidepressant (citalopram, escitalopram, TCAs) carries extreme torsades risk. Best approach: (1) Aggressively repleted potassium to >4.0 mEq/L, magnesium to >2.0 mg/dL; (2) Treat underlying eating disorder (nutritional rehabilitation); (3) Select sertraline or fluoxetine (minimal cardiac risk) for depression; (4) Obtain baseline and serial EKGs; (5) Coordinate care with medicine, cardiology, and eating disorder specialists. Only after cardiac stabilization and nutritional improvement should higher-risk antidepressants be considered.
+        </p>
+
+        <p>
+          <strong>Scenario 4: Patient on Ziprasidone (120 mg/day) for Schizophrenia Develops QTc 510 ms on Follow-Up EKG</strong>
+        </p>
+        <p>
+          QTc >500 ms is severely prolonged; risk of torsades is substantial. Management: (1) Check electrolytes urgently; if hypokalemia or hypomagnesemia present, repleted aggressively; (2) Obtain new EKG to confirm prolongation (exclude artifact); (3) Consider dose reduction of ziprasidone (from 120 to 80 mg/day) or switch to lower-risk antipsychotic (aripiprazole, risperidone, olanzapine); (4) If antipsychotic efficacy was good at 120 mg/day, consider brief hospitalization for cardiac monitoring during transition to alternative agent; (5) Cardiology referral for EKG interpretation and risk assessment; (6) Once on alternative agent, recheck EKG at 4 weeks to confirm QTc improvement.
+        </p>
+
+        <!-- SECTION 7: REFERENCES -->
+        <div class="ba-references">
+          <div class="ba-ref-title">References</div>
+          <ol class="ba-ref-list">
+            <li>Hasnain M, Vieweg WV, Beyer JL. Weight gain and metabolic syndrome related to antipsychotic medications in bipolar disorder. <em>J Affect Disord</em>. 2012;126(3):316–328.</li>
+            <li>Glassman AH, Roose SP. Risk of new cardiovascular events when discontinuing antipsychotic medications. <em>Schizophr Res</em>. 2011;128(1-3):22–29.</li>
+            <li>Reilly JG, Ayis SA, Ferrier IN, Jones SJ, Thomas SHL. QTc-interval abnormalities and psychotropic drug exposure in psychiatric patients. <em>Lancet</em>. 2000;355(9209):1048–1052.</li>
+            <li>Rabkin JG, Markowitz JS, Stewart JW, et al. How much does SSRI-induced sexual dysfunction matter to patients? <em>Am J Psychiatry</em>. 2006;163(10):1763–1770.</li>
+            <li>Haddad PM, Anderson IM. Antipsychotic-related QTc prolongation, torsade de pointes and sudden death. <em>Drugs</em>. 2002;62(11):1649–1671.</li>
+            <li>Glassman AH. Antipsychotic agents and cardiovascular risk. <em>J Clin Psychiatry</em>. 2005;66(Suppl 6):5–13.</li>
+            <li>Isbister GK, Balit CR, Macleod D, Duffull SB. Tricyclic antidepressant poisoning. <em>Toxicol Rev</em>. 2005;24(3):205–214.</li>
+            <li>Chou WH, DeVane CL, Jiang L, et al. Phenotyping and genotyping of CYP3A4, CYP2D6, CYP2C9, CYP2C19, CYP1A2, and NAT2 in an Amish population. <em>Clin Pharmacol Ther</em>. 2001;68(3):888–899.</li>
+            <li>Thase ME, Hamdani U, Krystal A, et al. Efficacy and tolerability of once-daily extended-release quetiapine fumarate monotherapy in adults with bipolar depression. <em>J Clin Psychiatry</em>. 2010;71(2):145–153.</li>
+            <li>Roden DM. Antiarrhythmic drugs and related effects on cardiac electrophysiology. In: Hoffman BB, ed. <em>Goodman & Gilman's The Pharmacological Basis of Therapeutics.</em> 13th ed. McGraw Hill; 2018:546–571.</li>
+            <li>Tisdale JE, Jaynes HA, Kingery JR, et al. Development and validation of a risk score to predict QT interval prolongation in hospitalized patients. <em>Circ Arrhythm Electrophysiol</em>. 2013;6(3):479–487.</li>
+            <li>Girardin F, Gex-Fabry M, Bertschy G, et al. Drug-induced long QT interval and torsade de pointes. <em>Drugs Today</em>. 2001;37(3):185–202.</li>
+            <li>Bailly DK, Baker GB, Holt A. Metabolic drug interactions of the selective serotonin reuptake inhibitors. <em>Cell Mol Neurobiol</em>. 2000;20(2):151–171.</li>
+            <li>Merrill DB, Dec GW, Goff DC. Adverse cardiac effects associated with clozapine. <em>J Clin Psychopharmacol</em>. 2005;25(1):32–41.</li>
+            <li>Spigset O, Hägg S, Malm H, et al. CYP2D6 genotype and the pharmacokinetics of tricyclic antidepressants in patients with eating disorders. <em>Eur J Clin Pharmacol</em>. 2007;63(3):225–233.</li>
+            <li>Beach SR, Kostis WJ, Celano CM, Januzzi JL, Ruskin JN, Noseworthy PA. Meta-analysis of selective serotonin reuptake inhibitor-associated QT prolongation. <em>J Clin Psychiatry</em>. 2014;75(5):441–449.</li>
+            <li>Pickering G, Jourdan D, Eschalier A, Dubray C. Magnesium status and dynamics in migraine and tension-type headache patients: involvement of NMDA receptors in pain mechanisms? <em>Cephalalgia</em>. 2002;22(1):54–62.</li>
+            <li>American Psychiatric Association. <em>Diagnostic and Statistical Manual of Mental Disorders.</em> 5th ed. Arlington, VA: American Psychiatric Publishing; 2013.</li>
+            <li>Sadock BJ, Sadock VA, Ruiz P. <em>Kaplan & Sadock's Synopsis of Psychiatry.</em> 11th ed. Philadelphia: Wolters Kluwer; 2015.</li>
+            <li>Stahl SM. <em>Stahl's Essential Psychopharmacology: Prescriber's Guide.</em> 7th ed. Cambridge University Press; 2021.</li>
+          </ol>
+        </div>
+
+      </div><!-- /ba-body -->
+    </article>
+
+          <!-- Related Posts & Share -->
+          <div class="ba-related">
+            <h4>Related Articles</h4>
+            <div class="ba-related-grid">
+            <a href="serotonin-syndrome-nms.html" class="ba-related-link">Serotonin Syndrome and Neuroleptic Malignant Syndrome: Recognition and Management</a>
+            <a href="clozapine-clinical-guide.html" class="ba-related-link">Clozapine: The Gold Standard for Treatment-Resistant Schizophrenia | PsychoPharmRef</a>
+            <a href="antipsychotic-review.html" class="ba-related-link">Antipsychotics Review: Classifications, Mechanisms, and Clinical Use | P...</a>
+            <a href="emergency-psychiatry.html" class="ba-related-link">Emergency Psychiatry: Assessment, Safety Planning, and Acute Medication Management | P...</a>
+            </div>
+            <div class="ba-share-row">
+              <a href="https://twitter.com/intent/tweet?text=EKG%20Findings%20in%20Psychiatric%20Practice%3A%20QT%20Prolongation%20and%20Clinical%20Monitoring%20%7C%20PsychoPharmRef&amp;url=https%3A%2F%2Fpsychopharmref.com%2Fblog%2Fekg-findings-psychiatry.html" target="_blank" rel="noopener" class="ba-share-btn ba-share-btn--x">Share on X</a>
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://psychopharmref.com/blog/ekg-findings-psychiatry.html" target="_blank" rel="noopener" class="ba-share-btn ba-share-btn--li">Share on LinkedIn</a>
+              <a href="mailto:?subject=EKG Findings in Psychiatric Practice | PsychoPharmRef&amp;body=Check out this article: https://psychopharmref.com/blog/ekg-findings-psychiatry.html" class="ba-share-btn ba-share-btn--email">Email</a>
+              <button class="ba-share-btn ba-share-btn--copy" onclick="navigator.clipboard.writeText('https://psychopharmref.com/blog/ekg-findings-psychiatry.html').then(function(){var b=this;b.textContent='Copied!';setTimeout(function(){b.textContent='Copy Link'},2000)}.bind(this))">Copy Link</button>
+            </div>
+          </div>
+
+        <div class="nl-blog-cta">
+          <h4>PsychoPharmRef Newsletter</h4>
+          <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
+          <a href="https://subscribe-forms.beehiiv.com/5f2b3081-aa41-452c-95c8-69a5ae899cf8" target="_blank" rel="noopener" class="nl-subscribe-btn">Subscribe — it's free</a>
+        </div>
+
+            <footer class="ba-footer">
+      <p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 16px;">This reference is intended for licensed healthcare professionals. Clinical decisions should integrate individual patient factors and current evidence.</p>
+      <a href="../index.html" class="btn-primary">Return to PsychoPharmRef</a>
+    </footer>
+
+  </div><!-- /container -->
+    </div>
+  </main>
+
+<script>
+// Sidebar nav group toggle
+document.querySelectorAll('.nav-parent-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    const group = btn.closest('.nav-group');
+    const isOpen = group.classList.contains('open');
+    document.querySelectorAll('.nav-group').forEach(g => g.classList.remove('open'));
+    if (!isOpen) group.classList.add('open');
+  });
+});
+
+// Highlight current page in sidebar
+(function() {
+  const currentFile = window.location.pathname.split('/').pop();
+  document.querySelectorAll('#sidebar .nav-sub-link').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentFile) {
+      link.classList.add('active');
+      setTimeout(() => link.scrollIntoView({ block: 'center', behavior: 'smooth' }), 100);
+    }
+  });
+})();
+</script>
+
+  <script>
+  (function() {
+    var btn = document.getElementById('mobile-menu-btn');
+    var sidebar = document.getElementById('sidebar');
+    var overlay = document.getElementById('sidebar-overlay');
+    if (!btn || !sidebar || !overlay) return;
+    function open() { sidebar.classList.add('sidebar-open'); overlay.classList.add('overlay-visible'); document.body.classList.add('sidebar-is-open'); }
+    function close() { sidebar.classList.remove('sidebar-open'); overlay.classList.remove('overlay-visible'); document.body.classList.remove('sidebar-is-open'); }
+    btn.addEventListener('click', function() { sidebar.classList.contains('sidebar-open') ? close() : open(); });
+    overlay.addEventListener('click', close);
+    sidebar.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { if (window.innerWidth <= 768) close(); }); });
+  })();
+  </script>
+</body>
+</html>
