@@ -22,3 +22,12 @@ notes/
 
 # FUSE hidden files
 blog/.fuse_hidden*
+.gstack/
+
+# Newsletter pipeline
+newsletter/.env
+newsletter/briefs/
+newsletter/drafts/
+newsletter/blog-index.json
+newsletter/node_modules/
+newsletter/package-lock.json
