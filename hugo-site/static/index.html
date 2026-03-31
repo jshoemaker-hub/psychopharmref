@@ -10255,6 +10255,14 @@
       <button class="warning-dismiss" onclick="dismissWarning()">I Understand — Continue to Reference Tool</button>
     </div>
   </div>
+  <script>
+    /* Persist disclaimer dismissal for the session */
+    (function(){
+      var m=document.getElementById('warning-modal');
+      try{if(sessionStorage.getItem('warningDismissed')){m.classList.add('hidden');}}catch(e){}
+      window.dismissWarning=function(){m.classList.add('hidden');try{sessionStorage.setItem('warningDismissed','1');}catch(e){}};
+    })();
+  </script>
 
   <script defer src="js/data.js?v=20260324"></script>
   <script defer src="js/app.js?v=20260330d"></script>
