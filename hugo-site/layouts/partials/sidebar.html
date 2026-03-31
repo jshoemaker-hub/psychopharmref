@@ -235,7 +235,7 @@
         <span class="nav-caret">&#9658;</span>
       </button>
       <ul class="nav-sub">
-        <li><a href="/#question-bank" class="nav-link nav-sub-link">Question Bank</a></li>
+        <li><a href="#" class="nav-link nav-sub-link" data-section="question-bank">Question Bank</a></li>
       </ul>
     </li>
   </ul>
@@ -243,6 +243,6 @@
   <div class="sidebar-footer">
     <a href="/#fda-search" class="sf-link">References &amp; Methods</a>
     <span class="sf-contact">Contact &mdash; coming soon</span>
-    <a href="/#question-bank" class="sf-link" id="sf-auth-link">Sign In / Sign Up</a>
+    <a href="#" class="sf-link" id="sf-auth-link" onclick="if(typeof switchSection==='function'){switchSection('question-bank');return false;}else{window.location='/#question-bank';}">Sign In / Sign Up</a>
   </div>
 </nav>
