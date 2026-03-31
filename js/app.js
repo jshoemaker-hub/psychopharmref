@@ -1277,6 +1277,7 @@ document.getElementById('glossary-search').addEventListener('input', e => {
 /* ── Clinical Warning ───────────────────────────────────────────────────── */
 function dismissWarning() {
   document.getElementById('warning-modal').classList.add('hidden');
+  try { sessionStorage.setItem('warningDismissed', '1'); } catch(e) {}
 }
 
 /* ── FDA Reference Search ───────────────────────────────────────────────── */
