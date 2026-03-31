@@ -249,7 +249,7 @@ const SECTION_GROUP = {
   'adl-tool': 'tools', 'asrs-tool': 'tools', 'cidi-tool': 'tools', 'ymrs-tool': 'tools',
   'pcl5-tool': 'tools', 'ybocs-tool': 'tools', 'msibpd-tool': 'tools', 'panss-tool': 'tools',
   'bfcrs-tool': 'tools', 'aims-tool': 'tools', 'suicide-risk-tools': 'tools',
-  'ess-tool': 'tools', 'bat-tool': 'tools', 'print-forms': 'tools',
+  'ess-tool': 'tools', 'bat-tool': 'tools', 'print-forms': 'tools', 'question-bank': 'qbank',
   'cog-domains': 'insights', 'neuro-circuits': 'insights', 'brain-regions': 'insights',
   'fda-search': null, 'overview': null, 'blog-index': 'blog', 'blog-smoking': 'blog', 'blog-weight': 'blog'
 };
@@ -289,12 +289,34 @@ function switchSection(id) {
     // Load CSS
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/tools/' + toolId + '.css?v=20260321';
+    link.href = 'css/tools/' + toolId + '.css?v=20260330d';
     document.head.appendChild(link);
-    // Load JS
-    const script = document.createElement('script');
-    script.src = 'js/tools/' + toolId + '.js?v=20260321';
-    document.body.appendChild(script);
+    // Load shared tool-utils.js once (first tool activation), then the tool JS
+    function loadToolScript() {
+      // Question bank needs data file loaded first
+      if (toolId === 'question-bank-tool' && !window.QBANK_DATA) {
+        var dataScript = document.createElement('script');
+        dataScript.src = 'js/qbank-data.js?v=20260330d';
+        dataScript.onload = function() {
+          var script = document.createElement('script');
+          script.src = 'js/tools/' + toolId + '.js?v=20260330d';
+          document.body.appendChild(script);
+        };
+        document.body.appendChild(dataScript);
+      } else {
+        var script = document.createElement('script');
+        script.src = 'js/tools/' + toolId + '.js?v=20260330d';
+        document.body.appendChild(script);
+      }
+    }
+    if (!window.ToolUtils) {
+      const utils = document.createElement('script');
+      utils.src = 'js/tools/tool-utils.js?v=20260330d';
+      utils.onload = loadToolScript;
+      document.body.appendChild(utils);
+    } else {
+      loadToolScript();
+    }
     sec.dataset.lazyLoaded = 'true';
   }
 
@@ -314,6 +336,11 @@ document.querySelectorAll('.nav-parent-btn').forEach(btn => {
   btn.addEventListener('click', e => {
     e.preventDefault();
     const group = btn.closest('.nav-group');
+    // QBank has a single item — navigate directly instead of toggling dropdown
+    if (group.dataset.group === 'qbank') {
+      switchSection('question-bank');
+      return;
+    }
     const isOpen = group.classList.contains('open');
     // Close all groups
     document.querySelectorAll('.nav-group').forEach(g => g.classList.remove('open'));
@@ -873,8 +900,12 @@ function renderPieChart(drug) {
 
 document.getElementById('drug-select').addEventListener('change', e => {
   const drug = MEDICATIONS.find(m => m.id === e.target.value);
-  if (drug) renderPieChart(drug);
-  else {
+  const emptyState = document.getElementById('pie-empty-state');
+  if (drug) {
+    if (emptyState) emptyState.classList.add('hidden');
+    renderPieChart(drug);
+  } else {
+    if (emptyState) emptyState.classList.remove('hidden');
     document.getElementById('pie-container').classList.add('hidden');
     document.getElementById('no-receptor-data').classList.add('hidden');
   }
