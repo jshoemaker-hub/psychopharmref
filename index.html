@@ -298,6 +298,17 @@
           <li><a href="/blog/healthcare-systems-insurance/" class="nav-link nav-sub-link">Insurance, Nonprofits &amp; the VA</a></li>
         </ul>
       </li>
+
+      <!-- QBank -->
+      <li class="nav-group" data-group="qbank">
+        <button class="nav-parent-btn">
+          <span class="nav-parent-label">QBank</span>
+          <span class="nav-caret">&#9658;</span>
+        </button>
+        <ul class="nav-sub">
+          <li><a href="#" class="nav-link nav-sub-link" data-section="question-bank">Question Bank</a></li>
+        </ul>
+      </li>
     </ul>
 
     <div class="filter-panel" style="display:none">
@@ -323,6 +334,7 @@
       <a href="#" class="sf-link" onclick="switchSection('fda-search');return false;">References &amp; Methods</a>
       <a href="#" class="sf-link" id="sf-disclaimer-link" onclick="document.getElementById('warning-modal').classList.remove('hidden');return false;">Legal Disclaimer</a>
       <a href="#" class="sf-link" onclick="switchSection('contact');return false;">Contact</a>
+      <a href="#" class="sf-link" id="sf-auth-link" onclick="switchSection('question-bank');return false;">Sign In / Sign Up</a>
     </div>
   </nav>
 
@@ -9739,7 +9751,73 @@
   </div>
 </section><!-- end aq-tool -->
 
+<!-- ── Question Bank ──────────────────────────────────────────────────── -->
+<section id="question-bank" data-lazy-tool="question-bank-tool" class="section">
+  <div class="section-header">
+    <h2>Question Bank</h2>
+    <p class="section-sub">1,000 USMLE-style psychiatry questions across 62+ topics. Sign in to start a quiz.</p>
+  </div>
 
+  <!-- Auth overlay (shown when logged out) -->
+  <div class="qb-auth-overlay" id="qb-auth-overlay">
+    <h3>Question Bank</h3>
+    <p>Sign in to access 1,000 USMLE-style psychiatry questions</p>
+    <div class="qb-auth-tabs">
+      <button class="qb-auth-tab qb-active" data-tab="login">Sign In</button>
+      <button class="qb-auth-tab" data-tab="register">Register</button>
+    </div>
+    <form class="qb-auth-form" id="qb-auth-form">
+      <input type="email" id="qb-email" placeholder="Email address" required>
+      <div class="qb-pass-wrap">
+        <input type="password" id="qb-pass" placeholder="Password" required minlength="6">
+        <button type="button" class="qb-pass-toggle" id="qb-pass-toggle" aria-label="Show password">
+          <svg class="qb-eye-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <svg class="qb-eye-closed" style="display:none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+        </button>
+      </div>
+      <a href="#" class="qb-forgot-link" id="qb-forgot-link">Forgot password?</a>
+      <div class="qb-auth-error" id="qb-auth-err"></div>
+      <button type="submit" class="qb-btn-primary" id="qb-auth-submit">Sign In</button>
+      <div class="qb-divider">or</div>
+      <button type="button" class="qb-btn-google" id="qb-google-btn">
+        <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59a14.5 14.5 0 0 1 0-9.18l-7.98-6.19a24.1 24.1 0 0 0 0 21.56l7.98-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+        Continue with Google
+      </button>
+    </form>
+  </div>
+
+  <!-- Reset password panel (hidden until needed) -->
+  <div class="qb-auth-overlay" id="qb-reset-panel" style="display:none">
+    <h3>Reset Password</h3>
+    <p>Enter your new password below.</p>
+    <form class="qb-auth-form" id="qb-reset-form">
+      <div class="qb-pass-wrap">
+        <input type="password" id="qb-new-pass" placeholder="New password" required minlength="6">
+        <button type="button" class="qb-pass-toggle" id="qb-reset-pass-toggle" aria-label="Show password">
+          <svg class="qb-eye-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <svg class="qb-eye-closed" style="display:none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+        </button>
+      </div>
+      <div class="qb-auth-error" id="qb-reset-err"></div>
+      <button type="submit" class="qb-btn-primary">Update Password</button>
+    </form>
+  </div>
+
+  <!-- User bar (shown when logged in) -->
+  <div class="qb-user-bar" id="qb-user-bar" style="display:none">
+    <span class="qb-user-email"></span>
+    <button id="qb-signout">Sign Out</button>
+  </div>
+
+  <!-- Quiz container -->
+  <div class="qb-container">
+    <div id="qb-quiz-view" style="display:none">
+      <div class="qb-setup" id="qb-setup"></div>
+      <div class="qb-quiz" id="qb-quiz-area"></div>
+      <div class="qb-results" id="qb-results"></div>
+    </div>
+  </div>
+</section><!-- end question-bank -->
 
 
 
@@ -10179,7 +10257,7 @@
   </div>
 
   <script defer src="js/data.js?v=20260324"></script>
-  <script defer src="js/app.js?v=20260324"></script>
+  <script defer src="js/app.js?v=20260330d"></script>
   <script defer src="js/search.js?v=20260325"></script>
 </body>
 </html>

@@ -2861,6 +2861,8 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
   transition: color 0.15s;
 }
 .sf-link:hover { color: var(--accent); }
+#sf-auth-link { color: var(--accent); font-weight: 600; border-top: 1px solid var(--border); padding-top: 6px; margin-top: 4px; }
+#sf-auth-link:hover { opacity: 0.8; }
 .sf-contact { font-size: 11px; color: var(--text-muted); opacity: 0.5; }
 
 /* ── Overview Topic Cards ───────────────────────────────────────────────── */
