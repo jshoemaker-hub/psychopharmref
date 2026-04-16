@@ -13,6 +13,7 @@
   {{ end }}
 
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ .Title }} - PsychoPharmRef</title>
   <meta name="description" content="{{ .Description | default .Summary | truncate 160 }}">
@@ -33,10 +34,10 @@
   <meta name="twitter:image" content="{{ "og-image.svg" | absURL }}">
 
   <link rel="canonical" href="{{ .Permalink }}">
-  <link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | absURL }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32.png" | absURL }}">
-  <link rel="stylesheet" href="{{ "css/styles.css" | absURL }}">
-  <link rel="stylesheet" href="{{ "css/blog.css" | absURL }}">
+  <link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32.png" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/blog.css" | relURL }}">
   <style>
     .ba-action-bar{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 14px;padding:6px 0;border-bottom:1px solid var(--border,#cfc8ba)}
     .ba-act-btn{display:inline-flex;align-items:center;gap:3px;padding:4px 9px;border-radius:4px;font-size:11px;font-weight:600;border:1px solid var(--border,#cfc8ba);background:var(--bg2,#ece6db);color:var(--text,#231e14);cursor:pointer;text-decoration:none;transition:background .15s,border-color .15s}
