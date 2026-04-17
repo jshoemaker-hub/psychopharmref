@@ -14,6 +14,8 @@
   var currentIdx = 0;
   var answers = [];
   var revealed = [];
+  var lastSelectedCats = [];
+  var usedQuestionIds = [];
 
   /* ── DOM refs (all from static HTML) ── */
   var root = document.getElementById('question-bank');
@@ -318,10 +320,16 @@
   /* ══════════════════════════════
      QUIZ ENGINE
   ══════════════════════════════ */
-  function startQuiz() {
+  function startQuiz(continueMode) {
     var data = window.QBANK_DATA || [];
-    var selectedCats = getSelectedCats();
-    var pool = data.filter(function (q) { return selectedCats.indexOf(q.usmle_category) !== -1; });
+    var selectedCats = continueMode ? lastSelectedCats : getSelectedCats();
+    if (!continueMode) {
+      lastSelectedCats = selectedCats;
+      usedQuestionIds = [];
+    }
+    var pool = data.filter(function (q) {
+      return selectedCats.indexOf(q.usmle_category) !== -1 && usedQuestionIds.indexOf(q.id) === -1;
+    });
 
     if (pool.length === 0) return;
 
@@ -330,6 +338,9 @@
     currentIdx = 0;
     answers = questions.map(function () { return -1; });
     revealed = questions.map(function () { return false; });
+
+    // Track used questions so "15 more" doesn't repeat
+    questions.forEach(function (q) { usedQuestionIds.push(q.id); });
 
     setupView.style.display = 'none';
     resultsView.style.display = 'none';
@@ -347,7 +358,10 @@
     var html = '<div class="qb-progress-bar"><div class="qb-progress-fill" style="width:' + progress + '%"></div></div>';
     html += '<div class="qb-progress-text">Question ' + (currentIdx + 1) + ' of ' + questions.length + '</div>';
     html += '<div class="qb-question-card">';
+    html += '<div class="qb-q-meta-row">';
     html += '<span class="qb-q-frame">' + (q.frame_used || '') + '</span>';
+    html += '<span class="qb-q-id">ID: ' + q.id + '</span>';
+    html += '</div>';
     html += '<div class="qb-q-stem">' + q.question + '</div>';
     html += '<div class="qb-options">';
     q.options.forEach(function (opt, i) {
@@ -371,6 +385,9 @@
     html += q.explanation || '';
     if (q.source_blog_title) {
       html += '<span class="qb-source">Source: ' + q.source_blog_title + '</span>';
+    }
+    if (revealed[currentIdx]) {
+      html += '<button class="qb-comment-btn" id="qb-comment-btn" title="Submit feedback on this question">Comment on Question</button>';
     }
     html += '</div>';
 
@@ -429,6 +446,14 @@
     if (finishBtn) {
       finishBtn.addEventListener('click', showResults);
     }
+
+    // Comment button
+    var commentBtn = quizArea.querySelector('#qb-comment-btn');
+    if (commentBtn) {
+      commentBtn.addEventListener('click', function () {
+        showCommentModal(q);
+      });
+    }
   }
 
   function showResults() {
@@ -441,16 +466,36 @@
     });
     var pct = Math.round(correct / questions.length * 100);
 
+    // Check if more questions are available in the same categories
+    var data = window.QBANK_DATA || [];
+    var remaining = data.filter(function (q) {
+      return lastSelectedCats.indexOf(q.usmle_category) !== -1 && usedQuestionIds.indexOf(q.id) === -1;
+    }).length;
+
+    var moreBtn = '';
+    if (remaining > 0) {
+      moreBtn = '<button class="qb-btn-primary" id="qb-more-quiz">Next ' + Math.min(SET_SIZE, remaining) + ' Questions</button>';
+    }
+
     resultsView.innerHTML =
       '<h3>Quiz Complete</h3>' +
       '<div class="qb-score-big">' + pct + '%</div>' +
       '<div class="qb-score-label">' + correct + ' of ' + questions.length + ' correct</div>' +
       '<div class="qb-results-actions">' +
+        moreBtn +
         '<button class="qb-btn-primary" id="qb-new-quiz">New Quiz</button>' +
         '<button class="qb-btn-secondary" id="qb-review">Review Answers</button>' +
       '</div>';
 
+    var moreQuizBtn = resultsView.querySelector('#qb-more-quiz');
+    if (moreQuizBtn) {
+      moreQuizBtn.addEventListener('click', function () {
+        startQuiz(true);
+      });
+    }
+
     resultsView.querySelector('#qb-new-quiz').addEventListener('click', function () {
+      usedQuestionIds = [];
       showSetup();
     });
 
@@ -459,6 +504,113 @@
       resultsView.style.display = 'none';
       document.getElementById('qb-quiz-area').style.display = 'block';
       renderQuestion();
+    });
+  }
+
+  /* ══════════════════════════════
+     COMMENT MODAL
+  ══════════════════════════════ */
+  function showCommentModal(q) {
+    // Remove existing modal if any
+    var existing = document.getElementById('qb-comment-modal');
+    if (existing) existing.remove();
+
+    var overlay = document.createElement('div');
+    overlay.id = 'qb-comment-modal';
+    overlay.className = 'qb-modal-overlay';
+    overlay.innerHTML =
+      '<div class="qb-modal">' +
+        '<div class="qb-modal-header">' +
+          '<h4>Comment on Question #' + q.id + '</h4>' +
+          '<button class="qb-modal-close" id="qb-modal-close">&times;</button>' +
+        '</div>' +
+        '<div class="qb-modal-body">' +
+          '<p class="qb-modal-q-preview">' + q.question.substring(0, 120) + (q.question.length > 120 ? '...' : '') + '</p>' +
+          '<textarea id="qb-comment-text" class="qb-comment-textarea" placeholder="Share your feedback, report an error, or suggest an improvement..." rows="4"></textarea>' +
+          '<div class="qb-modal-footer">' +
+            '<span class="qb-comment-status" id="qb-comment-status"></span>' +
+            '<button class="qb-btn-primary" id="qb-comment-submit">Submit Comment</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    document.body.appendChild(overlay);
+
+    // Close modal
+    overlay.querySelector('#qb-modal-close').addEventListener('click', function () {
+      overlay.remove();
+    });
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) overlay.remove();
+    });
+
+    // Submit comment
+    overlay.querySelector('#qb-comment-submit').addEventListener('click', function () {
+      var text = document.getElementById('qb-comment-text').value.trim();
+      var statusEl = document.getElementById('qb-comment-status');
+      if (!text) {
+        statusEl.textContent = 'Please enter a comment.';
+        statusEl.style.color = 'var(--red, #c04030)';
+        return;
+      }
+      submitComment(q, text, statusEl, overlay);
+    });
+  }
+
+  function submitComment(q, commentText, statusEl, overlay) {
+    statusEl.textContent = 'Submitting...';
+    statusEl.style.color = 'var(--text-muted)';
+    var submitBtn = overlay.querySelector('#qb-comment-submit');
+    submitBtn.disabled = true;
+
+    // ── Supabase insert ──
+    // Table: question_comments
+    // Columns: question_id (int), question_text (text), comment (text), user_email (text), created_at (timestamptz)
+    if (!supabase) {
+      statusEl.textContent = 'Error: not connected. Please try again.';
+      statusEl.style.color = 'var(--red, #c04030)';
+      submitBtn.disabled = false;
+      return;
+    }
+
+    var payload = {
+      question_id: q.id,
+      question_text: q.question,
+      comment: commentText,
+      user_email: currentUser ? currentUser.email : 'anonymous'
+    };
+
+    supabase.from('question_comments').insert([payload]).then(function (res) {
+      if (res.error) {
+        console.error('Comment insert error:', res.error);
+        statusEl.textContent = 'Error saving comment. Please try again.';
+        statusEl.style.color = 'var(--red, #c04030)';
+        submitBtn.disabled = false;
+        return;
+      }
+      // Send email notification via Supabase Edge Function
+      sendCommentEmail(q, commentText);
+      statusEl.textContent = 'Comment submitted — thank you!';
+      statusEl.style.color = 'var(--accent, #4a7c35)';
+      setTimeout(function () { overlay.remove(); }, 1500);
+    });
+  }
+
+  function sendCommentEmail(q, commentText) {
+    // Calls a Supabase Edge Function to email admin
+    // Edge Function name: send-comment-email
+    // Admin email: jshoemakercb@yahoo.com
+    if (!supabase) return;
+    supabase.functions.invoke('send-comment-email', {
+      body: {
+        question_id: q.id,
+        question_text: q.question,
+        comment: commentText,
+        user_email: currentUser ? currentUser.email : 'anonymous',
+        admin_email: 'jshoemakercb@yahoo.com'
+      }
+    }).then(function (res) {
+      if (res.error) console.warn('Email notification failed:', res.error);
     });
   }
 
