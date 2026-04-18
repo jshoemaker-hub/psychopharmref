@@ -146,6 +146,9 @@
           <li class="nav-sub-divider">Sleep</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="ess-tool">Epworth (Sleepiness)</a></li>
 
+          <li class="nav-sub-divider">Addiction</li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="sud-tool">DSM-5-TR SUD</a></li>
+
           <li class="nav-sub-divider">Safety</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="suicide-risk-tools">Suicide Risk</a></li>
 
@@ -9434,6 +9437,105 @@
     </div>
   </div>
 </section><!-- end msibpd-tool -->
+
+
+<!-- ── DSM-5-TR Substance Use Disorder Tool ─────────────────────────────── -->
+<section id="sud-tool" data-lazy-tool="sud-tool" class="section">
+  <div class="section-header">
+    <h2>DSM-5-TR Substance Use Disorder Tool</h2>
+    <p>Select a substance; the 11 DSM-5-TR criteria populate with substance-specific examples. Generates an EMR-ready text summary on completion.</p>
+  </div>
+
+  <div class="mt-warning">
+    <strong>Clinical Use Only</strong> &mdash; This tool is a DSM-5-TR documentation aid for licensed clinicians. Tolerance and withdrawal are excluded as criteria for hallucinogens, phencyclidine, and inhalants (max = 10). Final diagnosis requires clinical judgment and comprehensive evaluation.
+  </div>
+
+  <div class="sud-date">Assessment date: <span id="sud-date-display"></span></div>
+
+  <!-- 1. Substance -->
+  <div class="sud-card">
+    <h3 class="sud-card-title">1. Substance</h3>
+    <label class="sud-field-label" for="sud-substance">Select the specific substance being evaluated</label>
+    <select id="sud-substance" class="sud-select">
+      <option value="">&mdash; Choose substance &mdash;</option>
+      <option value="alcohol">Alcohol</option>
+      <option value="cannabis">Cannabis</option>
+      <option value="phencyclidine">Phencyclidine (PCP)</option>
+      <option value="other-hallucinogen">Other Hallucinogen (LSD, psilocybin, MDMA, etc.)</option>
+      <option value="inhalant">Inhalant</option>
+      <option value="opioid">Opioid</option>
+      <option value="sedative">Sedative, Hypnotic, or Anxiolytic</option>
+      <option value="stimulant">Stimulant</option>
+      <option value="tobacco">Tobacco</option>
+      <option value="other">Other (or Unknown) Substance</option>
+    </select>
+    <div id="sud-subopts" class="sud-subopts sud-hidden">
+      <div id="sud-specify-group" class="sud-hidden">
+        <label class="sud-field-label" for="sud-specify">Specify</label>
+        <input id="sud-specify" type="text" class="sud-input" placeholder="e.g., LSD, nitrous oxide">
+      </div>
+      <div id="sud-stim-group" class="sud-hidden">
+        <label class="sud-field-label" for="sud-stim-type">Stimulant type</label>
+        <select id="sud-stim-type" class="sud-select">
+          <option value="amphetamine">Amphetamine-type</option>
+          <option value="cocaine">Cocaine</option>
+          <option value="other-stim">Other stimulant</option>
+          <option value="unspecified">Unspecified stimulant</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Criteria -->
+  <div id="sud-criteria-card" class="sud-card sud-hidden">
+    <h3 class="sud-card-title">2. DSM-5-TR Criteria (past 12 months)</h3>
+    <p class="sud-criteria-intro">A problematic pattern of use leading to clinically significant impairment or distress, as manifested by <strong>2 or more</strong> of the following within a 12-month period.</p>
+    <p id="sud-criteria-note" class="sud-note sud-hidden"></p>
+    <div id="sud-criteria-list"></div>
+    <div class="sud-score-row">
+      <div class="sud-score-count">Criteria met: <b id="sud-count">0</b> <span id="sud-max">/ 11</span></div>
+      <div id="sud-severity"></div>
+    </div>
+  </div>
+
+  <!-- 3. Remission & specifiers -->
+  <div id="sud-specifiers-card" class="sud-card sud-hidden">
+    <h3 class="sud-card-title">3. Remission &amp; Additional Specifiers</h3>
+    <div class="sud-two-col">
+      <div>
+        <label class="sud-field-label">Remission status <span style="color:#6b6050;font-weight:400">(only if full criteria previously met but no longer met)</span></label>
+        <label class="sud-check-row"><input type="checkbox" id="sud-rem-early"> <span>In early/recent remission (&ge;3 but &lt;12 months; craving may still be present)</span></label>
+        <label class="sud-check-row"><input type="checkbox" id="sud-rem-sustained"> <span>In sustained remission (&ge;12 months; craving may still be present)</span></label>
+      </div>
+      <div>
+        <label class="sud-field-label">Additional specifiers</label>
+        <label class="sud-check-row"><input type="checkbox" id="sud-controlled"> <span>In a controlled environment</span></label>
+        <label class="sud-check-row"><input type="checkbox" id="sud-maintenance"> <span>On maintenance therapy</span></label>
+        <input id="sud-maintenance-detail" type="text" class="sud-input" placeholder="Agent (e.g., buprenorphine, methadone, nicotine replacement)">
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Supporting notes -->
+  <div id="sud-notes-card" class="sud-card sud-hidden">
+    <h3 class="sud-card-title">4. Supporting notes <span style="color:#6b6050;font-weight:400;font-size:0.95rem">(optional, appended to output)</span></h3>
+    <textarea id="sud-notes" class="sud-textarea" rows="4" placeholder="Frequency/pattern of use, collateral info, specific examples, duration, functional impact, etc."></textarea>
+  </div>
+
+  <!-- Generate -->
+  <button id="sud-generate-btn" class="sud-generate-btn">Generate Report &amp; Copy</button>
+
+  <!-- Output -->
+  <div id="sud-output" class="sud-output sud-hidden">
+    <h3 class="sud-card-title" style="margin-bottom:12px">EMR-Ready Summary</h3>
+    <pre id="sud-output-text" class="sud-output-pre"></pre>
+    <div class="sud-actions">
+      <button type="button" id="sud-copy-btn" class="sud-btn-secondary">Copy to clipboard</button>
+      <button type="button" id="sud-reset-btn" class="sud-btn-secondary">Reset</button>
+      <span id="sud-copy-status" class="sud-copy-status">Copied.</span>
+    </div>
+  </div>
+</section><!-- end sud-tool -->
 
 
 <!-- ── ASRS v1.1 ─────────────────────────────────────────────────────── -->
