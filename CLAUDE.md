@@ -87,6 +87,7 @@ var dateStr = ToolUtils.dateStamp();
 - `bat-` → BAT (Brief Anxiety)
 - `es-` → Epworth Sleepiness Scale
 - `msibpd-` → MSI-BPD
+- `sud-` → DSM-5-TR Substance Use Disorder Tool
 
 ### Copy-to-Clipboard Pattern
 Never use `alert()`. Always use `ToolUtils.copyWithButton()` for new tools:
@@ -107,7 +108,7 @@ ToolUtils.copyWithButton(text, btn);  // shows "Copied!" for 2s
 - Blog links within sidebar: `<li><a href="filename.html" class="nav-link nav-sub-link">Title</a></li>`
 
 ### Sidebar Navigation (index.html)
-- Clinical Tools group includes: QT Risk Tool, Refill Calendar, Med Comparison, Taper/Start, CDR Staging, ASD Severity, Suicide Risk, SLUMS Exam, PANSS, Catatonia (BFCRS), CIDI Bipolar Screen, PCL-5 (PTSD), YMRS (Mania), Y-BOCS (OCD), AIMS (Dyskinesia)
+- Clinical Tools group includes: QT Risk Tool, Refill Calendar, Med Comparison, Taper/Start, CDR Staging, ASD Severity, Suicide Risk, SLUMS Exam, PANSS, Catatonia (BFCRS), CIDI Bipolar Screen, PCL-5 (PTSD), YMRS (Mania), Y-BOCS (OCD), AIMS (Dyskinesia), DSM-5-TR SUD
 - When adding a tool, also add to sidebar nav under Clinical Tools
 
 ## Git Workflow
