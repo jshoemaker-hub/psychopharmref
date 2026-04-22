@@ -1345,6 +1345,44 @@ mark {
 }
 .warning-dismiss:hover { background: #a03020; }
 
+/* ── Friendly Welcome Modal variant (used for first-visit disclaimer) ─── */
+.warning-box--friendly {
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 40px rgba(35,30,20,0.18);
+}
+.warning-icon--friendly {
+  color: var(--accent);
+  font-size: 44px;
+}
+.warning-title--friendly {
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.warning-body a {
+  color: var(--accent);
+  font-weight: 600;
+}
+.warning-body a:hover { text-decoration: underline; }
+.warning-dismiss--friendly {
+  background: var(--accent);
+  color: #fefcf8;
+}
+.warning-dismiss--friendly:hover { background: #3d6a2b; }
+.warning-full-terms-link {
+  text-align: center;
+  margin: 14px 0 0;
+  font-size: 13px;
+}
+.warning-full-terms-link a {
+  color: var(--text-muted, #6b6458);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--text-muted, #6b6458);
+}
+.warning-full-terms-link a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
 /* ── FDA Reference Search ───────────────────────────────────────────────── */
 .fda-filter-input {
   display: block;

@@ -1,5 +1,5 @@
 ---
-title: "Blog"
-description: "Evidence-based clinical insights for psychiatrists and mental health clinicians"
+title: "Chapters"
+description: "Evidence-based clinical chapters for psychiatrists and mental health clinicians"
 draft: false
 ---

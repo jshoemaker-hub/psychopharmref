@@ -370,6 +370,28 @@ document.querySelectorAll('[data-section="overview"]').forEach(link => {
   });
 });
 
+/* ── Hash-based section navigation (deep links from blog posts, etc.) ──── */
+function sectionFromHash() {
+  var h = (window.location.hash || '').replace(/^#/, '').trim();
+  if (!h) return null;
+  var el = document.getElementById(h);
+  if (el && el.classList && el.classList.contains('section')) return h;
+  return null;
+}
+
+function applyHashNavigation() {
+  var id = sectionFromHash();
+  if (id) switchSection(id);
+}
+
+// On initial load: if the URL includes a valid #section-id (e.g., coming
+// from a blog post sidebar link), activate that section instead of landing
+// on the home/overview page.
+applyHashNavigation();
+
+// Keep the SPA in sync with browser-level hash changes.
+window.addEventListener('hashchange', applyHashNavigation);
+
 /* ── Class Filter (sidebar checkboxes) ─────────────────────────────────── */
 let activeClasses = new Set(MEDICATIONS.map(m => m.class));
 

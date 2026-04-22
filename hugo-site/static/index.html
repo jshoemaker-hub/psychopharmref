@@ -160,10 +160,10 @@
         </ul>
       </li>
 
-      <!-- Clinical Insights -->
+      <!-- Neuroscience -->
       <li class="nav-group" data-group="insights">
         <button class="nav-parent-btn">
-          <span class="nav-parent-label">Clinical Insights</span>
+          <span class="nav-parent-label">Neuroscience</span>
           <span class="nav-caret">&#9658;</span>
         </button>
         <ul class="nav-sub">
@@ -173,10 +173,10 @@
         </ul>
       </li>
 
-      <!-- Blog -->
+      <!-- Chapters -->
       <li class="nav-group" data-group="blog">
         <button class="nav-parent-btn">
-          <span class="nav-parent-label">Blog</span>
+          <span class="nav-parent-label">Chapters</span>
           <span class="nav-caret">&#9658;</span>
         </button>
         <ul class="nav-sub">
@@ -336,7 +336,7 @@
 
     <div class="sidebar-footer">
       <a href="#" class="sf-link" onclick="switchSection('fda-search');return false;">References &amp; Methods</a>
-      <a href="#" class="sf-link" id="sf-disclaimer-link" onclick="document.getElementById('warning-modal').classList.remove('hidden');return false;">Legal Disclaimer</a>
+      <a href="legal-disclaimer.html" class="sf-link" id="sf-disclaimer-link">Legal Disclaimer</a>
       <a href="#" class="sf-link" onclick="switchSection('contact');return false;">Contact</a>
       <a href="#" class="sf-link" id="sf-auth-link" onclick="switchSection('question-bank');return false;">Sign In / Sign Up</a>
     </div>
@@ -384,7 +384,7 @@
         </div>
         <div class="info-card info-card--topic">
           <div class="ic-icon">&#129504;</div>
-          <h3>Clinical Insights</h3>
+          <h3>Neuroscience</h3>
           <p>Neuropsychiatric cognitive domains, classic neurocircuits, and brain region involvement across major psychiatric diagnoses.</p>
           <div class="ic-sub-links">
             <button class="btn-sub" onclick="switchSection('cog-domains')">Cognitive Domains</button>
@@ -394,7 +394,7 @@
         </div>
         <div class="info-card info-card--topic">
           <div class="ic-icon">&#9998;</div>
-          <h3>Blog</h3>
+          <h3>Chapters</h3>
           <p>Clinical commentary, pharmacology explainers, and case-based learning.</p>
           <div class="ic-sub-links">
             <button class="btn-sub" onclick="switchSection('blog-index')">All Posts (79 articles)</button>
@@ -10101,10 +10101,10 @@
 </section><!-- end print-forms -->
 
 
-    <!-- ── Blog Index ─────────────────────────────────────────────────────── -->
+    <!-- ── Chapters Index ─────────────────────────────────────────────────── -->
     <section id="blog-index" class="section">
       <div class="section-header">
-        <h2>Blog</h2>
+        <h2>Chapters</h2>
         <p class="section-sub">79 evidence-based clinical articles on psychopharmacology, psychiatric disorders, clinical practice, and more.</p>
       </div>
 
@@ -10324,38 +10324,20 @@
     </div>
   </div>
 
-  <!-- ── Clinical Warning Modal ──────────────────────────────────────────── -->
-  <div id="warning-modal" class="warning-overlay">
-    <div class="warning-box">
-      <div class="warning-icon">⚠</div>
-      <h2 class="warning-title">Important Disclaimer</h2>
+  <!-- ── Clinical Welcome / Disclaimer Modal ─────────────────────────────── -->
+  <div id="warning-modal" class="warning-overlay warning-overlay--friendly">
+    <div class="warning-box warning-box--friendly">
+      <div class="warning-icon warning-icon--friendly">&#9432;</div>
+      <h2 class="warning-title warning-title--friendly">Important Disclaimer</h2>
       <div class="warning-body">
+        <p><strong>PsychoPharmRef is an independent educational reference tool.</strong> The creators of PsychoPharmRef assume no liability for clinical decisions made in whole or in part on the basis of information presented in this tool. Use is entirely at the clinician's own professional discretion and responsibility.</p>
 
-        <p><strong>PsychoPharmRef is an independent educational reference tool</strong> intended solely for use by licensed healthcare professionals, students, and researchers in clinical training contexts. It is <strong>not intended for use by patients or the general public.</strong></p>
-
-        <div class="warning-section-label">Not a Substitute for Clinical Judgment</div>
-        <p>Nothing in this tool constitutes medical advice, a clinical recommendation, or a standard of care. All information must be interpreted within the full context of an individual patient's clinical presentation, history, and current medications by a qualified clinician.</p>
-
-        <div class="warning-section-label">Data Accuracy &amp; Currency</div>
-        <ul>
-          <li>Data is derived from FDA-approved prescribing information, the PDSP Ki database, and peer-reviewed pharmacology literature. It may not reflect the most current labeling, post-market safety updates, or newly approved indications.</li>
-          <li>Receptor binding values (Ki) are sourced from in vitro studies and may not directly predict in vivo clinical effects at therapeutic doses.</li>
-          <li>The QT risk tool and Tisdale score are provided for educational awareness only and do not replace a full clinical assessment or real-time ECG interpretation.</li>
-        </ul>
-
-        <div class="warning-section-label">Scope of Use</div>
-        <ul>
-          <li>This reference does not account for individual patient factors including renal or hepatic impairment, genetic polymorphisms, pregnancy, pediatric populations, or off-label indications unless explicitly noted.</li>
-          <li>Drug interaction screening presented here is not comprehensive. Always verify interactions using a current clinical decision support system (e.g., Lexicomp, Micromedex, Clinical Pharmacology).</li>
-          <li>Always consult current FDA-approved labeling and applicable clinical practice guidelines before making any prescribing or clinical decision.</li>
-        </ul>
-
-        <div class="warning-section-label">No Liability</div>
-        <p>The creators of PsychoPharmRef assume no liability for clinical decisions made in whole or in part on the basis of information presented in this tool. Use is entirely at the clinician's own professional discretion and responsibility.</p>
+        <p>Considerable effort is made to ensure all information is accurate, but errors are human. Please use the <a href="#" onclick="dismissWarning();switchSection('contact');return false;">contact link</a> for any concerns.</p>
 
         <p class="warning-footer-note">By clicking below, you confirm that you are a licensed healthcare professional or student acting under supervision, and that you understand this tool is for educational reference only and not for direct patient care decision-making.</p>
       </div>
-      <button class="warning-dismiss" onclick="dismissWarning()">I Understand — Continue to Reference Tool</button>
+      <button class="warning-dismiss warning-dismiss--friendly" onclick="dismissWarning()">I agree to these terms</button>
+      <p class="warning-full-terms-link"><a href="legal-disclaimer.html">View full legal disclaimer &rarr;</a></p>
     </div>
   </div>
   <script>
@@ -10368,7 +10350,7 @@
   </script>
 
   <script defer src="js/data.js?v=20260324"></script>
-  <script defer src="js/app.js?v=20260330d"></script>
+  <script defer src="js/app.js?v=20260421a"></script>
   <script defer src="js/search.js?v=20260325"></script>
 </body>
 </html>
