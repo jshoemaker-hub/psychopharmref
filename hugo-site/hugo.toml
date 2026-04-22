@@ -7,7 +7,7 @@ defaultContentLanguage = "en"
   description = "Free clinical psychopharmacology reference with 91 medications, receptor binding profiles, P450 interactions, 15+ clinical tools, and 68 evidence-based blog posts."
   author = "Jerad Shoemaker, MD"
   authorJobTitle = "Psychiatrist"
-  ga4ID = "G-L2L4BVD8QC"
+  ga4ID = "G-RK6J3FQ9L7"
 
 [markup]
   [markup.goldmark]
