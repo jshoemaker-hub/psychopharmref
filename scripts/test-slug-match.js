@@ -68,7 +68,7 @@ function findCpdUrl(sitemap, drugName, sku) {
   }).filter(Boolean);
   if (!scored.length) return null;
   scored.sort((a, b) => b.score - a.score);
-  return scored[0].score >= 17 ? scored[0].url : null;
+  return scored[0].score >= 15 ? scored[0].url : null;
 }
 
 function findHwUrl(sitemap, drugName, sku) {
@@ -99,7 +99,7 @@ function findHwUrl(sitemap, drugName, sku) {
   }).filter(Boolean);
   if (!scored.length) return null;
   scored.sort((a, b) => b.score - a.score);
-  return scored[0].score >= 17 ? scored[0].url : null;
+  return scored[0].score >= 15 ? scored[0].url : null;
 }
 
 // Synthetic sitemaps populated with real URLs sampled during probing

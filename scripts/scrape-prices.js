@@ -29,6 +29,7 @@ const SKUS_PATH       = path.join(REPO_ROOT, 'data', 'drug-skus.json');
 const OUT_PATH        = path.join(REPO_ROOT, 'data', 'prices.json');
 const HUGO_OUT        = path.join(REPO_ROOT, 'hugo-site', 'static', 'data', 'prices.json');
 const CPD_TARGETS_OUT = path.join(REPO_ROOT, 'data', 'cpd-targets.json');
+const HW_TARGETS_OUT  = path.join(REPO_ROOT, 'data', 'hw-targets.json');
 
 // Realistic browser UA — bot-tagged UAs trigger Cloudflare challenges on
 // per-product pages (sitemaps are usually whitelisted for SEO crawlers but
@@ -46,20 +47,33 @@ function logWarn(msg)  { console.warn(`[warn]  ${msg}`); }
 function logError(msg) { console.error(`[error] ${msg}`); }
 
 async function fetchText(url, opts = {}) {
-  // Keep headers minimal & realistic. Don't request brotli — Node's fetch
-  // (undici) supports gzip/deflate natively on every release, but brotli
-  // support varies by Node version, and HealthWarehouse's product pages
-  // return brotli when offered, leaving the body undecoded for our regex.
+  // accept-encoding: identity disables all compression. Costs slightly larger
+  // payload but eliminates the class of bugs where the server (or a CDN in
+  // front of it) sends brotli/gzip that Node's fetch doesn't decompress.
   const headers = {
     'user-agent': UA,
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     'accept-language': 'en-US,en;q=0.9',
-    'accept-encoding': 'gzip, deflate',
+    'accept-encoding': 'identity',
     ...(opts.headers || {}),
   };
   const r = await fetch(url, { redirect: 'follow', ...opts, headers });
   if (!r.ok) throw new Error(`HTTP ${r.status} ${r.statusText} :: ${url}`);
   return r.text();
+}
+
+// Save a response body to /tmp for post-mortem when a parser can't find what
+// it expects. Only writes the first DEBUG_DUMP_LIMIT failures per source.
+const DEBUG_DUMP_LIMIT = 2;
+const debugDumpCount = { CPD: 0, HW: 0 };
+function debugDump(source, drugName, url, html) {
+  if (debugDumpCount[source] >= DEBUG_DUMP_LIMIT) return;
+  debugDumpCount[source]++;
+  try {
+    const tmpPath = `/tmp/scrape-debug-${source}-${drugName.replace(/[^A-Za-z0-9]/g, '_')}.html`;
+    fs.writeFileSync(tmpPath, html);
+    logWarn(`  → dumped response (${html.length} bytes) to ${tmpPath} for ${drugName}`);
+  } catch (e) { /* /tmp may not be writable */ }
 }
 
 async function fetchJson(url, opts = {}) {
@@ -166,7 +180,9 @@ function findCpdUrl(sitemap, drugName, sku) {
   scored.sort((a, b) => b.score - a.score);
   const top = scored[0];
   // Threshold: need at least drug-name + strength + form (10+6+4 = 20) to be confident
-  if (top.score < 17) return null;
+  // Lowered from 17 to 15 to capture borderline matches (e.g. drugs whose CPD
+  // slug uses unusual form strings like "extended-release-zyban" suffix).
+  if (top.score < 15) return null;
   return top.url;
 }
 
@@ -198,7 +214,7 @@ async function loadHwSitemap() {
   return urls;
 }
 
-function findHwUrl(sitemap, drugName, sku) {
+function findHwUrls(sitemap, drugName, sku) {
   const drugTokens = tokenize(drugName);
   const sd         = strengthDigits(sku.strength);
   const profile    = formProfile(sku.form);
@@ -232,14 +248,14 @@ function findHwUrl(sitemap, drugName, sku) {
     return { url, slug, score };
   }).filter(Boolean);
 
-  if (!scored.length) return null;
+  if (!scored.length) return [];
   scored.sort((a, b) => b.score - a.score);
-  const top = scored[0];
-  if (top.score < 17) return null;
-  return top.url;
+  // Return up to 3 candidates above threshold — fallback handles HW's
+  // dirty sitemap (some entries are stale and 404).
+  return scored.filter(s => s.score >= 15).slice(0, 3).map(s => s.url);
 }
 
-async function scrapeHw(url, sku) {
+async function scrapeHw(url, sku, drugName) {
   const html = await fetchText(url);
   // HealthWarehouse uses 3 JSON-LD blocks; the product is the last one with no @type field but `productName` + `offers`
   const ldBlocks = [...html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/g)].map(m => m[1]);
@@ -250,7 +266,10 @@ async function scrapeHw(url, sku) {
       if (j && (j.productName || j.offers)) { productLd = j; break; }
     } catch (_) { /* try next */ }
   }
-  if (!productLd) throw new Error('No product JSON-LD');
+  if (!productLd) {
+    debugDump('HW', drugName || 'unknown', url, html);
+    throw new Error('No product JSON-LD');
+  }
   const offers = productLd.offers || [];
   if (!Array.isArray(offers) || !offers.length) throw new Error('No offers[]');
 
@@ -425,35 +444,29 @@ async function main() {
   const prices    = {};
   const errors    = {};
   const stats     = { CostPlusDrugs: 0, HealthWarehouse: 0, NADAC: 0 };
-  const cpdTargets = {};   // { drugName: cpdUrl } — emitted for browser-phase scrape
+  const cpdTargets = {};   // { drugName: cpdUrl }            — emitted for browser-phase
+  const hwTargets  = {};   // { drugName: [url1, url2, url3] } — top-N candidates for browser-phase fallback
 
   for (const [drugName, sku] of drugList) {
     process.stdout.write(`  ${drugName.padEnd(28)}`);
     const drugErrors = [];
     const drugPrices = {};
 
-    // CPD: do slug-match here, but DON'T fetch the product page — Cloudflare 403's
-    // unauthenticated Node fetches. URLs are emitted to data/cpd-targets.json
-    // for the browser phase (Claude in Chrome) to scrape with shared CF clearance.
+    // Both retail sources are bot-protected. CPD returns 403, HW returns a
+    // soft-404 (Next.js [...dynamicRoutes] catchall) — same end result: no
+    // product data without a session cookie. Slug-match here, then defer the
+    // actual product-page fetch to the browser phase, where we navigate once
+    // (setting CF/session cookies) and fetch all targets same-origin.
     if (cpdSitemap.length) {
       const url = findCpdUrl(cpdSitemap, drugName, sku);
       if (!url) drugErrors.push('CostPlusDrugs: no slug match');
       else { cpdTargets[drugName] = url; }
     }
 
-    // HealthWarehouse
     if (hwSitemap.length) {
-      const url = findHwUrl(hwSitemap, drugName, sku);
-      if (!url) drugErrors.push('HealthWarehouse: no slug match');
-      else {
-        try {
-          const r = await scrapeHw(url, sku);
-          drugPrices.HealthWarehouse = { ...r, asOf: new Date().toISOString().slice(0, 10) };
-          stats.HealthWarehouse++;
-        } catch (e) {
-          drugErrors.push(`HealthWarehouse: ${e.message} (${url})`);
-        }
-      }
+      const urls = findHwUrls(hwSitemap, drugName, sku);
+      if (!urls.length) drugErrors.push('HealthWarehouse: no slug match');
+      else { hwTargets[drugName] = urls; }   // top 3 candidates; browser phase tries in order
     }
 
     // NADAC (offline lookup, no network call per drug)
@@ -486,7 +499,8 @@ async function main() {
     stats,
   };
 
-  logInfo(`\nResults: CPD-targets=${Object.keys(cpdTargets).length}/${drugList.length} (browser phase fetches these)  HW=${stats.HealthWarehouse}/${drugList.length}  NADAC=${stats.NADAC}/${drugList.length}`);
+  logInfo(`\nResults (Phase 1):  NADAC=${stats.NADAC}/${drugList.length}  CPD-targets=${Object.keys(cpdTargets).length}/${drugList.length}  HW-targets=${Object.keys(hwTargets).length}/${drugList.length}`);
+  logInfo('  → CPD + HW prices come from the browser phase (Claude in Chrome) which fetches the targets above.');
   const errorCount = Object.values(errors).reduce((sum, arr) => sum + arr.length, 0);
   if (errorCount) logWarn(`${errorCount} per-source lookup errors across ${Object.keys(errors).length} drugs (see prices.json "errors" map for detail).`);
 
@@ -505,14 +519,23 @@ async function main() {
   fs.writeFileSync(HUGO_OUT, json);
   logInfo(`Mirrored to ${HUGO_OUT}`);
 
-  // Emit cpd-targets.json — consumed by the browser phase (scheduled task)
-  const targetsJson = JSON.stringify({
-    $schema: 'List of {drugName: cpdProductUrl} pairs to scrape via Claude in Chrome (Cloudflare blocks unauth Node fetches). Browser phase outputs data/cpd-prices.json which is then merged via scripts/merge-cpd-prices.js.',
+  // Emit target files — consumed by the browser phase (scheduled task / Claude in Chrome)
+  const cpdJson = JSON.stringify({
+    $schema: '{drugName: cpdProductUrl} pairs to scrape via Claude in Chrome. Cloudflare blocks unauth Node fetches with HTTP 403.',
     generatedAt: new Date().toISOString(),
     targets: cpdTargets,
   }, null, 2);
-  fs.writeFileSync(CPD_TARGETS_OUT, targetsJson);
+  fs.writeFileSync(CPD_TARGETS_OUT, cpdJson);
   logInfo(`Wrote ${CPD_TARGETS_OUT} (${Object.keys(cpdTargets).length} target URLs)`);
+
+  const hwJson = JSON.stringify({
+    $schema: '{drugName: [url1, url2, url3]} candidate-list pairs (top 3 sitemap matches per drug, in score order). Browser phase tries each until one returns product data — handles HW soft-404 catchall on retired SKUs.',
+    generatedAt: new Date().toISOString(),
+    targets: hwTargets,
+  }, null, 2);
+  fs.writeFileSync(HW_TARGETS_OUT, hwJson);
+  const totalCandidates = Object.values(hwTargets).reduce((s, arr) => s + arr.length, 0);
+  logInfo(`Wrote ${HW_TARGETS_OUT} (${Object.keys(hwTargets).length} drugs, ${totalCandidates} candidate URLs)`);
 }
 
 main().catch(err => {
