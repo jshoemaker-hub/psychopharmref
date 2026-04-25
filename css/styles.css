@@ -3203,119 +3203,285 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
   vertical-align: middle;
 }
 
-.mc-cyp-summary {
+/* TL;DR summary banner — the key clinical takeaway */
+.mc-p450-summary {
   display: flex;
-  gap: 16px;
-  margin-bottom: 14px;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  border: 1px solid;
+  border-left-width: 6px;
+  line-height: 1.55;
+  font-size: 14px;
+  color: var(--text);
 }
-.mc-cyp-summary-stat {
+.mc-p450-summary--strong   { background: rgba(232,90,60,0.10);  border-color: rgba(232,90,60,0.45);  border-left-color: #e85a3c; }
+.mc-p450-summary--moderate { background: rgba(217,152,52,0.10); border-color: rgba(217,152,52,0.45); border-left-color: #d99834; }
+.mc-p450-summary--weak     { background: rgba(154,144,128,0.10); border-color: rgba(154,144,128,0.40); border-left-color: rgba(154,144,128,0.7); }
+.mc-p450-summary-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+.mc-p450-summary--strong   .mc-p450-summary-icon { color: #e85a3c; }
+.mc-p450-summary--moderate .mc-p450-summary-icon { color: #d99834; }
+.mc-p450-summary--weak     .mc-p450-summary-icon { color: var(--text-muted); }
+.mc-p450-summary-text { font-weight: 500; }
+.mc-p450-sum-strong   { color: #e85a3c; font-weight: 600; }
+.mc-p450-sum-moderate { color: #d99834; font-weight: 600; }
+.mc-p450-sum-weak     { color: var(--text-muted); }
+
+/* Overview header — at-a-glance counts and severity bar */
+.mc-p450-overview {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 14px;
+  align-items: stretch;
+  margin-bottom: 22px;
+}
+.mc-p450-overview-stat {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 22px;
+  text-align: center;
+  min-width: 130px;
+}
+.mc-p450-overview-num {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.mc-p450-overview-lbl {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  margin-top: 7px;
+  font-weight: 600;
+}
+.mc-p450-overview-severity {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
   background: var(--bg2);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 18px;
-  min-width: 110px;
+  border-radius: 10px;
+  padding: 14px 18px;
+  min-width: 0;
 }
-.mc-cyp-stat-num { font-size: 22px; font-weight: 700; color: var(--accent); }
-.mc-cyp-stat-lbl { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-top: 2px; text-align: center; }
-
-.mc-cyp-legend {
+.mc-p450-sev-bar {
   display: flex;
-  gap: 18px;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  background: rgba(154,144,128,0.18);
+}
+.mc-p450-sev-bar-seg--strong   { background: #e85a3c; }
+.mc-p450-sev-bar-seg--moderate { background: #d99834; }
+.mc-p450-sev-bar-seg--weak     { background: rgba(154,144,128,0.55); }
+.mc-p450-sev-summary {
+  display: flex;
+  gap: 8px;
   flex-wrap: wrap;
-  font-size: 11.5px;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-  padding: 8px 12px;
-  background: rgba(255,255,255,0.02);
-  border-radius: 6px;
-  align-items: center;
+  justify-content: center;
+  font-variant-numeric: tabular-nums;
 }
-.mc-cyp-legend > span { display: inline-flex; align-items: center; gap: 6px; }
-.mc-cyp-up   { color: #f06040; font-weight: 700; }
-.mc-cyp-down { color: #7aadee; font-weight: 700; }
-.mc-cyp-sev-strong-pill,
-.mc-cyp-sev-mod-pill,
-.mc-cyp-sev-weak-pill {
-  padding: 1px 8px;
-  border-radius: 8px;
-  font-size: 10.5px;
-  font-weight: 600;
-  margin-right: 4px;
-}
-.mc-cyp-sev-strong-pill { background: rgba(240,96,64,0.22); color: #f06040; }
-.mc-cyp-sev-mod-pill    { background: rgba(240,168,64,0.22); color: #f0a840; }
-.mc-cyp-sev-weak-pill   { background: rgba(154,144,128,0.22); color: var(--text-muted); }
-
-.mc-cyp-enzyme-block { margin-bottom: 18px; }
-.mc-cyp-enzyme-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--accent);
-  margin: 0 0 8px 0;
-  padding-bottom: 5px;
-  border-bottom: 1px solid var(--border);
-}
-.mc-cyp-enzyme-count {
-  font-weight: 400;
+.mc-p450-sev-mini-pill {
   font-size: 11px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-left: 8px;
+  padding: 3px 10px;
+  border-radius: 9px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
 }
+.mc-p450-sev-mini-pill--strong   { background: rgba(232,90,60,0.20); color: #e85a3c; }
+.mc-p450-sev-mini-pill--moderate { background: rgba(217,152,52,0.20); color: #d99834; }
+.mc-p450-sev-mini-pill--weak     { background: rgba(154,144,128,0.22); color: var(--text-muted); }
 
-.mc-cyp-row {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 4px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-left-width: 4px;
-  border-radius: 6px;
-  padding: 10px 14px;
-  margin-bottom: 8px;
-}
-.mc-cyp-row.mc-cyp-sev-strong { border-left-color: #f06040; }
-.mc-cyp-row.mc-cyp-sev-mod    { border-left-color: #f0a840; }
-.mc-cyp-row.mc-cyp-sev-weak   { border-left-color: rgba(154,144,128,0.6); }
-
-.mc-cyp-pair {
+/* Severity-tier divider within an enzyme block */
+.mc-p450-tier { margin-bottom: 6px; }
+.mc-p450-tier-divider {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--text);
+  margin: 14px 0 8px;
 }
-.mc-cyp-from { color: var(--text); }
-.mc-cyp-to   { color: var(--accent); }
-.mc-cyp-arrow { font-size: 15px; }
-.mc-cyp-arrow.mc-cyp-up   { color: #f06040; }
-.mc-cyp-arrow.mc-cyp-down { color: #7aadee; }
-.mc-cyp-mech {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-top: 2px;
+.mc-p450-tier-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  border-radius: 4px;
+  color: white;
+  flex-shrink: 0;
 }
-.mc-cyp-effect {
-  font-size: 12.5px;
-  color: var(--text);
-  margin-top: 4px;
-  line-height: 1.45;
+.mc-p450-tier-label--strong   { background: #e85a3c; }
+.mc-p450-tier-label--moderate { background: #d99834; }
+.mc-p450-tier-label--weak     { background: rgba(154,144,128,0.75); color: var(--bg2); }
+.mc-p450-tier-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
 }
+.mc-p450-tier--strong   .mc-p450-tier-line { background: rgba(232,90,60,0.35); }
+.mc-p450-tier--moderate .mc-p450-tier-line { background: rgba(217,152,52,0.35); }
 
-.mc-cyp-disclaimer {
+/* Enzyme section header */
+.mc-p450-enzyme-section { margin-bottom: 22px; }
+.mc-p450-enzyme-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 12px 0;
+  font-size: 14px;
+}
+.mc-p450-enzyme-pill {
+  display: inline-block;
+  padding: 5px 14px;
+  background: var(--accent);
+  color: var(--bg2);
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.mc-p450-enzyme-meta {
   font-size: 11px;
   color: var(--text-muted);
-  margin-top: 14px;
-  padding-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+/* Interaction card — the main attraction */
+.mc-p450-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-left-width: 5px;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.mc-p450-card:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.10); }
+.mc-p450-card--strong   { border-left-color: #e85a3c; background: linear-gradient(90deg, rgba(232,90,60,0.13), rgba(232,90,60,0.04) 60%); border-color: rgba(232,90,60,0.30); }
+.mc-p450-card--moderate { border-left-color: #d99834; background: linear-gradient(90deg, rgba(217,152,52,0.11), rgba(217,152,52,0.03) 60%); border-color: rgba(217,152,52,0.30); }
+.mc-p450-card--weak     { border-left-color: rgba(154,144,128,0.55); background: linear-gradient(90deg, rgba(154,144,128,0.08), var(--bg2) 50%); }
+
+.mc-p450-card-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.mc-p450-sev {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 4px;
+  color: white;
+}
+.mc-p450-sev--strong   { background: #e85a3c; }
+.mc-p450-sev--moderate { background: #d99834; }
+.mc-p450-sev--weak     { background: rgba(154,144,128,0.75); color: var(--bg2); }
+
+.mc-p450-impact {
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.mc-p450-up   { color: #e85a3c; }
+.mc-p450-down { color: #5a8dee; }
+
+.mc-p450-card-pair {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.mc-p450-from { color: var(--text); }
+.mc-p450-to   { color: var(--accent); }
+.mc-p450-arrow {
+  font-size: 22px;
+  color: var(--text-muted);
+  font-weight: 400;
+  opacity: 0.65;
+}
+
+.mc-p450-card-mech {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.mc-p450-mech-action {
+  font-style: italic;
+  margin-left: 4px;
+  opacity: 0.85;
+}
+
+.mc-p450-card-action {
+  font-size: 13px;
+  color: var(--text);
+  padding: 9px 12px;
+  border-radius: 6px;
+  line-height: 1.5;
+  font-weight: 500;
+  background: rgba(154,144,128,0.10);
+  border-left: 3px solid var(--border);
+}
+.mc-p450-card--strong .mc-p450-card-action {
+  background: rgba(232,90,60,0.12);
+  border-left-color: #e85a3c;
+  color: var(--text);
+}
+.mc-p450-card--moderate .mc-p450-card-action {
+  background: rgba(217,152,52,0.10);
+  border-left-color: #d99834;
+}
+.mc-p450-card--weak .mc-p450-card-action {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.mc-p450-disclaimer {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 18px;
+  padding-top: 12px;
   border-top: 1px dashed var(--border);
   line-height: 1.5;
   font-style: italic;
+}
+
+/* Mobile responsive */
+@media (max-width: 720px) {
+  .mc-p450-overview {
+    grid-template-columns: 1fr 1fr;
+  }
+  .mc-p450-overview-severity {
+    grid-column: 1 / -1;
+  }
+  .mc-p450-card-pair {
+    font-size: 16px;
+  }
+  .mc-p450-overview-num { font-size: 26px; }
 }
 
 .mc-p450-clear {

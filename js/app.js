@@ -2088,7 +2088,6 @@ function initMedCompare() {
     if (!container) return;
 
     if (mcP450Interactions.length === 0) {
-      // Check if it's "no data" or "no interactions"
       const hasAnyData = drugs.some(d => d.p450);
       if (!hasAnyData) {
         container.innerHTML = '<div class="mt-warning" style="margin:12px 0">No P450 metabolism data available for the selected medications.</div>';
@@ -2099,55 +2098,158 @@ function initMedCompare() {
     }
 
     const SEV_LABEL = { strong: 'Strong', moderate: 'Moderate', weak: 'Weak' };
-    const SEV_CLASS = { strong: 'mc-cyp-sev-strong', moderate: 'mc-cyp-sev-mod', weak: 'mc-cyp-sev-weak' };
+    const SEV_RANK  = { strong: 3, moderate: 2, weak: 1 };
+    const SEV_ORDER = ['strong', 'moderate', 'weak'];
 
-    // Group by enzyme for cleaner display
+    // Severity- and direction-aware action text
+    const ACTION = {
+      'strong-up':     'Substantial dose reduction often required &mdash; or switch to a non-interacting alternative',
+      'strong-down':   'Significantly reduced efficacy &mdash; may need higher dose or alternative agent',
+      'moderate-up':   'Consider dose reduction; monitor for {to} toxicity or new side effects',
+      'moderate-down': 'Monitor for reduced {to} efficacy; dose increase may be needed',
+      'weak-up':       'Usually clinically minor &mdash; monitor only at high doses or in sensitive patients',
+      'weak-down':     'Usually clinically minor &mdash; rare clinical impact'
+    };
+
+    // Helper for "A, B, and C" lists
+    function listAnd(arr) {
+      if (arr.length === 0) return '';
+      if (arr.length === 1) return arr[0];
+      if (arr.length === 2) return arr[0] + ' and ' + arr[1];
+      return arr.slice(0, -1).join(', ') + ', and ' + arr[arr.length - 1];
+    }
+
+    // Build TL;DR summary: per affected drug, find max-severity incoming effect
+    // {DrugName: { up: 'strong'|null, down: 'strong'|null }}
+    const drugMaxSev = {};
+    mcP450Interactions.forEach(e => {
+      if (!drugMaxSev[e.to]) drugMaxSev[e.to] = { up: null, down: null };
+      const slot = drugMaxSev[e.to];
+      if (slot[e.direction] == null || SEV_RANK[e.severity] > SEV_RANK[slot[e.direction]]) {
+        slot[e.direction] = e.severity;
+      }
+    });
+    // Group: { 'strong-up': ['Drug1', 'Drug2'], ... }
+    const sumGroups = {};
+    Object.entries(drugMaxSev).forEach(([drug, dirs]) => {
+      ['up', 'down'].forEach(d => {
+        if (dirs[d]) {
+          const key = `${dirs[d]}-${d}`;
+          (sumGroups[key] = sumGroups[key] || []).push(drug);
+        }
+      });
+    });
+    const SUM_PHRASE = {
+      'strong-up':     'levels rise significantly',
+      'moderate-up':   'levels rise moderately',
+      'weak-up':       'mildly elevated',
+      'strong-down':   'levels fall significantly',
+      'moderate-down': 'levels fall moderately',
+      'weak-down':     'mildly reduced'
+    };
+    const sumPhrases = [];
+    SEV_ORDER.forEach(sev => ['up', 'down'].forEach(d => {
+      const k = `${sev}-${d}`;
+      if (sumGroups[k]) {
+        sumPhrases.push(`<span class="mc-p450-sum-${sev}"><strong>${listAnd(sumGroups[k])}</strong> ${SUM_PHRASE[k]}</span>`);
+      }
+    }));
+    const summaryHTML = sumPhrases.length
+      ? `<div class="mc-p450-summary mc-p450-summary--${SEV_ORDER.find(s => sumGroups[s+'-up'] || sumGroups[s+'-down'])}">
+           <span class="mc-p450-summary-icon">&#9888;</span>
+           <span class="mc-p450-summary-text">Because of these interactions, ${sumPhrases.join('; ')}.</span>
+         </div>`
+      : '';
+
+    // Tally severities for the overview bar
+    const sevCounts = { strong: 0, moderate: 0, weak: 0 };
+    mcP450Interactions.forEach(e => sevCounts[e.severity]++);
+
+    // Group by enzyme; within each enzyme, group by severity tier
     const byEnzyme = {};
     mcP450Interactions.forEach(e => {
-      if (!byEnzyme[e.enzyme]) byEnzyme[e.enzyme] = [];
-      byEnzyme[e.enzyme].push(e);
+      if (!byEnzyme[e.enzyme]) byEnzyme[e.enzyme] = { strong: [], moderate: [], weak: [] };
+      byEnzyme[e.enzyme][e.severity].push(e);
     });
 
-    const enzymeBlocks = Object.entries(byEnzyme).sort().map(([enz, edges]) => {
-      const rows = edges.map(e => {
-        const arrow = e.direction === 'up' ? '&uarr;' : '&darr;';
-        const arrowCls = e.direction === 'up' ? 'mc-cyp-up' : 'mc-cyp-down';
-        const mechText = e.mechanism === 'inhibition'
-          ? `${e.from} inhibits ${enz} (${SEV_LABEL[e.severity]})`
-          : `${e.from} induces ${enz}`;
-        const effectText = e.direction === 'up'
-          ? `<strong>${e.to}</strong> levels increase &mdash; consider dose reduction or alternative`
-          : `<strong>${e.to}</strong> levels decrease &mdash; may require dose increase`;
+    const enzymeBlocks = Object.entries(byEnzyme).sort().map(([enz, tiers]) => {
+      const tierBlocks = SEV_ORDER.filter(s => tiers[s].length > 0).map(sev => {
+        const cards = tiers[sev].map(e => {
+          const dirClass = e.direction === 'up' ? 'mc-p450-up' : 'mc-p450-down';
+          const dirArrow = e.direction === 'up' ? '&uarr;' : '&darr;';
+          const dirLabel = e.direction === 'up'
+            ? `${dirArrow} ${e.to} levels rise`
+            : `${dirArrow} ${e.to} levels fall`;
+          const mechText = e.mechanism === 'inhibition'
+            ? `via ${enz} <span class="mc-p450-mech-action">(${SEV_LABEL[e.severity].toLowerCase()} inhibition)</span>`
+            : `via ${enz} <span class="mc-p450-mech-action">(induction)</span>`;
+          const action = (ACTION[`${e.severity}-${e.direction}`] || '').replace(/\{to\}/g, e.to);
+          return `
+            <div class="mc-p450-card mc-p450-card--${e.severity}">
+              <div class="mc-p450-card-bar">
+                <span class="mc-p450-sev mc-p450-sev--${e.severity}">${SEV_LABEL[e.severity]}</span>
+                <span class="mc-p450-impact ${dirClass}">${dirLabel}</span>
+              </div>
+              <div class="mc-p450-card-pair">
+                <span class="mc-p450-from">${e.from}</span>
+                <span class="mc-p450-arrow">&rarr;</span>
+                <span class="mc-p450-to">${e.to}</span>
+              </div>
+              <div class="mc-p450-card-mech">${mechText}</div>
+              <div class="mc-p450-card-action">${action}</div>
+            </div>`;
+        }).join('');
         return `
-          <div class="mc-cyp-row ${SEV_CLASS[e.severity]}">
-            <div class="mc-cyp-pair">
-              <span class="mc-cyp-from">${e.from}</span>
-              <span class="mc-cyp-arrow ${arrowCls}">&#10230; ${arrow}</span>
-              <span class="mc-cyp-to">${e.to}</span>
+          <div class="mc-p450-tier mc-p450-tier--${sev}">
+            <div class="mc-p450-tier-divider">
+              <span class="mc-p450-tier-label mc-p450-tier-label--${sev}">${SEV_LABEL[sev]} &middot; ${tiers[sev].length}</span>
+              <span class="mc-p450-tier-line"></span>
             </div>
-            <div class="mc-cyp-mech">${mechText}</div>
-            <div class="mc-cyp-effect">${effectText}</div>
+            ${cards}
           </div>`;
       }).join('');
+      const totalForEnzyme = tiers.strong.length + tiers.moderate.length + tiers.weak.length;
       return `
-        <div class="mc-cyp-enzyme-block">
-          <h4 class="mc-cyp-enzyme-title">&#9879; ${enz} <span class="mc-cyp-enzyme-count">${edges.length} interaction${edges.length === 1 ? '' : 's'}</span></h4>
-          ${rows}
+        <div class="mc-p450-enzyme-section">
+          <h4 class="mc-p450-enzyme-header">
+            <span class="mc-p450-enzyme-pill">&#9879; ${enz}</span>
+            <span class="mc-p450-enzyme-meta">${totalForEnzyme} interaction${totalForEnzyme === 1 ? '' : 's'}</span>
+          </h4>
+          ${tierBlocks}
         </div>`;
     }).join('');
 
+    // Severity bar
+    const sevBarSegs = SEV_ORDER
+      .filter(s => sevCounts[s] > 0)
+      .map(s => `<span class="mc-p450-sev-bar-seg mc-p450-sev-bar-seg--${s}" style="flex:${sevCounts[s]}" title="${sevCounts[s]} ${s}"></span>`)
+      .join('');
+    const sevPills = SEV_ORDER
+      .filter(s => sevCounts[s] > 0)
+      .map(s => `<span class="mc-p450-sev-mini-pill mc-p450-sev-mini-pill--${s}">${sevCounts[s]} ${s}</span>`)
+      .join('');
+
+    const total = mcP450Interactions.length;
+    const enzymeCount = Object.keys(byEnzyme).length;
+
     container.innerHTML = `
-      <div class="mc-cyp-summary">
-        <div class="mc-cyp-summary-stat"><span class="mc-cyp-stat-num">${mcP450Interactions.length}</span><span class="mc-cyp-stat-lbl">total interactions</span></div>
-        <div class="mc-cyp-summary-stat"><span class="mc-cyp-stat-num">${Object.keys(byEnzyme).length}</span><span class="mc-cyp-stat-lbl">CYP enzymes involved</span></div>
-      </div>
-      <div class="mc-cyp-legend">
-        <span><span class="mc-cyp-up">&uarr;</span> = substrate level rises (slowed metabolism)</span>
-        <span><span class="mc-cyp-down">&darr;</span> = substrate level falls (faster metabolism)</span>
-        <span><span class="mc-cyp-sev-strong-pill">Strong</span> <span class="mc-cyp-sev-mod-pill">Moderate</span> <span class="mc-cyp-sev-weak-pill">Weak</span></span>
+      ${summaryHTML}
+      <div class="mc-p450-overview">
+        <div class="mc-p450-overview-stat">
+          <div class="mc-p450-overview-num">${total}</div>
+          <div class="mc-p450-overview-lbl">Interaction${total === 1 ? '' : 's'}</div>
+        </div>
+        <div class="mc-p450-overview-stat">
+          <div class="mc-p450-overview-num">${enzymeCount}</div>
+          <div class="mc-p450-overview-lbl">CYP enzyme${enzymeCount === 1 ? '' : 's'}</div>
+        </div>
+        <div class="mc-p450-overview-severity">
+          <div class="mc-p450-sev-bar">${sevBarSegs}</div>
+          <div class="mc-p450-sev-summary">${sevPills}</div>
+        </div>
       </div>
       ${enzymeBlocks}
-      <p class="mc-cyp-disclaimer">CYP-based predictions only. Clinical impact depends on dose, genetics (poor/ultra-rapid metabolizers), comorbidity, and other concurrent medications. Always verify with a current interaction reference before prescribing.</p>
+      <p class="mc-p450-disclaimer">CYP-based predictions only. Clinical impact depends on dose, genetics (poor/ultra-rapid metabolizers), comorbidity, and other concurrent medications. Always verify with a current interaction reference before prescribing.</p>
     `;
   }
 
