@@ -1,10 +1,11 @@
 {
-  "$schema": "Generated weekly by the price scraper. lastUpdated=null means no scrape has run yet. TrumpRx (https://trumprx.gov/) currently carries no psychiatric medications (80-drug catalog focused on specialty/biologic drugs as of April 2026); will be re-added as a column once any tracked psych med appears there.",
+  "$schema": "Generated weekly by scripts/scrape-prices.js. lastUpdated=null means no scrape has run yet. Sources: Cost Plus Drugs (transparent retail), HealthWarehouse (mail-order retail), NADAC (CMS National Average Drug Acquisition Cost — wholesale anchor, excluded from best-price comparison since patients cannot purchase at this price).",
   "lastUpdated": null,
   "zipCode": "98643",
   "sources": [
-    { "key": "GoodRx", "displayName": "GoodRx", "url": "https://www.goodrx.com/" },
-    { "key": "CostPlusDrugs", "displayName": "Cost Plus Drugs", "url": "https://costplusdrugs.com/" }
+    { "key": "CostPlusDrugs",   "displayName": "Cost Plus Drugs",   "url": "https://costplusdrugs.com/",         "type": "retail" },
+    { "key": "HealthWarehouse", "displayName": "HealthWarehouse",   "url": "https://www.healthwarehouse.com/",   "type": "retail" },
+    { "key": "NADAC",           "displayName": "NADAC (wholesale)", "url": "https://data.medicaid.gov/dataset/", "type": "wholesale", "excludeFromBest": true }
   ],
   "prices": {}
 }

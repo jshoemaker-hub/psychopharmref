@@ -3649,6 +3649,26 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
 .pc-cell-best-only .pc-best-source { font-style: italic; }
 .pc-cell-best-empty { text-align: center; color: var(--text-muted); opacity: 0.4; }
 
+/* Wholesale (NADAC) source — visually distinct from retail prices */
+.pc-th-wholesale { color: var(--text-muted); }
+.pc-source-tag {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 1px 6px;
+  background: rgba(139,105,20,0.18);
+  color: var(--accent2);
+  font-size: 9.5px;
+  font-weight: 700;
+  border-radius: 7px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  vertical-align: middle;
+  cursor: help;
+}
+.pc-cell-wholesale { color: var(--text-muted); font-style: italic; }
+.pc-cell-wholesale a { color: var(--text-muted); border-bottom-style: dashed; }
+.pc-cell-wholesale a:hover { color: var(--accent2); border-bottom-color: var(--accent2); }
+
 .pc-disclaimer {
   font-size: 11px;
   color: var(--text-muted);

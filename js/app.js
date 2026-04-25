@@ -3161,7 +3161,11 @@ function initMedTaper() {
       <thead>
         <tr>
           <th class="pc-th-drug">Drug</th>
-          ${sources.map(s => `<th class="pc-th-price"><a href="${s.url}" target="_blank" rel="noopener" class="pc-source-link">${s.displayName}</a></th>`).join('')}
+          ${sources.map(s => {
+            const wholesale = s.excludeFromBest;
+            const tag = wholesale ? ' <span class="pc-source-tag" title="Wholesale acquisition cost — what pharmacies pay, not a buyable patient price.">wholesale</span>' : '';
+            return `<th class="pc-th-price${wholesale ? ' pc-th-wholesale' : ''}"><a href="${s.url}" target="_blank" rel="noopener" class="pc-source-link">${s.displayName}</a>${tag}</th>`;
+          }).join('')}
           <th class="pc-th-best">Best</th>
         </tr>
       </thead>
@@ -3177,33 +3181,39 @@ function initMedTaper() {
       // One row per drug
       meds.forEach(m => {
         const drugPrices = prices[m.name] || {};
-        // Determine best price among available sources
+        // Determine best price among RETAIL sources only (exclude wholesale anchors like NADAC)
         const sourcePriceObjs = sources.map(s => {
           const p = drugPrices[s.key];
-          return (p && p.available && typeof p.price === 'number') ? { key: s.key, price: p.price, url: p.url } : null;
+          if (!p || !p.available || typeof p.price !== 'number') return null;
+          return { key: s.key, price: p.price, url: p.url, excludeFromBest: !!s.excludeFromBest };
         });
-        const numericPrices = sourcePriceObjs.filter(p => p !== null).map(p => p.price);
+        const retailPriceObjs = sourcePriceObjs.filter(p => p !== null && !p.excludeFromBest);
+        const numericPrices = retailPriceObjs.map(p => p.price);
         const bestPrice = numericPrices.length ? Math.min(...numericPrices) : null;
 
         const priceCells = sources.map(s => {
           const p = drugPrices[s.key];
-          if (!p) return `<td class="pc-cell pc-cell-empty">&mdash;</td>`;
-          if (p.available === false) return `<td class="pc-cell pc-cell-na" title="Not available at ${s.displayName}">N/A</td>`;
-          if (typeof p.price !== 'number') return `<td class="pc-cell pc-cell-empty">&mdash;</td>`;
-          const isBest = p.price === bestPrice && numericPrices.length > 1;
-          const cls = isBest ? 'pc-cell pc-cell-price pc-cell-best-price' : 'pc-cell pc-cell-price';
+          const wholesaleCls = s.excludeFromBest ? ' pc-cell-wholesale' : '';
+          if (!p) return `<td class="pc-cell pc-cell-empty${wholesaleCls}">&mdash;</td>`;
+          if (p.available === false) return `<td class="pc-cell pc-cell-na${wholesaleCls}" title="Not available at ${s.displayName}">N/A</td>`;
+          if (typeof p.price !== 'number') return `<td class="pc-cell pc-cell-empty${wholesaleCls}">&mdash;</td>`;
+          const isBest = !s.excludeFromBest && p.price === bestPrice && numericPrices.length > 1;
+          const cls = `pc-cell pc-cell-price${wholesaleCls}${isBest ? ' pc-cell-best-price' : ''}`;
+          const tooltip = s.excludeFromBest && p.ndcDescription
+            ? ` title="${p.ndcDescription} — wholesale acquisition cost (NADAC). Patients cannot purchase at this price; shown as a transparency anchor."`
+            : '';
           const linkHTML = p.url
             ? `<a href="${p.url}" target="_blank" rel="noopener">${fmtMoney(p.price)}</a>`
             : fmtMoney(p.price);
-          return `<td class="${cls}">${linkHTML}</td>`;
+          return `<td class="${cls}"${tooltip}>${linkHTML}</td>`;
         }).join('');
 
         let bestCell = '<td class="pc-cell pc-cell-best-empty">&mdash;</td>';
         if (bestPrice !== null) {
-          if (numericPrices.length > 1) {
+          if (retailPriceObjs.length > 1) {
             const savings = Math.max(...numericPrices) - bestPrice;
             const savingsPct = savings > 0 ? Math.round((savings / Math.max(...numericPrices)) * 100) : 0;
-            const bestSourceObj = sourcePriceObjs.find(p => p && p.price === bestPrice);
+            const bestSourceObj = retailPriceObjs.find(p => p.price === bestPrice);
             const sourceName = sources.find(s => s.key === bestSourceObj.key)?.displayName || bestSourceObj.key;
             bestCell = `<td class="pc-cell pc-cell-best">
               <div class="pc-best-price">${fmtMoney(bestPrice)}</div>
@@ -3211,10 +3221,12 @@ function initMedTaper() {
               ${savingsPct >= 10 ? `<div class="pc-best-savings">save ${savingsPct}%</div>` : ''}
             </td>`;
           } else {
-            // Only one source has a price — show it but no comparison
+            // Only one retail source has a price — show it but no comparison
+            const bestSourceObj = retailPriceObjs[0];
+            const sourceName = sources.find(s => s.key === bestSourceObj.key)?.displayName || bestSourceObj.key;
             bestCell = `<td class="pc-cell pc-cell-best pc-cell-best-only">
               <div class="pc-best-price">${fmtMoney(bestPrice)}</div>
-              <div class="pc-best-source">only source</div>
+              <div class="pc-best-source">${sourceName}</div>
             </td>`;
           }
         }
