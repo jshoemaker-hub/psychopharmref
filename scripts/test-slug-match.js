@@ -55,9 +55,9 @@ function findCpdUrl(sitemap, drugName, sku) {
     else if (sd) score -= 4;
     if (profile.dose !== 'unknown' && slug.includes(profile.dose)) score += 4;
     else if (profile.dose !== 'unknown') score -= 3;
-    const slugIsER = /(extended|er|xr|xl|sr|cr)/.test(slug);
-    const slugIsDR = /(delayed|dr-)/.test(slug);
-    const slugIsSL = /(sublingual|-sl-)/.test(slug);
+    const slugIsER = /(extended|-er-|-er$|^er-|-xr-|-xr$|^xr-|-xl-|-xl$|^xl-|-sr-|-sr$|^sr-|-cr-|-cr$|^cr-)/.test(slug);
+    const slugIsDR = /(delayed|-dr-|-dr$|^dr-)/.test(slug);
+    const slugIsSL = /(sublingual|-sl-|-sl$|^sl-)/.test(slug);
     const slugRelease = slugIsER ? 'er' : slugIsDR ? 'dr' : slugIsSL ? 'sl' : null;
     if (wantsRelease && slugRelease === wantsRelease) score += 4;
     else if (wantsRelease && slugRelease !== wantsRelease) score -= 5;
@@ -89,7 +89,7 @@ function findHwUrl(sitemap, drugName, sku) {
     else if (profile.dose === 'capsule' && /capsule/.test(slug)) score += 4;
     else if (profile.dose !== 'unknown') score -= 2;
     const wantsER = profile.release === 'er';
-    const slugER = /(extended|-er-|-xr-|-xl-|-sr-|-cr-)/.test(slug);
+    const slugER = /(extended|-er-|-er$|^er-|-xr-|-xr$|^xr-|-xl-|-xl$|^xl-|-sr-|-sr$|^sr-|-cr-|-cr$|^cr-)/.test(slug);
     if (wantsER && slugER) score += 4;
     else if (wantsER && !slugER) score -= 5;
     else if (!wantsER && slugER) score -= 3;

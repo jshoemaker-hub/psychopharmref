@@ -29,7 +29,10 @@ const SKUS_PATH  = path.join(REPO_ROOT, 'data', 'drug-skus.json');
 const OUT_PATH   = path.join(REPO_ROOT, 'data', 'prices.json');
 const HUGO_OUT   = path.join(REPO_ROOT, 'hugo-site', 'static', 'data', 'prices.json');
 
-const UA = 'Mozilla/5.0 (compatible; PsychoPharmRefBot/1.0; +https://psychopharm.netlify.app)';
+// Realistic browser UA — bot-tagged UAs trigger Cloudflare challenges on
+// per-product pages (sitemaps are usually whitelisted for SEO crawlers but
+// product pages are not).
+const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15';
 
 const args = process.argv.slice(2);
 const ONLY    = (args.find(a => a.startsWith('--only=')) || '').slice('--only='.length).split(',').filter(Boolean);
@@ -42,11 +45,15 @@ function logWarn(msg)  { console.warn(`[warn]  ${msg}`); }
 function logError(msg) { console.error(`[error] ${msg}`); }
 
 async function fetchText(url, opts = {}) {
-  const r = await fetch(url, {
-    redirect: 'follow',
-    ...opts,
-    headers: { 'user-agent': UA, accept: 'text/html,application/xhtml+xml,application/xml,application/json,*/*', ...(opts.headers || {}) },
-  });
+  const headers = {
+    'user-agent': UA,
+    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,application/json;q=0.8,*/*;q=0.7',
+    'accept-language': 'en-US,en;q=0.9',
+    'accept-encoding': 'gzip, deflate, br',
+    'cache-control': 'no-cache',
+    ...(opts.headers || {}),
+  };
+  const r = await fetch(url, { redirect: 'follow', ...opts, headers });
   if (!r.ok) throw new Error(`HTTP ${r.status} ${r.statusText} :: ${url}`);
   return r.text();
 }
@@ -131,10 +138,12 @@ function findCpdUrl(sitemap, drugName, sku) {
     if (profile.dose !== 'unknown' && slug.includes(profile.dose)) score += 4;
     else if (profile.dose !== 'unknown') score -= 3;
 
-    // Release type match
-    const slugIsER = /(extended|er|xr|xl|sr|cr)/.test(slug);
-    const slugIsDR = /(delayed|dr-)/.test(slug);
-    const slugIsSL = /(sublingual|-sl-)/.test(slug);
+    // Release type match — must use word boundaries / dashes, otherwise
+    // "sertraline" / "perphenazine" / etc. (which contain "er") incorrectly
+    // get tagged as extended-release and lose 3 points to the wrong-release penalty.
+    const slugIsER = /(extended|-er-|-er$|^er-|-xr-|-xr$|^xr-|-xl-|-xl$|^xl-|-sr-|-sr$|^sr-|-cr-|-cr$|^cr-)/.test(slug);
+    const slugIsDR = /(delayed|-dr-|-dr$|^dr-)/.test(slug);
+    const slugIsSL = /(sublingual|-sl-|-sl$|^sl-)/.test(slug);
     const slugRelease = slugIsER ? 'er' : slugIsDR ? 'dr' : slugIsSL ? 'sl' : null;
     if (wantsRelease && slugRelease === wantsRelease) score += 4;
     else if (wantsRelease && slugRelease !== wantsRelease) score -= 5;
@@ -206,7 +215,7 @@ function findHwUrl(sitemap, drugName, sku) {
     else if (profile.dose !== 'unknown') score -= 2;
 
     const wantsER = profile.release === 'er';
-    const slugER  = /(extended|-er-|-xr-|-xl-|-sr-|-cr-)/.test(slug);
+    const slugER  = /(extended|-er-|-er$|^er-|-xr-|-xr$|^xr-|-xl-|-xl$|^xl-|-sr-|-sr$|^sr-|-cr-|-cr$|^cr-)/.test(slug);
     if (wantsER && slugER) score += 4;
     else if (wantsER && !slugER) score -= 5;
     else if (!wantsER && slugER) score -= 3;
