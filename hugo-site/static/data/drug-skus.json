@@ -1,0 +1,112 @@
+{
+  "$schema": "Hardcoded most-common-form/dose for each medication, used by the price scraper. clinicOnly:true means the drug is administered in clinic (not retail) and should be skipped during scraping.",
+  "skus": {
+    "Fluoxetine":            { "form": "capsule", "strength": "20 mg",   "quantity": 30, "supplyDays": 30, "generic": true },
+    "Sertraline":            { "form": "tablet",  "strength": "50 mg",   "quantity": 30, "supplyDays": 30, "generic": true },
+    "Escitalopram":          { "form": "tablet",  "strength": "10 mg",   "quantity": 30, "supplyDays": 30, "generic": true },
+    "Paroxetine":            { "form": "tablet",  "strength": "20 mg",   "quantity": 30, "supplyDays": 30, "generic": true },
+    "Citalopram":            { "form": "tablet",  "strength": "20 mg",   "quantity": 30, "supplyDays": 30, "generic": true },
+    "Fluvoxamine":           { "form": "tablet",  "strength": "50 mg",   "quantity": 60, "supplyDays": 30, "generic": true, "notes": "BID dosing" },
+
+    "Vilazodone":            { "form": "tablet",  "strength": "40 mg",   "quantity": 30, "supplyDays": 30, "generic": true },
+    "Vortioxetine":          { "form": "tablet",  "strength": "10 mg",   "quantity": 30, "supplyDays": 30, "generic": false, "notes": "Trintellix — limited generic" },
+
+    "Venlafaxine":           { "form": "ER capsule", "strength": "75 mg",  "quantity": 30, "supplyDays": 30, "generic": true,  "notes": "XR formulation most common" },
+    "Duloxetine":            { "form": "DR capsule", "strength": "30 mg",  "quantity": 30, "supplyDays": 30, "generic": true },
+    "Desvenlafaxine":        { "form": "ER tablet",  "strength": "50 mg",  "quantity": 30, "supplyDays": 30, "generic": true },
+    "Milnacipran":           { "form": "tablet",     "strength": "50 mg",  "quantity": 60, "supplyDays": 30, "generic": true,  "notes": "BID dosing" },
+    "Levomilnacipran":       { "form": "ER capsule", "strength": "40 mg",  "quantity": 30, "supplyDays": 30, "generic": false, "notes": "Fetzima — brand only" },
+
+    "Bupropion":             { "form": "ER tablet",  "strength": "150 mg", "quantity": 30, "supplyDays": 30, "generic": true,  "notes": "XL once-daily formulation" },
+    "Mirtazapine":           { "form": "tablet",     "strength": "15 mg",  "quantity": 30, "supplyDays": 30, "generic": true },
+    "Trazodone":             { "form": "tablet",     "strength": "50 mg",  "quantity": 30, "supplyDays": 30, "generic": true },
+    "Dextromethorphan/Bupropion": { "form": "ER tablet", "strength": "45/105 mg", "quantity": 60, "supplyDays": 30, "generic": false, "notes": "Auvelity — BID dosing" },
+
+    "Amitriptyline":         { "form": "tablet",  "strength": "25 mg",   "quantity": 30, "supplyDays": 30, "generic": true },
+    "Nortriptyline":         { "form": "capsule", "strength": "25 mg",   "quantity": 30, "supplyDays": 30, "generic": true },
+    "Imipramine":            { "form": "tablet",  "strength": "25 mg",   "quantity": 30, "supplyDays": 30, "generic": true },
+    "Doxepin":               { "form": "capsule", "strength": "25 mg",   "quantity": 30, "supplyDays": 30, "generic": true },
+
+    "Phenelzine":            { "form": "tablet",  "strength": "15 mg",   "quantity": 90, "supplyDays": 30, "generic": true,  "notes": "Nardil — TID dosing" },
+    "Tranylcypromine":       { "form": "tablet",  "strength": "10 mg",   "quantity": 60, "supplyDays": 30, "generic": true,  "notes": "Parnate — BID dosing" },
+
+    "Haloperidol":           { "form": "tablet",  "strength": "5 mg",    "quantity": 30, "supplyDays": 30, "generic": true },
+    "Chlorpromazine":        { "form": "tablet",  "strength": "50 mg",   "quantity": 30, "supplyDays": 30, "generic": true },
+    "Fluphenazine":          { "form": "tablet",  "strength": "5 mg",    "quantity": 30, "supplyDays": 30, "generic": true },
+    "Trifluoperazine":       { "form": "tablet",  "strength": "5 mg",    "quantity": 30, "supplyDays": 30, "generic": true },
+    "Perphenazine":          { "form": "tablet",  "strength": "8 mg",    "quantity": 30, "supplyDays": 30, "generic": true },
+    "Thiothixene":           { "form": "capsule", "strength": "5 mg",    "quantity": 30, "supplyDays": 30, "generic": true },
+    "Pimozide":              { "form": "tablet",  "strength": "2 mg",    "quantity": 30, "supplyDays": 30, "generic": true },
+    "Thioridazine":          { "form": "tablet",  "strength": "25 mg",   "quantity": 30, "supplyDays": 30, "generic": true,  "notes": "Rarely used — black-box QTc" },
+    "Loxapine":              { "form": "capsule", "strength": "10 mg",   "quantity": 30, "supplyDays": 30, "generic": true },
+    "Molindone":             { "form": "tablet",  "strength": "10 mg",   "quantity": 30, "supplyDays": 30, "generic": true,  "notes": "Limited US availability" },
+
+    "Risperidone":           { "form": "tablet",  "strength": "2 mg",    "quantity": 30, "supplyDays": 30, "generic": true },
+    "Olanzapine":            { "form": "tablet",  "strength": "10 mg",   "quantity": 30, "supplyDays": 30, "generic": true },
+    "Quetiapine":            { "form": "tablet",  "strength": "100 mg",  "quantity": 30, "supplyDays": 30, "generic": true,  "notes": "IR formulation" },
+    "Aripiprazole":          { "form": "tablet",  "strength": "10 mg",   "quantity": 30, "supplyDays": 30, "generic": true },
+    "Clozapine":             { "form": "tablet",  "strength": "100 mg",  "quantity": 30, "supplyDays": 30, "generic": true },
+    "Ziprasidone":           { "form": "capsule", "strength": "40 mg",   "quantity": 60, "supplyDays": 30, "generic": true,  "notes": "BID with food" },
+    "Lurasidone":            { "form": "tablet",  "strength": "40 mg",   "quantity": 30, "supplyDays": 30, "generic": true },
+    "Asenapine":             { "form": "SL tablet", "strength": "5 mg",  "quantity": 60, "supplyDays": 30, "generic": true,  "notes": "Sublingual, BID" },
+    "Paliperidone":          { "form": "ER tablet", "strength": "6 mg",  "quantity": 30, "supplyDays": 30, "generic": true },
+    "Iloperidone":           { "form": "tablet",  "strength": "6 mg",    "quantity": 60, "supplyDays": 30, "generic": true,  "notes": "Fanapt — BID" },
+    "Brexpiprazole":         { "form": "tablet",  "strength": "2 mg",    "quantity": 30, "supplyDays": 30, "generic": false, "notes": "Rexulti" },
+    "Cariprazine":           { "form": "capsule", "strength": "1.5 mg",  "quantity": 30, "supplyDays": 30, "generic": false, "notes": "Vraylar" },
+    "Lumateperone":          { "form": "capsule", "strength": "42 mg",   "quantity": 30, "supplyDays": 30, "generic": false, "notes": "Caplyta" },
+    "Pimavanserin":          { "form": "capsule", "strength": "34 mg",   "quantity": 30, "supplyDays": 30, "generic": false, "notes": "Nuplazid" },
+
+    "Lithium":               { "form": "capsule", "strength": "300 mg",  "quantity": 60, "supplyDays": 30, "generic": true,  "notes": "Carbonate, BID" },
+    "Valproate":             { "form": "DR tablet", "strength": "500 mg", "quantity": 60, "supplyDays": 30, "generic": true,  "notes": "Divalproex DR, BID" },
+    "Lamotrigine":           { "form": "tablet",  "strength": "100 mg",  "quantity": 60, "supplyDays": 30, "generic": true,  "notes": "BID maintenance" },
+    "Carbamazepine":         { "form": "tablet",  "strength": "200 mg",  "quantity": 60, "supplyDays": 30, "generic": true,  "notes": "BID" },
+    "Oxcarbazepine":         { "form": "tablet",  "strength": "300 mg",  "quantity": 60, "supplyDays": 30, "generic": true,  "notes": "BID" },
+    "Topiramate":            { "form": "tablet",  "strength": "100 mg",  "quantity": 60, "supplyDays": 30, "generic": true,  "notes": "BID" },
+
+    "Alprazolam":            { "form": "tablet",  "strength": "0.5 mg",  "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-IV" },
+    "Clonazepam":            { "form": "tablet",  "strength": "0.5 mg",  "quantity": 60, "supplyDays": 30, "generic": true,  "controlled": "C-IV", "notes": "BID" },
+    "Diazepam":              { "form": "tablet",  "strength": "5 mg",    "quantity": 60, "supplyDays": 30, "generic": true,  "controlled": "C-IV", "notes": "BID-TID" },
+    "Lorazepam":             { "form": "tablet",  "strength": "1 mg",    "quantity": 60, "supplyDays": 30, "generic": true,  "controlled": "C-IV", "notes": "BID-TID" },
+    "Oxazepam":              { "form": "capsule", "strength": "15 mg",   "quantity": 60, "supplyDays": 30, "generic": true,  "controlled": "C-IV" },
+    "Temazepam":             { "form": "capsule", "strength": "15 mg",   "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-IV", "notes": "Sleep, HS" },
+    "Triazolam":             { "form": "tablet",  "strength": "0.25 mg", "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-IV", "notes": "Sleep, HS" },
+    "Estazolam":             { "form": "tablet",  "strength": "1 mg",    "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-IV" },
+    "Flurazepam":            { "form": "capsule", "strength": "15 mg",   "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-IV" },
+    "Chlordiazepoxide":      { "form": "capsule", "strength": "10 mg",   "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-IV" },
+    "Clorazepate":           { "form": "tablet",  "strength": "7.5 mg",  "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-IV" },
+    "Midazolam":             { "form": "syrup",   "strength": "2 mg/mL", "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-IV", "notes": "Rarely outpatient", "limitedRetail": true },
+
+    "Buspirone":             { "form": "tablet",  "strength": "10 mg",   "quantity": 60, "supplyDays": 30, "generic": true,  "notes": "BID" },
+    "Gepirone":              { "form": "ER tablet", "strength": "18.2 mg", "quantity": 30, "supplyDays": 30, "generic": false, "notes": "Exxua — newer" },
+    "Hydroxyzine":           { "form": "tablet",  "strength": "25 mg",   "quantity": 30, "supplyDays": 30, "generic": true,  "notes": "HCl" },
+    "Doxylamine":            { "form": "tablet",  "strength": "25 mg",   "quantity": 30, "supplyDays": 30, "generic": true,  "notes": "OTC" },
+    "Diphenhydramine":       { "form": "capsule", "strength": "25 mg",   "quantity": 30, "supplyDays": 30, "generic": true,  "notes": "OTC" },
+
+    "Zolpidem":              { "form": "tablet",  "strength": "10 mg",   "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-IV", "notes": "Sleep, HS" },
+    "Eszopiclone":           { "form": "tablet",  "strength": "3 mg",    "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-IV", "notes": "Sleep, HS" },
+    "Ramelteon":             { "form": "tablet",  "strength": "8 mg",    "quantity": 30, "supplyDays": 30, "generic": true },
+    "Suvorexant":            { "form": "tablet",  "strength": "10 mg",   "quantity": 30, "supplyDays": 30, "generic": false, "controlled": "C-IV", "notes": "Belsomra" },
+
+    "Methylphenidate":       { "form": "tablet",  "strength": "10 mg",   "quantity": 60, "supplyDays": 30, "generic": true,  "controlled": "C-II", "notes": "IR, BID-TID" },
+    "Dexmethylphenidate":    { "form": "ER capsule", "strength": "10 mg", "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-II", "notes": "Focalin XR" },
+    "Amphetamine Mixed Salts": { "form": "tablet", "strength": "10 mg",  "quantity": 60, "supplyDays": 30, "generic": true,  "controlled": "C-II", "notes": "Adderall IR, BID" },
+    "Dextroamphetamine":     { "form": "tablet",  "strength": "10 mg",   "quantity": 60, "supplyDays": 30, "generic": true,  "controlled": "C-II", "notes": "BID" },
+    "Lisdexamfetamine":      { "form": "capsule", "strength": "30 mg",   "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-II", "notes": "Vyvanse" },
+
+    "Modafinil":             { "form": "tablet",  "strength": "200 mg",  "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-IV" },
+    "Armodafinil":           { "form": "tablet",  "strength": "150 mg",  "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-IV" },
+    "Solriamfetol":          { "form": "tablet",  "strength": "75 mg",   "quantity": 30, "supplyDays": 30, "generic": false, "controlled": "C-IV", "notes": "Sunosi" },
+
+    "Clonidine":             { "form": "tablet",  "strength": "0.1 mg",  "quantity": 60, "supplyDays": 30, "generic": true,  "notes": "BID" },
+    "Guanfacine":            { "form": "tablet",  "strength": "1 mg",    "quantity": 30, "supplyDays": 30, "generic": true },
+    "Propranolol":           { "form": "tablet",  "strength": "20 mg",   "quantity": 60, "supplyDays": 30, "generic": true,  "notes": "BID for psychiatric use" },
+    "Trihexyphenidyl":       { "form": "tablet",  "strength": "2 mg",    "quantity": 30, "supplyDays": 30, "generic": true },
+
+    "Gabapentin":            { "form": "capsule", "strength": "300 mg",  "quantity": 90, "supplyDays": 30, "generic": true,  "notes": "TID" },
+    "Pregabalin":            { "form": "capsule", "strength": "75 mg",   "quantity": 60, "supplyDays": 30, "generic": true,  "controlled": "C-V", "notes": "BID" },
+
+    "Esketamine":            { "form": "nasal spray", "strength": "84 mg", "quantity": 1, "supplyDays": 7, "generic": false, "controlled": "C-III", "notes": "Spravato — clinic-administered only", "clinicOnly": true },
+    "Brexanolone":           { "form": "IV infusion", "strength": "5 mg/mL", "quantity": 1, "supplyDays": 1, "generic": false, "notes": "Zulresso — clinic IV only", "clinicOnly": true },
+    "Zuranolone":            { "form": "capsule", "strength": "50 mg",   "quantity": 14, "supplyDays": 14, "generic": false, "controlled": "C-IV", "notes": "Zurzuvae — 14-day course only" }
+  }
+}
