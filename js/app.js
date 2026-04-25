@@ -2339,6 +2339,111 @@ function initMedCompare() {
       .map(([cond]) => `<span style="display:inline-block;margin:3px 4px;padding:3px 9px;background:#eaf2ea;border:1px solid #8aba8a;border-radius:12px;font-size:11px;color:#2a5a2a">${cond}</span>`)
       .join('');
 
+    // ── P450 interactions: TL;DR + table (uses mcP450Interactions closure state)
+    const P450_SEV_RANK = { strong: 3, moderate: 2, weak: 1 };
+    const P450_SEV_LBL  = { strong: 'STRONG', moderate: 'MOD', weak: 'WEAK' };
+    const P450_SEV_TXT_COL = { strong: '#fff', moderate: '#fff', weak: '#fff' };
+    const P450_SEV_BG_COL  = { strong: '#d94f30', moderate: '#c07000', weak: '#9a9085' };
+    const P450_ROW_BG_COL  = { strong: '#fde6e0', moderate: '#fdf0d8', weak: '#f5f3ee' };
+    const P450_ACTION_PRINT = {
+      'strong-up':     'Substantial dose reduction often required, or switch to alternative',
+      'strong-down':   'Significantly reduced efficacy &mdash; may need higher dose or alternative',
+      'moderate-up':   'Consider dose reduction; monitor for {to} toxicity',
+      'moderate-down': 'Monitor for reduced {to} efficacy; dose increase may be needed',
+      'weak-up':       'Usually clinically minor; monitor only at high doses',
+      'weak-down':     'Usually clinically minor'
+    };
+
+    // Defer building the P450 HTML until after thStyle/thCenterStyle are declared
+    // (mcP450Interactions and these constants are captured by reference)
+    function buildP450Section(thStyle, thCenterStyle) {
+    if (mcP450Interactions && mcP450Interactions.length > 0) {
+      // TL;DR summary — same logic as on-screen
+      const drugMaxSev = {};
+      mcP450Interactions.forEach(e => {
+        if (!drugMaxSev[e.to]) drugMaxSev[e.to] = { up: null, down: null };
+        const slot = drugMaxSev[e.to];
+        if (slot[e.direction] == null || P450_SEV_RANK[e.severity] > P450_SEV_RANK[slot[e.direction]]) {
+          slot[e.direction] = e.severity;
+        }
+      });
+      const sumGroups = {};
+      Object.entries(drugMaxSev).forEach(([drug, dirs]) => {
+        ['up','down'].forEach(d => {
+          if (dirs[d]) (sumGroups[`${dirs[d]}-${d}`] = sumGroups[`${dirs[d]}-${d}`] || []).push(drug);
+        });
+      });
+      const SUM_PHRASE = {
+        'strong-up':'levels rise significantly','moderate-up':'levels rise moderately','weak-up':'mildly elevated',
+        'strong-down':'levels fall significantly','moderate-down':'levels fall moderately','weak-down':'mildly reduced'
+      };
+      function listAndPrint(arr) {
+        if (arr.length === 1) return arr[0];
+        if (arr.length === 2) return arr.join(' and ');
+        return arr.slice(0,-1).join(', ') + ', and ' + arr[arr.length-1];
+      }
+      const sumPhrases = [];
+      ['strong','moderate','weak'].forEach(sev => ['up','down'].forEach(d => {
+        const k = `${sev}-${d}`;
+        if (sumGroups[k]) {
+          const col = P450_SEV_BG_COL[sev];
+          sumPhrases.push(`<span style="color:${col};font-weight:600">${listAndPrint(sumGroups[k])}</span> ${SUM_PHRASE[k]}`);
+        }
+      }));
+      const topSev = ['strong','moderate','weak'].find(s => sumGroups[s+'-up'] || sumGroups[s+'-down']);
+      const summaryBg = topSev === 'strong' ? '#fde6e0' : topSev === 'moderate' ? '#fdf0d8' : '#f5f3ee';
+      const summaryBorder = topSev === 'strong' ? '#d94f30' : topSev === 'moderate' ? '#c07000' : '#9a9085';
+      const summaryLine = `<div style="margin:6px 0 12px;padding:10px 14px;background:${summaryBg};border-left:4px solid ${summaryBorder};border-radius:4px;font-size:12.5px;line-height:1.55"><strong>Key takeaway:</strong> Because of these interactions, ${sumPhrases.join('; ')}.</div>`;
+
+      // Sort all interactions: strong → moderate → weak, then by enzyme, then by 'to' drug
+      const sortedInteractions = [...mcP450Interactions].sort((a, b) => {
+        if (P450_SEV_RANK[a.severity] !== P450_SEV_RANK[b.severity]) return P450_SEV_RANK[b.severity] - P450_SEV_RANK[a.severity];
+        if (a.enzyme !== b.enzyme) return a.enzyme.localeCompare(b.enzyme);
+        return a.to.localeCompare(b.to);
+      });
+
+      const p450TableRows = sortedInteractions.map(e => {
+        const arrow = e.direction === 'up' ? '&uarr;' : '&darr;';
+        const arrowCol = e.direction === 'up' ? '#d94f30' : '#2060b0';
+        const effect = e.direction === 'up' ? `${e.to} rises` : `${e.to} falls`;
+        const mech = e.mechanism === 'inhibition'
+          ? `${e.from} inhibits (${e.severity})`
+          : `${e.from} induces`;
+        const action = (P450_ACTION_PRINT[`${e.severity}-${e.direction}`] || '').replace(/\{to\}/g, e.to);
+        const sevPill = `<span style="display:inline-block;padding:2px 7px;background:${P450_SEV_BG_COL[e.severity]};color:${P450_SEV_TXT_COL[e.severity]};font-size:10px;font-weight:700;letter-spacing:0.08em;border-radius:3px">${P450_SEV_LBL[e.severity]}</span>`;
+        return `<tr style="background:${P450_ROW_BG_COL[e.severity]}">
+          <td style="padding:6px 8px;border-bottom:1px solid #e0e0e0;text-align:center">${sevPill}</td>
+          <td style="padding:6px 8px;border-bottom:1px solid #e0e0e0;font-size:12px;font-weight:600;color:${arrowCol};white-space:nowrap">${arrow} ${effect}</td>
+          <td style="padding:6px 8px;border-bottom:1px solid #e0e0e0;font-size:12px">${mech}</td>
+          <td style="padding:6px 8px;border-bottom:1px solid #e0e0e0;font-size:12px;text-align:center;font-weight:600">${e.enzyme}</td>
+          <td style="padding:6px 8px;border-bottom:1px solid #e0e0e0;font-size:11.5px;line-height:1.45">${action}</td>
+        </tr>`;
+      }).join('');
+
+      return `
+  <h2>P450 Interactions</h2>
+  ${summaryLine}
+  <table>
+    <thead><tr>
+      <th style="${thCenterStyle};width:75px">Severity</th>
+      <th style="${thStyle};width:160px">Effect</th>
+      <th style="${thStyle};width:170px">Source</th>
+      <th style="${thCenterStyle};width:75px">Enzyme</th>
+      <th style="${thStyle}">Recommended action</th>
+    </tr></thead>
+    <tbody>${p450TableRows}</tbody>
+  </table>
+  <p style="font-size:10px;color:#888;margin-top:4px">Sorted by severity. CYP-based predictions only; clinical impact depends on dose, genetics (poor/ultra-rapid metabolizers), comorbidity, and other concurrent medications. Always verify with a current interaction reference before prescribing.</p>`;
+    } else if (drugs.some(d => d.p450)) {
+      return `
+  <h2>P450 Interactions</h2>
+  <div style="margin:6px 0;padding:10px 14px;background:#eaf2ea;border-left:4px solid #2a7a2a;border-radius:4px;font-size:12.5px;line-height:1.55">
+    <strong>No CYP450-mediated interactions detected</strong> between the selected medications based on substrate / inhibitor / inducer data on file. This does not rule out non-CYP interactions (UGT, transporter, pharmacodynamic).
+  </div>`;
+    }
+    return '';
+    } // end buildP450Section
+
     // ── Drug summary rows
     const drugSummaryRows = drugs.map((d, idx) => {
       const color = DRUG_COLORS[idx];
@@ -2352,6 +2457,9 @@ function initMedCompare() {
 
     const thStyle = 'padding:6px 8px;background:#f0f4f0;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:#555;border-bottom:2px solid #c8d8c8';
     const thCenterStyle = thStyle + ';text-align:center';
+
+    // Build P450 section now that th styles are available
+    const p450SectionHTML = buildP450Section(thStyle, thCenterStyle);
 
     const html = `<!DOCTYPE html>
 <html lang="en">
@@ -2391,6 +2499,8 @@ function initMedCompare() {
     </tr></thead>
     <tbody>${drugSummaryRows}</tbody>
   </table>
+
+  ${p450SectionHTML}
 
   <h2>Receptor Binding (Ki, nM)</h2>
   <table>
