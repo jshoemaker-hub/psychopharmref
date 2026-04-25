@@ -24,10 +24,11 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-const REPO_ROOT  = path.resolve(__dirname, '..');
-const SKUS_PATH  = path.join(REPO_ROOT, 'data', 'drug-skus.json');
-const OUT_PATH   = path.join(REPO_ROOT, 'data', 'prices.json');
-const HUGO_OUT   = path.join(REPO_ROOT, 'hugo-site', 'static', 'data', 'prices.json');
+const REPO_ROOT       = path.resolve(__dirname, '..');
+const SKUS_PATH       = path.join(REPO_ROOT, 'data', 'drug-skus.json');
+const OUT_PATH        = path.join(REPO_ROOT, 'data', 'prices.json');
+const HUGO_OUT        = path.join(REPO_ROOT, 'hugo-site', 'static', 'data', 'prices.json');
+const CPD_TARGETS_OUT = path.join(REPO_ROOT, 'data', 'cpd-targets.json');
 
 // Realistic browser UA — bot-tagged UAs trigger Cloudflare challenges on
 // per-product pages (sitemaps are usually whitelisted for SEO crawlers but
@@ -45,12 +46,15 @@ function logWarn(msg)  { console.warn(`[warn]  ${msg}`); }
 function logError(msg) { console.error(`[error] ${msg}`); }
 
 async function fetchText(url, opts = {}) {
+  // Keep headers minimal & realistic. Don't request brotli — Node's fetch
+  // (undici) supports gzip/deflate natively on every release, but brotli
+  // support varies by Node version, and HealthWarehouse's product pages
+  // return brotli when offered, leaving the body undecoded for our regex.
   const headers = {
     'user-agent': UA,
-    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,application/json;q=0.8,*/*;q=0.7',
+    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     'accept-language': 'en-US,en;q=0.9',
-    'accept-encoding': 'gzip, deflate, br',
-    'cache-control': 'no-cache',
+    'accept-encoding': 'gzip, deflate',
     ...(opts.headers || {}),
   };
   const r = await fetch(url, { redirect: 'follow', ...opts, headers });
@@ -418,28 +422,23 @@ async function main() {
   try { hwSitemap  = await loadHwSitemap();  } catch (e) { logError(`HW sitemap failed: ${e.message}`); hwSitemap = []; }
   try { nadac      = await loadNadacIndex(); } catch (e) { logError(`NADAC load failed: ${e.message}`); nadac = null; }
 
-  const prices = {};
-  const errors = {};
-  const stats  = { CostPlusDrugs: 0, HealthWarehouse: 0, NADAC: 0 };
+  const prices    = {};
+  const errors    = {};
+  const stats     = { CostPlusDrugs: 0, HealthWarehouse: 0, NADAC: 0 };
+  const cpdTargets = {};   // { drugName: cpdUrl } — emitted for browser-phase scrape
 
   for (const [drugName, sku] of drugList) {
     process.stdout.write(`  ${drugName.padEnd(28)}`);
     const drugErrors = [];
     const drugPrices = {};
 
-    // CPD
+    // CPD: do slug-match here, but DON'T fetch the product page — Cloudflare 403's
+    // unauthenticated Node fetches. URLs are emitted to data/cpd-targets.json
+    // for the browser phase (Claude in Chrome) to scrape with shared CF clearance.
     if (cpdSitemap.length) {
       const url = findCpdUrl(cpdSitemap, drugName, sku);
       if (!url) drugErrors.push('CostPlusDrugs: no slug match');
-      else {
-        try {
-          const r = await scrapeCpd(url);
-          drugPrices.CostPlusDrugs = { ...r, asOf: new Date().toISOString().slice(0, 10) };
-          stats.CostPlusDrugs++;
-        } catch (e) {
-          drugErrors.push(`CostPlusDrugs: ${e.message} (${url})`);
-        }
-      }
+      else { cpdTargets[drugName] = url; }
     }
 
     // HealthWarehouse
@@ -487,12 +486,12 @@ async function main() {
     stats,
   };
 
-  logInfo(`\nResults: CPD=${stats.CostPlusDrugs}/${drugList.length}  HW=${stats.HealthWarehouse}/${drugList.length}  NADAC=${stats.NADAC}/${drugList.length}`);
+  logInfo(`\nResults: CPD-targets=${Object.keys(cpdTargets).length}/${drugList.length} (browser phase fetches these)  HW=${stats.HealthWarehouse}/${drugList.length}  NADAC=${stats.NADAC}/${drugList.length}`);
   const errorCount = Object.values(errors).reduce((sum, arr) => sum + arr.length, 0);
   if (errorCount) logWarn(`${errorCount} per-source lookup errors across ${Object.keys(errors).length} drugs (see prices.json "errors" map for detail).`);
 
   if (DRY_RUN) {
-    logInfo('--no-write set; not writing prices.json.');
+    logInfo('--no-write set; not writing prices.json or cpd-targets.json.');
     return;
   }
 
@@ -505,6 +504,15 @@ async function main() {
   if (!fs.existsSync(hugoDir)) fs.mkdirSync(hugoDir, { recursive: true });
   fs.writeFileSync(HUGO_OUT, json);
   logInfo(`Mirrored to ${HUGO_OUT}`);
+
+  // Emit cpd-targets.json — consumed by the browser phase (scheduled task)
+  const targetsJson = JSON.stringify({
+    $schema: 'List of {drugName: cpdProductUrl} pairs to scrape via Claude in Chrome (Cloudflare blocks unauth Node fetches). Browser phase outputs data/cpd-prices.json which is then merged via scripts/merge-cpd-prices.js.',
+    generatedAt: new Date().toISOString(),
+    targets: cpdTargets,
+  }, null, 2);
+  fs.writeFileSync(CPD_TARGETS_OUT, targetsJson);
+  logInfo(`Wrote ${CPD_TARGETS_OUT} (${Object.keys(cpdTargets).length} target URLs)`);
 }
 
 main().catch(err => {
