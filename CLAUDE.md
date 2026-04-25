@@ -6,17 +6,23 @@ A single-page psychopharmacology reference application for clinicians, built as 
 
 ```
 psychopharm/
-├── index.html          # Main SPA (~11,000+ lines) — all tools, sections, sidebar nav
-├── css/styles.css      # Global stylesheet
+├── index.html          # Main SPA (~11,000+ lines) — WORKING/PREVIEW copy
+├── css/styles.css      # Global stylesheet — working copy
 ├── js/
-│   ├── app.js          # Core application logic, QT risk tool, Tisdale scoring
-│   └── data.js         # Medication data, receptor binding profiles
+│   ├── app.js          # Core application logic, QT risk tool, Tisdale scoring — working copy
+│   └── data.js         # Medication data, receptor binding profiles — working copy
+├── hugo-site/          # WHAT ACTUALLY DEPLOYS (Netlify builds from here)
+│   ├── hugo.toml       # Hugo config
+│   ├── netlify.toml    # Build/publish config
+│   └── static/         # ← root files MUST be mirrored here after edits
+│       ├── index.html, js/app.js, css/styles.css, ...
 ├── blog/               # 42+ standalone HTML blog posts (each has own sidebar nav)
 ├── ref/                # Reference PDFs, source documents, research papers
 │   ├── scales/         # Clinical rating scale PDFs (PANSS, BFCRS, C-SSRS, CDR, SLUMS, etc.)
 │   └── literature/     # Research papers, textbook excerpts, guidelines
 ├── notes/              # Working notes, blog drafts, feature ideas
 ├── CLAUDE.md           # This file — project context for Claude
+├── netlify.toml        # Top-level Netlify config (base="hugo-site")
 └── .claude/            # Claude Code configuration
     ├── settings.json
     └── skills/         # Reusable task-specific skills
@@ -108,8 +114,33 @@ ToolUtils.copyWithButton(text, btn);  // shows "Copied!" for 2s
 - Blog links within sidebar: `<li><a href="filename.html" class="nav-link nav-sub-link">Title</a></li>`
 
 ### Sidebar Navigation (index.html)
-- Clinical Tools group includes: QT Risk Tool, Refill Calendar, Med Comparison, Taper/Start, CDR Staging, ASD Severity, Suicide Risk, SLUMS Exam, PANSS, Catatonia (BFCRS), CIDI Bipolar Screen, PCL-5 (PTSD), YMRS (Mania), Y-BOCS (OCD), AIMS (Dyskinesia), DSM-5-TR SUD
-- When adding a tool, also add to sidebar nav under Clinical Tools
+- Psychopharmacology group includes: Drug Database, P450 Interactions, Receptor Binding, Receptor Glossary, PK Curves, Med Comparison
+- Clinical Tools group includes: QT Risk Tool, Refill Calendar, Taper/Start, CDR Staging, ASD Severity, Suicide Risk, SLUMS Exam, PANSS, Catatonia (BFCRS), CIDI Bipolar Screen, PCL-5 (PTSD), YMRS (Mania), Y-BOCS (OCD), AIMS (Dyskinesia), DSM-5-TR SUD
+- When adding a tool, also add to sidebar nav under the appropriate group
+
+## Deployment Pipeline (CRITICAL)
+
+The site deploys via **Netlify + Hugo** from the `hugo-site/` directory. The root `index.html`, `js/app.js`, `css/styles.css` are working/preview copies — they are NOT what gets deployed.
+
+### Two-place sync requirement
+After editing any of the root files, **mirror them into `hugo-site/static/`**:
+```bash
+cp index.html hugo-site/static/index.html
+cp js/app.js hugo-site/static/js/app.js
+cp css/styles.css hugo-site/static/css/styles.css
+```
+Commit both copies in the same commit (or as a follow-up `Sync ... to Hugo source` commit, matching prior repo convention).
+
+Netlify config: `netlify.toml` at repo root sets `base = "hugo-site"`, `command = "hugo --minify"`, `publish = "hugo-site/public"`.
+
+### Cache-bust version string (CRITICAL)
+`index.html` loads JS/CSS with `?v=YYYYMMDDx` query strings. **Every time you edit `js/app.js` or `css/styles.css`, bump the corresponding version string** — otherwise browsers AND the Netlify CDN will keep serving the cached old file even though your push succeeded.
+
+Find them with:
+```bash
+grep -n '?v=' index.html
+```
+Update both the root `index.html` and `hugo-site/static/index.html`. Symptom of forgetting this: live HTML shows new tabs/markup but JS behavior is unchanged. Diagnose by `fetch('/js/app.js?v=<currentversion>')` in DevTools and confirming the file size/content matches the new code.
 
 ## Git Workflow
 ```bash
