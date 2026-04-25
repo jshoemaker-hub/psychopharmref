@@ -1,0 +1,11 @@
+{
+  "$schema": "Generated weekly by the price scraper. lastUpdated=null means no scrape has run yet.",
+  "lastUpdated": null,
+  "zipCode": "98643",
+  "sources": [
+    { "key": "TrumpRx", "displayName": "TrumpRx", "url": "https://trumprx.gov/" },
+    { "key": "GoodRx", "displayName": "GoodRx", "url": "https://www.goodrx.com/" },
+    { "key": "CostPlusDrugs", "displayName": "Cost Plus Drugs", "url": "https://costplusdrugs.com/" }
+  ],
+  "prices": {}
+}

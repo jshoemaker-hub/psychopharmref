@@ -3066,6 +3066,204 @@ function initMedTaper() {
   });
 }
 
+/* ── Price Comparison Tool ──────────────────────────────────────────── */
+(function() {
+  const section = document.getElementById('price-compare');
+  if (!section) return;
+
+  let pricesData = null;        // cached after first fetch
+  let pricesLoadAttempted = false;
+
+  // Lazy-load when user first navigates to the section
+  const navLinks = document.querySelectorAll('[data-section="price-compare"]');
+  navLinks.forEach(a => a.addEventListener('click', () => {
+    if (!pricesLoadAttempted) loadPrices();
+  }));
+
+  // Search input
+  const searchInput = document.getElementById('pc-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.trim().toLowerCase();
+      filterTable(q);
+    });
+  }
+
+  function loadPrices() {
+    pricesLoadAttempted = true;
+    fetch('/data/prices.json', { cache: 'no-cache' })
+      .then(r => r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`)))
+      .then(data => { pricesData = data; renderTable(); })
+      .catch(err => {
+        console.error('Failed to load prices.json', err);
+        renderError(err.message);
+      });
+  }
+
+  function renderError(msg) {
+    const c = document.getElementById('pc-table-container');
+    if (c) c.innerHTML = `<div class="mt-warning" style="margin:12px 0">Could not load pricing data: ${msg}. The weekly scraper may not have run yet, or the data file is missing.</div>`;
+  }
+
+  function fmtMoney(n) {
+    if (typeof n !== 'number' || Number.isNaN(n)) return '—';
+    return '$' + n.toFixed(2);
+  }
+
+  function fmtRelativeDate(isoDate) {
+    if (!isoDate) return 'Not yet scraped';
+    const d = new Date(isoDate);
+    if (Number.isNaN(d.getTime())) return 'Unknown';
+    const diffMs = Date.now() - d.getTime();
+    const days = Math.floor(diffMs / 86400000);
+    const human = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    if (days < 1) return `${human} (today)`;
+    if (days === 1) return `${human} (yesterday)`;
+    if (days < 14) return `${human} (${days} days ago)`;
+    return human;
+  }
+
+  function renderTable() {
+    const container = document.getElementById('pc-table-container');
+    const lastUpdEl = document.getElementById('pc-last-updated-date');
+    if (!container || !pricesData) return;
+
+    if (lastUpdEl) lastUpdEl.textContent = fmtRelativeDate(pricesData.lastUpdated);
+
+    const sources = pricesData.sources || [];
+    const prices = pricesData.prices || {};
+
+    if (typeof MEDICATIONS === 'undefined') {
+      container.innerHTML = '<div class="mt-warning">Drug list not loaded. Refresh the page.</div>';
+      return;
+    }
+
+    // Group MEDICATIONS by category, then sort by class then name within each group
+    const CATEGORY_ORDER = ['Antidepressant', 'Antipsychotic', 'Anxiolytic', 'Mood Stabilizer', 'Stimulant', 'Sleep', 'Other'];
+    const byCategory = {};
+    MEDICATIONS.forEach(m => {
+      const cat = m.category || 'Other';
+      (byCategory[cat] = byCategory[cat] || []).push(m);
+    });
+    Object.values(byCategory).forEach(arr => arr.sort((a, b) => {
+      if (a.class !== b.class) return (a.class || '').localeCompare(b.class || '');
+      return a.name.localeCompare(b.name);
+    }));
+
+    // Build the table — single table with category header rows
+    const colCount = 1 + sources.length + 1; // drug + N sources + best
+    let html = `<table class="pc-table">
+      <colgroup>
+        <col class="pc-col-drug">
+        ${sources.map(() => '<col class="pc-col-price">').join('')}
+        <col class="pc-col-best">
+      </colgroup>
+      <thead>
+        <tr>
+          <th class="pc-th-drug">Drug</th>
+          ${sources.map(s => `<th class="pc-th-price"><a href="${s.url}" target="_blank" rel="noopener" class="pc-source-link">${s.displayName}</a></th>`).join('')}
+          <th class="pc-th-best">Best</th>
+        </tr>
+      </thead>
+      <tbody>`;
+
+    const orderedCats = [...new Set([...CATEGORY_ORDER, ...Object.keys(byCategory)])].filter(c => byCategory[c]);
+    orderedCats.forEach(cat => {
+      const meds = byCategory[cat];
+      // Category header row
+      html += `<tr class="pc-cat-row" data-cat="${cat}">
+        <td colspan="${colCount}"><span class="pc-cat-label">${cat}</span> <span class="pc-cat-count">${meds.length}</span></td>
+      </tr>`;
+      // One row per drug
+      meds.forEach(m => {
+        const drugPrices = prices[m.name] || {};
+        // Determine best price among available sources
+        const sourcePriceObjs = sources.map(s => {
+          const p = drugPrices[s.key];
+          return (p && p.available && typeof p.price === 'number') ? { key: s.key, price: p.price, url: p.url } : null;
+        });
+        const numericPrices = sourcePriceObjs.filter(p => p !== null).map(p => p.price);
+        const bestPrice = numericPrices.length ? Math.min(...numericPrices) : null;
+
+        const priceCells = sources.map(s => {
+          const p = drugPrices[s.key];
+          if (!p) return `<td class="pc-cell pc-cell-empty">&mdash;</td>`;
+          if (p.available === false) return `<td class="pc-cell pc-cell-na" title="Not available at ${s.displayName}">N/A</td>`;
+          if (typeof p.price !== 'number') return `<td class="pc-cell pc-cell-empty">&mdash;</td>`;
+          const isBest = p.price === bestPrice && numericPrices.length > 1;
+          const cls = isBest ? 'pc-cell pc-cell-price pc-cell-best-price' : 'pc-cell pc-cell-price';
+          const linkHTML = p.url
+            ? `<a href="${p.url}" target="_blank" rel="noopener">${fmtMoney(p.price)}</a>`
+            : fmtMoney(p.price);
+          return `<td class="${cls}">${linkHTML}</td>`;
+        }).join('');
+
+        let bestCell = '<td class="pc-cell pc-cell-best-empty">&mdash;</td>';
+        if (bestPrice !== null) {
+          if (numericPrices.length > 1) {
+            const savings = Math.max(...numericPrices) - bestPrice;
+            const savingsPct = savings > 0 ? Math.round((savings / Math.max(...numericPrices)) * 100) : 0;
+            const bestSourceObj = sourcePriceObjs.find(p => p && p.price === bestPrice);
+            const sourceName = sources.find(s => s.key === bestSourceObj.key)?.displayName || bestSourceObj.key;
+            bestCell = `<td class="pc-cell pc-cell-best">
+              <div class="pc-best-price">${fmtMoney(bestPrice)}</div>
+              <div class="pc-best-source">${sourceName}</div>
+              ${savingsPct >= 10 ? `<div class="pc-best-savings">save ${savingsPct}%</div>` : ''}
+            </td>`;
+          } else {
+            // Only one source has a price — show it but no comparison
+            bestCell = `<td class="pc-cell pc-cell-best pc-cell-best-only">
+              <div class="pc-best-price">${fmtMoney(bestPrice)}</div>
+              <div class="pc-best-source">only source</div>
+            </td>`;
+          }
+        }
+
+        const formText = drugPrices.form || '';
+        html += `<tr class="pc-drug-row" data-drug-name="${m.name.toLowerCase()}" data-cat="${cat}">
+          <td class="pc-cell pc-cell-drug">
+            <div class="pc-drug-name">${m.name}</div>
+            <div class="pc-drug-meta">${m.class || ''}${formText ? ' &middot; ' + formText : ''}</div>
+          </td>
+          ${priceCells}
+          ${bestCell}
+        </tr>`;
+      });
+    });
+
+    html += `</tbody></table>`;
+
+    // If no data has been scraped yet, show a banner above the table
+    const noDataYet = !pricesData.lastUpdated || Object.keys(prices).length === 0;
+    if (noDataYet) {
+      html = `<div class="pc-no-data-banner">
+        <strong>Pricing data not yet available.</strong> The weekly scraper has not run yet (scheduled for Saturday at 2 AM PT). The table below shows the drugs that will be tracked once data starts flowing.
+      </div>` + html;
+    }
+
+    container.innerHTML = html;
+  }
+
+  function filterTable(q) {
+    const rows = document.querySelectorAll('.pc-drug-row');
+    const visibleByCategory = {};
+    rows.forEach(row => {
+      const name = row.dataset.drugName || '';
+      const visible = q === '' || name.includes(q);
+      row.style.display = visible ? '' : 'none';
+      if (visible) {
+        const cat = row.dataset.cat;
+        visibleByCategory[cat] = (visibleByCategory[cat] || 0) + 1;
+      }
+    });
+    // Hide category headers with 0 visible drugs
+    document.querySelectorAll('.pc-cat-row').forEach(row => {
+      const cat = row.dataset.cat;
+      row.style.display = (visibleByCategory[cat] > 0) ? '' : 'none';
+    });
+  }
+})();
+
 /* ── Mobile sidebar toggle ────────────────────────────────────────────── */
 (function() {
   const menuBtn = document.getElementById('mobile-menu-btn');

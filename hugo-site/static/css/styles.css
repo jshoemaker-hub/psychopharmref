@@ -3506,6 +3506,170 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
   margin-right: 6px;
 }
 
+/* ── Price Comparison Tool ───────────────────────────────────────────────── */
+.pc-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.pc-last-updated { font-size: 12.5px; color: var(--text-muted); }
+.pc-meta-label { color: var(--text-muted); font-weight: 600; margin-right: 4px; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.06em; }
+#pc-last-updated-date { color: var(--text); font-weight: 500; }
+.pc-search-wrap { flex: 0 0 auto; }
+#pc-search {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 7px 12px;
+  font-size: 13px;
+  width: 240px;
+  font-family: inherit;
+}
+#pc-search:focus { outline: none; border-color: var(--accent); }
+
+.pc-loading { padding: 30px; text-align: center; color: var(--text-muted); font-size: 13px; }
+
+.pc-no-data-banner {
+  margin-bottom: 14px;
+  padding: 12px 16px;
+  background: rgba(217,152,52,0.10);
+  border: 1px solid rgba(217,152,52,0.40);
+  border-left-width: 4px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.pc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.pc-col-drug  { width: 30%; }
+.pc-col-price { width: 17%; }
+.pc-col-best  { width: 19%; }
+
+.pc-table th {
+  padding: 10px 12px;
+  background: var(--bg2);
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 600;
+  border-bottom: 2px solid var(--border);
+}
+.pc-th-price, .pc-th-best { text-align: center; }
+.pc-source-link {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--text-muted);
+}
+.pc-source-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+.pc-table td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.pc-cat-row td {
+  background: rgba(74,124,53,0.10);
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+}
+.pc-cat-label { color: var(--accent); }
+.pc-cat-count {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px;
+  background: var(--bg2);
+  color: var(--text-muted);
+  border-radius: 9px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.pc-drug-row { transition: background 0.15s; }
+.pc-drug-row:hover td { background: rgba(255,255,255,0.02); }
+.pc-cell-drug { line-height: 1.35; }
+.pc-drug-name { font-weight: 600; color: var(--text); font-size: 13.5px; }
+.pc-drug-meta { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+.pc-cell { font-variant-numeric: tabular-nums; }
+.pc-cell-price { text-align: center; font-size: 14px; color: var(--text); }
+.pc-cell-price a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--text-muted); }
+.pc-cell-price a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.pc-cell-empty { text-align: center; color: var(--text-muted); opacity: 0.45; }
+.pc-cell-na    { text-align: center; color: var(--text-muted); font-size: 11px; font-style: italic; opacity: 0.6; }
+
+.pc-cell-best-price {
+  background: rgba(74,124,53,0.14);
+  font-weight: 700;
+  color: #6ea84d;
+  position: relative;
+}
+.pc-cell-best-price a { color: #6ea84d; }
+.pc-cell-best-price::before {
+  content: '★';
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #f0c040;
+  font-size: 12px;
+}
+
+.pc-cell-best { text-align: center; }
+.pc-best-price { font-size: 16px; font-weight: 700; color: var(--accent); line-height: 1.1; }
+.pc-best-source { font-size: 10.5px; color: var(--text-muted); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.05em; }
+.pc-best-savings {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 1px 7px;
+  background: rgba(74,124,53,0.18);
+  color: #6ea84d;
+  font-size: 10.5px;
+  font-weight: 700;
+  border-radius: 8px;
+  letter-spacing: 0.02em;
+}
+.pc-cell-best-only .pc-best-source { font-style: italic; }
+.pc-cell-best-empty { text-align: center; color: var(--text-muted); opacity: 0.4; }
+
+.pc-disclaimer {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* Mobile responsive — stack columns into card-style rows */
+@media (max-width: 720px) {
+  .pc-meta-bar { flex-direction: column; align-items: stretch; }
+  #pc-search { width: 100%; }
+  .pc-table { font-size: 12px; }
+  .pc-table th, .pc-table td { padding: 7px 8px; }
+  .pc-best-price { font-size: 14px; }
+  .pc-drug-name { font-size: 12.5px; }
+  .pc-cell-best-price::before { display: none; } /* hide star on mobile to save space */
+}
+
 /* ── Medication Taper / Start ───────────────────────────────────────────── */
 .mt-warning {
   display: flex;
