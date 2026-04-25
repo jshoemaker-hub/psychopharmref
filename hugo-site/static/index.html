@@ -107,6 +107,7 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="receptor-binding">Receptor Binding</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="glossary">Receptor Glossary</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="pk-curves">PK Curves</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="med-compare">Med Comparison</a></li>
         </ul>
       </li>
 
@@ -120,7 +121,6 @@
           <li class="nav-sub-divider">Medication Tools</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="qt-risk">QT Risk Tool</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="refill-calendar">Refill Calendar</a></li>
-          <li><a href="#" class="nav-link nav-sub-link" data-section="med-compare">Med Comparison</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="med-taper">Taper / Start</a></li>
 
           <li class="nav-sub-divider">Cognitive &amp; Neurodevelopmental</li>
@@ -2734,6 +2734,7 @@
             <button class="mc-tab mc-tab--active" data-tab="receptors">&#9673; Receptor Binding</button>
             <button class="mc-tab" data-tab="sideeffects">&#9888; Side Effect Overlap</button>
             <button class="mc-tab" data-tab="circuits">&#129504; Circuits &amp; Conditions</button>
+            <button class="mc-tab" data-tab="p450">&#9879; P450 Interactions <span class="mc-tab-count" id="mc-tab-count-p450" style="display:none"></span></button>
           </div>
           <button class="mt-print-btn mc-print-btn" id="mc-print-btn">&#128438; Print / Save PDF</button>
         </div>
@@ -2751,6 +2752,10 @@
 
         <div class="mc-panel" id="mc-panel-circuits">
           <div id="mc-circuit-content"></div>
+        </div>
+
+        <div class="mc-panel" id="mc-panel-p450">
+          <div id="mc-p450-content"></div>
         </div>
       </div>
     </section>

@@ -1967,14 +1967,23 @@ function initMedCompare() {
   buildSelectors();
 
   // Tab switching
+  function mcSwitchTab(tabName) {
+    document.querySelectorAll('.mc-tab').forEach(t => t.classList.toggle('mc-tab--active', t.dataset.tab === tabName));
+    document.querySelectorAll('.mc-panel').forEach(p => p.classList.remove('mc-panel--active'));
+    const target = document.getElementById(`mc-panel-${tabName}`);
+    if (target) target.classList.add('mc-panel--active');
+  }
   document.querySelectorAll('.mc-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.mc-tab').forEach(t => t.classList.remove('mc-tab--active'));
-      document.querySelectorAll('.mc-panel').forEach(p => p.classList.remove('mc-panel--active'));
-      tab.classList.add('mc-tab--active');
-      document.getElementById(`mc-panel-${tab.dataset.tab}`).classList.add('mc-panel--active');
-    });
+    tab.addEventListener('click', () => mcSwitchTab(tab.dataset.tab));
   });
+  // Delegated handler: clicking an inline P450 badge anywhere in the results jumps to that tab
+  const mcResultsEl = document.getElementById('mc-results');
+  if (mcResultsEl) {
+    mcResultsEl.addEventListener('click', (ev) => {
+      const badge = ev.target.closest('[data-jump]');
+      if (badge) { ev.preventDefault(); mcSwitchTab(badge.dataset.jump); }
+    });
+  }
 
   // Track current drugs for print
   let mcCurrentDrugs = [];
@@ -2009,10 +2018,137 @@ function initMedCompare() {
   // Drug color palette (up to 6)
   const DRUG_COLORS = ['#5b8dee','#f47560','#57c785','#f0c040','#b57bee','#f07090'];
 
+  // P450 interaction state — computed once per comparison, used by header badges + P450 tab
+  let mcP450Interactions = [];
+  let mcP450ByDrug = {}; // { drugName: { count, maxSev: 'strong'|'moderate'|'weak' } }
+
+  function computeP450Interactions(drugs) {
+    const SEV_RANK = { weak: 1, moderate: 2, strong: 3 };
+    const edges = [];
+    for (let i = 0; i < drugs.length; i++) {
+      for (let j = 0; j < drugs.length; j++) {
+        if (i === j) continue;
+        const A = drugs[i], B = drugs[j];
+        if (!A.p450 || !B.p450) continue;
+        const aInh = A.p450.inhibits || {};
+        const aInd = A.p450.induces || [];
+        const bSub = B.p450.substrate || [];
+        // A inhibits an enzyme that metabolizes B → ↑ B
+        for (const enz of bSub) {
+          if (aInh[enz]) {
+            edges.push({ from: A.name, to: B.name, enzyme: enz, mechanism: 'inhibition', severity: aInh[enz], direction: 'up' });
+          }
+          if (aInd.includes(enz)) {
+            edges.push({ from: A.name, to: B.name, enzyme: enz, mechanism: 'induction', severity: 'moderate', direction: 'down' });
+          }
+        }
+      }
+    }
+    // Aggregate per drug
+    const byDrug = {};
+    drugs.forEach(d => byDrug[d.name] = { count: 0, maxSev: null });
+    edges.forEach(e => {
+      [e.from, e.to].forEach(name => {
+        const slot = byDrug[name];
+        if (!slot) return;
+        slot.count++;
+        if (!slot.maxSev || SEV_RANK[e.severity] > SEV_RANK[slot.maxSev]) slot.maxSev = e.severity;
+      });
+    });
+    return { edges, byDrug };
+  }
+
   function renderComparison(drugs) {
+    const { edges, byDrug } = computeP450Interactions(drugs);
+    mcP450Interactions = edges;
+    mcP450ByDrug = byDrug;
+
     renderReceptorTab(drugs);
     renderSETab(drugs);
     renderCircuitTab(drugs);
+    renderP450Tab(drugs);
+
+    // Tab count indicator
+    const countEl = document.getElementById('mc-tab-count-p450');
+    if (countEl) {
+      // Each interaction is directional, so the unique pair count is edges.length / 1 (we keep all)
+      const pairs = edges.length;
+      if (pairs > 0) {
+        countEl.style.display = '';
+        countEl.textContent = pairs;
+      } else {
+        countEl.style.display = 'none';
+      }
+    }
+  }
+
+  /* ── P450 Interactions Tab ── */
+  function renderP450Tab(drugs) {
+    const container = document.getElementById('mc-p450-content');
+    if (!container) return;
+
+    if (mcP450Interactions.length === 0) {
+      // Check if it's "no data" or "no interactions"
+      const hasAnyData = drugs.some(d => d.p450);
+      if (!hasAnyData) {
+        container.innerHTML = '<div class="mt-warning" style="margin:12px 0">No P450 metabolism data available for the selected medications.</div>';
+      } else {
+        container.innerHTML = '<div class="mc-p450-clear"><span class="mc-p450-clear-icon">&#10003;</span> <strong>No CYP450-mediated interactions detected</strong> between the selected medications based on substrate / inhibitor / inducer data on file. This does not rule out non-CYP interactions (UGT, transporter, pharmacodynamic).</div>';
+      }
+      return;
+    }
+
+    const SEV_LABEL = { strong: 'Strong', moderate: 'Moderate', weak: 'Weak' };
+    const SEV_CLASS = { strong: 'mc-cyp-sev-strong', moderate: 'mc-cyp-sev-mod', weak: 'mc-cyp-sev-weak' };
+
+    // Group by enzyme for cleaner display
+    const byEnzyme = {};
+    mcP450Interactions.forEach(e => {
+      if (!byEnzyme[e.enzyme]) byEnzyme[e.enzyme] = [];
+      byEnzyme[e.enzyme].push(e);
+    });
+
+    const enzymeBlocks = Object.entries(byEnzyme).sort().map(([enz, edges]) => {
+      const rows = edges.map(e => {
+        const arrow = e.direction === 'up' ? '&uarr;' : '&darr;';
+        const arrowCls = e.direction === 'up' ? 'mc-cyp-up' : 'mc-cyp-down';
+        const mechText = e.mechanism === 'inhibition'
+          ? `${e.from} inhibits ${enz} (${SEV_LABEL[e.severity]})`
+          : `${e.from} induces ${enz}`;
+        const effectText = e.direction === 'up'
+          ? `<strong>${e.to}</strong> levels increase &mdash; consider dose reduction or alternative`
+          : `<strong>${e.to}</strong> levels decrease &mdash; may require dose increase`;
+        return `
+          <div class="mc-cyp-row ${SEV_CLASS[e.severity]}">
+            <div class="mc-cyp-pair">
+              <span class="mc-cyp-from">${e.from}</span>
+              <span class="mc-cyp-arrow ${arrowCls}">&#10230; ${arrow}</span>
+              <span class="mc-cyp-to">${e.to}</span>
+            </div>
+            <div class="mc-cyp-mech">${mechText}</div>
+            <div class="mc-cyp-effect">${effectText}</div>
+          </div>`;
+      }).join('');
+      return `
+        <div class="mc-cyp-enzyme-block">
+          <h4 class="mc-cyp-enzyme-title">&#9879; ${enz} <span class="mc-cyp-enzyme-count">${edges.length} interaction${edges.length === 1 ? '' : 's'}</span></h4>
+          ${rows}
+        </div>`;
+    }).join('');
+
+    container.innerHTML = `
+      <div class="mc-cyp-summary">
+        <div class="mc-cyp-summary-stat"><span class="mc-cyp-stat-num">${mcP450Interactions.length}</span><span class="mc-cyp-stat-lbl">total interactions</span></div>
+        <div class="mc-cyp-summary-stat"><span class="mc-cyp-stat-num">${Object.keys(byEnzyme).length}</span><span class="mc-cyp-stat-lbl">CYP enzymes involved</span></div>
+      </div>
+      <div class="mc-cyp-legend">
+        <span><span class="mc-cyp-up">&uarr;</span> = substrate level rises (slowed metabolism)</span>
+        <span><span class="mc-cyp-down">&darr;</span> = substrate level falls (faster metabolism)</span>
+        <span><span class="mc-cyp-sev-strong-pill">Strong</span> <span class="mc-cyp-sev-mod-pill">Moderate</span> <span class="mc-cyp-sev-weak-pill">Weak</span></span>
+      </div>
+      ${enzymeBlocks}
+      <p class="mc-cyp-disclaimer">CYP-based predictions only. Clinical impact depends on dose, genetics (poor/ultra-rapid metabolizers), comorbidity, and other concurrent medications. Always verify with a current interaction reference before prescribing.</p>
+    `;
   }
 
   /* ── Print / PDF ── */
@@ -2280,7 +2416,15 @@ function initMedCompare() {
         <thead>
           <tr>
             <th>Receptor</th>
-            ${drugs.map((d,i) => `<th style="color:${DRUG_COLORS[i]}">${d.name}</th>`).join('')}
+            ${drugs.map((d,i) => {
+              const ix = mcP450ByDrug[d.name];
+              let badge = '';
+              if (ix && ix.count > 0) {
+                const sevCls = ix.maxSev === 'strong' ? 'mc-cyp-badge-strong' : ix.maxSev === 'moderate' ? 'mc-cyp-badge-mod' : 'mc-cyp-badge-weak';
+                badge = `<span class="mc-cyp-badge ${sevCls}" data-jump="p450" title="${ix.count} CYP interaction${ix.count===1?'':'s'} — click for details">&#9879;${ix.count}</span>`;
+              }
+              return `<th style="color:${DRUG_COLORS[i]}">${d.name}${badge}</th>`;
+            }).join('')}
             <th>Shared High Affinity</th>
           </tr>
         </thead>
