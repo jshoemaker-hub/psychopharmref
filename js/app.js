@@ -244,6 +244,7 @@ function getColor(receptor) {
 const SECTION_GROUP = {
   'drug-table': 'psychopharm', 'p450': 'psychopharm',
   'receptor-binding': 'psychopharm', 'glossary': 'psychopharm', 'pk-curves': 'psychopharm',
+  'price-compare': 'psychopharm',
   'qt-risk': 'tools', 'refill-calendar': 'tools', 'med-compare': 'tools', 'med-taper': 'tools',
   'cdr-tool': 'tools', 'slums-tool': 'tools', 'asd-tool': 'tools', 'aq-tool': 'tools',
   'adl-tool': 'tools', 'asrs-tool': 'tools', 'cidi-tool': 'tools', 'ymrs-tool': 'tools',
@@ -323,6 +324,10 @@ function switchSection(id) {
     }
     sec.dataset.lazyLoaded = 'true';
   }
+
+  document.dispatchEvent(new CustomEvent('pp:sectionchange', {
+    detail: { id: id }
+  }));
 
   // Scroll main content to top
   document.getElementById('content').scrollTop = 0;
@@ -3074,11 +3079,25 @@ function initMedTaper() {
   let pricesData = null;        // cached after first fetch
   let pricesLoadAttempted = false;
 
+  function ensurePricesLoaded() {
+    if (!pricesLoadAttempted) loadPrices();
+  }
+
   // Lazy-load when user first navigates to the section
   const navLinks = document.querySelectorAll('[data-section="price-compare"]');
   navLinks.forEach(a => a.addEventListener('click', () => {
-    if (!pricesLoadAttempted) loadPrices();
+    ensurePricesLoaded();
   }));
+
+  document.addEventListener('pp:sectionchange', function(event) {
+    if (event.detail && event.detail.id === 'price-compare') {
+      ensurePricesLoaded();
+    }
+  });
+
+  if (section.classList.contains('active')) {
+    ensurePricesLoaded();
+  }
 
   // Search input
   const searchInput = document.getElementById('pc-search');
@@ -3091,7 +3110,7 @@ function initMedTaper() {
 
   function loadPrices() {
     pricesLoadAttempted = true;
-    fetch('/data/prices.json', { cache: 'no-cache' })
+    fetch('data/prices.json', { cache: 'no-cache' })
       .then(r => r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`)))
       .then(data => { pricesData = data; renderTable(); })
       .catch(err => {
@@ -3249,7 +3268,7 @@ function initMedTaper() {
     const noDataYet = !pricesData.lastUpdated || Object.keys(prices).length === 0;
     if (noDataYet) {
       html = `<div class="pc-no-data-banner">
-        <strong>Pricing data not yet available.</strong> The weekly scraper has not run yet (scheduled for Saturday at 2 AM PT). The table below shows the drugs that will be tracked once data starts flowing.
+        <strong>Pricing data not yet available for this run.</strong> Prices are refreshed manually each week from NADAC (CMS wholesale data) plus Cost Plus Drugs and HealthWarehouse. The table below shows the drugs that will be tracked once the next refresh completes.
       </div>` + html;
     }
 
