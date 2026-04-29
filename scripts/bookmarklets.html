@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PsychoPharmRef — Manual Price Scrape Bookmarklets (v3)</title>
+<style>
+  body { font: 15px/1.5 -apple-system, system-ui, sans-serif; max-width: 760px; margin: 40px auto; padding: 0 20px; color: #231e14; }
+  h1 { font-size: 22px; margin-bottom: 8px; }
+  h2 { font-size: 17px; margin-top: 32px; border-bottom: 1px solid #cfc8ba; padding-bottom: 6px; }
+  h3 { font-size: 15px; margin-top: 22px; }
+  code, pre { background: #ece6db; padding: 2px 5px; border-radius: 3px; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px; }
+  pre { padding: 10px; overflow-x: auto; }
+  ol li, ul li { margin: 6px 0; }
+  .bookmarklet {
+    display: inline-block;
+    padding: 8px 18px;
+    background: #4a7c35;
+    color: #fff !important;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-right: 12px;
+  }
+  .bookmarklet:hover { background: #3d6929; }
+  .note { background: #f8f4ec; border-left: 3px solid #8b6914; padding: 10px 14px; margin: 16px 0; font-size: 14px; }
+  .warn { background: #fff3e0; border-left: 3px solid #c0392b; padding: 10px 14px; margin: 16px 0; font-size: 14px; }
+  .ok { background: #eaf3e2; border-left: 3px solid #4a7c35; padding: 10px 14px; margin: 16px 0; font-size: 14px; }
+  kbd { background: #fff; border: 1px solid #cfc8ba; border-bottom-width: 2px; border-radius: 3px; padding: 1px 5px; font-family: inherit; font-size: 12px; }
+  table { border-collapse: collapse; margin-top: 12px; width: 100%; }
+  th, td { padding: 6px 10px; text-align: left; border-bottom: 1px solid #ece6db; vertical-align: top; }
+  th { background: #ece6db; }
+</style>
+</head>
+<body>
+
+<h1>Manual Price Scrape — Bookmarklets (v3)</h1>
+<p>Two paste-based bookmarklets. Drag each to your bookmarks bar once, then reuse weekly. Each prompts you to paste its <code>targets</code> JSON, so the bookmarklet itself doesn't need editing when target lists change.</p>
+
+<div class="note">
+<strong>Why this exists:</strong> Cost Plus Drugs and HealthWarehouse both have anti-scraping measures (Cloudflare 403, Next.js soft-404 catchall) that block plain Node fetches. Running these from a real Chrome tab on the source domain bypasses both, because your browser session has the necessary cookies. As of April 2026, CPD also moved to client-side rendering — its data now streams as escaped JSON inside <code>__next_f.push(...)</code> blocks, so the v3 extractor looks for <code>priceCalculation</code> anchored to the URL's slug instead of the legacy JSON-LD product schema.
+</div>
+
+<h2>Weekly workflow</h2>
+
+<h3>Phase 1 — generate target lists</h3>
+<pre>cd ~/Documents/html/psychopharm
+node scripts/scrape-prices.js</pre>
+<p>This populates NADAC into <code>data/prices.json</code> and writes <code>data/cpd-targets.json</code> and <code>data/hw-targets.json</code>.</p>
+
+<h3>Phase 2 — Cost Plus Drugs scrape</h3>
+<ol>
+  <li>Copy CPD targets to clipboard:
+    <pre>cat data/cpd-targets.json | jq .targets | pbcopy</pre>
+  </li>
+  <li>In Chrome, navigate to a real CPD <strong>product page</strong> (not the homepage, not a category listing). Easiest: open <a href="https://www.costplusdrugs.com/medications/fluoxetine-20mg-capsule/" target="_blank">https://www.costplusdrugs.com/medications/fluoxetine-20mg-capsule/</a> and wait until the price shows. This warms Cloudflare and the React app.</li>
+  <li>Click the <strong>Scrape CPD</strong> bookmarklet. When prompted, paste targets and click OK.</li>
+  <li>After ~10 seconds an alert reads "CPD scrape v3: X/Y prices captured." Healthy result is X &ge; 40 (out of ~47). If X is much lower, see Troubleshooting before continuing.</li>
+  <li>Move the downloaded file:
+    <pre>mv ~/Downloads/cpd-prices.json ~/Documents/html/psychopharm/data/</pre>
+  </li>
+</ol>
+
+<h3>Phase 3 — HealthWarehouse scrape</h3>
+<ol>
+  <li>Copy <strong>HW</strong> targets to clipboard (note: different file from Phase 2):
+    <pre>cat data/hw-targets.json | jq .targets | pbcopy</pre>
+  </li>
+  <li>Navigate to a real HW product page in the same window, e.g. <a href="https://www.healthwarehouse.com/sertraline-50mg-tablets-generic-zoloft" target="_blank">https://www.healthwarehouse.com/sertraline-50mg-tablets-generic-zoloft</a>. Wait until the page renders.</li>
+  <li>Click the <strong>Scrape HW</strong> bookmarklet. Paste targets, OK.</li>
+  <li>After ~10 seconds the alert reports the count. Move it:
+    <pre>mv ~/Downloads/hw-prices.json ~/Documents/html/psychopharm/data/</pre>
+  </li>
+</ol>
+
+<div class="warn">
+<strong>Don't cross-paste targets.</strong> The CPD targets file maps drug names to single URL strings; HW maps drug names to <em>arrays</em> of candidate URLs. Always re-run <code>pbcopy</code> with the right file before each bookmarklet. The v3 bookmarklets detect mismatched input and refuse to run with a clear error message — but it's wasted time.
+</div>
+
+<h3>Phase 4 — verify and merge</h3>
+<ol>
+  <li>Sanity-check both inputs are present and non-trivial:
+    <pre>ls -lh data/cpd-prices.json data/hw-prices.json
+jq ".results | to_entries | map(select(.value.available)) | length" \
+  data/cpd-prices.json data/hw-prices.json</pre>
+    Each file should be a few KB; counts should match what each bookmarklet's alert reported.
+  </li>
+  <li>Merge into the main prices file (mirrors automatically to <code>hugo-site/static/data/</code>):
+    <pre>node scripts/merge-retail-prices.js</pre>
+  </li>
+  <li>Commit:
+    <pre>git add data/ hugo-site/static/data/
+git -c user.name="Jerad Shoemaker" -c user.email="jshoemakerhwc@gmail.com" \
+    commit -m "Update drug prices $(date +%F)"
+git push</pre>
+  </li>
+</ol>
+
+<h2>The bookmarklets</h2>
+
+<p>Drag each link to your bookmarks bar.</p>
+
+<div class="warn">
+<strong>If you used previous (v1 or v2) versions, delete those bookmarks first.</strong> They use obsolete JSON-LD or naive priceCalculation logic and will return 0/X on the current CPD site. Replace with these v3 versions.
+</div>
+
+<p>
+  <a class="bookmarklet" href='javascript:(async function(){try{var raw=prompt("Paste CPD targets (data/cpd-targets.json -> targets value):");if(!raw)return;var parsed=JSON.parse(raw);var targets=parsed.targets||parsed;var firstVal=Object.values(targets)[0];if(Array.isArray(firstVal)){alert("Looks like HW targets (array values). Use Scrape HW, or paste cpd-targets.json content here.");return;}if(typeof firstVal!=="string"){alert("Invalid CPD targets shape. Expected object with string url values.");return;}var out={};var entries=Object.entries(targets);var i=0;function extractSlug(url){var m=url.replace(/\/$/,"").match(/\/([^\/]+)$/);return m?m[1]:null;}function escRe(s){return s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");}async function w(){while(i<entries.length){var e=entries[i++];var n=e[0],u=e[1];try{var r=await fetch(u,{credentials:"include"});if(!r.ok){out[n]={available:false,error:"HTTP "+r.status,url:u};continue;}var h=await r.text();var slug=extractSlug(u);var pat=new RegExp("priceCalculation\\\\?\"\\s*:\\s*([0-9]+\\.[0-9]+)[\\s\\S]{0,500}?slug\\\\?\"\\s*:\\s*\\\\?\""+escRe(slug)+"\\\\?\"","i");var m=h.match(pat);if(!m){var fb=h.match(/priceCalculation\\?"\s*:\s*([0-9]+\.[0-9]+)/);if(fb)out[n]={available:true,price:parseFloat(fb[1]),url:u,note:"fallback"};else out[n]={available:false,error:"no priceCalculation found",url:u};continue;}out[n]={available:true,price:parseFloat(m[1]),url:u};}catch(err){out[n]={available:false,error:err.message,url:u};}}}await Promise.all([w(),w(),w(),w(),w(),w()]);var data={generatedAt:new Date().toISOString(),source:"CostPlusDrugs",results:out};var blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="cpd-prices.json";document.body.appendChild(a);a.click();a.remove();var hits=Object.values(out).filter(function(x){return x.available;}).length;alert("CPD scrape v3: "+hits+"/"+entries.length+" prices captured.");}catch(e){alert("CPD bookmarklet error: "+e.message);}})();void 0;'>Scrape CPD</a>
+
+  <a class="bookmarklet" href='javascript:(async function(){try{var raw=prompt("Paste HW targets (data/hw-targets.json -> targets value):");if(!raw)return;var parsed=JSON.parse(raw);var targets=parsed.targets||parsed;var firstVal=Object.values(targets)[0];if(typeof firstVal==="string"){alert("Looks like CPD targets (string values). Use Scrape CPD, or paste hw-targets.json content here.");return;}if(!Array.isArray(firstVal)){alert("Invalid HW targets shape. Expected object mapping drug names to arrays of url candidates.");return;}var out={};var entries=Object.entries(targets);var i=0;function escRe(s){return s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");}function extractSlug(url){var m=url.replace(/\/$/,"").match(/\/([^\/]+)$/);return m?m[1]:null;}function extractPrice(html,url){var slug=extractSlug(url);var blocks=Array.from(html.matchAll(/<script[^>]*application\/ld\+json[^>]*>([\s\S]*?)<\/script>/g)).map(function(x){return x[1];});for(var j=0;j<blocks.length;j++){try{var pj=JSON.parse(blocks[j]);if(pj&&(pj.productName||pj.offers)){var offers=pj.offers||[];if(Array.isArray(offers)&&offers.length){var best=null,bd=Infinity;for(var k=0;k<offers.length;k++){var o=offers[k];var qty=(o&&o.eligibleQuantity&&o.eligibleQuantity.value)||(o&&o.priceSpecification&&o.priceSpecification.eligibleQuantity&&o.priceSpecification.eligibleQuantity.value);if(typeof qty!=="number"||qty===1)continue;var d=Math.abs(qty-30);if(d<bd){bd=d;best={qty:qty,price:o.price};}}if(best&&typeof best.price==="number")return{price:best.price,packSize:best.qty,strategy:"json-ld"};}}}catch(_){}}if(slug){var pat=new RegExp("priceCalculation\\\\?\"\\s*:\\s*([0-9]+\\.[0-9]+)[\\s\\S]{0,500}?slug\\\\?\"\\s*:\\s*\\\\?\""+escRe(slug)+"\\\\?\"","i");var m=html.match(pat);if(m)return{price:parseFloat(m[1]),strategy:"next-priceCalculation-slug"};var pat2=new RegExp("\"price\\\\?\"\\s*:\\s*([0-9]+\\.[0-9]+)[\\s\\S]{0,500}?slug\\\\?\"\\s*:\\s*\\\\?\""+escRe(slug)+"\\\\?\"","i");var m2=html.match(pat2);if(m2)return{price:parseFloat(m2[1]),strategy:"next-price-slug"};}return null;}async function tryOne(u){var r=await fetch(u,{credentials:"include"});if(!r.ok)throw new Error("HTTP "+r.status);var h=await r.text();var result=extractPrice(h,u);if(!result)throw new Error("no price extractable");var entry={available:true,price:result.price,url:u,strategy:result.strategy};if(result.packSize)entry.packSize=result.packSize;return entry;}async function w(){while(i<entries.length){var e=entries[i++];var n=e[0],urls=e[1];var ok=false,le="";for(var z=0;z<urls.length;z++){try{out[n]=await tryOne(urls[z]);ok=true;break;}catch(err){le=err.message+" ("+urls[z]+")";}}if(!ok)out[n]={available:false,error:"all candidates failed: "+le};}}await Promise.all([w(),w(),w(),w(),w(),w()]);var data={generatedAt:new Date().toISOString(),source:"HealthWarehouse",results:out};var blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="hw-prices.json";document.body.appendChild(a);a.click();a.remove();var hits=Object.values(out).filter(function(x){return x.available;}).length;alert("HW scrape v3: "+hits+"/"+entries.length+" prices captured.");}catch(e){alert("HW bookmarklet error: "+e.message);}})();void 0;'>Scrape HW</a>
+</p>
+
+<div class="note">
+<strong>Drag-to-bookmarks not working?</strong> Some Chrome flags block drag-as-bookmark from inline JavaScript URLs. Two workarounds:
+<ol>
+  <li><strong>Right-click an existing bookmark, choose "Add page"</strong>. Right-click the green button above and "Copy link address" to grab its URL, paste into the URL field, name it Scrape CPD or Scrape HW.</li>
+  <li><strong>Console paste route</strong>: open Chrome DevTools (<kbd>Cmd+Opt+I</kbd>) on the source site, click the Console tab. If Chrome blocks pasting, type literally <code>allow pasting</code> and press Enter. Then right-click the bookmarklet button above, "Copy link address", paste into the Console (the <code>javascript:</code> prefix is harmless), press Enter.</li>
+</ol>
+</div>
+
+<h2>Pre-flight checks</h2>
+
+<p>Before clicking each bookmarklet, confirm:</p>
+<ul>
+  <li>You're on a <strong>product page</strong> on the matching domain (URL contains a specific drug name, not just <code>/medications/</code> or <code>/categories/</code>).</li>
+  <li>Real prices/data are visible on the page (proves Cloudflare cleared and JS rendered).</li>
+  <li>You just <code>pbcopy</code>'d the matching <code>*-targets.json</code>.</li>
+  <li>If a 0/X result comes back, do <em>not</em> proceed to merge — diagnose first.</li>
+</ul>
+
+<h2>What each bookmarklet does</h2>
+
+<h3>Scrape CPD (v3)</h3>
+<ol>
+  <li>Validates pasted input is CPD-shape (string-valued targets). Auto-unwraps if you pasted the full file with a <code>generatedAt</code> wrapper.</li>
+  <li>For each <code>{drugName: productUrl}</code> pair, fetches the product page in same-origin context with credentials.</li>
+  <li>CPD's HTML now streams data inside <code>__next_f.push(...)</code> calls as escaped JSON. The v3 extractor:
+    <ul>
+      <li>Pulls the slug from the URL (e.g. <code>fluoxetine-20mg-capsule</code>).</li>
+      <li>Finds <code>priceCalculation</code> followed within ~500 chars by <code>slug:"&lt;that-slug&gt;"</code>.</li>
+      <li>Slug anchoring is critical: each product page contains prices for <em>all</em> strength variants (10mg, 20mg, 60mg, etc.). Naive matching grabs the first variant, not the canonical one.</li>
+    </ul>
+  </li>
+  <li>Concurrency 6 — 47 drugs finish in seconds.</li>
+</ol>
+
+<h3>Scrape HW (v3)</h3>
+<ol>
+  <li>Validates pasted input is HW-shape (array-valued candidate lists per drug).</li>
+  <li>For each <code>{drugName: [url1, url2, ...]}</code> pair, tries URLs in order until one succeeds.</li>
+  <li>For each successful response, tries three extraction strategies in order, recording which one matched:
+    <ol>
+      <li><strong>JSON-LD <code>offers[]</code></strong> — legacy HW format with pack-size <code>eligibleQuantity</code>; picks the offer closest to a 30-pill pack.</li>
+      <li><strong>Slug-anchored <code>priceCalculation</code></strong> — same as CPD v3, in case HW migrates to Next.js.</li>
+      <li><strong>Slug-anchored generic <code>price</code> field</strong> — broader fallback.</li>
+    </ol>
+  </li>
+  <li>Each successful entry includes a <code>strategy</code> field so you can tell at a glance which path worked.</li>
+</ol>
+
+<h2>Troubleshooting</h2>
+
+<table>
+  <tr><th>Symptom</th><th>Cause / fix</th></tr>
+  <tr><td>CPD: HTTP 403 on every drug</td><td>Cloudflare doesn't recognize your session. Visit a real product page first, click around to a second page, then re-run.</td></tr>
+  <tr><td>CPD: <code>no priceCalculation found</code> on every drug</td><td>CPD changed page structure again. Use the diagnostic below to save sample HTML, identify the new field name, update the regex in this file.</td></tr>
+  <tr><td>HW: HTTP 429 on every drug</td><td>Rate-limited (often after a cross-paste blast). Wait 15&ndash;30 minutes, then retry with the correct HW targets.</td></tr>
+  <tr><td>HW: <code>all candidates failed</code> with errors mentioning <code>(/)</code> as the URL</td><td>You pasted CPD targets (string values) into the HW prompt and the bookmarklet character-iterated them as bogus URLs. v3 detects this up-front; if you see this error, you're on an old bookmarklet — re-install v3.</td></tr>
+  <tr><td>Empty result file / no download triggered</td><td>Bookmarklet errored before download. The alert dialog has the message; usually a JSON paste typo or a CSP block.</td></tr>
+  <tr><td>Result count is suspiciously low (e.g., 47 entries when expecting 61)</td><td>Wrong targets pasted. Re-copy the matching <code>*-targets.json</code> and re-run.</td></tr>
+  <tr><td>Merge says <code>both retail sources returned zero prices</code></td><td>Merge refuses to overwrite good data with zero data. This is a guard, not a bug. Diagnose which source failed and re-run before re-merging.</td></tr>
+  <tr><td>Lost <code>data/prices.json</code> or <code>data/drug-skus.json</code></td><td>They're tracked in git. Restore: <code>git checkout HEAD -- data/prices.json data/drug-skus.json</code>. Then regenerate targets via Phase 1.</td></tr>
+</table>
+
+<h2>Diagnostic — when a site changes structure</h2>
+
+<p>If a future site change breaks v3, get a sample of the actual HTML the bookmarklet sees, then update the regex. With <code>allow pasting</code> enabled in the Console, paste this on a CPD or HW product page:</p>
+<pre>(async()=&gt;{
+  const url = location.href;
+  const r = await fetch(url, {credentials:"include"});
+  const h = await r.text();
+  const blob = new Blob([h], {type:"text/html"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "page-sample.html";
+  document.body.appendChild(a); a.click(); a.remove();
+  console.log("HTTP", r.status, "length", h.length,
+              "has priceCalculation:", h.includes("priceCalculation"));
+})();</pre>
+<p>Save the file to <code>data/page-sample.html</code> and grep for the visible price; the surrounding text shows the new field name. Update the regex in the bookmarklet href above accordingly.</p>
+
+</body>
+</html>
