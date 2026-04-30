@@ -1,0 +1,243 @@
+{
+  "$schema": "{drugName: [url1, url2, url3]} candidate-list pairs (top 3 sitemap matches per drug, in score order). Browser phase tries each until one returns product data — handles HW soft-404 catchall on retired SKUs.",
+  "generatedAt": "2026-04-30T06:11:29.023Z",
+  "targets": {
+    "Fluoxetine": [
+      "https://www.healthwarehouse.com/fluoxetine-20mg-capsules",
+      "https://www.healthwarehouse.com/wholesale-fluoxetine-20mg-capsules-100-count-bottle"
+    ],
+    "Sertraline": [
+      "https://www.healthwarehouse.com/sertraline-50mg-tablets-generic-zoloft",
+      "https://www.healthwarehouse.com/sertraline-50mg-tablets-greenstone"
+    ],
+    "Escitalopram": [
+      "https://www.healthwarehouse.com/escitalopram-oxalate-10-mg-tablets"
+    ],
+    "Paroxetine": [
+      "https://www.healthwarehouse.com/paroxetine-20mg-tablets",
+      "https://www.healthwarehouse.com/wholesale-paroxetine-20mg-tablets-30-count-bottle"
+    ],
+    "Citalopram": [
+      "https://www.healthwarehouse.com/citalopram-20mg-tablets",
+      "https://www.healthwarehouse.com/wholesale-citalopram-20mg-tablets-100-count-bottle",
+      "https://www.healthwarehouse.com/escitalopram-oxalate-20-mg-tablets"
+    ],
+    "Fluvoxamine": [
+      "https://www.healthwarehouse.com/fluvoxamine-150mg-tablets",
+      "https://www.healthwarehouse.com/fluvoxamine-50mg-tablets"
+    ],
+    "Vilazodone": [
+      "https://www.healthwarehouse.com/vilazodone-hcl-40mg-tablet"
+    ],
+    "Venlafaxine": [
+      "https://www.healthwarehouse.com/venlafaxine-xr-75mg-tablets",
+      "https://www.healthwarehouse.com/venlafaxine-er75mg-capsules"
+    ],
+    "Duloxetine": [
+      "https://www.healthwarehouse.com/duloxetine-30mg-capsules",
+      "https://www.healthwarehouse.com/duloxetine-30mg-enteric-coated-pellets-capsules",
+      "https://www.healthwarehouse.com/office-use-only-duloxetine-30mg-capsules-90ct-bottle"
+    ],
+    "Desvenlafaxine": [
+      "https://www.healthwarehouse.com/desvenlafaxine-er-50mg-tablets",
+      "https://www.healthwarehouse.com/desvenlafaxine-succinate-er-50mg-tablets-greenstone"
+    ],
+    "Bupropion": [
+      "https://www.healthwarehouse.com/bupropion-hcl-xl-150mg-tablets",
+      "https://www.healthwarehouse.com/bupropion-hcl-sr-150mg-tablets-generic-wellbutrin-sr",
+      "https://www.healthwarehouse.com/bupropion-hcl-sr-150-mg-tablets"
+    ],
+    "Mirtazapine": [
+      "https://www.healthwarehouse.com/mirtazapine-15mg-tablets-generic-remeron"
+    ],
+    "Trazodone": [
+      "https://www.healthwarehouse.com/trazodone-50mg-tablets",
+      "https://www.healthwarehouse.com/trazodone-150mg-tablets",
+      "https://www.healthwarehouse.com/wholesale-trazodone-50mg-tablets-100-count-bottle"
+    ],
+    "Amitriptyline": [
+      "https://www.healthwarehouse.com/perphenazine-amitriptyline-2-25mg-tablets",
+      "https://www.healthwarehouse.com/amitriptyline-25mg-tablets",
+      "https://www.healthwarehouse.com/amitriptyline-25mg-tablet"
+    ],
+    "Nortriptyline": [
+      "https://www.healthwarehouse.com/nortriptyline-hcl-25mg-capsules",
+      "https://www.healthwarehouse.com/nortriptyline-25mg-capsules"
+    ],
+    "Imipramine": [
+      "https://www.healthwarehouse.com/imipramine-hcl-25mg-tablets-generic-tofranil"
+    ],
+    "Doxepin": [
+      "https://www.healthwarehouse.com/doxepin-hcl-25mg-capsules",
+      "https://www.healthwarehouse.com/doxepin-25mg-capsules",
+      "https://www.healthwarehouse.com/doxepin-25mg-capsules-100ct-bottle-office-use-only"
+    ],
+    "Phenelzine": [
+      "https://www.healthwarehouse.com/phenelzine-15mg-tablets-greenstone",
+      "https://www.healthwarehouse.com/phenelzine-sulfate-15mg-tablets"
+    ],
+    "Tranylcypromine": [
+      "https://www.healthwarehouse.com/tranylcypromine-sulfate-10mg-tablets"
+    ],
+    "Haloperidol": [
+      "https://www.healthwarehouse.com/haloperidol-5mg-tablets",
+      "https://www.healthwarehouse.com/haloperidol-05mg-tablets",
+      "https://www.healthwarehouse.com/wholesale-haloperidol-0-5mg-tablets-100-count-bottle"
+    ],
+    "Chlorpromazine": [
+      "https://www.healthwarehouse.com/chlorpromazine-hcl-50mg-tablets",
+      "https://www.healthwarehouse.com/chlorpromazine-50mg-tablets"
+    ],
+    "Fluphenazine": [
+      "https://www.healthwarehouse.com/fluphenazine-5mg-tablets",
+      "https://www.healthwarehouse.com/fluphenazine-2-5mg-tablets"
+    ],
+    "Trifluoperazine": [
+      "https://www.healthwarehouse.com/trifluoperazine-5mg-tablets"
+    ],
+    "Perphenazine": [
+      "https://www.healthwarehouse.com/perphenazine-8mg-tablets"
+    ],
+    "Thiothixene": [
+      "https://www.healthwarehouse.com/thiothixene-5mg-capsules"
+    ],
+    "Thioridazine": [
+      "https://www.healthwarehouse.com/thioridazine-25mg-tablets"
+    ],
+    "Loxapine": [
+      "https://www.healthwarehouse.com/loxapine-10mg-capsules"
+    ],
+    "Risperidone": [
+      "https://www.healthwarehouse.com/risperidone-2mg-tablets-generic-risperdal",
+      "https://www.healthwarehouse.com/risperidone-0-25mg-tablets-generic-risperdal"
+    ],
+    "Olanzapine": [
+      "https://www.healthwarehouse.com/olanzapine-10mg-tablets"
+    ],
+    "Quetiapine": [
+      "https://www.healthwarehouse.com/quetiapine-fumarate-100mg-tablets",
+      "https://www.healthwarehouse.com/quetiapine-fumarate-100-mg-tablets"
+    ],
+    "Aripiprazole": [
+      "https://www.healthwarehouse.com/aripiprazole-10mg-tablets-1",
+      "https://www.healthwarehouse.com/aripiprazole-10mg-tablets",
+      "https://www.healthwarehouse.com/aripiprazole-10mg-tablets-2"
+    ],
+    "Ziprasidone": [
+      "https://www.healthwarehouse.com/ziprasidone-40mg-capsules-greenstone",
+      "https://www.healthwarehouse.com/ziprasidone-40-mg-capsules"
+    ],
+    "Lurasidone": [
+      "https://www.healthwarehouse.com/lurasidone-40mg-tablet"
+    ],
+    "Asenapine": [
+      "https://www.healthwarehouse.com/asenapine-2-5mg-sublingual-tablets-60ct-blister-pack",
+      "https://www.healthwarehouse.com/asenapine-saphris-5-mg-sublingual-tablets-box-of-60-greenstone"
+    ],
+    "Paliperidone": [
+      "https://www.healthwarehouse.com/paliperidone-er-6mg-tablets"
+    ],
+    "Lithium": [
+      "https://www.healthwarehouse.com/lithium-carbonate-300mg-capsules",
+      "https://www.healthwarehouse.com/wholesale-lithium-carbonate-300mg-capsules-100-count-bottle"
+    ],
+    "Lamotrigine": [
+      "https://www.healthwarehouse.com/lamotrigine-100mg-tablets-1",
+      "https://www.healthwarehouse.com/lamotrigine-100mg-tablets",
+      "https://www.healthwarehouse.com/lamotrigine-er-100mg-tablets"
+    ],
+    "Carbamazepine": [
+      "https://www.healthwarehouse.com/carbamazepine-200mg-tablets",
+      "https://www.healthwarehouse.com/carbamazepine-xr-200mg-tablets",
+      "https://www.healthwarehouse.com/carbamazepine-er-12hr-200mg-tablets"
+    ],
+    "Oxcarbazepine": [
+      "https://www.healthwarehouse.com/oxcarbazepine-300mg-tablets"
+    ],
+    "Topiramate": [
+      "https://www.healthwarehouse.com/topiramate-100mg-tablets-generic-topamax"
+    ],
+    "Diazepam": [
+      "https://www.healthwarehouse.com/valium-diazepam-5mg-tablets",
+      "https://www.healthwarehouse.com/diazepam-generic-valium-5mg-tablets"
+    ],
+    "Lorazepam": [
+      "https://www.healthwarehouse.com/lorazepam-generic-ativan-1mg-tablets"
+    ],
+    "Oxazepam": [
+      "https://www.healthwarehouse.com/oxazepam-generic-serax-15-mg-capsules"
+    ],
+    "Temazepam": [
+      "https://www.healthwarehouse.com/temazepam-generic-restoril-15mg-capsules"
+    ],
+    "Estazolam": [
+      "https://www.healthwarehouse.com/estazolam-generic-prosom-1mg-tablets"
+    ],
+    "Flurazepam": [
+      "https://www.healthwarehouse.com/flurazepam-generic-dalmane-15mg-capsules"
+    ],
+    "Chlordiazepoxide": [
+      "https://www.healthwarehouse.com/chlordiazepoxide-generic-librium-10mg-capsules"
+    ],
+    "Buspirone": [
+      "https://www.healthwarehouse.com/buspirone-hcl-10mg-tablets",
+      "https://www.healthwarehouse.com/buspirone-10mg-tablets",
+      "https://www.healthwarehouse.com/wholesale-buspirone-10mg-tablets-100-count-bottle"
+    ],
+    "Hydroxyzine": [
+      "https://www.healthwarehouse.com/hydroxyzine-25mg-tablets",
+      "https://www.healthwarehouse.com/hydroxyzine-hcl-25mg-tablets-100ct-bottle-office-use-only"
+    ],
+    "Diphenhydramine": [
+      "https://www.healthwarehouse.com/diphenhydramine-25mg-capsules-1000ct-sandoz",
+      "https://www.healthwarehouse.com/diphenhydramine-25mg-capsules",
+      "https://www.healthwarehouse.com/diphenhydramine-25mg-capsules-2"
+    ],
+    "Zolpidem": [
+      "https://www.healthwarehouse.com/ambien-zolpidem-tartrate-10mg-tablets",
+      "https://www.healthwarehouse.com/zolpidem-tartrate-generic-ambien-10mg-tablets"
+    ],
+    "Eszopiclone": [
+      "https://www.healthwarehouse.com/eszopiclone-3mg-tablets"
+    ],
+    "Ramelteon": [
+      "https://www.healthwarehouse.com/ramelteon-8mg-tablets"
+    ],
+    "Suvorexant": [
+      "https://www.healthwarehouse.com/belsomra-suvorexant-10mg-tablets-30ct-pack"
+    ],
+    "Modafinil": [
+      "https://www.healthwarehouse.com/modafinil-generic-provigil-200mg-tablets",
+      "https://www.healthwarehouse.com/provigil-modafinil-200mg-tablets",
+      "https://www.healthwarehouse.com/armodafinil-generic-nuvigil-200mg-tablets"
+    ],
+    "Armodafinil": [
+      "https://www.healthwarehouse.com/armodafinil-generic-nuvigil-150mg-tablets",
+      "https://www.healthwarehouse.com/nuvigil-armodafinil-150mg-tablets-30-count-bottle"
+    ],
+    "Guanfacine": [
+      "https://www.healthwarehouse.com/guanfacine-1mg-tablets-1",
+      "https://www.healthwarehouse.com/guanfacine-1mg-tablets",
+      "https://www.healthwarehouse.com/wholesale-guanfacine-1mg-tablets-100-count-bottle"
+    ],
+    "Propranolol": [
+      "https://www.healthwarehouse.com/propranolol-20mg-tablets-1",
+      "https://www.healthwarehouse.com/propranolol-20mg-tablets-2",
+      "https://www.healthwarehouse.com/propranolol-20mg-tablets"
+    ],
+    "Trihexyphenidyl": [
+      "https://www.healthwarehouse.com/trihexyphenidyl-2mg-tablets",
+      "https://www.healthwarehouse.com/wholesale-trihexyphenidyl-2mg-tablets-100-count-bottle"
+    ],
+    "Gabapentin": [
+      "https://www.healthwarehouse.com/gabapentin-generic-neurontin-300mg-capsules",
+      "https://www.healthwarehouse.com/gabapentin-300mg-capsules-generic-neurontin",
+      "https://www.healthwarehouse.com/neurontin-gabapentin-300mg-capsules"
+    ],
+    "Pregabalin": [
+      "https://www.healthwarehouse.com/pregabalin-generic-lyrica-75mg-capsules",
+      "https://www.healthwarehouse.com/lyrica-pregabalin-75mg-capsules",
+      "https://www.healthwarehouse.com/pregabalin-generic-lyrica-75mg-capsules-greenstone"
+    ]
+  }
+}
