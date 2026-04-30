@@ -16,7 +16,8 @@ psychopharm/
 │   ├── netlify.toml    # Build/publish config
 │   └── static/         # ← root files MUST be mirrored here after edits
 │       ├── index.html, js/app.js, css/styles.css, ...
-├── blog/               # 42+ standalone HTML blog posts (each has own sidebar nav)
+├── blog/               # 80+ standalone HTML blog posts (each fetches blog/sidebar.html)
+├── build-blog-index.py # Rebuilds js/blog-index.json (search bar data) — run after every new post
 ├── ref/                # Reference PDFs, source documents, research papers
 │   ├── scales/         # Clinical rating scale PDFs (PANSS, BFCRS, C-SSRS, CDR, SLUMS, etc.)
 │   └── literature/     # Research papers, textbook excerpts, guidelines
@@ -113,6 +114,29 @@ ToolUtils.copyWithButton(text, btn);  // shows "Copied!" for 2s
 - Blog sidebar link format: `<li><a href="../index.html#section-id" class="nav-link nav-sub-link">Label</a></li>`
 - Blog links within sidebar: `<li><a href="filename.html" class="nav-link nav-sub-link">Title</a></li>`
 
+### Adding a New Blog Post — REQUIRED checklist
+Every new chapter must touch all six places below, or it will be invisible somewhere on the site (sidebar missing, deploy missing, or search bar can't find it). This is the canonical sequence:
+
+1. **Create the standalone post** at `blog/<slug>.html` using an existing chapter (e.g., `blog/healthcare-legislation.html`) as the structural template — same `<head>`, action bar, `<header class="ba-header">`, `<div class="ba-body">`, related links, footer, and bottom scripts.
+2. **Update `blog/sidebar.html`** — add the new entry under the appropriate divider. This sidebar is shared across all chapters; one edit updates them all.
+3. **Update root `index.html`** — add the same entry to the in-page sidebar (use `/blog/<slug>/` URL form, not `.html`). Bump the article-count number in the three places it appears (`section-sub`, `Browse All N Articles`, and the `All Posts (N articles)` button).
+4. **Mirror to `hugo-site/static/index.html`** — `cp index.html hugo-site/static/index.html`. The Netlify build serves from there, not from the root.
+5. **Add the Hugo content file** at `hugo-site/content/blog/<slug>.html`. Format: YAML front matter (`title`, `date`, `description`, `category`, `subtitle`, `readTime`, `clinicalSummary`, `related`, `draft: false`) between `---` delimiters, followed by the body content (everything inside `<div class="ba-body">` from step 1, without the wrapper). Title must NOT include `| PsychoPharmRef` here. Match the style of `hugo-site/content/blog/healthcare-legislation.html`.
+6. **Update Hugo template sidebar** at `hugo-site/layouts/partials/sidebar.html` — same divider/entry as step 2, but using `{{ "/blog/<slug>" | relURL }}` for the href.
+7. **Rebuild the search index** — `python3 build-blog-index.py` (writes `js/blog-index.json`), then `cp js/blog-index.json hugo-site/static/js/blog-index.json`. Skipping this step is the single most common cause of "the search bar can't find my new post." The script auto-extracts title, description, top 80 keywords, and a snippet from the new HTML.
+8. **Validate HTML** — run the Python HTMLParser tag checker on the new file before committing.
+9. **Commit everything in one commit**, then push:
+   ```bash
+   git add blog/<slug>.html blog/sidebar.html index.html \
+           hugo-site/static/index.html hugo-site/static/js/blog-index.json \
+           hugo-site/layouts/partials/sidebar.html \
+           hugo-site/content/blog/<slug>.html js/blog-index.json
+   git -c user.name="Jerad Shoemaker" -c user.email="jshoemakerhwc@gmail.com" commit -m "Add <Title> chapter"
+   git push
+   ```
+
+Do NOT run `migrate-blogs.py` — it produces `.md` files that duplicate the `.html` content files Hugo actually deploys, and they clutter the working tree.
+
 ### Sidebar Navigation (index.html)
 - Psychopharmacology group includes: Drug Database, P450 Interactions, Receptor Binding, Receptor Glossary, PK Curves, Med Comparison
 - Clinical Tools group includes: QT Risk Tool, Refill Calendar, Taper/Start, CDR Staging, ASD Severity, Suicide Risk, SLUMS Exam, PANSS, Catatonia (BFCRS), CIDI Bipolar Screen, PCL-5 (PTSD), YMRS (Mania), Y-BOCS (OCD), AIMS (Dyskinesia), DSM-5-TR SUD
@@ -133,6 +157,16 @@ Commit both copies in the same commit (or as a follow-up `Sync ... to Hugo sourc
 
 Netlify config: `netlify.toml` at repo root sets `base = "hugo-site"`, `command = "hugo --minify"`, `publish = "hugo-site/public"`.
 
+### Search index rebuild (REQUIRED for new blog posts)
+The unified search bar at the top of every page reads from `js/blog-index.json`. This file is **not** generated automatically — it must be rebuilt whenever a blog post is added or its title/content meaningfully changes. Symptom of forgetting this: the article works but typing its title into the search bar returns nothing.
+
+```bash
+python3 build-blog-index.py                              # writes js/blog-index.json
+cp js/blog-index.json hugo-site/static/js/blog-index.json # mirror for deploy
+```
+
+The script reads every `blog/*.html`, strips tags, extracts the top 80 most-frequent meaningful words as keywords, and saves title/description/keywords/snippet for each post. It runs in seconds. Always commit both `js/blog-index.json` and the `hugo-site/static/` mirror together.
+
 ### Cache-bust version string (CRITICAL)
 `index.html` loads JS/CSS with `?v=YYYYMMDDx` query strings. **Every time you edit `js/app.js` or `css/styles.css`, bump the corresponding version string** — otherwise browsers AND the Netlify CDN will keep serving the cached old file even though your push succeeded.
 
@@ -151,6 +185,7 @@ git -c user.name="Jerad Shoemaker" -c user.email="jshoemakerhwc@gmail.com" commi
 - Domain scoring in tools: each question maps to ONE primary domain to avoid double-counting
 - Binary items in rating scales (e.g., BFCRS items 12, 17-21) are scored 0 or 3 only
 - Validate HTML after every insertion using the Python HTMLParser tag checker
-- Blog sidebar is shared (`blog/sidebar.html`) — edit once, not 77 files
+- Blog sidebar is shared (`blog/sidebar.html`) — edit once, not 80 files
+- After ANY new blog post: run `python3 build-blog-index.py` and mirror `js/blog-index.json` → `hugo-site/static/js/blog-index.json`. Skipping this is the #1 reason a new post "isn't searchable."
 - Use Python scripts for batch modifications across blog files when needed
 - Large tool sections (~1000+ lines) should be built via Agent tool, then inserted via Python
