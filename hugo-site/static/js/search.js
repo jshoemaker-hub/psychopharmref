@@ -6,8 +6,8 @@
     // ── Blog content index (loaded from JSON) ────────────────────────────
     var blogContentIndex = null;  // will be an array once loaded
 
-    // Load the pre-built blog content index
-    fetch('js/blog-index.json')
+    // Load the pre-built blog content index (cache-busted so newly-added posts appear immediately)
+    fetch('js/blog-index.json?v=20260430')
       .then(function(r) { return r.ok ? r.json() : []; })
       .then(function(data) { blogContentIndex = data; })
       .catch(function() { blogContentIndex = []; });
@@ -59,6 +59,10 @@
       { title: 'Epworth Sleepiness', section: 'ess-tool', cat: 'Rating Scale' },
       { title: 'Burnout (BAT)', section: 'bat-tool', cat: 'Rating Scale' },
       { title: 'Autism Screening (AQ)', section: 'aq-tool', cat: 'Rating Scale' },
+      { title: 'ASD Severity (DSM-5-TR)', section: 'asd-tool', cat: 'Rating Scale' },
+      { title: 'CIWA-Ar (Alcohol Withdrawal)', section: 'ciwa-tool', cat: 'Rating Scale' },
+      { title: 'COWS (Opiate Withdrawal)', section: 'cows-tool', cat: 'Rating Scale' },
+      { title: 'DSM-5-TR Substance Use Disorder', section: 'sud-tool', cat: 'Rating Scale' },
       { title: 'Printable Clinical Forms', section: 'print-forms', cat: 'Clinical Tools' },
     ];
 
