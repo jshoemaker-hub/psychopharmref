@@ -52,6 +52,52 @@
 .ba-share-menu.ba-open { display: block; }
 .ba-share-menu a, .ba-share-menu button { display: flex; align-items: center; gap: 8px; width: 100%; padding: 8px 14px; font-size: 12.5px; font-weight: 500; color: var(--text, #231e14); text-decoration: none; border: none; background: none; cursor: pointer; text-align: left; }
 .ba-share-menu a:hover, .ba-share-menu button:hover { background: var(--bg2, #ece6db); }
+
+/* Legislation/explainer callout boxes (used by healthcare-legislation, etc.) */
+.leg-box { background: var(--bg2); border-left: 4px solid var(--accent); padding: 1rem; margin: 1rem 0; border-radius: 4px; }
+.leg-box h4 { margin: 0 0 0.5rem 0; color: var(--accent); font-size: 1rem; }
+.leg-box p { margin: 0.5rem 0; font-size: 0.95rem; line-height: 1.6; }
+.leg-box strong { color: var(--text); font-weight: 700; }
+.leg-outcome { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1rem 0; }
+.leg-outcome > div { padding: 1rem; background: #f9f7f4; border: 1px solid var(--border); border-radius: 4px; }
+.leg-outcome h5 { margin: 0 0 0.75rem 0; color: var(--text); font-size: 0.95rem; font-weight: 700; }
+.leg-outcome p { margin: 0.5rem 0; font-size: 0.9rem; line-height: 1.5; }
+.leg-outcome li { margin: 0.4rem 0 0.4rem 1.25rem; font-size: 0.9rem; line-height: 1.5; }
+@media (max-width: 768px) { .leg-outcome { grid-template-columns: 1fr; } }
+
+/* Disability-paperwork callout boxes and comparison table (dp-) */
+.dp-box { background: var(--bg2); border-left: 4px solid var(--accent); padding: 1rem 1.1rem; margin: 1rem 0; border-radius: 4px; }
+.dp-box h4 { margin: 0 0 0.5rem 0; color: var(--accent); font-size: 1rem; }
+.dp-box p { margin: 0.5rem 0; font-size: 0.95rem; line-height: 1.6; }
+.dp-box strong { color: var(--text); font-weight: 700; }
+.dp-box ul { margin: 0.5rem 0 0.5rem 1.25rem; }
+.dp-box li { font-size: 0.95rem; line-height: 1.55; margin: 0.25rem 0; }
+.dp-warning { background: #fdf6e3; border-left: 4px solid var(--accent2, #8b6914); padding: 1rem 1.1rem; margin: 1rem 0; border-radius: 4px; }
+.dp-warning h4 { margin: 0 0 0.5rem 0; color: var(--accent2, #8b6914); font-size: 1rem; }
+.dp-warning p, .dp-warning li { font-size: 0.95rem; line-height: 1.6; }
+.dp-warning ul { margin: 0.5rem 0 0.25rem 1.25rem; }
+.dp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1rem 0; }
+.dp-grid > div { padding: 1rem; background: #f9f7f4; border: 1px solid var(--border); border-radius: 4px; }
+.dp-grid h5 { margin: 0 0 0.6rem 0; color: var(--text); font-size: 0.95rem; font-weight: 700; }
+.dp-grid p { margin: 0.4rem 0; font-size: 0.9rem; line-height: 1.55; }
+.dp-grid li { margin: 0.35rem 0 0.35rem 1.1rem; font-size: 0.9rem; line-height: 1.5; }
+.dp-grid .dp-do h5 { color: var(--accent); }
+.dp-grid .dp-dont h5 { color: #a14b3a; }
+.dp-table-wrap { width: 100%; max-width: 100%; overflow-x: auto; margin: 1rem 0; }
+table.dp-cmp { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 0.9rem; line-height: 1.5; }
+table.dp-cmp col.dp-c1 { width: 22%; }
+table.dp-cmp col.dp-c2 { width: 39%; }
+table.dp-cmp col.dp-c3 { width: 39%; }
+table.dp-cmp th, table.dp-cmp td { border: 1px solid var(--border); padding: 0.55rem 0.7rem; vertical-align: top; text-align: left; word-wrap: break-word; overflow-wrap: anywhere; hyphens: auto; }
+table.dp-cmp thead th { background: var(--bg2); color: var(--text); font-weight: 700; }
+table.dp-cmp tbody tr:nth-child(odd) { background: #f9f7f4; }
+table.dp-cmp td:first-child { font-weight: 600; }
+@media (max-width: 768px) {
+  .dp-grid { grid-template-columns: 1fr; }
+  table.dp-cmp { font-size: 0.82rem; table-layout: auto; min-width: 560px; }
+  table.dp-cmp col.dp-c1, table.dp-cmp col.dp-c2, table.dp-cmp col.dp-c3 { width: auto; }
+  table.dp-cmp th, table.dp-cmp td { padding: 0.45rem 0.55rem; }
+}
 </style>
 {{ end }}
 

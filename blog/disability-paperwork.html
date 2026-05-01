@@ -113,16 +113,21 @@
 .dp-grid .dp-do h5 { color: var(--accent); }
 .dp-grid .dp-dont h5 { color: #a14b3a; }
 
-.dp-table-wrap { overflow-x: auto; margin: 1rem 0; }
-table.dp-cmp { width: 100%; border-collapse: collapse; font-size: 0.92rem; line-height: 1.5; }
-table.dp-cmp th, table.dp-cmp td { border: 1px solid var(--border); padding: 0.55rem 0.7rem; vertical-align: top; text-align: left; }
+.dp-table-wrap { width: 100%; max-width: 100%; overflow-x: auto; margin: 1rem 0; }
+table.dp-cmp { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 0.9rem; line-height: 1.5; }
+table.dp-cmp col.dp-c1 { width: 22%; }
+table.dp-cmp col.dp-c2 { width: 39%; }
+table.dp-cmp col.dp-c3 { width: 39%; }
+table.dp-cmp th, table.dp-cmp td { border: 1px solid var(--border); padding: 0.55rem 0.7rem; vertical-align: top; text-align: left; word-wrap: break-word; overflow-wrap: anywhere; hyphens: auto; }
 table.dp-cmp thead th { background: var(--bg2); color: var(--text); font-weight: 700; }
 table.dp-cmp tbody tr:nth-child(odd) { background: #f9f7f4; }
-table.dp-cmp td:first-child { font-weight: 600; width: 22%; }
+table.dp-cmp td:first-child { font-weight: 600; }
 
 @media (max-width: 768px) {
   .dp-grid { grid-template-columns: 1fr; }
-  table.dp-cmp { font-size: 0.85rem; }
+  table.dp-cmp { font-size: 0.82rem; table-layout: auto; min-width: 560px; }
+  table.dp-cmp col.dp-c1, table.dp-cmp col.dp-c2, table.dp-cmp col.dp-c3 { width: auto; }
+  table.dp-cmp th, table.dp-cmp td { padding: 0.45rem 0.55rem; }
 }
 </style>
 </head>
@@ -391,6 +396,11 @@ table.dp-cmp td:first-child { font-weight: 600; width: 22%; }
 
       <div class="dp-table-wrap">
         <table class="dp-cmp">
+          <colgroup>
+            <col class="dp-c1">
+            <col class="dp-c2">
+            <col class="dp-c3">
+          </colgroup>
           <thead>
             <tr>
               <th>Aspect</th>
