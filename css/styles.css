@@ -4489,3 +4489,251 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
   .rc-result,
   .rc-stats-grid { page-break-inside: avoid; }
 }
+
+/* ─────────────────────────────────────────────────────────────────────
+   Psychiatry Glossary — search-bar definition preview + page UI
+   gl- prefix per project convention
+   ───────────────────────────────────────────────────────────────────── */
+
+/* Search dropdown — Glossary type pill + inline definition preview row */
+.us-item-type--gloss { background: rgba(139, 105, 20, 0.14); color: var(--accent2); }
+.us-item--glossary { padding-bottom: 10px; }
+.us-item-def {
+  display: block;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--text);
+  margin-top: 4px;
+  opacity: 0.9;
+}
+
+/* Page controls */
+.gl-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 14px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.gl-search {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+  color: var(--text);
+}
+.gl-search:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(74,124,53,0.18);
+}
+
+/* Category filter chips */
+.gl-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.gl-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.gl-chip:hover { border-color: var(--accent); }
+.gl-chip.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.gl-chip-count {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.08);
+}
+.gl-chip.active .gl-chip-count { background: rgba(255,255,255,0.22); }
+
+/* A-Z bar */
+.gl-az {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding-top: 4px;
+  border-top: 1px dashed var(--border);
+}
+.gl-az-btn {
+  min-width: 26px;
+  padding: 4px 6px;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.gl-az-btn:hover:not(.disabled) { background: rgba(74,124,53,0.10); }
+.gl-az-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+.gl-az-btn.disabled {
+  color: #bbb;
+  cursor: default;
+  opacity: 0.5;
+}
+
+.gl-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.gl-clear {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.gl-clear:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Letter group headings */
+.gl-letter-group { margin-bottom: 24px; }
+.gl-letter-heading {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--accent);
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 4px;
+  margin: 16px 0 12px;
+}
+
+/* Card grid */
+.gl-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.gl-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  scroll-margin-top: 80px;
+  transition: box-shadow 0.18s, border-color 0.18s, transform 0.18s;
+}
+.gl-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.gl-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.gl-term {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.3;
+}
+.gl-cat-pill {
+  flex-shrink: 0;
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(139, 105, 20, 0.12);
+  color: var(--accent2);
+  white-space: nowrap;
+}
+.gl-aliases {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.gl-aliases em { font-style: italic; }
+
+.gl-def {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+  margin: 6px 0 8px;
+}
+
+.gl-see-also {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  border-top: 1px solid #f0ece4;
+  padding-top: 6px;
+  margin-top: 6px;
+}
+.gl-see-label { font-style: italic; margin-right: 4px; }
+.gl-xref {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent);
+}
+.gl-xref:hover { background: rgba(74,124,53,0.10); }
+.gl-xref-plain { color: var(--text-muted); }
+
+.gl-link-row {
+  margin-top: 4px;
+  font-size: 12px;
+}
+.gl-link {
+  color: var(--accent2);
+  text-decoration: none;
+  font-weight: 600;
+}
+.gl-link:hover { text-decoration: underline; }
+
+.gl-empty {
+  text-align: center;
+  padding: 36px 12px;
+  font-size: 13px;
+  color: var(--text-muted);
+  background: var(--bg2);
+  border-radius: 8px;
+}
+
+/* Flash effect when scrolling to a term from search/cross-link */
+@keyframes glFlash {
+  0%   { box-shadow: 0 0 0 3px rgba(74,124,53,0.55); border-color: var(--accent); background: rgba(74,124,53,0.06); }
+  100% { box-shadow: 0 0 0 0 rgba(74,124,53,0);      border-color: var(--border);  background: #fff; }
+}
+.gl-card.gl-flash { animation: glFlash 2.4s ease-out; }
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .gl-cards { grid-template-columns: 1fr; }
+  .gl-letter-heading { font-size: 22px; }
+  .gl-card-head { flex-direction: column; }
+  .gl-cat-pill { align-self: flex-start; }
+}

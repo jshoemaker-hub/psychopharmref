@@ -245,6 +245,7 @@ const SECTION_GROUP = {
   'drug-table': 'psychopharm', 'p450': 'psychopharm',
   'receptor-binding': 'psychopharm', 'glossary': 'psychopharm', 'pk-curves': 'psychopharm',
   'price-compare': 'psychopharm',
+  'psychiatry-glossary': 'glossary',
   'qt-risk': 'tools', 'refill-calendar': 'tools', 'med-compare': 'tools', 'med-taper': 'tools',
   'cdr-tool': 'tools', 'slums-tool': 'tools', 'asd-tool': 'tools', 'aq-tool': 'tools',
   'adl-tool': 'tools', 'asrs-tool': 'tools', 'cidi-tool': 'tools', 'ymrs-tool': 'tools',

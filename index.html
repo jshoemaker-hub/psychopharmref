@@ -38,7 +38,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 
-  <link rel="stylesheet" href="css/styles.css?v=20260425b">
+  <link rel="stylesheet" href="css/styles.css?v=20260501a">
   <link rel="canonical" href="https://psychopharmref.com/">
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
@@ -109,6 +109,31 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="pk-curves">PK Curves</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="med-compare">Med Comparison</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="price-compare">Price Comparison</a></li>
+        </ul>
+      </li>
+
+      <!-- Glossary -->
+      <li class="nav-group" data-group="glossary">
+        <button class="nav-parent-btn">
+          <span class="nav-parent-label">Glossary</span>
+          <span class="nav-caret">&#9658;</span>
+        </button>
+        <ul class="nav-sub">
+          <li><a href="#" class="nav-link nav-sub-link" data-section="psychiatry-glossary">All Terms</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="psychiatry-glossary" data-glossary-cat="Phenomenology">Phenomenology</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="psychiatry-glossary" data-glossary-cat="Mood &amp; Affect">Mood &amp; Affect</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="psychiatry-glossary" data-glossary-cat="Psychosis">Psychosis</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="psychiatry-glossary" data-glossary-cat="Catatonia &amp; Movement">Catatonia &amp; Movement</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="psychiatry-glossary" data-glossary-cat="Defense Mechanisms">Defense Mechanisms</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="psychiatry-glossary" data-glossary-cat="Eponyms &amp; Syndromes">Eponyms &amp; Syndromes</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="psychiatry-glossary" data-glossary-cat="Diagnoses (DSM-5-TR)">Diagnoses (DSM-5-TR)</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="psychiatry-glossary" data-glossary-cat="Neuroanatomy">Neuroanatomy</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="psychiatry-glossary" data-glossary-cat="Neurochemistry">Neurochemistry</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="psychiatry-glossary" data-glossary-cat="Pharmacology">Pharmacology</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="psychiatry-glossary" data-glossary-cat="Cognition &amp; Dementia">Cognition &amp; Dementia</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="psychiatry-glossary" data-glossary-cat="Sleep">Sleep</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="psychiatry-glossary" data-glossary-cat="Suicide &amp; Self-Injury">Suicide &amp; Self-Injury</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="psychiatry-glossary" data-glossary-cat="Pediatric &amp; Developmental">Pediatric &amp; Developmental</a></li>
         </ul>
       </li>
 
@@ -378,6 +403,17 @@
             <button class="btn-sub" onclick="switchSection('p450')">P450 Interactions</button>
             <button class="btn-sub" onclick="switchSection('receptor-binding')">Receptor Binding</button>
             <button class="btn-sub" onclick="switchSection('glossary')">Receptor Glossary</button>
+          </div>
+        </div>
+        <div class="info-card info-card--topic">
+          <div class="ic-icon">&#128214;</div>
+          <h3>Glossary</h3>
+          <p>Psychiatry-specific language with concise definitions, cross-links, and tool/chapter references. Search the bar above for instant inline previews.</p>
+          <div class="ic-sub-links">
+            <button class="btn-sub" onclick="switchSection('psychiatry-glossary')">All Terms</button>
+            <button class="btn-sub" onclick="switchSection('psychiatry-glossary');window.glossarySetCategory&amp;&amp;window.glossarySetCategory('Phenomenology')">Phenomenology</button>
+            <button class="btn-sub" onclick="switchSection('psychiatry-glossary');window.glossarySetCategory&amp;&amp;window.glossarySetCategory('Eponyms &amp; Syndromes')">Eponyms</button>
+            <button class="btn-sub" onclick="switchSection('psychiatry-glossary');window.glossarySetCategory&amp;&amp;window.glossarySetCategory('Defense Mechanisms')">Defenses</button>
           </div>
         </div>
         <div class="info-card info-card--topic">
@@ -687,6 +723,27 @@
       </div>
 
       <div id="glossary-grid"></div>
+    </section>
+
+    <!-- ── Psychiatry Glossary ────────────────────────────────────────────── -->
+    <section id="psychiatry-glossary" class="section">
+      <div class="section-header">
+        <h2>Psychiatry Glossary</h2>
+        <p class="section-sub">A working clinical dictionary of psychiatry-specific language &mdash; phenomenology, diagnoses, defense mechanisms, eponyms, scales, and neuroanatomy. Search above for instant definition previews.</p>
+      </div>
+
+      <div class="gl-controls">
+        <input type="text" id="gl-search" class="gl-search" placeholder="Filter terms or definitions..." autocomplete="off">
+        <div class="gl-filter-row" id="gl-filter-row" role="tablist" aria-label="Filter by category"></div>
+        <div class="gl-az" id="gl-az" aria-label="Jump to letter"></div>
+        <div class="gl-meta">
+          <span id="gl-count">0 terms</span>
+          <button type="button" class="gl-clear" id="gl-clear">Clear filters</button>
+        </div>
+      </div>
+
+      <div class="gl-grid" id="gl-grid" aria-live="polite"></div>
+      <div class="gl-empty" id="gl-empty" hidden>No terms match the current filter.</div>
     </section>
 
     <section id="pk-curves" class="section">
@@ -10846,7 +10903,9 @@
   </script>
 
   <script defer src="js/data.js?v=20260324"></script>
-  <script defer src="js/app.js?v=20260428a"></script>
-  <script defer src="js/search.js?v=20260430b"></script>
+  <script defer src="js/app.js?v=20260501a"></script>
+  <script defer src="js/glossary-data.js?v=20260501a"></script>
+  <script defer src="js/glossary-page.js?v=20260501a"></script>
+  <script defer src="js/search.js?v=20260501a"></script>
 </body>
 </html>

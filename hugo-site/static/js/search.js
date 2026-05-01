@@ -161,6 +161,24 @@
         totalMatches += toolMatches.length;
       }
 
+      // 4. Search glossary (inline definition preview)
+      if (typeof window !== 'undefined' && window.GLOSSARY_TERMS) {
+        var glossMatches = searchGlossary(terms, 6);
+        if (glossMatches.length) {
+          html += '<div class="us-group-label">Glossary</div>';
+          glossMatches.forEach(function(g) {
+            var slug = g.term.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+            html += '<div class="us-item us-item--glossary" tabindex="0" onclick="window.glossaryScrollToTerm &amp;&amp; window.glossaryScrollToTerm(\'' + g.term.replace(/\\/g,'\\\\').replace(/\'/g,"\\'") + '\');document.getElementById(\'us-results\').classList.remove(\'open\');">' +
+              '<span class="us-item-type us-item-type--gloss">Term</span>' +
+              '<span class="us-item-title">' + hl(g.term, terms) + '</span>' +
+              '<span class="us-item-sub">' + escHtml(g.category) + '</span>' +
+              '<span class="us-item-def">' + hl(escHtml(truncate(g.def, 220)), terms) + '</span>' +
+              '</div>';
+          });
+          totalMatches += glossMatches.length;
+        }
+      }
+
       if (totalMatches === 0) {
         html = '<div class="us-empty">No results for &ldquo;' + escHtml(q) + '&rdquo;</div>';
       }
@@ -252,6 +270,50 @@
       // Sort by score descending
       scored.sort(function(a, b) { return b.score - a.score; });
       return scored.slice(0, limit);
+    }
+
+    /**
+     * Search glossary terms by term, aliases, then definition.
+     * Returns top results sorted: term-prefix matches > term-substring > alias > def.
+     */
+    function searchGlossary(terms, limit) {
+      var data = window.GLOSSARY_TERMS || [];
+      var scored = [];
+      data.forEach(function(e) {
+        var termLow = e.term.toLowerCase();
+        var aliasLow = (e.aliases || []).join(' ').toLowerCase();
+        var defLow = (e.def || '').toLowerCase();
+        var catLow = (e.category || '').toLowerCase();
+
+        var allMatch = terms.every(function(t) {
+          return termLow.indexOf(t) >= 0 ||
+                 aliasLow.indexOf(t) >= 0 ||
+                 defLow.indexOf(t) >= 0 ||
+                 catLow.indexOf(t) >= 0;
+        });
+        if (!allMatch) return;
+
+        var score = 0;
+        terms.forEach(function(t) {
+          if (termLow.indexOf(t) === 0) score += 100;
+          else if (termLow.indexOf(t) >= 0) score += 60;
+          if (aliasLow.indexOf(t) >= 0) score += 30;
+          if (defLow.indexOf(t) >= 0) score += 10;
+          if (catLow.indexOf(t) >= 0) score += 5;
+        });
+        scored.push({ term: e.term, category: e.category, def: e.def, score: score });
+      });
+      scored.sort(function(a, b) {
+        if (b.score !== a.score) return b.score - a.score;
+        return a.term.localeCompare(b.term);
+      });
+      return scored.slice(0, limit);
+    }
+
+    function truncate(s, n) {
+      s = String(s || '');
+      if (s.length <= n) return s;
+      return s.slice(0, n - 1).replace(/\s+\S*$/, '') + '…';
     }
 
     function hl(text, terms) {
