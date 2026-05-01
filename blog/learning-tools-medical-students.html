@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RK6J3FQ9L7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RK6J3FQ9L7');
+  </script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Tools for Medical Students on Psychiatry Rotation | PsychoPharmRef</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Learning Tools for Medical Students on Psychiatry Rotation">
+  <meta name="description" content="Practical mnemonics, rounding forms, and red-flag emergencies for medical students starting their psychiatry rotation: SIGECAPS, DIGFAST, SAD PERSONS, and more.">
+  <meta property="og:description" content="Practical mnemonics, rounding forms, and red-flag emergencies for medical students starting their psychiatry rotation: SIGECAPS, DIGFAST, SAD PERSONS, and more.">
+  <meta property="og:url" content="https://psychopharmref.com/blog/learning-tools-medical-students.html">
+  <meta property="og:site_name" content="PsychoPharmRef">
+  <meta property="og:image" content="https://psychopharmref.com/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary">
+  <meta name="author" content="Jerad Shoemaker, MD">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="canonical" href="https://psychopharmref.com/blog/learning-tools-medical-students.html">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="blog.css">
+  <style>
+    .btn-primary { display: inline-block; padding: 0.75rem 1.5rem; background-color: var(--accent); color: white; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background-color 0.3s; }
+    .btn-primary:hover { background-color: var(--green); }
+    .ba-related { margin-top: 30px; padding-top: 20px; border-top: 2px solid var(--border, #cfc8ba); }
+    .ba-related h4 { font-size: 15px; font-weight: 700; color: var(--text, #231e14); margin-bottom: 12px; }
+    .ba-related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+    .ba-related-link { display: block; padding: 10px 14px; background: var(--bg2, #ece6db); border: 1px solid var(--border, #cfc8ba); border-radius: 5px; text-decoration: none; color: var(--text, #231e14); font-size: 13px; font-weight: 600; transition: border-color 0.15s, background 0.15s; line-height: 1.35; }
+    .ba-related-link:hover { border-color: var(--accent, #4a7c35); background: var(--card, #fefcf8); }
+    .ba-share-row { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
+    .ba-share-btn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 5px; font-size: 12px; font-weight: 600; text-decoration: none; color: #fff; transition: opacity 0.15s; }
+    .ba-share-btn:hover { opacity: 0.85; }
+    .ba-share-btn--x { background: #000; }
+    .ba-share-btn--li { background: #0A66C2; }
+    .ba-share-btn--email { background: #6b6050; }
+    .ba-share-btn--copy { background: #4a7c35; cursor: pointer; border: none; }
+    .ba-action-bar { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0 14px; padding: 6px 0; border-bottom: 1px solid var(--border, #cfc8ba); }
+    .ba-act-btn { display: inline-flex; align-items: center; gap: 3px; padding: 4px 9px; border-radius: 4px; font-size: 11px; font-weight: 600; border: 1px solid var(--border, #cfc8ba); background: var(--bg2, #ece6db); color: var(--text, #231e14); cursor: pointer; text-decoration: none; transition: background 0.15s, border-color 0.15s; }
+    .ba-act-btn:hover { background: var(--accent, #4a7c35); color: #fff; border-color: var(--accent, #4a7c35); }
+    .ba-act-btn svg { width: 12px; height: 12px; fill: currentColor; flex-shrink: 0; }
+    .ba-share-drop { position: relative; display: inline-block; }
+    .ba-share-menu { display: none; position: absolute; top: 100%; left: 0; z-index: 10; background: #fff; border: 1px solid var(--border, #cfc8ba); border-radius: 5px; box-shadow: 0 4px 12px rgba(0,0,0,0.12); min-width: 160px; margin-top: 4px; padding: 4px 0; }
+    .ba-share-menu.ba-open { display: block; }
+    .ba-share-menu a, .ba-share-menu button { display: flex; align-items: center; gap: 8px; width: 100%; padding: 8px 14px; font-size: 12.5px; font-weight: 500; color: var(--text, #231e14); text-decoration: none; border: none; background: none; cursor: pointer; text-align: left; }
+    .ba-share-menu a:hover, .ba-share-menu button:hover { background: var(--bg2, #ece6db); }
+
+    /* Learning-tools-specific styles */
+    .lt-mnemonic { background: var(--bg2, #ece6db); border-left: 4px solid var(--accent, #4a7c35); padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 4px; }
+    .lt-mnemonic h4 { margin: 0 0 0.5rem 0; color: var(--accent, #4a7c35); font-size: 1.05rem; letter-spacing: 0.5px; }
+    .lt-mnemonic .lt-mnemonic-word { font-family: 'Segoe UI', Tahoma, sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacing: 1px; color: var(--text, #231e14); margin-bottom: 0.5rem; }
+    .lt-mnemonic ul { margin: 0.5rem 0 0 1.25rem; padding: 0; }
+    .lt-mnemonic li { margin: 0.25rem 0; font-size: 0.95rem; line-height: 1.5; }
+    .lt-mnemonic li b { color: var(--accent, #4a7c35); display: inline-block; min-width: 1.2em; }
+    .lt-redflag { background: #fef5ed; border: 1px solid #d49a4a; border-left: 4px solid #b97a25; padding: 0.85rem 1rem; margin: 0.85rem 0; border-radius: 4px; }
+    .lt-redflag h4 { margin: 0 0 0.4rem 0; color: #8b5a14; font-size: 1rem; }
+    .lt-redflag p { margin: 0.3rem 0; font-size: 0.93rem; line-height: 1.5; }
+    .lt-redflag strong { color: #6b3e0a; }
+    .lt-callout { background: #f5fbf2; border: 1px solid #b8d4a8; border-left: 4px solid var(--accent, #4a7c35); padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 4px; }
+    .lt-callout h4 { margin: 0 0 0.5rem 0; color: var(--accent, #4a7c35); font-size: 1rem; }
+    .lt-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1rem 0; }
+    @media (max-width: 768px) { .lt-grid-2 { grid-template-columns: 1fr; } }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Learning Tools for Medical Students on Psychiatry Rotation",
+    "description": "Practical mnemonics, rounding forms, and red-flag emergencies for medical students starting their psychiatry rotation: SIGECAPS, DIGFAST, SAD PERSONS, and more.",
+    "url": "https://psychopharmref.com/blog/learning-tools-medical-students.html",
+    "author": { "@type": "Person", "name": "Jerad Shoemaker, MD", "jobTitle": "Psychiatrist" },
+    "publisher": { "@type": "Organization", "name": "PsychoPharmRef" },
+    "datePublished": "2026-05-01",
+    "medicalAudience": { "@type": "MedicalAudience", "audienceType": "Medical Student" }
+  }
+  </script>
+</head>
+<body>
+  <button id="mobile-menu-btn" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
+  <div id="sidebar-overlay"></div>
+  <nav id="sidebar"></nav>
+  <script>
+  (function() {
+    fetch('sidebar.html')
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        var sidebar = document.getElementById('sidebar');
+        sidebar.innerHTML = html;
+        sidebar.querySelectorAll('.nav-parent-btn').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            var group = btn.closest('.nav-group');
+            if (group) group.classList.toggle('open');
+          });
+        });
+        var currentPage = location.pathname.split('/').pop();
+        sidebar.querySelectorAll('.nav-sub-link').forEach(function(link) {
+          if (link.getAttribute('href') === currentPage) link.classList.add('active');
+        });
+      });
+  })();
+  </script>
+
+  <main id="content">
+    <div class="container">
+      <article class="blog-article">
+        <a href="../" class="back-link">&larr; Back to Blog</a>
+        <div class="ba-action-bar">
+          <button class="ba-act-btn" onclick="window.print()" title="Print this article"><svg viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg> Print</button>
+          <div class="ba-share-drop">
+            <button class="ba-act-btn" onclick="this.nextElementSibling.classList.toggle('ba-open')" title="Share this article"><svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg> Share</button>
+            <div class="ba-share-menu">
+              <a href="https://twitter.com/intent/tweet?text=Learning%20Tools%20for%20Medical%20Students%20on%20Psychiatry%20Rotation&amp;url=https%3A%2F%2Fpsychopharmref.com%2Fblog%2Flearning-tools-medical-students.html" target="_blank" rel="noopener">X (Twitter)</a>
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://psychopharmref.com/blog/learning-tools-medical-students.html" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="mailto:?subject=Learning Tools for Medical Students on Psychiatry Rotation&amp;body=Check out this article: https://psychopharmref.com/blog/learning-tools-medical-students.html">Email</a>
+              <button onclick="navigator.clipboard.writeText('https://psychopharmref.com/blog/learning-tools-medical-students.html').then(function(){this.textContent='Copied!';setTimeout(function(){this.textContent='Copy Link'}.bind(this),2000)}.bind(this))">Copy Link</button>
+            </div>
+          </div>
+        </div>
+
+        <header class="ba-header">
+          <span class="ba-category">Medical Education &amp; Foundations</span>
+          <h1 class="ba-title">Learning Tools for Medical Students on Psychiatry Rotation</h1>
+          <p class="ba-subtitle">A starter kit of mnemonics, printable rounding forms, and red-flag emergencies for the first day on a psychiatric service</p>
+          <div class="ba-meta">
+            <span>Published: May 1, 2026</span>
+            <span>Medical Education</span>
+            <span>Rotation Survival</span>
+            <span class="ba-meta-item">Jerad Shoemaker, MD</span>
+          </div>
+        </header>
+
+        <div class="ba-body">
+          <p class="ba-lead">Most students arrive on a psychiatry rotation with the same questions: How do I structure an intake interview that I have never done before? Which symptoms am I supposed to be screening for? What do I write in the progress note tomorrow morning? And how do I avoid missing something dangerous? This chapter is a survival kit. It points to the chapters and printable forms you should have open during the first week, walks through the small handful of mnemonics that will carry most of your screening questions, and ends with a list of clinical situations where the right response is to stop interviewing and call your senior.</p>
+
+          <h2>How to use this site as a med student</h2>
+          <p>PsychoPharmRef is organized so you can find a specific clinical question quickly. The three sections you will use most often:</p>
+          <ul>
+            <li><b>Chapters</b> &mdash; long-form reviews on individual disorders, classes of medications, and clinical workflows. The companion chapter <a href="recommended-chapters-medical-students.html">Recommended Chapters for Medical Students</a> is an annotated reading list of the highest-yield 16 to start with.</li>
+            <li><b>Clinical Tools</b> &mdash; interactive scoring versions of common rating scales (PHQ-9 by way of SIGECAPS, YMRS, PCL-5, AIMS, BFCRS for catatonia, C-SSRS for suicide risk, and so on). Each tool generates a paste-ready note for your EMR.</li>
+            <li><b>Printable Forms</b> &mdash; one-page blank versions of the same scales, plus the new one-page <em>Psychiatric History &amp; MSE</em> and <em>Psychiatric SOAP Follow-up</em> sheets you can carry on rounds. Print a stack at the start of your rotation.</li>
+          </ul>
+
+          <h2>Mnemonics that do most of the work</h2>
+          <p>Three mnemonics will get you through the bulk of inpatient and outpatient screening. Memorize them in week one. They map directly onto DSM-5-TR criteria, so when you list off the symptoms during your presentation you are also walking the team through the diagnostic threshold.</p>
+
+          <div class="lt-mnemonic">
+            <h4>Depression &mdash; SIG E CAPS</h4>
+            <div class="lt-mnemonic-word">S &middot; I &middot; G &middot; E &middot; C &middot; A &middot; P &middot; S</div>
+            <ul>
+              <li><b>S</b> &mdash; <b>Sleep</b> changes (insomnia or hypersomnia)</li>
+              <li><b>I</b> &mdash; loss of <b>Interest</b> (anhedonia)</li>
+              <li><b>G</b> &mdash; <b>Guilt</b> or feelings of worthlessness/hopelessness</li>
+              <li><b>E</b> &mdash; low <b>Energy</b> (anergia, fatigue)</li>
+              <li><b>C</b> &mdash; poor <b>Concentration</b> (cognitive slowing, indecisiveness)</li>
+              <li><b>A</b> &mdash; <b>Appetite</b> changes (loss or increase) and weight change</li>
+              <li><b>P</b> &mdash; <b>Psychomotor</b> changes (retardation or agitation)</li>
+              <li><b>S</b> &mdash; <b>Suicidality</b> (passive ideation through plan and intent)</li>
+            </ul>
+            <p style="margin-top:0.6rem; font-size:0.9rem; color: #555;">DSM-5-TR major depressive episode = depressed mood and/or anhedonia plus &ge;5 of these symptoms most days for &ge;2 weeks. The classic teaching shorthand "<i>SIGECAPS</i>" is sometimes written "<i>SIG E CAPS</i>" as in a prescription for "energy capsules."</p>
+          </div>
+
+          <div class="lt-mnemonic">
+            <h4>Mania &mdash; DIG FAST</h4>
+            <div class="lt-mnemonic-word">D &middot; I &middot; G &middot; F &middot; A &middot; S &middot; T</div>
+            <ul>
+              <li><b>D</b> &mdash; <b>Distractibility</b></li>
+              <li><b>I</b> &mdash; <b>Irritable mood</b> or <b>Insomnia</b> with decreased need for sleep</li>
+              <li><b>G</b> &mdash; <b>Grandiosity</b> or inflated self-esteem</li>
+              <li><b>F</b> &mdash; <b>Flight of ideas</b> or racing thoughts</li>
+              <li><b>A</b> &mdash; <b>Activity</b> increase (goal-directed) or psychomotor <b>agitation</b></li>
+              <li><b>S</b> &mdash; <b>Speech</b> that is pressured, fast, or hard to interrupt</li>
+              <li><b>T</b> &mdash; <b>Thoughtlessness</b> &mdash; pleasurable activities with high consequence (spending, sex, driving, business deals)</li>
+            </ul>
+            <p style="margin-top:0.6rem; font-size:0.9rem; color: #555;">Manic episode = elevated/expansive/irritable mood plus &ge;3 of these (or 4 if mood is only irritable) for &ge;7 days (or any duration if hospitalized). Hypomania = same symptoms, &ge;4 days, no marked impairment, no psychosis.</p>
+          </div>
+
+          <div class="lt-mnemonic">
+            <h4>Suicide risk &mdash; SAD PERSONS</h4>
+            <div class="lt-mnemonic-word">S &middot; A &middot; D &middot; P &middot; E &middot; R &middot; S &middot; O &middot; N &middot; S</div>
+            <ul>
+              <li><b>S</b> &mdash; male <b>Sex</b></li>
+              <li><b>A</b> &mdash; <b>Age</b> &lt;19 or &gt;45 (some versions: &gt;60)</li>
+              <li><b>D</b> &mdash; <b>Depression</b> or hopelessness</li>
+              <li><b>P</b> &mdash; <b>Previous attempts</b> or psychiatric care</li>
+              <li><b>E</b> &mdash; <b>Excessive</b> alcohol/drug use</li>
+              <li><b>R</b> &mdash; <b>Rational</b> thinking loss (psychosis, intoxication, severe cognitive impairment)</li>
+              <li><b>S</b> &mdash; <b>Separated</b>, divorced, widowed, or socially isolated</li>
+              <li><b>O</b> &mdash; <b>Organized</b> plan, lethal means, or recent rehearsal</li>
+              <li><b>N</b> &mdash; <b>No</b> social supports</li>
+              <li><b>S</b> &mdash; <b>Sickness</b> &mdash; chronic medical illness, especially with pain</li>
+            </ul>
+            <p style="margin-top:0.6rem; font-size:0.9rem; color: #555;">SAD PERSONS is a teaching mnemonic, not a triage instrument; it has poor positive predictive value as a numeric score. Use it to remember <i>what to ask about</i>, then quantify with the <a href="../index.html#suicide-risk-tools">C-SSRS</a> and document risk and protective factors. The deeper review lives in <a href="suicide-risk-assessments.html">Suicide Risk Assessment</a>.</p>
+          </div>
+
+          <h2>Printable forms for rounding</h2>
+          <p>The rotations where students perform best are the ones where they walk in with structure. Two new one-page forms were built specifically for the medicine clerkship style of rounding, where you have ten minutes between patients and need to capture an intake or follow-up cleanly.</p>
+
+          <div class="lt-callout">
+            <h4>One-page Psychiatric History &amp; MSE (4-quadrant)</h4>
+            <p style="font-size:0.95rem; line-height:1.55; margin: 0.4rem 0;">A single sheet divided into four quadrants:</p>
+            <ul style="margin: 0.4rem 0 0.4rem 1.5rem; font-size: 0.93rem; line-height: 1.55;">
+              <li><b>Top left:</b> Chief complaint, HPI, ROS</li>
+              <li><b>Bottom left:</b> Psychosocial, SUD/AUD, allergies, medical/surgical, family hx, psychiatric hx</li>
+              <li><b>Top right:</b> Mental status exam, vitals/labs</li>
+              <li><b>Bottom right:</b> Diagnosis, assessment, and plan</li>
+            </ul>
+            <p style="font-size:0.95rem; line-height:1.55; margin: 0.6rem 0 0.2rem;">Print it from <a href="../index.html#print-forms">Printable Forms</a> &rarr; <em>Documentation Tools</em>.</p>
+          </div>
+
+          <div class="lt-callout">
+            <h4>One-page Psychiatric SOAP follow-up note</h4>
+            <p style="font-size:0.95rem; line-height:1.55; margin: 0.4rem 0;">Single page in classic Subjective / Objective / Assessment / Plan layout, with dedicated rows for sleep, appetite, mood, anxiety, SI/HI, MSE highlights, medication adherence, and side effects. Designed for the second visit forward and for inpatient daily progress notes.</p>
+            <p style="font-size:0.95rem; line-height:1.55; margin: 0.6rem 0 0.2rem;">Available in the same place as the H&amp;P sheet.</p>
+          </div>
+
+          <p>The other forms students reach for most often: <a href="../index.html#print-forms">PHQ-9, GAD-7, CIWA-Ar, COWS, AIMS, MoCA/SLUMS</a>, and the <a href="../index.html#print-forms">C-SSRS</a> for any patient endorsing suicidal ideation. Print a small stack of each before your rotation begins; they take up less space than a clipboard and they make presentations crisper.</p>
+
+          <h2>Things to watch out for &mdash; psychiatric red flags</h2>
+          <p>The psychiatric emergencies below are the ones where a delay in recognition causes harm. Each is covered in depth in <a href="emergency-psychiatry.html">Emergency Psychiatry: Assessment and Management of Acute Crises</a> and in the disorder-specific chapters; the goal here is to make the warning signs sticky enough that you flag them out loud during rounds.</p>
+
+          <div class="lt-grid-2">
+            <div class="lt-redflag">
+              <h4>Active suicidal ideation</h4>
+              <p><strong>Watch for:</strong> a stated plan, access to lethal means (firearms, stockpiled medication), recent hopelessness, command auditory hallucinations to harm self, or a recent attempt.</p>
+              <p><strong>Why it matters:</strong> the period immediately after discharge from an emergency department or inpatient unit is the highest-risk window for completed suicide.</p>
+            </div>
+            <div class="lt-redflag">
+              <h4>Acute psychosis / first break</h4>
+              <p><strong>Watch for:</strong> command hallucinations, paranoid delusions about food/poisoning, persecutory beliefs that name a specific target, disorganization severe enough to impair self-care.</p>
+              <p><strong>Why it matters:</strong> shorter duration of untreated psychosis is associated with better long-term function. Risk of self-harm and harm-to-others is highest during a first episode.</p>
+            </div>
+            <div class="lt-redflag">
+              <h4>Delirium</h4>
+              <p><strong>Watch for:</strong> acute change in attention and orientation, waxing/waning level of arousal, perceptual disturbance, sundowning, abnormal vitals.</p>
+              <p><strong>Why it matters:</strong> delirium has 25-40% in-hospital mortality and is a sign of underlying medical illness. It is not a primary psychiatric diagnosis &mdash; it is a medical emergency mislabeled as agitation.</p>
+            </div>
+            <div class="lt-redflag">
+              <h4>Alcohol withdrawal / DTs</h4>
+              <p><strong>Watch for:</strong> tremor, tachycardia, hypertension, hyperthermia, autonomic instability, hallucinations, seizures, severe confusion 48-96 hours after the last drink.</p>
+              <p><strong>Why it matters:</strong> untreated DTs carry up to 15% mortality. Score with <a href="../index.html#ciwa-tool">CIWA-Ar</a>, give thiamine before glucose, treat aggressively with benzodiazepines.</p>
+            </div>
+            <div class="lt-redflag">
+              <h4>Benzodiazepine withdrawal</h4>
+              <p><strong>Watch for:</strong> protracted course (days to weeks), seizures, severe insomnia, perceptual distortions, autonomic hyperactivity. High-risk in patients on chronic alprazolam or clonazepam suddenly held in the hospital.</p>
+              <p><strong>Why it matters:</strong> benzodiazepine withdrawal can be life-threatening (seizure, status). Always reconcile home benzo doses on admission.</p>
+            </div>
+            <div class="lt-redflag">
+              <h4>Serotonin syndrome</h4>
+              <p><strong>Watch for:</strong> the triad of mental-status change, autonomic instability (hyperthermia, tachycardia, diaphoresis, mydriasis), and neuromuscular hyperactivity (clonus, hyperreflexia, tremor &mdash; lower-extremity predominant).</p>
+              <p><strong>Why it matters:</strong> classically follows addition of a second serotonergic agent (linezolid, MAOI, tramadol, ondansetron, methylene blue) to an SSRI. Hyperthermia &gt;41&deg;C is a medical emergency. See <a href="serotonin-syndrome-nms.html">SS vs NMS</a>.</p>
+            </div>
+            <div class="lt-redflag">
+              <h4>Neuroleptic malignant syndrome (NMS)</h4>
+              <p><strong>Watch for:</strong> hyperthermia, "lead-pipe" rigidity, autonomic instability, altered mental status, markedly elevated CK, leukocytosis. Slower onset than serotonin syndrome (days, not hours).</p>
+              <p><strong>Why it matters:</strong> mortality 10-20% if untreated. Hold the offending antipsychotic, support, treat with bromocriptine or dantrolene.</p>
+            </div>
+            <div class="lt-redflag">
+              <h4>Acute dystonia</h4>
+              <p><strong>Watch for:</strong> sudden sustained muscle contractions (torticollis, oculogyric crisis, laryngospasm) within hours to days of starting or escalating an antipsychotic. More common in young men and high-potency D2 blockers.</p>
+              <p><strong>Why it matters:</strong> laryngeal dystonia compromises the airway. Treat with IM diphenhydramine or benztropine.</p>
+            </div>
+            <div class="lt-redflag">
+              <h4>Hypertensive crisis (tyramine reaction)</h4>
+              <p><strong>Watch for:</strong> sudden severe occipital headache, hypertension, palpitations, sweating in a patient on an MAOI after eating aged cheese, cured meat, fava beans, or drinking red wine.</p>
+              <p><strong>Why it matters:</strong> can cause intracerebral hemorrhage. Treat with phentolamine; avoid beta-blocker monotherapy. Counsel every MAOI patient on the diet at every visit.</p>
+            </div>
+            <div class="lt-redflag">
+              <h4>Lithium toxicity</h4>
+              <p><strong>Watch for:</strong> coarse tremor, ataxia, slurred speech, confusion, vomiting/diarrhea, seizures. Often precipitated by dehydration, NSAIDs, ACE-inhibitors, thiazides, or acute kidney injury.</p>
+              <p><strong>Why it matters:</strong> lithium has a narrow therapeutic index (0.6-1.2 mEq/L). Levels &gt;2.5 mEq/L often need hemodialysis. Always check a level when something changes &mdash; new med, new illness, new mental status.</p>
+            </div>
+            <div class="lt-redflag">
+              <h4>Tricyclic antidepressant (TCA) overdose</h4>
+              <p><strong>Watch for:</strong> the "3 Cs" &mdash; <i>cardiotoxicity</i> (wide QRS, terminal R-wave in aVR, dysrhythmia), <i>convulsions</i>, and <i>coma</i>. Anticholinergic toxidrome (dry, hot, blind, mad) often coexists.</p>
+              <p><strong>Why it matters:</strong> a single week's supply of amitriptyline can be lethal. Sodium bicarbonate is the antidote for QRS widening. Always ask whether a depressed patient has TCAs at home.</p>
+            </div>
+            <div class="lt-redflag">
+              <h4>Valproate-induced pancreatitis &amp; hepatotoxicity</h4>
+              <p><strong>Watch for:</strong> abdominal pain, vomiting, lethargy, hyperammonemia, transaminitis in a patient on divalproex/valproic acid &mdash; even with normal levels.</p>
+              <p><strong>Why it matters:</strong> idiosyncratic, can be fatal, and is most common in the first six months. Counsel every new patient about abdominal-pain warning signs and check LFTs and ammonia if symptomatic.</p>
+            </div>
+            <div class="lt-redflag">
+              <h4>Drug or alcohol overdose</h4>
+              <p><strong>Watch for:</strong> opioid toxidrome (pinpoint pupils, respiratory depression, somnolence), benzodiazepine respiratory depression, polysubstance overdose with co-ingested acetaminophen.</p>
+              <p><strong>Why it matters:</strong> opioids are now the leading cause of accidental death in U.S. adults under 50. Naloxone for opioids, supportive care for benzos, and always co-screen for acetaminophen and salicylates.</p>
+            </div>
+            <div class="lt-redflag">
+              <h4>Panic attack mimicking medical emergency</h4>
+              <p><strong>Watch for:</strong> sudden chest pain, dyspnea, palpitations, derealization, paresthesias peaking within ~10 minutes. Frequently presents to the ED.</p>
+              <p><strong>Why it matters:</strong> panic is a diagnosis of exclusion. Rule out PE, ACS, hypoglycemia, thyroid storm, and pheochromocytoma before reassuring the patient.</p>
+            </div>
+            <div class="lt-redflag">
+              <h4>Medication-induced suicidal ideation</h4>
+              <p><strong>Watch for:</strong> emergent suicidal thoughts within the first 1-4 weeks of starting an antidepressant (especially in patients &lt;25), or with isotretinoin, varenicline (older labeling), and high-dose corticosteroids.</p>
+              <p><strong>Why it matters:</strong> the FDA boxed warning on antidepressants exists because of an early-treatment risk window. Schedule close follow-up after any new SSRI/SNRI start in adolescents or young adults.</p>
+            </div>
+            <div class="lt-redflag">
+              <h4>Catatonia</h4>
+              <p><strong>Watch for:</strong> mutism, immobility, posturing, negativism, waxy flexibility, echolalia. Often missed on medical wards because the patient is "quiet."</p>
+              <p><strong>Why it matters:</strong> catatonia has 9-10% mortality if untreated and can progress to malignant catatonia (a thermoregulatory and autonomic emergency clinically indistinguishable from NMS). Score with <a href="../index.html#bfcrs-tool">BFCRS</a>; treat with lorazepam challenge or ECT.</p>
+            </div>
+          </div>
+
+          <h2>How to study during your rotation</h2>
+          <p>The single highest-yield habit on a psychiatry rotation is to read about a disorder the same evening you see it. That night-of consolidation is what cements the link between the patient you just interviewed and the criteria, neurobiology, and pharmacology in your reading. Use the <a href="recommended-chapters-medical-students.html">Recommended Chapters for Med Students</a> as your reading list. The chapter on <a href="science-of-learning.html">The Science of Learning</a> walks through the spaced-retrieval and interleaved-practice approaches that have the strongest evidence in medical education.</p>
+
+          <p>A few small things compound: keep an index card in your white-coat pocket with the three mnemonics above; ask one question every interview that you would not have asked yesterday; and present every patient to your senior with a one-line formulation rather than a chronological narrative. By the end of the rotation those small habits become the difference between students who say "I rotated through psychiatry" and students who learned how to think psychiatrically about every patient they will see for the rest of their careers.</p>
+
+          <h2>Key takeaways</h2>
+          <ul>
+            <li>Print a stack of one-page <a href="../index.html#print-forms">forms</a> before your first day &mdash; the H&amp;P quadrant sheet, SOAP follow-up sheet, PHQ-9, GAD-7, CIWA-Ar, COWS, and C-SSRS.</li>
+            <li>Memorize <b>SIGECAPS</b> (depression), <b>DIGFAST</b> (mania), and <b>SAD PERSONS</b> (suicide risk). They map onto DSM criteria and onto your differential.</li>
+            <li>Use the <a href="recommended-chapters-medical-students.html">recommended chapter list</a> to plan your reading; align each evening's reading with the patients you saw that day.</li>
+            <li>Memorize the <em>red-flag</em> list above &mdash; serotonin syndrome, NMS, lithium toxicity, TCA overdose, DTs, acute dystonia, hypertensive crisis, catatonia, medication-induced SI. These are the situations where stopping the interview to call your senior is the right answer.</li>
+            <li>Ask before assuming: consult psychiatry isn't reluctant to help. The question "is this delirium or is this dementia or is this depression?" is asked five times a week on any inpatient medicine service, and the right answer is usually all three at once.</li>
+          </ul>
+
+          <div class="ba-related">
+            <h4>Related Chapters</h4>
+            <div class="ba-related-grid">
+              <a href="recommended-chapters-medical-students.html" class="ba-related-link">Recommended Chapters for Med Students</a>
+              <a href="psychiatric-interview.html" class="ba-related-link">The Psychiatric Interview</a>
+              <a href="emergency-psychiatry.html" class="ba-related-link">Emergency Psychiatry</a>
+              <a href="suicide-risk-assessments.html" class="ba-related-link">Suicide Risk Assessment</a>
+              <a href="medical-note-writing.html" class="ba-related-link">Medical Note Writing</a>
+              <a href="science-of-learning.html" class="ba-related-link">The Science of Learning</a>
+              <a href="serotonin-syndrome-nms.html" class="ba-related-link">SS vs NMS</a>
+              <a href="delirium.html" class="ba-related-link">Delirium</a>
+            </div>
+          </div>
+
+          <div class="ba-share-row">
+            <a href="https://twitter.com/intent/tweet?text=Learning%20Tools%20for%20Medical%20Students%20on%20Psychiatry%20Rotation&amp;url=https%3A%2F%2Fpsychopharmref.com%2Fblog%2Flearning-tools-medical-students.html" target="_blank" rel="noopener" class="ba-share-btn ba-share-btn--x">Share on X</a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://psychopharmref.com/blog/learning-tools-medical-students.html" target="_blank" rel="noopener" class="ba-share-btn ba-share-btn--li">Share on LinkedIn</a>
+            <a href="mailto:?subject=Learning Tools for Medical Students on Psychiatry Rotation&amp;body=Check out this article: https://psychopharmref.com/blog/learning-tools-medical-students.html" class="ba-share-btn ba-share-btn--email">Email</a>
+            <button class="ba-share-btn ba-share-btn--copy" onclick="navigator.clipboard.writeText('https://psychopharmref.com/blog/learning-tools-medical-students.html').then(function(){var b=this;b.textContent='Copied!';setTimeout(function(){b.textContent='Copy Link'},2000)}.bind(this))">Copy Link</button>
+          </div>
+
+          <div class="nl-blog-cta">
+            <h4>PsychoPharmRef Newsletter</h4>
+            <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
+            <a href="https://subscribe-forms.beehiiv.com/5f2b3081-aa41-452c-95c8-69a5ae899cf8" target="_blank" rel="noopener" class="nl-subscribe-btn">Subscribe &mdash; it's free</a>
+          </div>
+
+          <footer class="ba-footer">
+            <p>This article is intended for educational use by medical students and trainees. Information presented reflects current evidence as of May 2026 and should be validated against current clinical guidelines and institutional protocols. Mnemonics are study aids, not substitutes for DSM-5-TR criteria or validated rating instruments.</p>
+            <p><a href="../" class="btn-primary">&larr; Back to Blog</a></p>
+          </footer>
+        </div>
+      </article>
+    </div>
+  </main>
+
+<script>
+document.querySelectorAll('.nav-parent-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    const group = btn.closest('.nav-group');
+    const isOpen = group.classList.contains('open');
+    document.querySelectorAll('.nav-group').forEach(g => g.classList.remove('open'));
+    if (!isOpen) group.classList.add('open');
+  });
+});
+(function() {
+  const currentFile = window.location.pathname.split('/').pop();
+  document.querySelectorAll('#sidebar .nav-sub-link').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentFile) {
+      link.classList.add('active');
+      setTimeout(() => link.scrollIntoView({ block: 'center', behavior: 'smooth' }), 100);
+    }
+  });
+})();
+</script>
+<script>
+(function() {
+  var btn = document.getElementById('mobile-menu-btn');
+  var sidebar = document.getElementById('sidebar');
+  var overlay = document.getElementById('sidebar-overlay');
+  if (!btn || !sidebar || !overlay) return;
+  function open() { sidebar.classList.add('sidebar-open'); overlay.classList.add('overlay-visible'); document.body.classList.add('sidebar-is-open'); }
+  function close() { sidebar.classList.remove('sidebar-open'); overlay.classList.remove('overlay-visible'); document.body.classList.remove('sidebar-is-open'); }
+  btn.addEventListener('click', function() { sidebar.classList.contains('sidebar-open') ? close() : open(); });
+  overlay.addEventListener('click', close);
+  sidebar.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { if (window.innerWidth <= 768) close(); }); });
+})();
+</script>
+</body>
+</html>

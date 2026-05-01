@@ -1244,3 +1244,278 @@
   }
 
 })();
+
+/* ────────────────────────────────────────────────────────────────────────
+   Freeform Forms — Psychiatric History (H&P) and Psychiatric SOAP
+   These are full-page fillable forms (not scored scales), so they bypass
+   the FORMS scoring template and render their own one-page layout.
+   ──────────────────────────────────────────────────────────────────────── */
+(function() {
+  var __originalPrintBlankForm = window.printBlankForm;
+
+  window.printBlankForm = function(formId) {
+    if (formId === 'psych-history') { return printPsychHistoryForm(); }
+    if (formId === 'psych-soap')    { return printPsychSoapForm(); }
+    if (typeof __originalPrintBlankForm === 'function') {
+      return __originalPrintBlankForm(formId);
+    }
+  };
+
+  function openFreeformWindow(title, bodyHtml) {
+    var w = window.open('', '_blank');
+    var html = ''
+      + '<!DOCTYPE html><html><head><meta charset="UTF-8">'
+      + '<meta name="viewport" content="width=device-width, initial-scale=1.0">'
+      + '<title>' + title + '</title>'
+      + '<style>'
+      + '* { margin: 0; padding: 0; box-sizing: border-box; }'
+      + 'body { font-family: "Segoe UI", Tahoma, sans-serif; color: #000; background: #f5f5f5; font-size: 10.5px; line-height: 1.35; }'
+      + '@media print { body { background: #fff; } .ff-page { box-shadow: none !important; margin: 0 !important; } }'
+      + '.ff-page { background: #fff; color: #000; margin: 0 auto; padding: 0.4in 0.45in; max-width: 8.5in; min-height: 10.6in; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }'
+      + '.ff-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #000; padding-bottom: 5px; margin-bottom: 8px; }'
+      + '.ff-title { font-size: 14px; font-weight: bold; }'
+      + '.ff-sub { font-size: 9px; color: #555; font-style: italic; }'
+      + '.ff-id { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px 14px; font-size: 9px; margin-bottom: 8px; }'
+      + '.ff-id .ff-field { display: flex; align-items: baseline; }'
+      + '.ff-id .ff-lbl { font-weight: bold; min-width: 52px; }'
+      + '.ff-id .ff-line { flex: 1; border-bottom: 1px solid #000; height: 14px; margin-left: 4px; }'
+      + '.ff-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }'
+      + '.ff-grid-2-3rows { grid-template-rows: auto auto; }'
+      + '.ff-quad { border: 1px solid #000; padding: 5px 7px; }'
+      + '.ff-quad h3 { font-size: 10.5px; font-weight: bold; margin: 0 0 4px 0; padding-bottom: 2px; border-bottom: 1px solid #555; text-transform: uppercase; letter-spacing: 0.4px; }'
+      + '.ff-quad .ff-sub-h { font-size: 9px; font-weight: bold; margin: 4px 0 1px 0; color: #333; }'
+      + '.ff-lines { background-image: linear-gradient(transparent 13px, #999 13px, #999 14px, transparent 14px); background-size: 100% 14px; min-height: 56px; }'
+      + '.ff-lines.ff-l-2 { min-height: 28px; }'
+      + '.ff-lines.ff-l-3 { min-height: 42px; }'
+      + '.ff-lines.ff-l-4 { min-height: 56px; }'
+      + '.ff-lines.ff-l-5 { min-height: 70px; }'
+      + '.ff-lines.ff-l-6 { min-height: 84px; }'
+      + '.ff-lines.ff-l-7 { min-height: 98px; }'
+      + '.ff-lines.ff-l-9 { min-height: 126px; }'
+      + '.ff-lines.ff-l-10 { min-height: 140px; }'
+      + '.ff-row { display: flex; align-items: baseline; gap: 8px; margin: 2px 0; }'
+      + '.ff-row .ff-row-lbl { font-weight: bold; font-size: 9px; min-width: 70px; }'
+      + '.ff-row .ff-row-line { flex: 1; border-bottom: 1px solid #000; height: 13px; }'
+      + '.ff-chk { display: inline-block; width: 9px; height: 9px; border: 1px solid #000; vertical-align: -1px; margin-right: 3px; }'
+      + '.ff-vit { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px 8px; font-size: 9px; }'
+      + '.ff-mse { font-size: 9px; }'
+      + '.ff-mse-line { display: flex; gap: 4px; margin: 1px 0; }'
+      + '.ff-mse-line b { font-weight: bold; min-width: 64px; display: inline-block; }'
+      + '.ff-mse-line .ff-mse-fill { flex: 1; border-bottom: 1px solid #000; height: 12px; }'
+      + '.ff-footer { margin-top: 6px; padding-top: 4px; border-top: 1px solid #999; font-size: 7.5px; color: #666; text-align: center; }'
+      + '.ff-print-btn { position: fixed; top: 10px; right: 10px; padding: 8px 14px; background: #4a7c35; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 12px; z-index: 100; }'
+      + '@media print { .ff-print-btn { display: none !important; } }'
+      + '</style></head><body>'
+      + '<button class="ff-print-btn" onclick="window.print()">Print this form</button>'
+      + bodyHtml
+      + '</body></html>';
+    w.document.write(html);
+    w.document.close();
+    setTimeout(function() { try { w.print(); } catch (e) {} }, 250);
+  }
+
+  function patientHeaderHtml(title, subtitle) {
+    return ''
+      + '<div class="ff-header">'
+      +   '<div><div class="ff-title">' + title + '</div>'
+      +       '<div class="ff-sub">' + subtitle + '</div></div>'
+      +   '<div class="ff-sub">PsychoPharmRef.com</div>'
+      + '</div>'
+      + '<div class="ff-id">'
+      +   '<div class="ff-field"><span class="ff-lbl">Patient:</span><span class="ff-line"></span></div>'
+      +   '<div class="ff-field"><span class="ff-lbl">DOB:</span><span class="ff-line"></span></div>'
+      +   '<div class="ff-field"><span class="ff-lbl">MRN:</span><span class="ff-line"></span></div>'
+      +   '<div class="ff-field"><span class="ff-lbl">Date:</span><span class="ff-line"></span></div>'
+      +   '<div class="ff-field" style="grid-column: span 2;"><span class="ff-lbl">Clinician:</span><span class="ff-line"></span></div>'
+      +   '<div class="ff-field"><span class="ff-lbl">Setting:</span><span class="ff-line"></span></div>'
+      +   '<div class="ff-field"><span class="ff-lbl">Visit #:</span><span class="ff-line"></span></div>'
+      + '</div>';
+  }
+
+  function printPsychHistoryForm() {
+    var topLeft = ''
+      + '<div class="ff-quad">'
+      +   '<h3>1. Chief Complaint &middot; HPI &middot; ROS</h3>'
+      +   '<div class="ff-sub-h">Chief Complaint (in patient\'s words)</div>'
+      +   '<div class="ff-lines ff-l-2"></div>'
+      +   '<div class="ff-sub-h">History of Present Illness</div>'
+      +   '<div class="ff-lines ff-l-9"></div>'
+      +   '<div class="ff-sub-h">Review of Systems (constitutional, neuro, GI, cardiopulm, endo, GU, pain)</div>'
+      +   '<div class="ff-lines ff-l-3"></div>'
+      + '</div>';
+
+    var bottomLeft = ''
+      + '<div class="ff-quad">'
+      +   '<h3>2. Background</h3>'
+      +   '<div class="ff-sub-h">Past Psychiatric History (dx, hospitalizations, ECT, prior trials)</div>'
+      +   '<div class="ff-lines ff-l-3"></div>'
+      +   '<div class="ff-sub-h">Substance &amp; Alcohol Use (incl. tobacco, last use, withdrawal hx)</div>'
+      +   '<div class="ff-lines ff-l-2"></div>'
+      +   '<div class="ff-sub-h">Past Medical / Surgical History</div>'
+      +   '<div class="ff-lines ff-l-2"></div>'
+      +   '<div class="ff-sub-h">Allergies</div>'
+      +   '<div class="ff-lines ff-l-2"></div>'
+      +   '<div class="ff-sub-h">Family History (psych, SUD, suicide)</div>'
+      +   '<div class="ff-lines ff-l-2"></div>'
+      +   '<div class="ff-sub-h">Psychosocial / Developmental (housing, support, trauma, education, legal, occ)</div>'
+      +   '<div class="ff-lines ff-l-3"></div>'
+      + '</div>';
+
+    var topRight = ''
+      + '<div class="ff-quad">'
+      +   '<h3>3. Mental Status Exam &middot; Vitals &middot; Labs</h3>'
+      +   '<div class="ff-mse">'
+      +     '<div class="ff-mse-line"><b>Appearance:</b><span class="ff-mse-fill"></span></div>'
+      +     '<div class="ff-mse-line"><b>Behavior:</b><span class="ff-mse-fill"></span></div>'
+      +     '<div class="ff-mse-line"><b>Speech:</b><span class="ff-mse-fill"></span></div>'
+      +     '<div class="ff-mse-line"><b>Mood:</b><span class="ff-mse-fill"></span></div>'
+      +     '<div class="ff-mse-line"><b>Affect:</b><span class="ff-mse-fill"></span></div>'
+      +     '<div class="ff-mse-line"><b>Thought Process:</b><span class="ff-mse-fill"></span></div>'
+      +     '<div class="ff-mse-line"><b>Thought Content:</b><span class="ff-mse-fill"></span></div>'
+      +     '<div class="ff-mse-line"><b>SI / HI:</b><span class="ff-mse-fill"></span></div>'
+      +     '<div class="ff-mse-line"><b>Perceptual:</b><span class="ff-mse-fill"></span></div>'
+      +     '<div class="ff-mse-line"><b>Cognition:</b><span class="ff-mse-fill"></span></div>'
+      +     '<div class="ff-mse-line"><b>Insight:</b><span class="ff-mse-fill"></span></div>'
+      +     '<div class="ff-mse-line"><b>Judgment:</b><span class="ff-mse-fill"></span></div>'
+      +   '</div>'
+      +   '<div class="ff-sub-h" style="margin-top:6px;">Vitals</div>'
+      +   '<div class="ff-vit">'
+      +     '<div class="ff-row"><span class="ff-row-lbl">BP</span><span class="ff-row-line"></span></div>'
+      +     '<div class="ff-row"><span class="ff-row-lbl">HR</span><span class="ff-row-line"></span></div>'
+      +     '<div class="ff-row"><span class="ff-row-lbl">RR</span><span class="ff-row-line"></span></div>'
+      +     '<div class="ff-row"><span class="ff-row-lbl">Temp</span><span class="ff-row-line"></span></div>'
+      +     '<div class="ff-row"><span class="ff-row-lbl">SpO2</span><span class="ff-row-line"></span></div>'
+      +     '<div class="ff-row"><span class="ff-row-lbl">Wt</span><span class="ff-row-line"></span></div>'
+      +     '<div class="ff-row"><span class="ff-row-lbl">BMI</span><span class="ff-row-line"></span></div>'
+      +     '<div class="ff-row"><span class="ff-row-lbl">QTc</span><span class="ff-row-line"></span></div>'
+      +   '</div>'
+      +   '<div class="ff-sub-h" style="margin-top:4px;">Labs / Toxicology / Imaging</div>'
+      +   '<div class="ff-lines ff-l-3"></div>'
+      + '</div>';
+
+    var bottomRight = ''
+      + '<div class="ff-quad">'
+      +   '<h3>4. Diagnosis &middot; Assessment &middot; Plan</h3>'
+      +   '<div class="ff-sub-h">DSM-5-TR Diagnosis (primary, comorbid, rule-outs)</div>'
+      +   '<div class="ff-lines ff-l-3"></div>'
+      +   '<div class="ff-sub-h">Assessment / Formulation (4 P\'s: predisposing, precipitating, perpetuating, protective)</div>'
+      +   '<div class="ff-lines ff-l-5"></div>'
+      +   '<div class="ff-sub-h">Risk (suicide / violence / self-care / capacity)</div>'
+      +   '<div class="ff-row"><span class="ff-row-lbl">Risk level:</span>'
+      +     '<span style="font-size:9px;"><span class="ff-chk"></span>Low <span class="ff-chk"></span>Moderate <span class="ff-chk"></span>High <span class="ff-chk"></span>Imminent</span>'
+      +   '</div>'
+      +   '<div class="ff-lines ff-l-2"></div>'
+      +   '<div class="ff-sub-h">Plan: Medications (start / continue / hold / change)</div>'
+      +   '<div class="ff-lines ff-l-3"></div>'
+      +   '<div class="ff-sub-h">Plan: Therapy / Labs / Follow-up / Disposition / Patient Education</div>'
+      +   '<div class="ff-lines ff-l-3"></div>'
+      + '</div>';
+
+    var body = ''
+      + '<div class="ff-page">'
+      +   patientHeaderHtml('Psychiatric History &amp; Mental Status Exam', 'One-page intake worksheet — four-quadrant layout')
+      +   '<div class="ff-grid-2">'
+      +     topLeft + topRight
+      +     + bottomLeft + bottomRight
+      +   '</div>'
+      +   '<div class="ff-footer">Educational form for clinician use. Document signs of acute risk separately. Source: PsychoPharmRef.com</div>'
+      + '</div>';
+    openFreeformWindow('Psychiatric History &amp; MSE', body);
+  }
+
+  function printPsychSoapForm() {
+    var subjective = ''
+      + '<div class="ff-quad" style="margin-bottom:5px;">'
+      +   '<h3>S &mdash; Subjective</h3>'
+      +   '<div class="ff-sub-h">Interval History &amp; Patient Report</div>'
+      +   '<div class="ff-lines ff-l-4"></div>'
+      +   '<div class="ff-grid-2" style="gap:8px; margin-top:4px;">'
+      +     '<div>'
+      +       '<div class="ff-row"><span class="ff-row-lbl">Mood:</span><span class="ff-row-line"></span></div>'
+      +       '<div class="ff-row"><span class="ff-row-lbl">Anxiety:</span><span class="ff-row-line"></span></div>'
+      +       '<div class="ff-row"><span class="ff-row-lbl">Sleep:</span><span class="ff-row-line"></span></div>'
+      +       '<div class="ff-row"><span class="ff-row-lbl">Appetite:</span><span class="ff-row-line"></span></div>'
+      +       '<div class="ff-row"><span class="ff-row-lbl">Energy:</span><span class="ff-row-line"></span></div>'
+      +       '<div class="ff-row"><span class="ff-row-lbl">Concentration:</span><span class="ff-row-line"></span></div>'
+      +     '</div>'
+      +     '<div>'
+      +       '<div class="ff-row"><span class="ff-row-lbl">SI:</span>'
+      +         '<span style="font-size:9px;"><span class="ff-chk"></span>None <span class="ff-chk"></span>Passive <span class="ff-chk"></span>Active <span class="ff-chk"></span>Plan</span>'
+      +       '</div>'
+      +       '<div class="ff-row"><span class="ff-row-lbl">HI:</span>'
+      +         '<span style="font-size:9px;"><span class="ff-chk"></span>None <span class="ff-chk"></span>Passive <span class="ff-chk"></span>Active <span class="ff-chk"></span>Plan</span>'
+      +       '</div>'
+      +       '<div class="ff-row"><span class="ff-row-lbl">Substances:</span><span class="ff-row-line"></span></div>'
+      +       '<div class="ff-row"><span class="ff-row-lbl">Adherence:</span>'
+      +         '<span style="font-size:9px;"><span class="ff-chk"></span>Full <span class="ff-chk"></span>Partial <span class="ff-chk"></span>None</span>'
+      +       '</div>'
+      +       '<div class="ff-row"><span class="ff-row-lbl">Side effects:</span><span class="ff-row-line"></span></div>'
+      +       '<div class="ff-row"><span class="ff-row-lbl">Stressors:</span><span class="ff-row-line"></span></div>'
+      +     '</div>'
+      +   '</div>'
+      + '</div>';
+
+    var objective = ''
+      + '<div class="ff-quad" style="margin-bottom:5px;">'
+      +   '<h3>O &mdash; Objective</h3>'
+      +   '<div class="ff-grid-2" style="gap:8px;">'
+      +     '<div>'
+      +       '<div class="ff-sub-h">Vitals</div>'
+      +       '<div class="ff-row"><span class="ff-row-lbl">BP / HR</span><span class="ff-row-line"></span></div>'
+      +       '<div class="ff-row"><span class="ff-row-lbl">Wt / BMI</span><span class="ff-row-line"></span></div>'
+      +       '<div class="ff-row"><span class="ff-row-lbl">Labs / QTc</span><span class="ff-row-line"></span></div>'
+      +     '</div>'
+      +     '<div>'
+      +       '<div class="ff-sub-h">Mental Status (key findings)</div>'
+      +       '<div class="ff-mse">'
+      +         '<div class="ff-mse-line"><b>App / Beh:</b><span class="ff-mse-fill"></span></div>'
+      +         '<div class="ff-mse-line"><b>Mood / Aff:</b><span class="ff-mse-fill"></span></div>'
+      +         '<div class="ff-mse-line"><b>TP / TC:</b><span class="ff-mse-fill"></span></div>'
+      +         '<div class="ff-mse-line"><b>Cog / Ins:</b><span class="ff-mse-fill"></span></div>'
+      +       '</div>'
+      +     '</div>'
+      +   '</div>'
+      +   '<div class="ff-sub-h" style="margin-top:3px;">Rating Scales (PHQ-9, GAD-7, AIMS, C-SSRS, etc.)</div>'
+      +   '<div class="ff-lines ff-l-2"></div>'
+      + '</div>';
+
+    var assessment = ''
+      + '<div class="ff-quad" style="margin-bottom:5px;">'
+      +   '<h3>A &mdash; Assessment</h3>'
+      +   '<div class="ff-sub-h">Diagnosis &amp; Course (improving / stable / worsening / partial response)</div>'
+      +   '<div class="ff-lines ff-l-3"></div>'
+      +   '<div class="ff-row"><span class="ff-row-lbl">Risk:</span>'
+      +     '<span style="font-size:9px;"><span class="ff-chk"></span>Low <span class="ff-chk"></span>Moderate <span class="ff-chk"></span>High <span class="ff-chk"></span>Imminent &nbsp; '
+      +     '<span class="ff-row-lbl" style="min-width:auto;">Capacity:</span>'
+      +     '<span class="ff-chk"></span>Intact <span class="ff-chk"></span>Impaired</span>'
+      +   '</div>'
+      + '</div>';
+
+    var plan = ''
+      + '<div class="ff-quad">'
+      +   '<h3>P &mdash; Plan</h3>'
+      +   '<div class="ff-sub-h">Medications (continue / change / start / discontinue &mdash; with dose &amp; rationale)</div>'
+      +   '<div class="ff-lines ff-l-4"></div>'
+      +   '<div class="ff-grid-2" style="gap:8px; margin-top:4px;">'
+      +     '<div>'
+      +       '<div class="ff-sub-h">Therapy / Referrals / Coordination</div>'
+      +       '<div class="ff-lines ff-l-3"></div>'
+      +     '</div>'
+      +     '<div>'
+      +       '<div class="ff-sub-h">Labs / Monitoring / Follow-up Interval</div>'
+      +       '<div class="ff-lines ff-l-3"></div>'
+      +     '</div>'
+      +   '</div>'
+      +   '<div class="ff-sub-h">Patient Education &amp; Safety Plan Reviewed</div>'
+      +   '<div class="ff-lines ff-l-2"></div>'
+      + '</div>';
+
+    var body = ''
+      + '<div class="ff-page">'
+      +   patientHeaderHtml('Psychiatric Follow-Up &mdash; SOAP Note', 'One-page progress-note worksheet')
+      +   subjective + objective + assessment + plan
+      +   '<div class="ff-footer">Educational form for clinician use. Document acute risk and safety planning separately. Source: PsychoPharmRef.com</div>'
+      + '</div>';
+    openFreeformWindow('Psychiatric SOAP Note', body);
+  }
+})();

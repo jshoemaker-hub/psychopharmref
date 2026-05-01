@@ -183,8 +183,26 @@
           <li class="nav-sub-divider">Wellness</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="bat-tool">Burnout (BAT)</a></li>
 
-          <li class="nav-sub-divider">Resources</li>
-          <li><a href="#" class="nav-link nav-sub-link" data-section="print-forms">Printable Forms</a></li>
+        </ul>
+      </li>
+
+
+      <!-- Printable Forms -->
+      <li class="nav-group" data-group="forms">
+        <button class="nav-parent-btn">
+          <span class="nav-parent-label">Printable Forms</span>
+          <span class="nav-caret">&#9658;</span>
+        </button>
+        <ul class="nav-sub">
+          <li><a href="#" class="nav-link nav-sub-link" data-section="print-forms">All Printable Forms</a></li>
+          <li><a href="#print-forms-pf-cat-docs" class="nav-link nav-sub-link" data-section="print-forms" data-anchor="pf-cat-docs">Documentation Tools</a></li>
+          <li><a href="#print-forms-pf-cat-meds" class="nav-link nav-sub-link" data-section="print-forms" data-anchor="pf-cat-meds">Medication Safety</a></li>
+          <li><a href="#print-forms-pf-cat-cog"  class="nav-link nav-sub-link" data-section="print-forms" data-anchor="pf-cat-cog">Cognitive &amp; Neurodevelopmental</a></li>
+          <li><a href="#print-forms-pf-cat-mood" class="nav-link nav-sub-link" data-section="print-forms" data-anchor="pf-cat-mood">Mood &amp; Anxiety</a></li>
+          <li><a href="#print-forms-pf-cat-psy"  class="nav-link nav-sub-link" data-section="print-forms" data-anchor="pf-cat-psy">Psychosis &amp; Movement</a></li>
+          <li><a href="#print-forms-pf-cat-sleep"   class="nav-link nav-sub-link" data-section="print-forms" data-anchor="pf-cat-sleep">Sleep</a></li>
+          <li><a href="#print-forms-pf-cat-safety"  class="nav-link nav-sub-link" data-section="print-forms" data-anchor="pf-cat-safety">Safety &amp; Risk</a></li>
+          <li><a href="#print-forms-pf-cat-wellness" class="nav-link nav-sub-link" data-section="print-forms" data-anchor="pf-cat-wellness">Wellness &amp; Burnout</a></li>
         </ul>
       </li>
 
@@ -318,6 +336,8 @@
           <li><a href="/blog/geriatric-psychiatry/" class="nav-link nav-sub-link">Geriatric Psychiatry</a></li>
 
           <li class="nav-sub-divider">Medical Education &amp; Foundations</li>
+          <li><a href="/blog/learning-tools-medical-students/" class="nav-link nav-sub-link">Learning Tools for Med Students</a></li>
+          <li><a href="/blog/recommended-chapters-medical-students/" class="nav-link nav-sub-link">Recommended Chapters (Med Students)</a></li>
           <li><a href="/blog/phenomenology/" class="nav-link nav-sub-link">Phenomenology</a></li>
           <li><a href="/blog/brain-imaging/" class="nav-link nav-sub-link">Brain Imaging</a></li>
           <li><a href="/blog/science-of-learning/" class="nav-link nav-sub-link">Science of Learning</a></li>
@@ -442,7 +462,7 @@
           <h3>Chapters</h3>
           <p>Clinical commentary, pharmacology explainers, and case-based learning.</p>
           <div class="ic-sub-links">
-            <button class="btn-sub" onclick="switchSection('blog-index')">All Posts (84 articles)</button>
+            <button class="btn-sub" onclick="switchSection('blog-index')">All Posts (86 articles)</button>
             <a href="blog/smoking-cessation.html" class="btn-sub">Smoking Cessation</a>
             <a href="blog/obesity-weight-loss.html" class="btn-sub">Obesity &amp; Weight Loss</a>
           </div>
@@ -10492,10 +10512,29 @@
 
   <!-- Load print-forms CSS and JS -->
   <link rel="stylesheet" href="css/tools/print-forms.css">
-  <script src="js/tools/print-forms.js"></script>
+  <script src="js/tools/print-forms.js?v=20260501b"></script>
+
+  <!-- Documentation Tools (one-page H&P / SOAP) -->
+  <div id="pf-cat-docs" class="pf-category-group">
+    <div class="pf-category-title">Documentation Tools</div>
+    <div class="pf-grid">
+      <div class="pf-card">
+        <div class="pf-card-title">Psychiatric History &amp; MSE (1-page)</div>
+        <div class="pf-card-ref">PsychoPharmRef one-page intake worksheet</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">Four-quadrant H&amp;P: CC/HPI/ROS, background (psychosocial, SUD, allergies, PMH/PSH, FH, PPH), MSE/vitals/labs, and diagnosis/assessment/plan.</p>
+        <button class="pf-btn" onclick="printBlankForm('psych-history')">Print Blank Form</button>
+      </div>
+      <div class="pf-card">
+        <div class="pf-card-title">Psychiatric SOAP Follow-up (1-page)</div>
+        <div class="pf-card-ref">PsychoPharmRef one-page progress-note worksheet</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">Subjective (mood/anxiety/sleep/SI/HI/adherence/side effects), Objective (vitals + key MSE + scales), Assessment (course + risk), Plan (meds, therapy, labs, follow-up).</p>
+        <button class="pf-btn" onclick="printBlankForm('psych-soap')">Print Blank Form</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Medication Tools -->
-  <div class="pf-category-group">
+  <div id="pf-cat-meds" class="pf-category-group">
     <div class="pf-category-title">Medication Safety & Monitoring</div>
     <div class="pf-grid">
       <div class="pf-card">
@@ -10508,7 +10547,7 @@
   </div>
 
   <!-- Cognitive & Neurodevelopmental -->
-  <div class="pf-category-group">
+  <div id="pf-cat-cog" class="pf-category-group">
     <div class="pf-category-title">Cognitive & Neurodevelopmental</div>
     <div class="pf-grid">
       <div class="pf-card">
@@ -10533,7 +10572,7 @@
   </div>
 
   <!-- Mood & Anxiety -->
-  <div class="pf-category-group">
+  <div id="pf-cat-mood" class="pf-category-group">
     <div class="pf-category-title">Mood & Anxiety</div>
     <div class="pf-grid">
       <div class="pf-card">
@@ -10570,7 +10609,7 @@
   </div>
 
   <!-- Psychosis & Movement -->
-  <div class="pf-category-group">
+  <div id="pf-cat-psy" class="pf-category-group">
     <div class="pf-category-title">Psychosis & Movement Disorders</div>
     <div class="pf-grid">
       <div class="pf-card">
@@ -10601,7 +10640,7 @@
   </div>
 
   <!-- Sleep -->
-  <div class="pf-category-group">
+  <div id="pf-cat-sleep" class="pf-category-group">
     <div class="pf-category-title">Sleep & Alertness</div>
     <div class="pf-grid">
       <div class="pf-card">
@@ -10614,7 +10653,7 @@
   </div>
 
   <!-- Safety -->
-  <div class="pf-category-group">
+  <div id="pf-cat-safety" class="pf-category-group">
     <div class="pf-category-title">Safety & Risk Assessment</div>
     <div class="pf-grid">
       <div class="pf-card">
@@ -10633,7 +10672,7 @@
   </div>
 
   <!-- Wellness / Burnout -->
-  <div class="pf-category-group">
+  <div id="pf-cat-wellness" class="pf-category-group">
     <div class="pf-category-title">Wellness & Burnout</div>
     <div class="pf-grid">
       <div class="pf-card">
@@ -10658,7 +10697,7 @@
     <section id="blog-index" class="section">
       <div class="section-header">
         <h2>Chapters</h2>
-        <p class="section-sub">84 evidence-based clinical articles on psychopharmacology, psychiatric disorders, clinical practice, and more.</p>
+        <p class="section-sub">86 evidence-based clinical articles on psychopharmacology, psychiatric disorders, clinical practice, and more.</p>
       </div>
 
       <div style="max-width:700px;margin:0 auto;text-align:center;padding:30px 20px;">
@@ -10666,7 +10705,7 @@
           Browse all articles with search, filtering, and category organization on the full blog page.
         </p>
         <a href="/blog/" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 32px;border-radius:6px;text-decoration:none;font-weight:600;font-size:15px;transition:background 0.2s;">
-          Browse All 84 Articles &rarr;
+          Browse All 86 Articles &rarr;
         </a>
 
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:30px;text-align:left;">
