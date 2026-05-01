@@ -1,17 +1,19 @@
-// tests/dispatch.test.js
+// tests/dispatch.test.js — updated 2026-04-16 for 4-4-4 structure
 
 import { dispatch } from '../lib/research.js';
 
 const ALL_TOPIC_KEYS = [
+  // S1 (4)
   's1-new-approvals',
   's1-pipeline-drugs',
-  's1-generics',
-  's1-shortages',
-  's1-legislation',
-  's1-psychiatry-news',
+  's1-supply-generics',
+  's1-policy-fda-watch',
+  // S2 (4)
   's2-med-comparison',
   's2-how-things-work',
   's2-survey-review',
+  's2-adverse-effects',
+  // S3 (4, unchanged)
   's3-diagnosis-history',
   's3-drug-discovery',
   's3-scientific-process',
@@ -19,7 +21,7 @@ const ALL_TOPIC_KEYS = [
 ];
 
 describe('dispatch table', () => {
-  test('all 13 topic keys are present in dispatch', () => {
+  test('all 12 topic keys are present in dispatch', () => {
     ALL_TOPIC_KEYS.forEach(key => {
       expect(dispatch).toHaveProperty(key);
     });
@@ -31,28 +33,34 @@ describe('dispatch table', () => {
     });
   });
 
+  test('retired topic keys are not in dispatch', () => {
+    ['s1-generics', 's1-shortages', 's1-legislation', 's1-psychiatry-news'].forEach(key => {
+      expect(dispatch[key]).toBeUndefined();
+    });
+  });
+
   test('unknown key is not in dispatch (or is undefined)', () => {
     expect(dispatch['s1-unknown-topic']).toBeUndefined();
     expect(dispatch['completely-made-up']).toBeUndefined();
     expect(dispatch['s4-nonexistent']).toBeUndefined();
   });
 
-  test('dispatch has exactly 13 entries', () => {
+  test('dispatch has exactly 12 entries', () => {
     const keys = Object.keys(dispatch);
-    expect(keys).toHaveLength(13);
+    expect(keys).toHaveLength(12);
   });
 
-  test('s1 section has 6 handlers', () => {
+  test('s1 section has 4 handlers', () => {
     const s1Keys = ALL_TOPIC_KEYS.filter(k => k.startsWith('s1-'));
-    expect(s1Keys).toHaveLength(6);
+    expect(s1Keys).toHaveLength(4);
     s1Keys.forEach(key => {
       expect(typeof dispatch[key]).toBe('function');
     });
   });
 
-  test('s2 section has 3 handlers', () => {
+  test('s2 section has 4 handlers', () => {
     const s2Keys = ALL_TOPIC_KEYS.filter(k => k.startsWith('s2-'));
-    expect(s2Keys).toHaveLength(3);
+    expect(s2Keys).toHaveLength(4);
     s2Keys.forEach(key => {
       expect(typeof dispatch[key]).toBe('function');
     });
@@ -66,23 +74,18 @@ describe('dispatch table', () => {
     });
   });
 
-  test('s1-new-approvals handler is fetchFdaRss', () => {
-    // Verify by name (toString check) or just that it's a function
-    expect(typeof dispatch['s1-new-approvals']).toBe('function');
-    // The function name should indicate fetchFdaRss
-    expect(dispatch['s1-new-approvals'].name).toBe('fetchFdaRss');
+  test('s1 handlers are the fallback-chain wrappers', () => {
+    expect(dispatch['s1-new-approvals'].name).toBe('fetchNewApprovals');
+    expect(dispatch['s1-pipeline-drugs'].name).toBe('fetchPipelineDrugs');
+    expect(dispatch['s1-supply-generics'].name).toBe('fetchSupplyGenerics');
+    expect(dispatch['s1-policy-fda-watch'].name).toBe('fetchPolicyFdaWatch');
   });
 
-  test('s1-pipeline-drugs handler is fetchClinicalTrials', () => {
-    expect(dispatch['s1-pipeline-drugs'].name).toBe('fetchClinicalTrials');
-  });
-
-  test('s1-legislation handler is fetchCongress', () => {
-    expect(dispatch['s1-legislation'].name).toBe('fetchCongress');
-  });
-
-  test('s1-generics handler is fetchPerplexity', () => {
-    expect(dispatch['s1-generics'].name).toBe('fetchPerplexity');
+  test('s2 handlers are the fallback-chain wrappers', () => {
+    expect(dispatch['s2-med-comparison'].name).toBe('fetchMedComparison');
+    expect(dispatch['s2-how-things-work'].name).toBe('fetchHowThingsWork');
+    expect(dispatch['s2-survey-review'].name).toBe('fetchSurveyReview');
+    expect(dispatch['s2-adverse-effects'].name).toBe('fetchAdverseEffects');
   });
 
   test('all s3 handlers are fetchPerplexity', () => {

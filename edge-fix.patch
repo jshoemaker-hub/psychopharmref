@@ -1,0 +1,1217 @@
+From 7410291f8ecfbaa50c7b042753abe4efd5c80f70 Mon Sep 17 00:00:00 2001
+From: Jerad Shoemaker <jshoemakerhwc@gmail.com>
+Date: Thu, 16 Apr 2026 09:04:18 -0700
+Subject: [PATCH] Fix blog CSS loading on netlify.app domain and add Edge
+ compatibility
+
+Change Hugo template asset links from absURL to relURL so CSS/favicons
+load correctly when site is accessed via psychopharmref.netlify.app
+(e.g. behind corporate proxies that block the custom domain). Add
+X-UA-Compatible meta tag across all pages and Netlify headers for
+Microsoft Edge compatibility.
+
+Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
+---
+ blog/adjustment-disorder.html                 | 1 +
+ blog/adult-adhd.html                          | 1 +
+ blog/alcohol-use-disorder.html                | 1 +
+ blog/alzheimers-disease.html                  | 1 +
+ blog/antidepressant-medications.html          | 1 +
+ blog/antidepressant-review.html               | 1 +
+ blog/antipsychotic-medications.html           | 1 +
+ blog/antipsychotic-movement-disorders.html    | 1 +
+ blog/antipsychotic-review.html                | 1 +
+ blog/autism-spectrum-disorder.html            | 1 +
+ blog/behavioral-modification.html             | 1 +
+ blog/benzodiazepine-pharmacology.html         | 1 +
+ blog/bipolar-disorder.html                    | 1 +
+ blog/cannabis-psychiatry.html                 | 1 +
+ blog/capacity-evaluation.html                 | 1 +
+ blog/catatonia.html                           | 1 +
+ blog/clozapine-clinical-guide.html            | 1 +
+ blog/common-side-effects-warnings.html        | 1 +
+ blog/court-testimony-psychiatry.html          | 1 +
+ blog/delirium.html                            | 1 +
+ blog/dissociative-disorders.html              | 1 +
+ blog/eating-disorders.html                    | 1 +
+ blog/ekg-findings-psychiatry.html             | 1 +
+ blog/electroconvulsive-therapy.html           | 1 +
+ blog/electronic-health-records.html           | 1 +
+ blog/emergency-psychiatry.html                | 1 +
+ blog/fatigue-differential-diagnosis.html      | 1 +
+ blog/first-break-psychosis.html               | 1 +
+ blog/folate-b12-mma.html                      | 1 +
+ blog/frontotemporal-dementia.html             | 1 +
+ blog/geriatric-psychiatry.html                | 1 +
+ blog/grief-bereavement.html                   | 1 +
+ blog/healthcare-legislation.html              | 1 +
+ blog/healthcare-systems-insurance.html        | 1 +
+ blog/heavy-metals-environmental-toxins.html   | 1 +
+ blog/history-psychiatric-medications.html     | 1 +
+ blog/infectious-disease-psychiatry.html       | 1 +
+ blog/influential-psychiatrists.html           | 1 +
+ blog/insomnia.html                            | 1 +
+ blog/ketamine-esketamine.html                 | 1 +
+ blog/legal-atypical-drugs-abuse.html          | 1 +
+ blog/legal-precedents-psychiatry.html         | 1 +
+ blog/long-acting-injectables.html             | 1 +
+ blog/magnesium-supplementation.html           | 1 +
+ blog/major-depressive-disorder.html           | 1 +
+ blog/medical-note-writing.html                | 1 +
+ blog/medical-statistics.html                  | 1 +
+ blog/medication-access.html                   | 1 +
+ blog/medication-changes.html                  | 1 +
+ blog/medication-discovery.html                | 1 +
+ blog/mood-stabilizer-medications.html         | 1 +
+ blog/motivational-interviewing.html           | 1 +
+ blog/natural-methods-depression-anxiety.html  | 1 +
+ blog/neuroscience-foundations.html            | 1 +
+ blog/neutropenia-psychiatric-medications.html | 1 +
+ blog/obesity-weight-loss.html                 | 1 +
+ blog/obsessive-compulsive-disorder.html       | 1 +
+ blog/opioid-use-disorder.html                 | 1 +
+ blog/organ-dysfunction-psychiatry.html        | 1 +
+ blog/panic-attacks-gad.html                   | 1 +
+ blog/parkinsons-disease.html                  | 1 +
+ blog/personality-disorders.html               | 1 +
+ blog/pharmacogenomics-psychiatry.html         | 1 +
+ blog/pharmacokinetics.html                    | 1 +
+ blog/pregnancy-breastfeeding.html             | 1 +
+ blog/psychiatric-ethics.html                  | 1 +
+ blog/psychiatric-interview.html               | 1 +
+ blog/psychiatric-medication-tremors.html      | 1 +
+ blog/psychoneuroimmunology.html               | 1 +
+ blog/psychosomatic-conditions.html            | 1 +
+ blog/psychotherapy-overview.html              | 1 +
+ blog/ptsd-cptsd.html                          | 1 +
+ blog/reading-journal-articles.html            | 1 +
+ blog/schizophrenia.html                       | 1 +
+ blog/science-of-learning.html                 | 1 +
+ blog/seasonal-affective-disorder.html         | 1 +
+ blog/serotonin-syndrome-nms.html              | 1 +
+ blog/sleep-medications-review.html            | 1 +
+ blog/sleep-medications.html                   | 1 +
+ blog/smoking-cessation.html                   | 1 +
+ blog/social-anxiety-phobias.html              | 1 +
+ blog/stimulant-substance-disorders.html       | 1 +
+ blog/suicide-risk-assessments.html            | 1 +
+ blog/surrogate-decision-makers.html           | 1 +
+ blog/telepsychiatry.html                      | 1 +
+ blog/traumatic-brain-injury.html              | 1 +
+ blog/vitamin-d.html                           | 1 +
+ hugo-site/layouts/_default/baseof.html        | 9 +++++----
+ hugo-site/static/index.html                   | 1 +
+ index.html                                    | 1 +
+ netlify.toml                                  | 1 +
+ 91 files changed, 95 insertions(+), 4 deletions(-)
+
+diff --git a/blog/adjustment-disorder.html b/blog/adjustment-disorder.html
+index a8eee42..ac8fe1e 100644
+--- a/blog/adjustment-disorder.html
++++ b/blog/adjustment-disorder.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Adjustment Disorder: Diagnostic Clarity and Evidence-Based Treatment | PsychoPharmRef</title>
+     
+diff --git a/blog/adult-adhd.html b/blog/adult-adhd.html
+index 2b5616f..ddf0533 100644
+--- a/blog/adult-adhd.html
++++ b/blog/adult-adhd.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Adult ADHD: Diagnosis, Pathophysiology, and Treatment - PsychoPharmRef</title>
+     <meta name="description" content="Comprehensive clinical overview of adult ADHD including diagnostic criteria, underlying neurobiological mechanisms, pharmacological and non-pharmacological treatment options for medical professionals.">
+diff --git a/blog/alcohol-use-disorder.html b/blog/alcohol-use-disorder.html
+index 5851c02..c594b22 100644
+--- a/blog/alcohol-use-disorder.html
++++ b/blog/alcohol-use-disorder.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Alcohol Use Disorder: Diagnosis, Pathophysiology, and Evidence-Based Treatment</title>
+   
+diff --git a/blog/alzheimers-disease.html b/blog/alzheimers-disease.html
+index f2738d1..a47d123 100644
+--- a/blog/alzheimers-disease.html
++++ b/blog/alzheimers-disease.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Alzheimer's Disease: Clinical Pathophysiology, Diagnosis, and Pharmacological Management</title>
+     
+diff --git a/blog/antidepressant-medications.html b/blog/antidepressant-medications.html
+index 5a46a0a..9151882 100644
+--- a/blog/antidepressant-medications.html
++++ b/blog/antidepressant-medications.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Antidepressant Medications: A Comprehensive Clinical Review</title>
+     <style>
+diff --git a/blog/antidepressant-review.html b/blog/antidepressant-review.html
+index 264ce03..e37ae84 100644
+--- a/blog/antidepressant-review.html
++++ b/blog/antidepressant-review.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Antidepressant Medications: A Clinical Review Across Generations | PsychoPharmRef</title>
+   
+diff --git a/blog/antipsychotic-medications.html b/blog/antipsychotic-medications.html
+index ded0d27..1cf9df6 100644
+--- a/blog/antipsychotic-medications.html
++++ b/blog/antipsychotic-medications.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Antipsychotic Medications: A Comprehensive Clinical Review | PsychoPharmRef</title>
+     <style>
+diff --git a/blog/antipsychotic-movement-disorders.html b/blog/antipsychotic-movement-disorders.html
+index ebed061..3697fa4 100644
+--- a/blog/antipsychotic-movement-disorders.html
++++ b/blog/antipsychotic-movement-disorders.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Antipsychotic Movement Disorders: Akathisia and Tardive Dyskinesia | PsychoPharmRef</title>
+     
+diff --git a/blog/antipsychotic-review.html b/blog/antipsychotic-review.html
+index da69075..182dd33 100644
+--- a/blog/antipsychotic-review.html
++++ b/blog/antipsychotic-review.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Antipsychotic Medications: A Clinical Review Across Generations | PsychoPharmRef</title>
+   
+diff --git a/blog/autism-spectrum-disorder.html b/blog/autism-spectrum-disorder.html
+index 57065e3..7a567b7 100644
+--- a/blog/autism-spectrum-disorder.html
++++ b/blog/autism-spectrum-disorder.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Autism Spectrum Disorder: Diagnosis, Pathophysiology, and Treatment | PsychoPharmRef</title>
+     <meta name="description" content="A comprehensive clinical overview of autism spectrum disorder covering diagnostic approaches, neurobiological mechanisms, environmental factors, and evidence-based pharmacological and non-pharmacological treatments.">
+diff --git a/blog/behavioral-modification.html b/blog/behavioral-modification.html
+index 37ffc5b..772fab3 100644
+--- a/blog/behavioral-modification.html
++++ b/blog/behavioral-modification.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>The Science of Behavioral Modification | PsychoPharmRef</title>
+ 
+diff --git a/blog/benzodiazepine-pharmacology.html b/blog/benzodiazepine-pharmacology.html
+index 2a81ede..ce9012e 100644
+--- a/blog/benzodiazepine-pharmacology.html
++++ b/blog/benzodiazepine-pharmacology.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Benzodiazepines: Pharmacology, Clinical Use, Dependence, and Tapering | PsychoPharmRef</title>
+ 
+diff --git a/blog/bipolar-disorder.html b/blog/bipolar-disorder.html
+index bce63f7..531dbc6 100644
+--- a/blog/bipolar-disorder.html
++++ b/blog/bipolar-disorder.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Bipolar Disorder: Classification, Diagnosis, and Treatment | PsychoPharmRef</title>
+     
+diff --git a/blog/cannabis-psychiatry.html b/blog/cannabis-psychiatry.html
+index 2f06959..05d89e3 100644
+--- a/blog/cannabis-psychiatry.html
++++ b/blog/cannabis-psychiatry.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Cannabis and Psychiatry: Use Disorder, Psychosis, and the Endocannabinoid System | PsychoPharmRef</title>
+   <meta property="og:type" content="article">
+diff --git a/blog/capacity-evaluation.html b/blog/capacity-evaluation.html
+index ebbe961..f40f883 100644
+--- a/blog/capacity-evaluation.html
++++ b/blog/capacity-evaluation.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Decision-Making Capacity: Assessment and Clinical Application | PsychoPharmRef</title>
+     
+diff --git a/blog/catatonia.html b/blog/catatonia.html
+index 8000955..1373e51 100644
+--- a/blog/catatonia.html
++++ b/blog/catatonia.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Catatonia: Recognition, Assessment, and Treatment | PsychoPharmRef</title>
+     
+diff --git a/blog/clozapine-clinical-guide.html b/blog/clozapine-clinical-guide.html
+index d291f82..5b541f8 100644
+--- a/blog/clozapine-clinical-guide.html
++++ b/blog/clozapine-clinical-guide.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Clozapine: The Gold Standard for Treatment-Resistant Schizophrenia | PsychoPharmRef</title>
+ 
+diff --git a/blog/common-side-effects-warnings.html b/blog/common-side-effects-warnings.html
+index 34043cd..f076306 100644
+--- a/blog/common-side-effects-warnings.html
++++ b/blog/common-side-effects-warnings.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Common Side Effects and Package Warnings in Psychiatric Medications | PsychoPharmRef</title>
+ 
+diff --git a/blog/court-testimony-psychiatry.html b/blog/court-testimony-psychiatry.html
+index 8bb249f..25ef105 100644
+--- a/blog/court-testimony-psychiatry.html
++++ b/blog/court-testimony-psychiatry.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>The Psychiatrist in the Courtroom: A Guide to Expert Testimony - PsychoPharmRef</title>
+     <meta name="description" content="Clinical guide to psychiatric expert testimony in criminal, civil, and administrative proceedings. Covers legal standards, case history, forensic evaluation, and courtroom preparation for psychiatrists.">
+diff --git a/blog/delirium.html b/blog/delirium.html
+index 9a9a232..af64bbe 100644
+--- a/blog/delirium.html
++++ b/blog/delirium.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Delirium: Recognition, Assessment, and Management | PsychoPharmRef</title>
+     
+diff --git a/blog/dissociative-disorders.html b/blog/dissociative-disorders.html
+index c7277cb..d4dcde4 100644
+--- a/blog/dissociative-disorders.html
++++ b/blog/dissociative-disorders.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Dissociative Disorders: DID, Depersonalization, and Trauma-Informed Treatment | PsychoPharmRef</title>
+ 
+diff --git a/blog/eating-disorders.html b/blog/eating-disorders.html
+index a573404..b1f3fdf 100644
+--- a/blog/eating-disorders.html
++++ b/blog/eating-disorders.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Eating Disorders: Anorexia, Bulimia, BED, ARFID — Diagnosis, Complications, Treatment | PsychoPharmRef</title>
+ 
+diff --git a/blog/ekg-findings-psychiatry.html b/blog/ekg-findings-psychiatry.html
+index 6c5835b..17d2e2a 100644
+--- a/blog/ekg-findings-psychiatry.html
++++ b/blog/ekg-findings-psychiatry.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>EKG Findings in Psychiatric Practice: QT Prolongation, Drug Interactions, and Clinical Monitoring | PsychoPharmRef</title>
+ 
+diff --git a/blog/electroconvulsive-therapy.html b/blog/electroconvulsive-therapy.html
+index 138e8e3..e84770b 100644
+--- a/blog/electroconvulsive-therapy.html
++++ b/blog/electroconvulsive-therapy.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Electroconvulsive Therapy and Neuromodulation: Evidence, Mechanisms, and Modern Practice</title>
+   
+diff --git a/blog/electronic-health-records.html b/blog/electronic-health-records.html
+index 02a771e..1abda91 100644
+--- a/blog/electronic-health-records.html
++++ b/blog/electronic-health-records.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Electronic Health Records (EHR): Systems, Tools, and Clinical Practice | PsychoPharmRef</title>
+ 
+diff --git a/blog/emergency-psychiatry.html b/blog/emergency-psychiatry.html
+index ca3646b..75fd7f9 100644
+--- a/blog/emergency-psychiatry.html
++++ b/blog/emergency-psychiatry.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Emergency Psychiatry: Assessment and Management of Acute Crises - PsychoPharmRef</title>
+     <meta name="description" content="Clinical guide to psychiatric emergencies including assessment of agitation, suicidality, psychosis, substance withdrawal, medical clearance, and involuntary commitment for acute psychiatric settings.">
+diff --git a/blog/fatigue-differential-diagnosis.html b/blog/fatigue-differential-diagnosis.html
+index 5ea4bbb..c1e3845 100644
+--- a/blog/fatigue-differential-diagnosis.html
++++ b/blog/fatigue-differential-diagnosis.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Fatigue: Comprehensive Differential Diagnosis and Clinical Approach | PsychoPharmRef</title>
+ 
+diff --git a/blog/first-break-psychosis.html b/blog/first-break-psychosis.html
+index 30d491b..511b57c 100644
+--- a/blog/first-break-psychosis.html
++++ b/blog/first-break-psychosis.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>First-Break Psychosis Workup | PsychoPharmRef</title>
+   
+diff --git a/blog/folate-b12-mma.html b/blog/folate-b12-mma.html
+index 9bcccb6..c02bfd4 100644
+--- a/blog/folate-b12-mma.html
++++ b/blog/folate-b12-mma.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Folate, B12, and Methylmalonic Acid: Clinical Implications in Neuropsychiatry</title>
+     
+diff --git a/blog/frontotemporal-dementia.html b/blog/frontotemporal-dementia.html
+index 42a13c2..1988431 100644
+--- a/blog/frontotemporal-dementia.html
++++ b/blog/frontotemporal-dementia.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Frontotemporal Dementia: Clinical Recognition and Management | PsychoPharmRef</title>
+     
+diff --git a/blog/geriatric-psychiatry.html b/blog/geriatric-psychiatry.html
+index c7b3316..a48e89c 100644
+--- a/blog/geriatric-psychiatry.html
++++ b/blog/geriatric-psychiatry.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Geriatric Psychiatry: Polypharmacy, Deprescribing, and Age-Specific Clinical Challenges | PsychoPharmRef</title>
+ 
+diff --git a/blog/grief-bereavement.html b/blog/grief-bereavement.html
+index f6591c9..33d7e8a 100644
+--- a/blog/grief-bereavement.html
++++ b/blog/grief-bereavement.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Grief and Bereavement: Clinical Perspectives and Interventions | PsychoPharmRef</title>
+   
+diff --git a/blog/healthcare-legislation.html b/blog/healthcare-legislation.html
+index 5009cf6..23acc60 100644
+--- a/blog/healthcare-legislation.html
++++ b/blog/healthcare-legislation.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Healthcare Legislation That Shaped Modern Medicine | PsychoPharmRef</title>
+ 
+diff --git a/blog/healthcare-systems-insurance.html b/blog/healthcare-systems-insurance.html
+index dd9caa6..7370849 100644
+--- a/blog/healthcare-systems-insurance.html
++++ b/blog/healthcare-systems-insurance.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Healthcare Insurance Systems, Nonprofit Medicine, and the VA | PsychoPharmRef</title>
+ 
+diff --git a/blog/heavy-metals-environmental-toxins.html b/blog/heavy-metals-environmental-toxins.html
+index 8f87703..ba57588 100644
+--- a/blog/heavy-metals-environmental-toxins.html
++++ b/blog/heavy-metals-environmental-toxins.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Heavy Metals and Environmental Toxins in Psychiatry: What Clinicians Need to Know - PsychoPharmRef</title>
+     <meta name="description" content="Clinical review of heavy metals, environmental toxins, and their psychiatric manifestations including lead, mercury, arsenic, air pollution, and mold exposure.">
+diff --git a/blog/history-psychiatric-medications.html b/blog/history-psychiatric-medications.html
+index 123ff29..29f8f68 100644
+--- a/blog/history-psychiatric-medications.html
++++ b/blog/history-psychiatric-medications.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>History of Psychiatric Medications | PsychoPharmRef</title>
+     
+diff --git a/blog/infectious-disease-psychiatry.html b/blog/infectious-disease-psychiatry.html
+index 25d1e19..e75d377 100644
+--- a/blog/infectious-disease-psychiatry.html
++++ b/blog/infectious-disease-psychiatry.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="A clinician's guide to psychiatric manifestations of 15 infectious pathogens — from neurosyphilis to long COVID, including mechanisms, screening strategies, and management considerations.">
+     <title>Infectious Disease and Psychiatry: When Pathogens Target the Mind - PsychoPharmRef</title>
+diff --git a/blog/influential-psychiatrists.html b/blog/influential-psychiatrists.html
+index 323ed4c..6641ea6 100644
+--- a/blog/influential-psychiatrists.html
++++ b/blog/influential-psychiatrists.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Influential Psychiatrists Who Shaped Modern Psychiatry | PsychoPharmRef</title>
+ 
+diff --git a/blog/insomnia.html b/blog/insomnia.html
+index 47c81d0..3357c60 100644
+--- a/blog/insomnia.html
++++ b/blog/insomnia.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Insomnia: A Comprehensive Clinical Guide | PsychoPharmRef</title>
+   
+diff --git a/blog/ketamine-esketamine.html b/blog/ketamine-esketamine.html
+index 7f9e378..9b026a6 100644
+--- a/blog/ketamine-esketamine.html
++++ b/blog/ketamine-esketamine.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Ketamine and Esketamine: Clinical Use in Psychiatry | PsychoPharmRef</title>
+   
+diff --git a/blog/legal-atypical-drugs-abuse.html b/blog/legal-atypical-drugs-abuse.html
+index 86a0502..c3f8bb9 100644
+--- a/blog/legal-atypical-drugs-abuse.html
++++ b/blog/legal-atypical-drugs-abuse.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Legal and Atypical Drugs of Abuse | PsychoPharmRef</title>
+ 
+diff --git a/blog/legal-precedents-psychiatry.html b/blog/legal-precedents-psychiatry.html
+index ff5451f..3cf8ade 100644
+--- a/blog/legal-precedents-psychiatry.html
++++ b/blog/legal-precedents-psychiatry.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Legal Frameworks in Psychiatry: Rights, Precedents, and Washington State Law | PsychoPharmRef</title>
+     
+diff --git a/blog/long-acting-injectables.html b/blog/long-acting-injectables.html
+index 0feb2e7..232092c 100644
+--- a/blog/long-acting-injectables.html
++++ b/blog/long-acting-injectables.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Long-Acting Injectables in Psychiatry: A Comprehensive Clinical Guide | PsychoPharmRef</title>
+     
+diff --git a/blog/magnesium-supplementation.html b/blog/magnesium-supplementation.html
+index 661e2b5..de334ff 100644
+--- a/blog/magnesium-supplementation.html
++++ b/blog/magnesium-supplementation.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Magnesium and Associated Minerals: A Clinical Guide to Supplementation | PsychoPharmRef</title>
+   
+diff --git a/blog/major-depressive-disorder.html b/blog/major-depressive-disorder.html
+index 4b476e2..6d192b6 100644
+--- a/blog/major-depressive-disorder.html
++++ b/blog/major-depressive-disorder.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Major Depressive Disorder & Dysthymia: Clinical Review | PsychoPharmRef</title>
+     
+diff --git a/blog/medical-note-writing.html b/blog/medical-note-writing.html
+index 4be7667..ba523e0 100644
+--- a/blog/medical-note-writing.html
++++ b/blog/medical-note-writing.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Medical Note Writing and the Mental Status Exam: A Clinical Guide | PsychoPharmRef</title>
+     
+diff --git a/blog/medical-statistics.html b/blog/medical-statistics.html
+index 8ff90f2..f66be29 100644
+--- a/blog/medical-statistics.html
++++ b/blog/medical-statistics.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Medical Statistics: What Every Doctor Needs to Know | PsychoPharmRef</title>
+ 
+diff --git a/blog/medication-access.html b/blog/medication-access.html
+index dc57d4a..000910d 100644
+--- a/blog/medication-access.html
++++ b/blog/medication-access.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Understanding Medication Access: From Production to Patient | PsychoPharmRef</title>
+ 
+diff --git a/blog/medication-changes.html b/blog/medication-changes.html
+index 740771e..0ab38b0 100644
+--- a/blog/medication-changes.html
++++ b/blog/medication-changes.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Medication Changes: Starting, Tapering, and Cross-Tapering Psychiatric Medications | PsychoPharmRef</title>
+   
+diff --git a/blog/medication-discovery.html b/blog/medication-discovery.html
+index 0b2f138..f725865 100644
+--- a/blog/medication-discovery.html
++++ b/blog/medication-discovery.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>How Are Medications Discovered? | PsychoPharmRef</title>
+ 
+diff --git a/blog/mood-stabilizer-medications.html b/blog/mood-stabilizer-medications.html
+index f87791a..64a57d4 100644
+--- a/blog/mood-stabilizer-medications.html
++++ b/blog/mood-stabilizer-medications.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Mood Stabilizer Medications: A Clinical Review | PsychoPharmRef</title>
+   
+diff --git a/blog/motivational-interviewing.html b/blog/motivational-interviewing.html
+index 76f5ffa..26d390a 100644
+--- a/blog/motivational-interviewing.html
++++ b/blog/motivational-interviewing.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Motivational Interviewing: Principles, Techniques, and Clinical Application | PsychoPharmRef</title>
+ 
+diff --git a/blog/natural-methods-depression-anxiety.html b/blog/natural-methods-depression-anxiety.html
+index 4014645..22bc6a1 100644
+--- a/blog/natural-methods-depression-anxiety.html
++++ b/blog/natural-methods-depression-anxiety.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Natural Methods for Treating Depression and Anxiety | PsychoPharmRef</title>
+ 
+diff --git a/blog/neuroscience-foundations.html b/blog/neuroscience-foundations.html
+index 8ceb46d..15883ab 100644
+--- a/blog/neuroscience-foundations.html
++++ b/blog/neuroscience-foundations.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Neuroscience Foundations for Psychiatry: Neurotransmitters, Circuits, and Clinical Correlates - PsychoPharmRef</title>
+     <meta name="description" content="A clinician's primer on neurotransmitter systems, brain circuits, and their relevance to psychiatric illness and psychopharmacological treatment.">
+diff --git a/blog/neutropenia-psychiatric-medications.html b/blog/neutropenia-psychiatric-medications.html
+index 1f9105b..0b20e81 100644
+--- a/blog/neutropenia-psychiatric-medications.html
++++ b/blog/neutropenia-psychiatric-medications.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Neutropenia and Psychiatric Medications | PsychoPharmRef</title>
+ 
+diff --git a/blog/obesity-weight-loss.html b/blog/obesity-weight-loss.html
+index 8bfbedc..2bf344f 100644
+--- a/blog/obesity-weight-loss.html
++++ b/blog/obesity-weight-loss.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>The Modern Obesity Toolkit: Lifestyle, Pharmacotherapy, and Surgery | PsychoPharmRef</title>
+     <meta name="description" content="A clinical refresher on current and next-generation pharmacotherapy, metabolic surgery, and lifestyle interventions for obesity. For medical professionals.">
+diff --git a/blog/obsessive-compulsive-disorder.html b/blog/obsessive-compulsive-disorder.html
+index e8d7a34..17a1dc7 100644
+--- a/blog/obsessive-compulsive-disorder.html
++++ b/blog/obsessive-compulsive-disorder.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Obsessive-Compulsive Disorder: Diagnosis, Neurobiology, and Evidence-Based Treatment - PsychoPharmRef</title>
+     <meta name="description" content="Clinical review of OCD diagnosis, neurobiology, neuroimaging findings, evidence-based psychotherapy (ERP), pharmacotherapy with SRIs, augmentation strategies, and Y-BOCS severity assessment.">
+diff --git a/blog/opioid-use-disorder.html b/blog/opioid-use-disorder.html
+index 6a3a1aa..b6e1e07 100644
+--- a/blog/opioid-use-disorder.html
++++ b/blog/opioid-use-disorder.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Opioid Use Disorder: Pharmacotherapy, Harm Reduction, and Clinical Management - PsychoPharmRef</title>
+     <meta name="description" content="Comprehensive clinical review of opioid use disorder including buprenorphine, methadone, naltrexone, harm reduction, NOWS management, and evidence-based treatment.">
+diff --git a/blog/organ-dysfunction-psychiatry.html b/blog/organ-dysfunction-psychiatry.html
+index 26349a8..ac64fb8 100644
+--- a/blog/organ-dysfunction-psychiatry.html
++++ b/blog/organ-dysfunction-psychiatry.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Psychiatric Changes in Severe Organ Dysfunction | PsychoPharmRef</title>
+ 
+diff --git a/blog/panic-attacks-gad.html b/blog/panic-attacks-gad.html
+index 3fa51d2..e7dbfdb 100644
+--- a/blog/panic-attacks-gad.html
++++ b/blog/panic-attacks-gad.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Panic Attacks and GAD: Clinical Management Guide | PsychoPharmRef</title>
+     
+diff --git a/blog/parkinsons-disease.html b/blog/parkinsons-disease.html
+index 6b40493..36188ce 100644
+--- a/blog/parkinsons-disease.html
++++ b/blog/parkinsons-disease.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="Comprehensive clinical guide to Parkinson's Disease: pathophysiology, diagnosis, treatment algorithms, and psychiatric management for healthcare professionals.">
+     <meta name="author" content="PsychoPharmRef">
+diff --git a/blog/personality-disorders.html b/blog/personality-disorders.html
+index f19b767..03bf742 100644
+--- a/blog/personality-disorders.html
++++ b/blog/personality-disorders.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Personality Disorders: Diagnosis, Neurobiology, and Evidence-Based Treatment - PsychoPharmRef</title>
+     <meta name="description" content="Comprehensive clinical review of personality disorders: three clusters, the centrality of borderline personality disorder, neurobiology, psychotherapy approaches (DBT, MBT, TFP, Schema, GPM), pharmacotherapy, and prognosis.">
+diff --git a/blog/pharmacogenomics-psychiatry.html b/blog/pharmacogenomics-psychiatry.html
+index dea41a2..8ee85a5 100644
+--- a/blog/pharmacogenomics-psychiatry.html
++++ b/blog/pharmacogenomics-psychiatry.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Pharmacogenomics in Psychiatry: CYP450 Testing and Clinical Interpretation | PsychoPharmRef</title>
+ 
+diff --git a/blog/pharmacokinetics.html b/blog/pharmacokinetics.html
+index 2dabdb1..68437c9 100644
+--- a/blog/pharmacokinetics.html
++++ b/blog/pharmacokinetics.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Pharmacokinetics: A Complete Guide for Clinicians | PsychoPharmRef</title>
+ 
+diff --git a/blog/pregnancy-breastfeeding.html b/blog/pregnancy-breastfeeding.html
+index 2ee1015..ff0dfef 100644
+--- a/blog/pregnancy-breastfeeding.html
++++ b/blog/pregnancy-breastfeeding.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Psychiatric Medications in Pregnancy and Breastfeeding | PsychoPharmRef</title>
+     <style>
+diff --git a/blog/psychiatric-ethics.html b/blog/psychiatric-ethics.html
+index 1788db3..c2574a7 100644
+--- a/blog/psychiatric-ethics.html
++++ b/blog/psychiatric-ethics.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Ethics in Psychiatry: Principles, Dilemmas, and Clinical Application - PsychoPharmRef</title>
+     <meta name="description" content="Clinical guide to psychiatric ethics: autonomy, beneficence, non-maleficence, justice, informed consent, confidentiality, boundaries, involuntary treatment, and dual agency in forensic contexts.">
+diff --git a/blog/psychiatric-interview.html b/blog/psychiatric-interview.html
+index 00ff601..928accc 100644
+--- a/blog/psychiatric-interview.html
++++ b/blog/psychiatric-interview.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>The Psychiatric Interview: Structure, Technique, and Clinical Reasoning - PsychoPharmRef</title>
+     <meta name="description" content="Comprehensive guide to conducting the psychiatric evaluation from first contact through formulation, covering interview structure, mental status examination, clinical formulation, and documentation.">
+diff --git a/blog/psychiatric-medication-tremors.html b/blog/psychiatric-medication-tremors.html
+index 20cba58..733bd11 100644
+--- a/blog/psychiatric-medication-tremors.html
++++ b/blog/psychiatric-medication-tremors.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Psychiatric Medication-Related Tremors | PsychoPharmRef</title>
+     
+diff --git a/blog/psychoneuroimmunology.html b/blog/psychoneuroimmunology.html
+index 5ae31f9..a248c7f 100644
+--- a/blog/psychoneuroimmunology.html
++++ b/blog/psychoneuroimmunology.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Psychoneuroimmunology: From Conditioned Immunity to Precision Psychiatry - PsychoPharmRef</title>
+     <meta name="description" content="Comprehensive clinical overview of psychoneuroimmunology including bidirectional brain-immune interactions, inflammatory markers in psychiatric disorders, and emerging immunopsychiatric treatments for clinicians.">
+diff --git a/blog/psychosomatic-conditions.html b/blog/psychosomatic-conditions.html
+index 5f18254..38a48c5 100644
+--- a/blog/psychosomatic-conditions.html
++++ b/blog/psychosomatic-conditions.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Psychosomatic Conditions: What Clinicians Need to Know | PsychoPharmRef</title>
+ 
+diff --git a/blog/psychotherapy-overview.html b/blog/psychotherapy-overview.html
+index 77a88d1..e5c13d3 100644
+--- a/blog/psychotherapy-overview.html
++++ b/blog/psychotherapy-overview.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Evidence-Based Psychotherapy: A Clinician's Guide to Major Modalities - PsychoPharmRef</title>
+     <meta name="description" content="Comprehensive clinical overview of CBT, DBT, psychodynamic therapy, IPT, MI, and other evidence-based psychotherapy modalities for psychiatrists and prescribers.">
+diff --git a/blog/ptsd-cptsd.html b/blog/ptsd-cptsd.html
+index 7f895f0..275a6e6 100644
+--- a/blog/ptsd-cptsd.html
++++ b/blog/ptsd-cptsd.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>PTSD and Complex PTSD: Clinical Diagnosis and Management | PsychoPharmRef</title>
+     <meta name="description" content="Comprehensive clinical review of PTSD and cPTSD for physicians: diagnostic criteria, pathophysiology, pharmacological and non-pharmacological treatments.">
+diff --git a/blog/reading-journal-articles.html b/blog/reading-journal-articles.html
+index c3d211b..4f1ba3a 100644
+--- a/blog/reading-journal-articles.html
++++ b/blog/reading-journal-articles.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Reading Journal Articles: A Guide for Clinicians | PsychoPharmRef</title>
+ 
+diff --git a/blog/schizophrenia.html b/blog/schizophrenia.html
+index 106e529..189d285 100644
+--- a/blog/schizophrenia.html
++++ b/blog/schizophrenia.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Schizophrenia: Diagnosis and Management in Clinical Practice | PsychoPharmRef</title>
+     
+diff --git a/blog/science-of-learning.html b/blog/science-of-learning.html
+index a4cc2cc..0116f1f 100644
+--- a/blog/science-of-learning.html
++++ b/blog/science-of-learning.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>The Science of Learning: How Memory, Cognition, and Education Shape Medical Training | PsychoPharmRef</title>
+ 
+diff --git a/blog/seasonal-affective-disorder.html b/blog/seasonal-affective-disorder.html
+index 49c5280..76e55ad 100644
+--- a/blog/seasonal-affective-disorder.html
++++ b/blog/seasonal-affective-disorder.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Seasonal Affective Disorder: Clinical Recognition and Management | PsychoPharmRef</title>
+     <meta name="description" content="Comprehensive clinical overview of seasonal affective disorder including pathophysiology, epidemiology, and evidence-based treatment strategies for healthcare providers.">
+diff --git a/blog/serotonin-syndrome-nms.html b/blog/serotonin-syndrome-nms.html
+index a098ce5..d9b96bd 100644
+--- a/blog/serotonin-syndrome-nms.html
++++ b/blog/serotonin-syndrome-nms.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Serotonin Syndrome vs NMS: Diagnosis, Differentiation, and Emergency Management | PsychoPharmRef</title>
+ 
+diff --git a/blog/sleep-medications-review.html b/blog/sleep-medications-review.html
+index 079f6d3..4f110c0 100644
+--- a/blog/sleep-medications-review.html
++++ b/blog/sleep-medications-review.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Sleep Medications: A Clinical Review Across Generations | PsychoPharmRef</title>
+   
+diff --git a/blog/sleep-medications.html b/blog/sleep-medications.html
+index b641e13..eeddfb0 100644
+--- a/blog/sleep-medications.html
++++ b/blog/sleep-medications.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Sleep Medications: Classes, Mechanisms, and Clinical Selection | PsychoPharmRef</title>
+     <style>
+diff --git a/blog/smoking-cessation.html b/blog/smoking-cessation.html
+index e0725e6..d075397 100644
+--- a/blog/smoking-cessation.html
++++ b/blog/smoking-cessation.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>A Clinical Guide to Smoking Cessation | PsychoPharmRef</title>
+     <meta name="description" content="Evidence-based pharmacotherapy, behavioral interventions, and support systems for helping patients quit tobacco. For medical professionals.">
+diff --git a/blog/social-anxiety-phobias.html b/blog/social-anxiety-phobias.html
+index 883f5cd..0e78467 100644
+--- a/blog/social-anxiety-phobias.html
++++ b/blog/social-anxiety-phobias.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Social Anxiety Disorder and Specific Phobias: Diagnosis and Evidence-Based Treatment | PsychoPharmRef</title>
+   <meta property="og:type" content="article">
+diff --git a/blog/stimulant-substance-disorders.html b/blog/stimulant-substance-disorders.html
+index c8c3e33..b712d75 100644
+--- a/blog/stimulant-substance-disorders.html
++++ b/blog/stimulant-substance-disorders.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Stimulant and Sedative Use Disorders: Clinical Management | PsychoPharmRef</title>
+ 
+diff --git a/blog/suicide-risk-assessments.html b/blog/suicide-risk-assessments.html
+index b1b016a..ec9da54 100644
+--- a/blog/suicide-risk-assessments.html
++++ b/blog/suicide-risk-assessments.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Suicide Risk Assessments: Evidence, Implementation, and Clinical Effectiveness</title>
+     
+diff --git a/blog/surrogate-decision-makers.html b/blog/surrogate-decision-makers.html
+index f0ed8af..5f471af 100644
+--- a/blog/surrogate-decision-makers.html
++++ b/blog/surrogate-decision-makers.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Medical Surrogate Decision-Makers: History, Law, and Clinical Practice | PsychoPharmRef</title>
+     
+diff --git a/blog/telepsychiatry.html b/blog/telepsychiatry.html
+index 7183d23..09a26de 100644
+--- a/blog/telepsychiatry.html
++++ b/blog/telepsychiatry.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Telepsychiatry: Practice Guidelines, Prescribing, and Clinical Adaptations | PsychoPharmRef</title>
+ 
+diff --git a/blog/traumatic-brain-injury.html b/blog/traumatic-brain-injury.html
+index ef39ffb..6b0fa0c 100644
+--- a/blog/traumatic-brain-injury.html
++++ b/blog/traumatic-brain-injury.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Traumatic Brain Injury, Post-Concussive Syndrome, and Chronic Traumatic Encephalopathy: A Clinical Review</title>
+     
+diff --git a/blog/vitamin-d.html b/blog/vitamin-d.html
+index c8ba92b..b5d98b8 100644
+--- a/blog/vitamin-d.html
++++ b/blog/vitamin-d.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+     <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Vitamin D Deficiency: Pathophysiology, Clinical Manifestations, and Treatment | PsychoPharmRef</title>
+     
+diff --git a/hugo-site/layouts/_default/baseof.html b/hugo-site/layouts/_default/baseof.html
+index ce1a9df..370bf36 100644
+--- a/hugo-site/layouts/_default/baseof.html
++++ b/hugo-site/layouts/_default/baseof.html
+@@ -13,6 +13,7 @@
+   {{ end }}
+ 
+   <meta charset="UTF-8">
++  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>{{ .Title }} - PsychoPharmRef</title>
+   <meta name="description" content="{{ .Description | default .Summary | truncate 160 }}">
+@@ -33,10 +34,10 @@
+   <meta name="twitter:image" content="{{ "og-image.svg" | absURL }}">
+ 
+   <link rel="canonical" href="{{ .Permalink }}">
+-  <link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | absURL }}">
+-  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32.png" | absURL }}">
+-  <link rel="stylesheet" href="{{ "css/styles.css" | absURL }}">
+-  <link rel="stylesheet" href="{{ "css/blog.css" | absURL }}">
++  <link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}">
++  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32.png" | relURL }}">
++  <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
++  <link rel="stylesheet" href="{{ "css/blog.css" | relURL }}">
+   <style>
+     .ba-action-bar{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 14px;padding:6px 0;border-bottom:1px solid var(--border,#cfc8ba)}
+     .ba-act-btn{display:inline-flex;align-items:center;gap:3px;padding:4px 9px;border-radius:4px;font-size:11px;font-weight:600;border:1px solid var(--border,#cfc8ba);background:var(--bg2,#ece6db);color:var(--text,#231e14);cursor:pointer;text-decoration:none;transition:background .15s,border-color .15s}
+diff --git a/hugo-site/static/index.html b/hugo-site/static/index.html
+index 6c769e3..4727b0c 100644
+--- a/hugo-site/static/index.html
++++ b/hugo-site/static/index.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>PsychoPharmRef — Psychopharmacology Reference for Clinicians</title>
+   <meta name="description" content="Free clinical psychopharmacology reference with 91 medications, receptor binding profiles, P450 interactions, 15+ clinical rating scales, PK curve visualization, and 56 evidence-based blog posts for psychiatrists and medical students.">
+diff --git a/index.html b/index.html
+index 6c769e3..4727b0c 100644
+--- a/index.html
++++ b/index.html
+@@ -10,6 +10,7 @@
+     gtag('config', 'G-L2L4BVD8QC');
+   </script>
+   <meta charset="UTF-8">
++  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>PsychoPharmRef — Psychopharmacology Reference for Clinicians</title>
+   <meta name="description" content="Free clinical psychopharmacology reference with 91 medications, receptor binding profiles, P450 interactions, 15+ clinical rating scales, PK curve visualization, and 56 evidence-based blog posts for psychiatrists and medical students.">
+diff --git a/netlify.toml b/netlify.toml
+index ea987c8..7b77e3e 100644
+--- a/netlify.toml
++++ b/netlify.toml
+@@ -14,6 +14,7 @@
+   [headers.values]
+     X-Frame-Options = "DENY"
+     X-Content-Type-Options = "nosniff"
++    X-UA-Compatible = "IE=edge"
+     Referrer-Policy = "strict-origin-when-cross-origin"
+ 
+ [[headers]]
+-- 
+2.34.1
+

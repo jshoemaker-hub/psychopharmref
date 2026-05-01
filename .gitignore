@@ -31,3 +31,15 @@ newsletter/drafts/
 newsletter/blog-index.json
 newsletter/node_modules/
 newsletter/package-lock.json
+
+# Environment variables (sensitive!)
+.env
+.env.local
+.env.*.local
+
+# Deploy artifacts (large zip bundles produced by build/Netlify — never commit)
+deploy-*.zip
+*.zip
+
+# Node modules (any location)
+node_modules/
