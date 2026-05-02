@@ -225,10 +225,6 @@ draft: false
             </ul>
 
             <div class="ba-insight-box">
-                <svg class="ba-insight-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <path d="M12 8v4m0 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
                 <strong>Clinical Pearl:</strong> The shift from categorical to dimensional assessment better reflects the reality that schizophrenia symptoms exist on continua with substantial variation between individuals. This framework has improved diagnostic reliability and treatment planning in clinical settings.
             </div>
 
@@ -846,6 +842,7 @@ draft: false
 /* SVG responsive sizing fix */
 .diagram-wrapper > div, .diagram-container > div, .svg-container > div, .svg-diagram > div, .diagram-wrap > div, .diagram > div { width: 100%; }
 .diagram-wrapper svg, .diagram-container svg, .svg-container svg, .svg-diagram svg, .diagram-wrap svg, .diagram svg, .ba-body svg { width: 100%; height: auto; max-width: 820px; }
+svg.ba-therapy-icon, svg.ba-insight-icon, svg.ba-stat-icon { width: 32px; height: 32px; max-width: none; flex-shrink: 0; }
                     </style>
                 </defs>
 
@@ -928,6 +925,163 @@ draft: false
                     </marker>
                 </defs>
             </svg>
+
+            <!-- INTEGRATE 2025 International Guidelines -->
+            <h3>INTEGRATE 2025: International Algorithmic Guidelines</h3>
+            <p>
+                The INTEGRATE guidelines, published in <em>The Lancet Psychiatry</em> in March 2025, are the first international consensus algorithm for schizophrenia pharmacotherapy. Developed across 30 countries spanning every UN region through an umbrella review, expert workshops, lived-experience focus groups, and a structured Delphi survey, INTEGRATE addresses a longstanding gap in country-specific guidance: the absence of concise, structured, decision-tree recommendations. Several of its positions diverge meaningfully from older paradigms and are worth incorporating into routine practice.
+            </p>
+
+            <h3>Six Cross-Cutting Principles</h3>
+            <ol>
+                <li><strong>Shared decision-making</strong> with the patient (and carers when appropriate) at every step, beginning at the earliest clinically feasible point.</li>
+                <li><strong>Treatment-decision aids</strong>—digital tools that compare side-effect profiles—should inform prescribing rather than habit or formulary defaults.</li>
+                <li><strong>Act early</strong> on inefficacy or intolerability; do not let an inadequate trial drift past 4 weeks at therapeutic dose with confirmed adherence.</li>
+                <li><strong>Lower doses</strong> are often required in young, elderly, female, and pharmacokinetically vulnerable patients (renal/hepatic disease, polypharmacy, smoking status, caffeine load).</li>
+                <li><strong>Address substance use</strong> as a core treatment target, not a downstream concern.</li>
+                <li><strong>Individualize</strong>—the algorithm is general guidance and should be adjusted for individual patients or settings where it is not suitable.</li>
+            </ol>
+
+            <h3>First-Episode Treatment: When and How</h3>
+            <p>
+                INTEGRATE recommends antipsychotic treatment for anyone with ≥1 week of psychotic symptoms causing distress or functional impairment, with earlier initiation appropriate when symptoms are causing severe distress or there are safety concerns. Initial choice should be guided by side-effect tolerability and patient preference. <strong>If no preference is expressed, a D2 partial agonist (aripiprazole 5 mg) is first-line</strong> due to its lower overall side-effect burden. Prolactin-raising agents should be avoided where possible, particularly in female patients of childbearing age. When olanzapine or clozapine is selected despite metabolic risk, <strong>concomitant metformin and lifestyle modification should be offered from initiation</strong>—not added reactively after weight gain.
+            </p>
+            <p>
+                For acute agitation, short-term concomitant benzodiazepine plus a less-sedating, metabolically favorable antipsychotic is preferred over monotherapy with a more sedating, metabolically adverse agent. The option of switching to a long-acting injectable should be discussed early in treatment once tolerability is established—not held as a last resort.
+            </p>
+
+            <div class="ba-table-wrap">
+                <table class="ba-table">
+                    <thead>
+                        <tr>
+                            <th>Antipsychotic</th>
+                            <th>Initial Dose (mg/day)</th>
+                            <th>Target at 2 wk (mg)</th>
+                            <th>Target at 4 wk (mg)</th>
+                            <th>Max Licensed (mg)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Aripiprazole</strong></td><td>5</td><td>15</td><td>20</td><td>30</td></tr>
+                        <tr><td><strong>Brexpiprazole</strong></td><td>1</td><td>3</td><td>4</td><td>4</td></tr>
+                        <tr><td><strong>Cariprazine</strong></td><td>1.5</td><td>3</td><td>4.5</td><td>6</td></tr>
+                        <tr><td><strong>Risperidone</strong></td><td>1</td><td>2</td><td>4</td><td>16</td></tr>
+                        <tr><td><strong>Paliperidone</strong></td><td>3</td><td>6</td><td>9</td><td>12</td></tr>
+                        <tr><td><strong>Olanzapine</strong></td><td>5</td><td>10</td><td>15</td><td>20</td></tr>
+                        <tr><td><strong>Quetiapine</strong></td><td>50</td><td>400</td><td>600</td><td>750</td></tr>
+                        <tr><td><strong>Lurasidone</strong></td><td>37</td><td>74</td><td>111</td><td>148</td></tr>
+                        <tr><td><strong>Amisulpride</strong></td><td>100</td><td>200</td><td>400</td><td>1200</td></tr>
+                        <tr><td><strong>Asenapine</strong></td><td>5</td><td>10</td><td>20</td><td>20</td></tr>
+                        <tr><td><strong>Ziprasidone</strong></td><td>40</td><td>80</td><td>160</td><td>160</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size: 13px; color: #5a5040; margin-top: -10px;"><em>Reassess after 7 days at the initial dose; if tolerable but inadequate, escalate. Treat at the target dose for 14 days before declaring failure. Maximum doses are licensed ceilings, not target doses.</em></p>
+
+            <h3>Adherence: A Standing Question, Not a Last Resort</h3>
+            <p>
+                INTEGRATE positions adherence assessment as routine for every non-responder or partial responder, not a last-ditch interrogation. Self-report alone is insufficient. <strong>Trough plasma levels</strong> (where available), pill counts, and staff or carer reports should be used. Low plasma concentration usually indicates non-adherence in the prior days but can also reflect rapid metabolizer status or absorption issues. <strong>If estimated adherence drops below 80%, an LAI should be discussed</strong>—openly, without coercion, framed by side-effect profile rather than systemic convenience. Because non-adherence is often invisible, LAI discussion may be appropriate even when there is no overt evidence of missed doses, especially in the context of partial response.
+            </p>
+
+            <h3>Domain-Specific Management</h3>
+            <p>
+                The most distinctive feature of INTEGRATE is its symptom-domain-specific algorithm. Rather than treating "schizophrenia" as a single target, the guideline directs different actions depending on which symptom cluster is driving residual disability. INTEGRATE also explicitly retires the first-generation versus second-generation dichotomy as clinically meaningless—prescribing should be guided by receptor profile and side-effect liability, not class lineage.
+            </p>
+
+            <div class="ba-table-wrap">
+                <table class="ba-table">
+                    <thead>
+                        <tr><th>Domain</th><th>First Action</th><th>If Switching</th><th>Augmentation</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Positive (residual)</strong></td>
+                            <td>Switch to an antipsychotic with a different receptor profile (e.g., amisulpride, risperidone, paliperidone, or olanzapine–samidorphan if first agent was a partial agonist)</td>
+                            <td>Cross-titrate informed by half-life and receptor profile</td>
+                            <td>If 2 trials fail → <strong>clozapine</strong>; if clozapine partial → amisulpride, aripiprazole, or ECT</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Negative</strong></td>
+                            <td>Rule out secondary causes (depression, EPS, sedation, isolation, hypothyroidism); reduce dose within therapeutic range</td>
+                            <td>Cariprazine, aripiprazole, or low-dose amisulpride (50 mg BID)</td>
+                            <td>Antidepressant; aripiprazole augmentation if not already on a partial agonist</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Depressive</strong></td>
+                            <td>Antidepressant (no specific agent shown superior); psychological therapy</td>
+                            <td>D2 partial agonist or amisulpride</td>
+                            <td>Reassess for masked negative symptoms</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cognitive</strong></td>
+                            <td>Review and reduce <strong>anticholinergic burden</strong>—clozapine, olanzapine, and quetiapine carry the highest central anticholinergic load</td>
+                            <td>To agent with lower anticholinergic activity</td>
+                            <td>Cognitive remediation therapy</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>The Path to Clozapine—Faster Than Most Practice</h3>
+            <p>
+                INTEGRATE's most consequential shift is acceleration toward clozapine. <strong>If two adequate antipsychotic trials at therapeutic dose with confirmed adherence fail to control positive symptoms, a clozapine trial should be considered</strong> after diagnostic reassessment. The guideline acknowledges this is a faster threshold than the prior TRRIP working group criteria, but cumulative harm from persistent symptoms and the established mortality benefit of clozapine support earlier transition.
+            </p>
+
+            <ul>
+                <li><strong>Co-commence metformin</strong> with clozapine to attenuate weight gain.</li>
+                <li><strong>Target plasma concentration ≥350 ng/mL</strong>; if response remains inadequate at 12 weeks at therapeutic level, raise to ~550 ng/mL.</li>
+                <li>Above 550 ng/mL: number-needed-to-treat for response is 17, with rising seizure risk—consider prophylactic lamotrigine and decide jointly with patient.</li>
+                <li>Augment clozapine with <strong>amisulpride, aripiprazole, or ECT</strong> for residual positive symptoms; with an <strong>antidepressant</strong> for residual negative symptoms.</li>
+                <li>If clozapine is unavailable or intolerable, olanzapine is the alternative. <strong>High-dose monotherapy is not supported</strong> by trial evidence in treatment-resistant schizophrenia.</li>
+            </ul>
+
+            <h3>Cardiometabolic Care: A Core Psychiatric Responsibility</h3>
+            <p>
+                INTEGRATE explicitly places metabolic monitoring and intervention within the psychiatrist's scope—not deferred to primary care. Baseline measures: BMI, waist circumference, BP, HbA1c, glucose, lipids, prolactin, LFTs, U+E, CBC, ECG. <strong>BMI, waist circumference, and BP are checked weekly for the first 6 weeks</strong>, with the full panel repeated at 3 months and annually thereafter (and after any antipsychotic switch). Fasting glucose is rechecked at 4 weeks; a random sample is acceptable for screening if fasting cannot be obtained.
+            </p>
+
+            <div class="ba-table-wrap">
+                <table class="ba-table">
+                    <thead>
+                        <tr><th>Trigger</th><th>Action</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>BMI ≥30 kg/m² (≥27.5 in South Asian, Chinese, Hispanic, Black African, African-Caribbean, or Middle Eastern patients), OR ≥27 with one or more metabolic syndrome criteria, OR ≥5% weight gain in 3 months</td><td>Switch antipsychotic to a lower-risk agent; adjunctive metformin; consider <strong>GLP-1 receptor agonist</strong></td></tr>
+                        <tr><td>Raised cholesterol</td><td>Statin</td></tr>
+                        <tr><td>HbA1c 5.7–6.5% or fasting glucose 5.5–7.0 mmol/L</td><td>Metformin (start 500 mg daily, titrate to 1 g BID; modified-release if available; check B12 annually)</td></tr>
+                        <tr><td>HbA1c ≥6.5%, random glucose ≥11 mmol/L, or fasting glucose ≥7 mmol/L</td><td>Diabetes specialist referral</td></tr>
+                        <tr><td>BP &gt;140/90 mmHg</td><td>Antihypertensive</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                The explicit inclusion of <strong>GLP-1 receptor agonists</strong> (semaglutide, liraglutide) for antipsychotic-associated obesity is a notable addition. Evidence in schizophrenia populations is still accruing, but signals so far show no adverse psychiatric effects and weight benefit comparable to the general population. Renal function should be assessed before metformin initiation, and metformin avoided in renal failure.
+            </p>
+
+            <h3>D2-Mediated Side Effects: Specific Algorithms</h3>
+            <ul>
+                <li><strong>Tardive dyskinesia:</strong> Switch to clozapine, olanzapine, quetiapine, or a partial agonist; if symptoms persist, add a VMAT2 inhibitor (valbenazine or deutetrabenazine).</li>
+                <li><strong>Parkinsonism:</strong> Reduce dose; switch to a partial agonist or weaker D2 antagonist. Anticholinergics are <em>not</em> routinely recommended given cognitive cost—reserve for when alternatives have failed.</li>
+                <li><strong>Akathisia:</strong> Dose reduction first; switch to quetiapine or olanzapine; <strong>propranolol 10–30 mg TID</strong> or <strong>mirtazapine 15 mg</strong> as adjuncts.</li>
+                <li><strong>Hyperprolactinemia (symptomatic):</strong> Switch to a D2 partial agonist OR add <strong>aripiprazole 5 mg daily</strong>. Counsel even asymptomatic patients on the bone density and breast cancer risk associated with chronic untreated hyperprolactinemia.</li>
+            </ul>
+
+            <h3>Substance Use Comorbidity</h3>
+            <p>
+                Smoking cessation pharmacotherapy works equivalently in schizophrenia: <strong>varenicline, bupropion, and nicotine replacement therapy</strong> all show comparable efficacy to non-psychiatric populations and should be offered. <strong>Naltrexone</strong> reduces harmful alcohol use in schizophrenia and should be offered when indicated. Information, education, and a non-judgmental approach are foundational, with co-working with addiction services where available.
+            </p>
+
+            <h3>Discontinuation: Cautious, Slow, Conditional</h3>
+            <p>
+                Complete antipsychotic discontinuation may be discussed only after <strong>≥2 years of full remission</strong> in patients without prior relapse on withdrawal. Taper over <strong>at least 6 months</strong> with active monitoring for prodromal symptoms, robust patient and family psychoeducation about relapse signs, and ongoing follow-up. Ongoing risk factors (substance use, poor premorbid adjustment, safety concerns) argue for continued treatment despite extended remission.
+            </p>
+
+            <div class="ba-insight-box">
+                <strong>Practical takeaways from INTEGRATE:</strong> The guideline's defining contributions are (1) explicit symptom-domain-specific algorithms rather than treating "schizophrenia" as one target, (2) acceleration to clozapine after only two failed adequate trials with confirmed adherence, (3) routine cardiometabolic intervention from day one—including GLP-1 receptor agonists when indicated, (4) reframing first-generation versus second-generation as a clinically irrelevant dichotomy, and (5) early, non-coercive discussion of LAIs as a tool for adherence rather than a coercive endpoint.
+            </div>
+
+            <p style="font-size: 13px; color: #5a5040;"><em>Source: McCutcheon RA, Pillinger T, Varvari I, et al. INTEGRATE: international guidelines for the algorithmic treatment of schizophrenia. <strong>Lancet Psychiatry</strong> 2025;12(5):384–94. doi:10.1016/S2215-0366(25)00031-8. Web tool: psymatik.com/guidelines/scz</em></p>
 
             <h3>Relapse Prevention and Maintenance Treatment</h3>
             <p>
@@ -1020,6 +1174,11 @@ draft: false
                     <li>Viguera AC, Baldessarini RJ, Hegarty JD, van Kammen DP, Tohen M. Clinical risk following abrupt and gradual withdrawal of maintenance neuroleptic treatment. Arch Gen Psychiatry. 1997;54(1):49-55.</li>
                     <li>Howes OD, Bhatnagar A, Murray RM. Understanding the increase in the incidence of schizophrenia. Front Psychiatry. 2017;8:262.</li>
                     <li>Correll CU, Solmi M, Veronese N, et al. Prevalence, incidence and mortality from cardiovascular disease in patients with pooled and specific severe mental illness: a large-scale meta-analysis of 3,211,768 patients and 113,383,368 controls. World Psychiatry. 2017;16(2):163-180.</li>
+                    <li>McCutcheon RA, Pillinger T, Varvari I, et al. INTEGRATE: international guidelines for the algorithmic treatment of schizophrenia. Lancet Psychiatry. 2025;12(5):384-394. doi:10.1016/S2215-0366(25)00031-8.</li>
+                    <li>Pillinger T, Howes OD, Correll CU, et al. Antidepressant and antipsychotic side-effects and personalised prescribing: a systematic review and digital tool development. Lancet Psychiatry. 2023;10(11):860-876.</li>
+                    <li>Wagner E, Siskind D, Falkai P, et al. Clozapine optimization: a Delphi consensus guideline from the Treatment Response and Resistance in Psychosis working group. Schizophr Bull. 2023;49(4):962-972.</li>
+                    <li>Siskind D, Hahn M, Correll CU, et al. Glucagon-like peptide-1 receptor agonists for antipsychotic-associated cardio-metabolic risk factors: a systematic review and individual participant data meta-analysis. Diabetes Obes Metab. 2019;21(2):293-302.</li>
+                    <li>Northwood K, Pearson E, Arnautovska U, et al. Optimising plasma clozapine levels to improve treatment response: an individual patient data meta-analysis and receiver operating characteristic curve analysis. Br J Psychiatry. 2023;222(6):241-245.</li>
                 </ol>
             </section>
 
