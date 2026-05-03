@@ -192,8 +192,6 @@
   // ===== Generate report =====
   function generate() {
     var dateStr   = document.getElementById('ace-date-display').textContent;
-    var patient   = (document.getElementById('ace-patient').value || '').trim();
-    var assessor  = (document.getElementById('ace-assessor').value || '').trim();
     var minutes   = (document.getElementById('ace-minutes').value || '').trim();
     var condition = (document.getElementById('ace-condition').value || '').trim();
     var treatment = (document.getElementById('ace-treatment').value || '').trim();
@@ -204,8 +202,6 @@
     var lines = [];
     lines.push('AID TO CAPACITY EVALUATION (ACE)');
     lines.push('Date: ' + dateStr);
-    if (patient)  lines.push('Patient: ' + patient);
-    if (assessor) lines.push('Assessor: ' + assessor);
     if (minutes)  lines.push('Time to administer: ' + minutes + ' minutes');
     lines.push('');
 
@@ -265,7 +261,7 @@
 
   function reset() {
     ToolUtils.confirmReset('Reset the entire ACE form?', function () {
-      ['ace-patient', 'ace-assessor', 'ace-minutes',
+      ['ace-minutes',
        'ace-condition', 'ace-treatment', 'ace-alternatives',
        'ace-comments'].forEach(function (id) {
         var el = document.getElementById(id);
