@@ -9,6 +9,10 @@ notes/
 *.jpg
 *.jpeg
 
+# EXCEPTION: per-chapter NotebookLM slide decks ship with the site
+!blog/slides/**
+!hugo-site/static/blog/slides/**
+
 # macOS
 .DS_Store
 .AppleDouble

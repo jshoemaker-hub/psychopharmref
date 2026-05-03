@@ -137,6 +137,26 @@ Every new chapter must touch all six places below, or it will be invisible somew
 
 Do NOT run `migrate-blogs.py` — it produces `.md` files that duplicate the `.html` content files Hugo actually deploys, and they clutter the working tree.
 
+### Adding a Slide Overview to a chapter
+Each chapter can show a NotebookLM-generated slide deck inline at the top of the page (collapsible image carousel + "Download PDF" button). The block is generic in the markup — it self-hides if no manifest exists for the slug, so a chapter can ship the snippet before the deck is ready.
+
+Workflow per chapter (uses `pdftoppm` from poppler-utils — `brew install poppler` on macOS):
+
+1. **Generate** the slide deck in NotebookLM, then **Download PDF Document (.pdf)** from the deck's three-dot menu.
+2. **Drop the PDF** at `blog/slides/<slug>.pdf` (where `<slug>` matches the chapter filename, e.g. `schizophrenia.pdf` for `blog/schizophrenia.html`).
+3. **Run** `python3 build-slides.py <slug>`. This produces:
+   - `blog/slides/<slug>/page-001.png` … `page-NNN.png` (web-sized, 1400px wide)
+   - `blog/slides/<slug>/manifest.json` (read at runtime by `blog/slides.js`)
+   - A mirrored copy at `hugo-site/static/blog/slides/<slug>/` and the source PDF at `hugo-site/static/blog/slides/<slug>.pdf`
+   - The paste-in HTML snippet, printed to stdout
+4. **For static blog posts (`blog/<slug>.html`)** only: paste the printed snippet between `</header>` and `<div class="ba-body">`, and add `<link rel="stylesheet" href="slides.css">` near the other stylesheets and `<script src="slides.js" defer></script>` somewhere near the snippet. The Hugo template (`hugo-site/layouts/blog/single.html`) already renders the slide block + loads `css/slides.css` and `js/slides.js` for every post, so no Hugo edits are needed.
+5. **Rebuild** when content changes: re-run `python3 build-slides.py <slug> --force` after replacing the PDF; the manifest's mtime check prevents unnecessary rebuilds otherwise.
+6. **Commit** the new PDF, the generated images directory, the manifest, the (possibly modified) static HTML, and the Hugo `static/blog/slides/...` mirror together.
+
+To rebuild every chapter at once: `python3 build-slides.py --all`.
+
+The 16 medical-student chapters (see `blog/recommended-chapters-medical-students.html`) are the priority targets: `learning-tools-medical-students`, `psychiatric-interview`, `major-depressive-disorder`, `bipolar-disorder`, `schizophrenia`, `antidepressant-review`, `antipsychotic-review`, `suicide-risk-assessments`, `serotonin-syndrome-nms`, `delirium`, `alcohol-use-disorder`, `panic-attacks-gad`, `capacity-evaluation`, `ptsd-cptsd`, `adult-adhd`, `emergency-psychiatry`.
+
 ### Sidebar Navigation (index.html)
 - Psychopharmacology group includes: Drug Database, P450 Interactions, Receptor Binding, Receptor Glossary, PK Curves, Med Comparison
 - Clinical Tools group includes: QT Risk Tool, Refill Calendar, Taper/Start, CDR Staging, ASD Severity, Suicide Risk, SLUMS Exam, PANSS, Catatonia (BFCRS), CIDI Bipolar Screen, PCL-5 (PTSD), YMRS (Mania), Y-BOCS (OCD), AIMS (Dyskinesia), DSM-5-TR SUD
