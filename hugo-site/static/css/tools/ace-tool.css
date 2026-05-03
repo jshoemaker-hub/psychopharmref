@@ -1,0 +1,319 @@
+/* ─────────────────────────────────────────────────────────────────
+   ace-tool.css — Aid to Capacity Evaluation (ACE)
+   Prefix: ace-
+   Uses site variables: --accent, --accent2, --text, --bg2, --border
+   ───────────────────────────────────────────────────────────────── */
+
+.ace-date {
+  color: #6b6050;
+  font-size: 0.92rem;
+  margin-bottom: 18px;
+}
+
+.ace-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px;
+  margin-bottom: 22px;
+}
+
+.ace-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 6px;
+}
+
+.ace-card-sub {
+  font-size: 0.92rem;
+  color: #6b6050;
+  margin: 0 0 16px;
+}
+
+.ace-field-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.ace-input,
+.ace-textarea,
+.ace-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--text);
+  font-size: 0.98rem;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.ace-input:focus,
+.ace-textarea:focus,
+.ace-select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+.ace-textarea { resize: vertical; min-height: 60px; }
+
+.ace-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 18px;
+}
+
+.ace-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px 18px;
+}
+
+.ace-domain {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+}
+
+.ace-domain-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.ace-domain-num {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+.ace-domain-num.ace-num-7 {
+  background: var(--accent2);
+}
+
+.ace-domain-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.ace-domain-prompts {
+  font-size: 0.88rem;
+  color: #6b6050;
+  margin: 6px 0 12px;
+  padding-left: 12px;
+  border-left: 3px solid var(--border);
+  font-style: italic;
+}
+
+.ace-domain-prompts strong {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.ace-score-row {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.ace-score-row label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.ace-score-row label:hover { background: #f4f1ea; }
+
+.ace-score-row input[type="radio"] {
+  accent-color: var(--accent);
+  margin: 0;
+}
+
+.ace-score-row input[type="radio"]:checked + span {
+  font-weight: 700;
+}
+
+.ace-score-row label:has(input:checked) {
+  background: #e9f0e0;
+  border-color: var(--accent);
+}
+
+.ace-domain-7 .ace-score-row label:has(input:checked) {
+  background: #fdf6e3;
+  border-color: var(--accent2);
+}
+
+.ace-domain-7 .ace-score-row input[type="radio"] {
+  accent-color: var(--accent2);
+}
+
+.ace-overall {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.ace-overall label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 0.92rem;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.ace-overall label:hover { background: #f4f1ea; }
+
+.ace-overall label:has(input:checked) {
+  background: #e9f0e0;
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.ace-overall input[type="radio"] {
+  accent-color: var(--accent);
+  margin: 0;
+}
+
+.ace-warning-pill {
+  display: inline-block;
+  background: #fdf6e3;
+  border: 1px solid #e0c97f;
+  color: #7a5c1e;
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-top: 10px;
+}
+
+.ace-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  align-items: center;
+}
+
+.ace-generate-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+.ace-generate-btn:hover { filter: brightness(0.92); }
+
+.ace-btn-secondary {
+  background: #fff;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 0.98rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ace-btn-secondary:hover { background: #f4f1ea; }
+
+.ace-btn-print {
+  background: #fff;
+  color: var(--accent2);
+  border: 1px solid var(--accent2);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 0.98rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ace-btn-print:hover { background: #fdf6e3; }
+
+.ace-output {
+  margin-top: 22px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.ace-output-pre {
+  background: #f8f6f0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: var(--text);
+  margin: 0;
+}
+
+.ace-copy-status {
+  display: inline-block;
+  margin-left: 8px;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.ace-copy-status.visible { opacity: 1; }
+
+.ace-hidden { display: none !important; }
+
+.ace-meta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 140px;
+  gap: 14px 18px;
+  align-items: end;
+}
+
+@media (max-width: 720px) {
+  .ace-grid-2,
+  .ace-grid-3,
+  .ace-meta-row,
+  .ace-overall { grid-template-columns: 1fr; }
+}
+
+@media print {
+  .ace-actions,
+  .ace-generate-btn,
+  .ace-btn-secondary,
+  .ace-btn-print { display: none !important; }
+}

@@ -1256,6 +1256,7 @@
   window.printBlankForm = function(formId) {
     if (formId === 'psych-history') { return printPsychHistoryForm(); }
     if (formId === 'psych-soap')    { return printPsychSoapForm(); }
+    if (formId === 'ace')           { return printAceForm(); }
     if (typeof __originalPrintBlankForm === 'function') {
       return __originalPrintBlankForm(formId);
     }
@@ -1528,5 +1529,153 @@
       +   '<div class="ff-footer">Educational form for clinician use. Document acute risk and safety planning separately. Source: PsychoPharmRef.com</div>'
       + '</div>';
     openFreeformWindow('Psychiatric SOAP Note', body);
+  }
+
+  /* ─── Aid to Capacity Evaluation (ACE) — printable form ─────────────── */
+  function printAceForm() {
+    var domains = [
+      {
+        id: '1',
+        title: 'Able to Understand Medical Problem',
+        prompts: 'What problems are you having right now? · What problem is bothering you most? · Why are you in the hospital? · Do you have [name problem]?'
+      },
+      {
+        id: '2',
+        title: 'Able to Understand Proposed Treatment',
+        prompts: 'What is the treatment for [your problem]? · What else can we do to help you? · Can you have [proposed treatment]?'
+      },
+      {
+        id: '3',
+        title: 'Able to Understand Alternative to Proposed Treatment (if any)',
+        prompts: 'Are there any other [treatments]? · What other options do you have? · Can you have [alternative treatment]?'
+      },
+      {
+        id: '4',
+        title: 'Able to Understand Option of Refusing Proposed Treatment (incl. withholding/withdrawing)',
+        prompts: 'Can you refuse [proposed treatment]? · Can we stop [proposed treatment]?'
+      },
+      {
+        id: '5',
+        title: 'Able to Appreciate Reasonably Foreseeable Consequences of Accepting',
+        prompts: 'What could happen if you have [proposed treatment]? · Side effects/problems? · Could it help you live longer?'
+      },
+      {
+        id: '6',
+        title: 'Able to Appreciate Reasonably Foreseeable Consequences of Refusing (incl. withholding/withdrawing)',
+        prompts: 'What could happen if you don’t have [proposed treatment]? · Could you get sicker / die? · What could happen if you have [alternative]?'
+      }
+    ];
+
+    var seven = [
+      {
+        id: '7a',
+        title: 'Decision Affected by Depression',
+        prompts: 'Why have you decided to accept/refuse? · Do you feel you’re being punished? · Are you a bad person? · Any hope for the future? · Do you deserve to be treated?'
+      },
+      {
+        id: '7b',
+        title: 'Decision Affected by Delusions / Psychosis',
+        prompts: 'Why have you decided to accept/refuse? · Is anyone trying to hurt or harm you? · Do you trust your doctor/nurse?'
+      }
+    ];
+
+    function aceRow(d, isSeven) {
+      var label = isSeven ? 'YES (decision IS affected) · UNSURE · NO' : 'YES · UNSURE · NO';
+      return ''
+        + '<div class="ace-pf-domain">'
+        +   '<div class="ace-pf-dhead">'
+        +     '<div class="ace-pf-dnum">' + d.id + '</div>'
+        +     '<div class="ace-pf-dtitle">' + d.title + '</div>'
+        +     '<div class="ace-pf-dscore">'
+        +       '<span class="ace-pf-chk"></span>YES &nbsp; '
+        +       '<span class="ace-pf-chk"></span>UNSURE &nbsp; '
+        +       '<span class="ace-pf-chk"></span>NO'
+        +     '</div>'
+        +   '</div>'
+        +   '<div class="ace-pf-prompts"><b>Sample Qs:</b> ' + d.prompts + '</div>'
+        +   '<div class="ace-pf-obs-label">Observations / patient&rsquo;s words:</div>'
+        +   '<div class="ace-pf-obs ff-lines ff-l-3"></div>'
+        + '</div>';
+    }
+
+    var head = ''
+      + '<div class="ff-header">'
+      +   '<div><div class="ff-title">Aid to Capacity Evaluation (ACE)</div>'
+      +       '<div class="ff-sub">Etchells E, et al. Joint Centre for Bioethics, University of Toronto. For non-commercial clinical use.</div></div>'
+      +   '<div class="ff-sub">PsychoPharmRef.com</div>'
+      + '</div>'
+      + '<div class="ff-id">'
+      +   '<div class="ff-field"><span class="ff-lbl">Patient:</span><span class="ff-line"></span></div>'
+      +   '<div class="ff-field"><span class="ff-lbl">DOB:</span><span class="ff-line"></span></div>'
+      +   '<div class="ff-field"><span class="ff-lbl">MRN:</span><span class="ff-line"></span></div>'
+      +   '<div class="ff-field"><span class="ff-lbl">Date / Time:</span><span class="ff-line"></span></div>'
+      +   '<div class="ff-field" style="grid-column: span 2;"><span class="ff-lbl">Assessor:</span><span class="ff-line"></span></div>'
+      +   '<div class="ff-field"><span class="ff-lbl">Setting:</span><span class="ff-line"></span></div>'
+      +   '<div class="ff-field"><span class="ff-lbl">Time (min):</span><span class="ff-line"></span></div>'
+      + '</div>';
+
+    var context = ''
+      + '<div class="ace-pf-context">'
+      +   '<div class="ace-pf-ctx-row"><span class="ace-pf-ctx-lbl">Medical condition:</span><span class="ace-pf-ctx-line"></span></div>'
+      +   '<div class="ace-pf-ctx-row"><span class="ace-pf-ctx-lbl">Proposed treatment:</span><span class="ace-pf-ctx-line"></span></div>'
+      +   '<div class="ace-pf-ctx-row"><span class="ace-pf-ctx-lbl">Alternatives:</span><span class="ace-pf-ctx-line"></span></div>'
+      + '</div>';
+
+    var instructions = ''
+      + '<div class="ace-pf-instructions">'
+      +   '<b>Scoring (Domains 1&ndash;6):</b> YES = appropriate response to open-ended questions; UNSURE = needs prompting with closed-ended questions; NO = cannot respond appropriately despite repeated prompting. '
+      +   '<b>Domain 7:</b> YES means the decision <i>is</i> affected by depression / psychosis. People are presumed capable; if uncertain, err on the side of capable. Never base a finding of incapacity on domain 7 alone.'
+      + '</div>';
+
+    var body = ''
+      + '<div class="ff-page ace-pf-page">'
+      +   head
+      +   context
+      +   instructions
+      +   '<div class="ace-pf-section-h">Capacity Domains</div>'
+      +   domains.map(function(d){ return aceRow(d, false); }).join('')
+      +   '<div class="ace-pf-section-h" style="margin-top:8px;">Affective Influences (Domain 7)</div>'
+      +   seven.map(function(d){ return aceRow(d, true); }).join('')
+      +   '<div class="ace-pf-section-h" style="margin-top:8px;">Overall Impression</div>'
+      +   '<div class="ace-pf-overall">'
+      +     '<span class="ace-pf-chk"></span>Definitely Capable &nbsp; '
+      +     '<span class="ace-pf-chk"></span>Probably Capable &nbsp; '
+      +     '<span class="ace-pf-chk"></span>Probably Incapable &nbsp; '
+      +     '<span class="ace-pf-chk"></span>Definitely Incapable'
+      +   '</div>'
+      +   '<div class="ace-pf-section-h" style="margin-top:8px;">Comments</div>'
+      +   '<div class="ff-sub-h">e.g., need for psychiatric assessment, further disclosure, family / cultural / religious consultation</div>'
+      +   '<div class="ff-lines ff-l-4"></div>'
+      +   '<div class="ff-footer">'
+      +     'Capacity is decision-specific. Address treatable/reversible causes (e.g., delirium, drug toxicity, pain, communication barriers) before final determination. '
+      +     'Source: Etchells E. ACE, Joint Centre for Bioethics, University of Toronto. Form generated from PsychoPharmRef.com'
+      +   '</div>'
+      + '</div>';
+
+    // Wrap in a small style block specific to the ACE form
+    var styled = ''
+      + '<style>'
+      + '.ace-pf-page { font-size: 9.5px; line-height: 1.3; }'
+      + '.ace-pf-context { display: grid; gap: 3px; margin-bottom: 5px; }'
+      + '.ace-pf-ctx-row { display: flex; align-items: baseline; gap: 6px; font-size: 9.5px; }'
+      + '.ace-pf-ctx-lbl { font-weight: bold; min-width: 110px; }'
+      + '.ace-pf-ctx-line { flex: 1; border-bottom: 1px solid #000; height: 13px; }'
+      + '.ace-pf-instructions { font-size: 8.5px; padding: 4px 6px; border: 1px solid #999; background: #f6f3ec; margin-bottom: 6px; line-height: 1.35; }'
+      + '.ace-pf-section-h { font-size: 10.5px; font-weight: bold; padding: 3px 0 2px; border-bottom: 1px solid #000; margin: 4px 0 4px; text-transform: uppercase; letter-spacing: 0.4px; }'
+      + '.ace-pf-domain { border: 1px solid #999; padding: 4px 6px; margin-bottom: 4px; }'
+      + '.ace-pf-dhead { display: grid; grid-template-columns: 28px 1fr auto; gap: 6px; align-items: baseline; }'
+      + '.ace-pf-dnum { font-weight: bold; font-size: 11px; }'
+      + '.ace-pf-dtitle { font-weight: bold; font-size: 9.5px; }'
+      + '.ace-pf-dscore { font-size: 9px; }'
+      + '.ace-pf-prompts { font-size: 8.5px; color: #333; font-style: italic; padding-left: 34px; margin: 2px 0 3px; }'
+      + '.ace-pf-prompts b { font-style: normal; color: #000; }'
+      + '.ace-pf-obs-label { font-size: 8.5px; font-weight: bold; padding-left: 34px; }'
+      + '.ace-pf-obs { margin-left: 34px; }'
+      + '.ace-pf-overall { font-size: 9.5px; padding: 4px 6px; border: 1px solid #999; }'
+      + '.ace-pf-chk { display: inline-block; width: 11px; height: 11px; border: 1px solid #000; vertical-align: -1px; margin-right: 3px; }'
+      + '</style>'
+      + body;
+
+    openFreeformWindow('Aid to Capacity Evaluation (ACE)', styled);
   }
 })();

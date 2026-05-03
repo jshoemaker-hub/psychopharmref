@@ -155,6 +155,7 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="asd-tool">ASD Severity</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="aq-tool">Autism Screening (AQ)</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="adl-tool">ADL / IADL</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="ace-tool">Capacity (ACE)</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="asrs-tool">ASRS (ADHD)</a></li>
 
           <li class="nav-sub-divider">Mood &amp; Anxiety Scales</li>
@@ -9516,6 +9517,96 @@
 </section><!-- end adl-tool -->
 
 
+<!-- ── Aid to Capacity Evaluation (ACE) ─────────────────────────────── -->
+<section id="ace-tool" data-lazy-tool="ace-tool" class="section">
+  <div class="section-header">
+    <h2>Aid to Capacity Evaluation (ACE)</h2>
+    <p>Structured 7-domain assessment of decision-specific capacity for a medical decision (Etchells et al., Joint Centre for Bioethics, University of Toronto). Yields an EMR-ready note and a printable blank form.</p>
+  </div>
+
+  <div class="mt-warning">
+    <strong>Capacity is decision-specific.</strong> Assess capacity for a single, specific decision. Address communication barriers (hearing, vision, language, dysphasia) and provide adequate disclosure of treatment, alternatives, risks, and consequences before scoring. People are presumed capable; if uncertain, err on the side of capable.
+  </div>
+
+  <div class="ace-date">Assessment date: <span id="ace-date-display"></span></div>
+
+  <!-- 1. Patient + decision context -->
+  <div class="ace-card">
+    <h3 class="ace-card-title">1. Patient &amp; Decision Context</h3>
+    <p class="ace-card-sub">Briefly identify the decision being assessed. Use the patient&rsquo;s own words wherever possible.</p>
+    <div class="ace-grid-2">
+      <div>
+        <label class="ace-field-label" for="ace-patient">Patient name / identifier</label>
+        <input id="ace-patient" type="text" class="ace-input" placeholder="Initials or MRN">
+      </div>
+      <div>
+        <label class="ace-field-label" for="ace-assessor">Assessor</label>
+        <input id="ace-assessor" type="text" class="ace-input" placeholder="Clinician name and role">
+      </div>
+    </div>
+    <div style="margin-top:12px">
+      <label class="ace-field-label" for="ace-condition">Medical condition</label>
+      <textarea id="ace-condition" class="ace-textarea" rows="2" placeholder="e.g., Below-knee gangrene, type 2 diabetes"></textarea>
+    </div>
+    <div style="margin-top:12px">
+      <label class="ace-field-label" for="ace-treatment">Proposed treatment</label>
+      <textarea id="ace-treatment" class="ace-textarea" rows="2" placeholder="e.g., Below-knee amputation"></textarea>
+    </div>
+    <div style="margin-top:12px">
+      <label class="ace-field-label" for="ace-alternatives">Alternatives discussed (including refusal / withdrawal)</label>
+      <textarea id="ace-alternatives" class="ace-textarea" rows="2" placeholder="e.g., IV antibiotics; comfort-focused care; no treatment"></textarea>
+    </div>
+  </div>
+
+  <!-- 2. Domain scoring -->
+  <div class="ace-card">
+    <h3 class="ace-card-title">2. Domain Scoring</h3>
+    <p class="ace-card-sub">
+      Domains 1&ndash;6: <strong>YES</strong> = appropriate response to open-ended questions; <strong>UNSURE</strong> = needs prompting with closed-ended questions; <strong>NO</strong> = cannot respond appropriately despite repeated prompting.
+      <br>Domain 7 (a/b): <strong>YES</strong> means the decision <em>is</em> affected by depression/psychosis. Never base a finding of incapacity on domain 7 alone.
+    </p>
+    <div id="ace-domains"></div>
+  </div>
+
+  <!-- 3. Overall impression -->
+  <div class="ace-card">
+    <h3 class="ace-card-title">3. Overall Impression</h3>
+    <p class="ace-card-sub">Capacity is presumed; if uncertain, err on the side of calling the person capable.</p>
+    <div class="ace-overall">
+      <label><input type="radio" name="ace-impression" value="def-cap"><span>Definitely Capable</span></label>
+      <label><input type="radio" name="ace-impression" value="prob-cap"><span>Probably Capable</span></label>
+      <label><input type="radio" name="ace-impression" value="prob-inc"><span>Probably Incapable</span></label>
+      <label><input type="radio" name="ace-impression" value="def-inc"><span>Definitely Incapable</span></label>
+    </div>
+    <div style="margin-top:14px">
+      <label class="ace-field-label" for="ace-comments">Comments (e.g., need for psychiatric assessment, further disclosure, family consultation)</label>
+      <textarea id="ace-comments" class="ace-textarea" rows="3" placeholder="Optional &mdash; appended to the report"></textarea>
+    </div>
+    <div style="margin-top:14px">
+      <label class="ace-field-label" for="ace-minutes">Time taken to administer (minutes)</label>
+      <input id="ace-minutes" type="number" min="0" step="1" class="ace-input" style="max-width:160px" placeholder="e.g., 15">
+    </div>
+  </div>
+
+  <!-- Action buttons -->
+  <div class="ace-actions">
+    <button id="ace-generate-btn" class="ace-generate-btn">Generate Report &amp; Copy</button>
+    <button id="ace-print-btn" class="ace-btn-print" type="button">Print Blank Form</button>
+  </div>
+
+  <!-- Output -->
+  <div id="ace-output" class="ace-output ace-hidden">
+    <h3 class="ace-card-title" style="margin-bottom:12px">EMR-Ready Summary</h3>
+    <pre id="ace-output-text" class="ace-output-pre"></pre>
+    <div class="ace-actions">
+      <button type="button" id="ace-copy-btn" class="ace-btn-secondary">Copy to clipboard</button>
+      <button type="button" id="ace-reset-btn" class="ace-btn-secondary">Reset</button>
+      <span id="ace-copy-status" class="ace-copy-status">Copied.</span>
+    </div>
+  </div>
+</section><!-- end ace-tool -->
+
+
 <!-- ── MSI-BPD ─────────────────────────────────────────────────────── -->
 <section id="msibpd-tool" data-lazy-tool="msibpd-tool" class="section">
   <div class="section-header">
@@ -10512,7 +10603,7 @@
 
   <!-- Load print-forms CSS and JS -->
   <link rel="stylesheet" href="css/tools/print-forms.css">
-  <script src="js/tools/print-forms.js?v=20260501e"></script>
+  <script src="js/tools/print-forms.js?v=20260503a"></script>
 
   <!-- Documentation Tools (one-page H&P / SOAP) -->
   <div id="pf-cat-docs" class="pf-category-group">
@@ -10567,6 +10658,12 @@
         <div class="pf-card-ref">Kessler RC, et al. Psychol Med. 2005;35(2):245-256</div>
         <p style="font-size: 13px; margin-bottom: 12px; color: #666;">18-item self-report ADHD screening with Part A (6 items) and Part B (12 supplemental).</p>
         <button class="pf-btn" onclick="printBlankForm('asrs')">Print Blank Form</button>
+      </div>
+      <div class="pf-card">
+        <div class="pf-card-title">Aid to Capacity Evaluation (ACE)</div>
+        <div class="pf-card-ref">Etchells E, et al. Joint Centre for Bioethics, U. of Toronto. (CMAJ 1996;155:657-61)</div>
+        <p style="font-size: 13px; margin-bottom: 12px; color: #666;">Structured 7-domain assessment of decision-specific capacity for a medical decision (understanding, appreciation, and affective influences).</p>
+        <button class="pf-btn" onclick="printBlankForm('ace')">Print Blank Form</button>
       </div>
     </div>
   </div>
@@ -10942,7 +11039,7 @@
   </script>
 
   <script defer src="js/data.js?v=20260324"></script>
-  <script defer src="js/app.js?v=20260501a"></script>
+  <script defer src="js/app.js?v=20260503a"></script>
   <script defer src="js/glossary-data.js?v=20260501a"></script>
   <script defer src="js/glossary-page.js?v=20260501a"></script>
   <script defer src="js/search.js?v=20260501a"></script>
