@@ -143,17 +143,19 @@ Each chapter can show a NotebookLM-generated slide deck inline at the top of the
 Workflow per chapter (uses `pdftoppm` from poppler-utils — `brew install poppler` on macOS):
 
 1. **Generate** the slide deck in NotebookLM, then **Download PDF Document (.pdf)** from the deck's three-dot menu.
-2. **Drop the PDF** at `blog/slides/<slug>.pdf` (where `<slug>` matches the chapter filename, e.g. `schizophrenia.pdf` for `blog/schizophrenia.html`).
-3. **Run** `python3 build-slides.py <slug>`. This produces:
-   - `blog/slides/<slug>/page-001.png` … `page-NNN.png` (web-sized, 1400px wide)
-   - `blog/slides/<slug>/manifest.json` (read at runtime by `blog/slides.js`)
-   - A mirrored copy at `hugo-site/static/blog/slides/<slug>/` and the source PDF at `hugo-site/static/blog/slides/<slug>.pdf`
+2. **Drop the PDF** at `blog/slides/<slug>.pdf` (where `<slug>` matches the chapter filename, e.g. `schizophrenia.pdf` for `blog/schizophrenia.html`). Note: `blog/slides/` is a symlink to `hugo-site/static/blog/slides/` — there is only one physical copy of each slide asset, so dropping a PDF at `blog/slides/<slug>.pdf` actually writes it under `hugo-site/static/blog/slides/<slug>.pdf`. This is intentional; it halves repo size and eliminates the prior mirror step.
+3. **Run** `python3 build-slides.py <slug>`. This produces, all under `hugo-site/static/blog/slides/<slug>/`:
+   - `page-001.png` … `page-NNN.png` (web-sized, 1100–1400px wide)
+   - `manifest.json` (read at runtime by `blog/slides.js`)
    - The paste-in HTML snippet, printed to stdout
+   The same files are reachable from `blog/slides/<slug>/` via the symlink, so root-served local previews continue to resolve `/blog/slides/...` paths.
 4. **For static blog posts (`blog/<slug>.html`)** only: paste the printed snippet between `</header>` and `<div class="ba-body">`, and add `<link rel="stylesheet" href="slides.css">` near the other stylesheets and `<script src="slides.js" defer></script>` somewhere near the snippet. The Hugo template (`hugo-site/layouts/blog/single.html`) already renders the slide block + loads `css/slides.css` and `js/slides.js` for every post, so no Hugo edits are needed.
 5. **Rebuild** when content changes: re-run `python3 build-slides.py <slug> --force` after replacing the PDF; the manifest's mtime check prevents unnecessary rebuilds otherwise.
-6. **Commit** the new PDF, the generated images directory, the manifest, the (possibly modified) static HTML, and the Hugo `static/blog/slides/...` mirror together.
+6. **Commit** the new PDF, the generated images directory, the manifest, and the (possibly modified) static HTML. There is no separate Hugo mirror to commit any more — outputs already live under `hugo-site/static/`.
 
 To rebuild every chapter at once: `python3 build-slides.py --all`.
+
+**Push size warning:** the home/office Wi-Fi on this Mac drops sustained pushes >~90 MiB; cellular tether is reliable. If a single commit's pack exceeds that ceiling, split it into multiple commits and push them one at a time, or push from a hotspot.
 
 The 16 medical-student chapters (see `blog/recommended-chapters-medical-students.html`) are the priority targets: `learning-tools-medical-students`, `psychiatric-interview`, `major-depressive-disorder`, `bipolar-disorder`, `schizophrenia`, `antidepressant-review`, `antipsychotic-review`, `suicide-risk-assessments`, `serotonin-syndrome-nms`, `delirium`, `alcohol-use-disorder`, `panic-attacks-gad`, `capacity-evaluation`, `ptsd-cptsd`, `adult-adhd`, `emergency-psychiatry`.
 

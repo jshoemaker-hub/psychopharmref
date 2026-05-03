@@ -34,10 +34,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 # Repo layout
+# NOTE: All slide assets live under hugo-site/static/blog/slides/ (the dir
+# Netlify deploys). blog/slides/ at the repo root is a symlink that points
+# here, so local previews under repo-root/ continue to resolve /blog/slides/*
+# without duplication.
 REPO       = Path(__file__).resolve().parent
 BLOG_DIR   = REPO / "blog"
-SLIDES_DIR = BLOG_DIR / "slides"
-HUGO_STATIC_SLIDES = REPO / "hugo-site" / "static" / "blog" / "slides"
+SLIDES_DIR = REPO / "hugo-site" / "static" / "blog" / "slides"
 
 # Image output
 DEFAULT_DPI   = 150
@@ -144,17 +147,12 @@ def convert(slug: str, dpi: int, width: int, force: bool) -> dict:
     }
     manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
 
-    # Mirror to hugo-site/static if it exists
-    hugo_target = HUGO_STATIC_SLIDES / slug
-    if HUGO_STATIC_SLIDES.parent.exists():
-        if hugo_target.exists():
-            shutil.rmtree(hugo_target)
-        shutil.copytree(out_dir, hugo_target)
-        # Also mirror the source PDF
-        shutil.copy2(pdf, HUGO_STATIC_SLIDES / f"{slug}.pdf")
-        print(f"  [hugo] mirrored to {hugo_target.relative_to(REPO)}")
+    # Single source of truth: outputs live under hugo-site/static/blog/slides/.
+    # blog/slides/ at the repo root is a symlink to here, so the same files are
+    # reachable from both /blog/slides/<slug>/... (root preview) and the Hugo
+    # build's static/ tree (Netlify deploy).
 
-    print(f"  [ok]   {slug}: {n} pages -> blog/slides/{slug}/")
+    print(f"  [ok]   {slug}: {n} pages -> hugo-site/static/blog/slides/{slug}/")
     return manifest
 
 
