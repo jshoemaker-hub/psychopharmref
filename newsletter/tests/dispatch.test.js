@@ -88,9 +88,12 @@ describe('dispatch table', () => {
     expect(dispatch['s2-adverse-effects'].name).toBe('fetchAdverseEffects');
   });
 
-  test('all s3 handlers are fetchPerplexity', () => {
+  test('all s3 handlers are the fallback-chain wrapper (added 2026-05-08)', () => {
+    // Previously dispatched direct to fetchPerplexity — a single transient
+    // Perplexity 503 or timeout could blank an entire S3 section. Now wrapped
+    // in fetchS3WithFallback so each S3 topic has a two-rung chain.
     ['s3-diagnosis-history', 's3-drug-discovery', 's3-scientific-process', 's3-historical-legal'].forEach(key => {
-      expect(dispatch[key].name).toBe('fetchPerplexity');
+      expect(dispatch[key].name).toBe('fetchS3WithFallback');
     });
   });
 });

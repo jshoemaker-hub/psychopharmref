@@ -1,5 +1,13 @@
 // lib/research.js — Source fetching handlers and dispatch table
 
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const briefsDir = path.join(__dirname, '..', 'briefs');
+
 /**
  * fetchWithTimeout — fetch wrapper with AbortController timeout
  * @param {string} url
@@ -321,14 +329,24 @@ export async function fetchPerplexity(topicKey, config) {
     const topicConf = config?.topics?.[topicKey];
     const focusArea = topicConf?.focusArea || topicKey;
     const cutoffDays = config?.recencyCutoff?.[topicKey];
-    let cutoffNote = '';
+
+    // Two query templates: a recency-anchored one for time-sensitive rungs (S1
+    // pipeline / approvals / shortages, S2 rung 1 "recent evidence" framings)
+    // and an evergreen one for rungs that explicitly opt out of the cutoff
+    // (S2 rung 2 history fallbacks, all S3 deep dives). Prior to 2026-05-08 a
+    // single template asked for "recent ... news items" regardless of cutoff,
+    // which caused the no-cutoff rungs to come back empty for genuinely
+    // historical topics (e.g. history of HAM-D, origin of schizophrenia
+    // diagnosis) — Perplexity correctly found nothing "recent" matching the
+    // ask. Branching the template restores the intended evergreen behaviour.
+    let query;
     if (cutoffDays) {
       const cutoffDate = new Date(Date.now() - cutoffDays * 24 * 60 * 60 * 1000)
         .toISOString().slice(0, 10);
-      cutoffNote = ` Focus on sources published after ${cutoffDate}.`;
+      query = `${focusArea}. Retrieve recent peer-reviewed sources, clinical guidelines, or news items with publication dates. Focus on sources published after ${cutoffDate}. Include URLs and publication dates where available.`;
+    } else {
+      query = `${focusArea}. Retrieve authoritative sources: peer-reviewed reviews, textbook chapters, historical accounts, primary sources, or canonical references. Original publication date is more important than recency. Include URLs and publication dates where available.`;
     }
-
-    const query = `${focusArea}. Retrieve recent peer-reviewed sources, clinical guidelines, or news items with publication dates.${cutoffNote} Include URLs and publication dates where available.`;
 
     const body = {
       model: config?.perplexityModel || 'sonar-pro',
@@ -378,13 +396,13 @@ export async function fetchPerplexity(topicKey, config) {
           });
         }
         const retryData = await retry.json();
-        return parsePerplexityResponse(topicKey, retryData, config);
+        return parsePerplexityResponse(topicKey, retryData, config, { focusArea, query });
       }
       throw new Error(`Perplexity returned ${response.status}`);
     }
 
     const data = await response.json();
-    return parsePerplexityResponse(topicKey, data, config);
+    return parsePerplexityResponse(topicKey, data, config, { focusArea, query });
   } catch (err) {
     if (err.name === 'AbortError') {
       return validateBrief({
@@ -395,6 +413,32 @@ export async function fetchPerplexity(topicKey, config) {
     }
     return validateBrief({ topic: topicKey, sources: [], warnings: [`Perplexity error: ${err.message}`] });
   }
+}
+
+/**
+ * writePerplexityDebug — write raw Perplexity API response to disk when a
+ * call returns zero parseable sources. Filename includes ISO timestamp so
+ * sequential rungs in the same topic don't collide. Best-effort: failures to
+ * write are swallowed (debug artifacts must never break the pipeline).
+ */
+function writePerplexityDebug(topicKey, data, ctx) {
+  try {
+    if (!fs.existsSync(briefsDir)) return;
+    const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const file = path.join(briefsDir, `perplexity-debug-${stamp}-${topicKey}.json`);
+    const payload = {
+      topic: topicKey,
+      capturedAt: new Date().toISOString(),
+      focusArea: ctx?.focusArea || '',
+      query: ctx?.query || '',
+      reason: 'Perplexity returned response but parser found 0 usable sources',
+      hasSearchResults: Array.isArray(data?.search_results) ? data.search_results.length : null,
+      hasCitations: Array.isArray(data?.citations) ? data.citations.length : null,
+      contentLength: data?.choices?.[0]?.message?.content?.length || 0,
+      rawResponse: data,
+    };
+    fs.writeFileSync(file, JSON.stringify(payload, null, 2));
+  } catch { /* best-effort; never break the pipeline on a debug write */ }
 }
 
 /**
@@ -417,7 +461,7 @@ export async function fetchPerplexity(topicKey, config) {
  * source from the assistant's content so the brief is never empty when the
  * model actually said something useful.
  */
-function parsePerplexityResponse(topicKey, data, config) {
+function parsePerplexityResponse(topicKey, data, config, ctx) {
   const content = data?.choices?.[0]?.message?.content || '';
   const retrievedDate = new Date().toISOString().slice(0, 10);
   const maxSources = config?.maxBriefSources || 5;
@@ -471,6 +515,15 @@ function parsePerplexityResponse(topicKey, data, config) {
   }
 
   const warnings = sources.length === 0 ? ['Perplexity returned no citations'] : [];
+
+  // When the parser yields nothing, dump the raw API response for postmortem.
+  // This is the single most valuable diagnostic artifact: it lets us see
+  // whether Perplexity actually returned 0 hits, returned a content synthesis
+  // with no citations, or returned an unexpected envelope shape.
+  if (sources.length === 0) {
+    writePerplexityDebug(topicKey, data, ctx);
+  }
+
   return validateBrief({ topic: topicKey, sources, relevantBlogPosts: [], warnings });
 }
 
@@ -682,10 +735,16 @@ function tagWithRung(brief, rungNumber, description) {
 }
 
 // Build the evergreen brief when every rung in a chain has returned empty.
-function escalateToEvergreen(topicKey, attempts) {
+// rungDetails (added 2026-05-08) carries the underlying per-rung warnings so
+// the evergreen brief preserves the actual failure cause instead of just the
+// generic "returned no sources" summary.
+function escalateToEvergreen(topicKey, attempts, rungDetails = []) {
   const warnings = attempts.map(
     (a, i) => `Rung ${i + 1} "${a}" returned no sources`
   );
+  if (rungDetails.length > 0) {
+    warnings.push(...rungDetails);
+  }
   warnings.push('All fallback rungs exhausted; drafting from evergreen prompt.');
   return validateBrief({
     topic: topicKey,
@@ -704,6 +763,7 @@ function escalateToEvergreen(topicKey, attempts) {
 // an evergreen-escalated brief.
 async function runFallbackChain(topicKey, rungs) {
   const attempts = [];
+  const rungDetails = []; // Per-rung underlying warnings from the brief itself.
   for (let i = 0; i < rungs.length; i++) {
     const rung = rungs[i];
     attempts.push(rung.description);
@@ -720,8 +780,15 @@ async function runFallbackChain(topicKey, rungs) {
     if (hasUsableSources(brief, rung.gate || {})) {
       return tagWithRung(brief, i + 1, rung.description);
     }
+    // Rung failed its gate. Capture its underlying warnings so the final
+    // evergreen brief surfaces the actual cause (e.g. "Perplexity returned no
+    // citations", "Perplexity error: 401 Unauthorized") rather than the
+    // generic "returned no sources" line we used to emit.
+    if (Array.isArray(brief?.warnings)) {
+      brief.warnings.forEach(w => rungDetails.push(`Rung ${i + 1} detail: ${w}`));
+    }
   }
-  return escalateToEvergreen(topicKey, attempts);
+  return escalateToEvergreen(topicKey, attempts, rungDetails);
 }
 
 // ── s1-new-approvals: 90-day FDA RSS → 3-year retrospective via Perplexity ──
@@ -953,9 +1020,55 @@ export async function fetchAdverseEffects(topicKey, config) {
   ]);
 }
 
+// ── S3 deep dives: previously dispatched directly to fetchPerplexity, which
+// meant a single transient Perplexity 503 or timeout would blank an entire
+// section (no rungs, no fallback). Wrapped in runFallbackChain as of
+// 2026-05-08. Rung 1 is the configured focusArea verbatim (broad framing of
+// the topic). Rung 2 is a narrower, more concrete framing — anchoring the
+// query to a specific named example often produces results when the broad
+// version returned nothing. Both rungs are evergreen (no recency cutoff) per
+// config.js; the no-cutoff query template (added simultaneously) handles the
+// time-insensitive phrasing.
+const S3_RUNG2_FOCUS = {
+  's3-diagnosis-history':
+    'a single named psychiatric diagnostic category (e.g., schizophrenia, bipolar disorder, PTSD, autism, ADHD, borderline personality, OCD): when first named, who named it, how DSM/ICD criteria evolved across editions, and current debates over its boundaries',
+  's3-drug-discovery':
+    'the discovery story of a single landmark psychiatric medication (chlorpromazine, lithium, imipramine, fluoxetine, clozapine, ketamine, brexanolone, psilocybin, lecanemab): serendipity vs rational design, key figures, pivotal trial, and downstream impact on the field',
+  's3-scientific-process':
+    'a methodological landmark in psychiatric research (the placebo response problem, RCT design in psychiatry, NIMH RDoC, network meta-analysis, registry-based trials, biomarker validation efforts): why it matters and how it changed practice',
+  's3-historical-legal':
+    'a landmark legal or ethical event in psychiatric history (deinstitutionalization, Tarasoff, Olmstead, ECT regulation, the Rosenhan experiment, asylum reform, mental-health parity laws): facts of the case, downstream policy, and contemporary relevance',
+};
+
+export async function fetchS3WithFallback(topicKey, config) {
+  const gate = { requireMetadata: true };
+  const topicConf = config?.topics?.[topicKey] || {};
+  return runFallbackChain(topicKey, [
+    {
+      description: `${topicConf.label || topicKey} — primary framing (Perplexity)`,
+      gate,
+      fn: () => fetchPerplexity(topicKey, config),
+    },
+    {
+      description: `${topicConf.label || topicKey} — concrete-example fallback (Perplexity)`,
+      gate,
+      fn: () => fetchPerplexity(topicKey, {
+        ...config,
+        topics: {
+          ...config.topics,
+          [topicKey]: {
+            ...topicConf,
+            focusArea: S3_RUNG2_FOCUS[topicKey] || topicConf.focusArea,
+          },
+        },
+      }),
+    },
+  ]);
+}
+
 /**
  * dispatch — maps topic keys to fetch handler functions.
- * S1 and S2 keys use fallback-chain wrappers; S3 keys stay on direct fetchPerplexity.
+ * All sections now use fallback-chain wrappers (S3 added 2026-05-08).
  */
 export const dispatch = {
   's1-new-approvals': fetchNewApprovals,
@@ -966,8 +1079,8 @@ export const dispatch = {
   's2-how-things-work': fetchHowThingsWork,
   's2-survey-review': fetchSurveyReview,
   's2-adverse-effects': fetchAdverseEffects,
-  's3-diagnosis-history': fetchPerplexity,
-  's3-drug-discovery': fetchPerplexity,
-  's3-scientific-process': fetchPerplexity,
-  's3-historical-legal': fetchPerplexity,
+  's3-diagnosis-history': fetchS3WithFallback,
+  's3-drug-discovery': fetchS3WithFallback,
+  's3-scientific-process': fetchS3WithFallback,
+  's3-historical-legal': fetchS3WithFallback,
 };
