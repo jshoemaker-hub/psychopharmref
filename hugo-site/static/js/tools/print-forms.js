@@ -700,6 +700,44 @@
       margin-bottom: 12px;
       padding-left: 12px;
     }
+    /* Column-header row: aligned labels above each bubble column */
+    .pf-print-col-headers {
+      display: grid;
+      grid-template-columns: 20px 1fr auto;
+      gap: 8px 12px;
+      margin: 6px 0 4px 0;
+      align-items: end;
+    }
+    .pf-print-col-labels {
+      display: flex;
+      gap: 6px;
+      align-items: end;
+      font-size: 7px;
+      font-weight: bold;
+      color: #222;
+      text-transform: uppercase;
+      letter-spacing: 0.2px;
+    }
+    .pf-print-col-labels > span {
+      width: 16px;
+      text-align: center;
+      line-height: 1.1;
+      display: inline-block;
+      white-space: normal;
+      word-break: break-word;
+    }
+    .pf-print-col-labels.box-cols > span {
+      width: 18px;
+    }
+    /* Wider variant: gives more horizontal room for descriptive headers */
+    .pf-print-item-boxes.pf-wide-cols,
+    .pf-print-col-labels.pf-wide-cols {
+      gap: 14px;
+    }
+    .pf-print-col-labels.pf-wide-cols > span {
+      width: 26px;
+      font-size: 7.5px;
+    }
     @media print {
       body { margin: 0; padding: 0; }
       .pf-print-page { margin: 0; padding: 20px; max-width: 100%; box-shadow: none; }
@@ -761,6 +799,26 @@
      Helper Functions
      ──────────────────────────────────────────────────────────────────────── */
 
+  /**
+   * Render an aligned column-header row above bubble columns.
+   * @param {string[]} labels - text for each column, in order
+   * @param {object} [opts]
+   * @param {boolean} [opts.box]  - true if columns use squares (.pf-print-box width 18px)
+   * @param {boolean} [opts.wide] - true to use wider columns + gap (for descriptive labels)
+   */
+  function renderColHeaders(labels, opts) {
+    opts = opts || {};
+    var classes = 'pf-print-col-labels';
+    if (opts.box)  classes += ' box-cols';
+    if (opts.wide) classes += ' pf-wide-cols';
+    var labelHtml = labels.map(function(l) { return '<span>' + l + '</span>'; }).join('');
+    return '<div class="pf-print-col-headers">'
+      +    '<div></div>'
+      +    '<div></div>'
+      +    '<div class="' + classes + '">' + labelHtml + '</div>'
+      +  '</div>';
+  }
+
   function renderFormItems(form, formId) {
     let html = '<div class="pf-print-items">';
 
@@ -776,12 +834,13 @@
         break;
 
       case 'cdr':
-        html += '<div class="pf-print-section-header">Rate each domain on scale: 0 / 0.5 / 1 / 2 / 3</div>';
+        html += '<div class="pf-print-section-header">Rate each domain on the CDR severity scale</div>';
+        html += renderColHeaders(['None (0)', 'Questionable (0.5)', 'Mild (1)', 'Moderate (2)', 'Severe (3)'], {box: true, wide: true});
         form.domains.forEach((domain, idx) => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">${idx + 1}.</div>
             <div class="pf-print-item-text">${domain}</div>
-            <div class="pf-print-item-boxes">
+            <div class="pf-print-item-boxes pf-wide-cols">
               <span class="pf-print-box">0</span>
               <span class="pf-print-box">0.5</span>
               <span class="pf-print-box">1</span>
@@ -793,12 +852,13 @@
         break;
 
       case 'aq-10':
-        html += '<div class="pf-print-section-header">Response scale: Definitely Agree / Slightly Agree / Slightly Disagree / Definitely Disagree</div>';
+        html += '<div class="pf-print-section-header">Response scale</div>';
+        html += renderColHeaders(['Definitely Agree', 'Slightly Agree', 'Slightly Disagree', 'Definitely Disagree'], {wide: true});
         form.items.forEach(item => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">${item.num}.</div>
             <div class="pf-print-item-text">${item.text}</div>
-            <div class="pf-print-item-boxes">
+            <div class="pf-print-item-boxes pf-wide-cols">
               <span class="pf-print-circle"></span>
               <span class="pf-print-circle"></span>
               <span class="pf-print-circle"></span>
@@ -809,12 +869,14 @@
         break;
 
       case 'asrs':
-        html += '<div class="pf-print-section-header">Part A (Screener) — Response: Never / Rarely / Sometimes / Often / Very Often</div>';
+        var asrsLabels = ['Never', 'Rarely', 'Sometimes', 'Often', 'Very Often'];
+        html += '<div class="pf-print-section-header">Part A (Screener)</div>';
+        html += renderColHeaders(asrsLabels, {wide: true});
         form.partA.forEach(item => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">${item.num}.</div>
             <div class="pf-print-item-text">${item.text}</div>
-            <div class="pf-print-item-boxes">
+            <div class="pf-print-item-boxes pf-wide-cols">
               <span class="pf-print-circle"></span>
               <span class="pf-print-circle"></span>
               <span class="pf-print-circle"></span>
@@ -823,12 +885,13 @@
             </div>
           </div>`;
         });
-        html += '<div class="pf-print-section-header" style="margin-top: 16px;">Part B (Supplemental) — Response: Never / Rarely / Sometimes / Often / Very Often</div>';
+        html += '<div class="pf-print-section-header" style="margin-top: 16px;">Part B (Supplemental)</div>';
+        html += renderColHeaders(asrsLabels, {wide: true});
         form.partB.forEach(item => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">${item.num}.</div>
             <div class="pf-print-item-text">${item.text}</div>
-            <div class="pf-print-item-boxes">
+            <div class="pf-print-item-boxes pf-wide-cols">
               <span class="pf-print-circle"></span>
               <span class="pf-print-circle"></span>
               <span class="pf-print-circle"></span>
@@ -873,15 +936,17 @@
         break;
 
       case 'pcl5':
-        html += '<div class="pf-print-section-header">Instructions: 0=Not at all, 1=A little bit, 2=Moderately, 3=Quite a bit, 4=Extremely</div>';
+        var pcl5Labels = ['Not at all (0)', 'A little bit (1)', 'Moderately (2)', 'Quite a bit (3)', 'Extremely (4)'];
+        html += '<div class="pf-print-section-header">Instructions: In the past month, how much were you bothered by each problem?</div>';
         ['B (Intrusion)', 'C (Avoidance)', 'D (Negative Cognitions/Mood)', 'E (Arousal/Reactivity)'].forEach((cluster, idx) => {
           const clusterKey = Object.keys(form.clusters)[idx];
           html += `<div class="pf-print-section-header" style="margin-top: 12px;">Cluster ${cluster}</div>`;
+          html += renderColHeaders(pcl5Labels, {wide: true});
           form.clusters[clusterKey].forEach(item => {
             html += `<div class="pf-print-item">
               <div class="pf-print-item-num">${item.num}.</div>
               <div class="pf-print-item-text">${item.text}</div>
-              <div class="pf-print-item-boxes">
+              <div class="pf-print-item-boxes pf-wide-cols">
                 <span class="pf-print-circle">0</span>
                 <span class="pf-print-circle">1</span>
                 <span class="pf-print-circle">2</span>
@@ -894,12 +959,14 @@
         break;
 
       case 'ybocs':
-        html += '<div class="pf-print-section-header">Obsessions (Items 1-5) — 0-4 scale</div>';
+        var ybocsLabels = ['None (0)', 'Mild (1)', 'Moderate (2)', 'Severe (3)', 'Extreme (4)'];
+        html += '<div class="pf-print-section-header">Obsessions (Items 1-5)</div>';
+        html += renderColHeaders(ybocsLabels, {wide: true});
         form.obsessions.forEach(item => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">${item.num}.</div>
             <div class="pf-print-item-text">${item.text}</div>
-            <div class="pf-print-item-boxes">
+            <div class="pf-print-item-boxes pf-wide-cols">
               <span class="pf-print-circle">0</span>
               <span class="pf-print-circle">1</span>
               <span class="pf-print-circle">2</span>
@@ -908,12 +975,13 @@
             </div>
           </div>`;
         });
-        html += '<div class="pf-print-section-header">Compulsions (Items 6-10) — 0-4 scale</div>';
+        html += '<div class="pf-print-section-header">Compulsions (Items 6-10)</div>';
+        html += renderColHeaders(ybocsLabels, {wide: true});
         form.compulsions.forEach(item => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">${item.num}.</div>
             <div class="pf-print-item-text">${item.text}</div>
-            <div class="pf-print-item-boxes">
+            <div class="pf-print-item-boxes pf-wide-cols">
               <span class="pf-print-circle">0</span>
               <span class="pf-print-circle">1</span>
               <span class="pf-print-circle">2</span>
@@ -936,7 +1004,9 @@
         break;
 
       case 'panss-6':
-        html += '<div class="pf-print-section-header">Rate each item on 1-7 scale (1=Absent, 7=Extreme)</div>';
+        var panssLabels = ['Absent', 'Minimal', 'Mild', 'Moderate', 'Mod-Severe', 'Severe', 'Extreme'];
+        html += '<div class="pf-print-section-header">Rate each item on 1-7 scale</div>';
+        html += renderColHeaders(panssLabels);
         form.items.forEach(item => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">${item.num}.</div>
@@ -955,8 +1025,10 @@
         break;
 
       case 'panss-30':
-        html += '<div class="pf-print-section-header">Rate each item on 1-7 scale (1=Absent, 7=Extreme)</div>';
+        var panss30Labels = ['Absent', 'Minimal', 'Mild', 'Moderate', 'Mod-Severe', 'Severe', 'Extreme'];
+        html += '<div class="pf-print-section-header">Rate each item on 1-7 scale</div>';
         html += '<div class="pf-print-section-header" style="margin-top: 12px;">Positive Scale (P1-P7)</div>';
+        html += renderColHeaders(panss30Labels);
         form.positive.forEach(item => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">${item.num}.</div>
@@ -973,6 +1045,7 @@
           </div>`;
         });
         html += '<div class="pf-print-section-header" style="margin-top: 12px;">Negative Scale (N1-N7)</div>';
+        html += renderColHeaders(panss30Labels);
         form.negative.forEach(item => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">${item.num}.</div>
@@ -989,6 +1062,7 @@
           </div>`;
         });
         html += '<div class="pf-print-section-header" style="margin-top: 12px;">General Psychopathology (G1-G16)</div>';
+        html += renderColHeaders(panss30Labels);
         form.general.forEach((item, idx) => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">G${idx + 1}.</div>
@@ -1015,12 +1089,13 @@
             <div class="pf-print-item-boxes"><span class="pf-print-circle">P</span><span class="pf-print-circle">A</span></div>
           </div>`;
         });
-        html += '<div class="pf-print-section-header" style="margin-top: 16px;">CRS Rating (23 items: 0-3 scale)</div>';
+        html += '<div class="pf-print-section-header" style="margin-top: 16px;">CRS Rating (23 items)</div>';
+        html += renderColHeaders(['Absent (0)', 'Occasional (1)', 'Frequent (2)', 'Constant (3)'], {wide: true});
         form.crs.forEach(item => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">${item.num}.</div>
             <div class="pf-print-item-text">${item.text}</div>
-            <div class="pf-print-item-boxes">
+            <div class="pf-print-item-boxes pf-wide-cols">
               <span class="pf-print-circle">0</span>
               <span class="pf-print-circle">1</span>
               <span class="pf-print-circle">2</span>
@@ -1031,12 +1106,14 @@
         break;
 
       case 'aims':
-        html += '<div class="pf-print-section-header">Movement Items (1-7: 0-4 scale)</div>';
+        var aimsLabels = ['None (0)', 'Minimal (1)', 'Mild (2)', 'Moderate (3)', 'Severe (4)'];
+        html += '<div class="pf-print-section-header">Movement Items (1-7)</div>';
+        html += renderColHeaders(aimsLabels, {wide: true});
         form.items.slice(0, 7).forEach(item => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">${item.num}.</div>
             <div class="pf-print-item-text">${item.text}</div>
-            <div class="pf-print-item-boxes">
+            <div class="pf-print-item-boxes pf-wide-cols">
               <span class="pf-print-circle">0</span>
               <span class="pf-print-circle">1</span>
               <span class="pf-print-circle">2</span>
@@ -1045,12 +1122,13 @@
             </div>
           </div>`;
         });
-        html += '<div class="pf-print-section-header" style="margin-top: 12px;">Global Judgments (8-10: 0-4 scale)</div>';
+        html += '<div class="pf-print-section-header" style="margin-top: 12px;">Global Judgments (8-10)</div>';
+        html += renderColHeaders(aimsLabels, {wide: true});
         form.items.slice(7).forEach(item => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">${item.num}.</div>
             <div class="pf-print-item-text">${item.text}</div>
-            <div class="pf-print-item-boxes">
+            <div class="pf-print-item-boxes pf-wide-cols">
               <span class="pf-print-circle">0</span>
               <span class="pf-print-circle">1</span>
               <span class="pf-print-circle">2</span>
@@ -1062,12 +1140,13 @@
         break;
 
       case 'ess':
-        html += '<div class="pf-print-section-header">Situation & Likelihood of Dozing (0-3 scale)</div>';
+        html += '<div class="pf-print-section-header">Situation & Likelihood of Dozing</div>';
+        html += renderColHeaders(['Would never doze (0)', 'Slight chance (1)', 'Moderate chance (2)', 'High chance (3)'], {wide: true});
         form.items.forEach((item, idx) => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">${idx + 1}.</div>
             <div class="pf-print-item-text">${item}</div>
-            <div class="pf-print-item-boxes">
+            <div class="pf-print-item-boxes pf-wide-cols">
               <span class="pf-print-circle">0</span>
               <span class="pf-print-circle">1</span>
               <span class="pf-print-circle">2</span>
@@ -1190,18 +1269,16 @@
 
       case 'bat-work':
       case 'bat-general':
-        var batDomains = {};
-        form.items.forEach(function(item) {
-          if (!batDomains[item.domain]) batDomains[item.domain] = [];
-          batDomains[item.domain].push(item);
-        });
-        Object.keys(batDomains).forEach(function(domain) {
+        var batLabels = ['Never (1)', 'Rarely (2)', 'Sometimes (3)', 'Often (4)', 'Always (5)'];
+        var batItemNum = 1;
+        Object.keys(form.domains).forEach(function(domain) {
           html += '<div class="pf-print-section-header" style="margin-top: 12px;">' + domain + '</div>';
-          batDomains[domain].forEach(function(item, idx) {
+          html += renderColHeaders(batLabels, {wide: true});
+          form.domains[domain].forEach(function(itemText) {
             html += '<div class="pf-print-item">' +
-              '<div class="pf-print-item-num">' + item.num + '.</div>' +
-              '<div class="pf-print-item-text">' + item.text + '</div>' +
-              '<div class="pf-print-item-boxes">' +
+              '<div class="pf-print-item-num">' + batItemNum + '.</div>' +
+              '<div class="pf-print-item-text">' + itemText + '</div>' +
+              '<div class="pf-print-item-boxes pf-wide-cols">' +
                 '<span class="pf-print-circle">1</span>' +
                 '<span class="pf-print-circle">2</span>' +
                 '<span class="pf-print-circle">3</span>' +
@@ -1209,9 +1286,9 @@
                 '<span class="pf-print-circle">5</span>' +
               '</div>' +
             '</div>';
+            batItemNum++;
           });
         });
-        html += '<div style="margin-top: 10px; font-size: 10px; color: #555;">Scale: 1 = Never, 2 = Rarely, 3 = Sometimes, 4 = Often, 5 = Always</div>';
         break;
     }
 
