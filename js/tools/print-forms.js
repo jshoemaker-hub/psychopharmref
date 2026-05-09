@@ -700,7 +700,10 @@
       margin-bottom: 12px;
       padding-left: 12px;
     }
-    /* Column-header row: aligned labels above each bubble column */
+    /* Column-header row: aligned labels above each bubble column.
+       Both the header label row AND the bubble row use CSS Grid with the
+       same grid-auto-columns pitch — so a label and its bubble share an
+       identical column slot, and the label sits centered above the bubble. */
     .pf-print-col-headers {
       display: grid;
       grid-template-columns: 20px 1fr auto;
@@ -709,8 +712,10 @@
       align-items: end;
     }
     .pf-print-col-labels {
-      display: flex;
-      gap: 6px;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 22px;
+      justify-items: center;
       align-items: end;
       font-size: 7px;
       font-weight: bold;
@@ -719,24 +724,27 @@
       letter-spacing: 0.2px;
     }
     .pf-print-col-labels > span {
-      width: 16px;
       text-align: center;
       line-height: 1.1;
-      display: inline-block;
+      width: 100%;
+      /* keep words intact — break only at spaces, never mid-letter */
+      word-break: keep-all;
+      overflow-wrap: normal;
+      hyphens: none;
       white-space: normal;
-      word-break: break-word;
-    }
-    .pf-print-col-labels.box-cols > span {
-      width: 18px;
     }
     /* Wider variant: gives more horizontal room for descriptive headers */
-    .pf-print-item-boxes.pf-wide-cols,
     .pf-print-col-labels.pf-wide-cols {
-      gap: 14px;
-    }
-    .pf-print-col-labels.pf-wide-cols > span {
-      width: 26px;
+      grid-auto-columns: 44px;
       font-size: 7.5px;
+    }
+    .pf-print-item-boxes.pf-wide-cols {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 44px;
+      gap: 0;
+      justify-items: center;
+      align-items: center;
     }
     @media print {
       body { margin: 0; padding: 0; }
@@ -1006,12 +1014,12 @@
       case 'panss-6':
         var panssLabels = ['Absent', 'Minimal', 'Mild', 'Moderate', 'Mod-Severe', 'Severe', 'Extreme'];
         html += '<div class="pf-print-section-header">Rate each item on 1-7 scale</div>';
-        html += renderColHeaders(panssLabels);
+        html += renderColHeaders(panssLabels, {wide: true});
         form.items.forEach(item => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">${item.num}.</div>
             <div class="pf-print-item-text">${item.text}</div>
-            <div class="pf-print-item-boxes">
+            <div class="pf-print-item-boxes pf-wide-cols">
               <span class="pf-print-circle">1</span>
               <span class="pf-print-circle">2</span>
               <span class="pf-print-circle">3</span>
@@ -1028,12 +1036,12 @@
         var panss30Labels = ['Absent', 'Minimal', 'Mild', 'Moderate', 'Mod-Severe', 'Severe', 'Extreme'];
         html += '<div class="pf-print-section-header">Rate each item on 1-7 scale</div>';
         html += '<div class="pf-print-section-header" style="margin-top: 12px;">Positive Scale (P1-P7)</div>';
-        html += renderColHeaders(panss30Labels);
+        html += renderColHeaders(panss30Labels, {wide: true});
         form.positive.forEach(item => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">${item.num}.</div>
             <div class="pf-print-item-text">${item.text}</div>
-            <div class="pf-print-item-boxes">
+            <div class="pf-print-item-boxes pf-wide-cols">
               <span class="pf-print-circle">1</span>
               <span class="pf-print-circle">2</span>
               <span class="pf-print-circle">3</span>
@@ -1045,12 +1053,12 @@
           </div>`;
         });
         html += '<div class="pf-print-section-header" style="margin-top: 12px;">Negative Scale (N1-N7)</div>';
-        html += renderColHeaders(panss30Labels);
+        html += renderColHeaders(panss30Labels, {wide: true});
         form.negative.forEach(item => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">${item.num}.</div>
             <div class="pf-print-item-text">${item.text}</div>
-            <div class="pf-print-item-boxes">
+            <div class="pf-print-item-boxes pf-wide-cols">
               <span class="pf-print-circle">1</span>
               <span class="pf-print-circle">2</span>
               <span class="pf-print-circle">3</span>
@@ -1062,12 +1070,12 @@
           </div>`;
         });
         html += '<div class="pf-print-section-header" style="margin-top: 12px;">General Psychopathology (G1-G16)</div>';
-        html += renderColHeaders(panss30Labels);
+        html += renderColHeaders(panss30Labels, {wide: true});
         form.general.forEach((item, idx) => {
           html += `<div class="pf-print-item">
             <div class="pf-print-item-num">G${idx + 1}.</div>
             <div class="pf-print-item-text">${item}</div>
-            <div class="pf-print-item-boxes">
+            <div class="pf-print-item-boxes pf-wide-cols">
               <span class="pf-print-circle">1</span>
               <span class="pf-print-circle">2</span>
               <span class="pf-print-circle">3</span>
