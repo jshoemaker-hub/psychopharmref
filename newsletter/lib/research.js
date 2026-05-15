@@ -312,32 +312,132 @@ export async function fetchCongress(topicKey, config) {
   }
 }
 
-// Perplexity transient-failure handling (hardened 2026-05-15).
+// Perplexity transient-failure handling (hardened 2026-05-15, model fallback added same day).
 //
 // Prior behaviour: 20s timeout, single retry only on 503, all other non-2xx
 // codes thrown immediately. A 2026-05-15 run with degraded Perplexity service
 // produced "Perplexity unavailable" on 5 of 6 rungs across two sections —
-// retries were exhausting too fast. This refactor:
+// retries were exhausting too fast. This implementation:
 //   - bumps the per-attempt timeout to 45s (sonar-pro routinely takes 15-30s
 //     under load),
-//   - increases the retry budget from 1 → 3 (so up to 4 attempts total),
+//   - increases the primary retry budget from 1 → 3 (4 attempts total),
 //   - applies exponential backoff between attempts (5s, 15s, 30s),
 //   - retries on the full set of transient HTTP codes {429, 502, 503, 504},
-//     not just 503. 429 in particular was previously fatal on the first hit
-//     even though rate-limit waits are exactly what backoff is for.
+//     not just 503. 429 was previously fatal on the first hit even though
+//     rate-limit waits are exactly what backoff is for.
+//   - falls back to the lighter 'sonar' model after the primary model (sonar-pro)
+//     exhausts its budget. Tier-1 accounts get deprioritised first on sonar-pro
+//     during Perplexity degradation; 'sonar' is cheaper and usually less
+//     queue-contended, so a final-pass attempt often succeeds when sonar-pro
+//     keeps timing out. Set config.perplexityFallbackModel to '' or equal to
+//     perplexityModel to disable.
 // Non-transient codes (401, 400, 404, etc.) still fail fast — those won't fix
 // themselves by retrying.
 const PERPLEXITY_TIMEOUT_MS = 45000;
 const PERPLEXITY_MAX_ATTEMPTS = 4;
 const PERPLEXITY_BACKOFF_MS = [5000, 15000, 30000]; // between attempt N and N+1
 const PERPLEXITY_TRANSIENT_HTTP = new Set([429, 502, 503, 504]);
+const PERPLEXITY_FALLBACK_MAX_ATTEMPTS = 2;
+const PERPLEXITY_FALLBACK_BACKOFF_MS = [10000];
+const PERPLEXITY_DEFAULT_FALLBACK_MODEL = 'sonar';
 
 /**
- * fetchPerplexity — query Perplexity sonar-pro for sources on a topic.
+ * tryPerplexityCall — execute one model's retry sequence against the
+ * Perplexity API. Returns one of:
+ *   { ok: true,    brief,             attempts }  — a usable brief was produced
+ *   { failFast: true, brief,          attempts }  — non-retryable error; caller should return brief immediately
+ *   { exhausted: true,                attempts }  — retry budget exhausted; caller may try the next model
  *
- * Retries on transient HTTP errors and timeouts with exponential backoff.
- * If all attempts fail, returns a brief with "Perplexity unavailable" warning
- * and writes a debug file to briefs/ capturing each attempt's outcome.
+ * Each attempts[] entry is tagged with .model so the debug dump shows which
+ * model produced which outcome.
+ */
+async function tryPerplexityCall(topicKey, config, ctx, model, maxAttempts, backoffMs) {
+  const apiKey = process.env.PERPLEXITY_API_KEY;
+  const body = {
+    model,
+    messages: [{ role: 'user', content: ctx.query }],
+  };
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+      'User-Agent': 'PsychoPharmRef-Newsletter/1.0',
+    },
+    body: JSON.stringify(body),
+  };
+
+  const attempts = [];
+
+  for (let i = 0; i < maxAttempts; i++) {
+    const attemptNo = i + 1;
+    try {
+      const response = await fetchWithTimeout(
+        'https://api.perplexity.ai/chat/completions',
+        requestOptions,
+        PERPLEXITY_TIMEOUT_MS
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        const brief = parsePerplexityResponse(topicKey, data, config, { ...ctx, model });
+        return { ok: true, brief, attempts };
+      }
+
+      // Non-2xx. Decide whether to retry.
+      attempts.push({ attempt: attemptNo, model, kind: 'http', status: response.status });
+      if (!PERPLEXITY_TRANSIENT_HTTP.has(response.status)) {
+        // Non-transient — fail fast.
+        return {
+          failFast: true,
+          brief: validateBrief({
+            topic: topicKey,
+            sources: [],
+            warnings: [`Perplexity error: HTTP ${response.status} (${model})`],
+          }),
+          attempts,
+        };
+      }
+      // Else fall through to backoff/retry.
+    } catch (err) {
+      if (err.name === 'AbortError') {
+        attempts.push({ attempt: attemptNo, model, kind: 'timeout', timeoutMs: PERPLEXITY_TIMEOUT_MS });
+        // Retryable — fall through to backoff/retry.
+      } else {
+        // Unexpected error (DNS, JSON parse on a 2xx, etc.). Don't retry.
+        attempts.push({ attempt: attemptNo, model, kind: 'error', message: err.message });
+        return {
+          failFast: true,
+          brief: validateBrief({
+            topic: topicKey,
+            sources: [],
+            warnings: [`Perplexity error: ${err.message} (${model})`],
+          }),
+          attempts,
+        };
+      }
+    }
+
+    // Backoff before the next attempt, if there is one.
+    if (i < maxAttempts - 1) {
+      const wait = backoffMs[i] || backoffMs[backoffMs.length - 1];
+      await new Promise(r => setTimeout(r, wait));
+    }
+  }
+
+  return { exhausted: true, attempts };
+}
+
+/**
+ * fetchPerplexity — query Perplexity for sources on a topic.
+ *
+ * Two-pass strategy:
+ *   Pass 1: primary model (default 'sonar-pro') — full retry budget.
+ *   Pass 2: fallback model (default 'sonar')    — 2 attempts, lighter / cheaper.
+ *
+ * If both passes are exhausted, returns a brief with "Perplexity unavailable"
+ * warning and writes a debug file capturing every attempt's outcome (HTTP
+ * status, timeout, or error message — tagged with the model that produced it).
  */
 export async function fetchPerplexity(topicKey, config) {
   const apiKey = process.env.PERPLEXITY_API_KEY;
@@ -371,80 +471,43 @@ export async function fetchPerplexity(topicKey, config) {
     query = `${focusArea}. Retrieve authoritative sources: peer-reviewed reviews, textbook chapters, historical accounts, primary sources, or canonical references. Original publication date is more important than recency. Include URLs and publication dates where available.`;
   }
 
-  const body = {
-    model: config?.perplexityModel || 'sonar-pro',
-    messages: [
-      {
-        role: 'user',
-        content: query,
-      },
-    ],
-  };
+  const ctx = { focusArea, query };
+  const primaryModel = config?.perplexityModel || 'sonar-pro';
+  // config.perplexityFallbackModel can be set to '' or equal to primary to disable.
+  const fallbackModel = config?.perplexityFallbackModel === undefined
+    ? PERPLEXITY_DEFAULT_FALLBACK_MODEL
+    : config.perplexityFallbackModel;
 
-  const requestOptions = {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-      'User-Agent': 'PsychoPharmRef-Newsletter/1.0',
-    },
-    body: JSON.stringify(body),
-  };
+  // Pass 1: primary model with full retry budget.
+  const primary = await tryPerplexityCall(
+    topicKey, config, ctx,
+    primaryModel, PERPLEXITY_MAX_ATTEMPTS, PERPLEXITY_BACKOFF_MS
+  );
+  if (primary.ok) return primary.brief;
+  if (primary.failFast) {
+    writePerplexityUnavailableDebug(topicKey, { ...ctx, attempts: primary.attempts });
+    return primary.brief;
+  }
 
-  // Per-attempt outcome log, dumped to debug file if all attempts fail.
-  const attempts = [];
+  const allAttempts = [...primary.attempts];
 
-  for (let i = 0; i < PERPLEXITY_MAX_ATTEMPTS; i++) {
-    const attemptNo = i + 1;
-    try {
-      const response = await fetchWithTimeout(
-        'https://api.perplexity.ai/chat/completions',
-        requestOptions,
-        PERPLEXITY_TIMEOUT_MS
-      );
-
-      if (response.ok) {
-        const data = await response.json();
-        return parsePerplexityResponse(topicKey, data, config, { focusArea, query });
-      }
-
-      // Non-2xx. Decide whether to retry.
-      attempts.push({ attempt: attemptNo, kind: 'http', status: response.status });
-      if (!PERPLEXITY_TRANSIENT_HTTP.has(response.status)) {
-        // Non-transient — fail fast.
-        writePerplexityUnavailableDebug(topicKey, { focusArea, query, attempts });
-        return validateBrief({
-          topic: topicKey,
-          sources: [],
-          warnings: [`Perplexity error: HTTP ${response.status}`],
-        });
-      }
-      // Else fall through to backoff/retry.
-    } catch (err) {
-      if (err.name === 'AbortError') {
-        attempts.push({ attempt: attemptNo, kind: 'timeout', timeoutMs: PERPLEXITY_TIMEOUT_MS });
-        // Retryable — fall through to backoff/retry.
-      } else {
-        // Unexpected error (DNS, JSON parse on a 2xx, etc.). Don't retry.
-        attempts.push({ attempt: attemptNo, kind: 'error', message: err.message });
-        writePerplexityUnavailableDebug(topicKey, { focusArea, query, attempts });
-        return validateBrief({
-          topic: topicKey,
-          sources: [],
-          warnings: [`Perplexity error: ${err.message}`],
-        });
-      }
-    }
-
-    // Backoff before the next attempt, if there is one.
-    if (i < PERPLEXITY_MAX_ATTEMPTS - 1) {
-      const wait = PERPLEXITY_BACKOFF_MS[i] || PERPLEXITY_BACKOFF_MS[PERPLEXITY_BACKOFF_MS.length - 1];
-      await new Promise(r => setTimeout(r, wait));
+  // Pass 2: fallback model (lighter, often more available during Perplexity
+  // service degradation). Skipped if disabled or equal to primary.
+  if (fallbackModel && fallbackModel !== primaryModel) {
+    const fallback = await tryPerplexityCall(
+      topicKey, config, ctx,
+      fallbackModel, PERPLEXITY_FALLBACK_MAX_ATTEMPTS, PERPLEXITY_FALLBACK_BACKOFF_MS
+    );
+    allAttempts.push(...fallback.attempts);
+    if (fallback.ok) return fallback.brief;
+    if (fallback.failFast) {
+      writePerplexityUnavailableDebug(topicKey, { ...ctx, attempts: allAttempts });
+      return fallback.brief;
     }
   }
 
-  // All attempts exhausted.
-  writePerplexityUnavailableDebug(topicKey, { focusArea, query, attempts });
+  // Both passes exhausted (or fallback disabled).
+  writePerplexityUnavailableDebug(topicKey, { ...ctx, attempts: allAttempts });
   return validateBrief({
     topic: topicKey,
     sources: [],
@@ -464,6 +527,23 @@ function writePerplexityUnavailableDebug(topicKey, ctx) {
     if (!fs.existsSync(briefsDir)) return;
     const stamp = new Date().toISOString().replace(/[:.]/g, '-');
     const file = path.join(briefsDir, `perplexity-unavailable-${stamp}-${topicKey}.json`);
+    const attempts = Array.isArray(ctx?.attempts) ? ctx.attempts : [];
+
+    // Summarise outcomes per model so it's easy to tell at a glance which
+    // model performed how. Useful when checking whether the sonar fallback
+    // is rescuing runs in practice.
+    const byModel = {};
+    for (const a of attempts) {
+      const m = a.model || 'unknown';
+      if (!byModel[m]) byModel[m] = { attempts: 0, timeouts: 0, httpStatuses: {}, errors: 0 };
+      byModel[m].attempts += 1;
+      if (a.kind === 'timeout') byModel[m].timeouts += 1;
+      else if (a.kind === 'http') {
+        byModel[m].httpStatuses[a.status] = (byModel[m].httpStatuses[a.status] || 0) + 1;
+      }
+      else if (a.kind === 'error') byModel[m].errors += 1;
+    }
+
     const payload = {
       topic: topicKey,
       capturedAt: new Date().toISOString(),
@@ -471,9 +551,11 @@ function writePerplexityUnavailableDebug(topicKey, ctx) {
       query: ctx?.query || '',
       reason: 'Perplexity call did not yield a brief — retry budget exhausted or non-retryable error',
       timeoutMs: PERPLEXITY_TIMEOUT_MS,
-      maxAttempts: PERPLEXITY_MAX_ATTEMPTS,
+      primaryMaxAttempts: PERPLEXITY_MAX_ATTEMPTS,
+      fallbackMaxAttempts: PERPLEXITY_FALLBACK_MAX_ATTEMPTS,
       transientHttpCodes: Array.from(PERPLEXITY_TRANSIENT_HTTP),
-      attempts: Array.isArray(ctx?.attempts) ? ctx.attempts : [],
+      summaryByModel: byModel,
+      attempts,
     };
     fs.writeFileSync(file, JSON.stringify(payload, null, 2));
   } catch { /* best-effort; never break the pipeline on a debug write */ }
@@ -495,6 +577,7 @@ function writePerplexityDebug(topicKey, data, ctx) {
       capturedAt: new Date().toISOString(),
       focusArea: ctx?.focusArea || '',
       query: ctx?.query || '',
+      model: ctx?.model || '',
       reason: 'Perplexity returned response but parser found 0 usable sources',
       hasSearchResults: Array.isArray(data?.search_results) ? data.search_results.length : null,
       hasCitations: Array.isArray(data?.citations) ? data.citations.length : null,
