@@ -312,107 +312,171 @@ export async function fetchCongress(topicKey, config) {
   }
 }
 
+// Perplexity transient-failure handling (hardened 2026-05-15).
+//
+// Prior behaviour: 20s timeout, single retry only on 503, all other non-2xx
+// codes thrown immediately. A 2026-05-15 run with degraded Perplexity service
+// produced "Perplexity unavailable" on 5 of 6 rungs across two sections —
+// retries were exhausting too fast. This refactor:
+//   - bumps the per-attempt timeout to 45s (sonar-pro routinely takes 15-30s
+//     under load),
+//   - increases the retry budget from 1 → 3 (so up to 4 attempts total),
+//   - applies exponential backoff between attempts (5s, 15s, 30s),
+//   - retries on the full set of transient HTTP codes {429, 502, 503, 504},
+//     not just 503. 429 in particular was previously fatal on the first hit
+//     even though rate-limit waits are exactly what backoff is for.
+// Non-transient codes (401, 400, 404, etc.) still fail fast — those won't fix
+// themselves by retrying.
+const PERPLEXITY_TIMEOUT_MS = 45000;
+const PERPLEXITY_MAX_ATTEMPTS = 4;
+const PERPLEXITY_BACKOFF_MS = [5000, 15000, 30000]; // between attempt N and N+1
+const PERPLEXITY_TRANSIENT_HTTP = new Set([429, 502, 503, 504]);
+
 /**
- * fetchPerplexity — query Perplexity sonar-pro for recent sources on a topic
+ * fetchPerplexity — query Perplexity sonar-pro for sources on a topic.
+ *
+ * Retries on transient HTTP errors and timeouts with exponential backoff.
+ * If all attempts fail, returns a brief with "Perplexity unavailable" warning
+ * and writes a debug file to briefs/ capturing each attempt's outcome.
  */
 export async function fetchPerplexity(topicKey, config) {
-  try {
-    const apiKey = process.env.PERPLEXITY_API_KEY;
-    if (!apiKey) {
-      return validateBrief({
-        topic: topicKey,
-        sources: [],
-        warnings: ['PERPLEXITY_API_KEY not set'],
-      });
-    }
-
-    const topicConf = config?.topics?.[topicKey];
-    const focusArea = topicConf?.focusArea || topicKey;
-    const cutoffDays = config?.recencyCutoff?.[topicKey];
-
-    // Two query templates: a recency-anchored one for time-sensitive rungs (S1
-    // pipeline / approvals / shortages, S2 rung 1 "recent evidence" framings)
-    // and an evergreen one for rungs that explicitly opt out of the cutoff
-    // (S2 rung 2 history fallbacks, all S3 deep dives). Prior to 2026-05-08 a
-    // single template asked for "recent ... news items" regardless of cutoff,
-    // which caused the no-cutoff rungs to come back empty for genuinely
-    // historical topics (e.g. history of HAM-D, origin of schizophrenia
-    // diagnosis) — Perplexity correctly found nothing "recent" matching the
-    // ask. Branching the template restores the intended evergreen behaviour.
-    let query;
-    if (cutoffDays) {
-      const cutoffDate = new Date(Date.now() - cutoffDays * 24 * 60 * 60 * 1000)
-        .toISOString().slice(0, 10);
-      query = `${focusArea}. Retrieve recent peer-reviewed sources, clinical guidelines, or news items with publication dates. Focus on sources published after ${cutoffDate}. Include URLs and publication dates where available.`;
-    } else {
-      query = `${focusArea}. Retrieve authoritative sources: peer-reviewed reviews, textbook chapters, historical accounts, primary sources, or canonical references. Original publication date is more important than recency. Include URLs and publication dates where available.`;
-    }
-
-    const body = {
-      model: config?.perplexityModel || 'sonar-pro',
-      messages: [
-        {
-          role: 'user',
-          content: query,
-        },
-      ],
-    };
-
-    const response = await fetchWithTimeout(
-      'https://api.perplexity.ai/chat/completions',
-      {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-          'User-Agent': 'PsychoPharmRef-Newsletter/1.0',
-        },
-        body: JSON.stringify(body),
-      },
-      20000
-    );
-
-    if (!response.ok) {
-      // Retry once after 10s on 503
-      if (response.status === 503) {
-        await new Promise(r => setTimeout(r, 10000));
-        const retry = await fetchWithTimeout(
-          'https://api.perplexity.ai/chat/completions',
-          {
-            method: 'POST',
-            headers: {
-              Authorization: `Bearer ${apiKey}`,
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(body),
-          },
-          20000
-        );
-        if (!retry.ok) {
-          return validateBrief({
-            topic: topicKey,
-            sources: [],
-            warnings: ['Perplexity unavailable — sources not fetched. Review manually before drafting.'],
-          });
-        }
-        const retryData = await retry.json();
-        return parsePerplexityResponse(topicKey, retryData, config, { focusArea, query });
-      }
-      throw new Error(`Perplexity returned ${response.status}`);
-    }
-
-    const data = await response.json();
-    return parsePerplexityResponse(topicKey, data, config, { focusArea, query });
-  } catch (err) {
-    if (err.name === 'AbortError') {
-      return validateBrief({
-        topic: topicKey,
-        sources: [],
-        warnings: ['Perplexity unavailable — sources not fetched. Review manually before drafting.'],
-      });
-    }
-    return validateBrief({ topic: topicKey, sources: [], warnings: [`Perplexity error: ${err.message}`] });
+  const apiKey = process.env.PERPLEXITY_API_KEY;
+  if (!apiKey) {
+    return validateBrief({
+      topic: topicKey,
+      sources: [],
+      warnings: ['PERPLEXITY_API_KEY not set'],
+    });
   }
+
+  const topicConf = config?.topics?.[topicKey];
+  const focusArea = topicConf?.focusArea || topicKey;
+  const cutoffDays = config?.recencyCutoff?.[topicKey];
+
+  // Two query templates: a recency-anchored one for time-sensitive rungs (S1
+  // pipeline / approvals / shortages, S2 rung 1 "recent evidence" framings)
+  // and an evergreen one for rungs that explicitly opt out of the cutoff
+  // (S2 rung 2 history fallbacks, all S3 deep dives). Prior to 2026-05-08 a
+  // single template asked for "recent ... news items" regardless of cutoff,
+  // which caused the no-cutoff rungs to come back empty for genuinely
+  // historical topics (e.g. history of HAM-D, origin of schizophrenia
+  // diagnosis) — Perplexity correctly found nothing "recent" matching the
+  // ask. Branching the template restores the intended evergreen behaviour.
+  let query;
+  if (cutoffDays) {
+    const cutoffDate = new Date(Date.now() - cutoffDays * 24 * 60 * 60 * 1000)
+      .toISOString().slice(0, 10);
+    query = `${focusArea}. Retrieve recent peer-reviewed sources, clinical guidelines, or news items with publication dates. Focus on sources published after ${cutoffDate}. Include URLs and publication dates where available.`;
+  } else {
+    query = `${focusArea}. Retrieve authoritative sources: peer-reviewed reviews, textbook chapters, historical accounts, primary sources, or canonical references. Original publication date is more important than recency. Include URLs and publication dates where available.`;
+  }
+
+  const body = {
+    model: config?.perplexityModel || 'sonar-pro',
+    messages: [
+      {
+        role: 'user',
+        content: query,
+      },
+    ],
+  };
+
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+      'User-Agent': 'PsychoPharmRef-Newsletter/1.0',
+    },
+    body: JSON.stringify(body),
+  };
+
+  // Per-attempt outcome log, dumped to debug file if all attempts fail.
+  const attempts = [];
+
+  for (let i = 0; i < PERPLEXITY_MAX_ATTEMPTS; i++) {
+    const attemptNo = i + 1;
+    try {
+      const response = await fetchWithTimeout(
+        'https://api.perplexity.ai/chat/completions',
+        requestOptions,
+        PERPLEXITY_TIMEOUT_MS
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        return parsePerplexityResponse(topicKey, data, config, { focusArea, query });
+      }
+
+      // Non-2xx. Decide whether to retry.
+      attempts.push({ attempt: attemptNo, kind: 'http', status: response.status });
+      if (!PERPLEXITY_TRANSIENT_HTTP.has(response.status)) {
+        // Non-transient — fail fast.
+        writePerplexityUnavailableDebug(topicKey, { focusArea, query, attempts });
+        return validateBrief({
+          topic: topicKey,
+          sources: [],
+          warnings: [`Perplexity error: HTTP ${response.status}`],
+        });
+      }
+      // Else fall through to backoff/retry.
+    } catch (err) {
+      if (err.name === 'AbortError') {
+        attempts.push({ attempt: attemptNo, kind: 'timeout', timeoutMs: PERPLEXITY_TIMEOUT_MS });
+        // Retryable — fall through to backoff/retry.
+      } else {
+        // Unexpected error (DNS, JSON parse on a 2xx, etc.). Don't retry.
+        attempts.push({ attempt: attemptNo, kind: 'error', message: err.message });
+        writePerplexityUnavailableDebug(topicKey, { focusArea, query, attempts });
+        return validateBrief({
+          topic: topicKey,
+          sources: [],
+          warnings: [`Perplexity error: ${err.message}`],
+        });
+      }
+    }
+
+    // Backoff before the next attempt, if there is one.
+    if (i < PERPLEXITY_MAX_ATTEMPTS - 1) {
+      const wait = PERPLEXITY_BACKOFF_MS[i] || PERPLEXITY_BACKOFF_MS[PERPLEXITY_BACKOFF_MS.length - 1];
+      await new Promise(r => setTimeout(r, wait));
+    }
+  }
+
+  // All attempts exhausted.
+  writePerplexityUnavailableDebug(topicKey, { focusArea, query, attempts });
+  return validateBrief({
+    topic: topicKey,
+    sources: [],
+    warnings: ['Perplexity unavailable — sources not fetched. Review manually before drafting.'],
+  });
+}
+
+/**
+ * writePerplexityUnavailableDebug — write a debug file when fetchPerplexity
+ * exhausts its retry budget (or hits a non-retryable error). Captures the
+ * per-attempt outcomes so the operator can see at a glance whether they were
+ * 503s, timeouts, a 429 rate limit, or something else. Best-effort write —
+ * never breaks the pipeline.
+ */
+function writePerplexityUnavailableDebug(topicKey, ctx) {
+  try {
+    if (!fs.existsSync(briefsDir)) return;
+    const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const file = path.join(briefsDir, `perplexity-unavailable-${stamp}-${topicKey}.json`);
+    const payload = {
+      topic: topicKey,
+      capturedAt: new Date().toISOString(),
+      focusArea: ctx?.focusArea || '',
+      query: ctx?.query || '',
+      reason: 'Perplexity call did not yield a brief — retry budget exhausted or non-retryable error',
+      timeoutMs: PERPLEXITY_TIMEOUT_MS,
+      maxAttempts: PERPLEXITY_MAX_ATTEMPTS,
+      transientHttpCodes: Array.from(PERPLEXITY_TRANSIENT_HTTP),
+      attempts: Array.isArray(ctx?.attempts) ? ctx.attempts : [],
+    };
+    fs.writeFileSync(file, JSON.stringify(payload, null, 2));
+  } catch { /* best-effort; never break the pipeline on a debug write */ }
 }
 
 /**
