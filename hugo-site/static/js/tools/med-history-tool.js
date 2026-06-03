@@ -1182,11 +1182,230 @@
     return results;
   }
 
+  // ─── Print Form ─────────────────────────────────────────────────────────────
+  function printForm() {
+    const cb  = '&#9744;'; // ☐ unchecked box
+    const dot = '&bull;';
+
+    const groupOrder = ['Antidepressants', 'Antipsychotics', 'Mood Stabilizers', 'Anxiolytics / Hypnotics', 'Stimulants / ADHD', 'SUD / Other'];
+
+    let body = '';
+
+    groupOrder.forEach(groupName => {
+      if (!GROUPS[groupName]) return;
+
+      body += `<div class="pg-group">
+        <div class="pg-group-title">${groupName}</div>`;
+
+      Object.entries(GROUPS[groupName]).forEach(([className, meds]) => {
+        const cw = CLASS_WARNINGS[className] || [];
+
+        body += `<div class="pg-class">
+          <div class="pg-class-hdr">
+            <span class="pg-class-name">${className}</span>`;
+        if (cw.length) {
+          body += `<span class="pg-cw-inline"> &mdash; Class risks: ${cw.join(' ' + dot + ' ')}</span>`;
+        }
+        body += `</div>`;
+
+        meds.forEach(med => {
+          const seList = med.sideEffects.map(fx => `<span class="pg-item">${cb}&nbsp;${fx}</span>`).join('');
+          const cwList = cw.map(fx => `<span class="pg-item pg-item-cw">${cb}&nbsp;${fx}</span>`).join('');
+          const bbList = med.blackBox.map(fx => `<span class="pg-item pg-item-bb">${cb}&nbsp;${fx}</span>`).join('');
+
+          body += `<div class="pg-med">
+            <div class="pg-med-header">
+              <span class="pg-tried">${cb} <strong>${med.name}</strong> <span class="pg-brand">(${med.brand})</span></span>
+              <span class="pg-fields-inline">
+                <span class="pg-label">Exp:</span>
+                ${cb}&nbsp;Good &nbsp;${cb}&nbsp;Neutral &nbsp;${cb}&nbsp;Bad
+                &emsp;<span class="pg-label">Year:</span> <span class="pg-line-short"></span>
+              </span>
+            </div>
+            <div class="pg-detail">
+              <span class="pg-label">Length:</span>
+              ${cb}&nbsp;Weeks &nbsp;${cb}&nbsp;Months &nbsp;${cb}&nbsp;Years &nbsp;${cb}&nbsp;Still taking
+              &emsp;<span class="pg-label">Reason stopped:</span>
+              ${cb}&nbsp;Stopped working &nbsp;${cb}&nbsp;Side effect &nbsp;${cb}&nbsp;Can't recall
+            </div>
+            <div class="pg-checks-row">
+              <span class="pg-checks-label">Side effects:</span>
+              <span class="pg-checks">${seList}</span>
+            </div>`;
+
+          if (cw.length) {
+            body += `<div class="pg-checks-row pg-checks-row-cw">
+              <span class="pg-checks-label">Class risks:</span>
+              <span class="pg-checks">${cwList}</span>
+            </div>`;
+          }
+          if (med.blackBox.length) {
+            body += `<div class="pg-checks-row pg-checks-row-bb">
+              <span class="pg-checks-label">&#11035;&nbsp;Black box:</span>
+              <span class="pg-checks">${bbList}</span>
+            </div>`;
+          }
+
+          body += `</div>`;
+        });
+
+        body += `</div>`;
+      });
+
+      body += `</div>`;
+    });
+
+    const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Psychiatric Medication History Form</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9.5pt;
+    color: #000;
+    background: #fff;
+    padding: 0.45in 0.5in 0.5in;
+  }
+
+  /* ── Cover header ── */
+  .pg-cover { margin-bottom: 14pt; border-bottom: 2pt solid #000; padding-bottom: 8pt; }
+  .pg-title { font-size: 15pt; font-weight: 700; letter-spacing: 0.03em; margin-bottom: 5pt; }
+  .pg-subtitle { font-size: 8.5pt; color: #333; margin-bottom: 8pt; line-height: 1.5; }
+  .pg-patient-row { display: flex; gap: 24pt; margin-bottom: 4pt; }
+  .pg-patient-field { flex: 1; }
+  .pg-patient-label { font-size: 8pt; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 1pt; }
+  .pg-patient-line { border-bottom: 1pt solid #000; display: block; min-width: 120pt; height: 13pt; }
+
+  /* ── Groups & classes ── */
+  .pg-group { margin-bottom: 10pt; page-break-inside: avoid; }
+  .pg-group-title {
+    font-size: 11pt; font-weight: 700; text-transform: uppercase;
+    background: #000; color: #fff;
+    padding: 2pt 5pt; margin-bottom: 4pt;
+    letter-spacing: 0.05em;
+  }
+  .pg-class { margin-bottom: 7pt; }
+  .pg-class-hdr {
+    font-size: 8pt; font-weight: 700; color: #333;
+    border-bottom: 0.5pt solid #999;
+    padding-bottom: 1.5pt; margin-bottom: 3pt;
+    line-height: 1.4;
+  }
+  .pg-class-name { font-size: 9pt; color: #000; }
+  .pg-cw-inline { font-weight: 400; font-size: 7.5pt; color: #555; }
+
+  /* ── Med card ── */
+  .pg-med {
+    border: 0.5pt solid #bbb;
+    border-radius: 3pt;
+    margin-bottom: 3.5pt;
+    padding: 3pt 5pt 3pt;
+    page-break-inside: avoid;
+  }
+  .pg-med-header {
+    display: flex; align-items: baseline;
+    gap: 8pt; margin-bottom: 1.5pt;
+    flex-wrap: wrap;
+  }
+  .pg-tried { font-size: 9.5pt; white-space: nowrap; }
+  .pg-brand { font-size: 8pt; font-weight: 400; color: #555; }
+  .pg-fields-inline { font-size: 8.5pt; color: #000; white-space: nowrap; }
+
+  .pg-detail {
+    font-size: 8.5pt; margin-bottom: 2pt;
+    line-height: 1.7;
+  }
+
+  /* ── Underline for year ── */
+  .pg-line-short {
+    display: inline-block;
+    border-bottom: 0.75pt solid #000;
+    width: 32pt; vertical-align: baseline;
+    margin-left: 1pt;
+  }
+
+  /* ── Checkbox rows ── */
+  .pg-checks-row {
+    display: flex; align-items: flex-start;
+    gap: 4pt; font-size: 8pt;
+    margin-bottom: 1.5pt; line-height: 1.55;
+  }
+  .pg-checks-label {
+    font-weight: 700; white-space: nowrap;
+    flex-shrink: 0; padding-top: 0.5pt;
+    min-width: 62pt;
+  }
+  .pg-checks { display: flex; flex-wrap: wrap; gap: 0.5pt 8pt; }
+  .pg-item { white-space: nowrap; }
+
+  .pg-checks-row-cw { color: #5a3e00; }
+  .pg-checks-row-cw .pg-checks-label { color: #5a3e00; }
+  .pg-item-cw { color: #5a3e00; }
+
+  .pg-checks-row-bb { color: #6b2c00; }
+  .pg-checks-row-bb .pg-checks-label { color: #6b2c00; font-weight: 700; }
+  .pg-item-bb { color: #6b2c00; }
+
+  .pg-label { font-weight: 700; }
+
+  /* ── Print ── */
+  @media print {
+    body { padding: 0.35in 0.45in; }
+    .pg-group { page-break-inside: auto; }
+    .pg-med { page-break-inside: avoid; }
+    @page { margin: 0.4in; size: letter portrait; }
+  }
+</style>
+</head>
+<body>
+
+<div class="pg-cover">
+  <div class="pg-title">Psychiatric Medication History</div>
+  <div class="pg-subtitle">
+    For each medication you have <strong>ever tried</strong>, check the box next to the name and fill in the fields below it.
+    Leave unchecked medications blank. Side effects, class risks, and black box warnings are listed for reference — check any that apply to your experience.
+  </div>
+  <div class="pg-patient-row">
+    <div class="pg-patient-field">
+      <span class="pg-patient-label">Patient name</span>
+      <span class="pg-patient-line"></span>
+    </div>
+    <div class="pg-patient-field">
+      <span class="pg-patient-label">Date of birth</span>
+      <span class="pg-patient-line"></span>
+    </div>
+    <div class="pg-patient-field">
+      <span class="pg-patient-label">Today's date</span>
+      <span class="pg-patient-line"></span>
+    </div>
+    <div class="pg-patient-field">
+      <span class="pg-patient-label">Provider</span>
+      <span class="pg-patient-line"></span>
+    </div>
+  </div>
+</div>
+
+${body}
+
+</body>
+</html>`;
+
+    const win = window.open('', '_blank', 'width=900,height=700');
+    if (!win) { alert('Pop-up blocked. Please allow pop-ups for this site and try again.'); return; }
+    win.document.write(html);
+    win.document.close();
+    setTimeout(function () { win.print(); }, 600);
+  }
+
   // ─── Init ───────────────────────────────────────────────────────────────────
   function init() {
     buildForm();
 
     const generateBtn = document.getElementById('mh-generate-btn');
+    const printBtn = document.getElementById('mh-print-btn');
     const restoreBtn = document.getElementById('mh-restore-btn');
     const resetBtn = document.getElementById('mh-reset-btn');
     const restoreInput = document.getElementById('mh-restore-input');
@@ -1204,6 +1423,10 @@
           outSection.scrollIntoView({ behavior: 'smooth' });
         }
       });
+    }
+
+    if (printBtn) {
+      printBtn.addEventListener('click', printForm);
     }
 
     if (copyReportBtn) {
