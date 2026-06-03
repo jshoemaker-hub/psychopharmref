@@ -218,6 +218,50 @@
   cursor: pointer;
 }
 
+/* Class warnings section — amber tint */
+.mh-cw-section {
+  margin-top: 0.6rem;
+  background: #fffbf0;
+  border: 1px solid #e8d78a;
+  border-radius: 5px;
+  padding: 0.5rem 0.65rem;
+}
+
+.mh-cw-hdr {
+  color: #7a5c00;
+}
+
+.mh-cw-item {
+  color: #5a4000;
+}
+
+.mh-cw-item input[type="checkbox"] {
+  accent-color: #b08700;
+}
+
+/* Black box section — amber-red tint */
+.mh-bb-section {
+  margin-top: 0.6rem;
+  background: #fff8f0;
+  border: 1px solid #e8a87a;
+  border-radius: 5px;
+  padding: 0.5rem 0.65rem;
+}
+
+.mh-bb-hdr {
+  color: #8b3800;
+}
+
+.mh-bb-item {
+  color: #6b2c00;
+  white-space: normal;
+}
+
+.mh-bb-item input[type="checkbox"] {
+  accent-color: #c04000;
+  flex-shrink: 0;
+}
+
 /* ── Output Section ─────────────────────────────────────────────────────── */
 
 #mh-output-section {

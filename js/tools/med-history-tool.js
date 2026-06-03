@@ -671,10 +671,16 @@
   MEDS.forEach(m => { MED_BY_CODE[m.code] = m; });
 
   // ─── State ──────────────────────────────────────────────────────────────────
-  // medState[code] = { tried, exp, year, len, reason, se: [bool,...] }
+  // medState[code] = { tried, exp, year, len, reason, se: [], cw: [], bb: [] }
   const medState = {};
   MEDS.forEach(m => {
-    medState[m.code] = { tried: false, exp: '', year: '', len: '', reason: '', se: new Array(m.sideEffects.length).fill(false) };
+    const cw = CLASS_WARNINGS[m.class] || [];
+    medState[m.code] = {
+      tried: false, exp: '', year: '', len: '', reason: '',
+      se: new Array(m.sideEffects.length).fill(false),
+      cw: new Array(cw.length).fill(false),
+      bb: new Array(m.blackBox.length).fill(false),
+    };
   });
 
   // ─── Build Form HTML ────────────────────────────────────────────────────────
@@ -713,16 +719,28 @@
   }
 
   function buildMedCard(med) {
-    const se = med.sideEffects.map((fx, i) =>
+    const cw = CLASS_WARNINGS[med.class] || [];
+
+    const seHtml = med.sideEffects.map((fx, i) =>
       `<label class="mh-se-label">
         <input type="checkbox" class="mh-se" data-code="${med.code}" data-idx="${i}">
         <span>${fx}</span>
       </label>`
     ).join('');
 
-    const bbHtml = med.blackBox.length
-      ? `<div class="mh-bb"><span class="mh-bb-label">⬛ Black Box:</span> ${med.blackBox.join(' | ')}</div>`
-      : '';
+    const cwHtml = cw.map((fx, i) =>
+      `<label class="mh-se-label mh-cw-item">
+        <input type="checkbox" class="mh-cw" data-code="${med.code}" data-idx="${i}">
+        <span>${fx}</span>
+      </label>`
+    ).join('');
+
+    const bbHtml = med.blackBox.map((fx, i) =>
+      `<label class="mh-se-label mh-bb-item">
+        <input type="checkbox" class="mh-bb-cb" data-code="${med.code}" data-idx="${i}">
+        <span>${fx}</span>
+      </label>`
+    ).join('');
 
     return `
     <div class="mh-med-card" id="mhcard-${med.code}">
@@ -735,7 +753,6 @@
         <span class="mh-tried-text">Tried?</span>
       </div>
       <div class="mh-med-body" id="mhbody-${med.code}" style="display:none">
-        ${bbHtml}
         <div class="mh-fields-row">
           <div class="mh-field">
             <label class="mh-field-label">Experience</label>
@@ -773,8 +790,16 @@
         </div>
         <div class="mh-se-section">
           <div class="mh-se-label-hdr">Side effects experienced:</div>
-          <div class="mh-se-grid">${se}</div>
+          <div class="mh-se-grid">${seHtml}</div>
         </div>
+        ${cw.length ? `<div class="mh-se-section mh-cw-section">
+          <div class="mh-se-label-hdr mh-cw-hdr">Class considerations experienced:</div>
+          <div class="mh-se-grid">${cwHtml}</div>
+        </div>` : ''}
+        ${med.blackBox.length ? `<div class="mh-se-section mh-bb-section">
+          <div class="mh-se-label-hdr mh-bb-hdr">⬛ Black box warnings — check if experienced / relevant:</div>
+          <div class="mh-se-grid">${bbHtml}</div>
+        </div>` : ''}
       </div>
     </div>`;
   }
@@ -827,6 +852,20 @@
         medState[code].se[idx] = this.checked;
       });
     });
+    document.querySelectorAll('.mh-cw').forEach(cb => {
+      cb.addEventListener('change', function () {
+        const code = this.dataset.code;
+        const idx = parseInt(this.dataset.idx, 10);
+        medState[code].cw[idx] = this.checked;
+      });
+    });
+    document.querySelectorAll('.mh-bb-cb').forEach(cb => {
+      cb.addEventListener('change', function () {
+        const code = this.dataset.code;
+        const idx = parseInt(this.dataset.idx, 10);
+        medState[code].bb[idx] = this.checked;
+      });
+    });
   }
 
   // ─── Restore Code ───────────────────────────────────────────────────────────
@@ -841,6 +880,8 @@
         l: s.len ? s.len[0] : '-',   // w/m/y/s/-
         r: s.reason === 'stopped working' ? 'S' : s.reason === 'side effect' ? 'E' : s.reason === 'cant recall' ? 'C' : s.reason === 'still taking' ? 'T' : '-',
         se: s.se.map(v => v ? '1' : '0').join(''),
+        cw: s.cw.map(v => v ? '1' : '0').join(''),
+        bb: s.bb.map(v => v ? '1' : '0').join(''),
       };
     });
     const json = JSON.stringify(triedMeds);
@@ -869,6 +910,16 @@
         if (s.se && s.se.length) {
           s.se.split('').forEach((v, i) => {
             if (state.se[i] !== undefined) state.se[i] = v === '1';
+          });
+        }
+        if (s.cw && s.cw.length) {
+          s.cw.split('').forEach((v, i) => {
+            if (state.cw[i] !== undefined) state.cw[i] = v === '1';
+          });
+        }
+        if (s.bb && s.bb.length) {
+          s.bb.split('').forEach((v, i) => {
+            if (state.bb[i] !== undefined) state.bb[i] = v === '1';
           });
         }
       });
@@ -918,6 +969,20 @@
           if (cb) cb.checked = true;
         }
       });
+      // class warnings
+      s.cw.forEach((checked, i) => {
+        if (checked) {
+          const cb = document.querySelector(`.mh-cw[data-code="${med.code}"][data-idx="${i}"]`);
+          if (cb) cb.checked = true;
+        }
+      });
+      // black box
+      s.bb.forEach((checked, i) => {
+        if (checked) {
+          const cb = document.querySelector(`.mh-bb-cb[data-code="${med.code}"][data-idx="${i}"]`);
+          if (cb) cb.checked = true;
+        }
+      });
     });
   }
 
@@ -951,10 +1016,16 @@
       lines.push('  Reason stopped:' + (s.reason ? ' ' + s.reason.charAt(0).toUpperCase() + s.reason.slice(1) : ' Not reported'));
       const checkedSE = med.sideEffects.filter((_, i) => s.se[i]);
       if (checkedSE.length) {
-        lines.push('  Side effects:  ' + checkedSE.join(', '));
+        lines.push('  Side effects:        ' + checkedSE.join(', '));
       }
-      if (med.blackBox.length) {
-        lines.push('  [Black Box]:   ' + med.blackBox.join(' | '));
+      const cw = CLASS_WARNINGS[med.class] || [];
+      const checkedCW = cw.filter((_, i) => s.cw[i]);
+      if (checkedCW.length) {
+        lines.push('  Class warnings:      ' + checkedCW.join(', '));
+      }
+      const checkedBB = med.blackBox.filter((_, i) => s.bb[i]);
+      if (checkedBB.length) {
+        lines.push('  Black box concerns:  ' + checkedBB.join(', '));
       }
       lines.push('');
     });
@@ -982,6 +1053,9 @@
 
     lines.push('='.repeat(60));
     lines.push('PPrefMedlist');
+    lines.push('');
+    lines.push('RESTORE CODE (paste into the Medication History Form to reload):');
+    lines.push(encodeState());
     lines.push('');
 
     return lines.join('\n');
@@ -1123,17 +1197,13 @@
     const resetBtn = document.getElementById('mh-reset-btn');
     const restoreInput = document.getElementById('mh-restore-input');
     const outputArea = document.getElementById('mh-output-area');
-    const codeDisplay = document.getElementById('mh-code-display');
     const copyReportBtn = document.getElementById('mh-copy-report-btn');
-    const copyCodeBtn = document.getElementById('mh-copy-code-btn');
 
     if (generateBtn) {
       generateBtn.addEventListener('click', function () {
         const report = generateReport();
         if (!report) return;
-        const code = encodeState();
         if (outputArea) outputArea.value = report;
-        if (codeDisplay) codeDisplay.value = code;
         const outSection = document.getElementById('mh-output-section');
         if (outSection) {
           outSection.style.display = 'block';
@@ -1146,14 +1216,6 @@
       copyReportBtn.addEventListener('click', function () {
         if (outputArea && outputArea.value) {
           ToolUtils.copyWithButton(outputArea.value, copyReportBtn);
-        }
-      });
-    }
-
-    if (copyCodeBtn) {
-      copyCodeBtn.addEventListener('click', function () {
-        if (codeDisplay && codeDisplay.value) {
-          ToolUtils.copyWithButton(codeDisplay.value, copyCodeBtn);
         }
       });
     }
@@ -1174,7 +1236,13 @@
       resetBtn.addEventListener('click', function () {
         ToolUtils.confirmReset('Reset all medication history entries?', function () {
           MEDS.forEach(m => {
-            medState[m.code] = { tried: false, exp: '', year: '', len: '', reason: '', se: new Array(m.sideEffects.length).fill(false) };
+            const cw = CLASS_WARNINGS[m.class] || [];
+            medState[m.code] = {
+              tried: false, exp: '', year: '', len: '', reason: '',
+              se: new Array(m.sideEffects.length).fill(false),
+              cw: new Array(cw.length).fill(false),
+              bb: new Array(m.blackBox.length).fill(false),
+            };
           });
           buildForm();
           const outSection = document.getElementById('mh-output-section');
