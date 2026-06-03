@@ -9740,8 +9740,9 @@
     <h2>Medication History Form</h2>
     <p>Comprehensive psychiatric medication history — documents prior trials, experiences, side effects, and generates a structured EMR-ready summary with failed-trial overlap analysis.</p>
   </div>
-  <div class="mt-warning">
-    <strong>Clinical Use:</strong> This form is intended to capture a patient's prior medication experience. Leave any medication untouched if not tried. Only medications marked "Tried" will appear in the generated report.
+  <div class="mt-warning" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+    <span><strong>Clinical Use:</strong> This form is intended to capture a patient's prior medication experience. Leave any medication untouched if not tried. Only medications marked "Tried" will appear in the generated report.</span>
+    <button class="mh-btn mh-btn-outline" id="mh-print-btn" style="white-space:nowrap;flex-shrink:0;">&#128438; Print Blank Form</button>
   </div>
 
   <div class="mh-restore-row">
@@ -9756,7 +9757,6 @@
 
   <div class="mh-top-controls" style="margin-top:1.5rem;">
     <button class="mh-btn mh-btn-primary" id="mh-generate-btn">Generate Report &amp; Code</button>
-    <button class="mh-btn mh-btn-outline" id="mh-print-btn">&#128438; Print Blank Form</button>
     <button class="mh-btn mh-btn-danger" id="mh-reset-btn">Reset All</button>
   </div>
 
