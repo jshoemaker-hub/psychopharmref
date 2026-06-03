@@ -1362,58 +1362,58 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 9.5pt;
+    font-size: 11pt;
     color: #000;
     background: #fff;
     padding: 0.45in 0.5in 0.5in;
   }
 
   /* ── Cover header ── */
-  .pg-cover { margin-bottom: 14pt; border-bottom: 2pt solid #000; padding-bottom: 8pt; }
-  .pg-title { font-size: 15pt; font-weight: 700; letter-spacing: 0.03em; margin-bottom: 5pt; }
-  .pg-subtitle { font-size: 8.5pt; color: #333; margin-bottom: 8pt; line-height: 1.5; }
-  .pg-patient-row { display: flex; gap: 24pt; margin-bottom: 4pt; }
+  .pg-cover { margin-bottom: 16pt; border-bottom: 2pt solid #000; padding-bottom: 10pt; }
+  .pg-title { font-size: 16pt; font-weight: 700; letter-spacing: 0.03em; margin-bottom: 6pt; }
+  .pg-subtitle { font-size: 11pt; color: #333; margin-bottom: 10pt; line-height: 1.5; }
+  .pg-patient-row { display: flex; gap: 20pt; margin-bottom: 4pt; }
   .pg-patient-field { flex: 1; }
-  .pg-patient-label { font-size: 8pt; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 1pt; }
-  .pg-patient-line { border-bottom: 1pt solid #000; display: block; min-width: 120pt; height: 13pt; }
+  .pg-patient-label { font-size: 11pt; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 2pt; }
+  .pg-patient-line { border-bottom: 1pt solid #000; display: block; min-width: 120pt; height: 16pt; }
 
   /* ── Groups & classes ── */
-  .pg-group { margin-bottom: 10pt; page-break-inside: avoid; }
+  .pg-group { margin-bottom: 12pt; page-break-inside: avoid; }
   .pg-group-title {
-    font-size: 11pt; font-weight: 700; text-transform: uppercase;
+    font-size: 12pt; font-weight: 700; text-transform: uppercase;
     background: #000; color: #fff;
-    padding: 2pt 5pt; margin-bottom: 4pt;
+    padding: 3pt 6pt; margin-bottom: 5pt;
     letter-spacing: 0.05em;
   }
-  .pg-class { margin-bottom: 7pt; }
+  .pg-class { margin-bottom: 9pt; }
   .pg-class-hdr {
-    font-size: 8pt; font-weight: 700; color: #333;
+    font-size: 11pt; font-weight: 700; color: #333;
     border-bottom: 0.5pt solid #999;
-    padding-bottom: 1.5pt; margin-bottom: 3pt;
+    padding-bottom: 2pt; margin-bottom: 4pt;
     line-height: 1.4;
   }
-  .pg-class-name { font-size: 9pt; color: #000; }
-  .pg-cw-inline { font-weight: 400; font-size: 7.5pt; color: #555; }
+  .pg-class-name { font-size: 11pt; color: #000; }
+  .pg-cw-inline { font-weight: 400; font-size: 11pt; color: #555; }
 
   /* ── Med card ── */
   .pg-med {
     border: 0.5pt solid #bbb;
     border-radius: 3pt;
-    margin-bottom: 3.5pt;
-    padding: 3pt 5pt 3pt;
+    margin-bottom: 5pt;
+    padding: 5pt 7pt 5pt;
     page-break-inside: avoid;
   }
   .pg-med-header {
     display: flex; align-items: baseline;
-    gap: 8pt; margin-bottom: 1.5pt;
+    gap: 10pt; margin-bottom: 3pt;
     flex-wrap: wrap;
   }
-  .pg-tried { font-size: 9.5pt; white-space: nowrap; }
-  .pg-brand { font-size: 8pt; font-weight: 400; color: #555; }
-  .pg-fields-inline { font-size: 8.5pt; color: #000; white-space: nowrap; }
+  .pg-tried { font-size: 11pt; white-space: nowrap; }
+  .pg-brand { font-size: 11pt; font-weight: 400; color: #555; }
+  .pg-fields-inline { font-size: 11pt; color: #000; white-space: nowrap; }
 
   .pg-detail {
-    font-size: 8.5pt; margin-bottom: 2pt;
+    font-size: 11pt; margin-bottom: 3pt;
     line-height: 1.7;
   }
 
@@ -1421,22 +1421,22 @@
   .pg-line-short {
     display: inline-block;
     border-bottom: 0.75pt solid #000;
-    width: 32pt; vertical-align: baseline;
+    width: 36pt; vertical-align: baseline;
     margin-left: 1pt;
   }
 
   /* ── Checkbox rows ── */
   .pg-checks-row {
     display: flex; align-items: flex-start;
-    gap: 4pt; font-size: 8pt;
-    margin-bottom: 1.5pt; line-height: 1.55;
+    gap: 5pt; font-size: 11pt;
+    margin-bottom: 2pt; line-height: 1.6;
   }
   .pg-checks-label {
     font-weight: 700; white-space: nowrap;
     flex-shrink: 0; padding-top: 0.5pt;
-    min-width: 62pt;
+    min-width: 80pt;
   }
-  .pg-checks { display: flex; flex-wrap: wrap; gap: 0.5pt 8pt; }
+  .pg-checks { display: flex; flex-wrap: wrap; gap: 1pt 10pt; }
   .pg-item { white-space: nowrap; }
 
   .pg-checks-row-cw { color: #5a3e00; }
