@@ -282,19 +282,153 @@
   margin-bottom: 1rem;
 }
 
-#mh-output-area {
-  width: 100%;
-  min-height: 280px;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 0.8rem;
-  line-height: 1.5;
-  padding: 0.65rem;
+/* ── Results display div ────────────────────────────────────────────────── */
+
+.mh-results-display {
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 7px;
   background: #fff;
+  overflow: hidden;
+}
+
+/* Report header */
+.mh-report-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.6rem 0.85rem 0.5rem;
+  border-bottom: 2px solid var(--accent);
+  background: var(--bg2);
+}
+.mh-report-title {
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--text);
-  resize: vertical;
-  box-sizing: border-box;
+}
+.mh-report-date {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* Table wrapper with horizontal scroll */
+.mh-table-wrap {
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* Results table */
+.mh-results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.mh-results-table thead th {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.45rem 0.65rem;
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* Group row */
+.mh-row-group td {
+  background: #2d4a20;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.4rem 0.65rem;
+}
+
+/* Class sub-row */
+.mh-row-class td {
+  background: #eef5ea;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.3rem 0.65rem;
+  border-bottom: 1px solid #cde0c4;
+}
+.mh-row-class-count {
+  font-weight: 400;
+  color: #888;
+  margin-left: 0.4em;
+}
+
+/* Med rows */
+.mh-row-med td {
+  padding: 0.45rem 0.65rem;
+  vertical-align: top;
+  border-bottom: 1px solid #eee;
+  line-height: 1.45;
+}
+.mh-row-med:last-child td { border-bottom: none; }
+.mh-row-med:nth-child(odd) td { background: #fafaf8; }
+.mh-row-med:nth-child(even) td { background: #fff; }
+
+.mh-col-name { min-width: 120px; }
+.mh-col-exp  { min-width: 80px; white-space: nowrap; }
+.mh-col-year { min-width: 52px; white-space: nowrap; }
+.mh-col-len  { min-width: 80px; white-space: nowrap; }
+.mh-col-reason { min-width: 110px; }
+.mh-col-se   { min-width: 160px; }
+.mh-col-cw   { min-width: 140px; }
+.mh-col-bb   { min-width: 140px; }
+
+.mh-brand-sm { font-size: 0.75rem; color: #888; font-weight: 400; }
+.mh-cell-none { color: #bbb; }
+.mh-cell-cw { color: #7a5c00; }
+.mh-cell-bb { color: #8b3800; font-weight: 500; }
+
+/* Pills */
+.mh-pill {
+  display: inline-block;
+  padding: 0.1rem 0.45rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.mh-pill-good    { background: #e6f4e0; color: #2d6a1a; }
+.mh-pill-neutral { background: #f0f0f0; color: #555; }
+.mh-pill-bad     { background: #fde8e8; color: #b00; }
+.mh-pill-sw      { background: #fff0d4; color: #7a4800; }
+.mh-pill-se      { background: #fde8e8; color: #b00; }
+.mh-pill-st      { background: #e6f4e0; color: #2d6a1a; }
+.mh-pill-cr      { background: #f0f0f0; color: #555; }
+
+/* Overlap block */
+.mh-overlap-block {
+  border-top: 2px solid var(--accent2);
+  padding: 0.85rem 0.85rem 0.75rem;
+  background: #fffbf0;
+}
+.mh-overlap-title {
+  font-size: 0.87rem;
+  font-weight: 700;
+  color: var(--accent2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+}
+.mh-overlap-intro {
+  font-size: 0.8rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+.mh-overlap-pre {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.78rem;
+  white-space: pre-wrap;
+  color: var(--text);
+  line-height: 1.55;
+  margin: 0;
 }
 
 #mh-code-display {

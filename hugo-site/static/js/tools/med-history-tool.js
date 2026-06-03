@@ -1055,6 +1055,104 @@
     return lines.join('\n');
   }
 
+  // ─── Table Output ───────────────────────────────────────────────────────────
+  function generateTableHTML() {
+    const triedMeds = MEDS.filter(m => medState[m.code].tried);
+    const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    const cap = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : '—';
+    const pill = (text, cls) => `<span class="mh-pill ${cls}">${text}</span>`;
+
+    const expPill = exp => {
+      if (!exp) return '<span class="mh-cell-none">—</span>';
+      const cls = exp === 'good' ? 'mh-pill-good' : exp === 'bad' ? 'mh-pill-bad' : 'mh-pill-neutral';
+      return pill(cap(exp), cls);
+    };
+    const reasonPill = r => {
+      if (!r) return '<span class="mh-cell-none">—</span>';
+      const cls = r === 'stopped working' ? 'mh-pill-sw' : r === 'side effect' ? 'mh-pill-se' : r === 'still taking' ? 'mh-pill-st' : 'mh-pill-cr';
+      const labels = { 'stopped working': 'Stopped working', 'side effect': 'Side effect', 'cant recall': "Can't recall", 'still taking': 'Still taking' };
+      return pill(labels[r] || cap(r), cls);
+    };
+
+    const groupOrder = ['Antidepressants', 'Antipsychotics', 'Mood Stabilizers', 'Anxiolytics / Hypnotics', 'Stimulants / ADHD', 'SUD / Other'];
+    let tableRows = '';
+
+    groupOrder.forEach(groupName => {
+      if (!GROUPS[groupName]) return;
+      const groupMeds = triedMeds.filter(m => m.group === groupName);
+      if (!groupMeds.length) return;
+
+      tableRows += `<tr class="mh-row-group"><td colspan="8">${groupName.toUpperCase()}</td></tr>`;
+
+      const classesSeen = [];
+      groupMeds.forEach(med => {
+        if (!classesSeen.includes(med.class)) {
+          classesSeen.push(med.class);
+          const classMeds = groupMeds.filter(m => m.class === med.class);
+          tableRows += `<tr class="mh-row-class"><td colspan="8">${med.class} <span class="mh-row-class-count">${classMeds.length} trial${classMeds.length > 1 ? 's' : ''}</span></td></tr>`;
+
+          classMeds.forEach(m => {
+            const s = medState[m.code];
+            const cw = CLASS_WARNINGS[m.class] || [];
+            const checkedSE = m.sideEffects.filter((_, i) => s.se[i]);
+            const checkedCW = cw.filter((_, i) => s.cw[i]);
+            const checkedBB = m.blackBox.filter((_, i) => s.bb[i]);
+
+            const seCell = checkedSE.length ? checkedSE.join(', ') : '<span class="mh-cell-none">None reported</span>';
+            const cwCell = checkedCW.length ? `<span class="mh-cell-cw">${checkedCW.join(', ')}</span>` : '<span class="mh-cell-none">—</span>';
+            const bbCell = checkedBB.length ? `<span class="mh-cell-bb">${checkedBB.join(', ')}</span>` : '<span class="mh-cell-none">—</span>';
+
+            tableRows += `<tr class="mh-row-med">
+              <td class="mh-col-name"><strong>${m.name}</strong><br><span class="mh-brand-sm">${m.brand}</span></td>
+              <td class="mh-col-exp">${expPill(s.exp)}</td>
+              <td class="mh-col-year">${s.year || '<span class="mh-cell-none">—</span>'}</td>
+              <td class="mh-col-len">${s.len ? cap(s.len) : '<span class="mh-cell-none">—</span>'}</td>
+              <td class="mh-col-reason">${reasonPill(s.reason)}</td>
+              <td class="mh-col-se">${seCell}</td>
+              <td class="mh-col-cw">${cwCell}</td>
+              <td class="mh-col-bb">${bbCell}</td>
+            </tr>`;
+          });
+        }
+      });
+    });
+
+    // Overlap analysis as formatted text block below table
+    const failedTrials = triedMeds.filter(m => {
+      const s = medState[m.code];
+      return s.reason === 'stopped working' || s.reason === 'side effect';
+    });
+
+    let overlapHtml = '';
+    if (failedTrials.length >= 2) {
+      const overlapLines = analyzeOverlap(failedTrials);
+      overlapHtml = `<div class="mh-overlap-block">
+        <div class="mh-overlap-title">Failed Trial Analysis — Receptor &amp; Metabolic Overlap</div>
+        <div class="mh-overlap-intro">Failed / discontinued trials (${failedTrials.length}): ${failedTrials.map(m => m.name + ' — ' + medState[m.code].reason).join(' &bull; ')}</div>
+        <pre class="mh-overlap-pre">${overlapLines.join('\n').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</pre>
+      </div>`;
+    }
+
+    return `<div class="mh-report-header">
+        <span class="mh-report-title">Psychiatric Medication History</span>
+        <span class="mh-report-date">${dateStr}</span>
+      </div>
+      <div class="mh-table-wrap">
+        <table class="mh-results-table">
+          <thead>
+            <tr>
+              <th>Medication</th><th>Experience</th><th>Year</th>
+              <th>Length</th><th>Reason Stopped</th>
+              <th>Side Effects</th><th>Class Warnings</th><th>Black Box</th>
+            </tr>
+          </thead>
+          <tbody>${tableRows}</tbody>
+        </table>
+      </div>
+      ${overlapHtml}`;
+  }
+
   // ─── Overlap Analysis ───────────────────────────────────────────────────────
   function analyzeOverlap(failedMeds) {
     const results = [];
@@ -1414,9 +1512,12 @@ ${body}
 
     if (generateBtn) {
       generateBtn.addEventListener('click', function () {
-        const report = generateReport();
-        if (!report) return;
-        if (outputArea) outputArea.value = report;
+        const triedMeds = MEDS.filter(m => medState[m.code].tried);
+        if (!triedMeds.length) {
+          alert('No medications marked as tried. Please indicate which medications you have tried.');
+          return;
+        }
+        if (outputArea) outputArea.innerHTML = generateTableHTML();
         const outSection = document.getElementById('mh-output-section');
         if (outSection) {
           outSection.style.display = 'block';
@@ -1431,9 +1532,8 @@ ${body}
 
     if (copyReportBtn) {
       copyReportBtn.addEventListener('click', function () {
-        if (outputArea && outputArea.value) {
-          ToolUtils.copyWithButton(outputArea.value, copyReportBtn);
-        }
+        const report = generateReport();
+        if (report) ToolUtils.copyWithButton(report, copyReportBtn);
       });
     }
 
