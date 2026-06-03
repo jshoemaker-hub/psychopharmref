@@ -697,14 +697,8 @@
         <h3 class="mh-group-title">${groupName}</h3>`;
 
       Object.entries(GROUPS[groupName]).forEach(([className, meds]) => {
-        const cw = CLASS_WARNINGS[className] || [];
         html += `<div class="mh-class">
           <h4 class="mh-class-title">${className}</h4>`;
-        if (cw.length) {
-          html += `<div class="mh-class-warnings">
-            <span class="mh-cw-label">Class considerations:</span> ${cw.join(' &bull; ')}
-          </div>`;
-        }
         meds.forEach(med => {
           html += buildMedCard(med);
         });
