@@ -1,0 +1,219 @@
+/* GAD-7 Tool Styles — gad- prefix */
+.gad-container {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.gad-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.gad-table thead th {
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 12px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.gad-table thead th:first-child {
+  text-align: left;
+  border-radius: 6px 0 0 0;
+}
+
+.gad-table thead th:last-child {
+  border-radius: 0 6px 0 0;
+}
+
+.gad-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+}
+
+.gad-table tbody tr:nth-child(even) {
+  background: var(--bg2);
+}
+
+.gad-table tbody tr:hover {
+  background: rgba(74,124,53,0.06);
+}
+
+.gad-table tbody td {
+  padding: 12px;
+  vertical-align: middle;
+}
+
+.gad-table tbody td:first-child {
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.45;
+}
+
+.gad-table tbody td:not(:first-child) {
+  text-align: center;
+}
+
+.gad-radio {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+/* Score display */
+.gad-score-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 20px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.gad-score-num {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.gad-score-max {
+  font-size: 13px;
+  color: var(--text-muted, #6b6050);
+  margin-top: 2px;
+}
+
+.gad-severity {
+  font-size: 15px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 6px;
+  margin-left: auto;
+}
+
+.gad-sev-minimal  { background: rgba(74,124,53,0.12);  color: #3a6e28; }
+.gad-sev-mild     { background: rgba(139,105,20,0.12); color: #8b6914; }
+.gad-sev-moderate { background: rgba(176,90,32,0.12);  color: #b05a20; }
+.gad-sev-severe   { background: rgba(192,64,48,0.15);  color: #c04030; }
+
+/* Functional impairment */
+.gad-functional {
+  margin-bottom: 20px;
+}
+
+.gad-functional label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.gad-func-options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.gad-func-btn {
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--bg2);
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.gad-func-btn.selected,
+.gad-func-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* Buttons */
+.gad-btn-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.gad-btn {
+  padding: 11px 22px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+
+.gad-btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.gad-btn-primary:hover {
+  background: #3a6e28;
+}
+
+.gad-btn-secondary {
+  background: var(--bg2);
+  color: var(--text);
+}
+
+.gad-btn-secondary:hover {
+  background: #e2dbd0;
+}
+
+/* Interpretation table */
+.gad-interp {
+  margin-top: 24px;
+  padding: 16px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.gad-interp-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted, #6b6050);
+  margin-bottom: 10px;
+}
+
+.gad-interp-grid {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 5px 16px;
+  font-size: 13px;
+}
+
+.gad-interp-score { font-weight: 700; }
+.gad-interp-label { font-weight: 600; }
+.gad-interp-action { color: var(--text-muted, #6b6050); }
+
+@media (max-width: 600px) {
+  .gad-table thead th:nth-child(2),
+  .gad-table thead th:nth-child(3),
+  .gad-table thead th:nth-child(4),
+  .gad-table thead th:nth-child(5) {
+    font-size: 10px;
+    padding: 8px 6px;
+  }
+  .gad-radio { width: 16px; height: 16px; }
+  .gad-score-num { font-size: 1.8rem; }
+  .gad-severity { font-size: 13px; }
+}

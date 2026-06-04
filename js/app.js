@@ -249,6 +249,7 @@ const SECTION_GROUP = {
   'qt-risk': 'tools', 'refill-calendar': 'tools', 'med-compare': 'tools', 'med-taper': 'tools',
   'cdr-tool': 'tools', 'slums-tool': 'tools', 'asd-tool': 'tools', 'aq-tool': 'tools',
   'adl-tool': 'tools', 'ace-tool': 'tools', 'asrs-tool': 'tools', 'cidi-tool': 'tools', 'ymrs-tool': 'tools',
+  'phq9-tool': 'tools', 'gad7-tool': 'tools',
   'pcl5-tool': 'tools', 'ybocs-tool': 'tools', 'msibpd-tool': 'tools', 'panss-tool': 'tools',
   'bfcrs-tool': 'tools', 'aims-tool': 'tools', 'suicide-risk-tools': 'tools',
   'ess-tool': 'tools', 'bat-tool': 'tools', 'sud-tool': 'tools', 'med-history-tool': 'tools',

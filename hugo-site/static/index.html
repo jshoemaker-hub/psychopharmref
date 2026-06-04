@@ -160,6 +160,8 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="asrs-tool">ASRS (ADHD)</a></li>
 
           <li class="nav-sub-divider">Mood &amp; Anxiety Scales</li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="phq9-tool">PHQ-9 (Depression)</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="gad7-tool">GAD-7 (Anxiety)</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="cidi-tool">CIDI Bipolar Screen</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="ymrs-tool">YMRS (Mania)</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="pcl5-tool">PCL-5 (PTSD)</a></li>
@@ -9635,6 +9637,245 @@
     </div>
   </div>
 </section><!-- end msibpd-tool -->
+
+<!-- ── PHQ-9 (Patient Health Questionnaire-9) ───────────────────────── -->
+<section id="phq9-tool" data-lazy-tool="phq9-tool" class="section">
+  <div class="section-header">
+    <h2>PHQ-9 (Patient Health Questionnaire-9)</h2>
+    <p>Validated 9-item depression screening and severity tool. Scores range 0–27 with five severity bands. Generates an EMR-ready summary.</p>
+  </div>
+
+  <div class="mt-warning">
+    <strong>Clinical Use Only</strong> &mdash; The PHQ-9 is a screening and severity tool, not a standalone diagnostic instrument. Final diagnosis requires clinical interview and judgment. If Item 9 is endorsed, assess current suicidal ideation, intent, and safety.
+  </div>
+
+  <div class="ph-container">
+    <table class="ph-table">
+      <thead>
+        <tr>
+          <th style="width:50%">Over the last 2 weeks, how often have you been bothered by any of the following problems?</th>
+          <th>Not at all<br><small>(0)</small></th>
+          <th>Several days<br><small>(1)</small></th>
+          <th>More than half the days<br><small>(2)</small></th>
+          <th>Nearly every day<br><small>(3)</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1. Little interest or pleasure in doing things</td>
+          <td><input class="ph-radio" type="radio" name="ph-q1" value="0"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q1" value="1"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q1" value="2"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q1" value="3"></td>
+        </tr>
+        <tr>
+          <td>2. Feeling down, depressed, or hopeless</td>
+          <td><input class="ph-radio" type="radio" name="ph-q2" value="0"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q2" value="1"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q2" value="2"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q2" value="3"></td>
+        </tr>
+        <tr>
+          <td>3. Trouble falling or staying asleep, or sleeping too much</td>
+          <td><input class="ph-radio" type="radio" name="ph-q3" value="0"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q3" value="1"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q3" value="2"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q3" value="3"></td>
+        </tr>
+        <tr>
+          <td>4. Feeling tired or having little energy</td>
+          <td><input class="ph-radio" type="radio" name="ph-q4" value="0"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q4" value="1"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q4" value="2"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q4" value="3"></td>
+        </tr>
+        <tr>
+          <td>5. Poor appetite or overeating</td>
+          <td><input class="ph-radio" type="radio" name="ph-q5" value="0"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q5" value="1"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q5" value="2"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q5" value="3"></td>
+        </tr>
+        <tr>
+          <td>6. Feeling bad about yourself — or that you are a failure or have let yourself or your family down</td>
+          <td><input class="ph-radio" type="radio" name="ph-q6" value="0"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q6" value="1"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q6" value="2"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q6" value="3"></td>
+        </tr>
+        <tr>
+          <td>7. Trouble concentrating on things, such as reading the newspaper or watching television</td>
+          <td><input class="ph-radio" type="radio" name="ph-q7" value="0"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q7" value="1"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q7" value="2"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q7" value="3"></td>
+        </tr>
+        <tr>
+          <td>8. Moving or speaking so slowly that other people could have noticed? Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual</td>
+          <td><input class="ph-radio" type="radio" name="ph-q8" value="0"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q8" value="1"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q8" value="2"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q8" value="3"></td>
+        </tr>
+        <tr>
+          <td><strong>9. Thoughts that you would be better off dead or of hurting yourself in some way</strong></td>
+          <td><input class="ph-radio" type="radio" name="ph-q9" value="0"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q9" value="1"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q9" value="2"></td>
+          <td><input class="ph-radio" type="radio" name="ph-q9" value="3"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="ph-item9-alert" class="ph-item9-alert">
+      ⚠️ Item 9 endorsed — conduct a direct suicidal ideation assessment and safety evaluation before proceeding.
+    </div>
+
+    <div class="ph-score-row">
+      <div>
+        <div class="ph-score-num" id="ph-score-num">0</div>
+        <div class="ph-score-max">out of 27</div>
+      </div>
+      <div id="ph-severity" class="ph-severity ph-sev-none">0 / 9 answered</div>
+    </div>
+
+    <div class="ph-functional">
+      <label>If you checked off any problems, how difficult have these made it for you to do your work, take care of things at home, or get along with other people?</label>
+      <div class="ph-func-options">
+        <button class="ph-func-btn" type="button">Not difficult at all</button>
+        <button class="ph-func-btn" type="button">Somewhat difficult</button>
+        <button class="ph-func-btn" type="button">Very difficult</button>
+        <button class="ph-func-btn" type="button">Extremely difficult</button>
+      </div>
+    </div>
+
+    <div class="ph-btn-row">
+      <button id="ph-report-btn" class="ph-btn ph-btn-primary" type="button">Generate Report &amp; Copy</button>
+      <button id="ph-reset-btn" class="ph-btn ph-btn-secondary" type="button">Reset</button>
+    </div>
+
+    <div class="ph-interp">
+      <div class="ph-interp-title">Scoring Guide</div>
+      <div class="ph-interp-grid">
+        <span class="ph-interp-score">0–4</span>   <span class="ph-interp-label">None–Minimal</span>   <span class="ph-interp-action">None indicated</span>
+        <span class="ph-interp-score">5–9</span>   <span class="ph-interp-label">Mild</span>           <span class="ph-interp-action">Watchful waiting; repeat PHQ-9 at follow-up</span>
+        <span class="ph-interp-score">10–14</span> <span class="ph-interp-label">Moderate</span>       <span class="ph-interp-action">Treatment plan, considering counseling, follow-up, and/or pharmacotherapy</span>
+        <span class="ph-interp-score">15–19</span> <span class="ph-interp-label">Moderately Severe</span> <span class="ph-interp-action">Active treatment with pharmacotherapy and/or psychotherapy</span>
+        <span class="ph-interp-score">20–27</span> <span class="ph-interp-label">Severe</span>         <span class="ph-interp-action">Immediate pharmacotherapy; consider expedited referral to mental health specialist</span>
+      </div>
+    </div>
+  </div>
+</section><!-- end phq9-tool -->
+
+<!-- ── GAD-7 (Generalized Anxiety Disorder 7-item Scale) ─────────────── -->
+<section id="gad7-tool" data-lazy-tool="gad7-tool" class="section">
+  <div class="section-header">
+    <h2>GAD-7 (Generalized Anxiety Disorder 7-item Scale)</h2>
+    <p>Validated 7-item anxiety screening and severity tool. Scores range 0–21 with four severity bands. Also screens for panic disorder, social anxiety, and PTSD. Generates an EMR-ready summary.</p>
+  </div>
+
+  <div class="mt-warning">
+    <strong>Clinical Use Only</strong> &mdash; The GAD-7 is a screening tool, not a standalone diagnostic instrument. A score ≥10 warrants further clinical evaluation. Sensitivity 89%, specificity 82% for GAD using this threshold.
+  </div>
+
+  <div class="gad-container">
+    <table class="gad-table">
+      <thead>
+        <tr>
+          <th style="width:50%">Over the last 2 weeks, how often have you been bothered by the following problems?</th>
+          <th>Not at all<br><small>(0)</small></th>
+          <th>Several days<br><small>(1)</small></th>
+          <th>Over half the days<br><small>(2)</small></th>
+          <th>Nearly every day<br><small>(3)</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1. Feeling nervous, anxious, or on edge</td>
+          <td><input class="gad-radio" type="radio" name="gad-q1" value="0"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q1" value="1"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q1" value="2"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q1" value="3"></td>
+        </tr>
+        <tr>
+          <td>2. Not being able to stop or control worrying</td>
+          <td><input class="gad-radio" type="radio" name="gad-q2" value="0"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q2" value="1"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q2" value="2"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q2" value="3"></td>
+        </tr>
+        <tr>
+          <td>3. Worrying too much about different things</td>
+          <td><input class="gad-radio" type="radio" name="gad-q3" value="0"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q3" value="1"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q3" value="2"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q3" value="3"></td>
+        </tr>
+        <tr>
+          <td>4. Trouble relaxing</td>
+          <td><input class="gad-radio" type="radio" name="gad-q4" value="0"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q4" value="1"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q4" value="2"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q4" value="3"></td>
+        </tr>
+        <tr>
+          <td>5. Being so restless that it's hard to sit still</td>
+          <td><input class="gad-radio" type="radio" name="gad-q5" value="0"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q5" value="1"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q5" value="2"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q5" value="3"></td>
+        </tr>
+        <tr>
+          <td>6. Becoming easily annoyed or irritable</td>
+          <td><input class="gad-radio" type="radio" name="gad-q6" value="0"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q6" value="1"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q6" value="2"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q6" value="3"></td>
+        </tr>
+        <tr>
+          <td>7. Feeling afraid as if something awful might happen</td>
+          <td><input class="gad-radio" type="radio" name="gad-q7" value="0"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q7" value="1"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q7" value="2"></td>
+          <td><input class="gad-radio" type="radio" name="gad-q7" value="3"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="gad-score-row">
+      <div>
+        <div class="gad-score-num" id="gad-score-num">0</div>
+        <div class="gad-score-max">out of 21</div>
+      </div>
+      <div id="gad-severity" class="gad-severity gad-sev-minimal">0 / 7 answered</div>
+    </div>
+
+    <div class="gad-functional">
+      <label>If you checked off any problems, how difficult have these made it for you to do your work, take care of things at home, or get along with other people?</label>
+      <div class="gad-func-options">
+        <button class="gad-func-btn" type="button">Not difficult at all</button>
+        <button class="gad-func-btn" type="button">Somewhat difficult</button>
+        <button class="gad-func-btn" type="button">Very difficult</button>
+        <button class="gad-func-btn" type="button">Extremely difficult</button>
+      </div>
+    </div>
+
+    <div class="gad-btn-row">
+      <button id="gad-report-btn" class="gad-btn gad-btn-primary" type="button">Generate Report &amp; Copy</button>
+      <button id="gad-reset-btn" class="gad-btn gad-btn-secondary" type="button">Reset</button>
+    </div>
+
+    <div class="gad-interp">
+      <div class="gad-interp-title">Scoring Guide</div>
+      <div class="gad-interp-grid">
+        <span class="gad-interp-score">0–4</span>   <span class="gad-interp-label">Minimal</span>  <span class="gad-interp-action">Monitor; reassess as needed</span>
+        <span class="gad-interp-score">5–9</span>   <span class="gad-interp-label">Mild</span>      <span class="gad-interp-action">Watchful waiting; consider re-evaluation in 2–4 weeks</span>
+        <span class="gad-interp-score">10–14</span> <span class="gad-interp-label">Moderate</span>  <span class="gad-interp-action">Possible anxiety disorder — consider treatment plan or referral</span>
+        <span class="gad-interp-score">15–21</span> <span class="gad-interp-label">Severe</span>    <span class="gad-interp-action">Likely anxiety disorder — active treatment recommended</span>
+      </div>
+    </div>
+  </div>
+</section><!-- end gad7-tool -->
 
 
 <!-- ── DSM-5-TR Substance Use Disorder Tool ─────────────────────────────── -->
