@@ -1,0 +1,528 @@
+/* ── Medication History Tool ── prefix: mh- ─────────────────────────────── */
+
+.mh-group {
+  margin-bottom: 2.5rem;
+}
+
+.mh-group-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.35rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mh-class {
+  margin-bottom: 1.6rem;
+  padding-left: 0.5rem;
+  border-left: 3px solid var(--border);
+}
+
+.mh-class-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent2);
+  margin-bottom: 0.4rem;
+}
+
+.mh-class-warnings {
+  font-size: 0.78rem;
+  color: #7a5c00;
+  background: #fdf8ec;
+  border: 1px solid #e8d78a;
+  border-radius: 5px;
+  padding: 0.4rem 0.65rem;
+  margin-bottom: 0.7rem;
+  line-height: 1.5;
+}
+
+.mh-cw-label {
+  font-weight: 600;
+  margin-right: 0.25em;
+}
+
+/* ── Med Card ───────────────────────────────────────────────────────────── */
+
+.mh-med-card {
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  margin-bottom: 0.55rem;
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.mh-med-card.mh-card-active {
+  border-color: var(--accent);
+  box-shadow: 0 1px 6px rgba(74, 124, 53, 0.12);
+}
+
+.mh-med-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.85rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.mh-tried-label {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  cursor: pointer;
+  flex: 1;
+}
+
+.mh-tried-label input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.mh-med-name {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.mh-med-brand {
+  color: #888;
+  font-size: 0.83rem;
+}
+
+.mh-tried-text {
+  font-size: 0.78rem;
+  color: #999;
+  font-style: italic;
+  white-space: nowrap;
+  margin-left: 0.5rem;
+}
+
+/* ── Med Body ───────────────────────────────────────────────────────────── */
+
+.mh-med-body {
+  border-top: 1px solid var(--border);
+  padding: 0.75rem 0.85rem 0.85rem;
+  background: var(--bg2);
+  border-radius: 0 0 6px 6px;
+}
+
+.mh-bb {
+  font-size: 0.78rem;
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 4px;
+  padding: 0.35rem 0.6rem;
+  margin-bottom: 0.7rem;
+  line-height: 1.5;
+  color: #5a3e00;
+}
+
+.mh-bb-label {
+  font-weight: 700;
+  margin-right: 0.3em;
+}
+
+/* ── Fields Row ─────────────────────────────────────────────────────────── */
+
+.mh-fields-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.mh-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 140px;
+}
+
+.mh-field-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mh-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.mh-radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.mh-radio-group input[type="radio"] {
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.mh-year {
+  font-size: 0.85rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: #fff;
+  color: var(--text);
+  max-width: 100px;
+}
+
+/* ── Side Effects ───────────────────────────────────────────────────────── */
+
+.mh-se-section {
+  margin-top: 0.5rem;
+}
+
+.mh-se-label-hdr {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.35rem;
+}
+
+.mh-se-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+.mh-se-label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.83rem;
+  color: var(--text);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mh-se-label input[type="checkbox"] {
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+/* Class warnings section — amber tint */
+.mh-cw-section {
+  margin-top: 0.6rem;
+  background: #fffbf0;
+  border: 1px solid #e8d78a;
+  border-radius: 5px;
+  padding: 0.5rem 0.65rem;
+}
+
+.mh-cw-hdr {
+  color: #7a5c00;
+}
+
+.mh-cw-item {
+  color: #5a4000;
+}
+
+.mh-cw-item input[type="checkbox"] {
+  accent-color: #b08700;
+}
+
+/* Black box section — amber-red tint */
+.mh-bb-section {
+  margin-top: 0.6rem;
+  background: #fff8f0;
+  border: 1px solid #e8a87a;
+  border-radius: 5px;
+  padding: 0.5rem 0.65rem;
+}
+
+.mh-bb-hdr {
+  color: #8b3800;
+}
+
+.mh-bb-item {
+  color: #6b2c00;
+  white-space: normal;
+}
+
+.mh-bb-item input[type="checkbox"] {
+  accent-color: #c04000;
+  flex-shrink: 0;
+}
+
+/* ── Output Section ─────────────────────────────────────────────────────── */
+
+#mh-output-section {
+  margin-top: 1.5rem;
+}
+
+.mh-output-label {
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--accent2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.mh-output-block {
+  margin-bottom: 1rem;
+}
+
+/* ── Results display div ────────────────────────────────────────────────── */
+
+.mh-results-display {
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* Report header */
+.mh-report-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.6rem 0.85rem 0.5rem;
+  border-bottom: 2px solid var(--accent);
+  background: var(--bg2);
+}
+.mh-report-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.mh-report-date {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* Table wrapper with horizontal scroll */
+.mh-table-wrap {
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* Results table */
+.mh-results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.mh-results-table thead th {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.45rem 0.65rem;
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* Group row */
+.mh-row-group td {
+  background: #2d4a20;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.4rem 0.65rem;
+}
+
+/* Class sub-row */
+.mh-row-class td {
+  background: #eef5ea;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.3rem 0.65rem;
+  border-bottom: 1px solid #cde0c4;
+}
+.mh-row-class-count {
+  font-weight: 400;
+  color: #888;
+  margin-left: 0.4em;
+}
+
+/* Med rows */
+.mh-row-med td {
+  padding: 0.45rem 0.65rem;
+  vertical-align: top;
+  border-bottom: 1px solid #eee;
+  line-height: 1.45;
+}
+.mh-row-med:last-child td { border-bottom: none; }
+.mh-row-med:nth-child(odd) td { background: #fafaf8; }
+.mh-row-med:nth-child(even) td { background: #fff; }
+
+.mh-col-name { min-width: 120px; }
+.mh-col-exp  { min-width: 80px; white-space: nowrap; }
+.mh-col-year { min-width: 52px; white-space: nowrap; }
+.mh-col-len  { min-width: 80px; white-space: nowrap; }
+.mh-col-reason { min-width: 110px; }
+.mh-col-se   { min-width: 160px; }
+.mh-col-cw   { min-width: 140px; }
+.mh-col-bb   { min-width: 140px; }
+
+.mh-brand-sm { font-size: 0.75rem; color: #888; font-weight: 400; }
+.mh-cell-none { color: #bbb; }
+.mh-cell-cw { color: #7a5c00; }
+.mh-cell-bb { color: #8b3800; font-weight: 500; }
+
+/* Pills */
+.mh-pill {
+  display: inline-block;
+  padding: 0.1rem 0.45rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.mh-pill-good    { background: #e6f4e0; color: #2d6a1a; }
+.mh-pill-neutral { background: #f0f0f0; color: #555; }
+.mh-pill-bad     { background: #fde8e8; color: #b00; }
+.mh-pill-sw      { background: #fff0d4; color: #7a4800; }
+.mh-pill-se      { background: #fde8e8; color: #b00; }
+.mh-pill-st      { background: #e6f4e0; color: #2d6a1a; }
+.mh-pill-cr      { background: #f0f0f0; color: #555; }
+
+/* Overlap block */
+.mh-overlap-block {
+  border-top: 2px solid var(--accent2);
+  padding: 0.85rem 0.85rem 0.75rem;
+  background: #fffbf0;
+}
+.mh-overlap-title {
+  font-size: 0.87rem;
+  font-weight: 700;
+  color: var(--accent2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+}
+.mh-overlap-intro {
+  font-size: 0.8rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+.mh-overlap-pre {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.78rem;
+  white-space: pre-wrap;
+  color: var(--text);
+  line-height: 1.55;
+  margin: 0;
+}
+
+#mh-code-display {
+  width: 100%;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #f4f0ea;
+  color: #444;
+  box-sizing: border-box;
+  word-break: break-all;
+}
+
+/* ── Action Buttons ─────────────────────────────────────────────────────── */
+
+.mh-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.mh-btn {
+  font-size: 0.87rem;
+  font-weight: 600;
+  padding: 0.5rem 1.1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s, background 0.15s;
+}
+
+.mh-btn:hover { opacity: 0.88; }
+
+.mh-btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.mh-btn-secondary {
+  background: var(--accent2);
+  color: #fff;
+}
+
+.mh-btn-outline {
+  background: transparent;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+
+.mh-btn-danger {
+  background: transparent;
+  color: #b00;
+  border: 1.5px solid #b00;
+}
+
+/* ── Restore Row ────────────────────────────────────────────────────────── */
+
+.mh-restore-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.2rem;
+}
+
+#mh-restore-input {
+  flex: 1;
+  min-width: 220px;
+  font-size: 0.82rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--text);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* ── Top controls ───────────────────────────────────────────────────────── */
+
+.mh-top-controls {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.mh-instruction-text {
+  font-size: 0.87rem;
+  color: #555;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}

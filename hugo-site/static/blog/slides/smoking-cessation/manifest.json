@@ -1,0 +1,20 @@
+{
+  "slug": "smoking-cessation",
+  "title": "A Clinical Guide to Smoking Cessation",
+  "pdf": "/blog/slides/smoking-cessation.pdf",
+  "pages": [
+    "/blog/slides/smoking-cessation/page-001.png",
+    "/blog/slides/smoking-cessation/page-002.png",
+    "/blog/slides/smoking-cessation/page-003.png",
+    "/blog/slides/smoking-cessation/page-004.png",
+    "/blog/slides/smoking-cessation/page-005.png",
+    "/blog/slides/smoking-cessation/page-006.png",
+    "/blog/slides/smoking-cessation/page-007.png",
+    "/blog/slides/smoking-cessation/page-008.png",
+    "/blog/slides/smoking-cessation/page-009.png",
+    "/blog/slides/smoking-cessation/page-010.png"
+  ],
+  "page_count": 10,
+  "generated": "2026-05-09T17:41:33Z",
+  "source": "NotebookLM Slide Deck"
+}

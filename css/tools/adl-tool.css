@@ -1,0 +1,24 @@
+
+    .ad-container { display: flex; flex-direction: column; gap: 2rem; }
+    .ad-checklist-section { background-color: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; }
+    .ad-section-title { font-size: 1.1rem; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+    .ad-summary { background-color: #fff; border-left: 4px solid var(--accent); padding: 1rem; margin-bottom: 1.5rem; border-radius: 4px; font-size: 0.95rem; color: var(--text); }
+    .ad-summary-line { margin: 0.25rem 0; }
+    .ad-summary-label { font-weight: 600; color: var(--accent); }
+    .ad-table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+    .ad-table thead { background-color: #f5f1e8; border-bottom: 2px solid var(--border); }
+    .ad-table th { padding: 0.75rem; text-align: left; font-weight: 600; color: var(--text); font-size: 0.9rem; }
+    .ad-table td { padding: 0.75rem; border-bottom: 1px solid var(--border); color: var(--text); }
+    .ad-table tbody tr:hover { background-color: #f9f7f2; }
+    .ad-item-name { font-weight: 500; min-width: 150px; }
+    .ad-option { display: flex; align-items: center; gap: 0.5rem; }
+    .ad-option input[type="radio"] { cursor: pointer; accent-color: var(--accent); }
+    .ad-option label { cursor: pointer; margin: 0; font-size: 0.9rem; }
+    .ad-footnote { font-size: 0.8rem; color: #666; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+    .ad-button-group { display: flex; gap: 1rem; margin-top: 2rem; }
+    .ad-generate-btn, .ad-reset-btn { padding: 0.75rem 1.5rem; border: none; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
+    .ad-generate-btn { background-color: var(--accent); color: white; }
+    .ad-generate-btn:hover { background-color: #3d6429; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(74,124,53,0.2); }
+    .ad-reset-btn { background-color: var(--accent2); color: white; }
+    .ad-reset-btn:hover { background-color: #6f5410; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(139,105,20,0.2); }
+  

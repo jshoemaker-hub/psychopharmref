@@ -1,0 +1,72 @@
+{{ define "main" }}
+<article class="blog-article">
+  <header class="ba-header">
+    <h1 class="ba-title">PsychoPharmRef Chapters</h1>
+    <p class="ba-subtitle">Evidence-based clinical chapters for psychiatrists and clinicians</p>
+  </header>
+
+  <div class="ba-body">
+    <a href="{{ "/" | relURL }}" class="back-link">← Back to Home</a>
+
+    <!-- Blog Search -->
+    <div class="blog-list-search" style="margin:16px 0 24px;">
+      <input type="text" id="blog-list-search" placeholder="Search 76 articles by topic, condition, or medication..." autocomplete="off" style="width:100%;max-width:500px;padding:10px 14px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:#fff;color:var(--text);">
+    </div>
+
+    <div class="blog-post-grid" id="blog-post-grid">
+    {{ range .Pages.ByDate.Reverse }}
+      <a href="{{ .Permalink }}" class="blog-post-card">
+        <div class="bpc-category">{{ .Params.category }}</div>
+        <h3 class="bpc-title">{{ .Title }}</h3>
+        <p class="bpc-excerpt">{{ .Description }}</p>
+        <span class="bpc-cta">Read article →</span>
+      </a>
+    {{ end }}
+    </div>
+  </div>
+
+  <footer class="ba-footer">
+    <p><strong>PsychoPharmRef</strong> | A resource for medical professionals | Data current as of {{ now.Format "January 2006" }}</p>
+  </footer>
+</article>
+{{ end }}
+
+{{ define "head" }}
+<style>
+.blog-post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin: 30px 0; }
+.blog-post-card { display: flex; flex-direction: column; background: var(--card, #fefcf8); border: 1px solid var(--border, #cfc8ba); border-radius: 10px; padding: 20px; text-decoration: none; color: var(--text, #231e14); transition: border-color 0.15s, background 0.15s, transform 0.15s; }
+.blog-post-card:hover { border-color: var(--accent, #4a7c35); background: var(--bg, #f5f0e8); transform: translateY(-2px); }
+.bpc-category { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent, #4a7c35); font-weight: 700; margin-bottom: 10px; }
+.bpc-title { font-size: 1.1rem; font-weight: 700; color: var(--text, #231e14); line-height: 1.3; margin-bottom: 10px; }
+.bpc-excerpt { font-size: 13px; color: var(--text-muted, #6b6050); line-height: 1.6; margin-bottom: 12px; flex-grow: 1; }
+.bpc-cta { font-size: 12px; font-weight: 600; color: var(--accent, #4a7c35); }
+.blog-post-card.hidden-by-search { display: none; }
+#blog-list-search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(74,124,53,0.15); outline: none; }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var input = document.getElementById('blog-list-search');
+  var grid = document.getElementById('blog-post-grid');
+  if (!input || !grid) return;
+  var cards = Array.from(grid.querySelectorAll('.blog-post-card'));
+  var timer;
+  input.addEventListener('input', function() {
+    clearTimeout(timer);
+    timer = setTimeout(function() {
+      var q = input.value.trim().toLowerCase();
+      if (!q) {
+        cards.forEach(function(c) { c.classList.remove('hidden-by-search'); });
+        return;
+      }
+      var terms = q.split(/\s+/);
+      cards.forEach(function(card) {
+        var text = card.textContent.toLowerCase();
+        var match = terms.every(function(t) { return text.indexOf(t) >= 0; });
+        card.classList.toggle('hidden-by-search', !match);
+      });
+    }, 150);
+  });
+});
+</script>
+{{ end }}

@@ -1,0 +1,23 @@
+{
+  "slug": "adult-adhd",
+  "title": "Adult ADHD: A Comprehensive Clinical Overview",
+  "pdf": "/blog/slides/adult-adhd.pdf",
+  "pages": [
+    "/blog/slides/adult-adhd/page-001.png",
+    "/blog/slides/adult-adhd/page-002.png",
+    "/blog/slides/adult-adhd/page-003.png",
+    "/blog/slides/adult-adhd/page-004.png",
+    "/blog/slides/adult-adhd/page-005.png",
+    "/blog/slides/adult-adhd/page-006.png",
+    "/blog/slides/adult-adhd/page-007.png",
+    "/blog/slides/adult-adhd/page-008.png",
+    "/blog/slides/adult-adhd/page-009.png",
+    "/blog/slides/adult-adhd/page-010.png",
+    "/blog/slides/adult-adhd/page-011.png",
+    "/blog/slides/adult-adhd/page-012.png",
+    "/blog/slides/adult-adhd/page-013.png"
+  ],
+  "page_count": 13,
+  "generated": "2026-05-03T06:11:28Z",
+  "source": "NotebookLM Slide Deck"
+}

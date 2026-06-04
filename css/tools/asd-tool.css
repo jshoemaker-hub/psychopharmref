@@ -1,0 +1,193 @@
+
+        /* ── ASD Tool Styles ── */
+        .asd-tool-grid { display: grid; grid-template-columns: 1fr; gap: 22px; margin: 20px 0; }
+        .asd-domain-panel {
+          background: var(--bg);
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          padding: 0;
+          overflow: hidden;
+        }
+        .asd-domain-header {
+          padding: 14px 20px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-weight: 700;
+          font-size: 1.08rem;
+          color: white;
+        }
+        .asd-domain-header--sc { background: #4a7c35; }
+        .asd-domain-header--rrb { background: #8b6914; }
+        .asd-domain-icon { font-size: 20px; }
+        .asd-domain-body { padding: 16px 20px; }
+        .asd-levels { display: flex; flex-direction: column; gap: 8px; }
+        .asd-level {
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          padding: 14px 16px;
+          border: 2px solid var(--border);
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.15s;
+          background: var(--bg);
+        }
+        .asd-level:hover { background: var(--bg2); }
+        .asd-level.asd-sel {
+          border-color: var(--accent);
+          background: rgba(74,124,53,0.05);
+        }
+        .asd-level input[type="radio"] {
+          margin-top: 4px;
+          flex-shrink: 0;
+          accent-color: var(--accent);
+        }
+        .asd-level-content { flex: 1; }
+        .asd-level-top {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 4px;
+        }
+        .asd-level-badge {
+          display: inline-block;
+          padding: 2px 10px;
+          border-radius: 10px;
+          font-weight: 700;
+          font-size: 0.82rem;
+          color: white;
+        }
+        .asd-badge-1 { background: #3a6e28; }
+        .asd-badge-2 { background: #8b6914; }
+        .asd-badge-3 { background: #c04030; }
+        .asd-level-name { font-weight: 700; font-size: 0.95rem; color: var(--text); }
+        .asd-level-desc { font-size: 0.84rem; color: #6b6050; line-height: 1.5; margin-top: 4px; }
+        .asd-level-example {
+          font-size: 0.82rem;
+          color: #6b6050;
+          font-style: italic;
+          margin-top: 6px;
+          padding-top: 6px;
+          border-top: 1px dashed var(--border);
+        }
+
+        /* Results */
+        .asd-results {
+          background: var(--bg);
+          border: 2px solid var(--border);
+          border-radius: 10px;
+          padding: 24px;
+          margin-top: 24px;
+          display: none;
+        }
+        .asd-results.asd-visible { display: block; }
+        .asd-results-title {
+          font-size: 1.15rem;
+          font-weight: 700;
+          margin-bottom: 16px;
+          color: var(--text);
+        }
+        .asd-score-row {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 14px;
+          margin-bottom: 20px;
+        }
+        .asd-score-card {
+          text-align: center;
+          padding: 18px 14px;
+          border-radius: 8px;
+          background: var(--bg2);
+          border: 1px solid var(--border);
+        }
+        .asd-score-card--primary {
+          border-width: 2px;
+        }
+        .asd-score-val {
+          font-size: 1.6rem;
+          font-weight: 800;
+          line-height: 1.1;
+        }
+        .asd-score-sublabel {
+          font-size: 0.92rem;
+          font-weight: 600;
+          margin-top: 2px;
+        }
+        .asd-score-label {
+          font-size: 0.78rem;
+          margin-top: 6px;
+          opacity: 0.8;
+        }
+
+        .asd-interp-section {
+          margin-bottom: 18px;
+        }
+        .asd-interp-box {
+          padding: 16px 18px;
+          border-radius: 8px;
+          margin-bottom: 10px;
+          line-height: 1.5;
+        }
+        .asd-interp-box h4 { margin: 0 0 6px; font-size: 1rem; }
+        .asd-interp-box p { font-size: 0.88rem; margin: 0 0 6px; }
+        .asd-interp-1 { background: rgba(58,110,40,0.08); border-left: 4px solid #3a6e28; }
+        .asd-interp-2 { background: rgba(139,105,20,0.08); border-left: 4px solid #8b6914; }
+        .asd-interp-3 { background: rgba(192,64,48,0.08); border-left: 4px solid #c04030; }
+
+        .asd-supports-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          gap: 12px;
+          margin-top: 14px;
+        }
+        .asd-support-card {
+          padding: 14px;
+          border-radius: 8px;
+          background: var(--bg2);
+          border: 1px solid var(--border);
+        }
+        .asd-support-card h5 {
+          margin: 0 0 6px;
+          font-size: 0.88rem;
+          color: var(--accent);
+        }
+        .asd-support-card ul {
+          margin: 0; padding: 0 0 0 16px;
+          font-size: 0.82rem;
+          line-height: 1.6;
+          color: #231e14;
+        }
+
+        .asd-screening-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 14px;
+          font-size: 0.84rem;
+        }
+        .asd-screening-table th, .asd-screening-table td {
+          padding: 8px 10px;
+          border: 1px solid var(--border);
+          text-align: left;
+        }
+        .asd-screening-table th { background: var(--bg2); font-weight: 600; }
+
+        .asd-ref-note {
+          font-size: 0.78rem;
+          color: #6b6050;
+          margin-top: 16px;
+          padding-top: 12px;
+          border-top: 1px solid var(--border);
+          line-height: 1.5;
+        }
+
+        .asd-btn-row { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+
+        @media(min-width:900px) {
+          .asd-tool-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media print {
+          .asd-btn-row, .mt-warning, .section-sub { display: none; }
+          .asd-results { display: block !important; border: 1px solid #999; }
+        }
+      

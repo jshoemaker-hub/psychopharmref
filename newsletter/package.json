@@ -1,0 +1,20 @@
+{
+  "name": "psychopharmref-newsletter",
+  "version": "1.0.0",
+  "description": "Weekly newsletter pipeline for PsychoPharmRef",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/.bin/jest"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.36.0",
+    "dotenv": "^16.0.0",
+    "natural": "^6.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  },
+  "jest": {
+    "transform": {}
+  }
+}

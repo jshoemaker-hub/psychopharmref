@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -c 'font-size=\"\"\"\"[6-9]\"\"\"\"' *.html)",
+      "Bash(ls /Users/jeradshoemaker/Documents/html/psychopharm/blog/*.html)",
+      "Bash(xargs -I{} basename {})"
+    ],
+    "additionalDirectories": [
+      "/Users/jeradshoemaker/Documents/html/psychopharm/.git"
+    ]
+  }
+}

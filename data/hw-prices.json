@@ -1,0 +1,486 @@
+{
+  "generatedAt": "2026-04-30T06:18:00.155Z",
+  "source": "HealthWarehouse",
+  "results": {
+    "Fluvoxamine": {
+      "available": true,
+      "price": 105.3,
+      "url": "https://www.healthwarehouse.com/fluvoxamine-150mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 3.51
+    },
+    "Fluoxetine": {
+      "available": true,
+      "price": 9,
+      "url": "https://www.healthwarehouse.com/fluoxetine-20mg-capsules",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.3
+    },
+    "Paroxetine": {
+      "available": true,
+      "price": 9.6,
+      "url": "https://www.healthwarehouse.com/paroxetine-20mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.32
+    },
+    "Citalopram": {
+      "available": true,
+      "price": 9,
+      "url": "https://www.healthwarehouse.com/citalopram-20mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.3
+    },
+    "Sertraline": {
+      "available": true,
+      "price": 9.6,
+      "url": "https://www.healthwarehouse.com/sertraline-50mg-tablets-generic-zoloft",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.32
+    },
+    "Escitalopram": {
+      "available": true,
+      "price": 9.9,
+      "url": "https://www.healthwarehouse.com/escitalopram-oxalate-10-mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.33
+    },
+    "Vilazodone": {
+      "available": true,
+      "price": 48,
+      "url": "https://www.healthwarehouse.com/vilazodone-hcl-40mg-tablet",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 1.6
+    },
+    "Trazodone": {
+      "available": true,
+      "price": 10.5,
+      "url": "https://www.healthwarehouse.com/trazodone-50mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.35
+    },
+    "Bupropion": {
+      "available": true,
+      "price": 18.9,
+      "url": "https://www.healthwarehouse.com/bupropion-hcl-xl-150mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.63
+    },
+    "Desvenlafaxine": {
+      "available": true,
+      "price": 35.1,
+      "url": "https://www.healthwarehouse.com/desvenlafaxine-er-50mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 1.17
+    },
+    "Venlafaxine": {
+      "available": true,
+      "price": 14.7,
+      "url": "https://www.healthwarehouse.com/venlafaxine-xr-75mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.49
+    },
+    "Mirtazapine": {
+      "available": true,
+      "price": 14.7,
+      "url": "https://www.healthwarehouse.com/mirtazapine-15mg-tablets-generic-remeron",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.49
+    },
+    "Duloxetine": {
+      "available": true,
+      "price": 12.9,
+      "url": "https://www.healthwarehouse.com/duloxetine-30mg-capsules",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.43
+    },
+    "Amitriptyline": {
+      "available": true,
+      "price": 56.1,
+      "url": "https://www.healthwarehouse.com/perphenazine-amitriptyline-2-25mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 1.87
+    },
+    "Haloperidol": {
+      "available": true,
+      "price": 18,
+      "url": "https://www.healthwarehouse.com/haloperidol-5mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.6
+    },
+    "Doxepin": {
+      "available": true,
+      "price": 20.4,
+      "url": "https://www.healthwarehouse.com/doxepin-hcl-25mg-capsules",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.68
+    },
+    "Tranylcypromine": {
+      "available": true,
+      "price": 36.6,
+      "url": "https://www.healthwarehouse.com/tranylcypromine-sulfate-10mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 60,
+      "unitPrice": 0.61
+    },
+    "Imipramine": {
+      "available": true,
+      "price": 13.5,
+      "url": "https://www.healthwarehouse.com/imipramine-hcl-25mg-tablets-generic-tofranil",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.45
+    },
+    "Perphenazine": {
+      "available": true,
+      "price": 15.6,
+      "url": "https://www.healthwarehouse.com/perphenazine-8mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.52
+    },
+    "Chlorpromazine": {
+      "available": true,
+      "price": 66,
+      "url": "https://www.healthwarehouse.com/chlorpromazine-50mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 2.2
+    },
+    "Nortriptyline": {
+      "available": true,
+      "price": 14.7,
+      "url": "https://www.healthwarehouse.com/nortriptyline-25mg-capsules",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.49
+    },
+    "Trifluoperazine": {
+      "available": true,
+      "price": 63.3,
+      "url": "https://www.healthwarehouse.com/trifluoperazine-5mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 2.11
+    },
+    "Fluphenazine": {
+      "available": true,
+      "price": 13.5,
+      "url": "https://www.healthwarehouse.com/fluphenazine-5mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.45
+    },
+    "Phenelzine": {
+      "available": true,
+      "price": 64.2,
+      "url": "https://www.healthwarehouse.com/phenelzine-sulfate-15mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 60,
+      "unitPrice": 1.07
+    },
+    "Thiothixene": {
+      "available": true,
+      "price": 69,
+      "url": "https://www.healthwarehouse.com/thiothixene-5mg-capsules",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 2.3
+    },
+    "Thioridazine": {
+      "available": true,
+      "price": 39,
+      "url": "https://www.healthwarehouse.com/thioridazine-25mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 60,
+      "unitPrice": 0.65
+    },
+    "Aripiprazole": {
+      "available": true,
+      "price": 15.3,
+      "url": "https://www.healthwarehouse.com/aripiprazole-10mg-tablets-1",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.51
+    },
+    "Risperidone": {
+      "available": true,
+      "price": 12,
+      "url": "https://www.healthwarehouse.com/risperidone-2mg-tablets-generic-risperdal",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.4
+    },
+    "Olanzapine": {
+      "available": true,
+      "price": 17.1,
+      "url": "https://www.healthwarehouse.com/olanzapine-10mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.57
+    },
+    "Loxapine": {
+      "available": true,
+      "price": 21,
+      "url": "https://www.healthwarehouse.com/loxapine-10mg-capsules",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.7
+    },
+    "Lurasidone": {
+      "available": true,
+      "price": 42,
+      "url": "https://www.healthwarehouse.com/lurasidone-40mg-tablet",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 1.4
+    },
+    "Ziprasidone": {
+      "available": true,
+      "price": 30.3,
+      "url": "https://www.healthwarehouse.com/ziprasidone-40-mg-capsules",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 1.01
+    },
+    "Quetiapine": {
+      "available": true,
+      "price": 9.9,
+      "url": "https://www.healthwarehouse.com/quetiapine-fumarate-100-mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.33
+    },
+    "Asenapine": {
+      "available": true,
+      "price": 199.5,
+      "url": "https://www.healthwarehouse.com/asenapine-2-5mg-sublingual-tablets-60ct-blister-pack",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 3,
+      "unitPrice": 66.5
+    },
+    "Lithium": {
+      "available": true,
+      "price": 15,
+      "url": "https://www.healthwarehouse.com/lithium-carbonate-300mg-capsules",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.5
+    },
+    "Carbamazepine": {
+      "available": true,
+      "price": 39,
+      "url": "https://www.healthwarehouse.com/carbamazepine-200mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 60,
+      "unitPrice": 0.65
+    },
+    "Paliperidone": {
+      "available": true,
+      "price": 102,
+      "url": "https://www.healthwarehouse.com/paliperidone-er-6mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 3.4
+    },
+    "Lamotrigine": {
+      "available": true,
+      "price": 10.8,
+      "url": "https://www.healthwarehouse.com/lamotrigine-100mg-tablets-1",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.36
+    },
+    "Temazepam": {
+      "available": true,
+      "price": 24,
+      "url": "https://www.healthwarehouse.com/temazepam-generic-restoril-15mg-capsules",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.8
+    },
+    "Estazolam": {
+      "available": true,
+      "price": 34.5,
+      "url": "https://www.healthwarehouse.com/estazolam-generic-prosom-1mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 1.15
+    },
+    "Oxazepam": {
+      "available": true,
+      "price": 36,
+      "url": "https://www.healthwarehouse.com/oxazepam-generic-serax-15-mg-capsules",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 1.2
+    },
+    "Oxcarbazepine": {
+      "available": true,
+      "price": 12.9,
+      "url": "https://www.healthwarehouse.com/oxcarbazepine-300mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.43
+    },
+    "Diazepam": {
+      "available": true,
+      "price": 378.6,
+      "url": "https://www.healthwarehouse.com/valium-diazepam-5mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 12.62
+    },
+    "Topiramate": {
+      "available": true,
+      "price": 10.2,
+      "url": "https://www.healthwarehouse.com/topiramate-100mg-tablets-generic-topamax",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.34
+    },
+    "Lorazepam": {
+      "available": true,
+      "price": 15,
+      "url": "https://www.healthwarehouse.com/lorazepam-generic-ativan-1mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.5
+    },
+    "Flurazepam": {
+      "available": false,
+      "error": "all candidates failed: HTTP 404 (https://www.healthwarehouse.com/flurazepam-generic-dalmane-15mg-capsules)"
+    },
+    "Zolpidem": {
+      "available": true,
+      "price": 729,
+      "url": "https://www.healthwarehouse.com/ambien-zolpidem-tartrate-10mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 24.3
+    },
+    "Eszopiclone": {
+      "available": true,
+      "price": 27,
+      "url": "https://www.healthwarehouse.com/eszopiclone-3mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.9
+    },
+    "Hydroxyzine": {
+      "available": true,
+      "price": 12,
+      "url": "https://www.healthwarehouse.com/hydroxyzine-25mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.4
+    },
+    "Chlordiazepoxide": {
+      "available": true,
+      "price": 18,
+      "url": "https://www.healthwarehouse.com/chlordiazepoxide-generic-librium-10mg-capsules",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.6
+    },
+    "Ramelteon": {
+      "available": true,
+      "price": 45,
+      "url": "https://www.healthwarehouse.com/ramelteon-8mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 1.5
+    },
+    "Diphenhydramine": {
+      "available": false,
+      "error": "all candidates failed: HTTP 404 (https://www.healthwarehouse.com/diphenhydramine-25mg-capsules-2)"
+    },
+    "Armodafinil": {
+      "available": true,
+      "price": 57,
+      "url": "https://www.healthwarehouse.com/armodafinil-generic-nuvigil-150mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 1.9
+    },
+    "Modafinil": {
+      "available": true,
+      "price": 45,
+      "url": "https://www.healthwarehouse.com/modafinil-generic-provigil-200mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 1.5
+    },
+    "Buspirone": {
+      "available": true,
+      "price": 9.9,
+      "url": "https://www.healthwarehouse.com/buspirone-10mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.33
+    },
+    "Suvorexant": {
+      "available": true,
+      "price": 1446.99,
+      "url": "https://www.healthwarehouse.com/belsomra-suvorexant-10mg-tablets-30ct-pack",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 3,
+      "unitPrice": 482.33
+    },
+    "Guanfacine": {
+      "available": true,
+      "price": 24,
+      "url": "https://www.healthwarehouse.com/guanfacine-1mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.8
+    },
+    "Propranolol": {
+      "available": true,
+      "price": 10.2,
+      "url": "https://www.healthwarehouse.com/propranolol-20mg-tablets-1",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.34
+    },
+    "Pregabalin": {
+      "available": true,
+      "price": 21.9,
+      "url": "https://www.healthwarehouse.com/pregabalin-generic-lyrica-75mg-capsules",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.73
+    },
+    "Gabapentin": {
+      "available": true,
+      "price": 14.1,
+      "url": "https://www.healthwarehouse.com/gabapentin-generic-neurontin-300mg-capsules",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.47
+    },
+    "Trihexyphenidyl": {
+      "available": true,
+      "price": 12,
+      "url": "https://www.healthwarehouse.com/trihexyphenidyl-2mg-tablets",
+      "strategy": "next-priceTiers-slug",
+      "packSize": 30,
+      "unitPrice": 0.4
+    }
+  }
+}

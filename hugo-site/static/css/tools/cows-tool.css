@@ -1,0 +1,267 @@
+
+    /* COWS Tool Styles - cows- prefix */
+    .cows-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .cows-context {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cows-context label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .cows-context input {
+      padding: 6px 8px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    .cows-item-group {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .cows-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .cows-item-num {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 30px;
+    }
+
+    .cows-item-title {
+      flex: 1;
+      margin: 0 8px;
+      font-size: 15px;
+    }
+
+    .cows-item-maxscore {
+      font-size: 13px;
+      color: #666;
+      background: #fff;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .cows-item-prompt {
+      font-size: 13px;
+      color: #555;
+      font-style: italic;
+      margin: 4px 0 10px;
+      line-height: 1.4;
+    }
+
+    .cows-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .cows-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 6px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .cows-option:hover {
+      background-color: rgba(74, 124, 53, 0.08);
+    }
+
+    .cows-option input[type="radio"] {
+      margin-top: 4px;
+      cursor: pointer;
+      accent-color: var(--accent);
+    }
+
+    .cows-option label {
+      cursor: pointer;
+      flex: 1;
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .cows-score-display {
+      background: #fff;
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 24px 0;
+      text-align: center;
+    }
+
+    .cows-total-score {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .cows-max-label {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    .cows-severity-label {
+      font-size: 16px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .cows-severity-minimal {
+      background: #e8f5e9;
+      color: #1b5e20;
+    }
+
+    .cows-severity-mild {
+      background: #fff3e0;
+      color: #e65100;
+    }
+
+    .cows-severity-moderate {
+      background: #ffe0b2;
+      color: #e65100;
+    }
+
+    .cows-severity-msevere {
+      background: #ffcdd2;
+      color: #b71c1c;
+    }
+
+    .cows-severity-severe {
+      background: #f8bbd0;
+      color: #880e4f;
+    }
+
+    .cows-guidance {
+      font-size: 14px;
+      color: var(--text);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    .cows-button-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin: 24px 0;
+      flex-wrap: wrap;
+    }
+
+    .cows-button {
+      padding: 12px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .cows-button-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .cows-button-primary:hover {
+      background: #3d6429;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(74, 124, 53, 0.2);
+    }
+
+    .cows-button-secondary {
+      background: #d0ccc0;
+      color: var(--text);
+    }
+
+    .cows-button-secondary:hover {
+      background: #c0bab0;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .cows-summary-section {
+      background: #f9f7f2;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      margin-top: 24px;
+      display: none;
+    }
+
+    .cows-summary-section.cows-show {
+      display: block;
+    }
+
+    .cows-summary-title {
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    .cows-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 12px;
+    }
+
+    .cows-summary-item {
+      background: #fff;
+      padding: 10px;
+      border-radius: 4px;
+      border-left: 3px solid var(--accent);
+      font-size: 13px;
+    }
+
+    .cows-summary-item-label {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .cows-summary-item-score {
+      color: var(--accent);
+      font-weight: 700;
+      margin-left: 4px;
+    }
+
+    .cows-warning {
+      /* Alias for .mt-warning — inherits its styles */
+    }

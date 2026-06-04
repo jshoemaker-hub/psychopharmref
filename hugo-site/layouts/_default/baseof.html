@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  {{ if site.Params.ga4ID }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.Params.ga4ID }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.Params.ga4ID }}');
+  </script>
+  {{ end }}
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Title }} - PsychoPharmRef</title>
+  <meta name="description" content="{{ .Description | default .Summary | truncate 160 }}">
+  <meta name="author" content="{{ site.Params.author }}">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ .Title }}">
+  <meta property="og:description" content="{{ .Description | default .Summary | truncate 200 }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:site_name" content="PsychoPharmRef">
+  <meta property="og:image" content="{{ "og-image.svg" | absURL }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ .Title }}">
+  <meta name="twitter:description" content="{{ .Description | default .Summary | truncate 200 }}">
+  <meta name="twitter:image" content="{{ "og-image.svg" | absURL }}">
+
+  <link rel="canonical" href="{{ .Permalink }}">
+  <link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32.png" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/blog.css" | relURL }}">
+  <style>
+    .ba-action-bar{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 14px;padding:6px 0;border-bottom:1px solid var(--border,#cfc8ba)}
+    .ba-act-btn{display:inline-flex;align-items:center;gap:3px;padding:4px 9px;border-radius:4px;font-size:11px;font-weight:600;border:1px solid var(--border,#cfc8ba);background:var(--bg2,#ece6db);color:var(--text,#231e14);cursor:pointer;text-decoration:none;transition:background .15s,border-color .15s}
+    .ba-act-btn:hover{background:var(--accent,#4a7c35);color:#fff;border-color:var(--accent,#4a7c35)}
+    .ba-act-btn svg{width:12px;height:12px;fill:currentColor;flex-shrink:0}
+    .ba-share-drop{position:relative;display:inline-block}
+    .ba-share-menu{display:none;position:absolute;top:100%;left:0;z-index:10;background:#fff;border:1px solid var(--border,#cfc8ba);border-radius:5px;box-shadow:0 4px 12px rgba(0,0,0,.12);min-width:160px;margin-top:4px;padding:4px 0}
+    .ba-share-menu.ba-open{display:block}
+    .ba-share-menu a,.ba-share-menu button{display:flex;align-items:center;gap:8px;width:100%;padding:8px 14px;font-size:12.5px;font-weight:500;color:var(--text,#231e14);text-decoration:none;border:none;background:none;cursor:pointer;text-align:left}
+    .ba-share-menu a:hover,.ba-share-menu button:hover{background:var(--bg2,#ece6db)}
+    .ba-related{margin-top:30px;padding-top:20px;border-top:2px solid var(--border,#cfc8ba)}
+    .ba-related h4{font-size:15px;font-weight:700;margin-bottom:12px}
+    .ba-related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+    .ba-related-link{display:block;padding:10px 14px;background:var(--bg2,#ece6db);border:1px solid var(--border,#cfc8ba);border-radius:5px;text-decoration:none;color:var(--text,#231e14);font-size:13px;font-weight:600;transition:border-color .15s}
+    .ba-related-link:hover{border-color:var(--accent,#4a7c35);background:var(--card,#fefcf8)}
+    .ba-share-row{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+    .ba-share-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:5px;font-size:12px;font-weight:600;text-decoration:none;color:#fff;transition:opacity .15s}
+    .ba-share-btn:hover{opacity:.85}
+    .ba-share-btn--x{background:#000}
+    .ba-share-btn--li{background:#0A66C2}
+    .us-wrap{padding:8px 14px 10px;position:relative}
+    .us-input{width:100%;padding:7px 10px 7px 28px;border:1px solid var(--border,#cfc8ba);border-radius:5px;font-size:12.5px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236b6050' stroke-width='2.5'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='16.5' y1='16.5' x2='21' y2='21'/%3E%3C/svg%3E") 8px center no-repeat;color:var(--text,#231e14);outline:none;transition:border-color .15s}
+    .us-input:focus{border-color:var(--accent,#4a7c35);box-shadow:0 0 0 2px rgba(74,124,53,.15)}
+    .us-results{display:none;position:absolute;left:14px;right:14px;top:100%;z-index:200;background:#fff;border:1px solid var(--border,#cfc8ba);border-radius:0 0 6px 6px;box-shadow:0 8px 24px rgba(0,0,0,.15);max-height:380px;overflow-y:auto}
+    .us-results.open{display:block}
+    .us-group-label{padding:6px 12px 4px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted,#6b6050);background:var(--bg2,#ece6db);border-bottom:1px solid var(--border,#cfc8ba);position:sticky;top:0}
+    .us-item{display:block;padding:8px 12px;text-decoration:none;color:var(--text,#231e14);font-size:12.5px;line-height:1.35;border-bottom:1px solid #f0ece4;cursor:pointer;transition:background .1s}
+    .us-item:hover,.us-item:focus{background:var(--bg2,#ece6db)}
+    .us-item-title{font-weight:600;display:block}
+    .us-item-sub{font-size:11px;color:var(--text-muted,#6b6050);margin-top:1px}
+    .us-item-type{display:inline-block;font-size:9px;font-weight:700;text-transform:uppercase;padding:1px 5px;border-radius:3px;margin-right:4px}
+    .us-item-type--blog{background:rgba(139,105,20,.12);color:var(--accent2,#8b6914)}
+    .us-empty{padding:16px 12px;text-align:center;font-size:12px;color:#999}
+    .us-results mark{background:rgba(74,124,53,.2);color:inherit;padding:0 1px;border-radius:2px}
+    .blog-search-results.active{display:block}
+    .blog-sr-item{display:block;padding:8px 10px;text-decoration:none;color:var(--text,#231e14);border-bottom:1px solid var(--border,#cfc8ba);font-size:12px;line-height:1.35;transition:background .1s}
+    .blog-sr-item:last-child{border-bottom:none}
+    .blog-sr-item:hover,.blog-sr-item:focus{background:var(--bg2,#ece6db)}
+    .blog-sr-title{font-weight:600;display:block}
+    .blog-sr-cat{font-size:10px;color:var(--text-muted,#6b6050);margin-top:2px}
+    .blog-sr-empty{padding:12px 10px;font-size:12px;color:#999;text-align:center}
+    mark{background:rgba(74,124,53,0.2);color:inherit;padding:0 1px;border-radius:2px}
+  </style>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ .Title }}",
+    "description": "{{ .Description | default .Summary | truncate 300 }}",
+    "url": "{{ .Permalink }}",
+    "datePublished": "{{ .Date.Format "2006-01-02" }}",
+    "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+    "author": {
+      "@type": "Person",
+      "name": "{{ site.Params.author }}",
+      "jobTitle": "{{ site.Params.authorJobTitle }}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "PsychoPharmRef"
+    }
+  }
+  </script>
+
+  {{ block "head" . }}{{ end }}
+</head>
+<body>
+  <a href="#content" class="skip-link">Skip to main content</a>
+
+  <button id="mobile-menu-btn" aria-label="Open navigation menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div id="sidebar-overlay"></div>
+
+  {{ partial "sidebar.html" . }}
+
+  <main id="content" role="main" aria-label="Article content">
+    <div class="container">
+      {{ block "main" . }}{{ end }}
+    </div>
+  </main>
+
+  {{ partial "scripts.html" . }}
+</body>
+</html>
