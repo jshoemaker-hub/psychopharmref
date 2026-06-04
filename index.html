@@ -172,6 +172,7 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="panss-tool">PANSS</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="bfcrs-tool">Catatonia (BFCRS)</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="aims-tool">AIMS (Dyskinesia)</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="bprs-tool">BPRS</a></li>
 
           <li class="nav-sub-divider">Sleep</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="ess-tool">Epworth (Sleepiness)</a></li>
@@ -9440,6 +9441,327 @@
     </div>
   </div>
 </section><!-- end aims-tool -->
+
+<!-- ── BPRS Tool ─────────────────────────────────────────────────────────── -->
+<section id="bprs-tool" data-lazy-tool="bprs-tool" class="section">
+  <div class="section-header">
+    <h2>BPRS (Brief Psychiatric Rating Scale)</h2>
+    <p>18-item clinician-rated scale for psychiatric symptom severity. Each item scored 0 (not assessed) to 7 (extremely severe). Validated severity anchors: mildly ill &asymp;&nbsp;31, moderately ill &asymp;&nbsp;41, markedly ill &asymp;&nbsp;53 (Leucht et al., 2005).</p>
+  </div>
+
+  <div class="mt-warning">
+    <strong>Clinical Use Only:</strong> BPRS ratings reflect the past week based on observed behavior and verbal report. Items should be scored according to the anchor definitions provided. Not a substitute for comprehensive clinical evaluation.
+  </div>
+
+  <div class="bp-container">
+
+    <div class="bp-scale-legend">
+      <strong>Rating Scale:</strong> 0 = Not Assessed &nbsp;|&nbsp; 1 = Not Present &nbsp;|&nbsp; 2 = Very Mild &nbsp;|&nbsp; 3 = Mild &nbsp;|&nbsp; 4 = Moderate &nbsp;|&nbsp; 5 = Moderately Severe &nbsp;|&nbsp; 6 = Severe &nbsp;|&nbsp; 7 = Extremely Severe
+    </div>
+
+    <form id="bp-form">
+
+        <div class="bp-section-group">
+          <div class="bp-section-title">Affective / Anxiety</div>
+          <div class="bp-item">
+            <span class="bp-item-label">1. Somatic Concern</span>
+            <p class="bp-item-description">Degree of concern over present bodily health. Rate the degree to which physical health is perceived as a problem by the patient, whether complaints have a realistic basis or not.</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i1-0" name="bp-item1" value="0"><label for="bp-i1-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i1-1" name="bp-item1" value="1"><label for="bp-i1-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i1-2" name="bp-item1" value="2"><label for="bp-i1-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i1-3" name="bp-item1" value="3"><label for="bp-i1-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i1-4" name="bp-item1" value="4"><label for="bp-i1-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i1-5" name="bp-item1" value="5"><label for="bp-i1-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i1-6" name="bp-item1" value="6"><label for="bp-i1-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i1-7" name="bp-item1" value="7"><label for="bp-i1-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+          <div class="bp-item">
+            <span class="bp-item-label">2. Anxiety</span>
+            <p class="bp-item-description">Worry, fear, or over-concern for present or future. Rate solely on the basis of verbal report of patient's own subjective experiences. Do not infer anxiety from physical signs or from neurotic defense mechanisms.</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i2-0" name="bp-item2" value="0"><label for="bp-i2-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i2-1" name="bp-item2" value="1"><label for="bp-i2-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i2-2" name="bp-item2" value="2"><label for="bp-i2-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i2-3" name="bp-item2" value="3"><label for="bp-i2-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i2-4" name="bp-item2" value="4"><label for="bp-i2-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i2-5" name="bp-item2" value="5"><label for="bp-i2-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i2-6" name="bp-item2" value="6"><label for="bp-i2-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i2-7" name="bp-item2" value="7"><label for="bp-i2-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+          <div class="bp-item">
+            <span class="bp-item-label">5. Guilt Feelings</span>
+            <p class="bp-item-description">Over-concern or remorse for past behavior. Rate on the basis of the patient's subjective experiences of guilt as evidenced by verbal report with appropriate affect; do not infer guilt feelings from depression, anxiety or neurotic defenses.</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i5-0" name="bp-item5" value="0"><label for="bp-i5-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i5-1" name="bp-item5" value="1"><label for="bp-i5-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i5-2" name="bp-item5" value="2"><label for="bp-i5-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i5-3" name="bp-item5" value="3"><label for="bp-i5-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i5-4" name="bp-item5" value="4"><label for="bp-i5-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i5-5" name="bp-item5" value="5"><label for="bp-i5-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i5-6" name="bp-item5" value="6"><label for="bp-i5-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i5-7" name="bp-item5" value="7"><label for="bp-i5-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+          <div class="bp-item">
+            <span class="bp-item-label">9. Depressive Mood</span>
+            <p class="bp-item-description">Despondency in mood, sadness. Rate only degree of despondency; do not rate on the basis of inferences concerning depression based upon general retardation and somatic complaints.</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i9-0" name="bp-item9" value="0"><label for="bp-i9-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i9-1" name="bp-item9" value="1"><label for="bp-i9-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i9-2" name="bp-item9" value="2"><label for="bp-i9-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i9-3" name="bp-item9" value="3"><label for="bp-i9-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i9-4" name="bp-item9" value="4"><label for="bp-i9-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i9-5" name="bp-item9" value="5"><label for="bp-i9-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i9-6" name="bp-item9" value="6"><label for="bp-i9-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i9-7" name="bp-item9" value="7"><label for="bp-i9-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+          <div class="bp-item">
+            <span class="bp-item-label">10. Hostility</span>
+            <p class="bp-item-description">Animosity, contempt, belligerence, disdain for other people outside the interview situation. Rate solely on the basis of the verbal report of feelings and actions of the patient toward others; do not infer hostility from neurotic defenses, anxiety, nor somatic complaints. (Rate attitude toward interviewer under &ldquo;Uncooperativeness&rdquo;.)</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i10-0" name="bp-item10" value="0"><label for="bp-i10-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i10-1" name="bp-item10" value="1"><label for="bp-i10-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i10-2" name="bp-item10" value="2"><label for="bp-i10-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i10-3" name="bp-item10" value="3"><label for="bp-i10-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i10-4" name="bp-item10" value="4"><label for="bp-i10-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i10-5" name="bp-item10" value="5"><label for="bp-i10-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i10-6" name="bp-item10" value="6"><label for="bp-i10-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i10-7" name="bp-item10" value="7"><label for="bp-i10-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bp-section-group">
+          <div class="bp-section-title">Positive Symptoms</div>
+          <div class="bp-item">
+            <span class="bp-item-label">4. Conceptual Disorganization</span>
+            <p class="bp-item-description">Degree to which the thought processes are confused, disconnected, or disorganized. Rate on the basis of integration of the verbal products of the patient; do not rate on the basis of patient's subjective impression of his own level of functioning.</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i4-0" name="bp-item4" value="0"><label for="bp-i4-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i4-1" name="bp-item4" value="1"><label for="bp-i4-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i4-2" name="bp-item4" value="2"><label for="bp-i4-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i4-3" name="bp-item4" value="3"><label for="bp-i4-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i4-4" name="bp-item4" value="4"><label for="bp-i4-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i4-5" name="bp-item4" value="5"><label for="bp-i4-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i4-6" name="bp-item4" value="6"><label for="bp-i4-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i4-7" name="bp-item4" value="7"><label for="bp-i4-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+          <div class="bp-item">
+            <span class="bp-item-label">8. Grandiosity</span>
+            <p class="bp-item-description">Exaggerated self-opinion, conviction of unusual ability or powers. Rate only on the basis of patient's statements about himself or self-in-relation-to-others, not on the basis of his demeanor in the interview situation.</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i8-0" name="bp-item8" value="0"><label for="bp-i8-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i8-1" name="bp-item8" value="1"><label for="bp-i8-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i8-2" name="bp-item8" value="2"><label for="bp-i8-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i8-3" name="bp-item8" value="3"><label for="bp-i8-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i8-4" name="bp-item8" value="4"><label for="bp-i8-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i8-5" name="bp-item8" value="5"><label for="bp-i8-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i8-6" name="bp-item8" value="6"><label for="bp-i8-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i8-7" name="bp-item8" value="7"><label for="bp-i8-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+          <div class="bp-item">
+            <span class="bp-item-label">11. Suspiciousness</span>
+            <p class="bp-item-description">Belief (delusional or otherwise) that others have now, or have had in the past, malicious or discriminatory intent toward the patient. On the basis of verbal report, rate only those suspicions which are currently held whether they concern past or present circumstances.</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i11-0" name="bp-item11" value="0"><label for="bp-i11-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i11-1" name="bp-item11" value="1"><label for="bp-i11-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i11-2" name="bp-item11" value="2"><label for="bp-i11-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i11-3" name="bp-item11" value="3"><label for="bp-i11-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i11-4" name="bp-item11" value="4"><label for="bp-i11-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i11-5" name="bp-item11" value="5"><label for="bp-i11-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i11-6" name="bp-item11" value="6"><label for="bp-i11-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i11-7" name="bp-item11" value="7"><label for="bp-i11-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+          <div class="bp-item">
+            <span class="bp-item-label">12. Hallucinatory Behavior</span>
+            <p class="bp-item-description">Perceptions without normal external stimulus correspondence. Rate only those experiences which are reported to have occurred within the last week and which are described as distinctly different from the thought and imagery processes of normal people.</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i12-0" name="bp-item12" value="0"><label for="bp-i12-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i12-1" name="bp-item12" value="1"><label for="bp-i12-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i12-2" name="bp-item12" value="2"><label for="bp-i12-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i12-3" name="bp-item12" value="3"><label for="bp-i12-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i12-4" name="bp-item12" value="4"><label for="bp-i12-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i12-5" name="bp-item12" value="5"><label for="bp-i12-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i12-6" name="bp-item12" value="6"><label for="bp-i12-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i12-7" name="bp-item12" value="7"><label for="bp-i12-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+          <div class="bp-item">
+            <span class="bp-item-label">15. Unusual Thought Content</span>
+            <p class="bp-item-description">Unusual, odd, strange or bizarre thought content. Rate here the degree of unusualness, not the degree of disorganization of thought processes.</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i15-0" name="bp-item15" value="0"><label for="bp-i15-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i15-1" name="bp-item15" value="1"><label for="bp-i15-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i15-2" name="bp-item15" value="2"><label for="bp-i15-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i15-3" name="bp-item15" value="3"><label for="bp-i15-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i15-4" name="bp-item15" value="4"><label for="bp-i15-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i15-5" name="bp-item15" value="5"><label for="bp-i15-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i15-6" name="bp-item15" value="6"><label for="bp-i15-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i15-7" name="bp-item15" value="7"><label for="bp-i15-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bp-section-group">
+          <div class="bp-section-title">Negative Symptoms</div>
+          <div class="bp-item">
+            <span class="bp-item-label">3. Emotional Withdrawal</span>
+            <p class="bp-item-description">Deficiency in relating to the interviewer and to the interviewer situation. Rate only the degree to which the patient gives the impression of failing to be in emotional contact with other people in the interview situation.</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i3-0" name="bp-item3" value="0"><label for="bp-i3-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i3-1" name="bp-item3" value="1"><label for="bp-i3-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i3-2" name="bp-item3" value="2"><label for="bp-i3-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i3-3" name="bp-item3" value="3"><label for="bp-i3-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i3-4" name="bp-item3" value="4"><label for="bp-i3-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i3-5" name="bp-item3" value="5"><label for="bp-i3-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i3-6" name="bp-item3" value="6"><label for="bp-i3-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i3-7" name="bp-item3" value="7"><label for="bp-i3-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+          <div class="bp-item">
+            <span class="bp-item-label">13. Motor Retardation</span>
+            <p class="bp-item-description">Reduction in energy level evidenced in slowed movements. Rate on the basis of observed behavior of the patient only; do not rate on the basis of patient's subjective impression of own energy level.</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i13-0" name="bp-item13" value="0"><label for="bp-i13-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i13-1" name="bp-item13" value="1"><label for="bp-i13-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i13-2" name="bp-item13" value="2"><label for="bp-i13-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i13-3" name="bp-item13" value="3"><label for="bp-i13-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i13-4" name="bp-item13" value="4"><label for="bp-i13-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i13-5" name="bp-item13" value="5"><label for="bp-i13-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i13-6" name="bp-item13" value="6"><label for="bp-i13-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i13-7" name="bp-item13" value="7"><label for="bp-i13-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+          <div class="bp-item">
+            <span class="bp-item-label">16. Blunted Affect</span>
+            <p class="bp-item-description">Reduced emotional tone, apparent lack of normal feeling or involvement.</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i16-0" name="bp-item16" value="0"><label for="bp-i16-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i16-1" name="bp-item16" value="1"><label for="bp-i16-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i16-2" name="bp-item16" value="2"><label for="bp-i16-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i16-3" name="bp-item16" value="3"><label for="bp-i16-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i16-4" name="bp-item16" value="4"><label for="bp-i16-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i16-5" name="bp-item16" value="5"><label for="bp-i16-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i16-6" name="bp-item16" value="6"><label for="bp-i16-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i16-7" name="bp-item16" value="7"><label for="bp-i16-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bp-section-group">
+          <div class="bp-section-title">Disorganization / Activation</div>
+          <div class="bp-item">
+            <span class="bp-item-label">6. Tension</span>
+            <p class="bp-item-description">Physical and motor manifestations of tension, &ldquo;nervousness&rdquo;, and heightened activation level. Tension should be rated solely on the basis of physical signs and motor behavior and not on the basis of subjective experiences of tension reported by the patient.</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i6-0" name="bp-item6" value="0"><label for="bp-i6-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i6-1" name="bp-item6" value="1"><label for="bp-i6-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i6-2" name="bp-item6" value="2"><label for="bp-i6-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i6-3" name="bp-item6" value="3"><label for="bp-i6-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i6-4" name="bp-item6" value="4"><label for="bp-i6-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i6-5" name="bp-item6" value="5"><label for="bp-i6-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i6-6" name="bp-item6" value="6"><label for="bp-i6-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i6-7" name="bp-item6" value="7"><label for="bp-i6-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+          <div class="bp-item">
+            <span class="bp-item-label">7. Mannerisms and Posturing</span>
+            <p class="bp-item-description">Unusual and unnatural motor behavior, the type of motor behavior which causes certain mental patients to stand out in a crowd of normal people. Rate only abnormality of movements; do not rate simple heightened motor activity here.</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i7-0" name="bp-item7" value="0"><label for="bp-i7-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i7-1" name="bp-item7" value="1"><label for="bp-i7-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i7-2" name="bp-item7" value="2"><label for="bp-i7-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i7-3" name="bp-item7" value="3"><label for="bp-i7-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i7-4" name="bp-item7" value="4"><label for="bp-i7-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i7-5" name="bp-item7" value="5"><label for="bp-i7-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i7-6" name="bp-item7" value="6"><label for="bp-i7-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i7-7" name="bp-item7" value="7"><label for="bp-i7-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+          <div class="bp-item">
+            <span class="bp-item-label">17. Excitement</span>
+            <p class="bp-item-description">Heightened emotional tone, agitation, increased reactivity.</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i17-0" name="bp-item17" value="0"><label for="bp-i17-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i17-1" name="bp-item17" value="1"><label for="bp-i17-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i17-2" name="bp-item17" value="2"><label for="bp-i17-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i17-3" name="bp-item17" value="3"><label for="bp-i17-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i17-4" name="bp-item17" value="4"><label for="bp-i17-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i17-5" name="bp-item17" value="5"><label for="bp-i17-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i17-6" name="bp-item17" value="6"><label for="bp-i17-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i17-7" name="bp-item17" value="7"><label for="bp-i17-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+          <div class="bp-item">
+            <span class="bp-item-label">18. Disorientation</span>
+            <p class="bp-item-description">Confusion or lack of proper association for person, place or time.</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i18-0" name="bp-item18" value="0"><label for="bp-i18-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i18-1" name="bp-item18" value="1"><label for="bp-i18-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i18-2" name="bp-item18" value="2"><label for="bp-i18-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i18-3" name="bp-item18" value="3"><label for="bp-i18-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i18-4" name="bp-item18" value="4"><label for="bp-i18-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i18-5" name="bp-item18" value="5"><label for="bp-i18-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i18-6" name="bp-item18" value="6"><label for="bp-i18-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i18-7" name="bp-item18" value="7"><label for="bp-i18-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bp-section-group">
+          <div class="bp-section-title">Other</div>
+          <div class="bp-item">
+            <span class="bp-item-label">14. Uncooperativeness</span>
+            <p class="bp-item-description">Evidence of resistance, unfriendliness, resentment, and lack of readiness to cooperate with the interviewer. Rate only on the basis of the patient's attitude and responses to the interviewer and the interview situation; do not rate on basis of reported resentment or uncooperativeness outside the interview situation.</p>
+            <div class="bp-radio-group">
+              <div class="bp-radio-option"><input type="radio" id="bp-i14-0" name="bp-item14" value="0"><label for="bp-i14-0">0 – Not Assessed</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i14-1" name="bp-item14" value="1"><label for="bp-i14-1">1 – Not Present</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i14-2" name="bp-item14" value="2"><label for="bp-i14-2">2 – Very Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i14-3" name="bp-item14" value="3"><label for="bp-i14-3">3 – Mild</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i14-4" name="bp-item14" value="4"><label for="bp-i14-4">4 – Moderate</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i14-5" name="bp-item14" value="5"><label for="bp-i14-5">5 – Mod. Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i14-6" name="bp-item14" value="6"><label for="bp-i14-6">6 – Severe</label></div>
+              <div class="bp-radio-option"><input type="radio" id="bp-i14-7" name="bp-item14" value="7"><label for="bp-i14-7">7 – Extremely Severe</label></div>
+            </div>
+          </div>
+        </div>
+
+    </form><!-- end bp-form -->
+
+    <!-- Score Display -->
+    <div class="bp-score-display">
+      <div class="bp-score-row">
+        <span class="bp-score-label">Total BPRS Score:</span>
+        <span class="bp-score-value" id="bp-total-score">0</span>
+      </div>
+      <div class="bp-score-row">
+        <span class="bp-score-label">Severity:</span>
+        <span class="bp-severity-label bp-severity-normal" id="bp-severity">&mdash;</span>
+      </div>
+      <div class="bp-subscale-grid" style="margin-top:14px;">
+        <div class="bp-subscale-row"><span class="bp-subscale-name">Positive Symptoms</span><span class="bp-subscale-score" id="bp-sub-positive-symptoms">0</span></div>
+        <div class="bp-subscale-row"><span class="bp-subscale-name">Negative Symptoms</span><span class="bp-subscale-score" id="bp-sub-negative-symptoms">0</span></div>
+        <div class="bp-subscale-row"><span class="bp-subscale-name">Affective Symptoms</span><span class="bp-subscale-score" id="bp-sub-affective-symptoms">0</span></div>
+        <div class="bp-subscale-row"><span class="bp-subscale-name">Activation</span><span class="bp-subscale-score" id="bp-sub-activation">0</span></div>
+        <div class="bp-subscale-row"><span class="bp-subscale-name">Other</span><span class="bp-subscale-score" id="bp-sub-other">0</span></div>
+      </div>
+    </div>
+
+    <div class="bp-button-group">
+      <button id="bp-copy-btn" class="bp-button bp-button-primary">Copy Report</button>
+      <button id="bp-reset-btn" class="bp-button bp-button-secondary">Reset</button>
+    </div>
+
+  </div><!-- end bp-container -->
+</section><!-- end bprs-tool -->
+
 
 
 <section id="adl-tool" data-lazy-tool="adl-tool" class="section">

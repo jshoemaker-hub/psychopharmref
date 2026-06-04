@@ -1,0 +1,223 @@
+    .bp-container {
+      max-width: 900px;
+      margin: 20px 0;
+    }
+
+    .bp-scale-legend {
+      background-color: #f9f7f2;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: #5a5450;
+      line-height: 1.6;
+    }
+
+    .bp-scale-legend strong {
+      color: var(--text);
+    }
+
+    .bp-section-group {
+      margin: 20px 0;
+      padding: 16px;
+      background-color: #f9f7f2;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .bp-section-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+    }
+
+    .bp-section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background-color: var(--border);
+      margin-left: 12px;
+    }
+
+    .bp-item {
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .bp-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .bp-item-label {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      display: block;
+      font-size: 15px;
+    }
+
+    .bp-item-description {
+      font-size: 13px;
+      color: #5a5450;
+      margin-bottom: 10px;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .bp-radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      margin-top: 8px;
+    }
+
+    .bp-radio-option {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bp-radio-option input[type="radio"] {
+      cursor: pointer;
+      width: 17px;
+      height: 17px;
+      margin: 0;
+    }
+
+    .bp-radio-option label {
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--text);
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .bp-score-display {
+      background-color: #f0f8ed;
+      border: 2px solid var(--accent);
+      border-radius: 6px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .bp-score-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(202, 191, 174, 0.4);
+    }
+
+    .bp-score-row:last-child {
+      border-bottom: none;
+    }
+
+    .bp-score-label {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .bp-score-value {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .bp-severity-label {
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .bp-severity-normal { color: var(--accent); }
+    .bp-severity-mild { color: #7a9a2a; }
+    .bp-severity-moderate { color: var(--accent2); }
+    .bp-severity-marked { color: #c47a2a; }
+    .bp-severity-severe { color: #d9534f; }
+
+    .bp-subscale-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .bp-subscale-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 10px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 3px;
+      border: 1px solid rgba(202,191,174,0.3);
+    }
+
+    .bp-subscale-name {
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .bp-subscale-score {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 13px;
+    }
+
+    .bp-button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .bp-button {
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .bp-button-primary {
+      background-color: var(--accent);
+      color: white;
+    }
+
+    .bp-button-primary:hover {
+      background-color: #3d6429;
+    }
+
+    .bp-button-secondary {
+      background-color: #d9d4ca;
+      color: var(--text);
+    }
+
+    .bp-button-secondary:hover {
+      background-color: #cfc8ba;
+    }
+
+    @media (max-width: 600px) {
+      .bp-radio-group {
+        gap: 8px 14px;
+      }
+
+      .bp-subscale-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bp-button-group {
+        flex-direction: column;
+      }
+
+      .bp-button {
+        width: 100%;
+      }
+    }
