@@ -101,11 +101,18 @@
 .dts-phase p { margin: 4px 0 0; color: #5a5040; font-size: 0.9rem; }
 
 /* Data table */
+.dts-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 20px 0;
+}
 .dts-table {
   width: 100%;
+  min-width: 540px;
   border-collapse: collapse;
   font-size: 0.9rem;
-  margin: 20px 0;
+  margin: 0;
 }
 .dts-table th {
   background: var(--accent, #4a7c35);
@@ -113,6 +120,7 @@
   padding: 10px 12px;
   text-align: left;
   font-weight: 600;
+  white-space: nowrap;
 }
 .dts-table td {
   padding: 9px 12px;
@@ -392,7 +400,7 @@
       <h3>Neuroimaging Correlates of TRS</h3>
       <p>Brain imaging studies comparing TRS to antipsychotic-responsive schizophrenia have identified a consistent structural profile, though the clinical utility of individual scans remains limited. The most replicated findings are:</p>
 
-      <table class="dts-table">
+      <div class="dts-table-wrap"><table class="dts-table">
         <thead>
           <tr>
             <th>Domain</th>
@@ -427,7 +435,7 @@
             <td>vs. antipsychotic responders</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
       <p>The structural and functional imaging pattern — particularly frontal gray matter loss and disrupted corticostriatal connectivity — aligns with the clinical phenotype of prominent cognitive and negative symptoms. Whether neuroimaging will eventually reach clinical utility for prospectively identifying TRS remains an active research question.</p>
 
@@ -485,7 +493,7 @@
       <h4>Pharmacokinetic Genes — Who Will Achieve Therapeutic Levels?</h4>
       <p>The most clinically actionable pharmacogenomic findings relate to drug metabolism:</p>
 
-      <table class="dts-table">
+      <div class="dts-table-wrap"><table class="dts-table">
         <thead>
           <tr><th>Gene</th><th>Enzymes Affected</th><th>Clinical Relevance</th></tr>
         </thead>
@@ -511,7 +519,7 @@
             <td>CYP2C19 variants associated with clozapine response variability in some studies.</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
       <h4>Pharmacodynamic Genes — Biomarkers of TRS Risk</h4>
       <p>Ying et al. (2023) summarized 104 pharmacogenomic studies in TRS. The most replicated associations with TRS include:</p>
@@ -597,7 +605,7 @@
       <p>ANC thresholds for action: <strong>&lt; 1500/mm³</strong> → interrupt clozapine and monitor closely; <strong>&lt; 1000/mm³</strong> → discontinue; <strong>&lt; 500/mm³</strong> (severe neutropenia) → discontinue immediately, consider G-CSF, hematology consult. Patients with benign ethnic neutropenia (BEN) have lower baseline ANC; documentation of BEN allows modified thresholds.</p>
 
       <h3>Managing Common Clozapine Side Effects</h3>
-      <table class="dts-table">
+      <div class="dts-table-wrap"><table class="dts-table">
         <thead>
           <tr><th>Side Effect</th><th>Frequency</th><th>Management</th></tr>
         </thead>
@@ -643,7 +651,7 @@
             <td>Monitor troponin and CRP weekly for first 4 weeks. Unexplained fever + tachycardia + chest pain + troponin rise = stop clozapine immediately.</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
       <!-- ============================================================ -->
       <!-- SECTION 7: ULTRA-TRS AND AUGMENTATION -->
@@ -670,7 +678,7 @@
 
       <p>Given the evidence for glutamatergic dysregulation as the core mechanism of TRS (elevated ACC glutamate, GRM3 associations, NMDA hypofunction hypothesis), glutamatergic agents are a rational augmentation target — even if clinical trial evidence remains incomplete.</p>
 
-      <table class="dts-table">
+      <div class="dts-table-wrap"><table class="dts-table">
         <thead>
           <tr><th>Agent</th><th>Mechanism</th><th>Evidence Level</th><th>Typical Dose</th></tr>
         </thead>
@@ -700,7 +708,7 @@
             <td>High doses required</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
       <h3>Electroconvulsive Therapy (ECT)</h3>
       <p>ECT augmentation in ultra-TRS patients (clozapine non-responders) has the strongest evidence of any non-pharmacological intervention. Multiple case series and controlled studies support meaningful response rates in patients who have failed clozapine. The combination of clozapine + ECT (sometimes called "clozapine-ECT combination therapy" or CET) produces clinically significant improvement in 50–60% of clozapine-resistant patients in some series. Mechanisms likely include enhanced dopaminergic and serotonergic signaling, neuroplasticity induction, and possible anti-inflammatory effects. ECT augmentation should be offered to eligible ultra-TRS patients before concluding the therapeutic options are exhausted.</p>
