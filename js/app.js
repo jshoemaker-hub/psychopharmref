@@ -251,7 +251,7 @@ const SECTION_GROUP = {
   'adl-tool': 'tools', 'ace-tool': 'tools', 'asrs-tool': 'tools', 'cidi-tool': 'tools', 'ymrs-tool': 'tools',
   'phq9-tool': 'tools', 'gad7-tool': 'tools',
   'pcl5-tool': 'tools', 'ybocs-tool': 'tools', 'msibpd-tool': 'tools', 'panss-tool': 'tools',
-  'bfcrs-tool': 'tools', 'aims-tool': 'tools', 'suicide-risk-tools': 'tools',
+  'bfcrs-tool': 'tools', 'aims-tool': 'tools', 'bprs-tool': 'tools', 'suicide-risk-tools': 'tools',
   'ess-tool': 'tools', 'bat-tool': 'tools', 'sud-tool': 'tools', 'med-history-tool': 'tools',
   'ciwa-tool': 'tools', 'cows-tool': 'tools',
   'print-forms': 'tools', 'question-bank': 'qbank',
@@ -294,30 +294,30 @@ function switchSection(id) {
     // Load CSS
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/tools/' + toolId + '.css?v=20260604a';
+    link.href = 'css/tools/' + toolId + '.css?v=20260605a';
     document.head.appendChild(link);
     // Load shared tool-utils.js once (first tool activation), then the tool JS
     function loadToolScript() {
       // Question bank needs data file loaded first
       if (toolId === 'question-bank-tool' && !window.QBANK_DATA) {
         var dataScript = document.createElement('script');
-        dataScript.src = 'js/qbank-data.js?v=20260604a';
+        dataScript.src = 'js/qbank-data.js?v=20260605a';
         dataScript.onload = function() {
           var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20260604a';
+          script.src = 'js/tools/' + toolId + '.js?v=20260605a';
           document.body.appendChild(script);
         };
         dataScript.onerror = function() { console.error('Failed to load qbank-data.js'); };
         document.body.appendChild(dataScript);
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20260604a';
+        script.src = 'js/tools/' + toolId + '.js?v=20260605a';
         document.body.appendChild(script);
       }
     }
     if (!window.ToolUtils) {
       const utils = document.createElement('script');
-      utils.src = 'js/tools/tool-utils.js?v=20260604a';
+      utils.src = 'js/tools/tool-utils.js?v=20260605a';
       utils.onload = loadToolScript;
       utils.onerror = function() { console.error('Failed to load tool-utils.js'); };
       document.body.appendChild(utils);
