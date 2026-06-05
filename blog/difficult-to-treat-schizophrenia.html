@@ -103,16 +103,13 @@
 /* Data table */
 .dts-table-wrap {
   width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
   margin: 20px 0;
 }
 .dts-table {
   width: 100%;
-  min-width: 540px;
   border-collapse: collapse;
   font-size: 0.9rem;
-  margin: 0;
+  table-layout: fixed;
 }
 .dts-table th {
   background: var(--accent, #4a7c35);
@@ -120,12 +117,14 @@
   padding: 10px 12px;
   text-align: left;
   font-weight: 600;
-  white-space: nowrap;
 }
+.dts-table th:first-child { width: 28%; }
 .dts-table td {
   padding: 9px 12px;
   border-bottom: 1px solid var(--border, #cfc8ba);
   vertical-align: top;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 .dts-table tr:last-child td { border-bottom: none; }
 .dts-table tr:nth-child(even) td { background: var(--bg2, #ece6db); }
@@ -403,7 +402,7 @@
       <div class="dts-table-wrap"><table class="dts-table">
         <thead>
           <tr>
-            <th style="width:22%">Domain</th>
+            <th>Domain</th>
             <th>Replicated Finding in TRS</th>
           </tr>
         </thead>
@@ -489,7 +488,7 @@
 
       <div class="dts-table-wrap"><table class="dts-table">
         <thead>
-          <tr><th style="width:18%">Gene</th><th>Key Drugs &amp; Clinical Relevance</th></tr>
+          <tr><th>Gene</th><th>Key Drugs &amp; Clinical Relevance</th></tr>
         </thead>
         <tbody>
           <tr>
@@ -597,7 +596,7 @@
       <h3>Managing Common Clozapine Side Effects</h3>
       <div class="dts-table-wrap"><table class="dts-table">
         <thead>
-          <tr><th style="width:28%">Side Effect</th><th>Management</th></tr>
+          <tr><th>Side Effect</th><th>Management</th></tr>
         </thead>
         <tbody>
           <tr>
@@ -662,7 +661,7 @@
 
       <div class="dts-table-wrap"><table class="dts-table">
         <thead>
-          <tr><th style="width:28%">Agent</th><th>Mechanism, Evidence &amp; Dose</th></tr>
+          <tr><th>Agent</th><th>Mechanism, Evidence &amp; Dose</th></tr>
         </thead>
         <tbody>
           <tr>
