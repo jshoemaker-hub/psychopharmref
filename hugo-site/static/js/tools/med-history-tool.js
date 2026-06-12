@@ -1040,7 +1040,6 @@
         lines.push('  • ' + m.name + ' (' + m.brand + ') — ' + medState[m.code].reason);
       });
       lines.push('');
-
       const overlapReport = analyzeOverlap(failedTrials);
       overlapReport.forEach(l => lines.push(l));
     }
@@ -1053,6 +1052,163 @@
     lines.push('');
 
     return lines.join('\n');
+  }
+
+  function generateEpicNote() {
+    const triedMeds = MEDS.filter(m => medState[m.code].tried);
+    if (!triedMeds.length) {
+      alert('No medications marked as tried. Please indicate which medications you have tried.');
+      return null;
+    }
+
+    const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    const cap = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : 'Not reported';
+    const esc = value => String(value || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+
+    const textLines = [
+      'Psychiatric Medication History',
+      'Generated: ' + dateStr,
+      ''
+    ];
+
+    const htmlParts = [
+      '<div>',
+      '<h3>Psychiatric Medication History</h3>',
+      '<p><strong>Generated:</strong> ' + esc(dateStr) + '</p>'
+    ];
+
+    let currentGroup = '';
+    triedMeds.forEach(med => {
+      const s = medState[med.code];
+      const checkedSE = med.sideEffects.filter((_, i) => s.se[i]);
+      const cw = CLASS_WARNINGS[med.class] || [];
+      const checkedCW = cw.filter((_, i) => s.cw[i]);
+      const checkedBB = med.blackBox.filter((_, i) => s.bb[i]);
+
+      if (med.group !== currentGroup) {
+        if (currentGroup) htmlParts.push('</ul>');
+        currentGroup = med.group;
+        textLines.push(currentGroup);
+        htmlParts.push('<p><strong>' + esc(currentGroup) + '</strong></p>');
+        htmlParts.push('<ul>');
+      }
+
+      const detailText = [
+        'Experience: ' + cap(s.exp),
+        'Year tried: ' + (s.year || 'Not reported'),
+        'Length of use: ' + cap(s.len),
+        'Reason stopped: ' + cap(s.reason)
+      ].join('; ');
+
+      textLines.push('- ' + med.name + ' (' + med.brand + ') [' + med.class + ']');
+      textLines.push('  ' + detailText);
+
+      const htmlDetails = [
+        '<strong>Experience:</strong> ' + esc(cap(s.exp)),
+        '<strong>Year tried:</strong> ' + esc(s.year || 'Not reported'),
+        '<strong>Length of use:</strong> ' + esc(cap(s.len)),
+        '<strong>Reason stopped:</strong> ' + esc(cap(s.reason))
+      ].join('; ');
+
+      htmlParts.push('<li><strong>' + esc(med.name) + ' (' + esc(med.brand) + ')</strong> [' + esc(med.class) + ']<br>' + htmlDetails);
+
+      if (checkedSE.length) {
+        textLines.push('  Side effects: ' + checkedSE.join(', '));
+        htmlParts.push('<br><strong>Side effects:</strong> ' + esc(checkedSE.join(', ')));
+      }
+      if (checkedCW.length) {
+        textLines.push('  Class considerations: ' + checkedCW.join(', '));
+        htmlParts.push('<br><strong>Class considerations:</strong> ' + esc(checkedCW.join(', ')));
+      }
+      if (checkedBB.length) {
+        textLines.push('  Black box concerns: ' + checkedBB.join(', '));
+        htmlParts.push('<br><strong>Black box concerns:</strong> ' + esc(checkedBB.join(', ')));
+      }
+
+      textLines.push('');
+      htmlParts.push('</li>');
+    });
+
+    if (currentGroup) htmlParts.push('</ul>');
+
+    const failedTrials = triedMeds.filter(m => {
+      const s = medState[m.code];
+      return s.reason === 'stopped working' || s.reason === 'side effect';
+    });
+
+    if (failedTrials.length >= 2) {
+      const overlapReport = analyzeOverlap(failedTrials);
+
+      textLines.push('Failed Trial Analysis - Receptor & Metabolic Overlap');
+      textLines.push('Failed / discontinued trials (' + failedTrials.length + '): ' + failedTrials.map(m => m.name + ' - ' + medState[m.code].reason).join('; '));
+      overlapReport.forEach(line => textLines.push(line));
+      textLines.push('');
+
+      htmlParts.push('<p><strong>Failed Trial Analysis - Receptor &amp; Metabolic Overlap</strong></p>');
+      htmlParts.push('<p><strong>Failed / discontinued trials (' + failedTrials.length + '):</strong> ' + esc(failedTrials.map(m => m.name + ' - ' + medState[m.code].reason).join('; ')) + '</p>');
+      htmlParts.push('<p>' + overlapReport.map(line => esc(line)).join('<br>') + '</p>');
+    }
+
+    htmlParts.push('</div>');
+
+    return {
+      text: textLines.join('\n'),
+      html: htmlParts.join('')
+    };
+  }
+
+  function showCopied(btn) {
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(function () { btn.textContent = orig; }, 2000);
+  }
+
+  function showCopyFallback(text, labelText) {
+    const fallback = document.getElementById('mh-copy-fallback');
+    const fallbackLabel = document.getElementById('mh-copy-fallback-label');
+    const fallbackText = document.getElementById('mh-copy-fallback-text');
+    if (!fallback || !fallbackText) return;
+
+    if (fallbackLabel) fallbackLabel.textContent = labelText;
+    fallbackText.value = text;
+    fallback.hidden = false;
+    fallbackText.focus();
+    fallbackText.select();
+  }
+
+  function copyEpicNote(btn) {
+    const note = generateEpicNote();
+    if (!note) return;
+    showCopyFallback(note.text, 'Epic note fallback: if paste is blank, press Cmd+C while this text is selected, then paste into Epic.');
+
+    if (navigator.clipboard && navigator.clipboard.write && window.ClipboardItem) {
+      const item = new window.ClipboardItem({
+        'text/html': new Blob([note.html], { type: 'text/html' }),
+        'text/plain': new Blob([note.text], { type: 'text/plain' })
+      });
+
+      navigator.clipboard.write([item]).then(function () {
+        showCopied(btn);
+      }).catch(function () {
+        ToolUtils.copyWithButton(note.text, btn);
+      });
+      return;
+    }
+
+    ToolUtils.copyWithButton(note.text, btn);
+  }
+
+  function copyPlainReport(btn) {
+    const report = generateReport();
+    if (!report) return;
+
+    showCopyFallback(report, 'Plain report fallback: if paste is blank, press Cmd+C while this text is selected, then paste into Epic.');
+    ToolUtils.copyWithButton(report, btn);
   }
 
   // ─── Table Output ───────────────────────────────────────────────────────────
@@ -1509,6 +1665,7 @@ ${body}
     const restoreInput = document.getElementById('mh-restore-input');
     const outputArea = document.getElementById('mh-output-area');
     const copyReportBtn = document.getElementById('mh-copy-report-btn');
+    const copyEpicBtn = document.getElementById('mh-copy-epic-btn');
 
     if (generateBtn) {
       generateBtn.addEventListener('click', function () {
@@ -1532,8 +1689,13 @@ ${body}
 
     if (copyReportBtn) {
       copyReportBtn.addEventListener('click', function () {
-        const report = generateReport();
-        if (report) ToolUtils.copyWithButton(report, copyReportBtn);
+        copyPlainReport(copyReportBtn);
+      });
+    }
+
+    if (copyEpicBtn) {
+      copyEpicBtn.addEventListener('click', function () {
+        copyEpicNote(copyEpicBtn);
       });
     }
 
