@@ -1054,7 +1054,7 @@
     return lines.join('\n');
   }
 
-  function generateEpicNote() {
+  function generateCopyNote() {
     const triedMeds = MEDS.filter(m => medState[m.code].tried);
     if (!triedMeds.length) {
       alert('No medications marked as tried. Please indicate which medications you have tried.');
@@ -1154,6 +1154,15 @@
       htmlParts.push('<p>' + overlapReport.map(line => esc(line)).join('<br>') + '</p>');
     }
 
+    const restoreCode = encodeState();
+    textLines.push('Restore code');
+    textLines.push('Paste this code into the Medication History Form restore field to reload this medication history:');
+    textLines.push(restoreCode);
+    textLines.push('');
+
+    htmlParts.push('<p><strong>Restore code</strong><br>');
+    htmlParts.push('Paste this code into the Medication History Form restore field to reload this medication history:<br>');
+    htmlParts.push('<code>' + esc(restoreCode) + '</code></p>');
     htmlParts.push('</div>');
 
     return {
@@ -1181,10 +1190,10 @@
     fallbackText.select();
   }
 
-  function copyEpicNote(btn) {
-    const note = generateEpicNote();
+  function copyNote(btn) {
+    const note = generateCopyNote();
     if (!note) return;
-    showCopyFallback(note.text, 'Epic note fallback: if paste is blank, press Cmd+C while this text is selected, then paste into Epic.');
+    showCopyFallback(note.text, 'Copy fallback: if paste is blank, press Cmd+C while this text is selected, then paste into Epic.');
 
     if (navigator.clipboard && navigator.clipboard.write && window.ClipboardItem) {
       const item = new window.ClipboardItem({
@@ -1201,14 +1210,6 @@
     }
 
     ToolUtils.copyWithButton(note.text, btn);
-  }
-
-  function copyPlainReport(btn) {
-    const report = generateReport();
-    if (!report) return;
-
-    showCopyFallback(report, 'Plain report fallback: if paste is blank, press Cmd+C while this text is selected, then paste into Epic.');
-    ToolUtils.copyWithButton(report, btn);
   }
 
   // ─── Table Output ───────────────────────────────────────────────────────────
@@ -1664,8 +1665,7 @@ ${body}
     const resetBtn = document.getElementById('mh-reset-btn');
     const restoreInput = document.getElementById('mh-restore-input');
     const outputArea = document.getElementById('mh-output-area');
-    const copyReportBtn = document.getElementById('mh-copy-report-btn');
-    const copyEpicBtn = document.getElementById('mh-copy-epic-btn');
+    const copyNoteBtn = document.getElementById('mh-copy-note-btn');
 
     if (generateBtn) {
       generateBtn.addEventListener('click', function () {
@@ -1687,15 +1687,9 @@ ${body}
       printBtn.addEventListener('click', printForm);
     }
 
-    if (copyReportBtn) {
-      copyReportBtn.addEventListener('click', function () {
-        copyPlainReport(copyReportBtn);
-      });
-    }
-
-    if (copyEpicBtn) {
-      copyEpicBtn.addEventListener('click', function () {
-        copyEpicNote(copyEpicBtn);
+    if (copyNoteBtn) {
+      copyNoteBtn.addEventListener('click', function () {
+        copyNote(copyNoteBtn);
       });
     }
 
