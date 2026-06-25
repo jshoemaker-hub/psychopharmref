@@ -757,6 +757,10 @@ const SYNAPTIC_BINDING = {
   ramelteon: [
     { loc: 'post', label: 'MT1, MT2',           detail: 'Post-synaptic agonism in suprachiasmatic nucleus (SCN) — MT1 mediates acute inhibition of SCN firing (sleep onset); MT2 mediates circadian phase shifting' }
   ],
+  cobenfy: [
+    { loc: 'post', label: 'M1, M4 (agonist — xanomeline)', detail: 'Xanomeline is a selective M1/M4 muscarinic receptor agonist — the first antipsychotic to work entirely without D2 blockade. M1 agonism in cortex and limbic system modulates dopaminergic and glutamatergic transmission indirectly; M4 agonism in striatum suppresses mesolimbic dopamine release presynaptically. Together these reduce positive and negative symptoms via cholinergic-dopaminergic interplay.' },
+    { loc: 'post', label: 'M2, M3, M5 (peripheral — blocked by trospium)', detail: 'Trospium is a peripherally restricted pan-muscarinic (M1–M5) antagonist co-administered to attenuate cholinergic side effects (nausea, vomiting, salivation, bradycardia) at peripheral M2/M3 receptors. Trospium does not cross the blood-brain barrier, preserving the central agonist effects of xanomeline.' }
+  ],
   suvorexant: [
     { loc: 'post', label: 'OX1R, OX2R',         detail: 'Post-synaptic orexin/hypocretin receptor antagonism in lateral hypothalamus projections; blocks wakefulness-promoting signal → promotes sleep passively without CNS depression' }
   ]
@@ -852,6 +856,7 @@ const PERINATAL_DATA = {
   brexpiprazole:        { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited data. Long half-life. Neonatal EPS/withdrawal possible.' }, breastfeeding: { hale: 'unknown', risk: 'unknown', notes: 'No human lactation data. Long half-life a concern.' } },
   cariprazine:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited data. Ultra-long half-life of DCAR metabolite (~1–3 weeks) is a concern.' }, breastfeeding: { hale: 'unknown', risk: 'avoid', notes: 'No data; ultra-long-acting metabolite would persist in infant for weeks. Avoid.' } },
   lumateperone:         { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'PLLR label only. Limited human data. Avoid unless clearly necessary.' }, breastfeeding: { hale: 'unknown', risk: 'unknown', notes: 'No human lactation data.' } },
+  cobenfy:           { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'PLLR label only. No adequate human pregnancy data. Novel mechanism; insufficient evidence to assess fetal risk.' }, breastfeeding: { hale: 'unknown', risk: 'unknown', notes: 'No human lactation data. Unknown whether xanomeline or trospium are present in breast milk. Avoid.' } },
   pimavanserin:         { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'PLLR label. Very limited data. Use in PD psychosis context — weigh risks carefully.' }, breastfeeding: { hale: 'unknown', risk: 'unknown', notes: 'No human lactation data.' } },
   // Mood stabilizers
   lithium:              { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Category D. Ebstein\'s anomaly risk (small absolute increase). Neonatal toxicity (floppy baby, cyanosis). If continued, monitor levels closely; hold during labor.' }, breastfeeding: { hale: 'L4', risk: 'avoid', notes: 'High milk-to-plasma ratio. Neonatal toxicity (hypotonia, cyanosis). Avoid; if used, monitor infant levels and hydration.' } },
@@ -2549,6 +2554,34 @@ const MEDICATIONS = [
     ]
   }
 
+  ,{
+    id: 'cobenfy',
+    name: 'Xanomeline-Trospium',
+    brandName: 'Cobenfy',
+    class: 'Muscarinic Agonist Antipsychotic',
+    category: 'Antipsychotic',
+    activeEnantiomer: { has: false, name: null },
+    halfLife: { drug: 'Xanomeline: ~2 hr; Trospium: ~20 hr', metabolites: 'None clinically significant' },
+    tmax: 1.5,
+    p450: {
+      substrate: ['CYP1A2', 'CYP3A4'],
+      inhibits: {},
+      induces: []
+    },
+    renalImpairment: { modified: true, moderate: 'Use caution (CrCl 30–60)', severe: 'Avoid (CrCl <30)', notes: 'Trospium component is renally cleared; avoid in severe renal impairment (CrCl <30 mL/min).' },
+    hepaticImpairment: { modified: true, notes: 'Use with caution; limited data.' },
+    geriatricDosing: { modified: false, notes: 'No specific adjustment; monitor for cholinergic side effects. Trospium renal clearance may be reduced with age.' },
+    qtInterval: false,
+    proteinBinding: 7,
+    receptorKi: {
+      SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000,
+      D1: 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 6
+    },
+    indications: [
+      { use: 'Schizophrenia', year: 2024 },
+    ]
+  }
+
   // ── Additional Mood Stabilizers ─────────────────────────────────────────
   ,{
     id: 'oxcarbazepine',
@@ -3889,6 +3922,15 @@ lumateperone: {
     'CNS': ['sedation', 'somnolence', 'dizziness'],
     'Metabolic/Endocrine': ['weight gain (minimal)'],
     'GI': ['nausea', 'dry mouth']
+  }
+},
+cobenfy: {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  sideEffects: {
+    'GI': ['nausea', 'vomiting', 'dyspepsia', 'constipation', 'diarrhea', 'dry mouth'],
+    'CNS': ['dizziness', 'headache', 'somnolence'],
+    'Cardiovascular': ['hypertension'],
+    'Other': ['hyperhidrosis', 'urinary tract infection', 'upper respiratory tract infection']
   }
 },
 pimavanserin: {
