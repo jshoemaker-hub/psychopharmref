@@ -8,16 +8,24 @@ import readline from 'readline';
 import { fileURLToPath } from 'url';
 import config from './config.js';
 import { dispatch } from './lib/research.js';
-import { findRelevantPosts, buildCorpus } from './lib/blog-linker.js';
 import { draftSection, generateNewsletterMeta, assembleHtml, extractBodyOnly } from './lib/draft.js';
 import { postDraft } from './lib/post.js';
 import { factCheckBrief, factCheckDraft, surveyRecency, formatReport, formatDraftReport, formatRecencyReport } from './lib/validator.js';
+import {
+  EVERGREEN_REPEAT_WINDOW_DAYS,
+  buildEvergreenStatusRows,
+  findEvergreenRepeatViolations,
+  planEvergreenUsage,
+  readEvergreenLog,
+  writeEvergreenLog,
+} from './lib/evergreen.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const briefsDir = path.join(__dirname, 'briefs');
 const draftsDir = path.join(__dirname, 'drafts');
 const blogIndexPath = path.join(__dirname, 'blog-index.json');
 const rotationLogPath = path.join(briefsDir, 'rotation-log.json');
+const evergreenLogPath = path.join(briefsDir, 'evergreen-log.json');
 
 // Ensure output directories exist
 if (!fs.existsSync(briefsDir)) fs.mkdirSync(briefsDir, { recursive: true });
@@ -26,6 +34,10 @@ if (!fs.existsSync(draftsDir)) fs.mkdirSync(draftsDir, { recursive: true });
 // Returns today's date string YYYY-MM-DD
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
+}
+
+function evergreenWindowDays() {
+  return config?.evergreen?.repeatWindowDays || EVERGREEN_REPEAT_WINDOW_DAYS;
 }
 
 // Returns most recent config file in briefs/ by filename sort
@@ -176,6 +188,69 @@ function printSchedule(rotation, count = 16, startLetter) {
   console.log('');
 }
 
+function prepareEvergreenPlans(date, sections) {
+  let entries = readEvergreenLog(evergreenLogPath);
+  const plans = {};
+  const newEntries = [];
+  const windowDays = evergreenWindowDays();
+
+  for (const sec of sections) {
+    if (sec.brief?.fallback !== 'evergreen') continue;
+    const plan = planEvergreenUsage({
+      date,
+      section: sec.section,
+      topicKey: sec.key,
+      entries,
+      windowDays,
+    });
+    plans[sec.section] = plan;
+    if (plan.created) {
+      entries = plan.entries;
+      newEntries.push(plan.entry);
+      console.log(`  Evergreen ${sec.section.toUpperCase()} locked to: ${plan.angle.title} (${plan.angle.id})`);
+    } else {
+      console.log(`  Evergreen ${sec.section.toUpperCase()} reusing logged angle: ${plan.angle.title} (${plan.angle.id})`);
+    }
+  }
+
+  return { plans, entries, newEntries };
+}
+
+function printEvergreenStatus(options = {}) {
+  const asOfDate = options.date || todayStr();
+  const entries = readEvergreenLog(evergreenLogPath);
+  const windowDays = evergreenWindowDays();
+  const rows = buildEvergreenStatusRows({ entries, asOfDate, windowDays });
+  const violations = findEvergreenRepeatViolations(entries, windowDays);
+
+  console.log(`\nEvergreen repeat guard (rolling ${windowDays} days, as of ${asOfDate})`);
+  console.log(`Log: ${evergreenLogPath}`);
+  if (entries.length === 0) {
+    console.log('No evergreen usage has been logged yet.');
+  }
+
+  for (const section of ['s1', 's2', 's3']) {
+    console.log(`\n${section.toUpperCase()}`);
+    rows
+      .filter(row => row.section === section)
+      .forEach(row => {
+        const last = row.lastDate || 'never';
+        const status = row.status === 'blocked'
+          ? `blocked until ${row.eligibleDate}`
+          : 'eligible';
+        console.log(`  ${row.angleId.padEnd(32)} ${status.padEnd(28)} last: ${last}  ${row.title}`);
+      });
+  }
+
+  if (violations.length > 0) {
+    console.warn('\nHistorical repeat violations in evergreen-log.json:');
+    violations.forEach(v => {
+      console.warn(`  ${v.angleId}: ${v.previous.date} -> ${v.current.date} (${v.gapDays} days; rule is ${v.windowDays})`);
+    });
+    process.exitCode = 1;
+  }
+}
+
 // Interactive topic picker
 async function pickTopics(options = {}) {
   const rotation = config.rotation;
@@ -270,11 +345,14 @@ async function runResearch() {
   console.log(`\nResearching topics for ${date}: ${s1} | ${s2} | ${s3}`);
 
   // Load blog index for linker (optional — skip if not built yet)
+  let findRelevantPosts = null;
   let corpus = null;
   let blogIndex = [];
   if (fs.existsSync(blogIndexPath)) {
+    const blogLinker = await import('./lib/blog-linker.js');
+    findRelevantPosts = blogLinker.findRelevantPosts;
     blogIndex = JSON.parse(fs.readFileSync(blogIndexPath, 'utf8'));
-    corpus = buildCorpus(blogIndexPath);
+    corpus = blogLinker.buildCorpus(blogIndexPath);
   } else {
     console.warn('Warning: blog-index.json not found. Run build-blog-index.js for blog linking.');
   }
@@ -332,14 +410,15 @@ async function runResearch() {
       brief.relevantBlogPosts = brief.relevantBlogPosts || [];
     }
 
-    // ── xAI/Grok cross-check (added 2026-04-26; mode: annotate-only) ──────
+    // ── Reviewer cross-check (added 2026-04-26 with xAI; reviewer swapped to
+    // Perplexity 2026-05-21; mode: annotate-only) ────────────────────────────
     // Annotate the brief with per-source verdicts; do NOT halt on disagreement.
-    // Disagreements are surfaced (a) on each source as `xaiVerdict`, (b) in a
-    // top-level `xaiConflicts` array on the brief, and (c) in sidecar
-    // verification.{json,txt} files. The pipeline continues so Jerad can
-    // review the conflicts at draft time and decide what to do.
+    // Disagreements are surfaced (a) on each source as `reviewerVerdict`,
+    // (b) in a top-level `reviewerConflicts` array on the brief, and (c) in
+    // sidecar verification.{json,txt} files. The pipeline continues so Jerad
+    // can review the conflicts at draft time and decide what to do.
     if (brief.sources && brief.sources.length > 0) {
-      console.log(`  Validating ${sec.label} via xAI...`);
+      console.log(`  Validating ${sec.label} via reviewer (Perplexity)...`);
       const topicConf = config.topics[sec.key] || {};
       const verifyResult = await factCheckBrief(brief, {
         sectionLabel: `${sec.label}: ${topicConf.label || sec.key}`,
@@ -353,7 +432,7 @@ async function runResearch() {
         if (!v) return s;
         return {
           ...s,
-          xaiVerdict: {
+          reviewerVerdict: {
             verdict: v.verdict,
             severity: v.severity,
             reasoning: v.reasoning,
@@ -362,7 +441,7 @@ async function runResearch() {
       });
 
       // Top-level summary of disagreements (empty array if all clean).
-      brief.xaiConflicts = verifyResult.verdicts
+      brief.reviewerConflicts = verifyResult.verdicts
         .filter(v => v.verdict === 'disagree')
         .map(v => ({
           sourceIndex: v.sourceIndex,
@@ -371,8 +450,8 @@ async function runResearch() {
           severity: v.severity,
           reasoning: v.reasoning,
         }));
-      brief.xaiSummary = verifyResult.summary || '';
-      brief.xaiModel = verifyResult.model || null;
+      brief.reviewerSummary = verifyResult.summary || '';
+      brief.reviewerModel = verifyResult.model || null;
 
       const reportText = formatReport(`${sec.label}: ${topicConf.label || sec.key}`, verifyResult);
       const reportPath = path.join(briefsDir, `${date}-${sec.label.toLowerCase()}-verification.txt`);
@@ -388,7 +467,7 @@ async function runResearch() {
       verificationResults.push({ section: sec.label, key: sec.key, result: verifyResult, reportPath });
     } else {
       console.log(`  (no sources to validate for ${sec.label})`);
-      brief.xaiConflicts = [];
+      brief.reviewerConflicts = [];
       verificationResults.push({ section: sec.label, key: sec.key, result: { ok: true, verdicts: [], summary: 'no sources' } });
     }
 
@@ -405,35 +484,35 @@ async function runResearch() {
   const flagged = verificationResults.filter(v => !v.result.ok);
   if (flagged.length > 0) {
     console.warn('\n══════════════════════════════════════════════════════════════');
-    console.warn('  xAI CROSS-CHECK — disagreements annotated (pipeline did NOT halt)');
+    console.warn('  REVIEWER CROSS-CHECK — disagreements annotated (pipeline did NOT halt)');
     console.warn('══════════════════════════════════════════════════════════════');
     for (const b of flagged) {
       console.warn(`\n${formatReport(`${b.section}: ${b.key}`, b.result)}`);
     }
     console.warn('\nReview the flagged sources before --draft. To act on a flag:');
     console.warn('  • Edit the affected brief JSON to remove or correct the source, or');
-    console.warn('  • Leave it in (each source carries its xaiVerdict for your review).');
+    console.warn('  • Leave it in (each source carries its reviewerVerdict for your review).');
   } else {
-    console.log('\nxAI cross-check: all sections clean (no disagreements).');
+    console.log('\nReviewer cross-check: all sections clean (no disagreements).');
   }
 
   // ── Recency probe (annotate-only, what's-missing coverage check) ────────
   // The brief / draft fact-checks grade claims that ARE made. They cannot
-  // catch what's MISSING. surveyRecency closes that gap by asking Grok-with-
-  // web_search what major psych-pharm developments occurred recently, so the
-  // human reviewer can decide whether anything should be folded into a
-  // section before --draft.
+  // catch what's MISSING. surveyRecency closes that gap by asking Perplexity
+  // (web-retrieved by default) what major psych-pharm developments occurred
+  // recently, so the human reviewer can decide whether anything should be
+  // folded into a section before --draft.
   //
   // Window anchoring (revised 2026-04-27): the probe must be anchored to
   // REAL dates, not letter dates. Forward-scheduled letters point at future
-  // dates; web_search obviously can't find events that haven't been
+  // dates; web search obviously can't find events that haven't been
   // published yet. So `until` defaults to today and `since` defaults to 7
   // days ago. Override via RECENCY_SINCE / RECENCY_UNTIL env vars when you
   // want to widen the window (e.g. catching a backlog after time off).
   //
-  // Annotate-only: skipped if XAI_API_KEY missing or RECENCY_PROBE=0. Never
-  // blocks; never auto-modifies briefs.
-  const recencyEnabled = process.env.RECENCY_PROBE !== '0' && !!process.env.XAI_API_KEY;
+  // Annotate-only: skipped if PERPLEXITY_API_KEY missing or RECENCY_PROBE=0.
+  // Never blocks; never auto-modifies briefs.
+  const recencyEnabled = process.env.RECENCY_PROBE !== '0' && !!process.env.PERPLEXITY_API_KEY;
   if (recencyEnabled) {
     const today = new Date().toISOString().slice(0, 10);
     const until = process.env.RECENCY_UNTIL || today;
@@ -443,7 +522,7 @@ async function runResearch() {
       return d.toISOString().slice(0, 10);
     })();
     const since = process.env.RECENCY_SINCE || defaultSince;
-    console.log(`\nRunning recency probe (xAI + web_search, since=${since}, until=${until})…`);
+    console.log(`\nRunning recency probe (Perplexity, since=${since}, until=${until})…`);
     try {
       const recency = await surveyRecency(since, { until, timeoutMs: 90000 });
       // Sidecar is named after the letter date so it lives next to the
@@ -463,8 +542,8 @@ async function runResearch() {
     } catch (err) {
       console.warn(`  Recency probe threw: ${err.message}`);
     }
-  } else if (!process.env.XAI_API_KEY) {
-    console.log('\n(Recency probe skipped: XAI_API_KEY not set.)');
+  } else if (!process.env.PERPLEXITY_API_KEY) {
+    console.log('\n(Recency probe skipped: PERPLEXITY_API_KEY not set.)');
   } else {
     console.log('\n(Recency probe skipped: RECENCY_PROBE=0.)');
   }
@@ -509,6 +588,12 @@ async function runDraft() {
 
   console.log(`\nDrafting newsletter for ${date}: ${s1} | ${s2} | ${s3}`);
 
+  const evergreen = prepareEvergreenPlans(date, [
+    { section: 's1', key: s1, brief: briefs.s1 },
+    { section: 's2', key: s2, brief: briefs.s2 },
+    { section: 's3', key: s3, brief: briefs.s3 },
+  ]);
+
   // Draft all 3 sections in parallel along with the 4-field newsletter meta.
   const [meta, r1, r2, r3] = await Promise.all([
     generateNewsletterMeta(
@@ -517,9 +602,9 @@ async function runDraft() {
       config.topics[s3]?.label || s3,
       config
     ),
-    draftSection(s1, briefs.s1, config, { sendDate: date }).catch(e => `<!-- DRAFT FAILED: ${e.message} — fill manually -->`),
-    draftSection(s2, briefs.s2, config, { sendDate: date }).catch(e => `<!-- DRAFT FAILED: ${e.message} — fill manually -->`),
-    draftSection(s3, briefs.s3, config, { sendDate: date }).catch(e => `<!-- DRAFT FAILED: ${e.message} — fill manually -->`),
+    draftSection(s1, briefs.s1, config, { sendDate: date, evergreenRotation: evergreen.plans.s1 }).catch(e => `<!-- DRAFT FAILED: ${e.message} — fill manually -->`),
+    draftSection(s2, briefs.s2, config, { sendDate: date, evergreenRotation: evergreen.plans.s2 }).catch(e => `<!-- DRAFT FAILED: ${e.message} — fill manually -->`),
+    draftSection(s3, briefs.s3, config, { sendDate: date, evergreenRotation: evergreen.plans.s3 }).catch(e => `<!-- DRAFT FAILED: ${e.message} — fill manually -->`),
   ]);
 
   const blogPostsPerSection = [
@@ -528,13 +613,17 @@ async function runDraft() {
     briefs.s3.relevantBlogPosts || [],
   ];
 
-  // Pass briefs through so assembleHtml can render xAI conflict banners
+  // Pass briefs through so assembleHtml can render reviewer conflict banners
   // (review-only; stripped before the body is copied to Beehiiv).
   const html = assembleHtml([r1, r2, r3], blogPostsPerSection, config.cta, meta, date, [briefs.s1, briefs.s2, briefs.s3]);
 
   const draftPath = path.join(draftsDir, `${date}-draft.html`);
   fs.writeFileSync(draftPath, html);
   console.log(`\nDraft saved: ${draftPath}`);
+  if (evergreen.newEntries.length > 0) {
+    writeEvergreenLog(evergreenLogPath, evergreen.entries);
+    console.log(`Evergreen log updated: ${evergreenLogPath}`);
+  }
   console.log(`Title:    ${meta.title}`);
   console.log(`Subtitle: ${meta.subtitle}`);
   console.log(`Subject:  ${meta.subject}`);
@@ -549,17 +638,17 @@ async function runDraft() {
   //
   // factCheckBrief grades brief SOURCES; it has nothing to grade when a
   // section falls back to evergreen drafting (no sources). factCheckDraft
-  // closes that gap by grading the rendered prose itself, with web_search
-  // grounding so currency claims (REMS still in force? approval still
-  // active? trial result final?) are checked against current sources
-  // rather than Grok's training cutoff.
+  // closes that gap by grading the rendered prose itself. The reviewer
+  // (Perplexity sonar-pro) retrieves from the web by default, so currency
+  // claims (REMS still in force? approval still active? trial result final?)
+  // are checked against current sources rather than a stale training cutoff.
   //
-  // Annotate-only: this never blocks. If XAI_API_KEY is missing or the
+  // Annotate-only: this never blocks. If PERPLEXITY_API_KEY is missing or the
   // user sets DRAFT_FACT_CHECK=0, this section is skipped entirely.
   // ──────────────────────────────────────────────────────────────────────
-  const draftFactCheckEnabled = process.env.DRAFT_FACT_CHECK !== '0' && !!process.env.XAI_API_KEY;
+  const draftFactCheckEnabled = process.env.DRAFT_FACT_CHECK !== '0' && !!process.env.PERPLEXITY_API_KEY;
   if (draftFactCheckEnabled) {
-    console.log('\nRunning post-draft fact-check (xAI + web_search) on each section…');
+    console.log('\nRunning post-draft fact-check (Perplexity) on each section…');
     const sectionInputs = [
       { key: s1, label: config.topics[s1]?.label || s1, html: r1 },
       { key: s2, label: config.topics[s2]?.label || s2, html: r2 },
@@ -569,8 +658,10 @@ async function runDraft() {
       const sectionLabel = `${s.key} — ${s.label} (${date})`;
       try {
         const result = await factCheckDraft(sectionLabel, s.html, {
+          // webSearch flag preserved for backward compatibility; Perplexity
+          // sonar-pro retrieves from the web by default and the flag is now
+          // a no-op inside the validator.
           webSearch: true,
-          // Slightly higher timeout than source-grader — web_search adds latency.
           timeoutMs: 90000,
         });
         return { ...s, sectionLabel, result };
@@ -608,8 +699,8 @@ async function runDraft() {
     } else {
       console.log('  All three sections passed the draft fact-check.');
     }
-  } else if (!process.env.XAI_API_KEY) {
-    console.log('\n(Post-draft fact-check skipped: XAI_API_KEY not set.)');
+  } else if (!process.env.PERPLEXITY_API_KEY) {
+    console.log('\n(Post-draft fact-check skipped: PERPLEXITY_API_KEY not set.)');
   } else {
     console.log('\n(Post-draft fact-check skipped: DRAFT_FACT_CHECK=0.)');
   }
@@ -779,6 +870,12 @@ function numArg(flag) {
   return Number.isFinite(n) ? n : undefined;
 }
 
+function strArg(flag) {
+  const i = args.indexOf(flag);
+  if (i === -1) return undefined;
+  return args[i + 1];
+}
+
 const override = args.includes('--override');
 const letterOverride = numArg('--letter');
 
@@ -787,6 +884,8 @@ if (args.includes('--pick-topics')) {
 } else if (args.includes('--schedule')) {
   const count = numArg('--count') ?? 16;
   printSchedule(config.rotation, count, letterOverride);
+} else if (args.includes('--evergreen-status')) {
+  printEvergreenStatus({ date: strArg('--date') });
 } else if (args.includes('--research')) {
   runResearch().catch(err => { console.error(err); process.exit(1); });
 } else if (args.includes('--draft')) {
@@ -805,6 +904,9 @@ if (args.includes('--pick-topics')) {
   console.log('  --schedule                Print upcoming 16 letters');
   console.log('  --schedule --count N      Print N upcoming letters');
   console.log('  --schedule --letter N     Start printing at letter N');
+  console.log('  --evergreen-status        Show yearly evergreen angle eligibility');
+  console.log('  --evergreen-status --date YYYY-MM-DD');
+  console.log('                            Check eligibility as of a specific date');
   console.log('  --research                Fetch sources and build research briefs');
   console.log('  --draft                   Generate newsletter draft via Claude API');
   console.log('  --post                    Copy HTML to clipboard + open Beehiiv compose page');

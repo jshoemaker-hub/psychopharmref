@@ -2,11 +2,12 @@
 //
 // One-off probe: feed the 2026-05-08 S2 clozapine paragraph (which was
 // drafted from an empty/evergreen brief, so the source-level validator had
-// nothing to grade) into the new factCheckDraft() pass and see whether xAI
-// flags the obsolete-Clozapine-REMS claim.
+// nothing to grade) into the factCheckDraft() pass and see whether the
+// reviewer flags the obsolete-Clozapine-REMS claim. Reviewer is Perplexity
+// (sonar-pro) since the 2026-05-21 role swap.
 //
 // Run from newsletter/:
-//   XAI_API_KEY=... node tests/check-clozapine-2026-05-08.js
+//   PERPLEXITY_API_KEY=... node tests/check-clozapine-2026-05-08.js
 //
 // Writes a verdict report to drafts/2026-05-08-s2-draft-verification.txt
 // next to the existing draft, and a JSON sidecar for machine inspection.
@@ -39,11 +40,10 @@ async function main() {
   const focusArea = 'Clozapine monitoring, REMS status, non-hematologic risks. Verify whether any cited safety/regulatory program is still in force as of your knowledge cutoff.';
 
   // Allow the runner to override model + timeout for faster ad-hoc probes.
-  // Default to grok-4-fast for the web-search probe so the round-trip fits
-  // inside our shell timeout; flip to grok-4 once we have a baseline.
-  const probeModel = process.env.PROBE_MODEL || 'grok-4-fast';
-  const probeTimeoutMs = Number(process.env.PROBE_TIMEOUT_MS) || 38000;
-  console.log(`Calling factCheckDraft (model=${probeModel}, web_search=on, timeout=${probeTimeoutMs}ms) at ${new Date().toISOString()}`);
+  // Default to sonar-pro for the web-retrieved probe.
+  const probeModel = process.env.PROBE_MODEL || 'sonar-pro';
+  const probeTimeoutMs = Number(process.env.PROBE_TIMEOUT_MS) || 90000;
+  console.log(`Calling factCheckDraft (model=${probeModel}, web-retrieved, timeout=${probeTimeoutMs}ms) at ${new Date().toISOString()}`);
   const t0 = Date.now();
   const result = await factCheckDraft(sectionLabel, s2, {
     focusArea,

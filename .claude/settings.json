@@ -3,7 +3,9 @@
     "allow": [
       "Bash(grep -c 'font-size=\"\"\"\"[6-9]\"\"\"\"' *.html)",
       "Bash(ls /Users/jeradshoemaker/Documents/html/psychopharm/blog/*.html)",
-      "Bash(xargs -I{} basename {})"
+      "Bash(xargs -I{} basename {})",
+      "Bash(~/.claude/skills/gstack/bin/gstack-config set:*)",
+      "Bash(touch ~/.gstack/.telemetry-prompted)"
     ],
     "additionalDirectories": [
       "/Users/jeradshoemaker/Documents/html/psychopharm/.git"

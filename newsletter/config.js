@@ -65,28 +65,33 @@ const config = {
     },
 
     // Section 3: Deep Dives (4, unchanged)
+    // The `handler` field is documentation-only; the live dispatch is in
+    // lib/research.js. All S3 topics now resolve to fetchS3WithFallback, which
+    // wraps the underlying research call (the function still named
+    // fetchPerplexity for backward compat — under the hood it calls xAI/Grok
+    // with web_search as of 2026-05-21, when research/review roles swapped).
     's3-diagnosis-history': {
       section: 's3',
       label: 'History of a Diagnosis',
-      handler: 'fetchPerplexity',
+      handler: 'fetchS3WithFallback',
       focusArea: 'historical development and evolution of psychiatric diagnoses',
     },
     's3-drug-discovery': {
       section: 's3',
       label: 'Drug Discovery Story',
-      handler: 'fetchPerplexity',
+      handler: 'fetchS3WithFallback',
       focusArea: 'history and story of psychiatric drug discovery and development',
     },
     's3-scientific-process': {
       section: 's3',
       label: 'Scientific Process in Psychiatry',
-      handler: 'fetchPerplexity',
+      handler: 'fetchS3WithFallback',
       focusArea: 'scientific methodology, clinical trial design, and research process in psychiatry',
     },
     's3-historical-legal': {
       section: 's3',
       label: 'Historical / Legal Context',
-      handler: 'fetchPerplexity',
+      handler: 'fetchS3WithFallback',
       focusArea: 'historical and legal context of psychiatric treatment, policy, and ethics',
     },
   },
@@ -125,7 +130,18 @@ const config = {
     ],
   },
 
+  // Reviewer (Perplexity) model — used by lib/validator.js for factCheckBrief,
+  // factCheckDraft, and surveyRecency. The env var PERPLEXITY_MODEL takes
+  // precedence over this if set.
   perplexityModel: 'sonar-pro',
+
+  // Researcher (xAI/Grok) model — used by lib/research.js fetchPerplexity()
+  // (which despite the name now calls xAI's Responses API with web_search as
+  // of 2026-05-21). The env var XAI_RESEARCH_MODEL takes precedence over this
+  // if set. Set xaiResearchFallbackModel to a second model to enable the
+  // two-pass rescue path, '' to disable.
+  xaiResearchModel: 'grok-4-fast',
+  xaiResearchFallbackModel: '',
 
   claudeModels: {
     default: 'claude-sonnet-4-6',
@@ -140,6 +156,12 @@ const config = {
   maxBriefSources: 5,
 
   blogSimilarityThreshold: 0.15,
+
+  evergreen: {
+    // Rolling window: a specific evergreen angle cannot be selected again
+    // until at least this many days have passed.
+    repeatWindowDays: 365,
+  },
 };
 
 export default config;

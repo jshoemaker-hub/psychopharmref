@@ -1,29 +1,32 @@
-// lib/validator.js — xAI/Grok cross-check for research briefs
+// lib/validator.js — Perplexity cross-check for research briefs and drafts
 //
-// Sends each brief's sources to Grok with a strict fact-check prompt and asks
-// for a per-source verdict: agree | disagree | unverified. Returns a structured
-// report. The caller (generate.js --research) decides what to do with the
-// result — current policy is "block on any disagreement".
+// Sends each brief's sources (or each drafted section's prose) to Perplexity
+// with a strict fact-check prompt and asks for a per-source / per-claim
+// verdict: agree | disagree | unverified. Returns a structured report. The
+// caller (generate.js --research / --draft) decides what to do with the
+// result — current policy is annotate-only (never blocks).
 //
-// Why xAI specifically: independent corpus from Perplexity (which fetches our
-// sources). Using Grok to grade Perplexity's outputs gives us a cross-vendor
-// sanity check rather than asking the same model to grade itself.
+// Why Perplexity specifically (changed 2026-05-21): independent corpus from
+// xAI/Grok, which now does the source-finding in lib/research.js. Using
+// Perplexity to grade Grok's outputs gives a cross-vendor sanity check rather
+// than asking the same model to grade itself. Perplexity's built-in web
+// retrieval also gives currency grounding for free — there's no separate
+// web_search tool to wire up; sonar-pro searches by default.
 //
-// Why grok-4-fast: this is a fact-check pass, not a reasoning task. Cost is
-// ~pennies per weekly run. Override via XAI_MODEL env var if you want grok-4
-// for higher-stakes content.
+// Why sonar-pro: this is a fact-check pass, not an open-ended reasoning task.
+// Cost is ~pennies per weekly run. Override via PERPLEXITY_MODEL env var if
+// you want to flip to a different sonar variant.
 
 import { fetchWithTimeout } from './research.js';
 
-const XAI_ENDPOINT = 'https://api.x.ai/v1/chat/completions';
-const XAI_RESPONSES_ENDPOINT = 'https://api.x.ai/v1/responses';
-const DEFAULT_MODEL = 'grok-4-fast';
+const PERPLEXITY_ENDPOINT = 'https://api.perplexity.ai/chat/completions';
+const DEFAULT_MODEL = 'sonar-pro';
 
 /**
  * extractFirstJsonObject — pull the first balanced JSON object out of a
  * string, tolerating leading prose, trailing prose, and ```json fences.
- * The Responses API + web_search path doesn't always honor JSON output
- * formatting, so we have to recover the JSON ourselves.
+ * Perplexity's response_format=json_object hint is best-effort, and the
+ * sonar models occasionally wrap their output in fences or prose.
  */
 function extractFirstJsonObject(text) {
   if (!text) return null;
@@ -51,28 +54,28 @@ function extractFirstJsonObject(text) {
 }
 
 /**
- * extractResponsesApiText — pull the assistant's final text out of a
- * Responses API payload. The output array can contain web_search_call
- * items, reasoning items, and one or more message items; we want the
- * text from the last message.
+ * collectPerplexityCitationUrls — Perplexity sonar responses expose web
+ * citations in two shapes: a top-level `citations` array of URL strings, and
+ * a `search_results` array of {title, url, date, snippet} objects. Return
+ * a de-duplicated URL list so callers can surface what the reviewer actually
+ * consulted, regardless of which envelope shape the API returns this run.
  */
-function extractResponsesApiText(data) {
-  if (!data) return '';
-  // Some implementations expose a top-level convenience field.
-  if (typeof data.output_text === 'string' && data.output_text) return data.output_text;
-  const output = Array.isArray(data.output) ? data.output : [];
-  const messages = output.filter(o => o?.type === 'message' || o?.role === 'assistant');
-  const last = messages[messages.length - 1];
-  if (!last) return '';
-  const content = Array.isArray(last.content) ? last.content : [];
-  const texts = content
-    .map(c => (typeof c?.text === 'string' ? c.text : (c?.type === 'output_text' && c?.text) || ''))
-    .filter(Boolean);
-  return texts.join('\n');
+function collectPerplexityCitationUrls(data) {
+  const urls = new Set();
+  const cites = Array.isArray(data?.citations) ? data.citations : [];
+  for (const c of cites) {
+    if (typeof c === 'string') urls.add(c);
+    else if (c && typeof c.url === 'string') urls.add(c.url);
+  }
+  const searchResults = Array.isArray(data?.search_results) ? data.search_results : [];
+  for (const sr of searchResults) {
+    if (sr && typeof sr.url === 'string') urls.add(sr.url);
+  }
+  return Array.from(urls);
 }
 
 /**
- * factCheckBrief — send a research brief to Grok and get per-source verdicts.
+ * factCheckBrief — send a research brief to Perplexity and get per-source verdicts.
  *
  * @param {object} brief         — the validateBrief() output from research.js
  * @param {object} options       — { model, sectionLabel, focusArea, timeoutMs }
@@ -84,16 +87,17 @@ function extractResponsesApiText(data) {
  *   severity:  'low' | 'medium' | 'high'   (only meaningful for 'disagree')
  *
  * `ok` is true iff zero verdicts are 'disagree'. 'unverified' does NOT block —
- * Grok routinely doesn't know about a brand-new approval or trial result, and
- * treating ignorance as disagreement would halt every weekly run.
+ * Perplexity may not find a confirming source for a brand-new approval or
+ * a niche trial, and treating ignorance as disagreement would halt every
+ * weekly run.
  */
 export async function factCheckBrief(brief, options = {}) {
-  const apiKey = process.env.XAI_API_KEY;
+  const apiKey = process.env.PERPLEXITY_API_KEY;
   if (!apiKey) {
     return {
       ok: true,                 // fail-open: missing key shouldn't block the pipeline
       verdicts: [],
-      summary: 'XAI_API_KEY not set — validator skipped.',
+      summary: 'PERPLEXITY_API_KEY not set — validator skipped.',
       model: null,
       error: 'no_api_key',
     };
@@ -109,19 +113,19 @@ export async function factCheckBrief(brief, options = {}) {
     };
   }
 
-  const model = options.model || process.env.XAI_MODEL || DEFAULT_MODEL;
-  const timeoutMs = options.timeoutMs || 45000;
+  const model = options.model || process.env.PERPLEXITY_MODEL || DEFAULT_MODEL;
+  const timeoutMs = options.timeoutMs || 60000;
   const sectionLabel = options.sectionLabel || brief.topic || 'unknown section';
   const focusArea = options.focusArea || '';
 
   const systemPrompt = [
     'You are a senior psychiatrist fact-checking sources for a clinical newsletter aimed at practicing physicians.',
-    'For each numbered source, decide whether the title and excerpt make accurate factual claims about psychiatry, psychopharmacology, regulation, or trials.',
+    'For each numbered source, decide whether the title and excerpt make accurate factual claims about psychiatry, psychopharmacology, regulation, or trials. Use your web access to verify currency claims against current sources whenever possible.',
     '',
     'Use exactly one of these verdicts per source:',
     '  - "agree":      The factual claims are correct as far as you can tell.',
     '  - "disagree":   At least one factual claim is wrong (e.g., wrong drug class, wrong mechanism, wrong dose, wrong trial result, wrong year, wrong agency action). DO NOT use this verdict for stylistic issues, vague phrasing, missing context, or things you simply have not heard of.',
-    '  - "unverified": You cannot confirm or refute the claims with your training data (e.g., a brand-new approval, a recently posted trial, a niche bill). This is the correct verdict for anything outside your knowledge — do NOT mark it "disagree" just because you have no record of it.',
+    '  - "unverified": You cannot confirm or refute the claims even after searching the web (e.g., a niche trial without public reporting). This is the correct verdict for anything you cannot ground — do NOT mark it "disagree" just because you have no record of it.',
     '',
     'For "disagree" verdicts, also assign a severity:',
     '  - "high":   Wrong drug, wrong mechanism, wrong dose, wrong indication, dangerous misstatement.',
@@ -157,19 +161,24 @@ export async function factCheckBrief(brief, options = {}) {
     sourcesBlock,
   ].filter(Boolean).join('\n');
 
+  // Note: Perplexity's response_format only accepts text / json_schema / regex.
+  // It does NOT accept OpenAI's `{ type: 'json_object' }` — that produces an
+  // HTTP 400. We rely on the strict-JSON prompt instructions plus the
+  // extractFirstJsonObject fallback below instead. If sonar-pro JSON
+  // reliability becomes a problem, switch to `{ type: 'json_schema', ... }`
+  // with the full schema.
   const body = {
     model,
     messages: [
       { role: 'system', content: systemPrompt },
       { role: 'user', content: userPrompt },
     ],
-    response_format: { type: 'json_object' },
     temperature: 0,
   };
 
   let response;
   try {
-    response = await fetchWithTimeout(XAI_ENDPOINT, {
+    response = await fetchWithTimeout(PERPLEXITY_ENDPOINT, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -182,7 +191,7 @@ export async function factCheckBrief(brief, options = {}) {
     return {
       ok: false,
       verdicts: [],
-      summary: `xAI request failed: ${err.message}`,
+      summary: `Perplexity request failed: ${err.message}`,
       model,
       error: 'request_failed',
     };
@@ -194,7 +203,7 @@ export async function factCheckBrief(brief, options = {}) {
     return {
       ok: false,
       verdicts: [],
-      summary: `xAI returned HTTP ${response.status}: ${errBody}`,
+      summary: `Perplexity returned HTTP ${response.status}: ${errBody}`,
       model,
       error: `http_${response.status}`,
     };
@@ -207,7 +216,7 @@ export async function factCheckBrief(brief, options = {}) {
     return {
       ok: false,
       verdicts: [],
-      summary: `xAI returned non-JSON: ${err.message}`,
+      summary: `Perplexity returned non-JSON: ${err.message}`,
       model,
       error: 'bad_response',
     };
@@ -217,11 +226,16 @@ export async function factCheckBrief(brief, options = {}) {
   let parsed;
   try {
     parsed = JSON.parse(content);
-  } catch (err) {
+  } catch {
+    // sonar-pro often wraps JSON in fences or a prose preamble; fall back to
+    // a tolerant extractor before giving up.
+    parsed = extractFirstJsonObject(content);
+  }
+  if (!parsed) {
     return {
       ok: false,
       verdicts: [],
-      summary: `xAI verdict was not valid JSON: ${err.message}. Raw: ${content.slice(0, 300)}`,
+      summary: `Perplexity verdict was not valid JSON. Raw: ${(content || '').slice(0, 300)}`,
       model,
       error: 'unparseable_verdict',
     };
@@ -252,22 +266,27 @@ export async function factCheckBrief(brief, options = {}) {
     model,
     usage: data?.usage || null,
     disagreementCount: disagreements.length,
+    citations: collectPerplexityCitationUrls(data),
   };
 }
 
 /**
- * factCheckDraft — send a drafted section's prose to Grok for claim-level
+ * factCheckDraft — send a drafted section's prose to Perplexity for claim-level
  * fact-checking. Sibling of factCheckBrief() but operates on the rendered
  * prose, not on brief sources. Use when a section was drafted from an
  * evergreen / source-less brief (no source-level validator coverage), or as
  * a belt-and-suspenders pass after drafting.
+ *
+ * Perplexity sonar models retrieve from the web by default, so currency
+ * claims (REMS still in force? approval still active? trial result final?)
+ * are checked against current sources rather than a stale training cutoff.
  *
  * Annotate-only: returns structured verdicts; the caller decides what to do.
  *
  * @param {string} sectionLabel — e.g. 'S2 — clozapine essentials (2026-05-08)'
  * @param {string} prose        — the drafted section text. HTML is accepted;
  *                                tags are stripped before grading.
- * @param {object} [options]    — { model, focusArea, timeoutMs }
+ * @param {object} [options]    — { model, focusArea, timeoutMs, webSearch }
  * @returns {Promise<object>}   — { ok, verdicts, summary, model, error? }
  *
  * Verdict shape:
@@ -278,14 +297,18 @@ export async function factCheckBrief(brief, options = {}) {
  * `ok` is true iff zero verdicts are 'disagree'. Same fail-open behavior as
  * factCheckBrief: missing key, network error, or unparseable output never
  * blocks — the pipeline always continues.
+ *
+ * Note: the `webSearch` option is accepted for backward compatibility with the
+ * Grok-era validator but is effectively a no-op here, since sonar-pro
+ * retrieves from the web by default.
  */
 export async function factCheckDraft(sectionLabel, prose, options = {}) {
-  const apiKey = process.env.XAI_API_KEY;
+  const apiKey = process.env.PERPLEXITY_API_KEY;
   if (!apiKey) {
     return {
       ok: true,
       verdicts: [],
-      summary: 'XAI_API_KEY not set — draft validator skipped.',
+      summary: 'PERPLEXITY_API_KEY not set — draft validator skipped.',
       model: null,
       error: 'no_api_key',
     };
@@ -308,18 +331,18 @@ export async function factCheckDraft(sectionLabel, prose, options = {}) {
     };
   }
 
-  const model = options.model || process.env.XAI_MODEL || DEFAULT_MODEL;
-  const timeoutMs = options.timeoutMs || 60000;
+  const model = options.model || process.env.PERPLEXITY_MODEL || DEFAULT_MODEL;
+  const timeoutMs = options.timeoutMs || 90000;
   const focusArea = options.focusArea || '';
 
   const systemPrompt = [
     'You are a senior psychiatrist fact-checking a drafted newsletter section aimed at practicing physicians.',
-    'Identify the section\'s discrete factual claims (dosages, monitoring thresholds, regulatory programs, trial results, dates, mechanisms, indications) and grade each one.',
+    'Identify the section\'s discrete factual claims (dosages, monitoring thresholds, regulatory programs, trial results, dates, mechanisms, indications) and grade each one. Use your web access to verify currency claims against current sources.',
     '',
     'Use exactly one of these verdicts per claim:',
     '  - "agree":      The claim is correct.',
     '  - "disagree":   The claim is wrong (e.g., describes a regulatory program as active when it has been discontinued; wrong dose; wrong drug class; wrong trial result; wrong year; misstated mechanism). DO NOT use this for stylistic issues, vague phrasing, or things you simply have not heard of.',
-    '  - "unverified": You cannot confirm or refute the claim with your training data (e.g., a brand-new approval). This is the correct verdict for anything outside your knowledge — do NOT mark it "disagree" just because you have no record of it.',
+    '  - "unverified": You cannot confirm or refute the claim even after searching the web (e.g., a brand-new approval with no third-party reporting). This is the correct verdict for anything you cannot ground — do NOT mark it "disagree" just because you have no record of it.',
     '',
     'For "disagree" verdicts, also assign a severity:',
     '  - "high":   Wrong drug, wrong mechanism, wrong dose, wrong indication, dangerous misstatement, OR a regulatory/safety program described as live when it has been discontinued or vice versa.',
@@ -327,7 +350,7 @@ export async function factCheckDraft(sectionLabel, prose, options = {}) {
     '  - "low":    Minor factual slip unlikely to mislead a physician.',
     'For "agree" and "unverified", set severity to "low".',
     '',
-    'Pay special attention to claims of currency: phrases like "operates under," "is required," "must enroll," "monitoring is mandated by" — verify whether the cited program/requirement is still in force as of your knowledge cutoff. Flag obsolete-as-current claims as "disagree" with severity "high".',
+    'Pay special attention to claims of currency: phrases like "operates under," "is required," "must enroll," "monitoring is mandated by" — verify whether the cited program/requirement is still in force using current web sources. Flag obsolete-as-current claims as "disagree" with severity "high".',
     '',
     'Return at most 12 claims (the most load-bearing ones). Quote each claim verbatim or near-verbatim from the prose so the human reviewer can find it.',
     '',
@@ -348,49 +371,20 @@ export async function factCheckDraft(sectionLabel, prose, options = {}) {
     plain,
   ].filter(Boolean).join('\n');
 
-  // Web search opt-in. When on, call the Responses API at /v1/responses with
-  // tools=[{type:'web_search'}] so Grok can ground currency claims (REMS
-  // status, label changes, withdrawn approvals) against current web results
-  // rather than relying on its training cutoff. Off by default to keep weekly
-  // run cost low and to match factCheckBrief's behavior.
-  const webSearch = options.webSearch === true
-    || (options.webSearch !== false && process.env.XAI_WEB_SEARCH === '1');
-
-  let endpoint;
-  let body;
-  if (webSearch) {
-    endpoint = XAI_RESPONSES_ENDPOINT;
-    // Responses API uses `input` (not `messages`) and accepts a `tools` array.
-    // We prepend a hint that the model should use the search tool whenever a
-    // claim's currency is in question — that's the whole point of this path.
-    const augmentedSystem = systemPrompt
-      + '\n\nWhen a claim asserts that a regulatory program, label, requirement, or approval is currently in force ("operates under", "is required", "must enroll", "is mandated", "carries a"), you MUST call the web_search tool to verify the claim against current sources before grading. Do not rely on training data alone for currency judgments. If web search reveals the cited program/requirement has been discontinued, modified, or withdrawn, return verdict "disagree" with severity "high".';
-    body = {
-      model,
-      input: [
-        { role: 'system', content: augmentedSystem },
-        { role: 'user', content: userPrompt },
-      ],
-      tools: [{ type: 'web_search' }],
-      // No response_format here — Responses API + tools combo doesn't reliably
-      // honor json_object format, so we extract JSON ourselves below.
-    };
-  } else {
-    endpoint = XAI_ENDPOINT;
-    body = {
-      model,
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: userPrompt },
-      ],
-      response_format: { type: 'json_object' },
-      temperature: 0,
-    };
-  }
+  // See factCheckBrief for why response_format is omitted (Perplexity rejects
+  // OpenAI's `json_object` shape).
+  const body = {
+    model,
+    messages: [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: userPrompt },
+    ],
+    temperature: 0,
+  };
 
   let response;
   try {
-    response = await fetchWithTimeout(endpoint, {
+    response = await fetchWithTimeout(PERPLEXITY_ENDPOINT, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -403,7 +397,7 @@ export async function factCheckDraft(sectionLabel, prose, options = {}) {
     return {
       ok: false,
       verdicts: [],
-      summary: `xAI request failed: ${err.message}`,
+      summary: `Perplexity request failed: ${err.message}`,
       model,
       error: 'request_failed',
     };
@@ -415,7 +409,7 @@ export async function factCheckDraft(sectionLabel, prose, options = {}) {
     return {
       ok: false,
       verdicts: [],
-      summary: `xAI returned HTTP ${response.status}: ${errBody}`,
+      summary: `Perplexity returned HTTP ${response.status}: ${errBody}`,
       model,
       error: `http_${response.status}`,
     };
@@ -428,31 +422,24 @@ export async function factCheckDraft(sectionLabel, prose, options = {}) {
     return {
       ok: false,
       verdicts: [],
-      summary: `xAI returned non-JSON: ${err.message}`,
+      summary: `Perplexity returned non-JSON: ${err.message}`,
       model,
       error: 'bad_response',
     };
   }
 
-  // Extract the assistant text. Chat Completions: data.choices[0].message.content.
-  // Responses API: walk data.output[] for the last assistant message.
-  const content = webSearch
-    ? extractResponsesApiText(data)
-    : (data?.choices?.[0]?.message?.content || '');
-
+  const content = data?.choices?.[0]?.message?.content || '';
   let parsed = null;
   try {
     parsed = JSON.parse(content);
   } catch {
-    // Web search responses sometimes wrap JSON in fences or add a preamble;
-    // fall back to a tolerant extractor.
     parsed = extractFirstJsonObject(content);
   }
   if (!parsed) {
     return {
       ok: false,
       verdicts: [],
-      summary: `xAI verdict was not valid JSON. Raw: ${(content || '').slice(0, 300)}`,
+      summary: `Perplexity verdict was not valid JSON. Raw: ${(content || '').slice(0, 300)}`,
       model,
       error: 'unparseable_verdict',
     };
@@ -470,25 +457,7 @@ export async function factCheckDraft(sectionLabel, prose, options = {}) {
     };
   });
 
-  // Citations from the web_search tool — only present on the Responses API path.
-  const citations = (() => {
-    if (!webSearch) return [];
-    const out = Array.isArray(data?.output) ? data.output : [];
-    const urls = new Set();
-    for (const item of out) {
-      // Citations may surface either as annotations on message content or as
-      // dedicated web_search_call result items. Collect any url-shaped fields.
-      const walk = (node) => {
-        if (!node || typeof node !== 'object') return;
-        if (typeof node.url === 'string') urls.add(node.url);
-        if (Array.isArray(node)) node.forEach(walk);
-        else for (const k of Object.keys(node)) walk(node[k]);
-      };
-      walk(item);
-    }
-    return Array.from(urls);
-  })();
-
+  const citations = collectPerplexityCitationUrls(data);
   const disagreements = verdicts.filter(v => v.verdict === 'disagree');
   return {
     ok: disagreements.length === 0,
@@ -497,7 +466,10 @@ export async function factCheckDraft(sectionLabel, prose, options = {}) {
     model,
     usage: data?.usage || null,
     disagreementCount: disagreements.length,
-    webSearch,
+    // webSearch field preserved for backward compatibility with sidecar
+    // readers; Perplexity sonar always retrieves from the web, so this is
+    // always effectively true.
+    webSearch: true,
     citations,
   };
 }
@@ -508,7 +480,7 @@ export async function factCheckDraft(sectionLabel, prose, options = {}) {
 export function formatDraftReport(sectionLabel, result) {
   const lines = [];
   lines.push(`## Draft fact-check — ${sectionLabel}`);
-  lines.push(`Model: ${result.model || '(none)'}${result.webSearch ? ' + web_search' : ''}`);
+  lines.push(`Model: ${result.model || '(none)'}${result.webSearch ? ' (web-retrieved)' : ''}`);
   if (result.usage) {
     const inTok = result.usage.prompt_tokens ?? result.usage.input_tokens ?? '?';
     const outTok = result.usage.completion_tokens ?? result.usage.output_tokens ?? '?';
@@ -530,7 +502,7 @@ export function formatDraftReport(sectionLabel, result) {
   }
   if (Array.isArray(result.citations) && result.citations.length > 0) {
     lines.push('');
-    lines.push('Citations from web_search:');
+    lines.push('Citations consulted:');
     result.citations.forEach((u, i) => lines.push(`  [${i + 1}] ${u}`));
   }
   return lines.join('\n');
@@ -545,7 +517,9 @@ export function formatReport(sectionLabel, result) {
   lines.push(`## Verification report — ${sectionLabel}`);
   lines.push(`Model: ${result.model || '(none)'}`);
   if (result.usage) {
-    lines.push(`Tokens: ${result.usage.prompt_tokens} in / ${result.usage.completion_tokens} out`);
+    const inTok = result.usage.prompt_tokens ?? result.usage.input_tokens ?? '?';
+    const outTok = result.usage.completion_tokens ?? result.usage.output_tokens ?? '?';
+    lines.push(`Tokens: ${inTok} in / ${outTok} out`);
   }
   lines.push(`Status: ${result.ok ? 'PASS' : 'FAIL'} — ${result.disagreementCount || 0} disagreement(s)`);
   if (result.summary) lines.push(`Summary: ${result.summary}`);
@@ -561,18 +535,24 @@ export function formatReport(sectionLabel, result) {
   } else {
     lines.push('  (no per-source verdicts)');
   }
+  if (Array.isArray(result.citations) && result.citations.length > 0) {
+    lines.push('');
+    lines.push('Citations consulted:');
+    result.citations.forEach((u, i) => lines.push(`  [${i + 1}] ${u}`));
+  }
   return lines.join('\n');
 }
 
 /**
  * surveyRecency — annotate-only recency probe.
  *
- * Asks Grok-with-web_search what major psychiatric pharmacology / regulatory
- * developments occurred in a date window. Distinct from factCheckBrief and
- * factCheckDraft: those grade claims that ARE made; this surfaces topics the
- * brief / draft might be missing entirely. The output is meant to be reviewed
- * before --draft, so the human can decide whether to fold an item into the
- * relevant section topic or leave it for next week.
+ * Asks Perplexity (sonar-pro, web-retrieved by default) what major psychiatric
+ * pharmacology / regulatory developments occurred in a date window. Distinct
+ * from factCheckBrief and factCheckDraft: those grade claims that ARE made;
+ * this surfaces topics the brief / draft might be missing entirely. The
+ * output is meant to be reviewed before --draft, so the human can decide
+ * whether to fold an item into the relevant section topic or leave it for
+ * next week.
  *
  * @param {string} since         — ISO date "YYYY-MM-DD" (inclusive lower bound)
  * @param {object} [options]     — { until, model, timeoutMs, maxItems }
@@ -593,20 +573,20 @@ export function formatReport(sectionLabel, result) {
  * returns ok=false with an error code so the caller can log and continue.
  */
 export async function surveyRecency(since, options = {}) {
-  const apiKey = process.env.XAI_API_KEY;
+  const apiKey = process.env.PERPLEXITY_API_KEY;
   if (!apiKey) {
     return {
       ok: true,
       items: [],
       citations: [],
-      summary: 'XAI_API_KEY not set — recency probe skipped.',
+      summary: 'PERPLEXITY_API_KEY not set — recency probe skipped.',
       model: null,
       error: 'no_api_key',
     };
   }
 
   const until = options.until || new Date().toISOString().slice(0, 10);
-  const model = options.model || process.env.XAI_MODEL || DEFAULT_MODEL;
+  const model = options.model || process.env.PERPLEXITY_MODEL || DEFAULT_MODEL;
   const timeoutMs = options.timeoutMs || 90000;
   const maxItems = options.maxItems || 10;
 
@@ -614,7 +594,7 @@ export async function surveyRecency(since, options = {}) {
     'You are a senior psychiatrist scanning the most recent psychiatric pharmacology / regulatory landscape on behalf of a weekly clinical newsletter.',
     'Your job is to surface developments a practicing psychiatrist would want to know about — NOT to grade existing copy.',
     '',
-    'Use the web_search tool. You MUST search the web; do not rely on training data. Search broadly: FDA drug safety communications, FDA approvals page, Federal Register, ClinicalTrials.gov, NEJM / JAMA Psychiatry / AJP, Psychiatric Times, Pharmacy Times, medical news outlets.',
+    'You have web retrieval. Search broadly: FDA drug safety communications, FDA approvals page, Federal Register, ClinicalTrials.gov, NEJM / JAMA Psychiatry / AJP, Psychiatric Times, Pharmacy Times, medical news outlets.',
     '',
     'Restrict findings to events DATED within the window provided in the user message. Do NOT include older items even if they remain relevant.',
     '',
@@ -647,21 +627,23 @@ export async function surveyRecency(since, options = {}) {
   const userPrompt = [
     `Window: ${since} through ${until} (inclusive).`,
     `Today is ${new Date().toISOString().slice(0, 10)}.`,
-    'Surface major psychiatric pharmacology / regulatory developments in this window. Use the web_search tool. Strict JSON output.',
+    'Surface major psychiatric pharmacology / regulatory developments in this window. Strict JSON output.',
   ].join('\n');
 
+  // See factCheckBrief for why response_format is omitted (Perplexity rejects
+  // OpenAI's `json_object` shape).
   const body = {
     model,
-    input: [
+    messages: [
       { role: 'system', content: systemPrompt },
       { role: 'user', content: userPrompt },
     ],
-    tools: [{ type: 'web_search' }],
+    temperature: 0,
   };
 
   let response;
   try {
-    response = await fetchWithTimeout(XAI_RESPONSES_ENDPOINT, {
+    response = await fetchWithTimeout(PERPLEXITY_ENDPOINT, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
@@ -675,7 +657,7 @@ export async function surveyRecency(since, options = {}) {
       ok: false,
       items: [],
       citations: [],
-      summary: `xAI request failed: ${err.message}`,
+      summary: `Perplexity request failed: ${err.message}`,
       model,
       error: 'request_failed',
     };
@@ -688,7 +670,7 @@ export async function surveyRecency(since, options = {}) {
       ok: false,
       items: [],
       citations: [],
-      summary: `xAI returned HTTP ${response.status}: ${errBody}`,
+      summary: `Perplexity returned HTTP ${response.status}: ${errBody}`,
       model,
       error: `http_${response.status}`,
     };
@@ -702,13 +684,13 @@ export async function surveyRecency(since, options = {}) {
       ok: false,
       items: [],
       citations: [],
-      summary: `xAI returned non-JSON: ${err.message}`,
+      summary: `Perplexity returned non-JSON: ${err.message}`,
       model,
       error: 'bad_response',
     };
   }
 
-  const content = extractResponsesApiText(data);
+  const content = data?.choices?.[0]?.message?.content || '';
   let parsed = null;
   try { parsed = JSON.parse(content); } catch { parsed = extractFirstJsonObject(content); }
   if (!parsed) {
@@ -716,7 +698,7 @@ export async function surveyRecency(since, options = {}) {
       ok: false,
       items: [],
       citations: [],
-      summary: `xAI recency output was not valid JSON. Raw: ${(content || '').slice(0, 300)}`,
+      summary: `Perplexity recency output was not valid JSON. Raw: ${(content || '').slice(0, 300)}`,
       model,
       error: 'unparseable_output',
     };
@@ -734,17 +716,7 @@ export async function surveyRecency(since, options = {}) {
     relevance: validRelevance.includes(it.relevance) ? it.relevance : 'medium',
   }));
 
-  // Pull citations from the Responses API output array.
-  const out = Array.isArray(data?.output) ? data.output : [];
-  const urls = new Set();
-  const walk = (node) => {
-    if (!node || typeof node !== 'object') return;
-    if (typeof node.url === 'string') urls.add(node.url);
-    if (Array.isArray(node)) node.forEach(walk);
-    else for (const k of Object.keys(node)) walk(node[k]);
-  };
-  out.forEach(walk);
-  const citations = Array.from(urls);
+  const citations = collectPerplexityCitationUrls(data);
 
   return {
     ok: true,
@@ -763,7 +735,7 @@ export async function surveyRecency(since, options = {}) {
 export function formatRecencyReport(result) {
   const lines = [];
   lines.push(`## Recency probe — ${result?.window?.since || '?'} through ${result?.window?.until || '?'}`);
-  lines.push(`Model: ${result.model || '(none)'} + web_search`);
+  lines.push(`Model: ${result.model || '(none)'} (web-retrieved)`);
   if (result.usage) {
     const inTok = result.usage.prompt_tokens ?? result.usage.input_tokens ?? '?';
     const outTok = result.usage.completion_tokens ?? result.usage.output_tokens ?? '?';

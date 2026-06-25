@@ -1,16 +1,18 @@
 // tests/probe-recency.js
 //
-// One-off probe: ask Grok-with-web_search what major psychiatric pharmacology
-// / regulatory developments occurred in a recent window. This is the
-// "what's new" coverage probe — orthogonal to fact-checking. It tells you
-// what topics the brief / draft might be missing entirely.
+// One-off probe: ask Perplexity (sonar-pro, web-retrieved by default) what
+// major psychiatric pharmacology / regulatory developments occurred in a
+// recent window. This is the "what's new" coverage probe — orthogonal to
+// fact-checking. It tells you what topics the brief / draft might be missing
+// entirely.
 //
 // Usage:
-//   XAI_API_KEY=... node tests/probe-recency.js
-//   XAI_API_KEY=... SINCE=2026-04-12 UNTIL=2026-04-26 node tests/probe-recency.js
+//   PERPLEXITY_API_KEY=... node tests/probe-recency.js
+//   PERPLEXITY_API_KEY=... SINCE=2026-04-12 UNTIL=2026-04-26 node tests/probe-recency.js
 //
 // Defaults: window = 14 days back through today.
-// Override the model with PROBE_MODEL (default: validator's XAI_MODEL or grok-4-fast).
+// Override the model with PROBE_MODEL (default: validator's PERPLEXITY_MODEL
+// or sonar-pro).
 
 import fs from 'fs';
 import path from 'path';

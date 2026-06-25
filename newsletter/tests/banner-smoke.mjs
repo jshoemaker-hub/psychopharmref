@@ -2,8 +2,8 @@ import { assembleHtml, extractBodyOnly, renderConflictBanner } from '../lib/draf
 
 const flaggedBrief = {
   topic: 's1-test',
-  xaiSummary: 'Source 2 has a critical drug-class error.',
-  xaiConflicts: [
+  reviewerSummary: 'Source 2 has a critical drug-class error.',
+  reviewerConflicts: [
     {
       sourceIndex: 2,
       sourceTitle: 'Lithium is a benzodiazepine commonly used for ADHD',
@@ -21,7 +21,7 @@ const flaggedBrief = {
   ],
 };
 
-const cleanBrief = { topic: 's2-clean', xaiConflicts: [], xaiSummary: '' };
+const cleanBrief = { topic: 's2-clean', reviewerConflicts: [], reviewerSummary: '' };
 const briefs = [flaggedBrief, cleanBrief, cleanBrief];
 
 const sections = [
@@ -38,13 +38,13 @@ const bodyHtml = extractBodyOnly(fullHtml);
 
 console.log('=== ASSERTIONS ===');
 
-const hasBannerInFull = fullHtml.includes('REVIEW ONLY — xAI flagged 2 source');
+const hasBannerInFull = fullHtml.includes('REVIEW ONLY — Reviewer flagged 2 source');
 console.log('Full HTML contains banner header:', hasBannerInFull, ' (expected: true)');
 
 const hasMarkersInFull = fullHtml.includes('<!-- REVIEW_ONLY_START -->') && fullHtml.includes('<!-- REVIEW_ONLY_END -->');
 console.log('Full HTML contains REVIEW_ONLY markers:', hasMarkersInFull, ' (expected: true)');
 
-const bodyHasBanner = bodyHtml.includes('REVIEW ONLY') || bodyHtml.includes('xAI flagged') || bodyHtml.includes('REVIEW_ONLY');
+const bodyHasBanner = bodyHtml.includes('REVIEW ONLY') || bodyHtml.includes('Reviewer flagged') || bodyHtml.includes('REVIEW_ONLY');
 console.log('Clipboard body contains banner content:', bodyHasBanner, ' (expected: false)');
 
 const bodyHasContent = bodyHtml.includes('S1 body content here') && bodyHtml.includes('S2 body content here');

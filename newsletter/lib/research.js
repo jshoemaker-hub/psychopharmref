@@ -312,38 +312,105 @@ export async function fetchCongress(topicKey, config) {
   }
 }
 
-// Perplexity transient-failure handling (hardened 2026-05-15, model fallback added same day).
+// xAI/Grok research handling (introduced 2026-05-21 — research and review
+// roles swapped: xAI/Grok now does source-finding via the Responses API +
+// web_search tool; Perplexity moved over to the fact-checking role in
+// lib/validator.js).
 //
-// Prior behaviour: 20s timeout, single retry only on 503, all other non-2xx
-// codes thrown immediately. A 2026-05-15 run with degraded Perplexity service
-// produced "Perplexity unavailable" on 5 of 6 rungs across two sections —
-// retries were exhausting too fast. This implementation:
-//   - bumps the per-attempt timeout to 45s (sonar-pro routinely takes 15-30s
-//     under load),
-//   - increases the primary retry budget from 1 → 3 (4 attempts total),
-//   - applies exponential backoff between attempts (5s, 15s, 30s),
-//   - retries on the full set of transient HTTP codes {429, 502, 503, 504},
-//     not just 503. 429 was previously fatal on the first hit even though
-//     rate-limit waits are exactly what backoff is for.
-//   - falls back to the lighter 'sonar' model after the primary model (sonar-pro)
-//     exhausts its budget. Tier-1 accounts get deprioritised first on sonar-pro
-//     during Perplexity degradation; 'sonar' is cheaper and usually less
-//     queue-contended, so a final-pass attempt often succeeds when sonar-pro
-//     keeps timing out. Set config.perplexityFallbackModel to '' or equal to
-//     perplexityModel to disable.
+// Retry contract preserves the Perplexity-era behaviour so the surrounding
+// fallback-chain wrappers (fetchNewApprovals, fetchS3WithFallback, etc.) keep
+// working without modification:
+//   - 60s per-attempt timeout (web_search adds latency vs. a bare chat call),
+//   - primary model gets 4 attempts with exponential backoff (5s/15s/30s),
+//   - retries on transient HTTP {429, 502, 503, 504}; everything else fails
+//     fast,
+//   - optional secondary model rescue pass (2 attempts, 10s backoff). Set
+//     config.xaiFallbackModel to '' or equal to the primary to disable.
 // Non-transient codes (401, 400, 404, etc.) still fail fast — those won't fix
 // themselves by retrying.
-const PERPLEXITY_TIMEOUT_MS = 45000;
-const PERPLEXITY_MAX_ATTEMPTS = 4;
-const PERPLEXITY_BACKOFF_MS = [5000, 15000, 30000]; // between attempt N and N+1
-const PERPLEXITY_TRANSIENT_HTTP = new Set([429, 502, 503, 504]);
-const PERPLEXITY_FALLBACK_MAX_ATTEMPTS = 2;
-const PERPLEXITY_FALLBACK_BACKOFF_MS = [10000];
-const PERPLEXITY_DEFAULT_FALLBACK_MODEL = 'sonar';
+const XAI_RESEARCH_ENDPOINT = 'https://api.x.ai/v1/responses';
+const XAI_RESEARCH_TIMEOUT_MS = 60000;
+const XAI_RESEARCH_MAX_ATTEMPTS = 4;
+const XAI_RESEARCH_BACKOFF_MS = [5000, 15000, 30000]; // between attempt N and N+1
+const XAI_RESEARCH_TRANSIENT_HTTP = new Set([429, 502, 503, 504]);
+const XAI_RESEARCH_FALLBACK_MAX_ATTEMPTS = 2;
+const XAI_RESEARCH_FALLBACK_BACKOFF_MS = [10000];
+const XAI_RESEARCH_DEFAULT_PRIMARY_MODEL = 'grok-4-fast';
+const XAI_RESEARCH_DEFAULT_FALLBACK_MODEL = '';
 
 /**
- * tryPerplexityCall — execute one model's retry sequence against the
- * Perplexity API. Returns one of:
+ * extractFirstJsonObject — pull the first balanced JSON object out of a
+ * string, tolerating leading prose, trailing prose, and ```json fences.
+ * Grok's Responses API + web_search path doesn't always honor strict JSON
+ * output formatting, so we have to recover the JSON ourselves.
+ *
+ * (Duplicated from lib/validator.js to keep the modules decoupled.)
+ */
+function extractFirstJsonObject(text) {
+  if (!text) return null;
+  const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/);
+  const candidate = fenced ? fenced[1] : text;
+  let depth = 0;
+  let start = -1;
+  for (let i = 0; i < candidate.length; i++) {
+    const ch = candidate[i];
+    if (ch === '{') {
+      if (depth === 0) start = i;
+      depth++;
+    } else if (ch === '}') {
+      depth--;
+      if (depth === 0 && start >= 0) {
+        const slice = candidate.slice(start, i + 1);
+        try { return JSON.parse(slice); } catch { /* keep scanning */ }
+        start = -1;
+      }
+    }
+  }
+  return null;
+}
+
+/**
+ * extractResponsesApiText — pull the assistant's final text out of a
+ * Responses API payload. The output array can contain web_search_call items,
+ * reasoning items, and one or more message items; we want the text from the
+ * last message.
+ */
+function extractResponsesApiText(data) {
+  if (!data) return '';
+  if (typeof data.output_text === 'string' && data.output_text) return data.output_text;
+  const output = Array.isArray(data.output) ? data.output : [];
+  const messages = output.filter(o => o?.type === 'message' || o?.role === 'assistant');
+  const last = messages[messages.length - 1];
+  if (!last) return '';
+  const content = Array.isArray(last.content) ? last.content : [];
+  const texts = content
+    .map(c => (typeof c?.text === 'string' ? c.text : (c?.type === 'output_text' && c?.text) || ''))
+    .filter(Boolean);
+  return texts.join('\n');
+}
+
+/**
+ * collectResponsesApiUrls — walk every node in a Responses API payload and
+ * collect any URL-shaped fields. Used as a backstop for source URLs when the
+ * model's structured JSON output is missing or malformed but the web_search
+ * tool clearly fired.
+ */
+function collectResponsesApiUrls(data) {
+  const output = Array.isArray(data?.output) ? data.output : [];
+  const urls = new Set();
+  const walk = (node) => {
+    if (!node || typeof node !== 'object') return;
+    if (typeof node.url === 'string') urls.add(node.url);
+    if (Array.isArray(node)) node.forEach(walk);
+    else for (const k of Object.keys(node)) walk(node[k]);
+  };
+  output.forEach(walk);
+  return Array.from(urls);
+}
+
+/**
+ * tryXaiResearchCall — execute one model's retry sequence against the xAI
+ * Responses API with web_search. Returns one of:
  *   { ok: true,    brief,             attempts }  — a usable brief was produced
  *   { failFast: true, brief,          attempts }  — non-retryable error; caller should return brief immediately
  *   { exhausted: true,                attempts }  — retry budget exhausted; caller may try the next model
@@ -351,11 +418,15 @@ const PERPLEXITY_DEFAULT_FALLBACK_MODEL = 'sonar';
  * Each attempts[] entry is tagged with .model so the debug dump shows which
  * model produced which outcome.
  */
-async function tryPerplexityCall(topicKey, config, ctx, model, maxAttempts, backoffMs) {
-  const apiKey = process.env.PERPLEXITY_API_KEY;
+async function tryXaiResearchCall(topicKey, config, ctx, model, maxAttempts, backoffMs) {
+  const apiKey = process.env.XAI_API_KEY;
   const body = {
     model,
-    messages: [{ role: 'user', content: ctx.query }],
+    input: [
+      { role: 'system', content: ctx.systemPrompt },
+      { role: 'user', content: ctx.userPrompt },
+    ],
+    tools: [{ type: 'web_search' }],
   };
   const requestOptions = {
     method: 'POST',
@@ -373,27 +444,25 @@ async function tryPerplexityCall(topicKey, config, ctx, model, maxAttempts, back
     const attemptNo = i + 1;
     try {
       const response = await fetchWithTimeout(
-        'https://api.perplexity.ai/chat/completions',
+        XAI_RESEARCH_ENDPOINT,
         requestOptions,
-        PERPLEXITY_TIMEOUT_MS
+        XAI_RESEARCH_TIMEOUT_MS
       );
 
       if (response.ok) {
         const data = await response.json();
-        const brief = parsePerplexityResponse(topicKey, data, config, { ...ctx, model });
+        const brief = parseXaiResearchResponse(topicKey, data, config, { ...ctx, model });
         return { ok: true, brief, attempts };
       }
 
-      // Non-2xx. Decide whether to retry.
       attempts.push({ attempt: attemptNo, model, kind: 'http', status: response.status });
-      if (!PERPLEXITY_TRANSIENT_HTTP.has(response.status)) {
-        // Non-transient — fail fast.
+      if (!XAI_RESEARCH_TRANSIENT_HTTP.has(response.status)) {
         return {
           failFast: true,
           brief: validateBrief({
             topic: topicKey,
             sources: [],
-            warnings: [`Perplexity error: HTTP ${response.status} (${model})`],
+            warnings: [`xAI research error: HTTP ${response.status} (${model})`],
           }),
           attempts,
         };
@@ -401,24 +470,22 @@ async function tryPerplexityCall(topicKey, config, ctx, model, maxAttempts, back
       // Else fall through to backoff/retry.
     } catch (err) {
       if (err.name === 'AbortError') {
-        attempts.push({ attempt: attemptNo, model, kind: 'timeout', timeoutMs: PERPLEXITY_TIMEOUT_MS });
+        attempts.push({ attempt: attemptNo, model, kind: 'timeout', timeoutMs: XAI_RESEARCH_TIMEOUT_MS });
         // Retryable — fall through to backoff/retry.
       } else {
-        // Unexpected error (DNS, JSON parse on a 2xx, etc.). Don't retry.
         attempts.push({ attempt: attemptNo, model, kind: 'error', message: err.message });
         return {
           failFast: true,
           brief: validateBrief({
             topic: topicKey,
             sources: [],
-            warnings: [`Perplexity error: ${err.message} (${model})`],
+            warnings: [`xAI research error: ${err.message} (${model})`],
           }),
           attempts,
         };
       }
     }
 
-    // Backoff before the next attempt, if there is one.
     if (i < maxAttempts - 1) {
       const wait = backoffMs[i] || backoffMs[backoffMs.length - 1];
       await new Promise(r => setTimeout(r, wait));
@@ -429,109 +496,129 @@ async function tryPerplexityCall(topicKey, config, ctx, model, maxAttempts, back
 }
 
 /**
- * fetchPerplexity — query Perplexity for sources on a topic.
+ * fetchPerplexity — query xAI/Grok (with web_search) for sources on a topic.
  *
- * Two-pass strategy:
- *   Pass 1: primary model (default 'sonar-pro') — full retry budget.
- *   Pass 2: fallback model (default 'sonar')    — 2 attempts, lighter / cheaper.
+ * The name is preserved for backward compatibility with the dozen-plus call
+ * sites in the fallback-chain wrappers below; under the hood this no longer
+ * touches Perplexity at all. As of 2026-05-21 the research role moved to
+ * xAI/Grok and the fact-checking role moved to Perplexity (see
+ * lib/validator.js for the reviewer side).
  *
- * If both passes are exhausted, returns a brief with "Perplexity unavailable"
+ * Two-pass strategy mirrors the previous Perplexity implementation:
+ *   Pass 1: primary model (default 'grok-4-fast') — full retry budget.
+ *   Pass 2: optional fallback model — 2 attempts, lighter / cheaper.
+ *
+ * If both passes are exhausted, returns a brief with "xAI research unavailable"
  * warning and writes a debug file capturing every attempt's outcome (HTTP
  * status, timeout, or error message — tagged with the model that produced it).
  */
 export async function fetchPerplexity(topicKey, config) {
-  const apiKey = process.env.PERPLEXITY_API_KEY;
+  const apiKey = process.env.XAI_API_KEY;
   if (!apiKey) {
     return validateBrief({
       topic: topicKey,
       sources: [],
-      warnings: ['PERPLEXITY_API_KEY not set'],
+      warnings: ['XAI_API_KEY not set'],
     });
   }
 
   const topicConf = config?.topics?.[topicKey];
   const focusArea = topicConf?.focusArea || topicKey;
   const cutoffDays = config?.recencyCutoff?.[topicKey];
+  const maxSources = config?.maxBriefSources || 5;
 
-  // Two query templates: a recency-anchored one for time-sensitive rungs (S1
-  // pipeline / approvals / shortages, S2 rung 1 "recent evidence" framings)
-  // and an evergreen one for rungs that explicitly opt out of the cutoff
-  // (S2 rung 2 history fallbacks, all S3 deep dives). Prior to 2026-05-08 a
-  // single template asked for "recent ... news items" regardless of cutoff,
-  // which caused the no-cutoff rungs to come back empty for genuinely
-  // historical topics (e.g. history of HAM-D, origin of schizophrenia
-  // diagnosis) — Perplexity correctly found nothing "recent" matching the
-  // ask. Branching the template restores the intended evergreen behaviour.
-  let query;
+  // Recency-anchored vs. evergreen framing. The evergreen branch covers the
+  // S2 fallback rungs and all S3 deep dives, which explicitly opt out of the
+  // recency cutoff and need historical / canonical sources rather than recent
+  // news items.
+  let recencyClause;
   if (cutoffDays) {
     const cutoffDate = new Date(Date.now() - cutoffDays * 24 * 60 * 60 * 1000)
       .toISOString().slice(0, 10);
-    query = `${focusArea}. Retrieve recent peer-reviewed sources, clinical guidelines, or news items with publication dates. Focus on sources published after ${cutoffDate}. Include URLs and publication dates where available.`;
+    recencyClause = `Prefer sources published after ${cutoffDate}. Recency matters.`;
   } else {
-    query = `${focusArea}. Retrieve authoritative sources: peer-reviewed reviews, textbook chapters, historical accounts, primary sources, or canonical references. Original publication date is more important than recency. Include URLs and publication dates where available.`;
+    recencyClause = 'Recency does not matter here — peer-reviewed reviews, textbook chapters, historical accounts, primary sources, and canonical references are all welcome regardless of publication date.';
   }
 
-  const ctx = { focusArea, query };
-  const primaryModel = config?.perplexityModel || 'sonar-pro';
-  // config.perplexityFallbackModel can be set to '' or equal to primary to disable.
-  const fallbackModel = config?.perplexityFallbackModel === undefined
-    ? PERPLEXITY_DEFAULT_FALLBACK_MODEL
-    : config.perplexityFallbackModel;
+  const systemPrompt = [
+    'You are a research assistant gathering primary sources for a psychopharmacology newsletter aimed at practicing psychiatrists.',
+    'Use the web_search tool aggressively — every source you return must be one you actually found via search, with a real URL and a real title.',
+    'Prefer authoritative sources: FDA, NIH/NIMH, ClinicalTrials.gov, NEJM, JAMA Psychiatry, AJP, Lancet Psychiatry, Cochrane, society guideline pages (APA, AACAP, NICE), peer-reviewed reviews. Acceptable secondary sources: Psychiatric Times, Pharmacy Times, MedPage, STAT, reputable medical news outlets.',
+    'Skip blogs, marketing copy, AI-generated content farms, and any source without a clear publication date or author.',
+    '',
+    `Return at most ${maxSources} sources, prioritised by relevance and authority.`,
+    '',
+    'Respond with STRICT JSON only (no prose, no markdown fences) matching this schema:',
+    '{',
+    '  "sources": [',
+    '    {"title": "<source title>", "url": "<canonical URL>", "publishedDate": "YYYY-MM-DD or empty", "excerpt": "<1–3 sentence summary of what this source says about the topic>"}',
+    '  ],',
+    '  "summary": "<one-sentence overview of what the sources collectively show>"',
+    '}',
+  ].join('\n');
+
+  const userPrompt = [
+    `Topic: ${focusArea}`,
+    recencyClause,
+    `Today is ${new Date().toISOString().slice(0, 10)}.`,
+    'Search the web, then return strict JSON per the schema above.',
+  ].join('\n');
+
+  const ctx = { focusArea, systemPrompt, userPrompt, query: userPrompt };
+  const primaryModel = config?.xaiResearchModel || process.env.XAI_RESEARCH_MODEL || XAI_RESEARCH_DEFAULT_PRIMARY_MODEL;
+  // config.xaiResearchFallbackModel can be set to '' or equal to primary to disable.
+  const fallbackModel = config?.xaiResearchFallbackModel === undefined
+    ? XAI_RESEARCH_DEFAULT_FALLBACK_MODEL
+    : config.xaiResearchFallbackModel;
 
   // Pass 1: primary model with full retry budget.
-  const primary = await tryPerplexityCall(
+  const primary = await tryXaiResearchCall(
     topicKey, config, ctx,
-    primaryModel, PERPLEXITY_MAX_ATTEMPTS, PERPLEXITY_BACKOFF_MS
+    primaryModel, XAI_RESEARCH_MAX_ATTEMPTS, XAI_RESEARCH_BACKOFF_MS
   );
   if (primary.ok) return primary.brief;
   if (primary.failFast) {
-    writePerplexityUnavailableDebug(topicKey, { ...ctx, attempts: primary.attempts });
+    writeXaiResearchUnavailableDebug(topicKey, { ...ctx, attempts: primary.attempts });
     return primary.brief;
   }
 
   const allAttempts = [...primary.attempts];
 
-  // Pass 2: fallback model (lighter, often more available during Perplexity
-  // service degradation). Skipped if disabled or equal to primary.
+  // Pass 2: optional fallback model.
   if (fallbackModel && fallbackModel !== primaryModel) {
-    const fallback = await tryPerplexityCall(
+    const fallback = await tryXaiResearchCall(
       topicKey, config, ctx,
-      fallbackModel, PERPLEXITY_FALLBACK_MAX_ATTEMPTS, PERPLEXITY_FALLBACK_BACKOFF_MS
+      fallbackModel, XAI_RESEARCH_FALLBACK_MAX_ATTEMPTS, XAI_RESEARCH_FALLBACK_BACKOFF_MS
     );
     allAttempts.push(...fallback.attempts);
     if (fallback.ok) return fallback.brief;
     if (fallback.failFast) {
-      writePerplexityUnavailableDebug(topicKey, { ...ctx, attempts: allAttempts });
+      writeXaiResearchUnavailableDebug(topicKey, { ...ctx, attempts: allAttempts });
       return fallback.brief;
     }
   }
 
   // Both passes exhausted (or fallback disabled).
-  writePerplexityUnavailableDebug(topicKey, { ...ctx, attempts: allAttempts });
+  writeXaiResearchUnavailableDebug(topicKey, { ...ctx, attempts: allAttempts });
   return validateBrief({
     topic: topicKey,
     sources: [],
-    warnings: ['Perplexity unavailable — sources not fetched. Review manually before drafting.'],
+    warnings: ['xAI research unavailable — sources not fetched. Review manually before drafting.'],
   });
 }
 
 /**
- * writePerplexityUnavailableDebug — write a debug file when fetchPerplexity
- * exhausts its retry budget (or hits a non-retryable error). Captures the
- * per-attempt outcomes so the operator can see at a glance whether they were
- * 503s, timeouts, a 429 rate limit, or something else. Best-effort write —
- * never breaks the pipeline.
+ * writeXaiResearchUnavailableDebug — write a debug file when fetchPerplexity
+ * (now xAI-backed) exhausts its retry budget or hits a non-retryable error.
+ * Best-effort write — never breaks the pipeline.
  */
-function writePerplexityUnavailableDebug(topicKey, ctx) {
+function writeXaiResearchUnavailableDebug(topicKey, ctx) {
   try {
     if (!fs.existsSync(briefsDir)) return;
     const stamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const file = path.join(briefsDir, `perplexity-unavailable-${stamp}-${topicKey}.json`);
+    const file = path.join(briefsDir, `xai-research-unavailable-${stamp}-${topicKey}.json`);
     const attempts = Array.isArray(ctx?.attempts) ? ctx.attempts : [];
 
-    // Summarise outcomes per model so it's easy to tell at a glance which
-    // model performed how. Useful when checking whether the sonar fallback
-    // is rescuing runs in practice.
     const byModel = {};
     for (const a of attempts) {
       const m = a.model || 'unknown';
@@ -548,12 +635,13 @@ function writePerplexityUnavailableDebug(topicKey, ctx) {
       topic: topicKey,
       capturedAt: new Date().toISOString(),
       focusArea: ctx?.focusArea || '',
-      query: ctx?.query || '',
-      reason: 'Perplexity call did not yield a brief — retry budget exhausted or non-retryable error',
-      timeoutMs: PERPLEXITY_TIMEOUT_MS,
-      primaryMaxAttempts: PERPLEXITY_MAX_ATTEMPTS,
-      fallbackMaxAttempts: PERPLEXITY_FALLBACK_MAX_ATTEMPTS,
-      transientHttpCodes: Array.from(PERPLEXITY_TRANSIENT_HTTP),
+      systemPrompt: ctx?.systemPrompt || '',
+      userPrompt: ctx?.userPrompt || '',
+      reason: 'xAI research call did not yield a brief — retry budget exhausted or non-retryable error',
+      timeoutMs: XAI_RESEARCH_TIMEOUT_MS,
+      primaryMaxAttempts: XAI_RESEARCH_MAX_ATTEMPTS,
+      fallbackMaxAttempts: XAI_RESEARCH_FALLBACK_MAX_ATTEMPTS,
+      transientHttpCodes: Array.from(XAI_RESEARCH_TRANSIENT_HTTP),
       summaryByModel: byModel,
       attempts,
     };
@@ -562,98 +650,79 @@ function writePerplexityUnavailableDebug(topicKey, ctx) {
 }
 
 /**
- * writePerplexityDebug — write raw Perplexity API response to disk when a
- * call returns zero parseable sources. Filename includes ISO timestamp so
- * sequential rungs in the same topic don't collide. Best-effort: failures to
- * write are swallowed (debug artifacts must never break the pipeline).
+ * writeXaiResearchDebug — write the raw xAI Responses API payload when a
+ * call returns a structured response but the parser found 0 usable sources.
+ * Filename includes ISO timestamp so sequential rungs in the same topic
+ * don't collide. Best-effort.
  */
-function writePerplexityDebug(topicKey, data, ctx) {
+function writeXaiResearchDebug(topicKey, data, ctx) {
   try {
     if (!fs.existsSync(briefsDir)) return;
     const stamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const file = path.join(briefsDir, `perplexity-debug-${stamp}-${topicKey}.json`);
+    const file = path.join(briefsDir, `xai-research-debug-${stamp}-${topicKey}.json`);
     const payload = {
       topic: topicKey,
       capturedAt: new Date().toISOString(),
       focusArea: ctx?.focusArea || '',
-      query: ctx?.query || '',
+      systemPrompt: ctx?.systemPrompt || '',
+      userPrompt: ctx?.userPrompt || '',
       model: ctx?.model || '',
-      reason: 'Perplexity returned response but parser found 0 usable sources',
-      hasSearchResults: Array.isArray(data?.search_results) ? data.search_results.length : null,
-      hasCitations: Array.isArray(data?.citations) ? data.citations.length : null,
-      contentLength: data?.choices?.[0]?.message?.content?.length || 0,
+      reason: 'xAI returned a response but parser found 0 usable sources',
       rawResponse: data,
     };
     fs.writeFileSync(file, JSON.stringify(payload, null, 2));
-  } catch { /* best-effort; never break the pipeline on a debug write */ }
+  } catch { /* best-effort */ }
 }
 
 /**
- * parsePerplexityResponse — extract sources from Perplexity API response.
- *
- * Sonar / sonar-pro responses include TWO source-related fields:
- *   - data.citations:     array of bare URL strings (the legacy field)
- *   - data.search_results: array of { title, url, date, snippet, source }
- *
- * Prior implementation read only `citations`, so every Perplexity-driven brief
- * landed with empty title/publishedDate/excerpt for every source. Before the
- * 2026-04-17 metadata gate, those skeleton sources still satisfied a count
- * check and the brief moved on; after the gate, every Perplexity rung failed
- * `requireMetadata` and fell to evergreen. Verified against the live API:
- * `search_results` is populated for sonar-pro as of 2026-04-27.
- *
- * Strategy: prefer `search_results` (rich metadata). Fall back to `citations`
- * (URL-only) when search_results is missing — defensive for older responses
- * or any future API shape change. As a last resort, synthesize a single
- * source from the assistant's content so the brief is never empty when the
- * model actually said something useful.
+ * parseXaiResearchResponse — extract sources from an xAI Responses API
+ * payload. The model is asked to return strict JSON {sources: [...]}; we
+ * parse it, validate each source, and shape it into the brief contract that
+ * the rest of the pipeline expects (title/url/publishedDate/retrievedDate/
+ * excerpt). If the model declines to emit JSON, we fall back to collecting
+ * citation URLs from the Responses API output array so the brief still has
+ * something — better an opaque URL than no source at all.
  */
-function parsePerplexityResponse(topicKey, data, config, ctx) {
-  const content = data?.choices?.[0]?.message?.content || '';
+function parseXaiResearchResponse(topicKey, data, config, ctx) {
   const retrievedDate = new Date().toISOString().slice(0, 10);
   const maxSources = config?.maxBriefSources || 5;
-  const searchResults = Array.isArray(data?.search_results) ? data.search_results : [];
-  const citations = Array.isArray(data?.citations) ? data.citations : [];
+  const content = extractResponsesApiText(data);
 
-  let sources;
-  if (searchResults.length > 0) {
-    // Preferred path — rich metadata available.
-    sources = searchResults.slice(0, maxSources).map((sr, i) => ({
-      title: sr.title || `Source ${i + 1}`,
-      url: sr.url || '',
-      publishedDate: sr.date || '',
+  let parsed = null;
+  try { parsed = JSON.parse(content); } catch { parsed = extractFirstJsonObject(content); }
+
+  let sources = [];
+  if (parsed && Array.isArray(parsed.sources)) {
+    sources = parsed.sources.slice(0, maxSources).map((s, i) => ({
+      title: typeof s?.title === 'string' && s.title ? s.title : `Source ${i + 1}`,
+      url: typeof s?.url === 'string' ? s.url : '',
+      publishedDate: typeof s?.publishedDate === 'string' ? s.publishedDate : '',
       retrievedDate,
-      excerpt: sr.snippet || '',
+      excerpt: typeof s?.excerpt === 'string' ? s.excerpt : '',
     }));
-  } else if (citations.length > 0) {
-    // Legacy fallback — citations may be strings or objects.
-    sources = citations.slice(0, maxSources).map((citation, i) => {
-      if (typeof citation === 'string') {
-        return {
-          title: `Source ${i + 1}`,
-          url: citation,
-          publishedDate: '',
-          retrievedDate,
-          excerpt: '',
-        };
-      }
-      return {
-        title: citation.title || `Source ${i + 1}`,
-        url: citation.url || '',
-        publishedDate: citation.date || '',
-        retrievedDate,
-        excerpt: citation.snippet || '',
-      };
-    });
-  } else {
-    sources = [];
   }
 
-  // If neither source array is populated, fall back to a single content-based
-  // source so the brief isn't empty when the model returned a useful synthesis.
+  // Backstop: if the JSON path produced nothing usable, salvage URLs from the
+  // web_search tool output so the brief isn't empty when search clearly fired.
+  if (sources.length === 0) {
+    const urls = collectResponsesApiUrls(data);
+    if (urls.length > 0) {
+      sources = urls.slice(0, maxSources).map((u, i) => ({
+        title: `Source ${i + 1}`,
+        url: u,
+        publishedDate: '',
+        retrievedDate,
+        excerpt: '',
+      }));
+    }
+  }
+
+  // Last resort: synthesize a single source from the assistant's content so
+  // an evergreen synthesis isn't lost when the model returned prose with no
+  // citations at all. Drafting can still proceed with this.
   if (sources.length === 0 && content) {
     sources.push({
-      title: `Perplexity research: ${topicKey}`,
+      title: `xAI research synthesis: ${topicKey}`,
       url: '',
       publishedDate: '',
       retrievedDate,
@@ -661,14 +730,10 @@ function parsePerplexityResponse(topicKey, data, config, ctx) {
     });
   }
 
-  const warnings = sources.length === 0 ? ['Perplexity returned no citations'] : [];
+  const warnings = sources.length === 0 ? ['xAI returned no citations'] : [];
 
-  // When the parser yields nothing, dump the raw API response for postmortem.
-  // This is the single most valuable diagnostic artifact: it lets us see
-  // whether Perplexity actually returned 0 hits, returned a content synthesis
-  // with no citations, or returned an unexpected envelope shape.
   if (sources.length === 0) {
-    writePerplexityDebug(topicKey, data, ctx);
+    writeXaiResearchDebug(topicKey, data, ctx);
   }
 
   return validateBrief({ topic: topicKey, sources, relevantBlogPosts: [], warnings });
@@ -688,8 +753,8 @@ function parsePerplexityResponse(topicKey, data, config, ctx) {
        psychiatric keyword. Protects against Congress.gov / FDA RSS returning
        non-psych items that trivially satisfy a count check.
      - requireMetadata: at least one source has a publishedDate OR a
-       substantive excerpt (>20 chars). Protects against Perplexity returning
-       bare URLs with no extractable content.
+       substantive excerpt (>20 chars). Protects against the research call
+       returning bare URLs with no extractable content.
 
    Cross-topic substitution is NOT done here — that would break the 16-letter
    rotation balance. The evergreen prompt is the safety net.
@@ -928,9 +993,9 @@ async function runFallbackChain(topicKey, rungs) {
       return tagWithRung(brief, i + 1, rung.description);
     }
     // Rung failed its gate. Capture its underlying warnings so the final
-    // evergreen brief surfaces the actual cause (e.g. "Perplexity returned no
-    // citations", "Perplexity error: 401 Unauthorized") rather than the
-    // generic "returned no sources" line we used to emit.
+    // evergreen brief surfaces the actual cause (e.g. "xAI returned no
+    // citations", "xAI research error: HTTP 401 (grok-4-fast)") rather than
+    // the generic "returned no sources" line we used to emit.
     if (Array.isArray(brief?.warnings)) {
       brief.warnings.forEach(w => rungDetails.push(`Rung ${i + 1} detail: ${w}`));
     }
@@ -938,7 +1003,7 @@ async function runFallbackChain(topicKey, rungs) {
   return escalateToEvergreen(topicKey, attempts, rungDetails);
 }
 
-// ── s1-new-approvals: 90-day FDA RSS → 3-year retrospective via Perplexity ──
+// ── s1-new-approvals: 90-day FDA RSS → 3-year retrospective via xAI/Grok ──
 export async function fetchNewApprovals(topicKey, config) {
   return runFallbackChain(topicKey, [
     {
@@ -947,7 +1012,7 @@ export async function fetchNewApprovals(topicKey, config) {
       gate: { requirePsychRelevance: true, requireMetadata: true },
     },
     {
-      description: 'Most recent FDA psychiatric approval in the last 3 years (Perplexity retrospective)',
+      description: 'Most recent FDA psychiatric approval in the last 3 years (xAI/Grok retrospective)',
       fn: () => fetchPerplexity(topicKey, {
         ...config,
         topics: {
@@ -982,7 +1047,7 @@ export async function fetchSupplyGenerics(topicKey, config) {
   const loose = { requireMetadata: true };  // historical rung: any substantive source OK
   return runFallbackChain(topicKey, [
     {
-      description: 'Active psychiatric-drug shortages (FDA RSS / ASHP via Perplexity)',
+      description: 'Active psychiatric-drug shortages (FDA RSS / ASHP via xAI/Grok)',
       gate: psychGate,
       fn: () => fetchPerplexity(topicKey, {
         ...config,
@@ -996,7 +1061,7 @@ export async function fetchSupplyGenerics(topicKey, config) {
       }),
     },
     {
-      description: 'New generic psychiatric-drug approvals in the last 12 months (Perplexity)',
+      description: 'New generic psychiatric-drug approvals in the last 12 months (xAI/Grok)',
       gate: psychGate,
       fn: () => fetchPerplexity(topicKey, {
         ...config,
@@ -1011,7 +1076,7 @@ export async function fetchSupplyGenerics(topicKey, config) {
       }),
     },
     {
-      description: 'Historical psychiatric-drug shortage essay (Perplexity, no recency cutoff)',
+      description: 'Historical psychiatric-drug shortage essay (xAI/Grok, no recency cutoff)',
       gate: loose,
       fn: () => fetchPerplexity(topicKey, {
         ...config,
@@ -1043,7 +1108,7 @@ export async function fetchPolicyFdaWatch(topicKey, config) {
       fn: () => fetchFdaRss(topicKey, config),
     },
     {
-      description: 'CMS, state scope-of-practice, or major guideline update (Perplexity)',
+      description: 'CMS, state scope-of-practice, or major guideline update (xAI/Grok)',
       gate,
       fn: () => fetchPerplexity(topicKey, {
         ...config,
@@ -1059,20 +1124,21 @@ export async function fetchPolicyFdaWatch(topicKey, config) {
   ]);
 }
 
-// ── s2 handlers: single-rung Perplexity wrappers with landmark fallback for comparison ──
-// Each passes through to fetchPerplexity with the per-topic focusArea already in config.
+// ── s2 handlers: single-rung research wrappers with landmark fallback for comparison ──
+// Each passes through to fetchPerplexity (xAI/Grok-backed since 2026-05-21) with
+// the per-topic focusArea already in config.
 // Rung 2 (when applicable) swaps the focusArea for the landmark/receptor/history fallback.
 
 export async function fetchMedComparison(topicKey, config) {
   const gate = { requireMetadata: true };
   return runFallbackChain(topicKey, [
     {
-      description: 'Current medication comparison (Perplexity)',
+      description: 'Current medication comparison (xAI/Grok)',
       gate,
       fn: () => fetchPerplexity(topicKey, config),
     },
     {
-      description: 'Landmark psychopharmacology trial revisit (Perplexity, no recency cutoff)',
+      description: 'Landmark psychopharmacology trial revisit (xAI/Grok, no recency cutoff)',
       gate,
       fn: () => fetchPerplexity(topicKey, {
         ...config,
@@ -1093,12 +1159,12 @@ export async function fetchHowThingsWork(topicKey, config) {
   const gate = { requireMetadata: true };
   return runFallbackChain(topicKey, [
     {
-      description: 'Mechanism of a specific clinically relevant drug (Perplexity)',
+      description: 'Mechanism of a specific clinically relevant drug (xAI/Grok)',
       gate,
       fn: () => fetchPerplexity(topicKey, config),
     },
     {
-      description: 'Receptor-level deep dive (Perplexity, evergreen scope)',
+      description: 'Receptor-level deep dive (xAI/Grok, evergreen scope)',
       gate,
       fn: () => fetchPerplexity(topicKey, {
         ...config,
@@ -1119,12 +1185,12 @@ export async function fetchSurveyReview(topicKey, config) {
   const gate = { requireMetadata: true };
   return runFallbackChain(topicKey, [
     {
-      description: 'Rating-scale review tied to a recent evidence or implementation story (Perplexity)',
+      description: 'Rating-scale review tied to a recent evidence or implementation story (xAI/Grok)',
       gate,
       fn: () => fetchPerplexity(topicKey, config),
     },
     {
-      description: 'History of a rating scale (Perplexity, no recency cutoff)',
+      description: 'History of a rating scale (xAI/Grok, no recency cutoff)',
       gate,
       fn: () => fetchPerplexity(topicKey, {
         ...config,
@@ -1145,12 +1211,12 @@ export async function fetchAdverseEffects(topicKey, config) {
   const gate = { requireMetadata: true };
   return runFallbackChain(topicKey, [
     {
-      description: 'Adverse effect tied to a recent label change or case series (Perplexity)',
+      description: 'Adverse effect tied to a recent label change or case series (xAI/Grok)',
       gate,
       fn: () => fetchPerplexity(topicKey, config),
     },
     {
-      description: 'Evergreen adverse-effect deep dive (Perplexity, no recency cutoff)',
+      description: 'Evergreen adverse-effect deep dive (xAI/Grok, no recency cutoff)',
       gate,
       fn: () => fetchPerplexity(topicKey, {
         ...config,
@@ -1167,14 +1233,14 @@ export async function fetchAdverseEffects(topicKey, config) {
   ]);
 }
 
-// ── S3 deep dives: previously dispatched directly to fetchPerplexity, which
-// meant a single transient Perplexity 503 or timeout would blank an entire
+// ── S3 deep dives: previously dispatched directly to the research call,
+// which meant a single transient 503 or timeout would blank an entire
 // section (no rungs, no fallback). Wrapped in runFallbackChain as of
 // 2026-05-08. Rung 1 is the configured focusArea verbatim (broad framing of
 // the topic). Rung 2 is a narrower, more concrete framing — anchoring the
 // query to a specific named example often produces results when the broad
 // version returned nothing. Both rungs are evergreen (no recency cutoff) per
-// config.js; the no-cutoff query template (added simultaneously) handles the
+// config.js; the no-cutoff prompt branch (added simultaneously) handles the
 // time-insensitive phrasing.
 const S3_RUNG2_FOCUS = {
   's3-diagnosis-history':
@@ -1192,12 +1258,12 @@ export async function fetchS3WithFallback(topicKey, config) {
   const topicConf = config?.topics?.[topicKey] || {};
   return runFallbackChain(topicKey, [
     {
-      description: `${topicConf.label || topicKey} — primary framing (Perplexity)`,
+      description: `${topicConf.label || topicKey} — primary framing (xAI/Grok)`,
       gate,
       fn: () => fetchPerplexity(topicKey, config),
     },
     {
-      description: `${topicConf.label || topicKey} — concrete-example fallback (Perplexity)`,
+      description: `${topicConf.label || topicKey} — concrete-example fallback (xAI/Grok)`,
       gate,
       fn: () => fetchPerplexity(topicKey, {
         ...config,

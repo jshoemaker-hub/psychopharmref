@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import Anthropic from '@anthropic-ai/sdk';
+import { buildEvergreenRotationContext } from './evergreen.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const promptsDir = path.join(__dirname, '..', 'prompts');
@@ -266,7 +267,7 @@ export function renderSectionHtml(topicLabel, essayTitle, sendDate, bodyText) {
  * @param {string} topicKey
  * @param {object} brief
  * @param {object} config
- * @param {{ sendDate?: string }} [options]
+ * @param {{ sendDate?: string, evergreenRotation?: object }} [options]
  * @returns {string} HTML string
  */
 export async function draftSection(topicKey, brief, config, options = {}) {
@@ -285,7 +286,10 @@ export async function draftSection(topicKey, brief, config, options = {}) {
     // for this section instead of the topic-specific one, and skip the recency
     // guard (evergreen pieces are not time-bound).
     const useEvergreen = brief?.fallback === 'evergreen';
-    const templateText = loadPromptTemplate(topicKey, { evergreen: useEvergreen });
+    let templateText = loadPromptTemplate(topicKey, { evergreen: useEvergreen });
+    if (useEvergreen && options.evergreenRotation) {
+      templateText = `${templateText}\n\n${buildEvergreenRotationContext(options.evergreenRotation)}`;
+    }
     const recencyGuard = useEvergreen ? '' : buildRecencyGuard(topicKey, config);
     const fullPrompt = injectBrief(templateText, brief, recencyGuard);
 
@@ -409,7 +413,7 @@ export const BODY_START_MARKER = '<!-- BEEHIIV_BODY_START -->';
 export const BODY_END_MARKER = '<!-- BEEHIIV_BODY_END -->';
 
 // REVIEW_ONLY markers fence content that should appear in the saved HTML for
-// in-browser review (e.g., the xAI conflict banners) but MUST be stripped
+// in-browser review (e.g., the reviewer conflict banners) but MUST be stripped
 // before the body is copied to Beehiiv. extractBodyOnly() removes anything
 // between these markers, inclusive.
 export const REVIEW_ONLY_START = '<!-- REVIEW_ONLY_START -->';
@@ -450,21 +454,28 @@ export function renderCopyPasteBlock(meta, sendDate) {
 }
 
 /**
- * renderConflictBanner — render a per-section "xAI flagged" review banner
- * surfacing this section's xaiConflicts entries. The banner is fenced with
- * REVIEW_ONLY markers so extractBodyOnly() strips it from the Beehiiv clipboard.
+ * renderConflictBanner — render a per-section "reviewer flagged" review banner
+ * surfacing this section's reviewerConflicts entries. The banner is fenced
+ * with REVIEW_ONLY markers so extractBodyOnly() strips it from the Beehiiv
+ * clipboard.
  *
  * Visual treatment: red border + "REVIEW ONLY — NOT FOR PUBLICATION" header,
  * deliberately ugly so it's impossible to mistake for newsletter content.
  *
  * Returns '' if the brief is missing or has no conflicts (banner suppressed).
  *
- * @param {object} brief — must have .xaiConflicts array; may have .xaiSummary
+ * Naming history: the conflict fields were previously called xaiConflicts /
+ * xaiSummary back when xAI/Grok was the reviewer. Roles swapped 2026-05-21
+ * (Perplexity now reviews; xAI now researches), and the fields were renamed
+ * to be reviewer-agnostic. Old briefs in briefs/ still carry the xai* names
+ * and will not render banners — that's expected; just re-run --research.
+ *
+ * @param {object} brief — must have .reviewerConflicts array; may have .reviewerSummary
  * @param {string} sectionLabel — e.g. "Section 1: Newly Approved Medications"
  * @returns {string} HTML
  */
 export function renderConflictBanner(brief, sectionLabel) {
-  const conflicts = (brief && brief.xaiConflicts) || [];
+  const conflicts = (brief && brief.reviewerConflicts) || [];
   if (conflicts.length === 0) return '';
 
   const items = conflicts.map(c => {
@@ -483,14 +494,14 @@ export function renderConflictBanner(brief, sectionLabel) {
     ].join('\n');
   }).join('\n');
 
-  const summary = brief.xaiSummary
-    ? `<p style="margin:0 0 0.5em 0;color:#444;font-style:italic;">Grok summary: ${escapeHtml(brief.xaiSummary)}</p>`
+  const summary = brief.reviewerSummary
+    ? `<p style="margin:0 0 0.5em 0;color:#444;font-style:italic;">Reviewer summary: ${escapeHtml(brief.reviewerSummary)}</p>`
     : '';
 
   return [
     REVIEW_ONLY_START,
     `<div style="border:3px solid #b91c1c;background:#fef2f2;padding:0.75em 1em;margin:1.5em 0 0.5em 0;font-family:-apple-system,BlinkMacSystemFont,sans-serif;">`,
-    `  <p style="margin:0 0 0.4em 0;font-size:0.85em;font-weight:bold;color:#b91c1c;letter-spacing:0.05em;">⚠ REVIEW ONLY — xAI flagged ${conflicts.length} source${conflicts.length === 1 ? '' : 's'} in ${escapeHtml(sectionLabel)}</p>`,
+    `  <p style="margin:0 0 0.4em 0;font-size:0.85em;font-weight:bold;color:#b91c1c;letter-spacing:0.05em;">⚠ REVIEW ONLY — Reviewer flagged ${conflicts.length} source${conflicts.length === 1 ? '' : 's'} in ${escapeHtml(sectionLabel)}</p>`,
     `  ${summary}`,
     `  <ul style="margin:0;padding-left:1.5em;font-size:0.95em;line-height:1.5;">`,
     items,
@@ -511,7 +522,7 @@ export function renderConflictBanner(brief, sectionLabel) {
  * @param {{ title, subtitle, subject, previewText }} [meta] — optional meta
  * @param {string} [sendDate] — optional YYYY-MM-DD for the meta header
  * @param {object[]} [briefs] — optional array of 3 briefs; if a brief has
- *   .xaiConflicts entries a review-only banner is inserted above its section
+ *   .reviewerConflicts entries a review-only banner is inserted above its section
  * @returns {string}
  */
 export function assembleHtml(sections, blogPosts, cta, meta, sendDate, briefs) {
@@ -530,7 +541,7 @@ export function assembleHtml(sections, blogPosts, cta, meta, sendDate, briefs) {
     const label = sectionLabels[i];
     parts.push(`<!-- ${label} -->`);
 
-    // Pre-section xAI conflict banner (review-only; stripped by extractBodyOnly).
+    // Pre-section reviewer conflict banner (review-only; stripped by extractBodyOnly).
     const brief = briefs && briefs[i];
     if (brief) {
       const banner = renderConflictBanner(brief, label);
@@ -565,7 +576,7 @@ export function assembleHtml(sections, blogPosts, cta, meta, sendDate, briefs) {
  * suitable for pasting into Beehiiv's HTML editor without the copy-paste header.
  * Falls back to the full input if markers are not found (older drafts).
  *
- * Also strips any REVIEW_ONLY blocks (e.g. xAI conflict banners) — these are
+ * Also strips any REVIEW_ONLY blocks (e.g. reviewer conflict banners) — these are
  * meant for in-browser review of the saved draft, NOT for Beehiiv. The strip
  * is defense in depth: even if a banner accidentally lands inside the body
  * markers, this regex removes it before clipboard copy.

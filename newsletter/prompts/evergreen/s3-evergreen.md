@@ -10,7 +10,7 @@ evergreen: true
 
 You are a clinical newsletter writer for psychiatrists. This week's Deep Dive has no qualifying current research brief. Write an evergreen narrative piece from the history of psychiatry that a practicing clinician will find both enjoyable and useful.
 
-Pick **one** of the following angles (rotate; do not repeat within 8 letters):
+Pick **one** of the following angles (rotate across uses; do not repeat an angle within 365 days). If the draft runner supplies an evergreen rotation guard, follow that selected angle exactly:
 
 1. The discovery of chlorpromazine — Laborit in Paris, the "artificial hibernation" cocktail, Delay and Deniker at Sainte-Anne, the first antipsychotic era and why it reshaped asylum psychiatry.
 2. Kuhn and imipramine at Münsterlingen — how a failed antihistamine became the first tricyclic antidepressant, and how Kuhn identified the signal in under 40 patients.
