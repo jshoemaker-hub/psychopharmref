@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Create Question Bank Account</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 480px; margin: 60px auto; padding: 20px; background: #faf8f4; color: #231e14; }
+  h2 { color: #4a7c35; }
+  .msg { margin-top: 20px; padding: 14px; border-radius: 8px; }
+  .success { background: #e8f5e0; border: 1px solid #4a7c35; }
+  .error { background: #fde8e8; border: 1px solid #c44; }
+  .info { background: #fff8e0; border: 1px solid #8b6914; }
+  button { background: #4a7c35; color: #fff; border: none; padding: 12px 24px; border-radius: 6px; font-size: 16px; cursor: pointer; margin-top: 10px; }
+  button:hover { background: #3d6a2b; }
+  code { background: #ece6db; padding: 2px 6px; border-radius: 3px; }
+</style>
+</head>
+<body>
+  <h2>Create Question Bank Account</h2>
+  <p>This will create an account with:</p>
+  <p><strong>Email:</strong> jshoemakerhwc@gmail.com<br>
+     <strong>Password:</strong> TempPass2026!</p>
+  <button id="btn" onclick="createAccount()">Create Account</button>
+  <div id="result"></div>
+
+<script>
+async function createAccount() {
+  var btn = document.getElementById('btn');
+  var result = document.getElementById('result');
+  btn.disabled = true;
+  btn.textContent = 'Creating...';
+  result.innerHTML = '<div class="msg info">Connecting to Supabase...</div>';
+
+  try {
+    var sb = window.supabase.createClient(
+      'https://rqvulyfzyyvzxekuxgyu.supabase.co',
+      'sb_publishable_ix1r79mKjH9R7V8MC2M6dg_ANx5-uXE'
+    );
+
+    var { data, error } = await sb.auth.signUp({
+      email: 'jshoemakerhwc@gmail.com',
+      password: 'TempPass2026!'
+    });
+
+    if (error) {
+      result.innerHTML = '<div class="msg error"><strong>Error:</strong> ' + error.message + '</div>';
+      btn.disabled = false;
+      btn.textContent = 'Try Again';
+      return;
+    }
+
+    if (data.user && data.user.identities && data.user.identities.length === 0) {
+      result.innerHTML = '<div class="msg info"><strong>Account already exists!</strong> Try signing in on the Question Bank page with this email and password.</div>';
+    } else if (data.session) {
+      result.innerHTML = '<div class="msg success"><strong>Account created and logged in!</strong> You can now go to the Question Bank. No email confirmation needed.</div>';
+    } else {
+      result.innerHTML = '<div class="msg success"><strong>Account created!</strong> Check your email for a confirmation link, then sign in on the Question Bank page.</div>';
+    }
+    btn.textContent = 'Done';
+  } catch (e) {
+    result.innerHTML = '<div class="msg error"><strong>Error:</strong> ' + e.message + '</div>';
+    btn.disabled = false;
+    btn.textContent = 'Try Again';
+  }
+}
+</script>
+</body>
+</html>

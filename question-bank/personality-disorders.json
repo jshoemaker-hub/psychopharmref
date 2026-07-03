@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "question": "According to the blog post, what is the precise definition of the Alternative Model for Personality Disorders (AMPD)?",
+    "options": [
+      "A system that replaces all personality disorder diagnoses with a single severity rating",
+      "A dimensional assessment approach measuring the severity of maladaptive traits along multiple axes rather than assigning categorical diagnoses",
+      "A revised categorical system that reduces the number of personality disorders from ten to six",
+      "A screening tool designed to identify personality disorders in primary care settings"
+    ],
+    "correct_index": 1,
+    "explanation": "The post states that the DSM-5 proposed the AMPD in Section III, which shifts toward dimensional assessment—measuring the severity of maladaptive traits along multiple axes rather than assigning categorical diagnoses. This addresses the false precision of categorical cutoffs and aligns with neurobiology suggesting personality pathology exists on continua.",
+    "source_blog_title": "Personality Disorders: Diagnosis, Neurobiology, and Evidence-Based Treatment",
+    "source_blog_url": "https://psychopharmref.com/blog/personality-disorders.html",
+    "frame_used": "Factual Recall"
+  },
+  {
+    "id": 2,
+    "question": "Which of the following best captures the central point the author makes about the impact of personality disorders on treatment outcomes?",
+    "options": [
+      "Personality disorders make patients completely treatment-resistant to all psychiatric interventions",
+      "Personality disorders have minimal effect on Axis I treatment as long as medication doses are optimized",
+      "The presence of a personality disorder leads to higher dropout rates, poorer medication response, longer time to remission, and elevated relapse rates",
+      "Personality disorders improve treatment engagement because patients are more motivated to seek help"
+    ],
+    "correct_index": 2,
+    "explanation": "The post emphasizes that personality disorders dramatically alter treatment response to standard psychiatric interventions, listing higher treatment dropout, poorer medication response, longer remission time, and elevated relapse rates. The author concludes that personality disorder assessment should be integrated into all psychiatric formulations.",
+    "source_blog_title": "Personality Disorders: Diagnosis, Neurobiology, and Evidence-Based Treatment",
+    "source_blog_url": "https://psychopharmref.com/blog/personality-disorders.html",
+    "frame_used": "Main Idea"
+  },
+  {
+    "id": 3,
+    "question": "What specific detail does the author provide regarding schizoid personality disorder that most readers might overlook?",
+    "options": [
+      "Schizoid individuals have impaired social-cognitive abilities similar to autism spectrum disorder",
+      "Schizoid individuals typically have preserved social-cognitive abilities but little motivation to use them",
+      "Schizoid PD has the highest prevalence of all Cluster A disorders at 8%",
+      "Schizoid individuals actively desire social connection but fear rejection"
+    ],
+    "correct_index": 1,
+    "explanation": "The post makes a critical differential point: unlike autism spectrum disorder where social difficulties reflect deficits in social-cognitive processing and theory of mind, schizoid individuals typically have preserved social-cognitive abilities but little motivation to use them. This distinction is easy to overlook but is clinically important.",
+    "source_blog_title": "Personality Disorders: Diagnosis, Neurobiology, and Evidence-Based Treatment",
+    "source_blog_url": "https://psychopharmref.com/blog/personality-disorders.html",
+    "frame_used": "Key Detail"
+  },
+  {
+    "id": 4,
+    "question": "Based solely on the information in the post, it can be inferred that Good Psychiatric Management (GPM) may be particularly valuable in clinical settings because...",
+    "options": [
+      "It is the only therapy shown to reduce suicidality in BPD",
+      "It requires less specialized training than DBT and shows comparable efficacy, making it more widely accessible",
+      "It incorporates medication management as its primary intervention",
+      "It was developed specifically for inpatient psychiatric units"
+    ],
+    "correct_index": 1,
+    "explanation": "The post describes GPM as a pragmatic, generalist approach designed for delivery by non-specialized psychiatrists and therapists in standard outpatient settings and notes that emerging evidence shows it is as effective as more intensive interventions (DBT, MBT) for reducing suicidality and self-harm. The author explicitly states that GPM's accessibility is a major advantage.",
+    "source_blog_title": "Personality Disorders: Diagnosis, Neurobiology, and Evidence-Based Treatment",
+    "source_blog_url": "https://psychopharmref.com/blog/personality-disorders.html",
+    "frame_used": "Inference"
+  },
+  {
+    "id": 5,
+    "question": "What is the primary reason the author gives for why non-suicidal self-injury (NSSI) in BPD is reinforced?",
+    "options": [
+      "It generates positive social attention from caregivers and family members",
+      "It provides physical sensation that acutely reduces negative affect, interrupting dissociation or overwhelming emotion",
+      "It triggers endorphin release that produces a euphoric high",
+      "It allows the patient to control when they experience pain rather than having it inflicted by others"
+    ],
+    "correct_index": 1,
+    "explanation": "The post explains that NSSI is typically described by patients as providing relief from intolerable emotional or somatic states and that studies using experience sampling show that NSSI does indeed reduce negative affect acutely, explaining its reinforcement. The physical sensation interrupts dissociation or provides a sense of control.",
+    "source_blog_title": "Personality Disorders: Diagnosis, Neurobiology, and Evidence-Based Treatment",
+    "source_blog_url": "https://psychopharmref.com/blog/personality-disorders.html",
+    "frame_used": "Cause & Effect"
+  },
+  {
+    "id": 6,
+    "question": "How does the author distinguish BPD mood instability from Bipolar II mood episodes in the article?",
+    "options": [
+      "BPD mood shifts last weeks while Bipolar II shifts last hours",
+      "Bipolar II involves reactive mood shifts tied to interpersonal triggers, while BPD shows episodic elevation with grandiosity",
+      "BPD affective shifts are reactive, brief (hours), and tied to interpersonal triggers, while Bipolar II shows episodic mood elevation lasting days to weeks with decreased need for sleep and grandiosity",
+      "Both are clinically identical and can only be distinguished through genetic testing"
+    ],
+    "correct_index": 2,
+    "explanation": "The post explicitly contrasts the two: bipolar II shows episodic mood elevation lasting days to weeks with decreased need for sleep, grandiosity, increased goal-directed activity. BPD affective shifts are reactive, brief (hours), and tied to interpersonal triggers. This distinction is presented as a common diagnostic pitfall.",
+    "source_blog_title": "Personality Disorders: Diagnosis, Neurobiology, and Evidence-Based Treatment",
+    "source_blog_url": "https://psychopharmref.com/blog/personality-disorders.html",
+    "frame_used": "Comparison"
+  },
+  {
+    "id": 7,
+    "question": "In a real-world scenario where a clinician notices they feel cast as the \"idealized rescuer\" by a BPD patient and later feel rejected and ineffective, which principle from the blog would be most relevant?",
+    "options": [
+      "Immediately refer the patient to a different provider to prevent boundary violations",
+      "Recognize this as expected countertransference and seek consultation or supervision to manage the dynamic productively",
+      "Increase the patient's medication dosages to reduce the intensity of transference reactions",
+      "Confront the patient directly about their manipulative behavior"
+    ],
+    "correct_index": 1,
+    "explanation": "The post describes this exact dynamic: Early idealization can create a rescue fantasy in clinicians. This is invariably disappointed when the patient becomes angry or suicidal, leading the clinician to feel rejected, ineffective, or manipulated. The recommended response is recognition of this dynamic and use of consultation or supervision. The author also emphasizes that the pattern is not manipulative but reflects the person's genuine perception.",
+    "source_blog_title": "Personality Disorders: Diagnosis, Neurobiology, and Evidence-Based Treatment",
+    "source_blog_url": "https://psychopharmref.com/blog/personality-disorders.html",
+    "frame_used": "Application"
+  },
+  {
+    "id": 8,
+    "question": "Which of the following statements is NOT true according to the blog post?",
+    "options": [
+      "Approximately 85% of individuals with BPD achieve remission of full diagnostic criteria within 10 years",
+      "DBT reduces suicidal behaviors by approximately 50% in randomized controlled trials",
+      "Lamotrigine is FDA-approved for the treatment of borderline personality disorder",
+      "Functional recovery in BPD typically lags behind symptomatic improvement by years"
+    ],
+    "correct_index": 2,
+    "explanation": "The post explicitly states that no medication is FDA-approved for any personality disorder. Lamotrigine is discussed as showing modest evidence for mood instability in BPD, but it does not carry an FDA indication. Options A, B, and D are all directly stated in the post.",
+    "source_blog_title": "Personality Disorders: Diagnosis, Neurobiology, and Evidence-Based Treatment",
+    "source_blog_url": "https://psychopharmref.com/blog/personality-disorders.html",
+    "frame_used": "Common Misconception"
+  }
+]
