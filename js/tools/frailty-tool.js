@@ -8,7 +8,7 @@
       cardClass: 'fr-score-card--d1',
       items: [
         { id: 1, domain: 'Psychiatric symptom acuity', desc: 'Severity of active psychotic, mood, or anxiety symptoms in the past 30 days (e.g., persistent hallucinations, psychomotor retardation, incapacitating panic).' },
-        { id: 7, domain: 'Suicidality / self-harm risk', desc: 'Recency and severity of suicidal ideation, intent, plan, or self-injurious behavior.' },
+        { id: 7, domain: 'Suicidality / self-harm risk', desc: 'Any suicide attempt or self-harm event in the past 12 months. Binary: 0 = none, 3 = one or more.', binary: true },
         { id: 8, domain: 'Insight and judgment', desc: 'Degree of impaired illness awareness or unsafe decision-making relevant to navigating reporting/compliance systems.' },
         { id: 15, domain: 'Sleep-wake / behavioral regulation', desc: 'Disruption significant enough to impair reliability or attendance at scheduled activities.' },
         { id: 18, domain: 'Response to structured demands', desc: 'History of decompensation under schedule pressure, deadlines, or unfamiliar structured environments.' }
@@ -31,8 +31,8 @@
       label: 'Care Utilization & Treatment',
       cardClass: 'fr-score-card--d3',
       items: [
-        { id: 5, domain: 'Psychiatric hospitalizations (12 mo)', desc: 'Number and acuity of inpatient psychiatric admissions in the past 12 months.' },
-        { id: 6, domain: 'Crisis / ED utilization (12 mo)', desc: 'ED visits, mobile crisis contacts, or crisis stabilization admissions for psychiatric decompensation.' },
+        { id: 5, domain: 'Psychiatric hospitalizations (12 mo)', desc: 'Any inpatient psychiatric admission in the past 12 months. Binary: 0 = none, 3 = one or more.', binary: true },
+        { id: 6, domain: 'Crisis / ED utilization (12 mo)', desc: 'Any ED visit, mobile crisis contact, or crisis stabilization admission for psychiatric decompensation in the past 12 months. Binary: 0 = none, 3 = one or more.', binary: true },
         { id: 9, domain: 'Treatment adherence capacity', desc: 'Inability (distinct from unwillingness) to consistently attend appointments or take medication as prescribed.' },
         { id: 16, domain: 'Medication side-effect burden', desc: 'Sedation, extrapyramidal symptoms, metabolic effects, or cognitive slowing limiting sustained activity.' },
         { id: 19, domain: 'Treatment engagement pattern', desc: 'Consistency of outpatient visit attendance over the past 6–12 months.' }
@@ -95,13 +95,52 @@
   const section          = document.getElementById('frailty-tool');
 
   /* ── Render Form ───────────────────────────────────────────────────── */
-  function radiosHtml(namePrefix, itemId) {
+  function radiosHtml(namePrefix, itemId, binary) {
+    if (binary) {
+      // Render the two binary options in the 1st and 4th column positions,
+      // with invisible spacers in between, so they still line up under the
+      // shared 4-column header row.
+      return `
+        <label class="fr-radio-label">
+          <input type="radio" name="${namePrefix}${itemId}" value="0">
+          <span class="fr-radio-text">0 – Not present</span>
+        </label>
+        <span class="fr-radio-spacer" aria-hidden="true"></span>
+        <span class="fr-radio-spacer" aria-hidden="true"></span>
+        <label class="fr-radio-label">
+          <input type="radio" name="${namePrefix}${itemId}" value="3">
+          <span class="fr-radio-text">3 – Present</span>
+        </label>
+      `;
+    }
     return ANCHORS.map(a => `
       <label class="fr-radio-label">
         <input type="radio" name="${namePrefix}${itemId}" value="${a.value}">
         <span class="fr-radio-text">${a.label}</span>
       </label>
     `).join('');
+  }
+
+  function noteHtml(namePrefix, itemId) {
+    return `<div class="fr-item-note-row">
+      <label class="fr-item-note-label" for="${namePrefix}note-${itemId}">Note (optional)</label>
+      <input type="text" id="${namePrefix}note-${itemId}" name="${namePrefix}note-${itemId}" class="fr-item-note-input" placeholder="Specific example or clarifying detail for this item...">
+    </div>`;
+  }
+
+  function itemGroupHtml(namePrefix, item) {
+    const badge = item.binary ? '<span class="fr-item-binary-badge">Binary: 0 or 3</span>' : '';
+    return `<div class="fr-item-group">
+      <div class="fr-item-row">
+        <span class="fr-item-num">${item.id}.</span>
+        <div class="fr-item-body">
+          <div class="fr-item-domain">${item.domain}${badge}</div>
+          <div class="fr-item-desc">${item.desc}</div>
+        </div>
+        <div class="fr-radios">${radiosHtml(namePrefix, item.id, item.binary)}</div>
+      </div>
+      ${noteHtml(namePrefix, item.id)}
+    </div>`;
   }
 
   function renderSmiForm() {
@@ -120,16 +159,7 @@
         </div>
       </div>`;
       domain.items.forEach(item => {
-        html += `<div class="fr-item-group">
-          <div class="fr-item-row">
-            <span class="fr-item-num">${item.id}.</span>
-            <div class="fr-item-body">
-              <div class="fr-item-domain">${item.domain}</div>
-              <div class="fr-item-desc">${item.desc}</div>
-            </div>
-            <div class="fr-radios">${radiosHtml('fr-smi-', item.id)}</div>
-          </div>
-        </div>`;
+        html += itemGroupHtml('fr-smi-', item);
       });
       html += `</div>`;
     });
@@ -150,16 +180,7 @@
       </div>
     </div>`;
     SUD_ITEMS.forEach(item => {
-      html += `<div class="fr-item-group">
-        <div class="fr-item-row">
-          <span class="fr-item-num">${item.id}.</span>
-          <div class="fr-item-body">
-            <div class="fr-item-domain">${item.domain}</div>
-            <div class="fr-item-desc">${item.desc}</div>
-          </div>
-          <div class="fr-radios">${radiosHtml('fr-sud-', item.id)}</div>
-        </div>
-      </div>`;
+      html += itemGroupHtml('fr-sud-', item);
     });
     html += `</div>`;
     sudContainer.innerHTML = html;
@@ -176,14 +197,16 @@
   }
 
   // Like getDomainScore, but also returns each item's selected value (null if unanswered)
-  // for narrative generation.
+  // and free-text note, for narrative and report generation.
   function getDomainDetail(namePrefix, items) {
     let sum = 0, count = 0;
     const itemValues = items.map(item => {
       const sel = document.querySelector(`input[name="${namePrefix}${item.id}"]:checked`);
       const value = sel ? parseInt(sel.value, 10) : null;
       if (value !== null) { sum += value; count++; }
-      return { id: item.id, domain: item.domain, desc: item.desc, value };
+      const noteEl = document.getElementById(`${namePrefix}note-${item.id}`);
+      const note = noteEl ? noteEl.value.trim() : '';
+      return { id: item.id, domain: item.domain, desc: item.desc, value, note };
     });
     return { sum, count, itemValues };
   }
@@ -337,12 +360,12 @@
       'ITEM RESPONSES:'
     ];
 
-    const allSmiItems = [].concat(...SMI_DOMAINS.map(d => d.items)).sort((a, b) => a.id - b.id);
-    allSmiItems.forEach(item => {
-      const sel = document.querySelector(`input[name="fr-smi-${item.id}"]:checked`);
-      const val = sel ? parseInt(sel.value, 10) : null;
+    const allItemValues = [].concat(d1.itemValues, d2.itemValues, d3.itemValues, d4.itemValues)
+      .sort((a, b) => a.id - b.id);
+    allItemValues.forEach(item => {
       lines.push('  ' + item.id + '. ' + item.domain + ' — ' + item.desc);
-      lines.push('      Response: ' + labelForValue(val));
+      lines.push('      Response: ' + labelForValue(item.value));
+      if (item.note) lines.push('      Note: ' + item.note);
     });
 
     if (sudActive()) {
@@ -355,6 +378,7 @@
       sud.itemValues.forEach(item => {
         lines.push('  ' + item.id + '. ' + item.domain + ' — ' + item.desc);
         lines.push('      Response: ' + labelForValue(item.value));
+        if (item.note) lines.push('      Note: ' + item.note);
       });
     }
 
@@ -370,8 +394,10 @@
 
   /* ── Reset ─────────────────────────────────────────────────────────── */
   function resetForm() {
-    document.querySelectorAll('input[name^="fr-smi-"]').forEach(r => { r.checked = false; });
-    document.querySelectorAll('input[name^="fr-sud-"]').forEach(r => { r.checked = false; });
+    document.querySelectorAll('input[type="radio"][name^="fr-smi-"]').forEach(r => { r.checked = false; });
+    document.querySelectorAll('input[type="radio"][name^="fr-sud-"]').forEach(r => { r.checked = false; });
+    document.querySelectorAll('input[type="text"][name^="fr-smi-note-"]').forEach(i => { i.value = ''; });
+    document.querySelectorAll('input[type="text"][name^="fr-sud-note-"]').forEach(i => { i.value = ''; });
     if (sudCheckbox) sudCheckbox.checked = false;
     if (diagnosisInput) diagnosisInput.value = '';
     if (narrativeInput) narrativeInput.value = '';
