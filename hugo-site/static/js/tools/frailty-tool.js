@@ -289,8 +289,8 @@
       return 'No items have been scored yet. Complete the 20-item checklist above, then regenerate this report for an individualized narrative summary.';
     }
 
-    let sentence1 = 'For this patient with a diagnosis of ' + diagnosis + ', over the period of the preceding 30–90 days, ' +
-      'the patient scored ' + total + '/60 on the SMI-FRAIL-20, resulting in ' + severity.label.toLowerCase() +
+    let sentence1 = 'Clinical review for medical frailty over the last 30–90 days for this patient with a diagnosis of ' +
+      diagnosis + '. The patient scored ' + total + '/60 on the SMI-FRAIL-20, resulting in ' + severity.label.toLowerCase() +
       ' per this non-validated clinician documentation tool.';
 
     const maxSum = Math.max(...domainDetails.map(d => d.sum));
