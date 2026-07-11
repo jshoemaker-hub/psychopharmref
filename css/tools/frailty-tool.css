@@ -21,6 +21,67 @@
   margin-bottom: 24px;
 }
 
+/* Diagnosis field & narrative example box */
+.fr-field {
+  margin-bottom: 20px;
+}
+.fr-field-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.fr-field-required {
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--accent2, #8b6914);
+  text-transform: none;
+}
+.fr-text-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--card, #fefcf8);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+.fr-text-input:focus, .fr-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.fr-narrative-box {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin: 8px 0 20px;
+}
+.fr-narrative-hint {
+  font-size: 12px;
+  color: var(--text-muted, #6b6050);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.fr-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 13.5px;
+  font-family: inherit;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--card, #fefcf8);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
 /* Domain sections */
 .fr-domain {
   margin-bottom: 26px;

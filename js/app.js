@@ -294,30 +294,30 @@ function switchSection(id) {
     // Load CSS
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/tools/' + toolId + '.css?v=20260710a';
+    link.href = 'css/tools/' + toolId + '.css?v=20260710b';
     document.head.appendChild(link);
     // Load shared tool-utils.js once (first tool activation), then the tool JS
     function loadToolScript() {
       // Question bank needs data file loaded first
       if (toolId === 'question-bank-tool' && !window.QBANK_DATA) {
         var dataScript = document.createElement('script');
-        dataScript.src = 'js/qbank-data.js?v=20260710a';
+        dataScript.src = 'js/qbank-data.js?v=20260710b';
         dataScript.onload = function() {
           var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20260710a';
+          script.src = 'js/tools/' + toolId + '.js?v=20260710b';
           document.body.appendChild(script);
         };
         dataScript.onerror = function() { console.error('Failed to load qbank-data.js'); };
         document.body.appendChild(dataScript);
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20260710a';
+        script.src = 'js/tools/' + toolId + '.js?v=20260710b';
         document.body.appendChild(script);
       }
     }
     if (!window.ToolUtils) {
       const utils = document.createElement('script');
-      utils.src = 'js/tools/tool-utils.js?v=20260710a';
+      utils.src = 'js/tools/tool-utils.js?v=20260710b';
       utils.onload = loadToolScript;
       utils.onerror = function() { console.error('Failed to load tool-utils.js'); };
       document.body.appendChild(utils);

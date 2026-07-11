@@ -11047,6 +11047,12 @@
       preceding 30–90 days, using chart review, collateral information, and direct interview.
     </div>
 
+    <!-- Diagnosis field -->
+    <div class="fr-field">
+      <label class="fr-field-label" for="fr-diagnosis">Primary psychiatric diagnosis (DSM-5-TR)</label>
+      <input type="text" id="fr-diagnosis" class="fr-text-input" placeholder="e.g., Schizophrenia, paranoid type (F20.9)">
+    </div>
+
     <!-- Core 20-item form (JS-rendered) -->
     <div id="fr-form-container"></div>
 
@@ -11077,6 +11083,18 @@
         <div class="fr-score-num" id="fr-sud-num">0 / 24</div>
         <div class="fr-score-label">SUD Add-On Module</div>
       </div>
+    </div>
+
+    <!-- Individualized narrative example (required for CMS documentation standard) -->
+    <div class="fr-narrative-box">
+      <label class="fr-field-label" for="fr-narrative-example">
+        Clinician-documented example of functional impairment <span class="fr-field-required">(required for individualized documentation)</span>
+      </label>
+      <div class="fr-narrative-hint">
+        Describe one specific, dated, behavioral example — not a restated diagnosis. Cite your source (chart review, collateral, direct observation).
+        Example: "Per residential staff report on 6/2/26, patient required prompting for hygiene on 4 of 7 days and missed a scheduled volunteer shift during a symptom exacerbation."
+      </div>
+      <textarea id="fr-narrative-example" class="fr-textarea" rows="3" placeholder="Enter a specific, dated example here..."></textarea>
     </div>
 
     <!-- SUD Module Toggle -->
@@ -11764,7 +11782,7 @@
   </script>
 
   <script defer src="js/data.js?v=20260324"></script>
-  <script defer src="js/app.js?v=20260710a"></script>
+  <script defer src="js/app.js?v=20260710b"></script>
   <script defer src="js/glossary-data.js?v=20260501a"></script>
   <script defer src="js/glossary-page.js?v=20260501a"></script>
   <script defer src="js/search.js?v=20260501a"></script>

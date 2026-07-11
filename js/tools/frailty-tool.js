@@ -70,8 +70,13 @@
     { value: 3, label: '3 – Severe' }
   ];
 
+  const VALUE_LABELS = ['Not present', 'Mild', 'Moderate', 'Severe'];
+  function labelForValue(v) {
+    return (v === null || v === undefined || isNaN(v)) ? '—' : (VALUE_LABELS[v] || '—');
+  }
+
   /* ── DOM References ────────────────────────────────────────────────── */
-  const smiContainer   = document.getElementById('fr-form-container');
+  const smiContainer    = document.getElementById('fr-form-container');
   const sudContainer    = document.getElementById('fr-sud-container');
   const sudCheckbox     = document.getElementById('fr-sud-enable');
   const sudScoreCard    = document.getElementById('fr-sud-score-card');
@@ -85,6 +90,8 @@
   const sudNumEl        = document.getElementById('fr-sud-num');
   const reportBtn       = document.getElementById('fr-report-btn');
   const resetBtn        = document.getElementById('fr-reset-btn');
+  const diagnosisInput  = document.getElementById('fr-diagnosis');
+  const narrativeInput  = document.getElementById('fr-narrative-example');
   const section          = document.getElementById('frailty-tool');
 
   /* ── Render Form ───────────────────────────────────────────────────── */
@@ -168,6 +175,29 @@
     return { sum, count };
   }
 
+  // Like getDomainScore, but also returns each item's selected value (null if unanswered)
+  // for narrative generation.
+  function getDomainDetail(namePrefix, items) {
+    let sum = 0, count = 0;
+    const itemValues = items.map(item => {
+      const sel = document.querySelector(`input[name="${namePrefix}${item.id}"]:checked`);
+      const value = sel ? parseInt(sel.value, 10) : null;
+      if (value !== null) { sum += value; count++; }
+      return { id: item.id, domain: item.domain, desc: item.desc, value };
+    });
+    return { sum, count, itemValues };
+  }
+
+  // Given a set of {domain, value} items, find the highest tier (3, then 2, then 1)
+  // that has at least one item, and return that tier plus the items at it.
+  function cascadeItems(itemValues) {
+    for (let tier = 3; tier >= 1; tier--) {
+      const atTier = itemValues.filter(i => i.value === tier);
+      if (atTier.length) return { tier, items: atTier };
+    }
+    return { tier: 0, items: [] };
+  }
+
   function getSeverity(total) {
     if (total <= 10) return { label: 'Minimal impairment', cls: 'fr-severity-minimal' };
     if (total <= 25) return { label: 'Mild-to-moderate impairment', cls: 'fr-severity-mild' };
@@ -225,20 +255,78 @@
     return 'Severe contribution; substance-related impairment may independently support a frailty determination.';
   }
 
+  // Builds the auto-generated narrative paragraph summarizing the most-impaired
+  // domain and, within it, the highest tier of items present (severe, else
+  // moderate, else mild, else "not present").
+  function buildNarrative(domainDetails, total, severity) {
+    const diagnosis = (diagnosisInput && diagnosisInput.value.trim()) || '[diagnosis not specified]';
+    const anyAnswered = domainDetails.some(d => d.count > 0);
+
+    if (!anyAnswered) {
+      return 'No items have been scored yet. Complete the 20-item checklist above, then regenerate this report for an individualized narrative summary.';
+    }
+
+    let sentence1 = 'For this patient with a diagnosis of ' + diagnosis + ', over the period of the preceding 30–90 days, ' +
+      'the patient scored ' + total + '/60 on the SMI-FRAIL-20, resulting in ' + severity.label.toLowerCase() +
+      ' per this non-validated clinician documentation tool.';
+
+    const maxSum = Math.max(...domainDetails.map(d => d.sum));
+    const topDomains = domainDetails.filter(d => d.sum === maxSum && d.sum > 0);
+
+    if (topDomains.length === 0) {
+      return sentence1 + ' No individual domain showed elevated impairment based on items completed to date.';
+    }
+
+    const domainNames = topDomains.map(d => d.label).join(' and ');
+    const domainScoreStr = topDomains.map(d => d.sum + '/15').join(', ');
+    const sentence2 = ' The patient showed the most impairment in ' + domainNames + ' (' + domainScoreStr + ').';
+
+    let allTopItems = [];
+    topDomains.forEach(d => { allTopItems = allTopItems.concat(d.itemValues); });
+    const cascade = cascadeItems(allTopItems);
+
+    let sentence3;
+    if (cascade.tier === 0) {
+      sentence3 = ' No individual items within this domain were rated above "Not present."';
+    } else {
+      const tierWord = VALUE_LABELS[cascade.tier].toLowerCase();
+      const names = cascade.items.map(i => i.domain).join(', ');
+      sentence3 = ' Specifically, the patient has ' + tierWord + ' difficulties with: ' + names + '.';
+    }
+
+    return sentence1 + sentence2 + sentence3;
+  }
+
   function generateReport() {
     const dateStr = (typeof ToolUtils !== 'undefined') ? ToolUtils.dateStamp() : new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
-    const d1 = getDomainScore('fr-smi-', SMI_DOMAINS[0].items);
-    const d2 = getDomainScore('fr-smi-', SMI_DOMAINS[1].items);
-    const d3 = getDomainScore('fr-smi-', SMI_DOMAINS[2].items);
-    const d4 = getDomainScore('fr-smi-', SMI_DOMAINS[3].items);
+    const d1 = getDomainDetail('fr-smi-', SMI_DOMAINS[0].items);
+    const d2 = getDomainDetail('fr-smi-', SMI_DOMAINS[1].items);
+    const d3 = getDomainDetail('fr-smi-', SMI_DOMAINS[2].items);
+    const d4 = getDomainDetail('fr-smi-', SMI_DOMAINS[3].items);
+    const domainDetails = [
+      Object.assign({ label: SMI_DOMAINS[0].label }, d1),
+      Object.assign({ label: SMI_DOMAINS[1].label }, d2),
+      Object.assign({ label: SMI_DOMAINS[2].label }, d3),
+      Object.assign({ label: SMI_DOMAINS[3].label }, d4),
+    ];
     const total = d1.sum + d2.sum + d3.sum + d4.sum;
     const severity = getSeverity(total);
+
+    const narrative = buildNarrative(domainDetails, total, severity);
+    const narrativeExample = (narrativeInput && narrativeInput.value.trim())
+      ? narrativeInput.value.trim()
+      : '[No example provided — add a specific, dated, behavioral example above before finalizing documentation. This is required to meet the CMS individualized-impairment standard.]';
 
     const lines = [
       'SMI-FRAIL-20 — Medical Frailty Documentation Tool',
       'Date: ' + dateStr,
       'Period reviewed: preceding 30–90 days',
+      '',
+      narrative,
+      '',
+      'Clinician-documented example of functional impairment:',
+      narrativeExample,
       '',
       'SMI FRAILTY SCORE: ' + total + ' / 60  [' + severity.label + ']',
       '  Symptom Acuity & Safety:        ' + d1.sum + ' / 15',
@@ -246,27 +334,27 @@
       '  Care Utilization & Treatment:   ' + d3.sum + ' / 15',
       '  Support & Systemic Factors:     ' + d4.sum + ' / 15',
       '',
-      'ITEM RESPONSES (0=Not present, 1=Mild, 2=Moderate, 3=Severe):'
+      'ITEM RESPONSES:'
     ];
 
     const allSmiItems = [].concat(...SMI_DOMAINS.map(d => d.items)).sort((a, b) => a.id - b.id);
     allSmiItems.forEach(item => {
       const sel = document.querySelector(`input[name="fr-smi-${item.id}"]:checked`);
-      const val = sel ? sel.value : '—';
-      lines.push('  ' + item.id + '. ' + item.domain + ': ' + val);
+      const val = sel ? parseInt(sel.value, 10) : null;
+      lines.push('  ' + item.id + '. ' + item.domain + ' — ' + item.desc);
+      lines.push('      Response: ' + labelForValue(val));
     });
 
     if (sudActive()) {
-      const sud = getDomainScore('fr-sud-', SUD_ITEMS);
+      const sud = getDomainDetail('fr-sud-', SUD_ITEMS);
       lines.push('');
       lines.push('SUD ADD-ON MODULE SCORE: ' + sud.sum + ' / 24');
       lines.push('  ' + sudInterpretation(sud.sum));
       lines.push('');
       lines.push('SUD MODULE ITEM RESPONSES:');
-      SUD_ITEMS.forEach(item => {
-        const sel = document.querySelector(`input[name="fr-sud-${item.id}"]:checked`);
-        const val = sel ? sel.value : '—';
-        lines.push('  ' + item.id + '. ' + item.domain + ': ' + val);
+      sud.itemValues.forEach(item => {
+        lines.push('  ' + item.id + '. ' + item.domain + ' — ' + item.desc);
+        lines.push('      Response: ' + labelForValue(item.value));
       });
     }
 
@@ -285,6 +373,8 @@
     document.querySelectorAll('input[name^="fr-smi-"]').forEach(r => { r.checked = false; });
     document.querySelectorAll('input[name^="fr-sud-"]').forEach(r => { r.checked = false; });
     if (sudCheckbox) sudCheckbox.checked = false;
+    if (diagnosisInput) diagnosisInput.value = '';
+    if (narrativeInput) narrativeInput.value = '';
     toggleSud();
     updateScores();
   }
