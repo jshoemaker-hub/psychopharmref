@@ -188,6 +188,9 @@
           <li class="nav-sub-divider">Wellness</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="bat-tool">Burnout (BAT)</a></li>
 
+          <li class="nav-sub-divider">Disability &amp; Coverage</li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="frailty-tool">SMI Medical Frailty (SMI-FRAIL-20)</a></li>
+
         </ul>
       </li>
 
@@ -11017,6 +11020,125 @@
   </div>
 </section><!-- end bat-tool -->
 
+<section id="frailty-tool" data-lazy-tool="frailty-tool" class="section">
+  <div class="section-header">
+    <h2>SMI-FRAIL-20: Medical Frailty Documentation Tool</h2>
+    <p>
+      A 20-item structured checklist to support individualized documentation of medical frailty in patients
+      with severe mental illness (SMI), developed in response to the June 2026 CMS interim final rule
+      (CMS-2454-IFC) narrowing the Medicaid work-requirement medical frailty exemption. Includes an optional
+      8-item substance use disorder (SUD) add-on module. Generates an EMR-ready summary.
+    </p>
+  </div>
+
+  <div class="fr-warning mt-warning">
+    <strong>Clinical &amp; Documentation Use Only</strong> — SMI-FRAIL-20 is an educational documentation aid,
+    not a validated psychometric instrument and not endorsed by CMS or any state Medicaid agency. It does not
+    determine exemption eligibility; verification standards are set independently by each state. CMS's rule
+    prohibits relying on diagnosis codes alone — pair every item scored 2–3 with a concrete, dated behavioral
+    example in the chart note.
+  </div>
+
+  <div class="fr-container">
+    <div class="fr-intro-box">
+      <strong>Policy context:</strong> CMS's June 2026 interim final rule requires states to verify not just a
+      qualifying diagnosis but that the condition significantly impairs the patient's ability to meet the
+      80-hour/month Medicaid community engagement requirement. Complete this tool based on functioning over the
+      preceding 30–90 days, using chart review, collateral information, and direct interview.
+    </div>
+
+    <!-- Core 20-item form (JS-rendered) -->
+    <div id="fr-form-container"></div>
+
+    <!-- Score Display -->
+    <div class="fr-score-display">
+      <div class="fr-score-card fr-score-card--total">
+        <div class="fr-score-num" id="fr-total-num">0</div>
+        <div class="fr-score-label" id="fr-total-max">/ 60</div>
+        <div class="fr-severity fr-severity-minimal" id="fr-severity">Minimal impairment</div>
+      </div>
+      <div class="fr-score-card fr-score-card--d1">
+        <div class="fr-score-num" id="fr-d1-num">0 / 15</div>
+        <div class="fr-score-label">Symptom Acuity &amp; Safety</div>
+      </div>
+      <div class="fr-score-card fr-score-card--d2">
+        <div class="fr-score-num" id="fr-d2-num">0 / 15</div>
+        <div class="fr-score-label">Functional Capacity</div>
+      </div>
+      <div class="fr-score-card fr-score-card--d3">
+        <div class="fr-score-num" id="fr-d3-num">0 / 15</div>
+        <div class="fr-score-label">Care Utilization &amp; Treatment</div>
+      </div>
+      <div class="fr-score-card fr-score-card--d4">
+        <div class="fr-score-num" id="fr-d4-num">0 / 15</div>
+        <div class="fr-score-label">Support &amp; Systemic Factors</div>
+      </div>
+      <div class="fr-score-card fr-score-card--sud" id="fr-sud-score-card" style="display:none;">
+        <div class="fr-score-num" id="fr-sud-num">0 / 24</div>
+        <div class="fr-score-label">SUD Add-On Module</div>
+      </div>
+    </div>
+
+    <!-- SUD Module Toggle -->
+    <div class="fr-sud-toggle">
+      <label>
+        <input type="checkbox" id="fr-sud-enable">
+        Patient has an active or clinically significant recent substance use disorder — include SUD Add-On Module
+      </label>
+      <div class="fr-sud-note">
+        Under the CMS rule, the SUD frailty category applies whether or not the patient is currently in active
+        treatment, but excludes individuals in stable, sustained recovery for five or more years.
+      </div>
+    </div>
+    <div id="fr-sud-container" class="fr-sud-hidden"></div>
+
+    <div class="fr-btn-row">
+      <button id="fr-report-btn" class="fr-btn fr-btn-primary" type="button">Generate Report &amp; Copy</button>
+      <button id="fr-reset-btn" class="fr-btn fr-btn-secondary" type="button">Reset</button>
+    </div>
+
+    <div class="fr-interp">
+      <div class="fr-interp-title">SMI Frailty Score Interpretation (0–60)</div>
+      <div class="fr-interp-grid">
+        <span class="fr-interp-score">0–10</span>
+        <span class="fr-interp-label">Minimal</span>
+        <span class="fr-interp-desc">Exemption unlikely to be supported on this domain alone; continue routine monitoring.</span>
+        <span class="fr-interp-score">11–25</span>
+        <span class="fr-interp-label">Mild-to-moderate</span>
+        <span class="fr-interp-desc">May support a determination if impairment is concentrated in items 3, 4, 9, 18, 20. Narrative detail is essential.</span>
+        <span class="fr-interp-score">26–40</span>
+        <span class="fr-interp-label">Moderate-to-severe</span>
+        <span class="fr-interp-desc">Generally supports a medical frailty determination. Document ADL/IADL, safety, and hospitalization findings.</span>
+        <span class="fr-interp-score">41–60</span>
+        <span class="fr-interp-label">Severe</span>
+        <span class="fr-interp-desc">Strongly supports a medical frailty exemption. Document safety risk and inability to sustain 80 hrs/month of activity.</span>
+      </div>
+      <hr class="fr-interp-divider">
+      <div class="fr-interp-title">SUD Add-On Module Interpretation (0–24)</div>
+      <div class="fr-interp-grid">
+        <span class="fr-interp-score">0–6</span>
+        <span class="fr-interp-label">Low</span>
+        <span class="fr-interp-desc">Low frailty contribution from SUD alone; combine with the SMI Frailty Score above.</span>
+        <span class="fr-interp-score">7–14</span>
+        <span class="fr-interp-label">Moderate</span>
+        <span class="fr-interp-desc">Supports frailty determination when combined with SMI domains.</span>
+        <span class="fr-interp-score">15–24</span>
+        <span class="fr-interp-label">Severe</span>
+        <span class="fr-interp-desc">Substance-related impairment may independently support a frailty determination.</span>
+      </div>
+      <hr class="fr-interp-divider">
+      <div style="font-size:12px; color: var(--text-muted, #6b6050); line-height:1.5;">
+        These bands are a clinical organizing framework, not a CMS-published cutoff. States retain discretion over
+        verification criteria — always pair the total score with item-level narrative. Sources: CMS, "Medicaid
+        Community Engagement Requirement for Certain Individuals," Interim Final Rule CMS-2454-IFC (June 1, 2026);
+        KFF, "The Medical Frailty Exemption from Medicaid Work Requirements" (June 23, 2026); Georgetown University
+        Center for Children and Families (July 9, 2026). A multistate legal challenge to the rule is pending —
+        confirm current enforcement status with your state Medicaid agency.
+      </div>
+    </div>
+  </div>
+</section><!-- end frailty-tool -->
+
 <section id="aq-tool" data-lazy-tool="aq-tool" class="section">
   <div class="section-header">
     <h2>Autism Screening (AQ)</h2>
@@ -11642,7 +11764,7 @@
   </script>
 
   <script defer src="js/data.js?v=20260324"></script>
-  <script defer src="js/app.js?v=20260614a"></script>
+  <script defer src="js/app.js?v=20260710a"></script>
   <script defer src="js/glossary-data.js?v=20260501a"></script>
   <script defer src="js/glossary-page.js?v=20260501a"></script>
   <script defer src="js/search.js?v=20260501a"></script>
