@@ -1058,15 +1058,24 @@ document.getElementById('class-select').addEventListener('change', renderBarChar
 const HM_PKI_MIN = 4;      // floor of the color scale
 const HM_PKI_MAX = 9.5;    // ceiling of the color scale
 
+// Three-stop gradient: pale cream (weak) → gold (moderate) → deep green
+// (strong). Distinct hues make mid-range affinities easier to tell apart
+// than a single-hue ramp, and it stays on-brand (--accent2 gold, --accent green).
+const HM_STOPS = [
+  { t: 0,   rgb: [244, 239, 216] },   // pale cream
+  { t: 0.5, rgb: [224, 168, 40]  },   // gold
+  { t: 1,   rgb: [45, 94, 30]    }    // deep green
+];
+
 function hmColor(pki) {
-  // Normalize to 0..1 across the display range, then interpolate a green
-  // ramp from pale beige (weak) to deep accent green (strong).
   let t = (pki - HM_PKI_MIN) / (HM_PKI_MAX - HM_PKI_MIN);
   t = Math.max(0, Math.min(1, t));
-  const hue = 95;                     // matches --accent (#4a7c35)
-  const sat = 22 + t * 30;            // 22% → 52%
-  const light = 93 - t * 62;          // 93% → 31%
-  return { css: `hsl(${hue}, ${sat}%, ${light}%)`, dark: light < 58 };
+  const a = t <= 0.5 ? HM_STOPS[0] : HM_STOPS[1];
+  const b = t <= 0.5 ? HM_STOPS[1] : HM_STOPS[2];
+  const lt = (t - a.t) / (b.t - a.t);
+  const rgb = a.rgb.map((c, i) => Math.round(c + (b.rgb[i] - c) * lt));
+  const lum = (0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]) / 255;
+  return { css: `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`, dark: lum < 0.55 };
 }
 
 function renderHeatmap() {
