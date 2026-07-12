@@ -1051,6 +1051,86 @@ function renderBarChart() {
 
 document.getElementById('class-select').addEventListener('change', renderBarChart);
 
+/* ── Class Heatmap (pKi by receptor) ────────────────────────────────────── */
+// Sequential green scale mapped to pKi. Solves the tall-bar dynamic-range
+// problem: SERT (pKi ~9) and weak off-targets (pKi ~5) both read clearly
+// because intensity, not height, encodes affinity.
+const HM_PKI_MIN = 4;      // floor of the color scale
+const HM_PKI_MAX = 9.5;    // ceiling of the color scale
+
+function hmColor(pki) {
+  // Normalize to 0..1 across the display range, then interpolate a green
+  // ramp from pale beige (weak) to deep accent green (strong).
+  let t = (pki - HM_PKI_MIN) / (HM_PKI_MAX - HM_PKI_MIN);
+  t = Math.max(0, Math.min(1, t));
+  const hue = 95;                     // matches --accent (#4a7c35)
+  const sat = 22 + t * 30;            // 22% → 52%
+  const light = 93 - t * 62;          // 93% → 31%
+  return { css: `hsl(${hue}, ${sat}%, ${light}%)`, dark: light < 58 };
+}
+
+function renderHeatmap() {
+  const cls  = document.getElementById('class-select').value;
+  const meds = MEDICATIONS.filter(m => m.class === cls && m.receptorKi);
+  const receptors = RECEPTOR_LIST.filter(r => activeReceptors.has(r));
+  const table = document.getElementById('rb-hm-table');
+  if (!table) return;
+
+  if (!meds.length || !receptors.length) {
+    table.innerHTML = '<tbody><tr><td style="padding:20px;color:#8a8172">' +
+      'Select at least one drug class and receptor to display the heatmap.</td></tr></tbody>';
+    return;
+  }
+
+  const pkiOf = (m, r) => {
+    const ki = m.receptorKi?.[r];
+    return (ki && ki < 10000) ? (9 - Math.log10(ki)) : null;
+  };
+
+  let head = '<thead><tr><th class="rb-hm-corner">Drug</th>';
+  receptors.forEach(r => {
+    head += `<th style="border-bottom-color:${getColor(r)}">${r}</th>`;
+  });
+  head += '</tr></thead>';
+
+  let body = '<tbody>';
+  meds.forEach(m => {
+    body += `<tr><th>${m.name}</th>`;
+    receptors.forEach(r => {
+      const pki = pkiOf(m, r);
+      if (pki == null) {
+        body += '<td class="rb-hm-cell rb-hm-empty" title="' +
+          `${m.name} — ${r}: no significant binding (Ki ≥ 10,000 nM)">·</td>`;
+      } else {
+        const c = hmColor(pki);
+        const ki = m.receptorKi[r];
+        const action = getReceptorAction(m.id, r);
+        const tip = `${m.name} — ${r}: pKi ${pki.toFixed(2)} (Ki = ${ki} nM)` +
+          (action ? ` | ${action}` : '');
+        body += `<td class="rb-hm-cell" style="background:${c.css};color:${c.dark ? '#fff' : '#3a3222'}" ` +
+          `title="${tip.replace(/"/g, '&quot;')}">${pki.toFixed(1)}</td>`;
+      }
+    });
+    body += '</tr>';
+  });
+  body += '</tbody>';
+
+  table.innerHTML = head + body;
+
+  // Legend: gradient bar + N/A swatch
+  const legend = document.getElementById('rb-hm-legend');
+  if (legend) {
+    const grad = `linear-gradient(to right, ${hmColor(HM_PKI_MIN).css}, ` +
+      `${hmColor((HM_PKI_MIN + HM_PKI_MAX) / 2).css}, ${hmColor(HM_PKI_MAX).css})`;
+    legend.innerHTML =
+      `<span>Weaker</span>` +
+      `<span class="rb-hm-bar" style="background:${grad}"></span>` +
+      `<span>Stronger&nbsp;&nbsp;(pKi ${HM_PKI_MIN} → ${HM_PKI_MAX}+)</span>` +
+      `<span class="rb-hm-na"><span></span>&nbsp;= Ki ≥ 10,000 nM (negligible)</span>`;
+  }
+}
+window.renderHeatmap = renderHeatmap;
+
 /* ── Side-by-Side Drug Comparison ───────────────────────────────────────── */
 let compareChartInst = null;
 

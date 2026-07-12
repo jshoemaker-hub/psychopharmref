@@ -228,20 +228,29 @@
         /* ── View Toggle ─── */
         window.switchRBView = function(view) {
           var barWrap = document.getElementById('bar-chart-wrap');
+          var heatWrap = document.getElementById('heatmap-wrap');
           var treeWrap = document.getElementById('treemap-wrap');
           var btnBar = document.getElementById('rb-view-bar');
+          var btnHeat = document.getElementById('rb-view-heat');
           var btnTree = document.getElementById('rb-view-tree');
 
+          barWrap.style.display = 'none';
+          heatWrap.style.display = 'none';
+          treeWrap.style.display = 'none';
+          btnBar.classList.remove('rb-vt-active');
+          if (btnHeat) btnHeat.classList.remove('rb-vt-active');
+          btnTree.classList.remove('rb-vt-active');
+
           if (view === 'tree') {
-            barWrap.style.display = 'none';
             treeWrap.style.display = '';
-            btnBar.classList.remove('rb-vt-active');
             btnTree.classList.add('rb-vt-active');
             renderTreemap();
+          } else if (view === 'heat') {
+            heatWrap.style.display = '';
+            if (btnHeat) btnHeat.classList.add('rb-vt-active');
+            if (window.renderHeatmap) window.renderHeatmap();
           } else {
             barWrap.style.display = '';
-            treeWrap.style.display = 'none';
-            btnTree.classList.remove('rb-vt-active');
             btnBar.classList.add('rb-vt-active');
             renderBarChart();
           }
@@ -260,11 +269,17 @@
             if (document.getElementById('treemap-wrap').style.display !== 'none') {
               renderTreemap();
             }
+            if (document.getElementById('heatmap-wrap').style.display !== 'none' && window.renderHeatmap) {
+              window.renderHeatmap();
+            }
           }, 0);
         });
         document.getElementById('class-select').addEventListener('change', function() {
           if (document.getElementById('treemap-wrap').style.display !== 'none') {
             setTimeout(renderTreemap, 50);
+          }
+          if (document.getElementById('heatmap-wrap').style.display !== 'none' && window.renderHeatmap) {
+            setTimeout(window.renderHeatmap, 50);
           }
         });
       })();

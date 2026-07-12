@@ -702,6 +702,7 @@
         </select>
         <div class="rb-view-toggle">
           <button class="rb-vt-btn rb-vt-active" id="rb-view-bar" onclick="switchRBView('bar')">Bar Chart</button>
+          <button class="rb-vt-btn" id="rb-view-heat" onclick="switchRBView('heat')">Heatmap</button>
           <button class="rb-vt-btn" id="rb-view-tree" onclick="switchRBView('tree')">Treemap</button>
         </div>
         <div class="receptor-toggles" id="receptor-toggles"></div>
@@ -709,6 +710,14 @@
 
       <div class="bar-chart-wrap" id="bar-chart-wrap">
         <canvas id="bar-chart" height="340"></canvas>
+      </div>
+
+      <!-- Heatmap View -->
+      <div id="heatmap-wrap" style="display:none;">
+        <div class="rb-hm-scroll">
+          <table class="rb-hm-table" id="rb-hm-table"></table>
+        </div>
+        <div class="rb-hm-legend" id="rb-hm-legend"></div>
       </div>
 
       <!-- Treemap View -->
@@ -720,8 +729,21 @@
       <style>
         .rb-view-toggle { display: inline-flex; border: 1px solid var(--border); border-radius: 5px; overflow: hidden; margin-left: 12px; }
         .rb-vt-btn { padding: 5px 14px; font-size: 12px; border: none; background: var(--bg2); color: var(--text); cursor: pointer; transition: all 0.15s; }
-        .rb-vt-btn:first-child { border-right: 1px solid var(--border); }
+        .rb-vt-btn:not(:last-child) { border-right: 1px solid var(--border); }
         .rb-vt-btn.rb-vt-active { background: var(--accent); color: #fff; }
+        /* Heatmap */
+        .rb-hm-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 6px; background: #fefdfb; }
+        .rb-hm-table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+        .rb-hm-table th, .rb-hm-table td { text-align: center; padding: 0; }
+        .rb-hm-table thead th { position: sticky; top: 0; background: #fefdfb; color: #6b6050; font-weight: 700; font-size: 11.5px; padding: 8px 6px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+        .rb-hm-table thead th.rb-hm-corner { text-align: left; padding-left: 12px; }
+        .rb-hm-table tbody th { text-align: left; padding: 6px 12px; font-weight: 600; color: var(--text); white-space: nowrap; background: #fefdfb; position: sticky; left: 0; border-right: 1px solid var(--border); z-index: 1; }
+        .rb-hm-cell { height: 38px; min-width: 52px; font-weight: 600; font-variant-numeric: tabular-nums; border: 1px solid rgba(255,255,255,0.55); cursor: default; }
+        .rb-hm-cell.rb-hm-empty { color: #b3aa99; background: #f4f1ea; font-weight: 400; }
+        .rb-hm-legend { display: flex; align-items: center; gap: 10px; margin-top: 12px; font-size: 11.5px; color: #6b6050; flex-wrap: wrap; }
+        .rb-hm-legend .rb-hm-bar { height: 12px; width: 220px; border-radius: 3px; border: 1px solid var(--border); }
+        .rb-hm-legend .rb-hm-na { display: inline-flex; align-items: center; gap: 5px; }
+        .rb-hm-legend .rb-hm-na span { width: 14px; height: 12px; border-radius: 2px; background: #f4f1ea; border: 1px solid var(--border); }
         #treemap-container { min-height: 460px; border: 1px solid var(--border); border-radius: 6px; background: #fefdfb; overflow: hidden; }
         /* Drug outer tile */
         .rb-tm-drug { position: absolute; box-sizing: border-box; border: 2px solid rgba(255,255,255,0.85); border-radius: 4px; overflow: hidden; }
@@ -741,7 +763,7 @@
         .rb-tm-tooltip { position: absolute; background: rgba(35,30,20,0.93); color: #fff; font-size: 12px; padding: 8px 12px; border-radius: 5px; pointer-events: none; z-index: 20; white-space: nowrap; line-height: 1.6; box-shadow: 0 3px 12px rgba(0,0,0,0.3); }
       </style>
 
-      <script src="js/treemap.js?v=20260415"></script>
+      <script src="js/treemap.js?v=20260712b"></script>
     </section>
 
     <!-- ── Receptor Glossary ─────────────────────────────────────────────── -->
@@ -11830,7 +11852,7 @@
   </script>
 
   <script defer src="js/data.js?v=20260324"></script>
-  <script defer src="js/app.js?v=20260712a"></script>
+  <script defer src="js/app.js?v=20260712b"></script>
   <script defer src="js/glossary-data.js?v=20260501a"></script>
   <script defer src="js/glossary-page.js?v=20260501a"></script>
   <script defer src="js/search.js?v=20260501a"></script>
