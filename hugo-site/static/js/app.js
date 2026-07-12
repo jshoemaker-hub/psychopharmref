@@ -255,9 +255,23 @@ const SECTION_GROUP = {
   'ess-tool': 'tools', 'bat-tool': 'tools', 'sud-tool': 'tools', 'med-history-tool': 'tools',
   'ciwa-tool': 'tools', 'cows-tool': 'tools', 'frailty-tool': 'tools',
   'print-forms': 'tools', 'question-bank': 'qbank',
-  'cog-domains': 'insights', 'neuro-circuits': 'insights', 'brain-regions': 'insights',
+  'cog-domains': 'insights', 'neuro-circuits': 'insights', 'brain-regions': 'insights', 'brain-explorer': 'insights',
   'fda-search': null, 'overview': null, 'blog-index': 'blog', 'blog-smoking': 'blog', 'blog-weight': 'blog'
 };
+
+// --- 3D Brain Explorer deep-linking helpers ---
+window.__brainFocusQueue = window.__brainFocusQueue || null;
+function ppOpenBrain(id){
+  switchSection('brain-explorer');
+  if(window.PPBrainExplorer && window.PPBrainExplorer.focus){ window.PPBrainExplorer.focus(id); }
+  else { window.__brainFocusQueue = id; }
+}
+function ppGoSection(sectionId, anchorId){
+  switchSection(sectionId);
+  if(anchorId){ setTimeout(function(){ var el=document.getElementById(anchorId); if(el) el.scrollIntoView({behavior:'smooth', block:'center'}); }, 90); }
+}
+window.ppOpenBrain = ppOpenBrain;
+window.ppGoSection = ppGoSection;
 
 function expandGroup(groupId) {
   document.querySelectorAll('.nav-group').forEach(g => {
@@ -294,30 +308,30 @@ function switchSection(id) {
     // Load CSS
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/tools/' + toolId + '.css?v=20260710d';
+    link.href = 'css/tools/' + toolId + '.css?v=20260712a';
     document.head.appendChild(link);
     // Load shared tool-utils.js once (first tool activation), then the tool JS
     function loadToolScript() {
       // Question bank needs data file loaded first
       if (toolId === 'question-bank-tool' && !window.QBANK_DATA) {
         var dataScript = document.createElement('script');
-        dataScript.src = 'js/qbank-data.js?v=20260710d';
+        dataScript.src = 'js/qbank-data.js?v=20260712a';
         dataScript.onload = function() {
           var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20260710d';
+          script.src = 'js/tools/' + toolId + '.js?v=20260712a';
           document.body.appendChild(script);
         };
         dataScript.onerror = function() { console.error('Failed to load qbank-data.js'); };
         document.body.appendChild(dataScript);
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20260710d';
+        script.src = 'js/tools/' + toolId + '.js?v=20260712a';
         document.body.appendChild(script);
       }
     }
     if (!window.ToolUtils) {
       const utils = document.createElement('script');
-      utils.src = 'js/tools/tool-utils.js?v=20260710d';
+      utils.src = 'js/tools/tool-utils.js?v=20260712a';
       utils.onload = loadToolScript;
       utils.onerror = function() { console.error('Failed to load tool-utils.js'); };
       document.body.appendChild(utils);

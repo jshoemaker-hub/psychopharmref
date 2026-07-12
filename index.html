@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RK6J3FQ9L7"></script>
   <script>
@@ -224,6 +227,7 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="cog-domains">Cognitive Domains</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="neuro-circuits">Neuropsych Circuits</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="brain-regions">Brain Regions</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="brain-explorer">3D Brain Explorer</a></li>
         </ul>
       </li>
 
@@ -1784,15 +1788,15 @@
         <div class="circuit-big-concept">
           <div class="cbc-title">The Parallel Loop Framework <span class="cbc-ref">Alexander, DeLong &amp; Strick, 1986</span></div>
           <div class="cbc-grid">
-            <div class="cbc-row" style="--lc:#4a90d9">
+            <div class="cbc-row" id="be-c-dlpfc" style="--lc:#4a90d9">
               <span class="cbc-loop">Dorsolateral Prefrontal</span>
               <span class="cbc-fn">Executive Function / Cognition</span>
             </div>
-            <div class="cbc-row" style="--lc:#e07b39">
+            <div class="cbc-row" id="be-c-ofc" style="--lc:#e07b39">
               <span class="cbc-loop">Orbitofrontal</span>
               <span class="cbc-fn">Behavioral Inhibition / Impulse Control</span>
             </div>
-            <div class="cbc-row" style="--lc:#7ab86e">
+            <div class="cbc-row" id="be-c-acc" style="--lc:#7ab86e">
               <span class="cbc-loop">Anterior Cingulate</span>
               <span class="cbc-fn">Motivation / Effort Allocation</span>
             </div>
@@ -1805,10 +1809,12 @@
         <p class="ref-caveat">All four loops share the same basic architecture: <strong>Cortex → Striatum → Globus Pallidus/SNr → Thalamus → Cortex</strong>. What differs is <em>which</em> cortical region anchors the loop and therefore which function is modulated. This framework underlies DBS target selection, neuropsychiatric differential diagnosis, and neuroimaging interpretation.</p>
       </div>
 
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:20px 0;padding:14px 16px;border:1px solid rgba(74,124,53,.35);background:rgba(74,124,53,.07);border-radius:12px;"><span style="font-weight:600;color:var(--accent);font-size:13px;">&#129504; Explore in 3D &rarr;</span><span style="display:flex;flex-wrap:wrap;gap:6px;"><a onclick="ppOpenBrain('dlpfc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">DLPFC</a><a onclick="ppOpenBrain('ofc-vmpfc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">OFC/vmPFC</a><a onclick="ppOpenBrain('acc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">ACC</a><a onclick="ppOpenBrain('dstriatum')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Striatum</a><a onclick="ppOpenBrain('lc-thal')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">MD thalamus</a><a onclick="ppOpenBrain('nacc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">NAcc</a><a onclick="ppOpenBrain('vta-snc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">VTA/SNc</a><a onclick="switchSection('brain-explorer')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Open Explorer &#8599;</a></span></div>
+
       <!-- ── Category: Cortico-BG-Thalamo-Cortical Loops ── -->
       <div class="circuit-category-header">
         <span class="cch-icon">&#9676;</span>
-        <span class="cch-label">Cortico–Basal Ganglia–Thalamo–Cortical Loops</span>
+        <span class="cch-label" id="be-c-loops">Cortico–Basal Ganglia–Thalamo–Cortical Loops</span>
         <span class="cch-ref">Alexander, DeLong &amp; Strick, 1986 · Tekin &amp; Cummings, 2002</span>
       </div>
 
@@ -1973,7 +1979,7 @@
       <!-- ── Category: Limbic Circuits ── -->
       <div class="circuit-category-header">
         <span class="cch-icon">&#9672;</span>
-        <span class="cch-label">Limbic Circuits</span>
+        <span class="cch-label" id="be-c-limbic">Limbic Circuits</span>
         <span class="cch-ref">Papez, 1937 · LeDoux, 2003</span>
       </div>
 
@@ -2083,7 +2089,7 @@
       <!-- ── Category: Dopamine Circuits ── -->
       <div class="circuit-category-header">
         <span class="cch-icon">&#9670;</span>
-        <span class="cch-label">Dopamine Projection Circuits</span>
+        <span class="cch-label" id="be-c-reward">Dopamine Projection Circuits</span>
         <span class="cch-ref">Schultz, 1998 · Stahl, 2021</span>
       </div>
 
@@ -2193,7 +2199,7 @@
       <!-- ── Category: Motor Circuit ── -->
       <div class="circuit-category-header">
         <span class="cch-icon">&#9656;</span>
-        <span class="cch-label">Motor Circuit</span>
+        <span class="cch-label" id="be-c-motor">Motor Circuit</span>
         <span class="cch-ref">DeLong, 1990 · often co-taught with psychiatric loops</span>
       </div>
 
@@ -2332,18 +2338,20 @@
         <p class="ref-card-sub">Each major neuropsychiatric condition is associated with dysfunction in a characteristic set of brain regions. Region involvement is based on convergent evidence from structural MRI, functional neuroimaging, lesion studies, and postmortem data. Colors indicate brain region category.</p>
         <!-- Region legend -->
         <div class="region-legend">
-          <span class="rl-item" style="--rc:#4a90d9">Prefrontal / Frontal Cortex</span>
-          <span class="rl-item" style="--rc:#7ab86e">Cingulate Cortex</span>
-          <span class="rl-item" style="--rc:#b85a5a">Amygdala</span>
-          <span class="rl-item" style="--rc:#9a5ab8">Hippocampus / MTL</span>
-          <span class="rl-item" style="--rc:#c8a83a">Striatum / Basal Ganglia</span>
-          <span class="rl-item" style="--rc:#5aacb8">Thalamus</span>
+          <span class="rl-item" id="be-r-pfc" style="--rc:#4a90d9;cursor:pointer" title="View in 3D Brain Explorer" onclick="ppOpenBrain('dlpfc')">Prefrontal / Frontal Cortex</span>
+          <span class="rl-item" id="be-r-cingulate" style="--rc:#7ab86e;cursor:pointer" title="View in 3D Brain Explorer" onclick="ppOpenBrain('acc')">Cingulate Cortex</span>
+          <span class="rl-item" id="be-r-amygdala" style="--rc:#b85a5a;cursor:pointer" title="View in 3D Brain Explorer" onclick="ppOpenBrain('amygdala')">Amygdala</span>
+          <span class="rl-item" id="be-r-hippocampus" style="--rc:#9a5ab8;cursor:pointer" title="View in 3D Brain Explorer" onclick="ppOpenBrain('hippocampus')">Hippocampus / MTL</span>
+          <span class="rl-item" id="be-r-striatum" style="--rc:#c8a83a;cursor:pointer" title="View in 3D Brain Explorer" onclick="ppOpenBrain('dstriatum')">Striatum / Basal Ganglia</span>
+          <span class="rl-item" id="be-r-thalamus" style="--rc:#5aacb8;cursor:pointer" title="View in 3D Brain Explorer" onclick="ppOpenBrain('lc-thal')">Thalamus</span>
           <span class="rl-item" style="--rc:#e07b39">Temporal Cortex</span>
           <span class="rl-item" style="--rc:#6ab87a">Cerebellum</span>
-          <span class="rl-item" style="--rc:#8a9aaa">Brainstem / SN</span>
+          <span class="rl-item" id="be-r-brainstem" style="--rc:#8a9aaa;cursor:pointer" title="View in 3D Brain Explorer" onclick="ppOpenBrain('vta-snc')">Brainstem / SN</span>
           <span class="rl-item" style="--rc:#b86e9a">Insula / Parietal</span>
         </div>
       </div>
+
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:20px 0;padding:14px 16px;border:1px solid rgba(74,124,53,.35);background:rgba(74,124,53,.07);border-radius:12px;"><span style="font-weight:600;color:var(--accent);font-size:13px;">&#129504; Explore in 3D &rarr;</span><span style="display:flex;flex-wrap:wrap;gap:6px;"><a onclick="ppOpenBrain('dlpfc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">DLPFC</a><a onclick="ppOpenBrain('acc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">ACC</a><a onclick="ppOpenBrain('amygdala')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Amygdala</a><a onclick="ppOpenBrain('hippocampus')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Hippocampus</a><a onclick="ppOpenBrain('dstriatum')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Striatum</a><a onclick="ppOpenBrain('lc-thal')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">MD thalamus</a><a onclick="ppOpenBrain('nacc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">NAcc</a><a onclick="ppOpenBrain('vta-snc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">VTA/SNc</a><a onclick="switchSection('brain-explorer')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Open Explorer &#8599;</a></span></div>
 
       <!-- ── Anxiety Disorders ── -->
       <div class="circuit-category-header">
@@ -2796,6 +2804,46 @@
       </div>
 
     </section><!-- end brain-regions -->
+
+    <section id="brain-explorer" data-lazy-tool="brain-explorer" class="section">
+      <div class="section-header">
+        <h2>3D Brain Explorer</h2>
+        <p class="section-sub">Interactive, expert-segmented 3D neuroanatomy for the structures that matter in psychopharmacology. Click a structure to see its role and jump to the related circuit or region.</p>
+      </div>
+      <div class="be-wrap">
+        <div class="be-grid">
+          <div class="be-card be-side" id="be-side"></div>
+          <div class="be-card">
+            <div class="be-toolbar">
+              <button class="be-btn" id="be-reset">Reset view</button>
+              <label class="be-toggle"><input type="checkbox" id="be-shell" checked> Brain shell</label>
+              <label class="be-toggle"><input type="checkbox" id="be-ctx" checked> Context structures</label>
+              <label class="be-toggle"><input type="checkbox" id="be-spin"> Auto-rotate</label>
+            </div>
+            <div class="be-stagewrap"><canvas class="be-canvas" id="be-canvas"></canvas><div class="be-loading" id="be-loading">Loading brain model&hellip;</div></div>
+          </div>
+          <div class="be-card">
+            <div class="be-panel">
+              <h3 id="be-name">Pick a structure</h3>
+              <p class="be-abbr" id="be-abbr">SPL expert-segmented atlas &middot; 10 structures</p>
+              <div id="be-detail" style="display:none">
+                <div class="be-row"><p class="be-k">System</p><p class="be-v" id="be-system"></p></div>
+                <div class="be-row"><p class="be-k">Why it matters</p><p class="be-v" id="be-why"></p></div>
+                <div class="be-row"><p class="be-k">On this model</p><p class="be-v" id="be-note"></p></div>
+                <div class="be-links" id="be-links"></div>
+              </div>
+              <p class="be-hint" id="be-hint">Drag to rotate &middot; scroll to zoom &middot; click any structure. Toggle the brain shell and context nuclei to isolate what you need. Raphe and locus coeruleus are shown as bilateral markers.</p>
+              <p class="be-cred">3D models: SPL-PNL Brain Atlas, Surgical Planning Laboratory &amp; Psychiatry Neuroimaging Laboratory, Brigham &amp; Women's Hospital / Harvard (<a href="http://www.spl.harvard.edu/publications/item/view/1265" target="_blank" rel="noopener">spl.harvard.edu</a>), 3D Slicer (BSD-style) license.</p>
+            </div>
+            <div class="be-loc empty" id="be-loc">
+              <p class="be-loc-k" id="be-loc-k">Location</p>
+              <div id="be-locator"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- end brain-explorer -->
+
 
     <!-- ── Medication Comparison ─────────────────────────────────────────── -->
     <section id="med-compare" class="section">
@@ -11782,7 +11830,7 @@
   </script>
 
   <script defer src="js/data.js?v=20260324"></script>
-  <script defer src="js/app.js?v=20260710d"></script>
+  <script defer src="js/app.js?v=20260712a"></script>
   <script defer src="js/glossary-data.js?v=20260501a"></script>
   <script defer src="js/glossary-page.js?v=20260501a"></script>
   <script defer src="js/search.js?v=20260501a"></script>

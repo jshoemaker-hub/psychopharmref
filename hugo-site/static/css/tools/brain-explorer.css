@@ -1,0 +1,46 @@
+/* 3D Brain Explorer — prefixed be- */
+.be-wrap{margin-top:24px;}
+.be-grid{display:grid;grid-template-columns:200px 1fr 270px;gap:16px;align-items:start;}
+@media(max-width:1000px){.be-grid{grid-template-columns:1fr;}}
+.be-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;}
+.be-side{padding:12px;max-height:600px;overflow:auto;}
+.be-side h4{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2);margin:12px 0 5px;}
+.be-side h4:first-child{margin-top:0;}
+.be-item{display:flex;gap:8px;align-items:center;width:100%;text-align:left;border:1px solid transparent;background:none;border-radius:9px;padding:6px 7px;cursor:pointer;transition:.14s;color:var(--text);}
+.be-item:hover{background:rgba(0,0,0,.04);}
+.be-item.active{background:rgba(74,124,53,.12);border-color:rgba(74,124,53,.35);}
+.be-sw{width:12px;height:12px;border-radius:3px;flex:none;}
+.be-ab{font-size:12px;font-weight:600;}
+.be-nm{font-size:10px;color:#8a8065;}
+.be-stagewrap{position:relative;}
+.be-canvas{width:100%;height:560px;display:block;border-radius:12px;background:radial-gradient(circle at 50% 40%,#fbf7ee,#e9e0d0);cursor:grab;}
+.be-canvas:active{cursor:grabbing;}
+.be-toolbar{display:flex;gap:10px;align-items:center;padding:9px 12px;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.be-btn{font-size:12px;padding:6px 11px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--text);cursor:pointer;}
+.be-btn:hover{border-color:var(--accent);color:var(--accent);}
+.be-toggle{font-size:12px;color:var(--text);display:flex;align-items:center;gap:6px;cursor:pointer;}
+.be-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#8a8065;font-size:14px;}
+.be-panel{padding:14px;}
+.be-panel h3{font-size:15px;margin:0 0 2px;color:var(--accent);}
+.be-abbr{font-size:11px;color:#8a8065;margin:0 0 10px;}
+.be-row{margin:0 0 9px;}
+.be-k{font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent2);margin:0 0 2px;}
+.be-v{font-size:12.5px;line-height:1.5;color:var(--text);margin:0;}
+.be-hint{color:#8a8065;font-size:12px;line-height:1.5;}
+.be-links{display:flex;flex-direction:column;gap:6px;margin:10px 0 4px;}
+.be-link{font-size:12px;color:var(--accent);text-decoration:none;border:1px solid var(--border);border-radius:8px;padding:6px 9px;background:#fff;cursor:pointer;transition:.14s;}
+.be-link:hover{border-color:var(--accent);background:rgba(74,124,53,.06);}
+.be-loc{padding:12px 14px;border-top:1px solid var(--border);}
+.be-loc.empty{display:none;}
+.be-loc-k{font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent2);margin:0 0 6px;}
+.be-loc svg{width:100%;height:auto;border-radius:8px;background:#fbf7ee;border:1px solid var(--border);}
+.be-cred{font-size:10px;color:#a89c7e;margin-top:12px;border-top:1px dashed var(--border);padding-top:8px;line-height:1.5;}
+.be-cred a{color:#8a8065;}
+@keyframes bePulse{0%,100%{opacity:.85}50%{opacity:.4}}
+.be-hl{animation:bePulse 1.8s ease-in-out infinite;}
+/* callout in circuits/regions sections */
+.be-callout{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:20px;padding:14px 16px;border:1px solid rgba(74,124,53,.35);background:rgba(74,124,53,.07);border-radius:12px;}
+.be-callout .be-co-t{font-weight:600;color:var(--accent);font-size:13px;}
+.be-callout .be-co-links{display:flex;flex-wrap:wrap;gap:6px;}
+.be-chip{font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);cursor:pointer;}
+.be-chip:hover{border-color:var(--accent);color:var(--accent);}
