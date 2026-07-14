@@ -2046,6 +2046,8 @@ function initMedCompare() {
   function buildSelectors() {
     const container = document.getElementById('mc-selectors');
     if (!container) return;
+    // Preserve any medications already chosen so changing the count doesn't reset them
+    const prev = Array.from(container.querySelectorAll('.mc-select')).map(s => s.value);
     container.innerHTML = '';
     for (let i = 0; i < mcCount; i++) {
       const wrap = document.createElement('div');
@@ -2057,6 +2059,7 @@ function initMedCompare() {
       sel.className = 'mc-select';
       sel.id = `mc-sel-${i}`;
       sel.innerHTML = `<option value="">— Select —</option>` + drugOptions;
+      if (prev[i]) sel.value = prev[i];
       wrap.appendChild(label);
       wrap.appendChild(sel);
       container.appendChild(wrap);
