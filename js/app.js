@@ -983,10 +983,42 @@ function toggleReceptor(receptor, btn) {
   renderBarChart();
 }
 
+// pKi for a drug/receptor pair, or null if binding is negligible (Ki ≥ 10,000 nM).
+function classPki(m, r) {
+  const ki = m.receptorKi?.[r];
+  return (ki && ki < 10000) ? (9 - Math.log10(ki)) : null;
+}
+
+// Order receptor columns so the ones a class is MOST active at sit on the left:
+// primary key = how many drugs in the class bind it, secondary = total affinity,
+// tie-break = canonical RECEPTOR_LIST order. Receptors the class never binds
+// fall to the right, keeping every column present but relevance-sorted.
+function sortReceptorsByClassActivity(meds, receptors) {
+  return receptors.slice().sort((a, b) => {
+    let na = 0, sa = 0, nb = 0, sb = 0;
+    meds.forEach(m => {
+      const pa = classPki(m, a); if (pa != null) { na++; sa += pa; }
+      const pb = classPki(m, b); if (pb != null) { nb++; sb += pb; }
+    });
+    if (nb !== na) return nb - na;
+    if (sb !== sa) return sb - sa;
+    return RECEPTOR_LIST.indexOf(a) - RECEPTOR_LIST.indexOf(b);
+  });
+}
+
+// Classes whose targets aren't part of the monoamine/receptor-Ki panel. Shown as
+// an explanatory note instead of an empty grid (no fabricated affinity values).
+const CLASS_MECH_NOTE = {
+  'Gabapentinoid': 'Gabapentin and pregabalin bind the α2δ auxiliary subunit of voltage-gated calcium channels — not classic neurotransmitter receptors. No receptor-affinity (Ki) data applies, so this class has no heat-map columns.',
+  'Neuroactive Steroid': 'Brexanolone and zuranolone are positive allosteric modulators at synaptic and extrasynaptic GABA-A receptors. Their action is functional modulation rather than competitive (orthosteric) binding, so no receptor Ki values are represented here.',
+  'NMDA Antagonist': 'Esketamine is an uncompetitive NMDA-receptor channel blocker, with additional σ-1 and μ/κ-opioid activity. These targets are not part of the monoamine Ki panel, so no heat-map columns apply.'
+};
+
 function renderBarChart() {
   const cls  = document.getElementById('class-select').value;
   const meds = MEDICATIONS.filter(m => m.class === cls && m.receptorKi);
-  const receptors = RECEPTOR_LIST.filter(r => activeReceptors.has(r));
+  const receptors = sortReceptorsByClassActivity(
+    meds, RECEPTOR_LIST.filter(r => activeReceptors.has(r)));
 
   if (!meds.length || !receptors.length) return;
 
@@ -1081,20 +1113,35 @@ function hmColor(pki) {
 function renderHeatmap() {
   const cls  = document.getElementById('class-select').value;
   const meds = MEDICATIONS.filter(m => m.class === cls && m.receptorKi);
-  const receptors = RECEPTOR_LIST.filter(r => activeReceptors.has(r));
   const table = document.getElementById('rb-hm-table');
+  const legend = document.getElementById('rb-hm-legend');
   if (!table) return;
 
-  if (!meds.length || !receptors.length) {
-    table.innerHTML = '<tbody><tr><td style="padding:20px;color:#8a8172">' +
-      'Select at least one drug class and receptor to display the heatmap.</td></tr></tbody>';
+  // Class exists in the dropdown but no drug in it has receptor-Ki data
+  // (targets outside the monoamine panel). Explain rather than show blanks.
+  if (!meds.length) {
+    const note = CLASS_MECH_NOTE[cls];
+    table.innerHTML = '<tbody><tr><td style="padding:18px 20px;color:#6b6050;line-height:1.6;font-size:13px">' +
+      (note
+        ? '<strong>No receptor-affinity data for this class.</strong><br>' + note
+        : 'Select at least one drug class and receptor to display the heatmap.') +
+      '</td></tr></tbody>';
+    if (legend) legend.innerHTML = '';
     return;
   }
 
-  const pkiOf = (m, r) => {
-    const ki = m.receptorKi?.[r];
-    return (ki && ki < 10000) ? (9 - Math.log10(ki)) : null;
-  };
+  // All toggled receptors, ordered so the class's most-active columns lead.
+  const receptors = sortReceptorsByClassActivity(
+    meds, RECEPTOR_LIST.filter(r => activeReceptors.has(r)));
+
+  if (!receptors.length) {
+    table.innerHTML = '<tbody><tr><td style="padding:20px;color:#8a8172">' +
+      'Select at least one receptor to display the heatmap.</td></tr></tbody>';
+    if (legend) legend.innerHTML = '';
+    return;
+  }
+
+  const pkiOf = classPki;
 
   let head = '<thead><tr><th class="rb-hm-corner">Drug</th>';
   receptors.forEach(r => {
@@ -1127,7 +1174,6 @@ function renderHeatmap() {
   table.innerHTML = head + body;
 
   // Legend: gradient bar + N/A swatch
-  const legend = document.getElementById('rb-hm-legend');
   if (legend) {
     const grad = `linear-gradient(to right, ${hmColor(HM_PKI_MIN).css}, ` +
       `${hmColor((HM_PKI_MIN + HM_PKI_MAX) / 2).css}, ${hmColor(HM_PKI_MAX).css})`;

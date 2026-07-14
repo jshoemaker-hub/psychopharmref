@@ -785,7 +785,7 @@ const RECEPTOR_COLORS = {
   'OX2R':   '#F87171',
 };
 
-const RECEPTOR_LIST = ['SERT','NET','DAT','5HT1A','5HT2A','5HT2C','D1','D2','D3','H1','alpha1','alpha2','M1'];
+const RECEPTOR_LIST = ['SERT','NET','DAT','5HT1A','5HT2A','5HT2C','D1','D2','D3','H1','alpha1','alpha2','M1','GABA-A','MT1','MT2','OX1R','OX2R'];
 const P450_ENZYMES  = ['CYP1A2','CYP2B6','CYP2C9','CYP2C19','CYP2D6','CYP3A4'];
 
 // ── Perinatal Safety Data ──────────────────────────────────────────────────
