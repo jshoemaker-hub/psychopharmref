@@ -225,6 +225,134 @@
           });
         };
 
+        /* ── Paint a set of drug items into a container (shared by class + compare) ─── */
+        function paintTreemap(container, legEl, items) {
+          container.innerHTML = '';
+          container.style.position = 'relative';
+
+          if (!items.length) {
+            container.innerHTML = '<div style="padding:40px;text-align:center;color:#999;">No significant binding to display.</div>';
+            if (legEl) legEl.innerHTML = '';
+            return;
+          }
+
+          var W = container.clientWidth || 800;
+          var H = 460;
+          container.style.height = H + 'px';
+
+          var drugTiles = squarify(items, { x: 0, y: 0, w: W, h: H });
+
+          drugTiles.forEach(function(tile) {
+            var it = tile.item;
+            var el = document.createElement('div');
+            el.className = 'rb-tm-drug';
+            el.style.cssText = 'left:' + tile.x + 'px;top:' + tile.y + 'px;width:' + tile.w + 'px;height:' + tile.h + 'px;background:#e8e4dc;';
+
+            var labelH = 18;
+            if (tile.w > 40 && tile.h > 30) {
+              var label = document.createElement('div');
+              label.className = 'rb-tm-drug-label';
+              var nameSpan = document.createElement('span');
+              nameSpan.className = 'rb-tm-drug-name';
+              nameSpan.textContent = it.name;
+              if (tile.w < 80) nameSpan.style.fontSize = '9px';
+              label.appendChild(nameSpan);
+              el.appendChild(label);
+            } else {
+              labelH = 0;
+            }
+
+            var innerRect = { x: 0, y: labelH, w: tile.w - 4, h: tile.h - labelH - 4 };
+            if (innerRect.w > 4 && innerRect.h > 4 && it.breakdown.length > 0) {
+              var subTiles = squarify(it.breakdown, innerRect);
+              subTiles.forEach(function(sub) {
+                var rec = sub.item;
+                var recEl = document.createElement('div');
+                recEl.className = 'rb-tm-rec';
+                recEl.style.cssText = 'left:' + (sub.x + 2) + 'px;top:' + (sub.y + 2) + 'px;width:' + sub.w + 'px;height:' + sub.h + 'px;background:' + getReceptorColorTM(rec.r) + ';';
+                if (sub.w > 28 && sub.h > 18) {
+                  var rName = document.createElement('div');
+                  rName.className = 'rb-tm-rec-name';
+                  rName.textContent = rec.r;
+                  if (sub.w < 44 || sub.h < 24) rName.style.fontSize = '7.5px';
+                  recEl.appendChild(rName);
+                  if (sub.w > 38 && sub.h > 30) {
+                    var rVal = document.createElement('div');
+                    rVal.className = 'rb-tm-rec-val';
+                    rVal.textContent = rec.pki.toFixed(1);
+                    recEl.appendChild(rVal);
+                  }
+                }
+                el.appendChild(recEl);
+              });
+            }
+
+            el.addEventListener('mouseenter', function() {
+              var existing = container.querySelector('.rb-tm-tooltip');
+              if (existing) existing.remove();
+              var tip = document.createElement('div');
+              tip.className = 'rb-tm-tooltip';
+              var html = '<strong>' + it.name + '</strong><br>';
+              it.breakdown.forEach(function(b) {
+                html += '<span style="color:' + getReceptorColorTM(b.r) + '">●</span> ' +
+                  b.r + ': pKi ' + b.pki.toFixed(2) + ' (Ki ' + b.ki + ' nM) — ' + b.action + '<br>';
+              });
+              html += '<em style="color:#ccc">Total pKi: ' + it.value.toFixed(2) + '</em>';
+              tip.innerHTML = html;
+              var tipLeft = tile.x + tile.w + 8;
+              if (tipLeft + 280 > W) tipLeft = tile.x - 280;
+              if (tipLeft < 0) tipLeft = 4;
+              tip.style.left = tipLeft + 'px';
+              tip.style.top = Math.max(0, tile.y) + 'px';
+              container.appendChild(tip);
+            });
+            el.addEventListener('mouseleave', function() {
+              var existing = container.querySelector('.rb-tm-tooltip');
+              if (existing) existing.remove();
+            });
+
+            container.appendChild(el);
+          });
+
+          if (legEl) {
+            legEl.innerHTML = '';
+            var usedReceptors = {};
+            items.forEach(function(it) { it.breakdown.forEach(function(b) { usedReceptors[b.r] = true; }); });
+            RECEPTOR_LIST.forEach(function(r) {
+              if (!usedReceptors[r]) return;
+              var item = document.createElement('div');
+              item.className = 'rb-tm-leg-item';
+              item.innerHTML = '<div class="rb-tm-leg-swatch" style="background:' + getReceptorColorTM(r) + '"></div>' + r;
+              legEl.appendChild(item);
+            });
+          }
+        }
+
+        /* ── Compare Treemap: exactly two drugs, across all receptors ─── */
+        window.renderCompareTreemap = function(drugA, drugB) {
+          var container = document.getElementById('compare-treemap-container');
+          if (!container) return;
+          var legEl = document.getElementById('compare-tm-legend');
+          var items = [];
+          [drugA, drugB].forEach(function(m) {
+            if (!m || !m.receptorKi) return;
+            var totalPki = 0, breakdown = [];
+            RECEPTOR_LIST.forEach(function(r) {
+              var ki = m.receptorKi[r];
+              if (ki && ki < 10000) {
+                var pki = 9 - Math.log10(ki);
+                totalPki += pki;
+                breakdown.push({ r: r, pki: pki, ki: ki, action: getReceptorAction(m.id, r), value: pki });
+              }
+            });
+            if (totalPki > 0) {
+              breakdown.sort(function(a, b) { return b.pki - a.pki; });
+              items.push({ id: m.id, name: m.name, value: totalPki, breakdown: breakdown });
+            }
+          });
+          paintTreemap(container, legEl, items);
+        };
+
         /* ── View Toggle ─── */
         window.switchRBView = function(view) {
           var barWrap = document.getElementById('bar-chart-wrap');

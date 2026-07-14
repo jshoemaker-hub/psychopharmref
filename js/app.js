@@ -1188,6 +1188,8 @@ window.renderHeatmap = renderHeatmap;
 
 /* ── Side-by-Side Drug Comparison ───────────────────────────────────────── */
 let compareChartInst = null;
+let compareView = 'bar';           // 'bar' | 'heat' | 'tree'
+let compareDrugs = { a: null, b: null };
 
 function populateCompareSelects() {
   const sorted = [...MEDICATIONS].filter(m => m.receptorKi).sort((a,b) => a.name.localeCompare(b.name));
@@ -1196,6 +1198,15 @@ function populateCompareSelects() {
   document.getElementById('compare-b').innerHTML = '<option value="">-- Select drug --</option>' + opts;
 }
 
+// Receptors where at least one of the two drugs has meaningful affinity.
+function compareReceptors(drugA, drugB) {
+  return RECEPTOR_LIST.filter(r =>
+    (drugA.receptorKi[r] && drugA.receptorKi[r] < 10000) ||
+    (drugB.receptorKi[r] && drugB.receptorKi[r] < 10000)
+  );
+}
+
+// Entry point: reads the two selects, stores state, shows/hides the container.
 function renderCompareChart() {
   const idA = document.getElementById('compare-a').value;
   const idB = document.getElementById('compare-b').value;
@@ -1206,6 +1217,7 @@ function renderCompareChart() {
     container.classList.add('hidden');
     empty.classList.toggle('hidden', !idA && !idB);
     if (compareChartInst) { compareChartInst.destroy(); compareChartInst = null; }
+    compareDrugs = { a: null, b: null };
     return;
   }
 
@@ -1213,19 +1225,48 @@ function renderCompareChart() {
   const drugB = MEDICATIONS.find(m => m.id === idB);
   if (!drugA?.receptorKi || !drugB?.receptorKi) return;
 
-  // Only receptors where at least one drug has meaningful affinity
-  const receptors = RECEPTOR_LIST.filter(r =>
-    (drugA.receptorKi[r] && drugA.receptorKi[r] < 10000) ||
-    (drugB.receptorKi[r] && drugB.receptorKi[r] < 10000)
-  );
+  compareDrugs = { a: drugA, b: drugB };
+  container.classList.remove('hidden');
+  empty.classList.add('hidden');
 
+  renderCompareViews();
+  renderCompareTable(drugA, drugB);
+}
+
+// Toggle between bar / heatmap / treemap views.
+function switchCompareView(view) {
+  compareView = view;
+  const barWrap  = document.getElementById('compare-bar-wrap');
+  const heatWrap = document.getElementById('compare-heatmap-wrap');
+  const treeWrap = document.getElementById('compare-treemap-wrap');
+  const btnBar  = document.getElementById('cmp-view-bar');
+  const btnHeat = document.getElementById('cmp-view-heat');
+  const btnTree = document.getElementById('cmp-view-tree');
+  [barWrap, heatWrap, treeWrap].forEach(el => { if (el) el.style.display = 'none'; });
+  [btnBar, btnHeat, btnTree].forEach(el => { if (el) el.classList.remove('rb-vt-active'); });
+  if (view === 'heat')      { heatWrap.style.display = ''; btnHeat.classList.add('rb-vt-active'); }
+  else if (view === 'tree') { treeWrap.style.display = ''; btnTree.classList.add('rb-vt-active'); }
+  else                      { barWrap.style.display = '';  btnBar.classList.add('rb-vt-active'); }
+  renderCompareViews();
+}
+window.switchCompareView = switchCompareView;
+
+// Renders whichever view is currently active (only the visible one — Chart.js
+// and the treemap need real layout dimensions, which display:none removes).
+function renderCompareViews() {
+  const drugA = compareDrugs.a, drugB = compareDrugs.b;
+  if (!drugA || !drugB) return;
+  const receptors = compareReceptors(drugA, drugB);
+  if (compareView === 'heat')      renderCompareHeatmap(drugA, drugB, receptors);
+  else if (compareView === 'tree') { if (window.renderCompareTreemap) window.renderCompareTreemap(drugA, drugB); }
+  else                             renderCompareBar(drugA, drugB, receptors);
+}
+
+function renderCompareBar(drugA, drugB, receptors) {
   const toBar = (drug, r) => {
     const ki = drug.receptorKi?.[r];
     return (ki && ki < 10000) ? parseFloat((9 - Math.log10(ki)).toFixed(2)) : null;
   };
-
-  container.classList.remove('hidden');
-  empty.classList.add('hidden');
 
   const ctx = document.getElementById('compare-chart').getContext('2d');
   if (compareChartInst) { compareChartInst.destroy(); compareChartInst = null; }
@@ -1258,6 +1299,9 @@ function renderCompareChart() {
     },
     options: {
       responsive: true,
+      // Fill the fixed-height .compare-canvas-box wrapper instead of growing
+      // the canvas to width/2 (which overflowed the viewport).
+      maintainAspectRatio: false,
       scales: {
         x: {
           ticks: { color: '#6b6050', font: { size: 12 } },
@@ -1286,10 +1330,64 @@ function renderCompareChart() {
       }
     }
   });
-
-  // Render comparison table
-  renderCompareTable(drugA, drugB);
 }
+
+// Two-drug heatmap: rows = drugs, columns = receptors, color intensity = pKi.
+function renderCompareHeatmap(drugA, drugB, receptors) {
+  const table  = document.getElementById('compare-hm-table');
+  const legend = document.getElementById('compare-hm-legend');
+  if (!table) return;
+
+  if (!receptors.length) {
+    table.innerHTML = '<tbody><tr><td style="padding:20px;color:#8a8172">' +
+      'Neither drug has significant receptor-Ki data to compare.</td></tr></tbody>';
+    if (legend) legend.innerHTML = '';
+    return;
+  }
+
+  const pkiOf = (m, r) => {
+    const ki = m.receptorKi?.[r];
+    return (ki && ki < 10000) ? (9 - Math.log10(ki)) : null;
+  };
+
+  let head = '<thead><tr><th class="rb-hm-corner">Drug</th>';
+  receptors.forEach(r => { head += `<th style="border-bottom-color:${getColor(r)}">${r}</th>`; });
+  head += '</tr></thead>';
+
+  let body = '<tbody>';
+  [drugA, drugB].forEach(m => {
+    body += `<tr><th>${m.name}</th>`;
+    receptors.forEach(r => {
+      const pki = pkiOf(m, r);
+      if (pki == null) {
+        body += '<td class="rb-hm-cell rb-hm-empty" title="' +
+          `${m.name} — ${r}: no significant binding (Ki ≥ 10,000 nM)">·</td>`;
+      } else {
+        const c = hmColor(pki);
+        const ki = m.receptorKi[r];
+        const action = getReceptorAction(m.id, r);
+        const tip = `${m.name} — ${r}: pKi ${pki.toFixed(2)} (Ki = ${ki} nM)` +
+          (action ? ` | ${action}` : '');
+        body += `<td class="rb-hm-cell" style="background:${c.css};color:${c.dark ? '#fff' : '#3a3222'}" ` +
+          `title="${tip.replace(/"/g, '&quot;')}">${pki.toFixed(1)}</td>`;
+      }
+    });
+    body += '</tr>';
+  });
+  body += '</tbody>';
+  table.innerHTML = head + body;
+
+  if (legend) {
+    const grad = `linear-gradient(to right, ${hmColor(HM_PKI_MIN).css}, ` +
+      `${hmColor((HM_PKI_MIN + HM_PKI_MAX) / 2).css}, ${hmColor(HM_PKI_MAX).css})`;
+    legend.innerHTML =
+      `<span>Weaker</span>` +
+      `<span class="rb-hm-bar" style="background:${grad}"></span>` +
+      `<span>Stronger&nbsp;&nbsp;(pKi ${HM_PKI_MIN} → ${HM_PKI_MAX}+)</span>` +
+      `<span class="rb-hm-na"><span></span>&nbsp;= Ki ≥ 10,000 nM (negligible)</span>`;
+  }
+}
+window.renderCompareHeatmap = renderCompareHeatmap;
 
 function renderCompareTable(drugA, drugB) {
   const allReceptors = RECEPTOR_LIST.filter(r =>
