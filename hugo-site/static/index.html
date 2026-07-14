@@ -111,6 +111,7 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="glossary">Receptor Glossary</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="pk-curves">PK Curves</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="med-compare">Med Comparison</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="similar-meds">Find Similar Meds</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="price-compare">Price Comparison</a></li>
         </ul>
       </li>
@@ -2925,6 +2926,35 @@
           <div id="mc-p450-content"></div>
         </div>
       </div>
+    </section>
+
+    <!-- ── Find Similar Medications ──────────────────────────────────────── -->
+    <section id="similar-meds" data-lazy-tool="similar-meds" class="section">
+      <div class="section-header">
+        <h2>Find Similar Medications</h2>
+        <p class="section-sub">When a medication that once worked best loses its effect (tachyphylaxis, or &ldquo;poop-out&rdquo;), identify the three medications with the most similar pharmacology &mdash; a rational starting point for a switch.</p>
+      </div>
+
+      <div class="mt-warning">
+        <strong>Clinical decision-support only.</strong> Similarity is computed from receptor-binding profiles (60%), drug class (25%), and shared FDA indications (15%). Pharmacologic similarity does not guarantee comparable efficacy or tolerability in an individual, and for apparent tachyphylaxis a switch to a <em>different</em> mechanism is sometimes preferable. Use alongside clinical judgment.
+      </div>
+
+      <div class="ref-card sm-setup-card">
+        <h3 class="ref-card-title">&#9878; Select the reference medication</h3>
+        <div class="sm-setup-row">
+          <div class="sm-select-wrap">
+            <label class="sm-select-label" for="sm-ref-select">Medication that worked best</label>
+            <select id="sm-ref-select" class="sm-select"><option value="">&mdash; Select &mdash;</option></select>
+          </div>
+          <label class="sm-toggle">
+            <input type="checkbox" id="sm-samecat" checked>
+            <span>Restrict to same category</span>
+          </label>
+        </div>
+        <button class="btn-primary sm-go-btn" id="sm-go-btn">Find Similar Medications &#9656;</button>
+      </div>
+
+      <div id="sm-results" class="sm-results" style="display:none"></div>
     </section>
 
     <!-- ── Price Comparison ──────────────────────────────────────────────── -->
@@ -11858,6 +11888,6 @@
   <script defer src="js/app.js?v=20260713b"></script>
   <script defer src="js/glossary-data.js?v=20260501a"></script>
   <script defer src="js/glossary-page.js?v=20260501a"></script>
-  <script defer src="js/search.js?v=20260501a"></script>
+  <script defer src="js/search.js?v=20260713c"></script>
 </body>
 </html>
