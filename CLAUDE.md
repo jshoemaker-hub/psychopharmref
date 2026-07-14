@@ -96,6 +96,8 @@ var dateStr = ToolUtils.dateStamp();
 - `es-` → Epworth Sleepiness Scale
 - `msibpd-` → MSI-BPD
 - `sud-` → DSM-5-TR Substance Use Disorder Tool
+- `sm-` → Find Similar Medications
+- `cm-` → Find Complementary Medications
 
 ### Copy-to-Clipboard Pattern
 Never use `alert()`. Always use `ToolUtils.copyWithButton()` for new tools:

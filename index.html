@@ -112,6 +112,7 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="pk-curves">PK Curves</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="med-compare">Med Comparison</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="similar-meds">Find Similar Meds</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="complementary-meds">Find Complementary Meds</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="price-compare">Price Comparison</a></li>
         </ul>
       </li>
@@ -2955,6 +2956,35 @@
       </div>
 
       <div id="sm-results" class="sm-results" style="display:none"></div>
+    </section>
+
+    <!-- ── Find Complementary Medications ────────────────────────────────── -->
+    <section id="complementary-meds" data-lazy-tool="complementary-meds" class="section">
+      <div class="section-header">
+        <h2>Find Complementary Medications</h2>
+        <p class="section-sub">The mirror of &ldquo;Find Similar.&rdquo; For a reference medication, identify the three agents that treat the same condition but act through a <em>different</em> receptor set &mdash; rational candidates for combination or augmentation rather than a like-for-like switch.</p>
+      </div>
+
+      <div class="mt-warning">
+        <strong>Clinical decision-support only.</strong> Complementarity is computed from receptor-binding <em>divergence</em> (40%), drug class (30%), and shared FDA indications (30%); eligible candidates share at least one indication, have receptor-binding data on file, and diverge mechanistically (receptor overlap &le; 70% &mdash; more-similar agents belong in <em>Find Similar Medications</em>). Mechanistic complementarity does not establish efficacy or safety of a combination &mdash; always assess CYP450 interactions, additive serotonergic/QT/sedation/seizure risk, and whether optimizing monotherapy is preferable. Use alongside clinical judgment.
+      </div>
+
+      <div class="ref-card cm-setup-card">
+        <h3 class="ref-card-title">&#9878; Select the reference medication</h3>
+        <div class="cm-setup-row">
+          <div class="cm-select-wrap">
+            <label class="cm-select-label" for="cm-ref-select">Current / anchor medication</label>
+            <select id="cm-ref-select" class="cm-select"><option value="">&mdash; Select &mdash;</option></select>
+          </div>
+          <label class="cm-toggle">
+            <input type="checkbox" id="cm-samecat" checked>
+            <span>Restrict to same category</span>
+          </label>
+        </div>
+        <button class="btn-primary cm-go-btn" id="cm-go-btn">Find Complementary Medications &#9656;</button>
+      </div>
+
+      <div id="cm-results" class="cm-results" style="display:none"></div>
     </section>
 
     <!-- ── Price Comparison ──────────────────────────────────────────────── -->

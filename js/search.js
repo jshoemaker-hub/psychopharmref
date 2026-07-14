@@ -43,6 +43,7 @@
       { title: 'Refill Calendar & Usage', section: 'refill-calendar', cat: 'Clinical Tool' },
       { title: 'Medication Comparison', section: 'med-compare', cat: 'Clinical Tool' },
       { title: 'Find Similar Medications', section: 'similar-meds', cat: 'Clinical Tool' },
+      { title: 'Find Complementary Medications', section: 'complementary-meds', cat: 'Clinical Tool' },
       { title: 'Taper / Cross-Taper Planner', section: 'med-taper', cat: 'Clinical Tool' },
       { title: 'PANSS (Psychosis)', section: 'panss-tool', cat: 'Rating Scale' },
       { title: 'SLUMS Exam (Cognition)', section: 'slums-tool', cat: 'Rating Scale' },
