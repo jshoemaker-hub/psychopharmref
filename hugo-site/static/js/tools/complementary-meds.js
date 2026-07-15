@@ -217,7 +217,9 @@
   }
 
   // ── State ────────────────────────────────────────────────────────────────
-  var lastRanked = null, lastRef = null;
+  var lastRanked = null, lastRef = null, lastSameCat = true;
+  var STEP = 3;            // how many results per "show more" click
+  var shownCount = STEP;   // how many are currently displayed
 
   function populateSelect() {
     var sel = document.getElementById('cm-ref-select');
@@ -265,13 +267,15 @@
       };
     }).sort(function (a, b) { return b.s.total - a.s.total; });
 
-    lastRanked = ranked; lastRef = ref;
+    lastRanked = ranked; lastRef = ref; lastSameCat = sameCat;
+    shownCount = STEP;               // reset to first three on every new search
     render(ref, ranked, sameCat);
   }
 
   function render(ref, ranked, sameCat) {
     var results = document.getElementById('cm-results');
-    var top = ranked.slice(0, 3);
+    var shownN = Math.min(shownCount, ranked.length);
+    var top = ranked.slice(0, shownN);
     var html = '';
 
     // Reference banner
@@ -346,7 +350,7 @@
     });
     html += '</div>';
 
-    // Receptor comparison table (reference + top 3)
+    // Receptor comparison table (reference + all shown candidates)
     var cols = [ref].concat(top.map(function (r) { return r.med; }));
     var recSet = {};
     cols.forEach(function (m) {
@@ -388,18 +392,38 @@
       + 'and whether monotherapy optimization or a switch is the better move. These rankings inform, not replace, that decision.'
       + '</div>';
 
-    html += '<div class="cm-actions"><button class="btn-primary cm-report-btn" id="cm-report-btn">Copy Summary</button></div>';
+    var remaining = ranked.length - shownN;
+    html += '<div class="cm-actions">';
+    html += '<button class="btn-primary cm-report-btn" id="cm-report-btn">Copy Summary</button>';
+    if (remaining > 0) {
+      var next = Math.min(STEP, remaining);
+      html += '<button class="cm-more-btn" id="cm-more-btn">Not these? Show ' + next + ' more '
+        + '<span class="cm-more-sub">(' + remaining + ' left)</span></button>';
+    }
+    html += '</div>';
+    if (ranked.length > STEP) {
+      html += '<div class="cm-count-note">Showing ' + shownN + ' of ' + ranked.length
+        + ' eligible complementary agents, ranked by score.</div>';
+    }
 
     results.innerHTML = html;
     results.style.display = '';
 
     var rbtn = document.getElementById('cm-report-btn');
     if (rbtn) rbtn.addEventListener('click', function () { copyReport(this); });
+    var mbtn = document.getElementById('cm-more-btn');
+    if (mbtn) mbtn.addEventListener('click', function () {
+      var firstNew = shownCount;                         // index of first newly revealed card
+      shownCount = Math.min(shownCount + STEP, lastRanked.length);
+      render(lastRef, lastRanked, lastSameCat);
+      var cards = document.querySelectorAll('#cm-results .cm-card');
+      if (cards[firstNew]) cards[firstNew].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
   }
 
   function copyReport(btn) {
     if (!lastRef || !lastRanked) return;
-    var ref = lastRef, top = lastRanked.slice(0, 3);
+    var ref = lastRef, top = lastRanked.slice(0, Math.min(shownCount, lastRanked.length));
     var date = (window.ToolUtils && ToolUtils.dateStamp) ? ToolUtils.dateStamp()
       : new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     var t = 'Complementary Medication Analysis\nDate: ' + date + '\n\n';

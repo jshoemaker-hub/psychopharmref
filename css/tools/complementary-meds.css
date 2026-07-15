@@ -138,7 +138,16 @@
   background: var(--bg2); border-left: 3px solid var(--accent2); border-radius: 0 7px 7px 0;
   padding: 0.75rem 0.95rem;
 }
-.cm-actions { margin-top: 1rem; }
+.cm-actions { margin-top: 1rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+.cm-more-btn {
+  font-size: 0.9rem; font-weight: 600; color: var(--accent2); cursor: pointer;
+  background: #fff; border: 1px solid var(--accent2); border-radius: 7px;
+  padding: 0.5rem 0.9rem; transition: background 0.15s ease, color 0.15s ease;
+}
+.cm-more-btn:hover { background: var(--accent2); color: #fff; }
+.cm-more-sub { font-weight: 400; opacity: 0.75; font-size: 0.82rem; }
+.cm-more-btn:hover .cm-more-sub { opacity: 0.9; }
+.cm-count-note { margin-top: 0.55rem; font-size: 0.78rem; color: var(--text); opacity: 0.6; }
 
 @media (max-width: 640px) {
   .cm-ref-class { margin-left: 0; width: 100%; }
