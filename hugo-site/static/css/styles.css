@@ -1195,6 +1195,34 @@ mark {
   border-radius: 8px;
   margin-top: 4px;
 }
+
+/* Side-by-Side interaction flags (P450 / QT) */
+.compare-flags-wrap { margin: 4px 0 14px; }
+.cmp-flags {
+  border-radius: 8px; padding: 9px 12px; font-size: 13px; line-height: 1.45;
+  display: flex; flex-direction: column; gap: 6px;
+  border: 1px solid var(--border); background: var(--bg2);
+}
+.cmp-flags--clear {
+  flex-direction: row; align-items: center; gap: 7px;
+  color: #3f6b2c; background: rgba(74,124,53,0.09); border-color: rgba(74,124,53,0.35);
+}
+.cmp-flag-dot { font-weight: 800; color: var(--accent); }
+.cmp-flags--low  { background: rgba(139,105,20,0.07); border-color: rgba(139,105,20,0.35); }
+.cmp-flags--mod  { background: rgba(196,140,20,0.12); border-color: rgba(196,140,20,0.55); }
+.cmp-flags--high { background: rgba(176,42,42,0.10);  border-color: rgba(176,42,42,0.55); }
+.cmp-flags-title { font-weight: 700; font-size: 12px; letter-spacing: 0.02em; text-transform: uppercase; opacity: 0.85; }
+.cmp-flags--high .cmp-flags-title { color: #a02020; }
+.cmp-flags--mod .cmp-flags-title  { color: #9a6a10; }
+.cmp-flag { display: flex; align-items: flex-start; gap: 7px; color: var(--text); }
+.cmp-flag-badge {
+  flex: 0 0 auto; font-size: 10px; font-weight: 800; letter-spacing: 0.02em;
+  color: #fff; padding: 1px 6px; border-radius: 4px; margin-top: 1px; white-space: nowrap;
+}
+.cmp-flag-badge--qt   { background: #a02020; }
+.cmp-flag-badge--high { background: #a02020; }
+.cmp-flag-badge--mod  { background: #c48c14; }
+.cmp-flag-badge--low  { background: #8b6914; }
 .compare-table {
   width: 100%;
   border-collapse: collapse;
@@ -3229,6 +3257,35 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
 .mc-p450-summary--moderate .mc-p450-summary-icon { color: #d99834; }
 .mc-p450-summary--weak     .mc-p450-summary-icon { color: var(--text-muted); }
 .mc-p450-summary-text { font-weight: 500; }
+
+/* Additive QT prolongation flag (independent of CYP interactions) */
+.mc-qt-flag {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(176,42,42,0.45);
+  border-left: 6px solid #a02020;
+  background: rgba(176,42,42,0.10);
+  line-height: 1.55;
+  font-size: 14px;
+  color: var(--text);
+}
+.mc-qt-flag-badge {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: #a02020;
+  padding: 2px 8px;
+  border-radius: 5px;
+  margin-top: 1px;
+}
+.mc-qt-flag-text { font-weight: 500; }
+
 .mc-p450-sum-strong   { color: #e85a3c; font-weight: 600; }
 .mc-p450-sum-moderate { color: #d99834; font-weight: 600; }
 .mc-p450-sum-weak     { color: var(--text-muted); }

@@ -67,6 +67,33 @@
 
 .sm-why { font-size: 0.84rem; color: var(--text); opacity: 0.85; }
 
+/* Interaction flags (P450 / QT) */
+.sm-flags {
+  border-radius: 8px; padding: 0.55rem 0.7rem; font-size: 0.8rem; line-height: 1.4;
+  display: flex; flex-direction: column; gap: 0.35rem;
+  border: 1px solid var(--border); background: var(--bg2);
+}
+.sm-flags--clear {
+  flex-direction: row; align-items: center; gap: 0.4rem;
+  color: #3f6b2c; background: rgba(74,124,53,0.09); border-color: rgba(74,124,53,0.35);
+}
+.sm-flag-dot { font-weight: 800; color: var(--accent); }
+.sm-flags--low  { background: rgba(139,105,20,0.07); border-color: rgba(139,105,20,0.35); }
+.sm-flags--mod  { background: rgba(196,140,20,0.12); border-color: rgba(196,140,20,0.55); }
+.sm-flags--high { background: rgba(176,42,42,0.10);  border-color: rgba(176,42,42,0.55); }
+.sm-flags-title { font-weight: 700; font-size: 0.76rem; letter-spacing: 0.02em; text-transform: uppercase; opacity: 0.85; }
+.sm-flags--high .sm-flags-title { color: #a02020; }
+.sm-flags--mod .sm-flags-title  { color: #9a6a10; }
+.sm-flag { display: flex; align-items: flex-start; gap: 0.4rem; color: var(--text); }
+.sm-flag-badge {
+  flex: 0 0 auto; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.02em;
+  color: #fff; padding: 0.08rem 0.34rem; border-radius: 4px; margin-top: 0.05rem; white-space: nowrap;
+}
+.sm-flag-badge--qt   { background: #a02020; }
+.sm-flag-badge--high { background: #a02020; }
+.sm-flag-badge--mod  { background: #c48c14; }
+.sm-flag-badge--low  { background: #8b6914; }
+
 .sm-metrics { display: flex; flex-direction: column; gap: 0.55rem; }
 .sm-metric-top { display: flex; justify-content: space-between; font-size: 0.78rem; margin-bottom: 0.2rem; }
 .sm-metric-label { color: var(--text); font-weight: 600; }

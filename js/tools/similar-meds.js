@@ -98,6 +98,52 @@
     return out;
   }
 
+  // ── Interaction flags: P450 conflicts & additive QT ──────────────────────
+  // A pharmacokinetic conflict exists when one agent inhibits or induces a CYP
+  // enzyme that the OTHER agent is a substrate of (so its levels rise or fall).
+  function p450(med) {
+    var p = med.p450 || {};
+    return {
+      substrate: p.substrate || [],
+      inhibits: p.inhibits || {},
+      induces: p.induces || []
+    };
+  }
+  var SEV_RANK = { strong: 3, moderate: 2, weak: 1 };
+  function p450Conflicts(ref, cand) {
+    var out = [];
+    function scan(actor, target) {
+      var a = p450(actor), b = p450(target);
+      for (var e in a.inhibits) {
+        if (b.substrate.indexOf(e) !== -1) {
+          out.push({ enzyme: e, actor: actor.name, target: target.name, effect: 'inhibits', strength: a.inhibits[e], dir: '↑' });
+        }
+      }
+      a.induces.forEach(function (e) {
+        if (b.substrate.indexOf(e) !== -1) {
+          out.push({ enzyme: e, actor: actor.name, target: target.name, effect: 'induces', strength: 'inducer', dir: '↓' });
+        }
+      });
+    }
+    scan(ref, cand);
+    scan(cand, ref);
+    out.sort(function (x, y) {
+      var rx = x.effect === 'induces' ? 3 : (SEV_RANK[x.strength] || 0);
+      var ry = y.effect === 'induces' ? 3 : (SEV_RANK[y.strength] || 0);
+      return ry - rx;
+    });
+    return out;
+  }
+  function conflictSeverity(list) {
+    var max = 0;
+    list.forEach(function (c) {
+      var r = c.effect === 'induces' ? 3 : (SEV_RANK[c.strength] || 0);
+      if (r > max) max = r;
+    });
+    return max; // 0 none, 1 weak, 2 moderate, 3 strong/inducer
+  }
+  function qtAdditive(ref, cand) { return !!ref.qtInterval && !!cand.qtInterval; }
+
   // ── Small render helpers ─────────────────────────────────────────────────
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
   function pct(x) { return Math.round(x) + '%'; }
@@ -113,6 +159,32 @@
   function chip(r) {
     var c = COLORS[r] || '#8b6914';
     return '<span class="sm-chip" style="--sm-chip:' + c + '">' + esc(r) + '</span>';
+  }
+
+  // Safety-flag block: additive QT and known P450 interactions between the pair.
+  function flagsBlock(ref, row) {
+    var conflicts = row.p450, qt = row.qt;
+    if (!qt && !conflicts.length) {
+      return '<div class="sm-flags sm-flags--clear"><span class="sm-flag-dot">&#10003;</span>'
+        + 'No additive QT or known P450 interaction with ' + esc(ref.name) + '.</div>';
+    }
+    var sev = conflictSeverity(conflicts);
+    var lvl = qt ? 'high' : (sev >= 3 ? 'high' : (sev === 2 ? 'mod' : 'low'));
+    var html = '<div class="sm-flags sm-flags--' + lvl + '">';
+    html += '<div class="sm-flags-title">&#9888; Interaction flags</div>';
+    if (qt) {
+      html += '<div class="sm-flag"><span class="sm-flag-badge sm-flag-badge--qt">QT</span>'
+        + 'Additive QT prolongation &mdash; both agents prolong QT. Avoid combining or monitor ECG and electrolytes.</div>';
+    }
+    conflicts.forEach(function (c) {
+      var bsev = c.effect === 'induces' ? 'high' : (c.strength === 'strong' ? 'high' : (c.strength === 'moderate' ? 'mod' : 'low'));
+      html += '<div class="sm-flag"><span class="sm-flag-badge sm-flag-badge--' + bsev + '">' + esc(c.enzyme) + '</span>'
+        + esc(c.actor) + (c.effect === 'induces'
+            ? ' induces ' + esc(c.enzyme) + ' &rarr; &darr; ' + esc(c.target) + ' levels'
+            : ' (' + esc(c.strength) + ' ' + esc(c.enzyme) + ' inhibitor) &rarr; &uarr; ' + esc(c.target) + ' levels')
+        + '</div>';
+    });
+    return html + '</div>';
   }
 
   // ── State ────────────────────────────────────────────────────────────────
@@ -146,7 +218,10 @@
     if (sameCat) cand = cand.filter(function (m) { return m.category === ref.category; });
     var ranked = cand.map(function (c) {
       var s = score(ref, c);
-      return { med: c, s: s, shared: sharedTargets(ref, c), inds: sharedIndications(ref, c) };
+      return {
+        med: c, s: s, shared: sharedTargets(ref, c), inds: sharedIndications(ref, c),
+        p450: p450Conflicts(ref, c), qt: qtAdditive(ref, c)
+      };
     }).sort(function (a, b) { return b.s.total - a.s.total; });
     lastRanked = ranked; lastRef = ref;
     render(ref, ranked, sameCat);
@@ -200,6 +275,8 @@
         + '</div>';
 
       html += '<div class="sm-why">Why: ' + esc(why) + '.</div>';
+
+      html += flagsBlock(ref, row);
 
       html += '<div class="sm-metrics">';
       if (s.refKi) html += bar('Receptor binding', s.rMatch, 'weight 60%');
@@ -286,6 +363,13 @@
       t += 'Class: ' + Math.round(s.cMatch * 100) + '%  ·  Indications: ' + Math.round(s.iMatch * 100) + '%\n';
       if (row.shared.length) t += '   Shared receptor targets: ' + row.shared.slice(0, 6).map(function (x) { return x.r; }).join(', ') + '\n';
       if (row.inds.length) t += '   Shared indications: ' + row.inds.join(', ') + '\n';
+      if (row.qt) t += '   FLAG - Additive QT: both agents prolong QT; monitor ECG/electrolytes.\n';
+      (row.p450 || []).forEach(function (c) {
+        t += '   FLAG - P450: ' + (c.effect === 'induces'
+          ? c.actor + ' induces ' + c.enzyme + ' -> lowers ' + c.target + ' levels'
+          : c.actor + ' (' + c.strength + ' ' + c.enzyme + ' inhibitor) -> raises ' + c.target + ' levels') + '\n';
+      });
+      if (!row.qt && !(row.p450 && row.p450.length)) t += '   No additive QT or known P450 interaction.\n';
       t += '\n';
     });
     t += 'Note: Pharmacologic similarity is decision support only and does not guarantee comparable response or tolerability. For apparent tachyphylaxis, first reassess adherence and diagnosis; a cross-mechanism switch or augmentation may be preferable in some cases.\n';

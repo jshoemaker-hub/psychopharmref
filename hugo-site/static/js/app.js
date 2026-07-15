@@ -309,30 +309,30 @@ function switchSection(id) {
     // Load CSS
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/tools/' + toolId + '.css?v=20260714a';
+    link.href = 'css/tools/' + toolId + '.css?v=20260715a';
     document.head.appendChild(link);
     // Load shared tool-utils.js once (first tool activation), then the tool JS
     function loadToolScript() {
       // Question bank needs data file loaded first
       if (toolId === 'question-bank-tool' && !window.QBANK_DATA) {
         var dataScript = document.createElement('script');
-        dataScript.src = 'js/qbank-data.js?v=20260714a';
+        dataScript.src = 'js/qbank-data.js?v=20260715a';
         dataScript.onload = function() {
           var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20260714a';
+          script.src = 'js/tools/' + toolId + '.js?v=20260715a';
           document.body.appendChild(script);
         };
         dataScript.onerror = function() { console.error('Failed to load qbank-data.js'); };
         document.body.appendChild(dataScript);
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20260714a';
+        script.src = 'js/tools/' + toolId + '.js?v=20260715a';
         document.body.appendChild(script);
       }
     }
     if (!window.ToolUtils) {
       const utils = document.createElement('script');
-      utils.src = 'js/tools/tool-utils.js?v=20260714a';
+      utils.src = 'js/tools/tool-utils.js?v=20260715a';
       utils.onload = loadToolScript;
       utils.onerror = function() { console.error('Failed to load tool-utils.js'); };
       document.body.appendChild(utils);
@@ -1231,7 +1231,79 @@ function renderCompareChart() {
   empty.classList.add('hidden');
 
   renderCompareViews();
+  renderCompareFlags(drugA, drugB);
   renderCompareTable(drugA, drugB);
+}
+
+/* ── Interaction flags: additive QT + CYP450 conflicts between the pair ───── */
+// A pharmacokinetic conflict exists when one drug inhibits or induces a CYP
+// enzyme that the OTHER drug is a substrate of (so its levels rise or fall).
+const CMP_SEV_RANK = { strong: 3, moderate: 2, weak: 1 };
+function cmpP450Fields(med) {
+  const p = med.p450 || {};
+  return { substrate: p.substrate || [], inhibits: p.inhibits || {}, induces: p.induces || [] };
+}
+function cmpP450Conflicts(drugA, drugB) {
+  const out = [];
+  const scan = (actor, target) => {
+    const a = cmpP450Fields(actor), b = cmpP450Fields(target);
+    for (const e in a.inhibits) {
+      if (b.substrate.indexOf(e) !== -1) {
+        out.push({ enzyme: e, actor: actor.name, target: target.name, effect: 'inhibits', strength: a.inhibits[e] });
+      }
+    }
+    a.induces.forEach(e => {
+      if (b.substrate.indexOf(e) !== -1) {
+        out.push({ enzyme: e, actor: actor.name, target: target.name, effect: 'induces', strength: 'inducer' });
+      }
+    });
+  };
+  scan(drugA, drugB);
+  scan(drugB, drugA);
+  out.sort((x, y) => {
+    const rx = x.effect === 'induces' ? 3 : (CMP_SEV_RANK[x.strength] || 0);
+    const ry = y.effect === 'induces' ? 3 : (CMP_SEV_RANK[y.strength] || 0);
+    return ry - rx;
+  });
+  return out;
+}
+function cmpConflictSeverity(list) {
+  let max = 0;
+  list.forEach(c => {
+    const r = c.effect === 'induces' ? 3 : (CMP_SEV_RANK[c.strength] || 0);
+    if (r > max) max = r;
+  });
+  return max;
+}
+function renderCompareFlags(drugA, drugB) {
+  const wrap = document.getElementById('compare-flags-wrap');
+  if (!wrap) return;
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const conflicts = cmpP450Conflicts(drugA, drugB);
+  const qt = !!drugA.qtInterval && !!drugB.qtInterval;
+
+  if (!qt && !conflicts.length) {
+    wrap.innerHTML = '<div class="cmp-flags cmp-flags--clear"><span class="cmp-flag-dot">&#10003;</span>'
+      + 'No additive QT or known P450 interaction between ' + esc(drugA.name) + ' and ' + esc(drugB.name) + '.</div>';
+    return;
+  }
+  const sev = cmpConflictSeverity(conflicts);
+  const lvl = qt ? 'high' : (sev >= 3 ? 'high' : (sev === 2 ? 'mod' : 'low'));
+  let html = '<div class="cmp-flags cmp-flags--' + lvl + '">';
+  html += '<div class="cmp-flags-title">&#9888; Interaction flags</div>';
+  if (qt) {
+    html += '<div class="cmp-flag"><span class="cmp-flag-badge cmp-flag-badge--qt">QT</span>'
+      + 'Additive QT prolongation &mdash; both agents prolong QT. Avoid combining or monitor ECG and electrolytes.</div>';
+  }
+  conflicts.forEach(c => {
+    const bsev = c.effect === 'induces' ? 'high' : (c.strength === 'strong' ? 'high' : (c.strength === 'moderate' ? 'mod' : 'low'));
+    html += '<div class="cmp-flag"><span class="cmp-flag-badge cmp-flag-badge--' + bsev + '">' + esc(c.enzyme) + '</span>'
+      + esc(c.actor) + (c.effect === 'induces'
+          ? ' induces ' + esc(c.enzyme) + ' &rarr; &darr; ' + esc(c.target) + ' levels'
+          : ' (' + esc(c.strength) + ' ' + esc(c.enzyme) + ' inhibitor) &rarr; &uarr; ' + esc(c.target) + ' levels')
+      + '</div>';
+  });
+  wrap.innerHTML = html + '</div>';
 }
 
 // Toggle between bar / heatmap / treemap views.
@@ -2345,12 +2417,27 @@ function initMedCompare() {
     const container = document.getElementById('mc-p450-content');
     if (!container) return;
 
+    // Additive QT prolongation — independent of CYP metabolism. Two or more
+    // selected agents that each prolong QT carry additive torsades risk.
+    const qtNames = drugs.filter(d => d.qtInterval).map(d => d.name);
+    let qtBlock = '';
+    if (qtNames.length >= 2) {
+      const namesStr = qtNames.length === 2
+        ? qtNames.join(' and ')
+        : qtNames.slice(0, -1).join(', ') + ', and ' + qtNames[qtNames.length - 1];
+      qtBlock = `
+        <div class="mc-qt-flag">
+          <span class="mc-qt-flag-badge">QT</span>
+          <div class="mc-qt-flag-text"><strong>Additive QT prolongation.</strong> ${namesStr} each prolong the QT interval. Combining them raises the risk of torsades de pointes &mdash; avoid co-prescribing where possible, or monitor ECG and correct electrolytes (K<sup>+</sup>, Mg<sup>2+</sup>).</div>
+        </div>`;
+    }
+
     if (mcP450Interactions.length === 0) {
       const hasAnyData = drugs.some(d => d.p450);
       if (!hasAnyData) {
-        container.innerHTML = '<div class="mt-warning" style="margin:12px 0">No P450 metabolism data available for the selected medications.</div>';
+        container.innerHTML = qtBlock + '<div class="mt-warning" style="margin:12px 0">No P450 metabolism data available for the selected medications.</div>';
       } else {
-        container.innerHTML = '<div class="mc-p450-clear"><span class="mc-p450-clear-icon">&#10003;</span> <strong>No CYP450-mediated interactions detected</strong> between the selected medications based on substrate / inhibitor / inducer data on file. This does not rule out non-CYP interactions (UGT, transporter, pharmacodynamic).</div>';
+        container.innerHTML = qtBlock + '<div class="mc-p450-clear"><span class="mc-p450-clear-icon">&#10003;</span> <strong>No CYP450-mediated interactions detected</strong> between the selected medications based on substrate / inhibitor / inducer data on file. This does not rule out non-CYP interactions (UGT, transporter, pharmacodynamic).</div>';
       }
       return;
     }
@@ -2491,6 +2578,7 @@ function initMedCompare() {
     const enzymeCount = Object.keys(byEnzyme).length;
 
     container.innerHTML = `
+      ${qtBlock}
       ${summaryHTML}
       <div class="mc-p450-overview">
         <div class="mc-p450-overview-stat">
