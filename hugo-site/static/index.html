@@ -41,7 +41,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 
-  <link rel="stylesheet" href="css/styles.css?v=20260715a">
+  <link rel="stylesheet" href="css/styles.css?v=20260715b">
   <link rel="canonical" href="https://psychopharmref.com/">
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
@@ -2923,36 +2923,43 @@
         <button class="btn-primary mc-go-btn" id="mc-go-btn">Compare Medications &#9656;</button>
       </div>
 
-      <!-- Results (hidden until compare clicked) -->
-      <div id="mc-results" class="mc-results" style="display:none">
+      <!-- Results (hidden until compare clicked) — stacked report layout -->
+      <div id="mc-results" class="mc-results mc-report" style="display:none">
         <div class="mc-results-header">
-          <div class="mc-tabs" id="mc-tabs">
-            <button class="mc-tab mc-tab--active" data-tab="receptors">&#9673; Receptor Binding</button>
-            <button class="mc-tab" data-tab="sideeffects">&#9888; Side Effect Overlap</button>
-            <button class="mc-tab" data-tab="circuits">&#129504; Circuits &amp; Conditions</button>
-            <button class="mc-tab" data-tab="p450">&#9879; P450 Interactions <span class="mc-tab-count" id="mc-tab-count-p450" style="display:none"></span></button>
+          <div class="mc-report-heading">
+            <h3 class="mc-report-title">Comparison Report</h3>
+            <div class="mc-drug-chips" id="mc-drug-chips"></div>
           </div>
           <button class="mt-print-btn mc-print-btn" id="mc-print-btn">&#128438; Print / Save PDF</button>
         </div>
 
-        <div class="mc-panel mc-panel--active" id="mc-panel-receptors">
+        <section class="mc-section" id="mc-section-summary">
+          <h3 class="mc-section-title">Drug Summary</h3>
+          <div id="mc-summary-content"></div>
+        </section>
+
+        <section class="mc-section" id="mc-section-p450">
+          <h3 class="mc-section-title">&#9879; P450 Interactions <span class="mc-tab-count" id="mc-tab-count-p450" style="display:none"></span></h3>
+          <div id="mc-p450-content"></div>
+        </section>
+
+        <section class="mc-section" id="mc-section-receptors">
+          <h3 class="mc-section-title">&#9673; Receptor Binding</h3>
           <div class="mc-chart-wrap">
             <canvas id="mc-bar-chart"></canvas>
           </div>
           <div id="mc-receptor-table"></div>
-        </div>
+        </section>
 
-        <div class="mc-panel" id="mc-panel-sideeffects">
+        <section class="mc-section" id="mc-section-sideeffects">
+          <h3 class="mc-section-title">&#9888; Side Effect Overlap</h3>
           <div id="mc-se-content"></div>
-        </div>
+        </section>
 
-        <div class="mc-panel" id="mc-panel-circuits">
+        <section class="mc-section" id="mc-section-circuits">
+          <h3 class="mc-section-title">&#129504; Circuits &amp; Conditions</h3>
           <div id="mc-circuit-content"></div>
-        </div>
-
-        <div class="mc-panel" id="mc-panel-p450">
-          <div id="mc-p450-content"></div>
-        </div>
+        </section>
       </div>
     </section>
 
@@ -11942,7 +11949,7 @@
   </script>
 
   <script defer src="js/data.js?v=20260713b"></script>
-  <script defer src="js/app.js?v=20260715a"></script>
+  <script defer src="js/app.js?v=20260715b"></script>
   <script defer src="js/glossary-data.js?v=20260501a"></script>
   <script defer src="js/glossary-page.js?v=20260501a"></script>
   <script defer src="js/search.js?v=20260714a"></script>

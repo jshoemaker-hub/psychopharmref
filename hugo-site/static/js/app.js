@@ -2296,22 +2296,16 @@ function initMedCompare() {
 
   buildSelectors();
 
-  // Tab switching
-  function mcSwitchTab(tabName) {
-    document.querySelectorAll('.mc-tab').forEach(t => t.classList.toggle('mc-tab--active', t.dataset.tab === tabName));
-    document.querySelectorAll('.mc-panel').forEach(p => p.classList.remove('mc-panel--active'));
-    const target = document.getElementById(`mc-panel-${tabName}`);
-    if (target) target.classList.add('mc-panel--active');
-  }
-  document.querySelectorAll('.mc-tab').forEach(tab => {
-    tab.addEventListener('click', () => mcSwitchTab(tab.dataset.tab));
-  });
-  // Delegated handler: clicking an inline P450 badge anywhere in the results jumps to that tab
+  // Stacked report layout — clicking an inline P450 badge scrolls to that section
   const mcResultsEl = document.getElementById('mc-results');
   if (mcResultsEl) {
     mcResultsEl.addEventListener('click', (ev) => {
       const badge = ev.target.closest('[data-jump]');
-      if (badge) { ev.preventDefault(); mcSwitchTab(badge.dataset.jump); }
+      if (badge) {
+        ev.preventDefault();
+        const sec = document.getElementById(`mc-section-${badge.dataset.jump}`);
+        if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
   }
 
@@ -2336,9 +2330,6 @@ function initMedCompare() {
     mcCurrentDrugs = drugs;
     renderComparison(drugs);
     document.getElementById('mc-results').style.display = '';
-    // Reset to first tab
-    document.querySelectorAll('.mc-tab').forEach((t,i) => t.classList.toggle('mc-tab--active', i===0));
-    document.querySelectorAll('.mc-panel').forEach((p,i) => p.classList.toggle('mc-panel--active', i===0));
   });
 
   document.getElementById('mc-print-btn').addEventListener('click', () => {
@@ -2388,11 +2379,40 @@ function initMedCompare() {
     return { edges, byDrug };
   }
 
+  /* ── Report header chips ── */
+  function renderDrugChips(drugs) {
+    const el = document.getElementById('mc-drug-chips');
+    if (!el) return;
+    el.innerHTML = drugs.map((d, idx) =>
+      `<span class="mc-drug-chip" style="background:${DRUG_COLORS[idx]}">${d.name}</span>`
+    ).join('');
+  }
+
+  /* ── Drug Summary section (mirrors print report) ── */
+  function renderDrugSummary(drugs) {
+    const container = document.getElementById('mc-summary-content');
+    if (!container) return;
+    const rows = drugs.map((d, idx) => `
+      <tr>
+        <td class="mc-sum-name" style="color:${DRUG_COLORS[idx]}">${d.name}</td>
+        <td>${d.class || '—'}</td>
+        <td>${d.halfLife?.drug || '—'}</td>
+        <td class="mc-sum-mech">${d.mechanism || (d.receptorKi ? 'Receptor-mediated (see binding)' : '—')}</td>
+      </tr>`).join('');
+    container.innerHTML = `
+      <table class="mc-summary-table">
+        <thead><tr><th>Drug</th><th>Class</th><th>Half-Life</th><th>Mechanism</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+  }
+
   function renderComparison(drugs) {
     const { edges, byDrug } = computeP450Interactions(drugs);
     mcP450Interactions = edges;
     mcP450ByDrug = byDrug;
 
+    renderDrugChips(drugs);
+    renderDrugSummary(drugs);
     renderReceptorTab(drugs);
     renderSETab(drugs);
     renderCircuitTab(drugs);
