@@ -75,8 +75,23 @@
     return uniSize ? inter / uniSize : 0;
   }
 
+  // ── User-adjustable weights (slider toolbar) ─────────────────────────────
+  // Sliders hold raw 0–100 values; the score normalizes them to sum to 1.
+  function readWeights() {
+    function v(id, dflt) { var el = document.getElementById(id); return el ? (parseFloat(el.value) || 0) : dflt; }
+    return { d: v('cm-w-divergence', 40), c: v('cm-w-class', 30), i: v('cm-w-indication', 30) };
+  }
+  function normWeights() {
+    var raw = readWeights();
+    var wD = raw.d, wC = raw.c, wI = raw.i;
+    var sum = wD + wC + wI;
+    if (sum <= 0) { wD = 40; wC = 30; wI = 30; sum = 100; }
+    return { wD: wD / sum, wC: wC / sum, wI: wI / sum };
+  }
+
   function score(ref, cand) {
-    var wD = 0.40, wC = 0.30, wI = 0.30;
+    var w = normWeights();
+    var wD = w.wD, wC = w.wC, wI = w.wI;
     var cos = cosine(fingerprint(ref), fingerprint(cand));
     var div = 1 - cos;                                   // receptor divergence
     var cMatch = (ref.class === cand.class) ? 1 : (ref.category === cand.category ? 0.7 : 0);
@@ -329,9 +344,9 @@
       html += flagsBlock(ref, row);
 
       html += '<div class="cm-metrics">';
-      html += bar('Receptor divergence', s.div, 'weight 40% · ' + Math.round(s.cos * 100) + '% receptor overlap');
-      html += bar('Class match', s.cMatch, 'weight 30%');
-      html += bar('Shared indications', s.iMatch, 'weight 30%');
+      html += bar('Receptor divergence', s.div, 'weight ' + Math.round(s.wD * 100) + '% · ' + Math.round(s.cos * 100) + '% receptor overlap');
+      html += bar('Class match', s.cMatch, 'weight ' + Math.round(s.wC * 100) + '%');
+      html += bar('Shared indications', s.iMatch, 'weight ' + Math.round(s.wI * 100) + '%');
       html += '</div>';
 
       if (row.added.length) {
@@ -427,8 +442,10 @@
     var date = (window.ToolUtils && ToolUtils.dateStamp) ? ToolUtils.dateStamp()
       : new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     var t = 'Complementary Medication Analysis\nDate: ' + date + '\n\n';
+    var w = normWeights();
     t += 'Reference medication: ' + ref.name + ' (' + ref.brandName + ') — ' + ref.class + ', ' + ref.category + '\n';
-    t += 'Ranked for complementary pairing (receptor divergence 40%, class 30%, shared indications 30%).\n';
+    t += 'Ranked for complementary pairing (receptor divergence ' + Math.round(w.wD * 100)
+      + '%, class ' + Math.round(w.wC * 100) + '%, shared indications ' + Math.round(w.wI * 100) + '%).\n';
     t += 'Candidates share ≥1 indication and cover a different receptor set — rational combination/augmentation options.\n\n';
     top.forEach(function (row, i) {
       var m = row.med, s = row.s;
@@ -456,6 +473,16 @@
     }
   }
 
+  // Update the on-screen % labels to reflect the normalized effective weights.
+  var WEIGHT_IDS = ['cm-w-divergence', 'cm-w-class', 'cm-w-indication'];
+  function refreshWeightLabels() {
+    var w = normWeights();
+    function set(id, frac) { var el = document.getElementById(id); if (el) el.textContent = Math.round(frac * 100) + '%'; }
+    set('cm-w-divergence-val', w.wD);
+    set('cm-w-class-val', w.wC);
+    set('cm-w-indication-val', w.wI);
+  }
+
   // ── Wire up ──────────────────────────────────────────────────────────────
   populateSelect();
   var go = document.getElementById('cm-go-btn');
@@ -464,4 +491,20 @@
   if (sel) sel.addEventListener('change', function () { if (lastRef) compute(); });
   var cb = document.getElementById('cm-samecat');
   if (cb) cb.addEventListener('change', function () { if (lastRef) compute(); });
+
+  // Sliders: live re-rank + label update as they move.
+  WEIGHT_IDS.forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', function () { refreshWeightLabels(); if (lastRef) compute(); });
+  });
+  var reset = document.getElementById('cm-weights-reset');
+  if (reset) reset.addEventListener('click', function () {
+    WEIGHT_IDS.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.value = el.getAttribute('data-default');
+    });
+    refreshWeightLabels();
+    if (lastRef) compute();
+  });
+  refreshWeightLabels();
 })();

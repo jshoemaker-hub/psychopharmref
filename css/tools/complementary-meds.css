@@ -21,6 +21,45 @@
 .cm-toggle input { width: 16px; height: 16px; accent-color: var(--accent2); cursor: pointer; }
 .cm-go-btn { margin-top: 0.25rem; }
 
+/* Matching-weight slider toolbar */
+.cm-weights {
+  border: 1px solid var(--border); border-radius: 9px; background: #fff;
+  padding: 0.75rem 0.9rem 0.85rem; margin: 0.25rem 0 1rem;
+}
+.cm-weights-head { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.cm-weights-title { font-size: 0.85rem; font-weight: 700; color: var(--text); letter-spacing: 0.02em; }
+.cm-weights-reset {
+  font-size: 0.76rem; font-weight: 600; color: var(--accent2);
+  background: transparent; border: 1px solid var(--border); border-radius: 6px;
+  padding: 0.25rem 0.6rem; cursor: pointer; transition: background 0.15s, border-color 0.15s;
+}
+.cm-weights-reset:hover { background: var(--bg2); border-color: var(--accent2); }
+.cm-weights-hint { font-size: 0.78rem; color: var(--text); opacity: 0.72; margin: 0.4rem 0 0.7rem; line-height: 1.45; }
+.cm-weight-row {
+  display: grid; grid-template-columns: 150px 1fr 48px; align-items: center;
+  gap: 0.75rem; padding: 0.28rem 0;
+}
+.cm-weight-label { font-size: 0.85rem; font-weight: 600; color: var(--text); }
+.cm-weight-slider {
+  width: 100%; height: 5px; -webkit-appearance: none; appearance: none;
+  background: var(--border); border-radius: 4px; outline: none; cursor: pointer;
+}
+.cm-weight-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 17px; height: 17px; border-radius: 50%;
+  background: var(--accent2); border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.25); cursor: pointer;
+}
+.cm-weight-slider::-moz-range-thumb {
+  width: 15px; height: 15px; border-radius: 50%; background: var(--accent2);
+  border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.25); cursor: pointer;
+}
+.cm-weight-slider:focus { outline: 2px solid var(--accent2); outline-offset: 3px; }
+.cm-weight-val {
+  font-size: 0.86rem; font-weight: 700; color: var(--accent2); text-align: right; font-variant-numeric: tabular-nums;
+}
+@media (max-width: 560px) {
+  .cm-weight-row { grid-template-columns: 120px 1fr 42px; gap: 0.5rem; }
+}
+
 .cm-results { margin-top: 0.5rem; }
 
 /* Reference banner */

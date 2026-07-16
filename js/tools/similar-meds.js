@@ -63,10 +63,26 @@
     return uniSize ? inter / uniSize : 0;
   }
 
+  // ── User-adjustable weights (slider toolbar) ─────────────────────────────
+  // Sliders hold raw 0–100 values; the score normalizes the usable factors so
+  // they always sum to 1. When the reference has no receptor data, the receptor
+  // factor is unusable (weight 0) and class + indications carry the whole score.
+  function readWeights() {
+    function v(id, dflt) { var el = document.getElementById(id); return el ? (parseFloat(el.value) || 0) : dflt; }
+    return { r: v('sm-w-receptor', 60), c: v('sm-w-class', 25), i: v('sm-w-indication', 15) };
+  }
+  function normWeights(refKi) {
+    var raw = readWeights();
+    var wR = refKi ? raw.r : 0, wC = raw.c, wI = raw.i;
+    var sum = wR + wC + wI;
+    if (sum <= 0) { wR = refKi ? 60 : 0; wC = refKi ? 25 : 65; wI = refKi ? 15 : 35; sum = wR + wC + wI; }
+    return { wR: wR / sum, wC: wC / sum, wI: wI / sum };
+  }
+
   function score(ref, cand) {
     var refKi = hasKi(ref);
-    var wR = 0.60, wC = 0.25, wI = 0.15;
-    if (!refKi) { wR = 0; wC = 0.65; wI = 0.35; }
+    var w = normWeights(refKi);
+    var wR = w.wR, wC = w.wC, wI = w.wI;
     var rMatch = refKi ? cosine(fingerprint(ref), fingerprint(cand)) : 0;
     var cMatch = (ref.class === cand.class) ? 1 : (ref.category === cand.category ? 0.5 : 0);
     var iMatch = jaccard(ref, cand);
@@ -279,9 +295,9 @@
       html += flagsBlock(ref, row);
 
       html += '<div class="sm-metrics">';
-      if (s.refKi) html += bar('Receptor binding', s.rMatch, 'weight 60%');
-      html += bar('Class match', s.cMatch, s.refKi ? 'weight 25%' : 'weight 65%');
-      html += bar('Shared indications', s.iMatch, s.refKi ? 'weight 15%' : 'weight 35%');
+      if (s.refKi) html += bar('Receptor binding', s.rMatch, 'weight ' + Math.round(s.wR * 100) + '%');
+      html += bar('Class match', s.cMatch, 'weight ' + Math.round(s.wC * 100) + '%');
+      html += bar('Shared indications', s.iMatch, 'weight ' + Math.round(s.wI * 100) + '%');
       html += '</div>';
 
       if (row.shared.length) {
@@ -354,8 +370,10 @@
     var date = (window.ToolUtils && ToolUtils.dateStamp) ? ToolUtils.dateStamp()
       : new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     var t = 'Similar Medication Analysis\nDate: ' + date + '\n\n';
+    var w = normWeights(hasKi(ref));
     t += 'Reference medication: ' + ref.name + ' (' + ref.brandName + ') — ' + ref.class + ', ' + ref.category + '\n';
-    t += 'Ranked by pharmacologic similarity (receptor binding 60%, class 25%, shared indications 15%).\n\n';
+    t += 'Ranked by pharmacologic similarity (receptor binding ' + Math.round(w.wR * 100)
+      + '%, class ' + Math.round(w.wC * 100) + '%, shared indications ' + Math.round(w.wI * 100) + '%).\n\n';
     top.forEach(function (row, i) {
       var m = row.med, s = row.s;
       t += (i + 1) + '. ' + m.name + ' (' + m.brandName + ') — ' + m.class + '  |  ' + Math.round(s.total) + '% match\n';
@@ -382,12 +400,39 @@
     }
   }
 
+  // Update the on-screen % labels to reflect the normalized effective weights.
+  var WEIGHT_IDS = ['sm-w-receptor', 'sm-w-class', 'sm-w-indication'];
+  function refreshWeightLabels() {
+    var refKi = lastRef ? hasKi(lastRef) : true;
+    var w = normWeights(refKi);
+    function set(id, frac) { var el = document.getElementById(id); if (el) el.textContent = Math.round(frac * 100) + '%'; }
+    set('sm-w-receptor-val', w.wR);
+    set('sm-w-class-val', w.wC);
+    set('sm-w-indication-val', w.wI);
+  }
+
   // ── Wire up ──────────────────────────────────────────────────────────────
   populateSelect();
   var go = document.getElementById('sm-go-btn');
   if (go) go.addEventListener('click', compute);
   var sel = document.getElementById('sm-ref-select');
-  if (sel) sel.addEventListener('change', function () { if (lastRef) compute(); });
+  if (sel) sel.addEventListener('change', function () { refreshWeightLabels(); if (lastRef) compute(); });
   var cb = document.getElementById('sm-samecat');
   if (cb) cb.addEventListener('change', function () { if (lastRef) compute(); });
+
+  // Sliders: live re-rank + label update as they move.
+  WEIGHT_IDS.forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', function () { refreshWeightLabels(); if (lastRef) compute(); });
+  });
+  var reset = document.getElementById('sm-weights-reset');
+  if (reset) reset.addEventListener('click', function () {
+    WEIGHT_IDS.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.value = el.getAttribute('data-default');
+    });
+    refreshWeightLabels();
+    if (lastRef) compute();
+  });
+  refreshWeightLabels();
 })();
