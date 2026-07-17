@@ -18,7 +18,7 @@
 (function () {
   // The dataset (js/chem-structure-data.js, ~1.8MB / ~250KB gzipped) is lazy-loaded
   // on first open of this tool rather than on every page — see ensureData() below.
-  var DATA_VERSION = '20260716f';
+  var DATA_VERSION = '20260717g';
   var byId = {};
   function indexData() { byId = {}; CHEM_STRUCTURES.forEach(function (d) { byId[d.id] = d; }); }
 
@@ -108,6 +108,79 @@
     return '<div class="cs-region ' + cls + '"><div class="cs-region-title">' + esc(title) + '</div>' + esc(txt) + '</div>';
   }
 
+  // ── Druglikeness range bars (Lipinski / Veber / CNS thresholds) ───────────
+  // Each descriptor maps to a color-zoned track; a marker shows where the
+  // molecule falls. Zones are [upperBound, class] left→right (green/amber/red).
+  var DL_FILL = { good: '#cfe3c2', warn: '#f0dcae', bad: '#eec4b4' };
+  var DL_MARK = { good: '#4a7c35', warn: '#b06e12', bad: '#b04a2c' };
+  var DRUGLIKE = [
+    { key: 'mw',   label: 'Molecular weight',  unit: ' Da',  term: 'Molecular weight',            min: 0,  max: 600, zones: [[500, 'good'], [600, 'bad']], limit: 'Lipinski &le; 500' },
+    { key: 'logP', label: 'cLogP',             unit: '',     term: 'cLogP',                       min: -2, max: 6,   zones: [[0, 'warn'], [5, 'good'], [6, 'bad']], limit: 'Lipinski &le; 5 &middot; low = poor CNS entry' },
+    { key: 'tpsa', label: 'Polar surface area', unit: ' &#8491;&sup2;', term: 'Polar surface area (TPSA)', min: 0, max: 160, zones: [[90, 'good'], [140, 'warn'], [160, 'bad']], limit: '&le; 90 CNS &middot; &le; 140 oral (Veber)' },
+    { key: 'hbd',  label: 'H-bond donors',     unit: '',     term: "Lipinski's rule of five",     min: 0,  max: 8,   zones: [[5, 'good'], [8, 'bad']], limit: 'Lipinski &le; 5' },
+    { key: 'hba',  label: 'H-bond acceptors',  unit: '',     term: "Lipinski's rule of five",     min: 0,  max: 14,  zones: [[10, 'good'], [14, 'bad']], limit: 'Lipinski &le; 10' },
+    { key: 'rotatableBonds', label: 'Rotatable bonds', unit: '', term: null,                      min: 0,  max: 12,  zones: [[10, 'good'], [12, 'bad']], limit: 'Veber &le; 10' }
+  ];
+  function dlZone(cfg, v) {
+    for (var i = 0; i < cfg.zones.length; i++) { if (v <= cfg.zones[i][0]) return cfg.zones[i][1]; }
+    return cfg.zones[cfg.zones.length - 1][1];
+  }
+  function dlGradient(cfg) {
+    var span = cfg.max - cfg.min, prev = cfg.min, stops = [];
+    cfg.zones.forEach(function (z) {
+      var c = DL_FILL[z[1]];
+      var a = (prev - cfg.min) / span * 100, b = (z[0] - cfg.min) / span * 100;
+      stops.push(c + ' ' + a.toFixed(1) + '%', c + ' ' + b.toFixed(1) + '%');
+      prev = z[0];
+    });
+    return 'linear-gradient(90deg,' + stops.join(',') + ')';
+  }
+  function dlRow(cfg, d) {
+    var v = d[cfg.key];
+    if (v == null) return '';
+    var span = cfg.max - cfg.min;
+    var pos = Math.max(0, Math.min(100, (v - cfg.min) / span * 100));
+    var zc = dlZone(cfg, v);
+    var label = cfg.term
+      ? '<a href="#" class="cs-gloss-link" data-gterm="' + esc(cfg.term) + '" title="Glossary: ' + esc(cfg.term) + '">' + cfg.label + '</a>'
+      : cfg.label;
+    return '<div class="cs-dl-row">' +
+        '<div class="cs-dl-head"><span class="cs-dl-label">' + label + '</span>' +
+          '<span class="cs-dl-val" style="color:' + DL_MARK[zc] + '">' + v + cfg.unit + '</span></div>' +
+        '<div class="cs-dl-track" style="background:' + dlGradient(cfg) + '">' +
+          '<span class="cs-dl-marker" style="left:' + pos.toFixed(1) + '%;border-top-color:' + DL_MARK[zc] + '"></span>' +
+        '</div>' +
+        '<div class="cs-dl-limit">' + cfg.limit + '</div>' +
+      '</div>';
+  }
+  function dlChip(ok, warn, text) {
+    var cls = ok ? 'good' : (warn ? 'warn' : 'bad');
+    var mark = ok ? '&#10003;' : (warn ? '&#9679;' : '&#10007;');
+    return '<span class="cs-dl-chip cs-dl-chip-' + cls + '">' + mark + ' ' + text + '</span>';
+  }
+  function druglikenessHTML(d) {
+    if (d.hbd == null && d.mw == null) return '';
+    var bars = DRUGLIKE.map(function (c) { return dlRow(c, d); }).join('');
+    // Lipinski: flag when >=2 of the four cutoffs are exceeded
+    var viol = (d.mw > 500) + (d.logP > 5) + (d.hbd > 5) + (d.hba > 10);
+    var lip = viol < 2;
+    var veber = (d.rotatableBonds != null && d.rotatableBonds <= 10 && d.tpsa != null && d.tpsa <= 140);
+    var cnsFull = (d.tpsa != null && d.tpsa <= 90 && d.mw != null && d.mw <= 450);
+    var cnsChip = cnsFull
+      ? dlChip(true, false, 'CNS-penetrant profile')
+      : ((d.tpsa != null && d.tpsa <= 140)
+          ? dlChip(false, true, 'Limited / peripherally restricted CNS entry')
+          : dlChip(false, false, 'Poor passive CNS entry'));
+    var verdict = '<div class="cs-dl-verdict">' +
+      dlChip(lip, false, 'Lipinski: ' + (lip ? 'pass' : viol + ' violations')) +
+      dlChip(veber, false, 'Veber: ' + (veber ? 'oral-favorable' : 'flagged')) +
+      cnsChip + '</div>';
+    return '<div class="cs-druglike">' +
+      '<div class="cs-dl-title">Druglikeness &amp; CNS access <span class="cs-dl-sub">where this molecule sits in the Lipinski / Veber ranges</span></div>' +
+      bars + verdict +
+    '</div>';
+  }
+
   // ── Panel markup ─────────────────────────────────────────────────────────
   function panelHTML(d, side) {
     var meta = d.metaboliteOf ? '<span class="cs-metabadge">active metabolite of ' + esc(byId[d.metaboliteOf] ? byId[d.metaboliteOf].name : d.metaboliteOf) + '</span>' : '';
@@ -157,10 +230,12 @@
           propRow('Signal entry point', (d.messenger ? esc(MSG[d.messenger]) : '&mdash;')) +
           propRow('Year introduced/synth.', esc(String(d.year))) +
         '</div>' +
+        druglikenessHTML(d) +
         '<div class="cs-regions">' +
           region('lipo', 'Fat- vs water-attracting', d.lipoNote) +
           region('protein', 'Protein-binding region', d.proteinNote) +
           region('receptor', 'Receptor-binding region', d.receptorNote) +
+          region('transporter', 'Membrane transport', d.transporterNote) +
           region('cascade', MSG[d.messenger] || 'Signal cascade', d.messengerNote) +
         '</div>' +
       '</div>';

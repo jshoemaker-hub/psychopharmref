@@ -167,7 +167,7 @@
     </header>
 
     <div class="ba-body">
-      <p class="ba-lead">The Chemical Structures comparison tool reports a short list of numbers for every drug — molecular weight, cLogP, polar surface area, ionization at physiologic pH, aqueous solubility, and a highlighted protein-binding region. These are not trivia. Each property is a lever that a medicinal chemist deliberately tuned, and each one predicts something you will see clinically: how fast a drug enters the brain, how long it lingers, whether renal or hepatic impairment matters, how tightly it rides on albumin, and where it is likely to interact. This chapter walks through the panel one property at a time, connects each to bedside decisions, and closes with how these levers are used on purpose during drug design.</p>
+      <p class="ba-lead">The Chemical Structures comparison tool reports a short list of numbers for every drug — molecular weight, cLogP, polar surface area, ionization at physiologic pH, aqueous solubility, and a highlighted protein-binding region. These are not trivia. Each property is a lever that a medicinal chemist deliberately tuned, and each one predicts something you will see clinically: how fast a drug enters the brain, how long it lingers, whether renal or hepatic impairment matters, how tightly it rides on albumin, and where it is likely to interact. This chapter walks through the panel one property at a time, connects each to bedside decisions, adds the druglikeness range bars and the transporters that carry drugs across membranes, and closes with how these levers are used on purpose during drug design.</p>
 
       <h2>The property panel, decoded</h2>
 
@@ -185,6 +185,8 @@
           <tr><td><strong>Ionization (pH 7.4)</strong></td><td>Fraction charged in plasma, set by pKa</td><td>Only the neutral fraction crosses membranes freely. Governs pH-dependent absorption, ion trapping, and dialyzability.</td></tr>
           <tr><td><strong>Aqueous solubility</strong></td><td>How much dissolves in water (mg/mL, logS)</td><td>Poorly soluble drugs have erratic or food-dependent absorption and are hard to formulate; it is the other half of the permeability/solubility trade-off.</td></tr>
           <tr><td><strong>Protein-binding region</strong></td><td>Structural feature that anchors the drug to plasma proteins</td><td>Highly bound drugs have a small free (active) fraction, are displaceable, and are poorly dialyzed. See the low-albumin scenario below.</td></tr>
+          <tr><td><strong>H-bond donors / acceptors, rotatable bonds</strong></td><td>Count of N–H/O–H groups, of N and O atoms, and of freely rotating single bonds</td><td>The remaining Lipinski and Veber cutoffs (donors ≤ 5, acceptors ≤ 10, rotatable bonds ≤ 10). Shown as range bars; each hydrogen bond and each degree of flexibility is a tax on membrane crossing.</td></tr>
+          <tr><td><strong>Membrane transport</strong></td><td>Whether a carrier or efflux pump — not passive diffusion — governs where the drug goes</td><td>Flagged when a drug is a notable P-glycoprotein (ABCB1) substrate. Efflux at the blood–brain barrier can keep an otherwise brain-ready molecule peripheral.</td></tr>
         </tbody>
       </table>
       </div>
@@ -207,11 +209,65 @@
         <p><strong>How to use it:</strong> it is a filter, not a law. It predicts passive oral absorption of the neutral molecule; it does not apply to compounds that are actively transported, injectables, or naturally large classes (many antibiotics and all biologics break it intentionally). TPSA (&lt; 140 Å²) and rotatable-bond count are common modern add-ons. For CNS drugs, the working targets are tighter still: MW under ~450, TPSA under ~90 Å², and enough lipophilicity to cross but not so much that the drug is sedating or promiscuous.</p>
       </div>
 
+      <h2>Druglikeness at a glance: the range bars</h2>
+
+      <p>The Chemical Structures tool now renders a compact set of <strong>range bars</strong> beneath the property rows — one track each for molecular weight, cLogP, polar surface area, hydrogen-bond donors, hydrogen-bond acceptors, and rotatable bonds — with a marker showing where the molecule falls against the accepted thresholds. Green is the favorable zone, amber is borderline, red is over the limit. Below the bars, three chips summarize the verdict: whether the molecule passes <strong>Lipinski's rule of five</strong>, whether it clears the <strong>Veber</strong> oral-bioavailability criteria, and whether its profile predicts good, limited, or poor entry into the brain.</p>
+
+      <p>The point of the bars is not to pass or fail a drug but to make the trade-offs visible. A molecule can sail through Lipinski and still be a poor CNS agent because its polar surface area is too high; another can violate a weight cutoff yet work fine because it is actively transported or given by injection. Two criteria round out the classic rule of five:</p>
+
+      <div class="ba-support-card">
+        <h4>Veber's rules — the flexibility and polarity add-ons</h4>
+        <p>Lipinski predicts absorption from size, lipophilicity, and hydrogen bonding, but says nothing about molecular <em>flexibility</em>. In 2002, Veber and colleagues at GSK found that oral bioavailability also tracks two further descriptors: <strong>rotatable bonds ≤ 10</strong> (a floppy molecule pays a larger entropic penalty to bind and to cross membranes) and <strong>polar surface area ≤ 140 Å²</strong>. A drug that clears both Lipinski and Veber is very likely to be orally absorbable. The tool's "Veber" chip reflects that rotatable-bond and TPSA pair.</p>
+      </div>
+
+      <div class="ba-support-card">
+        <h4>Hydrogen-bond donors and acceptors, concretely</h4>
+        <p>Every hydrogen bond a drug makes with water is one it must break to slip through the greasy interior of a membrane. <strong>Donors</strong> (N–H, O–H) cost the most, which is why Lipinski caps them at five and CNS drugs usually keep them at three or fewer. <strong>Acceptors</strong> (any N or O) are capped at ten. You can read these almost straight off the 2D structure: count the blue nitrogens and red oxygens for acceptors, and the ones carrying an H for donors. Most psychotropics sit comfortably inside both limits — part of why they can be dosed orally and still reach the brain.</p>
+      </div>
+
+      <h2>Polar surface area: the CNS gate — and staying out on purpose</h2>
+
+      <p>Polar surface area deserves its own section because it is the property that most cleanly separates drugs that reach the brain from those that don't. As a rule of thumb, a TPSA under about <strong>90 Å²</strong> is compatible with good CNS penetration; 90–140 Å² still allows oral absorption but limits brain entry; and above <strong>140 Å²</strong> passive intestinal absorption falls off. Most psychotropics are engineered well under 90 — aripiprazole, sertraline, and buspirone all sit low — which is exactly why they are centrally active.</p>
+
+      <p>The more instructive examples are the drugs pushed to <em>high</em> PSA on purpose, to keep them <strong>out</strong> of the brain. Peripheral restriction is a deliberate design strategy, and three pairs make it vivid:</p>
+
+      <div class="ba-support-card">
+        <h4>Sedating vs non-sedating antihistamines</h4>
+        <p>First-generation <strong>diphenhydramine</strong> has a low polar surface area and slips easily across the blood–brain barrier — hence the sedation, and its use as a sleep aid. The second-generation agents <strong>fexofenadine</strong> and <strong>loratadine</strong> were designed with higher polarity (and, for fexofenadine, P-glycoprotein efflux) so they stay peripheral, blocking histamine in the airway and skin without the drowsiness. Same target, opposite CNS strategy — largely written in the polar surface area.</p>
+      </div>
+
+      <div class="ba-support-card">
+        <h4>Domperidone vs metoclopramide</h4>
+        <p>Both are D₂ antagonists used for nausea and gastroparesis. <strong>Metoclopramide</strong> crosses into the brain and can cause the full range of central D₂ effects — sedation, extrapyramidal symptoms, tardive dyskinesia. <strong>Domperidone</strong>, with higher polar surface area and strong P-glycoprotein efflux, largely stays outside the blood–brain barrier, so it causes far fewer central effects (at the cost of a QT liability from its peripheral action). The clinical difference is mostly a difference in membrane crossing.</p>
+      </div>
+
+      <div class="ba-support-card">
+        <h4>Loperamide — the opioid you can buy off the shelf</h4>
+        <p><strong>Loperamide</strong> is a potent µ-opioid agonist, yet at normal doses it produces no euphoria or analgesia because a high polar surface area plus avid P-glycoprotein efflux keep it out of the CNS — it acts only on gut opioid receptors to slow motility. This is also why massive overdoses (taken to defeat the efflux pump or to self-treat withdrawal) are dangerous: once P-glycoprotein is overwhelmed, the drug reaches the heart and brain, causing life-threatening QT prolongation and arrhythmia.</p>
+      </div>
+
       <h2>Ionization and pKa: only the neutral form travels</h2>
 
       <p>The <strong>pKa</strong> is the pH at which a drug is half ionized. Combined with the local pH (via the Henderson–Hasselbalch relationship), it fixes the charged fraction the tool shows in the "Ionization (pH 7.4)" row. This matters because biological membranes are lipid, and only the uncharged form diffuses across them freely. Most psychotropics are weak bases (the amine nitrogen you can see highlighted in the 2D structure), so they are substantially protonated and positively charged in plasma — a brake on how much drug is free to cross into the brain at any instant.</p>
 
       <p>Three practical consequences follow. First, <strong>pH-dependent absorption</strong>: raising gastric pH with a proton-pump inhibitor or antacid changes the ionized fraction of pH-sensitive drugs and can blunt absorption. Second, <strong>ion trapping</strong>: a drug that crosses a membrane as the neutral form and then becomes charged on the far side (because the pH differs) gets stuck there — the basis of urinary alkalinization to speed elimination of acidic overdoses, and of drug accumulation in acidic compartments. Third, <strong>dialyzability</strong>: small, water-soluble, minimally protein-bound, low-volume-of-distribution drugs (lithium is the classic) are efficiently removed by hemodialysis, whereas large, lipophilic, highly bound ones are not.</p>
+
+      <p>Because the concept is easier to hold onto through cases than through equations, three clinical situations show ionization actually changing a decision:</p>
+
+      <div class="ba-support-card">
+        <h4>1 · pH-dependent absorption: PPIs and weak-base drugs</h4>
+        <p>Some drugs need an acidic stomach to dissolve and be absorbed. Raising gastric pH with a proton-pump inhibitor or antacid leaves them undissolved and drops their absorption — a true efficacy-threatening interaction rather than a nuisance. The classic offenders are weak-base drugs with pH-dependent solubility: the antifungal <strong>ketoconazole</strong>, the HIV drug <strong>atazanavir</strong>, and several oncology tyrosine-kinase inhibitors (<strong>dasatinib</strong>, <strong>erlotinib</strong>). In psychiatry the effect is usually milder, but it is a reminder to ask why a co-prescribed acid suppressant might be quietly undercutting another drug.</p>
+      </div>
+
+      <div class="ba-support-card">
+        <h4>2 · Ion trapping in overdose: why we alkalinize the urine</h4>
+        <p><strong>Salicylate</strong> (aspirin) and <strong>phenobarbital</strong> are weak acids. In the renal tubule, raising urine pH with a bicarbonate infusion converts more of the filtered drug to its charged, anionic form — which cannot diffuse back across the tubular membrane and is therefore "trapped" in the urine and excreted faster. Urinary alkalinization is a front-line technique in salicylate and phenobarbital poisoning, and it is pure Henderson–Hasselbalch: shift the pH, shift the ionized fraction, shift the elimination.</p>
+      </div>
+
+      <div class="ba-support-card">
+        <h4>3 · Why the local anesthetic fails in an abscess</h4>
+        <p><strong>Lidocaine</strong> is a weak base (pKa ≈ 7.9). It must cross the nerve membrane in its neutral form to work, then re-ionize inside to block the sodium channel. Infected, inflamed tissue is acidic, which pushes lidocaine toward its charged form <em>outside</em> the nerve — so less crosses and the block is weak or fails. It is the everyday clinical face of ionization: the same drug, the same dose, defeated by a two-unit shift in local pH.</p>
+      </div>
 
       <h2>Protein binding — and the low-albumin problem</h2>
 
@@ -249,6 +305,38 @@
       <p>The logic is mechanical. The glomerulus filters small, unbound, water-soluble molecules directly into urine; because the filtrate is water, a hydrophilic charged drug that can't diffuse back across the tubular membrane stays in the urine and is excreted. A lipophilic drug, by contrast, is largely protein-bound (not filtered), and any that is filtered simply diffuses back into the blood across the tubule — so the body must first make it water-soluble through hepatic phase I (CYP oxidation) and phase II (glucuronidation, etc.) metabolism before it can leave. Active tubular secretion (via OAT/OCT transporters) adds a second renal route for some charged drugs and is where interactions like probenecid act.</p>
 
       <div class="ba-warning-box"><strong>Clinical translation.</strong> Renally cleared, hydrophilic drugs — <strong>lithium</strong>, gabapentin, pregabalin, topiramate, memantine, amantadine, paliperidone — need dose reduction in renal impairment and are the ones you watch across changes in hydration, GFR, and drug interactions that alter renal handling (NSAIDs, thiazides, and ACE inhibitors with lithium). Lipophilic, hepatically metabolized drugs (most antidepressants and antipsychotics) are instead sensitive to hepatic impairment and CYP interactions. A quick glance at logP, TPSA, and the ionization row tells you which failure mode to anticipate before you ever open the package insert.</div>
+
+      <h2>When a water-soluble drug still gets metabolized</h2>
+
+      <p>The renal-versus-hepatic table above is a reliable first pass, and its core heuristic — <em>hydrophilic drugs tend to be excreted unchanged, lipophilic drugs must be metabolized first</em> — holds for most of the formulary. Truly water-soluble, low-logP psychotropics do bypass the cytochrome P450 system and leave through the kidney essentially intact: <strong>lithium</strong>, <strong>gabapentin</strong>, <strong>pregabalin</strong>, <strong>topiramate</strong> (largely), and <strong>metformin</strong> outside psychiatry are the clean examples. But two caveats keep the rule honest.</p>
+
+      <p>First, <strong>"not metabolized by CYP" is not the same as "not metabolized."</strong> Polar drugs frequently skip phase I oxidation only to be conjugated in phase II — glucuronidation, sulfation, acetylation. <strong>Morphine</strong> is the archetype: relatively hydrophilic, barely touched by CYP, yet almost entirely cleared by UGT glucuronidation (one product, morphine-6-glucuronide, is itself active). Lamotrigine, lorazepam, and oxazepam are psychiatric examples cleared chiefly by glucuronidation rather than CYP — which is why they are comparatively free of CYP-based interactions.</p>
+
+      <p>Second, there are genuine <strong>outliers where a water-soluble drug is a CYP substrate anyway</strong>, because CYP recognizes a specific oxidizable functional group, not overall lipophilicity. The xanthines are the teaching cases: <strong>caffeine</strong> and <strong>theophylline</strong> both have negative logP values — they are freely water-soluble — yet both are cleared almost entirely by <strong>CYP1A2</strong>. This is exactly why a smoker (who induces CYP1A2) clears caffeine, theophylline, and also <strong>clozapine</strong> and <strong>olanzapine</strong> faster — and why stopping smoking can push clozapine levels up sharply. Ethanol is another small, water-soluble molecule with real oxidative metabolism (alcohol dehydrogenase plus CYP2E1). The lesson for the panel: read logP and TPSA to predict the <em>usual</em> route, but remember that a reactive handle on the molecule can send even a hydrophilic drug through the liver.</p>
+
+      <h2>Crossing the membrane by carrier: the transporter routes</h2>
+
+      <p>Everything so far assumes drugs cross membranes by passive diffusion, which is why size, lipophilicity, charge, and polar surface area predict so much. But a large and clinically important set of drugs cross <em>only</em> because a dedicated transporter carries them — and a second set are actively pumped <em>back out</em>. These carriers explain drugs that "shouldn't" work on paper (too polar, too large) and several that stay out of the brain despite looking like they should get in. Two superfamilies do most of the work: the <strong>SLC</strong> (solute carrier) uptake transporters and the <strong>ABC</strong> (ATP-binding cassette) efflux pumps.</p>
+
+      <div class="ba-support-card">
+        <h4>LAT1 — the amino-acid gate every psychiatrist should know</h4>
+        <p><strong>LAT1 (SLC7A5)</strong>, the large-neutral-amino-acid transporter, ferries amino acids across the blood–brain barrier — and a striking number of neuroactive drugs are built as amino-acid mimics precisely to hitch a ride on it. <strong>Gabapentin</strong> and <strong>pregabalin</strong> (leucine-like), <strong>L-DOPA</strong> (the Parkinson's prodrug that crosses where dopamine cannot), <strong>baclofen</strong>, and <strong>methyldopa</strong> all enter the brain via LAT1. This also creates a food interaction: a high-protein meal floods LAT1 with dietary amino acids and can blunt L-DOPA's effect by competition.</p>
+      </div>
+
+      <div class="ba-support-card">
+        <h4>The other uptake carriers (SLC family)</h4>
+        <p><strong>PEPT1 (SLC15A1)</strong> is a peptide transporter exploited by prodrugs such as <strong>valacyclovir</strong> to boost oral absorption. <strong>MCT1 (SLC16A1)</strong>, a monocarboxylate transporter, carries <strong>valproate</strong> and γ-hydroxybutyrate (GHB) across the barrier. <strong>OATP</strong> transporters (SLCO family) pull <strong>statins</strong> and other anions into hepatocytes for clearance — the site of many statin interactions. <strong>OCT and MATE</strong> transporters handle organic cations like <strong>metformin</strong> in the kidney (and are where the cimetidine–metformin interaction lives), and <strong>GLUT1</strong> supplies glucose to the brain. The monoamine transporters <strong>SERT, NET, and DAT</strong> are also SLC-family carriers (SLC6) — but here they are the antidepressant and stimulant <em>targets</em> rather than delivery routes.</p>
+      </div>
+
+      <div class="ba-support-card">
+        <h4>P-glycoprotein and the efflux pumps (ABC family)</h4>
+        <p>Working against uptake, the <strong>ABC</strong> efflux transporters use ATP to pump drugs back out of cells and out of the brain. <strong>P-glycoprotein (P-gp / ABCB1 / MDR1)</strong> is the dominant one at the blood–brain barrier; it is why <strong>loperamide</strong> stays out of the CNS, and it actively refluxes many antipsychotics (risperidone, paliperidone, aripiprazole) and antidepressants — which is why ABCB1 polymorphisms have been studied as predictors of central drug exposure and response. The tool now flags these with a "Membrane transport" note on the affected structures. <strong>BCRP (ABCG2)</strong> and the <strong>MRP</strong> family (ABCC) provide additional efflux at the gut, liver, kidney, and barrier. Because many CYP3A4 inhibitors and inducers also modulate P-gp, a single interacting drug can shift brain and gut exposure independently of metabolism.</p>
+      </div>
+
+      <div class="ba-support-card">
+        <h4>Truly large molecules: receptor-mediated transcytosis</h4>
+        <p>Neither passive diffusion nor the small-molecule carriers can move an antibody or a therapeutic protein across the blood–brain barrier — they are simply too big. Biologics that need central action instead use <strong>receptor-mediated transcytosis</strong>, piggy-backing on the barrier's own receptors: the <strong>transferrin receptor</strong> and the <strong>insulin receptor</strong> are the two "molecular Trojan horse" routes now used to shuttle engineered antibodies into the brain. It is a reminder that the same barrier described by polar surface area for a small molecule becomes an entirely different engineering problem for a large one.</p>
+      </div>
 
       <h2>Intentional design: what chemists tune, and why</h2>
 

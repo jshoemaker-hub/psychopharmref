@@ -115,6 +115,27 @@
 .cs-prop-val { color: var(--text); text-align: right; }
 .cs-prop-val sub { font-size: 10px; }
 
+/* Druglikeness range bars (Lipinski / Veber / CNS) */
+.cs-druglike { padding: 4px 14px 12px; border-top: 1px dashed var(--border); }
+.cs-dl-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; color: var(--accent2); margin: 8px 0 10px; }
+.cs-dl-title .cs-dl-sub { display: block; font-weight: 500; text-transform: none; letter-spacing: 0; font-size: 11px; color: #9a927e; margin-top: 2px; }
+.cs-dl-row { margin-bottom: 11px; }
+.cs-dl-head { display: flex; justify-content: space-between; align-items: baseline; font-size: 12.5px; margin-bottom: 3px; }
+.cs-dl-label { color: #6b6350; font-weight: 600; }
+.cs-dl-val { font-weight: 800; font-variant-numeric: tabular-nums; }
+.cs-dl-track { position: relative; height: 9px; border-radius: 5px; border: 1px solid var(--border); }
+.cs-dl-marker {
+  position: absolute; top: -4px; width: 0; height: 0; transform: translateX(-5px);
+  border-left: 5px solid transparent; border-right: 5px solid transparent;
+  border-top: 8px solid #4a7c35; filter: drop-shadow(0 1px 0 #fff);
+}
+.cs-dl-limit { font-size: 10.5px; color: #9a927e; margin-top: 4px; }
+.cs-dl-verdict { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.cs-dl-chip { font-size: 11px; font-weight: 700; border-radius: 999px; padding: 3px 9px; border: 1px solid; }
+.cs-dl-chip-good { color: #3c6a2a; background: #eaf3e3; border-color: #cfe3c2; }
+.cs-dl-chip-warn { color: #8a5710; background: #fbf1da; border-color: #f0dcae; }
+.cs-dl-chip-bad  { color: #973c22; background: #f8e6de; border-color: #eec4b4; }
+
 /* Region annotation callouts */
 .cs-regions { padding: 4px 14px 14px; }
 .cs-region {
@@ -128,6 +149,8 @@
 .cs-region.protein .cs-region-title { color: #8b6914; }
 .cs-region.receptor{ border-left-color: #4a7c35; }
 .cs-region.receptor .cs-region-title { color: #4a7c35; }
+.cs-region.transporter { border-left-color: #6b4fa0; }
+.cs-region.transporter .cs-region-title { color: #6b4fa0; }
 .cs-region.cascade { border-left-color: #3B82F6; }
 .cs-region.cascade .cs-region-title { color: #2f6bd0; }
 

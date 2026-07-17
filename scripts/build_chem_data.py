@@ -20,6 +20,19 @@ PKA = {
  "olanzapine":7.4,
 }
 
+# ── Curated membrane-transport notes (disposition/efflux, not drug target) ────
+# Applied in enrich(); rendered as the "Membrane transport" region in the tool.
+TRANSPORTER = {
+ "risperidone":"A well-characterized P-glycoprotein (ABCB1/MDR1) efflux substrate; the pump at the blood–brain barrier limits and regulates how much reaches the brain, and ABCB1 variants have been studied as modifiers of response and side effects.",
+ "paliperidone":"An even stronger P-glycoprotein (ABCB1) substrate than risperidone; brisk efflux at the blood–brain barrier — together with its renal elimination — keeps central exposure in check.",
+ "aripiprazole":"A P-glycoprotein (ABCB1) efflux substrate; transport at the blood–brain barrier contributes to its brain-to-plasma partitioning.",
+ "olanzapine":"A modest P-glycoprotein (ABCB1) substrate; efflux is one factor shaping its blood–brain-barrier handling.",
+ "citalopram":"A P-glycoprotein (ABCB1) efflux substrate; because the pump limits how much SSRI reaches the brain, ABCB1 polymorphisms have been studied as predictors of antidepressant response.",
+ "escitalopram":"A P-glycoprotein (ABCB1) efflux substrate; ABCB1 variants at the blood–brain barrier have been examined as pharmacogenetic predictors of SSRI response.",
+ "paroxetine":"A P-glycoprotein (ABCB1) substrate; efflux at the blood–brain barrier is among the transporter factors linked to variable SSRI exposure.",
+ "venlafaxine":"A P-glycoprotein (ABCB1) efflux substrate; blood–brain-barrier transport is among the mechanisms studied in relation to antidepressant response.",
+}
+
 # ── Curated old→new "generation evolution" narratives ────────────────────────
 # Shown when the two selected drugs form a known design lineage. Each explains
 # the structural change and why it was expected to improve on the predecessor.
@@ -485,6 +498,12 @@ def enrich(d):
     d["formula"] = rdMolDescriptors.CalcMolFormula(m)
     d["logP"] = round(Descriptors.MolLogP(m), 2)
     d["tpsa"] = round(Descriptors.TPSA(m), 1)
+    # Lipinski / Veber H-bond and flexibility descriptors (drive the range bars)
+    d["hbd"] = Descriptors.NumHDonors(m)
+    d["hba"] = Descriptors.NumHAcceptors(m)
+    d["rotatableBonds"] = Descriptors.NumRotatableBonds(m)
+    if d["id"] in TRANSPORTER:
+        d.setdefault("transporterNote", TRANSPORTER[d["id"]])
     d["canonicalSmiles"] = Chem.MolToSmiles(m)
     # lipophilicity descriptor from computed logP
     lp = d["logP"]
