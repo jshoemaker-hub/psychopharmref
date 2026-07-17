@@ -1794,6 +1794,110 @@ window.GLOSSARY_TERMS = [
     seeAlso: ["Half-life", "Cross-taper", "Drug interaction"]
   },
   {
+    term: "logP",
+    aliases: ["log p", "partition coefficient", "lipophilicity", "octanol-water partition"],
+    category: "Pharmacology",
+    def: "Log10 of a drug's octanol/water partition coefficient for its neutral form — a measure of lipophilicity. Higher logP predicts faster membrane and blood-brain-barrier crossing, larger volume of distribution, tighter protein binding, and more CYP metabolism, but also more sedation, fat accumulation, and off-target activity. CNS drugs typically sit around logP 2-4.",
+    seeAlso: ["cLogP", "logD", "Lipinski's rule of five", "Polar surface area (TPSA)", "Volume of distribution"],
+    link: { blogSlug: "medicinal-chemistry" }
+  },
+  {
+    term: "cLogP",
+    aliases: ["clogp", "calculated logp", "computed logp"],
+    category: "Pharmacology",
+    def: "A logP value calculated from molecular structure by summing empirical fragment/atom contributions, rather than measured in a flask. Usually agrees with measured logP within a few tenths but diverges for unusual scaffolds, intramolecular H-bonds, or zwitterions. The Chemical Structures tool reports cLogP because it is generated directly from each structure.",
+    seeAlso: ["logP", "logD", "Lipinski's rule of five"],
+    link: { blogSlug: "medicinal-chemistry" }
+  },
+  {
+    term: "logD",
+    aliases: ["log d", "distribution coefficient"],
+    category: "Pharmacology",
+    def: "Like logP but for the entire drug at a given pH (both neutral and ionized forms), so it reflects real behavior in plasma. For a drug charged at pH 7.4, logD is lower than logP. The property that actually governs partitioning of an ionizable drug at physiologic pH.",
+    seeAlso: ["logP", "cLogP", "pKa", "Ionization"],
+    link: { blogSlug: "medicinal-chemistry" }
+  },
+  {
+    term: "Polar surface area (TPSA)",
+    aliases: ["tpsa", "polar surface area", "psa", "topological polar surface area"],
+    category: "Pharmacology",
+    def: "The total surface area of a molecule's polar atoms (oxygen, nitrogen, and their attached hydrogens). A gate on passive membrane crossing: TPSA above ~90 sq A sharply reduces brain penetration, and above ~140 sq A limits oral absorption. Low TPSA favors CNS entry.",
+    seeAlso: ["logP", "Lipinski's rule of five", "Blood-brain barrier"],
+    link: { blogSlug: "medicinal-chemistry" }
+  },
+  {
+    term: "Lipinski's rule of five",
+    aliases: ["rule of five", "ro5", "lipinski rule"],
+    category: "Pharmacology",
+    def: "A rule of thumb predicting poor oral absorption of a small molecule when two or more apply: molecular weight >500 Da, cLogP >5, hydrogen-bond donors >5, or hydrogen-bond acceptors >10. A filter for druglikeness, not a law — actively transported drugs, injectables, and biologics break it by design.",
+    seeAlso: ["logP", "cLogP", "Molecular weight", "Polar surface area (TPSA)", "Bioavailability"],
+    link: { blogSlug: "medicinal-chemistry" }
+  },
+  {
+    term: "Molecular weight",
+    aliases: ["molecular mass", "mw", "daltons"],
+    category: "Pharmacology",
+    def: "The mass of a drug molecule in daltons. Small molecules (<500 Da) cross membranes and the blood-brain barrier passively; larger ones need transporters or cannot be given orally. One of the four Lipinski cutoffs.",
+    seeAlso: ["Lipinski's rule of five", "Blood-brain barrier", "Bioavailability"],
+    link: { blogSlug: "medicinal-chemistry" }
+  },
+  {
+    term: "pKa",
+    aliases: ["pka", "acid dissociation constant", "ionization constant"],
+    category: "Pharmacology",
+    def: "The pH at which a drug is half ionized. With local pH (Henderson-Hasselbalch), it sets the charged fraction in plasma. Only the neutral fraction crosses lipid membranes freely, so pKa governs pH-dependent absorption, ion trapping, and CNS entry. Most psychotropics are weak bases and are substantially protonated at pH 7.4.",
+    seeAlso: ["Ionization", "logD", "Ion trapping", "Blood-brain barrier"],
+    link: { blogSlug: "medicinal-chemistry" }
+  },
+  {
+    term: "Ionization",
+    aliases: ["ionized fraction", "percent ionized", "protonation state"],
+    category: "Pharmacology",
+    def: "The fraction of a drug carrying a charge at a given pH, set by its pKa. Only the uncharged fraction diffuses across membranes; the charged fraction is trapped in water compartments and favored for renal excretion. Underlies urinary alkalinization for acidic overdoses and pH-dependent drug absorption.",
+    seeAlso: ["pKa", "logD", "Ion trapping", "Renal excretion"],
+    link: { blogSlug: "medicinal-chemistry" }
+  },
+  {
+    term: "Ion trapping",
+    aliases: ["ion trap", "pH partitioning"],
+    category: "Pharmacology",
+    def: "Accumulation of a drug on one side of a membrane because it crosses as the neutral form and then becomes charged (and membrane-impermeant) where the pH differs. Basis of urinary alkalinization to speed elimination of weak-acid overdoses and of drug accumulation in acidic compartments.",
+    seeAlso: ["pKa", "Ionization", "Renal excretion"],
+    link: { blogSlug: "medicinal-chemistry" }
+  },
+  {
+    term: "Plasma protein binding",
+    aliases: ["protein binding", "protein-bound", "free fraction", "unbound fraction", "albumin binding"],
+    category: "Pharmacology",
+    def: "The reversible equilibrium between drug bound to plasma proteins (albumin for acidic/neutral drugs; alpha1-acid glycoprotein for many bases) and the free fraction. Only free drug is active, distributable, metabolized, and filtered. In hypoalbuminemia, a highly bound drug's free fraction rises while the total measured level may look normal — check a free level for narrow-index drugs like phenytoin and valproate.",
+    seeAlso: ["Volume of distribution", "Hypoalbuminemia", "Free fraction", "Drug interaction"],
+    link: { blogSlug: "medicinal-chemistry" }
+  },
+  {
+    term: "Volume of distribution",
+    aliases: ["vd", "volume of distribution", "apparent volume"],
+    category: "Pharmacology",
+    def: "The theoretical volume needed to contain the total drug at the measured plasma concentration; a large Vd means the drug leaves plasma for tissues (lipophilic, poorly protein-bound-in-plasma drugs). High Vd predicts a long half-life, resistance to dialysis, and a large loading dose relative to maintenance.",
+    seeAlso: ["logP", "Plasma protein binding", "Half-life", "Renal excretion"],
+    link: { blogSlug: "medicinal-chemistry" }
+  },
+  {
+    term: "Renal excretion",
+    aliases: ["renal clearance", "renal elimination", "urinary excretion"],
+    category: "Pharmacology",
+    def: "Elimination of unchanged drug by the kidney, favored by small size, low lipophilicity (low logP, high TPSA), charge/ionization, and low protein binding. Renally cleared psychotropics (lithium, gabapentin, pregabalin, topiramate, paliperidone, memantine) need dose reduction in renal impairment. Contrast with hepatic metabolism, favored by lipophilic, neutral, highly bound drugs.",
+    seeAlso: ["Ionization", "Plasma protein binding", "logP", "First-pass metabolism", "Dialyzability"],
+    link: { blogSlug: "medicinal-chemistry" }
+  },
+  {
+    term: "Aqueous solubility",
+    aliases: ["water solubility", "logS", "solubility"],
+    category: "Pharmacology",
+    def: "How much drug dissolves in water. Poorly soluble drugs show erratic or food-dependent absorption and are hard to formulate; solubility trades off against lipophilic permeability. Low solubility is exploited on purpose for depot long-acting injectables that dissolve slowly over weeks.",
+    seeAlso: ["logP", "Bioavailability", "Lipinski's rule of five"],
+    link: { blogSlug: "medicinal-chemistry" }
+  },
+  {
     term: "Agnosia",
     aliases: ["inability to recognize"],
     category: "Cognition & Dementia",
