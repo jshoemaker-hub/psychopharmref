@@ -291,7 +291,16 @@
       a.addEventListener('click', function (e) {
         e.preventDefault();
         var term = a.getAttribute('data-gterm');
-        if (term && window.glossaryScrollToTerm) window.glossaryScrollToTerm(term);
+        if (!term || !window.glossaryScrollToTerm) return;
+        // Record Chem Structure as a history entry so the browser Back
+        // button returns here (the SPA otherwise leaves no back-stack).
+        try {
+          if (window.location.hash !== '#chem-structure') {
+            history.replaceState(null, '', '#chem-structure');
+          }
+          history.pushState(null, '', '#psychiatry-glossary');
+        } catch (err) {}
+        window.glossaryScrollToTerm(term);
       });
     });
     box.querySelectorAll('[data-loadmet]').forEach(function (btn) {
