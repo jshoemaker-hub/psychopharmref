@@ -94,21 +94,6 @@
 .ba-share-menu a, .ba-share-menu button { display: flex; align-items: center; gap: 8px; width: 100%; padding: 8px 14px; font-size: 12.5px; font-weight: 500; color: var(--text, #231e14); text-decoration: none; border: none; background: none; cursor: pointer; text-align: left; }
 .ba-share-menu a:hover, .ba-share-menu button:hover { background: var(--bg2, #ece6db); }
 
-/* Medicinal-chemistry-specific styles (mc- prefix) */
-.mc-box { background: var(--bg2); border-left: 4px solid var(--accent); padding: 1rem 1.2rem; margin: 1.2rem 0; border-radius: 4px; }
-.mc-box h4 { margin: 0 0 0.5rem 0; color: var(--accent); font-size: 1rem; }
-.mc-box p { margin: 0.5rem 0; font-size: 0.95rem; line-height: 1.6; }
-.mc-box strong { color: var(--text); font-weight: 700; }
-.mc-warn { background: #fdf3e7; border-left: 4px solid var(--accent2, #8b6914); padding: 1rem 1.2rem; margin: 1.2rem 0; border-radius: 4px; font-size: 0.95rem; line-height: 1.6; }
-.mc-warn strong { color: var(--accent2, #8b6914); }
-.mc-table-wrap { overflow-x: auto; margin: 1.2rem 0; }
-table.mc-table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
-table.mc-table th, table.mc-table td { border: 1px solid var(--border); padding: 0.55rem 0.7rem; text-align: left; vertical-align: top; line-height: 1.45; }
-table.mc-table th { background: var(--bg2); font-weight: 700; color: var(--text); }
-table.mc-table tr:nth-child(even) td { background: #f9f7f4; }
-.mc-key { font-weight: 700; white-space: nowrap; }
-.mc-pearl { background: #eef4e9; border: 1px solid #cfe0c2; border-radius: 6px; padding: 0.85rem 1.1rem; margin: 1.2rem 0; font-size: 0.92rem; line-height: 1.55; }
-.mc-pearl strong { color: var(--accent); }
 </style>
 </head>
 <body>
@@ -188,18 +173,18 @@ table.mc-table tr:nth-child(even) td { background: #f9f7f4; }
 
       <p>Everything in the tool's property rows maps onto one of three questions: Can the molecule get where it needs to go? How long does it stay? And what will it collide with along the way? The table below is the quick-reference version; the sections that follow expand the entries that matter most.</p>
 
-      <div class="mc-table-wrap">
-      <table class="mc-table">
+      <div class="ba-table-wrap">
+      <table class="ba-table">
         <thead>
           <tr><th>Property (as shown)</th><th>What it measures</th><th>Why it matters clinically</th></tr>
         </thead>
         <tbody>
-          <tr><td class="mc-key">Molecular weight</td><td>Size of the molecule in daltons</td><td>Small molecules (&lt;500 Da) cross membranes and the blood–brain barrier passively; very large molecules need transporters or won't be oral. One of Lipinski's four cutoffs.</td></tr>
-          <tr><td class="mc-key">cLogP (lipophilicity)</td><td>Calculated fat-vs-water partitioning of the neutral molecule</td><td>Drives CNS penetration, volume of distribution, protein binding, and CYP metabolism. Too high predicts sedation, accumulation in fat, and off-target promiscuity.</td></tr>
-          <tr><td class="mc-key">Polar surface area (TPSA)</td><td>Total area of polar (O, N, and attached H) atoms</td><td>A gate on membrane and blood–brain-barrier crossing. TPSA &gt; ~90 Å² sharply reduces brain entry; &gt; 140 Å² limits oral absorption.</td></tr>
-          <tr><td class="mc-key">Ionization (pH 7.4)</td><td>Fraction charged in plasma, set by pKa</td><td>Only the neutral fraction crosses membranes freely. Governs pH-dependent absorption, ion trapping, and dialyzability.</td></tr>
-          <tr><td class="mc-key">Aqueous solubility</td><td>How much dissolves in water (mg/mL, logS)</td><td>Poorly soluble drugs have erratic or food-dependent absorption and are hard to formulate; it is the other half of the permeability/solubility trade-off.</td></tr>
-          <tr><td class="mc-key">Protein-binding region</td><td>Structural feature that anchors the drug to plasma proteins</td><td>Highly bound drugs have a small free (active) fraction, are displaceable, and are poorly dialyzed. See the low-albumin scenario below.</td></tr>
+          <tr><td><strong>Molecular weight</strong></td><td>Size of the molecule in daltons</td><td>Small molecules (&lt;500 Da) cross membranes and the blood–brain barrier passively; very large molecules need transporters or won't be oral. One of Lipinski's four cutoffs.</td></tr>
+          <tr><td><strong>cLogP (lipophilicity)</strong></td><td>Calculated fat-vs-water partitioning of the neutral molecule</td><td>Drives CNS penetration, volume of distribution, protein binding, and CYP metabolism. Too high predicts sedation, accumulation in fat, and off-target promiscuity.</td></tr>
+          <tr><td><strong>Polar surface area (TPSA)</strong></td><td>Total area of polar (O, N, and attached H) atoms</td><td>A gate on membrane and blood–brain-barrier crossing. TPSA &gt; ~90 Å² sharply reduces brain entry; &gt; 140 Å² limits oral absorption.</td></tr>
+          <tr><td><strong>Ionization (pH 7.4)</strong></td><td>Fraction charged in plasma, set by pKa</td><td>Only the neutral fraction crosses membranes freely. Governs pH-dependent absorption, ion trapping, and dialyzability.</td></tr>
+          <tr><td><strong>Aqueous solubility</strong></td><td>How much dissolves in water (mg/mL, logS)</td><td>Poorly soluble drugs have erratic or food-dependent absorption and are hard to formulate; it is the other half of the permeability/solubility trade-off.</td></tr>
+          <tr><td><strong>Protein-binding region</strong></td><td>Structural feature that anchors the drug to plasma proteins</td><td>Highly bound drugs have a small free (active) fraction, are displaceable, and are poorly dialyzed. See the low-albumin scenario below.</td></tr>
         </tbody>
       </table>
       </div>
@@ -208,11 +193,11 @@ table.mc-table tr:nth-child(even) td { background: #f9f7f4; }
 
       <p><strong>logP</strong> is the base-10 logarithm of a drug's partition coefficient — the ratio of its concentration in octanol (a fat surrogate) to water at equilibrium, measured for the <em>neutral</em> form. A logP of 0 means the molecule splits evenly; +3 means it favors fat 1,000-to-1; a negative value means it prefers water. <strong>cLogP</strong> is the same quantity <em>calculated</em> from the structure rather than measured in a flask, by summing empirically derived fragment and atom contributions (the tool reports cLogP because it is generated directly from each SMILES string). The two usually agree within a few tenths; they diverge for unusual scaffolds, intramolecular hydrogen bonds, or zwitterions, where the fragment method has no good rule. When they disagree meaningfully, the measured logP is the reference standard and cLogP is the estimate.</p>
 
-      <div class="mc-warn"><strong>Don't confuse logP with logD.</strong> logP describes only the neutral species. For an ionizable drug, the property that actually governs behavior at pH 7.4 is <strong>logD</strong>, which folds in the ionized fraction and is therefore lower than logP for bases and acids that are charged in plasma. The tool lists cLogP plus a separate ionization row so you can reason about both; mentally combine them when a drug is heavily charged.</div>
+      <div class="ba-warning-box"><strong>Don't confuse logP with logD.</strong> logP describes only the neutral species. For an ionizable drug, the property that actually governs behavior at pH 7.4 is <strong>logD</strong>, which folds in the ionized fraction and is therefore lower than logP for bases and acids that are charged in plasma. The tool lists cLogP plus a separate ionization row so you can reason about both; mentally combine them when a drug is heavily charged.</div>
 
       <p>Lipophilicity is the single most predictive property because it correlates with so many downstream behaviors: higher logP means faster passive membrane crossing, deeper CNS penetration, larger volume of distribution, tighter plasma-protein binding, and more avid CYP450 metabolism — but also more sedation, more fat accumulation with a longer effective half-life, more off-target receptor promiscuity, and higher risk of poor aqueous solubility. Good CNS drugs live in a moderate window, roughly logP 2–4.</p>
 
-      <div class="mc-box">
+      <div class="ba-support-card">
         <h4>Lipinski's Rule of Five</h4>
         <p>A 1997 rule of thumb from Christopher Lipinski for predicting whether an orally administered small molecule will be reasonably absorbed. Poor oral absorption becomes likely when <strong>two or more</strong> of the following are true (each threshold is a multiple of five, hence the name):</p>
         <p>• Molecular weight &gt; <strong>500</strong> Da<br>
@@ -232,7 +217,7 @@ table.mc-table tr:nth-child(even) td { background: #f9f7f4; }
 
       <p>In plasma, a drug exists in equilibrium between a fraction bound to proteins (mainly albumin for acidic and neutral drugs; α1-acid glycoprotein for many bases) and a free fraction. <strong>Only the free (unbound) fraction is pharmacologically active</strong> — it is the part that can cross membranes, hit receptors, be metabolized, and be filtered by the kidney. The "protein-binding region" the tool highlights is the lipophilic/anionic patch of the molecule that docks into albumin. Highly bound drugs (say, &gt; 90%) carry a large reservoir on protein and a correspondingly tiny free fraction.</p>
 
-      <div class="mc-box">
+      <div class="ba-support-card">
         <h4>The scenario: a highly protein-bound drug in a patient with low albumin</h4>
         <p><strong>The question:</strong> what happens to a drug that is 95%+ protein-bound when the patient is hypoalbuminemic — malnourished, cirrhotic, nephrotic, burned, critically ill, or elderly?</p>
         <p><strong>The mechanism:</strong> fewer binding sites means a larger <em>fraction</em> of the drug is unbound. For a drug that was 95% bound, dropping to 90% bound doubles the free fraction from 5% to 10%. Because only free drug is active, the pharmacologic effect (and toxicity risk) rises even though the <em>total</em> measured concentration is unchanged.</p>
@@ -240,14 +225,14 @@ table.mc-table tr:nth-child(even) td { background: #f9f7f4; }
         <p><strong>The nuance:</strong> for most drugs the body compensates. A larger free fraction is also more available for clearance and distribution, so at steady state the free concentration often returns toward baseline while the total falls. The transient toxicity window matters most for drugs that are highly bound, have a narrow therapeutic index, and are given IV or titrated fast. Displacement drug interactions (e.g., adding a second highly bound drug) follow the same logic and are clinically important mainly for that same narrow-index, highly bound subset — not as a general rule.</p>
       </div>
 
-      <div class="mc-pearl"><strong>Bottom line:</strong> in a hypoalbuminemic patient on a highly protein-bound, narrow-index drug, trust the free level, not the total. Suspect toxicity even when the reported concentration looks normal.</div>
+      <div class="ba-support-card"><strong>Bottom line:</strong> in a hypoalbuminemic patient on a highly protein-bound, narrow-index drug, trust the free level, not the total. Suspect toxicity even when the reported concentration looks normal.</div>
 
       <h2>What makes a drug favor renal excretion?</h2>
 
       <p>Whether a drug leaves mostly through the kidney (unchanged in urine) or through the liver (metabolized first) is largely predictable from the same properties on the panel. Renal excretion is favored by the mirror image of the features that favor hepatic metabolism.</p>
 
-      <div class="mc-table-wrap">
-      <table class="mc-table">
+      <div class="ba-table-wrap">
+      <table class="ba-table">
         <thead>
           <tr><th>Favors renal excretion (unchanged)</th><th>Favors hepatic metabolism</th></tr>
         </thead>
@@ -263,33 +248,33 @@ table.mc-table tr:nth-child(even) td { background: #f9f7f4; }
 
       <p>The logic is mechanical. The glomerulus filters small, unbound, water-soluble molecules directly into urine; because the filtrate is water, a hydrophilic charged drug that can't diffuse back across the tubular membrane stays in the urine and is excreted. A lipophilic drug, by contrast, is largely protein-bound (not filtered), and any that is filtered simply diffuses back into the blood across the tubule — so the body must first make it water-soluble through hepatic phase I (CYP oxidation) and phase II (glucuronidation, etc.) metabolism before it can leave. Active tubular secretion (via OAT/OCT transporters) adds a second renal route for some charged drugs and is where interactions like probenecid act.</p>
 
-      <div class="mc-warn"><strong>Clinical translation.</strong> Renally cleared, hydrophilic drugs — <strong>lithium</strong>, gabapentin, pregabalin, topiramate, memantine, amantadine, paliperidone — need dose reduction in renal impairment and are the ones you watch across changes in hydration, GFR, and drug interactions that alter renal handling (NSAIDs, thiazides, and ACE inhibitors with lithium). Lipophilic, hepatically metabolized drugs (most antidepressants and antipsychotics) are instead sensitive to hepatic impairment and CYP interactions. A quick glance at logP, TPSA, and the ionization row tells you which failure mode to anticipate before you ever open the package insert.</div>
+      <div class="ba-warning-box"><strong>Clinical translation.</strong> Renally cleared, hydrophilic drugs — <strong>lithium</strong>, gabapentin, pregabalin, topiramate, memantine, amantadine, paliperidone — need dose reduction in renal impairment and are the ones you watch across changes in hydration, GFR, and drug interactions that alter renal handling (NSAIDs, thiazides, and ACE inhibitors with lithium). Lipophilic, hepatically metabolized drugs (most antidepressants and antipsychotics) are instead sensitive to hepatic impairment and CYP interactions. A quick glance at logP, TPSA, and the ionization row tells you which failure mode to anticipate before you ever open the package insert.</div>
 
       <h2>Intentional design: what chemists tune, and why</h2>
 
       <p>None of these properties is accidental. Modern psychopharmacology is largely the story of taking a molecule that <em>works</em> and re-engineering its structure to keep the target activity while dialing away liabilities. The tool's built-in lineages make this concrete — a few recurring design moves:</p>
 
-      <div class="mc-box">
+      <div class="ba-support-card">
         <h4>Strip the scaffold to remove off-target binding (tricyclic → SSRI)</h4>
         <p>The flat, fused three-ring core of amitriptyline and imipramine incidentally blocks H₁, muscarinic, and α₁ receptors and destabilizes cardiac conduction — the source of TCA sedation, dry mouth, orthostasis, and lethal overdose. Discarding the tricyclic scaffold for an open-chain phenylpropylamine (fluoxetine) keeps serotonin-reuptake inhibition but sheds those liabilities. <strong>Design goal:</strong> selectivity and overdose safety.</p>
       </div>
 
-      <div class="mc-box">
+      <div class="ba-support-card">
         <h4>The chiral switch: keep the active half (citalopram → escitalopram)</h4>
         <p>Citalopram is a 50/50 mix of two mirror-image forms; the R-enantiomer is nearly inactive at the serotonin transporter and even partially opposes the active S-form. Purifying to the single S-enantiomer (escitalopram) gives fuller target occupancy per milligram and a cleaner dose–response. <strong>Design goal:</strong> potency and tolerability from stereochemistry alone.</p>
       </div>
 
-      <div class="mc-box">
+      <div class="ba-support-card">
         <h4>Promote the active metabolite (venlafaxine → desvenlafaxine)</h4>
         <p>Venlafaxine is converted by CYP2D6 to its active O-desmethyl metabolite. Marketing that metabolite as its own drug (desvenlafaxine) removes a metabolism step, flattening the variability that CYP2D6 genetics and interactions introduce. <strong>Design goal:</strong> more predictable exposure across patients.</p>
       </div>
 
-      <div class="mc-box">
+      <div class="ba-support-card">
         <h4>Tune lipophilicity for depot delivery (esterified long-acting injectables)</h4>
         <p>Attaching a fatty-acid chain to a drug (fluphenazine decanoate, paliperidone palmitate, aripiprazole lauroxil) makes it dramatically more lipophilic and poorly water-soluble on purpose, so an oil-depot or crystal dissolves and releases slowly over weeks. <strong>Design goal:</strong> a long dosing interval and steady levels for adherence.</p>
       </div>
 
-      <div class="mc-box">
+      <div class="ba-support-card">
         <h4>Prodrugs and peripheral restriction</h4>
         <p>A <strong>prodrug</strong> is deliberately inactive until the body converts it — lisdexamfetamine is dextroamphetamine bonded to lysine, cleaved only after absorption, which smooths the concentration curve and reduces abuse potential. Conversely, chemists sometimes add a permanent charge (a quaternary amine, e.g., methylnaltrexone) so a drug <em>can't</em> cross the blood–brain barrier, keeping its action peripheral. <strong>Design goals:</strong> controlled activation, abuse deterrence, and confining effects to where they're wanted.</p>
       </div>

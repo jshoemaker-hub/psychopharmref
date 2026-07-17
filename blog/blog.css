@@ -452,3 +452,8 @@ svg { display: block; width: 100%; height: auto; }
   .ba-stat-row { grid-template-columns: 1fr; }
   .ba-table th, .ba-table td { padding: 6px 8px; font-size: 11px; }
 }
+
+
+/* ── Defensive: any blog-content table NOT using the .ba-table pattern still
+      scrolls horizontally instead of overflowing the article column. ────── */
+.ba-body table:not(.ba-table) { display: block; width: -moz-fit-content; width: fit-content; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
