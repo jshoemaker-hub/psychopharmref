@@ -97,7 +97,12 @@
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
     return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function formulaHTML(f) { return esc(f).replace(/(\d+)/g, '<sub>$1</sub>'); }
-  function propRow(l, v) { return '<div class="cs-prop-row"><span class="cs-prop-label">' + l + '</span><span class="cs-prop-val">' + v + '</span></div>'; }
+  function propRow(l, v, term) {
+    var label = term
+      ? '<a href="#" class="cs-gloss-link" data-gterm="' + esc(term) + '" title="Glossary: ' + esc(term) + '">' + l + '</a>'
+      : l;
+    return '<div class="cs-prop-row"><span class="cs-prop-label">' + label + '</span><span class="cs-prop-val">' + v + '</span></div>';
+  }
   function region(cls, title, txt) {
     if (!txt) return '';
     return '<div class="cs-region ' + cls + '"><div class="cs-region-title">' + esc(title) + '</div>' + esc(txt) + '</div>';
@@ -144,11 +149,11 @@
         '</div>' +
         '<div class="cs-props">' +
           propRow('Molecular formula', formulaHTML(d.formula)) +
-          propRow('Molecular weight', d.mw + ' g/mol') +
-          propRow('cLogP (lipophilicity)', d.logP + ' &middot; ' + esc(d.lipophilicity)) +
-          propRow('Polar surface area', (d.tpsa != null ? d.tpsa + ' &#8491;&sup2;' : '&mdash;')) +
-          propRow('Aqueous solubility', sol) +
-          propRow('Ionization (pH 7.4)', (d.ionization || '&mdash;')) +
+          propRow('Molecular weight', d.mw + ' g/mol', 'Molecular weight') +
+          propRow('cLogP (lipophilicity)', d.logP + ' &middot; ' + esc(d.lipophilicity), 'cLogP') +
+          propRow('Polar surface area', (d.tpsa != null ? d.tpsa + ' &#8491;&sup2;' : '&mdash;'), 'Polar surface area (TPSA)') +
+          propRow('Aqueous solubility', sol, 'Aqueous solubility') +
+          propRow('Ionization (pH 7.4)', (d.ionization || '&mdash;'), 'Ionization') +
           propRow('Signal entry point', (d.messenger ? esc(MSG[d.messenger]) : '&mdash;')) +
           propRow('Year introduced/synth.', esc(String(d.year))) +
         '</div>' +
@@ -280,6 +285,13 @@
         if (!viewers[side]) return;
         spinning[side] = !spinning[side];
         try { viewers[side].spin(spinning[side] ? 'y' : false); viewers[side].render(); } catch (e) {}
+      });
+    });
+    box.querySelectorAll('.cs-gloss-link').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var term = a.getAttribute('data-gterm');
+        if (term && window.glossaryScrollToTerm) window.glossaryScrollToTerm(term);
       });
     });
     box.querySelectorAll('[data-loadmet]').forEach(function (btn) {

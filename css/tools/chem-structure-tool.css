@@ -110,6 +110,8 @@
 }
 .cs-prop-row:last-child { border-bottom: none; }
 .cs-prop-label { color: #6b6350; font-weight: 600; }
+.cs-gloss-link { color: var(--accent); font-weight: 600; text-decoration: none; border-bottom: 1px dotted var(--accent); cursor: pointer; }
+.cs-gloss-link:hover { border-bottom-style: solid; }
 .cs-prop-val { color: var(--text); text-align: right; }
 .cs-prop-val sub { font-size: 10px; }
 
