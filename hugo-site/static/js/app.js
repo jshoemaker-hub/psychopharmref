@@ -546,6 +546,7 @@ function openDrugModal(id) {
     </div>
   </div>` : ''}
     ${drug.mechanism ? `<div class="modal-section"><h4>Mechanism</h4><div style="font-size:13px;color:var(--text-muted);line-height:1.7">${drug.mechanism}</div></div>` : ''}
+    ${buildPerinatalHTML(drug.id)}
     ${buildBlackBoxHTML(drug.id)}
     ${buildSideEffectsHTML(drug.id)}
   `;
@@ -625,6 +626,39 @@ function synapticModalHTML(drugId) {
   }).join('');
 }
 
+/* ── Perinatal Modal Section ────────────────────────────────────────────── */
+function buildPerinatalHTML(drugId) {
+  const p = typeof PERINATAL_DATA !== 'undefined' ? PERINATAL_DATA[drugId] : null;
+  if (!p) return '';
+  const badge = risk => {
+    const b = PERINATAL_RISK_BADGE[risk] || PERINATAL_RISK_BADGE.unknown;
+    return `<span class="peri-badge ${b.cls}">${b.label}</span>`;
+  };
+  const preg = p.pregnancy;
+  const bf   = p.breastfeeding;
+  const pregHTML = preg ? `
+    <div class="modal-field">
+      <label>Pregnancy</label>
+      <div>${badge(preg.risk)}${preg.fdaCategory ? ` <span class="peri-cat">Cat. ${preg.fdaCategory}</span>` : ''}
+        ${preg.notes ? `<br><small>${preg.notes}</small>` : ''}
+      </div>
+    </div>` : '';
+  const bfHTML = bf ? `
+    <div class="modal-field">
+      <label>Breastfeeding</label>
+      <div>${badge(bf.risk)}${bf.hale && bf.hale !== 'unknown' ? ` <span class="peri-cat">Hale ${bf.hale}</span>` : ''}${bf.rid ? ` <span class="peri-rid">RID ${bf.rid}</span>` : ''}
+        ${bf.notes ? `<br><small>${bf.notes}</small>` : ''}
+      </div>
+    </div>` : '';
+  if (!pregHTML && !bfHTML) return '';
+  return `
+  <div class="modal-section">
+    <h4>Pregnancy &amp; Lactation</h4>
+    <div class="modal-row">${pregHTML}${bfHTML}</div>
+    <div class="peri-source">RID = Relative Infant Dose (% of weight-adjusted maternal dose); &lt;10% generally considered compatible. Established published figures (Hale's, LactMed); verify against a current lactation reference before clinical decisions.</div>
+  </div>`;
+}
+
 /* ── Perinatal Cell Helpers ─────────────────────────────────────────────── */
 const PERINATAL_RISK_BADGE = {
   low:     { cls: 'peri-low',     label: 'Compatible'  },
@@ -639,9 +673,12 @@ function perinatalCell(data, isBF = false) {
   const cat = isBF
     ? (data.hale && data.hale !== 'unknown' ? `<span class="peri-cat">Hale ${data.hale}</span>` : '')
     : (data.fdaCategory ? `<span class="peri-cat">Cat. ${data.fdaCategory}</span>` : '');
+  const rid = (isBF && data.rid)
+    ? `<span class="peri-rid" title="Relative Infant Dose">RID ${data.rid}</span>`
+    : '';
   const title = (data.notes || '').replace(/"/g, '&quot;');
   return `<div class="peri-cell" title="${title}">
-    <span class="peri-badge ${b.cls}">${b.label}</span>${cat}
+    <span class="peri-badge ${b.cls}">${b.label}</span>${cat}${rid}
   </div>`;
 }
 
