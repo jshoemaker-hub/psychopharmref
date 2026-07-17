@@ -98,6 +98,7 @@ var dateStr = ToolUtils.dateStamp();
 - `sud-` → DSM-5-TR Substance Use Disorder Tool
 - `sm-` → Find Similar Medications
 - `cm-` → Find Complementary Medications
+- `cs-` → Chem Structure (side-by-side structural comparison)
 
 ### Copy-to-Clipboard Pattern
 Never use `alert()`. Always use `ToolUtils.copyWithButton()` for new tools:

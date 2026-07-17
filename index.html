@@ -113,6 +113,7 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="med-compare">Med Comparison</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="similar-meds">Find Similar Meds</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="complementary-meds">Find Complementary Meds</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="chem-structure">Chem Structure</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="price-compare">Price Comparison</a></li>
         </ul>
       </li>
@@ -3067,6 +3068,46 @@
       </div>
 
       <div id="cm-results" class="cm-results" style="display:none"></div>
+    </section>
+
+    <!-- ── Chem Structure ────────────────────────────────────────────────── -->
+    <section id="chem-structure" data-lazy-tool="chem-structure-tool" class="section">
+      <div class="section-header">
+        <h2>Chem Structure</h2>
+        <p class="section-sub">Compare two psychotropic drugs side by side &mdash; their 2D structures, molecular properties, and the fat/water, protein-binding, and receptor-binding regions that shape their behavior. Built-in lineages show how each newer-generation agent was chemically re-engineered from an older one, and why the change was expected to help.</p>
+      </div>
+
+      <div class="mt-warning">
+        <strong>Educational reference only.</strong> Molecular weight, formula, cLogP, polar surface area, and aqueous solubility (ESOL model) are computed with RDKit from each drug&rsquo;s SMILES; structural similarity is a Morgan/ECFP4 Tanimoto score; the 3D view is a single computed conformer. Aqueous solubility is the estimated <em>intrinsic (neutral-form)</em> value &mdash; marketed salt forms are far more soluble. pK<sub>a</sub> values are approximate literature figures used to estimate ionization at pH 7.4. Region annotations and &ldquo;generation evolution&rdquo; notes are curated teaching summaries, not a substitute for primary medicinal-chemistry sources.
+      </div>
+
+      <div id="cs-mount">
+        <div class="ref-card cs-setup-card">
+          <div class="cs-mode-row">
+            <button type="button" class="cs-seg cs-modeseg active" data-mode="compare">&#9878; Compare two</button>
+            <button type="button" class="cs-seg cs-modeseg" data-mode="single">&#9679; Single medication</button>
+          </div>
+          <div class="cs-setup-row">
+            <div class="cs-select-wrap">
+              <label class="cs-select-label" for="cs-sel-a" id="cs-label-a">Structure A</label>
+              <select id="cs-sel-a" class="cs-select"></select>
+            </div>
+            <button type="button" class="cs-swap-btn cs-b-only" id="cs-swap" title="Swap A and B">&#8646; Swap</button>
+            <div class="cs-select-wrap cs-b-only">
+              <label class="cs-select-label" for="cs-sel-b">Structure B</label>
+              <select id="cs-sel-b" class="cs-select"></select>
+            </div>
+            <button type="button" class="cs-go-btn" id="cs-go">Compare &#9656;</button>
+          </div>
+
+          <div class="cs-quickpicks">
+            <div class="cs-quickpicks-title">&#9889; Notable comparisons</div>
+            <div id="cs-quickpicks"></div>
+          </div>
+        </div>
+
+        <div id="cs-results" class="cs-results" style="display:none"></div>
+      </div>
     </section>
 
     <!-- ── Price Comparison ──────────────────────────────────────────────── -->
@@ -11997,7 +12038,7 @@
   </script>
 
   <script defer src="js/data.js?v=20260713b"></script>
-  <script defer src="js/app.js?v=20260716a"></script>
+  <script defer src="js/app.js?v=20260716f"></script>
   <script defer src="js/glossary-data.js?v=20260501a"></script>
   <script defer src="js/glossary-page.js?v=20260501a"></script>
   <script defer src="js/search.js?v=20260714a"></script>

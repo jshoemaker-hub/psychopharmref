@@ -1,0 +1,167 @@
+/* ── Chem Structure tool ──────────────────────────────────────────────────
+   Prefix: cs-   (registered in CLAUDE.md CSS prefix registry)
+   Side-by-side chemical structure comparison. Uses SmilesDrawer (CDN) for 2D. */
+
+.cs-setup-card { margin-bottom: 18px; }
+.cs-mode-row { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 14px; background: #fff; }
+.cs-modeseg { padding: 7px 16px; }
+.cs-setup-card.single-mode .cs-b-only { display: none; }
+.cs-grid.single { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+.cs-moiety {
+  margin: 8px 10px 0; padding: 7px 10px; font-size: 12.5px; line-height: 1.45;
+  background: #fbf6ea; border: 1px solid rgba(139,105,20,.3); border-left: 4px solid var(--accent2);
+  border-radius: 6px; color: #6b5514;
+}
+.cs-setup-row {
+  display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end;
+}
+.cs-select-wrap { flex: 1 1 240px; min-width: 200px; }
+.cs-select-label {
+  display: block; font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .04em; color: var(--accent); margin-bottom: 5px;
+}
+.cs-select {
+  width: 100%; padding: 9px 11px; border: 1px solid var(--border);
+  border-radius: 8px; background: #fff; color: var(--text); font-size: 14px;
+}
+.cs-swap-btn, .cs-go-btn {
+  border: 1px solid var(--border); background: var(--bg2); color: var(--text);
+  border-radius: 8px; padding: 9px 14px; font-size: 14px; cursor: pointer;
+  font-weight: 600;
+}
+.cs-swap-btn:hover { background: #e3ddd0; }
+.cs-go-btn { background: var(--accent); color: #fff; border-color: var(--accent); }
+.cs-go-btn:hover { filter: brightness(1.06); }
+
+.cs-quickpicks { margin-top: 14px; }
+.cs-quickpicks-title {
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+  color: var(--accent2); margin-bottom: 8px;
+}
+.cs-chip {
+  display: inline-block; margin: 0 6px 6px 0; padding: 6px 11px;
+  border: 1px solid var(--border); border-radius: 999px; background: #fff;
+  color: var(--text); font-size: 12.5px; cursor: pointer;
+}
+.cs-chip:hover { background: var(--bg2); border-color: var(--accent); }
+.cs-chip .cs-chip-arrow { color: var(--accent); font-weight: 700; margin: 0 3px; }
+
+/* Results grid: two structure panels side by side */
+.cs-results { margin-top: 20px; }
+.cs-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+}
+@media (max-width: 720px) { .cs-grid { grid-template-columns: 1fr; } }
+
+.cs-panel {
+  border: 1px solid var(--border); border-radius: 12px; background: #fff;
+  overflow: hidden; display: flex; flex-direction: column;
+}
+.cs-panel-head {
+  padding: 12px 14px; background: var(--bg2); border-bottom: 1px solid var(--border);
+}
+.cs-panel-name { font-size: 17px; font-weight: 700; color: var(--text); margin: 0; }
+.cs-panel-brand { font-size: 13px; color: var(--accent2); }
+.cs-panel-class {
+  display: inline-block; margin-top: 6px; font-size: 11.5px; font-weight: 600;
+  color: var(--accent); background: rgba(74,124,53,.10);
+  border: 1px solid rgba(74,124,53,.25); border-radius: 6px; padding: 2px 8px;
+}
+.cs-metabadge {
+  display: inline-block; margin-top: 6px; margin-left: 6px; font-size: 11px;
+  font-weight: 600; color: #7a5b00; background: rgba(139,105,20,.12);
+  border: 1px solid rgba(139,105,20,.3); border-radius: 6px; padding: 2px 8px;
+}
+
+.cs-canvas-wrap, .cs-viewer-wrap {
+  position: relative; padding: 10px; text-align: center; background:
+  repeating-linear-gradient(45deg,#fafafa,#fafafa 10px,#f4f2ec 10px,#f4f2ec 20px);
+}
+.cs-canvas-wrap canvas, .cs-2d canvas { max-width: 100%; height: auto; background: #fff; border-radius: 8px; }
+
+/* Pre-rendered 2D SVG depiction */
+.cs-svg-host { width: 100%; max-width: 380px; margin: 0 auto; background: #fff; border-radius: 8px; padding: 6px; box-sizing: border-box; }
+.cs-svg-host svg { width: 100%; height: auto; display: block; transition: transform .25s ease; }
+
+/* 2D/3D segmented toggle */
+.cs-viewmode { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 8px; background: #fff; }
+.cs-seg { border: none; background: #fff; color: #6b6350; padding: 5px 16px; font-size: 12.5px; font-weight: 700; cursor: pointer; }
+.cs-seg + .cs-seg { border-left: 1px solid var(--border); }
+.cs-seg.active { background: var(--accent); color: #fff; }
+
+/* 3D viewer */
+.cs-3d-canvas { position: relative; width: 100%; height: 300px; background: #fff; border-radius: 8px; overflow: hidden; margin: 0 auto; }
+.cs-3d-canvas canvas { border-radius: 8px; }
+.cs-3d-loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); color: #6b6350; font-size: 13px; }
+.cs-3d-hint { font-size: 11px; color: #9a927e; align-self: center; }
+.cs-canvas-tools { margin-top: 8px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.cs-mini-btn {
+  border: 1px solid var(--border); background: #fff; color: var(--text);
+  border-radius: 7px; padding: 5px 10px; font-size: 12px; cursor: pointer;
+}
+.cs-mini-btn:hover { background: var(--bg2); }
+.cs-rotated-note { font-size: 11.5px; color: var(--accent2); font-style: italic; margin-top: 4px; }
+
+/* Property grid */
+.cs-props { padding: 12px 14px; }
+.cs-prop-row {
+  display: flex; justify-content: space-between; gap: 10px; padding: 5px 0;
+  border-bottom: 1px dashed var(--border); font-size: 13.5px;
+}
+.cs-prop-row:last-child { border-bottom: none; }
+.cs-prop-label { color: #6b6350; font-weight: 600; }
+.cs-prop-val { color: var(--text); text-align: right; }
+.cs-prop-val sub { font-size: 10px; }
+
+/* Region annotation callouts */
+.cs-regions { padding: 4px 14px 14px; }
+.cs-region {
+  border-left: 4px solid var(--border); border-radius: 4px; padding: 7px 10px;
+  margin-top: 8px; font-size: 12.8px; line-height: 1.45; background: #fbfaf7;
+}
+.cs-region-title { font-weight: 700; font-size: 11.5px; text-transform: uppercase; letter-spacing: .03em; }
+.cs-region.lipo   { border-left-color: #d08a2c; }
+.cs-region.lipo   .cs-region-title { color: #b06e12; }
+.cs-region.protein{ border-left-color: #8b6914; }
+.cs-region.protein .cs-region-title { color: #8b6914; }
+.cs-region.receptor{ border-left-color: #4a7c35; }
+.cs-region.receptor .cs-region-title { color: #4a7c35; }
+.cs-region.cascade { border-left-color: #3B82F6; }
+.cs-region.cascade .cs-region-title { color: #2f6bd0; }
+
+/* Element legend */
+.cs-legend { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 8px; font-size: 11px; color: #6b6350; }
+.cs-legend span { display: inline-flex; align-items: center; gap: 4px; }
+.cs-legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+/* Comparison summary bar */
+.cs-summary {
+  margin-top: 18px; border: 1px solid var(--border); border-radius: 12px;
+  background: var(--bg2); padding: 16px 18px;
+}
+.cs-summary h3 { margin: 0 0 12px; font-size: 15px; color: var(--text); }
+.cs-metrics { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 6px; }
+.cs-metric {
+  flex: 1 1 150px; background: #fff; border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px; text-align: center;
+}
+.cs-metric-val { font-size: 24px; font-weight: 800; color: var(--accent); line-height: 1; }
+.cs-metric-label { font-size: 11.5px; color: #6b6350; margin-top: 5px; }
+.cs-metric-sub { font-size: 11px; color: var(--accent2); margin-top: 3px; }
+
+.cs-bar { height: 9px; border-radius: 5px; background: #e3ddd0; overflow: hidden; margin-top: 8px; }
+.cs-bar > i { display: block; height: 100%; background: var(--accent); border-radius: 5px; }
+
+.cs-evolution {
+  margin-top: 14px; background: #fff; border: 1px solid var(--border);
+  border-left: 5px solid var(--accent2); border-radius: 10px; padding: 14px 16px;
+}
+.cs-evolution-tag {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--accent2); margin-bottom: 6px;
+}
+.cs-evolution p { margin: 6px 0; font-size: 13.5px; line-height: 1.5; }
+.cs-evolution b { color: var(--text); }
+
+.cs-note { font-size: 12.5px; color: #6b6350; margin-top: 12px; line-height: 1.5; }
+.cs-empty { color: #6b6350; font-size: 14px; padding: 30px; text-align: center; }
