@@ -134,9 +134,18 @@ function buildYbocsDom() {
               <label class="yb-checklist-label">Excessive listmaking</label>
               <input type="checkbox" class="yb-comp-misc-list" data-type="past">
             </div>
+            <span id="yb-current-obs-count">0</span>
+            <span id="yb-past-obs-count">0</span>
+            <span id="yb-current-comp-count">0</span>
+            <span id="yb-past-comp-count">0</span>
+            <span id="yb-total-current-count">0</span>
+            <span id="yb-total-past-count">0</span>
+            <button id="yb-copy-checklist-btn" type="button">Copy Checklist</button>
           </div>
           <div id="yb-tab-severity" class="yb-tab-content">
             ${inputs.join('\n')}
+            <span id="yb-investigational-answered">0</span>
+            <button id="yb-copy-investigational-btn" type="button">Copy Investigational Items</button>
           </div>
           <span id="yb-obs-subtotal">0</span>
           <span id="yb-comp-subtotal">0</span>
@@ -206,14 +215,42 @@ async function runYbocsCase() {
   selectResponses(window, 'yb-item-', [2, 2, 2, 2, 0, 2, 2, 2, 2, 0]);
   const supplemental = window.document.querySelector('input[name="yb-item-1b"][value="3"]');
   supplemental.checked = true;
-  window.document.querySelector('.yb-obs-harm-self').checked = true;
-  window.document.querySelector('.yb-comp-misc-list').checked = true;
+  const currentObsession = window.document.querySelector('.yb-obs-harm-self');
+  currentObsession.checked = true;
+  currentObsession.dispatchEvent(new window.Event('change', { bubbles: true }));
+  const pastCompulsion = window.document.querySelector('.yb-comp-misc-list');
+  pastCompulsion.checked = true;
+  pastCompulsion.dispatchEvent(new window.Event('change', { bubbles: true }));
+  const insight = window.document.querySelector('input[name="yb-item-11"][value="2"]');
+  insight.checked = true;
+  insight.dispatchEvent(new window.Event('change', { bubbles: true }));
   await wait(20);
 
   assert.strictEqual(window.document.getElementById('yb-total-score').textContent, '16');
   assert.strictEqual(window.document.getElementById('yb-obs-subtotal').textContent, '8');
   assert.strictEqual(window.document.getElementById('yb-comp-subtotal').textContent, '8');
   assert.strictEqual(window.document.getElementById('yb-severity-badge').textContent, 'Moderate');
+  assert.strictEqual(window.document.getElementById('yb-current-obs-count').textContent, '1');
+  assert.strictEqual(window.document.getElementById('yb-past-comp-count').textContent, '1');
+  assert.strictEqual(window.document.getElementById('yb-total-current-count').textContent, '1');
+  assert.strictEqual(window.document.getElementById('yb-total-past-count').textContent, '1');
+  assert.strictEqual(window.document.getElementById('yb-investigational-answered').textContent, '1');
+
+  window.document.getElementById('yb-copy-checklist-btn').click();
+  await wait(20);
+
+  const checklistReport = stubs.getCopiedText();
+  assert(checklistReport.includes('Y-BOCS Symptom Checklist'), 'Y-BOCS checklist report missing heading');
+  assert(checklistReport.includes('Current Obsessions (1): Fear might harm self'), 'Y-BOCS checklist report missing current obsession');
+  assert(checklistReport.includes('Past Compulsions (1): Excessive listmaking'), 'Y-BOCS checklist report missing past compulsion');
+
+  window.document.getElementById('yb-copy-investigational-btn').click();
+  await wait(20);
+
+  const investigationalReport = stubs.getCopiedText();
+  assert(investigationalReport.includes('Y-BOCS Investigational Items'), 'Y-BOCS investigational report missing heading');
+  assert(investigationalReport.includes('Completed: 1/9'), 'Y-BOCS investigational report missing completion count');
+  assert(investigationalReport.includes('11. Insight: 2'), 'Y-BOCS investigational report missing item score');
 
   window.document.getElementById('yb-generate-btn').click();
   await wait(20);

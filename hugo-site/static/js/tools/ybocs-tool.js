@@ -69,8 +69,13 @@
     return scale.investigational_items || FALLBACK_SCALE.investigational_items;
   }
 
-  function getSelectedValue(itemId) {
+  function getSelectedRadio(itemId) {
     var radio = section.querySelector('input[name="yb-item-' + itemId + '"]:checked');
+    return radio || null;
+  }
+
+  function getSelectedValue(itemId) {
+    var radio = getSelectedRadio(itemId);
     return radio ? parseInt(radio.value, 10) : 0;
   }
 
@@ -119,6 +124,95 @@
     return labels;
   }
 
+  function checklistSelections() {
+    return {
+      obsessionsCurrent: checkedLabels('input[type="checkbox"][class^="yb-obs-"][data-type="current"]'),
+      obsessionsPast: checkedLabels('input[type="checkbox"][class^="yb-obs-"][data-type="past"]'),
+      compulsionsCurrent: checkedLabels('input[type="checkbox"][class^="yb-comp-"][data-type="current"]'),
+      compulsionsPast: checkedLabels('input[type="checkbox"][class^="yb-comp-"][data-type="past"]')
+    };
+  }
+
+  function checklistCounts() {
+    var selections = checklistSelections();
+    return {
+      currentObsessions: selections.obsessionsCurrent.length,
+      pastObsessions: selections.obsessionsPast.length,
+      currentCompulsions: selections.compulsionsCurrent.length,
+      pastCompulsions: selections.compulsionsPast.length,
+      totalCurrent: selections.obsessionsCurrent.length + selections.compulsionsCurrent.length,
+      totalPast: selections.obsessionsPast.length + selections.compulsionsPast.length
+    };
+  }
+
+  function setText(id, value) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = value;
+  }
+
+  function updateChecklistSummary() {
+    var counts = checklistCounts();
+    setText('yb-current-obs-count', counts.currentObsessions);
+    setText('yb-past-obs-count', counts.pastObsessions);
+    setText('yb-current-comp-count', counts.currentCompulsions);
+    setText('yb-past-comp-count', counts.pastCompulsions);
+    setText('yb-total-current-count', counts.totalCurrent);
+    setText('yb-total-past-count', counts.totalPast);
+  }
+
+  function investigationalAnsweredCount() {
+    return getInvestigationalItems().reduce(function(total, item) {
+      return total + (getSelectedRadio(item.id) ? 1 : 0);
+    }, 0);
+  }
+
+  function updateInvestigationalSummary() {
+    setText('yb-investigational-answered', investigationalAnsweredCount());
+  }
+
+  function formatChecklistLine(label, values) {
+    return label + ' (' + values.length + '): ' + (values.length ? values.join('; ') : 'None endorsed');
+  }
+
+  function generateChecklistReport() {
+    var selections = checklistSelections();
+    var counts = checklistCounts();
+    var lines = [
+      'Y-BOCS Symptom Checklist',
+      'Date: ' + ToolUtils.dateStamp(),
+      '',
+      formatChecklistLine('Current Obsessions', selections.obsessionsCurrent),
+      formatChecklistLine('Past Obsessions', selections.obsessionsPast),
+      formatChecklistLine('Current Compulsions', selections.compulsionsCurrent),
+      formatChecklistLine('Past Compulsions', selections.compulsionsPast),
+      '',
+      'Checklist Total: ' + counts.totalCurrent + ' current / ' + counts.totalPast + ' past',
+      'Note: Checklist selections are descriptive and are not included in the Y-BOCS 0-40 severity score.'
+    ];
+
+    return lines.join('\n');
+  }
+
+  function generateInvestigationalReport() {
+    var items = getInvestigationalItems();
+    var lines = [
+      'Y-BOCS Investigational Items',
+      'Date: ' + ToolUtils.dateStamp(),
+      '',
+      'Completed: ' + investigationalAnsweredCount() + '/' + items.length
+    ];
+
+    items.forEach(function(item) {
+      var selected = getSelectedRadio(item.id);
+      lines.push(item.id + '. ' + item.label + ': ' + (selected ? selected.value : 'Not rated'));
+    });
+
+    lines.push('');
+    lines.push('Note: Investigational items are not included in the Y-BOCS 0-40 severity score.');
+
+    return lines.join('\n');
+  }
+
   function generateReport() {
     var total = totalScore();
     var severity = severityForScore(total);
@@ -154,17 +248,14 @@
       lines.push('  ' + item.id + '. ' + item.label + ': ' + getSelectedValue(item.id));
     });
 
-    var obsessionsCurrentList = checkedLabels('input[type="checkbox"][class^="yb-obs-"][data-type="current"]');
-    var obsessionsPastList = checkedLabels('input[type="checkbox"][class^="yb-obs-"][data-type="past"]');
-    var compulsionsCurrentList = checkedLabels('input[type="checkbox"][class^="yb-comp-"][data-type="current"]');
-    var compulsionsPastList = checkedLabels('input[type="checkbox"][class^="yb-comp-"][data-type="past"]');
+    var checklist = checklistSelections();
 
     lines.push('');
     lines.push('SYMPTOM CHECKLIST');
-    lines.push('Current Obsessions: ' + (obsessionsCurrentList.length ? obsessionsCurrentList.join('; ') : 'None endorsed'));
-    lines.push('Past Obsessions: ' + (obsessionsPastList.length ? obsessionsPastList.join('; ') : 'None endorsed'));
-    lines.push('Current Compulsions: ' + (compulsionsCurrentList.length ? compulsionsCurrentList.join('; ') : 'None endorsed'));
-    lines.push('Past Compulsions: ' + (compulsionsPastList.length ? compulsionsPastList.join('; ') : 'None endorsed'));
+    lines.push('Current Obsessions: ' + (checklist.obsessionsCurrent.length ? checklist.obsessionsCurrent.join('; ') : 'None endorsed'));
+    lines.push('Past Obsessions: ' + (checklist.obsessionsPast.length ? checklist.obsessionsPast.join('; ') : 'None endorsed'));
+    lines.push('Current Compulsions: ' + (checklist.compulsionsCurrent.length ? checklist.compulsionsCurrent.join('; ') : 'None endorsed'));
+    lines.push('Past Compulsions: ' + (checklist.compulsionsPast.length ? checklist.compulsionsPast.join('; ') : 'None endorsed'));
     lines.push('');
     if (reportMeta.scoring_note) lines.push(reportMeta.scoring_note);
     if (reportMeta.screening_note) lines.push(reportMeta.screening_note);
@@ -211,8 +302,26 @@
     section.addEventListener('change', function(event) {
       if (event.target && event.target.matches('input[type="radio"][name^="yb-item-"]')) {
         updateScores();
+        updateInvestigationalSummary();
+      }
+      if (event.target && event.target.matches('input[type="checkbox"]')) {
+        updateChecklistSummary();
       }
     });
+
+    var copyChecklistBtn = document.getElementById('yb-copy-checklist-btn');
+    if (copyChecklistBtn) {
+      copyChecklistBtn.addEventListener('click', function() {
+        ToolUtils.copyWithButton(generateChecklistReport(), copyChecklistBtn);
+      });
+    }
+
+    var copyInvestigationalBtn = document.getElementById('yb-copy-investigational-btn');
+    if (copyInvestigationalBtn) {
+      copyInvestigationalBtn.addEventListener('click', function() {
+        ToolUtils.copyWithButton(generateInvestigationalReport(), copyInvestigationalBtn);
+      });
+    }
 
     var generateBtn = document.getElementById('yb-generate-btn');
     if (generateBtn) {
@@ -228,6 +337,8 @@
           section.querySelectorAll('input[type="radio"]').forEach(function(radio) { radio.checked = false; });
           section.querySelectorAll('input[type="checkbox"]').forEach(function(cb) { cb.checked = false; });
           updateScores();
+          updateChecklistSummary();
+          updateInvestigationalSummary();
         });
       });
     }
@@ -235,6 +346,8 @@
     addPrintBtn();
     loadSchema();
     updateScores();
+    updateChecklistSummary();
+    updateInvestigationalSummary();
   }
 
   if (document.readyState === 'loading') {

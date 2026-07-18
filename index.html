@@ -8486,6 +8486,38 @@
           </div>
         </div>
       </div>
+
+      <!-- CHECKLIST SUMMARY -->
+      <div class="yb-score-display" id="yb-checklist-summary">
+        <div class="yb-score-row">
+          <span class="yb-score-label">Current Obsessions:</span>
+          <span class="yb-score-value" id="yb-current-obs-count">0</span>
+        </div>
+        <div class="yb-score-row">
+          <span class="yb-score-label">Past Obsessions:</span>
+          <span class="yb-score-value" id="yb-past-obs-count">0</span>
+        </div>
+        <div class="yb-score-row">
+          <span class="yb-score-label">Current Compulsions:</span>
+          <span class="yb-score-value" id="yb-current-comp-count">0</span>
+        </div>
+        <div class="yb-score-row">
+          <span class="yb-score-label">Past Compulsions:</span>
+          <span class="yb-score-value" id="yb-past-comp-count">0</span>
+        </div>
+        <div class="yb-score-row" style="font-size: 1.1rem; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 2px solid var(--border);">
+          <span class="yb-score-label">Checklist Total:</span>
+          <span><span class="yb-score-value" id="yb-total-current-count">0</span> current / <span class="yb-score-value" id="yb-total-past-count">0</span> past</span>
+        </div>
+        <div class="yb-severity-level">
+          <span class="yb-severity-label">Scoring:</span>
+          <span>Checklist selections are descriptive and are not included in the 0–40 severity score.</span>
+        </div>
+      </div>
+
+      <div class="yb-button-group">
+        <button type="button" class="yb-btn yb-btn-primary" id="yb-copy-checklist-btn">Copy Checklist</button>
+      </div>
     </div>
 
     <!-- TAB 2: SEVERITY SCALE -->
@@ -9329,6 +9361,21 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="yb-score-display" id="yb-investigational-summary">
+          <div class="yb-score-row">
+            <span class="yb-score-label">Investigational Items Completed:</span>
+            <span><span class="yb-score-value" id="yb-investigational-answered">0</span>/9</span>
+          </div>
+          <div class="yb-severity-level">
+            <span class="yb-severity-label">Scoring:</span>
+            <span>Investigational items are not included in the 0–40 severity score.</span>
+          </div>
+        </div>
+
+        <div class="yb-button-group">
+          <button type="button" class="yb-btn yb-btn-primary" id="yb-copy-investigational-btn">Copy Investigational Items</button>
         </div>
       </div>
 
@@ -12111,7 +12158,7 @@
 
   <script defer src="js/data.js?v=20260717e"></script>
   <script defer src="js/routes.js?v=20260718h"></script>
-  <script defer src="js/app.js?v=20260718p"></script>
+  <script defer src="js/app.js?v=20260718q"></script>
   <script defer src="js/glossary-data.js?v=20260717a"></script>
   <script defer src="js/glossary-page.js?v=20260501a"></script>
   <script defer src="js/search.js?v=20260714a"></script>
