@@ -34,5 +34,23 @@
     "review_status": "source-cited",
     "last_reviewed": "2026-07-18",
     "notes": "Primary source cited by the MSI-BPD tool report. PMID: 14744082. DOI: 10.1521/pedi.17.6.568.25355."
+  },
+  {
+    "id": "overall-1962-bprs",
+    "label": "Overall JE, Gorham DR. The Brief Psychiatric Rating Scale. Psychol Rep. 1962;10(3):799-812.",
+    "type": "journal_article",
+    "year": 1962,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Primary source cited by the BPRS tool report. DOI: 10.2466/pr0.1962.10.3.799."
+  },
+  {
+    "id": "leucht-2005-bprs",
+    "label": "Leucht S, Kane JM, Kissling W, Hamann J, Etschel E, Engel R. Clinical implications of Brief Psychiatric Rating Scale scores. Br J Psychiatry. 2005;187:366-371.",
+    "type": "journal_article",
+    "year": 2005,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Severity anchor source cited by the BPRS tool report. PMID: 16199797. DOI: 10.1192/bjp.187.4.366."
   }
 ]

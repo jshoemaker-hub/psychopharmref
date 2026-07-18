@@ -309,7 +309,7 @@ function switchSection(id) {
     // Load CSS
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/tools/' + toolId + '.css?v=20260718j';
+    link.href = 'css/tools/' + toolId + '.css?v=20260718k';
     document.head.appendChild(link);
     // Load shared tool-utils.js once (first tool activation), then the tool JS
     function loadToolScript() {
@@ -319,7 +319,7 @@ function switchSection(id) {
         dataScript.src = 'js/qbank-data.js?v=20260716f';
         dataScript.onload = function() {
           var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20260718j';
+          script.src = 'js/tools/' + toolId + '.js?v=20260718k';
           document.body.appendChild(script);
         };
         dataScript.onerror = function() { console.error('Failed to load qbank-data.js'); };
@@ -340,7 +340,7 @@ function switchSection(id) {
           d.onload = function() {
             if (--pending === 0) {
               var script = document.createElement('script');
-              script.src = 'js/tools/' + toolId + '.js?v=20260718j';
+              script.src = 'js/tools/' + toolId + '.js?v=20260718k';
               document.body.appendChild(script);
             }
           };
@@ -349,28 +349,30 @@ function switchSection(id) {
         });
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20260718j';
+        script.src = 'js/tools/' + toolId + '.js?v=20260718k';
         document.body.appendChild(script);
       }
     }
-    var schemaScaleTools = {
-      'phq9-tool': true,
-      'gad7-tool': true,
-      'ess-tool': true,
-      'msibpd-tool': true
+    var toolUtilsRequirements = {
+      'phq9-tool': ['createScaleTool'],
+      'gad7-tool': ['createScaleTool'],
+      'ess-tool': ['createScaleTool'],
+      'msibpd-tool': ['createScaleTool'],
+      'bprs-tool': ['loadClinicalScale']
     };
 
     function shouldLoadToolUtils() {
       if (!window.ToolUtils) return true;
-      if (schemaScaleTools[toolId] && typeof window.ToolUtils.createScaleTool !== 'function') {
-        return true;
+      var requirements = toolUtilsRequirements[toolId] || [];
+      for (var i = 0; i < requirements.length; i++) {
+        if (typeof window.ToolUtils[requirements[i]] !== 'function') return true;
       }
       return false;
     }
 
     if (shouldLoadToolUtils()) {
       const utils = document.createElement('script');
-      utils.src = 'js/tools/tool-utils.js?v=20260718j';
+      utils.src = 'js/tools/tool-utils.js?v=20260718k';
       utils.onload = loadToolScript;
       utils.onerror = function() { console.error('Failed to load tool-utils.js'); };
       document.body.appendChild(utils);

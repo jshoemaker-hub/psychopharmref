@@ -1,0 +1,228 @@
+{
+  "id": "bprs",
+  "tool_section_id": "bprs-tool",
+  "title": "Brief Psychiatric Rating Scale",
+  "short_title": "BPRS",
+  "domain": "psychiatric symptom severity",
+  "status": "pilot-source-of-truth",
+  "last_reviewed": "2026-07-18",
+  "source_ids": ["overall-1962-bprs", "leucht-2005-bprs"],
+  "instructions": "Rate psychiatric symptoms over the past week using observed behavior and verbal report.",
+  "score": {
+    "min": 0,
+    "max": 126,
+    "item_count": 18,
+    "method": "sum",
+    "missing_response_policy": "0 means not assessed; interpret severity anchors only in clinical context"
+  },
+  "options": [
+    { "value": 0, "label": "Not Assessed", "report_label": "not assessed" },
+    { "value": 1, "label": "Not Present", "report_label": "not present" },
+    { "value": 2, "label": "Very Mild", "report_label": "very mild" },
+    { "value": 3, "label": "Mild", "report_label": "mild" },
+    { "value": 4, "label": "Moderate", "report_label": "moderate" },
+    { "value": 5, "label": "Moderately Severe", "report_label": "moderately severe" },
+    { "value": 6, "label": "Severe", "report_label": "severe" },
+    { "value": 7, "label": "Extremely Severe", "report_label": "extremely severe" }
+  ],
+  "items": [
+    {
+      "id": "bprs-1",
+      "number": 1,
+      "text": "Somatic Concern",
+      "description": "Degree of concern over present bodily health."
+    },
+    {
+      "id": "bprs-2",
+      "number": 2,
+      "text": "Anxiety",
+      "description": "Worry, fear, or over-concern for present or future."
+    },
+    {
+      "id": "bprs-3",
+      "number": 3,
+      "text": "Emotional Withdrawal",
+      "description": "Deficiency in relating to the interviewer and interview situation."
+    },
+    {
+      "id": "bprs-4",
+      "number": 4,
+      "text": "Conceptual Disorganization",
+      "description": "Confused, disconnected, or disorganized thought processes."
+    },
+    {
+      "id": "bprs-5",
+      "number": 5,
+      "text": "Guilt Feelings",
+      "description": "Over-concern or remorse for past behavior."
+    },
+    {
+      "id": "bprs-6",
+      "number": 6,
+      "text": "Tension",
+      "description": "Physical and motor manifestations of tension or heightened activation."
+    },
+    {
+      "id": "bprs-7",
+      "number": 7,
+      "text": "Mannerisms and Posturing",
+      "description": "Unusual and unnatural motor behavior."
+    },
+    {
+      "id": "bprs-8",
+      "number": 8,
+      "text": "Grandiosity",
+      "description": "Exaggerated self-opinion or conviction of unusual ability or powers."
+    },
+    {
+      "id": "bprs-9",
+      "number": 9,
+      "text": "Depressive Mood",
+      "description": "Despondency in mood or sadness."
+    },
+    {
+      "id": "bprs-10",
+      "number": 10,
+      "text": "Hostility",
+      "description": "Animosity, contempt, belligerence, or disdain for other people."
+    },
+    {
+      "id": "bprs-11",
+      "number": 11,
+      "text": "Suspiciousness",
+      "description": "Belief that others have malicious or discriminatory intent."
+    },
+    {
+      "id": "bprs-12",
+      "number": 12,
+      "text": "Hallucinatory Behavior",
+      "description": "Perceptions without normal external stimulus correspondence."
+    },
+    {
+      "id": "bprs-13",
+      "number": 13,
+      "text": "Motor Retardation",
+      "description": "Reduction in energy level evidenced by slowed movements."
+    },
+    {
+      "id": "bprs-14",
+      "number": 14,
+      "text": "Uncooperativeness",
+      "description": "Resistance, unfriendliness, resentment, or lack of readiness to cooperate."
+    },
+    {
+      "id": "bprs-15",
+      "number": 15,
+      "text": "Unusual Thought Content",
+      "description": "Unusual, odd, strange, or bizarre thought content."
+    },
+    {
+      "id": "bprs-16",
+      "number": 16,
+      "text": "Blunted Affect",
+      "description": "Reduced emotional tone or apparent lack of normal feeling."
+    },
+    {
+      "id": "bprs-17",
+      "number": 17,
+      "text": "Excitement",
+      "description": "Heightened emotional tone, agitation, or increased reactivity."
+    },
+    {
+      "id": "bprs-18",
+      "number": 18,
+      "text": "Disorientation",
+      "description": "Confusion or lack of proper association for person, place, or time."
+    }
+  ],
+  "subscales": [
+    { "id": "positive-symptoms", "label": "Positive Symptoms", "item_numbers": [4, 8, 11, 12, 15] },
+    { "id": "negative-symptoms", "label": "Negative Symptoms", "item_numbers": [3, 13, 16] },
+    { "id": "affective-symptoms", "label": "Affective Symptoms", "item_numbers": [2, 5, 9] },
+    { "id": "activation", "label": "Activation", "item_numbers": [6, 7, 17] },
+    { "id": "other", "label": "Other", "item_numbers": [1, 10, 14, 18] }
+  ],
+  "severity_bands": [
+    {
+      "min": 0,
+      "max": 0,
+      "label": "Not rated",
+      "display_label": "-",
+      "class": "bp-severity-normal",
+      "action": "No BPRS severity interpretation until at least one item is scored above not assessed"
+    },
+    {
+      "min": 1,
+      "max": 30,
+      "label": "Below Mild",
+      "class": "bp-severity-normal",
+      "action": "Below the Leucht et al. mildly ill anchor; interpret with clinical interview"
+    },
+    {
+      "min": 31,
+      "max": 40,
+      "label": "Mildly Ill",
+      "class": "bp-severity-mild",
+      "action": "Approximately corresponds to Clinical Global Impression mildly ill"
+    },
+    {
+      "min": 41,
+      "max": 52,
+      "label": "Moderately Ill",
+      "class": "bp-severity-moderate",
+      "action": "Approximately corresponds to Clinical Global Impression moderately ill"
+    },
+    {
+      "min": 53,
+      "max": 126,
+      "label": "Markedly Ill or Worse",
+      "class": "bp-severity-severe",
+      "action": "Approximately corresponds to Clinical Global Impression markedly ill or greater"
+    }
+  ],
+  "report": {
+    "heading": "BPRS (Brief Psychiatric Rating Scale)",
+    "scoring_note": "Severity anchors (Leucht et al., 2005): mildly ill ~= 31, moderately ill ~= 41, markedly ill ~= 53."
+  },
+  "test_vectors": [
+    {
+      "name": "all_not_assessed",
+      "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 0,
+      "expected_severity": "Not rated",
+      "expected_subscales": {
+        "positive-symptoms": 0,
+        "negative-symptoms": 0,
+        "affective-symptoms": 0,
+        "activation": 0,
+        "other": 0
+      }
+    },
+    {
+      "name": "mild_anchor",
+      "responses": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 5, 0, 0, 0, 0],
+      "expected_score": 31,
+      "expected_severity": "Mildly Ill",
+      "expected_subscales": {
+        "positive-symptoms": 8,
+        "negative-symptoms": 4,
+        "affective-symptoms": 6,
+        "activation": 4,
+        "other": 9
+      }
+    },
+    {
+      "name": "marked_anchor",
+      "responses": [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 3, 3, 3, 0],
+      "expected_score": 53,
+      "expected_severity": "Markedly Ill or Worse",
+      "expected_subscales": {
+        "positive-symptoms": 15,
+        "negative-symptoms": 9,
+        "affective-symptoms": 9,
+        "activation": 9,
+        "other": 11
+      }
+    }
+  ]
+}

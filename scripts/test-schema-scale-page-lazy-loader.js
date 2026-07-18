@@ -50,6 +50,16 @@ const CASES = [
     severityElementId: 'mb-interp',
     expectedSeverity: '1 / 10 answered',
   },
+  {
+    label: 'BPRS',
+    sectionId: 'bprs-tool',
+    inputSelector: 'input[name="bp-item1"][value="3"]',
+    scoreElementId: 'bp-total-score',
+    expectedScore: '3',
+    severityElementId: 'bp-severity',
+    expectedSeverity: 'Below Mild',
+    requiredToolUtilsMethod: 'loadClinicalScale',
+  },
 ];
 
 function assert(condition, message) {
@@ -138,8 +148,9 @@ async function runCase(testCase) {
     dom.window.switchSection(testCase.sectionId);
     await wait(300);
 
+    const requiredToolUtilsMethod = testCase.requiredToolUtilsMethod || 'createScaleTool';
     assert(
-      typeof dom.window.ToolUtils.createScaleTool === 'function',
+      typeof dom.window.ToolUtils[requiredToolUtilsMethod] === 'function',
       `${testCase.label}: tool-utils.js was not refreshed for schema-driven runtime`
     );
     assert(

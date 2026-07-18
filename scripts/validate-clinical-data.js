@@ -83,6 +83,16 @@ function safetyFlagsForResponses(scale, responses) {
     .map(item => item.id);
 }
 
+function subscaleScoresForResponses(scale, responses) {
+  const scores = {};
+  for (const subscale of scale.subscales || []) {
+    scores[subscale.id] = subscale.item_numbers.reduce((sum, itemNumber) => {
+      return sum + responses[itemNumber - 1];
+    }, 0);
+  }
+  return scores;
+}
+
 function validateBandCoverage(scale, fileRel) {
   const bands = [...scale.severity_bands].sort((a, b) => a.min - b.min);
   let expectedMin = scale.score.min;
@@ -98,6 +108,28 @@ function validateBandCoverage(scale, fileRel) {
   }
 
   expect(expectedMin === scale.score.max + 1, `${fileRel}: severity bands stop at ${expectedMin - 1}; expected ${scale.score.max}`);
+}
+
+function validateSubscales(scale, fileRel) {
+  if (scale.subscales === undefined) return;
+  expect(Array.isArray(scale.subscales), `${fileRel}: subscales must be an array when present`);
+
+  const subscaleIds = new Set();
+  for (const subscale of scale.subscales || []) {
+    expect(isNonEmptyString(subscale.id), `${fileRel}: every subscale needs id`);
+    expect(isNonEmptyString(subscale.label), `${fileRel}: subscale ${subscale.id || 'unknown'} needs label`);
+    expect(!subscaleIds.has(subscale.id), `${fileRel}: duplicate subscale id "${subscale.id}"`);
+    if (subscale.id) subscaleIds.add(subscale.id);
+
+    expect(Array.isArray(subscale.item_numbers) && subscale.item_numbers.length > 0, `${fileRel}: subscale ${subscale.id || 'unknown'} needs item_numbers`);
+    const itemNumbers = new Set();
+    for (const itemNumber of subscale.item_numbers || []) {
+      expect(Number.isInteger(itemNumber), `${fileRel}: subscale ${subscale.id || 'unknown'} item_numbers must be integers`);
+      expect(itemNumber >= 1 && itemNumber <= scale.score.item_count, `${fileRel}: subscale ${subscale.id || 'unknown'} item ${itemNumber} is out of range`);
+      expect(!itemNumbers.has(itemNumber), `${fileRel}: subscale ${subscale.id || 'unknown'} repeats item ${itemNumber}`);
+      itemNumbers.add(itemNumber);
+    }
+  }
 }
 
 function validateScale(scale, filePath, sources) {
@@ -147,6 +179,7 @@ function validateScale(scale, filePath, sources) {
 
   expect(Array.isArray(scale.severity_bands) && scale.severity_bands.length > 0, `${fileRel}: severity_bands must be a non-empty array`);
   validateBandCoverage(scale, fileRel);
+  validateSubscales(scale, fileRel);
 
   for (const vector of scale.test_vectors || []) {
     expect(Array.isArray(vector.responses), `${fileRel}: test vector "${vector.name}" needs responses array`);
@@ -158,10 +191,15 @@ function validateScale(scale, filePath, sources) {
     const score = scoreResponses(vector.responses);
     const severity = severityForScore(scale, score);
     const flags = safetyFlagsForResponses(scale, vector.responses);
+    const subscales = subscaleScoresForResponses(scale, vector.responses);
 
     expect(score === vector.expected_score, `${fileRel}: test vector "${vector.name}" expected score ${vector.expected_score}, got ${score}`);
     expect(severity && severity.label === vector.expected_severity, `${fileRel}: test vector "${vector.name}" expected severity ${vector.expected_severity}, got ${severity ? severity.label : 'none'}`);
     expect(JSON.stringify(flags) === JSON.stringify(vector.expected_safety_flags || []), `${fileRel}: test vector "${vector.name}" safety flags mismatch`);
+
+    for (const [subscaleId, expectedScore] of Object.entries(vector.expected_subscales || {})) {
+      expect(subscales[subscaleId] === expectedScore, `${fileRel}: test vector "${vector.name}" subscale ${subscaleId} expected ${expectedScore}, got ${subscales[subscaleId]}`);
+    }
   }
 
   passes.push(`Validated ${scale.short_title} (${scale.items.length} items, ${scale.severity_bands.length} severity bands)`);
