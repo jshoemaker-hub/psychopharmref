@@ -1,0 +1,130 @@
+{
+  "id": "bfcrs",
+  "tool_section_id": "bfcrs-tool",
+  "title": "Bush-Francis Catatonia Rating Scale",
+  "short_title": "BFCRS",
+  "domain": "catatonia",
+  "status": "pilot-source-of-truth",
+  "last_reviewed": "2026-07-18",
+  "source_ids": ["bush-1996-bfcrs", "urmc-bfcrs"],
+  "instructions": "Clinician-administered bedside assessment for catatonia. Items 1-14 form the Catatonia Screening Instrument; items 1-23 are summed for the full severity rating.",
+  "score": {
+    "min": 0,
+    "max": 69,
+    "item_count": 23,
+    "method": "sum",
+    "missing_response_policy": "unanswered items score 0 in the current runtime; score all 23 CRS items before interpreting"
+  },
+  "options": [
+    { "value": 0, "label": "Absent" },
+    { "value": 1, "label": "Mild / occasional" },
+    { "value": 2, "label": "Moderate / frequent" },
+    { "value": 3, "label": "Severe / present" }
+  ],
+  "items": [
+    { "id": "bfcrs-1", "number": 1, "text": "Immobility/Stupor", "max": 3, "allowed_values": [0, 1, 2, 3] },
+    { "id": "bfcrs-2", "number": 2, "text": "Mutism", "max": 3, "allowed_values": [0, 1, 2, 3] },
+    { "id": "bfcrs-3", "number": 3, "text": "Staring", "max": 3, "allowed_values": [0, 1, 2, 3] },
+    { "id": "bfcrs-4", "number": 4, "text": "Posturing/Catalepsy", "max": 3, "allowed_values": [0, 1, 2, 3] },
+    { "id": "bfcrs-5", "number": 5, "text": "Grimacing", "max": 3, "allowed_values": [0, 1, 2, 3] },
+    { "id": "bfcrs-6", "number": 6, "text": "Echopraxia/Echolalia", "max": 3, "allowed_values": [0, 1, 2, 3] },
+    { "id": "bfcrs-7", "number": 7, "text": "Stereotypy", "max": 3, "allowed_values": [0, 1, 2, 3] },
+    { "id": "bfcrs-8", "number": 8, "text": "Mannerisms", "max": 3, "allowed_values": [0, 1, 2, 3] },
+    { "id": "bfcrs-9", "number": 9, "text": "Verbigeration", "max": 3, "allowed_values": [0, 1, 2, 3] },
+    { "id": "bfcrs-10", "number": 10, "text": "Rigidity", "max": 3, "allowed_values": [0, 1, 2, 3] },
+    { "id": "bfcrs-11", "number": 11, "text": "Negativism", "max": 3, "allowed_values": [0, 1, 2, 3] },
+    { "id": "bfcrs-12", "number": 12, "text": "Waxy Flexibility", "max": 3, "allowed_values": [0, 3], "binary": true },
+    { "id": "bfcrs-13", "number": 13, "text": "Withdrawal", "max": 3, "allowed_values": [0, 1, 2, 3] },
+    { "id": "bfcrs-14", "number": 14, "text": "Excitement", "max": 3, "allowed_values": [0, 1, 2, 3] },
+    { "id": "bfcrs-15", "number": 15, "text": "Impulsivity", "max": 3, "allowed_values": [0, 1, 2, 3] },
+    { "id": "bfcrs-16", "number": 16, "text": "Automatic Obedience", "max": 3, "allowed_values": [0, 1, 2, 3] },
+    { "id": "bfcrs-17", "number": 17, "text": "Passive Obedience (Mitgehen)", "max": 3, "allowed_values": [0, 3], "binary": true },
+    { "id": "bfcrs-18", "number": 18, "text": "Muscle Resistance (Gegenhalten)", "max": 3, "allowed_values": [0, 3], "binary": true },
+    { "id": "bfcrs-19", "number": 19, "text": "Motorically Stuck (Ambitendency)", "max": 3, "allowed_values": [0, 3], "binary": true },
+    { "id": "bfcrs-20", "number": 20, "text": "Grasp Reflex", "max": 3, "allowed_values": [0, 3], "binary": true },
+    { "id": "bfcrs-21", "number": 21, "text": "Perseveration", "max": 3, "allowed_values": [0, 3], "binary": true },
+    { "id": "bfcrs-22", "number": 22, "text": "Combativeness", "max": 3, "allowed_values": [0, 1, 2, 3] },
+    { "id": "bfcrs-23", "number": 23, "text": "Autonomic Abnormality", "max": 3, "allowed_values": [0, 1, 2, 3] }
+  ],
+  "subscales": [
+    { "id": "screening", "label": "Screening Items", "item_numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "max": 42 },
+    { "id": "retarded", "label": "Retarded/Withdrawn Features", "item_numbers": [1, 2, 3, 4, 10, 13], "max": 18 },
+    { "id": "excited", "label": "Excited Features", "item_numbers": [14, 6, 7, 8, 15, 22], "max": 18 }
+  ],
+  "screening": {
+    "item_numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+    "positive_item_threshold": 1,
+    "positive_screen_min_items": 2,
+    "positive_label": "Positive screen - catatonia likely",
+    "negative_label": "Negative screen - catatonia unlikely"
+  },
+  "binary_item_numbers": [12, 17, 18, 19, 20, 21],
+  "subtype_groups": [
+    { "id": "retarded", "label": "Retarded/Withdrawn", "item_numbers": [1, 2, 3, 4, 10, 13] },
+    { "id": "excited", "label": "Excited", "item_numbers": [14, 6, 7, 8, 15, 22] }
+  ],
+  "malignant_warning": {
+    "item_numbers": [14, 23],
+    "threshold": 1,
+    "message": "WARNING - Autonomic instability present with excitement. Evaluate for malignant catatonia as a medical emergency."
+  },
+  "severity_bands": [
+    { "min": 0, "max": 0, "label": "No catatonia detected", "class": "negative", "action": "No catatonic signs endorsed in this scoring session" },
+    { "min": 1, "max": 10, "label": "Mild catatonia", "class": "mild", "action": "Mild catatonic sign burden; interpret in clinical context" },
+    { "min": 11, "max": 20, "label": "Moderate catatonia", "class": "moderate", "action": "Moderate catatonic sign burden" },
+    { "min": 21, "max": 30, "label": "Severe catatonia", "class": "severe", "action": "Severe catatonic sign burden" },
+    { "min": 31, "max": 69, "label": "Extreme catatonia", "class": "extreme", "action": "Extreme catatonic sign burden" }
+  ],
+  "report": {
+    "heading": "Bush-Francis Catatonia Rating Scale (BFCRS)",
+    "screening_heading": "Bush-Francis Catatonia Screening Instrument (BFCSI)",
+    "scoring_note": "Scoring: the full BFCRS severity score is the sum of items 1-23 (0-69). Items 12 and 17-21 are binary and are scored 0 or 3 only.",
+    "screening_note": "The 14-item screening instrument is positive when two or more screening items are present."
+  },
+  "test_vectors": [
+    {
+      "name": "all_zero",
+      "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 0,
+      "expected_severity": "No catatonia detected",
+      "expected_subscales": {
+        "screening": 0,
+        "retarded": 0,
+        "excited": 0
+      }
+    },
+    {
+      "name": "positive_screen_mild",
+      "responses": [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 2,
+      "expected_severity": "Mild catatonia",
+      "expected_subscales": {
+        "screening": 2,
+        "retarded": 2,
+        "excited": 0
+      }
+    },
+    {
+      "name": "binary_items_moderate",
+      "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 3, 3, 3, 3, 0, 0],
+      "expected_score": 18,
+      "expected_severity": "Moderate catatonia",
+      "expected_subscales": {
+        "screening": 3,
+        "retarded": 0,
+        "excited": 0
+      }
+    },
+    {
+      "name": "malignant_warning_shape",
+      "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 2],
+      "expected_score": 5,
+      "expected_severity": "Mild catatonia",
+      "expected_subscales": {
+        "screening": 3,
+        "retarded": 0,
+        "excited": 3
+      }
+    }
+  ]
+}

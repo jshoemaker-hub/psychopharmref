@@ -117,6 +117,24 @@
     "notes": "Institutional clinical reference for the common Y-BOCS severity ranges used by this tool. URL: https://med.stanford.edu/ocd/about/diagnosis.html."
   },
   {
+    "id": "bush-1996-bfcrs",
+    "label": "Bush G, Fink M, Petrides G, Dowling F, Francis A. Catatonia. I. Rating scale and standardized examination. Acta Psychiatr Scand. 1996;93(2):129-136.",
+    "type": "journal_article",
+    "year": 1996,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Primary source for the Bush-Francis Catatonia Rating Scale and 14-item screening instrument. PMID: 8686483. DOI: 10.1111/j.1600-0447.1996.tb09814.x."
+  },
+  {
+    "id": "urmc-bfcrs",
+    "label": "University of Rochester Medicine. Bush-Francis Catatonia Rating Scale educational resources and item scoring.",
+    "type": "clinical_resource",
+    "year": 2026,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Clinical item-scoring reference for BFCRS rating anchors and binary present/absent items. URL: https://www.urmc.rochester.edu/psychiatry/divisions/collaborative-care-and-wellness/bush-francis-catatonia-rating-scale/bfcrs."
+  },
+  {
     "id": "kessler-2005-asrs",
     "label": "Kessler RC, Adler L, Ames M, Demler O, Faraone S, Hiripi E, Howes MJ, Jin R, Secnik K, Spencer T, Ustun TB, Walters EE. The World Health Organization Adult ADHD Self-Report Scale (ASRS): a short screening scale for use in the general population. Psychol Med. 2005;35(2):245-256.",
     "type": "journal_article",

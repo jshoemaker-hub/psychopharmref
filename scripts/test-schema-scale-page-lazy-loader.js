@@ -116,6 +116,18 @@ const CASES = [
     requiredToolUtilsMethod: 'loadClinicalScale',
   },
   {
+    label: 'BFCRS',
+    sectionId: 'bfcrs-tool',
+    inputSelector: 'input[name="bf-crs-1"][value="1"]',
+    scoreElementId: 'bf-crs-severity',
+    expectedScore: '1',
+    severityElementId: 'bf-crs-interpretation',
+    expectedSeverity: 'Mild catatonia',
+    requiredToolUtilsMethod: 'loadClinicalScale',
+    reportButtonId: 'bf-crs-generate',
+    expectedReportText: 'Severity Score: 1/69',
+  },
+  {
     label: 'ASRS',
     sectionId: 'asrs-tool',
     inputSelector: 'input[name="asrs-1"][value="2"]',

@@ -1,353 +1,385 @@
+(function() {
+  var FALLBACK_SCALE = {
+    id: 'bfcrs',
+    score: { min: 0, max: 69, item_count: 23, method: 'sum' },
+    items: [
+      { number: 1, text: 'Immobility/Stupor', max: 3 },
+      { number: 2, text: 'Mutism', max: 3 },
+      { number: 3, text: 'Staring', max: 3 },
+      { number: 4, text: 'Posturing/Catalepsy', max: 3 },
+      { number: 5, text: 'Grimacing', max: 3 },
+      { number: 6, text: 'Echopraxia/Echolalia', max: 3 },
+      { number: 7, text: 'Stereotypy', max: 3 },
+      { number: 8, text: 'Mannerisms', max: 3 },
+      { number: 9, text: 'Verbigeration', max: 3 },
+      { number: 10, text: 'Rigidity', max: 3 },
+      { number: 11, text: 'Negativism', max: 3 },
+      { number: 12, text: 'Waxy Flexibility', max: 3, allowed_values: [0, 3], binary: true },
+      { number: 13, text: 'Withdrawal', max: 3 },
+      { number: 14, text: 'Excitement', max: 3 },
+      { number: 15, text: 'Impulsivity', max: 3 },
+      { number: 16, text: 'Automatic Obedience', max: 3 },
+      { number: 17, text: 'Passive Obedience (Mitgehen)', max: 3, allowed_values: [0, 3], binary: true },
+      { number: 18, text: 'Muscle Resistance (Gegenhalten)', max: 3, allowed_values: [0, 3], binary: true },
+      { number: 19, text: 'Motorically Stuck (Ambitendency)', max: 3, allowed_values: [0, 3], binary: true },
+      { number: 20, text: 'Grasp Reflex', max: 3, allowed_values: [0, 3], binary: true },
+      { number: 21, text: 'Perseveration', max: 3, allowed_values: [0, 3], binary: true },
+      { number: 22, text: 'Combativeness', max: 3 },
+      { number: 23, text: 'Autonomic Abnormality', max: 3 }
+    ],
+    screening: {
+      item_numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+      positive_item_threshold: 1,
+      positive_screen_min_items: 2,
+      positive_label: 'Positive screen - catatonia likely',
+      negative_label: 'Negative screen - catatonia unlikely'
+    },
+    subtype_groups: [
+      { id: 'retarded', label: 'Retarded/Withdrawn', item_numbers: [1, 2, 3, 4, 10, 13] },
+      { id: 'excited', label: 'Excited', item_numbers: [14, 6, 7, 8, 15, 22] }
+    ],
+    malignant_warning: {
+      item_numbers: [14, 23],
+      threshold: 1,
+      message: 'WARNING - Autonomic instability present with excitement. Evaluate for malignant catatonia as a medical emergency.'
+    },
+    severity_bands: [
+      { min: 0, max: 0, label: 'No catatonia detected', class: 'negative' },
+      { min: 1, max: 10, label: 'Mild catatonia', class: 'mild' },
+      { min: 11, max: 20, label: 'Moderate catatonia', class: 'moderate' },
+      { min: 21, max: 30, label: 'Severe catatonia', class: 'severe' },
+      { min: 31, max: 69, label: 'Extreme catatonia', class: 'extreme' }
+    ],
+    report: {
+      heading: 'Bush-Francis Catatonia Rating Scale (BFCRS)',
+      screening_heading: 'Bush-Francis Catatonia Screening Instrument (BFCSI)',
+      scoring_note: 'Scoring: the full BFCRS severity score is the sum of items 1-23 (0-69). Items 12 and 17-21 are binary and are scored 0 or 3 only.',
+      screening_note: 'The 14-item screening instrument is positive when two or more screening items are present.'
+    },
+    references: [
+      { label: 'Bush G, Fink M, Petrides G, Dowling F, Francis A. Catatonia. I. Rating scale and standardized examination. Acta Psychiatr Scand. 1996;93(2):129-136.' },
+      { label: 'University of Rochester Medicine. Bush-Francis Catatonia Rating Scale educational resources and item scoring.' }
+    ]
+  };
 
-    (function() {
-      // Item data
-      const itemNames = {
-        1: 'Immobility/Stupor',
-        2: 'Mutism',
-        3: 'Staring',
-        4: 'Posturing/Catalepsy',
-        5: 'Grimacing',
-        6: 'Echopraxia/Echolalia',
-        7: 'Stereotypy',
-        8: 'Mannerisms',
-        9: 'Verbigeration',
-        10: 'Rigidity',
-        11: 'Negativism',
-        12: 'Waxy Flexibility',
-        13: 'Withdrawal',
-        14: 'Excitement',
-        15: 'Impulsivity',
-        16: 'Automatic Obedience',
-        17: 'Passive Obedience (Mitgehen)',
-        18: 'Muscle Resistance (Gegenhalten)',
-        19: 'Motorically Stuck (Ambitendency)',
-        20: 'Grasp Reflex',
-        21: 'Perseveration',
-        22: 'Combativeness',
-        23: 'Autonomic Abnormality'
-      };
+  var scale = FALLBACK_SCALE;
+  var section = document.getElementById('bfcrs-tool');
 
-      // CSI items: 1-14
-      const csiItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+  function getItems() {
+    return scale.items || FALLBACK_SCALE.items;
+  }
 
-      // Setup collapsible fieldsets
-      document.querySelectorAll('.bf-fieldset').forEach(fieldset => {
-        const legend = fieldset.querySelector('.bf-legend');
-        legend.addEventListener('click', function() {
-          fieldset.classList.toggle('bf-collapsed');
-        });
-      });
+  function getScreening() {
+    return scale.screening || FALLBACK_SCALE.screening;
+  }
 
-      // Setup tab switching
-      document.querySelectorAll('.bf-tab-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const tabId = this.getAttribute('data-tab');
+  function getSubtypeGroups() {
+    return scale.subtype_groups || FALLBACK_SCALE.subtype_groups;
+  }
 
-          // Remove active from all tabs and buttons
-          document.querySelectorAll('.bf-tab-btn').forEach(b => b.classList.remove('bf-active'));
-          document.querySelectorAll('.bf-tab-content').forEach(t => t.classList.remove('bf-active'));
+  function getMalignantWarning() {
+    return scale.malignant_warning || FALLBACK_SCALE.malignant_warning;
+  }
 
-          // Add active to clicked button and corresponding tab
-          this.classList.add('bf-active');
-          document.getElementById(tabId).classList.add('bf-active');
-        });
-      });
+  function getItem(itemNumber) {
+    var items = getItems();
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].number === itemNumber) return items[i];
+    }
+    return null;
+  }
 
-      // CSI SCORING
-      function updateCSIScore() {
-        let score = 0;
-        const presentItems = [];
+  function itemLabel(itemNumber) {
+    var item = getItem(itemNumber);
+    return item ? item.text : 'Item ' + itemNumber;
+  }
 
-        csiItems.forEach(num => {
-          const checkbox = document.querySelector(`input[name="bf-csi-${num}"]`);
-          if (checkbox && checkbox.checked) {
-            score++;
-            presentItems.push(itemNames[num]);
-          }
-        });
+  function getCrsRadio(itemNumber) {
+    return section.querySelector('input[name="bf-crs-' + itemNumber + '"]:checked');
+  }
 
-        document.getElementById('bf-csi-score').textContent = score;
+  function getCrsValue(itemNumber) {
+    var radio = getCrsRadio(itemNumber);
+    return radio ? parseInt(radio.value, 10) : 0;
+  }
 
-        let interpretation = '';
-        let className = '';
+  function getCsiCheckbox(itemNumber) {
+    return section.querySelector('input[name="bf-csi-' + itemNumber + '"]');
+  }
 
-        if (score <= 1) {
-          interpretation = 'Negative screen — catatonia unlikely.';
-          className = 'negative';
-        } else {
-          interpretation = 'Positive screen — catatonia likely. Proceed to full BFCRS assessment.';
-          className = 'positive';
-        }
+  function itemSum(itemNumbers) {
+    return (itemNumbers || []).reduce(function(total, itemNumber) {
+      return total + getCrsValue(itemNumber);
+    }, 0);
+  }
 
-        const interpDiv = document.getElementById('bf-csi-interpretation');
-        interpDiv.className = 'bf-interpretation ' + className;
-        interpDiv.textContent = interpretation;
+  function severityForScore(score) {
+    var bands = scale.severity_bands || FALLBACK_SCALE.severity_bands;
+    for (var i = 0; i < bands.length; i++) {
+      if (score >= bands[i].min && score <= bands[i].max) return bands[i];
+    }
+    return bands[bands.length - 1];
+  }
 
-        const listDiv = document.getElementById('bf-csi-items-list');
-        if (presentItems.length > 0) {
-          listDiv.textContent = 'Items present: ' + presentItems.join(', ');
-        } else {
-          listDiv.textContent = '';
-        }
+  function crsTotalScore() {
+    return getItems().reduce(function(total, item) {
+      return total + getCrsValue(item.number);
+    }, 0);
+  }
+
+  function crsItemsPresent() {
+    return getItems().filter(function(item) {
+      return getCrsValue(item.number) > 0;
+    });
+  }
+
+  function csiPresentItems() {
+    var screening = getScreening();
+    return (screening.item_numbers || []).filter(function(itemNumber) {
+      var checkbox = getCsiCheckbox(itemNumber);
+      return checkbox && checkbox.checked;
+    });
+  }
+
+  function crsScreeningPositiveItems() {
+    var screening = getScreening();
+    var threshold = screening.positive_item_threshold || 1;
+    return (screening.item_numbers || []).filter(function(itemNumber) {
+      return getCrsValue(itemNumber) >= threshold;
+    });
+  }
+
+  function csiResultLabel(count) {
+    var screening = getScreening();
+    return count >= screening.positive_screen_min_items ? screening.positive_label : screening.negative_label;
+  }
+
+  function updateCSIScore() {
+    var presentItems = csiPresentItems();
+    var score = presentItems.length;
+    var scoreEl = document.getElementById('bf-csi-score');
+    var interpDiv = document.getElementById('bf-csi-interpretation');
+    var listDiv = document.getElementById('bf-csi-items-list');
+
+    if (scoreEl) scoreEl.textContent = score;
+    if (interpDiv) {
+      interpDiv.className = 'bf-interpretation ' + (score >= getScreening().positive_screen_min_items ? 'positive' : 'negative');
+      interpDiv.textContent = csiResultLabel(score);
+    }
+    if (listDiv) {
+      listDiv.textContent = presentItems.length
+        ? 'Items present: ' + presentItems.map(itemLabel).join(', ')
+        : '';
+    }
+  }
+
+  function subtypeResult() {
+    var total = crsTotalScore();
+    if (total === 0) return '';
+
+    var groups = getSubtypeGroups();
+    var retarded = groups.find(function(group) { return group.id === 'retarded'; }) || groups[0];
+    var excited = groups.find(function(group) { return group.id === 'excited'; }) || groups[1];
+    var retardedScore = retarded ? itemSum(retarded.item_numbers) : 0;
+    var excitedScore = excited ? itemSum(excited.item_numbers) : 0;
+
+    if (retardedScore > excitedScore && retardedScore > 0) return 'Predominant subtype: ' + retarded.label;
+    if (excitedScore > retardedScore && excitedScore > 0) return 'Predominant subtype: ' + excited.label;
+    return 'Predominant subtype: Mixed';
+  }
+
+  function hasMalignantWarning() {
+    var warning = getMalignantWarning();
+    var threshold = warning.threshold || 1;
+    return (warning.item_numbers || []).every(function(itemNumber) {
+      return getCrsValue(itemNumber) >= threshold;
+    });
+  }
+
+  function updateCRSScore() {
+    var total = crsTotalScore();
+    var present = crsItemsPresent();
+    var screeningPositive = crsScreeningPositiveItems();
+    var severity = severityForScore(total);
+    var severityEl = document.getElementById('bf-crs-severity');
+    var presentEl = document.getElementById('bf-crs-items-present');
+    var screeningEl = document.getElementById('bf-crs-screening-positive');
+    var interpDiv = document.getElementById('bf-crs-interpretation');
+    var subtypeDiv = document.getElementById('bf-crs-subtype');
+    var warningDiv = document.getElementById('bf-crs-warning');
+
+    if (severityEl) severityEl.textContent = total;
+    if (presentEl) presentEl.textContent = present.length;
+    if (screeningEl) screeningEl.textContent = screeningPositive.length;
+    if (interpDiv) {
+      interpDiv.className = 'bf-interpretation ' + (severity.class || '');
+      interpDiv.textContent = severity.label;
+    }
+    if (subtypeDiv) subtypeDiv.textContent = subtypeResult();
+    if (warningDiv) {
+      if (hasMalignantWarning()) {
+        warningDiv.textContent = getMalignantWarning().message;
+        warningDiv.style.display = 'block';
+      } else {
+        warningDiv.textContent = '';
+        warningDiv.style.display = 'none';
       }
+    }
+  }
 
-      // CRS SCORING
-      function updateCRSScore() {
-        let severity = 0;
-        let itemsPresent = 0;
-        let screeningPositive = 0;
-        const allPresentItems = [];
+  function referencesLines() {
+    var lines = [];
+    (scale.references || FALLBACK_SCALE.references).forEach(function(ref) {
+      if (ref && ref.label) lines.push('Reference: ' + ref.label);
+    });
+    return lines;
+  }
 
-        for (let i = 1; i <= 23; i++) {
-          const radio = document.querySelector(`input[name="bf-crs-${i}"]:checked`);
-          if (radio) {
-            const score = parseInt(radio.value);
-            severity += score;
-            if (score > 0) {
-              itemsPresent++;
-              allPresentItems.push(itemNames[i]);
-            }
-            if (csiItems.includes(i) && score > 0) {
-              screeningPositive++;
-            }
-          }
-        }
+  function generateCSIReport() {
+    var reportMeta = scale.report || FALLBACK_SCALE.report;
+    var presentItems = csiPresentItems();
+    var lines = [
+      reportMeta.screening_heading || 'Bush-Francis Catatonia Screening Instrument (BFCSI)',
+      'Date: ' + ToolUtils.dateStamp(),
+      '',
+      'SCREENING ITEMS'
+    ];
 
-        document.getElementById('bf-crs-severity').textContent = severity;
-        document.getElementById('bf-crs-items-present').textContent = itemsPresent;
-        document.getElementById('bf-crs-screening-positive').textContent = screeningPositive;
+    (getScreening().item_numbers || []).forEach(function(itemNumber) {
+      lines.push(itemNumber + '. ' + itemLabel(itemNumber) + ': ' + (presentItems.indexOf(itemNumber) >= 0 ? 'Present' : 'Absent'));
+    });
 
-        // Interpretation
-        let severityLabel = '';
-        let severityClass = '';
-        if (severity === 0) {
-          severityLabel = 'No catatonia detected.';
-          severityClass = 'negative';
-        } else if (severity <= 10) {
-          severityLabel = 'Mild catatonia.';
-          severityClass = 'mild';
-        } else if (severity <= 20) {
-          severityLabel = 'Moderate catatonia.';
-          severityClass = 'moderate';
-        } else if (severity <= 30) {
-          severityLabel = 'Severe catatonia.';
-          severityClass = 'severe';
-        } else {
-          severityLabel = 'Extreme catatonia.';
-          severityClass = 'extreme';
-        }
+    lines.push('');
+    lines.push('Screening Score: ' + presentItems.length + '/14');
+    lines.push('Result: ' + csiResultLabel(presentItems.length));
+    if (presentItems.length) {
+      lines.push('Items Present: ' + presentItems.map(itemLabel).join(', '));
+    }
+    lines.push('');
+    if (reportMeta.screening_note) lines.push(reportMeta.screening_note);
+    lines = lines.concat(referencesLines());
 
-        const interpDiv = document.getElementById('bf-crs-interpretation');
-        interpDiv.className = 'bf-interpretation ' + severityClass;
-        interpDiv.textContent = severityLabel;
+    return lines.join('\n');
+  }
 
-        // Subtype determination
-        const subtypeDiv = document.getElementById('bf-crs-subtype');
-        const retardedItems = [1, 2, 3, 4, 10, 13];
-        const excitedItems = [14, 6, 7, 8, 15, 22];
+  function generateCRSReport() {
+    var total = crsTotalScore();
+    var severity = severityForScore(total);
+    var present = crsItemsPresent();
+    var screeningPositive = crsScreeningPositiveItems();
+    var reportMeta = scale.report || FALLBACK_SCALE.report;
+    var lines = [
+      reportMeta.heading || 'Bush-Francis Catatonia Rating Scale (BFCRS)',
+      'Date: ' + ToolUtils.dateStamp(),
+      '',
+      'ITEM SCORES'
+    ];
 
-        let retardedScore = 0;
-        let excitedScore = 0;
+    getItems().forEach(function(item) {
+      var radio = getCrsRadio(item.number);
+      lines.push(item.number + '. ' + item.text + ': ' + (radio ? radio.value + '/' + item.max : 'Not rated'));
+    });
 
-        retardedItems.forEach(num => {
-          const radio = document.querySelector(`input[name="bf-crs-${num}"]:checked`);
-          if (radio) retardedScore += parseInt(radio.value);
-        });
+    lines.push('');
+    lines.push('SUMMARY');
+    lines.push('Severity Score: ' + total + '/' + scale.score.max);
+    lines.push('Items Present: ' + present.length + '/23');
+    lines.push('Screening Items Positive: ' + screeningPositive.length + '/14');
+    lines.push('Severity: ' + severity.label);
+    if (subtypeResult()) lines.push(subtypeResult());
+    if (hasMalignantWarning()) {
+      lines.push('');
+      lines.push(getMalignantWarning().message);
+    }
+    lines.push('');
+    if (reportMeta.scoring_note) lines.push(reportMeta.scoring_note);
+    if (reportMeta.screening_note) lines.push(reportMeta.screening_note);
+    lines = lines.concat(referencesLines());
 
-        excitedItems.forEach(num => {
-          const radio = document.querySelector(`input[name="bf-crs-${num}"]:checked`);
-          if (radio) excitedScore += parseInt(radio.value);
-        });
+    return lines.join('\n');
+  }
 
-        let subtype = '';
-        if (severity > 0) {
-          if (retardedScore > excitedScore && retardedScore > 0) {
-            subtype = 'Predominant subtype: Retarded/Withdrawn';
-          } else if (excitedScore > retardedScore && excitedScore > 0) {
-            subtype = 'Predominant subtype: Excited';
-          } else if (retardedScore > 0 || excitedScore > 0) {
-            subtype = 'Predominant subtype: Mixed';
-          }
-          subtypeDiv.textContent = subtype;
-        } else {
-          subtypeDiv.textContent = '';
-        }
+  function loadSchema() {
+    if (typeof ToolUtils === 'undefined' || typeof ToolUtils.loadClinicalScale !== 'function') return;
 
-        // Malignant warning
-        const item14 = document.querySelector('input[name="bf-crs-14"]:checked');
-        const item23 = document.querySelector('input[name="bf-crs-23"]:checked');
-        const warningDiv = document.getElementById('bf-crs-warning');
-
-        if (item14 && item23 && parseInt(item14.value) > 0 && parseInt(item23.value) > 0) {
-          warningDiv.textContent = '⚠ WARNING — Autonomic instability present. Evaluate for malignant catatonia (medical emergency).';
-          warningDiv.style.display = 'block';
-        } else {
-          warningDiv.textContent = '';
-          warningDiv.style.display = 'none';
-        }
-      }
-
-      // Attach listeners to CSI checkboxes
-      csiItems.forEach(num => {
-        const checkbox = document.querySelector(`input[name="bf-csi-${num}"]`);
-        if (checkbox) checkbox.addEventListener('change', updateCSIScore);
-      });
-
-      // Attach listeners to CRS radios
-      for (let i = 1; i <= 23; i++) {
-        const radios = document.querySelectorAll(`input[name="bf-crs-${i}"]`);
-        radios.forEach(radio => {
-          radio.addEventListener('change', updateCRSScore);
-        });
-      }
-
-      // CSI REPORT
-      document.getElementById('bf-csi-generate').addEventListener('click', function() {
-        const today = new Date();
-        const dateStr = today.toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        });
-
-        let report = 'Bush-Francis Catatonia Screening (CSI)\n';
-        report += 'Date: ' + dateStr + '\n\n';
-        report += 'SCREENING ITEMS:\n';
-
-        csiItems.forEach(num => {
-          const checkbox = document.querySelector(`input[name="bf-csi-${num}"]`);
-          const status = (checkbox && checkbox.checked) ? 'Present' : 'Absent';
-          report += num + '. ' + itemNames[num] + ': ' + status + '\n';
-        });
-
-        const score = document.getElementById('bf-csi-score').textContent;
-        const result = (parseInt(score) <= 1) ? 'Negative screen' : 'Positive screen — catatonia likely';
-
-        report += '\nScreening Score: ' + score + '/14\n';
-        report += 'Result: ' + result + '\n';
-
-        const presentList = Array.from(document.querySelectorAll('input[name^="bf-csi-"]:checked'))
-          .map(cb => itemNames[csiItems[csiItems.indexOf(parseInt(cb.name.split('-')[2]))]])
-          .join(', ');
-
-        if (presentList) {
-          report += 'Items Present: ' + presentList + '\n';
-        }
-
-        navigator.clipboard.writeText(report).then(() => {
-          const orig = this.textContent;
-          this.textContent = 'Copied!';
-          setTimeout(() => { this.textContent = orig; }, 2000);
-        });
-      });
-
-      // CRS REPORT
-      document.getElementById('bf-crs-generate').addEventListener('click', function() {
-        const today = new Date();
-        const dateStr = today.toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        });
-
-        let report = 'Bush-Francis Catatonia Rating Scale (BFCRS)\n';
-        report += 'Date: ' + dateStr + '\n\n';
-        report += 'ITEM SCORES:\n';
-
-        let severity = 0;
-        let itemsPresent = 0;
-        let screeningPositive = 0;
-
-        for (let i = 1; i <= 23; i++) {
-          const radio = document.querySelector(`input[name="bf-crs-${i}"]:checked`);
-          const score = (radio) ? radio.value : '—';
-          report += i + '. ' + itemNames[i] + ': ' + score + '\n';
-
-          if (radio) {
-            const scoreInt = parseInt(radio.value);
-            severity += scoreInt;
-            if (scoreInt > 0) itemsPresent++;
-            if (csiItems.includes(i) && scoreInt > 0) screeningPositive++;
-          }
-        }
-
-        let severityLabel = '';
-        if (severity === 0) {
-          severityLabel = 'No catatonia';
-        } else if (severity <= 10) {
-          severityLabel = 'Mild catatonia';
-        } else if (severity <= 20) {
-          severityLabel = 'Moderate catatonia';
-        } else if (severity <= 30) {
-          severityLabel = 'Severe catatonia';
-        } else {
-          severityLabel = 'Extreme catatonia';
-        }
-
-        report += '\nSUMMARY:\n';
-        report += 'Severity Score: ' + severity + '/69\n';
-        report += 'Items Present: ' + itemsPresent + '/23\n';
-        report += 'Screening Items Positive: ' + screeningPositive + '/14\n';
-        report += 'Severity: ' + severityLabel + '\n';
-
-        // Subtype
-        const retardedItems = [1, 2, 3, 4, 10, 13];
-        const excitedItems = [14, 6, 7, 8, 15, 22];
-        let retardedScore = 0;
-        let excitedScore = 0;
-
-        retardedItems.forEach(num => {
-          const radio = document.querySelector(`input[name="bf-crs-${num}"]:checked`);
-          if (radio) retardedScore += parseInt(radio.value);
-        });
-
-        excitedItems.forEach(num => {
-          const radio = document.querySelector(`input[name="bf-crs-${num}"]:checked`);
-          if (radio) excitedScore += parseInt(radio.value);
-        });
-
-        let subtype = 'Mixed';
-        if (severity > 0) {
-          if (retardedScore > excitedScore && retardedScore > 0) {
-            subtype = 'Retarded/Withdrawn';
-          } else if (excitedScore > retardedScore && excitedScore > 0) {
-            subtype = 'Excited';
-          }
-        }
-
-        report += 'Predominant Subtype: ' + subtype + '\n';
-
-        // Malignant check
-        const item14 = document.querySelector('input[name="bf-crs-14"]:checked');
-        const item23 = document.querySelector('input[name="bf-crs-23"]:checked');
-
-        if (item14 && item23 && parseInt(item14.value) > 0 && parseInt(item23.value) > 0) {
-          report += '\nWARNING — Autonomic instability present. Evaluate for malignant catatonia (medical emergency).\n';
-        }
-
-        navigator.clipboard.writeText(report).then(() => {
-          const orig = this.textContent;
-          this.textContent = 'Copied!';
-          setTimeout(() => { this.textContent = orig; }, 2000);
-        });
-      });
-
-      // Initial score updates
+    ToolUtils.loadClinicalScale('bfcrs').then(function(loadedScale) {
+      scale = loadedScale;
       updateCSIScore();
       updateCRSScore();
+    }).catch(function(err) {
+      console.warn('BFCRS schema unavailable; using embedded fallback.', err);
+    });
+  }
 
-      // Add print button
-      (function addPrintBtn() {
-        var sec = document.getElementById('bfcrs-tool');
-        if (!sec) return;
-        var header = sec.querySelector('.section-header');
-        if (!header) return;
-        var btn = document.createElement('button');
-        btn.className = 'pf-inline-btn';
-        btn.onclick = function() { if (typeof printBlankForm === 'function') printBlankForm('bfcrs'); };
-        btn.innerHTML = '🖨️ Print Blank Form';
-        btn.title = 'Print a blank version of this form';
-        header.appendChild(btn);
-      })();
-    })();
-  
+  function addPrintBtn() {
+    var header = section.querySelector('.section-header');
+    if (!header) return;
+    var btn = document.createElement('button');
+    btn.className = 'pf-inline-btn';
+    btn.onclick = function() { if (typeof printBlankForm === 'function') printBlankForm('bfcrs'); };
+    btn.innerHTML = 'Print Blank Form';
+    btn.title = 'Print a blank version of this form';
+    header.appendChild(btn);
+  }
+
+  function initCollapsibles() {
+    section.querySelectorAll('.bf-fieldset').forEach(function(fieldset) {
+      var legend = fieldset.querySelector('.bf-legend');
+      if (!legend) return;
+      legend.addEventListener('click', function() {
+        fieldset.classList.toggle('bf-collapsed');
+      });
+    });
+  }
+
+  function initTabs() {
+    section.querySelectorAll('.bf-tab-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var tabId = btn.getAttribute('data-tab');
+        section.querySelectorAll('.bf-tab-btn').forEach(function(b) { b.classList.remove('bf-active'); });
+        section.querySelectorAll('.bf-tab-content').forEach(function(t) { t.classList.remove('bf-active'); });
+        btn.classList.add('bf-active');
+        var tab = document.getElementById(tabId);
+        if (tab) tab.classList.add('bf-active');
+      });
+    });
+  }
+
+  function init() {
+    initCollapsibles();
+    initTabs();
+
+    section.querySelectorAll('input[name^="bf-csi-"]').forEach(function(checkbox) {
+      checkbox.addEventListener('change', updateCSIScore);
+    });
+
+    section.querySelectorAll('input[name^="bf-crs-"]').forEach(function(radio) {
+      radio.addEventListener('change', updateCRSScore);
+    });
+
+    var csiGenerateBtn = document.getElementById('bf-csi-generate');
+    if (csiGenerateBtn) {
+      csiGenerateBtn.addEventListener('click', function() {
+        ToolUtils.copyWithButton(generateCSIReport(), csiGenerateBtn);
+      });
+    }
+
+    var crsGenerateBtn = document.getElementById('bf-crs-generate');
+    if (crsGenerateBtn) {
+      crsGenerateBtn.addEventListener('click', function() {
+        ToolUtils.copyWithButton(generateCRSReport(), crsGenerateBtn);
+      });
+    }
+
+    addPrintBtn();
+    loadSchema();
+    updateCSIScore();
+    updateCRSScore();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
