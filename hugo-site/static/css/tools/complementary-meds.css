@@ -192,3 +192,52 @@
   .cm-ref-class { margin-left: 0; width: 100%; }
   .cm-cards { grid-template-columns: 1fr; }
 }
+
+/* ── Curated combination strategies (cm-combo-) ────────────────────────────
+   Evidence-based augmentation pairs, shown above the computed rankings. */
+.cm-combos {
+  border: 1px solid var(--accent2); border-radius: 11px;
+  background: linear-gradient(180deg, #fbf7ec 0%, #fff 55%);
+  padding: 0.9rem 1rem 1rem; margin: 0.75rem 0 1.25rem;
+}
+.cm-combos-head { display: flex; flex-direction: column; gap: 0.2rem; margin-bottom: 0.7rem; }
+.cm-combos-title { font-size: 1rem; font-weight: 800; color: var(--accent2); letter-spacing: 0.01em; }
+.cm-combos-sub { font-size: 0.82rem; color: var(--text); opacity: 0.75; line-height: 1.4; }
+.cm-combos-role {
+  font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--accent2); margin: 0.6rem 0 0.45rem; opacity: 0.9;
+}
+.cm-combo-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.cm-combo {
+  border: 1px solid var(--border); border-left: 4px solid var(--border);
+  border-radius: 8px; background: #fff; padding: 0.65rem 0.8rem;
+}
+.cm-combo--fda { border-left-color: var(--accent); }
+.cm-combo--guideline { border-left-color: var(--accent2); }
+.cm-combo--empirical { border-left-color: #b08a3e; }
+.cm-combo-top { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin-bottom: 0.15rem; }
+.cm-combo-op { color: var(--accent2); font-weight: 800; }
+.cm-combo-add { font-size: 1rem; font-weight: 700; color: var(--text); }
+.cm-combo-anchor { font-weight: 600; color: var(--text); }
+.cm-combo-brand { font-size: 0.85rem; color: var(--text); opacity: 0.7; font-weight: 500; }
+.cm-combo-ext {
+  font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em;
+  color: #7a5c12; background: #f0e6cc; border-radius: 4px; padding: 0.05rem 0.35rem;
+}
+.cm-combo-badge {
+  font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em;
+  border-radius: 4px; padding: 0.1rem 0.4rem; color: #fff; white-space: nowrap;
+}
+.cm-combo-badge--fda { background: var(--accent); }
+.cm-combo-badge--guideline { background: var(--accent2); }
+.cm-combo-badge--empirical { background: #b08a3e; }
+.cm-combo-nick {
+  font-size: 0.72rem; font-weight: 700; font-style: italic; color: var(--accent2);
+  background: #f7efdc; border-radius: 4px; padding: 0.1rem 0.4rem;
+}
+.cm-combo-cond { font-size: 0.78rem; font-weight: 600; color: var(--text); opacity: 0.7; margin-bottom: 0.3rem; }
+.cm-combo-why { font-size: 0.88rem; line-height: 1.5; color: var(--text); }
+.cm-combo-monitor { font-size: 0.83rem; line-height: 1.45; color: var(--text); opacity: 0.9; margin-top: 0.35rem; }
+.cm-combo-monitor strong { color: #9a3b28; }
+.cm-combo-cite { font-size: 0.74rem; color: var(--text); opacity: 0.55; margin-top: 0.3rem; font-style: italic; }
+.cm-combos-foot { font-size: 0.76rem; color: var(--text); opacity: 0.6; line-height: 1.4; margin-top: 0.75rem; }

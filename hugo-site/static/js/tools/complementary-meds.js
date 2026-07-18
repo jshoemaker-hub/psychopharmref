@@ -205,6 +205,84 @@
     return '<span class="cm-chip" style="--cm-chip:' + c + '">' + esc(r) + '</span>';
   }
 
+  // ── Curated combination strategies (Phase 1 knowledge base) ──────────────
+  function medById(id) {
+    for (var i = 0; i < MEDICATIONS.length; i++) { if (MEDICATIONS[i].id === id) return MEDICATIONS[i]; }
+    return null;
+  }
+  function addLabel(add) {
+    if (!add) return { name: '', brand: '', external: false };
+    if (add.external) return { name: add.label, brand: add.brand || '', external: true };
+    var m = medById(add.id);
+    return m ? { name: m.name, brand: m.brandName, external: false } : { name: add.id, brand: '', external: false };
+  }
+  // Human-readable description of an entry's anchor (for addon-direction display).
+  function describeAnchor(entry) {
+    var a = entry.anchor || {};
+    var parts = [];
+    if (a.ids && a.ids.length) {
+      a.ids.forEach(function (id) { var m = medById(id); parts.push(m ? m.name : id); });
+    }
+    if (a.classes && a.classes.length) { a.classes.forEach(function (c) { parts.push('any ' + c); }); }
+    if (!parts.length) return 'the base agent';
+    if (parts.length === 1) return parts[0];
+    if (parts.length === 2) return parts[0] + ' or ' + parts[1];
+    return parts.slice(0, -1).join(', ') + ', or ' + parts[parts.length - 1];
+  }
+  function evBadge(ev) {
+    var CS = window.CombinationStrategies;
+    var short = (CS && CS.EVIDENCE_SHORT[ev]) || ev;
+    return '<span class="cm-combo-badge cm-combo-badge--' + esc(ev) + '">' + esc(short) + '</span>';
+  }
+  function comboCard(entry, add, direction, refName) {
+    var lab = addLabel(add);
+    var title, sub;
+    if (direction === 'anchor') {
+      title = '<span class="cm-combo-op">+</span> <span class="cm-combo-add">' + esc(lab.name) + '</span>'
+        + (lab.brand ? ' <span class="cm-combo-brand">' + esc(lab.brand) + '</span>' : '')
+        + (lab.external ? ' <span class="cm-combo-ext">adjunct</span>' : '');
+      sub = esc(entry.condition);
+    } else {
+      title = '<span class="cm-combo-add">' + esc(refName) + '</span> <span class="cm-combo-op">augments</span> '
+        + '<span class="cm-combo-anchor">' + esc(describeAnchor(entry)) + '</span>';
+      sub = esc(entry.condition);
+    }
+    var html = '<div class="cm-combo cm-combo--' + esc(entry.evidence) + '">';
+    html += '<div class="cm-combo-top">' + title + evBadge(entry.evidence)
+      + (entry.nickname ? '<span class="cm-combo-nick">' + esc(entry.nickname) + '</span>' : '') + '</div>';
+    html += '<div class="cm-combo-cond">' + sub + '</div>';
+    html += '<div class="cm-combo-why">' + esc(entry.rationale) + '</div>';
+    if (entry.monitoring) html += '<div class="cm-combo-monitor"><strong>Monitor:</strong> ' + esc(entry.monitoring) + '</div>';
+    if (entry.ref) html += '<div class="cm-combo-cite">' + esc(entry.ref) + '</div>';
+    html += '</div>';
+    return html;
+  }
+  function combosBlock(ref) {
+    var CS = window.CombinationStrategies;
+    if (!CS) return '';
+    var res = CS.lookup(ref);
+    if (!res.anchor.length && !res.addon.length) return '';
+    var html = '<div class="cm-combos">';
+    html += '<div class="cm-combos-head"><span class="cm-combos-title">&#9733; Known evidence-based combinations</span>'
+      + '<span class="cm-combos-sub">Curated augmentation strategies involving ' + esc(ref.name)
+      + ' &mdash; drawn from clinical evidence, not computed from receptor divergence.</span></div>';
+    if (res.anchor.length) {
+      html += '<div class="cm-combos-role">Add to ' + esc(ref.name) + ':</div>';
+      html += '<div class="cm-combo-list">';
+      res.anchor.forEach(function (r) { html += comboCard(r.entry, r.add, 'anchor', ref.name); });
+      html += '</div>';
+    }
+    if (res.addon.length) {
+      html += '<div class="cm-combos-role">' + esc(ref.name) + ' as an add-on agent:</div>';
+      html += '<div class="cm-combo-list">';
+      res.addon.forEach(function (r) { html += comboCard(r.entry, null, 'addon', ref.name); });
+      html += '</div>';
+    }
+    html += '<div class="cm-combos-foot">Evidence tier is a guide, not a substitute for the full trial record. Confirm current labeling, interactions, and patient-specific risks before combining.</div>';
+    html += '</div>';
+    return html;
+  }
+
   // Safety-flag block: additive QT and known P450 interactions between the pair.
   function flagsBlock(ref, row) {
     var conflicts = row.p450, qt = row.qt;
@@ -282,6 +360,8 @@
       };
     }).sort(function (a, b) { return b.s.total - a.s.total; });
 
+    // No receptor data → no computed ranking (render shows curated combos only).
+    if (!hasKi(ref)) ranked = [];
     lastRanked = ranked; lastRef = ref; lastSameCat = sameCat;
     shownCount = STEP;               // reset to first three on every new search
     render(ref, ranked, sameCat);
@@ -301,12 +381,22 @@
       + '<span class="cm-ref-class">' + esc(ref.class) + ' · ' + esc(ref.category) + '</span>'
       + '</div>';
 
+    // Curated evidence-based combinations — shown first, and even when the
+    // reference has no receptor-binding data (e.g. lithium, valproate).
+    var combos = combosBlock(ref);
+    if (combos) html += combos;
+
     if (!hasKi(ref)) {
       html += '<div class="cm-note-inline">Receptor-binding data is not on file for ' + esc(ref.name)
-        + ' (its mechanism lies outside the monoamine receptor set), so mechanistic divergence cannot be computed. '
-        + 'The complementary-agent search requires a reference with receptor-binding data.</div>';
+        + ' (its mechanism lies outside the monoamine receptor set), so the computed receptor-divergence ranking below cannot be generated. '
+        + (combos ? 'The curated combinations above still apply.' : 'The complementary-agent search requires a reference with receptor-binding data.') + '</div>';
+      if (combos) {
+        html += '<div class="cm-actions"><button class="btn-primary cm-report-btn" id="cm-report-btn">Copy Summary</button></div>';
+      }
       results.innerHTML = html;
       results.style.display = '';
+      var rb = document.getElementById('cm-report-btn');
+      if (rb) rb.addEventListener('click', function () { copyReport(this); });
       return;
     }
 
@@ -443,10 +533,35 @@
       : new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     var t = 'Complementary Medication Analysis\nDate: ' + date + '\n\n';
     var w = normWeights();
-    t += 'Reference medication: ' + ref.name + ' (' + ref.brandName + ') — ' + ref.class + ', ' + ref.category + '\n';
-    t += 'Ranked for complementary pairing (receptor divergence ' + Math.round(w.wD * 100)
+    t += 'Reference medication: ' + ref.name + ' (' + ref.brandName + ') — ' + ref.class + ', ' + ref.category + '\n\n';
+
+    // Curated evidence-based combinations (Phase 1 knowledge base)
+    var CS = window.CombinationStrategies;
+    if (CS) {
+      var res = CS.lookup(ref);
+      if (res.anchor.length || res.addon.length) {
+        t += 'KNOWN EVIDENCE-BASED COMBINATIONS (curated)\n';
+        res.anchor.forEach(function (r) {
+          var lab = addLabel(r.add);
+          t += '  + ' + lab.name + (lab.brand ? ' (' + lab.brand + ')' : '')
+            + '  [' + (CS.EVIDENCE_SHORT[r.entry.evidence] || r.entry.evidence) + ']'
+            + (r.entry.nickname ? ' — "' + r.entry.nickname + '"' : '') + '\n';
+          t += '     ' + r.entry.condition + '. ' + r.entry.rationale + '\n';
+          if (r.entry.monitoring) t += '     Monitor: ' + r.entry.monitoring + '\n';
+        });
+        res.addon.forEach(function (r) {
+          t += '  ' + ref.name + ' augments ' + describeAnchor(r.entry)
+            + '  [' + (CS.EVIDENCE_SHORT[r.entry.evidence] || r.entry.evidence) + '] — ' + r.entry.condition + '\n';
+        });
+        t += '\n';
+      }
+    }
+
+    if (top.length) {
+    t += 'COMPUTED COMPLEMENTARY AGENTS (receptor divergence ' + Math.round(w.wD * 100)
       + '%, class ' + Math.round(w.wC * 100) + '%, shared indications ' + Math.round(w.wI * 100) + '%).\n';
     t += 'Candidates share ≥1 indication and cover a different receptor set — rational combination/augmentation options.\n\n';
+    }
     top.forEach(function (row, i) {
       var m = row.med, s = row.s;
       t += (i + 1) + '. ' + m.name + ' (' + m.brandName + ') — ' + m.class + '  |  ' + Math.round(s.total) + '% complement\n';
