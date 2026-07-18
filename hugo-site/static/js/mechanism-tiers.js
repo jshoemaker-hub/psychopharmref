@@ -40,7 +40,7 @@
   var TIERS = {
     first:  { n: 1, label: 'first messenger',  short: 'receptor/membrane',
               desc: 'Receptors, transporters, ion channels and transmitter-regulating enzymes.' },
-    second: { n: 2, label: 'second messenger', short: 'second messenger',
+    second: { n: 2, label: 'second messenger', short: 'cAMP / IP3 / calcium',
               desc: 'cAMP, IP3/DAG, intracellular calcium.' },
     third:  { n: 3, label: 'third messenger',  short: 'kinase/transcription factor',
               desc: 'Protein kinases and transcription factors (GSK-3beta, CREB).' },

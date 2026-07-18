@@ -381,3 +381,16 @@
   background: var(--bg2); border-radius: 6px; padding: 0.4rem 0.55rem; margin-top: 0.3rem;
 }
 .cm-route-note strong { color: var(--accent2); }
+
+/* Named cascade-tier chips */
+.cm-shared--tier { align-items: center; }
+.cm-tier-chip {
+  display: inline-flex; flex-direction: column; line-height: 1.25;
+  border: 1px solid rgba(74,124,53,0.4); background: rgba(74,124,53,0.07);
+  border-radius: 5px; padding: 0.15rem 0.45rem; margin: 0.12rem 0.25rem 0.12rem 0;
+}
+.cm-tier-chip-n { font-size: 0.74rem; font-weight: 800; color: #3f6b2c; }
+.cm-tier-chip-t { font-size: 0.68rem; color: var(--text); opacity: 0.75; }
+/* Action names run longer than the old short codes — let them wrap */
+.cm-actx { white-space: normal; }
+.cm-actx-a, .cm-actx-b { white-space: nowrap; }

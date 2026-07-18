@@ -374,15 +374,37 @@
     return html + '</div>';
   }
 
+  // Cascade tiers spelled out: "1st messenger (receptor/membrane)" rather than a
+  // bare short code, so the axis reads as pharmacology instead of jargon.
+  var TIER_ORD = { 1: '1st', 2: '2nd', 3: '3rd', 4: '4th' };
+  function tierNames(medId) {
+    var MT = window.MechanismTiers;
+    if (!MT) return '';
+    return MT.tiersFor(medId).map(function (t) {
+      var meta = MT.TIERS[t];
+      if (!meta) return t;
+      return (TIER_ORD[meta.n] || meta.n) + ' messenger (' + meta.short + ')';
+    }).join(' + ');
+  }
+  function tierChip(med) {
+    return '<span class="cm-tier-chip"><span class="cm-tier-chip-n">' + esc(med.name) + '</span>'
+      + '<span class="cm-tier-chip-t">' + esc(tierNames(med.id)) + '</span></span>';
+  }
+  // Action contrasts written out in full: "antagonist -> partial agonist".
+  function contrastText(c) {
+    var RA = window.ReceptorActions;
+    return c.r + ' ' + RA.label(c.refAct) + ' \u2192 ' + RA.label(c.candAct);
+  }
+
   // Action contrast: same receptor, different functional action.
   function actxChip(c) {
     var RA = window.ReceptorActions;
     var col = COLORS[c.r] || '#8b6914';
     return '<span class="cm-actx" style="--cm-chip:' + col + '">'
       + '<span class="cm-actx-r">' + esc(c.r) + '</span>'
-      + '<span class="cm-actx-a">' + esc(RA.short(c.refAct)) + '</span>'
+      + '<span class="cm-actx-a">' + esc(RA.label(c.refAct)) + '</span>'
       + '<span class="cm-actx-arrow">&rarr;</span>'
-      + '<span class="cm-actx-b">' + esc(RA.short(c.candAct)) + '</span></span>';
+      + '<span class="cm-actx-b">' + esc(RA.label(c.candAct)) + '</span></span>';
   }
 
   // ── Curated combination strategies (Phase 1 knowledge base) ──────────────
@@ -491,7 +513,7 @@
 
   // ── State ────────────────────────────────────────────────────────────────
   var lastRanked = null, lastRef = null, lastSameCat = true, lastExcluded = [], lastRouteFiltered = 0, lastRoutePassed = 0;
-  var STEP = 3;            // how many results per "show more" click
+  var STEP = 6;            // how many results per "show more" click
   var shownCount = STEP;   // how many are currently displayed
 
   function populateSelect() {
@@ -575,7 +597,7 @@
     lastRouteFiltered = routeFiltered;
     lastRoutePassed = routePassed;
     lastRanked = ranked; lastRef = ref; lastSameCat = sameCat;
-    shownCount = STEP;               // reset to first three on every new search
+    shownCount = STEP;               // reset to the first page on every new search
     render(ref, ranked, sameCat);
   }
 
@@ -725,18 +747,23 @@
           + '<div class="cm-metric-note">no receptor-binding data on file for one of the pair</div></div>';
       }
       if (s.aDiv !== null) {
-        var nSh = row.act ? row.act.contrasts.length : 0;
-        html += bar('Action divergence', s.aDiv, 'weight ' + Math.round(s.wA * 100) + '% · '
-          + (nSh ? nSh + ' shared receptor' + (nSh > 1 ? 's' : '') + ' acted on differently' : 'same action at shared receptors'));
+        var cs = row.act ? row.act.contrasts : [];
+        var noteA;
+        if (cs.length) {
+          noteA = cs.slice(0, 2).map(contrastText).join(' · ')
+            + (cs.length > 2 ? ' · +' + (cs.length - 2) + ' more' : '');
+        } else {
+          noteA = 'same action at every shared receptor';
+        }
+        html += bar('Action divergence', s.aDiv, 'weight ' + Math.round(s.wA * 100) + '% · ' + noteA);
       } else {
         html += '<div class="cm-metric cm-metric--na"><div class="cm-metric-top">'
           + '<span class="cm-metric-label">Action divergence</span><span class="cm-metric-val">n/a</span></div>'
           + '<div class="cm-metric-note">no shared receptor with a characterized action &mdash; weight folded into receptor divergence</div></div>';
       }
       if (s.tDiv !== null) {
-        var MT = window.MechanismTiers;
         html += bar('Cascade-tier divergence', s.tDiv, 'weight ' + Math.round(s.wT * 100) + '% · '
-          + esc(MT.labelList(ref.id).join('/')) + ' vs ' + esc(MT.labelList(m.id).join('/')));
+          + esc(ref.name) + ': ' + esc(tierNames(ref.id)) + '  vs  ' + esc(m.name) + ': ' + esc(tierNames(m.id)));
       }
       html += bar('Class match', s.cMatch, 'weight ' + Math.round(s.wC * 100) + '%');
       html += bar('Shared indications', s.iMatch, 'weight ' + Math.round(s.wI * 100) + '%');
@@ -747,6 +774,11 @@
       html += routeNotes(m.id);
 
       html += coverageBlock(row);
+
+      if (s.tDiv !== null && s.tDiv > 0) {
+        html += '<div class="cm-shared cm-shared--tier"><span class="cm-shared-label">Cascade tier:</span> '
+          + tierChip(ref) + tierChip(m) + '</div>';
+      }
 
       var MTn = window.MechanismTiers ? window.MechanismTiers.noteFor(m.id) : null;
       if (MTn) {
@@ -905,6 +937,9 @@
       if (row.safety) row.safety.reasons.forEach(function (rs) {
         t += '   ' + (rs.severity === 'contraindicated' ? 'CONTRAINDICATED' : 'CAUTION') + ' - ' + rs.title + ': ' + rs.detail + '\n';
       });
+      if (s.tDiv !== null && window.MechanismTiers) {
+        t += '   Cascade tier: ' + ref.name + ' = ' + tierNames(ref.id) + '; ' + m.name + ' = ' + tierNames(m.id) + '\n';
+      }
       if (window.Routes) t += '   Routes: ' + window.Routes.sorted(m.id).map(function (rt) {
         return window.Routes.short(rt);
       }).join(', ') + '\n';
@@ -918,7 +953,7 @@
       }
       if (row.act && row.act.contrasts.length) {
         t += '   Same receptor, different action: ' + row.act.contrasts.slice(0, 5).map(function (c) {
-          return c.r + ' ' + window.ReceptorActions.short(c.refAct) + ' -> ' + window.ReceptorActions.short(c.candAct);
+          return c.r + ' ' + window.ReceptorActions.label(c.refAct) + ' -> ' + window.ReceptorActions.label(c.candAct);
         }).join('; ') + '\n';
       }
       if (row.added.length) t += '   New receptor coverage: ' + row.added.slice(0, 6).map(function (x) { return x.r; }).join(', ') + '\n';
