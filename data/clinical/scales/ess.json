@@ -1,0 +1,67 @@
+{
+  "id": "ess",
+  "tool_section_id": "ess-tool",
+  "title": "Epworth Sleepiness Scale",
+  "short_title": "ESS",
+  "domain": "sleep",
+  "status": "schema-runtime",
+  "last_reviewed": "2026-07-18",
+  "source_ids": ["johns-1991-ess"],
+  "instructions": "Rate each situation for your likelihood of dozing off or falling asleep, not just feeling tired.",
+  "score": {
+    "min": 0,
+    "max": 24,
+    "item_count": 8,
+    "method": "sum",
+    "missing_response_policy": "report answered count; do not classify severity until all items are answered"
+  },
+  "options": [
+    { "value": 0, "label": "Would never nod off" },
+    { "value": 1, "label": "Slight chance" },
+    { "value": 2, "label": "Moderate chance" },
+    { "value": 3, "label": "High chance" }
+  ],
+  "items": [
+    { "id": "ess-1", "number": 1, "text": "Sitting and reading" },
+    { "id": "ess-2", "number": 2, "text": "Watching TV" },
+    { "id": "ess-3", "number": 3, "text": "Sitting, inactive, in a public place (e.g., meeting, theater, dinner event)" },
+    { "id": "ess-4", "number": 4, "text": "As a passenger in a car for an hour or more without a break" },
+    { "id": "ess-5", "number": 5, "text": "Lying down to rest when circumstances permit" },
+    { "id": "ess-6", "number": 6, "text": "Sitting and talking to someone" },
+    { "id": "ess-7", "number": 7, "text": "Sitting quietly after a meal without alcohol" },
+    { "id": "ess-8", "number": 8, "text": "In a car, while stopped for a few minutes in traffic or at a light" }
+  ],
+  "severity_bands": [
+    { "min": 0, "max": 7, "label": "Unlikely that you are abnormally sleepy", "class": "es-normal", "action": "Monitor clinically; no abnormal daytime sleepiness suggested by score alone" },
+    { "min": 8, "max": 9, "label": "Average amount of daytime sleepiness", "class": "es-average", "action": "Monitor symptoms and context; reassess if impairment or safety concerns are present" },
+    { "min": 10, "max": 15, "label": "Excessive daytime sleepiness - further evaluation recommended", "class": "es-excessive", "action": "Consider formal sleep evaluation and review sleep, medication, and medical contributors" },
+    { "min": 16, "max": 24, "label": "Excessive daytime sleepiness - strongly consider seeking medical attention", "class": "es-excessive", "action": "Strongly consider physician or sleep-medicine evaluation, especially with driving or occupational risk" }
+  ],
+  "report": {
+    "heading": "Epworth Sleepiness Scale (ESS)",
+    "scoring_note": "Scoring: 0-7 unlikely abnormal sleepiness, 8-9 average daytime sleepiness, 10-15 excessive daytime sleepiness, 16-24 high excessive daytime sleepiness."
+  },
+  "test_vectors": [
+    {
+      "name": "all_zero",
+      "responses": [0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 0,
+      "expected_severity": "Unlikely that you are abnormally sleepy",
+      "expected_safety_flags": []
+    },
+    {
+      "name": "average",
+      "responses": [1, 1, 1, 1, 1, 1, 1, 1],
+      "expected_score": 8,
+      "expected_severity": "Average amount of daytime sleepiness",
+      "expected_safety_flags": []
+    },
+    {
+      "name": "high_excessive",
+      "responses": [3, 3, 3, 2, 2, 1, 1, 1],
+      "expected_score": 16,
+      "expected_severity": "Excessive daytime sleepiness - strongly consider seeking medical attention",
+      "expected_safety_flags": []
+    }
+  ]
+}

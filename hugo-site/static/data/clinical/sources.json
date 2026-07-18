@@ -16,5 +16,23 @@
     "review_status": "source-cited",
     "last_reviewed": "2026-07-17",
     "notes": "Primary source cited by the GAD-7 tool report."
+  },
+  {
+    "id": "johns-1991-ess",
+    "label": "Johns MW. A new method for measuring daytime sleepiness: the Epworth sleepiness scale. Sleep. 1991;14(6):540-545.",
+    "type": "journal_article",
+    "year": 1991,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Primary source cited by the Epworth Sleepiness Scale tool report. PMID: 1798888. DOI: 10.1093/sleep/14.6.540."
+  },
+  {
+    "id": "zanarini-2003-msibpd",
+    "label": "Zanarini MC, Vujanovic AA, Parachini EA, Boulanger JL, Frankenburg FR, Hennen J. A screening measure for BPD: the McLean Screening Instrument for Borderline Personality Disorder (MSI-BPD). J Pers Disord. 2003;17(6):568-573.",
+    "type": "journal_article",
+    "year": 2003,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Primary source cited by the MSI-BPD tool report. PMID: 14744082. DOI: 10.1521/pedi.17.6.568.25355."
   }
 ]

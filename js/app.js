@@ -309,7 +309,7 @@ function switchSection(id) {
     // Load CSS
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/tools/' + toolId + '.css?v=20260718i';
+    link.href = 'css/tools/' + toolId + '.css?v=20260718j';
     document.head.appendChild(link);
     // Load shared tool-utils.js once (first tool activation), then the tool JS
     function loadToolScript() {
@@ -319,7 +319,7 @@ function switchSection(id) {
         dataScript.src = 'js/qbank-data.js?v=20260716f';
         dataScript.onload = function() {
           var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20260718i';
+          script.src = 'js/tools/' + toolId + '.js?v=20260718j';
           document.body.appendChild(script);
         };
         dataScript.onerror = function() { console.error('Failed to load qbank-data.js'); };
@@ -327,11 +327,11 @@ function switchSection(id) {
       } else if (toolId === 'complementary-meds' && !window.CombinationStrategies) {
         // Complementary-meds needs curated overlays before the tool computes scores.
         var deps = [
-          'js/combination-strategies.js?v=20260718i',
-          'js/receptor-actions.js?v=20260718i',
-          'js/mechanism-tiers.js?v=20260718i',
-          'js/pair-safety.js?v=20260718i',
-          'js/symptom-domains.js?v=20260718i'
+          'js/combination-strategies.js?v=20260718j',
+          'js/receptor-actions.js?v=20260718j',
+          'js/mechanism-tiers.js?v=20260718j',
+          'js/pair-safety.js?v=20260718j',
+          'js/symptom-domains.js?v=20260718j'
         ];
         var pending = deps.length;
         deps.forEach(function(src) {
@@ -340,7 +340,7 @@ function switchSection(id) {
           d.onload = function() {
             if (--pending === 0) {
               var script = document.createElement('script');
-              script.src = 'js/tools/' + toolId + '.js?v=20260718i';
+              script.src = 'js/tools/' + toolId + '.js?v=20260718j';
               document.body.appendChild(script);
             }
           };
@@ -349,14 +349,20 @@ function switchSection(id) {
         });
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20260718i';
+        script.src = 'js/tools/' + toolId + '.js?v=20260718j';
         document.body.appendChild(script);
       }
     }
+    var schemaScaleTools = {
+      'phq9-tool': true,
+      'gad7-tool': true,
+      'ess-tool': true,
+      'msibpd-tool': true
+    };
+
     function shouldLoadToolUtils() {
       if (!window.ToolUtils) return true;
-      if ((toolId === 'phq9-tool' || toolId === 'gad7-tool') &&
-          typeof window.ToolUtils.createScaleTool !== 'function') {
+      if (schemaScaleTools[toolId] && typeof window.ToolUtils.createScaleTool !== 'function') {
         return true;
       }
       return false;
@@ -364,7 +370,7 @@ function switchSection(id) {
 
     if (shouldLoadToolUtils()) {
       const utils = document.createElement('script');
-      utils.src = 'js/tools/tool-utils.js?v=20260718i';
+      utils.src = 'js/tools/tool-utils.js?v=20260718j';
       utils.onload = loadToolScript;
       utils.onerror = function() { console.error('Failed to load tool-utils.js'); };
       document.body.appendChild(utils);

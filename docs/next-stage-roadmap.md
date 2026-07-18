@@ -52,8 +52,8 @@ Definition of done:
 
 ## Phase 2: Clinical Data Source Of Truth
 
-Status: started with PHQ-9 and GAD-7 pilot schemas; both now consume their
-schemas at runtime with embedded fallbacks.
+Status: started with PHQ-9, GAD-7, ESS, and MSI-BPD schemas; all four now
+consume their schemas at runtime with embedded fallbacks.
 
 Move high-value clinical data into structured, reviewable sources before it is
 rendered into UI.
@@ -92,13 +92,15 @@ Current pilot:
 - `data/clinical/sources.json`
 - `data/clinical/scales/phq9.json`
 - `data/clinical/scales/gad7.json`
+- `data/clinical/scales/ess.json`
+- `data/clinical/scales/msibpd.json`
 - `npm run check:clinical`
 
 These files do not yet drive the runtime UI. They are the first reviewable,
 testable source-of-truth layer for scoring, severity bands, report notes, source
 citations, and safety flags.
 
-PHQ-9 and GAD-7 are the first runtime consumers. Their tool scripts load
+PHQ-9, GAD-7, ESS, and MSI-BPD are the first runtime consumers. Their tool scripts load
 `data/clinical/scales/<scale>.json` through `ToolUtils.loadClinicalScale()`,
 then use the schemas for score range, severity bands, action text, item report
 text, source citation, and PHQ-9 Item 9 safety flag behavior.

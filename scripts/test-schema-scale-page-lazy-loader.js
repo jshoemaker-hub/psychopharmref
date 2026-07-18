@@ -3,7 +3,7 @@
  * Regression test for schema-driven scale tools in the full page lazy-loader.
  *
  * Reproduces the stale-helper shape that can happen when a browser cached an
- * older tool-utils.js before PHQ-9/GAD-7 moved to ToolUtils.createScaleTool().
+ * older tool-utils.js before these tools moved to ToolUtils.createScaleTool().
  */
 
 const fs = require('fs');
@@ -31,6 +31,24 @@ const CASES = [
     expectedScore: '3',
     severityElementId: 'gad-severity',
     expectedSeverity: '1 / 7 answered',
+  },
+  {
+    label: 'ESS',
+    sectionId: 'ess-tool',
+    inputSelector: 'input[name="ess-1"][value="3"]',
+    scoreElementId: 'es-score',
+    expectedScore: '3',
+    severityElementId: 'es-interp',
+    expectedSeverity: '1 / 8 answered',
+  },
+  {
+    label: 'MSI-BPD',
+    sectionId: 'msibpd-tool',
+    inputSelector: 'input[name="mb-q1"][value="1"]',
+    scoreElementId: 'mb-score',
+    expectedScore: '1',
+    severityElementId: 'mb-interp',
+    expectedSeverity: '1 / 10 answered',
   },
 ];
 

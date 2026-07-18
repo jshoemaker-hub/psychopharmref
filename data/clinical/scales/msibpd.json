@@ -1,0 +1,66 @@
+{
+  "id": "msibpd",
+  "tool_section_id": "msibpd-tool",
+  "title": "McLean Screening Instrument for Borderline Personality Disorder",
+  "short_title": "MSI-BPD",
+  "domain": "personality",
+  "status": "schema-runtime",
+  "last_reviewed": "2026-07-18",
+  "source_ids": ["zanarini-2003-msibpd"],
+  "instructions": "Answer each screening item yes or no.",
+  "score": {
+    "min": 0,
+    "max": 10,
+    "item_count": 10,
+    "method": "sum",
+    "missing_response_policy": "report answered count; do not classify severity until all items are answered"
+  },
+  "options": [
+    { "value": 0, "label": "No" },
+    { "value": 1, "label": "Yes" }
+  ],
+  "items": [
+    { "id": "msibpd-1", "number": 1, "text": "Troubled relationships" },
+    { "id": "msibpd-2", "number": 2, "text": "Self-harm / suicide attempt" },
+    { "id": "msibpd-3", "number": 3, "text": "Impulsivity problems" },
+    { "id": "msibpd-4", "number": 4, "text": "Extreme moodiness" },
+    { "id": "msibpd-5", "number": 5, "text": "Frequent anger" },
+    { "id": "msibpd-6", "number": 6, "text": "Distrustfulness" },
+    { "id": "msibpd-7", "number": 7, "text": "Unreality / derealization" },
+    { "id": "msibpd-8", "number": 8, "text": "Chronic emptiness" },
+    { "id": "msibpd-9", "number": 9, "text": "Identity confusion" },
+    { "id": "msibpd-10", "number": 10, "text": "Fear of abandonment" }
+  ],
+  "severity_bands": [
+    { "min": 0, "max": 6, "label": "Below screening threshold", "class": "mb-negative", "action": "Continue diagnostic assessment based on clinical context" },
+    { "min": 7, "max": 10, "label": "Positive screen - symptoms highly consistent with BPD; further evaluation warranted", "class": "mb-positive", "action": "Prompt comprehensive psychiatric evaluation for borderline personality disorder and differential diagnoses" }
+  ],
+  "report": {
+    "heading": "McLean Screening Instrument for BPD (MSI-BPD)",
+    "scoring_note": "Scoring: total score 0-10; cutoff of 7 or more is a positive screen in the original validation study.",
+    "screening_note": "This is a screening tool, not a diagnostic instrument. Interpret alongside clinical interview and DSM criteria."
+  },
+  "test_vectors": [
+    {
+      "name": "all_no",
+      "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 0,
+      "expected_severity": "Below screening threshold",
+      "expected_safety_flags": []
+    },
+    {
+      "name": "positive_cutoff",
+      "responses": [1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+      "expected_score": 7,
+      "expected_severity": "Positive screen - symptoms highly consistent with BPD; further evaluation warranted",
+      "expected_safety_flags": []
+    },
+    {
+      "name": "all_yes",
+      "responses": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      "expected_score": 10,
+      "expected_severity": "Positive screen - symptoms highly consistent with BPD; further evaluation warranted",
+      "expected_safety_flags": []
+    }
+  ]
+}
