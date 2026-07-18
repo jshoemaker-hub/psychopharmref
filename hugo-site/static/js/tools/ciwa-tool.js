@@ -1,138 +1,156 @@
+(function() {
+  'use strict';
 
-    (function() {
-      'use strict';
+  var FALLBACK_SCALE = {
+    id: 'ciwa',
+    score: { min: 0, max: 67, item_count: 10, method: 'sum' },
+    items: [
+      { number: 1, text: 'Nausea & Vomiting', max: 7 },
+      { number: 2, text: 'Tremor', max: 7 },
+      { number: 3, text: 'Paroxysmal Sweats', max: 7 },
+      { number: 4, text: 'Anxiety', max: 7 },
+      { number: 5, text: 'Agitation', max: 7 },
+      { number: 6, text: 'Tactile Disturbances', max: 7 },
+      { number: 7, text: 'Auditory Disturbances', max: 7 },
+      { number: 8, text: 'Visual Disturbances', max: 7 },
+      { number: 9, text: 'Headache / Fullness in Head', max: 7 },
+      { number: 10, text: 'Orientation / Clouding of Sensorium', max: 4 }
+    ],
+    severity_bands: [
+      { min: 0, max: 9, label: 'Minimal to mild withdrawal', class: 'ciwa-severity-minimal', action: 'Scores <10 do not usually require additional medication for withdrawal. Continue symptom-triggered reassessment per protocol.' },
+      { min: 10, max: 15, label: 'Moderate withdrawal', class: 'ciwa-severity-moderate', action: 'Marked autonomic arousal. Consider benzodiazepine and continued frequent (q1h) reassessment.' },
+      { min: 16, max: 67, label: 'Severe withdrawal', class: 'ciwa-severity-severe', action: 'Impending delirium tremens risk. Treat with benzodiazepine promptly, monitor closely, and consider higher level of care.' }
+    ],
+    report: {
+      heading: 'CIWA-Ar (Clinical Institute Withdrawal Assessment - Alcohol, Revised)',
+      scoring_note: 'Scoring: total score is the sum of 10 clinician-rated items (0-67). Item 10 is scored 0-4; all other items are scored 0-7.',
+      screening_note: 'Common interpretation: <10 minimal/mild withdrawal, 10-15 moderate withdrawal, >=16 severe withdrawal.'
+    },
+    references: [
+      { label: 'Sullivan JT, Sykora K, Schneiderman J, Naranjo CA, Sellers EM. Assessment of alcohol withdrawal: the revised Clinical Institute Withdrawal Assessment for Alcohol scale (CIWA-Ar). Br J Addict. 1989;84(11):1353-1357.' }
+    ]
+  };
 
-      const ITEM_CONFIG = {
-        'ciwa-item1':  { name: 'Nausea & Vomiting',     max: 7 },
-        'ciwa-item2':  { name: 'Tremor',                 max: 7 },
-        'ciwa-item3':  { name: 'Paroxysmal Sweats',      max: 7 },
-        'ciwa-item4':  { name: 'Anxiety',                max: 7 },
-        'ciwa-item5':  { name: 'Agitation',              max: 7 },
-        'ciwa-item6':  { name: 'Tactile Disturbances',   max: 7 },
-        'ciwa-item7':  { name: 'Auditory Disturbances',  max: 7 },
-        'ciwa-item8':  { name: 'Visual Disturbances',    max: 7 },
-        'ciwa-item9':  { name: 'Headache / Fullness',    max: 7 },
-        'ciwa-item10': { name: 'Orientation / Sensorium', max: 4 }
-      };
+  var scale = FALLBACK_SCALE;
+  var section = document.getElementById('ciwa-tool');
+  var form = document.getElementById('ciwa-form');
+  var totalScoreEl = document.getElementById('ciwa-total-score');
+  var severityEl = document.getElementById('ciwa-severity-level');
+  var guidanceEl = document.getElementById('ciwa-guidance');
+  var reportBtn = document.getElementById('ciwa-report-btn');
+  var resetBtn = document.getElementById('ciwa-reset-btn');
+  var summarySection = document.getElementById('ciwa-summary');
+  var summaryGrid = document.getElementById('ciwa-summary-grid');
+  var pulseEl = document.getElementById('ciwa-pulse');
+  var bpEl = document.getElementById('ciwa-bp');
 
-      const MAX_TOTAL = 67;
+  function getItems() {
+    return scale.items || FALLBACK_SCALE.items;
+  }
 
-      const form          = document.getElementById('ciwa-form');
-      const totalScoreEl  = document.getElementById('ciwa-total-score');
-      const severityEl    = document.getElementById('ciwa-severity-level');
-      const guidanceEl    = document.getElementById('ciwa-guidance');
-      const reportBtn     = document.getElementById('ciwa-report-btn');
-      const resetBtn      = document.getElementById('ciwa-reset-btn');
-      const summarySection= document.getElementById('ciwa-summary');
-      const summaryGrid   = document.getElementById('ciwa-summary-grid');
-      const pulseEl       = document.getElementById('ciwa-pulse');
-      const bpEl          = document.getElementById('ciwa-bp');
+  function getItemValue(itemNumber) {
+    var selected = form.querySelector('input[name="ciwa-item' + itemNumber + '"]:checked');
+    return selected ? parseInt(selected.value, 10) : 0;
+  }
 
-      function calculateScore() {
-        let total = 0;
-        const scores = {};
-        for (let n = 1; n <= 10; n++) {
-          const itemName = 'ciwa-item' + n;
-          const selected = form.querySelector('input[name="' + itemName + '"]:checked');
-          const score = selected ? parseInt(selected.value, 10) : 0;
-          total += score;
-          scores[n] = score;
-        }
-        return { total: total, scores: scores };
-      }
+  function calculateScore() {
+    var total = 0;
+    var scores = {};
+    getItems().forEach(function(item) {
+      var score = getItemValue(item.number);
+      total += score;
+      scores[item.number] = score;
+    });
+    return { total: total, scores: scores };
+  }
 
-      function getSeverity(total) {
-        if (total < 10)  return { level: 'Minimal to mild withdrawal', cls: 'ciwa-severity-minimal' };
-        if (total <= 15) return { level: 'Moderate withdrawal',         cls: 'ciwa-severity-moderate' };
-        return              { level: 'Severe withdrawal',                cls: 'ciwa-severity-severe' };
-      }
+  function getSeverity(total) {
+    var bands = scale.severity_bands || FALLBACK_SCALE.severity_bands;
+    for (var i = 0; i < bands.length; i++) {
+      if (total >= bands[i].min && total <= bands[i].max) return bands[i];
+    }
+    return bands[bands.length - 1];
+  }
 
-      function getGuidance(total) {
-        if (total < 10) {
-          return 'Scores <10 do not usually require additional medication for withdrawal. Continue symptom-triggered reassessment per protocol.';
-        }
-        if (total <= 15) {
-          return 'Marked autonomic arousal. Consider benzodiazepine and continued frequent (q1h) reassessment.';
-        }
-        return 'Impending delirium tremens risk. Treat with benzodiazepine promptly, monitor closely, and consider higher level of care.';
-      }
+  function updateDisplay() {
+    var res = calculateScore();
+    var sev = getSeverity(res.total);
 
-      function updateDisplay() {
-        const res = calculateScore();
-        const sev = getSeverity(res.total);
+    totalScoreEl.textContent = res.total;
+    severityEl.textContent = sev.label;
+    severityEl.className = 'ciwa-severity-label ' + (sev.class || '');
+    guidanceEl.textContent = sev.action || '';
 
-        totalScoreEl.textContent = res.total;
-        severityEl.textContent = sev.level;
-        severityEl.className = 'ciwa-severity-label ' + sev.cls;
-        guidanceEl.textContent = getGuidance(res.total);
+    summaryGrid.innerHTML = '';
+    getItems().forEach(function(item) {
+      var score = res.scores[item.number];
+      var cell = document.createElement('div');
+      cell.className = 'ciwa-summary-item';
+      cell.innerHTML =
+        '<div class="ciwa-summary-item-label">' + item.number + '. ' + item.text + '</div>' +
+        '<div><span class="ciwa-summary-item-score">' + score + '/' + item.max + '</span></div>';
+      summaryGrid.appendChild(cell);
+    });
+    summarySection.classList.add('ciwa-show');
+  }
 
-        // Build per-item summary grid
-        summaryGrid.innerHTML = '';
-        for (let n = 1; n <= 10; n++) {
-          const cfg = ITEM_CONFIG['ciwa-item' + n];
-          const score = res.scores[n];
-          const cell = document.createElement('div');
-          cell.className = 'ciwa-summary-item';
-          cell.innerHTML =
-            '<div class="ciwa-summary-item-label">' + n + '. ' + cfg.name + '</div>' +
-            '<div><span class="ciwa-summary-item-score">' + score + '/' + cfg.max + '</span></div>';
-          summaryGrid.appendChild(cell);
-        }
-        summarySection.classList.add('ciwa-show');
-      }
+  function generateReport() {
+    var res = calculateScore();
+    var sev = getSeverity(res.total);
+    var pulse = (pulseEl && pulseEl.value) ? pulseEl.value.trim() : '';
+    var bp = (bpEl && bpEl.value) ? bpEl.value.trim() : '';
+    var reportMeta = scale.report || FALLBACK_SCALE.report;
+    var lines = [
+      reportMeta.heading || 'CIWA-Ar (Clinical Institute Withdrawal Assessment - Alcohol, Revised)',
+      'Date: ' + ToolUtils.dateStamp()
+    ];
 
-      function generateReport() {
-        const res = calculateScore();
-        const sev = getSeverity(res.total);
-        const pulse = (pulseEl && pulseEl.value) ? pulseEl.value.trim() : '';
-        const bp    = (bpEl && bpEl.value) ? bpEl.value.trim() : '';
+    if (pulse) lines.push('Pulse: ' + pulse + ' bpm');
+    if (bp) lines.push('Blood pressure: ' + bp);
+    lines.push('');
+    lines.push('Total Score: ' + res.total + ' / ' + scale.score.max);
+    lines.push('Severity: ' + sev.label);
+    lines.push('');
+    lines.push('Individual Item Scores:');
+    getItems().forEach(function(item) {
+      lines.push((item.number < 10 ? '  ' : ' ') + item.number + '. ' + item.text + ': ' + res.scores[item.number] + '/' + item.max);
+    });
+    lines.push('');
+    lines.push('Clinical Interpretation: ' + (sev.action || ''));
+    lines.push('');
+    if (reportMeta.scoring_note) lines.push(reportMeta.scoring_note);
+    if (reportMeta.screening_note) lines.push(reportMeta.screening_note);
+    (scale.references || FALLBACK_SCALE.references).forEach(function(ref) {
+      if (ref && ref.label) lines.push('Reference: ' + ref.label);
+    });
 
-        const lines = [];
-        lines.push('CIWA-Ar (Clinical Institute Withdrawal Assessment – Alcohol, Revised)');
-        lines.push('Date: ' + ToolUtils.dateStamp());
-        if (pulse) lines.push('Pulse: ' + pulse + ' bpm');
-        if (bp)    lines.push('Blood pressure: ' + bp);
-        lines.push('');
-        lines.push('Total Score: ' + res.total + ' / ' + MAX_TOTAL);
-        lines.push('Severity: ' + sev.level);
-        lines.push('');
-        lines.push('Individual Item Scores:');
-        lines.push('  1. Nausea & Vomiting: ' + res.scores[1] + '/7');
-        lines.push('  2. Tremor: ' + res.scores[2] + '/7');
-        lines.push('  3. Paroxysmal Sweats: ' + res.scores[3] + '/7');
-        lines.push('  4. Anxiety: ' + res.scores[4] + '/7');
-        lines.push('  5. Agitation: ' + res.scores[5] + '/7');
-        lines.push('  6. Tactile Disturbances: ' + res.scores[6] + '/7');
-        lines.push('  7. Auditory Disturbances: ' + res.scores[7] + '/7');
-        lines.push('  8. Visual Disturbances: ' + res.scores[8] + '/7');
-        lines.push('  9. Headache / Fullness in Head: ' + res.scores[9] + '/7');
-        lines.push(' 10. Orientation / Clouding of Sensorium: ' + res.scores[10] + '/4');
-        lines.push('');
-        lines.push('Clinical Interpretation: ' + getGuidance(res.total));
-        lines.push('');
-        lines.push('Reference: Sullivan JT, Sykora K, Schneiderman J, Naranjo CA, Sellers EM. Assessment of alcohol withdrawal: the revised Clinical Institute Withdrawal Assessment for Alcohol scale (CIWA-Ar). Br J Addict. 1989;84(11):1353-7.');
+    return lines.join('\n');
+  }
 
-        return lines.join('\n');
-      }
+  function loadSchema() {
+    if (typeof ToolUtils === 'undefined' || typeof ToolUtils.loadClinicalScale !== 'function') return;
 
-      function copyReport() {
-        ToolUtils.copyWithButton(generateReport(), reportBtn);
-      }
-
-      function resetForm() {
-        ToolUtils.confirmReset('Reset all CIWA-Ar scores? This action cannot be undone.', function() {
-          form.reset();
-          if (pulseEl) pulseEl.value = '';
-          if (bpEl)    bpEl.value = '';
-          updateDisplay();
-        });
-      }
-
-      // Event listeners
-      form.addEventListener('change', updateDisplay);
-      reportBtn.addEventListener('click', copyReport);
-      resetBtn.addEventListener('click', resetForm);
-
-      // Initial display
+    ToolUtils.loadClinicalScale('ciwa').then(function(loadedScale) {
+      scale = loadedScale;
       updateDisplay();
-    })();
+    }).catch(function(err) {
+      console.warn('CIWA-Ar schema unavailable; using embedded fallback.', err);
+    });
+  }
+
+  form.addEventListener('change', updateDisplay);
+  reportBtn.addEventListener('click', function() {
+    ToolUtils.copyWithButton(generateReport(), reportBtn);
+  });
+  resetBtn.addEventListener('click', function() {
+    ToolUtils.confirmReset('Reset all CIWA-Ar scores? This action cannot be undone.', function() {
+      form.reset();
+      if (pulseEl) pulseEl.value = '';
+      if (bpEl) bpEl.value = '';
+      updateDisplay();
+    });
+  });
+
+  loadSchema();
+  updateDisplay();
+})();

@@ -128,6 +128,41 @@ const CASES = [
     expectedReportText: 'Severity Score: 1/69',
   },
   {
+    label: 'CIWA-Ar',
+    sectionId: 'ciwa-tool',
+    inputSelector: 'input[name="ciwa-item1"][value="4"]',
+    scoreElementId: 'ciwa-total-score',
+    expectedScore: '4',
+    severityElementId: 'ciwa-severity-level',
+    expectedSeverity: 'Minimal to mild withdrawal',
+    requiredToolUtilsMethod: 'loadClinicalScale',
+    reportButtonId: 'ciwa-report-btn',
+    expectedReportText: 'Total Score: 4 / 67',
+  },
+  {
+    label: 'COWS',
+    sectionId: 'cows-tool',
+    inputSelector: 'input[name="cows-item1"][value="4"]',
+    scoreElementId: 'cows-total-score',
+    expectedScore: '4',
+    severityElementId: 'cows-severity-level',
+    expectedSeverity: 'No significant withdrawal',
+    requiredToolUtilsMethod: 'loadClinicalScale',
+    reportButtonId: 'cows-report-btn',
+    expectedReportText: 'Total Score: 4 / 48',
+  },
+  {
+    label: 'SUD',
+    sectionId: 'sud-tool',
+    inputSelector: '#sud-substance',
+    selectValue: 'opioid',
+    scoreElementId: 'sud-count',
+    expectedScore: '0',
+    severityElementId: 'sud-severity',
+    expectedSeverity: 'NO SUD',
+    requiredToolUtilsMethod: 'loadClinicalScale',
+  },
+  {
     label: 'ASRS',
     sectionId: 'asrs-tool',
     inputSelector: 'input[name="asrs-1"][value="2"]',
@@ -257,7 +292,11 @@ async function runCase(testCase) {
 
     const input = dom.window.document.querySelector(testCase.inputSelector);
     assert(input, `${testCase.label}: missing test input`);
-    input.checked = true;
+    if (testCase.selectValue !== undefined) {
+      input.value = testCase.selectValue;
+    } else {
+      input.checked = true;
+    }
     input.dispatchEvent(new dom.window.Event('change', { bubbles: true }));
     await wait(50);
 

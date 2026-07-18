@@ -9,7 +9,7 @@
   'use strict';
 
   // ===== Configuration =====
-  var substances = {
+  var fallbackSubstances = {
     alcohol:              { name: 'Alcohol',                           max: 11, excludeWithdrawal: false },
     cannabis:             { name: 'Cannabis',                          max: 11, excludeWithdrawal: false },
     phencyclidine:        { name: 'Phencyclidine',                     max: 10, excludeWithdrawal: true  },
@@ -22,7 +22,7 @@
     other:                { name: 'Other (or Unknown)',                max: 11, excludeWithdrawal: false }
   };
 
-  var criteriaShort = [
+  var fallbackCriteriaShort = [
     'Used in larger amounts/longer than intended',
     'Persistent desire or unsuccessful efforts to cut down',
     'Great deal of time obtaining/using/recovering',
@@ -36,7 +36,7 @@
     'Withdrawal'
   ];
 
-  var criteriaText = [
+  var fallbackCriteriaText = [
     'Substance is often taken in larger amounts or over a longer period than was intended.',
     'Persistent desire or unsuccessful efforts to cut down or control substance use.',
     'A great deal of time is spent in activities necessary to obtain, use, or recover from the substance.',
@@ -49,6 +49,11 @@
     'Tolerance (markedly increased amounts needed for effect, or markedly diminished effect at the same amount).',
     'Withdrawal (characteristic withdrawal syndrome, or substance (or a closely related one) taken to relieve or avoid withdrawal).'
   ];
+
+  var scale = null;
+  var substances = fallbackSubstances;
+  var criteriaShort = fallbackCriteriaShort;
+  var criteriaText = fallbackCriteriaText;
 
   var examples = {
     alcohol: [
@@ -189,6 +194,47 @@
   var dateDisplay = document.getElementById('sud-date-display');
   if (dateDisplay) dateDisplay.textContent = ToolUtils.dateStamp();
 
+  function applyScale(loadedScale) {
+    scale = loadedScale;
+    substances = loadedScale.substances || fallbackSubstances;
+    if (Array.isArray(loadedScale.items) && loadedScale.items.length) {
+      criteriaText = loadedScale.items.map(function(item) { return item.text; });
+      criteriaShort = loadedScale.items.map(function(item) { return item.short_text || item.text; });
+    }
+  }
+
+  function loadSchema() {
+    if (typeof ToolUtils === 'undefined' || typeof ToolUtils.loadClinicalScale !== 'function') return;
+
+    ToolUtils.loadClinicalScale('sud').then(function(loadedScale) {
+      applyScale(loadedScale);
+      if (currentKey) updateSubstance();
+    }).catch(function(err) {
+      console.warn('SUD schema unavailable; using embedded fallback.', err);
+    });
+  }
+
+  function severityForCount(criteriaCount) {
+    var bands = (scale && scale.severity_bands) || [
+      { min: 0, max: 1, label: 'NO SUD', class: 'sud-sev-none' },
+      { min: 2, max: 3, label: 'MILD', class: 'sud-sev-mild' },
+      { min: 4, max: 5, label: 'MODERATE', class: 'sud-sev-mod' },
+      { min: 6, max: 11, label: 'SEVERE', class: 'sud-sev-severe' }
+    ];
+    for (var i = 0; i < bands.length; i++) {
+      if (criteriaCount >= bands[i].min && criteriaCount <= bands[i].max) return bands[i];
+    }
+    return bands[bands.length - 1];
+  }
+
+  function referencesLines() {
+    var lines = [];
+    ((scale && scale.references) || []).forEach(function(ref) {
+      if (ref && ref.label) lines.push('Reference: ' + ref.label);
+    });
+    return lines;
+  }
+
   // ===== Substance change =====
   function updateSubstance() {
     var sel = document.getElementById('sud-substance');
@@ -266,10 +312,9 @@
     document.getElementById('sud-count').textContent = count;
     var el = document.getElementById('sud-severity');
     var label, cls;
-    if (count >= 6)      { label = 'SEVERE';   cls = 'sud-sev-severe'; }
-    else if (count >= 4) { label = 'MODERATE'; cls = 'sud-sev-mod';    }
-    else if (count >= 2) { label = 'MILD';     cls = 'sud-sev-mild';   }
-    else                 { label = 'NO SUD';   cls = 'sud-sev-none';   }
+    var severity = severityForCount(count);
+    label = severity.label;
+    cls = severity.class;
     el.innerHTML = '<span class="sud-severity-pill ' + cls + '">' + label + '</span>';
   }
 
@@ -293,16 +338,19 @@
 
   // ===== EMR text output =====
   function generate() {
-    if (!currentCfg) { alert('Please select a substance.'); return; }
+    var btn = document.getElementById('sud-generate-btn');
+    if (!currentCfg) {
+      var orig = btn.textContent;
+      btn.textContent = 'Select substance first';
+      setTimeout(function() { btn.textContent = orig; }, 1800);
+      return;
+    }
 
     var substanceDisplay = displaySubstance();
     var dateStr = document.getElementById('sud-date-display').textContent;
 
-    var sev;
-    if (count >= 6)      sev = 'severe';
-    else if (count >= 4) sev = 'moderate';
-    else if (count >= 2) sev = 'mild';
-    else                 sev = null;
+    var severity = severityForCount(count);
+    var sev = count >= 2 ? severity.label.toLowerCase() : null;
 
     var remEarly = document.getElementById('sud-rem-early').checked;
     var remSust  = document.getElementById('sud-rem-sustained').checked;
@@ -376,6 +424,14 @@
     lines.push('');
     lines.push('Assigned ICD-10-CM code: _________');
     lines.push('(Select per current coding guide based on substance, severity, remission, and specifiers.)');
+    if (scale && scale.report && scale.report.scoring_note) {
+      lines.push('');
+      lines.push(scale.report.scoring_note);
+    }
+    if (scale && scale.report && scale.report.screening_note) {
+      lines.push(scale.report.screening_note);
+    }
+    referencesLines().forEach(function(line) { lines.push(line); });
 
     var text = lines.join('\n');
     document.getElementById('sud-output-text').textContent = text;
@@ -383,17 +439,13 @@
     document.getElementById('sud-output').scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     // Auto-copy on generate, with button feedback
-    var btn = document.getElementById('sud-generate-btn');
     ToolUtils.copyWithButton(text, btn);
   }
 
   function copy() {
     var text = document.getElementById('sud-output-text').textContent;
     var status = document.getElementById('sud-copy-status');
-    navigator.clipboard.writeText(text).then(function () {
-      status.classList.add('visible');
-      setTimeout(function () { status.classList.remove('visible'); }, 1800);
-    });
+    ToolUtils.copyWithMessage(text, status, 1800);
   }
 
   function reset() {
@@ -425,4 +477,5 @@
   document.getElementById('sud-generate-btn').addEventListener('click', generate);
   document.getElementById('sud-copy-btn').addEventListener('click', copy);
   document.getElementById('sud-reset-btn').addEventListener('click', reset);
+  loadSchema();
 })();

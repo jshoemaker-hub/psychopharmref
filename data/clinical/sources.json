@@ -135,6 +135,33 @@
     "notes": "Clinical item-scoring reference for BFCRS rating anchors and binary present/absent items. URL: https://www.urmc.rochester.edu/psychiatry/divisions/collaborative-care-and-wellness/bush-francis-catatonia-rating-scale/bfcrs."
   },
   {
+    "id": "sullivan-1989-ciwa-ar",
+    "label": "Sullivan JT, Sykora K, Schneiderman J, Naranjo CA, Sellers EM. Assessment of alcohol withdrawal: the revised Clinical Institute Withdrawal Assessment for Alcohol scale (CIWA-Ar). Br J Addict. 1989;84(11):1353-1357.",
+    "type": "journal_article",
+    "year": 1989,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Primary source cited by the CIWA-Ar tool report. PMID: 2597811. DOI: 10.1111/j.1360-0443.1989.tb00737.x."
+  },
+  {
+    "id": "wesson-2003-cows",
+    "label": "Wesson DR, Ling W. The Clinical Opiate Withdrawal Scale (COWS). J Psychoactive Drugs. 2003;35(2):253-259.",
+    "type": "journal_article",
+    "year": 2003,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Primary source cited by the COWS tool report. DOI: 10.1080/02791072.2003.10400007."
+  },
+  {
+    "id": "ncbi-2024-sud-criteria",
+    "label": "McNeely J, Hamilton LK, Whitley SD, et al. Substance Use Screening, Risk Assessment, and Use Disorder Diagnosis in Adults. NCBI Bookshelf, Table 3: DSM-5-TR Criteria for Diagnosing and Classifying Substance Use Disorders. 2024.",
+    "type": "clinical_resource",
+    "year": 2024,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "DSM-5-TR SUD criteria summary and severity thresholds cited by the DSM-5-TR SUD documentation aid. URL: https://www.ncbi.nlm.nih.gov/books/NBK565474/table/table-3/."
+  },
+  {
     "id": "kessler-2005-asrs",
     "label": "Kessler RC, Adler L, Ames M, Demler O, Faraone S, Hiripi E, Howes MJ, Jin R, Secnik K, Spencer T, Ustun TB, Walters EE. The World Health Organization Adult ADHD Self-Report Scale (ASRS): a short screening scale for use in the general population. Psychol Med. 2005;35(2):245-256.",
     "type": "journal_article",

@@ -1,0 +1,77 @@
+{
+  "id": "cows",
+  "tool_section_id": "cows-tool",
+  "title": "Clinical Opiate Withdrawal Scale",
+  "short_title": "COWS",
+  "domain": "opioid withdrawal",
+  "status": "pilot-source-of-truth",
+  "last_reviewed": "2026-07-18",
+  "source_ids": ["wesson-2003-cows"],
+  "instructions": "Clinician-administered 11-item assessment of opioid withdrawal severity.",
+  "score": {
+    "min": 0,
+    "max": 48,
+    "item_count": 11,
+    "method": "sum",
+    "missing_response_policy": "unanswered items score 0 in the current runtime; score all 11 items before interpreting"
+  },
+  "options": [
+    { "value": 0, "label": "Absent" },
+    { "value": 1, "label": "Mild" },
+    { "value": 2, "label": "Moderate" },
+    { "value": 3, "label": "Marked" },
+    { "value": 4, "label": "Severe" },
+    { "value": 5, "label": "Very severe" }
+  ],
+  "items": [
+    { "id": "cows-1", "number": 1, "text": "Resting Pulse Rate", "max": 4, "allowed_values": [0, 1, 2, 4] },
+    { "id": "cows-2", "number": 2, "text": "Sweating", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "cows-3", "number": 3, "text": "Restlessness", "max": 5, "allowed_values": [0, 1, 3, 5] },
+    { "id": "cows-4", "number": 4, "text": "Pupil Size", "max": 5, "allowed_values": [0, 1, 2, 5] },
+    { "id": "cows-5", "number": 5, "text": "Bone or Joint Aches", "max": 4, "allowed_values": [0, 1, 2, 4] },
+    { "id": "cows-6", "number": 6, "text": "Runny Nose or Tearing", "max": 4, "allowed_values": [0, 1, 2, 4] },
+    { "id": "cows-7", "number": 7, "text": "GI Upset", "max": 5, "allowed_values": [0, 1, 2, 3, 5] },
+    { "id": "cows-8", "number": 8, "text": "Tremor", "max": 4, "allowed_values": [0, 1, 2, 4] },
+    { "id": "cows-9", "number": 9, "text": "Yawning", "max": 4, "allowed_values": [0, 1, 2, 4] },
+    { "id": "cows-10", "number": 10, "text": "Anxiety or Irritability", "max": 4, "allowed_values": [0, 1, 2, 4] },
+    { "id": "cows-11", "number": 11, "text": "Gooseflesh Skin", "max": 5, "allowed_values": [0, 3, 5] }
+  ],
+  "severity_bands": [
+    { "min": 0, "max": 4, "label": "No significant withdrawal", "class": "cows-severity-minimal", "action": "Minimal signs of opioid withdrawal. Buprenorphine induction not yet recommended; reassess in 1-2 hours or await further objective signs." },
+    { "min": 5, "max": 12, "label": "Mild withdrawal", "class": "cows-severity-mild", "action": "Mild withdrawal. Generally considered the lower threshold for initiating buprenorphine when clinically appropriate." },
+    { "min": 13, "max": 24, "label": "Moderate withdrawal", "class": "cows-severity-moderate", "action": "Moderate withdrawal. Appropriate for buprenorphine induction; consider adjunctive supportive medications." },
+    { "min": 25, "max": 36, "label": "Moderately severe withdrawal", "class": "cows-severity-msevere", "action": "Moderately severe withdrawal. Initiate treatment promptly and monitor for dehydration and electrolyte disturbance." },
+    { "min": 37, "max": 48, "label": "Severe withdrawal", "class": "cows-severity-severe", "action": "Severe withdrawal. Consider higher level of care, aggressive symptom control, and rapid initiation of MOUD per program." }
+  ],
+  "report": {
+    "heading": "COWS (Clinical Opiate Withdrawal Scale)",
+    "scoring_note": "Scoring: total score is the sum of 11 clinician-rated opioid withdrawal items (0-48). Item weights vary by symptom.",
+    "screening_note": "Common interpretation: 5-12 mild, 13-24 moderate, 25-36 moderately severe, >36 severe."
+  },
+  "test_vectors": [
+    {
+      "name": "all_zero",
+      "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 0,
+      "expected_severity": "No significant withdrawal"
+    },
+    {
+      "name": "mild",
+      "responses": [1, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 5,
+      "expected_severity": "Mild withdrawal"
+    },
+    {
+      "name": "moderate",
+      "responses": [4, 4, 5, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 13,
+      "expected_severity": "Moderate withdrawal"
+    },
+    {
+      "name": "severe",
+      "responses": [4, 4, 5, 5, 4, 4, 5, 4, 4, 4, 5],
+      "expected_score": 48,
+      "expected_severity": "Severe withdrawal"
+    }
+  ]
+}

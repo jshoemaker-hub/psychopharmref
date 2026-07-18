@@ -1,0 +1,70 @@
+{
+  "id": "ciwa",
+  "tool_section_id": "ciwa-tool",
+  "title": "Clinical Institute Withdrawal Assessment for Alcohol, Revised",
+  "short_title": "CIWA-Ar",
+  "domain": "alcohol withdrawal",
+  "status": "pilot-source-of-truth",
+  "last_reviewed": "2026-07-18",
+  "source_ids": ["sullivan-1989-ciwa-ar"],
+  "instructions": "Clinician-rated 10-item assessment of acute alcohol withdrawal severity.",
+  "score": {
+    "min": 0,
+    "max": 67,
+    "item_count": 10,
+    "method": "sum",
+    "missing_response_policy": "unanswered items score 0 in the current runtime; score all 10 items before interpreting"
+  },
+  "options": [
+    { "value": 0, "label": "Absent" },
+    { "value": 1, "label": "Very mild" },
+    { "value": 2, "label": "Mild" },
+    { "value": 3, "label": "Mild-moderate" },
+    { "value": 4, "label": "Moderate" },
+    { "value": 5, "label": "Moderately severe" },
+    { "value": 6, "label": "Severe" },
+    { "value": 7, "label": "Very severe" }
+  ],
+  "items": [
+    { "id": "ciwa-1", "number": 1, "text": "Nausea & Vomiting", "max": 7, "allowed_values": [0, 1, 2, 3, 4, 5, 6, 7] },
+    { "id": "ciwa-2", "number": 2, "text": "Tremor", "max": 7, "allowed_values": [0, 1, 2, 3, 4, 5, 6, 7] },
+    { "id": "ciwa-3", "number": 3, "text": "Paroxysmal Sweats", "max": 7, "allowed_values": [0, 1, 2, 3, 4, 5, 6, 7] },
+    { "id": "ciwa-4", "number": 4, "text": "Anxiety", "max": 7, "allowed_values": [0, 1, 2, 3, 4, 5, 6, 7] },
+    { "id": "ciwa-5", "number": 5, "text": "Agitation", "max": 7, "allowed_values": [0, 1, 2, 3, 4, 5, 6, 7] },
+    { "id": "ciwa-6", "number": 6, "text": "Tactile Disturbances", "max": 7, "allowed_values": [0, 1, 2, 3, 4, 5, 6, 7] },
+    { "id": "ciwa-7", "number": 7, "text": "Auditory Disturbances", "max": 7, "allowed_values": [0, 1, 2, 3, 4, 5, 6, 7] },
+    { "id": "ciwa-8", "number": 8, "text": "Visual Disturbances", "max": 7, "allowed_values": [0, 1, 2, 3, 4, 5, 6, 7] },
+    { "id": "ciwa-9", "number": 9, "text": "Headache / Fullness in Head", "max": 7, "allowed_values": [0, 1, 2, 3, 4, 5, 6, 7] },
+    { "id": "ciwa-10", "number": 10, "text": "Orientation / Clouding of Sensorium", "max": 4, "allowed_values": [0, 1, 2, 3, 4] }
+  ],
+  "severity_bands": [
+    { "min": 0, "max": 9, "label": "Minimal to mild withdrawal", "class": "ciwa-severity-minimal", "action": "Scores <10 do not usually require additional medication for withdrawal. Continue symptom-triggered reassessment per protocol." },
+    { "min": 10, "max": 15, "label": "Moderate withdrawal", "class": "ciwa-severity-moderate", "action": "Marked autonomic arousal. Consider benzodiazepine and continued frequent (q1h) reassessment." },
+    { "min": 16, "max": 67, "label": "Severe withdrawal", "class": "ciwa-severity-severe", "action": "Impending delirium tremens risk. Treat with benzodiazepine promptly, monitor closely, and consider higher level of care." }
+  ],
+  "report": {
+    "heading": "CIWA-Ar (Clinical Institute Withdrawal Assessment - Alcohol, Revised)",
+    "scoring_note": "Scoring: total score is the sum of 10 clinician-rated items (0-67). Item 10 is scored 0-4; all other items are scored 0-7.",
+    "screening_note": "Common interpretation: <10 minimal/mild withdrawal, 10-15 moderate withdrawal, >=16 severe withdrawal."
+  },
+  "test_vectors": [
+    {
+      "name": "all_zero",
+      "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 0,
+      "expected_severity": "Minimal to mild withdrawal"
+    },
+    {
+      "name": "moderate",
+      "responses": [2, 2, 2, 2, 2, 0, 0, 0, 0, 0],
+      "expected_score": 10,
+      "expected_severity": "Moderate withdrawal"
+    },
+    {
+      "name": "severe",
+      "responses": [7, 7, 7, 7, 7, 7, 7, 7, 7, 4],
+      "expected_score": 67,
+      "expected_severity": "Severe withdrawal"
+    }
+  ]
+}

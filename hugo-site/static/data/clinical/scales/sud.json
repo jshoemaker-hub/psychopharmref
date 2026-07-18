@@ -1,0 +1,78 @@
+{
+  "id": "sud",
+  "tool_section_id": "sud-tool",
+  "title": "DSM-5-TR Substance Use Disorder Criteria",
+  "short_title": "DSM-5-TR SUD",
+  "domain": "substance use disorder",
+  "status": "pilot-source-of-truth",
+  "last_reviewed": "2026-07-18",
+  "source_ids": ["ncbi-2024-sud-criteria"],
+  "instructions": "Documentation aid for DSM-5-TR substance use disorder criteria in the past 12 months.",
+  "score": {
+    "min": 0,
+    "max": 11,
+    "item_count": 11,
+    "method": "threshold_count",
+    "missing_response_policy": "unchecked criteria score 0; tolerance and withdrawal should not be counted when DSM-5-TR excludes them for a substance"
+  },
+  "options": [
+    { "value": 0, "label": "Criterion not met" },
+    { "value": 1, "label": "Criterion met" }
+  ],
+  "items": [
+    { "id": "sud-1", "number": 1, "text": "Substance is often taken in larger amounts or over a longer period than was intended.", "short_text": "Used in larger amounts/longer than intended", "max": 1, "allowed_values": [0, 1], "clinical_threshold": 1 },
+    { "id": "sud-2", "number": 2, "text": "Persistent desire or unsuccessful efforts to cut down or control substance use.", "short_text": "Persistent desire or unsuccessful efforts to cut down", "max": 1, "allowed_values": [0, 1], "clinical_threshold": 1 },
+    { "id": "sud-3", "number": 3, "text": "A great deal of time is spent in activities necessary to obtain, use, or recover from the substance.", "short_text": "Great deal of time obtaining/using/recovering", "max": 1, "allowed_values": [0, 1], "clinical_threshold": 1 },
+    { "id": "sud-4", "number": 4, "text": "Craving, or a strong desire or urge to use the substance.", "short_text": "Craving", "max": 1, "allowed_values": [0, 1], "clinical_threshold": 1 },
+    { "id": "sud-5", "number": 5, "text": "Recurrent substance use resulting in a failure to fulfill major role obligations at work, school, or home.", "short_text": "Role failure at work, school, or home", "max": 1, "allowed_values": [0, 1], "clinical_threshold": 1 },
+    { "id": "sud-6", "number": 6, "text": "Continued substance use despite persistent or recurrent social or interpersonal problems caused or exacerbated by use.", "short_text": "Continued use despite social/interpersonal problems", "max": 1, "allowed_values": [0, 1], "clinical_threshold": 1 },
+    { "id": "sud-7", "number": 7, "text": "Important social, occupational, or recreational activities are given up or reduced because of use.", "short_text": "Important activities given up or reduced", "max": 1, "allowed_values": [0, 1], "clinical_threshold": 1 },
+    { "id": "sud-8", "number": 8, "text": "Recurrent substance use in situations in which it is physically hazardous.", "short_text": "Recurrent use in physically hazardous situations", "max": 1, "allowed_values": [0, 1], "clinical_threshold": 1 },
+    { "id": "sud-9", "number": 9, "text": "Use continues despite knowledge of a persistent or recurrent physical or psychological problem likely caused or exacerbated by the substance.", "short_text": "Continued use despite physical or psychological problem", "max": 1, "allowed_values": [0, 1], "clinical_threshold": 1 },
+    { "id": "sud-10", "number": 10, "text": "Tolerance.", "short_text": "Tolerance", "max": 1, "allowed_values": [0, 1], "clinical_threshold": 1 },
+    { "id": "sud-11", "number": 11, "text": "Withdrawal.", "short_text": "Withdrawal", "max": 1, "allowed_values": [0, 1], "clinical_threshold": 1 }
+  ],
+  "severity_bands": [
+    { "min": 0, "max": 1, "label": "NO SUD", "class": "sud-sev-none", "action": "Does not meet threshold for SUD diagnosis; fewer than 2 criteria." },
+    { "min": 2, "max": 3, "label": "MILD", "class": "sud-sev-mild", "action": "Mild substance use disorder range." },
+    { "min": 4, "max": 5, "label": "MODERATE", "class": "sud-sev-mod", "action": "Moderate substance use disorder range." },
+    { "min": 6, "max": 11, "label": "SEVERE", "class": "sud-sev-severe", "action": "Severe substance use disorder range." }
+  ],
+  "substances": {
+    "alcohol": { "name": "Alcohol", "max": 11, "excludeWithdrawal": false },
+    "cannabis": { "name": "Cannabis", "max": 11, "excludeWithdrawal": false },
+    "phencyclidine": { "name": "Phencyclidine", "max": 10, "excludeWithdrawal": true },
+    "other-hallucinogen": { "name": "Other Hallucinogen", "max": 10, "excludeWithdrawal": true },
+    "inhalant": { "name": "Inhalant", "max": 10, "excludeWithdrawal": true },
+    "opioid": { "name": "Opioid", "max": 11, "excludeWithdrawal": false },
+    "sedative": { "name": "Sedative, Hypnotic, or Anxiolytic", "max": 11, "excludeWithdrawal": false },
+    "stimulant": { "name": "Stimulant", "max": 11, "excludeWithdrawal": false },
+    "tobacco": { "name": "Tobacco", "max": 11, "excludeWithdrawal": false },
+    "other": { "name": "Other (or Unknown)", "max": 11, "excludeWithdrawal": false }
+  },
+  "report": {
+    "heading": "DSM-5-TR Substance Use Disorder Assessment",
+    "scoring_note": "Scoring: 2-3 criteria = mild, 4-5 criteria = moderate, 6 or more criteria = severe.",
+    "screening_note": "Withdrawal is not counted for hallucinogens, phencyclidine, or inhalants in this documentation aid."
+  },
+  "test_vectors": [
+    {
+      "name": "none",
+      "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 0,
+      "expected_severity": "NO SUD"
+    },
+    {
+      "name": "mild",
+      "responses": [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 2,
+      "expected_severity": "MILD"
+    },
+    {
+      "name": "severe",
+      "responses": [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+      "expected_score": 6,
+      "expected_severity": "SEVERE"
+    }
+  ]
+}
