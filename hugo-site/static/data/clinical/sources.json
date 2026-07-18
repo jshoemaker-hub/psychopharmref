@@ -88,5 +88,32 @@
     "review_status": "source-cited",
     "last_reviewed": "2026-07-18",
     "notes": "Severity threshold and clinically meaningful change source cited by the YMRS tool report. PMID: 23526724. PMCID: PMC6878321. DOI: 10.1002/mpr.1379."
+  },
+  {
+    "id": "guy-1976-aims",
+    "label": "Guy W. ECDEU Assessment Manual for Psychopharmacology, Revised. Rockville, MD: U.S. Department of Health, Education, and Welfare; 1976:534-537.",
+    "type": "manual",
+    "year": 1976,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Primary source cited by the AIMS tool report; AIMS is a public-domain U.S. federal government instrument."
+  },
+  {
+    "id": "goodman-1989-ybocs",
+    "label": "Goodman WK, Price LH, Rasmussen SA, Mazure C, Fleischmann RL, Hill CL, Heninger GR, Charney DS. The Yale-Brown Obsessive Compulsive Scale. I. Development, use, and reliability. Arch Gen Psychiatry. 1989;46(11):1006-1011.",
+    "type": "journal_article",
+    "year": 1989,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Primary source cited by the Y-BOCS tool report. PMID: 2684084. DOI: 10.1001/archpsyc.1989.01810110048007."
+  },
+  {
+    "id": "stanford-ybocs-severity",
+    "label": "Stanford Medicine. Yale-Brown Obsessive Compulsive Scale severity interpretation.",
+    "type": "clinical_resource",
+    "year": 2026,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Institutional clinical reference for the common Y-BOCS severity ranges used by this tool. URL: https://med.stanford.edu/ocd/about/diagnosis.html."
   }
 ]

@@ -62,8 +62,14 @@ function loadSources() {
   return out;
 }
 
-function scoreResponses(responses) {
-  return responses.reduce((sum, value) => sum + value, 0);
+function getScoredItemNumbers(scale) {
+  return scale.score.scored_item_numbers || scale.items.map(item => item.number);
+}
+
+function scoreResponses(scale, responses) {
+  return getScoredItemNumbers(scale).reduce((sum, itemNumber) => {
+    return sum + responses[itemNumber - 1];
+  }, 0);
 }
 
 function severityForScore(scale, score) {
@@ -261,11 +267,17 @@ function validateScale(scale, filePath, sources) {
     }
   });
 
+  if (scale.score.scored_item_numbers !== undefined) {
+    validateItemNumberList(scale, fileRel, 'score.scored_item_numbers', scale.score.scored_item_numbers);
+  }
+
+  const scoredItemNumbers = getScoredItemNumbers(scale);
   const allItemsHaveMax = scale.items.length > 0 && scale.items.every(item => Number.isInteger(item.max));
+  const scoredItems = scoredItemNumbers.map(itemNumber => scale.items[itemNumber - 1]).filter(Boolean);
   const expectedMax = allItemsHaveMax
-    ? scale.items.reduce((sum, item) => sum + item.max, 0)
-    : scale.score.item_count * maxOption;
-  expect(scale.score.max === expectedMax, `${fileRel}: score.max should equal ${allItemsHaveMax ? 'sum of item max values' : 'item_count * highest option'} (${expectedMax})`);
+    ? scoredItems.reduce((sum, item) => sum + item.max, 0)
+    : scoredItemNumbers.length * maxOption;
+  expect(scale.score.max === expectedMax, `${fileRel}: score.max should equal ${allItemsHaveMax ? 'sum of scored item max values' : 'scored item count * highest option'} (${expectedMax})`);
 
   expect(Array.isArray(scale.severity_bands) && scale.severity_bands.length > 0, `${fileRel}: severity_bands must be a non-empty array`);
   validateBandCoverage(scale, fileRel);
@@ -282,7 +294,7 @@ function validateScale(scale, filePath, sources) {
       expect(allowedValues.has(response), `${fileRel}: test vector "${vector.name}" has invalid response ${response} for item ${index + 1}`);
     });
 
-    const score = scoreResponses(vector.responses);
+    const score = scoreResponses(scale, vector.responses);
     const severity = severityForScore(scale, score);
     const flags = safetyFlagsForResponses(scale, vector.responses);
     const subscales = subscaleScoresForResponses(scale, vector.responses);

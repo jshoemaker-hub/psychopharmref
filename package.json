@@ -9,9 +9,10 @@
     "test:bprs-runtime": "node scripts/test-bprs-schema-runtime.js",
     "test:pcl5-runtime": "node scripts/test-pcl5-schema-runtime.js",
     "test:ymrs-runtime": "node scripts/test-ymrs-schema-runtime.js",
+    "test:aims-ybocs-runtime": "node scripts/test-aims-ybocs-schema-runtime.js",
     "check:sidebars": "python3 scripts/check-sidebars.py",
     "check:blog-sync": "python3 scripts/check-blog-sync.py",
-    "check": "npm run check:release && npm run check:clinical && npm run test:phq9-runtime && npm run test:gad7-runtime && npm run test:ess-msibpd-runtime && npm run test:bprs-runtime && npm run test:pcl5-runtime && npm run test:ymrs-runtime && npm run test:schema-scale-page-lazy-loader && npm run check:sidebars",
+    "check": "npm run check:release && npm run check:clinical && npm run test:phq9-runtime && npm run test:gad7-runtime && npm run test:ess-msibpd-runtime && npm run test:bprs-runtime && npm run test:pcl5-runtime && npm run test:ymrs-runtime && npm run test:aims-ybocs-runtime && npm run test:schema-scale-page-lazy-loader && npm run check:sidebars",
     "check:full": "npm run check && npm run check:blog-sync"
   },
   "dependencies": {

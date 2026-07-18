@@ -1,0 +1,104 @@
+{
+  "id": "aims",
+  "tool_section_id": "aims-tool",
+  "title": "Abnormal Involuntary Movement Scale",
+  "short_title": "AIMS",
+  "domain": "tardive dyskinesia",
+  "status": "pilot-source-of-truth",
+  "last_reviewed": "2026-07-18",
+  "source_ids": ["guy-1976-aims"],
+  "instructions": "Clinician-rated examination for abnormal involuntary movements, including activation maneuvers and dental status.",
+  "score": {
+    "min": 0,
+    "max": 28,
+    "item_count": 12,
+    "scored_item_numbers": [1, 2, 3, 4, 5, 6, 7],
+    "method": "sum",
+    "missing_response_policy": "unanswered items score 0 in the current runtime; complete examination is required for interpretation"
+  },
+  "options": [
+    { "value": 0, "label": "None / no" },
+    { "value": 1, "label": "Minimal / yes" },
+    { "value": 2, "label": "Mild" },
+    { "value": 3, "label": "Moderate" },
+    { "value": 4, "label": "Severe" }
+  ],
+  "items": [
+    { "id": "aims-1", "number": 1, "text": "Muscles of Facial Expression", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "aims-2", "number": 2, "text": "Lips and Perioral Area", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "aims-3", "number": 3, "text": "Jaw", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "aims-4", "number": 4, "text": "Tongue", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "aims-5", "number": 5, "text": "Upper Extremities", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "aims-6", "number": 6, "text": "Lower Extremities", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "aims-7", "number": 7, "text": "Neck, Shoulders, Hips", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "aims-8", "number": 8, "text": "Severity of Abnormal Movements Overall", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "aims-9", "number": 9, "text": "Incapacitation Due to Abnormal Movements", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "aims-10", "number": 10, "text": "Patient Awareness of Abnormal Movements", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "aims-11", "number": 11, "text": "Current Problems with Teeth and/or Dentures", "max": 1, "allowed_values": [0, 1] },
+    { "id": "aims-12", "number": 12, "text": "Does Patient Usually Wear Dentures", "max": 1, "allowed_values": [0, 1] }
+  ],
+  "subscales": [
+    { "id": "facial-oral", "label": "Facial & Oral Movements", "item_numbers": [1, 2, 3, 4], "max": 16, "display_element_id": "ai-facial-score" },
+    { "id": "extremity", "label": "Extremity Movements", "item_numbers": [5, 6], "max": 8, "display_element_id": "ai-extremity-score" },
+    { "id": "trunk", "label": "Trunk Movements", "item_numbers": [7], "max": 4, "display_element_id": "ai-trunk-score" }
+  ],
+  "screening_rules": [
+    {
+      "id": "td-screen",
+      "label": "Tardive Dyskinesia Screen",
+      "positive_label": "POSITIVE",
+      "negative_label": "NEGATIVE",
+      "threshold": 2,
+      "movement_item_numbers": [1, 2, 3, 4, 5, 6, 7],
+      "global_item_number": 8,
+      "display_element_id": "ai-screen-status"
+    }
+  ],
+  "severity_bands": [
+    { "min": 0, "max": 0, "label": "No Dyskinesia", "class": "ai-severity-negative", "action": "No scored abnormal movements on items 1-7" },
+    { "min": 1, "max": 7, "label": "Minimal Dyskinesia", "class": "ai-severity-minimal", "action": "Minimal movement burden; continue monitoring and clinical correlation" },
+    { "min": 8, "max": 14, "label": "Mild Dyskinesia", "class": "ai-severity-mild", "action": "Mild movement burden; review medication exposure and functional impact" },
+    { "min": 15, "max": 21, "label": "Moderate Dyskinesia", "class": "ai-severity-moderate", "action": "Moderate movement burden; consider treatment modification or specialist input" },
+    { "min": 22, "max": 28, "label": "Severe Dyskinesia", "class": "ai-severity-positive", "action": "Severe movement burden; assess safety, impairment, and treatment urgency" }
+  ],
+  "report": {
+    "heading": "Abnormal Involuntary Movement Scale (AIMS)",
+    "scoring_note": "Scoring: total movement score is the sum of items 1-7 (0-28). Items 8-10 are global judgments; items 11-12 document dental status.",
+    "screening_note": "This tool flags a positive TD screen when any movement item 1-7 is rated 2 or higher, or item 8 is rated 2 or higher."
+  },
+  "test_vectors": [
+    {
+      "name": "all_zero",
+      "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 0,
+      "expected_severity": "No Dyskinesia",
+      "expected_subscales": {
+        "facial-oral": 0,
+        "extremity": 0,
+        "trunk": 0
+      }
+    },
+    {
+      "name": "positive_screen_minimal_total",
+      "responses": [0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 1, 0],
+      "expected_score": 2,
+      "expected_severity": "Minimal Dyskinesia",
+      "expected_subscales": {
+        "facial-oral": 2,
+        "extremity": 0,
+        "trunk": 0
+      }
+    },
+    {
+      "name": "severe_total",
+      "responses": [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1],
+      "expected_score": 28,
+      "expected_severity": "Severe Dyskinesia",
+      "expected_subscales": {
+        "facial-oral": 16,
+        "extremity": 8,
+        "trunk": 4
+      }
+    }
+  ]
+}

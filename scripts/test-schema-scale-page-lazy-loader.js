@@ -80,6 +80,26 @@ const CASES = [
     expectedSeverity: 'Remission',
     requiredToolUtilsMethod: 'loadClinicalScale',
   },
+  {
+    label: 'Y-BOCS',
+    sectionId: 'ybocs-tool',
+    inputSelector: 'input[name="yb-item-1"][value="2"]',
+    scoreElementId: 'yb-total-score',
+    expectedScore: '2',
+    severityElementId: 'yb-severity-badge',
+    expectedSeverity: 'Subclinical',
+    requiredToolUtilsMethod: 'loadClinicalScale',
+  },
+  {
+    label: 'AIMS',
+    sectionId: 'aims-tool',
+    inputSelector: 'input[name="ai-item1"][value="2"]',
+    scoreElementId: 'ai-total-score',
+    expectedScore: '2/28',
+    severityElementId: 'ai-severity-level',
+    expectedSeverity: 'Minimal Dyskinesia',
+    requiredToolUtilsMethod: 'loadClinicalScale',
+  },
 ];
 
 function assert(condition, message) {

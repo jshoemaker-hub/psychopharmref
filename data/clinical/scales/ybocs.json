@@ -1,0 +1,100 @@
+{
+  "id": "ybocs",
+  "tool_section_id": "ybocs-tool",
+  "title": "Yale-Brown Obsessive Compulsive Scale",
+  "short_title": "Y-BOCS",
+  "domain": "obsessive-compulsive symptoms",
+  "status": "pilot-source-of-truth",
+  "last_reviewed": "2026-07-18",
+  "source_ids": ["goodman-1989-ybocs", "stanford-ybocs-severity"],
+  "instructions": "Clinician-administered severity scale for obsessions and compulsions. Core items 1-10 are summed for the total score.",
+  "score": {
+    "min": 0,
+    "max": 40,
+    "item_count": 10,
+    "method": "sum",
+    "missing_response_policy": "unanswered items score 0 in the current runtime; score all 10 core items before interpreting"
+  },
+  "options": [
+    { "value": 0, "label": "None / no symptoms" },
+    { "value": 1, "label": "Mild" },
+    { "value": 2, "label": "Moderate" },
+    { "value": 3, "label": "Severe" },
+    { "value": 4, "label": "Extreme" }
+  ],
+  "items": [
+    { "id": "ybocs-1", "number": 1, "text": "Time Occupied by Obsessive Thoughts", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "ybocs-2", "number": 2, "text": "Interference Due to Obsessive Thoughts", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "ybocs-3", "number": 3, "text": "Distress Associated with Obsessive Thoughts", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "ybocs-4", "number": 4, "text": "Resistance Against Obsessions", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "ybocs-5", "number": 5, "text": "Degree of Control Over Obsessive Thoughts", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "ybocs-6", "number": 6, "text": "Time Spent Performing Compulsive Behaviors", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "ybocs-7", "number": 7, "text": "Interference Due to Compulsive Behaviors", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "ybocs-8", "number": 8, "text": "Distress Associated with Compulsive Behavior", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "ybocs-9", "number": 9, "text": "Resistance Against Compulsions", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "ybocs-10", "number": 10, "text": "Degree of Control Over Compulsive Behavior", "max": 4, "allowed_values": [0, 1, 2, 3, 4] }
+  ],
+  "subscales": [
+    { "id": "obsessions", "label": "Obsession Subtotal", "item_numbers": [1, 2, 3, 4, 5], "max": 20, "display_element_id": "yb-obs-subtotal" },
+    { "id": "compulsions", "label": "Compulsion Subtotal", "item_numbers": [6, 7, 8, 9, 10], "max": 20, "display_element_id": "yb-comp-subtotal" }
+  ],
+  "severity_bands": [
+    { "min": 0, "max": 7, "label": "Subclinical", "class": "yb-severity-subclinical", "action": "Subclinical range by common Y-BOCS severity bands; interpret in clinical context" },
+    { "min": 8, "max": 15, "label": "Mild", "class": "yb-severity-mild", "action": "Mild obsessive-compulsive symptom severity" },
+    { "min": 16, "max": 23, "label": "Moderate", "class": "yb-severity-moderate", "action": "Moderate obsessive-compulsive symptom severity" },
+    { "min": 24, "max": 31, "label": "Severe", "class": "yb-severity-severe", "action": "Severe obsessive-compulsive symptom severity" },
+    { "min": 32, "max": 40, "label": "Extreme", "class": "yb-severity-extreme", "action": "Extreme obsessive-compulsive symptom severity" }
+  ],
+  "supplemental_items": [
+    { "id": "1b", "label": "Obsession-Free Interval" },
+    { "id": "6b", "label": "Compulsion-Free Interval" }
+  ],
+  "investigational_items": [
+    { "id": "11", "label": "Insight" },
+    { "id": "12", "label": "Avoidance" },
+    { "id": "13", "label": "Indecisiveness" },
+    { "id": "14", "label": "Overvalued Responsibility" },
+    { "id": "15", "label": "Pervasive Slowness" },
+    { "id": "16", "label": "Pathological Doubting" },
+    { "id": "17", "label": "Global Severity" },
+    { "id": "18", "label": "Global Improvement" },
+    { "id": "19", "label": "Reliability" }
+  ],
+  "report": {
+    "heading": "Yale-Brown Obsessive Compulsive Scale (Y-BOCS)",
+    "scoring_note": "Scoring: items 1-5 form the obsession subtotal (0-20), items 6-10 form the compulsion subtotal (0-20), and the total ranges 0-40.",
+    "screening_note": "Common interpretation bands: 0-7 subclinical, 8-15 mild, 16-23 moderate, 24-31 severe, 32-40 extreme."
+  },
+  "test_vectors": [
+    {
+      "name": "all_zero",
+      "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 0,
+      "expected_severity": "Subclinical",
+      "expected_subscales": {
+        "obsessions": 0,
+        "compulsions": 0
+      }
+    },
+    {
+      "name": "moderate",
+      "responses": [2, 2, 2, 2, 0, 2, 2, 2, 2, 0],
+      "expected_score": 16,
+      "expected_severity": "Moderate",
+      "expected_subscales": {
+        "obsessions": 8,
+        "compulsions": 8
+      }
+    },
+    {
+      "name": "extreme",
+      "responses": [4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+      "expected_score": 40,
+      "expected_severity": "Extreme",
+      "expected_subscales": {
+        "obsessions": 20,
+        "compulsions": 20
+      }
+    }
+  ]
+}
