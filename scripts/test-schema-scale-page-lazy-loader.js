@@ -70,6 +70,16 @@ const CASES = [
     expectedSeverity: 'Minimal symptoms (0-10)',
     requiredToolUtilsMethod: 'loadClinicalScale',
   },
+  {
+    label: 'YMRS',
+    sectionId: 'ymrs-tool',
+    inputSelector: 'input[name="ym-item1"][value="3"]',
+    scoreElementId: 'ym-total-score',
+    expectedScore: '3',
+    severityElementId: 'ym-severity-level',
+    expectedSeverity: 'Remission',
+    requiredToolUtilsMethod: 'loadClinicalScale',
+  },
 ];
 
 function assert(condition, message) {

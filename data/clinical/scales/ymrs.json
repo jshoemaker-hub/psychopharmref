@@ -1,0 +1,77 @@
+{
+  "id": "ymrs",
+  "tool_section_id": "ymrs-tool",
+  "title": "Young Mania Rating Scale",
+  "short_title": "YMRS",
+  "domain": "mania",
+  "status": "pilot-source-of-truth",
+  "last_reviewed": "2026-07-18",
+  "source_ids": ["young-1978-ymrs", "lukasiewicz-2013-ymrs"],
+  "instructions": "Clinician-administered rating of manic symptoms based on interview, observed behavior, and reported subjective experience.",
+  "score": {
+    "min": 0,
+    "max": 60,
+    "item_count": 11,
+    "method": "sum",
+    "missing_response_policy": "HTML defaults every item to 0; interpret only after clinician review of each item"
+  },
+  "options": [
+    { "value": 0, "label": "Absent / none" },
+    { "value": 1, "label": "Minimal / possible" },
+    { "value": 2, "label": "Mild / definite" },
+    { "value": 3, "label": "Moderate" },
+    { "value": 4, "label": "Marked" },
+    { "value": 6, "label": "Severe" },
+    { "value": 8, "label": "Extreme" }
+  ],
+  "items": [
+    { "id": "ymrs-1", "number": 1, "text": "Elevated Mood", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "ymrs-2", "number": 2, "text": "Increased Motor Activity-Energy", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "ymrs-3", "number": 3, "text": "Sexual Interest", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "ymrs-4", "number": 4, "text": "Sleep", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "ymrs-5", "number": 5, "text": "Irritability", "max": 8, "allowed_values": [0, 2, 4, 6, 8] },
+    { "id": "ymrs-6", "number": 6, "text": "Speech (Rate/Amount)", "max": 8, "allowed_values": [0, 2, 4, 6, 8] },
+    { "id": "ymrs-7", "number": 7, "text": "Language-Thought Disorder", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "ymrs-8", "number": 8, "text": "Content", "max": 8, "allowed_values": [0, 2, 4, 6, 8] },
+    { "id": "ymrs-9", "number": 9, "text": "Disruptive-Aggressive Behavior", "max": 8, "allowed_values": [0, 2, 4, 6, 8] },
+    { "id": "ymrs-10", "number": 10, "text": "Appearance", "max": 4, "allowed_values": [0, 1, 2, 3, 4] },
+    { "id": "ymrs-11", "number": 11, "text": "Insight", "max": 4, "allowed_values": [0, 1, 2, 3, 4] }
+  ],
+  "severity_bands": [
+    { "min": 0, "max": 11, "label": "Remission", "class": "ym-severity-remission", "action": "Manic symptom burden is in the remission range by this tool's display bands; interpret in clinical context" },
+    { "min": 12, "max": 19, "label": "Mild mania", "class": "ym-severity-mild", "action": "Mild current manic symptom burden; consider monitoring, functional impact, and longitudinal change" },
+    { "min": 20, "max": 25, "label": "Moderate mania", "class": "ym-severity-moderate", "action": "Moderate current manic symptom burden; further clinical assessment and treatment planning are usually warranted" },
+    { "min": 26, "max": 60, "label": "Severe mania", "class": "ym-severity-severe", "action": "High current manic symptom burden; assess safety, psychosis, impairment, and need for urgent treatment setting" }
+  ],
+  "report": {
+    "heading": "Young Mania Rating Scale (YMRS)",
+    "scoring_note": "Scoring: 11 clinician-rated items summed for a 0-60 total; items 5, 6, 8, and 9 use 0/2/4/6/8 scoring.",
+    "screening_note": "Lukasiewicz et al. identified a YMRS severity threshold of 25 for CGI-BP mania marked illness in the EMBLEM cohort and a minimal clinically significant difference of 6.6 points."
+  },
+  "test_vectors": [
+    {
+      "name": "all_zero",
+      "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 0,
+      "expected_severity": "Remission"
+    },
+    {
+      "name": "mild",
+      "responses": [2, 2, 1, 1, 2, 2, 1, 0, 0, 1, 0],
+      "expected_score": 12,
+      "expected_severity": "Mild mania"
+    },
+    {
+      "name": "moderate",
+      "responses": [2, 2, 2, 2, 4, 4, 2, 0, 0, 1, 1],
+      "expected_score": 20,
+      "expected_severity": "Moderate mania"
+    },
+    {
+      "name": "severe",
+      "responses": [3, 3, 3, 3, 4, 4, 2, 2, 2, 0, 0],
+      "expected_score": 26,
+      "expected_severity": "Severe mania"
+    }
+  ]
+}

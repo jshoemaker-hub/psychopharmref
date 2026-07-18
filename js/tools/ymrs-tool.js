@@ -1,148 +1,178 @@
+(function() {
+  var FALLBACK_SCALE = {
+    id: 'ymrs',
+    short_title: 'YMRS',
+    score: { min: 0, max: 60, item_count: 11, method: 'sum' },
+    items: [
+      { id: 'ymrs-1', number: 1, text: 'Elevated Mood', max: 4 },
+      { id: 'ymrs-2', number: 2, text: 'Increased Motor Activity-Energy', max: 4 },
+      { id: 'ymrs-3', number: 3, text: 'Sexual Interest', max: 4 },
+      { id: 'ymrs-4', number: 4, text: 'Sleep', max: 4 },
+      { id: 'ymrs-5', number: 5, text: 'Irritability', max: 8 },
+      { id: 'ymrs-6', number: 6, text: 'Speech (Rate/Amount)', max: 8 },
+      { id: 'ymrs-7', number: 7, text: 'Language-Thought Disorder', max: 4 },
+      { id: 'ymrs-8', number: 8, text: 'Content', max: 8 },
+      { id: 'ymrs-9', number: 9, text: 'Disruptive-Aggressive Behavior', max: 8 },
+      { id: 'ymrs-10', number: 10, text: 'Appearance', max: 4 },
+      { id: 'ymrs-11', number: 11, text: 'Insight', max: 4 }
+    ],
+    severity_bands: [
+      { min: 0, max: 11, label: 'Remission', class: 'ym-severity-remission' },
+      { min: 12, max: 19, label: 'Mild mania', class: 'ym-severity-mild' },
+      { min: 20, max: 25, label: 'Moderate mania', class: 'ym-severity-moderate' },
+      { min: 26, max: 60, label: 'Severe mania', class: 'ym-severity-severe' }
+    ],
+    report: {
+      heading: 'Young Mania Rating Scale (YMRS)',
+      scoring_note: 'Scoring: 11 clinician-rated items summed for a 0-60 total; items 5, 6, 8, and 9 use 0/2/4/6/8 scoring.'
+    },
+    references: [
+      { label: 'Young RC, Biggs JT, Ziegler VE, Meyer DA. A rating scale for mania: reliability, validity and sensitivity. Br J Psychiatry. 1978;133:429-435.' }
+    ]
+  };
 
-    (function() {
-      const ITEM_CONFIG = {
-        'ym-item1': { name: 'Elevated Mood', max: 4 },
-        'ym-item2': { name: 'Increased Motor Activity–Energy', max: 4 },
-        'ym-item3': { name: 'Sexual Interest', max: 4 },
-        'ym-item4': { name: 'Sleep', max: 4 },
-        'ym-item5': { name: 'Irritability', max: 8 },
-        'ym-item6': { name: 'Speech (Rate/Amount)', max: 8 },
-        'ym-item7': { name: 'Language–Thought Disorder', max: 4 },
-        'ym-item8': { name: 'Content', max: 8 },
-        'ym-item9': { name: 'Disruptive–Aggressive Behavior', max: 8 },
-        'ym-item10': { name: 'Appearance', max: 4 },
-        'ym-item11': { name: 'Insight', max: 4 }
-      };
+  var scale = FALLBACK_SCALE;
 
-      const form = document.getElementById('ym-form');
-      const totalScoreEl = document.getElementById('ym-total-score');
-      const severityEl = document.getElementById('ym-severity-level');
-      const reportBtn = document.getElementById('ym-report-btn');
-      const resetBtn = document.getElementById('ym-reset-btn');
-      const summarySection = document.getElementById('ym-summary');
-      const summaryGrid = document.getElementById('ym-summary-grid');
+  var form = document.getElementById('ym-form');
+  var totalScoreEl = document.getElementById('ym-total-score');
+  var severityEl = document.getElementById('ym-severity-level');
+  var reportBtn = document.getElementById('ym-report-btn');
+  var resetBtn = document.getElementById('ym-reset-btn');
+  var summarySection = document.getElementById('ym-summary');
+  var summaryGrid = document.getElementById('ym-summary-grid');
 
-      function calculateScore() {
-        let total = 0;
-        const scores = {};
+  function getItems() {
+    return scale.items || FALLBACK_SCALE.items;
+  }
 
-        for (let itemNum = 1; itemNum <= 11; itemNum++) {
-          const itemName = `ym-item${itemNum}`;
-          const selected = form.querySelector(`input[name="${itemName}"]:checked`);
-          const score = selected ? parseInt(selected.value, 10) : 0;
-          total += score;
-          scores[itemNum] = score;
-        }
+  function getSelectedValue(itemNumber) {
+    var selected = form.querySelector('input[name="ym-item' + itemNumber + '"]:checked');
+    return selected ? parseInt(selected.value, 10) : 0;
+  }
 
-        return { total, scores };
-      }
+  function calculateScore() {
+    var total = 0;
+    var scores = {};
 
-      function getSeverityLevel(total) {
-        if (total < 12) return { level: 'Remission', class: 'ym-severity-remission' };
-        if (total < 20) return { level: 'Mild mania', class: 'ym-severity-mild' };
-        if (total < 26) return { level: 'Moderate mania', class: 'ym-severity-moderate' };
-        return { level: 'Severe mania', class: 'ym-severity-severe' };
-      }
+    getItems().forEach(function(item) {
+      var score = getSelectedValue(item.number);
+      total += score;
+      scores[item.number] = score;
+    });
 
-      function updateDisplay() {
-        const { total, scores } = calculateScore();
-        const severity = getSeverityLevel(total);
+    return { total: total, scores: scores };
+  }
 
-        totalScoreEl.textContent = total;
-        severityEl.textContent = severity.level;
-        severityEl.className = `ym-severity-label ${severity.class}`;
+  function getSeverityLevel(total) {
+    var bands = scale.severity_bands || FALLBACK_SCALE.severity_bands;
+    for (var i = 0; i < bands.length; i++) {
+      if (total >= bands[i].min && total <= bands[i].max) return bands[i];
+    }
+    return bands[bands.length - 1];
+  }
 
-        // Update summary grid
-        summaryGrid.innerHTML = '';
-        for (let itemNum = 1; itemNum <= 11; itemNum++) {
-          const config = ITEM_CONFIG[`ym-item${itemNum}`];
-          const score = scores[itemNum];
-          const summaryItem = document.createElement('div');
-          summaryItem.className = 'ym-summary-item';
-          summaryItem.innerHTML = `
-            <div class="ym-summary-item-label">${itemNum}. ${config.name}</div>
-            <div class="ym-summary-item-score">${score}/${config.max}</div>
-          `;
-          summaryGrid.appendChild(summaryItem);
-        }
+  function updateDisplay() {
+    var result = calculateScore();
+    var severity = getSeverityLevel(result.total);
 
-        summarySection.classList.add('ym-show');
-      }
+    totalScoreEl.textContent = result.total;
+    severityEl.textContent = severity.label;
+    severityEl.className = 'ym-severity-label ' + (severity.class || '');
 
-      function generateReport() {
-        const { total, scores } = calculateScore();
-        const severity = getSeverityLevel(total);
+    summaryGrid.innerHTML = '';
+    getItems().forEach(function(item) {
+      var summaryItem = document.createElement('div');
+      summaryItem.className = 'ym-summary-item';
+      summaryItem.innerHTML = [
+        '<div class="ym-summary-item-label">' + item.number + '. ' + item.text + '</div>',
+        '<div class="ym-summary-item-score">' + result.scores[item.number] + '/' + item.max + '</div>'
+      ].join('');
+      summaryGrid.appendChild(summaryItem);
+    });
 
-        // Get current date in YYYY-MM-DD format
-        const today = new Date();
-        const dateStr = today.toISOString().split('T')[0];
+    summarySection.classList.add('ym-show');
+  }
 
-        const lines = [
-          'Young Mania Rating Scale (YMRS)',
-          `Date: ${dateStr}`,
-          '',
-          `Total Score: ${total}/60`,
-          `Severity: ${severity.level}`,
-          '',
-          'Individual Item Scores:',
-          `  1. Elevated Mood: ${scores[1]}/4`,
-          `  2. Increased Motor Activity–Energy: ${scores[2]}/4`,
-          `  3. Sexual Interest: ${scores[3]}/4`,
-          `  4. Sleep: ${scores[4]}/4`,
-          `  5. Irritability: ${scores[5]}/8`,
-          `  6. Speech (Rate/Amount): ${scores[6]}/8`,
-          `  7. Language–Thought Disorder: ${scores[7]}/4`,
-          `  8. Content: ${scores[8]}/8`,
-          `  9. Disruptive–Aggressive Behavior: ${scores[9]}/8`,
-          `  10. Appearance: ${scores[10]}/4`,
-          `  11. Insight: ${scores[11]}/4`,
-          '',
-          `Clinical Note: Score of ${total} indicates ${severity.level.toLowerCase()}.`
-        ];
+  function generateReport() {
+    var result = calculateScore();
+    var severity = getSeverityLevel(result.total);
+    var reportMeta = scale.report || FALLBACK_SCALE.report;
+    var lines = [
+      reportMeta.heading || 'Young Mania Rating Scale (YMRS)',
+      'Date: ' + ToolUtils.dateStamp(),
+      '',
+      'Total Score: ' + result.total + '/' + scale.score.max,
+      'Severity: ' + severity.label,
+      ''
+    ];
 
-        return lines.join('\n');
-      }
+    if (severity.action) {
+      lines.push('Clinical Note: ' + severity.action);
+      lines.push('');
+    } else {
+      lines.push('Clinical Note: Score of ' + result.total + ' indicates ' + severity.label.toLowerCase() + '.');
+      lines.push('');
+    }
 
-      function copyReport() {
-        const report = generateReport();
-        navigator.clipboard.writeText(report).then(() => {
-          const orig = reportBtn.textContent;
-          reportBtn.textContent = 'Copied!';
-          setTimeout(() => {
-            reportBtn.textContent = orig;
-          }, 2000);
-        }).catch(err => {
-          console.error('Failed to copy:', err);
-        });
-      }
+    lines.push('Individual Item Scores:');
+    getItems().forEach(function(item) {
+      lines.push('  ' + item.number + '. ' + item.text + ': ' + result.scores[item.number] + '/' + item.max);
+    });
 
-      function resetForm() {
-        if (confirm('Reset all scores? This action cannot be undone.')) {
-          form.reset();
-          updateDisplay();
-        }
-      }
+    lines.push('');
+    if (reportMeta.scoring_note) lines.push(reportMeta.scoring_note);
+    if (reportMeta.screening_note) lines.push(reportMeta.screening_note);
+    (scale.references || FALLBACK_SCALE.references).forEach(function(ref) {
+      if (ref && ref.label) lines.push('Reference: ' + ref.label);
+    });
 
-      // Event listeners
-      form.addEventListener('change', updateDisplay);
-      reportBtn.addEventListener('click', copyReport);
-      resetBtn.addEventListener('click', resetForm);
+    return lines.join('\n');
+  }
 
-      // Add print button
-      (function addPrintBtn() {
-        var sec = document.getElementById('ymrs-tool');
-        if (!sec) return;
-        var header = sec.querySelector('.section-header');
-        if (!header) return;
-        var btn = document.createElement('button');
-        btn.className = 'pf-inline-btn';
-        btn.onclick = function() { if (typeof printBlankForm === 'function') printBlankForm('ymrs'); };
-        btn.innerHTML = '🖨️ Print Blank Form';
-        btn.title = 'Print a blank version of this form';
-        header.appendChild(btn);
-      })();
+  function loadSchema() {
+    if (typeof ToolUtils === 'undefined' || typeof ToolUtils.loadClinicalScale !== 'function') return;
 
-      // Initial display
+    ToolUtils.loadClinicalScale('ymrs').then(function(loadedScale) {
+      scale = loadedScale;
       updateDisplay();
-    })();
-  
+    }).catch(function(err) {
+      console.warn('YMRS schema unavailable; using embedded fallback.', err);
+    });
+  }
+
+  function addPrintBtn() {
+    var sec = document.getElementById('ymrs-tool');
+    if (!sec) return;
+    var header = sec.querySelector('.section-header');
+    if (!header) return;
+    var btn = document.createElement('button');
+    btn.className = 'pf-inline-btn';
+    btn.onclick = function() { if (typeof printBlankForm === 'function') printBlankForm('ymrs'); };
+    btn.innerHTML = 'Print Blank Form';
+    btn.title = 'Print a blank version of this form';
+    header.appendChild(btn);
+  }
+
+  function init() {
+    form.addEventListener('change', updateDisplay);
+    reportBtn.addEventListener('click', function() {
+      ToolUtils.copyWithButton(generateReport(), reportBtn);
+    });
+    resetBtn.addEventListener('click', function() {
+      ToolUtils.confirmReset('Reset all YMRS scores?', function() {
+        form.reset();
+        updateDisplay();
+      });
+    });
+
+    addPrintBtn();
+    loadSchema();
+    updateDisplay();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();

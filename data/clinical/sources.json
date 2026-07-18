@@ -70,5 +70,23 @@
     "review_status": "source-cited",
     "last_reviewed": "2026-07-18",
     "notes": "Psychometric source cited by the PCL-5 tool report. PMID: 26606250. DOI: 10.1002/jts.22059."
+  },
+  {
+    "id": "young-1978-ymrs",
+    "label": "Young RC, Biggs JT, Ziegler VE, Meyer DA. A rating scale for mania: reliability, validity and sensitivity. Br J Psychiatry. 1978;133:429-435.",
+    "type": "journal_article",
+    "year": 1978,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Primary source cited by the YMRS tool report. PMID: 728692. DOI: 10.1192/bjp.133.5.429."
+  },
+  {
+    "id": "lukasiewicz-2013-ymrs",
+    "label": "Lukasiewicz M, Gerard S, Besnard A, Falissard B, Perrin E, Sapin H, Tohen M, Reed C, Azorin JM; EMBLEM Study Group. Young Mania Rating Scale: how to interpret the numbers? Determination of a severity threshold and of the minimal clinically significant difference in the EMBLEM cohort. Int J Methods Psychiatr Res. 2013;22(1):46-58.",
+    "type": "journal_article",
+    "year": 2013,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Severity threshold and clinically meaningful change source cited by the YMRS tool report. PMID: 23526724. PMCID: PMC6878321. DOI: 10.1002/mpr.1379."
   }
 ]

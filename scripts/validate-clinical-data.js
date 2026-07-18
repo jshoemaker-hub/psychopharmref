@@ -233,7 +233,6 @@ function validateScale(scale, filePath, sources) {
   const minOption = Math.min(...optionValues);
   const maxOption = Math.max(...optionValues);
   expect(minOption === 0, `${fileRel}: option values should start at 0`);
-  expect(scale.score.max === scale.score.item_count * maxOption, `${fileRel}: score.max should equal item_count * highest option`);
 
   expect(Array.isArray(scale.items), `${fileRel}: items must be an array`);
   expect(scale.items.length === scale.score.item_count, `${fileRel}: expected ${scale.score.item_count} items, found ${scale.items.length}`);
@@ -244,7 +243,29 @@ function validateScale(scale, filePath, sources) {
     itemIds.add(item.id);
     expect(item.number === index + 1, `${fileRel}: item ${item.id} number should be ${index + 1}`);
     expect(isNonEmptyString(item.text), `${fileRel}: item ${item.id} needs text`);
+    if (item.max !== undefined) {
+      expect(Number.isInteger(item.max), `${fileRel}: item ${item.id} max must be an integer`);
+    }
+    if (item.allowed_values !== undefined) {
+      expect(Array.isArray(item.allowed_values) && item.allowed_values.length > 0, `${fileRel}: item ${item.id} allowed_values must be a non-empty array`);
+      const itemValues = new Set();
+      for (const value of item.allowed_values || []) {
+        expect(Number.isInteger(value), `${fileRel}: item ${item.id} allowed_values must be integers`);
+        expect(optionValues.has(value), `${fileRel}: item ${item.id} allowed value ${value} is not in global options`);
+        expect(!itemValues.has(value), `${fileRel}: item ${item.id} repeats allowed value ${value}`);
+        itemValues.add(value);
+      }
+      if (item.max !== undefined && item.allowed_values.length) {
+        expect(item.max === Math.max(...item.allowed_values), `${fileRel}: item ${item.id} max should match highest allowed value`);
+      }
+    }
   });
+
+  const allItemsHaveMax = scale.items.length > 0 && scale.items.every(item => Number.isInteger(item.max));
+  const expectedMax = allItemsHaveMax
+    ? scale.items.reduce((sum, item) => sum + item.max, 0)
+    : scale.score.item_count * maxOption;
+  expect(scale.score.max === expectedMax, `${fileRel}: score.max should equal ${allItemsHaveMax ? 'sum of item max values' : 'item_count * highest option'} (${expectedMax})`);
 
   expect(Array.isArray(scale.severity_bands) && scale.severity_bands.length > 0, `${fileRel}: severity_bands must be a non-empty array`);
   validateBandCoverage(scale, fileRel);
@@ -255,9 +276,11 @@ function validateScale(scale, filePath, sources) {
   for (const vector of scale.test_vectors || []) {
     expect(Array.isArray(vector.responses), `${fileRel}: test vector "${vector.name}" needs responses array`);
     expect(vector.responses.length === scale.score.item_count, `${fileRel}: test vector "${vector.name}" response count mismatch`);
-    for (const response of vector.responses) {
-      expect(optionValues.has(response), `${fileRel}: test vector "${vector.name}" has invalid response ${response}`);
-    }
+    vector.responses.forEach((response, index) => {
+      const item = scale.items[index];
+      const allowedValues = item && item.allowed_values ? new Set(item.allowed_values) : optionValues;
+      expect(allowedValues.has(response), `${fileRel}: test vector "${vector.name}" has invalid response ${response} for item ${index + 1}`);
+    });
 
     const score = scoreResponses(vector.responses);
     const severity = severityForScore(scale, score);
