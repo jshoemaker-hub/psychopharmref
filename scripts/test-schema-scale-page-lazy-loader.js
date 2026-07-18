@@ -89,6 +89,21 @@ const CASES = [
     severityElementId: 'yb-severity-badge',
     expectedSeverity: 'Subclinical',
     requiredToolUtilsMethod: 'loadClinicalScale',
+    extraInputSelectors: [
+      'input[name="yb-item-2"][value="2"]',
+      'input[name="yb-item-3"][value="2"]',
+      'input[name="yb-item-4"][value="2"]',
+      'input[name="yb-item-5"][value="2"]',
+      'input[name="yb-item-6"][value="2"]',
+      'input[name="yb-item-7"][value="2"]',
+      'input[name="yb-item-8"][value="2"]',
+      'input[name="yb-item-9"][value="2"]',
+      'input[name="yb-item-10"][value="2"]',
+    ],
+    expectedScoreAfterExtraInputs: '20',
+    expectedSeverityAfterExtraInputs: 'Moderate',
+    reportButtonId: 'yb-generate-btn',
+    expectedReportText: 'Total Score: 20/40',
   },
   {
     label: 'AIMS',
@@ -142,6 +157,7 @@ async function runCase(testCase) {
   const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
   const messages = [];
   const requests = [];
+  let copiedText = '';
   const virtualConsole = new VirtualConsole();
 
   ['error', 'warn'].forEach(level => {
@@ -191,6 +207,15 @@ async function runCase(testCase) {
         }));
       };
       window.confirm = () => true;
+      Object.defineProperty(window.navigator, 'clipboard', {
+        configurable: true,
+        value: {
+          writeText(text) {
+            copiedText = text;
+            return Promise.resolve();
+          },
+        },
+      });
 
       // Simulate an older helper already loaded in a long-lived browser tab.
       window.ToolUtils = {
@@ -236,6 +261,33 @@ async function runCase(testCase) {
     if (testCase.alertElementId) {
       const alert = dom.window.document.getElementById(testCase.alertElementId);
       assert(alert.classList.contains('visible'), `${testCase.label}: safety alert did not become visible`);
+    }
+
+    for (const selector of testCase.extraInputSelectors || []) {
+      const extraInput = dom.window.document.querySelector(selector);
+      assert(extraInput, `${testCase.label}: missing extra test input ${selector}`);
+      extraInput.checked = true;
+      extraInput.dispatchEvent(new dom.window.Event('change', { bubbles: true }));
+    }
+
+    if (testCase.extraInputSelectors) {
+      await wait(50);
+      assert(
+        scoreEl.textContent === testCase.expectedScoreAfterExtraInputs,
+        `${testCase.label}: full score did not update`
+      );
+      assert(
+        severityEl.textContent === testCase.expectedSeverityAfterExtraInputs,
+        `${testCase.label}: full severity did not update`
+      );
+    }
+
+    if (testCase.reportButtonId) {
+      const reportButton = dom.window.document.getElementById(testCase.reportButtonId);
+      assert(reportButton, `${testCase.label}: missing report button`);
+      reportButton.click();
+      await wait(50);
+      assert(copiedText.includes(testCase.expectedReportText), `${testCase.label}: report copy did not include expected text`);
     }
   } finally {
     dom.window.close();

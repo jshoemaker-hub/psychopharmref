@@ -7895,8 +7895,8 @@
   </div>
 <div class="yb-tab-container">
     <div class="yb-tab-buttons">
-      <button class="yb-tab-btn yb-active" data-tab="checklist">Symptom Checklist</button>
-      <button class="yb-tab-btn" data-tab="severity">Severity Scale</button>
+      <button type="button" class="yb-tab-btn yb-active" data-tab="checklist">Symptom Checklist</button>
+      <button type="button" class="yb-tab-btn" data-tab="severity">Severity Scale</button>
     </div>
 
     <!-- TAB 1: SYMPTOM CHECKLIST -->
@@ -8946,6 +8946,32 @@
         </div>
       </div>
 
+      <!-- SCORE DISPLAY -->
+      <div class="yb-score-display">
+        <div class="yb-score-row">
+          <span class="yb-score-label">Obsession Subtotal (Items 1–5):</span>
+          <span class="yb-score-value" id="yb-obs-subtotal">0</span>/20
+        </div>
+        <div class="yb-score-row">
+          <span class="yb-score-label">Compulsion Subtotal (Items 6–10):</span>
+          <span class="yb-score-value" id="yb-comp-subtotal">0</span>/20
+        </div>
+        <div class="yb-score-row" style="font-size: 1.1rem; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 2px solid var(--border);">
+          <span class="yb-score-label">Total Score (Items 1–10):</span>
+          <span class="yb-score-value" id="yb-total-score">0</span>/40
+        </div>
+        <div class="yb-severity-level">
+          <span class="yb-severity-label">Severity:</span>
+          <span class="yb-severity-badge" id="yb-severity-badge">Subclinical</span>
+        </div>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="yb-button-group">
+        <button type="button" class="yb-btn yb-btn-primary" id="yb-generate-btn">Generate Report & Copy</button>
+        <button type="button" class="yb-btn yb-btn-secondary" id="yb-reset-btn">Reset</button>
+      </div>
+
       <!-- INVESTIGATIONAL ITEMS SECTION -->
       <div class="yb-investigational-section">
         <div class="yb-investigational-title" onclick="this.classList.toggle('yb-collapsed'); this.nextElementSibling.classList.toggle('yb-collapsed');">
@@ -9306,31 +9332,6 @@
         </div>
       </div>
 
-      <!-- SCORE DISPLAY -->
-      <div class="yb-score-display">
-        <div class="yb-score-row">
-          <span class="yb-score-label">Obsession Subtotal (Items 1–5):</span>
-          <span class="yb-score-value" id="yb-obs-subtotal">0</span>/20
-        </div>
-        <div class="yb-score-row">
-          <span class="yb-score-label">Compulsion Subtotal (Items 6–10):</span>
-          <span class="yb-score-value" id="yb-comp-subtotal">0</span>/20
-        </div>
-        <div class="yb-score-row" style="font-size: 1.1rem; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 2px solid var(--border);">
-          <span class="yb-score-label">Total Score (Items 1–10):</span>
-          <span class="yb-score-value" id="yb-total-score">0</span>/40
-        </div>
-        <div class="yb-severity-level">
-          <span class="yb-severity-label">Severity:</span>
-          <span class="yb-severity-badge" id="yb-severity-badge">Subclinical</span>
-        </div>
-      </div>
-
-      <!-- ACTION BUTTONS -->
-      <div class="yb-button-group">
-        <button class="yb-btn yb-btn-primary" id="yb-generate-btn">Generate Report & Copy</button>
-        <button class="yb-btn yb-btn-secondary" id="yb-reset-btn">Reset</button>
-      </div>
     </div>
   </div>
 </section><!-- end ybocs-tool -->
@@ -12110,7 +12111,7 @@
 
   <script defer src="js/data.js?v=20260717e"></script>
   <script defer src="js/routes.js?v=20260718h"></script>
-  <script defer src="js/app.js?v=20260718o"></script>
+  <script defer src="js/app.js?v=20260718p"></script>
   <script defer src="js/glossary-data.js?v=20260717a"></script>
   <script defer src="js/glossary-page.js?v=20260501a"></script>
   <script defer src="js/search.js?v=20260714a"></script>

@@ -101,8 +101,10 @@
     });
 
     var total = totalScore();
-    document.getElementById('yb-total-score').textContent = total;
-    document.getElementById('yb-severity-badge').textContent = severityForScore(total).label;
+    var totalEl = document.getElementById('yb-total-score');
+    var severityEl = document.getElementById('yb-severity-badge');
+    if (totalEl) totalEl.textContent = total;
+    if (severityEl) severityEl.textContent = severityForScore(total).label;
   }
 
   function checkedLabels(selector) {
@@ -206,21 +208,29 @@
       });
     });
 
-    section.querySelectorAll('input[type="radio"][name^="yb-item-"]').forEach(function(radio) {
-      radio.addEventListener('change', updateScores);
-    });
-
-    document.getElementById('yb-generate-btn').addEventListener('click', function() {
-      ToolUtils.copyWithButton(generateReport(), document.getElementById('yb-generate-btn'));
-    });
-
-    document.getElementById('yb-reset-btn').addEventListener('click', function() {
-      ToolUtils.confirmReset('Reset all Y-BOCS scores and checkboxes?', function() {
-        section.querySelectorAll('input[type="radio"]').forEach(function(radio) { radio.checked = false; });
-        section.querySelectorAll('input[type="checkbox"]').forEach(function(cb) { cb.checked = false; });
+    section.addEventListener('change', function(event) {
+      if (event.target && event.target.matches('input[type="radio"][name^="yb-item-"]')) {
         updateScores();
-      });
+      }
     });
+
+    var generateBtn = document.getElementById('yb-generate-btn');
+    if (generateBtn) {
+      generateBtn.addEventListener('click', function() {
+        ToolUtils.copyWithButton(generateReport(), generateBtn);
+      });
+    }
+
+    var resetBtn = document.getElementById('yb-reset-btn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function() {
+        ToolUtils.confirmReset('Reset all Y-BOCS scores and checkboxes?', function() {
+          section.querySelectorAll('input[type="radio"]').forEach(function(radio) { radio.checked = false; });
+          section.querySelectorAll('input[type="checkbox"]').forEach(function(cb) { cb.checked = false; });
+          updateScores();
+        });
+      });
+    }
 
     addPrintBtn();
     loadSchema();
