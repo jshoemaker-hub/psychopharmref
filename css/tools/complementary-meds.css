@@ -88,7 +88,7 @@
   border: 1px solid var(--border); border-radius: 10px; background: #fff;
   padding: 0.9rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.7rem;
 }
-.cm-card-head { display: flex; align-items: center; gap: 0.6rem; }
+.cm-card-head { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
 .cm-rank {
   flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
@@ -97,14 +97,18 @@
 .cm-rank--1 { background: var(--accent2); }
 .cm-rank--2 { background: #a9862a; }
 .cm-rank--3 { background: #c4a955; }
-.cm-card-title { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
-.cm-card-name { font-size: 1.05rem; font-weight: 700; color: var(--text); }
-.cm-card-brand { font-size: 0.78rem; color: var(--text); opacity: 0.65; }
+/* flex:1 1 0 + min-width:0 lets the title shrink rather than run under the score;
+   overflow-wrap breaks long compound names (Dextromethorphan/Bupropion) that
+   browsers will not otherwise break at the slash. */
+.cm-card-title { display: flex; flex-direction: column; line-height: 1.2; flex: 1 1 0; min-width: 0; }
+.cm-card-name { font-size: 1.05rem; font-weight: 700; color: var(--text);
+  overflow-wrap: anywhere; word-break: break-word; hyphens: auto; }
+.cm-card-brand { font-size: 0.78rem; color: var(--text); opacity: 0.65; overflow-wrap: anywhere; }
 .cm-overall {
-  margin-left: auto; text-align: right; font-size: 1.4rem; font-weight: 800;
+  flex: 0 0 auto; margin-left: auto; text-align: right; font-size: 1.4rem; font-weight: 800;
   color: var(--accent2); line-height: 1; display: flex; flex-direction: column; align-items: flex-end;
 }
-.cm-overall small { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.7; color: var(--text); }
+.cm-overall small { white-space: nowrap; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.7; color: var(--text); }
 
 .cm-why { font-size: 0.84rem; color: var(--text); opacity: 0.85; }
 
