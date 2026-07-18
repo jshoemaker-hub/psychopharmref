@@ -41,7 +41,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 
-  <link rel="stylesheet" href="css/styles.css?v=20260717c">
+  <link rel="stylesheet" href="css/styles.css?v=20260718g">
   <link rel="canonical" href="https://psychopharmref.com/">
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
@@ -403,6 +403,21 @@
       <label class="filter-item"><input type="checkbox" class="class-filter" value="Benzodiazepine" checked> Benzodiazepine</label>
       <label class="filter-item"><input type="checkbox" class="class-filter" value="Melatonin Agonist" checked> Melatonin Agonist</label>
       <label class="filter-item"><input type="checkbox" class="class-filter" value="Orexin Antagonist" checked> Orexin Antagonist</label>
+
+      <h4>Filter by Route</h4>
+      <label class="filter-item"><input type="checkbox" class="route-filter" value="oral" checked> Oral</label>
+      <label class="filter-item"><input type="checkbox" class="route-filter" value="lai" checked> Long-acting injectable</label>
+      <label class="filter-item"><input type="checkbox" class="route-filter" value="im" checked> Intramuscular</label>
+      <label class="filter-item"><input type="checkbox" class="route-filter" value="iv" checked> Intravenous</label>
+      <label class="filter-item"><input type="checkbox" class="route-filter" value="sublingual" checked> Sublingual</label>
+      <label class="filter-item"><input type="checkbox" class="route-filter" value="intranasal" checked> Intranasal</label>
+      <label class="filter-item"><input type="checkbox" class="route-filter" value="inhaled" checked> Inhaled</label>
+      <label class="filter-item"><input type="checkbox" class="route-filter" value="transdermal" checked> Transdermal</label>
+      <label class="filter-item"><input type="checkbox" class="route-filter" value="rectal" checked> Rectal</label>
+      <div class="filter-actions">
+        <button type="button" class="filter-mini-btn" id="route-filter-all">All</button>
+        <button type="button" class="filter-mini-btn" id="route-filter-parenteral">Parenteral only</button>
+      </div>
     </div>
 
     <div class="sidebar-footer">
@@ -563,6 +578,7 @@
               <th class="sortable col-pb" data-col="proteinBinding">Protein Binding <span class="sort-arrow"></span></th>
               <th class="sortable col-pregnancy" data-col="pregnancy">Pregnancy <span class="sort-arrow"></span></th>
               <th class="sortable col-breastfeeding" data-col="breastfeeding">Breastfeeding <span class="sort-arrow"></span></th>
+              <th class="col-route">Route</th>
               <th class="col-synaptic">Pre / Post-Synaptic Binding</th>
               <th class="col-receptor">Receptor Chart</th>
             </tr>
@@ -12093,7 +12109,8 @@
   </script>
 
   <script defer src="js/data.js?v=20260717e"></script>
-  <script defer src="js/app.js?v=20260718f"></script>
+  <script defer src="js/routes.js?v=20260718g"></script>
+  <script defer src="js/app.js?v=20260718g"></script>
   <script defer src="js/glossary-data.js?v=20260717a"></script>
   <script defer src="js/glossary-page.js?v=20260501a"></script>
   <script defer src="js/search.js?v=20260714a"></script>

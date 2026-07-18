@@ -309,7 +309,7 @@ function switchSection(id) {
     // Load CSS
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/tools/' + toolId + '.css?v=20260718f';
+    link.href = 'css/tools/' + toolId + '.css?v=20260718g';
     document.head.appendChild(link);
     // Load shared tool-utils.js once (first tool activation), then the tool JS
     function loadToolScript() {
@@ -319,7 +319,7 @@ function switchSection(id) {
         dataScript.src = 'js/qbank-data.js?v=20260716f';
         dataScript.onload = function() {
           var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20260718f';
+          script.src = 'js/tools/' + toolId + '.js?v=20260718g';
           document.body.appendChild(script);
         };
         dataScript.onerror = function() { console.error('Failed to load qbank-data.js'); };
@@ -327,12 +327,11 @@ function switchSection(id) {
       } else if (toolId === 'complementary-meds' && !window.CombinationStrategies) {
         // Complementary-meds needs curated overlays before the tool computes scores.
         var deps = [
-          'js/combination-strategies.js?v=20260718f',
-          'js/receptor-actions.js?v=20260718f',
-          'js/mechanism-tiers.js?v=20260718f',
-          'js/pair-safety.js?v=20260718f',
-          'js/symptom-domains.js?v=20260718f',
-          'js/routes.js?v=20260718f'
+          'js/combination-strategies.js?v=20260718g',
+          'js/receptor-actions.js?v=20260718g',
+          'js/mechanism-tiers.js?v=20260718g',
+          'js/pair-safety.js?v=20260718g',
+          'js/symptom-domains.js?v=20260718g'
         ];
         var pending = deps.length;
         deps.forEach(function(src) {
@@ -341,7 +340,7 @@ function switchSection(id) {
           d.onload = function() {
             if (--pending === 0) {
               var script = document.createElement('script');
-              script.src = 'js/tools/' + toolId + '.js?v=20260718f';
+              script.src = 'js/tools/' + toolId + '.js?v=20260718g';
               document.body.appendChild(script);
             }
           };
@@ -350,13 +349,13 @@ function switchSection(id) {
         });
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20260718f';
+        script.src = 'js/tools/' + toolId + '.js?v=20260718g';
         document.body.appendChild(script);
       }
     }
     if (!window.ToolUtils) {
       const utils = document.createElement('script');
-      utils.src = 'js/tools/tool-utils.js?v=20260718f';
+      utils.src = 'js/tools/tool-utils.js?v=20260718g';
       utils.onload = loadToolScript;
       utils.onerror = function() { console.error('Failed to load tool-utils.js'); };
       document.body.appendChild(utils);
@@ -442,6 +441,9 @@ window.addEventListener('hashchange', applyHashNavigation);
 
 /* ── Class Filter (sidebar checkboxes) ─────────────────────────────────── */
 let activeClasses = new Set(MEDICATIONS.map(m => m.class));
+// Route filter — every route ticked by default, so the table starts unfiltered.
+// A medication is shown when ANY of its routes is still ticked.
+let activeRoutes = new Set(window.Routes ? Object.keys(window.Routes.ROUTES) : []);
 
 document.querySelectorAll('.class-filter').forEach(cb => {
   cb.addEventListener('change', () => {
@@ -452,6 +454,27 @@ document.querySelectorAll('.class-filter').forEach(cb => {
     renderP450Table();
   });
 });
+
+/* ── Route Filter (sidebar checkboxes) ─────────────────────────────────── */
+function syncRouteFilter() {
+  activeRoutes = new Set(
+    [...document.querySelectorAll('.route-filter:checked')].map(c => c.value)
+  );
+  renderDrugTable();
+}
+document.querySelectorAll('.route-filter').forEach(cb => {
+  cb.addEventListener('change', syncRouteFilter);
+});
+function setRouteFilter(routes) {
+  document.querySelectorAll('.route-filter').forEach(cb => {
+    cb.checked = routes === null ? true : routes.indexOf(cb.value) !== -1;
+  });
+  syncRouteFilter();
+}
+const routeAllBtn = document.getElementById('route-filter-all');
+if (routeAllBtn) routeAllBtn.addEventListener('click', () => setRouteFilter(null));
+const routeParenteralBtn = document.getElementById('route-filter-parenteral');
+if (routeParenteralBtn) routeParenteralBtn.addEventListener('click', () => setRouteFilter(['lai', 'im', 'iv']));
 
 /* ── Overview Stats ─────────────────────────────────────────────────────── */
 function renderStats() {
@@ -717,6 +740,10 @@ function visibleMeds() {
   const filtered = MEDICATIONS.filter(m => {
     if (!activeClasses.has(m.class)) return false;
     if (categoryFilter && m.category !== categoryFilter) return false;
+    if (window.Routes && activeRoutes.size) {
+      const rts = window.Routes.routesFor(m.id);
+      if (!rts.some(rt => activeRoutes.has(rt))) return false;
+    }
     if (tableSearch) {
       const q = tableSearch.toLowerCase();
       return m.name.toLowerCase().includes(q) || m.brandName.toLowerCase().includes(q) || m.class.toLowerCase().includes(q);
@@ -761,7 +788,7 @@ function renderDrugTable() {
   const meds  = visibleMeds();
   const tbody = document.getElementById('main-tbody');
   const showSE = !!sideEffectSort;
-  const colCount = showSE ? 15 : 14;
+  const colCount = showSE ? 16 : 15;
 
   tbody.innerHTML = meds.map(m => {
     const renal = m.renalImpairment.modified
@@ -786,6 +813,14 @@ function renderDrugTable() {
       : `<span class="no-badge">${m.mechanism ? 'See mechanism' : '—'}</span>`;
 
     const synapticHTML = synapticCell(m.id);
+
+    const routeHTML = window.Routes
+      ? window.Routes.sorted(m.id).map(rt => {
+          const note = window.Routes.noteFor(m.id, rt);
+          const on = activeRoutes.has(rt) && activeRoutes.size < Object.keys(window.Routes.ROUTES).length;
+          return `<span class="route-badge${on ? ' route-badge--on' : ''}"${note ? ` title="${note.replace(/"/g, '&quot;')}"` : ''}>${window.Routes.short(rt)}</span>`;
+        }).join('')
+      : '—';
 
     let seCell = '';
     if (showSE) {
@@ -814,6 +849,7 @@ function renderDrugTable() {
       <td>${pb}</td>
       <td>${pregCell}</td>
       <td>${bfCell}</td>
+      <td class="col-route">${routeHTML}</td>
       <td>${synapticHTML}</td>
       <td>${chartBtn}</td>
     </tr>`;
