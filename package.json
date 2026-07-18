@@ -7,9 +7,10 @@
     "test:gad7-runtime": "node scripts/test-gad7-schema-runtime.js",
     "test:ess-msibpd-runtime": "node scripts/test-ess-msibpd-schema-runtime.js",
     "test:bprs-runtime": "node scripts/test-bprs-schema-runtime.js",
+    "test:pcl5-runtime": "node scripts/test-pcl5-schema-runtime.js",
     "check:sidebars": "python3 scripts/check-sidebars.py",
     "check:blog-sync": "python3 scripts/check-blog-sync.py",
-    "check": "npm run check:release && npm run check:clinical && npm run test:phq9-runtime && npm run test:gad7-runtime && npm run test:ess-msibpd-runtime && npm run test:bprs-runtime && npm run test:schema-scale-page-lazy-loader && npm run check:sidebars",
+    "check": "npm run check:release && npm run check:clinical && npm run test:phq9-runtime && npm run test:gad7-runtime && npm run test:ess-msibpd-runtime && npm run test:bprs-runtime && npm run test:pcl5-runtime && npm run test:schema-scale-page-lazy-loader && npm run check:sidebars",
     "check:full": "npm run check && npm run check:blog-sync"
   },
   "dependencies": {

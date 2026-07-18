@@ -60,6 +60,16 @@ const CASES = [
     expectedSeverity: 'Below Mild',
     requiredToolUtilsMethod: 'loadClinicalScale',
   },
+  {
+    label: 'PCL-5',
+    sectionId: 'pcl5-tool',
+    inputSelector: 'input[name="pc-item-1"][value="3"]',
+    scoreElementId: 'pc-total',
+    expectedScore: '3',
+    severityElementId: 'pc-severity',
+    expectedSeverity: 'Minimal symptoms (0-10)',
+    requiredToolUtilsMethod: 'loadClinicalScale',
+  },
 ];
 
 function assert(condition, message) {

@@ -93,6 +93,33 @@ function subscaleScoresForResponses(scale, responses) {
   return scores;
 }
 
+function diagnosticCriteriaForResponses(scale, responses) {
+  const results = {};
+  for (const criterion of scale.diagnostic_criteria || []) {
+    const endorsed = criterion.item_numbers.filter(itemNumber => {
+      return responses[itemNumber - 1] >= criterion.symptom_threshold;
+    }).length;
+    results[criterion.id] = {
+      endorsed,
+      met: endorsed >= criterion.min_endorsed,
+    };
+  }
+  return results;
+}
+
+function cutoffResultsForScore(scale, score) {
+  const results = {};
+  for (const cutoff of scale.cutoffs || []) {
+    if (cutoff.operator === 'greater_than_or_equal') {
+      const above = score >= cutoff.threshold;
+      results[cutoff.id] = above ? cutoff.report_label_above : cutoff.report_label_below;
+    } else {
+      errors.push(`${scale.id}: unsupported cutoff operator "${cutoff.operator}" on ${cutoff.id}`);
+    }
+  }
+  return results;
+}
+
 function validateBandCoverage(scale, fileRel) {
   const bands = [...scale.severity_bands].sort((a, b) => a.min - b.min);
   let expectedMin = scale.score.min;
@@ -110,6 +137,17 @@ function validateBandCoverage(scale, fileRel) {
   expect(expectedMin === scale.score.max + 1, `${fileRel}: severity bands stop at ${expectedMin - 1}; expected ${scale.score.max}`);
 }
 
+function validateItemNumberList(scale, fileRel, ownerLabel, itemNumbers) {
+  expect(Array.isArray(itemNumbers) && itemNumbers.length > 0, `${fileRel}: ${ownerLabel} needs item_numbers`);
+  const seen = new Set();
+  for (const itemNumber of itemNumbers || []) {
+    expect(Number.isInteger(itemNumber), `${fileRel}: ${ownerLabel} item_numbers must be integers`);
+    expect(itemNumber >= 1 && itemNumber <= scale.score.item_count, `${fileRel}: ${ownerLabel} item ${itemNumber} is out of range`);
+    expect(!seen.has(itemNumber), `${fileRel}: ${ownerLabel} repeats item ${itemNumber}`);
+    seen.add(itemNumber);
+  }
+}
+
 function validateSubscales(scale, fileRel) {
   if (scale.subscales === undefined) return;
   expect(Array.isArray(scale.subscales), `${fileRel}: subscales must be an array when present`);
@@ -121,14 +159,45 @@ function validateSubscales(scale, fileRel) {
     expect(!subscaleIds.has(subscale.id), `${fileRel}: duplicate subscale id "${subscale.id}"`);
     if (subscale.id) subscaleIds.add(subscale.id);
 
-    expect(Array.isArray(subscale.item_numbers) && subscale.item_numbers.length > 0, `${fileRel}: subscale ${subscale.id || 'unknown'} needs item_numbers`);
-    const itemNumbers = new Set();
-    for (const itemNumber of subscale.item_numbers || []) {
-      expect(Number.isInteger(itemNumber), `${fileRel}: subscale ${subscale.id || 'unknown'} item_numbers must be integers`);
-      expect(itemNumber >= 1 && itemNumber <= scale.score.item_count, `${fileRel}: subscale ${subscale.id || 'unknown'} item ${itemNumber} is out of range`);
-      expect(!itemNumbers.has(itemNumber), `${fileRel}: subscale ${subscale.id || 'unknown'} repeats item ${itemNumber}`);
-      itemNumbers.add(itemNumber);
+    validateItemNumberList(scale, fileRel, `subscale ${subscale.id || 'unknown'}`, subscale.item_numbers);
+    if (subscale.max !== undefined) {
+      expect(Number.isInteger(subscale.max), `${fileRel}: subscale ${subscale.id || 'unknown'} max must be an integer`);
     }
+  }
+}
+
+function validateDiagnosticCriteria(scale, fileRel, optionValues) {
+  if (scale.diagnostic_criteria === undefined) return;
+  expect(Array.isArray(scale.diagnostic_criteria), `${fileRel}: diagnostic_criteria must be an array when present`);
+
+  const criterionIds = new Set();
+  for (const criterion of scale.diagnostic_criteria || []) {
+    expect(isNonEmptyString(criterion.id), `${fileRel}: every diagnostic criterion needs id`);
+    expect(isNonEmptyString(criterion.label), `${fileRel}: diagnostic criterion ${criterion.id || 'unknown'} needs label`);
+    expect(!criterionIds.has(criterion.id), `${fileRel}: duplicate diagnostic criterion id "${criterion.id}"`);
+    if (criterion.id) criterionIds.add(criterion.id);
+
+    validateItemNumberList(scale, fileRel, `diagnostic criterion ${criterion.id || 'unknown'}`, criterion.item_numbers);
+    expect(optionValues.has(criterion.symptom_threshold), `${fileRel}: diagnostic criterion ${criterion.id || 'unknown'} symptom_threshold must be a valid option`);
+    expect(Number.isInteger(criterion.min_endorsed), `${fileRel}: diagnostic criterion ${criterion.id || 'unknown'} needs integer min_endorsed`);
+    expect(criterion.min_endorsed >= 1 && criterion.min_endorsed <= criterion.item_numbers.length, `${fileRel}: diagnostic criterion ${criterion.id || 'unknown'} min_endorsed is out of range`);
+  }
+}
+
+function validateCutoffs(scale, fileRel) {
+  if (scale.cutoffs === undefined) return;
+  expect(Array.isArray(scale.cutoffs), `${fileRel}: cutoffs must be an array when present`);
+
+  const cutoffIds = new Set();
+  for (const cutoff of scale.cutoffs || []) {
+    expect(isNonEmptyString(cutoff.id), `${fileRel}: every cutoff needs id`);
+    expect(!cutoffIds.has(cutoff.id), `${fileRel}: duplicate cutoff id "${cutoff.id}"`);
+    if (cutoff.id) cutoffIds.add(cutoff.id);
+    expect(cutoff.operator === 'greater_than_or_equal', `${fileRel}: cutoff ${cutoff.id || 'unknown'} uses unsupported operator "${cutoff.operator}"`);
+    expect(Number.isInteger(cutoff.threshold), `${fileRel}: cutoff ${cutoff.id || 'unknown'} threshold must be an integer`);
+    expect(cutoff.threshold >= scale.score.min && cutoff.threshold <= scale.score.max, `${fileRel}: cutoff ${cutoff.id || 'unknown'} threshold is out of score range`);
+    expect(isNonEmptyString(cutoff.report_label_above), `${fileRel}: cutoff ${cutoff.id || 'unknown'} needs report_label_above`);
+    expect(isNonEmptyString(cutoff.report_label_below), `${fileRel}: cutoff ${cutoff.id || 'unknown'} needs report_label_below`);
   }
 }
 
@@ -180,6 +249,8 @@ function validateScale(scale, filePath, sources) {
   expect(Array.isArray(scale.severity_bands) && scale.severity_bands.length > 0, `${fileRel}: severity_bands must be a non-empty array`);
   validateBandCoverage(scale, fileRel);
   validateSubscales(scale, fileRel);
+  validateDiagnosticCriteria(scale, fileRel, optionValues);
+  validateCutoffs(scale, fileRel);
 
   for (const vector of scale.test_vectors || []) {
     expect(Array.isArray(vector.responses), `${fileRel}: test vector "${vector.name}" needs responses array`);
@@ -192,6 +263,8 @@ function validateScale(scale, filePath, sources) {
     const severity = severityForScore(scale, score);
     const flags = safetyFlagsForResponses(scale, vector.responses);
     const subscales = subscaleScoresForResponses(scale, vector.responses);
+    const criteria = diagnosticCriteriaForResponses(scale, vector.responses);
+    const cutoffs = cutoffResultsForScore(scale, score);
 
     expect(score === vector.expected_score, `${fileRel}: test vector "${vector.name}" expected score ${vector.expected_score}, got ${score}`);
     expect(severity && severity.label === vector.expected_severity, `${fileRel}: test vector "${vector.name}" expected severity ${vector.expected_severity}, got ${severity ? severity.label : 'none'}`);
@@ -199,6 +272,19 @@ function validateScale(scale, filePath, sources) {
 
     for (const [subscaleId, expectedScore] of Object.entries(vector.expected_subscales || {})) {
       expect(subscales[subscaleId] === expectedScore, `${fileRel}: test vector "${vector.name}" subscale ${subscaleId} expected ${expectedScore}, got ${subscales[subscaleId]}`);
+    }
+
+    for (const [criterionId, expected] of Object.entries(vector.expected_criteria || {})) {
+      const actual = criteria[criterionId];
+      expect(Boolean(actual), `${fileRel}: test vector "${vector.name}" references unknown criterion ${criterionId}`);
+      if (actual) {
+        expect(actual.endorsed === expected.endorsed, `${fileRel}: test vector "${vector.name}" criterion ${criterionId} endorsed expected ${expected.endorsed}, got ${actual.endorsed}`);
+        expect(actual.met === expected.met, `${fileRel}: test vector "${vector.name}" criterion ${criterionId} met expected ${expected.met}, got ${actual.met}`);
+      }
+    }
+
+    for (const [cutoffId, expected] of Object.entries(vector.expected_cutoffs || {})) {
+      expect(cutoffs[cutoffId] === expected, `${fileRel}: test vector "${vector.name}" cutoff ${cutoffId} expected ${expected}, got ${cutoffs[cutoffId]}`);
     }
   }
 

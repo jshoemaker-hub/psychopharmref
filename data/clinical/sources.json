@@ -52,5 +52,23 @@
     "review_status": "source-cited",
     "last_reviewed": "2026-07-18",
     "notes": "Severity anchor source cited by the BPRS tool report. PMID: 16199797. DOI: 10.1192/bjp.187.4.366."
+  },
+  {
+    "id": "national-center-ptsd-pcl5",
+    "label": "U.S. Department of Veterans Affairs, National Center for PTSD. PTSD Checklist for DSM-5 (PCL-5).",
+    "type": "clinical_resource",
+    "year": 2026,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Official scoring and interpretation resource cited by the PCL-5 tool report. URL: https://www.ptsd.va.gov/professional/assessment/adult-sr/ptsd-checklist.asp."
+  },
+  {
+    "id": "blevins-2015-pcl5",
+    "label": "Blevins CA, Weathers FW, Davis MT, Witte TK, Domino JL. The Posttraumatic Stress Disorder Checklist for DSM-5 (PCL-5): Development and initial psychometric evaluation. J Trauma Stress. 2015;28(6):489-498.",
+    "type": "journal_article",
+    "year": 2015,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Psychometric source cited by the PCL-5 tool report. PMID: 26606250. DOI: 10.1002/jts.22059."
   }
 ]

@@ -1,0 +1,249 @@
+{
+  "id": "pcl5",
+  "tool_section_id": "pcl5-tool",
+  "title": "PTSD Checklist for DSM-5",
+  "short_title": "PCL-5",
+  "domain": "ptsd",
+  "status": "pilot-source-of-truth",
+  "last_reviewed": "2026-07-18",
+  "source_ids": ["national-center-ptsd-pcl5", "blevins-2015-pcl5"],
+  "instructions": "In the past month, indicate how much you have been bothered by each problem in response to a very stressful experience.",
+  "score": {
+    "min": 0,
+    "max": 80,
+    "item_count": 20,
+    "method": "sum",
+    "missing_response_policy": "unanswered items score 0 in the current runtime; interpret only with clinical context"
+  },
+  "options": [
+    { "value": 0, "label": "Not at all" },
+    { "value": 1, "label": "A little bit" },
+    { "value": 2, "label": "Moderately" },
+    { "value": 3, "label": "Quite a bit" },
+    { "value": 4, "label": "Extremely" }
+  ],
+  "items": [
+    {
+      "id": "pcl5-1",
+      "number": 1,
+      "text": "Repeated, disturbing, and unwanted memories of the stressful experience",
+      "cluster": "b"
+    },
+    {
+      "id": "pcl5-2",
+      "number": 2,
+      "text": "Repeated, disturbing dreams of the stressful experience",
+      "cluster": "b"
+    },
+    {
+      "id": "pcl5-3",
+      "number": 3,
+      "text": "Feeling as if the stressful experience were actually happening again",
+      "cluster": "b"
+    },
+    {
+      "id": "pcl5-4",
+      "number": 4,
+      "text": "Feeling very upset when reminded of the stressful experience",
+      "cluster": "b"
+    },
+    {
+      "id": "pcl5-5",
+      "number": 5,
+      "text": "Strong physical reactions when reminded of the stressful experience",
+      "cluster": "b"
+    },
+    {
+      "id": "pcl5-6",
+      "number": 6,
+      "text": "Avoiding memories, thoughts, or feelings related to the stressful experience",
+      "cluster": "c"
+    },
+    {
+      "id": "pcl5-7",
+      "number": 7,
+      "text": "Avoiding external reminders of the stressful experience",
+      "cluster": "c"
+    },
+    {
+      "id": "pcl5-8",
+      "number": 8,
+      "text": "Trouble remembering important parts of the stressful experience",
+      "cluster": "d"
+    },
+    {
+      "id": "pcl5-9",
+      "number": 9,
+      "text": "Strong negative beliefs about yourself, other people, or the world",
+      "cluster": "d"
+    },
+    {
+      "id": "pcl5-10",
+      "number": 10,
+      "text": "Blaming yourself or someone else for the stressful experience or what happened after it",
+      "cluster": "d"
+    },
+    {
+      "id": "pcl5-11",
+      "number": 11,
+      "text": "Strong negative feelings such as fear, horror, anger, guilt, or shame",
+      "cluster": "d"
+    },
+    {
+      "id": "pcl5-12",
+      "number": 12,
+      "text": "Loss of interest in activities that you used to enjoy",
+      "cluster": "d"
+    },
+    {
+      "id": "pcl5-13",
+      "number": 13,
+      "text": "Feeling distant or cut off from other people",
+      "cluster": "d"
+    },
+    {
+      "id": "pcl5-14",
+      "number": 14,
+      "text": "Trouble experiencing positive feelings",
+      "cluster": "d"
+    },
+    {
+      "id": "pcl5-15",
+      "number": 15,
+      "text": "Irritable behavior, angry outbursts, or acting aggressively",
+      "cluster": "e"
+    },
+    {
+      "id": "pcl5-16",
+      "number": 16,
+      "text": "Taking too many risks or doing things that could cause you harm",
+      "cluster": "e"
+    },
+    {
+      "id": "pcl5-17",
+      "number": 17,
+      "text": "Being superalert, watchful, or on guard",
+      "cluster": "e"
+    },
+    {
+      "id": "pcl5-18",
+      "number": 18,
+      "text": "Feeling jumpy or easily startled",
+      "cluster": "e"
+    },
+    {
+      "id": "pcl5-19",
+      "number": 19,
+      "text": "Having difficulty concentrating",
+      "cluster": "e"
+    },
+    {
+      "id": "pcl5-20",
+      "number": 20,
+      "text": "Trouble falling or staying asleep",
+      "cluster": "e"
+    }
+  ],
+  "subscales": [
+    { "id": "cluster-b", "label": "Cluster B - Intrusion", "report_label": "B - Intrusion", "item_numbers": [1, 2, 3, 4, 5], "max": 20, "display_element_id": "pc-clusterB" },
+    { "id": "cluster-c", "label": "Cluster C - Avoidance", "report_label": "C - Avoidance", "item_numbers": [6, 7], "max": 8, "display_element_id": "pc-clusterC" },
+    { "id": "cluster-d", "label": "Cluster D - Negative Cognitions/Mood", "report_label": "D - Negative Cognitions/Mood", "item_numbers": [8, 9, 10, 11, 12, 13, 14], "max": 28, "display_element_id": "pc-clusterD" },
+    { "id": "cluster-e", "label": "Cluster E - Arousal/Reactivity", "report_label": "E - Arousal/Reactivity", "item_numbers": [15, 16, 17, 18, 19, 20], "max": 24, "display_element_id": "pc-clusterE" }
+  ],
+  "diagnostic_criteria": [
+    { "id": "b", "label": "Criterion B", "report_label": "Criterion B (>=1 intrusion symptom)", "item_numbers": [1, 2, 3, 4, 5], "symptom_threshold": 2, "min_endorsed": 1, "display_element_id": "pc-crit-b", "count_element_id": "pc-crit-b-count" },
+    { "id": "c", "label": "Criterion C", "report_label": "Criterion C (>=1 avoidance symptom)", "item_numbers": [6, 7], "symptom_threshold": 2, "min_endorsed": 1, "display_element_id": "pc-crit-c", "count_element_id": "pc-crit-c-count" },
+    { "id": "d", "label": "Criterion D", "report_label": "Criterion D (>=2 negative cognition symptoms)", "item_numbers": [8, 9, 10, 11, 12, 13, 14], "symptom_threshold": 2, "min_endorsed": 2, "display_element_id": "pc-crit-d", "count_element_id": "pc-crit-d-count" },
+    { "id": "e", "label": "Criterion E", "report_label": "Criterion E (>=2 arousal symptoms)", "item_numbers": [15, 16, 17, 18, 19, 20], "symptom_threshold": 2, "min_endorsed": 2, "display_element_id": "pc-crit-e", "count_element_id": "pc-crit-e-count" }
+  ],
+  "cutoffs": [
+    {
+      "id": "probable-ptsd",
+      "threshold": 33,
+      "operator": "greater_than_or_equal",
+      "label_above": "Above threshold (>=33)",
+      "label_below": "Below threshold (<33)",
+      "report_label_above": "Above threshold",
+      "report_label_below": "Below threshold",
+      "display_element_id": "pc-cutoff",
+      "note": "Initial research suggests a PCL-5 cutoff score between 31 and 33 is indicative of probable PTSD across samples; this tool displays >=33."
+    }
+  ],
+  "severity_bands": [
+    { "min": 0, "max": 10, "label": "Minimal symptoms (0-10)", "class": "pc-severity-minimal", "action": "Low current self-reported PTSD symptom burden; interpret in context of trauma exposure and clinical interview" },
+    { "min": 11, "max": 20, "label": "Mild symptoms (11-20)", "class": "pc-severity-mild", "action": "Mild current self-reported PTSD symptom burden; monitor clinically if trauma-related impairment is present" },
+    { "min": 21, "max": 32, "label": "Moderate symptoms (21-32)", "class": "pc-severity-moderate", "action": "Moderate current self-reported PTSD symptom burden; consider further assessment" },
+    { "min": 33, "max": 51, "label": "Moderately severe symptoms (33-51)", "class": "pc-severity-moderately-severe", "action": "At or above this tool's probable PTSD cutoff; further clinical assessment recommended" },
+    { "min": 52, "max": 80, "label": "Severe symptoms (52-80)", "class": "pc-severity-severe", "action": "High current self-reported PTSD symptom burden; further clinical assessment recommended" }
+  ],
+  "report": {
+    "heading": "PCL-5 (PTSD Checklist for DSM-5)",
+    "scoring_note": "Scoring: total symptom severity score ranges 0-80; DSM-5 cluster scores are B items 1-5, C items 6-7, D items 8-14, and E items 15-20.",
+    "screening_note": "Provisional PTSD diagnosis: count each item rated 2 or higher as endorsed, requiring at least 1 B item, 1 C item, 2 D items, and 2 E items. PCL-5 results require clinical confirmation; CAPS-5 is the diagnostic gold standard."
+  },
+  "test_vectors": [
+    {
+      "name": "all_zero",
+      "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 0,
+      "expected_severity": "Minimal symptoms (0-10)",
+      "expected_subscales": {
+        "cluster-b": 0,
+        "cluster-c": 0,
+        "cluster-d": 0,
+        "cluster-e": 0
+      },
+      "expected_criteria": {
+        "b": { "endorsed": 0, "met": false },
+        "c": { "endorsed": 0, "met": false },
+        "d": { "endorsed": 0, "met": false },
+        "e": { "endorsed": 0, "met": false }
+      },
+      "expected_cutoffs": {
+        "probable-ptsd": "Below threshold"
+      }
+    },
+    {
+      "name": "cutoff_and_criteria_met",
+      "responses": [3, 0, 0, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4],
+      "expected_score": 33,
+      "expected_severity": "Moderately severe symptoms (33-51)",
+      "expected_subscales": {
+        "cluster-b": 3,
+        "cluster-c": 2,
+        "cluster-d": 4,
+        "cluster-e": 24
+      },
+      "expected_criteria": {
+        "b": { "endorsed": 1, "met": true },
+        "c": { "endorsed": 1, "met": true },
+        "d": { "endorsed": 2, "met": true },
+        "e": { "endorsed": 6, "met": true }
+      },
+      "expected_cutoffs": {
+        "probable-ptsd": "Above threshold"
+      }
+    },
+    {
+      "name": "below_cutoff_partial_criteria",
+      "responses": [2, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 6,
+      "expected_severity": "Minimal symptoms (0-10)",
+      "expected_subscales": {
+        "cluster-b": 4,
+        "cluster-c": 0,
+        "cluster-d": 2,
+        "cluster-e": 0
+      },
+      "expected_criteria": {
+        "b": { "endorsed": 2, "met": true },
+        "c": { "endorsed": 0, "met": false },
+        "d": { "endorsed": 1, "met": false },
+        "e": { "endorsed": 0, "met": false }
+      },
+      "expected_cutoffs": {
+        "probable-ptsd": "Below threshold"
+      }
+    }
+  ]
+}
