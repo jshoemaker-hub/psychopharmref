@@ -263,3 +263,31 @@
   border-radius: 6px; padding: 0.45rem 0.6rem; margin: 0.4rem 0 0.1rem;
 }
 .cm-rescue strong { color: #b05a20; }
+
+/* ── Cascade tier, safety flags & exclusions (Phase 3) ─────────────────────*/
+.cm-combos { margin-top: 1.25rem; }
+.cm-tiernote {
+  font-size: 0.83rem; line-height: 1.45; color: var(--text);
+  background: #f1f4ec; border-left: 3px solid var(--accent);
+  border-radius: 6px; padding: 0.45rem 0.6rem; margin: 0.4rem 0 0.1rem;
+}
+.cm-tiernote strong { color: var(--accent); }
+.cm-safety {
+  display: flex; gap: 0.45rem; align-items: flex-start;
+  font-size: 0.82rem; line-height: 1.45; border-radius: 6px;
+  padding: 0.45rem 0.6rem; margin: 0.4rem 0 0.1rem;
+}
+.cm-safety--caution { background: #fdf6e8; border: 1px solid #e0cfa4; color: var(--text); }
+.cm-safety--contraindicated { background: #fbeeea; border: 1px solid #e3b5a8; color: var(--text); }
+.cm-safety-badge { font-weight: 800; color: #b05a20; flex: 0 0 auto; }
+.cm-safety--contraindicated .cm-safety-badge { color: var(--red); }
+.cm-excluded {
+  border: 1px solid #e3b5a8; border-radius: 10px; background: #fdf5f3;
+  padding: 0.85rem 1rem; margin: 1rem 0 1.25rem;
+}
+.cm-excluded-title { font-size: 0.95rem; font-weight: 800; color: var(--red); margin-bottom: 0.2rem; }
+.cm-excluded-sub { font-size: 0.8rem; color: var(--text); opacity: 0.75; line-height: 1.45; margin-bottom: 0.6rem; }
+.cm-excl-item { border-top: 1px solid #eddcd6; padding-top: 0.5rem; margin-top: 0.5rem; }
+.cm-excl-name { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+.cm-excl-reason { font-size: 0.82rem; line-height: 1.45; color: var(--text); opacity: 0.9; margin-top: 0.2rem; }
+.cm-excl-reason strong { color: var(--red); }

@@ -89,34 +89,53 @@
   // Sliders hold raw 0–100 values; the score normalizes them to sum to 1.
   function readWeights() {
     function v(id, dflt) { var el = document.getElementById(id); return el ? (parseFloat(el.value) || 0) : dflt; }
-    return { d: v('cm-w-divergence', 35), a: v('cm-w-action', 20), c: v('cm-w-class', 20), i: v('cm-w-indication', 25) };
+    return { d: v('cm-w-divergence', 30), a: v('cm-w-action', 15), t: v('cm-w-tier', 15),
+             c: v('cm-w-class', 15), i: v('cm-w-indication', 25) };
   }
   function normWeights() {
     var raw = readWeights();
-    var wD = raw.d, wA = raw.a, wC = raw.c, wI = raw.i;
-    var sum = wD + wA + wC + wI;
-    if (sum <= 0) { wD = 35; wA = 20; wC = 20; wI = 25; sum = 100; }
-    return { wD: wD / sum, wA: wA / sum, wC: wC / sum, wI: wI / sum };
+    var wD = raw.d, wA = raw.a, wT = raw.t, wC = raw.c, wI = raw.i;
+    var sum = wD + wA + wT + wC + wI;
+    if (sum <= 0) { wD = 30; wA = 15; wT = 15; wC = 15; wI = 25; sum = 100; }
+    return { wD: wD / sum, wA: wA / sum, wT: wT / sum, wC: wC / sum, wI: wI / sum };
   }
 
   function score(ref, cand, act) {
     var w = normWeights();
-    var wD = w.wD, wA = w.wA, wC = w.wC, wI = w.wI;
-    var cos = cosine(fingerprint(ref), fingerprint(cand));
-    var div = 1 - cos;                                   // receptor divergence
+    // Receptor and action divergence require binding data on BOTH agents. An
+    // absent fingerprint is unknown, not divergent — scoring it as maximally
+    // different would rank lithium top of every list for the wrong reason.
+    var both = hasKi(ref) && hasKi(cand);
+    var cos = both ? cosine(fingerprint(ref), fingerprint(cand)) : null;
+    var div = both ? (1 - cos) : null;
     var cMatch = (ref.class === cand.class) ? 1 : (ref.category === cand.category ? 0.7 : 0);
     var iMatch = jaccard(ref, cand);
     var aInfo = act || actionInfo(ref, cand);
-    // When the pair shares no characterized receptor, action divergence does not
-    // apply — fold its weight into receptor divergence rather than scoring a 0
-    // against a dimension that cannot be measured.
-    var aDiv = aInfo.score, wDe = wD, wAe = wA;
-    if (aDiv === null) { wDe = wD + wA; wAe = 0; aDiv = 0; }
+    var MT = window.MechanismTiers;
+    var tDiv = MT ? MT.divergence(ref.id, cand.id) : null;
+
+    // Any axis that cannot be measured for this pair is dropped and its weight
+    // redistributed proportionally across the axes that CAN be — so a pair is
+    // never penalised for a dimension that does not apply to it.
+    var axes = [
+      { k: 'div', w: w.wD, v: div },
+      { k: 'act', w: w.wA, v: aInfo.score },
+      { k: 'tier', w: w.wT, v: tDiv },
+      { k: 'class', w: w.wC, v: cMatch },
+      { k: 'ind', w: w.wI, v: iMatch }
+    ];
+    var live = axes.filter(function (a) { return a.v !== null; });
+    var wSum = live.reduce(function (t, a) { return t + a.w; }, 0);
+    var total = 0, eff = {};
+    if (wSum > 0) {
+      live.forEach(function (a) { eff[a.k] = a.w / wSum; total += (a.w / wSum) * a.v; });
+    }
     return {
-      total: 100 * (wDe * div + wAe * aDiv + wC * cMatch + wI * iMatch),
+      total: 100 * total,
       div: div, cos: cos, cMatch: cMatch, iMatch: iMatch,
-      aDiv: aInfo.score, contrasts: aInfo.contrasts,
-      wD: wDe, wA: wAe, wC: wC, wI: wI
+      aDiv: aInfo.score, contrasts: aInfo.contrasts, tDiv: tDiv,
+      wD: eff.div || 0, wA: eff.act || 0, wT: eff.tier || 0,
+      wC: eff['class'] || 0, wI: eff.ind || 0
     };
   }
 
@@ -267,6 +286,24 @@
     return '<span class="cm-chip" style="--cm-chip:' + c + '">' + esc(r) + '</span>';
   }
 
+  // Contraindicated pairs — reported so the reasoning is visible, never ranked.
+  function excludedBlock(ref) {
+    if (!lastExcluded || !lastExcluded.length) return '';
+    var html = '<div class="cm-excluded"><div class="cm-excluded-title">&#10006; Excluded as contraindicated with '
+      + esc(ref.name) + '</div>'
+      + '<div class="cm-excluded-sub">These agents share an indication with ' + esc(ref.name)
+      + ' and would otherwise rank, but must not be combined. They are listed so the reasoning is visible '
+      + '&mdash; not as options.</div>';
+    lastExcluded.forEach(function (x) {
+      html += '<div class="cm-excl-item"><span class="cm-excl-name">' + esc(x.med.name) + '</span>';
+      x.reasons.forEach(function (rs) {
+        html += '<div class="cm-excl-reason"><strong>' + esc(rs.title) + '.</strong> ' + esc(rs.detail) + '</div>';
+      });
+      html += '</div>';
+    });
+    return html + '</div>';
+  }
+
   // Action contrast: same receptor, different functional action.
   function actxChip(c) {
     var RA = window.ReceptorActions;
@@ -383,7 +420,7 @@
   }
 
   // ── State ────────────────────────────────────────────────────────────────
-  var lastRanked = null, lastRef = null, lastSameCat = true;
+  var lastRanked = null, lastRef = null, lastSameCat = true, lastExcluded = [];
   var STEP = 3;            // how many results per "show more" click
   var shownCount = STEP;   // how many are currently displayed
 
@@ -416,8 +453,27 @@
     var cand = MEDICATIONS.filter(function (m) { return m.id !== refId; });
     if (sameCat) cand = cand.filter(function (m) { return m.category === ref.category; });
     var refFp = fingerprint(ref);
+    var excluded = [];
     cand = cand.filter(function (m) {
-      if (!hasKi(m) || sharedIndications(ref, m).length === 0) return false;
+      if (sharedIndications(ref, m).length === 0) return false;
+
+      // Safety gate first: a contraindicated pair is never ranked, however
+      // mechanistically complementary it may look. It is reported separately.
+      var PS = window.PairSafety;
+      if (PS) {
+        var chk = PS.check(ref, m);
+        if (chk.severity === 'contraindicated') {
+          excluded.push({ med: m, reasons: chk.reasons });
+          return false;
+        }
+      }
+
+      // Agents with no receptor-binding data (lithium, valproate, esketamine…)
+      // cannot be assessed on the receptor axes at all — they qualify on the
+      // cascade-tier axis instead, so admit them and let score() drop the
+      // inapplicable dimensions.
+      if (!hasKi(ref) || !hasKi(m)) return true;
+
       if (cosine(refFp, fingerprint(m)) <= OVERLAP_CEILING) return true;
       // High receptor overlap, but do they ACT differently at those receptors?
       var a = actionInfo(ref, m);
@@ -428,7 +484,8 @@
       var act = actionInfo(ref, c);
       return {
         med: c, s: score(ref, c, act), act: act,
-        rescued: cosine(refFp, fingerprint(c)) > OVERLAP_CEILING,
+        rescued: hasKi(ref) && hasKi(c) && cosine(refFp, fingerprint(c)) > OVERLAP_CEILING,
+        safety: window.PairSafety ? window.PairSafety.check(ref, c) : null,
         added: addedTargets(ref, c),
         refOnly: refOnlyTargets(ref, c),
         inds: sharedIndications(ref, c),
@@ -437,8 +494,7 @@
       };
     }).sort(function (a, b) { return b.s.total - a.s.total; });
 
-    // No receptor data → no computed ranking (render shows curated combos only).
-    if (!hasKi(ref)) ranked = [];
+    lastExcluded = excluded;
     lastRanked = ranked; lastRef = ref; lastSameCat = sameCat;
     shownCount = STEP;               // reset to first three on every new search
     render(ref, ranked, sameCat);
@@ -450,38 +506,42 @@
     var top = ranked.slice(0, shownN);
     var html = '';
 
-    // Reference banner
-    html += '<div class="cm-ref-banner">'
+    // Reference banner leads; the curated combinations card is held back and
+    // rendered BELOW the ranked options.
+    var refBanner = '<div class="cm-ref-banner">'
       + '<span class="cm-ref-tag">Reference</span>'
       + '<span class="cm-ref-name">' + esc(ref.name) + '</span>'
       + '<span class="cm-ref-brand">' + esc(ref.brandName) + '</span>'
       + '<span class="cm-ref-class">' + esc(ref.class) + ' · ' + esc(ref.category) + '</span>'
       + '</div>';
+    html += refBanner;
 
-    // Curated evidence-based combinations — shown first, and even when the
-    // reference has no receptor-binding data (e.g. lithium, valproate).
+
+    // Curated evidence-based combinations — built now, emitted after the ranked
+    // options. Still shown when the reference has no receptor-binding data.
     var combos = combosBlock(ref);
-    if (combos) html += combos;
 
     if (!hasKi(ref)) {
       html += '<div class="cm-note-inline">Receptor-binding data is not on file for ' + esc(ref.name)
-        + ' (its mechanism lies outside the monoamine receptor set), so the computed receptor-divergence ranking below cannot be generated. '
-        + (combos ? 'The curated combinations above still apply.' : 'The complementary-agent search requires a reference with receptor-binding data.') + '</div>';
-      if (combos) {
-        html += '<div class="cm-actions"><button class="btn-primary cm-report-btn" id="cm-report-btn">Copy Summary</button></div>';
-      }
-      results.innerHTML = html;
-      results.style.display = '';
-      var rb = document.getElementById('cm-report-btn');
-      if (rb) rb.addEventListener('click', function () { copyReport(this); });
-      return;
+        + ' — its mechanism lies outside the monoamine receptor set, so the receptor- and action-divergence axes cannot be computed for this reference. '
+        + 'Ranking below falls back to signal-transduction tier, class and shared indications.</div>';
     }
 
     if (!top.length) {
-      html += '<div class="cm-note-inline">No eligible complementary agents found &mdash; candidates must share at least one indication with ' + esc(ref.name)
-        + ', have receptor-binding data on file, and diverge enough to differ mechanistically (receptor overlap &le; '
-        + Math.round(OVERLAP_CEILING * 100) + '%; more-similar agents belong in <em>Find Similar Medications</em>)'
-        + (sameCat ? '. Try unchecking &ldquo;Restrict to same category.&rdquo;' : '.') + '</div>';
+      var exOnly = excludedBlock(ref);
+      if (exOnly && lastExcluded.length) {
+        html += '<div class="cm-note-inline">No <em>rankable</em> complementary agents remain for ' + esc(ref.name)
+          + ' &mdash; every candidate sharing an indication is contraindicated in combination with it, for the reasons below.'
+          + (sameCat ? ' You can also try unchecking &ldquo;Restrict to same category.&rdquo;' : '') + '</div>';
+      } else {
+        html += '<div class="cm-note-inline">No eligible complementary agents found &mdash; candidates must share at least one indication with ' + esc(ref.name)
+          + ' and either diverge mechanistically (receptor overlap &le; ' + Math.round(OVERLAP_CEILING * 100)
+          + '%; more-similar agents belong in <em>Find Similar Medications</em>), act differently at shared receptors, '
+          + 'or work at a different signal-transduction tier'
+          + (sameCat ? '. Try unchecking &ldquo;Restrict to same category.&rdquo;' : '.') + '</div>';
+      }
+      html += combos;
+      html += exOnly;
       results.innerHTML = html;
       results.style.display = '';
       return;
@@ -522,7 +582,13 @@
       html += flagsBlock(ref, row);
 
       html += '<div class="cm-metrics">';
-      html += bar('Receptor divergence', s.div, 'weight ' + Math.round(s.wD * 100) + '% · ' + Math.round(s.cos * 100) + '% receptor overlap');
+      if (s.div !== null) {
+        html += bar('Receptor divergence', s.div, 'weight ' + Math.round(s.wD * 100) + '% · ' + Math.round(s.cos * 100) + '% receptor overlap');
+      } else {
+        html += '<div class="cm-metric cm-metric--na"><div class="cm-metric-top">'
+          + '<span class="cm-metric-label">Receptor divergence</span><span class="cm-metric-val">n/a</span></div>'
+          + '<div class="cm-metric-note">no receptor-binding data on file for one of the pair</div></div>';
+      }
       if (s.aDiv !== null) {
         var nSh = row.act ? row.act.contrasts.length : 0;
         html += bar('Action divergence', s.aDiv, 'weight ' + Math.round(s.wA * 100) + '% · '
@@ -532,10 +598,26 @@
           + '<span class="cm-metric-label">Action divergence</span><span class="cm-metric-val">n/a</span></div>'
           + '<div class="cm-metric-note">no shared receptor with a characterized action &mdash; weight folded into receptor divergence</div></div>';
       }
+      if (s.tDiv !== null) {
+        var MT = window.MechanismTiers;
+        html += bar('Cascade-tier divergence', s.tDiv, 'weight ' + Math.round(s.wT * 100) + '% · '
+          + esc(MT.labelList(ref.id).join('/')) + ' vs ' + esc(MT.labelList(m.id).join('/')));
+      }
       html += bar('Class match', s.cMatch, 'weight ' + Math.round(s.wC * 100) + '%');
       html += bar('Shared indications', s.iMatch, 'weight ' + Math.round(s.wI * 100) + '%');
       html += '</div>';
 
+      var MTn = window.MechanismTiers ? window.MechanismTiers.noteFor(m.id) : null;
+      if (MTn) {
+        html += '<div class="cm-tiernote"><strong>Acts downstream:</strong> ' + esc(MTn) + '</div>';
+      }
+      if (row.safety && row.safety.reasons.length) {
+        row.safety.reasons.forEach(function (rs) {
+          html += '<div class="cm-safety cm-safety--' + esc(rs.severity) + '">'
+            + '<span class="cm-safety-badge">' + (rs.severity === 'contraindicated' ? '&#10006;' : '&#9888;') + '</span>'
+            + '<span><strong>' + esc(rs.title) + '.</strong> ' + esc(rs.detail) + '</span></div>';
+        });
+      }
       if (row.act && row.act.contrasts.length) {
         html += '<div class="cm-shared cm-shared--actx"><span class="cm-shared-label">Same receptor, different action:</span> '
           + row.act.contrasts.slice(0, 5).map(actxChip).join('') + '</div>';
@@ -556,8 +638,11 @@
     });
     html += '</div>';
 
+    // Curated evidence-based combinations, below the ranked options.
+    html += combos;
+
     // Receptor comparison table (reference + all shown candidates)
-    var cols = [ref].concat(top.map(function (r) { return r.med; }));
+    var cols = [ref].concat(top.map(function (r) { return r.med; })).filter(hasKi);
     var recSet = {};
     cols.forEach(function (m) {
       if (m.receptorKi) for (var r in m.receptorKi) { if (pKi(m.receptorKi[r]) >= 6) recSet[r] = 1; }
@@ -589,6 +674,8 @@
       });
       html += '</tbody></table></div>';
     }
+
+    html += excludedBlock(ref);
 
     // Clinical footnote + report button
     html += '<div class="cm-clinical">'
@@ -666,9 +753,13 @@
     top.forEach(function (row, i) {
       var m = row.med, s = row.s;
       t += (i + 1) + '. ' + m.name + ' (' + m.brandName + ') — ' + m.class + '  |  ' + Math.round(s.total) + '% complement\n';
-      t += '   Receptor divergence: ' + Math.round(s.div * 100) + '% (' + Math.round(s.cos * 100) + '% overlap)  ·  '
+      t += '   Receptor divergence: ' + (s.div === null ? 'n/a' : Math.round(s.div * 100) + '% (' + Math.round(s.cos * 100) + '% overlap)') + '  ·  '
+        + 'Cascade tier: ' + (s.tDiv === null ? 'n/a' : Math.round(s.tDiv * 100) + '%') + '  ·  '
         + 'Action divergence: ' + (s.aDiv === null ? 'n/a' : Math.round(s.aDiv * 100) + '%') + '  ·  '
         + 'Class: ' + Math.round(s.cMatch * 100) + '%  ·  Indications: ' + Math.round(s.iMatch * 100) + '%\n';
+      if (row.safety) row.safety.reasons.forEach(function (rs) {
+        t += '   ' + (rs.severity === 'contraindicated' ? 'CONTRAINDICATED' : 'CAUTION') + ' - ' + rs.title + ': ' + rs.detail + '\n';
+      });
       if (row.act && row.act.contrasts.length) {
         t += '   Same receptor, different action: ' + row.act.contrasts.slice(0, 5).map(function (c) {
           return c.r + ' ' + window.ReceptorActions.short(c.refAct) + ' -> ' + window.ReceptorActions.short(c.candAct);
@@ -685,6 +776,13 @@
       if (!row.qt && !row.p450.length) t += '   No additive QT or known P450 interaction.\n';
       t += '\n';
     });
+    if (lastExcluded && lastExcluded.length) {
+      t += 'EXCLUDED AS CONTRAINDICATED WITH ' + ref.name.toUpperCase() + ':\n';
+      lastExcluded.forEach(function (x) {
+        t += '  ' + x.med.name + ' — ' + x.reasons.map(function (r) { return r.title; }).join('; ') + '\n';
+      });
+      t += '\n';
+    }
     t += 'Note: Mechanistic complementarity is decision support only. Before combining agents, assess CYP450 interactions, additive serotonergic/QT/sedation/seizure risk, and whether optimizing monotherapy or switching is preferable.\n';
 
     if (window.ToolUtils && ToolUtils.copyWithButton) { ToolUtils.copyWithButton(t, btn); }
@@ -696,12 +794,13 @@
   }
 
   // Update the on-screen % labels to reflect the normalized effective weights.
-  var WEIGHT_IDS = ['cm-w-divergence', 'cm-w-action', 'cm-w-class', 'cm-w-indication'];
+  var WEIGHT_IDS = ['cm-w-divergence', 'cm-w-action', 'cm-w-tier', 'cm-w-class', 'cm-w-indication'];
   function refreshWeightLabels() {
     var w = normWeights();
     function set(id, frac) { var el = document.getElementById(id); if (el) el.textContent = Math.round(frac * 100) + '%'; }
     set('cm-w-divergence-val', w.wD);
     set('cm-w-action-val', w.wA);
+    set('cm-w-tier-val', w.wT);
     set('cm-w-class-val', w.wC);
     set('cm-w-indication-val', w.wI);
   }
