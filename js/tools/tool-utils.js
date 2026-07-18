@@ -114,7 +114,7 @@ var ToolUtils = (function() {
     });
   }
 
-  var clinicalDataVersion = '20260718f';
+  var clinicalDataVersion = '20260718g';
   var clinicalSourcesPromise = null;
   var clinicalScalePromises = {};
 

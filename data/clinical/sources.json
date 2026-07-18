@@ -187,5 +187,68 @@
     "review_status": "source-cited",
     "last_reviewed": "2026-07-18",
     "notes": "Published primary-care implementation table for the CIDI 0-9 risk-level bands used by this tool. DOI: 10.3122/jabfm.2012.03.110217."
+  },
+  {
+    "id": "morris-1993-cdr",
+    "label": "Morris JC. The Clinical Dementia Rating (CDR): current version and scoring rules. Neurology. 1993;43(11):2412-2414.",
+    "type": "journal_article",
+    "year": 1993,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Primary scoring rules source cited by the CDR staging tool report. DOI: 10.1212/WNL.43.11.2412-a."
+  },
+  {
+    "id": "tariq-2006-slums",
+    "label": "Tariq SH, Tumosa N, Chibnall JT, Perry HM III, Morley JE. The Saint Louis University Mental Status Examination for detecting mild neurocognitive disorder and dementia. Am J Geriatr Psychiatry. 2006;14(11):900-910.",
+    "type": "journal_article",
+    "year": 2006,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Primary validation source cited by the SLUMS tool report. PMID: 17068312. DOI: 10.1097/01.JGP.0000221510.33817.86."
+  },
+  {
+    "id": "slu-slums-exam",
+    "label": "Saint Louis University School of Medicine. Saint Louis University Mental Status (SLUMS) Exam.",
+    "type": "clinical_resource",
+    "year": 2026,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Official SLUMS exam resource cited by the SLUMS tool report. URL: https://www.slu.edu/medicine/internal-medicine/geriatric-medicine/aging-successfully/mental-status-exam.php."
+  },
+  {
+    "id": "katz-1963-adl",
+    "label": "Katz S, Ford AB, Moskowitz RW, Jackson BA, Jaffe MW. Studies of illness in the aged. The Index of ADL. JAMA. 1963;185:914-919.",
+    "type": "journal_article",
+    "year": 1963,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Foundational ADL index source cited by the ADL/IADL functional assessment report. PMID: 14044222. DOI: 10.1001/jama.1963.03060120024016."
+  },
+  {
+    "id": "lawton-1969-iadl",
+    "label": "Lawton MP, Brody EM. Assessment of older people: self-maintaining and instrumental activities of daily living. Gerontologist. 1969;9(3):179-186.",
+    "type": "journal_article",
+    "year": 1969,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Foundational IADL source cited by the ADL/IADL functional assessment report. PMID: 5349366. DOI: 10.1093/geront/9.3_Part_1.179."
+  },
+  {
+    "id": "etchells-1999-ace",
+    "label": "Etchells E, Darzins P, Silberfeld M, Singer PA, McKenny J, Naglie G, Katz M, Guyatt GH, Molloy DW, Strang D. Assessment of patient capacity to consent to treatment. J Gen Intern Med. 1999;14(1):27-34.",
+    "type": "journal_article",
+    "year": 1999,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Primary ACE development and evaluation source cited by the ACE tool report. PMID: 9893088. PMCID: PMC1496441. DOI: 10.1046/j.1525-1497.1999.00277.x."
+  },
+  {
+    "id": "jcb-ace",
+    "label": "Joint Centre for Bioethics and Canadian Network for the Prevention of Elder Abuse. Aid to Capacity Evaluation (ACE).",
+    "type": "clinical_resource",
+    "year": 2026,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Clinical ACE tool resource cited by the ACE tool report. URL: https://cnpea.ca/en/tools/practice-tools/387-aid-to-capacity-evaluation-ace."
   }
 ]

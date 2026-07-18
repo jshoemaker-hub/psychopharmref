@@ -26,6 +26,17 @@
 (function () {
   'use strict';
 
+  var scale = {
+    id: 'ace',
+    report: {
+      heading: 'AID TO CAPACITY EVALUATION (ACE)'
+    },
+    references: [
+      { label: 'Etchells E, Darzins P, Silberfeld M, Singer PA, McKenny J, Naglie G, Katz M, Guyatt GH, Molloy DW, Strang D. J Gen Intern Med. 1999;14(1):27-34.' },
+      { label: 'Joint Centre for Bioethics. Aid to Capacity Evaluation (ACE).' }
+    ]
+  };
+
   // ===== Domain definitions =====
   var domains = [
     {
@@ -115,6 +126,18 @@
     }
   ];
 
+  function applyScale(nextScale) {
+    if (!nextScale) return;
+    scale = nextScale;
+    if (Array.isArray(nextScale.domains) && nextScale.domains.length) {
+      domains = nextScale.domains;
+    }
+  }
+
+  if (window.ToolUtils && ToolUtils.loadClinicalScale) {
+    ToolUtils.loadClinicalScale('ace').then(applyScale).catch(function(){});
+  }
+
   // ===== Build domain UI =====
   function buildDomains() {
     var container = document.getElementById('ace-domains');
@@ -180,13 +203,20 @@
   function impressionLabel() {
     var checked = document.querySelector('input[name="ace-impression"]:checked');
     if (!checked) return '';
-    var map = {
-      'def-cap':   'Definitely Capable',
-      'prob-cap':  'Probably Capable',
-      'prob-inc':  'Probably Incapable',
-      'def-inc':   'Definitely Incapable'
-    };
-    return map[checked.value] || '';
+    var impressions = scale.overall_impressions || [
+      { value: 'def-cap', label: 'Definitely Capable' },
+      { value: 'prob-cap', label: 'Probably Capable' },
+      { value: 'prob-inc', label: 'Probably Incapable' },
+      { value: 'def-inc', label: 'Definitely Incapable' }
+    ];
+    var match = impressions.filter(function (item) { return item.value === checked.value; })[0];
+    return match ? match.label : '';
+  }
+
+  function referenceLines() {
+    return (scale.references || []).map(function (ref) {
+      return '  - ' + ref.label;
+    });
   }
 
   // ===== Generate report =====
@@ -200,7 +230,7 @@
     var impression = impressionLabel();
 
     var lines = [];
-    lines.push('AID TO CAPACITY EVALUATION (ACE)');
+    lines.push((scale.report && scale.report.heading) || 'AID TO CAPACITY EVALUATION (ACE)');
     lines.push('Date: ' + dateStr);
     if (minutes)  lines.push('Time to administer: ' + minutes + ' minutes');
     lines.push('');
@@ -239,6 +269,9 @@
     lines.push('  - People are presumed capable; if uncertain, err on the side of calling the person capable.');
     lines.push('  - A finding of incapacity should not rest solely on domains 7a/7b; obtain an independent assessment when depression or psychosis appears to drive the decision.');
     lines.push('  - If incapacity is suspected, address treatable/reversible causes (e.g., delirium, drug toxicity, pain, communication barriers) and re-assess.');
+    lines.push('');
+    lines.push('REFERENCES');
+    referenceLines().forEach(function (line) { lines.push(line); });
 
     var text = lines.join('\n');
     var pre = document.getElementById('ace-output-text');
@@ -252,11 +285,7 @@
 
   function copy() {
     var text = document.getElementById('ace-output-text').textContent;
-    var status = document.getElementById('ace-copy-status');
-    navigator.clipboard.writeText(text).then(function () {
-      status.classList.add('visible');
-      setTimeout(function () { status.classList.remove('visible'); }, 1800);
-    });
+    ToolUtils.copyWithButton(text, document.getElementById('ace-copy-btn'));
   }
 
   function reset() {

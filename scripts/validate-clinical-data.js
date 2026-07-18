@@ -214,6 +214,105 @@ function validateCutoffs(scale, fileRel) {
   }
 }
 
+function collectAssessmentItems(scale) {
+  const items = [];
+
+  if (Array.isArray(scale.items)) {
+    items.push(...scale.items);
+  }
+
+  for (const collectionName of ['domains', 'groups']) {
+    for (const group of scale[collectionName] || []) {
+      if (collectionName === 'domains' && group && typeof group === 'object' && !Array.isArray(group) && !Array.isArray(group.items)) {
+        items.push(group);
+      }
+      if (Array.isArray(group.items)) {
+        items.push(...group.items.filter(item => item && typeof item === 'object' && !Array.isArray(item)));
+      }
+    }
+  }
+
+  return items;
+}
+
+function validateAssessmentOptions(scale, fileRel) {
+  if (scale.options === undefined) return;
+  expect(Array.isArray(scale.options) && scale.options.length > 0, `${fileRel}: options must be a non-empty array when present`);
+
+  const optionValues = new Set();
+  for (const option of scale.options || []) {
+    expect(option.value !== undefined, `${fileRel}: every option needs value`);
+    expect(['string', 'number', 'boolean'].includes(typeof option.value), `${fileRel}: option values must be strings, numbers, or booleans`);
+    expect(isNonEmptyString(option.label), `${fileRel}: every option needs label`);
+    expect(!optionValues.has(option.value), `${fileRel}: duplicate option value ${option.value}`);
+    optionValues.add(option.value);
+  }
+}
+
+function validateAssessmentGroups(scale, fileRel, collectionName) {
+  if (scale[collectionName] === undefined) return;
+  expect(Array.isArray(scale[collectionName]), `${fileRel}: ${collectionName} must be an array when present`);
+
+  const ids = new Set();
+  for (const group of scale[collectionName] || []) {
+    expect(isNonEmptyString(group.id), `${fileRel}: every ${collectionName} entry needs id`);
+    expect(isNonEmptyString(group.label) || isNonEmptyString(group.title), `${fileRel}: ${collectionName} ${group.id || 'unknown'} needs label or title`);
+    expect(!ids.has(group.id), `${fileRel}: duplicate ${collectionName} id "${group.id}"`);
+    if (group.id) ids.add(group.id);
+  }
+}
+
+function validateAssessment(scale, filePath, sources) {
+  const fileRel = rel(filePath);
+  if (!scale) return;
+
+  expect(scale.schema_kind === 'clinical_assessment', `${fileRel}: schema_kind must be clinical_assessment`);
+  expect(isNonEmptyString(scale.id), `${fileRel}: missing id`);
+  expect(isNonEmptyString(scale.tool_section_id), `${fileRel}: missing tool_section_id`);
+  expect(isNonEmptyString(scale.title), `${fileRel}: missing title`);
+  expect(isNonEmptyString(scale.short_title), `${fileRel}: missing short_title`);
+  expect(isNonEmptyString(scale.last_reviewed), `${fileRel}: missing last_reviewed`);
+  expect(Array.isArray(scale.source_ids) && scale.source_ids.length > 0, `${fileRel}: source_ids must be a non-empty array`);
+
+  for (const sourceId of scale.source_ids || []) {
+    expect(sources.has(sourceId), `${fileRel}: unknown source_id "${sourceId}"`);
+  }
+
+  validateAssessmentOptions(scale, fileRel);
+  validateAssessmentGroups(scale, fileRel, 'domains');
+  validateAssessmentGroups(scale, fileRel, 'groups');
+
+  const items = collectAssessmentItems(scale);
+  expect(items.length > 0, `${fileRel}: clinical_assessment schemas need items, domain items, or group items`);
+
+  const itemIds = new Set();
+  items.forEach((item, index) => {
+    expect(isNonEmptyString(item.id), `${fileRel}: assessment item ${index + 1} needs id`);
+    expect(!itemIds.has(item.id), `${fileRel}: duplicate assessment item id "${item.id}"`);
+    if (item.id) itemIds.add(item.id);
+    expect(isNonEmptyString(item.text) || isNonEmptyString(item.label) || isNonEmptyString(item.title), `${fileRel}: assessment item ${item.id || index + 1} needs text, label, or title`);
+    if (item.score_values !== undefined) {
+      expect(Array.isArray(item.score_values) && item.score_values.length > 0, `${fileRel}: item ${item.id || index + 1} score_values must be a non-empty array`);
+      (item.score_values || []).forEach(value => {
+        expect(typeof value === 'number', `${fileRel}: item ${item.id || index + 1} score_values must be numeric`);
+      });
+    }
+  });
+
+  if (scale.report !== undefined) {
+    expect(isNonEmptyString(scale.report.heading), `${fileRel}: report.heading is required when report is present`);
+  }
+
+  for (const vector of scale.test_vectors || []) {
+    expect(isNonEmptyString(vector.name), `${fileRel}: every test vector needs name`);
+    if (vector.responses !== undefined) {
+      expect(typeof vector.responses === 'object' && !Array.isArray(vector.responses), `${fileRel}: assessment test vector "${vector.name}" responses must be an object`);
+    }
+  }
+
+  passes.push(`Validated ${scale.short_title} assessment schema (${items.length} items)`);
+}
+
 function validateScale(scale, filePath, sources) {
   const fileRel = rel(filePath);
   if (!scale) return;
@@ -359,7 +458,12 @@ function main() {
   expect(scaleFiles.length > 0, 'data/clinical/scales must contain at least one scale JSON file');
 
   for (const filePath of scaleFiles) {
-    validateScale(readJson(filePath), filePath, sources);
+    const scale = readJson(filePath);
+    if (scale && scale.schema_kind === 'clinical_assessment') {
+      validateAssessment(scale, filePath, sources);
+    } else {
+      validateScale(scale, filePath, sources);
+    }
   }
 
   for (const pass of passes) {

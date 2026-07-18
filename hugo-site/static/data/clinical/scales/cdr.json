@@ -1,0 +1,92 @@
+{
+  "id": "cdr",
+  "schema_kind": "clinical_assessment",
+  "tool_section_id": "cdr-tool",
+  "title": "Clinical Dementia Rating",
+  "short_title": "CDR",
+  "domain": "dementia staging",
+  "status": "pilot-source-of-truth",
+  "last_reviewed": "2026-07-18",
+  "source_ids": ["morris-1993-cdr"],
+  "instructions": "Clinician-rated staging instrument. Score decline from the person's prior usual level and derive the global CDR using memory as the primary category.",
+  "score": {
+    "method": "morris_global_algorithm",
+    "global_values": [0, 0.5, 1, 2, 3],
+    "sum_of_boxes_min": 0,
+    "sum_of_boxes_max": 18
+  },
+  "options": [
+    { "value": 0, "label": "None" },
+    { "value": 0.5, "label": "Questionable" },
+    { "value": 1, "label": "Mild" },
+    { "value": 2, "label": "Moderate" },
+    { "value": 3, "label": "Severe" }
+  ],
+  "domains": [
+    {
+      "id": "memory",
+      "label": "Memory",
+      "primary": true,
+      "score_values": [0, 0.5, 1, 2, 3],
+      "text": "Memory"
+    },
+    {
+      "id": "orientation",
+      "label": "Orientation",
+      "score_values": [0, 0.5, 1, 2, 3],
+      "text": "Orientation"
+    },
+    {
+      "id": "judgment",
+      "label": "Judgment & Problem Solving",
+      "score_values": [0, 0.5, 1, 2, 3],
+      "text": "Judgment and problem solving"
+    },
+    {
+      "id": "community",
+      "label": "Community Affairs",
+      "score_values": [0, 0.5, 1, 2, 3],
+      "text": "Community affairs"
+    },
+    {
+      "id": "home",
+      "label": "Home & Hobbies",
+      "score_values": [0, 0.5, 1, 2, 3],
+      "text": "Home and hobbies"
+    },
+    {
+      "id": "personalcare",
+      "label": "Personal Care",
+      "score_values": [0, 1, 2, 3],
+      "text": "Personal care",
+      "note": "Personal Care does not use a 0.5 score in the standard CDR."
+    }
+  ],
+  "sum_of_boxes_bands": [
+    { "min": 0, "max": 0, "label": "Normal" },
+    { "min": 0.5, "max": 4, "label": "Questionable / Very Mild" },
+    { "min": 4.5, "max": 9, "label": "Mild Dementia" },
+    { "min": 9.5, "max": 15.5, "label": "Moderate Dementia" },
+    { "min": 16, "max": 18, "label": "Severe Dementia" }
+  ],
+  "report": {
+    "heading": "CDR Dementia Staging Summary",
+    "scoring_note": "The global CDR is derived using the Morris 1993 scoring rules with Memory as the primary category.",
+    "sum_of_boxes_note": "CDR-SB staging: 0 = Normal; 0.5-4.0 = Questionable/Very Mild; 4.5-9.0 = Mild; 9.5-15.5 = Moderate; 16.0-18.0 = Severe."
+  },
+  "test_vectors": [
+    {
+      "name": "questionable_all_boxes",
+      "responses": {
+        "memory": 0.5,
+        "orientation": 0.5,
+        "judgment": 0.5,
+        "community": 0.5,
+        "home": 0.5,
+        "personalcare": 0
+      },
+      "expected_global": 0.5,
+      "expected_sum_of_boxes": 2.5
+    }
+  ]
+}

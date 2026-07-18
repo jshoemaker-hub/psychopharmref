@@ -1,0 +1,62 @@
+{
+  "id": "adl-iadl",
+  "schema_kind": "clinical_assessment",
+  "tool_section_id": "adl-tool",
+  "title": "ADL / IADL Functional Assessment",
+  "short_title": "ADL / IADL",
+  "domain": "functional assessment",
+  "status": "pilot-source-of-truth",
+  "last_reviewed": "2026-07-18",
+  "source_ids": ["katz-1963-adl", "lawton-1969-iadl"],
+  "instructions": "Document current functional status across basic and instrumental activities of daily living.",
+  "options": [
+    { "value": "Independent", "label": "Independent" },
+    { "value": "Needs Help", "label": "Needs Help" },
+    { "value": "Dependent", "label": "Dependent" },
+    { "value": "Cannot Do", "label": "Cannot Do" }
+  ],
+  "groups": [
+    {
+      "id": "adl",
+      "label": "Activities of Daily Living (ADL)",
+      "items": [
+        { "id": "bathing", "label": "Bathing", "text": "Bathing" },
+        { "id": "dressing", "label": "Dressing", "text": "Dressing" },
+        { "id": "grooming", "label": "Grooming", "text": "Grooming" },
+        { "id": "mouth-care", "label": "Mouth Care", "text": "Mouth care" },
+        { "id": "toileting", "label": "Toileting", "text": "Toileting" },
+        { "id": "transferring", "label": "Transferring (Bed/Chair)", "text": "Transferring" },
+        { "id": "walking", "label": "Walking", "text": "Walking" },
+        { "id": "stairs", "label": "Climbing Stairs", "text": "Climbing stairs" },
+        { "id": "eating", "label": "Eating", "text": "Eating" }
+      ]
+    },
+    {
+      "id": "iadl",
+      "label": "Instrumental Activities of Daily Living (IADL)",
+      "items": [
+        { "id": "shopping", "label": "Shopping", "text": "Shopping" },
+        { "id": "cooking", "label": "Cooking", "text": "Cooking" },
+        { "id": "medications", "label": "Managing Medications", "text": "Managing medications" },
+        { "id": "phone", "label": "Using Phone / Looking Up Numbers", "text": "Using phone" },
+        { "id": "housework", "label": "Doing Housework", "text": "Doing housework" },
+        { "id": "laundry", "label": "Doing Laundry", "text": "Doing laundry" },
+        { "id": "driving", "label": "Driving / Using Public Transportation", "text": "Driving or using transportation" },
+        { "id": "finances", "label": "Managing Finances", "text": "Managing finances" }
+      ]
+    }
+  ],
+  "report": {
+    "heading": "ADL / IADL Functional Assessment",
+    "scoring_note": "Counts summarize observed independence and assistance needs. This checklist is documentation support, not a substitute for a full functional assessment."
+  },
+  "test_vectors": [
+    {
+      "name": "single_adl_and_iadl",
+      "responses": {
+        "bathing": "Independent",
+        "shopping": "Dependent"
+      }
+    }
+  ]
+}

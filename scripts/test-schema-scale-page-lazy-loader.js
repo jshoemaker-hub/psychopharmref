@@ -182,6 +182,44 @@ const CASES = [
     expectedSeverity: '\u2014',
     requiredToolUtilsMethod: 'loadClinicalScale',
   },
+  {
+    label: 'CDR',
+    sectionId: 'cdr-tool',
+    inputSelector: 'input[name="cdr-memory"][value="0.5"]',
+    requiredToolUtilsMethod: 'loadClinicalScale',
+    skipScoreAssertions: true,
+  },
+  {
+    label: 'SLUMS',
+    sectionId: 'slums-tool',
+    inputSelector: '.sl-q-check[data-question="1"]',
+    scoreElementId: 'sl-total-score',
+    expectedScore: '1',
+    severityElementId: 'sl-total-score',
+    expectedSeverity: '1',
+    requiredToolUtilsMethod: 'loadClinicalScale',
+  },
+  {
+    label: 'ADL/IADL',
+    sectionId: 'adl-tool',
+    inputSelector: 'input[name="ad-bathing"][value="Independent"]',
+    scoreElementId: 'ad-adl-independent',
+    expectedScore: '1',
+    severityElementId: 'ad-adl-independent',
+    expectedSeverity: '1',
+    requiredToolUtilsMethod: 'loadClinicalScale',
+    reportButtonId: 'ad-generate-btn',
+    expectedReportText: 'Bathing: Independent',
+  },
+  {
+    label: 'ACE',
+    sectionId: 'ace-tool',
+    inputSelector: 'input[name="ace-d1"][value="yes"]',
+    requiredToolUtilsMethod: 'loadClinicalScale',
+    skipScoreAssertions: true,
+    reportButtonId: 'ace-generate-btn',
+    expectedReportText: 'Aid to Capacity Evaluation (ACE)',
+  },
 ];
 
 function assert(condition, message) {
@@ -254,6 +292,7 @@ async function runCase(testCase) {
         }));
       };
       window.confirm = () => true;
+      window.HTMLElement.prototype.scrollIntoView = function noop() {};
       Object.defineProperty(window.navigator, 'clipboard', {
         configurable: true,
         value: {
@@ -300,14 +339,18 @@ async function runCase(testCase) {
     input.dispatchEvent(new dom.window.Event('change', { bubbles: true }));
     await wait(50);
 
-    const scoreEl = dom.window.document.getElementById(testCase.scoreElementId);
-    assert(scoreEl.textContent === testCase.expectedScore, `${testCase.label}: score did not update`);
+    let scoreEl = null;
+    let severityEl = null;
+    if (!testCase.skipScoreAssertions) {
+      scoreEl = dom.window.document.getElementById(testCase.scoreElementId);
+      assert(scoreEl.textContent === testCase.expectedScore, `${testCase.label}: score did not update`);
 
-    const severityEl = dom.window.document.getElementById(testCase.severityElementId);
-    assert(
-      severityEl.textContent === testCase.expectedSeverity,
-      `${testCase.label}: answered count did not update`
-    );
+      severityEl = dom.window.document.getElementById(testCase.severityElementId);
+      assert(
+        severityEl.textContent === testCase.expectedSeverity,
+        `${testCase.label}: answered count did not update`
+      );
+    }
 
     if (testCase.alertElementId) {
       const alert = dom.window.document.getElementById(testCase.alertElementId);
@@ -338,7 +381,10 @@ async function runCase(testCase) {
       assert(reportButton, `${testCase.label}: missing report button`);
       reportButton.click();
       await wait(50);
-      assert(copiedText.includes(testCase.expectedReportText), `${testCase.label}: report copy did not include expected text`);
+      assert(
+        copiedText.includes(testCase.expectedReportText),
+        `${testCase.label}: report copy did not include expected text "${testCase.expectedReportText}". Copied text started: ${copiedText.slice(0, 120)}`
+      );
     }
   } finally {
     dom.window.close();

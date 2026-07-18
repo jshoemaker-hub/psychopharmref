@@ -1,0 +1,75 @@
+{
+  "id": "slums",
+  "schema_kind": "clinical_assessment",
+  "tool_section_id": "slums-tool",
+  "title": "Saint Louis University Mental Status Examination",
+  "short_title": "SLUMS",
+  "domain": "cognitive screening",
+  "status": "pilot-source-of-truth",
+  "last_reviewed": "2026-07-18",
+  "source_ids": ["tariq-2006-slums", "slu-slums-exam"],
+  "instructions": "Thirty-point cognitive screening exam. Interpret total score using education-adjusted thresholds.",
+  "score": {
+    "method": "sum",
+    "min": 0,
+    "max": 30,
+    "item_count": 21,
+    "missing_response_policy": "unanswered scoring units score 0 in the current runtime"
+  },
+  "items": [
+    { "id": "1", "number": 1, "text": "Day of week", "label": "Q1 (Day of Week)", "max": 1, "domain": "orientation" },
+    { "id": "2", "number": 2, "text": "Year", "label": "Q2 (Year)", "max": 1, "domain": "orientation" },
+    { "id": "3", "number": 3, "text": "State", "label": "Q3 (State)", "max": 1, "domain": "orientation" },
+    { "id": "5a", "number": 4, "text": "Spending calculation", "label": "Q5A (Spending)", "max": 1, "domain": "executive" },
+    { "id": "5b", "number": 5, "text": "Money left calculation", "label": "Q5B (Money Left)", "max": 2, "domain": "executive" },
+    { "id": "6", "number": 6, "text": "Animal naming", "label": "Q6 (Animal Naming)", "max": 3, "domain": "language" },
+    { "id": "7-apple", "number": 7, "text": "Delayed recall - apple", "label": "Q7A (Apple - Recall)", "max": 1, "domain": "memory" },
+    { "id": "7-pen", "number": 8, "text": "Delayed recall - pen", "label": "Q7B (Pen - Recall)", "max": 1, "domain": "memory" },
+    { "id": "7-tie", "number": 9, "text": "Delayed recall - tie", "label": "Q7C (Tie - Recall)", "max": 1, "domain": "memory" },
+    { "id": "7-house", "number": 10, "text": "Delayed recall - house", "label": "Q7D (House - Recall)", "max": 1, "domain": "memory" },
+    { "id": "7-car", "number": 11, "text": "Delayed recall - car", "label": "Q7E (Car - Recall)", "max": 1, "domain": "memory" },
+    { "id": "8-648", "number": 12, "text": "Digit span backwards - 648", "label": "Q8A (648 Backwards)", "max": 1, "domain": "workingmemory" },
+    { "id": "8-8537", "number": 13, "text": "Digit span backwards - 8537", "label": "Q8B (8537 Backwards)", "max": 1, "domain": "workingmemory" },
+    { "id": "9-markers", "number": 14, "text": "Clock markers", "label": "Q9A (Clock Markers)", "max": 2, "domain": "visuospatial" },
+    { "id": "9-time", "number": 15, "text": "Clock time", "label": "Q9B (Clock Time)", "max": 2, "domain": "visuospatial" },
+    { "id": "10-triangle", "number": 16, "text": "Place X in triangle", "label": "Q10A (Triangle X)", "max": 1, "domain": "attention" },
+    { "id": "10-largest", "number": 17, "text": "Identify largest figure", "label": "Q10B (Largest Figure)", "max": 1, "domain": "attention" },
+    { "id": "11-name", "number": 18, "text": "Story recall - name", "label": "Q11A (Story Name)", "max": 2, "domain": "memory" },
+    { "id": "11-work", "number": 19, "text": "Story recall - work", "label": "Q11B (Story Work)", "max": 2, "domain": "memory" },
+    { "id": "11-when", "number": 20, "text": "Story recall - timing", "label": "Q11C (Story Timing)", "max": 2, "domain": "memory" },
+    { "id": "11-state", "number": 21, "text": "Story recall - state", "label": "Q11D (Story State)", "max": 2, "domain": "memory" }
+  ],
+  "domains": [
+    { "id": "orientation", "label": "Orientation / Temporal-Spatial", "max": 3, "items": ["1", "2", "3"] },
+    { "id": "executive", "label": "Executive Functioning", "max": 3, "items": ["5a", "5b"] },
+    { "id": "attention", "label": "Attention & Concentration", "max": 2, "items": ["10-triangle", "10-largest"] },
+    { "id": "memory", "label": "Memory (Episodic Retrieval)", "max": 13, "items": ["7-apple", "7-pen", "7-tie", "7-house", "7-car", "11-name", "11-work", "11-when", "11-state"] },
+    { "id": "workingmemory", "label": "Working Memory", "max": 2, "items": ["8-648", "8-8537"] },
+    { "id": "language", "label": "Language / Processing Speed", "max": 3, "items": ["6"] },
+    { "id": "visuospatial", "label": "Visuospatial / Construction", "max": 4, "items": ["9-markers", "9-time"] }
+  ],
+  "education_bands": {
+    "high-school": [
+      { "min": 27, "max": 30, "label": "Normal", "note": "No cognitive impairment detected." },
+      { "min": 21, "max": 26, "label": "Mild Neurocognitive Disorder (MNCD)", "note": "Cognitive decline present; comprehensive evaluation recommended." },
+      { "min": 0, "max": 20, "label": "Dementia", "note": "Significant cognitive impairment; urgent neuropsychological evaluation indicated." }
+    ],
+    "less-than-high-school": [
+      { "min": 25, "max": 30, "label": "Normal", "note": "No cognitive impairment detected." },
+      { "min": 20, "max": 24, "label": "Mild Neurocognitive Disorder (MNCD)", "note": "Cognitive decline present; comprehensive evaluation recommended." },
+      { "min": 0, "max": 19, "label": "Dementia", "note": "Significant cognitive impairment; urgent neuropsychological evaluation indicated." }
+    ]
+  },
+  "report": {
+    "heading": "SLUMS Examination Summary",
+    "scoring_note": "Scoring: total score is the sum of 21 scoring units for a maximum of 30 points. Interpretation is education-adjusted."
+  },
+  "test_vectors": [
+    {
+      "name": "all_zero_high_school",
+      "responses": {},
+      "expected_score": 0,
+      "expected_high_school_label": "Dementia"
+    }
+  ]
+}

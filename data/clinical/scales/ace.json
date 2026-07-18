@@ -1,0 +1,131 @@
+{
+  "id": "ace",
+  "schema_kind": "clinical_assessment",
+  "tool_section_id": "ace-tool",
+  "title": "Aid to Capacity Evaluation",
+  "short_title": "ACE",
+  "domain": "capacity assessment",
+  "status": "pilot-source-of-truth",
+  "last_reviewed": "2026-07-18",
+  "source_ids": ["etchells-1999-ace", "jcb-ace"],
+  "instructions": "Structured aid for assessing decision-specific capacity to consent to a specific medical decision.",
+  "options": [
+    { "value": "yes", "label": "YES" },
+    { "value": "unsure", "label": "UNSURE" },
+    { "value": "no", "label": "NO" }
+  ],
+  "domains": [
+    {
+      "id": "1",
+      "title": "Able to understand medical problem",
+      "text": "Able to understand medical problem",
+      "type": "understanding",
+      "prompts": [
+        "What problems are you having right now?",
+        "What problem is bothering you most?",
+        "Why are you in the hospital?",
+        "Do you have [name problem here]?"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Able to understand proposed treatment",
+      "text": "Able to understand proposed treatment",
+      "type": "understanding",
+      "prompts": [
+        "What is the treatment for [your problem]?",
+        "What else can we do to help you?",
+        "Can you have [proposed treatment]?"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Able to understand alternative to proposed treatment (if any)",
+      "text": "Able to understand alternative to proposed treatment",
+      "type": "understanding",
+      "prompts": [
+        "Are there any other [treatments]?",
+        "What other options do you have?",
+        "Can you have [alternative treatment]?"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Able to understand option of refusing proposed treatment",
+      "text": "Able to understand option of refusing proposed treatment",
+      "type": "understanding",
+      "note": "Includes withholding or withdrawing the proposed treatment.",
+      "prompts": [
+        "Can you refuse [proposed treatment]?",
+        "Can we stop [proposed treatment]?"
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Able to appreciate reasonably foreseeable consequences of accepting",
+      "text": "Able to appreciate reasonably foreseeable consequences of accepting",
+      "type": "appreciation",
+      "prompts": [
+        "What could happen to you if you have [proposed treatment]?",
+        "Can [proposed treatment] cause problems/side effects?",
+        "Can [proposed treatment] help you live longer?"
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Able to appreciate reasonably foreseeable consequences of refusing",
+      "text": "Able to appreciate reasonably foreseeable consequences of refusing",
+      "type": "appreciation",
+      "prompts": [
+        "What could happen to you if you do not have [proposed treatment]?",
+        "Could you get sicker/die if you do not have [proposed treatment]?",
+        "What could happen if you have [alternative treatment]? (if alternatives are available)"
+      ]
+    },
+    {
+      "id": "7a",
+      "title": "Decision affected by depression",
+      "text": "Decision affected by depression",
+      "type": "affect",
+      "note": "YES = decision IS affected by depression. Look for hopelessness, worthlessness, guilt, or punishment themes.",
+      "prompts": [
+        "Can you help me understand why you have decided to accept/refuse treatment?",
+        "Do you feel that you are being punished?",
+        "Do you think you are a bad person?",
+        "Do you have any hope for the future?",
+        "Do you deserve to be treated?"
+      ]
+    },
+    {
+      "id": "7b",
+      "title": "Decision affected by delusions/psychosis",
+      "text": "Decision affected by delusions/psychosis",
+      "type": "affect",
+      "note": "YES = decision IS affected by psychosis or delusion.",
+      "prompts": [
+        "Can you help me understand why you have decided to accept/refuse treatment?",
+        "Do you think anyone is trying to hurt/harm you?",
+        "Do you trust your doctor/nurse?"
+      ]
+    }
+  ],
+  "overall_impressions": [
+    { "value": "def-cap", "label": "Definitely Capable" },
+    { "value": "prob-cap", "label": "Probably Capable" },
+    { "value": "prob-inc", "label": "Probably Incapable" },
+    { "value": "def-inc", "label": "Definitely Incapable" }
+  ],
+  "report": {
+    "heading": "Aid to Capacity Evaluation (ACE)",
+    "scoring_note": "Capacity is decision-specific. People are presumed capable; if uncertain, err on the side of capable."
+  },
+  "test_vectors": [
+    {
+      "name": "understanding_unsure",
+      "responses": {
+        "1": "unsure",
+        "2": "yes"
+      }
+    }
+  ]
+}

@@ -13,9 +13,10 @@
     "test:bfcrs-runtime": "node scripts/test-bfcrs-schema-runtime.js",
     "test:addiction-runtime": "node scripts/test-addiction-schema-runtime.js",
     "test:asrs-cidi-runtime": "node scripts/test-asrs-cidi-schema-runtime.js",
+    "test:cognitive-function-runtime": "node scripts/test-cognitive-function-schema-runtime.js",
     "check:sidebars": "python3 scripts/check-sidebars.py",
     "check:blog-sync": "python3 scripts/check-blog-sync.py",
-    "check": "npm run check:release && npm run check:clinical && npm run test:phq9-runtime && npm run test:gad7-runtime && npm run test:ess-msibpd-runtime && npm run test:bprs-runtime && npm run test:pcl5-runtime && npm run test:ymrs-runtime && npm run test:aims-ybocs-runtime && npm run test:bfcrs-runtime && npm run test:addiction-runtime && npm run test:asrs-cidi-runtime && npm run test:schema-scale-page-lazy-loader && npm run check:sidebars",
+    "check": "npm run check:release && npm run check:clinical && npm run test:phq9-runtime && npm run test:gad7-runtime && npm run test:ess-msibpd-runtime && npm run test:bprs-runtime && npm run test:pcl5-runtime && npm run test:ymrs-runtime && npm run test:aims-ybocs-runtime && npm run test:bfcrs-runtime && npm run test:addiction-runtime && npm run test:asrs-cidi-runtime && npm run test:cognitive-function-runtime && npm run test:schema-scale-page-lazy-loader && npm run check:sidebars",
     "check:full": "npm run check && npm run check:blog-sync"
   },
   "dependencies": {
