@@ -100,6 +100,26 @@ const CASES = [
     expectedSeverity: 'Minimal Dyskinesia',
     requiredToolUtilsMethod: 'loadClinicalScale',
   },
+  {
+    label: 'ASRS',
+    sectionId: 'asrs-tool',
+    inputSelector: 'input[name="asrs-1"][value="2"]',
+    scoreElementId: 'as-parta-count',
+    expectedScore: '\u2014',
+    severityElementId: 'as-parta-result',
+    expectedSeverity: '\u2014',
+    requiredToolUtilsMethod: 'loadClinicalScale',
+  },
+  {
+    label: 'CIDI',
+    sectionId: 'cidi-tool',
+    inputSelector: 'input[name="ci-q1"][value="yes"]',
+    scoreElementId: 'ci-score-text',
+    expectedScore: '\u2014',
+    severityElementId: 'ci-score-text',
+    expectedSeverity: '\u2014',
+    requiredToolUtilsMethod: 'loadClinicalScale',
+  },
 ];
 
 function assert(condition, message) {

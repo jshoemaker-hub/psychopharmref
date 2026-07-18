@@ -1,0 +1,79 @@
+{
+  "id": "asrs",
+  "tool_section_id": "asrs-tool",
+  "title": "Adult ADHD Self-Report Scale v1.1",
+  "short_title": "ASRS v1.1",
+  "domain": "attention-deficit/hyperactivity symptoms",
+  "status": "schema-runtime",
+  "last_reviewed": "2026-07-18",
+  "source_ids": ["kessler-2005-asrs"],
+  "instructions": "Rate each item by symptom frequency over the past 6 months. Part A is scored by counting item-specific threshold responses; Part B is supplemental.",
+  "score": {
+    "min": 0,
+    "max": 6,
+    "item_count": 18,
+    "method": "threshold_count",
+    "scored_item_numbers": [1, 2, 3, 4, 5, 6],
+    "positive_threshold": 4,
+    "missing_response_policy": "report answered count; do not classify Part A until all 6 screener items are answered"
+  },
+  "options": [
+    { "value": 0, "label": "Never" },
+    { "value": 1, "label": "Rarely" },
+    { "value": 2, "label": "Sometimes" },
+    { "value": 3, "label": "Often" },
+    { "value": 4, "label": "Very Often" }
+  ],
+  "items": [
+    { "id": "asrs-1", "number": 1, "section": "part-a", "text": "Trouble wrapping up details", "clinical_threshold": 2 },
+    { "id": "asrs-2", "number": 2, "section": "part-a", "text": "Difficulty organizing", "clinical_threshold": 2 },
+    { "id": "asrs-3", "number": 3, "section": "part-a", "text": "Problems remembering appointments", "clinical_threshold": 2 },
+    { "id": "asrs-4", "number": 4, "section": "part-a", "text": "Avoid/delay starting tasks requiring thought", "clinical_threshold": 3 },
+    { "id": "asrs-5", "number": 5, "section": "part-a", "text": "Fidget or squirm when sitting", "clinical_threshold": 3 },
+    { "id": "asrs-6", "number": 6, "section": "part-a", "text": "Feel overly active, driven by a motor", "clinical_threshold": 3 },
+    { "id": "asrs-7", "number": 7, "section": "part-b", "text": "Careless mistakes on boring projects" },
+    { "id": "asrs-8", "number": 8, "section": "part-b", "text": "Difficulty keeping attention on boring work" },
+    { "id": "asrs-9", "number": 9, "section": "part-b", "text": "Difficulty concentrating when others speak" },
+    { "id": "asrs-10", "number": 10, "section": "part-b", "text": "Misplace or difficulty finding things" },
+    { "id": "asrs-11", "number": 11, "section": "part-b", "text": "Distracted by activity or noise" },
+    { "id": "asrs-12", "number": 12, "section": "part-b", "text": "Leave seat in meetings" },
+    { "id": "asrs-13", "number": 13, "section": "part-b", "text": "Feel restless or fidgety" },
+    { "id": "asrs-14", "number": 14, "section": "part-b", "text": "Difficulty unwinding and relaxing" },
+    { "id": "asrs-15", "number": 15, "section": "part-b", "text": "Talk too much in social situations" },
+    { "id": "asrs-16", "number": 16, "section": "part-b", "text": "Finish sentences of others" },
+    { "id": "asrs-17", "number": 17, "section": "part-b", "text": "Difficulty waiting your turn" },
+    { "id": "asrs-18", "number": 18, "section": "part-b", "text": "Interrupt others" }
+  ],
+  "severity_bands": [
+    { "min": 0, "max": 3, "label": "Below threshold", "class": "as-negative", "action": "ADHD screen below Part A threshold; continue diagnostic assessment based on clinical context" },
+    { "min": 4, "max": 6, "label": "Positive screen - further evaluation warranted", "class": "as-positive", "action": "Part A symptoms are highly consistent with adult ADHD; complete comprehensive diagnostic evaluation" }
+  ],
+  "report": {
+    "heading": "Adult ADHD Self-Report Scale (ASRS v1.1)",
+    "scoring_note": "Scoring: Part A counts item-specific threshold responses only. Items 1-3 count at Sometimes or higher; items 4-6 count at Often or higher.",
+    "screening_note": "A positive ASRS Part A screen is not diagnostic and should be followed by comprehensive ADHD assessment, functional impairment review, developmental history, and differential diagnosis."
+  },
+  "test_vectors": [
+    {
+      "name": "all_never",
+      "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 0,
+      "expected_severity": "Below threshold",
+      "expected_safety_flags": []
+    },
+    {
+      "name": "positive_screen",
+      "responses": [2, 2, 2, 3, 0, 3, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2],
+      "expected_score": 5,
+      "expected_severity": "Positive screen - further evaluation warranted",
+      "expected_safety_flags": []
+    },
+    {
+      "name": "below_threshold",
+      "responses": [2, 1, 2, 2, 3, 0, 4, 4, 3, 3, 2, 2, 1, 1, 0, 0, 3, 3],
+      "expected_score": 3,
+      "expected_severity": "Below threshold",
+      "expected_safety_flags": []
+    }
+  ]
+}

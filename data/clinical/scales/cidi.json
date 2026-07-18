@@ -1,0 +1,92 @@
+{
+  "id": "cidi",
+  "tool_section_id": "cidi-tool",
+  "title": "CIDI 3.0 Bipolar Screening Scale",
+  "short_title": "CIDI Bipolar",
+  "domain": "bipolar disorder screening",
+  "status": "schema-runtime",
+  "last_reviewed": "2026-07-18",
+  "source_ids": ["kessler-2006-cidi-bipolar", "jabfm-2012-cidi-risk"],
+  "instructions": "Administer the two stem questions first. If either stem is endorsed, administer the Criterion B gate; if the gate is endorsed, count the 9 symptom items.",
+  "score": {
+    "min": 0,
+    "max": 9,
+    "item_count": 9,
+    "method": "threshold_count",
+    "missing_response_policy": "stem and gate questions determine whether the symptom-count risk table should be interpreted"
+  },
+  "options": [
+    { "value": 0, "label": "No" },
+    { "value": 1, "label": "Yes" }
+  ],
+  "stem_questions": [
+    {
+      "id": "euphoria",
+      "label": "Euphoria stem",
+      "report_label": "Euphoria (Q1 - elevated mood)"
+    },
+    {
+      "id": "irritability",
+      "label": "Irritability stem",
+      "report_label": "Irritability (Q2 - irritable mood)"
+    }
+  ],
+  "gate_question": {
+    "id": "criterion-b",
+    "label": "Criterion B Gate",
+    "report_label": "Criterion B Gate (Q3)"
+  },
+  "items": [
+    { "id": "irritability", "number": 1, "text": "Extreme irritability (shouting, fights, arguments)", "clinical_threshold": 1 },
+    { "id": "restlessness", "number": 2, "text": "Restlessness or agitation (pacing, inability to sit still)", "clinical_threshold": 1 },
+    { "id": "disinhibition", "number": 3, "text": "Unusual or embarrassing behavior (oversharing, disinhibition)", "clinical_threshold": 1 },
+    { "id": "grandiosity", "number": 4, "text": "Inflated self-esteem or special powers/talents", "clinical_threshold": 1 },
+    { "id": "goal-directed", "number": 5, "text": "Increased goal-directed activity (multiple new projects)", "clinical_threshold": 1 },
+    { "id": "concentration", "number": 6, "text": "Difficulty concentrating", "clinical_threshold": 1 },
+    { "id": "racing", "number": 7, "text": "Racing or jumping thoughts", "clinical_threshold": 1 },
+    { "id": "sleep", "number": 8, "text": "Decreased need for sleep (4 hours or less without fatigue)", "clinical_threshold": 1 },
+    { "id": "spending", "number": 9, "text": "Excessive spending with financial consequences", "clinical_threshold": 1 }
+  ],
+  "severity_bands": [
+    { "min": 0, "max": 4, "label": "Very Low Risk", "probability": "<5%", "class": "ci-risk-very-low", "action": "Low CIDI symptom count; interpret in clinical context and continue differential assessment as indicated" },
+    { "min": 5, "max": 5, "label": "Low Risk", "probability": "5-24%", "class": "ci-risk-low", "action": "Consider comprehensive bipolar assessment if history, course, family history, or antidepressant activation raises concern" },
+    { "min": 6, "max": 6, "label": "Moderate Risk", "probability": "25-49%", "class": "ci-risk-moderate", "action": "Recommend comprehensive psychiatric evaluation for bipolar spectrum disorder and differential diagnoses" },
+    { "min": 7, "max": 8, "label": "High Risk", "probability": "50-79%", "class": "ci-risk-high", "action": "Recommend prompt psychiatric evaluation; assess safety, episode history, substance/medical contributors, and treatment implications" },
+    { "min": 9, "max": 9, "label": "Very High Risk", "probability": ">=80%", "class": "ci-risk-very-high", "action": "High probability screen; arrange urgent comprehensive psychiatric evaluation and safety assessment" }
+  ],
+  "report": {
+    "heading": "CIDI 3.0 Bipolar Screening Scale",
+    "scoring_note": "Scoring: after a positive stem and Criterion B gate, count the 9 symptom questions endorsed yes and map the 0-9 count to the risk table.",
+    "screening_note": "The CIDI bipolar screen estimates risk and does not establish a bipolar diagnosis. Positive screens require clinical interview, longitudinal course review, substance/medical differential, and safety assessment."
+  },
+  "test_vectors": [
+    {
+      "name": "very_low",
+      "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "expected_score": 0,
+      "expected_severity": "Very Low Risk",
+      "expected_safety_flags": []
+    },
+    {
+      "name": "low",
+      "responses": [1, 1, 1, 1, 1, 0, 0, 0, 0],
+      "expected_score": 5,
+      "expected_severity": "Low Risk",
+      "expected_safety_flags": []
+    },
+    {
+      "name": "high",
+      "responses": [1, 1, 1, 1, 1, 1, 1, 0, 0],
+      "expected_score": 7,
+      "expected_severity": "High Risk",
+      "expected_safety_flags": []
+    },
+    {
+      "name": "very_high",
+      "responses": [1, 1, 1, 1, 1, 1, 1, 1, 1],
+      "expected_score": 9,
+      "expected_severity": "Very High Risk",
+      "expected_safety_flags": []
+    }
+  ]
+}

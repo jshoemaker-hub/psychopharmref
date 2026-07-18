@@ -67,6 +67,13 @@ function getScoredItemNumbers(scale) {
 }
 
 function scoreResponses(scale, responses) {
+  if (scale.score.method === 'threshold_count') {
+    return getScoredItemNumbers(scale).reduce((count, itemNumber) => {
+      const item = scale.items[itemNumber - 1];
+      return count + (responses[itemNumber - 1] >= item.clinical_threshold ? 1 : 0);
+    }, 0);
+  }
+
   return getScoredItemNumbers(scale).reduce((sum, itemNumber) => {
     return sum + responses[itemNumber - 1];
   }, 0);
@@ -222,7 +229,8 @@ function validateScale(scale, filePath, sources) {
     expect(sources.has(sourceId), `${fileRel}: unknown source_id "${sourceId}"`);
   }
 
-  expect(scale.score && scale.score.method === 'sum', `${fileRel}: score.method must be "sum"`);
+  const supportedScoreMethods = new Set(['sum', 'threshold_count']);
+  expect(scale.score && supportedScoreMethods.has(scale.score.method), `${fileRel}: score.method must be one of ${Array.from(supportedScoreMethods).join(', ')}`);
   expect(Number.isInteger(scale.score && scale.score.min), `${fileRel}: score.min must be an integer`);
   expect(Number.isInteger(scale.score && scale.score.max), `${fileRel}: score.max must be an integer`);
   expect(Number.isInteger(scale.score && scale.score.item_count), `${fileRel}: score.item_count must be an integer`);
@@ -265,6 +273,9 @@ function validateScale(scale, filePath, sources) {
         expect(item.max === Math.max(...item.allowed_values), `${fileRel}: item ${item.id} max should match highest allowed value`);
       }
     }
+    if (item.clinical_threshold !== undefined) {
+      expect(optionValues.has(item.clinical_threshold), `${fileRel}: item ${item.id} clinical_threshold must be a valid option`);
+    }
   });
 
   if (scale.score.scored_item_numbers !== undefined) {
@@ -272,12 +283,21 @@ function validateScale(scale, filePath, sources) {
   }
 
   const scoredItemNumbers = getScoredItemNumbers(scale);
+  if (scale.score.method === 'threshold_count') {
+    scoredItemNumbers.forEach(itemNumber => {
+      const item = scale.items[itemNumber - 1];
+      expect(Number.isInteger(item.clinical_threshold), `${fileRel}: threshold_count scored item ${itemNumber} needs clinical_threshold`);
+    });
+  }
+
   const allItemsHaveMax = scale.items.length > 0 && scale.items.every(item => Number.isInteger(item.max));
   const scoredItems = scoredItemNumbers.map(itemNumber => scale.items[itemNumber - 1]).filter(Boolean);
-  const expectedMax = allItemsHaveMax
+  const expectedMax = scale.score.method === 'threshold_count'
+    ? scoredItemNumbers.length
+    : allItemsHaveMax
     ? scoredItems.reduce((sum, item) => sum + item.max, 0)
     : scoredItemNumbers.length * maxOption;
-  expect(scale.score.max === expectedMax, `${fileRel}: score.max should equal ${allItemsHaveMax ? 'sum of scored item max values' : 'scored item count * highest option'} (${expectedMax})`);
+  expect(scale.score.max === expectedMax, `${fileRel}: score.max should equal ${scale.score.method === 'threshold_count' ? 'scored threshold item count' : allItemsHaveMax ? 'sum of scored item max values' : 'scored item count * highest option'} (${expectedMax})`);
 
   expect(Array.isArray(scale.severity_bands) && scale.severity_bands.length > 0, `${fileRel}: severity_bands must be a non-empty array`);
   validateBandCoverage(scale, fileRel);

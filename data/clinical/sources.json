@@ -115,5 +115,32 @@
     "review_status": "source-cited",
     "last_reviewed": "2026-07-18",
     "notes": "Institutional clinical reference for the common Y-BOCS severity ranges used by this tool. URL: https://med.stanford.edu/ocd/about/diagnosis.html."
+  },
+  {
+    "id": "kessler-2005-asrs",
+    "label": "Kessler RC, Adler L, Ames M, Demler O, Faraone S, Hiripi E, Howes MJ, Jin R, Secnik K, Spencer T, Ustun TB, Walters EE. The World Health Organization Adult ADHD Self-Report Scale (ASRS): a short screening scale for use in the general population. Psychol Med. 2005;35(2):245-256.",
+    "type": "journal_article",
+    "year": 2005,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Primary source cited by the ASRS tool report. PMID: 15841682. DOI: 10.1017/S0033291704002892."
+  },
+  {
+    "id": "kessler-2006-cidi-bipolar",
+    "label": "Kessler RC, Akiskal HS, Angst J, Guyer M, Hirschfeld RMA, Merikangas KR, Stang PE. Validity of the assessment of bipolar spectrum disorders in the WHO CIDI 3.0. J Affect Disord. 2006;96(3):259-269.",
+    "type": "journal_article",
+    "year": 2006,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Primary validation source cited by the CIDI bipolar screening tool report. PMID: 16997383. PMCID: PMC1821426. DOI: 10.1016/j.jad.2006.08.018."
+  },
+  {
+    "id": "jabfm-2012-cidi-risk",
+    "label": "Gill JM, Chen YX, Grimes A, Klinkman MS. Using electronic health record-based tools to screen for bipolar disorder in primary care patients with depression. J Am Board Fam Med. 2012;25(3):283-290.",
+    "type": "journal_article",
+    "year": 2012,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-18",
+    "notes": "Published primary-care implementation table for the CIDI 0-9 risk-level bands used by this tool. DOI: 10.3122/jabfm.2012.03.110217."
   }
 ]
