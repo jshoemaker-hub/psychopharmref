@@ -85,19 +85,30 @@
     return uniSize ? Math.min(1, inter / uniSize) : 0;
   }
 
+  // ── Residual symptoms (Phase 4) ──────────────────────────────────────────
+  // Which symptom domains the clinician wants the added agent to cover. Empty
+  // by default, in which case the coverage axis simply does not apply.
+  function selectedDomains() {
+    var out = [];
+    var boxes = document.querySelectorAll('.cm-symptom-box');
+    if (!boxes || !boxes.length) return out;
+    Array.prototype.forEach.call(boxes, function (b) { if (b.checked) out.push(b.value); });
+    return out;
+  }
+
   // ── User-adjustable weights (slider toolbar) ─────────────────────────────
   // Sliders hold raw 0–100 values; the score normalizes them to sum to 1.
   function readWeights() {
     function v(id, dflt) { var el = document.getElementById(id); return el ? (parseFloat(el.value) || 0) : dflt; }
     return { d: v('cm-w-divergence', 30), a: v('cm-w-action', 15), t: v('cm-w-tier', 15),
-             c: v('cm-w-class', 15), i: v('cm-w-indication', 25) };
+             c: v('cm-w-class', 15), i: v('cm-w-indication', 25), s: v('cm-w-symptom', 35) };
   }
   function normWeights() {
     var raw = readWeights();
-    var wD = raw.d, wA = raw.a, wT = raw.t, wC = raw.c, wI = raw.i;
-    var sum = wD + wA + wT + wC + wI;
-    if (sum <= 0) { wD = 30; wA = 15; wT = 15; wC = 15; wI = 25; sum = 100; }
-    return { wD: wD / sum, wA: wA / sum, wT: wT / sum, wC: wC / sum, wI: wI / sum };
+    var wD = raw.d, wA = raw.a, wT = raw.t, wC = raw.c, wI = raw.i, wS = raw.s;
+    var sum = wD + wA + wT + wC + wI + wS;
+    if (sum <= 0) { wD = 30; wA = 15; wT = 15; wC = 15; wI = 25; wS = 35; sum = 135; }
+    return { wD: wD / sum, wA: wA / sum, wT: wT / sum, wC: wC / sum, wI: wI / sum, wS: wS / sum };
   }
 
   function score(ref, cand, act) {
@@ -113,6 +124,8 @@
     var aInfo = act || actionInfo(ref, cand);
     var MT = window.MechanismTiers;
     var tDiv = MT ? MT.divergence(ref.id, cand.id) : null;
+    var SD = window.SymptomDomains;
+    var cov = SD ? SD.coverage(cand, selectedDomains()) : null;
 
     // Any axis that cannot be measured for this pair is dropped and its weight
     // redistributed proportionally across the axes that CAN be — so a pair is
@@ -122,7 +135,8 @@
       { k: 'act', w: w.wA, v: aInfo.score },
       { k: 'tier', w: w.wT, v: tDiv },
       { k: 'class', w: w.wC, v: cMatch },
-      { k: 'ind', w: w.wI, v: iMatch }
+      { k: 'ind', w: w.wI, v: iMatch },
+      { k: 'sym', w: w.wS, v: cov ? cov.score : null }
     ];
     var live = axes.filter(function (a) { return a.v !== null; });
     var wSum = live.reduce(function (t, a) { return t + a.w; }, 0);
@@ -133,9 +147,9 @@
     return {
       total: 100 * total,
       div: div, cos: cos, cMatch: cMatch, iMatch: iMatch,
-      aDiv: aInfo.score, contrasts: aInfo.contrasts, tDiv: tDiv,
+      aDiv: aInfo.score, contrasts: aInfo.contrasts, tDiv: tDiv, cov: cov,
       wD: eff.div || 0, wA: eff.act || 0, wT: eff.tier || 0,
-      wC: eff['class'] || 0, wI: eff.ind || 0
+      wC: eff['class'] || 0, wI: eff.ind || 0, wS: eff.sym || 0
     };
   }
 
@@ -284,6 +298,33 @@
   function chip(r) {
     var c = COLORS[r] || '#8b6914';
     return '<span class="cm-chip" style="--cm-chip:' + c + '">' + esc(r) + '</span>';
+  }
+
+  // Symptom-coverage chips: which residual domains this agent addresses, and
+  // which it may make worse.
+  function covChip(entry, negative) {
+    var SD = window.SymptomDomains;
+    var why = entry.contributors.map(function (c) { return c.receptor + ' ' + c.action; }).join(', ');
+    return '<span class="cm-cov' + (negative ? ' cm-cov--neg' : '') + '">'
+      + '<span class="cm-cov-d">' + esc(SD.short(entry.domain)) + '</span>'
+      + (why ? '<span class="cm-cov-w">' + esc(why) + '</span>' : '') + '</span>';
+  }
+  function coverageBlock(row) {
+    var cov = row.s.cov;
+    if (!cov) return '';
+    var html = '';
+    if (cov.covers.length) {
+      html += '<div class="cm-shared cm-shared--cov"><span class="cm-shared-label">Covers residual:</span> '
+        + cov.covers.map(function (c) { return covChip(c, false); }).join('') + '</div>';
+    }
+    if (cov.worsens.length) {
+      html += '<div class="cm-shared cm-shared--cov"><span class="cm-shared-label cm-shared-label--neg">May worsen:</span> '
+        + cov.worsens.map(function (c) { return covChip(c, true); }).join('') + '</div>';
+    }
+    if (!cov.covers.length && !cov.worsens.length) {
+      html += '<div class="cm-cov-none">No clear mechanistic coverage of the selected residual symptoms.</div>';
+    }
+    return html;
   }
 
   // Contraindicated pairs — reported so the reasoning is visible, never ranked.
@@ -516,6 +557,23 @@
       + '</div>';
     html += refBanner;
 
+    // What does the reference itself already cover, and what is the gap?
+    var doms = selectedDomains();
+    if (doms.length && window.SymptomDomains) {
+      var g = window.SymptomDomains.gaps(ref, doms);
+      html += '<div class="cm-gap">';
+      html += '<span class="cm-gap-label">Targeting residual:</span> ';
+      html += doms.map(function (d) {
+        var covered = g.covered.indexOf(d) !== -1;
+        return '<span class="cm-gap-chip' + (covered ? ' cm-gap-chip--covered' : ' cm-gap-chip--gap') + '">'
+          + esc(window.SymptomDomains.short(d)) + (covered ? ' &#10003;' : ' gap') + '</span>';
+      }).join('');
+      html += '<div class="cm-gap-note">' + (g.gaps.length
+        ? esc(ref.name) + ' already addresses the ticked domains marked &#10003;. The ones marked <em>gap</em> are what a complementary agent should be chosen for.'
+        : esc(ref.name) + ' already has mechanistic coverage of every ticked domain &mdash; consider optimising the current agent before adding another.') + '</div>';
+      html += '</div>';
+    }
+
 
     // Curated evidence-based combinations — built now, emitted after the ranked
     // options. Still shown when the reference has no receptor-binding data.
@@ -552,7 +610,10 @@
     top.forEach(function (row, idx) {
       var m = row.med, s = row.s;
       var whyBits = [];
-      whyBits.push(Math.round(s.div * 100) + '% divergent receptor profile');
+      if (s.cov && s.cov.covers.length) {
+        whyBits.push('covers ' + s.cov.covers.map(function (c) { return window.SymptomDomains.short(c.domain); }).join(' + '));
+      }
+      if (s.div !== null) whyBits.push(Math.round(s.div * 100) + '% divergent receptor profile');
       if (s.aDiv !== null && s.aDiv > 0 && row.act.contrasts.length) {
         whyBits.push(Math.round(s.aDiv * 100) + '% action divergence at shared receptors ('
           + row.act.contrasts.slice(0, 2).map(function (c) { return c.r; }).join(', ') + ')');
@@ -582,6 +643,11 @@
       html += flagsBlock(ref, row);
 
       html += '<div class="cm-metrics">';
+      if (s.cov) {
+        html += bar('Symptom coverage', s.cov.score, 'weight ' + Math.round(s.wS * 100) + '% · '
+          + (s.cov.covers.length ? s.cov.covers.length + ' of ' + selectedDomains().length + ' targeted domain'
+              + (selectedDomains().length > 1 ? 's' : '') + ' covered' : 'none of the targeted domains covered'));
+      }
       if (s.div !== null) {
         html += bar('Receptor divergence', s.div, 'weight ' + Math.round(s.wD * 100) + '% · ' + Math.round(s.cos * 100) + '% receptor overlap');
       } else {
@@ -606,6 +672,8 @@
       html += bar('Class match', s.cMatch, 'weight ' + Math.round(s.wC * 100) + '%');
       html += bar('Shared indications', s.iMatch, 'weight ' + Math.round(s.wI * 100) + '%');
       html += '</div>';
+
+      html += coverageBlock(row);
 
       var MTn = window.MechanismTiers ? window.MechanismTiers.noteFor(m.id) : null;
       if (MTn) {
@@ -760,6 +828,14 @@
       if (row.safety) row.safety.reasons.forEach(function (rs) {
         t += '   ' + (rs.severity === 'contraindicated' ? 'CONTRAINDICATED' : 'CAUTION') + ' - ' + rs.title + ': ' + rs.detail + '\n';
       });
+      if (s.cov) {
+        if (s.cov.covers.length) t += '   Covers residual: ' + s.cov.covers.map(function (c) {
+          return window.SymptomDomains.short(c.domain) + ' (' + c.contributors.map(function (x) { return x.receptor + ' ' + x.action; }).join(', ') + ')';
+        }).join('; ') + '\n';
+        if (s.cov.worsens.length) t += '   MAY WORSEN: ' + s.cov.worsens.map(function (c) {
+          return window.SymptomDomains.short(c.domain) + ' (' + c.contributors.map(function (x) { return x.receptor + ' ' + x.action; }).join(', ') + ')';
+        }).join('; ') + '\n';
+      }
       if (row.act && row.act.contrasts.length) {
         t += '   Same receptor, different action: ' + row.act.contrasts.slice(0, 5).map(function (c) {
           return c.r + ' ' + window.ReceptorActions.short(c.refAct) + ' -> ' + window.ReceptorActions.short(c.candAct);
@@ -794,7 +870,7 @@
   }
 
   // Update the on-screen % labels to reflect the normalized effective weights.
-  var WEIGHT_IDS = ['cm-w-divergence', 'cm-w-action', 'cm-w-tier', 'cm-w-class', 'cm-w-indication'];
+  var WEIGHT_IDS = ['cm-w-divergence', 'cm-w-action', 'cm-w-tier', 'cm-w-class', 'cm-w-indication', 'cm-w-symptom'];
   function refreshWeightLabels() {
     var w = normWeights();
     function set(id, frac) { var el = document.getElementById(id); if (el) el.textContent = Math.round(frac * 100) + '%'; }
@@ -803,6 +879,7 @@
     set('cm-w-tier-val', w.wT);
     set('cm-w-class-val', w.wC);
     set('cm-w-indication-val', w.wI);
+    set('cm-w-symptom-val', w.wS);
   }
 
   // ── Wire up ──────────────────────────────────────────────────────────────
@@ -813,6 +890,15 @@
   if (sel) sel.addEventListener('change', function () { if (lastRef) compute(); });
   var cb = document.getElementById('cm-samecat');
   if (cb) cb.addEventListener('change', function () { if (lastRef) compute(); });
+  var symBoxes = document.querySelectorAll('.cm-symptom-box');
+  if (symBoxes) Array.prototype.forEach.call(symBoxes, function (b) {
+    b.addEventListener('change', function () { if (lastRef) compute(); });
+  });
+  var symClear = document.getElementById('cm-symptom-clear');
+  if (symClear) symClear.addEventListener('click', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('.cm-symptom-box'), function (b) { b.checked = false; });
+    if (lastRef) compute();
+  });
 
   // Sliders: live re-rank + label update as they move.
   WEIGHT_IDS.forEach(function (id) {

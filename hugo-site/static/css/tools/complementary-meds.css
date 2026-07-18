@@ -295,3 +295,47 @@
 .cm-excl-name { font-size: 0.95rem; font-weight: 700; color: var(--text); }
 .cm-excl-reason { font-size: 0.82rem; line-height: 1.45; color: var(--text); opacity: 0.9; margin-top: 0.2rem; }
 .cm-excl-reason strong { color: var(--red); }
+
+/* ── Residual-symptom targeting (Phase 4) ──────────────────────────────────*/
+.cm-symptoms {
+  border: 1px solid var(--border); border-radius: 9px; background: #fff;
+  padding: 0.75rem 0.9rem 0.85rem; margin: 0.25rem 0 1rem;
+}
+.cm-symptoms-head { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.cm-symptoms-title { font-size: 0.85rem; font-weight: 700; color: var(--text); letter-spacing: 0.02em; }
+.cm-symptoms-opt { font-weight: 500; opacity: 0.6; }
+.cm-symptoms-hint { font-size: 0.78rem; color: var(--text); opacity: 0.72; margin: 0.4rem 0 0.7rem; line-height: 1.45; }
+.cm-symptom-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.35rem 0.9rem; }
+.cm-symptom {
+  display: flex; align-items: center; gap: 0.45rem; font-size: 0.84rem;
+  color: var(--text); cursor: pointer; user-select: none; padding: 0.15rem 0;
+}
+.cm-symptom input { width: 15px; height: 15px; accent-color: var(--accent2); cursor: pointer; flex: 0 0 auto; }
+
+/* Reference gap analysis */
+.cm-gap {
+  border: 1px solid var(--border); border-left: 3px solid var(--accent2);
+  border-radius: 8px; background: #fbf7ec; padding: 0.6rem 0.8rem; margin-bottom: 1rem;
+}
+.cm-gap-label { font-size: 0.8rem; font-weight: 700; color: var(--accent2); margin-right: 0.35rem; }
+.cm-gap-chip {
+  display: inline-block; font-size: 0.74rem; font-weight: 700; border-radius: 4px;
+  padding: 0.1rem 0.42rem; margin: 0.12rem 0.25rem 0.12rem 0; white-space: nowrap;
+}
+.cm-gap-chip--covered { background: rgba(74,124,53,0.14); color: #3f6b2c; border: 1px solid rgba(74,124,53,0.4); }
+.cm-gap-chip--gap { background: rgba(176,90,32,0.12); color: #96491a; border: 1px solid rgba(176,90,32,0.4); }
+.cm-gap-note { font-size: 0.78rem; color: var(--text); opacity: 0.75; line-height: 1.45; margin-top: 0.35rem; }
+
+/* Coverage chips on result cards */
+.cm-shared--cov { align-items: center; }
+.cm-shared-label--neg { color: #96491a; }
+.cm-cov {
+  display: inline-flex; flex-direction: column; line-height: 1.2;
+  border: 1px solid rgba(74,124,53,0.4); background: rgba(74,124,53,0.08);
+  border-radius: 5px; padding: 0.15rem 0.42rem; margin: 0.12rem 0.25rem 0.12rem 0;
+}
+.cm-cov--neg { border-color: rgba(176,90,32,0.45); background: rgba(176,90,32,0.09); }
+.cm-cov-d { font-size: 0.76rem; font-weight: 800; color: #3f6b2c; }
+.cm-cov--neg .cm-cov-d { color: #96491a; }
+.cm-cov-w { font-size: 0.66rem; color: var(--text); opacity: 0.7; }
+.cm-cov-none { font-size: 0.78rem; color: var(--text); opacity: 0.6; font-style: italic; }

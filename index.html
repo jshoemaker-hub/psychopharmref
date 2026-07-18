@@ -3042,12 +3042,36 @@
           </label>
         </div>
 
+
+        <div class="cm-symptoms" role="group" aria-label="Residual symptoms to target">
+          <div class="cm-symptoms-head">
+            <span class="cm-symptoms-title">&#9678; Residual symptoms to target <span class="cm-symptoms-opt">(optional)</span></span>
+            <button type="button" class="cm-weights-reset" id="cm-symptom-clear">Clear</button>
+          </div>
+          <p class="cm-symptoms-hint">Tick what the patient still has on the current agent. Candidates are then scored on whether their mechanism plausibly <em>covers</em> those domains &mdash; and flagged where it may <em>worsen</em> them. Leave blank to rank on mechanism alone.</p>
+          <div class="cm-symptom-grid">
+            <label class="cm-symptom"><input type="checkbox" class="cm-symptom-box" value="insomnia"><span>Insomnia / sleep</span></label>
+            <label class="cm-symptom"><input type="checkbox" class="cm-symptom-box" value="anhedonia"><span>Anhedonia / amotivation</span></label>
+            <label class="cm-symptom"><input type="checkbox" class="cm-symptom-box" value="anxiety"><span>Anxiety / arousal</span></label>
+            <label class="cm-symptom"><input type="checkbox" class="cm-symptom-box" value="cognition"><span>Cognitive / inattention</span></label>
+            <label class="cm-symptom"><input type="checkbox" class="cm-symptom-box" value="agitation"><span>Agitation / irritability</span></label>
+            <label class="cm-symptom"><input type="checkbox" class="cm-symptom-box" value="psychosis"><span>Psychotic symptoms</span></label>
+            <label class="cm-symptom"><input type="checkbox" class="cm-symptom-box" value="appetite"><span>Poor appetite / weight loss</span></label>
+            <label class="cm-symptom"><input type="checkbox" class="cm-symptom-box" value="sexual"><span>Sexual dysfunction</span></label>
+            <label class="cm-symptom"><input type="checkbox" class="cm-symptom-box" value="pain"><span>Somatic pain</span></label>
+          </div>
+        </div>
         <div class="cm-weights" role="group" aria-label="Matching weight controls">
           <div class="cm-weights-head">
             <span class="cm-weights-title">&#9707; Matching weights</span>
             <button type="button" class="cm-weights-reset" id="cm-weights-reset">Reset defaults</button>
           </div>
-          <p class="cm-weights-hint">Adjust how much each factor counts. Raise <em>Receptor divergence</em> to favor agents hitting different targets; raise <em>Action divergence</em> to favor agents that act <em>differently at the same</em> target (e.g. a D2 antagonist paired with a D2 partial agonist); raise <em>Cascade-tier divergence</em> to favor agents working at a different level of signal transduction (lithium and valproate act intracellularly rather than at a receptor); lower <em>Class</em> to surface options in other classes. Axes that cannot be measured for a given pair are dropped and their weight redistributed. Uncheck &ldquo;Restrict to same category&rdquo; above to widen the pool. Weights normalize to 100%; results re-rank as you drag. (Eligible agents must still share &ge;1 indication and diverge mechanistically.)</p>
+          <p class="cm-weights-hint">Adjust how much each factor counts. Raise <em>Receptor divergence</em> to favor agents hitting different targets; raise <em>Action divergence</em> to favor agents that act <em>differently at the same</em> target (e.g. a D2 antagonist paired with a D2 partial agonist); raise <em>Cascade-tier divergence</em> to favor agents working at a different level of signal transduction (lithium and valproate act intracellularly rather than at a receptor); lower <em>Class</em> to surface options in other classes. Axes that cannot be measured for a given pair are dropped and their weight redistributed &mdash; <em>Symptom coverage</em> only applies once you tick a residual symptom above. Uncheck &ldquo;Restrict to same category&rdquo; above to widen the pool. Weights normalize to 100%; results re-rank as you drag. (Eligible agents must still share &ge;1 indication and diverge mechanistically.)</p>
+          <div class="cm-weight-row">
+            <label class="cm-weight-label" for="cm-w-symptom">Symptom coverage</label>
+            <input type="range" class="cm-weight-slider" id="cm-w-symptom" min="0" max="100" step="5" value="35" data-default="35">
+            <span class="cm-weight-val" id="cm-w-symptom-val">26%</span>
+          </div>
           <div class="cm-weight-row">
             <label class="cm-weight-label" for="cm-w-divergence">Receptor divergence</label>
             <input type="range" class="cm-weight-slider" id="cm-w-divergence" min="0" max="100" step="5" value="30" data-default="30">
@@ -12055,7 +12079,7 @@
   </script>
 
   <script defer src="js/data.js?v=20260717e"></script>
-  <script defer src="js/app.js?v=20260718d"></script>
+  <script defer src="js/app.js?v=20260718e"></script>
   <script defer src="js/glossary-data.js?v=20260717a"></script>
   <script defer src="js/glossary-page.js?v=20260501a"></script>
   <script defer src="js/search.js?v=20260714a"></script>
