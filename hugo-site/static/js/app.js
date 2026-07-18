@@ -309,7 +309,7 @@ function switchSection(id) {
     // Load CSS
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/tools/' + toolId + '.css?v=20260717i';
+    link.href = 'css/tools/' + toolId + '.css?v=20260718a';
     document.head.appendChild(link);
     // Load shared tool-utils.js once (first tool activation), then the tool JS
     function loadToolScript() {
@@ -319,31 +319,38 @@ function switchSection(id) {
         dataScript.src = 'js/qbank-data.js?v=20260716f';
         dataScript.onload = function() {
           var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20260717i';
+          script.src = 'js/tools/' + toolId + '.js?v=20260718a';
           document.body.appendChild(script);
         };
         dataScript.onerror = function() { console.error('Failed to load qbank-data.js'); };
         document.body.appendChild(dataScript);
       } else if (toolId === 'complementary-meds' && !window.CombinationStrategies) {
-        // Complementary-meds needs the curated combination-strategies KB first
-        var csScript = document.createElement('script');
-        csScript.src = 'js/combination-strategies.js?v=20260717i';
-        csScript.onload = function() {
-          var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20260717i';
-          document.body.appendChild(script);
-        };
-        csScript.onerror = function() { console.error('Failed to load combination-strategies.js'); };
-        document.body.appendChild(csScript);
+        // Complementary-meds needs two data files first: the curated combination
+        // strategies KB and the receptor-action overlay. Load both, then the tool.
+        var deps = ['js/combination-strategies.js?v=20260718a', 'js/receptor-actions.js?v=20260718a'];
+        var pending = deps.length;
+        deps.forEach(function(src) {
+          var d = document.createElement('script');
+          d.src = src;
+          d.onload = function() {
+            if (--pending === 0) {
+              var script = document.createElement('script');
+              script.src = 'js/tools/' + toolId + '.js?v=20260718a';
+              document.body.appendChild(script);
+            }
+          };
+          d.onerror = function() { console.error('Failed to load ' + src); };
+          document.body.appendChild(d);
+        });
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20260717i';
+        script.src = 'js/tools/' + toolId + '.js?v=20260718a';
         document.body.appendChild(script);
       }
     }
     if (!window.ToolUtils) {
       const utils = document.createElement('script');
-      utils.src = 'js/tools/tool-utils.js?v=20260717i';
+      utils.src = 'js/tools/tool-utils.js?v=20260718a';
       utils.onload = loadToolScript;
       utils.onerror = function() { console.error('Failed to load tool-utils.js'); };
       document.body.appendChild(utils);

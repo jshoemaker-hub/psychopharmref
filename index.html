@@ -3026,7 +3026,7 @@
       </div>
 
       <div class="mt-warning">
-        <strong>Clinical decision-support only.</strong> Two engines: a <em>curated knowledge base</em> of established combination/augmentation strategies (each tagged by evidence tier &mdash; FDA-approved adjunct, guideline, or empirical), shown above a <em>computed</em> ranking derived from receptor-binding divergence (40%), drug class (30%), and shared FDA indications (30%). Neither establishes the efficacy or safety of a combination for a given patient &mdash; always assess CYP450 interactions, additive serotonergic/QT/sedation/seizure risk, and whether optimizing monotherapy is preferable. Use alongside clinical judgment.
+        <strong>Clinical decision-support only.</strong> Two engines: a <em>curated knowledge base</em> of established combination/augmentation strategies (each tagged by evidence tier &mdash; FDA-approved adjunct, guideline, or empirical), shown above a <em>computed</em> ranking derived from receptor-binding divergence (35%), <em>action</em> divergence at shared receptors (20%), drug class (20%), and shared FDA indications (25%). Action data (full/partial agonist, antagonist, inverse agonist, reuptake inhibitor, releaser, allosteric modulator) is curated pharmacology, not a measured constant. Neither establishes the efficacy or safety of a combination for a given patient &mdash; always assess CYP450 interactions, additive serotonergic/QT/sedation/seizure risk, and whether optimizing monotherapy is preferable. Use alongside clinical judgment.
       </div>
 
       <div class="ref-card cm-setup-card">
@@ -3047,21 +3047,26 @@
             <span class="cm-weights-title">&#9707; Matching weights</span>
             <button type="button" class="cm-weights-reset" id="cm-weights-reset">Reset defaults</button>
           </div>
-          <p class="cm-weights-hint">Adjust how much each factor counts. Raise <em>Receptor divergence</em> to favor mechanistically different agents; lower <em>Class</em> to surface options in other classes. Uncheck &ldquo;Restrict to same category&rdquo; above to widen the pool. Weights normalize to 100%; results re-rank as you drag. (Eligible agents must still share &ge;1 indication and diverge mechanistically.)</p>
+          <p class="cm-weights-hint">Adjust how much each factor counts. Raise <em>Receptor divergence</em> to favor agents hitting different targets; raise <em>Action divergence</em> to favor agents that act <em>differently at the same</em> target (e.g. a D2 antagonist paired with a D2 partial agonist); lower <em>Class</em> to surface options in other classes. Uncheck &ldquo;Restrict to same category&rdquo; above to widen the pool. Weights normalize to 100%; results re-rank as you drag. (Eligible agents must still share &ge;1 indication and diverge mechanistically.)</p>
           <div class="cm-weight-row">
             <label class="cm-weight-label" for="cm-w-divergence">Receptor divergence</label>
-            <input type="range" class="cm-weight-slider" id="cm-w-divergence" min="0" max="100" step="5" value="40" data-default="40">
-            <span class="cm-weight-val" id="cm-w-divergence-val">40%</span>
+            <input type="range" class="cm-weight-slider" id="cm-w-divergence" min="0" max="100" step="5" value="35" data-default="35">
+            <span class="cm-weight-val" id="cm-w-divergence-val">35%</span>
+          </div>
+          <div class="cm-weight-row">
+            <label class="cm-weight-label" for="cm-w-action">Action divergence</label>
+            <input type="range" class="cm-weight-slider" id="cm-w-action" min="0" max="100" step="5" value="20" data-default="20">
+            <span class="cm-weight-val" id="cm-w-action-val">20%</span>
           </div>
           <div class="cm-weight-row">
             <label class="cm-weight-label" for="cm-w-class">Class match</label>
-            <input type="range" class="cm-weight-slider" id="cm-w-class" min="0" max="100" step="5" value="30" data-default="30">
-            <span class="cm-weight-val" id="cm-w-class-val">30%</span>
+            <input type="range" class="cm-weight-slider" id="cm-w-class" min="0" max="100" step="5" value="20" data-default="20">
+            <span class="cm-weight-val" id="cm-w-class-val">20%</span>
           </div>
           <div class="cm-weight-row">
             <label class="cm-weight-label" for="cm-w-indication">Shared indications</label>
-            <input type="range" class="cm-weight-slider" id="cm-w-indication" min="0" max="100" step="5" value="30" data-default="30">
-            <span class="cm-weight-val" id="cm-w-indication-val">30%</span>
+            <input type="range" class="cm-weight-slider" id="cm-w-indication" min="0" max="100" step="5" value="25" data-default="25">
+            <span class="cm-weight-val" id="cm-w-indication-val">25%</span>
           </div>
         </div>
 
@@ -11608,7 +11613,7 @@
   </div>
 
   <!-- Load print-forms CSS and JS -->
-  <link rel="stylesheet" href="css/tools/print-forms.css">
+  <link rel="stylesheet" href="css/tools/print-forms.css?v=20260508c">
   <script src="js/tools/print-forms.js?v=20260508c"></script>
 
   <!-- Documentation Tools (one-page H&P / SOAP) -->
@@ -12045,7 +12050,7 @@
   </script>
 
   <script defer src="js/data.js?v=20260717e"></script>
-  <script defer src="js/app.js?v=20260717h"></script>
+  <script defer src="js/app.js?v=20260718a"></script>
   <script defer src="js/glossary-data.js?v=20260717a"></script>
   <script defer src="js/glossary-page.js?v=20260501a"></script>
   <script defer src="js/search.js?v=20260714a"></script>

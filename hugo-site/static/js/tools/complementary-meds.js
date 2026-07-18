@@ -64,50 +64,67 @@
   function indUses(med) {
     return (med.indications || []).map(function (i) { return i.use.toLowerCase().trim(); });
   }
+  // Indication labels nest rather than match exactly — "Treatment-Resistant
+  // Schizophrenia" and "Schizophrenia" describe the same clinical problem, as do
+  // "Adjunct for Major Depressive Disorder" and "Major Depressive Disorder".
+  // Exact string equality would reject those pairs (and with them the whole
+  // clozapine-augmentation case), so treat one label containing the other as a
+  // match.
+  function indRelated(x, y) {
+    return x === y || x.indexOf(y) !== -1 || y.indexOf(x) !== -1;
+  }
   function jaccard(a, b) {
     var A = indUses(a), B = indUses(b);
     if (!A.length && !B.length) return 0;
-    var setB = {}, inter = 0, seen = {};
-    B.forEach(function (u) { setB[u] = 1; });
-    A.forEach(function (u) { if (setB[u] && !seen[u]) { inter++; seen[u] = 1; } });
+    var inter = 0;
+    A.forEach(function (u) {
+      for (var i = 0; i < B.length; i++) { if (indRelated(u, B[i])) { inter++; return; } }
+    });
     var uni = {}; A.concat(B).forEach(function (u) { uni[u] = 1; });
     var uniSize = Object.keys(uni).length;
-    return uniSize ? inter / uniSize : 0;
+    return uniSize ? Math.min(1, inter / uniSize) : 0;
   }
 
   // ── User-adjustable weights (slider toolbar) ─────────────────────────────
   // Sliders hold raw 0–100 values; the score normalizes them to sum to 1.
   function readWeights() {
     function v(id, dflt) { var el = document.getElementById(id); return el ? (parseFloat(el.value) || 0) : dflt; }
-    return { d: v('cm-w-divergence', 40), c: v('cm-w-class', 30), i: v('cm-w-indication', 30) };
+    return { d: v('cm-w-divergence', 35), a: v('cm-w-action', 20), c: v('cm-w-class', 20), i: v('cm-w-indication', 25) };
   }
   function normWeights() {
     var raw = readWeights();
-    var wD = raw.d, wC = raw.c, wI = raw.i;
-    var sum = wD + wC + wI;
-    if (sum <= 0) { wD = 40; wC = 30; wI = 30; sum = 100; }
-    return { wD: wD / sum, wC: wC / sum, wI: wI / sum };
+    var wD = raw.d, wA = raw.a, wC = raw.c, wI = raw.i;
+    var sum = wD + wA + wC + wI;
+    if (sum <= 0) { wD = 35; wA = 20; wC = 20; wI = 25; sum = 100; }
+    return { wD: wD / sum, wA: wA / sum, wC: wC / sum, wI: wI / sum };
   }
 
-  function score(ref, cand) {
+  function score(ref, cand, act) {
     var w = normWeights();
-    var wD = w.wD, wC = w.wC, wI = w.wI;
+    var wD = w.wD, wA = w.wA, wC = w.wC, wI = w.wI;
     var cos = cosine(fingerprint(ref), fingerprint(cand));
     var div = 1 - cos;                                   // receptor divergence
     var cMatch = (ref.class === cand.class) ? 1 : (ref.category === cand.category ? 0.7 : 0);
     var iMatch = jaccard(ref, cand);
+    var aInfo = act || actionInfo(ref, cand);
+    // When the pair shares no characterized receptor, action divergence does not
+    // apply — fold its weight into receptor divergence rather than scoring a 0
+    // against a dimension that cannot be measured.
+    var aDiv = aInfo.score, wDe = wD, wAe = wA;
+    if (aDiv === null) { wDe = wD + wA; wAe = 0; aDiv = 0; }
     return {
-      total: 100 * (wD * div + wC * cMatch + wI * iMatch),
+      total: 100 * (wDe * div + wAe * aDiv + wC * cMatch + wI * iMatch),
       div: div, cos: cos, cMatch: cMatch, iMatch: iMatch,
-      wD: wD, wC: wC, wI: wI
+      aDiv: aInfo.score, contrasts: aInfo.contrasts,
+      wD: wDe, wA: wAe, wC: wC, wI: wI
     };
   }
 
   function sharedIndications(ref, cand) {
-    var setB = {}; indUses(cand).forEach(function (u) { setB[u] = 1; });
-    var out = [];
+    var B = indUses(cand), out = [];
     (ref.indications || []).forEach(function (i) {
-      if (setB[i.use.toLowerCase().trim()]) out.push(i.use);
+      var u = i.use.toLowerCase().trim();
+      for (var k = 0; k < B.length; k++) { if (indRelated(u, B[k])) { out.push(i.use); return; } }
     });
     return out;
   }
@@ -140,6 +157,51 @@
     }
     return out.sort(function (a, b) { return b.pRef - a.pRef; });
   }
+
+  // ── ACTION divergence (Phase 2) ──────────────────────────────────────────
+  // Affinity says the two agents share a receptor; ACTION says whether they do
+  // the same thing there. A D2 antagonist and a D2 partial agonist overlap
+  // almost perfectly by binding fingerprint yet are functionally complementary
+  // — this axis is what makes that visible.
+  //
+  // Scored only over receptors BOTH agents bind meaningfully (pKi >= 6) and for
+  // which both actions are characterized. Each shared receptor contributes the
+  // functional distance between the two actions, weighted by the weaker of the
+  // two binding strengths (so a contrast at a strongly-bound receptor counts
+  // more than one at a marginal target). Returns null when no shared receptor
+  // is scorable — the pair simply has no action contrast to measure.
+  function actionInfo(ref, cand) {
+    var RA = window.ReceptorActions;
+    if (!RA || !hasKi(ref) || !hasKi(cand)) return { score: null, contrasts: [] };
+    var num = 0, den = 0, contrasts = [];
+    for (var r in ref.receptorKi) {
+      if (!cand.receptorKi || cand.receptorKi[r] == null) continue;
+      var pRef = pKi(ref.receptorKi[r]), pCand = pKi(cand.receptorKi[r]);
+      if (pRef < 6 || pCand < 6) continue;                  // not a real shared target
+      var aRef = RA.actionFor(ref.id, r), aCand = RA.actionFor(cand.id, r);
+      var d = RA.distance(aRef, aCand);
+      if (d === null) continue;                             // uncharacterized -> skip
+      var w = Math.min(pRef - FLOOR, pCand - FLOOR);
+      if (w <= 0) continue;
+      num += d * w; den += w;
+      if (d > 0) contrasts.push({ r: r, refAct: aRef, candAct: aCand, dist: d, pRef: pRef, pCand: pCand });
+    }
+    if (den === 0) return { score: null, contrasts: [] };
+    contrasts.sort(function (a, b) { return (b.dist * Math.min(b.pRef, b.pCand)) - (a.dist * Math.min(a.pRef, a.pCand)); });
+    // Aggregation: a flat mean would dilute the one contrast that matters —
+    // two antipsychotics acting oppositely at D2 also act identically at H1,
+    // alpha1 and 5HT2A, dragging the average toward zero. Complementarity is
+    // about the PRESENCE of a meaningful functional difference, so the peak
+    // contrast dominates, tempered by how broadly the pair differs overall.
+    var mean = num / den, peak = 0;
+    contrasts.forEach(function (c) { if (c.dist > peak) peak = c.dist; });
+    return { score: 0.7 * peak + 0.3 * mean, peak: peak, mean: mean, contrasts: contrasts };
+  }
+
+  // A pair whose receptor fingerprints overlap heavily can still be a rational
+  // combination if they ACT differently at those shared receptors. This floor
+  // lets such pairs past the overlap ceiling.
+  var ACTION_FLOOR = 0.30;
 
   // ── Interaction flags: P450 conflicts & additive QT ──────────────────────
   // A pharmacokinetic conflict exists when one agent inhibits or induces a CYP
@@ -203,6 +265,17 @@
   function chip(r) {
     var c = COLORS[r] || '#8b6914';
     return '<span class="cm-chip" style="--cm-chip:' + c + '">' + esc(r) + '</span>';
+  }
+
+  // Action contrast: same receptor, different functional action.
+  function actxChip(c) {
+    var RA = window.ReceptorActions;
+    var col = COLORS[c.r] || '#8b6914';
+    return '<span class="cm-actx" style="--cm-chip:' + col + '">'
+      + '<span class="cm-actx-r">' + esc(c.r) + '</span>'
+      + '<span class="cm-actx-a">' + esc(RA.short(c.refAct)) + '</span>'
+      + '<span class="cm-actx-arrow">&rarr;</span>'
+      + '<span class="cm-actx-b">' + esc(RA.short(c.candAct)) + '</span></span>';
   }
 
   // ── Curated combination strategies (Phase 1 knowledge base) ──────────────
@@ -344,14 +417,18 @@
     if (sameCat) cand = cand.filter(function (m) { return m.category === ref.category; });
     var refFp = fingerprint(ref);
     cand = cand.filter(function (m) {
-      return hasKi(m)
-        && sharedIndications(ref, m).length > 0
-        && cosine(refFp, fingerprint(m)) <= OVERLAP_CEILING;
+      if (!hasKi(m) || sharedIndications(ref, m).length === 0) return false;
+      if (cosine(refFp, fingerprint(m)) <= OVERLAP_CEILING) return true;
+      // High receptor overlap, but do they ACT differently at those receptors?
+      var a = actionInfo(ref, m);
+      return a.score !== null && a.score >= ACTION_FLOOR;
     });
 
     var ranked = cand.map(function (c) {
+      var act = actionInfo(ref, c);
       return {
-        med: c, s: score(ref, c),
+        med: c, s: score(ref, c, act), act: act,
+        rescued: cosine(refFp, fingerprint(c)) > OVERLAP_CEILING,
         added: addedTargets(ref, c),
         refOnly: refOnlyTargets(ref, c),
         inds: sharedIndications(ref, c),
@@ -416,6 +493,10 @@
       var m = row.med, s = row.s;
       var whyBits = [];
       whyBits.push(Math.round(s.div * 100) + '% divergent receptor profile');
+      if (s.aDiv !== null && s.aDiv > 0 && row.act.contrasts.length) {
+        whyBits.push(Math.round(s.aDiv * 100) + '% action divergence at shared receptors ('
+          + row.act.contrasts.slice(0, 2).map(function (c) { return c.r; }).join(', ') + ')');
+      }
       if (s.cMatch === 1) whyBits.push('same class (' + m.class + ')');
       else if (s.cMatch === 0.7) whyBits.push('same category, different class');
       if (row.inds.length) whyBits.push(row.inds.length + ' shared indication' + (row.inds.length > 1 ? 's' : ''));
@@ -431,14 +512,34 @@
 
       html += '<div class="cm-why">Why: ' + esc(why) + '.</div>';
 
+      if (row.rescued) {
+        html += '<div class="cm-rescue"><strong>Note:</strong> these two bind a highly similar receptor set ('
+          + pct(s.cos * 100) + ' overlap). They appear here only because they <em>act differently</em> at those shared receptors '
+          + '&mdash; the dopamine partial-agonist-plus-antagonist pattern. Same-class combination (e.g. antipsychotic polypharmacy) '
+          + 'carries additive adverse-effect burden and needs a specific rationale such as clozapine augmentation.</div>';
+      }
+
       html += flagsBlock(ref, row);
 
       html += '<div class="cm-metrics">';
       html += bar('Receptor divergence', s.div, 'weight ' + Math.round(s.wD * 100) + '% · ' + Math.round(s.cos * 100) + '% receptor overlap');
+      if (s.aDiv !== null) {
+        var nSh = row.act ? row.act.contrasts.length : 0;
+        html += bar('Action divergence', s.aDiv, 'weight ' + Math.round(s.wA * 100) + '% · '
+          + (nSh ? nSh + ' shared receptor' + (nSh > 1 ? 's' : '') + ' acted on differently' : 'same action at shared receptors'));
+      } else {
+        html += '<div class="cm-metric cm-metric--na"><div class="cm-metric-top">'
+          + '<span class="cm-metric-label">Action divergence</span><span class="cm-metric-val">n/a</span></div>'
+          + '<div class="cm-metric-note">no shared receptor with a characterized action &mdash; weight folded into receptor divergence</div></div>';
+      }
       html += bar('Class match', s.cMatch, 'weight ' + Math.round(s.wC * 100) + '%');
       html += bar('Shared indications', s.iMatch, 'weight ' + Math.round(s.wI * 100) + '%');
       html += '</div>';
 
+      if (row.act && row.act.contrasts.length) {
+        html += '<div class="cm-shared cm-shared--actx"><span class="cm-shared-label">Same receptor, different action:</span> '
+          + row.act.contrasts.slice(0, 5).map(actxChip).join('') + '</div>';
+      }
       if (row.added.length) {
         html += '<div class="cm-shared"><span class="cm-shared-label">New coverage from ' + esc(m.name) + ':</span> '
           + row.added.slice(0, 6).map(function (t) { return chip(t.r); }).join('') + '</div>';
@@ -566,7 +667,13 @@
       var m = row.med, s = row.s;
       t += (i + 1) + '. ' + m.name + ' (' + m.brandName + ') — ' + m.class + '  |  ' + Math.round(s.total) + '% complement\n';
       t += '   Receptor divergence: ' + Math.round(s.div * 100) + '% (' + Math.round(s.cos * 100) + '% overlap)  ·  '
+        + 'Action divergence: ' + (s.aDiv === null ? 'n/a' : Math.round(s.aDiv * 100) + '%') + '  ·  '
         + 'Class: ' + Math.round(s.cMatch * 100) + '%  ·  Indications: ' + Math.round(s.iMatch * 100) + '%\n';
+      if (row.act && row.act.contrasts.length) {
+        t += '   Same receptor, different action: ' + row.act.contrasts.slice(0, 5).map(function (c) {
+          return c.r + ' ' + window.ReceptorActions.short(c.refAct) + ' -> ' + window.ReceptorActions.short(c.candAct);
+        }).join('; ') + '\n';
+      }
       if (row.added.length) t += '   New receptor coverage: ' + row.added.slice(0, 6).map(function (x) { return x.r; }).join(', ') + '\n';
       if (row.inds.length) t += '   Shared indications: ' + row.inds.join(', ') + '\n';
       if (row.qt) t += '   FLAG - Additive QT: both agents prolong QT; monitor ECG/electrolytes.\n';
@@ -589,11 +696,12 @@
   }
 
   // Update the on-screen % labels to reflect the normalized effective weights.
-  var WEIGHT_IDS = ['cm-w-divergence', 'cm-w-class', 'cm-w-indication'];
+  var WEIGHT_IDS = ['cm-w-divergence', 'cm-w-action', 'cm-w-class', 'cm-w-indication'];
   function refreshWeightLabels() {
     var w = normWeights();
     function set(id, frac) { var el = document.getElementById(id); if (el) el.textContent = Math.round(frac * 100) + '%'; }
     set('cm-w-divergence-val', w.wD);
+    set('cm-w-action-val', w.wA);
     set('cm-w-class-val', w.wC);
     set('cm-w-indication-val', w.wI);
   }

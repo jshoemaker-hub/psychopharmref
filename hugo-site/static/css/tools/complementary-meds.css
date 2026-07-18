@@ -241,3 +241,25 @@
 .cm-combo-monitor strong { color: #9a3b28; }
 .cm-combo-cite { font-size: 0.74rem; color: var(--text); opacity: 0.55; margin-top: 0.3rem; font-style: italic; }
 .cm-combos-foot { font-size: 0.76rem; color: var(--text); opacity: 0.6; line-height: 1.4; margin-top: 0.75rem; }
+
+/* ── Action contrasts (cm-actx-) — Phase 2 ─────────────────────────────────
+   Same receptor, opposite functional action: the D2-antagonist / D2-partial-
+   agonist case that receptor-affinity divergence alone cannot see. */
+.cm-shared--actx { align-items: center; }
+.cm-actx {
+  display: inline-flex; align-items: center; gap: 0.28rem;
+  border: 1px solid var(--cm-chip, var(--border));
+  border-radius: 5px; padding: 0.1rem 0.4rem; margin: 0.12rem 0.25rem 0.12rem 0;
+  background: #fff; font-size: 0.75rem; white-space: nowrap;
+}
+.cm-actx-r { font-weight: 800; color: var(--cm-chip, var(--text)); }
+.cm-actx-a, .cm-actx-b { font-weight: 600; color: var(--text); opacity: 0.85; }
+.cm-actx-arrow { color: var(--cm-chip, var(--text)); font-weight: 700; }
+.cm-metric--na { opacity: 0.6; }
+.cm-metric--na .cm-metric-val { font-style: italic; }
+.cm-rescue {
+  font-size: 0.8rem; line-height: 1.45; color: var(--text);
+  background: #fdf6e8; border: 1px solid #e0cfa4; border-left: 3px solid #b05a20;
+  border-radius: 6px; padding: 0.45rem 0.6rem; margin: 0.4rem 0 0.1rem;
+}
+.cm-rescue strong { color: #b05a20; }
