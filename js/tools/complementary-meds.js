@@ -96,6 +96,35 @@
     return out;
   }
 
+  // ── Route-of-administration filter ───────────────────────────────────────
+  // Empty = no filter ("Any route"). Multiple routes are OR-ed, so selecting
+  // IM and IV shows agents available by either.
+  var selectedRoutes = [];
+
+  function routeChips(medId) {
+    var R = window.Routes;
+    if (!R) return '';
+    return R.sorted(medId).map(function (rt) {
+      var note = R.noteFor(medId, rt);
+      var on = selectedRoutes.indexOf(rt) !== -1;
+      return '<span class="cm-route-chip' + (on ? ' cm-route-chip--match' : '') + '"'
+        + (note ? ' title="' + esc(note) + '"' : '') + '>' + esc(R.short(rt)) + '</span>';
+    }).join('');
+  }
+  // Formulation detail for the routes the clinician actually asked about.
+  function routeNotes(medId) {
+    var R = window.Routes;
+    if (!R) return '';
+    var wanted = selectedRoutes.length ? selectedRoutes : [];
+    var out = [];
+    wanted.forEach(function (rt) {
+      if (!R.has(medId, rt)) return;
+      var note = R.noteFor(medId, rt);
+      if (note) out.push('<div class="cm-route-note"><strong>' + esc(R.short(rt)) + ':</strong> ' + esc(note) + '</div>');
+    });
+    return out.join('');
+  }
+
   // ── User-adjustable weights (slider toolbar) ─────────────────────────────
   // Sliders hold raw 0–100 values; the score normalizes them to sum to 1.
   function readWeights() {
@@ -461,7 +490,7 @@
   }
 
   // ── State ────────────────────────────────────────────────────────────────
-  var lastRanked = null, lastRef = null, lastSameCat = true, lastExcluded = [];
+  var lastRanked = null, lastRef = null, lastSameCat = true, lastExcluded = [], lastRouteFiltered = 0, lastRoutePassed = 0;
   var STEP = 3;            // how many results per "show more" click
   var shownCount = STEP;   // how many are currently displayed
 
@@ -495,8 +524,15 @@
     if (sameCat) cand = cand.filter(function (m) { return m.category === ref.category; });
     var refFp = fingerprint(ref);
     var excluded = [];
+    var routeFiltered = 0;   // shared an indication but wrong route
+    var routePassed = 0;     // shared an indication AND matched the route
     cand = cand.filter(function (m) {
       if (sharedIndications(ref, m).length === 0) return false;
+
+      // Route filter — applied before the safety and mechanism gates so the
+      // count of route-excluded agents stays meaningful.
+      if (window.Routes && !window.Routes.hasAny(m.id, selectedRoutes)) { routeFiltered++; return false; }
+      routePassed++;
 
       // Safety gate first: a contraindicated pair is never ranked, however
       // mechanistically complementary it may look. It is reported separately.
@@ -536,6 +572,8 @@
     }).sort(function (a, b) { return b.s.total - a.s.total; });
 
     lastExcluded = excluded;
+    lastRouteFiltered = routeFiltered;
+    lastRoutePassed = routePassed;
     lastRanked = ranked; lastRef = ref; lastSameCat = sameCat;
     shownCount = STEP;               // reset to first three on every new search
     render(ref, ranked, sameCat);
@@ -556,6 +594,21 @@
       + '<span class="cm-ref-class">' + esc(ref.class) + ' · ' + esc(ref.category) + '</span>'
       + '</div>';
     html += refBanner;
+
+    // Active route filter — state it plainly so a short list is never mistaken
+    // for "these are the only complementary options".
+    if (selectedRoutes.length && window.Routes) {
+      html += '<div class="cm-routefilter">'
+        + '<span class="cm-routefilter-label">Route filter:</span> '
+        + selectedRoutes.map(function (rt) {
+            return '<span class="cm-route-chip cm-route-chip--match">' + esc(window.Routes.short(rt)) + '</span>';
+          }).join('')
+        + '<span class="cm-routefilter-txt">showing only agents available as '
+        + esc(selectedRoutes.map(function (rt) { return window.Routes.label(rt); }).join(' or '))
+        + (lastRouteFiltered ? ' &mdash; ' + lastRouteFiltered + ' otherwise-eligible agent'
+            + (lastRouteFiltered > 1 ? 's' : '') + ' hidden by this filter' : '')
+        + '.</span></div>';
+    }
 
     // What does the reference itself already cover, and what is the gap?
     var doms = selectedDomains();
@@ -592,6 +645,22 @@
           + ' &mdash; every candidate sharing an indication is contraindicated in combination with it, for the reasons below.'
           + (sameCat ? ' You can also try unchecking &ldquo;Restrict to same category.&rdquo;' : '') + '</div>';
       } else {
+        if (selectedRoutes.length && lastRoutePassed > 0) {
+          // Agents DID match the route — they failed the mechanism or safety
+          // gates. Saying "none available by this route" would be wrong.
+          html += '<div class="cm-note-inline">' + lastRoutePassed + ' agent'
+            + (lastRoutePassed > 1 ? 's are' : ' is') + ' available by the selected route ('
+            + esc(selectedRoutes.map(function (rt) { return window.Routes.label(rt); }).join(' or '))
+            + ') and share an indication with ' + esc(ref.name) + ', but none qualify as <em>complementary</em> '
+            + '&mdash; they are either too pharmacologically similar to ' + esc(ref.name)
+            + ' (that is the <em>Find Similar Medications</em> question) or contraindicated in combination.</div>';
+        } else if (selectedRoutes.length && lastRouteFiltered) {
+          html += '<div class="cm-note-inline">No agent sharing an indication with ' + esc(ref.name)
+            + ' is available by the selected route ('
+            + esc(selectedRoutes.map(function (rt) { return window.Routes.label(rt); }).join(' or ')) + '). '
+            + lastRouteFiltered + ' otherwise-eligible agent' + (lastRouteFiltered > 1 ? 's were' : ' was')
+            + ' hidden by this filter &mdash; switch back to <em>Any route</em> to see them.</div>';
+        } else
         html += '<div class="cm-note-inline">No eligible complementary agents found &mdash; candidates must share at least one indication with ' + esc(ref.name)
           + ' and either diverge mechanistically (receptor overlap &le; ' + Math.round(OVERLAP_CEILING * 100)
           + '%; more-similar agents belong in <em>Find Similar Medications</em>), act differently at shared receptors, '
@@ -672,6 +741,10 @@
       html += bar('Class match', s.cMatch, 'weight ' + Math.round(s.wC * 100) + '%');
       html += bar('Shared indications', s.iMatch, 'weight ' + Math.round(s.wI * 100) + '%');
       html += '</div>';
+
+      html += '<div class="cm-shared cm-shared--routes"><span class="cm-shared-label">Routes:</span> '
+        + routeChips(m.id) + '</div>';
+      html += routeNotes(m.id);
 
       html += coverageBlock(row);
 
@@ -789,7 +862,11 @@
       : new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     var t = 'Complementary Medication Analysis\nDate: ' + date + '\n\n';
     var w = normWeights();
-    t += 'Reference medication: ' + ref.name + ' (' + ref.brandName + ') — ' + ref.class + ', ' + ref.category + '\n\n';
+    t += 'Reference medication: ' + ref.name + ' (' + ref.brandName + ') — ' + ref.class + ', ' + ref.category + '\n';
+    if (selectedRoutes.length && window.Routes) {
+      t += 'Route filter: ' + selectedRoutes.map(function (rt) { return window.Routes.label(rt); }).join(' or ') + '\n';
+    }
+    t += '\n';
 
     // Curated evidence-based combinations (Phase 1 knowledge base)
     var CS = window.CombinationStrategies;
@@ -828,6 +905,9 @@
       if (row.safety) row.safety.reasons.forEach(function (rs) {
         t += '   ' + (rs.severity === 'contraindicated' ? 'CONTRAINDICATED' : 'CAUTION') + ' - ' + rs.title + ': ' + rs.detail + '\n';
       });
+      if (window.Routes) t += '   Routes: ' + window.Routes.sorted(m.id).map(function (rt) {
+        return window.Routes.short(rt);
+      }).join(', ') + '\n';
       if (s.cov) {
         if (s.cov.covers.length) t += '   Covers residual: ' + s.cov.covers.map(function (c) {
           return window.SymptomDomains.short(c.domain) + ' (' + c.contributors.map(function (x) { return x.receptor + ' ' + x.action; }).join(', ') + ')';
@@ -894,6 +974,30 @@
   if (symBoxes) Array.prototype.forEach.call(symBoxes, function (b) {
     b.addEventListener('change', function () { if (lastRef) compute(); });
   });
+  // Route buttons: "Any route" clears; the others toggle and OR together.
+  var routeBtns = document.querySelectorAll('.cm-route-btn');
+  function syncRouteBtns() {
+    Array.prototype.forEach.call(routeBtns, function (b) {
+      var rt = b.getAttribute('data-route');
+      var on = rt ? (selectedRoutes.indexOf(rt) !== -1) : (selectedRoutes.length === 0);
+      b.classList.toggle('cm-route-btn--on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  if (routeBtns) Array.prototype.forEach.call(routeBtns, function (b) {
+    b.addEventListener('click', function () {
+      var rt = b.getAttribute('data-route');
+      if (!rt) { selectedRoutes = []; }
+      else {
+        var i = selectedRoutes.indexOf(rt);
+        if (i === -1) selectedRoutes.push(rt); else selectedRoutes.splice(i, 1);
+      }
+      syncRouteBtns();
+      if (lastRef) compute();
+    });
+  });
+  syncRouteBtns();
+
   var symClear = document.getElementById('cm-symptom-clear');
   if (symClear) symClear.addEventListener('click', function () {
     Array.prototype.forEach.call(document.querySelectorAll('.cm-symptom-box'), function (b) { b.checked = false; });
