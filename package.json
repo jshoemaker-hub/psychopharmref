@@ -1,4 +1,14 @@
 {
+  "scripts": {
+    "check:release": "node scripts/validate-release.js",
+    "check:clinical": "node scripts/validate-clinical-data.js",
+    "test:phq9-runtime": "node scripts/test-phq9-schema-runtime.js",
+    "test:gad7-runtime": "node scripts/test-gad7-schema-runtime.js",
+    "check:sidebars": "python3 scripts/check-sidebars.py",
+    "check:blog-sync": "python3 scripts/check-blog-sync.py",
+    "check": "npm run check:release && npm run check:clinical && npm run test:phq9-runtime && npm run test:gad7-runtime && npm run check:sidebars",
+    "check:full": "npm run check && npm run check:blog-sync"
+  },
   "dependencies": {
     "jsdom": "^29.0.2"
   }

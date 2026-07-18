@@ -196,7 +196,7 @@ html, body {
   background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 18px;
 }
 .ba-stacked-card { border-top: 3px solid var(--sc, var(--accent)); }
-.ba-support-card { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 8px; padding: 18px; }
+.ba-support-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 18px; }
 .ba-therapy-icon, .ba-pop-icon, .ba-stacked-icon { font-size: 26px; margin-bottom: 8px; }
 .ba-therapy-title, .ba-stacked-title { font-size: 14px; font-weight: 700; color: var(--sc, var(--accent)); margin-bottom: 6px; }
 .ba-stacked-sub { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }

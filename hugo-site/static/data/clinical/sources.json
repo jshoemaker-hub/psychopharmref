@@ -1,0 +1,20 @@
+[
+  {
+    "id": "kroenke-2001-phq9",
+    "label": "Kroenke K, Spitzer RL, Williams JBW. The PHQ-9. J Gen Intern Med. 2001;16:606-613.",
+    "type": "journal_article",
+    "year": 2001,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-17",
+    "notes": "Primary source cited by the PHQ-9 tool report."
+  },
+  {
+    "id": "spitzer-2006-gad7",
+    "label": "Spitzer RL, Kroenke K, Williams JBW, Lowe B. A brief measure for assessing generalized anxiety disorder. Arch Intern Med. 2006;166:1092-1097.",
+    "type": "journal_article",
+    "year": 2006,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-17",
+    "notes": "Primary source cited by the GAD-7 tool report."
+  }
+]

@@ -42,19 +42,27 @@ def canonical_key(attrs):
     """Reduce an anchor's attributes to a stable identity across all three URL forms.
     Searches the whole attribute string so Hugo's nested-quote href
     (href="{{ "/blog/slug" | relURL }}") is handled correctly."""
-    # 1) explicit section (index.html tool links: data-section="chem-structure")
+    # 1) in-page anchored links (index.html printable-form categories:
+    #    data-section="print-forms" data-anchor="pf-cat-docs")
+    m = re.search(r'data-anchor="([^"]+)"', attrs)
+    if m:
+        return "sec:" + m.group(1)
+    # 2) explicit section (index.html tool links: data-section="chem-structure")
     m = re.search(r'data-section="([^"]+)"', attrs)
     if m:
         return "sec:" + m.group(1)          # glossary category chips collapse to the base section
-    # 2) chapter slug in any URL form: /blog/slug/, {{ "/blog/slug" | relURL }}
+    # 3) Hugo blog index: {{ "/blog" | relURL }}
+    if re.search(r'/blog/?(?:"|\s*\|)', attrs):
+        return "sec:blog-index"
+    # 4) chapter slug in any URL form: /blog/slug/, {{ "/blog/slug" | relURL }}
     m = re.search(r'/blog/([a-z0-9][a-z0-9-]*)', attrs)
     if m:
         return "blog:" + m.group(1)
-    # 3) section deep-link fragment: ../index.html#id, /#id, #id
+    # 5) section deep-link fragment: ../index.html#id, /#id, #id
     m = re.search(r'#([a-z0-9][a-z0-9-]*)"', attrs)
     if m:
         return "sec:" + m.group(1)
-    # 4) relative chapter file: slug.html  (blog/sidebar.html chapter links)
+    # 6) relative chapter file: slug.html  (blog/sidebar.html chapter links)
     m = re.search(r'"([a-z0-9][a-z0-9-]*)\.html"', attrs)
     if m and m.group(1) != "index":
         return "blog:" + m.group(1)
