@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "bump:asset-versions": "node scripts/bump-asset-versions.js",
     "build:blog-index": "python3 build-blog-index.py",
     "check:blog-index": "python3 build-blog-index.py --check",
     "check:release": "node scripts/validate-release.js",
