@@ -309,17 +309,17 @@ function switchSection(id) {
     // Load CSS
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/tools/' + toolId + '.css?v=20260719a';
+    link.href = 'css/tools/' + toolId + '.css?v=20260719b';
     document.head.appendChild(link);
     // Load shared tool-utils.js once (first tool activation), then the tool JS
     function loadToolScript() {
       // Question bank needs data file loaded first
       if (toolId === 'question-bank-tool' && !window.QBANK_DATA) {
         var dataScript = document.createElement('script');
-        dataScript.src = 'js/qbank-data.js?v=20260719a';
+        dataScript.src = 'js/qbank-data.js?v=20260719b';
         dataScript.onload = function() {
           var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20260719a';
+          script.src = 'js/tools/' + toolId + '.js?v=20260719b';
           document.body.appendChild(script);
         };
         dataScript.onerror = function() { console.error('Failed to load qbank-data.js'); };
@@ -327,11 +327,11 @@ function switchSection(id) {
       } else if (toolId === 'complementary-meds' && !window.CombinationStrategies) {
         // Complementary-meds needs curated overlays before the tool computes scores.
         var deps = [
-          'js/combination-strategies.js?v=20260719a',
-          'js/receptor-actions.js?v=20260719a',
-          'js/mechanism-tiers.js?v=20260719a',
-          'js/pair-safety.js?v=20260719a',
-          'js/symptom-domains.js?v=20260719a'
+          'js/combination-strategies.js?v=20260719b',
+          'js/receptor-actions.js?v=20260719b',
+          'js/mechanism-tiers.js?v=20260719b',
+          'js/pair-safety.js?v=20260719b',
+          'js/symptom-domains.js?v=20260719b'
         ];
         var pending = deps.length;
         deps.forEach(function(src) {
@@ -340,7 +340,7 @@ function switchSection(id) {
           d.onload = function() {
             if (--pending === 0) {
               var script = document.createElement('script');
-              script.src = 'js/tools/' + toolId + '.js?v=20260719a';
+              script.src = 'js/tools/' + toolId + '.js?v=20260719b';
               document.body.appendChild(script);
             }
           };
@@ -351,9 +351,9 @@ function switchSection(id) {
         // Similar-meds now shares complementary's action/tier/symptom overlays
         // (routes.js is already loaded globally). Load them before the tool JS.
         var smDeps = [
-          'js/receptor-actions.js?v=20260719a',
-          'js/mechanism-tiers.js?v=20260719a',
-          'js/symptom-domains.js?v=20260719a'
+          'js/receptor-actions.js?v=20260719b',
+          'js/mechanism-tiers.js?v=20260719b',
+          'js/symptom-domains.js?v=20260719b'
         ];
         var smPending = smDeps.length;
         smDeps.forEach(function(src) {
@@ -362,7 +362,7 @@ function switchSection(id) {
           d.onload = function() {
             if (--smPending === 0) {
               var script = document.createElement('script');
-              script.src = 'js/tools/' + toolId + '.js?v=20260719a';
+              script.src = 'js/tools/' + toolId + '.js?v=20260719b';
               document.body.appendChild(script);
             }
           };
@@ -371,7 +371,7 @@ function switchSection(id) {
         });
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20260719a';
+        script.src = 'js/tools/' + toolId + '.js?v=20260719b';
         document.body.appendChild(script);
       }
     }
@@ -408,7 +408,7 @@ function switchSection(id) {
 
     if (shouldLoadToolUtils()) {
       const utils = document.createElement('script');
-      utils.src = 'js/tools/tool-utils.js?v=20260719a';
+      utils.src = 'js/tools/tool-utils.js?v=20260719b';
       utils.onload = loadToolScript;
       utils.onerror = function() { console.error('Failed to load tool-utils.js'); };
       document.body.appendChild(utils);
