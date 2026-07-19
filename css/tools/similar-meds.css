@@ -174,7 +174,118 @@
   background: var(--bg2); border-left: 3px solid var(--accent2); border-radius: 0 7px 7px 0;
   padding: 0.75rem 0.95rem;
 }
-.sm-actions { margin-top: 1rem; }
+.sm-actions { margin-top: 1rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+.sm-more-btn {
+  font-size: 0.9rem; font-weight: 600; color: var(--accent2); cursor: pointer;
+  background: #fff; border: 1px solid var(--accent2); border-radius: 7px;
+  padding: 0.5rem 0.9rem; transition: background 0.15s ease, color 0.15s ease;
+}
+.sm-more-btn:hover { background: var(--accent2); color: #fff; }
+.sm-more-sub { font-weight: 400; opacity: 0.75; font-size: 0.82rem; }
+.sm-more-btn:hover .sm-more-sub { opacity: 0.9; }
+.sm-count-note { margin-top: 0.55rem; font-size: 0.78rem; color: var(--text); opacity: 0.6; }
+
+.sm-metric--na { opacity: 0.6; }
+.sm-metric--na .sm-metric-val { font-style: italic; }
+
+/* ── Residual-symptom targeting ────────────────────────────────────────────*/
+.sm-symptoms {
+  border: 1px solid var(--border); border-radius: 9px; background: #fff;
+  padding: 0.75rem 0.9rem 0.85rem; margin: 0.25rem 0 1rem;
+}
+.sm-symptoms-head { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.sm-symptoms-title { font-size: 0.85rem; font-weight: 700; color: var(--text); letter-spacing: 0.02em; }
+.sm-symptoms-opt { font-weight: 500; opacity: 0.6; }
+.sm-symptoms-hint { font-size: 0.78rem; color: var(--text); opacity: 0.72; margin: 0.4rem 0 0.7rem; line-height: 1.45; }
+.sm-symptom-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.35rem 0.9rem; }
+.sm-symptom {
+  display: flex; align-items: center; gap: 0.45rem; font-size: 0.84rem;
+  color: var(--text); cursor: pointer; user-select: none; padding: 0.15rem 0;
+}
+.sm-symptom input { width: 15px; height: 15px; accent-color: var(--accent2); cursor: pointer; flex: 0 0 auto; }
+
+/* Reference gap analysis */
+.sm-gap {
+  border: 1px solid var(--border); border-left: 3px solid var(--accent2);
+  border-radius: 8px; background: #fbf7ec; padding: 0.6rem 0.8rem; margin-bottom: 1rem;
+}
+.sm-gap-label { font-size: 0.8rem; font-weight: 700; color: var(--accent2); margin-right: 0.35rem; }
+.sm-gap-chip {
+  display: inline-block; font-size: 0.74rem; font-weight: 700; border-radius: 4px;
+  padding: 0.1rem 0.42rem; margin: 0.12rem 0.25rem 0.12rem 0; white-space: nowrap;
+}
+.sm-gap-chip--covered { background: rgba(74,124,53,0.14); color: #3f6b2c; border: 1px solid rgba(74,124,53,0.4); }
+.sm-gap-chip--gap { background: rgba(176,90,32,0.12); color: #96491a; border: 1px solid rgba(176,90,32,0.4); }
+.sm-gap-note { font-size: 0.78rem; color: var(--text); opacity: 0.75; line-height: 1.45; margin-top: 0.35rem; }
+
+/* Coverage chips on result cards */
+.sm-shared--cov { align-items: center; }
+.sm-shared-label--neg { color: #96491a; }
+.sm-cov {
+  display: inline-flex; flex-direction: column; line-height: 1.2;
+  border: 1px solid rgba(74,124,53,0.4); background: rgba(74,124,53,0.08);
+  border-radius: 5px; padding: 0.15rem 0.42rem; margin: 0.12rem 0.25rem 0.12rem 0;
+}
+.sm-cov--neg { border-color: rgba(176,90,32,0.45); background: rgba(176,90,32,0.09); }
+.sm-cov-d { font-size: 0.76rem; font-weight: 800; color: #3f6b2c; }
+.sm-cov--neg .sm-cov-d { color: #96491a; }
+.sm-cov-w { font-size: 0.66rem; color: var(--text); opacity: 0.7; }
+.sm-cov-none { font-size: 0.78rem; color: var(--text); opacity: 0.6; font-style: italic; }
+
+/* ── Action match/contrast chips (sm-actx-) ────────────────────────────────*/
+.sm-shared--actx { align-items: center; }
+.sm-actx {
+  display: inline-flex; align-items: center; gap: 0.28rem;
+  border: 1px solid var(--sm-chip, var(--border));
+  border-radius: 5px; padding: 0.1rem 0.4rem; margin: 0.12rem 0.25rem 0.12rem 0;
+  background: #fff; font-size: 0.75rem; white-space: normal;
+}
+.sm-actx--match { background: rgba(74,124,53,0.08); }
+.sm-actx-r { font-weight: 800; color: var(--sm-chip, var(--text)); }
+.sm-actx-a, .sm-actx-b { font-weight: 600; color: var(--text); opacity: 0.85; white-space: nowrap; }
+.sm-actx-arrow { color: var(--sm-chip, var(--text)); font-weight: 700; }
+
+/* ── Route-of-administration filter ────────────────────────────────────────*/
+.sm-routes {
+  border: 1px solid var(--border); border-radius: 9px; background: #fff;
+  padding: 0.75rem 0.9rem 0.85rem; margin: 0.25rem 0 1rem;
+}
+.sm-routes-head { display: flex; flex-direction: column; gap: 0.2rem; margin-bottom: 0.6rem; }
+.sm-routes-title { font-size: 0.85rem; font-weight: 700; color: var(--text); letter-spacing: 0.02em; }
+.sm-routes-hint { font-size: 0.78rem; color: var(--text); opacity: 0.72; line-height: 1.45; }
+.sm-route-btns { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.sm-route-btn {
+  font-family: inherit; font-size: 0.82rem; font-weight: 600; cursor: pointer;
+  padding: 0.4rem 0.75rem; border-radius: 6px; border: 1px solid var(--border);
+  background: #fff; color: var(--text); transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.sm-route-btn:hover { background: var(--bg2); border-color: var(--accent2); }
+.sm-route-btn--on { background: var(--accent2); color: #fff; border-color: var(--accent2); }
+.sm-route-btn:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+
+/* Active-filter banner */
+.sm-routefilter {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem;
+  border: 1px solid var(--border); border-left: 3px solid var(--accent2);
+  border-radius: 8px; background: #fbf7ec; padding: 0.5rem 0.75rem; margin-bottom: 1rem;
+  font-size: 0.8rem;
+}
+.sm-routefilter-label { font-weight: 700; color: var(--accent2); }
+.sm-routefilter-txt { color: var(--text); opacity: 0.8; }
+
+/* Route chips on result cards */
+.sm-shared--routes { align-items: center; }
+.sm-route-chip {
+  display: inline-block; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.03em;
+  border: 1px solid var(--border); background: var(--bg2); color: var(--text);
+  border-radius: 4px; padding: 0.08rem 0.36rem; margin: 0.1rem 0.2rem 0.1rem 0; white-space: nowrap;
+}
+.sm-route-chip--match { background: var(--accent2); color: #fff; border-color: var(--accent2); }
+.sm-route-note {
+  font-size: 0.78rem; line-height: 1.45; color: var(--text);
+  background: var(--bg2); border-radius: 6px; padding: 0.4rem 0.55rem; margin-top: 0.3rem;
+}
+.sm-route-note strong { color: var(--accent2); }
 
 @media (max-width: 640px) {
   .sm-ref-class { margin-left: 0; width: 100%; }

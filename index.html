@@ -496,7 +496,7 @@
           <h3>Chapters</h3>
           <p>Clinical commentary, pharmacology explainers, and case-based learning.</p>
           <div class="ic-sub-links">
-            <button class="btn-sub" onclick="switchSection('blog-index')">All Posts (89 articles)</button>
+            <button class="btn-sub" onclick="switchSection('blog-index')">All Posts (97 articles)</button>
             <a href="blog/smoking-cessation.html" class="btn-sub">Smoking Cessation</a>
             <a href="blog/obesity-weight-loss.html" class="btn-sub">Obesity &amp; Weight Loss</a>
           </div>
@@ -2986,11 +2986,11 @@
     <section id="similar-meds" data-lazy-tool="similar-meds" class="section">
       <div class="section-header">
         <h2>Find Similar Medications</h2>
-        <p class="section-sub">When a medication that once worked best loses its effect (tachyphylaxis, or &ldquo;poop-out&rdquo;), identify the three medications with the most similar pharmacology &mdash; a rational starting point for a switch.</p>
+        <p class="section-sub">When a medication that once worked best loses its effect (tachyphylaxis, or &ldquo;poop-out&rdquo;), identify the medications with the most similar pharmacology &mdash; a rational starting point for a switch. Filter by route of administration, target residual symptoms the switch must not lose ground on, and page through beyond the closest three.</p>
       </div>
 
       <div class="mt-warning">
-        <strong>Clinical decision-support only.</strong> Similarity is computed from receptor-binding profiles (60%), drug class (25%), and shared FDA indications (15%). Pharmacologic similarity does not guarantee comparable efficacy or tolerability in an individual, and for apparent tachyphylaxis a switch to a <em>different</em> mechanism is sometimes preferable. Use alongside clinical judgment.
+        <strong>Clinical decision-support only.</strong> Similarity is computed from receptor-binding profiles, <em>action</em> match at shared receptors (both antagonists, both reuptake inhibitors, etc.), <em>signal-transduction tier</em> agreement, drug class, and shared FDA indications &mdash; and, when residual symptoms are ticked, how well each candidate&rsquo;s mechanism still covers them. Any axis that cannot be measured for a pair is dropped and its weight redistributed. Pharmacologic similarity does not guarantee comparable efficacy or tolerability in an individual, and for apparent tachyphylaxis a switch to a <em>different</em> mechanism is sometimes preferable. Use alongside clinical judgment.
       </div>
 
       <div class="ref-card sm-setup-card">
@@ -3006,26 +3006,74 @@
           </label>
         </div>
 
+        <div class="sm-routes" role="group" aria-label="Filter by route of administration">
+          <div class="sm-routes-head">
+            <span class="sm-routes-title">&#9663; Route of administration</span>
+            <span class="sm-routes-hint">Show only agents available by the selected route(s). Useful when adherence calls for a long-acting injectable, or when the oral route is unavailable.</span>
+          </div>
+          <div class="sm-route-btns">
+            <button type="button" class="sm-route-btn sm-route-btn--on" data-route="" id="sm-route-any">Any route</button>
+            <button type="button" class="sm-route-btn" data-route="oral">Oral</button>
+            <button type="button" class="sm-route-btn" data-route="lai">Long-acting injectable</button>
+            <button type="button" class="sm-route-btn" data-route="im">Intramuscular</button>
+            <button type="button" class="sm-route-btn" data-route="iv">Intravenous</button>
+          </div>
+        </div>
+
+        <div class="sm-symptoms" role="group" aria-label="Residual symptoms to preserve coverage of">
+          <div class="sm-symptoms-head">
+            <span class="sm-symptoms-title">&#9678; Residual symptoms to keep covered <span class="sm-symptoms-opt">(optional)</span></span>
+            <button type="button" class="sm-weights-reset" id="sm-symptom-clear">Clear</button>
+          </div>
+          <p class="sm-symptoms-hint">Tick what the patient still has. Candidates are then scored on whether their mechanism plausibly <em>covers</em> those domains &mdash; and flagged where it may <em>worsen</em> them &mdash; so a switch doesn&rsquo;t trade one problem for another. Leave blank to rank on pharmacology alone.</p>
+          <div class="sm-symptom-grid">
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="insomnia"><span>Insomnia / sleep</span></label>
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="anhedonia"><span>Anhedonia / amotivation</span></label>
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="anxiety"><span>Anxiety / arousal</span></label>
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="cognition"><span>Cognitive / inattention</span></label>
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="agitation"><span>Agitation / irritability</span></label>
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="psychosis"><span>Psychotic symptoms</span></label>
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="appetite"><span>Poor appetite / weight loss</span></label>
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="sexual"><span>Sexual dysfunction</span></label>
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="pain"><span>Somatic pain</span></label>
+          </div>
+        </div>
+
         <div class="sm-weights" role="group" aria-label="Matching weight controls">
           <div class="sm-weights-head">
             <span class="sm-weights-title">&#9707; Matching weights</span>
             <button type="button" class="sm-weights-reset" id="sm-weights-reset">Reset defaults</button>
           </div>
-          <p class="sm-weights-hint">Adjust how much each factor counts toward the match. Lower <em>Class</em> to surface options in other classes; lower <em>Shared indications</em> to reach across indications. Uncheck &ldquo;Restrict to same category&rdquo; above to widen the pool. Weights normalize to 100%; results re-rank as you drag.</p>
+          <p class="sm-weights-hint">Adjust how much each factor counts toward the match. Raise <em>Action match</em> to favor agents that act the <em>same way</em> at shared receptors; raise <em>Cascade-tier match</em> to favor agents working at the same level of signal transduction. Lower <em>Class</em> to surface options in other classes; lower <em>Shared indications</em> to reach across indications. Axes that cannot be measured for a given pair are dropped and their weight redistributed &mdash; <em>Symptom coverage</em> only applies once you tick a residual symptom above. Uncheck &ldquo;Restrict to same category&rdquo; above to widen the pool. Weights normalize to 100%; results re-rank as you drag.</p>
           <div class="sm-weight-row">
             <label class="sm-weight-label" for="sm-w-receptor">Receptor binding</label>
             <input type="range" class="sm-weight-slider" id="sm-w-receptor" min="0" max="100" step="5" value="60" data-default="60">
-            <span class="sm-weight-val" id="sm-w-receptor-val">60%</span>
+            <span class="sm-weight-val" id="sm-w-receptor-val">39%</span>
+          </div>
+          <div class="sm-weight-row">
+            <label class="sm-weight-label" for="sm-w-action">Action match</label>
+            <input type="range" class="sm-weight-slider" id="sm-w-action" min="0" max="100" step="5" value="15" data-default="15">
+            <span class="sm-weight-val" id="sm-w-action-val">10%</span>
+          </div>
+          <div class="sm-weight-row">
+            <label class="sm-weight-label" for="sm-w-tier">Cascade-tier match</label>
+            <input type="range" class="sm-weight-slider" id="sm-w-tier" min="0" max="100" step="5" value="10" data-default="10">
+            <span class="sm-weight-val" id="sm-w-tier-val">6%</span>
           </div>
           <div class="sm-weight-row">
             <label class="sm-weight-label" for="sm-w-class">Class match</label>
             <input type="range" class="sm-weight-slider" id="sm-w-class" min="0" max="100" step="5" value="25" data-default="25">
-            <span class="sm-weight-val" id="sm-w-class-val">25%</span>
+            <span class="sm-weight-val" id="sm-w-class-val">16%</span>
           </div>
           <div class="sm-weight-row">
             <label class="sm-weight-label" for="sm-w-indication">Shared indications</label>
             <input type="range" class="sm-weight-slider" id="sm-w-indication" min="0" max="100" step="5" value="15" data-default="15">
-            <span class="sm-weight-val" id="sm-w-indication-val">15%</span>
+            <span class="sm-weight-val" id="sm-w-indication-val">10%</span>
+          </div>
+          <div class="sm-weight-row">
+            <label class="sm-weight-label" for="sm-w-symptom">Symptom coverage</label>
+            <input type="range" class="sm-weight-slider" id="sm-w-symptom" min="0" max="100" step="5" value="30" data-default="30">
+            <span class="sm-weight-val" id="sm-w-symptom-val">19%</span>
           </div>
         </div>
 
@@ -11913,7 +11961,7 @@
     <section id="blog-index" class="section">
       <div class="section-header">
         <h2>Chapters</h2>
-        <p class="section-sub">89 evidence-based clinical articles on psychopharmacology, psychiatric disorders, clinical practice, and more.</p>
+        <p class="section-sub">97 evidence-based clinical articles on psychopharmacology, psychiatric disorders, clinical practice, and more.</p>
       </div>
 
       <div style="max-width:700px;margin:0 auto;text-align:center;padding:30px 20px;">
@@ -11921,7 +11969,7 @@
           Browse all articles with search, filtering, and category organization on the full blog page.
         </p>
         <a href="/blog/" style="display:inline-block;background:var(--accent);color:#fff;padding:12px 32px;border-radius:6px;text-decoration:none;font-weight:600;font-size:15px;transition:background 0.2s;">
-          Browse All 89 Articles &rarr;
+          Browse All 97 Articles &rarr;
         </a>
 
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:30px;text-align:left;">
@@ -12159,7 +12207,7 @@
 
   <script defer src="js/data.js?v=20260717e"></script>
   <script defer src="js/routes.js?v=20260718h"></script>
-  <script defer src="js/app.js?v=20260718t"></script>
+  <script defer src="js/app.js?v=20260718u"></script>
   <script defer src="js/glossary-data.js?v=20260717a"></script>
   <script defer src="js/glossary-page.js?v=20260501a"></script>
   <script defer src="js/search.js?v=20260714a"></script>
