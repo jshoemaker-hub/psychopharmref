@@ -11,8 +11,12 @@ Output: js/blog-index.json
 import os, re, json, glob
 from html.parser import HTMLParser
 
-BLOG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'blog')
-OUT_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'js', 'blog-index.json')
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+BLOG_DIR = os.path.join(ROOT_DIR, 'blog')
+OUT_FILES = [
+    os.path.join(ROOT_DIR, 'js', 'blog-index.json'),
+    os.path.join(ROOT_DIR, 'hugo-site', 'static', 'js', 'blog-index.json'),
+]
 
 # ── HTML text extractor ──────────────────────────────────────────────────────
 
@@ -149,7 +153,10 @@ def extract_keywords(text, min_len=4, top_n=80):
 
 def main():
     index = []
-    files = sorted(glob.glob(os.path.join(BLOG_DIR, '*.html')))
+    files = sorted(
+        f for f in glob.glob(os.path.join(BLOG_DIR, '*.html'))
+        if os.path.basename(f) != 'sidebar.html'
+    )
     print(f'Scanning {len(files)} blog files...')
 
     for fpath in files:
@@ -176,11 +183,13 @@ def main():
         index.append(entry)
         print(f'  ✓ {fname} — {len(keywords)} keywords')
 
-    with open(OUT_FILE, 'w', encoding='utf-8') as f:
-        json.dump(index, f, indent=1)
+    for out_file in OUT_FILES:
+        os.makedirs(os.path.dirname(out_file), exist_ok=True)
+        with open(out_file, 'w', encoding='utf-8') as f:
+            json.dump(index, f, indent=1)
 
-    size_kb = os.path.getsize(OUT_FILE) / 1024
-    print(f'\nWrote {OUT_FILE} ({len(index)} posts, {size_kb:.1f} KB)')
+        size_kb = os.path.getsize(out_file) / 1024
+        print(f'\nWrote {out_file} ({len(index)} posts, {size_kb:.1f} KB)')
 
 
 if __name__ == '__main__':

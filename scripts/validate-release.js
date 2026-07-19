@@ -270,6 +270,74 @@ function checkLoaderVersionLiterals() {
   passes.push('Checked lazy-loader cache-bust literals in js/app.js');
 }
 
+function listBlogArticleFiles(dirRel) {
+  return walk(dirRel, file => file.endsWith('.html'))
+    .map(file => path.basename(file))
+    .filter(name => name !== 'sidebar.html')
+    .sort();
+}
+
+function compareFileLists(label, expected, actual) {
+  const expectedSet = new Set(expected);
+  const actualSet = new Set(actual);
+  const missing = expected.filter(item => !actualSet.has(item));
+  const extra = actual.filter(item => !expectedSet.has(item));
+
+  if (missing.length) {
+    errors.push(`${label} missing ${missing.length} file(s): ${missing.join(', ')}`);
+  }
+  if (extra.length) {
+    errors.push(`${label} has ${extra.length} extra file(s): ${extra.join(', ')}`);
+  }
+}
+
+function checkBlogIndex() {
+  const legacyFiles = listBlogArticleFiles('blog');
+  const hugoFiles = listBlogArticleFiles('hugo-site/content/blog');
+  const expectedCount = legacyFiles.length;
+
+  compareFileLists('Hugo blog content', legacyFiles, hugoFiles);
+
+  let entries;
+  try {
+    entries = JSON.parse(read('js/blog-index.json'));
+  } catch (error) {
+    errors.push(`Could not parse js/blog-index.json: ${error.message}`);
+    return;
+  }
+
+  if (!Array.isArray(entries)) {
+    errors.push('js/blog-index.json must be a JSON array');
+    return;
+  }
+
+  const indexFiles = entries.map(entry => entry && entry.file).filter(Boolean).sort();
+  const duplicateFiles = indexFiles.filter((file, idx) => idx > 0 && file === indexFiles[idx - 1]);
+  if (duplicateFiles.length) {
+    errors.push(`js/blog-index.json has duplicate file entries: ${[...new Set(duplicateFiles)].join(', ')}`);
+  }
+
+  compareFileLists('js/blog-index.json', legacyFiles, [...new Set(indexFiles)].sort());
+
+  for (const htmlRel of ['index.html', 'hugo-site/static/index.html']) {
+    const html = read(htmlRel);
+    const countMatches = [...html.matchAll(/All Posts \((\d+) articles\)|(\d+) evidence-based clinical articles|Browse All (\d+) Articles/g)];
+    if (!countMatches.length) {
+      errors.push(`Could not find displayed blog article counts in ${htmlRel}`);
+      continue;
+    }
+
+    for (const match of countMatches) {
+      const count = Number(match[1] || match[2] || match[3]);
+      if (count !== expectedCount) {
+        errors.push(`${htmlRel} displays ${count} blog articles, but blog/ contains ${expectedCount}`);
+      }
+    }
+  }
+
+  passes.push(`Checked blog index coverage and displayed count for ${expectedCount} articles`);
+}
+
 function main() {
   console.log('PsychoPharmRef release validation');
   console.log('==================================\n');
@@ -280,6 +348,7 @@ function main() {
   checkHtmlBalance('index.html');
   checkHtmlBalance('hugo-site/static/index.html');
   checkLoaderVersionLiterals();
+  checkBlogIndex();
 
   for (const pass of passes) {
     console.log(`PASS: ${pass}`);

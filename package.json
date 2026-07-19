@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "build:blog-index": "python3 build-blog-index.py",
     "check:release": "node scripts/validate-release.js",
     "check:clinical": "node scripts/validate-clinical-data.js",
     "test:phq9-runtime": "node scripts/test-phq9-schema-runtime.js",
