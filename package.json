@@ -19,7 +19,8 @@
     "check:blog-sync": "python3 scripts/check-blog-sync.py",
     "check": "npm run check:release && npm run check:clinical && npm run test:phq9-runtime && npm run test:gad7-runtime && npm run test:ess-msibpd-runtime && npm run test:bprs-runtime && npm run test:pcl5-runtime && npm run test:ymrs-runtime && npm run test:aims-ybocs-runtime && npm run test:bfcrs-runtime && npm run test:addiction-runtime && npm run test:asrs-cidi-runtime && npm run test:cognitive-function-runtime && npm run test:schema-scale-page-lazy-loader && npm run check:sidebars",
     "check:full": "npm run check && npm run check:blog-sync",
-    "preflight": "npm run check:full && hugo --minify --renderToMemory -s hugo-site && git diff --check"
+    "preflight": "npm run check:full && hugo --minify --renderToMemory -s hugo-site && git diff --check",
+    "sync:deploy-assets": "cp index.html hugo-site/static/index.html && cp js/app.js hugo-site/static/js/app.js && cp css/styles.css hugo-site/static/css/styles.css"
   },
   "dependencies": {
     "jsdom": "^29.0.2"
