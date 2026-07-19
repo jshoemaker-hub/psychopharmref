@@ -1,0 +1,196 @@
+{
+  "id": "panss",
+  "schema_kind": "clinical_assessment",
+  "tool_section_id": "panss-tool",
+  "title": "Positive and Negative Syndrome Scale",
+  "short_title": "PANSS",
+  "domain": "psychosis symptom severity",
+  "status": "pilot-source-of-truth",
+  "last_reviewed": "2026-07-19",
+  "source_ids": ["kay-1987-panss", "leucht-2005-panss-meaning", "marder-1997-panss-factors"],
+  "instructions": "Clinician-rated schizophrenia and psychosis symptom severity scale. Ratings reflect the past week and require trained rater administration.",
+  "score": {
+    "method": "sum",
+    "min": 30,
+    "max": 210,
+    "item_count": 30,
+    "missing_response_policy": "The current runtime displays unanswered items as 0 until rated; reports are generated only when the selected form has at least one scored item."
+  },
+  "options": [
+    { "value": 1, "label": "Absent" },
+    { "value": 2, "label": "Minimal" },
+    { "value": 3, "label": "Mild" },
+    { "value": 4, "label": "Moderate" },
+    { "value": 5, "label": "Moderately Severe" },
+    { "value": 6, "label": "Severe" },
+    { "value": 7, "label": "Extreme" }
+  ],
+  "items": [
+    { "id": "P1", "number": 1, "text": "Delusions", "subscale": "positive", "max": 7 },
+    { "id": "P2", "number": 2, "text": "Conceptual Disorganization", "subscale": "positive", "max": 7 },
+    { "id": "P3", "number": 3, "text": "Hallucinatory Behavior", "subscale": "positive", "max": 7 },
+    { "id": "P4", "number": 4, "text": "Excitement", "subscale": "positive", "max": 7 },
+    { "id": "P5", "number": 5, "text": "Grandiosity", "subscale": "positive", "max": 7 },
+    { "id": "P6", "number": 6, "text": "Suspiciousness/Persecution", "subscale": "positive", "max": 7 },
+    { "id": "P7", "number": 7, "text": "Hostility", "subscale": "positive", "max": 7 },
+    { "id": "N1", "number": 8, "text": "Blunted Affect", "subscale": "negative", "max": 7 },
+    { "id": "N2", "number": 9, "text": "Emotional Withdrawal", "subscale": "negative", "max": 7 },
+    { "id": "N3", "number": 10, "text": "Poor Rapport", "subscale": "negative", "max": 7 },
+    { "id": "N4", "number": 11, "text": "Passive/Apathetic Social Withdrawal", "subscale": "negative", "max": 7 },
+    { "id": "N5", "number": 12, "text": "Difficulty in Abstract Thinking", "subscale": "negative", "max": 7 },
+    { "id": "N6", "number": 13, "text": "Lack of Spontaneity and Flow of Conversation", "subscale": "negative", "max": 7 },
+    { "id": "N7", "number": 14, "text": "Stereotyped Thinking", "subscale": "negative", "max": 7 },
+    { "id": "G1", "number": 15, "text": "Somatic Concern", "subscale": "general", "max": 7 },
+    { "id": "G2", "number": 16, "text": "Anxiety", "subscale": "general", "max": 7 },
+    { "id": "G3", "number": 17, "text": "Guilt Feelings", "subscale": "general", "max": 7 },
+    { "id": "G4", "number": 18, "text": "Tension", "subscale": "general", "max": 7 },
+    { "id": "G5", "number": 19, "text": "Mannerisms and Posturing", "subscale": "general", "max": 7 },
+    { "id": "G6", "number": 20, "text": "Depression", "subscale": "general", "max": 7 },
+    { "id": "G7", "number": 21, "text": "Motor Retardation", "subscale": "general", "max": 7 },
+    { "id": "G8", "number": 22, "text": "Uncooperativeness", "subscale": "general", "max": 7 },
+    { "id": "G9", "number": 23, "text": "Unusual Thought Content", "subscale": "general", "max": 7 },
+    { "id": "G10", "number": 24, "text": "Disorientation", "subscale": "general", "max": 7 },
+    { "id": "G11", "number": 25, "text": "Poor Attention", "subscale": "general", "max": 7 },
+    { "id": "G12", "number": 26, "text": "Lack of Judgment and Insight", "subscale": "general", "max": 7 },
+    { "id": "G13", "number": 27, "text": "Disturbance of Volition", "subscale": "general", "max": 7 },
+    { "id": "G14", "number": 28, "text": "Poor Impulse Control", "subscale": "general", "max": 7 },
+    { "id": "G15", "number": 29, "text": "Preoccupation", "subscale": "general", "max": 7 },
+    { "id": "G16", "number": 30, "text": "Active Social Avoidance", "subscale": "general", "max": 7 }
+  ],
+  "versions": [
+    {
+      "id": "panss-6",
+      "label": "PANSS-6",
+      "heading": "PANSS-6 (Brief Psychosis Assessment)",
+      "item_ids": ["P1", "P2", "P3", "N1", "N4", "N6"],
+      "max": 42,
+      "subscales": [
+        { "id": "positive", "label": "Positive Subscale", "item_ids": ["P1", "P2", "P3"], "max": 21 },
+        { "id": "negative", "label": "Negative Subscale", "item_ids": ["N1", "N4", "N6"], "max": 21 }
+      ]
+    },
+    {
+      "id": "panss-30",
+      "label": "PANSS-30",
+      "heading": "PANSS-30 (Full Psychosis Assessment)",
+      "item_ids": ["P1", "P2", "P3", "P4", "P5", "P6", "P7", "N1", "N2", "N3", "N4", "N5", "N6", "N7", "G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8", "G9", "G10", "G11", "G12", "G13", "G14", "G15", "G16"],
+      "max": 210
+    }
+  ],
+  "subscales": [
+    { "id": "positive", "label": "Positive Scale", "report_heading": "POSITIVE SCALE (P1-P7)", "item_ids": ["P1", "P2", "P3", "P4", "P5", "P6", "P7"], "max": 49 },
+    { "id": "negative", "label": "Negative Scale", "report_heading": "NEGATIVE SCALE (N1-N7)", "item_ids": ["N1", "N2", "N3", "N4", "N5", "N6", "N7"], "max": 49 },
+    { "id": "general", "label": "General Psychopathology", "report_heading": "GENERAL PSYCHOPATHOLOGY (G1-G16)", "item_ids": ["G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8", "G9", "G10", "G11", "G12", "G13", "G14", "G15", "G16"], "max": 112 }
+  ],
+  "marder_factors": [
+    { "id": "positive", "label": "Positive Symptoms", "item_ids": ["P1", "P3", "P5", "P6", "G9"], "max": 35 },
+    { "id": "negative", "label": "Negative Symptoms", "item_ids": ["N1", "N2", "N3", "N4", "N6", "G7"], "max": 42 },
+    { "id": "disorganized", "label": "Disorganized Thought", "item_ids": ["P2", "N5", "G11"], "max": 21 },
+    { "id": "hostility", "label": "Uncontrolled Hostility/Excitement", "item_ids": ["P4", "P7", "G8", "G14"], "max": 28 },
+    { "id": "anxiety", "label": "Anxiety/Depression", "item_ids": ["G2", "G3", "G4", "G6"], "max": 28 }
+  ],
+  "severity_bands": [
+    {
+      "min": 0,
+      "max": 0,
+      "label": "Not rated",
+      "display_label": "-",
+      "action": "No PANSS severity interpretation until at least one item is scored."
+    },
+    {
+      "min": 1,
+      "max": 57,
+      "label": "Mild illness",
+      "action": "Interpret alongside clinical interview and CGI-S rating."
+    },
+    {
+      "min": 58,
+      "max": 74,
+      "label": "Moderate illness",
+      "action": "Approximately near the mild-to-moderate CGI-S anchor range; interpret in clinical context."
+    },
+    {
+      "min": 75,
+      "max": 95,
+      "label": "Marked illness",
+      "action": "Approximately near the moderate-to-marked CGI-S anchor range; interpret in clinical context."
+    },
+    {
+      "min": 96,
+      "max": 115,
+      "label": "Severe illness",
+      "action": "Approximately near the marked-to-severe CGI-S anchor range; interpret in clinical context."
+    },
+    {
+      "min": 116,
+      "max": 210,
+      "label": "Extremely severe",
+      "action": "High PANSS total; interpret with full diagnostic formulation and risk/functional assessment."
+    }
+  ],
+  "report": {
+    "heading": "PANSS Assessment Summary",
+    "panss6_note": "Interpret in clinical context alongside CGI-S rating. No formal severity cut-offs established.",
+    "panss30_note": "PANSS total score interpretation uses approximate CGI-linked anchor ranges and should be interpreted in clinical context."
+  },
+  "test_vectors": [
+    {
+      "name": "panss6_minimal_all_items",
+      "responses": {
+        "P1": 2,
+        "P2": 2,
+        "P3": 2,
+        "N1": 2,
+        "N4": 2,
+        "N6": 2
+      },
+      "expected_total": 12,
+      "expected_subscales": {
+        "positive": 6,
+        "negative": 6
+      }
+    },
+    {
+      "name": "panss30_all_absent",
+      "responses": {
+        "P1": 1,
+        "P2": 1,
+        "P3": 1,
+        "P4": 1,
+        "P5": 1,
+        "P6": 1,
+        "P7": 1,
+        "N1": 1,
+        "N2": 1,
+        "N3": 1,
+        "N4": 1,
+        "N5": 1,
+        "N6": 1,
+        "N7": 1,
+        "G1": 1,
+        "G2": 1,
+        "G3": 1,
+        "G4": 1,
+        "G5": 1,
+        "G6": 1,
+        "G7": 1,
+        "G8": 1,
+        "G9": 1,
+        "G10": 1,
+        "G11": 1,
+        "G12": 1,
+        "G13": 1,
+        "G14": 1,
+        "G15": 1,
+        "G16": 1
+      },
+      "expected_total": 30,
+      "expected_subscales": {
+        "positive": 7,
+        "negative": 7,
+        "general": 16
+      },
+      "expected_severity": "Mild illness"
+    }
+  ]
+}

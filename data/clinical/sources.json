@@ -54,6 +54,33 @@
     "notes": "Severity anchor source cited by the BPRS tool report. PMID: 16199797. DOI: 10.1192/bjp.187.4.366."
   },
   {
+    "id": "kay-1987-panss",
+    "label": "Kay SR, Fiszbein A, Opler LA. The positive and negative syndrome scale (PANSS) for schizophrenia. Schizophr Bull. 1987;13(2):261-276.",
+    "type": "journal_article",
+    "year": 1987,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-19",
+    "notes": "Primary PANSS development and standardization source cited by the PANSS tool report. PMID: 3616518. DOI: 10.1093/schbul/13.2.261."
+  },
+  {
+    "id": "leucht-2005-panss-meaning",
+    "label": "Leucht S, Kane JM, Kissling W, Hamann J, Etschel E, Engel RR. What does the PANSS mean? Schizophr Res. 2005;79(2-3):231-238.",
+    "type": "journal_article",
+    "year": 2005,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-19",
+    "notes": "CGI-linking source for PANSS total score interpretation. PMID: 15982856. DOI: 10.1016/j.schres.2005.04.008."
+  },
+  {
+    "id": "marder-1997-panss-factors",
+    "label": "Marder SR, Davis JM, Chouinard G. The effects of risperidone on the five dimensions of schizophrenia derived by factor analysis: combined results of the North American trials. J Clin Psychiatry. 1997;58(12):538-546.",
+    "type": "journal_article",
+    "year": 1997,
+    "review_status": "source-cited",
+    "last_reviewed": "2026-07-19",
+    "notes": "Five-factor PANSS symptom-dimension source cited by the PANSS tool report."
+  },
+  {
     "id": "national-center-ptsd-pcl5",
     "label": "U.S. Department of Veterans Affairs, National Center for PTSD. PTSD Checklist for DSM-5 (PCL-5).",
     "type": "clinical_resource",
