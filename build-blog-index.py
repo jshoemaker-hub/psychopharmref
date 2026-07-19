@@ -5,10 +5,11 @@ Extracts text content from all blog HTML files and produces blog-index.json
 for the unified search bar. Run this whenever a new blog post is added.
 
 Usage:  python3 build-blog-index.py
-Output: js/blog-index.json
+        python3 build-blog-index.py --check
+Output: js/blog-index.json and hugo-site/static/js/blog-index.json
 """
 
-import os, re, json, glob
+import os, re, json, glob, sys
 from html.parser import HTMLParser
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -151,13 +152,14 @@ def extract_keywords(text, min_len=4, top_n=80):
 
 # ── Main ─────────────────────────────────────────────────────────────────────
 
-def main():
+def build_index(verbose=True):
     index = []
     files = sorted(
         f for f in glob.glob(os.path.join(BLOG_DIR, '*.html'))
         if os.path.basename(f) != 'sidebar.html'
     )
-    print(f'Scanning {len(files)} blog files...')
+    if verbose:
+        print(f'Scanning {len(files)} blog files...')
 
     for fpath in files:
         fname = os.path.basename(fpath)
@@ -181,16 +183,68 @@ def main():
             'snippet': body[:300].rsplit(' ', 1)[0] if len(body) > 300 else body,
         }
         index.append(entry)
-        print(f'  ✓ {fname} — {len(keywords)} keywords')
+        if verbose:
+            print(f'  ✓ {fname} — {len(keywords)} keywords')
 
+    return index
+
+
+def serialize_index(index):
+    return json.dumps(index, indent=1)
+
+
+def write_index(index):
+    payload = serialize_index(index)
     for out_file in OUT_FILES:
         os.makedirs(os.path.dirname(out_file), exist_ok=True)
         with open(out_file, 'w', encoding='utf-8') as f:
-            json.dump(index, f, indent=1)
+            f.write(payload)
 
         size_kb = os.path.getsize(out_file) / 1024
         print(f'\nWrote {out_file} ({len(index)} posts, {size_kb:.1f} KB)')
 
 
+def check_index(index):
+    expected = serialize_index(index)
+    stale = []
+    missing = []
+
+    for out_file in OUT_FILES:
+        if not os.path.exists(out_file):
+            missing.append(out_file)
+            continue
+        with open(out_file, 'r', encoding='utf-8') as f:
+            if f.read() != expected:
+                stale.append(out_file)
+
+    if missing or stale:
+        print('ERROR: blog index output is stale or missing.')
+        for out_file in missing:
+            print(f'  missing: {out_file}')
+        for out_file in stale:
+            print(f'  stale:   {out_file}')
+        print('\nRun `npm run build:blog-index` and commit the updated generated files.')
+        return 1
+
+    print(f'OK — blog index files are current ({len(index)} posts).')
+    return 0
+
+
+def main():
+    check = False
+    for arg in sys.argv[1:]:
+        if arg == '--check':
+            check = True
+        else:
+            print(f'Usage: {sys.argv[0]} [--check]', file=sys.stderr)
+            return 2
+
+    index = build_index(verbose=not check)
+    if check:
+        return check_index(index)
+    write_index(index)
+    return 0
+
+
 if __name__ == '__main__':
-    main()
+    sys.exit(main())
