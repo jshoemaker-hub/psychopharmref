@@ -309,7 +309,7 @@ function switchSection(id) {
     // Load CSS
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/tools/' + toolId + '.css?v=20260718u';
+    link.href = 'css/tools/' + toolId + '.css?v=20260718v';
     document.head.appendChild(link);
     // Load shared tool-utils.js once (first tool activation), then the tool JS
     function loadToolScript() {
@@ -319,7 +319,7 @@ function switchSection(id) {
         dataScript.src = 'js/qbank-data.js?v=20260716f';
         dataScript.onload = function() {
           var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20260718u';
+          script.src = 'js/tools/' + toolId + '.js?v=20260718v';
           document.body.appendChild(script);
         };
         dataScript.onerror = function() { console.error('Failed to load qbank-data.js'); };
@@ -340,7 +340,7 @@ function switchSection(id) {
           d.onload = function() {
             if (--pending === 0) {
               var script = document.createElement('script');
-              script.src = 'js/tools/' + toolId + '.js?v=20260718u';
+              script.src = 'js/tools/' + toolId + '.js?v=20260718v';
               document.body.appendChild(script);
             }
           };
@@ -362,7 +362,7 @@ function switchSection(id) {
           d.onload = function() {
             if (--smPending === 0) {
               var script = document.createElement('script');
-              script.src = 'js/tools/' + toolId + '.js?v=20260718u';
+              script.src = 'js/tools/' + toolId + '.js?v=20260718v';
               document.body.appendChild(script);
             }
           };
@@ -371,7 +371,7 @@ function switchSection(id) {
         });
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20260718u';
+        script.src = 'js/tools/' + toolId + '.js?v=20260718v';
         document.body.appendChild(script);
       }
     }
@@ -408,7 +408,7 @@ function switchSection(id) {
 
     if (shouldLoadToolUtils()) {
       const utils = document.createElement('script');
-      utils.src = 'js/tools/tool-utils.js?v=20260718u';
+      utils.src = 'js/tools/tool-utils.js?v=20260718v';
       utils.onload = loadToolScript;
       utils.onerror = function() { console.error('Failed to load tool-utils.js'); };
       document.body.appendChild(utils);
