@@ -255,7 +255,7 @@ const SECTION_GROUP = {
   'bfcrs-tool': 'tools', 'aims-tool': 'tools', 'bprs-tool': 'tools', 'suicide-risk-tools': 'tools',
   'ess-tool': 'tools', 'bat-tool': 'tools', 'sud-tool': 'tools', 'med-history-tool': 'tools',
   'ciwa-tool': 'tools', 'cows-tool': 'tools', 'frailty-tool': 'tools',
-  'print-forms': 'tools', 'question-bank': 'qbank',
+  'print-forms': 'forms', 'question-bank': 'qbank',
   'cog-domains': 'insights', 'neuro-circuits': 'insights', 'brain-regions': 'insights', 'brain-explorer': 'insights',
   'fda-search': null, 'overview': null, 'blog-index': 'blog', 'blog-smoking': 'blog', 'blog-weight': 'blog'
 };
