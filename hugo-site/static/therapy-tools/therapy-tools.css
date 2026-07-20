@@ -1,0 +1,286 @@
+/* ==========================================================================
+   Therapy Tools — shared handout stylesheet
+   Patient-facing one-page handouts. Boxed-panel, colored-banner layout
+   adapted to the PsychoPharmRef palette. Screen + print.
+   ========================================================================== */
+
+:root {
+  --tt-bg:        #f5f0e8;  /* page background (matches site --bg) */
+  --tt-ink:       #231e14;  /* body text */
+  --tt-muted:     #6b6151;  /* secondary text */
+  --tt-border:    #cfc8ba;  /* soft borders */
+  --tt-panel:     #ffffff;  /* panel fill */
+  /* accent family — harmonizes with warm beige */
+  --tt-green:     #4a7c35;
+  --tt-gold:      #b8860b;
+  --tt-terra:     #c15f3c;
+  --tt-teal:      #2f7d78;
+  --tt-blue:      #3a6ea5;
+  --tt-plum:      #7d5a8c;
+  --tt-font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--tt-bg);
+  color: var(--tt-ink);
+  font-family: var(--tt-font);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Action bar (screen only) ---------- */
+.tt-actionbar {
+  max-width: 8.5in;
+  margin: 18px auto 0;
+  padding: 0 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.tt-back {
+  color: var(--tt-green);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+.tt-back:hover { text-decoration: underline; }
+.tt-print {
+  background: var(--tt-green);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+.tt-print:hover { background: #3d6a2b; }
+
+/* ---------- The sheet ---------- */
+.tt-sheet {
+  max-width: 8.5in;
+  margin: 16px auto 40px;
+  background: var(--tt-panel);
+  border: 1px solid var(--tt-border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+}
+
+/* Colored banner header */
+.tt-banner {
+  background: var(--tt-green);
+  color: #fff;
+  padding: 20px 26px 18px;
+}
+.tt-banner.terra { background: var(--tt-terra); }
+.tt-banner.teal  { background: var(--tt-teal); }
+.tt-banner.blue  { background: var(--tt-blue); }
+.tt-banner.gold  { background: var(--tt-gold); }
+.tt-banner.plum  { background: var(--tt-plum); }
+.tt-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin: 0 0 4px;
+  font-weight: 700;
+}
+.tt-banner h1 {
+  margin: 0;
+  font-size: 27px;
+  line-height: 1.12;
+  font-weight: 800;
+}
+.tt-banner .tt-sub {
+  margin: 8px 0 0;
+  font-size: 14px;
+  opacity: 0.95;
+  max-width: 62ch;
+}
+
+.tt-body { padding: 20px 22px 8px; }
+
+/* Two-column masonry-ish grid of panels */
+.tt-grid {
+  column-count: 2;
+  column-gap: 16px;
+}
+.tt-grid.one-col { column-count: 1; }
+
+/* Panel */
+.tt-panel {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  border: 1.5px solid var(--tt-border);
+  border-radius: 10px;
+  padding: 13px 15px 14px;
+  margin: 0 0 16px;
+  background: #fff;
+}
+.tt-panel.tint-green { border-color: #b9cdaa; background: #f4f8f0; }
+.tt-panel.tint-gold  { border-color: #e0cf9a; background: #faf6ea; }
+.tt-panel.tint-terra { border-color: #e6b8a7; background: #fbf1ec; }
+.tt-panel.tint-teal  { border-color: #a9cfcc; background: #eef6f5; }
+.tt-panel.tint-blue  { border-color: #aec5e0; background: #eef3fa; }
+.tt-panel.tint-plum  { border-color: #cdb9d6; background: #f6f0f9; }
+
+.tt-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 8px;
+}
+.tt-icon {
+  font-size: 22px;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+.tt-panel-head h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--tt-terra);
+  line-height: 1.15;
+}
+.tt-panel.tint-green .tt-panel-head h2 { color: var(--tt-green); }
+.tt-panel.tint-gold  .tt-panel-head h2 { color: #8a6608; }
+.tt-panel.tint-teal  .tt-panel-head h2 { color: var(--tt-teal); }
+.tt-panel.tint-blue  .tt-panel-head h2 { color: var(--tt-blue); }
+.tt-panel.tint-plum  .tt-panel-head h2 { color: var(--tt-plum); }
+
+.tt-panel p { margin: 0 0 8px; font-size: 13.5px; }
+.tt-panel p:last-child { margin-bottom: 0; }
+.tt-panel ul, .tt-panel ol { margin: 0 0 4px; padding-left: 20px; font-size: 13.5px; }
+.tt-panel li { margin-bottom: 5px; }
+.tt-panel h3 {
+  font-size: 13px;
+  margin: 10px 0 4px;
+  color: var(--tt-ink);
+  font-weight: 700;
+}
+.tt-lead { font-size: 14px; color: var(--tt-muted); margin: 0 0 14px; }
+.tt-em { font-weight: 700; color: var(--tt-terra); }
+
+/* Numbered step chips */
+.tt-steps { list-style: none; padding: 0; margin: 0; }
+.tt-steps li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 8px;
+  font-size: 13.5px;
+}
+.tt-steps li::before {
+  counter-increment: tt;
+  content: counter(tt);
+  position: absolute;
+  left: 0; top: 0;
+  width: 21px; height: 21px;
+  background: var(--tt-green);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tt-steps { counter-reset: tt; }
+
+/* Fill-in lines for worksheets */
+.tt-fill {
+  border: none;
+  border-bottom: 1.5px solid var(--tt-border);
+  display: block;
+  height: 22px;
+  margin: 6px 0;
+}
+.tt-writebox {
+  border: 1.5px dashed var(--tt-border);
+  border-radius: 8px;
+  min-height: 54px;
+  margin: 6px 0 4px;
+}
+
+/* Callout / warning */
+.tt-callout {
+  background: #fbf1ec;
+  border: 1.5px solid #e6b8a7;
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 13px;
+  margin: 4px 0 16px;
+}
+.tt-callout strong { color: var(--tt-terra); }
+
+/* Breathing square graphic */
+.tt-square {
+  width: 190px; height: 190px;
+  margin: 6px auto 4px;
+  border: 3px solid var(--tt-teal);
+  border-radius: 12px;
+  position: relative;
+}
+.tt-square span {
+  position: absolute;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--tt-teal);
+  background: #fff;
+  padding: 2px 6px;
+}
+.tt-square .top    { top: -13px; left: 50%; transform: translateX(-50%); }
+.tt-square .bottom { bottom: -13px; left: 50%; transform: translateX(-50%); }
+.tt-square .left   { left: -34px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+.tt-square .right  { right: -40px; top: 50%; transform: translateY(-50%) rotate(90deg); }
+.tt-square .mid {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; color: var(--tt-muted); font-weight: 600; background: none; padding: 0;
+}
+
+/* Footer inside sheet */
+.tt-foot {
+  border-top: 1px solid var(--tt-border);
+  margin-top: 4px;
+  padding: 12px 22px 16px;
+  font-size: 11px;
+  color: var(--tt-muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.tt-foot a { color: var(--tt-green); text-decoration: none; }
+.tt-foot .tt-brand { font-weight: 700; color: var(--tt-ink); }
+
+/* ---------- Print ---------- */
+@media print {
+  @page { size: letter portrait; margin: 0.4in; }
+  html, body { background: #fff; }
+  .tt-actionbar { display: none !important; }
+  .tt-sheet {
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  .tt-banner { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .tt-panel, .tt-callout, .tt-banner, .tt-steps li::before, .tt-square span, .tt-square {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .tt-sheet { page-break-inside: auto; }
+}
+
+@media (max-width: 700px) {
+  .tt-grid { column-count: 1; }
+  .tt-banner h1 { font-size: 22px; }
+}

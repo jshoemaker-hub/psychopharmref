@@ -7,7 +7,7 @@
     var blogContentIndex = null;  // will be an array once loaded
 
     // Load the pre-built blog content index (cache-busted so newly-added posts appear immediately)
-    fetch('js/blog-index.json?v=20260430b')
+    fetch('js/blog-index.json?v=20260719a')
       .then(function(r) { return r.ok ? r.json() : []; })
       .then(function(data) { blogContentIndex = data; })
       .catch(function() { blogContentIndex = []; });
@@ -243,8 +243,8 @@
             var sidebar = blogSidebarMap[entry.file] || {};
             scored.push({
               title: entry.title,
-              url: sidebar.url || ('blog/' + entry.file),
-              category: sidebar.category || '',
+              url: entry.url || sidebar.url || ('blog/' + entry.file),
+              category: entry.category || sidebar.category || '',
               score: score,
               matchType: matchType,
               matchedKeywords: matchedKw

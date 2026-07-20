@@ -14,6 +14,7 @@ from html.parser import HTMLParser
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 BLOG_DIR = os.path.join(ROOT_DIR, 'blog')
+THERAPY_DIR = os.path.join(ROOT_DIR, 'hugo-site', 'static', 'therapy-tools')
 OUT_FILES = [
     os.path.join(ROOT_DIR, 'js', 'blog-index.json'),
     os.path.join(ROOT_DIR, 'hugo-site', 'static', 'js', 'blog-index.json'),
@@ -81,16 +82,21 @@ def extract_body_text(html):
 
 
 def extract_title(html):
-    """Get the <title> text, strip ' | PsychoPharmRef'."""
+    """Get the <title> text, strip ' | Therapy Tools' and ' | PsychoPharmRef'."""
     m = re.search(r'<title>(.*?)</title>', html, re.IGNORECASE)
     if m:
-        return re.sub(r'\s*\|\s*PsychoPharmRef\s*$', '', m.group(1)).strip()
+        t = re.sub(r'\s*\|\s*PsychoPharmRef\s*$', '', m.group(1)).strip()
+        t = re.sub(r'\s*\|\s*Therapy Tools\s*$', '', t).strip()
+        return t
     return ''
 
 
 def extract_description(html):
-    """Get og:description meta content."""
+    """Get og:description meta content, falling back to name="description"."""
     m = re.search(r'<meta\s+property="og:description"\s+content="([^"]*)"', html)
+    if m:
+        return m.group(1).strip()
+    m = re.search(r'<meta\s+name="description"\s+content="([^"]*)"', html)
     if m:
         return m.group(1).strip()
     return ''
@@ -185,6 +191,36 @@ def build_index(verbose=True):
         index.append(entry)
         if verbose:
             print(f'  ✓ {fname} — {len(keywords)} keywords')
+
+    # ── Therapy Tools handouts (static one-page PDFs) ────────────────────────
+    therapy_files = sorted(glob.glob(os.path.join(THERAPY_DIR, '*.html')))
+    if verbose and therapy_files:
+        print(f'Scanning {len(therapy_files)} therapy-tool handouts...')
+    for fpath in therapy_files:
+        fname = os.path.basename(fpath)
+        with open(fpath, 'r', encoding='utf-8') as f:
+            html = f.read()
+
+        title = extract_title(html)
+        desc = extract_description(html)
+        body = normalize_text(extract_body_text(html))
+        keywords = extract_keywords(body)
+
+        if not title:
+            continue
+
+        entry = {
+            'file': fname,
+            'title': title,
+            'desc': desc,
+            'keywords': keywords,
+            'url': 'therapy-tools/' + fname,
+            'category': 'Therapy Tool',
+            'snippet': body[:300].rsplit(' ', 1)[0] if len(body) > 300 else body,
+        }
+        index.append(entry)
+        if verbose:
+            print(f'  ✓ therapy-tools/{fname} — {len(keywords)} keywords')
 
     return index
 
