@@ -285,7 +285,7 @@ function expandGroup(groupId) {
   });
 }
 
-function switchSection(id) {
+function switchSection(id, skipGroupExpand) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
   const sec = document.getElementById(id);
@@ -293,9 +293,12 @@ function switchSection(id) {
   const link = document.querySelector(`[data-section="${id}"]`);
   if (link) link.classList.add('active');
 
-  // Expand the parent group for this section
-  const group = SECTION_GROUP[id];
-  expandGroup(group);
+  // Expand the parent group for this section (unless suppressed, e.g. on the
+  // initial homepage landing where the Psychopharmacology submenu stays closed)
+  if (!skipGroupExpand) {
+    const group = SECTION_GROUP[id];
+    expandGroup(group);
+  }
 
   // Show filter panel only when drug-table is active
   const filterPanel = document.querySelector('.filter-panel');
@@ -491,7 +494,7 @@ function applyHashNavigation() {
 if (sectionFromHash()) {
   applyHashNavigation();
 } else {
-  switchSection('drug-table');
+  switchSection('drug-table', true);
 }
 
 // Keep the SPA in sync with browser-level hash changes.
