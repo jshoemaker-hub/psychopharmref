@@ -257,6 +257,7 @@ const SECTION_GROUP = {
   'ciwa-tool': 'tools', 'cows-tool': 'tools', 'frailty-tool': 'tools',
   'print-forms': 'forms', 'question-bank': 'qbank',
   'cog-domains': 'insights', 'neuro-circuits': 'insights', 'brain-regions': 'insights', 'brain-explorer': 'insights',
+  'handouts': 'handouts',
   'fda-search': null, 'overview': null, 'blog-index': 'blog', 'blog-smoking': 'blog', 'blog-weight': 'blog'
 };
 
@@ -462,11 +463,11 @@ document.querySelectorAll('.nav-sub-link').forEach(link => {
   });
 });
 
-// Home link
-document.querySelectorAll('[data-section="overview"]').forEach(link => {
+// Home link — the Drug Database is the home page
+document.querySelectorAll('.nav-link[data-section="drug-table"]').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-    switchSection('overview');
+    switchSection('drug-table');
   });
 });
 
@@ -485,9 +486,13 @@ function applyHashNavigation() {
 }
 
 // On initial load: if the URL includes a valid #section-id (e.g., coming
-// from a blog post sidebar link), activate that section instead of landing
-// on the home/overview page.
-applyHashNavigation();
+// from a blog post sidebar link), activate that section; otherwise land on
+// the Drug Database, which is the site's home page.
+if (sectionFromHash()) {
+  applyHashNavigation();
+} else {
+  switchSection('drug-table');
+}
 
 // Keep the SPA in sync with browser-level hash changes.
 window.addEventListener('hashchange', applyHashNavigation);

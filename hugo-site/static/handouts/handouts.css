@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Therapy Tools — shared handout stylesheet
+   Handouts — shared handout stylesheet
    Patient-facing one-page handouts. Boxed-panel, colored-banner layout
    adapted to the PsychoPharmRef palette. Screen + print.
    ========================================================================== */
@@ -10,6 +10,8 @@
   --tt-muted:     #6b6151;  /* secondary text */
   --tt-border:    #cfc8ba;  /* soft borders */
   --tt-panel:     #ffffff;  /* panel fill */
+  --tt-bg2:       #ece6db;  /* sidebar fill (matches site --bg2) */
+  --tt-bg3:       #e2dbd0;  /* hover fill (matches site --bg3) */
   /* accent family — harmonizes with warm beige */
   --tt-green:     #4a7c35;
   --tt-gold:      #b8860b;
@@ -260,56 +262,71 @@ html, body {
 .tt-foot a { color: var(--tt-green); text-decoration: none; }
 .tt-foot .tt-brand { font-weight: 700; color: var(--tt-ink); }
 
-/* ---------- Persistent side navigation (screen only) ---------- */
+/* ---------- Persistent side navigation (screen only) ----------
+   Styled to match the main app sidebar (index.html): warm-beige fill,
+   muted link text, green active state with a left accent border. */
 .tt-sidenav {
   position: fixed;
   top: 0; left: 0;
-  width: 244px;
+  width: 240px;
   height: 100vh;
-  background: #fff;
+  background: var(--tt-bg2);
   border-right: 1px solid var(--tt-border);
   overflow-y: auto;
-  padding: 16px 0 40px;
+  padding: 0 0 40px;
   z-index: 60;
   transform: translateX(-100%);
   transition: transform 0.22s ease;
   -webkit-overflow-scrolling: touch;
+  font-family: var(--tt-font);
 }
 .tt-sidenav.open { transform: none; }
 .tt-sidenav-head {
-  padding: 4px 18px 12px;
+  padding: 20px 16px 14px;
   border-bottom: 1px solid var(--tt-border);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 .tt-sidenav-head .tt-sn-brand {
-  font-size: 15px; font-weight: 800; color: var(--tt-ink);
+  font-size: 18px; font-weight: 700; color: var(--tt-ink);
+  letter-spacing: -0.3px;
   text-decoration: none; display: block;
 }
+.tt-sidenav-head .tt-sn-brand span { color: var(--tt-green); }
 .tt-sidenav-head .tt-sn-sub {
-  font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--tt-accent2, var(--tt-gold)); font-weight: 700; margin-top: 2px;
+  font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--tt-muted); font-weight: 600; margin-top: 2px;
 }
 .tt-sidenav-head a.tt-sn-all {
-  display: inline-block; margin-top: 8px; font-size: 12px;
+  display: inline-block; margin-top: 10px; font-size: 12px;
   color: var(--tt-green); text-decoration: none; font-weight: 600;
 }
+.tt-sidenav-head a.tt-sn-all:hover { text-decoration: underline; }
+.tt-sn-section {
+  font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--tt-green); font-weight: 800;
+  padding: 14px 18px 3px;
+}
 .tt-sn-group {
-  font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase;
-  color: var(--tt-muted); font-weight: 700;
-  padding: 12px 18px 4px;
+  font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--tt-muted); font-weight: 700; opacity: .7;
+  padding: 7px 18px 2px 24px;
 }
 .tt-sn-link {
   display: block;
-  padding: 6px 18px 6px 18px;
+  margin: 1px 8px;
+  padding: 9px 10px;
   font-size: 13px;
-  color: var(--tt-ink);
+  font-weight: 500;
+  color: var(--tt-muted);
   text-decoration: none;
-  border-left: 3px solid transparent;
+  border-radius: 5px;
+  border-left: 2px solid transparent;
   line-height: 1.3;
+  transition: background 0.15s, color 0.15s;
 }
-.tt-sn-link:hover { background: #f4f8f0; }
+.tt-sn-link:hover { background: var(--tt-bg3); color: var(--tt-ink); }
 .tt-sn-link.active {
-  background: #f4f8f0;
+  background: rgba(74,124,53,0.10);
   border-left-color: var(--tt-green);
   color: var(--tt-green);
   font-weight: 700;
@@ -342,7 +359,7 @@ html, body {
   .tt-sidenav { transform: none; }
   .tt-navtoggle { display: none; }
   .tt-nav-backdrop { display: none; }
-  body.has-sidenav { padding-left: 244px; }
+  body.has-sidenav { padding-left: 240px; }
 }
 
 /* ---------- Print ---------- */
