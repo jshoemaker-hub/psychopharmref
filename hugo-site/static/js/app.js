@@ -293,12 +293,10 @@ function switchSection(id, skipGroupExpand) {
   const link = document.querySelector(`[data-section="${id}"]`);
   if (link) link.classList.add('active');
 
-  // Expand the parent group for this section (unless suppressed, e.g. on the
-  // initial homepage landing where the Psychopharmacology submenu stays closed)
-  if (!skipGroupExpand) {
-    const group = SECTION_GROUP[id];
-    expandGroup(group);
-  }
+  // Expand the parent group for this section. When skipGroupExpand is set
+  // (homepage landing / Home button) collapse all groups instead, so the
+  // Psychopharmacology submenu doesn't drop down on the home page.
+  expandGroup(skipGroupExpand ? null : SECTION_GROUP[id]);
 
   // Show filter panel only when drug-table is active
   const filterPanel = document.querySelector('.filter-panel');
@@ -470,7 +468,7 @@ document.querySelectorAll('.nav-sub-link').forEach(link => {
 document.querySelectorAll('.nav-link[data-section="drug-table"]').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-    switchSection('drug-table');
+    switchSection('drug-table', true);
   });
 });
 
