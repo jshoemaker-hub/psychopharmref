@@ -52,6 +52,39 @@
         ["nicotine-dependence",          "Nicotine Dependence"],
         ["methamphetamine-use-disorder", "Methamphetamine Use Disorder"]
       ]]
+    ]],
+    ["Medications", [
+      ["Antidepressants", [
+        ["ssris",        "SSRIs"],
+        ["snris",        "SNRIs"],
+        ["bupropion",    "Bupropion"],
+        ["mirtazapine",  "Mirtazapine"],
+        ["tcas",         "Tricyclic Antidepressants"],
+        ["maois",        "MAO Inhibitors"]
+      ]],
+      ["Antipsychotics", [
+        ["atypical-antipsychotics", "Atypical (2nd-Gen)"],
+        ["typical-antipsychotics",  "Typical (1st-Gen)"],
+        ["clozapine",               "Clozapine"]
+      ]],
+      ["Mood Stabilizers", [
+        ["lithium", "Lithium"]
+      ]],
+      ["Anticonvulsants", [
+        ["lamotrigine",   "Lamotrigine"],
+        ["valproate",     "Valproate (Depakote)"],
+        ["carbamazepine", "Carbamazepine"],
+        ["oxcarbazepine", "Oxcarbazepine (Trileptal)"],
+        ["gabapentinoids","Gabapentin &amp; Pregabalin"]
+      ]],
+      ["Sedatives &amp; Stimulants", [
+        ["benzodiazepines", "Benzodiazepines"],
+        ["stimulants",      "Stimulants (ADHD)"],
+        ["hypnotics",       "Sleep Medications"]
+      ]],
+      ["Antihistamines &amp; Anticholinergics", [
+        ["antihistamines-anticholinergics", "Antihistamines &amp; Anticholinergics"]
+      ]]
     ]]
   ];
 
