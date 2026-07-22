@@ -7,7 +7,7 @@
     var blogContentIndex = null;  // will be an array once loaded
 
     // Load the pre-built blog content index (cache-busted so newly-added posts appear immediately)
-    fetch('js/blog-index.json?v=20260719a')
+    fetch('js/blog-index.json?v=20260722b')
       .then(function(r) { return r.ok ? r.json() : []; })
       .then(function(data) { blogContentIndex = data; })
       .catch(function() { blogContentIndex = []; });
