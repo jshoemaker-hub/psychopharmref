@@ -1,0 +1,899 @@
+id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
+320,22. Psychopharmacology,276,65,211,"Ketamine represents a paradigm shift for treatment-resistant depression through rapid-onset effects and novel NMDA antagonism; esketamine offers potential advantages; however, long-term efficacy, optimal dosing, and patient selection criteria remain active investigation areas"
+990,22. Psychopharmacology,267,57,210,"Autism introduces unique challenges: social communication deficits in job interviews, sensory accommodation needs in work environments, executive function support, independent living skills, and peer relationship building are critical areas requiring targeted support"
+995,22. Psychopharmacology,249,58,191,"Girls' autism is often missed due to: better social camouflaging/masking of differences, underrepresentation in referral literature, female-specific presentations (focused interests appearing age-appropriate), clinician bias favoring male phenotypes"
+319,22. Psychopharmacology,248,64,184,"Ketamine has legitimate medical uses (anesthesia, analgesia) and, when administered in controlled clinical settings with proper dosing and monitoring, produces antidepressant effects; street use differs fundamentally in dosing, setting, and context"
+996,22. Psychopharmacology,233,65,168,"Augmentative and alternative communication (AAC) methods (picture exchange, sign language, speech-generating devices, text-to-speech apps) enable meaningful communication; speech output devices show particular promise in recent years"
+279,1. Assessment Fundamentals,217,55,162,"Accurate diagnosis requires comprehensive history (including past psychiatric episodes, family history, substance use, trauma), mental status examination (observable data), and integration of all available information"
+280,1. Assessment Fundamentals,237,75,162,"Comprehensive assessment integrating rapport and alliance-building, systematic history (presenting problem, psychiatric history, medical history, substance use, psychosocial factors), mental status examination, and diagnostic formulation"
+790,11. Feeding and Eating Disorders,230,68,162,"CBT-E is transdiagnostic, addressing core cognitive distortions (overvaluation of appearance/weight, dichotomous thinking about food) across all eating disorder categories through behavioral experiments and cognitive restructuring"
+311,16. Substance-Related Disorders,234,83,151,"Legal status does not determine safety or toxicity. Synthetic drugs exploit regulatory gaps and lack FDA oversight, quality control, and pharmacological characterization. Legal availability has not prevented severe toxicity and death."
+983,22. Psychopharmacology,198,49,149,"Untreated ADHD increases relapse risk; appropriate ADHD treatment can improve recovery outcomes by addressing executive dysfunction, impulsivity, and reward sensitivity underlying addictive behavior"
+360,22. Psychopharmacology,165,19,146,"Early serendipity (MAOIs, lithium, chlorpromazine); mechanistic reverse-engineering. Modern combines rational design with rigorous RCTs; serendipity remains valuable"
+975,22. Psychopharmacology,221,76,145,"Yes, carefully. After symptom resolution, alternative antidepressants (preferably non-serotonergic or low serotonergic activity) can be reintroduced with avoidance of previous offending combinations and careful monitoring"
+974,22. Psychopharmacology,187,44,143,"SSRI + MAOI combination is a medical emergency causing serotonin syndrome; discontinue both immediately, provide supportive care (cyproheptadine as serotonin antagonist may be considered)"
+184,2. Neurodevelopmental Disorders,170,28,142,"Girls may mask social difficulties through 'camouflaging,' have less obvious restricted interests (more focused on animals/books), and may show different sensory profiles"
+454,"27. Forensic, Ethics, and Legal Issues",199,57,142,"Psychiatry retains legal and moral authority to treat without consent, administer consciousness-altering medications, and deal with patients whose illness impairs their capacity to understand illness"
+54,9. Dissociative Disorders,182,41,141,"In DID, alternate identities are experienced as part of self; in psychosis, hallucinations and delusions are experienced as external. DID patients typically maintain reality testing."
+998,22. Psychopharmacology,205,66,139,"Lithium carries increased risk of Ebstein's anomaly (right ventricular outflow obstruction); while risk is modest (~0.05-0.1% vs. baseline 0.01%), benefit of mood stabilization must be weighed against risk"
+208,3. Schizophrenia Spectrum,233,95,138,"Catatonia remains one of the most frequently missed presentations in psychiatry and neurology, with diagnostic delays averaging 2-6 weeks, making early recognition and treatment essential to prevent progression to malignant catatonia"
+978,22. Psychopharmacology,212,74,138,"History of SUD warrants caution but does not preclude stimulant therapy; careful monitoring, non-stimulant options, and appropriate safeguards (pill counts, urine screens) enable safe treatment in select patients"
+272,23. Psychotherapy and Non-Pharmacologic,211,75,136,"Behavioral modification addresses maladaptive patterns through systematic exposure, reinforcement, and activity scheduling, with strong evidence for depression, anxiety, PTSD, substance use, and other conditions"
+356,22. Psychopharmacology,158,22,136,"First-generation (chlorpromazine, haloperidol) serendipity; second-generation rationally designed with D2+serotonin antagonism reducing extrapyramidal effects"
+160,24. Psychiatric Emergencies,239,104,135,"C-SSRS is a valuable structured assessment tool but positive results require clinical judgment incorporating severity, intent, plan, means access, and protective factors; PPV limitation means most positive screens represent low actual risk"
+936,22. Psychopharmacology,191,56,135,Acute benzodiazepine use (weeks-months) for specific anxiety triggers is evidence-based; chronic use for generalized anxiety is not recommended due to dependence risk and diminishing efficacy
+150,23. Psychotherapy and Non-Pharmacologic,223,89,134,"Transition from unmodified to modified ECT reflects recognition that convulsive therapy could be administered safely and effectively through anesthesia and paralysis, reducing violent muscle contractions and iatrogenic harm"
+969,22. Psychopharmacology,197,63,134,"After 5-7 days of antipsychotic discontinuation, antipsychotics can be cautiously restarted, preferably with a different class; rechallenge carries recurrence risk (~50%) requiring close monitoring"
+194,8. Trauma- and Stressor-Related Disorders,160,27,133,AD has clear temporal stressor relationship; AD symptoms don't meet full MDD criteria; expected response exceeds stressor; duration up to 6 months post-stressor
+248,8. Trauma- and Stressor-Related Disorders,198,65,133,"Grief is a normal response to loss; complicated grief (prolonged, intense, functionally impairing) requires specialized assessment and treatment to prevent long-term psychiatric and medical sequelae"
+993,22. Psychopharmacology,207,74,133,"Mental health comorbidities (depression, anxiety, social isolation) are common in adolescent autism due to increased self-awareness; integrated treatment addressing both autism and mental health is essential"
+295,16. Substance-Related Disorders,210,78,132,Both drugs carry severe health risks including psychiatric complications and cardiac toxicity. The distinction between natural and synthetic does not determine safety; pharmacological mechanism determines harm.
+314,22. Psychopharmacology,194,62,132,"Ketamine antagonizes NMDA (N-methyl-D-aspartate) glutamate receptors, leading to disinhibition of AMPA receptors and increased synaptic plasticity, particularly affecting circuits involving BDNF"
+229,18. Personality Disorders,201,70,131,"Avoidant personality disorder is characterized by social withdrawal and fear of rejection, while dependent personality disorder involves excessive reliance on others for decision-making and reassurance"
+142,22. Psychopharmacology,191,62,129,"While benzodiazepines have Level A evidence for acute anxiety relief, chronic use is not recommended due to dependence potential; SSRIs and CBT are first-line for persistent anxiety disorders"
+242,8. Trauma- and Stressor-Related Disorders,180,51,129,"Complicated grief (persistent complex bereavement disorder), characterized by prolonged, intense grief that persists beyond normal timeframes with significant functional impairment"
+994,22. Psychopharmacology,217,88,129,These behaviors are both differences and can create functional challenges; intense interests can be channeled into learning/careers; repetitive behaviors provide emotional regulation but may interfere with transitions
+999,22. Psychopharmacology,158,30,128,"Refeeding syndrome: hypophosphatemia, hypokalemia, hypomagnesemia from carbohydrate metabolism consuming phosphate/electrolytes; life-threatening if untreated"
+310,16. Substance-Related Disorders,205,78,127,"Synthetic drugs have different chemical structures than their parent compounds, so standard antibodies in immunoassays do not recognize them; manufacturers continuously modify structures to evade detection"
+516,20. Medication-Induced Movement Disorders,177,50,127,Akathisia is characterized by a compelling urge to move with dysphoric quality despite conscious attempts to sit still; simple agitation lacks this subjective distress component
+187,"27. Forensic, Ethics, and Legal Issues",158,32,126,Competency is a legal determination made by courts; capacity is a clinical assessment made by physicians. Capacity is decision-specific; competency is global.
+957,22. Psychopharmacology,183,57,126,Dynamic risk assessment with frequent reassessment is essential given BPD's characteristic mood/ideation volatility; crisis planning and accessible mental health services are critical
+253,23. Psychotherapy and Non-Pharmacologic,175,54,121,"CBT is brief and focused on current symptoms through behavioral change, while psychodynamic therapy is longer-term and explores historical patterns and unconscious motivations"
+269,23. Psychotherapy and Non-Pharmacologic,169,48,121,"Behavioral modification addresses underlying sleep-interfering patterns and habits, building sustainable sleep, while medication alone may not address behavioral factors"
+755,7. OCD and Related Disorders,185,64,121,"Y-BOCS scores range 0-40; higher scores indicate greater severity and correlate with need for intensive treatment (pharmacotherapy + ERP, possibly residential programs for severe cases)"
+719,4. Bipolar and Related Disorders,205,85,120,"Bipolar disorder is characterized by profound circadian dysfunction; sleep deprivation can trigger manic episodes (phase-advance hypothesis), and chronobiological interventions target these vulnerabilities"
+987,22. Psychopharmacology,187,67,120,"Weekend medication holidays are acceptable for some patients, particularly those with lower doses; individual factors (duration, functional demands, symptom stability) guide this decision"
+989,22. Psychopharmacology,181,62,119,"Antipsychotics (risperidone, aripiprazole) show FDA approval for irritability in autism; they reduce aggression and stereotyped behavior with acceptable benefit-risk in select cases"
+1000,22. Psychopharmacology,191,72,119,"Standardized C-SSRS protocol adherence ensures consistent, comprehensive assessment of ideation severity, intent, and behavior history; enabling comparable risk stratification across settings"
+439,22. Psychopharmacology,148,30,118,B12 supplementation via intramuscular injection or high-dose oral/sublingual supplementation due to limited plant sources and absorption variability
+988,22. Psychopharmacology,183,65,118,"Autism involves atypical neural processing of sensory information; enhanced perception (hyperacusis, texture sensitivity) and reduced filtering of background stimuli are core features"
+312,16. Substance-Related Disorders,215,98,117,"Legal-atypical drugs exploit regulatory gaps and chemical-modification strategies to evade legal controls, lack FDA oversight, produce unpredictable and often severe toxicity, and present constantly evolving threats"
+471,"27. Forensic, Ethics, and Legal Issues",179,62,117,"All three intersect in psychiatric practice; clinicians must navigate complex interactions between constitutional protections, state statutes, and common law negligence principles"
+971,22. Psychopharmacology,173,56,117,"Levodopa withdrawal syndrome (characterized by acute rigidity, hyperthermia, autonomic instability) mimics NMS; this represents dopamine insufficiency rather than antagonism"
+239,24. Psychiatric Emergencies,191,75,116,"Psychiatric emergencies represent genuine crises requiring immediate comprehensive assessment, medical evaluation, and structured intervention to address potential life-threatening situations"
+256,23. Psychotherapy and Non-Pharmacologic,190,74,116,"Psychotherapy includes diverse evidence-based approaches (CBT, psychodynamic, DBT, supportive therapy) tailored to the specific condition, often combined with medication for optimal outcomes"
+271,23. Psychotherapy and Non-Pharmacologic,172,56,116,"Behavior, thoughts, and emotions are bidirectionally related; changing behavior often changes thoughts and emotions, while emotional change can facilitate behavioral change"
+486,5. Depressive Disorders,176,60,116,"Clinical recognition and evidence-based management of SAD as a significant subtype of major depressive disorder, including neurobiological mechanisms and therapeutic approaches"
+520,20. Medication-Induced Movement Disorders,157,41,116,"Recognize it as a medication side effect; consider dose reduction, alternative antipsychotics, or adjunctive treatment (e.g., beta-blockers, benzodiazepines)"
+984,22. Psychopharmacology,167,51,116,"Medication alone is insufficient; structured behavioral interventions (executive coaching, time management training, organizational systems) complement pharmacotherapy"
+240,24. Psychiatric Emergencies,203,88,115,"Emergency care consists of: immediate safety assessment, medical evaluation to exclude organic causes, comprehensive psychiatric evaluation, and appropriate intervention based on diagnosis and risk level"
+261,23. Psychotherapy and Non-Pharmacologic,169,54,115,"Confrontation views resistance as pathology requiring direct challenge, while MI views resistance as an understandable response to explore further, not direct opposition"
+152,24. Psychiatric Emergencies,177,64,113,Screening alone (assessment without linkage to appropriate intervention and follow-up) does not reduce suicide mortality; assessment must be paired with structured interventions
+982,22. Psychopharmacology,178,65,113,"Stimulants can precipitate mood destabilization, anxiety, or mania in some patients; careful monitoring for mood worsening, anxiety escalation, or hypomanic features is essential"
+224,3. Schizophrenia Spectrum,185,74,111,"Early identification, lower-dose antipsychotics with psychoeducation and psychosocial support, aiming to minimize untreated psychosis duration and optimize long-term functional outcomes"
+931,22. Psychopharmacology,172,61,111,"Benzodiazepines carry high addiction potential and abuse risk, particularly in individuals with SUD history; use should be limited to acute withdrawal with close monitoring"
+945,22. Psychopharmacology,154,43,111,"ECT is a rapid, highly effective treatment for catatonia, particularly in benzodiazepine-refractory cases or when rapid resolution is clinically necessary"
+980,22. Psychopharmacology,185,74,111,Baseline and periodic blood pressure monitoring; choice of lower-dose stimulants or non-stimulants; avoidance of high-dose or long-acting formulations that amplify cardiovascular stress
+190,"27. Forensic, Ethics, and Legal Issues",149,39,110,A manic patient's impaired judgment and inability to reason through financial consequences suggests impaired capacity for complex financial decisions
+231,18. Personality Disorders,190,80,110,"Personality disorders are inflexible, pervasive patterns with origins in temperament and developmental factors, require specialized treatment approaches, and treatment takes substantial time"
+147,23. Psychotherapy and Non-Pharmacologic,172,63,109,Administration of general anesthesia and neuromuscular blocking agents (muscle relaxants) to prevent violent muscle contractions and allow controlled mechanical ventilation
+304,16. Substance-Related Disorders,207,98,109,"Multimodal treatment combining FDA-approved pharmacotherapy with behavioral support (counseling, CBT) offers the highest quit rates and should be individualized based on patient preferences and comorbidities"
+464,"27. Forensic, Ethics, and Legal Issues",179,70,109,"Understanding insanity standards, conducting thorough chart reviews, developing forensic-specific reports, and preparing for cross-examination with AAPL ethical guidelines in mind"
+493,10. Somatic Symptom Disorders,172,63,109,"Recognize fibromyalgia as a real condition with identifiable neurobiological mechanisms involving central sensitization, and address both somatic and psychiatric dimensions"
+963,22. Psychopharmacology,157,48,109,"Passive ideation (death wishes without plan/intent) is lower risk than active ideation (specific plan and intent), but both require assessment and monitoring"
+992,22. Psychopharmacology,170,61,109,"ABA shows evidence for improving social communication, reducing repetitive behaviors, and enhancing adaptive skills; it is one of the most studied interventions in autism"
+163,20. Medication-Induced Movement Disorders,149,41,108,"Serotonin Syndrome: rapid onset (hours to 24h) with hyperreflexia, tremor; NMS: gradual onset (24-72h), lead pipe rigidity, creatine kinase elevation"
+245,8. Trauma- and Stressor-Related Disorders,171,64,107,"Grief is sadness related to loss with episodic intensity and gradual acceptance, while depression is persistent depressed mood with self-blame and global negative thinking"
+316,22. Psychopharmacology,186,79,107,"Esketamine is more potent at NMDA receptor antagonism than racemic ketamine mixture, may have preferential antidepressant effects with less dissociation, and has FDA nasal spray approval"
+149,23. Psychotherapy and Non-Pharmacologic,207,101,106,ECT induces transient heart rate and blood pressure elevation and may precipitate arrhythmias; baseline ECG and cardiology evaluation are necessary in patients with cardiac risk factors or arrhythmia history
+277,1. Assessment Fundamentals,197,92,105,"Specific questions about mania symptoms (grandiosity, decreased need for sleep, racing thoughts, excessive spending) help identify bipolar disorder, while their absence suggests unipolar depression"
+303,16. Substance-Related Disorders,179,74,105,"NRT provides nicotine without combustion toxins, allowing the brain's reward system to adjust gradually while avoiding relapse; it effectively reduces overall nicotine consumption"
+153,24. Psychiatric Emergencies,201,97,104,Safety planning demonstrates moderate evidence for reducing attempts in outpatient settings but lacks mortality endpoint data; it must be paired with structured psychotherapy (DBT) for optimal outcomes
+472,"27. Forensic, Ethics, and Legal Issues",166,62,104,"Understanding statutory requirements, landmark precedents, and specific state frameworks (like RCW 71 for Washington) is essential for ethical, legally compliant care"
+503,26. Consultation-Liaison Psychiatry,160,56,104,"Fatigue is specifically defined as subjective exhaustion or reduced capacity for work disproportionate to exertion, distinct from simple sleepiness or tiredness"
+991,22. Psychopharmacology,157,53,104,"Autism and intellectual disability are distinct; approximately 30-50% of autistic individuals have comorbid ID, while others have average or above-average IQ"
+501,26. Consultation-Liaison Psychiatry,184,81,103,"Clarify the distinctions between physical fatigue, mental fatigue, and sleepiness; organize the differential diagnosis by physiologic system; and establish a rational testing hierarchy"
+872,22. Psychopharmacology,171,68,103,Escitalopram's superior potency and pharmacokinetics may provide benefit in partial responders; switching is a standard evidence-based strategy when response is suboptimal
+946,22. Psychopharmacology,164,61,103,Cardiac disease is no longer considered an absolute contraindication if patient is medically optimized; relative risk-benefit must be assessed with cardiology input
+264,23. Psychotherapy and Non-Pharmacologic,188,86,102,"MI is effective because it honors client autonomy, addresses ambivalence about change through empathetic exploration, and builds intrinsic motivation rather than imposing external pressure"
+463,"27. Forensic, Ethics, and Legal Issues",164,62,102,"Treating clinicians prioritize alliance and patient well-being; forensic experts prioritize objectivity and reaching truth, which may not serve the evaluated person"
+771,9. Dissociative Disorders,183,81,102,The nervous system fails to reintegrate after severe childhood trauma; the 'phobic' part (avoiding reminders) and 'traumatic' part (re-enacting) persist as separate identity fragments
+953,22. Psychopharmacology,178,76,102,Single-item screening has limited specificity; positive screens require comprehensive risk assessment with tools like C-SSRS to differentiate serious risk from transient ideation
+358,22. Psychopharmacology,129,29,100,Clinical discoveries often precede understanding; serendipitous observations led to clinical utility before mechanisms understood
+232,18. Personality Disorders,218,119,99,"Personality disorders represent enduring, inflexible trait patterns that influence presentation of other psychiatric conditions, require long-term treatment, and may limit response to standard psychiatric interventions"
+247,8. Trauma- and Stressor-Related Disorders,174,75,99,"Normal grief involves sadness, yearning, and temporary functional disruption, while only complicated grief (prolonged, intense) with significant impairment requires treatment"
+355,22. Psychopharmacology,119,20,99,Understanding tricyclic side effects and monoamine hypothesis; SSRIs selective serotonin reuptake reducing side effects
+478,"27. Forensic, Ethics, and Legal Issues",165,66,99,"Surrogate decision-making requires understanding statutory hierarchies, patient autonomy principles, and clear clinical procedures to provide legally defensible care"
+756,7. OCD and Related Disorders,168,69,99,Initiate intensive ERP psychotherapy immediately; combined pharmacotherapy and evidence-based psychotherapy maximize outcomes even in pharmacologically refractory cases
+955,22. Psychopharmacology,159,60,99,"Means restriction (counseling on firearm safety, safe storage, temporary removal) reduces impulsive suicide risk, particularly in access to highly lethal means"
+482,5. Depressive Disorders,143,45,98,"SAD prevalence increases with geographical latitude, with higher rates in northern regions (approximately 10% in Alaska versus 1-2% in Florida)"
+772,9. Dissociative Disorders,190,92,98,"Excessive prefrontal dampening of limbic threat signals, producing emotional numbing and detachment—an adaptive avoidance response to inescapable threat that becomes maladaptive when chronic"
+949,22. Psychopharmacology,165,67,98,"Psychosis often impairs judgment; formal capacity evaluation and involvement of surrogate decision-makers (healthcare proxy, family, ethics committee) is appropriate"
+177,2. Neurodevelopmental Disorders,118,21,97,"2013 (DSM-5), combining Asperger Syndrome, PDD-NOS, and childhood disintegrative disorder under a single ASD diagnosis"
+216,22. Psychopharmacology,172,75,97,"Clozapine requires gold-standard treatment-resistant indication, intensive monitoring for serious adverse effects, and careful dose titration to achieve therapeutic benefit"
+475,"27. Forensic, Ethics, and Legal Issues",154,57,97,Every clinician will encounter incapacitated patients requiring surrogate authorization; knowing statutory hierarchy prevents legal and ethical violations
+196,8. Trauma- and Stressor-Related Disorders,129,33,96,"Brief supportive psychotherapy, stress reduction, and addressing stressor when possible; medications if specific symptoms warrant"
+223,3. Schizophrenia Spectrum,171,75,96,"With early intervention and appropriate treatment, some patients with first-break psychosis recover fully or achieve good functional outcomes, though prognosis is variable"
+510,22. Psychopharmacology,147,51,96,"Psychiatrists must develop EKG literacy to understand cardiac effects of psychotropic medications, particularly QT prolongation and arrhythmia risk"
+788,11. Feeding and Eating Disorders,156,60,96,"ARFID lacks body-image disturbance and weight concerns; restriction stems from sensory sensitivity or anxiety about consequences (choking), not shape/weight"
+950,22. Psychopharmacology,152,56,96,"Seizure disorder is not a contraindication, but anticonvulsants lower seizure threshold for ECT; dose adjustment or temporary reduction may be necessary"
+979,22. Psychopharmacology,141,45,96,"Atomoxetine (Strattera, selective norepinephrine reuptake inhibitor) and guanfacine (extended-release) are FDA-approved non-stimulant options"
+76,6. Anxiety Disorders,150,55,95,Specific Phobia is circumscribed to a specific object/situation; Agoraphobia involves anxiety in multiple situations where escape/help seems difficult
+252,23. Psychotherapy and Non-Pharmacologic,192,97,95,"Without structured approaches and skills training, patients with poor distress tolerance may worsen or drop out of treatment, while structured therapy can reduce self-harm and improve outcomes"
+748,7. OCD and Related Disorders,164,69,95,"Benzodiazepines reduce anxiety below levels necessary for habituation in ERP, potentially impairing the learning that occurs during exposure and response prevention"
+935,22. Psychopharmacology,158,63,95,"Triazolam impairs cognitive and psychomotor function, creating serious driving impairment risk even at normal doses; patients should not drive after taking it"
+961,22. Psychopharmacology,177,82,95,"Command hallucinations plus weak resistance, recent psychiatric hospitalization, or planning indicate elevated risk; hospitalization and antipsychotic optimization are indicated"
+64,11. Feeding and Eating Disorders,133,39,94,"Refeeding syndrome risk (severe hypophosphatemia and metabolic shifts), requiring careful caloric increase and electrolyte monitoring"
+164,20. Medication-Induced Movement Disorders,120,26,94,"Stop offending antipsychotic immediately; supportive care, hydration, monitoring for complications (rhabdomyolysis, DIC)"
+215,22. Psychopharmacology,182,88,94,"While clozapine carries significant risks, its superior efficacy in treatment-resistant schizophrenia justifies its use when other treatments have failed, with appropriate monitoring"
+237,24. Psychiatric Emergencies,176,82,94,"Both require comprehensive assessment including safety, medical evaluation, and appropriate psychiatric/medical intervention, but specific interventions vary based on diagnosis"
+470,"27. Forensic, Ethics, and Legal Issues",157,63,94,"To provide guidance on navigating involuntary commitment, forced medication, confidentiality exceptions, and duty to warn within ethical and legal frameworks"
+487,5. Depressive Disorders,144,50,94,"Children frequently manifest irritability, behavioral dysregulation, and social withdrawal rather than anhedonia and fatigue prominent in adults"
+778,11. Feeding and Eating Disorders,152,58,94,"Refeeding syndrome: shift from catabolism to anabolism causes intracellular shift of electrolytes, paradoxically lowering serum levels despite repletion"
+156,24. Psychiatric Emergencies,173,80,93,"Screening without intervention infrastructure shows no benefit or paradoxically may show higher post-discharge suicide rates, potentially due to reactive depressive response"
+181,2. Neurodevelopmental Disorders,127,34,93,"No medication specifically treats core autism symptoms; medications address co-occurring conditions (ADHD, anxiety, aggression)"
+265,23. Psychotherapy and Non-Pharmacologic,148,55,93,"Engaging in valued activities despite low motivation can gradually improve mood and increase reinforcement, breaking the inactivity-depression cycle"
+511,22. Psychopharmacology,135,42,93,"QT-prolonging agents carry higher risk for torsades de pointes and sudden cardiac death, requiring baseline and periodic EKG monitoring"
+731,5. Depressive Disorders,155,62,93,"TMS shows ~40-50% response; advantages include no systemic side effects, cognitive benefits, and no seizure risk, though remission rates are lower than ECT"
+986,22. Psychopharmacology,149,56,93,"Adjust timing (earlier dosing in day), reduce dose, or switch to non-stimulant; concurrent sleep hygiene and possibly brief sleep medication may help"
+146,23. Psychotherapy and Non-Pharmacologic,155,63,92,ECT's rapid onset (often 2-4 sessions with response emerging within days) compared to antidepressants (weeks to months) reduces acute suicide risk exposure
+171,2. Neurodevelopmental Disorders,121,29,92,"Improve functional impairment in work, relationships, and daily living through medication and/or behavioral interventions"
+182,2. Neurodevelopmental Disorders,122,30,92,Applied Behavior Analysis (ABA) with individualized intensive therapy focusing on functional skills and behavior reduction
+432,26. Consultation-Liaison Psychiatry,143,52,91,Chronic hyperglycemia causes oxidative stress and advanced glycation end products (AGEs) that damage brain tissue and promote neuroinflammation
+740,6. Anxiety Disorders,144,53,91,"Imipramine and clomipramine demonstrate 60-70% efficacy in panic comparable to SSRIs, though side effects make SSRIs/SNRIs preferable first-line"
+144,23. Psychotherapy and Non-Pharmacologic,158,68,90,"ECT-induced ictal activity and post-ictal neuroendocrine release (prolactin, ACTH), which may contribute to therapeutic effect independent of seizure duration"
+148,23. Psychotherapy and Non-Pharmacologic,181,91,90,"Post-ECT cognitive effects (brief disorientation, transient amnesia) typically resolve within days; chronic antipsychotics and benzodiazepines can cause persistent cognitive dulling"
+176,2. Neurodevelopmental Disorders,127,37,90,"Adults may develop compensatory strategies, hyperactivity may be less prominent, and symptoms may be attributed to other causes"
+317,22. Psychopharmacology,162,72,90,Ketamine's rapid antidepressant onset (hours to days) addresses acute suicidality while avoiding traditional antidepressants that may destabilize bipolar patients
+744,6. Anxiety Disorders,156,66,90,"Discontinuation syndrome occurs with abrupt SSRI cessation, characterized by dizziness, nausea, paresthesias, electric shock sensations, and rebound anxiety"
+189,"27. Forensic, Ethics, and Legal Issues",125,36,89,Substituted judgment (deciding as the patient would if capable) or best interest standard (acting in patient's best interest)
+494,10. Somatic Symptom Disorders,136,47,89,"Modern neuroscience demonstrates that psychosomatic conditions have genuine neurobiological bases, making the mind-body dualism obsolete"
+753,7. OCD and Related Disorders,149,60,89,Continue the exposure; anxiety typically peaks within 30-90 minutes then naturally declines through habituation—premature escape reinforces avoidance
+997,22. Psychopharmacology,152,63,89,"No, mandatory ANC monitoring is the singular safety requirement for clozapine; continuation without results is contraindicated and risks agranulocytosis"
+238,24. Psychiatric Emergencies,167,79,88,"Danger assessment, safety planning, and appropriate disposition (inpatient vs. outpatient) require integration of risk factors, protective factors, and support systems"
+273,1. Assessment Fundamentals,157,69,88,"Establishing therapeutic alliance through respectful engagement, explaining confidentiality, and using open questions to understand the patient's perspective"
+714,4. Bipolar and Related Disorders,176,88,88,"Tremor, polyuria, and polydipsia are expected dose-dependent side effects; lithium has a narrow therapeutic window and requires regular monitoring of renal and thyroid function"
+751,7. OCD and Related Disorders,139,51,88,"Imaginal exposure, where the patient describes feared scenarios in detail while listening to recordings repeatedly until anxiety habituates"
+792,11. Feeding and Eating Disorders,182,94,88,"Purging-related medical complications (esophageal damage, dental erosion, severe electrolyte dysregulation) may be permanent even with successful behavioral/pharmacological treatment"
+962,22. Psychopharmacology,133,45,88,Low to moderate risk; protective factors and situational stressor suggest good prognosis with outpatient support and crisis resources
+228,18. Personality Disorders,170,83,87,Suicidal behavior reflects the emotional instability and fear of abandonment central to borderline pathology and requires proactive suicide risk assessment and management
+292,16. Substance-Related Disorders,179,92,87,Cocaine causes short-lived euphoria and stimulation (minutes to hours) while methamphetamine causes sustained euphoria lasting hours to days with greater psychotomimetic potential
+352,22. Psychopharmacology,105,18,87,"Individualized planning considering half-lives, serotonin syndrome risk, withdrawal with gradual tapering"
+468,"27. Forensic, Ethics, and Legal Issues",163,76,87,"Unlike most medical specialties, psychiatry can treat without consent when patient's illness impairs capacity and creates danger, creating legal/ethical complexity"
+480,"27. Forensic, Ethics, and Legal Issues",135,48,87,"Understand and follow the statutory framework for identifying and contacting appropriate surrogates, and document procedures thoroughly"
+799,13. Sleep-Wake Disorders,158,71,87,Pathological changes in the suprachiasmatic nucleus disrupt circadian rhythm regulation; circadian desynchronization and reduced light cues impair entrainment
+800,13. Sleep-Wake Disorders,164,77,87,"Paradoxical insomnia (sleep state misperception): inaccurate perception of wakefulness during sleep, possibly from microarousals or impaired metacognitive awareness"
+803,13. Sleep-Wake Disorders,161,74,87,Combining SSRIs (sertraline) with SNRIs (venlafaxine) creates unnecessary polypharmacy and risks serotonin syndrome; use single first-line agent at adequate dose
+169,2. Neurodevelopmental Disorders,123,37,86,Symptoms must have been present since childhood (before age 12) with evidence of functional impairment in multiple settings
+275,1. Assessment Fundamentals,171,85,86,"The MSE provides objective observable data complementing the patient's subjective history, allowing assessment of cognition, emotional functioning, and thought disturbance"
+598,21. Other Conditions,135,49,86,Mail-order offers cost savings and convenience for stable chronic patients; retail provides immediate access and pharmacist interaction
+844,17. Neurocognitive Disorders,164,78,86,"Discontinue haloperidol immediately; continue aggressive sepsis management and consider neuroleptic malignant syndrome (NMS) treatment (cooling, fluids, dantrolene)"
+230,18. Personality Disorders,152,67,85,Building alliance through empathy while gently exploring the impact of his behavior on relationships and addressing his need for control and superiority
+299,16. Substance-Related Disorders,162,77,85,"Varenicline is a partial agonist at alpha-4-beta-2 nicotinic receptors, providing mild activation while blocking the stronger rewarding effects of smoked nicotine"
+489,10. Somatic Symptom Disorders,144,59,85,"Conditions with genuine neurobiological underpinnings involving central sensitization, neuroplasticity, and dysregulation of the stress response"
+940,22. Psychopharmacology,145,60,85,"ECT induces a controlled seizure, triggering neurobiological changes (altered neurotransmission, neuroplasticity, neurogenesis) that improve mood"
+941,22. Psychopharmacology,150,65,85,"ECT has rapid onset (symptom improvement within days-weeks) and is highly effective in severe, treatment-resistant depression and psychotic depression"
+942,22. Psychopharmacology,158,73,85,"Yes, transient cognitive effects (disorientation, anterograde amnesia) are common during active ECT; they typically resolve within days-weeks after completion"
+33,7. OCD and Related Disorders,125,41,84,"Intrusions recognized as excessive/unreasonable, cause significant distress, consume substantial time, and impair functioning"
+306,16. Substance-Related Disorders,163,79,84,"Synthetic cathinones are potent monoamine releasers and reuptake inhibitors, producing dopamine/norepinephrine effects that rival or exceed methamphetamine potency"
+141,22. Psychopharmacology,141,58,83,"Reduced GABA-A receptors, increased glutamate signaling, and a new neurobiological set point requiring benzodiazepine presence to feel normal"
+263,23. Psychotherapy and Non-Pharmacologic,147,64,83,"Gentle, empathetic exploration of the client's ambivalence about change, supporting autonomy while helping articulate reasons for changing behavior"
+964,22. Psychopharmacology,148,65,83,Serotonin syndrome has rapid onset (hours-days) and typically faster resolution with drug discontinuation; NMS has slower onset and prolonged course
+58,11. Feeding and Eating Disorders,107,25,82,AN involves significantly low body weight; BN involves normal/near-normal weight despite binge-purge cycles
+200,8. Trauma- and Stressor-Related Disorders,120,38,82,Generally favorable—most patients recover within 6 months with appropriate support; early intervention improves outcomes
+288,16. Substance-Related Disorders,183,101,82,"Legalization enabled development of extremely high-potency products (20-30% THC in flower, 50-99% in concentrates) that correspond with more severe cannabis-induced psychotic episodes"
+336,22. Psychopharmacology,107,25,82,Enables rational polypharmacy and optimized dosing through understanding half-lives and CYP450 interactions
+359,22. Psychopharmacology,115,33,82,Serendipitous medications proved effective in rigorous trials; validity from clinical evidence not discovery method
+429,26. Consultation-Liaison Psychiatry,103,21,82,Thyroid hormone excess (hyperthyroidism) causing increased metabolic rate and catecholamine sensitivity
+742,6. Anxiety Disorders,137,55,82,Caffeine increases sympathomimetic effects and can precipitate panic attacks in vulnerable individuals; reduction is clinically indicated
+287,16. Substance-Related Disorders,169,88,81,"CBD evidence in humans is limited, but animal models and some human studies suggest anxiolytic and antipsychotic properties; most enthusiasm is based on preclinical work"
+300,16. Substance-Related Disorders,172,91,81,Patches provide steady-state nicotine delivery and reduce cravings; gum/lozenges allow rapid self-titration for breakthrough cravings; combination therapy improves outcomes
+350,22. Psychopharmacology,90,9,81,Gradual 10 percent reduction every 1-2 weeks avoiding severe withdrawal including seizures
+408,26. Consultation-Liaison Psychiatry,112,31,81,Chronic HPA axis activation leading to reduced regulatory T cells and persistent Th1/Th17 inflammatory imbalance
+309,16. Substance-Related Disorders,146,66,80,"Supportive care including aggressive cooling, IV fluids for rhabdomyolysis management, benzodiazepines for agitation, and potential ICU monitoring"
+431,26. Consultation-Liaison Psychiatry,115,35,80,"Reduced cardiac output decreasing cerebral perfusion and oxygen delivery, plus neuroinflammation from heart failure"
+512,22. Psychopharmacology,126,46,80,"Obtain baseline EKG, follow FDA dose limitations, monitor for drug interactions, and perform periodic EKGs in at-risk patients"
+715,4. Bipolar and Related Disorders,149,69,80,"Monotherapy with antidepressants risks mood destabilization, rapid cycling, and potential switch to mania without concurrent mood stabilizer coverage"
+985,22. Psychopharmacology,133,53,80,ADHD shows strong familial aggregation; first-degree relatives have 50-80% prevalence; screening siblings and offspring is reasonable
+519,20. Medication-Induced Movement Disorders,122,43,79,Simple motor restlessness is purely objective; akathisia combines subjective dysphoric distress with objective motor signs
+976,22. Psychopharmacology,143,64,79,"Adult ADHD persists in 30-50% of childhood ADHD cases; it is a legitimate neurodevelopmental condition with neurobiological basis, not laziness"
+399,1. Assessment Fundamentals,141,63,78,Benzodiazepines allosterically enhance GABA-A receptors for rapid anxiolysis; SSRIs require neuroadaptation over weeks for therapeutic effect
+518,20. Medication-Induced Movement Disorders,148,70,78,"Manifestations, assessment, pathophysiology, and management of akathisia and tardive dyskinesia as clinically significant antipsychotic side effects"
+711,4. Bipolar and Related Disorders,189,111,78,"Bipolar II patients spend more cumulative time in depressed states, and the subthreshold mania may delay recognition, resulting in higher suicide risk despite apparently less severe illness"
+734,6. Anxiety Disorders,165,87,78,Expected onset is 6-12 weeks; response is defined as ≥50% symptom reduction; continued trials at adequate doses and durations are necessary before concluding failure
+929,22. Psychopharmacology,144,66,78,"Benzodiazepines increase fall risk, cognitive impairment, delirium, and mortality in older adults; safer alternatives (SSRIs, CBT) are preferred"
+970,22. Psychopharmacology,132,54,78,"Discontinue both medications immediately and monitor for symptom resolution; supportive care (benzodiazepines, cooling if necessary)"
+174,2. Neurodevelopmental Disorders,123,46,77,"Cardiovascular assessment including personal/family history of cardiac arrhythmias, cardiomyopathy, or sudden cardiac death"
+560,13. Sleep-Wake Disorders,153,76,77,"Explain that benzodiazepines/Z-drugs alter sleep architecture even if subjectively feeling rested, and chronic use carries dependence and tolerance risks"
+798,13. Sleep-Wake Disorders,178,101,77,Bright light therapy timed to desired circadian phase and melatonin 0.5–2 mg (immediate release) 30–120 min before desired sleep onset are evidence-based complementary approaches
+828,16. Substance-Related Disorders,181,104,77,"Peer support groups show benefits for sustained remission, particularly through community connection and accountability, though they work synergistically with professional treatment"
+967,22. Psychopharmacology,145,68,77,"Discontinue antipsychotic immediately, initiate supportive care (cooling, hydration, monitoring); consider dantrolene (NMDA antagonist) if severe"
+192,"27. Forensic, Ethics, and Legal Issues",105,29,76,Appreciation—inability to accept/acknowledge the reality of illness despite understanding the information
+249,23. Psychotherapy and Non-Pharmacologic,151,75,76,Psychotherapy is a collaboration between therapist and patient involving structured interventions designed to address emotional and behavioral problems
+357,22. Psychopharmacology,100,24,76,Serendipitously observed mood stabilization; mechanism incompletely understood despite 70+ years use
+707,3. Schizophrenia Spectrum,175,99,76,"Depressive symptoms occur in 50-70% of first-episode cases; major depressive disorder emerges post-episode in 25%, significantly impacting functional outcomes and suicide risk"
+728,5. Depressive Disorders,167,91,76,"Cognitive symptoms reflect depression severity; certain antidepressants and psychotherapy (CBT, behavioral activation) target cognitive components and improve function"
+785,9. Dissociative Disorders,157,81,76,Selective loss of autobiographical memory with preservation of semantic and procedural memory is characteristic of dissociative amnesia (not organic amnesia)
+883,22. Psychopharmacology,150,74,76,Bupropion's dopaminergic mechanism addresses anhedonia common in both depression and AUD; SSRI + alcohol may increase CNS depression and disinhibition
+958,22. Psychopharmacology,140,64,76,"Male sex, older age, chronic pain, social isolation, and access to means all increase suicide risk; combined presence suggests elevated risk"
+60,11. Feeding and Eating Disorders,93,18,75,"Disturbance in perception/evaluation of body shape and weight, or its role in self-evaluation"
+175,2. Neurodevelopmental Disorders,108,33,75,"Cognitive-Behavioral Therapy (CBT) focused on organization, time management, and executive function coaching"
+284,16. Substance-Related Disorders,152,77,75,"THC is a CB1 partial agonist with dose-dependent psychotomimetic effects, while CBD has minimal CB1 activity and acts through TRPV1 and 5-HT1A receptors"
+315,22. Psychopharmacology,149,74,75,Dissociation is expected and often accompanies the antidepressant effects; patient monitoring and supportive care during the experience are essential
+597,21. Other Conditions,130,55,75,"Manufacturing disruptions, consolidation of suppliers, low reimbursement rates discouraging production, and hoarding during crises"
+35,7. OCD and Related Disorders,113,39,74,"Reduce anxiety and distress from obsessions, though relief is temporary and rituals ultimately maintain the cycle"
+79,6. Anxiety Disorders,108,34,74,Avoidance prevents habituation and paradoxically maintains or worsens anxiety through negative reinforcement
+244,8. Trauma- and Stressor-Related Disorders,140,66,74,"Complicated grief tends to persist and worsen without treatment, with long-term consequences for physical health and psychiatric comorbidity"
+294,16. Substance-Related Disorders,163,89,74,"Methamphetamine-associated psychosis; symptoms may persist or recur despite abstinence, suggesting either unmasked schizophrenia or lasting neurobiological changes"
+440,22. Psychopharmacology,119,45,74,Proton pump inhibitors reduce gastric acid required for B12 release from food protein and B12 binding protein synthesis
+558,13. Sleep-Wake Disorders,138,64,74,"Melatonin agonists have substantially better safety profiles with no addiction potential, minimal tolerance, and no respiratory depression"
+650,1. Assessment Fundamentals,125,51,74,"Despite effective medical documentation forming the backbone of practice, formal training remains limited for many clinicians"
+720,4. Bipolar and Related Disorders,155,81,74,"Meta-analyses document 20-30% reduction in relapse when cognitive-behavioral therapy is combined with pharmacotherapy, particularly for depressive episodes"
+278,1. Assessment Fundamentals,128,55,73,"Non-judgmental, specific questioning that assumes some substance use and asks for details, reducing underreporting due to stigma"
+483,5. Depressive Disorders,128,55,73,"Environmental light exposure plays a significant role, as evidenced by higher prevalence in regions with reduced winter sunlight"
+495,10. Somatic Symptom Disorders,136,63,73,"Cartesian dualism separates mind and body; contemporary neuroscience recognizes their bidirectional, physically instantiated interaction"
+765,8. Trauma- and Stressor-Related Disorders,148,75,73,Children show behavioral reenactment and concrete threat interpretation; adult PTSD often involves abstract threat cognitions and explicit reporting
+938,22. Psychopharmacology,124,51,73,"Paradoxical reaction: benzodiazepines occasionally cause increased anxiety, agitation, or disinhibition rather than sedation"
+972,22. Psychopharmacology,142,69,73,Rhabdomyolysis from muscle breakdown may lead to myoglobinuria and acute renal failure; aggressive hydration and renal monitoring are critical
+167,20. Medication-Induced Movement Disorders,105,33,72,Stop serotonergic agents; supportive care; consider cyproheptadine (serotonin antagonist) in severe cases
+243,8. Trauma- and Stressor-Related Disorders,129,57,72,"Her presentation falls within normal grief response timeline and pattern, with sadness and initial disruption gradually improving"
+484,5. Depressive Disorders,140,68,72,"It established that major depressive disorder could present with a distinct seasonal pattern, expanding understanding of depressive subtypes"
+767,8. Trauma- and Stressor-Related Disorders,177,105,72,"Moral injury (violating personal ethics, killing others in combat) produces unique treatment-resistant presentations and requires specialized moral/meaning-focused interventions"
+795,13. Sleep-Wake Disorders,141,69,72,"Sedative-hypnotics suppress arousal responses in OSA, worsening hypoxemia; sleep medicine evaluation is essential before sedating medications"
+908,22. Psychopharmacology,107,35,72,Baseline and periodic absolute neutrophil count (ANC) monitoring; clozapine carries risk of agranulocytosis
+919,22. Psychopharmacology,139,67,72,"Lamotrigine carries risk of Stevens-Johnson syndrome (SJS); slow titration (starting 25 mg, increasing by 25-50 mg weekly) reduces SJS risk"
+977,22. Psychopharmacology,124,52,72,Increase to therapeutic dose; low starting doses require titration upward to optimize efficacy while monitoring tolerability
+296,16. Substance-Related Disorders,148,77,71,Consider intensive outpatient programs (IOP) or residential treatment programs combined with behavioral interventions and treatment of comorbidities
+502,26. Consultation-Liaison Psychiatry,135,64,71,"To provide a systematic, evidence-based approach to evaluating fatigue across multiple organ systems while avoiding diagnostic extremes"
+725,5. Depressive Disorders,151,80,71,"Sleep deprivation paradoxically produces therapeutic benefit in some patients, particularly those with melancholic features and early morning awakening"
+966,22. Psychopharmacology,140,69,71,"Serotonin syndrome resolves rapidly because serotonergic drugs have short half-lives; once metabolized, serotonergic excess resolves quickly"
+221,3. Schizophrenia Spectrum,166,96,70,"First-break psychosis typically occurs in previously healthy individuals with no prior psychiatric history, while substance-induced psychosis is secondary to drug use"
+302,16. Substance-Related Disorders,152,82,70,E-cigarettes may reduce combustion-related harm but perpetuate nicotine dependence; they lack FDA approval for smoking cessation and evidence is limited
+672,1. Assessment Fundamentals,121,51,70,Scientific literature is shaped by complex incentives that clinicians must understand to practice evidence-based medicine
+770,9. Dissociative Disorders,155,85,70,"Dissociative amnesia is a structural failure of memory integration, not motivated forgetting; false memories in alters can be corrected through integration"
+917,22. Psychopharmacology,126,56,70,Immediately stop lithium and initiate supportive care; check renal function and electrolytes; hemodialysis for severe toxicity
+554,13. Sleep-Wake Disorders,126,57,69,"Their narrow therapeutic window, respiratory depression, fatal overdose potential, and addiction liability made them dangerous"
+745,7. OCD and Related Disorders,125,56,69,Trial of high-dose sertraline (another SSRI with robust OCD evidence) or clomipramine (TCA with potent serotonergic activity)
+746,7. OCD and Related Disorders,126,57,69,"Low-dose antipsychotic augmentation (e.g., aripiprazole 2-10 mg/day) showing ~30% additional improvement in partial responders"
+909,22. Psychopharmacology,133,64,69,Olanzapine commonly causes marked weight gain and metabolic effects; this may undermine adherence in already impulsive manic patients
+973,22. Psychopharmacology,141,72,69,"Clozapine has some serotonergic activity; combined with sertraline, serotonergic excess can occur even without typical MAOI/tramadol exposure"
+2,3. Schizophrenia Spectrum,125,57,68,"Meta-analyses demonstrated poor inter-rater reliability, diagnostic instability over time, and minimal treatment implications"
+166,20. Medication-Induced Movement Disorders,88,20,68,Excessive serotonergic transmission due to combined serotonergic medications or overdose
+186,"27. Forensic, Ethics, and Legal Issues",101,33,68,May lack appreciation—cannot accurately apply information to own situation due to delusional thinking
+307,16. Substance-Related Disorders,158,90,68,"Synthetic cannabinoids are more selective CB1 full agonists with higher binding affinity than THC, producing more severe and unpredictable psychiatric effects"
+492,10. Somatic Symptom Disorders,125,57,68,The stress response dysregulation underlying psychosomatic conditions affects both somatic and psychiatric symptom generation
+702,3. Schizophrenia Spectrum,124,56,68,"Augmentation with valproate or lamotrigine, with integrated dual-diagnosis treatment addressing both psychosis and addiction"
+868,22. Psychopharmacology,145,77,68,Monitor closely for suicidality; increased activation in early treatment is expected and often resolves with continued therapy or dose adjustment
+918,22. Psychopharmacology,120,52,68,Valproate carries 10-20% risk of neural tube defects and developmental delay; alternative mood stabilizers are preferred
+951,22. Psychopharmacology,128,60,68,"Most patients experience transient cognitive effects during active ECT, with full recovery within weeks to months post-treatment"
+3,3. Schizophrenia Spectrum,111,44,67,Immediate medical evaluation to exclude secondary causes such as neuroleptic malignant syndrome or encephalitis
+193,8. Trauma- and Stressor-Related Disorders,104,37,67,Symptoms emerge within 3 months of a clear stressor and persist up to 6 months after stressor resolution
+301,16. Substance-Related Disorders,145,78,67,"Combined pharmacotherapy (varenicline, bupropion, or NRT) plus cognitive-behavioral therapy produces superior quit rates compared to either alone"
+354,22. Psychopharmacology,97,30,67,Rationally synthesized based on MAOI understanding; chemists designed monoamine reuptake blockers
+462,"27. Forensic, Ethics, and Legal Issues",132,65,67,"Forensic psychiatric expertise requires fundamentally different skills, methodologies, and ethical frameworks than clinical practice"
+479,"27. Forensic, Ethics, and Legal Issues",124,57,67,Substituted judgment uses known patient values/preferences; best interest standard applies when such preferences are unknown
+695,1. Assessment Fundamentals,125,58,67,Remote psychiatric care is now a standard component of practice requiring knowledge of guidelines and clinical considerations
+775,9. Dissociative Disorders,147,80,67,Rushing to Phase 2 (trauma processing) without Phase 1 (stabilization/resource-building) can destabilize the dissociative system and harm treatment
+934,22. Psychopharmacology,109,42,67,"Start with 10% dose reduction per week (diazepam 18 mg daily Week 1) with slow, gradual reduction over months"
+131,22. Psychopharmacology,125,59,66,"Slow titration is mandatory to minimize risk of Stevens-Johnson syndrome (SJS), starting at 25 mg daily and increasing slowly"
+348,22. Psychopharmacology,78,12,66,Short-half-life SSRIs common withdrawal; fluoxetine rare due to long half-life
+599,21. Other Conditions,138,72,66,"Requesting a generic formulation, using manufacturer patient assistance programs, or consulting social work for pharmacy discount programs"
+600,21. Other Conditions,122,56,66,"Explain that significant disparities exist based on insurance, geography, socioeconomic status, and medication type (REMS)"
+867,22. Psychopharmacology,137,71,66,Venlafaxine's noradrenergic activity provides additional analgesia and activating effects beneficial for pain and psychomotor retardation
+904,22. Psychopharmacology,127,61,66,Atypical antipsychotics cause weight gain and insulin resistance through D2/5-HT2 antagonism; metabolic monitoring is essential
+947,22. Psychopharmacology,146,80,66,Right unilateral ECT has slightly lower efficacy but minimizes cognitive side effects; bilateral provides faster remission but more memory effects
+257,23. Psychotherapy and Non-Pharmacologic,114,49,65,Using empathetic questioning to help the patient explore and resolve their own ambivalence about changing behavior
+297,16. Substance-Related Disorders,129,64,65,"Varenicline (partial agonist at alpha-4-beta-2 nicotinic receptors), bupropion (antidepressant), and nicotine replacement therapy"
+437,22. Psychopharmacology,115,50,65,"MTHFR deficiency impairs conversion of methylfolate to active form, impairing one-carbon metabolism and methylation"
+933,22. Psychopharmacology,119,54,65,"Benzodiazepine + alcohol CNS depression causing profound sedation, respiratory depression, and potential overdose death"
+42,8. Trauma- and Stressor-Related Disorders,81,17,64,"Re-experiencing/intrusion symptoms (flashbacks, nightmares related to the trauma)"
+191,"27. Forensic, Ethics, and Legal Issues",103,39,64,Presume capacity unless clearly demonstrated otherwise; capacity is decision-specific and can fluctuate
+195,8. Trauma- and Stressor-Related Disorders,88,24,64,With mixed disturbance of emotions and conduct (if mood and behavioral symptoms present)
+286,16. Substance-Related Disorders,146,82,64,Adolescent brains show exceptional vulnerability due to ongoing development of prefrontal cortex and limbic system where CB1 receptors predominate
+313,22. Psychopharmacology,119,55,64,"Ketamine produces rapid antidepressant effects within hours to days, compared to weeks for conventional antidepressants"
+347,22. Psychopharmacology,83,19,64,4-5 week washout required due to long half-life and active metabolite norfluoxetine
+460,"27. Forensic, Ethics, and Legal Issues",125,61,64,Forensic reports require objectivity and thorough chart review; clinical notes focus on alliance and therapeutic relationship
+749,7. OCD and Related Disorders,123,59,64,High-dose IV clomipramine (12.5-25 mg/day boluses over 2-4 weeks) may achieve remission in 50-70% of IV-refractory patients
+900,22. Psychopharmacology,130,66,64,Different monoamine targets (addition of norepinephrine) provide alternative therapeutic mechanisms in SSRI partial/non-responders
+981,22. Psychopharmacology,109,45,64,Consider extended-release formulations or twice-daily dosing to provide sustained coverage throughout the day
+12,4. Bipolar and Related Disorders,96,33,63,"Presence of hypomanic (not manic) episodes and major depressive episodes, without manic episodes"
+68,13. Sleep-Wake Disorders,100,37,63,Long-term efficacy decreases due to tolerance; psychological dependence can develop with chronic use
+338,22. Psychopharmacology,85,22,63,Achieves higher blood levels at standard doses; lower doses or alternatives necessary
+801,13. Sleep-Wake Disorders,155,92,63,Gradual taper (1–2 weeks) after sleep consolidation prevents rebound insomnia while reinforcing patient confidence in CBT-I skills for long-term management
+17,5. Depressive Disorders,88,26,62,5 or more symptoms during the same 2-week period (including depressed mood or anhedonia)
+69,13. Sleep-Wake Disorders,85,23,62,Consistent sleep schedule and adequate time in bed (7-9 hours) with regular wake time
+476,"27. Forensic, Ethics, and Legal Issues",131,69,62,"Legal codification provides standardized procedures, clarity about hierarchy, and protection for vulnerable patients and clinicians"
+694,1. Assessment Fundamentals,116,54,62,Telepsychiatry can achieve standard of care outcomes when conducted with appropriate protocols and clinical judgment
+716,4. Bipolar and Related Disorders,130,68,62,"Valproate and certain atypical antipsychotics (quetiapine, risperidone) have stronger evidence than lithium; avoid antidepressants"
+754,7. OCD and Related Disorders,106,44,62,Memantine (NMDA antagonist) and N-acetylcysteine with modest efficacy through glutamate pathway modulation
+943,22. Psychopharmacology,116,54,62,Monthly maintenance ECT combined with antidepressants to sustain remission in select patients with recurrent illness
+71,13. Sleep-Wake Disorders,108,47,61,"Associating bed with sleep only, limiting activities in bed to sleep/sex, and leaving bed if unable to sleep"
+159,24. Psychiatric Emergencies,159,98,61,The field empirically developed risk factor frameworks (Durkheim onwards) but implementation of screening preceded rigorous evidence of screening effectiveness
+255,23. Psychotherapy and Non-Pharmacologic,136,75,61,Psychotherapy has substantial empirical support for multiple psychiatric conditions and represents a core treatment alongside medication
+293,16. Substance-Related Disorders,157,96,61,"No medications have demonstrated consistent efficacy in reducing cocaine use; behavioral interventions (contingency management, CBT) remain the gold standard"
+656,1. Assessment Fundamentals,98,37,61,"The quality of documentation, its clarity in representing clinical reasoning, and its completeness"
+789,11. Feeding and Eating Disorders,152,91,61,Males with AN are more likely to focus on muscularity/'bulk' rather than thinness; clinician bias (viewing ED as female illness) leads to underdiagnosis
+55,9. Dissociative Disorders,97,37,60,Trauma-focused psychotherapy addressing underlying trauma and integrating dissociated experiences
+70,13. Sleep-Wake Disorders,90,30,60,"Consolidates sleep, increases sleep efficiency, and breaks the cycle of wakefulness in bed"
+137,22. Psychopharmacology,134,74,60,"For long-acting benzos, begin 10% weekly dose reduction directly; diazepam's long half-life permits smooth tapering without conversion"
+198,8. Trauma- and Stressor-Related Disorders,100,40,60,"Symptoms represent impaired coping/adaptation to a life stressor, exceeding normal expected response"
+290,16. Substance-Related Disorders,120,60,60,Coronary vasoconstriction via alpha-adrenergic agonism; increased myocardial oxygen demand; potential thrombus formation
+405,26. Consultation-Liaison Psychiatry,107,47,60,Viral induced microglial activation producing pro-inflammatory cytokines that exacerbate mood dysregulation
+739,6. Anxiety Disorders,135,75,60,Slow tapered discontinuation over weeks to months with careful monitoring for withdrawal symptoms per Beers Criteria and APA guidelines
+954,22. Psychopharmacology,116,56,60,Protective factors modify risk; presence of strong protective factors reduces suicide risk even with active ideation
+959,22. Psychopharmacology,104,44,60,"Warning signs, internal coping strategies, social supports, professional contacts, and means restriction"
+960,22. Psychopharmacology,126,66,60,Refer for comprehensive suicide risk assessment with specialized instrument (C-SSRS) and psychiatric consultation if high risk
+22,5. Depressive Disorders,105,46,59,Black box warning for increased suicidality in pediatric and early adult populations with antidepressants
+51,9. Dissociative Disorders,79,20,59,Dissociative Fugue (a specifier of dissociative amnesia with purposeful travel)
+130,22. Psychopharmacology,123,64,59,"Agents that treat acute mania, prevent manic recurrence, and ideally prevent depressive episodes without destabilizing mood"
+500,26. Consultation-Liaison Psychiatry,108,49,59,"Fatigue is a core symptom of depression and anxiety, which are primary presentations in psychiatric practice"
+608,22. Psychopharmacology,141,82,59,"Despite progress, how should we select agents when fundamental questions about mechanism, patient selection, and treatment resistance remain?"
+686,1. Assessment Fundamentals,120,61,59,EHRs represent transformation from paper to digital with ongoing challenges requiring understanding of systems and tools
+40,7. OCD and Related Disorders,120,62,58,OCD involves specific serotonergic circuit dysregulation in orbitofrontal-striatal pathways that SSRIs directly modulate
+50,9. Dissociative Disorders,75,17,58,"Derealization (surroundings seem unreal, dreamlike, or emotionally distant)"
+143,22. Psychopharmacology,129,71,58,Post-acute withdrawal syndrome (PAWS); persistent symptoms after acute withdrawal reflects prolonged neurobiological readjustment
+266,23. Psychotherapy and Non-Pharmacologic,102,44,58,"Graduated exposure through a hierarchy, reducing anxiety through habituation and challenging avoidance"
+337,22. Psychopharmacology,87,29,58,Identifies CYP450 genetic variations explaining poor response; guides dose optimization
+416,26. Consultation-Liaison Psychiatry,100,42,58,Molecular mimicry: anti-streptococcal antibodies cross-react with neuronal antigens in basal ganglia
+447,25. Special Populations,148,90,58,"The FDA categories reflected quality of evidence, not absolute risk; misinterpretation of this distinction led to inappropriate medication avoidance"
+552,13. Sleep-Wake Disorders,144,86,58,"Explain that Z-drugs act on the same GABA-A receptors as benzodiazepines and share similar risks including tolerance, dependence, and withdrawal"
+631,21. Other Conditions,128,70,58,"Insurance payment models, shaped by historical economic circumstances, influence coverage independent of clinical judgment alone"
+786,11. Feeding and Eating Disorders,94,36,58,Olanzapine (2.5–10 mg/day) for appetite stimulation and reduction of weight-related obsessions
+877,22. Psychopharmacology,147,89,58,"Esketamine is an NMDA receptor antagonist providing rapid-acting antidepressant effects within hours-days, distinct from monoamine-based mechanisms"
+16,4. Bipolar and Related Disorders,93,36,57,Lithium can cause chronic kidney disease and requires dose adjustment based on renal function
+46,8. Trauma- and Stressor-Related Disorders,91,34,57,"Prolonged, repeated interpersonal trauma (e.g., childhood abuse, intimate partner violence)"
+180,2. Neurodevelopmental Disorders,83,26,57,"ADHD, anxiety disorders, intellectual disability, seizure disorder, and GI problems"
+391,25. Special Populations,77,20,57,Increased mortality including cerebrovascular events and sudden cardiac death
+456,"27. Forensic, Ethics, and Legal Issues",121,64,57,"Apply frameworks addressing autonomy, beneficence, non-maleficence, and justice, recognizing these principles may collide"
+461,"27. Forensic, Ethics, and Legal Issues",152,95,57,"Conduct a thorough, objective evaluation based on current law and provide honest conclusions regardless of whether they support the claimant's interests"
+488,5. Depressive Disorders,122,65,57,"Light therapy and/or antidepressants, addressing both the environmental light deficiency and mood disorder pathophysiology"
+504,26. Consultation-Liaison Psychiatry,129,72,57,Navigate a systematic differential while avoiding both missed organic diagnoses and unnecessary investigative fishing expeditions
+835,16. Substance-Related Disorders,121,64,57,"Divide the dose (e.g., 8 mg AM + 8 mg PM) and manage side effects symptomatically (laxatives, sexual dysfunction support)"
+10,4. Bipolar and Related Disorders,98,42,56,Duration (7+ days vs 4+ days) and presence of functional impairment or psychotic features in mania
+11,4. Bipolar and Related Disorders,75,19,56,Depressive episode with insufficient duration for bipolar II classification
+59,11. Feeding and Eating Disorders,78,22,56,"Electrolyte abnormalities (hypokalemia), dental erosion, and esophageal injury"
+61,11. Feeding and Eating Disorders,83,27,56,"EKG (assess QTc), electrolytes (K, Na, Cl, PO4), bone density, CBC, metabolic panel"
+185,"27. Forensic, Ethics, and Legal Issues",91,35,56,"Four-part functional test: understanding, appreciation, reasoning, and expression of choice"
+234,24. Psychiatric Emergencies,127,71,56,"Assessment should evaluate intent, means, timeline, and protective factors, with particular attention to access to lethal means"
+328,22. Psychopharmacology,94,38,56,Particularly valuable for patients with documented nonadherence or relapse-recurrence patterns
+436,22. Psychopharmacology,110,54,56,B12 is essential for monoamine synthesis and one-carbon metabolism required for neuronal methylation reactions
+446,25. Special Populations,142,86,56,"Treatment requires nuanced, evidence-based decision-making that weighs both medication risks and substantial risks of untreated mental illness"
+717,4. Bipolar and Related Disorders,128,72,56,"Reduce lithium dose cautiously while monitoring for relapse, or consider alternative mood stabilizers with less cognitive impact"
+737,6. Anxiety Disorders,106,50,56,Pregabalin as a GABA analog with comparable SSRI/SNRI efficacy and particular utility in pain-comorbid GAD
+791,11. Feeding and Eating Disorders,152,96,56,"RED-S encompasses eating disorders in athletes and subclinical undereating with serious medical consequences (bone loss, immunosuppression, injury risk)"
+870,22. Psychopharmacology,118,62,56,Higher doses may paradoxically worsen mood and increase sexual dysfunction without additional benefit in many patients
+878,22. Psychopharmacology,122,66,56,"Bupropion's dopaminergic mechanism directly targets anhedonia and psychomotor retardation, unlike serotonin-focused agents"
+270,23. Psychotherapy and Non-Pharmacologic,106,51,55,"Habituation and extinction learning through repeated, prolonged exposure reduce conditioned fear responses"
+291,16. Substance-Related Disorders,105,50,55,"Dilated cardiomyopathy from sustained catecholamine excess, myocardial necrosis, and progressive fibrosis"
+342,22. Psychopharmacology,83,28,55,CYP2C19 metabolizer status differs; ultra-rapid/poor metabolizer explains variation
+387,25. Special Populations,99,44,55,"Citalopram carries dose-dependent QT prolongation risk, particularly concerning in elderly patients"
+434,22. Psychopharmacology,91,36,55,"Metformin impairs B12 absorption, causing B12 deficiency with neuropsychiatric consequences"
+509,22. Psychopharmacology,119,64,55,Be aware that citalopram can prolong QT interval and follow FDA dose limitations; consider baseline and monitoring EKGs
+580,22. Psychopharmacology,122,67,55,"Reduced sun exposure in winter decreases cutaneous vitamin D synthesis, worsening deficiency and affecting mood regulation"
+836,16. Substance-Related Disorders,136,81,55,"Opioid antagonism removes endogenous opioid contribution to mood regulation and reward processing, unmasking or precipitating depression"
+890,22. Psychopharmacology,115,60,55,"Tricyclic antidepressants (amitriptyline), which have evidence for migraine prophylaxis beyond depression treatment"
+912,22. Psychopharmacology,115,60,55,Dopamine antagonism relieves prolactin inhibition; elevated prolactin causes galactorrhea and menstrual dysfunction
+927,22. Psychopharmacology,118,63,55,Combination therapy may provide broader symptom coverage and improved efficacy in treatment-resistant bipolar disorder
+26,6. Anxiety Disorders,89,35,54,Recurrent panic attacks with persistent worry about future attacks and behavioral changes
+52,9. Dissociative Disorders,82,28,54,"History of trauma, particularly during childhood or critical developmental periods"
+87,16. Substance-Related Disorders,128,74,54,Replacement of categorical dependence/abuse distinction with a dimensional severity model based on overlapping neural substrates
+214,22. Psychopharmacology,116,62,54,"Clozapine can cause significant metabolic effects including weight gain and metabolic syndrome, requiring monitoring"
+649,1. Assessment Fundamentals,114,60,54,"It serves as a permanent account of clinical reasoning, supports legal defensibility, and drives clinical judgment"
+750,7. OCD and Related Disorders,159,105,54,"Hierarchy guides treatment progression from moderately challenging exposures, advancing as anxiety tolerance builds, optimizing learning and preventing dropout"
+90,16. Substance-Related Disorders,133,80,53,"It was marketed with false claims of reduced addiction risk due to modified-release formulation, leading to escalation of prescribing"
+114,22. Psychopharmacology,118,65,53,"Inhibition of monoamine oxidase (MAO), the enzyme responsible for metabolizing serotonin, norepinephrine, and dopamine"
+199,8. Trauma- and Stressor-Related Disorders,109,56,53,"Potentially, if distress/impairment exceeds expected response to this stressor and no other diagnosis applies"
+254,23. Psychotherapy and Non-Pharmacologic,115,62,53,"Graduated exposure to the feared stimulus combined with relaxation techniques, reducing anxiety through habituation"
+267,23. Psychotherapy and Non-Pharmacologic,108,55,53,Positive reinforcement and contingency management increase desired behaviors while reducing maladaptive ones
+459,"27. Forensic, Ethics, and Legal Issues",132,79,53,The blog indicates treating clinicians should generally avoid testifying to prevent conflicts between therapeutic and forensic roles
+490,10. Somatic Symptom Disorders,94,41,53,"Cartesian dualism—the false separation of mind and body into distinct, non-interacting domains"
+499,26. Consultation-Liaison Psychiatry,123,70,53,The near-universal nature of fatigue makes differential diagnosis particularly difficult and requires systematic evaluation
+595,21. Other Conditions,124,71,53,"REMS requires monitoring and restrict distribution to certified pharmacies, potentially limiting access in underserved areas"
+683,1. Assessment Fundamentals,102,49,53,Complex systems like EHRs offer transformation alongside new challenges requiring systematic solutions
+838,16. Substance-Related Disorders,129,76,53,Advise against discontinuing even temporarily; MOUD requires continuous dosing for sustained effectiveness and relapse prevention
+914,22. Psychopharmacology,125,72,53,"Antipsychotic augmentation (aripiprazole, quetiapine) shows evidence for improving outcomes in treatment-resistant depression"
+944,22. Psychopharmacology,134,81,53,"General anesthesia with muscle relaxant; patient is anesthetized, monitored, and seizure is safely induced under controlled conditions"
+346,22. Psychopharmacology,77,25,52,Allows paroxetine anticholinergic/sexual effects resolution before sertraline
+458,"27. Forensic, Ethics, and Legal Issues",147,95,52,"The clinical question assumes patient well-being is paramount; the legal question seeks truth, which may not serve the evaluated person's interests"
+574,22. Psychopharmacology,116,64,52,"Benzodiazepines have stronger evidence, but magnesium offers better long-term safety profile without dependence risk"
+592,22. Psychopharmacology,115,63,52,Explain that obesity is a neuroendocrine disease; GLP-1 agonists address underlying appetite regulatory dysfunction
+615,22. Psychopharmacology,126,74,52,Different agents remain clinically relevant for different patient populations based on efficacy and side effect considerations
+730,5. Depressive Disorders,80,28,52,"Low-dose aripiprazole, quetiapine, or olanzapine for antidepressant augmentation"
+145,23. Psychotherapy and Non-Pharmacologic,138,87,51,"ECT remains one of the most effective interventions for severe, treatment-resistant depression, catatonia, and certain psychotic disorders"
+298,16. Substance-Related Disorders,119,68,51,"Bupropion increases dopamine and norepinephrine, reducing craving and mood symptoms associated with nicotine withdrawal"
+422,26. Consultation-Liaison Psychiatry,84,33,51,Copper excess generates reactive oxygen species and causes oxidative neuronal damage
+435,22. Psychopharmacology,98,47,51,Inflammation in the terminal ileum impairs B12 absorption; ileal disease affects folate absorption
+586,22. Psychopharmacology,126,75,51,5-7% weight loss improves glycemic control and cardiovascular risk; >10-15% produces disease-modifying effects (T2D remission)
+926,22. Psychopharmacology,122,71,51,Add an SSRI with careful monitoring for mood switching; lamotrigine monotherapy may be insufficient for bipolar depression
+179,2. Neurodevelopmental Disorders,94,44,50,Level 1 - Requiring support (previously called 'high-functioning' autism or Asperger Syndrome)
+183,2. Neurodevelopmental Disorders,74,24,50,"By 12-18 months, with definitive diagnosis often possible by age 2-3 years"
+188,"27. Forensic, Ethics, and Legal Issues",70,20,50,Understanding—the ability to comprehend and retain medical information
+340,22. Psychopharmacology,68,18,50,Most informative for narrow window medications; less for wide window
+445,25. Special Populations,132,82,50,Conduct a nuanced risk-benefit analysis weighing the dangers of untreated maternal depression against medication teratogenicity risk
+515,20. Medication-Induced Movement Disorders,106,56,50,The dysphoric inner restlessness is so severe that patients refuse medication despite psychiatric benefits
+587,22. Psychopharmacology,87,37,50,"GLP-1 receptor activation slowing gastric emptying, leading to early satiety and nausea"
+648,1. Assessment Fundamentals,108,58,50,Seven centuries of accumulated intellectual traditions addressing fundamental questions about mental illness
+843,17. Neurocognitive Disorders,132,82,50,Lewy body disease involves extreme sensitivity to antipsychotics; even low doses carry severe risk of neuroleptic malignant syndrome
+948,22. Psychopharmacology,111,61,50,"Mood stabilizer (lithium, valproate, lamotrigine) continuation combined with antidepressants or maintenance ECT"
+38,7. OCD and Related Disorders,72,23,49,Cognitive-Behavioral Therapy with Exposure and Response Prevention (ERP)
+151,24. Psychiatric Emergencies,152,103,49,PHQ-9 Item 9 identifies ideation prevalence but lacks discriminative capacity; further comprehensive assessment is necessary to distinguish serious risk
+276,1. Assessment Fundamentals,113,64,49,Missing MSE findings and inconsistencies can delay diagnosis of more serious pathology such as psychosis or mania
+344,22. Psychopharmacology,74,25,49,Provides valuable information for treatment failures and dose optimization
+401,26. Consultation-Liaison Psychiatry,88,39,49,Pro-inflammatory cytokines cross the blood-brain barrier and trigger depressive symptoms
+485,5. Depressive Disorders,116,67,49,"Major depressive disorder with seasonal pattern (SAD), given the recurrent winter presentation and Alaska's latitude"
+496,10. Somatic Symptom Disorders,116,67,49,Recognize the integrated neurobiological nature of the condition and address both somatic and psychiatric dimensions
+903,22. Psychopharmacology,116,67,49,Fluoroquinolones and SSRIs together increase serotonin syndrome risk (monoaminergic effect of some fluoroquinolones)
+197,8. Trauma- and Stressor-Related Disorders,92,44,48,Persistence beyond 6 months post-stressor resolution or development of full MDD/GAD criteria
+308,16. Substance-Related Disorders,154,106,48,"Synthetic drugs evade legal prohibition through chemical modification, avoiding FDA oversight and drug screening; composition and potency are uncontrolled"
+318,22. Psychopharmacology,138,90,48,Ketamine's antidepressant effects are time-limited and require repeated dosing schedules or follow-up booster infusions to sustain benefit
+349,22. Psychopharmacology,73,25,48,Monitor mood destabilization and psychotic exacerbation; gradual tapering
+382,17. Neurocognitive Disorders,93,45,48,Microstructural white matter damage and diffuse axonal injury not visible on conventional MRI
+383,17. Neurocognitive Disorders,90,42,48,Enhances dopamine and norepinephrine signaling to improve attention and executive function
+397,1. Assessment Fundamentals,98,50,48,GABA is inhibitory and reduces excitability; glutamate is excitatory and increases neuronal firing
+780,11. Feeding and Eating Disorders,117,69,48,"Arrhythmia vulnerability from electrolyte dysregulation, particularly during refeeding; MVP increases arrhythmia risk"
+886,22. Psychopharmacology,108,60,48,Venlafaxine's noradrenergic activity increases blood pressure through alpha-1 adrenergic receptor activation
+48,8. Trauma- and Stressor-Related Disorders,80,33,47,Duration: ASD occurs 3 days to 1 month post-trauma; PTSD persists beyond 1 month
+108,17. Neurocognitive Disorders,130,83,47,"It is the leading cause of dementia, accounting for 60-80% of all dementia cases with approximately 6.9 million Americans affected"
+173,2. Neurodevelopmental Disorders,68,21,47,"Decreased appetite, insomnia, and elevated heart rate/blood pressure"
+611,22. Psychopharmacology,146,99,47,Dopamine antagonism in mesolimbic pathways contributes to symptom reduction while antagonism in nigrostriatal pathways produces movement disorders
+628,21. Other Conditions,103,56,47,Insurance companies' decisions based on reimbursement models derived from healthcare system development
+663,1. Assessment Fundamentals,90,43,47,"Read medical literature, make informed clinical decisions, and evaluate treatment evidence"
+684,1. Assessment Fundamentals,96,49,47,Government can require systemic healthcare infrastructure changes for integration and efficiency
+747,7. OCD and Related Disorders,114,67,47,"Tic-related OCD may respond differently, often requiring antipsychotic augmentation in addition to SRI monotherapy"
+860,22. Psychopharmacology,136,89,47,Memantine targets excitotoxicity from glutamate dysregulation that dominates in moderate-severe disease; cholinesterase benefit plateaus
+915,22. Psychopharmacology,122,75,47,Extrapyramidal side effects (EPS) including akathisia; managed with dose reduction or anticholinergic agents (benztropine)
+920,22. Psychopharmacology,102,55,47,Reduce valproate dose or switch to alternative; optimize side effect burden while maintaining efficacy
+24,5. Depressive Disorders,66,20,46,Cognitive-Behavioral Therapy (CBT) and Interpersonal Therapy (IPT)
+62,11. Feeding and Eating Disorders,72,26,46,"Family-Based Treatment (FBT), especially for adolescents; CBT for adults"
+246,8. Trauma- and Stressor-Related Disorders,101,55,46,Grief-focused cognitive behavioral therapy specifically designed to address prolonged grief reactions
+331,22. Psychopharmacology,73,27,46,Venlafaxine inhibits CYP2D6; TCAs are substrates increasing toxicity risk
+351,22. Psychopharmacology,77,31,46,Single dose not immediately removed from brain; multiple misses cause relapse
+430,26. Consultation-Liaison Psychiatry,68,22,46,Neuropsychiatric lupus (CNS lupus) causing direct brain inflammation
+450,"27. Forensic, Ethics, and Legal Issues",125,79,46,"The transorbital lobotomy era, in which thousands of patients received permanent neurological damage in the name of treatment"
+506,22. Psychopharmacology,107,61,46,"Thioridazine withdrawal led to lethal torsades de pointes, and droperidol received an FDA black box warning"
+654,1. Assessment Fundamentals,103,57,46,"Despite effective documentation being foundational to practice, formal training is surprisingly limited"
+670,1. Assessment Fundamentals,121,75,46,Modern journals represent systematized knowledge sharing with advantages and limitations shaped by publication incentives
+797,13. Sleep-Wake Disorders,87,41,46,Prazosin (alpha-1 blocker) for nightmare suppression and sleep architecture improvement
+802,13. Sleep-Wake Disorders,124,78,46,"Add light therapy (10,000 lux × 30 min at 6 AM) to advance circadian phase and address melancholic phenotype early awakening"
+20,5. Depressive Disorders,64,19,45,Previous depressive episodes or inadequate past treatment trials
+65,13. Sleep-Wake Disorders,52,7,45,At least 3 months despite adequate sleep opportunity
+126,22. Psychopharmacology,102,57,45,"Partial agonists provide modest dopaminergic activity, modulating dopamine system more physiologically"
+136,22. Psychopharmacology,115,70,45,Psychiatric medications are empirically discovered rather than rationally designed based on mechanism understanding
+157,24. Psychiatric Emergencies,133,88,45,No large-scale randomized controlled trial has been completed examining whether systematic screening itself reduces suicide mortality
+222,3. Schizophrenia Spectrum,110,65,45,"A comprehensive approach includes medication, psychoeducation for patient and family, and psychosocial support"
+323,22. Psychopharmacology,83,38,45,LAI formulations produce similar steady-state blood levels to equivalent oral doses
+420,26. Consultation-Liaison Psychiatry,102,57,45,Manganese accumulates in basal ganglia causing direct toxic damage distinct from dopamine neuron death
+469,"27. Forensic, Ethics, and Legal Issues",109,64,45,"The duty to warn, which may require breaking confidentiality to alert authorities and/or the potential victim"
+688,1. Assessment Fundamentals,98,53,45,A transformation enabling comprehensive patient data management and systematic quality improvement
+850,17. Neurocognitive Disorders,91,46,45,"Anticholinergic and antihistamine medications, due to pupil dilation and accommodation loss"
+885,22. Psychopharmacology,94,49,45,Increased serotonin in the enteric nervous system stimulates intestinal motility and secretion
+888,22. Psychopharmacology,119,74,45,Escitalopram is the active S-enantiomer providing superior efficacy and lower dose requirements than racemic citalopram
+896,22. Psychopharmacology,114,69,45,"No, SSRI dose escalation beyond 100 mg sertraline is not evidenced-based; adding an adjunctive agent is preferable"
+30,6. Anxiety Disorders,99,55,44,"Increase serotonergic neurotransmission, reducing anxiety through multiple neurobiological pathways"
+78,6. Anxiety Disorders,65,21,44,Exposure therapy (systematic desensitization or in vivo exposure)
+204,3. Schizophrenia Spectrum,106,62,44,"Progression to malignant catatonia with autonomic dysregulation, hyperthermia, and mortality exceeding 40%"
+324,22. Psychopharmacology,97,53,44,"Different formulations have distinct frequencies (monthly, bimonthly) and varying onset timelines"
+536,22. Psychopharmacology,140,96,44,"Neutropenia risk varies substantially across medication classes; only certain agents (clozapine, carbamazepine, etc.) carry significant risk"
+736,6. Anxiety Disorders,94,50,44,"Beta-blocker (propranolol) for somatic symptoms, though limited efficacy for cognitive anxiety"
+848,17. Neurocognitive Disorders,131,87,44,"Haloperidol undergoes hepatic metabolism, creating metabolites that accumulate in renal impairment, prolonging effects and toxicity"
+937,22. Psychopharmacology,111,67,44,"Benzodiazepines depress respiration; combined with COPD, they increase hypercapnia and respiratory failure risk"
+39,7. OCD and Related Disorders,72,29,43,"Add low-dose antipsychotic (e.g., aripiprazole) to enhance SSRI response"
+85,16. Substance-Related Disorders,117,74,43,It increases case identification of moderately affected individuals who previously fell between diagnostic categories
+158,24. Psychiatric Emergencies,119,76,43,Cognitive behavioral therapy for suicide prevention (CBT-SP) with documented follow-up appointments and safety planning
+260,23. Psychotherapy and Non-Pharmacologic,96,53,43,Enhanced intrinsic motivation and likelihood of behavior change through client-generated reasons
+413,26. Consultation-Liaison Psychiatry,86,43,43,Isoniazid-induced pyridoxine (vitamin B6) deficiency causing neuropsychiatric symptoms
+585,22. Psychopharmacology,96,53,43,"Binding to GLP-1 receptors in the hypothalamus and gut, increasing satiety and reducing appetite"
+589,22. Psychopharmacology,99,56,43,"Altered gut hormone secretion (GLP-1, peptide YY) and improved insulin sensitivity from weight loss"
+655,1. Assessment Fundamentals,93,50,43,"Document clinical reasoning, support legal defensibility, and drive quality clinical judgment"
+696,1. Assessment Fundamentals,95,52,43,Adherence to practice guidelines and clinical judgment about when telepsychiatry is appropriate
+710,4. Bipolar and Related Disorders,107,64,43,"Inhibition of inositol monophosphatase, altering phosphatidylinositol signaling and reducing manic symptoms"
+732,5. Depressive Disorders,95,52,43,Electroconvulsive therapy (ECT) as fastest-acting option for severe depression with suicidality
+777,9. Dissociative Disorders,127,84,43,"Benzodiazepines enhance GABA signaling and further disinhibit thalamic filtering, paradoxically worsening dissociative symptoms"
+781,9. Dissociative Disorders,106,63,43,DES >30 suggests clinically significant dissociation; scores >40 indicate severe/pathological dissociation
+34,7. OCD and Related Disorders,74,32,42,"Intrusive, unwanted thought about harming others despite absence of intent"
+77,6. Anxiety Disorders,63,21,42,SSRIs and Cognitive-Behavioral Therapy with exposure components
+268,23. Psychotherapy and Non-Pharmacologic,95,53,42,Extended avoidance perpetuates depression through loss of reinforcement and worsening isolation
+428,26. Consultation-Liaison Psychiatry,72,30,42,Myxedema madness from iatrogenic hypothyroidism if inadequately replaced
+618,"27. Forensic, Ethics, and Legal Issues",78,36,42,Recent decades with important historical antecedents that shaped modern policy
+645,1. Assessment Fundamentals,85,43,42,Gradual evolution with specific intellectual traditions influencing modern approaches
+689,1. Assessment Fundamentals,99,57,42,An innovation born from COVID-19 necessity that has become standard of care when conducted properly
+727,5. Depressive Disorders,75,33,42,Stopping fluoxetine and immediately starting an MAOI (after 2-week washout)
+783,9. Dissociative Disorders,156,114,42,"Yes; DID alters may differ in age, gender, personality, handedness, memory, vocabulary, and apparent physical characteristics (eye color, reaction to drugs)"
+899,22. Psychopharmacology,111,69,42,SNRIs' noradrenergic activity provides analgesia beneficial for patients with pain-predominant somatic symptoms
+925,22. Psychopharmacology,82,40,42,"Thiazide diuretics, which paradoxically reduce urine output in lithium-induced NDI"
+939,22. Psychopharmacology,124,82,42,"Long-acting benzodiazepines accumulate with repeated dosing, producing sustained CNS depression and daytime residual effects"
+15,4. Bipolar and Related Disorders,91,50,41,Antidepressant monotherapy should be avoided; combine with mood stabilizer or antipsychotic
+139,22. Psychopharmacology,129,88,41,"Benzodiazepines increase falls and fractures through cognitive impairment, motor effects, and altered pharmacokinetics in elderly"
+343,22. Psychopharmacology,72,31,41,"Requires strategies: dose reduction, alternative medications, monitoring"
+389,25. Special Populations,58,17,41,Nephrogenic diabetes insipidus with chronic kidney disease
+403,26. Consultation-Liaison Psychiatry,76,35,41,Cytokine-induced sickness behavior via pro-inflammatory signals to the brain
+660,1. Assessment Fundamentals,101,60,41,Systematic approaches developed to test hypotheses and distinguish real effects from chance variation
+665,1. Assessment Fundamentals,77,36,41,Foundational to evidence-based practice and informed clinical decision-making
+873,22. Psychopharmacology,131,90,41,"No, sertraline carries minimal teratogenic risk; abrupt discontinuation risks relapse, which poses greater risk to mother and fetus"
+891,22. Psychopharmacology,114,73,41,Fluoxetine's serotonergic effects may increase appetite and reduce satiety signals through hypothalamic mechanisms
+932,22. Psychopharmacology,92,51,41,"Dramatic clinical improvement within minutes, indicating benzodiazepine-responsive catatonia"
+965,22. Psychopharmacology,102,61,41,All combinations contribute; but paroxetine + tramadol + linezolid creates maximal serotonergic excess
+117,22. Psychopharmacology,132,92,40,"It fundamentally changed antidepressant prescribing through superior tolerability, minimal overdose lethality, and convenient dosing"
+140,22. Psychopharmacology,128,88,40,"Lorazepam is metabolized via direct glucuronidation, independent of hepatic oxidation, and has reliable intramuscular absorption"
+333,22. Psychopharmacology,74,34,40,NSAIDs and ACE inhibitors reduce renal clearance increasing lithium levels
+341,22. Psychopharmacology,76,36,40,May influence psychosis susceptibility and antipsychotic/stimulant selection
+406,26. Consultation-Liaison Psychiatry,83,43,40,Direct inhibition of pro-inflammatory cytokine production and microglial activation
+452,"27. Forensic, Ethics, and Legal Issues",103,63,40,Historical abuses provide crucial context for understanding why modern ethical safeguards are necessary
+630,21. Other Conditions,121,81,40,Healthcare organization fundamentally changed when payment models evolved from direct payment to insurance intermediation
+652,1. Assessment Fundamentals,90,50,40,"It documents clinical reasoning, provides legal protection, and drives quality improvement"
+760,8. Trauma- and Stressor-Related Disorders,95,55,40,Switch to Cognitive Processing Therapy (CPT) or EMDR; augment medication if not at maximum dose
+852,17. Neurocognitive Disorders,121,81,40,Reduce dopaminergic medication (levodopa/carbidopa); use non-pharmacological management; avoid antipsychotics if possible
+884,22. Psychopharmacology,100,60,40,SSRIs may precipitate mood destabilization or hypomanic switching without concurrent mood stabilizer
+895,22. Psychopharmacology,91,51,40,"Bupropion, which has neutral to slight weight-loss effects and may improve glycemic control"
+6,3. Schizophrenia Spectrum,89,50,39,Greater cognitive and social disruption with higher risk of neurodevelopmental compromise
+104,17. Neurocognitive Disorders,130,91,39,"Recognition is challenging due to variable presentation, and outcomes are intermediate between hyperactive and hypoactive subtypes"
+209,22. Psychopharmacology,120,81,39,Clozapine is indicated for treatment-resistant cases and has demonstrated efficacy when other antipsychotics have failed
+330,22. Psychopharmacology,72,33,39,Potent CYP450 inhibitor increases anticoagulant levels and bleeding risk
+491,10. Somatic Symptom Disorders,96,57,39,Psychological stress produces measurable physical changes in brain structure and immune function
+567,23. Psychotherapy and Non-Pharmacologic,108,69,39,Regular yoga practice (3+ times/week) shows evidence for mood improvement and can complement pharmacotherapy
+616,22. Psychopharmacology,111,72,39,Side effects and indications; patient selection and monitoring remain complex despite mechanistic understanding
+677,1. Assessment Fundamentals,93,54,39,"Systematic scientific investigation revealing learning as an active, engagement-based process"
+743,6. Anxiety Disorders,105,66,39,Cognitive restructuring and behavioral activation to interrupt the cognitive-behavioral maintenance cycle
+796,13. Sleep-Wake Disorders,139,100,39,Markedly decreased need for sleep (not insomnia) is pathognomonic for mood elevation; sleep deprivation itself can trigger mania escalation
+893,22. Psychopharmacology,110,71,39,"Add a mood stabilizer (lithium, valproate, lamotrigine) to prevent mood switching while maintaining fluoxetine"
+922,22. Psychopharmacology,106,67,39,"Oral contraceptives induce CYP3A4, reducing lamotrigine levels and potentially compromising mood stability"
+220,3. Schizophrenia Spectrum,145,107,38,"Prolonged untreated psychosis is associated with worse functional outcomes, more hospitalizations, and potentially reduced antipsychotic response"
+390,25. Special Populations,98,60,38,"Benzodiazepines carry high risk of falls, cognitive impairment, and dependence in elderly patients"
+467,"27. Forensic, Ethics, and Legal Issues",102,64,38,Treating patients who refuse care while protecting community safety and respecting individual autonomy
+666,1. Assessment Fundamentals,85,47,38,Scientists sharing findings through letters eventually leading to structured journals
+681,1. Assessment Fundamentals,96,58,38,A fundamental transformation replacing paper-based documentation with integrated digital systems
+779,9. Dissociative Disorders,105,67,38,"Start low, titrate cautiously; discuss side effects clearly; offer choice/control in medication selection"
+784,11. Feeding and Eating Disorders,93,55,38,Increase fluoxetine to 60 mg daily—higher doses are often required for BN than for depression
+839,16. Substance-Related Disorders,139,101,38,"NAS is an expected outcome of intrauterine opioid exposure; severity is often milder with buprenorphine than methadone, and it is treatable"
+889,22. Psychopharmacology,98,60,38,"SNRIs (venlafaxine, duloxetine), which have FDA approval for both depression and anxiety disorders"
+96,16. Substance-Related Disorders,127,90,37,"It initially focused on white, middle-class populations but has now broadened to disproportionately affect communities of color"
+165,20. Medication-Induced Movement Disorders,73,36,37,Marked elevation of creatine kinase (CK) reflecting severe rhabdomyolysis
+576,22. Psychopharmacology,100,63,37,"Explain that magnesium can cause hypermagnesemia, diarrhea, and drug interactions at excessive doses"
+614,22. Psychopharmacology,112,75,37,Reduced extrapyramidal side effects while maintaining antipsychotic efficacy through additional receptor effects
+624,"27. Forensic, Ethics, and Legal Issues",105,68,37,Practice competently within legally defined boundaries and understand system constraints on care delivery
+643,1. Assessment Fundamentals,101,64,37,Contemporary practice reflects centuries of intellectual development with specific historical origins
+687,1. Assessment Fundamentals,84,47,37,EHRs are mandatory infrastructure that shape daily clinical work and data management
+782,11. Feeding and Eating Disorders,122,85,37,"Low estrogen (from hypothalamic hypogonadism), malnutrition, and elevated cortisol create rapid bone loss (2–3% per month)"
+811,6. Anxiety Disorders,95,58,37,"His avoidance is motivated by sensory and communication difficulty, not fear of social judgment"
+842,17. Neurocognitive Disorders,112,75,37,Haloperidol: increases QTc interval and carries risk of torsades de pointes with concurrent QT-prolonging agents
+952,22. Psychopharmacology,86,49,37,Frequency and intensity of suicidal ideation (0-4 scale) and suicidal behavior history
+124,22. Psychopharmacology,87,51,36,M3 muscarinic antagonism impairing glucose regulation and increasing insulin resistance
+218,3. Schizophrenia Spectrum,123,87,36,"Early recognition and treatment can improve outcomes, potentially affecting the disease trajectory and functional prognosis"
+233,24. Psychiatric Emergencies,98,62,36,"De-escalation and safety assessment, followed by appropriate medical and psychiatric interventions"
+451,"27. Forensic, Ethics, and Legal Issues",118,82,36,"The patient's illness impairs her capacity to understand she is ill, creating tension between autonomy and beneficence"
+664,1. Assessment Fundamentals,107,71,36,The understanding that statistical significance and clinical significance are related but distinct concepts
+682,1. Assessment Fundamentals,97,61,36,"Paper charts contained: hand-written notes, separate lab records, and fragmented pharmacy records"
+685,1. Assessment Fundamentals,91,55,36,EHRs integrate fragmented records and enable systematic data analysis impossible with paper
+741,6. Anxiety Disorders,110,74,36,Cognitive-behavioral therapy (CBT) showing 60-70% efficacy and relapse-preventive effects after treatment ends
+859,22. Psychopharmacology,125,89,36,Donanemab targets phosphorylated tau and oligomeric amyloid; lecanemab targets soluble oligomeric and protofibrillary amyloid
+881,22. Psychopharmacology,104,68,36,Discontinue sertraline and switch to a non-SSRI agent; fluid restriction and monitoring of sodium levels
+898,22. Psychopharmacology,99,63,36,"Yes, SSRIs including paroxetine can cause dose-dependent tremor through enhanced serotonin activity"
+9,4. Bipolar and Related Disorders,43,8,35,7 consecutive days (or any hospitalization)
+45,8. Trauma- and Stressor-Related Disorders,62,27,35,Prolonged Exposure (PE) and Cognitive Processing Therapy (CPT)
+103,17. Neurocognitive Disorders,113,78,35,He distinguished delirium from primary psychiatric illness and emphasized its association with medical conditions
+250,23. Psychotherapy and Non-Pharmacologic,88,53,35,Identifying and modifying maladaptive thought patterns and their behavioral consequences
+321,22. Psychopharmacology,89,54,35,"LAIs provide sustained medication delivery over weeks to months, eliminating daily dosing"
+400,1. Assessment Fundamentals,74,39,35,Loss of normal circadian cortisol rhythm and dexamethasone non-suppression
+584,22. Psychopharmacology,134,99,35,"Explain that sun protection practices, skin pigmentation, age, latitude, and season all limit vitamin D synthesis despite sun exposure"
+640,22. Psychopharmacology,102,67,35,It demonstrates how clinical observation integrates with scientific theory to advance psychiatric care
+691,1. Assessment Fundamentals,114,79,35,Telepsychiatry provides options for many conditions when practice guidelines and clinical judgment guide selection
+787,11. Feeding and Eating Disorders,94,59,35,"Active or recent substance use disorder, as stimulants carry addiction risk in this population"
+907,22. Psychopharmacology,103,68,35,LAI improves adherence by removing daily dosing burden; relapse risk decreases with improved compliance
+923,22. Psychopharmacology,86,51,35,Lithium-induced hypothyroidism; add levothyroxine replacement while continuing lithium
+4,3. Schizophrenia Spectrum,77,43,34,Generally favorable response to antipsychotics with better long-term outcomes
+172,2. Neurodevelopmental Disorders,55,21,34,Stimulant medications (methylphenidate or amphetamines)
+259,23. Psychotherapy and Non-Pharmacologic,116,82,34,Rolling with resistance rather than meeting it directly reduces client defensiveness and encourages self-exploration
+386,25. Special Populations,69,35,34,Anticholinergic effects combined with age-related physiologic changes
+444,25. Special Populations,120,86,34,"It replaced categorical oversimplification with narrative summaries of pregnancy risk, clinical data, and animal studies"
+514,20. Medication-Induced Movement Disorders,85,51,34,Typically emerges within days to weeks of antipsychotic initiation or dose escalation
+690,1. Assessment Fundamentals,98,64,34,Quality telepsychiatry conducted with appropriate safeguards can achieve standard of care outcomes
+713,4. Bipolar and Related Disorders,112,78,34,Valproate carries 1-2% neural tube defect risk; preconception planning and risk-benefit counseling are essential
+735,6. Anxiety Disorders,103,69,34,Continue SSRI/SNRI for 12+ months; recommend tapering only after sustained remission to prevent relapse
+892,22. Psychopharmacology,103,69,34,"Tricyclic antidepressants, which have significant anticholinergic effects that worsen urinary retention"
+28,6. Anxiety Disorders,40,7,33,6 months of excessive worry on most days
+37,7. OCD and Related Disorders,61,28,33,8-12 weeks of consistent high-dose treatment for full benefit
+590,22. Psychopharmacology,114,81,33,Semaglutide (appetite suppression) produces greater weight loss (~10-15% body weight) compared to orlistat (~5-7%)
+627,21. Other Conditions,102,69,33,Payment models historically shaped how healthcare developed and continue to influence current practice
+644,1. Assessment Fundamentals,98,65,33,Because answers to fundamental questions shaped by these figures influence day-to-day patient care
+718,4. Bipolar and Related Disorders,124,91,33,Early intervention during the prodromal/subsyndromal phase may be protective and prevent progression to full bipolar illness
+738,6. Anxiety Disorders,113,80,33,"Tolerance development; anxiolytic effects diminish within 7-10 days of continuous use, requiring escalating doses"
+834,16. Substance-Related Disorders,119,86,33,Continue buprenorphine throughout pregnancy; withdrawal poses greater risk to mother and fetus than medication exposure
+23,5. Depressive Disorders,81,49,32,Prevent recurrence of depressive episodes and reduce frequency of future episodes
+32,6. Anxiety Disorders,59,27,32,Cognitive-Behavioral Therapy (CBT) with exposure techniques
+80,6. Anxiety Disorders,55,23,32,2-4 weeks initial response; 8-12 weeks for full benefit
+205,3. Schizophrenia Spectrum,130,98,32,"Catatonia was once considered primarily a feature of schizophrenia, but is now recognized as a syndrome across multiple etiologies"
+345,22. Psychopharmacology,57,25,32,Gradual taper over 7-14 days while initiating venlafaxine
+374,17. Neurocognitive Disorders,62,30,32,Impulse control disorder secondary to dopaminergic stimulation
+407,26. Consultation-Liaison Psychiatry,75,43,32,High-intensity exercise combined with adequate sleep and Mediterranean diet
+507,22. Psychopharmacology,94,62,32,Psychiatrists need to develop EKG knowledge to safely monitor for drug-induced cardiac effects
+668,1. Assessment Fundamentals,97,65,32,Scientific literature is shaped by publication incentives that may not perfectly align with truth
+794,13. Sleep-Wake Disorders,100,68,32,"Cognitive restructuring, which challenges catastrophic sleep-related beliefs and performance anxiety"
+865,22. Psychopharmacology,113,81,32,"Bupropion increases dopamine and norepinephrine activity, addressing monoamine deficits not covered by SSRI alone"
+879,22. Psychopharmacology,104,72,32,Mirtazapine's alpha-2 antagonism and sedation may provide migraine prophylaxis through muscle relaxation
+128,22. Psychopharmacology,98,67,31,LAI agents demonstrate superior adherence and prevent relapse through sustained therapeutic levels
+129,22. Psychopharmacology,66,35,31,Polyuric nephrogenic diabetes insipidus and chronic kidney disease
+241,8. Trauma- and Stressor-Related Disorders,56,25,31,Normal grief response with some common grief experiences
+335,22. Psychopharmacology,65,34,31,Most SSRIs taken with/without food; minimal absorption difference
+339,22. Psychopharmacology,60,29,31,Rapidly metabolized; subtherapeutic levels at standard doses
+353,22. Psychopharmacology,76,45,31,MAOIs discovered serendipitously from isoniazid; led to monoamine hypothesis
+421,26. Consultation-Liaison Psychiatry,57,26,31,"Central and peripheral nervous system, heart, and kidneys"
+568,23. Psychotherapy and Non-Pharmacologic,108,77,31,Explain that natural does not mean safe; St. John's Wort has serious drug interactions and efficacy concerns
+669,1. Assessment Fundamentals,79,48,31,Systematization of scientific knowledge sharing for broader access and scrutiny
+759,8. Trauma- and Stressor-Related Disorders,78,47,31,Venlafaxine (SNRI) due to superior efficacy for depressive vegetative symptoms
+863,22. Psychopharmacology,81,50,31,Increasing exposure to bright light in the morning to reinforce circadian rhythms
+412,26. Consultation-Liaison Psychiatry,48,18,30,Paresis of the insane (neurosyphilitic dementia)
+415,26. Consultation-Liaison Psychiatry,91,61,30,Post-Lyme syndrome likely involves persistent immune activation and microglial inflammation
+448,25. Special Populations,116,86,30,The pendulum swung from therapeutic nihilism (post-thalidomide) toward a rational framework of risk-benefit analysis
+596,21. Other Conditions,85,55,30,Brand-name medications have higher development and marketing costs reflected in price
+629,21. Other Conditions,92,62,30,"Payment models, insurance systems, and their historical development affecting patient access"
+637,22. Psychopharmacology,98,68,30,Progress begins with unexpected observations subsequently integrated into systematic understanding
+646,1. Assessment Fundamentals,108,78,30,Modern psychiatry represents systematic responses to historical challenges identified by influential figures
+693,1. Assessment Fundamentals,90,60,30,The pandemic transformed telepsychiatry from niche practice to recognized standard of care
+820,16. Substance-Related Disorders,97,67,30,Naltrexone requires dose reduction or avoidance due to hepatic metabolism and hepatotoxicity risk
+823,16. Substance-Related Disorders,129,99,30,Her symptom reduction from 6 to 2 criteria demonstrates the continuous severity spectrum reflected in DSM-5 dimensional diagnosis
+827,16. Substance-Related Disorders,106,76,30,Imminent risk of seizure and/or delirium tremens (alcohol withdrawal syndrome) once alcohol levels decline
+833,16. Substance-Related Disorders,119,89,30,Methadone requires gradual titration; many patients require 60–100+ mg for withdrawal suppression and craving reduction
+902,22. Psychopharmacology,122,92,30,"Augmentation (lithium, atypical antipsychotics, buspirone) shows evidence for improving outcomes in partial/non-responders"
+913,22. Psychopharmacology,124,94,30,Atypical antipsychotics are preferred for first-episode psychosis due to improved side effect profiles and superior outcomes
+118,22. Psychopharmacology,94,65,29,SERT (serotonin transporter) blockade on platelet aggregation and central serotonergic effects
+305,16. Substance-Related Disorders,71,42,29,"Synthetic cannabinoids (K2, Spice) or synthetic cathinones (bath salts)"
+322,22. Psychopharmacology,55,26,29,Aripiprazole; minimal weight gain and metabolic effects
+325,22. Psychopharmacology,54,25,29,Significantly reduce relapse and hospitalization rates
+327,22. Psychopharmacology,64,35,29,Offering after informed consent as legitimate therapeutic option
+455,"27. Forensic, Ethics, and Legal Issues",96,67,29,"Psychiatry uniquely retains legal authority to involuntarily treat, whereas cardiologists do not"
+612,22. Psychopharmacology,130,101,29,Individual patient tolerability and specific symptom profiles should guide selection among agents with different receptor profiles
+661,1. Assessment Fundamentals,96,67,29,Statistical methodology transformed medicine from anecdotal to systematic evaluation of efficacy
+671,1. Assessment Fundamentals,83,54,29,Publication does not guarantee validity; incentives can influence what is published
+864,22. Psychopharmacology,81,52,29,"Tricyclic antidepressants, because their anticholinergic effects impair cognition"
+138,22. Psychopharmacology,99,71,28,Allosteric positive modulation that enhances GABA's effect without directly activating the receptor
+326,22. Psychopharmacology,55,27,28,Gradually over 5-7 days; bridge therapy often necessary
+332,22. Psychopharmacology,52,24,28,"Sertraline 24h, fluoxetine 48-72h, paroxetine 15-20h"
+385,25. Special Populations,74,46,28,Screen for medical causes including medication review and thyroid function
+388,25. Special Populations,64,36,28,Syndrome of inappropriate antidiuretic hormone (SIADH) secretion
+477,"27. Forensic, Ethics, and Legal Issues",82,54,28,Consult a statutory surrogate hierarchy to identify the appropriate decision-maker
+581,22. Psychopharmacology,104,76,28,"Vitamin D normalizes calcium absorption, allowing normal muscle-bone coupling and neuromuscular function"
+667,1. Assessment Fundamentals,92,64,28,Publication incentives can fragment research findings and potentially distort the literature
+675,1. Assessment Fundamentals,80,52,28,"The first systematic, experimental approach to understanding learning and memory"
+724,5. Depressive Disorders,84,56,28,Electroconvulsive therapy (ECT) as first-line for depression with psychotic features
+31,6. Anxiety Disorders,75,48,27,"Risk of dependence and tolerance, with rebound anxiety upon discontinuation"
+97,17. Neurocognitive Disorders,94,67,27,"Disturbed attention and awareness with reduced ability to direct, focus, and sustain attention"
+334,22. Psychopharmacology,50,23,27,Narrow therapeutic window with variable metabolism
+384,17. Neurocognitive Disorders,58,31,27,Amyloid-beta accumulation leading to Alzheimer's pathology
+453,"27. Forensic, Ethics, and Legal Issues",103,76,27,"Treat based on the patient's previously known values and preferences, or use a surrogate decision-maker"
+641,1. Assessment Fundamentals,111,84,27,Contemporary psychiatrists inherit specific intellectual traditions and approaches shaped by historical figures
+729,5. Depressive Disorders,115,88,27,Treatment-resistance is common in dysthymia alone; combination pharmacotherapy or augmentation is frequently needed
+821,16. Substance-Related Disorders,90,63,27,Protracted withdrawal: persistent CNS hyperexcitability beyond acute detoxification period
+905,22. Psychopharmacology,91,64,27,Prolonged QTc increases arrhythmia risk and may require drug substitution or dose reduction
+8,3. Schizophrenia Spectrum,81,55,26,Enhanced reliability and documented baseline severity for longitudinal assessment
+168,20. Medication-Induced Movement Disorders,51,25,26,"Hyperreflexia, clonus, and tremor occurring rapidly"
+212,22. Psychopharmacology,83,57,26,Agranulocytosis and other serious adverse effects that could be fatal if undetected
+235,24. Psychiatric Emergencies,89,63,26,"De-escalation first, then pharmacological intervention if needed, with medical monitoring"
+368,17. Neurocognitive Disorders,49,23,26,Pick bodies (swollen neurons with tau inclusions)
+575,22. Psychopharmacology,71,45,26,"Magnesium citrate or glycinate 200-400 mg daily, divided into 2-3 doses"
+617,"27. Forensic, Ethics, and Legal Issues",107,81,26,"Healthcare laws control which hospitals can operate, what services are covered, and how clinicians practice"
+623,"27. Forensic, Ethics, and Legal Issues",95,69,26,Healthcare legislation directly shapes what patients can access and what clinicians can provide
+676,1. Assessment Fundamentals,90,64,26,"Learners differ in prior knowledge, motivation, metacognition, and neurobiological factors"
+758,8. Trauma- and Stressor-Related Disorders,77,51,26,Venlafaxine or SSRI with augmentation of topiramate for behavioral dyscontrol
+928,22. Psychopharmacology,62,36,26,Benzodiazepine withdrawal syndrome from abrupt discontinuation
+236,24. Psychiatric Emergencies,100,75,25,"Missing medical etiologies can delay critical medical treatment, resulting in morbidity or mortality"
+636,22. Psychopharmacology,104,79,25,It reveals the unpredictable nature of drug discovery and the importance of careful clinical observation
+692,1. Assessment Fundamentals,83,58,25,Clinical evidence supporting telepsychiatry's effectiveness when properly conducted
+703,3. Schizophrenia Spectrum,144,119,25,"Associated with greater cognitive and social disruption, higher genetic loading, more severe negative symptoms, and greater treatment resistance"
+968,22. Psychopharmacology,90,65,25,"No, she is not on an antipsychotic; serotonin syndrome from SSRI + tramadol is more likely"
+155,24. Psychiatric Emergencies,92,68,24,"Approximately 6-12%, indicating that positive screens substantially overestimate actual risk"
+262,23. Psychotherapy and Non-Pharmacologic,73,49,24,Reflective listening to demonstrate understanding and clarify ambivalence
+373,17. Neurocognitive Disorders,59,35,24,Parkinson's disease dementia (PDD) from Lewy body pathology
+376,17. Neurocognitive Disorders,66,42,24,Lewy bodies in autonomic nervous system neurons affect GI function
+392,25. Special Populations,49,25,24,Prolonged grief disorder with depressive features
+402,26. Consultation-Liaison Psychiatry,68,44,24,Depression impairs immune cell function and increases infection risk
+424,26. Consultation-Liaison Psychiatry,91,67,24,Use chelating agents that selectively bind the metal with appropriate dosing and monitoring
+651,1. Assessment Fundamentals,94,70,24,"It forms the foundation of psychiatric assessment, clinical reasoning, and legal documentation"
+659,1. Assessment Fundamentals,86,62,24,Fundamental tools for interpreting research evidence that underlies clinical decisions
+680,1. Assessment Fundamentals,74,50,24,Optimize learning effectiveness through evidence-based pedagogical methods
+825,16. Substance-Related Disorders,110,86,24,"Meaningful social engagement, purposeful activity, and peer support reducing isolation and enabling resilience"
+36,7. OCD and Related Disorders,52,29,23,SSRIs at higher doses than those used for depression
+112,17. Neurocognitive Disorders,91,68,23,The overall neurobiological process involving multiple interconnected pathogenic mechanisms
+119,22. Psychopharmacology,114,91,23,"They target novel mechanisms including NMDA, GABA, and sigma-1 receptors, potentially offering more rapid efficacy"
+251,23. Psychotherapy and Non-Pharmacologic,106,83,23,Psychodynamic therapy explores how past experiences and unconscious patterns influence current functioning
+283,16. Substance-Related Disorders,96,73,23,Cannabinoid hyperemesis syndrome; dysregulation related to CB1 receptor function in the GI tract
+329,22. Psychopharmacology,70,47,23,Half-life 24-26 hours; steady-state after 5 half-lives equals 5-7 days
+361,17. Neurocognitive Disorders,42,19,23,Behavioral variant frontotemporal dementia
+375,17. Neurocognitive Disorders,49,26,23,Deep brain stimulation of the subthalamic nucleus
+395,1. Assessment Fundamentals,60,37,23,5-HT1A receptors on somatodendritic and postsynaptic regions
+414,26. Consultation-Liaison Psychiatry,65,42,23,Varicella-zoster virus encephalitis requiring urgent IV acyclovir
+417,26. Consultation-Liaison Psychiatry,51,28,23,Impulsivity and aggression from frontal lobe damage
+619,"27. Forensic, Ethics, and Legal Issues",96,73,23,Healthcare legislation that controls practice parameters and constrains clinical decision-making
+632,21. Other Conditions,86,63,23,The intersection of clinical practice with payment systems and healthcare organization
+647,1. Assessment Fundamentals,88,65,23,Modern approaches inherit specific intellectual traditions from historical psychiatrists
+712,4. Bipolar and Related Disorders,103,80,23,"Favor combination mood stabilizers (e.g., lamotrigine + lithium or valproate) and avoid antidepressants"
+773,9. Dissociative Disorders,125,102,23,Benzodiazepines increase dissociation through enhanced GABAergic effects and carry high dependency risk in trauma populations
+804,13. Sleep-Wake Disorders,112,89,23,Obstructive sleep apnea (AHI >15) as secondary cause of sleep fragmentation requiring CPAP rather than hypnotics
+815,6. Anxiety Disorders,77,54,23,Temporal confounding and misunderstanding of the active therapeutic mechanism
+853,22. Psychopharmacology,62,39,23,Mild cognitive impairment due to Alzheimer's disease (CDR 0.5)
+876,22. Psychopharmacology,134,111,23,"Continued antidepressant therapy reduces relapse risk; discontinuation should be planned gradually if attempted, with close monitoring"
+901,22. Psychopharmacology,95,72,23,GI side effects typically improve within 2-4 weeks with continued therapy as tolerance develops
+924,22. Psychopharmacology,103,80,23,"Carbamazepine autoinduces its own metabolism, reducing steady-state levels and mood stability over time"
+213,22. Psychopharmacology,114,92,22,Clozapine has demonstrated superior efficacy in treatment-resistant schizophrenia compared to other antipsychotics
+588,22. Psychopharmacology,90,68,22,Rapid weight loss from lean mass mobilization releases stored cholesterol into circulation
+622,"27. Forensic, Ethics, and Legal Issues",77,55,22,"A fundamental shift in how medical care is organized, financed, and delivered"
+829,16. Substance-Related Disorders,123,101,22,Recommend gradual taper over 4–6 weeks while reinforcing that remaining on MOUD with improved function constitutes recovery
+851,17. Neurocognitive Disorders,128,106,22,"Discontinue haloperidol; monitor for further NMS signs (rigidity, CK elevation, altered mental status); continue supportive care"
+880,22. Psychopharmacology,82,60,22,"Bupropion, which has minimal sexual dysfunction risk due to dopaminergic mechanism"
+99,17. Neurocognitive Disorders,98,77,21,"Confirmation of an underlying medical cause through history, physical exam, or laboratory findings"
+135,22. Psychopharmacology,66,45,21,Nephrogenic diabetes insipidus from chronic lithium nephrotoxicity
+210,22. Psychopharmacology,107,86,21,Clozapine carries risks for serious adverse effects that require regular laboratory and clinical monitoring
+219,3. Schizophrenia Spectrum,105,84,21,"Early intervention with lower-dose antipsychotics, psychoeducation, and psychosocial support is indicated"
+367,17. Neurocognitive Disorders,44,23,21,Executive function and cognitive flexibility
+563,23. Psychotherapy and Non-Pharmacologic,97,76,21,"St. John's Wort induces CYP3A4, reducing fluoxetine levels and increasing serotonin syndrome risk"
+565,23. Psychotherapy and Non-Pharmacologic,104,83,21,"Sleep regularity stabilizes circadian rhythm function, optimizing neurotransmitter and hormone secretion"
+570,22. Psychopharmacology,82,61,21,"Magnesium acts as an NMDA receptor antagonist, modulating glutamate excitotoxicity"
+621,"27. Forensic, Ethics, and Legal Issues",80,59,21,It explains the constraints and possibilities that shape daily clinical practice
+733,6. Anxiety Disorders,87,66,21,"SSRI or SNRI (e.g., paroxetine, sertraline, venlafaxine) representing first-line agents"
+810,6. Anxiety Disorders,111,90,21,Exposure therapy progressively restores vmPFC-amygdala connectivity and prefrontal control over fear extinction
+824,16. Substance-Related Disorders,119,98,21,"Concurrent evidence-based treatment for both AUD and trauma (e.g., MBRP for substance use; trauma-focused CBT for PTSD)"
+831,16. Substance-Related Disorders,105,84,21,The daily pickup requirement creates stress and behavioral disruption in his established recovery routine
+845,17. Neurocognitive Disorders,124,103,21,Resume her home antipsychotic at standard dose; abrupt discontinuation may precipitate psychotic relapse and worsen delirium
+874,22. Psychopharmacology,55,34,21,Serotonin syndrome from fluoxetine-tramadol interaction
+41,8. Trauma- and Stressor-Related Disorders,28,8,20,At least 1 month of symptoms
+47,8. Trauma- and Stressor-Related Disorders,63,43,20,Documented or credible exposure to a qualifying traumatic event
+53,9. Dissociative Disorders,36,16,20,Dissociative Identity Disorder (DID)
+110,17. Neurocognitive Disorders,89,69,20,"Tau undergoes aberrant phosphorylation at specific sites, forming neurofibrillary tangles"
+125,22. Psychopharmacology,104,84,20,Failure to respond to 2+ adequate trials (8+ weeks at therapeutic dose each); clozapine is gold standard
+132,22. Psychopharmacology,80,60,20,Direct hepatotoxicity and mitochondrial dysfunction affecting ammonia metabolism
+162,20. Medication-Induced Movement Disorders,44,24,20,SSRI with MAOI (monoamine oxidase inhibitor)
+203,3. Schizophrenia Spectrum,95,75,20,"Catatonia is a syndrome that can occur across psychiatric, neurological, and medical etiologies"
+366,17. Neurocognitive Disorders,65,45,20,SSRIs are used to manage behavioral disinhibition and impulsivity
+427,26. Consultation-Liaison Psychiatry,59,39,20,Hypoxic encephalopathy from inadequate cerebral oxygenation
+662,1. Assessment Fundamentals,94,74,20,Every clinical decision from test ordering to medication choice involves statistical reasoning
+722,5. Depressive Disorders,91,71,20,"Bupropion, an activating agent that addresses apathy and may improve goal-directed behavior"
+723,5. Depressive Disorders,87,67,20,Tricyclic antidepressants and venlafaxine show superior efficacy in atypical depression
+726,5. Depressive Disorders,116,96,20,Long-term antidepressant continuation (12+ months minimum) significantly reduces relapse risk after initial response
+766,8. Trauma- and Stressor-Related Disorders,96,76,20,"Impaired negative feedback of the HPA axis, sustained threat vigilance, and poor stress recovery"
+805,6. Anxiety Disorders,54,34,20,Propranolol 20–40 mg thirty minutes before performance
+809,6. Anxiety Disorders,86,66,20,Applied tension protocol: systematic tensioning of large muscle groups during exposure
+862,22. Psychopharmacology,108,88,20,Cognitive training shows modest protective effects on cognitive decline and helps preserve functional skills
+116,22. Psychopharmacology,100,81,19,"SNRIs, which maintain SSRI tolerability while offering noradrenergic activity beneficial for fatigue"
+134,22. Psychopharmacology,94,75,19,"Carbamazepine induces hepatic metabolism of the contraceptive, reducing contraceptive efficacy"
+289,16. Substance-Related Disorders,96,77,19,Direct chemical caustic injury from methamphetamine; reduced salivary flow and poor oral hygiene
+370,17. Neurocognitive Disorders,41,22,19,Dyskinesia or levodopa-induced dyskinesia
+438,22. Psychopharmacology,67,48,19,B12 deficiency can cause psychosis that fully remits with treatment
+538,20. Medication-Induced Movement Disorders,72,53,19,Enhanced sensitivity of beta-2 adrenergic receptors in the basal ganglia
+653,1. Assessment Fundamentals,93,74,19,"Effective documentation supports clinical reasoning, legal protection, and quality assessment"
+679,1. Assessment Fundamentals,78,59,19,Evidence-based principles from cognitive science can optimize medical learning
+752,7. OCD and Related Disorders,96,77,19,Continue ERP and pharmacotherapy for an extended period to consolidate gains and prevent relapse
+832,16. Substance-Related Disorders,95,76,19,Insufficient dosing: he requires higher buprenorphine (12–16 mg) to adequately block withdrawal
+846,17. Neurocognitive Disorders,87,68,19,Anticholinergic burden from diphenhydramine and metoclopramide contributing to delirium
+910,22. Psychopharmacology,49,30,19,Tardive dyskinesia from chronic dopamine blockade
+43,8. Trauma- and Stressor-Related Disorders,42,24,18,Negative alterations in cognition and mood
+74,6. Anxiety Disorders,70,52,18,Fear of negative evaluation or judgment by others in social situations
+274,1. Assessment Fundamentals,60,42,18,Open-ended questions that encourage the patient to elaborate
+282,16. Substance-Related Disorders,58,40,18,Adolescent use during a period of active brain development
+369,17. Neurocognitive Disorders,38,20,18,Lewy bodies containing alpha-synuclein
+524,22. Psychopharmacology,76,58,18,SSRI-induced inhibition of platelet serotonin reuptake impairing aggregation
+572,22. Psychopharmacology,82,64,18,Magnesium's NMDA antagonism reduces neuropathic pain processing in the spinal cord
+578,22. Psychopharmacology,111,93,18,Vitamin D receptors modulate serotonin and dopamine pathways and regulate inflammatory cytokines affecting mood
+698,3. Schizophrenia Spectrum,83,65,18,Second-generation antipsychotics with dopamine D2 antagonism plus 5-HT2A antagonism
+699,3. Schizophrenia Spectrum,79,61,18,"Switch to an antipsychotic with minimal metabolic effects, such as aripiprazole"
+808,6. Anxiety Disorders,76,58,18,In vivo exposure therapy for 1–4 sessions with high efficacy rates of 60–80%
+855,22. Psychopharmacology,94,76,18,"Citalopram at higher doses increases QTc interval, raising arrhythmia risk in elderly patients"
+21,5. Depressive Disorders,53,36,17,4-6 weeks of consistent treatment before full benefit
+67,13. Sleep-Wake Disorders,49,32,17,Cognitive-Behavioral Therapy for Insomnia (CBT-I)
+72,13. Sleep-Wake Disorders,55,38,17,4-8 weeks of consistent treatment with ongoing practice
+258,23. Psychotherapy and Non-Pharmacologic,87,70,17,Eliciting the patient's own motivations and concerns rather than imposing external ones
+394,1. Assessment Fundamentals,34,17,17,Striatum via nigrostriatal pathway
+555,13. Sleep-Wake Disorders,96,79,17,"Ramelteon, a melatonin agonist, has minimal residual daytime effects or morning-after impairment"
+583,22. Psychopharmacology,77,60,17,"Target 30-50 ng/mL using 2,000-4,000 IU daily with reassessment in 8-12 weeks"
+396,1. Assessment Fundamentals,34,18,16,Muscarinic acetylcholine receptors
+535,22. Psychopharmacology,94,78,16,Continue clozapine throughout perioperative period; the timing of CBC is unaffected by surgery
+556,13. Sleep-Wake Disorders,84,68,16,Tolerance to the hypnotic effect combined with cognitive impairment from chronic use
+559,13. Sleep-Wake Disorders,73,57,16,"Melatonin agonist or DORA, avoiding benzodiazepine-SSRI interaction risks"
+607,22. Psychopharmacology,104,88,16,Both achieve therapeutic effects by increasing synaptic monoamine levels but through distinct mechanisms
+610,22. Psychopharmacology,94,78,16,Shift from empirical discoveries to understanding receptor mechanisms to targeted pharmacology
+638,22. Psychopharmacology,87,71,16,Progress represents synthesis of accidental breakthroughs with systematic understanding
+826,16. Substance-Related Disorders,130,114,16,Further improvement with combined medication and intensified behavioral intervention addressing coping skills and thought patterns
+206,3. Schizophrenia Spectrum,124,109,15,"These features represent the distinct constellation of motor, behavioral, and cognitive features characteristic of catatonia"
+593,21. Other Conditions,64,49,15,Manufacturers → wholesalers/distributors → pharmacies → patients
+764,8. Trauma- and Stressor-Related Disorders,74,59,15,Continue SSRI for minimum 12+ months post-remission to reduce relapse risk
+830,16. Substance-Related Disorders,111,96,15,"Naloxone is metabolized more rapidly than the offending opioid, requiring redosing before opioid effects recede"
+154,24. Psychiatric Emergencies,88,74,14,"Lithium, with robust antisuicidal effects and relative risk reduction approximately 0.24"
+605,22. Psychopharmacology,95,81,14,Expansion of the clinician's therapeutic options while revealing limitations of prior therapies
+613,22. Psychopharmacology,86,72,14,The mechanisms of both therapeutic and adverse effects have neurochemical explanations
+817,16. Substance-Related Disorders,91,77,14,Withdrawal of GABAergic inhibition and loss of suppression of glutamatergic excitatory tone
+871,22. Psychopharmacology,109,95,14,Fluoxetine is approved for both major depression and OCD at different dose ranges (OCD requires higher doses)
+92,16. Substance-Related Disorders,97,84,13,Its potency (50–100 times that of morphine) makes dosing unpredictable in illicit street supplies
+102,17. Neurocognitive Disorders,73,60,13,Acute onset over hours to days with fluctuating course throughout the day
+109,17. Neurocognitive Disorders,121,108,13,"The pathological process is identical regardless of onset age, although Alzheimer originally described presenile dementia"
+111,17. Neurocognitive Disorders,103,90,13,They have greater efficacy against oligomeric and protofibrillary species compared to fibrillar plaques
+409,26. Consultation-Liaison Psychiatry,49,36,13,Acute HIV syndrome (or acute retroviral syndrome)
+522,22. Psychopharmacology,68,55,13,Excessive serotonergic activity in the nucleus paragigantocellularis
+562,23. Psychotherapy and Non-Pharmacologic,106,93,13,"Dietary components modulate gut microbiota composition, which influences CNS serotonin and GABA production"
+709,4. Bipolar and Related Disorders,74,61,13,At least one full manic episode lasting ≥1 week with functional impairment
+768,8. Trauma- and Stressor-Related Disorders,97,84,13,Secondary victimization and continued threat exposure perpetuate PTSD symptoms and delay recovery
+822,16. Substance-Related Disorders,115,102,13,Continue naltrexone 50 mg daily; evidence supports at least 12 months of pharmacotherapy for AUD relapse prevention
+847,17. Neurocognitive Disorders,122,109,13,"Prednisone: corticosteroids cause mood disturbance and cognitive effects, including delirium, particularly at higher doses"
+29,6. Anxiety Disorders,29,17,12,Elevated mood and grandiosity
+101,17. Neurocognitive Disorders,99,87,12,"It provided a practical, validated tool that revolutionized delirium detection in clinical practice"
+457,"27. Forensic, Ethics, and Legal Issues",84,72,12,The 2017 rule change fundamentally altered Social Security disability law assessment
+508,22. Psychopharmacology,64,52,12,"Blockade of the hERG potassium channel, impairing repolarization"
+639,22. Psychopharmacology,87,75,12,Serendipitous clinical observations contributed fundamentally to modern pharmacotherapy
+721,5. Depressive Disorders,82,70,12,"Add an augmentation agent (lithium, atypical antipsychotic, or T3 thyroid hormone)"
+769,9. Dissociative Disorders,63,51,12,Dissociative Identity Disorder with internal voices from alters
+897,22. Psychopharmacology,68,56,12,"Bupropion or mirtazapine, which have minimal sexual dysfunction risk"
+91,16. Substance-Related Disorders,104,93,11,The settlement was insufficient relative to profits and came after massive suffering had already accrued
+105,17. Neurocognitive Disorders,71,60,11,Extracellular amyloid plaques and intracellular neurofibrillary tangles
+371,17. Neurocognitive Disorders,51,40,11,Dopaminergic medication effect on limbic structures
+378,17. Neurocognitive Disorders,38,27,11,Chronic traumatic encephalopathy (CTE)
+564,23. Psychotherapy and Non-Pharmacologic,72,61,11,Meditation induces neurogenesis in the dentate gyrus from BDNF signaling
+704,3. Schizophrenia Spectrum,74,63,11,Female predominance with sensory impairments as common etiological factors
+812,6. Anxiety Disorders,115,104,11,Continue current dose; the risk of relapse and maternal stress from untreated anxiety may outweigh medication risks
+854,22. Psychopharmacology,68,57,11,Microhemorrhages or vasogenic edema detected on follow-up MRI (ARIA)
+869,22. Psychopharmacology,90,79,11,No adjustment needed; sertraline undergoes hepatic metabolism with minimal renal excretion
+1,3. Schizophrenia Spectrum,81,71,10,"Positive symptoms, negative symptoms, disorganization, cognition, and mood/affect"
+19,5. Depressive Disorders,34,24,10,Depression with psychotic features
+404,26. Consultation-Liaison Psychiatry,41,31,10,Cognitive behavioral therapy and exercise
+419,26. Consultation-Liaison Psychiatry,57,47,10,Oxidative stress and cellular energy depletion in neurons
+551,13. Sleep-Wake Disorders,83,73,10,"Melatonin agonists or DORAs, which have minimal addiction/cross-addiction potential"
+553,13. Sleep-Wake Disorders,75,65,10,Antagonism of orexin (hypocretin) receptors reducing wake-promoting signals
+561,23. Psychotherapy and Non-Pharmacologic,39,29,10,Regular aerobic exercise (150 min/week)
+573,22. Psychopharmacology,87,77,10,"Magnesium has osmotic effects, increasing intraluminal water and promoting loose stools"
+591,22. Psychopharmacology,45,35,10,Tirzepatide (dual GLP-1/GIP receptor agonist)
+816,6. Anxiety Disorders,108,98,10,"Alcohol intoxication prevents encoding of exposure-based extinction memories, perpetuating anxiety avoidance"
+849,17. Neurocognitive Disorders,104,94,10,"Adding benzodiazepine (lorazepam) to haloperidol, accepting the sedating effects as necessary for safety"
+921,22. Psychopharmacology,86,76,10,"Thiazide diuretics reduce lithium clearance, increasing serum levels and toxicity risk"
+211,22. Psychopharmacology,89,80,9,Clozapine typically requires 6-8 weeks or longer to demonstrate full antipsychotic effect
+381,17. Neurocognitive Disorders,37,28,9,Post-traumatic stress disorder (PTSD)
+546,13. Sleep-Wake Disorders,100,91,9,Morning sedation and impaired psychomotor function increase fall risk and injury in elderly patients
+861,22. Psychopharmacology,96,87,9,Intensive BP control slows cognitive decline but increases orthostatic hypotension and fall risk
+442,25. Special Populations,82,74,8,"The thalidomide tragedy of the 1960s, which caused 10,000 congenital malformations"
+620,"27. Forensic, Ethics, and Legal Issues",81,73,8,Legislation defines boundaries and determines possibilities for clinical practice
+657,1. Assessment Fundamentals,83,75,8,Every clinical decision rests on statistical reasoning whether explicit or implicit
+708,3. Schizophrenia Spectrum,64,56,8,"Weight, waist circumference, BMI, glucose, lipids, and prolactin"
+806,6. Anxiety Disorders,69,61,8,Initiate phenelzine 15 mg three times daily after appropriate washout
+916,22. Psychopharmacology,60,52,8,Nephrogenic diabetes insipidus from chronic lithium exposure
+94,16. Substance-Related Disorders,83,76,7,Reduction of mortality by approximately 50% when combined with psychosocial support
+363,17. Neurocognitive Disorders,45,38,7,TDP-43 (TAR DNA-binding protein 43) pathology
+527,22. Psychopharmacology,99,92,7,SSRIs are excreted in minimal quantities and are generally considered compatible with breastfeeding
+531,22. Psychopharmacology,94,87,7,Benign ethnic neutropenia affects 5-12% of African descent populations and is not drug-induced
+539,20. Medication-Induced Movement Disorders,53,46,7,Kinetic tremor consistent with cerebellar dysfunction
+642,1. Assessment Fundamentals,67,60,7,Seven distinct schools of thought from different historical periods
+673,1. Assessment Fundamentals,81,74,7,Learning principles derived from cognitive science can optimize medical education
+774,9. Dissociative Disorders,58,51,7,Dissociative fugue with identity loss and unplanned travel
+837,16. Substance-Related Disorders,100,93,7,Administer naloxone immediately while simultaneously preparing supportive care and diagnostic workup
+5,3. Schizophrenia Spectrum,51,45,6,Executive dysfunction and working memory impairment
+63,11. Feeding and Eating Disorders,27,21,6,Binge Eating Disorder (BED)
+423,26. Consultation-Liaison Psychiatry,30,24,6,Frontal lobes and white matter
+441,25. Special Populations,123,117,6,Lithium carries real but manageable risk; risk-benefit analysis must weigh untreated bipolar illness against fetal exposure
+658,1. Assessment Fundamentals,75,69,6,Medical school emphasizes clinical application over statistical methodology
+761,8. Trauma- and Stressor-Related Disorders,54,48,6,Prazosin (alpha-1 blockade) at doses 0.5–16 mg nightly
+762,8. Trauma- and Stressor-Related Disorders,80,74,6,Begin stabilization and resource-building phase before trauma-focused processing
+426,26. Consultation-Liaison Psychiatry,29,24,5,Uremia-induced encephalopathy
+528,22. Psychopharmacology,94,89,5,SSRIs rarely cause hepatotoxicity; routine LFT monitoring is not indicated in healthy patients
+549,13. Sleep-Wake Disorders,81,76,5,Sudden removal of GABA-A enhancement unmasks pre-existing glutamate hyperactivity
+602,22. Psychopharmacology,77,72,5,Serendipitous discovery subsequently rationalized into mechanistic frameworks
+906,22. Psychopharmacology,100,95,5,Antipsychotics carry minimal teratogenic risk; untreated psychosis poses greater maternal/fetal risk
+14,4. Bipolar and Related Disorders,34,30,4,Lithium or atypical antipsychotics
+56,9. Dissociative Disorders,39,35,4,SSRIs for associated depression/anxiety
+123,22. Psychopharmacology,53,49,4,Agranulocytosis with incidence of approximately 0.38%
+133,22. Psychopharmacology,70,66,4,"Annually: lithium level, renal function (creatinine), thyroid function"
+372,17. Neurocognitive Disorders,16,12,4,Freezing of gait
+547,13. Sleep-Wake Disorders,49,45,4,"Benzodiazepines and Z-drugs (zolpidem, temazepam)"
+548,13. Sleep-Wake Disorders,88,84,4,Tolerance develops with chronic benzodiazepine/Z-drug use due to receptor downregulation
+606,22. Psychopharmacology,46,42,4,Monoamine catabolism and synaptic availability
+814,6. Anxiety Disorders,107,103,4,"Efficacy would be reduced; propranolol peak effects occur 30 minutes post-dose, missing the critical window"
+887,22. Psychopharmacology,73,69,4,Continue sertraline at the current dose; risk-benefit favors continuation
+13,4. Bipolar and Related Disorders,30,27,3,Rapid cycling bipolar disorder
+44,8. Trauma- and Stressor-Related Disorders,32,29,3,SSRIs (sertraline or paroxetine)
+100,17. Neurocognitive Disorders,82,79,3,Acute systemic illness and physiological stress are major precipitants of delirium
+285,16. Substance-Related Disorders,95,92,3,Cognitive behavioral therapy and contingency management; no FDA-approved pharmacotherapy exists
+380,17. Neurocognitive Disorders,17,14,3,Prefrontal cortex
+425,26. Consultation-Liaison Psychiatry,22,19,3,Hepatic encephalopathy
+433,22. Psychopharmacology,22,19,3,Vitamin B12 deficiency
+557,13. Sleep-Wake Disorders,78,75,3,Incomplete sedation of higher cortical centers while motor areas remain active
+566,23. Psychotherapy and Non-Pharmacologic,59,56,3,CBT demonstrates stronger evidence with larger effect sizes
+604,22. Psychopharmacology,77,74,3,Targeting of NMDA receptor function rather than monoamine reuptake mechanisms
+678,1. Assessment Fundamentals,65,62,3,Active engagement improves retention and application of knowledge
+840,16. Substance-Related Disorders,110,107,3,Restart MOUD (buprenorphine or methadone) given his relapse risk from acute craving and environmental exposure
+121,22. Psychopharmacology,12,10,2,Aripiprazole
+379,17. Neurocognitive Disorders,62,60,2,Disruption of monoamine systems and neuroinflammation from TBI
+398,1. Assessment Fundamentals,33,31,2,"Attention, alertness, and arousal"
+582,22. Psychopharmacology,63,61,2,Vitamin D3 is more potent and preferred for treating deficiency
+626,21. Other Conditions,81,79,2,It explains how current payment models shape patient access and clinical practice
+634,22. Psychopharmacology,73,71,2,Serendipitous clinical observations followed by mechanistic investigation
+83,16. Substance-Related Disorders,47,46,1,Jellinek's disease model published in the 1950s
+107,17. Neurocognitive Disorders,87,86,1,"Aβ42 is more prone to self-assembly into oligomers, protofibrils, and insoluble plaques"
+217,3. Schizophrenia Spectrum,50,49,1,First-break psychosis (first episode of psychosis)
+365,17. Neurocognitive Disorders,31,30,1,Insula and orbitofrontal cortex
+410,26. Consultation-Liaison Psychiatry,23,22,1,Cryptococcal meningitis
+530,22. Psychopharmacology,70,69,1,Immediately discontinue carbamazepine and check CBC weekly for 4 weeks
+497,26. Consultation-Liaison Psychiatry,16,16,0,10-20% of adults
+609,22. Psychopharmacology,95,95,0,Chlorpromazine; produced a peculiar state of emotional indifference despite clear consciousness

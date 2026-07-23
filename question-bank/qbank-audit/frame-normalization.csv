@@ -1,0 +1,157 @@
+id,old_frame_used,new_frame_used
+697,"Treatment-resistant schizophrenia, clozapine monitoring",Application
+698,"First-generation EPS, SGA advantages",Application
+699,"Metabolic side effects, antipsychotic switching",Application
+700,"Duration of untreated psychosis, first-episode outcomes",Application
+701,"Hyperprolactinemia, aripiprazole advantage",Application
+702,"Augmentation strategies, comorbid substance use",Application
+703,"Very early-onset schizophrenia, prognosis",Application
+704,"Late-onset schizophrenia, female predominance",Application
+705,"Disorganized-type schizophrenia, prognosis",Application
+706,Hypothyroidism mimicking negative symptoms,Application
+707,"Depressive symptoms in schizophrenia, suicide risk",Application
+708,Antipsychotic monitoring protocol,Application
+709,"Bipolar I diagnosis, manic episode criteria",Application
+710,"Lithium mechanism, inositol hypothesis",Application
+711,"Bipolar II suicide risk, depression-dominant pattern",Application
+712,"Rapid cycling bipolar, combination therapy",Application
+713,"Valproate teratogenicity, pregnancy planning",Application
+714,"Lithium side effects, monitoring protocol",Application
+715,Antidepressant monotherapy contraindication,Application
+716,"Mixed features bipolar, treatment-resistant",Application
+717,"Lithium cognitive side effects, dose adjustment",Application
+718,"Prodromal bipolar, early intervention",Application
+719,"Circadian dysfunction bipolar, chronobiological interventions",Application
+720,"Combined pharmacotherapy and psychotherapy, relapse reduction",Application
+721,"Treatment-resistant depression, augmentation",Application
+722,"Apathetic depression, bupropion",Application
+723,"Atypical depression, tricyclic efficacy",Application
+724,"Psychotic depression, ECT efficacy",Application
+725,"Sleep deprivation therapy, melancholic depression",Application
+726,"Maintenance antidepressant, relapse prevention",Application
+727,"Serotonin syndrome, MAOI-SSRI washout",Application
+728,"Cognitive symptoms depression, psychotherapy",Application
+729,"Double depression, treatment-resistant dysthymia",Application
+730,"FDA-approved augmentation, TRD",Application
+731,"TMS efficacy, treatment-resistant depression",Application
+732,"ECT for acute severe depression, suicidality",Application
+733,SSRI first-line panic disorder,Application
+734,"SSRI onset timeline, panic disorder",Application
+735,SSRI maintenance panic disorder,Application
+736,"Beta-blocker somatic anxiety, performance",Application
+737,"Pregabalin GAD, pain comorbidity",Application
+738,"Benzodiazepine tolerance, cognitive effects",Application
+739,"Benzodiazepine withdrawal, tapering",Application
+740,TCA panic disorder efficacy,Application
+741,"CBT efficacy anxiety, relapse prevention",Application
+742,Caffeine panic disorder precipitation,Application
+743,"Metacognitive disturbance GAD, CBT",Application
+744,"SSRI discontinuation syndrome, tapering",Application
+745,"SSRI-refractory OCD, clomipramine trial",Application
+746,Antipsychotic augmentation OCD,Application
+747,"Tic-related OCD, antipsychotic augmentation",Application
+748,Benzodiazepine impairs ERP learning,Application
+749,IV clomipramine treatment-resistant OCD,Application
+750,"ERP hierarchy construction, graded exposure",Application
+751,Imaginal exposure pure O OCD,Application
+752,Combined pharmacotherapy psychotherapy maintenance,Application
+753,"Habituation mechanism ERP, anxiety decline",Application
+754,"Glutamate modulation OCD, emerging agents",Application
+755,"Y-BOCS severity, treatment intensity",Application
+756,ERP efficacy despite pharmacological resistance,Application
+757,Differential diagnosis and phenotypic recognition,Application
+758,Phenotype-based pharmacotherapy targeting,Application
+759,Neurobiologically-informed medication selection,Application
+760,Treatment-resistant PTSD management algorithm,Application
+761,Symptom-cluster targeting pharmacotherapy,Application
+762,Phase-oriented treatment sequencing for complex presentations,Application
+763,Treatment selection for complex trauma presentations,Application
+764,Long-term management and relapse prevention,Application
+765,Developmental distinctions in PTSD presentation,Application
+766,Neuroendocrine mechanisms and clinical implications,Application
+767,Combat-specific trauma factors and treatment prognosis,Application
+768,Post-traumatic environmental and social factors,Application
+769,Differential diagnosis: Dissociation vs. Psychosis,Application
+770,Memory mechanisms in DID and differential from organic amnesia,Application
+771,Neurobiological mechanisms of identity fragmentation,Application
+772,Neurobiological model of depersonalization/derealization,Application
+773,Trauma-sensitive prescribing in dissociative disorders,Application
+774,Dissociative amnesia subtypes and clinical recognition,Application
+775,Phase-oriented treatment sequencing in DID,Application
+776,DSM-5 diagnostic criteria and severity specifiers,Application
+777,Pharmacological mechanisms in dissociative disorders,Application
+778,Refeeding syndrome pathophysiology and recognition,Application
+779,Trauma-informed prescribing principles,Application
+780,Cardiac complications and refeeding management,Application
+781,Assessment instruments for dissociative disorders,Application
+782,Endocrine complications and bone metabolism in AN,Application
+783,Clinical presentation heterogeneity in DID,Application
+784,Pharmacotherapy dosing for bulimia nervosa,Application
+785,Differential diagnosis: Dissociative vs. organic amnesia,Application
+786,Antipsychotic augmentation in anorexia nervosa,Application
+787,Pharmacotherapy contraindications in BED,Application
+788,ARFID diagnostic criteria and distinction from AN,Application
+789,Gender differences and special populations in eating disorders,Application
+790,Evidence-based psychotherapy for eating disorders,Application
+791,Special populations: Athletes and RED-S,Application
+792,Medical complications and prognosis in bulimia nervosa,Application
+793,Two-process model of sleep and circadian mechanisms,Application
+794,CBT-I components for anxiety-related insomnia,Application
+795,Sleep apnea screening and medication safety,Application
+796,Sleep disturbance in bipolar mood episodes,Application
+797,Pharmacotherapy for nightmare disorder in PTSD,Application
+798,Circadian-targeted interventions in shift work disorder,Application
+799,Circadian disruption in dementia and sundowning,Application
+800,Paradoxical insomnia and sleep state misperception,Application
+801,Integration of pharmacotherapy with behavioral intervention,Application
+802,Depression-related sleep phenotypes and integrated treatment,Application
+803,Medication selection principles and polypharmacy avoidance,Application
+804,Polysomnography indications in treatment-resistant insomnia,Application
+805,Performance anxiety pharmacotherapy,Application
+806,Treatment-resistant SAD pharmacotherapy,Application
+807,Differential diagnosis: AvPD vs SAD,Application
+808,Specific phobia: single-session exposure efficacy,Application
+809,Blood-injection-injury phobia: applied tension,Application
+810,Neurobiological substrate of exposure therapy,Application
+811,Differential diagnosis: ASD vs SAD,Application
+812,SSRI continuation in pregnancy with SAD,Application
+813,Pharmacotherapy optimization with comorbid depression,Application
+814,Propranolol timing for performance anxiety,Application
+815,Psychotherapy mechanism misattribution,Application
+816,Alcohol self-medication and comorbidity,Application
+817,Alcohol withdrawal pathophysiology,Application
+818,Second-line and emerging AUD pharmacotherapy,Application
+819,Treatment modality selection by severity,Application
+820,AUD pharmacotherapy in hepatic disease,Application
+821,Protracted withdrawal and acamprosate timing,Application
+822,Duration of AUD pharmacotherapy,Application
+823,DSM-5 dimensional approach to AUD,Application
+824,Integrated treatment: AUD + trauma,Application
+825,Protective factors in residential treatment,Application
+826,Combined pharmacotherapy and psychotherapy dosage,Application
+827,Acute alcohol intoxication and withdrawal risk,Application
+828,Mutual aid groups and peer support efficacy,Application
+829,MOUD and recovery definition,Application
+830,Naloxone pharmacokinetics in overdose,Application
+831,MOUD psychosocial and behavioral factors,Application
+832,Buprenorphine induction dosing,Application
+833,Methadone dosing optimization,Application
+834,MOUD in pregnancy,Application
+835,MOUD side effect management,Application
+836,Naltrexone-associated anhedonia and depression,Application
+837,Acute opioid overdose management,Application
+838,Continuity of MOUD therapy,Application
+839,MOUD in pregnancy and NAS,Application
+840,MOUD at re-entry/transition,Application
+841,Antipsychotic selection in delirium,Application
+842,Antipsychotic and QT prolongation in delirium,Application
+843,Antipsychotic contraindication in Lewy body disease,Application
+844,Neuroleptic malignant syndrome recognition and management,Application
+845,Antipsychotic continuation in delirium-prone patients,Application
+846,Anticholinergic medications precipitating delirium,Application
+847,Corticosteroid-induced delirium,Application
+848,Antipsychotic dosing in renal impairment,Application
+849,Benzodiazepine adjunction for severe delirium,Application
+850,Anticholinergic medications and glaucoma contraindication,Application
+851,Early NMS recognition and haloperidol discontinuation,Application
+852,Delirium in Parkinson disease with dopaminergic excess,Application
