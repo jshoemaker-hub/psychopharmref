@@ -606,9 +606,9 @@
           <button class="ic-title-btn" onclick="switchSection('handouts')"><span class="ic-icon">&#128196;</span><span>Handouts</span></button>
           <p>Plain-language patient education on therapy skills, diagnoses, and psychiatric medications.</p>
           <div class="ic-sub-links">
-            <button class="btn-sub" onclick="switchSection('handouts')">All Handouts</button>
-            <a href="/handouts/ssris.html" class="btn-sub">SSRIs</a>
-            <a href="/handouts/safety-plan.html" class="btn-sub">Safety Plan</a>
+            <button class="btn-sub" onclick="ppOpenHandouts('therapy')">Therapy Handouts</button>
+            <button class="btn-sub" onclick="ppOpenHandouts('medication')">Medication Ed.</button>
+            <button class="btn-sub" onclick="ppOpenHandouts('dementia')">Dementia Handouts</button>
           </div>
         </div>
         <div class="info-card info-card--topic">
@@ -11915,8 +11915,22 @@
     .tt-l-btn:hover { background: #3d6a2b; }
     .tt-l-soon { align-self: flex-start; font-size: 12px; font-weight: 700; color: #8a8172; background: #e4ddcf; border-radius: 6px; padding: 6px 12px; }
     .tt-l-card.soon { opacity: .82; }
+    .ho-cats { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 20px; }
+    .ho-cat-btn { cursor: pointer; font-size: 13px; font-weight: 700; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border); background: #fff; color: var(--text); }
+    .ho-cat-btn:hover { border-color: var(--accent); }
+    .ho-cat-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .ho-group { margin-bottom: 8px; }
   </style>
 
+  <div class="ho-cats">
+    <button class="ho-cat-btn active" data-cat="all" onclick="handoutsFilter('all')">All</button>
+    <button class="ho-cat-btn" data-cat="therapy" onclick="handoutsFilter('therapy')">Therapy</button>
+    <button class="ho-cat-btn" data-cat="medication" onclick="handoutsFilter('medication')">Medication Ed.</button>
+    <button class="ho-cat-btn" data-cat="dementia" onclick="handoutsFilter('dementia')">Dementia</button>
+    <button class="ho-cat-btn" data-cat="sud" onclick="handoutsFilter('sud')">Substance Use</button>
+  </div>
+
+  <div class="ho-group" data-cat="therapy">
   <div class="tt-l-grid">
 
     <div class="tt-l-head">Therapy</div>
@@ -12033,6 +12047,12 @@
       <a class="tt-l-btn" href="/handouts/healthy-habits-gratitude.html">Open handout &rarr;</a>
     </div>
 
+    </div><!-- tt-l-grid -->
+    </div><!-- ho-group therapy -->
+
+    <div class="ho-group" data-cat="dementia">
+    <div class="tt-l-grid">
+
     <div class="tt-l-head">Dementia</div>
 
     <div class="tt-l-card">
@@ -12084,7 +12104,13 @@
       <a class="tt-l-btn" href="/handouts/dementia-later-stages.html">Open handout &rarr;</a>
     </div>
 
-    <div class="tt-l-head">SUD / AUD</div>
+    </div><!-- tt-l-grid -->
+    </div><!-- ho-group dementia -->
+
+    <div class="ho-group" data-cat="sud">
+    <div class="tt-l-grid">
+
+    <div class="tt-l-head">Substance Use</div>
 
     <div class="tt-l-card">
       <div class="tt-l-topic">Alcohol</div>
@@ -12120,6 +12146,12 @@
       <p>What meth does, health effects, what treatment works, and the crash and early recovery.</p>
       <a class="tt-l-btn" href="/handouts/methamphetamine-use-disorder.html">Open handout &rarr;</a>
     </div>
+
+    </div><!-- tt-l-grid -->
+    </div><!-- ho-group sud -->
+
+    <div class="ho-group" data-cat="medication">
+    <div class="tt-l-grid">
 
     <div class="tt-l-head">Medications &middot; Antidepressants</div>
 
@@ -12266,7 +12298,8 @@
       <a class="tt-l-btn" href="/handouts/antihistamines-anticholinergics.html">Open handout &rarr;</a>
     </div>
 
-  </div>
+    </div><!-- tt-l-grid -->
+  </div><!-- ho-group medication -->
 </section>
 
 <section id="print-forms" class="section">
@@ -12714,7 +12747,7 @@
 
   <script defer src="js/data.js?v=20260719d"></script>
   <script defer src="js/routes.js?v=20260719d"></script>
-  <script defer src="js/app.js?v=20260722c"></script>
+  <script defer src="js/app.js?v=20260723a"></script>
   <script defer src="js/glossary-data.js?v=20260719d"></script>
   <script defer src="js/glossary-page.js?v=20260719d"></script>
   <script defer src="js/search.js?v=20260722c"></script>

@@ -275,6 +275,23 @@ function ppGoSection(sectionId, anchorId){
 window.ppOpenBrain = ppOpenBrain;
 window.ppGoSection = ppGoSection;
 
+// --- Handouts category filtering ---
+function handoutsFilter(cat) {
+  cat = cat || 'all';
+  document.querySelectorAll('#handouts .ho-group').forEach(function (g) {
+    g.style.display = (cat === 'all' || g.dataset.cat === cat) ? '' : 'none';
+  });
+  document.querySelectorAll('#handouts .ho-cat-btn').forEach(function (b) {
+    b.classList.toggle('active', b.dataset.cat === cat);
+  });
+}
+function ppOpenHandouts(cat) {
+  switchSection('handouts');
+  handoutsFilter(cat || 'all');
+}
+window.handoutsFilter = handoutsFilter;
+window.ppOpenHandouts = ppOpenHandouts;
+
 function expandGroup(groupId) {
   document.querySelectorAll('.nav-group').forEach(g => {
     if (g.dataset.group === groupId) {
@@ -283,6 +300,27 @@ function expandGroup(groupId) {
       g.classList.remove('open');
     }
   });
+}
+
+// When true, switchSection is responding to a browser history event
+// (back/forward or hashchange) and must NOT push a new history entry.
+var __suppressHistory = false;
+
+function pushSectionState(id) {
+  if (__suppressHistory) return;
+  // Overview is the clean landing URL; other sections get a #hash so the
+  // browser records a history entry we can return to with the Back button.
+  var target = (id === 'overview')
+    ? (window.location.pathname + window.location.search)
+    : ('#' + id);
+  var sameAsCurrent = (id === 'overview')
+    ? (window.location.hash === '')
+    : (window.location.hash === '#' + id);
+  if (!sameAsCurrent) {
+    history.pushState({ section: id }, '', target);
+  } else if (!history.state) {
+    history.replaceState({ section: id }, '', target);
+  }
 }
 
 function switchSection(id, skipGroupExpand) {
@@ -433,6 +471,10 @@ function switchSection(id, skipGroupExpand) {
     document.getElementById('sidebar-overlay').classList.remove('overlay-visible');
     document.body.classList.remove('sidebar-is-open');
   }
+
+  // Record a browser history entry so the Back button navigates within the
+  // SPA (e.g. handout page → Back → home) instead of leaving the site.
+  pushSectionState(id);
 }
 
 // Parent nav button toggle
@@ -488,15 +530,34 @@ function applyHashNavigation() {
 
 // On initial load: if the URL includes a valid #section-id (e.g., coming
 // from a blog post sidebar link), activate that section; otherwise land on
-// the home hub (overview), the site's navigation landing page.
+// the home hub (overview), the site's navigation landing page. Suppress the
+// history push here and seed the current entry with replaceState so the very
+// first Back press has a state to return to.
+__suppressHistory = true;
 if (sectionFromHash()) {
   applyHashNavigation();
 } else {
   switchSection('overview', true);
 }
+__suppressHistory = false;
+history.replaceState({ section: sectionFromHash() || 'overview' }, '', window.location.href);
 
-// Keep the SPA in sync with browser-level hash changes.
-window.addEventListener('hashchange', applyHashNavigation);
+// Keep the SPA in sync with browser-level hash changes (deep links, manual
+// hash edits). Guarded so it never pushes a duplicate history entry.
+window.addEventListener('hashchange', function () {
+  __suppressHistory = true;
+  applyHashNavigation();
+  __suppressHistory = false;
+});
+
+// Back/Forward buttons: restore the section recorded in history state (or the
+// hash / overview) without pushing a new entry.
+window.addEventListener('popstate', function (e) {
+  var id = (e.state && e.state.section) || sectionFromHash() || 'overview';
+  __suppressHistory = true;
+  switchSection(id, id === 'overview');
+  __suppressHistory = false;
+});
 
 /* ── Class Filter (sidebar checkboxes) ─────────────────────────────────── */
 let activeClasses = new Set(MEDICATIONS.map(m => m.class));
