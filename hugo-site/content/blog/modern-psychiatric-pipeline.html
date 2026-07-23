@@ -1,0 +1,160 @@
+---
+title: "The Modern Psychiatric Pipeline: Beyond Monoamines"
+date: 2026-07-23
+description: "A layered guide to the mechanisms reshaping psychiatric drug development and the Phase 3 wins and misses of 2025–26."
+category: "Psychopharmacology"
+subtitle: "How psychiatric drug development escaped the serotonin–dopamine box — and what the Phase 3 wins and misses of 2025–26 are teaching us"
+readTime: "18 min read"
+clinicalSummary: ""
+related:
+  - "ketamine-esketamine"
+  - "peptides-biologics-psychiatry"
+  - "novel-mechanisms-schizophrenia-bipolar"
+  - "orexin-sleep-wake-system"
+  - "medication-discovery"
+  - "antidepressant-review"
+draft: false
+---
+
+<style>
+.mx-legend { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 1rem 1.25rem; margin: 1.25rem 0; font-size: 0.9rem; line-height: 1.6; }
+.mx-legend strong { color: var(--text); }
+.mx-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em; padding: 2px 8px; border-radius: 10px; margin-right: 4px; vertical-align: middle; white-space: nowrap; }
+.mx-approved { background: #d9e8cf; color: #2f4d1e; }
+.mx-late { background: #cfe0ec; color: #1d3d52; }
+.mx-early { background: #efe6c9; color: #5a4a12; }
+.mx-preclin { background: #eadfce; color: #5a4326; }
+.mx-failed { background: #ecd4d0; color: #6b2016; }
+.mx-gray { background: #e0dcd4; color: #4a4436; }
+.mx-tier { display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent2, #8b6914); margin: 2.25rem 0 -0.25rem; }
+.mx-box { background: var(--bg2); border-left: 4px solid var(--accent); padding: 1rem 1.15rem; margin: 1.15rem 0; border-radius: 4px; }
+.mx-box h4 { margin: 0 0 0.5rem 0; color: var(--accent); font-size: 1rem; }
+.mx-box p { margin: 0.4rem 0; font-size: 0.94rem; line-height: 1.6; }
+.mx-pearl { background: #f9f5ea; border: 1px solid #e4d9be; border-left: 4px solid var(--accent2, #8b6914); padding: 0.9rem 1.15rem; margin: 1.15rem 0; border-radius: 4px; }
+.mx-pearl strong { color: var(--accent2, #8b6914); }
+.mx-warn { background: #f6ece9; border: 1px solid #e0c4bd; border-left: 4px solid #a2402f; padding: 0.9rem 1.15rem; margin: 1.15rem 0; border-radius: 4px; }
+.mx-warn strong { color: #a2402f; }
+.mx-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.88rem; }
+.mx-table th, .mx-table td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; line-height: 1.45; }
+.mx-table th { background: var(--bg2); font-weight: 700; }
+.mx-table caption { caption-side: bottom; font-size: 0.8rem; color: #6b6050; padding-top: 6px; text-align: left; }
+</style>
+
+<p class="ba-lead">For fifty years, almost every psychiatric drug worked one of two ways: it nudged monoamine neurotransmitters (serotonin, norepinephrine, dopamine) or it blocked the dopamine D2 receptor. That paradigm gave us medicines that genuinely help millions of people — but it also gave us a ceiling. Antidepressants take weeks to work, roughly a third of patients with depression never remit on them, and antipsychotics tame positive symptoms while leaving negative symptoms and cognition largely untouched. The story of the modern pipeline is the story of the field finally reaching outside that box: to acetylcholine, glutamate, GABA-active neurosteroids, orexin, the opioid system, and psychedelics. This chapter is a map of that terrain, written to be read straight through by a medical student and mined for detail by a seasoned clinician. It ends with the most instructive part — a scoreboard of what actually succeeded and what failed in late-stage trials over the past two years.</p>
+
+      <div class="mx-legend">
+        <strong>How to read the tags in this chapter.</strong> Each agent is marked with its development status so you can weigh hope against evidence at a glance:
+        <span class="mx-tag mx-approved">Approved</span> FDA-approved for a psychiatric/CNS indication ·
+        <span class="mx-tag mx-late">Late pipeline</span> Phase 3 or filed ·
+        <span class="mx-tag mx-early">Early / mixed</span> Phase 1–2 or conflicting data ·
+        <span class="mx-tag mx-failed">Failed</span> negative pivotal trial or discontinued ·
+        <span class="mx-tag mx-preclin">Preclinical</span> animal/mechanistic only.
+      </div>
+
+      <span class="mx-tier">Foundations</span>
+      <h2>The monoamine era and its ceiling</h2>
+
+      <p>Modern psychopharmacology was born partly by accident. Iproniazid, a tuberculosis drug, brightened patients' moods in the 1950s and turned out to inhibit monoamine oxidase. Imipramine, developed as an antipsychotic, instead relieved depression by blocking monoamine reuptake. Chlorpromazine calmed psychosis through what we later understood as dopamine D2 blockade. From these serendipitous findings grew the <em>monoamine hypothesis</em> of mood disorders and the <em>dopamine hypothesis</em> of psychosis — frameworks that organized six decades of drug design.</p>
+
+      <p>The clinical limits of that design are worth stating plainly, because they are exactly what the new pipeline is trying to overcome. Selective serotonin reuptake inhibitors raise synaptic serotonin within hours, yet mood lifts over weeks — a delay that tells us the acute pharmacology is not the therapeutic mechanism; downstream neuroplastic adaptation is. The landmark STAR*D trial showed that after one antidepressant, only about a third of patients reach remission, and each subsequent switch yields diminishing returns. On the psychosis side, D2 blockade reliably reduces hallucinations and delusions but does little for the negative symptoms (amotivation, flat affect) and cognitive deficits that most determine long-term disability, all while imposing metabolic and movement side effects. A field that wants better outcomes has to target different biology.</p>
+
+      <span class="mx-tier">Foundations → Clinical</span>
+      <h2>How to read a pipeline (and why so many drugs fail)</h2>
+
+      <p>Before touring the mechanisms, it helps to know how to interpret the news items you will see. A compound moves from <strong>Phase 1</strong> (safety, healthy volunteers) to <strong>Phase 2</strong> (does it plausibly work; dose-finding) to <strong>Phase 3</strong> (pivotal, adequately powered efficacy trials, usually two positive studies needed for approval). The FDA's <strong>PDUFA date</strong> is the deadline by which the agency must act on a filed application. Approval to appear on a compounding "bulks list" is a different and much lower bar — it does not mean the drug is proven safe or effective (a distinction that matters enormously for peptides, covered in the companion chapter).</p>
+
+      <p>Efficacy is usually judged on a rating scale: the <strong>MADRS</strong> or <strong>HAM-D</strong> for depression, the <strong>PANSS</strong> for schizophrenia, the <strong>YMRS</strong> for mania. What separates a "win" from a "miss" is whether the drug beats placebo on the pre-specified primary endpoint with statistical significance — and psychiatry has a punishing placebo-response problem, with placebo arms often improving substantially. This is why a mechanistically elegant drug can still fail: the effect must exceed a large and variable placebo response in a heterogeneous population. Keep that in mind as we go; several of the most scientifically interesting agents below stumbled for exactly this reason.</p>
+
+      <span class="mx-tier">Clinical</span>
+      <h2>Glutamate: the fast-acting frontier</h2>
+
+      <p>If monoamines were the twentieth century's story, glutamate — the brain's principal excitatory neurotransmitter — is the twenty-first's. The catalyzing observation was that a single subanesthetic dose of <strong>ketamine</strong>, an NMDA-receptor antagonist, can lift severe depression within hours, precisely the speed the monoamine drugs lack. Ketamine's antidepressant action appears to run not through NMDA blockade alone but through a downstream surge in glutamate, AMPA-receptor activation, and rapid synaptogenesis mediated by BDNF and mTOR signaling.</p>
+
+      <div class="mx-box">
+        <h4><span class="mx-tag mx-approved">Approved</span> Esketamine (Spravato) and the NMDA proof of concept</h4>
+        <p>Intranasal esketamine, the S-enantiomer of ketamine, is FDA-approved for treatment-resistant depression and for depression with acute suicidal ideation, and has since gained monotherapy labeling flexibility. It established that a non-monoaminergic, rapid-acting antidepressant was commercially and clinically real — and that the REMS-level monitoring such drugs require is workable. See the dedicated ketamine/esketamine chapter for dosing and practice detail.</p>
+      </div>
+
+      <p>The problem with ketamine is delivery and dissociation. Much of the glutamatergic pipeline is an attempt to keep the rapid antidepressant effect while shedding the infusion, the dissociation, and the abuse liability.</p>
+
+      <ul>
+        <li><strong>Dextromethorphan–bupropion (Auvelity, AXS-05)</strong> <span class="mx-tag mx-approved">Approved</span> — an oral combination in which bupropion inhibits CYP2D6 to raise dextromethorphan levels; dextromethorphan is an NMDA antagonist and sigma-1 agonist. Approved for major depressive disorder, and in April 2026 its label expanded to <strong>agitation associated with Alzheimer's dementia</strong> — a meaningful non-antipsychotic option for a notoriously difficult indication. (Do not confuse Auvelity with dextromethorphan–<em>quinidine</em>/Nuedexta, which is for pseudobulbar affect.)</li>
+        <li><strong>AMPA positive allosteric modulators</strong> — rather than block NMDA, these amplify AMPA signaling directly. <strong>NBI-1065845</strong> (adjunctive MDD) and <strong>osavampator</strong> (Phase 3 MDD) target the plasticity limb of the glutamate story while trying to avoid NMDA-related liabilities. <span class="mx-tag mx-late">Late pipeline</span></li>
+        <li><strong>Evenamide</strong> <span class="mx-tag mx-late">Late pipeline</span> — a glutamate-<em>release</em> modulator (via voltage-gated sodium channels) studied as add-on therapy in treatment-resistant schizophrenia, a rare glutamatergic bet in psychosis rather than depression.</li>
+        <li><strong>Esmethadone (REL-1017)</strong> and <strong>zelquistinel</strong> — additional NMDA-targeting antidepressant candidates whose trial records illustrate how hard it has been to reproduce ketamine's effect in an oral, non-dissociative pill.</li>
+      </ul>
+
+      <span class="mx-tier">Clinical</span>
+      <h2>Acetylcholine: the muscarinic revival</h2>
+
+      <p>The single biggest conceptual shift in antipsychotic pharmacology in decades arrived in September 2024 with the approval of <strong>Cobenfy (xanomeline–trospium, formerly KarXT)</strong> <span class="mx-tag mx-approved">Approved</span>. Xanomeline is a muscarinic M1/M4 agonist; it treats schizophrenia <em>without blocking dopamine D2 at all</em>, instead modulating dopaminergic tone upstream through cholinergic circuits. Because peripheral muscarinic agonism causes nausea, salivation, and GI upset, it is paired with trospium, a peripherally restricted anticholinergic that does not cross the blood–brain barrier. The result is the first antipsychotic with no direct D2 mechanism — and therefore, potentially, freedom from the movement disorders and prolactin elevation that define the class.</p>
+
+      <div class="mx-pearl">
+        <strong>Why this matters clinically:</strong> a muscarinic antipsychotic offers a genuinely different side-effect profile and a mechanistic rationale for helping cognition and negative symptoms — the domains D2 blockers neglect. The trade-off is cholinergic GI tolerability. Cobenfy is the proof that "beyond D2" is not just a slogan.</div>
+
+      <p>But the muscarinic story is also a cautionary one, and it previews this chapter's theme. When Cobenfy was tested as an <em>adjunct</em> to existing antipsychotics in inadequately controlled schizophrenia (the Phase 3 ARISE trial, 2025), it <strong>missed its primary endpoint</strong> — a 2.0-point PANSS separation from placebo that did not reach significance (p = 0.11). And <strong>emraclidine</strong>, a once-daily M4-selective agent that many hoped would be a cleaner, simpler successor, <strong>failed both of its Phase 2 EMPOWER trials in late 2024</strong> <span class="mx-tag mx-failed">Failed</span>. The muscarinic mechanism is real; translating it reliably across trial designs has proven harder than the 2024 approval made it look.</p>
+
+      <span class="mx-tier">Clinical</span>
+      <h2>GABA and neuroactive steroids</h2>
+
+      <p>Allopregnanolone, a metabolite of progesterone, is a positive allosteric modulator of the GABA-A receptor — and its precipitous fall after childbirth is implicated in postpartum depression. This insight produced a genuinely new class.</p>
+
+      <ul>
+        <li><strong>Brexanolone (Zulresso)</strong> <span class="mx-tag mx-approved">Approved</span> — IV allopregnanolone for postpartum depression; effective but requiring a 60-hour monitored infusion.</li>
+        <li><strong>Zuranolone (Zurzuvae)</strong> <span class="mx-tag mx-approved">Approved</span> — an oral neurosteroid approved for postpartum depression as a brief 14-day course, a landmark for a rapid, time-limited antidepressant. Notably, its program in <em>major</em> depressive disorder was less consistent, and sedation is the defining tolerability issue — relevant to the sleep chapter's discussion of sedating agents.</li>
+      </ul>
+
+      <p>The neurosteroid class reframes depression treatment as something that can be delivered as a defined course rather than open-ended maintenance — a different clinical paradigm entirely.</p>
+
+      <span class="mx-tier">Clinical</span>
+      <h2>Monoamines, reimagined</h2>
+
+      <p>Not every advance abandons monoamines; some recombine them more cleverly. The most immediate example is <strong>centanafadine</strong> <span class="mx-tag mx-late">Late pipeline</span>, a first-in-class norepinephrine–dopamine–serotonin reuptake inhibitor (a "triple reuptake inhibitor," or NDSRI) for ADHD across children, adolescents, and adults. Its non-stimulant profile with low abuse liability positions it between the stimulants and the older non-stimulants, and its <strong>FDA decision date is July 24, 2026</strong> — the day after this chapter's publication. <strong>Solriamfetol (Sunosi)</strong> <span class="mx-tag mx-approved">Approved</span>, a dopamine–norepinephrine reuptake inhibitor already approved for excessive daytime sleepiness, posted a positive Phase 3 (FOCUS) in adult ADHD and is being explored in depression and binge-eating disorder — a monoamine drug migrating across the sleep/energy/focus triad.</p>
+
+      <p>A bolder monoamine idea was <strong>ulotaront</strong> <span class="mx-tag mx-failed">Failed</span>, the first TAAR1 (trace amine-associated receptor 1) agonist — a mechanism that modulates dopamine and serotonin indirectly, promising antipsychotic effect without D2 blockade or weight gain, plus a signal for improved sleep. After a breakthrough-therapy designation on the strength of Phase 2, its Phase 3 program disappointed, failing to separate from placebo on the primary endpoint. TAAR1 remains a live target, but ulotaront is a sobering example of Phase 2 promise not surviving Phase 3.</p>
+
+      <span class="mx-tier">Clinical → Frontier</span>
+      <h2>The opioid system and kappa antagonism</h2>
+
+      <p>The dynorphin/kappa-opioid system drives dysphoria, anhedonia, and stress reactivity — an attractive target for the anhedonic core of depression. The most advanced test of this idea was <strong>navacaprant</strong>, a selective kappa-opioid antagonist. Its result is one of the clearest cautionary tales in the recent pipeline: it went <strong>0-for-3 in Phase 3 (KOASTAL-1, -2, -3), and its developer discontinued the program in June 2026</strong> <span class="mx-tag mx-failed">Failed</span>, cutting roughly a third of its workforce. Other kappa-directed and opioid-modulating approaches (including buprenorphine-based combinations) continue, but the kappa-antagonist thesis for depression took a hard hit. It is a useful teaching case for why negative trials deserve as much attention as positive ones.</p>
+
+      <span class="mx-tier">Frontier</span>
+      <h2>Psychedelics and the supervised-dosing model</h2>
+
+      <p>Psychedelic-assisted therapy proposes something structurally new: a small number of supervised dosing sessions, paired with psychotherapy, rather than a daily pill. <strong>COMP360</strong>, a synthetic psilocybin formulation, has posted <strong>positive Phase 3 data in treatment-resistant depression</strong> <span class="mx-tag mx-late">Late pipeline</span>, advancing a mechanism (5-HT2A agonism driving acute neuroplasticity) that is as much about the therapeutic context as the molecule. The regulatory and logistical questions are formidable — how to standardize supervised dosing, credential therapists, and reimburse hours-long sessions — and the field absorbed a major setback when the FDA issued a complete response letter for MDMA-assisted therapy in 2024 over trial-conduct and functional-unblinding concerns. Psychedelics may prove the hardest case of all for a regulatory system built around pills, even where efficacy signals are strong.</p>
+
+      <span class="mx-tier">Frontier</span>
+      <h2>Where peptides and biologics enter the picture</h2>
+
+      <p>The newest expansion is not a neurotransmitter system at all but a shift in <em>molecule type</em>: peptides and biologics crossing from metabolism and immunology into psychiatry. GLP-1/GIP incretin peptides such as semaglutide, tirzepatide, and the investigational <strong>brenipatide</strong> (in Phase 3 adjunctive depression) act on reward, neuroinflammation, and insulin signaling; anti-cytokine monoclonal antibodies such as <strong>tocilizumab</strong> and <strong>canakinumab</strong> test the inflammation hypothesis of depression and psychosis directly. Because this is a large topic with its own regulatory drama — including a July 2026 FDA advisory meeting on compounded peptides — it has its own dedicated chapter. For the purposes of this map, note simply that "beyond monoamines" now also means "beyond small molecules."</p>
+
+      <span class="mx-tier">Synthesis</span>
+      <h2>The 2025–26 scoreboard: wins, misses, and pending</h2>
+
+      <p>The most honest way to summarize the current pipeline is not a list of promises but a ledger of results. The pattern is striking: the depression and sleep–wake spaces have produced genuine wins, while schizophrenia's non-dopaminergic bets have mostly stumbled.</p>
+
+      <table class="mx-table">
+        <caption>Selected late-stage psychiatric pipeline outcomes, 2024–2026. Status reflects the most recent pivotal readout or regulatory action at the time of writing.</caption>
+        <thead>
+          <tr><th>Agent</th><th>Mechanism</th><th>Indication</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Xanomeline–trospium (Cobenfy)</td><td>M1/M4 muscarinic agonist</td><td>Schizophrenia</td><td><span class="mx-tag mx-approved">Approved</span> 2024 (monotherapy); adjunctive ARISE <span class="mx-tag mx-failed">missed</span></td></tr>
+          <tr><td>Dextromethorphan–bupropion (Auvelity)</td><td>NMDA antagonist / sigma-1</td><td>MDD; Alzheimer's agitation</td><td><span class="mx-tag mx-approved">Approved</span> (agitation added 2026)</td></tr>
+          <tr><td>Zuranolone (Zurzuvae)</td><td>GABA-A neurosteroid</td><td>Postpartum depression</td><td><span class="mx-tag mx-approved">Approved</span></td></tr>
+          <tr><td>Centanafadine</td><td>NE–DA–5HT reuptake (NDSRI)</td><td>ADHD</td><td><span class="mx-tag mx-late">PDUFA 7/24/2026</span></td></tr>
+          <tr><td>Solriamfetol (Sunosi)</td><td>DA–NE reuptake</td><td>ADHD (FOCUS), EDS</td><td><span class="mx-tag mx-late">Phase 3 positive in ADHD</span></td></tr>
+          <tr><td>COMP360 psilocybin</td><td>5-HT2A agonist</td><td>Treatment-resistant depression</td><td><span class="mx-tag mx-late">Phase 3 positive</span></td></tr>
+          <tr><td>Osavampator / NBI-1065845</td><td>AMPA positive modulator</td><td>MDD (adjunctive)</td><td><span class="mx-tag mx-late">Phase 3 / late</span></td></tr>
+          <tr><td>Evenamide</td><td>Glutamate-release modulator</td><td>Treatment-resistant schizophrenia</td><td><span class="mx-tag mx-late">Phase 3 enrolling</span></td></tr>
+          <tr><td>Emraclidine</td><td>M4-selective agonist</td><td>Schizophrenia</td><td><span class="mx-tag mx-failed">Phase 2 failed</span></td></tr>
+          <tr><td>Ulotaront</td><td>TAAR1 agonist</td><td>Schizophrenia</td><td><span class="mx-tag mx-failed">Phase 3 missed</span></td></tr>
+          <tr><td>Navacaprant</td><td>Kappa-opioid antagonist</td><td>MDD</td><td><span class="mx-tag mx-failed">0/3 Phase 3; halted</span></td></tr>
+        </tbody>
+      </table>
+
+      <p>Two lessons fall out of this ledger. First, <strong>mechanistic novelty does not equal clinical success</strong>: emraclidine, ulotaront, and navacaprant were all elegant, well-reasoned bets that did not survive adequately powered testing. Second, <strong>context of use matters as much as the molecule</strong>: xanomeline–trospium is simultaneously an approved monotherapy and a failed adjunct, depending on the trial design. For clinicians, the practical takeaway is to treat every "breakthrough" headline as a Phase 2 promissory note until the pivotal data land, and to read negative trials as carefully as positive ones.</p>
+
+      <h2>Conclusion</h2>
+
+      <p>The monoamine and dopamine hypotheses were not wrong — they were incomplete. What the modern pipeline reflects is a field that has finally accumulated enough mechanistic understanding to test genuinely different biology: cholinergic tone in psychosis, glutamatergic plasticity in depression, neurosteroid modulation in postpartum illness, orexin in the sleep–wake axis, and the immune and metabolic systems as legitimate psychiatric targets. Some of these bets are already reshaping practice (esketamine, zuranolone, Cobenfy, the orexin agents), some are imminent (centanafadine), and many have failed instructively. For the trainee, the message is that the textbook is being rewritten in real time. For the experienced clinician, it is that the next decade of prescribing will demand fluency in mechanisms that were footnotes in residency. The companion chapters take three of these threads — peptides and biologics, the orexin system, and the specific state of schizophrenia and bipolar development — and follow them to the clinic.</p>
