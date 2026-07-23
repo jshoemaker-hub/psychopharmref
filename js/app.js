@@ -464,11 +464,11 @@ document.querySelectorAll('.nav-sub-link').forEach(link => {
   });
 });
 
-// Home link — the Drug Database is the home page
-document.querySelectorAll('.nav-link[data-section="drug-table"]').forEach(link => {
+// Home link — the home hub (overview) is the landing page
+document.querySelectorAll('.nav-link[data-section="overview"]').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-    switchSection('drug-table', true);
+    switchSection('overview', true);
   });
 });
 
@@ -488,11 +488,11 @@ function applyHashNavigation() {
 
 // On initial load: if the URL includes a valid #section-id (e.g., coming
 // from a blog post sidebar link), activate that section; otherwise land on
-// the Drug Database, which is the site's home page.
+// the home hub (overview), the site's navigation landing page.
 if (sectionFromHash()) {
   applyHashNavigation();
 } else {
-  switchSection('drug-table', true);
+  switchSection('overview', true);
 }
 
 // Keep the SPA in sync with browser-level hash changes.
@@ -554,6 +554,9 @@ function renderStats() {
 function initQuickSearch() {
   const input = document.getElementById('quick-search');
   const dropdown = document.getElementById('search-results');
+  // The home hub now uses the unified search widget instead of this drug-only
+  // quick search, so these elements may not exist — bail out safely if so.
+  if (!input || !dropdown) return;
 
   input.addEventListener('input', () => {
     const q = input.value.trim().toLowerCase();
@@ -2062,9 +2065,19 @@ document.getElementById('tisdale-copy-btn').addEventListener('click', function()
   });
 });
 
+/* ── Home ticker: duplicate the item set for a seamless marquee loop ─────── */
+function initHomeTicker() {
+  const track = document.getElementById('home-ticker-track');
+  if (!track) return;
+  const set = track.querySelector('.tk-set');
+  if (!set) return;
+  track.appendChild(set.cloneNode(true));
+}
+
 /* ── Init ───────────────────────────────────────────────────────────────── */
 renderStats();
 initQuickSearch();
+initHomeTicker();
 renderDrugTable();
 renderP450Table();
 populateDrugSelect();

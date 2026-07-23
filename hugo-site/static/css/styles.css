@@ -2979,6 +2979,116 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
 .btn-sub--disabled:hover { background: rgba(255,255,255,0.06); color: var(--text-muted); border-color: var(--border); }
 .info-card--soon { opacity: 0.6; }
 
+/* ── Home Hub ───────────────────────────────────────────────────────────── */
+.home-hero-header { text-align: center; max-width: 720px; margin-left: auto; margin-right: auto; }
+.home-hero-header .section-sub { font-size: 14px; line-height: 1.6; }
+
+/* Hero search — reuses the unified-search widget, styled larger & centered */
+.home-search {
+  max-width: 620px;
+  margin: 0 auto 24px;
+  padding: 0;
+  position: relative;
+}
+.home-search .us-input {
+  padding: 13px 16px 13px 42px;
+  font-size: 15px;
+  border-radius: 9px;
+  background-position: 14px center;
+  background-size: 18px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.home-search .us-results {
+  left: 0; right: 0;
+  border-radius: 0 0 9px 9px;
+}
+
+.home-stats { max-width: 720px; margin-left: auto; margin-right: auto; margin-bottom: 24px; }
+
+/* Popular & newly added ticker */
+.home-ticker {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0 auto 28px;
+  height: 42px;
+}
+.home-ticker-label {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fff;
+  background: var(--accent);
+}
+.home-ticker-viewport { flex: 1; overflow: hidden; position: relative; }
+.home-ticker-track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  animation: home-ticker-scroll 44s linear infinite;
+  will-change: transform;
+}
+.home-ticker:hover .home-ticker-track { animation-play-state: paused; }
+.tk-set {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 0 22px;
+  flex-shrink: 0;
+}
+.tk-set a {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.tk-set a:hover { color: var(--accent); text-decoration: underline; }
+.tk-tag {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.tk-tag--pop { background: rgba(139,105,20,0.14); color: var(--accent2); }
+.tk-tag--new { background: rgba(74,124,53,0.14); color: var(--accent); }
+@keyframes home-ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-ticker-track { animation: none; }
+  .home-ticker-viewport { overflow-x: auto; }
+}
+
+/* Clickable tile titles */
+.ic-title-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: left;
+}
+.ic-title-btn .ic-icon { font-size: 26px; }
+.ic-title-btn:hover span:last-child { text-decoration: underline; }
+
 /* ── Medication Comparison ──────────────────────────────────────────────── */
 .mc-results-header {
   display: flex;

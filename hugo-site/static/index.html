@@ -41,7 +41,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 
-  <link rel="stylesheet" href="css/styles.css?v=20260720c">
+  <link rel="stylesheet" href="css/styles.css?v=20260722c">
   <link rel="canonical" href="https://psychopharmref.com/">
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
@@ -95,7 +95,7 @@
     <ul class="nav-links">
       <!-- Home -->
       <li>
-        <a href="#" class="nav-link active" data-section="drug-table">Home</a>
+        <a href="#" class="nav-link active" data-section="overview">Home</a>
       </li>
 
       <!-- Psychopharmacology -->
@@ -521,72 +521,119 @@
   <!-- Main Content -->
   <main id="content" role="main" aria-label="Clinical reference content">
 
-    <!-- ── Overview ─────────────────────────────────────────────────────── -->
-    <section id="overview" class="section">
-      <div class="section-header">
+    <!-- ── Home Hub (Overview) ────────────────────────────────────────────── -->
+    <section id="overview" class="section active">
+      <div class="section-header home-hero-header">
         <h2>PsychoPharmRef</h2>
-        <p class="section-sub">Clinical pharmacology reference for psychiatric medications.</p>
+        <p class="section-sub">A clinical psychopharmacology reference for psychiatrists, residents, and students — drug data, interaction checkers, rating scales, printable forms, patient handouts, and evidence-based chapters, all in one place.</p>
       </div>
 
-      <div class="stats-grid" id="stats-grid"></div>
-
-      <div class="overview-search">
-        <input type="text" id="quick-search" placeholder="Quick drug lookup (name or brand)..." autocomplete="off">
-        <div id="search-results" class="search-dropdown"></div>
+      <!-- Hero search (unified: drugs, tools, chapters, glossary) -->
+      <div class="us-wrap home-search">
+        <input type="text" class="us-input" placeholder="Search medications, tools, chapters, glossary…" autocomplete="off" aria-label="Search the whole site">
+        <div class="us-results"></div>
       </div>
 
-      <div class="overview-cards overview-cards--topics">
+      <div class="stats-grid home-stats" id="stats-grid"></div>
+
+      <!-- Popular & Newly Added ticker -->
+      <!-- EDIT: replace the anchors below with your curated Popular / New items.
+           Internal links: onclick="switchSection('SECTION-ID');return false;"
+           Chapter links:  href="/blog/<slug>/"  — the track auto-duplicates for the loop. -->
+      <div class="home-ticker" aria-label="Popular and newly added">
+        <span class="home-ticker-label">Featured</span>
+        <div class="home-ticker-viewport">
+          <div class="home-ticker-track" id="home-ticker-track">
+            <div class="tk-set">
+              <span class="tk-tag tk-tag--pop">Popular</span>
+              <a href="#" onclick="switchSection('drug-table');return false;">Drug Database</a>
+              <a href="#" onclick="switchSection('p450');return false;">P450 Interactions</a>
+              <a href="#" onclick="switchSection('receptor-binding');return false;">Receptor Binding</a>
+              <a href="#" onclick="switchSection('qt-risk');return false;">QT Risk Tool</a>
+              <a href="#" onclick="switchSection('phq9-tool');return false;">PHQ-9</a>
+              <a href="#" onclick="switchSection('panss-tool');return false;">PANSS</a>
+              <span class="tk-tag tk-tag--new">New</span>
+              <a href="/blog/antipsychotic-weight-management/">Antipsychotic Weight Management</a>
+              <a href="#" onclick="switchSection('price-compare');return false;">Price Comparison</a>
+              <a href="#" onclick="switchSection('frailty-tool');return false;">SMI Medical Frailty Scale</a>
+              <a href="#" onclick="switchSection('handouts');return false;">Patient Handouts</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 navigation tiles, one per main section -->
+      <div class="overview-cards overview-cards--topics home-tiles">
         <div class="info-card info-card--topic">
-          <div class="ic-icon">&#128138;</div>
-          <h3>Psychopharmacology</h3>
-          <p>Drug database, P450 enzyme interactions, receptor binding profiles, and receptor pharmacology glossary.</p>
+          <button class="ic-title-btn" onclick="switchSection('drug-table')"><span class="ic-icon">&#128138;</span><span>Psychopharmacology</span></button>
+          <p>Searchable drug database, CYP450 interaction checker, receptor binding profiles, and PK curve comparisons.</p>
           <div class="ic-sub-links">
             <button class="btn-sub" onclick="switchSection('drug-table')">Drug Database</button>
             <button class="btn-sub" onclick="switchSection('p450')">P450 Interactions</button>
-            <button class="btn-sub" onclick="switchSection('receptor-binding')">Receptor Binding</button>
-            <button class="btn-sub" onclick="switchSection('glossary')">Receptor Glossary</button>
+            <button class="btn-sub" onclick="switchSection('receptor-binding')">Binding Profiles</button>
+            <button class="btn-sub" onclick="switchSection('pk-curves')">PK Curves</button>
           </div>
         </div>
         <div class="info-card info-card--topic">
-          <div class="ic-icon">&#128214;</div>
-          <h3>Glossary</h3>
-          <p>Psychiatry-specific language with concise definitions, cross-links, and tool/chapter references. Search the bar above for instant inline previews.</p>
+          <button class="ic-title-btn" onclick="switchSection('psychiatry-glossary')"><span class="ic-icon">&#128214;</span><span>Glossary</span></button>
+          <p>Psychiatry-specific language with concise definitions, cross-links, and tool/chapter references.</p>
           <div class="ic-sub-links">
             <button class="btn-sub" onclick="switchSection('psychiatry-glossary')">All Terms</button>
             <button class="btn-sub" onclick="switchSection('psychiatry-glossary');window.glossarySetCategory&amp;&amp;window.glossarySetCategory('Phenomenology')">Phenomenology</button>
             <button class="btn-sub" onclick="switchSection('psychiatry-glossary');window.glossarySetCategory&amp;&amp;window.glossarySetCategory('Eponyms &amp; Syndromes')">Eponyms</button>
-            <button class="btn-sub" onclick="switchSection('psychiatry-glossary');window.glossarySetCategory&amp;&amp;window.glossarySetCategory('Defense Mechanisms')">Defenses</button>
           </div>
         </div>
         <div class="info-card info-card--topic">
-          <div class="ic-icon">&#128295;</div>
-          <h3>Clinical Tools</h3>
-          <p>Interactive clinical decision support tools for QT prolongation risk assessment and medication refill scheduling.</p>
+          <button class="ic-title-btn" onclick="switchSection('qt-risk')"><span class="ic-icon">&#128295;</span><span>Clinical Tools</span></button>
+          <p>Interactive decision support and 25+ validated rating scales, each with a copy-to-EMR report.</p>
           <div class="ic-sub-links">
-            <button class="btn-sub" onclick="switchSection('qt-risk')">QT Risk Tool</button>
-            <button class="btn-sub" onclick="switchSection('refill-calendar')">Refill Calendar</button>
-            <button class="btn-sub" onclick="switchSection('med-compare')">Med Comparison</button>
-            <button class="btn-sub" onclick="switchSection('med-taper')">Taper / Start</button>
+            <button class="btn-sub" onclick="switchSection('qt-risk')">QT Risk</button>
+            <button class="btn-sub" onclick="switchSection('phq9-tool')">PHQ-9</button>
+            <button class="btn-sub" onclick="switchSection('panss-tool')">PANSS</button>
+            <button class="btn-sub" onclick="switchSection('suicide-risk-tools')">Suicide Risk</button>
           </div>
         </div>
         <div class="info-card info-card--topic">
-          <div class="ic-icon">&#129504;</div>
-          <h3>Neuroscience</h3>
-          <p>Neuropsychiatric cognitive domains, classic neurocircuits, and brain region involvement across major psychiatric diagnoses.</p>
+          <button class="ic-title-btn" onclick="switchSection('print-forms')"><span class="ic-icon">&#128424;</span><span>Printable Forms</span></button>
+          <p>Print-ready documentation, medication safety, and screening forms for the clinic and chart.</p>
+          <div class="ic-sub-links">
+            <button class="btn-sub" onclick="switchSection('print-forms')">All Forms</button>
+            <button class="btn-sub" onclick="ppGoSection('print-forms','pf-cat-docs')">Documentation</button>
+            <button class="btn-sub" onclick="ppGoSection('print-forms','pf-cat-meds')">Medication Safety</button>
+          </div>
+        </div>
+        <div class="info-card info-card--topic">
+          <button class="ic-title-btn" onclick="switchSection('handouts')"><span class="ic-icon">&#128196;</span><span>Handouts</span></button>
+          <p>Plain-language patient education on therapy skills, diagnoses, and psychiatric medications.</p>
+          <div class="ic-sub-links">
+            <button class="btn-sub" onclick="switchSection('handouts')">All Handouts</button>
+            <a href="/handouts/ssris.html" class="btn-sub">SSRIs</a>
+            <a href="/handouts/safety-plan.html" class="btn-sub">Safety Plan</a>
+          </div>
+        </div>
+        <div class="info-card info-card--topic">
+          <button class="ic-title-btn" onclick="switchSection('cog-domains')"><span class="ic-icon">&#129504;</span><span>Neuroscience</span></button>
+          <p>Cognitive domains, classic neurocircuits, brain-region involvement, and a 3D brain explorer.</p>
           <div class="ic-sub-links">
             <button class="btn-sub" onclick="switchSection('cog-domains')">Cognitive Domains</button>
-            <button class="btn-sub" onclick="switchSection('neuro-circuits')">Neuropsych Circuits</button>
-            <button class="btn-sub" onclick="switchSection('brain-regions')">Brain Regions</button>
+            <button class="btn-sub" onclick="switchSection('neuro-circuits')">Circuits</button>
+            <button class="btn-sub" onclick="switchSection('brain-explorer')">3D Explorer</button>
           </div>
         </div>
         <div class="info-card info-card--topic">
-          <div class="ic-icon">&#9998;</div>
-          <h3>Chapters</h3>
-          <p>Clinical commentary, pharmacology explainers, and case-based learning.</p>
+          <button class="ic-title-btn" onclick="switchSection('blog-index')"><span class="ic-icon">&#9998;</span><span>Chapters</span></button>
+          <p>Evidence-based clinical commentary, pharmacology explainers, and case-based learning.</p>
           <div class="ic-sub-links">
-            <button class="btn-sub" onclick="switchSection('blog-index')">All Posts (97 articles)</button>
-            <a href="blog/smoking-cessation.html" class="btn-sub">Smoking Cessation</a>
-            <a href="blog/obesity-weight-loss.html" class="btn-sub">Obesity &amp; Weight Loss</a>
+            <button class="btn-sub" onclick="switchSection('blog-index')">All Chapters</button>
+            <a href="/blog/smoking-cessation/" class="btn-sub">Smoking Cessation</a>
+            <a href="/blog/alcohol-use-disorder/" class="btn-sub">Alcohol Use Disorder</a>
+          </div>
+        </div>
+        <div class="info-card info-card--topic">
+          <button class="ic-title-btn" onclick="switchSection('question-bank')"><span class="ic-icon">&#127891;</span><span>QBank</span></button>
+          <p>Board-style practice questions with detailed explanations for exam prep and self-study.</p>
+          <div class="ic-sub-links">
+            <button class="btn-sub" onclick="switchSection('question-bank')">Question Bank</button>
           </div>
         </div>
       </div>
@@ -607,7 +654,7 @@
     </section>
 
     <!-- ── Drug Database ─────────────────────────────────────────────────── -->
-    <section id="drug-table" class="section active">
+    <section id="drug-table" class="section">
       <div class="section-header">
         <h2>Drug Database</h2>
         <div class="table-controls">
@@ -12667,9 +12714,9 @@
 
   <script defer src="js/data.js?v=20260719d"></script>
   <script defer src="js/routes.js?v=20260719d"></script>
-  <script defer src="js/app.js?v=20260720e"></script>
+  <script defer src="js/app.js?v=20260722c"></script>
   <script defer src="js/glossary-data.js?v=20260719d"></script>
   <script defer src="js/glossary-page.js?v=20260719d"></script>
-  <script defer src="js/search.js?v=20260722b"></script>
+  <script defer src="js/search.js?v=20260722c"></script>
 </body>
 </html>

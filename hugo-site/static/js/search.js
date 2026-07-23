@@ -1,7 +1,8 @@
 (function() {
-    var input = document.getElementById('us-input');
-    var results = document.getElementById('us-results');
-    if (!input || !results) return;
+    // Support multiple search widgets on the page (sidebar + home hero).
+    // Each widget is a .us-wrap containing a .us-input and a .us-results.
+    var wraps = document.querySelectorAll('.us-wrap');
+    if (!wraps.length) return;
 
     // ── Blog content index (loaded from JSON) ────────────────────────────
     var blogContentIndex = null;  // will be an array once loaded
@@ -68,35 +69,50 @@
       { title: 'Printable Clinical Forms', section: 'print-forms', cat: 'Clinical Tools' },
     ];
 
-    var timer;
-    input.addEventListener('input', function() {
-      clearTimeout(timer);
-      timer = setTimeout(doSearch, 120);
-    });
+    // Close every open results dropdown (used by inline result onclicks).
+    window.__usCloseAll = function() {
+      document.querySelectorAll('.us-results').forEach(function(r) { r.classList.remove('open'); });
+    };
 
-    input.addEventListener('keydown', function(e) {
-      var items = results.querySelectorAll('.us-item');
-      var focused = results.querySelector('.us-item:focus');
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        if (!focused && items.length) items[0].focus();
-        else if (focused && focused.nextElementSibling && focused.nextElementSibling.classList.contains('us-item')) focused.nextElementSibling.focus();
-        else if (focused && focused.nextElementSibling && focused.nextElementSibling.nextElementSibling) focused.nextElementSibling.nextElementSibling.focus();
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        if (focused && focused.previousElementSibling && focused.previousElementSibling.classList.contains('us-item')) focused.previousElementSibling.focus();
-        else input.focus();
-      } else if (e.key === 'Escape') {
-        results.classList.remove('open');
-        input.blur();
-      }
-    });
-
+    // Close all dropdowns when clicking outside any search widget.
     document.addEventListener('click', function(e) {
-      if (!e.target.closest('.us-wrap')) results.classList.remove('open');
+      if (!e.target.closest('.us-wrap')) window.__usCloseAll();
     });
 
-    function doSearch() {
+    // Wire up each search widget instance.
+    wraps.forEach(function(wrap) {
+      var input = wrap.querySelector('.us-input');
+      var results = wrap.querySelector('.us-results');
+      if (input && results) initWidget(input, results);
+    });
+
+    function initWidget(input, results) {
+      var timer;
+      input.addEventListener('input', function() {
+        clearTimeout(timer);
+        timer = setTimeout(function() { doSearch(input, results); }, 120);
+      });
+
+      input.addEventListener('keydown', function(e) {
+        var items = results.querySelectorAll('.us-item');
+        var focused = results.querySelector('.us-item:focus');
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (!focused && items.length) items[0].focus();
+          else if (focused && focused.nextElementSibling && focused.nextElementSibling.classList.contains('us-item')) focused.nextElementSibling.focus();
+          else if (focused && focused.nextElementSibling && focused.nextElementSibling.nextElementSibling) focused.nextElementSibling.nextElementSibling.focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (focused && focused.previousElementSibling && focused.previousElementSibling.classList.contains('us-item')) focused.previousElementSibling.focus();
+          else input.focus();
+        } else if (e.key === 'Escape') {
+          results.classList.remove('open');
+          input.blur();
+        }
+      });
+    }
+
+    function doSearch(input, results) {
       var q = input.value.trim().toLowerCase();
       if (!q || q.length < 2) { results.classList.remove('open'); results.innerHTML = ''; return; }
       var terms = q.split(/\s+/);
@@ -113,7 +129,7 @@
         if (drugMatches.length) {
           html += '<div class="us-group-label">Medications</div>';
           drugMatches.forEach(function(m) {
-            html += '<div class="us-item" tabindex="0" onclick="switchSection(\'drug-table\');openDrugModal(\'' + m.id + '\');document.getElementById(\'us-results\').classList.remove(\'open\');">' +
+            html += '<div class="us-item" tabindex="0" onclick="switchSection(\'drug-table\');openDrugModal(\'' + m.id + '\');window.__usCloseAll();">' +
               '<span class="us-item-type us-item-type--drug">Drug</span>' +
               '<span class="us-item-title">' + hl(m.name, terms) + '</span>' +
               '<span class="us-item-sub">' + m.brandName + ' &bull; ' + m.class + '</span>' +
@@ -154,7 +170,7 @@
       if (toolMatches.length) {
         html += '<div class="us-group-label">Tools & Scales</div>';
         toolMatches.forEach(function(t) {
-          html += '<div class="us-item" tabindex="0" onclick="switchSection(\'' + t.section + '\');document.getElementById(\'us-results\').classList.remove(\'open\');">' +
+          html += '<div class="us-item" tabindex="0" onclick="switchSection(\'' + t.section + '\');window.__usCloseAll();">' +
             '<span class="us-item-type us-item-type--tool">Tool</span>' +
             '<span class="us-item-title">' + hl(t.title, terms) + '</span>' +
             '<span class="us-item-sub">' + t.cat + '</span>' +
@@ -170,7 +186,7 @@
           html += '<div class="us-group-label">Glossary</div>';
           glossMatches.forEach(function(g) {
             var slug = g.term.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-            html += '<div class="us-item us-item--glossary" tabindex="0" onclick="window.glossaryScrollToTerm &amp;&amp; window.glossaryScrollToTerm(\'' + g.term.replace(/\\/g,'\\\\').replace(/\'/g,"\\'") + '\');document.getElementById(\'us-results\').classList.remove(\'open\');">' +
+            html += '<div class="us-item us-item--glossary" tabindex="0" onclick="window.glossaryScrollToTerm &amp;&amp; window.glossaryScrollToTerm(\'' + g.term.replace(/\\/g,'\\\\').replace(/\'/g,"\\'") + '\');window.__usCloseAll();">' +
               '<span class="us-item-type us-item-type--gloss">Term</span>' +
               '<span class="us-item-title">' + hl(g.term, terms) + '</span>' +
               '<span class="us-item-sub">' + escHtml(g.category) + '</span>' +
