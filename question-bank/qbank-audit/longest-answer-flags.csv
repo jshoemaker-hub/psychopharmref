@@ -300,6 +300,7 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 981,22. Psychopharmacology,109,45,64,Consider extended-release formulations or twice-daily dosing to provide sustained coverage throughout the day
 1249,22. Psychopharmacology,118,54,64,"A prodrug (dextroamphetamine bonded to lysine) cleaved after absorption, smoothing levels and reducing abuse potential"
 1267,3. Schizophrenia Spectrum,131,67,64,It justifies systematic medical workup at first presentation and trying multiple agents rather than insisting the first should work
+1492,29. Neuroscience & Neuroanatomy,110,46,64,"Inability to recognize previously identifiable stimuli despite intact primary sensation, and modality-specific"
 12,4. Bipolar and Related Disorders,96,33,63,"Presence of hypomanic (not manic) episodes and major depressive episodes, without manic episodes"
 68,13. Sleep-Wake Disorders,100,37,63,Long-term efficacy decreases due to tolerance; psychological dependence can develop with chronic use
 338,22. Psychopharmacology,85,22,63,Achieves higher blood levels at standard doses; lower doses or alternatives necessary
@@ -410,6 +411,7 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 838,16. Substance-Related Disorders,129,76,53,Advise against discontinuing even temporarily; MOUD requires continuous dosing for sustained effectiveness and relapse prevention
 914,22. Psychopharmacology,125,72,53,"Antipsychotic augmentation (aripiprazole, quetiapine) shows evidence for improving outcomes in treatment-resistant depression"
 944,22. Psychopharmacology,134,81,53,"General anesthesia with muscle relaxant; patient is anesthetized, monitored, and seizure is safely induced under controlled conditions"
+1495,29. Neuroscience & Neuroanatomy,105,52,53,SLUMS uses education-adjusted scoring and requires no certification; MoCA requires training/certification
 346,22. Psychopharmacology,77,25,52,Allows paroxetine anticholinergic/sexual effects resolution before sertraline
 458,"27. Forensic, Ethics, and Legal Issues",147,95,52,"The clinical question assumes patient well-being is paramount; the legal question seeks truth, which may not serve the evaluated person's interests"
 574,22. Psychopharmacology,116,64,52,"Benzodiazepines have stronger evidence, but magnesium offers better long-term safety profile without dependence risk"
@@ -511,6 +513,8 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 937,22. Psychopharmacology,111,67,44,"Benzodiazepines depress respiration; combined with COPD, they increase hypercapnia and respiratory failure risk"
 1080,"27. Forensic, Ethics, and Legal Issues",108,64,44,"Disability under these statutes is functional, not diagnostic — a diagnosis can support but not establish it"
 1189,21. Other Conditions,104,60,44,"Largely administrative and custodial — admissions, discharges, supervising attendants, maintaining order"
+1408,29. Neuroscience & Neuroanatomy,102,58,44,Antagonism underlies second-generation antipsychotic action; agonism underlies classical hallucinogens
+1451,29. Neuroscience & Neuroanatomy,91,47,44,"They have minimal 5-HT2A antagonism, unlike the balanced D2/5-HT2A second-generation agents"
 39,7. OCD and Related Disorders,72,29,43,"Add low-dose antipsychotic (e.g., aripiprazole) to enhance SSRI response"
 85,16. Substance-Related Disorders,117,74,43,It increases case identification of moderately affected individuals who previously fell between diagnostic categories
 158,24. Psychiatric Emergencies,119,76,43,Cognitive behavioral therapy for suicide prevention (CBT-SP) with documented follow-up appointments and safety planning
@@ -546,6 +550,7 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1211,17. Neurocognitive Disorders,119,77,42,"A medical emergency mislabeled as agitation, signaling underlying medical illness — not a primary psychiatric diagnosis"
 1220,24. Psychiatric Emergencies,89,47,42,"Within the first 1–4 weeks of starting an antidepressant, especially in patients under 25"
 1232,22. Psychopharmacology,97,55,42,Each H-bond a drug makes with water must be broken to slip through the membrane's greasy interior
+1411,29. Neuroscience & Neuroanatomy,96,54,42,Many patients respond poorly to serotonergic monotherapy and other systems are also dysregulated
 15,4. Bipolar and Related Disorders,91,50,41,Antidepressant monotherapy should be avoided; combine with mood stabilizer or antipsychotic
 139,22. Psychopharmacology,129,88,41,"Benzodiazepines increase falls and fractures through cognitive impairment, motor effects, and altered pharmacokinetics in elderly"
 343,22. Psychopharmacology,72,31,41,"Requires strategies: dose reduction, alternative medications, monitoring"
@@ -599,6 +604,7 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1099,21. Other Conditions,95,57,38,"Pre-tax contributions, tax-free growth, and tax-free withdrawals for qualified medical expenses"
 1219,22. Psychopharmacology,90,52,38,"The reactions are idiosyncratic, can be fatal, and are most common in the first six months"
 1243,22. Psychopharmacology,111,73,38,"High PSA plus P-glycoprotein efflux keep it out of the CNS; overdose overwhelms P-gp, causing QT and arrhythmia"
+1461,29. Neuroscience & Neuroanatomy,92,54,38,Reward and reinforcement; anhedonia with low DA and positive psychotic symptoms with high DA
 96,16. Substance-Related Disorders,127,90,37,"It initially focused on white, middle-class populations but has now broadened to disproportionately affect communities of color"
 165,20. Medication-Induced Movement Disorders,73,36,37,Marked elevation of creatine kinase (CK) reflecting severe rhabdomyolysis
 576,22. Psychopharmacology,100,63,37,"Explain that magnesium can cause hypermagnesemia, diarrhea, and drug interactions at excessive doses"
@@ -612,6 +618,9 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 952,22. Psychopharmacology,86,49,37,Frequency and intensity of suicidal ideation (0-4 scale) and suicidal behavior history
 1083,"27. Forensic, Ethics, and Legal Issues",97,60,37,"Broadly — it is not a demanding standard, and episodic conditions qualify if limiting when active"
 1202,21. Other Conditions,92,55,37,"Mostly 30-minute medication management visits, plus a smaller private psychotherapy caseload"
+1442,29. Neuroscience & Neuroanatomy,91,54,37,"Bupropion, because anhedonia reflects dopamine deficiency and it avoids sexual side effects"
+1443,29. Neuroscience & Neuroanatomy,95,58,37,"High-dose SSRI or glutamate-modulating augmentation, given glutamate excess in OFC–ACC circuits"
+1476,29. Neuroscience & Neuroanatomy,128,91,37,ADHD: underactive fronto-striatal signaling; OCD: hyperactive orbitofrontal loop; Parkinson: dopamine depletion in motor putamen
 124,22. Psychopharmacology,87,51,36,M3 muscarinic antagonism impairing glucose regulation and increasing insulin resistance
 218,3. Schizophrenia Spectrum,123,87,36,"Early recognition and treatment can improve outcomes, potentially affecting the disease trajectory and functional prognosis"
 233,24. Psychiatric Emergencies,98,62,36,"De-escalation and safety assessment, followed by appropriate medical and psychiatric interventions"
@@ -628,6 +637,9 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1081,"27. Forensic, Ethics, and Legal Issues",91,55,36,A physical or mental impairment that substantially limits one or more major life activities
 1190,21. Other Conditions,78,42,36,Kraepelin's distinction between dementia praecox and manic-depressive insanity
 1271,17. Neurocognitive Disorders,105,69,36,"Dementia syndrome (phenomenology), Alzheimer disease (pathology), cognitive failure (late-stage function)"
+1428,29. Neuroscience & Neuroanatomy,84,48,36,NMDA antagonism leading to increased AMPA trafficking and BDNF-driven synaptogenesis
+1439,29. Neuroscience & Neuroanatomy,78,42,36,"Obsessive-compulsive disorder, via circuit hyperactivity and hyperconnectivity"
+1480,29. Neuroscience & Neuroanatomy,94,58,36,"DBS target selection, neuropsychiatric differential diagnosis, and neuroimaging interpretation"
 9,4. Bipolar and Related Disorders,43,8,35,7 consecutive days (or any hospitalization)
 45,8. Trauma- and Stressor-Related Disorders,62,27,35,Prolonged Exposure (PE) and Cognitive Processing Therapy (CPT)
 103,17. Neurocognitive Disorders,113,78,35,He distinguished delirium from primary psychiatric illness and emphasized its association with medical conditions
@@ -643,6 +655,7 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1040,1. Assessment Fundamentals,89,54,35,"Magnetic fields pass through skull and scalp without distortion, unlike electrical fields"
 1075,"27. Forensic, Ethics, and Legal Issues",104,69,35,Decline — no such federal document exists and public access does not run through a clinician's signature
 1260,1. Assessment Fundamentals,90,55,35,Phenotypic classification is the only kind possible when the underlying biology is unknown
+1431,29. Neuroscience & Neuroanatomy,86,51,35,Partial agonism that reduces craving while blocking full activation by cigarette smoke
 4,3. Schizophrenia Spectrum,77,43,34,Generally favorable response to antipsychotics with better long-term outcomes
 172,2. Neurodevelopmental Disorders,55,21,34,Stimulant medications (methylphenidate or amphetamines)
 259,23. Psychotherapy and Non-Pharmacologic,116,82,34,Rolling with resistance rather than meeting it directly reduces client defensiveness and encourages self-exploration
@@ -655,6 +668,8 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 892,22. Psychopharmacology,103,69,34,"Tricyclic antidepressants, which have significant anticholinergic effects that worsen urinary retention"
 1032,17. Neurocognitive Disorders,93,59,34,"Dementia with Lewy bodies from Alzheimer disease, and Parkinson disease from essential tremor"
 1114,21. Other Conditions,94,60,34,A fee-only fiduciary (via NAPFA or XY Planning Network) rather than a commission-based advisor
+1469,29. Neuroscience & Neuroanatomy,86,52,34,"Amygdala volume enlargement in bipolar disorder, opposite to the reduction seen in MDD"
+1489,29. Neuroscience & Neuroanatomy,104,70,34,"Alzheimer impairs encoding, recall, and recognition; frontostriatal often spares recognition/cued recall"
 28,6. Anxiety Disorders,40,7,33,6 months of excessive worry on most days
 37,7. OCD and Related Disorders,61,28,33,8-12 weeks of consistent high-dose treatment for full benefit
 590,22. Psychopharmacology,114,81,33,Semaglutide (appetite suppression) produces greater weight loss (~10-15% body weight) compared to orlistat (~5-7%)
@@ -679,6 +694,7 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 879,22. Psychopharmacology,104,72,32,Mirtazapine's alpha-2 antagonism and sedation may provide migraine prophylaxis through muscle relaxation
 1194,"27. Forensic, Ethics, and Legal Issues",95,63,32,Funding community services and accelerating closure of state hospitals (deinstitutionalization)
 1205,21. Other Conditions,98,66,32,Each era inherits the institutional infrastructure of the previous era and only slowly remodels it
+1447,29. Neuroscience & Neuroanatomy,79,47,32,Mood disorders may involve an altered balance between inhibition and excitation
 128,22. Psychopharmacology,98,67,31,LAI agents demonstrate superior adherence and prevent relapse through sustained therapeutic levels
 129,22. Psychopharmacology,66,35,31,Polyuric nephrogenic diabetes insipidus and chronic kidney disease
 241,8. Trauma- and Stressor-Related Disorders,56,25,31,Normal grief response with some common grief experiences
@@ -715,6 +731,7 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1217,20. Medication-Induced Movement Disorders,70,40,30,"Dehydration, NSAIDs, ACE-inhibitors, thiazides, or acute kidney injury"
 1225,24. Psychiatric Emergencies,114,84,30,"Pinpoint pupils, respiratory depression, and somnolence; naloxone, and co-screen for acetaminophen and salicylates"
 1252,1. Assessment Fundamentals,87,57,30,"The disciplined description of what we can see, hear, and measure before explaining why"
+1422,29. Neuroscience & Neuroanatomy,76,46,30,"Impulse-control disorders such as gambling and hypersexuality, and psychosis"
 118,22. Psychopharmacology,94,65,29,SERT (serotonin transporter) blockade on platelet aggregation and central serotonergic effects
 305,16. Substance-Related Disorders,71,42,29,"Synthetic cannabinoids (K2, Spice) or synthetic cathinones (bath salts)"
 322,22. Psychopharmacology,55,26,29,Aripiprazole; minimal weight gain and metabolic effects
@@ -726,6 +743,7 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 671,1. Assessment Fundamentals,83,54,29,Publication does not guarantee validity; incentives can influence what is published
 864,22. Psychopharmacology,81,52,29,"Tricyclic antidepressants, because their anticholinergic effects impair cognition"
 1237,22. Psychopharmacology,91,62,29,The free (active) level is elevated despite a normal total; check or correct the free level
+1424,29. Neuroscience & Neuroanatomy,71,42,29,"Orthostatic hypotension and dizziness, raising fall risk in the elderly"
 138,22. Psychopharmacology,99,71,28,Allosteric positive modulation that enhances GABA's effect without directly activating the receptor
 326,22. Psychopharmacology,55,27,28,Gradually over 5-7 days; bridge therapy often necessary
 332,22. Psychopharmacology,52,24,28,"Sertraline 24h, fluoxetine 48-72h, paroxetine 15-20h"
@@ -740,6 +758,8 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1058,3. Schizophrenia Spectrum,75,47,28,Treatment-resistant schizophrenia and reducing suicidality in schizophrenia
 1079,"27. Forensic, Ethics, and Legal Issues",96,68,28,Prove enough and disclose nothing else — establish disability and need using functional language
 1090,"27. Forensic, Ethics, and Legal Issues",87,59,28,This is the structural pattern of an 'ESA letter mill' and is widely considered invalid
+1434,29. Neuroscience & Neuroanatomy,83,55,28,"At those doses its H1 antagonism predominates, acting like a sedating antihistamine"
+1470,29. Neuroscience & Neuroanatomy,103,75,28,Striatal blockade reduces positive symptoms while DLPFC blockade may worsen negative/cognitive symptoms
 31,6. Anxiety Disorders,75,48,27,"Risk of dependence and tolerance, with rebound anxiety upon discontinuation"
 97,17. Neurocognitive Disorders,94,67,27,"Disturbed attention and awareness with reduced ability to direct, focus, and sustain attention"
 334,22. Psychopharmacology,50,23,27,Narrow therapeutic window with variable metabolism
@@ -752,6 +772,8 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1095,21. Other Conditions,90,63,27,Make 120 qualifying monthly IDR payments while working full-time for a qualifying employer
 1197,21. Other Conditions,79,52,27,When one field captures a new technology the other does not yet know how to use
 1263,1. Assessment Fundamentals,84,57,27,"As 'the leukemias' splintered into AML, ALL, CLL, CML and further molecular subtypes"
+1406,29. Neuroscience & Neuroanatomy,104,77,27,"Increased serotonin activates presynaptic 5-HT1A autoreceptors, paradoxically reducing serotonin release"
+1445,29. Neuroscience & Neuroanatomy,85,58,27,It is FDA-approved for treatment-resistant depression and depression with suicidality
 8,3. Schizophrenia Spectrum,81,55,26,Enhanced reliability and documented baseline severity for longitudinal assessment
 168,20. Medication-Induced Movement Disorders,51,25,26,"Hyperreflexia, clonus, and tremor occurring rapidly"
 212,22. Psychopharmacology,83,57,26,Agranulocytosis and other serious adverse effects that could be fatal if undetected
@@ -766,6 +788,9 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1023,22. Psychopharmacology,84,58,26,The risk of destabilization or relapse almost always outweighs the metabolic benefit
 1245,22. Psychopharmacology,85,59,26,"Stripping the fused-ring scaffold to remove H1, muscarinic, and α1 off-target binding"
 1248,22. Psychopharmacology,84,58,26,Attaching a fatty-acid chain to raise lipophilicity so an oil depot dissolves slowly
+1429,29. Neuroscience & Neuroanatomy,80,54,26,Blocking pathological NMDA overstimulation while allowing physiologic activation
+1437,29. Neuroscience & Neuroanatomy,86,60,26,They reduce amygdala activation but impair the extinction learning exposure depends on
+1449,29. Neuroscience & Neuroanatomy,67,41,26,"Blocking monoamine oxidase, preventing neurotransmitter degradation"
 236,24. Psychiatric Emergencies,100,75,25,"Missing medical etiologies can delay critical medical treatment, resulting in morbidity or mortality"
 636,22. Psychopharmacology,104,79,25,It reveals the unpredictable nature of drug discovery and the importance of careful clinical observation
 692,1. Assessment Fundamentals,83,58,25,Clinical evidence supporting telepsychiatry's effectiveness when properly conducted
@@ -775,6 +800,8 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1066,3. Schizophrenia Spectrum,51,26,25,Electroconvulsive therapy augmentation of clozapine
 1098,21. Other Conditions,79,54,25,The match is an immediate 25–100% return that should never be left on the table
 1234,24. Psychiatric Emergencies,88,63,25,Raising urine pH ionizes these weak acids so they are trapped in the tubule and excreted
+1419,29. Neuroscience & Neuroanatomy,78,53,25,"Rapid dissociation from the D2 receptor, leaving it unblocked much of the time"
+1477,29. Neuroscience & Neuroanatomy,61,36,25,Delayed neural maturation rather than fixed structural damage
 155,24. Psychiatric Emergencies,92,68,24,"Approximately 6-12%, indicating that positive screens substantially overestimate actual risk"
 262,23. Psychotherapy and Non-Pharmacologic,73,49,24,Reflective listening to demonstrate understanding and clarify ambivalence
 373,17. Neurocognitive Disorders,59,35,24,Parkinson's disease dementia (PDD) from Lewy body pathology
@@ -787,6 +814,7 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 680,1. Assessment Fundamentals,74,50,24,Optimize learning effectiveness through evidence-based pedagogical methods
 825,16. Substance-Related Disorders,110,86,24,"Meaningful social engagement, purposeful activity, and peer support reducing isolation and enabling resilience"
 1266,3. Schizophrenia Spectrum,89,65,24,"It is a final common phenotype reached by many routes, with no defining biological marker"
+1418,29. Neuroscience & Neuroanatomy,88,64,24,"It is a partial agonist that partially activates D2, reducing EPS and hyperprolactinemia"
 36,7. OCD and Related Disorders,52,29,23,SSRIs at higher doses than those used for depression
 112,17. Neurocognitive Disorders,91,68,23,The overall neurobiological process involving multiple interconnected pathogenic mechanisms
 119,22. Psychopharmacology,114,91,23,"They target novel mechanisms including NMDA, GABA, and sigma-1 receptors, potentially offering more rapid efficacy"
@@ -815,6 +843,10 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1073,"27. Forensic, Ethics, and Legal Issues",64,41,23,"Interrupting a panic attack, dissociation, or self-harm behavior"
 1207,5. Depressive Disorders,77,54,23,Depressed mood and/or anhedonia plus at least 5 symptoms for at least 2 weeks
 1210,24. Psychiatric Emergencies,93,70,23,"A teaching aid for what to ask about, not a triage instrument — quantify risk with the C-SSRS"
+1463,29. Neuroscience & Neuroanatomy,80,57,23,It provides the structural template architecture shared by all parallel BG loops
+1467,29. Neuroscience & Neuroanatomy,57,34,23,The subgenual anterior cingulate cortex (sgACC / Area 25)
+1473,29. Neuroscience & Neuroanatomy,46,23,23,The bed nucleus of the stria terminalis (BNST)
+1483,29. Neuroscience & Neuroanatomy,69,46,23,Amygdala hyperactivity with vmPFC hypoactivity failing to suppress it
 213,22. Psychopharmacology,114,92,22,Clozapine has demonstrated superior efficacy in treatment-resistant schizophrenia compared to other antipsychotics
 588,22. Psychopharmacology,90,68,22,Rapid weight loss from lean mass mobilization releases stored cholesterol into circulation
 622,"27. Forensic, Ethics, and Legal Issues",77,55,22,"A fundamental shift in how medical care is organized, financed, and delivered"
@@ -824,6 +856,10 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1004,22. Psychopharmacology,81,59,22,Impairing insulin secretion and contributing to dysglycemia independent of weight
 1063,22. Psychopharmacology,70,48,22,"Discontinue immediately, consider G-CSF, and obtain hematology consult"
 1188,21. Other Conditions,83,61,22,"The rise of experimental and behaviorist psychology in universities (Wundt, Watson)"
+1425,29. Neuroscience & Neuroanatomy,78,56,22,"Reduced norepinephrine release, useful in ADHD, anxiety, and opioid withdrawal"
+1458,29. Neuroscience & Neuroanatomy,63,41,22,Emotional processing and episodic memory encoding/consolidation
+1478,29. Neuroscience & Neuroanatomy,70,48,22,"Superior temporal sulcus, fusiform face area, amygdala, and medial PFC"
+1491,29. Neuroscience & Neuroanatomy,63,41,22,Prospective memory — remembering to carry out future intentions
 99,17. Neurocognitive Disorders,98,77,21,"Confirmation of an underlying medical cause through history, physical exam, or laboratory findings"
 135,22. Psychopharmacology,66,45,21,Nephrogenic diabetes insipidus from chronic lithium nephrotoxicity
 210,22. Psychopharmacology,107,86,21,Clozapine carries risks for serious adverse effects that require regular laboratory and clinical monitoring
@@ -879,6 +915,7 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1060,3. Schizophrenia Spectrum,70,51,19,"Delaying clozapine, often 5–10 years after first antipsychotic failure"
 1067,22. Psychopharmacology,63,44,19,M1/M4 muscarinic receptor activation without direct D2 blockade
 1239,22. Psychopharmacology,68,49,19,"Lithium, gabapentin, pregabalin, topiramate, memantine, paliperidone"
+1481,29. Neuroscience & Neuroanatomy,67,48,19,Mesolimbic circuit; increased D2 signaling in the nucleus accumbens
 43,8. Trauma- and Stressor-Related Disorders,42,24,18,Negative alterations in cognition and mood
 74,6. Anxiety Disorders,70,52,18,Fear of negative evaluation or judgment by others in social situations
 274,1. Assessment Fundamentals,60,42,18,Open-ended questions that encourage the patient to elaborate
@@ -893,6 +930,8 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 855,22. Psychopharmacology,94,76,18,"Citalopram at higher doses increases QTc interval, raising arrhythmia risk in elderly patients"
 1043,17. Neurocognitive Disorders,80,62,18,Behavioral and personality changes preceding a frontotemporal dementia diagnosis
 1233,22. Psychopharmacology,85,67,18,"The neutral fraction; most psychotropics are weak bases, largely protonated in plasma"
+1412,29. Neuroscience & Neuroanatomy,73,55,18,It requires higher doses and longer duration (8–12 weeks) to show benefit
+1485,29. Neuroscience & Neuroanatomy,73,55,18,Perseverative errors — repeating a strategy already known to be incorrect
 21,5. Depressive Disorders,53,36,17,4-6 weeks of consistent treatment before full benefit
 67,13. Sleep-Wake Disorders,49,32,17,Cognitive-Behavioral Therapy for Insomnia (CBT-I)
 72,13. Sleep-Wake Disorders,55,38,17,4-8 weeks of consistent treatment with ongoing practice
@@ -904,6 +943,9 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1027,1. Assessment Fundamentals,73,56,17,"MRI, for its superior soft-tissue contrast and lack of ionizing radiation"
 1046,1. Assessment Fundamentals,22,5,17,"MRI, broadly conceived"
 1057,3. Schizophrenia Spectrum,86,69,17,Normal dopamine synthesis with elevated ACC glutamate; does not respond to D2 blockade
+1438,29. Neuroscience & Neuroanatomy,71,54,17,Chronic depression and PTSD; SSRIs may promote hippocampal neurogenesis
+1475,29. Neuroscience & Neuroanatomy,76,59,17,Shared overlap in orbitofrontal and frontostriatal (basal ganglia) circuitry
+1490,29. Neuroscience & Neuroanatomy,43,26,17,Cortical dementia such as Alzheimer disease
 396,1. Assessment Fundamentals,34,18,16,Muscarinic acetylcholine receptors
 535,22. Psychopharmacology,94,78,16,Continue clozapine throughout perioperative period; the timing of CBC is unaffected by surgery
 556,13. Sleep-Wake Disorders,84,68,16,Tolerance to the hypnotic effect combined with cognitive impairment from chronic use
@@ -916,6 +958,7 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1085,"27. Forensic, Ethics, and Legal Issues",91,75,16,"Up to 12 weeks of unpaid, job-protected leave per year; the employer determines eligibility"
 1196,23. Psychotherapy and Non-Pharmacologic,82,66,16,"A convergence, bringing psychiatry and psychology back into productive partnership"
 1238,22. Psychopharmacology,77,61,16,"Low lipophilicity, small size, charged at physiologic pH, low protein binding"
+1416,29. Neuroscience & Neuroanatomy,62,46,16,"Hyperprolactinemia, amenorrhea, galactorrhea, and gynecomastia"
 206,3. Schizophrenia Spectrum,124,109,15,"These features represent the distinct constellation of motor, behavioral, and cognitive features characteristic of catatonia"
 593,21. Other Conditions,64,49,15,Manufacturers → wholesalers/distributors → pharmacies → patients
 764,8. Trauma- and Stressor-Related Disorders,74,59,15,Continue SSRI for minimum 12+ months post-remission to reduce relapse risk
@@ -925,6 +968,10 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1184,21. Other Conditions,59,44,15,Medical treatment/healing — 'medical treatment of the mind'
 1227,22. Psychopharmacology,75,60,15,cLogP is calculated from structure; measured logP is the reference standard
 1242,22. Psychopharmacology,73,58,15,LAT1; a high-protein meal floods it with amino acids and can blunt L-DOPA
+1417,29. Neuroscience & Neuroanatomy,70,55,15,"60–80% occupancy, above which EPS risk escalates without added benefit"
+1446,29. Neuroscience & Neuroanatomy,62,47,15,Reducing the somatic symptoms of performance or social anxiety
+1448,29. Neuroscience & Neuroanatomy,71,56,15,"Higher binding affinity, so more receptors are occupied at modest doses"
+1453,29. Neuroscience & Neuroanatomy,61,46,15,"Delirium, urinary retention, acute glaucoma, ileus, and falls"
 154,24. Psychiatric Emergencies,88,74,14,"Lithium, with robust antisuicidal effects and relative risk reduction approximately 0.24"
 605,22. Psychopharmacology,95,81,14,Expansion of the clinician's therapeutic options while revealing limitations of prior therapies
 613,22. Psychopharmacology,86,72,14,The mechanisms of both therapeutic and adverse effects have neurochemical explanations
@@ -948,6 +995,8 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1065,22. Psychopharmacology,83,70,13,"Clozapine inhibits lamotrigine glucuronidation, reducing its clearance by about 50%"
 1187,21. Other Conditions,85,72,13,"A doctrinal dispute within depth psychology, not a medicine-versus-academy separation"
 1332,28. Terminology & Phenomenology (Glossary),25,12,13,Projective identification
+1405,29. Neuroscience & Neuroanatomy,51,38,13,The dorsal and median raphe nuclei of the brainstem
+1455,29. Neuroscience & Neuroanatomy,43,30,13,The dorsolateral prefrontal (DLPFC) circuit
 29,6. Anxiety Disorders,29,17,12,Elevated mood and grandiosity
 101,17. Neurocognitive Disorders,99,87,12,"It provided a practical, validated tool that revolutionized delirium detection in clinical practice"
 457,"27. Forensic, Ethics, and Legal Issues",84,72,12,The 2017 rule change fundamentally altered Social Security disability law assessment
@@ -960,6 +1009,8 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1042,1. Assessment Fundamentals,85,73,12,Psychiatric disorders are distributed network disorders rather than focal pathologies
 1068,22. Psychopharmacology,49,37,12,Trace amine-associated receptor 1 (TAAR1) agonism
 1215,20. Medication-Induced Movement Disorders,60,48,12,Acute dystonia; treat with IM diphenhydramine or benztropine
+1415,29. Neuroscience & Neuroanatomy,60,48,12,"Extrapyramidal symptoms and, chronically, tardive dyskinesia"
+1457,29. Neuroscience & Neuroanatomy,75,63,12,"Apathy, reduced initiative, loss of motivation, and in extreme cases mutism"
 91,16. Substance-Related Disorders,104,93,11,The settlement was insufficient relative to profits and came after massive suffering had already accrued
 105,17. Neurocognitive Disorders,71,60,11,Extracellular amyloid plaques and intracellular neurofibrillary tangles
 371,17. Neurocognitive Disorders,51,40,11,Dopaminergic medication effect on limbic structures
@@ -972,6 +1023,10 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1015,22. Psychopharmacology,70,59,11,"Metformin, which is cheap, broadly evidenced, and now guideline-backed"
 1244,22. Psychopharmacology,67,56,11,Receptor-mediated transcytosis via transferrin or insulin receptors
 1374,28. Terminology & Phenomenology (Glossary),19,8,11,Isolation of affect
+1410,29. Neuroscience & Neuroanatomy,53,42,11,"5-HT3, in the chemoreceptor trigger zone and GI tract"
+1462,29. Neuroscience & Neuroanatomy,63,52,11,Both too little and too much dopamine tone impair PFC cognition
+1479,29. Neuroscience & Neuroanatomy,61,50,11,"Underconnected between distant regions, overconnected locally"
+1498,29. Neuroscience & Neuroanatomy,32,21,11,Primary sensation and perception
 1,3. Schizophrenia Spectrum,81,71,10,"Positive symptoms, negative symptoms, disorganization, cognition, and mood/affect"
 19,5. Depressive Disorders,34,24,10,Depression with psychotic features
 404,26. Consultation-Liaison Psychiatry,41,31,10,Cognitive behavioral therapy and exercise
@@ -991,6 +1046,7 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1253,1. Assessment Fundamentals,66,56,10,Claiming to know more about what is actually wrong inside the body
 1333,28. Terminology & Phenomenology (Glossary),30,20,10,Gilles de la Tourette syndrome
 1352,28. Terminology & Phenomenology (Glossary),23,13,10,"Apraxia, constructional"
+1493,29. Neuroscience & Neuroanatomy,29,19,10,Motor skills and construction
 211,22. Psychopharmacology,89,80,9,Clozapine typically requires 6-8 weeks or longer to demonstrate full antipsychotic effect
 381,17. Neurocognitive Disorders,37,28,9,Post-traumatic stress disorder (PTSD)
 546,13. Sleep-Wake Disorders,100,91,9,Morning sedation and impaired psychomotor function increase fall risk and injury in elderly patients
@@ -998,6 +1054,10 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1071,"27. Forensic, Ethics, and Legal Issues",62,53,9,That a doctor's signature is what creates the legal protection
 1274,28. Terminology & Phenomenology (Glossary),24,15,9,Hypnagogic hallucination
 1363,28. Terminology & Phenomenology (Glossary),25,16,9,Anterior cingulate cortex
+1403,29. Neuroscience & Neuroanatomy,62,53,9,"Reuptake by transporters, enzymatic degradation, and diffusion"
+1426,29. Neuroscience & Neuroanatomy,68,59,9,Loss of GABAergic inhibition combined with retained glutamate excess
+1436,29. Neuroscience & Neuroanatomy,78,69,9,They reduce amygdala reactivity and strengthen prefrontal-amygdala connections
+1452,29. Neuroscience & Neuroanatomy,70,61,9,"Serotonin, dopamine, norepinephrine, GABA/glutamate, and acetylcholine"
 442,25. Special Populations,82,74,8,"The thalidomide tragedy of the 1960s, which caused 10,000 congenital malformations"
 620,"27. Forensic, Ethics, and Legal Issues",81,73,8,Legislation defines boundaries and determines possibilities for clinical practice
 657,1. Assessment Fundamentals,83,75,8,Every clinical decision rests on statistical reasoning whether explicit or implicit
@@ -1012,6 +1072,7 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1286,28. Terminology & Phenomenology (Glossary),25,17,8,Looseness of associations
 1315,28. Terminology & Phenomenology (Glossary),20,12,8,Inappropriate affect
 1327,28. Terminology & Phenomenology (Glossary),28,20,8,Reactive attachment disorder
+1427,29. Neuroscience & Neuroanatomy,49,41,8,Glutamate binding and postsynaptic depolarization
 94,16. Substance-Related Disorders,83,76,7,Reduction of mortality by approximately 50% when combined with psychosocial support
 363,17. Neurocognitive Disorders,45,38,7,TDP-43 (TAR DNA-binding protein 43) pathology
 527,22. Psychopharmacology,99,92,7,SSRIs are excreted in minimal quantities and are generally considered compatible with breastfeeding
@@ -1027,6 +1088,8 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1141,28. Terminology & Phenomenology (Glossary),19,12,7,Isolation of affect
 1185,21. Other Conditions,21,14,7,Johann Christian Reil
 1198,21. Other Conditions,71,64,7,That psychiatry deals with the brain and psychology deals with the mind
+1404,29. Neuroscience & Neuroanatomy,72,65,7,Less sedation and weight gain than an agent with equal affinity for both
+1441,29. Neuroscience & Neuroanatomy,84,77,7,"Mirtazapine, whose 5-HT2A/2C and potent H1 antagonism aids mood, sleep, and appetite"
 5,3. Schizophrenia Spectrum,51,45,6,Executive dysfunction and working memory impairment
 63,11. Feeding and Eating Disorders,27,21,6,Binge Eating Disorder (BED)
 423,26. Consultation-Liaison Psychiatry,30,24,6,Frontal lobes and white matter
@@ -1045,6 +1108,9 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1370,28. Terminology & Phenomenology (Glossary),23,17,6,Formal thought disorder
 1387,28. Terminology & Phenomenology (Glossary),23,17,6,Extrapyramidal symptoms
 1396,28. Terminology & Phenomenology (Glossary),169,163,6,"Gold-standard suicide risk assessment tool with sections on ideation (frequency, intensity, control) and behavior (attempts, preparatory acts, non-suicidal self-injury)."
+1432,29. Neuroscience & Neuroanatomy,30,24,6,The nucleus basalis of Meynert
+1454,29. Neuroscience & Neuroanatomy,59,53,6,Cortex → Striatum → Globus Pallidus/SNr → Thalamus → Cortex
+1494,29. Neuroscience & Neuroanatomy,59,53,6,Normal is ≥26; add 1 point if ≤12 years of formal education
 426,26. Consultation-Liaison Psychiatry,29,24,5,Uremia-induced encephalopathy
 528,22. Psychopharmacology,94,89,5,SSRIs rarely cause hepatotoxicity; routine LFT monitoring is not indicated in healthy patients
 549,13. Sleep-Wake Disorders,81,76,5,Sudden removal of GABA-A enhancement unmasks pre-existing glutamate hyperactivity
@@ -1071,6 +1137,7 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1356,28. Terminology & Phenomenology (Glossary),17,13,4,Circumstantiality
 1367,28. Terminology & Phenomenology (Glossary),27,23,4,REM sleep behavior disorder
 1393,28. Terminology & Phenomenology (Glossary),22,18,4,Volume of distribution
+1460,29. Neuroscience & Neuroanatomy,65,61,4,"It inhibits the amygdala, providing contextual modulation of fear"
 13,4. Bipolar and Related Disorders,30,27,3,Rapid cycling bipolar disorder
 44,8. Trauma- and Stressor-Related Disorders,32,29,3,SSRIs (sertraline or paroxetine)
 100,17. Neurocognitive Disorders,82,79,3,Acute systemic illness and physiological stress are major precipitants of delirium
@@ -1088,6 +1155,7 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1126,28. Terminology & Phenomenology (Glossary),19,16,3,Munchausen syndrome
 1134,28. Terminology & Phenomenology (Glossary),18,15,3,Reaction formation
 1298,28. Terminology & Phenomenology (Glossary),19,16,3,Interrupted attempt
+1402,29. Neuroscience & Neuroanatomy,71,68,3,They are ligand-gated ion channels mediating fast synaptic transmission
 121,22. Psychopharmacology,12,10,2,Aripiprazole
 379,17. Neurocognitive Disorders,62,60,2,Disruption of monoamine systems and neuroinflammation from TBI
 398,1. Assessment Fundamentals,33,31,2,"Attention, alertness, and arousal"
@@ -1102,6 +1170,9 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1344,28. Terminology & Phenomenology (Glossary),25,23,2,Hypnopompic hallucination
 1368,28. Terminology & Phenomenology (Glossary),11,9,2,P4 screener
 1379,28. Terminology & Phenomenology (Glossary),9,7,2,Tolerance
+1407,29. Neuroscience & Neuroanatomy,35,33,2,Partial agonism at 5-HT1A receptors
+1435,29. Neuroscience & Neuroanatomy,27,25,2,Dopamine and norepinephrine
+1474,29. Neuroscience & Neuroanatomy,51,49,2,It normalizes with successful SSRI treatment or CBT
 83,16. Substance-Related Disorders,47,46,1,Jellinek's disease model published in the 1950s
 107,17. Neurocognitive Disorders,87,86,1,"Aβ42 is more prone to self-assembly into oligomers, protofibrils, and insoluble plaques"
 217,3. Schizophrenia Spectrum,50,49,1,First-break psychosis (first episode of psychosis)
@@ -1117,6 +1188,8 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1201,1. Assessment Fundamentals,31,30,1,Research Domain Criteria (RDoC)
 1359,28. Terminology & Phenomenology (Glossary),16,15,1,"Tremor, postural"
 1361,28. Terminology & Phenomenology (Glossary),20,19,1,Lesch-Nyhan syndrome
+1430,29. Neuroscience & Neuroanatomy,43,42,1,Clozapine's very high muscarinic antagonism
+1482,29. Neuroscience & Neuroanatomy,31,30,1,The motor basal ganglia circuit
 497,26. Consultation-Liaison Psychiatry,16,16,0,10-20% of adults
 609,22. Psychopharmacology,95,95,0,Chlorpromazine; produced a peculiar state of emotional indifference despite clear consciousness
 1064,3. Schizophrenia Spectrum,11,11,0,Lamotrigine
@@ -1129,3 +1202,11 @@ id,usmle_category,correct_len,max_distractor_len,len_gap,correct_answer
 1330,28. Terminology & Phenomenology (Glossary),19,19,0,Erotomanic delusion
 1336,28. Terminology & Phenomenology (Glossary),27,27,0,Alpha-2 adrenergic receptor
 1397,28. Terminology & Phenomenology (Glossary),86,86,0,Child shows mixed response to caregiver: simultaneously seeking and resisting comfort;
+1409,29. Neuroscience & Neuroanatomy,6,6,0,5-HT2C
+1420,29. Neuroscience & Neuroanatomy,27,27,0,Dopamine and norepinephrine
+1421,29. Neuroscience & Neuroanatomy,55,55,0,"Nigrostriatal neurons, with over 80% cell loss at onset"
+1440,29. Neuroscience & Neuroanatomy,45,45,0,The hypothalamic-pituitary-adrenal (HPA) axis
+1444,29. Neuroscience & Neuroanatomy,9,9,0,About 30%
+1466,29. Neuroscience & Neuroanatomy,27,27,0,Acetylcholine and glutamate
+1472,29. Neuroscience & Neuroanatomy,23,23,0,Auditory hallucinations
+1487,29. Neuroscience & Neuroanatomy,65,65,0,Retrieval failure improves with cueing; encoding failure does not

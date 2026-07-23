@@ -1,0 +1,1554 @@
+[
+ {
+  "id": 1402,
+  "question": "Postsynaptic receptors are described as either ionotropic or metabotropic. What distinguishes ionotropic receptors?",
+  "options": [
+   "They recycle neurotransmitter back into the presynaptic terminal",
+   "They terminate transmission by enzymatic degradation of the ligand",
+   "They are G-protein coupled receptors mediating slow, diverse effects",
+   "They are ligand-gated ion channels mediating fast synaptic transmission"
+  ],
+  "correct_index": 3,
+  "explanation": "Ionotropic receptors are ligand-gated ion channels producing fast synaptic transmission, whereas metabotropic receptors are G-protein coupled, producing slower but more diverse intracellular effects.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1403,
+  "question": "Neurotransmitter action at the synapse is terminated by three mechanisms. Which set correctly names them?",
+  "options": [
+   "Reuptake by transporters, enzymatic degradation, and diffusion",
+   "Vesicle release, receptor binding, and depolarization",
+   "Synthesis, packaging, and axonal transport",
+   "Phosphorylation, glycosylation, and endocytosis"
+  ],
+  "correct_index": 0,
+  "explanation": "Transmission is terminated by reuptake (transporters recycle the molecule), enzymatic degradation (e.g., monoamine oxidase), and diffusion (molecules drift from the cleft). Psychiatric drugs target each of these steps.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1404,
+  "question": "Ziprasidone has high 5-HT2A affinity (Ki ~0.4 nM) but lower H1 affinity (Ki ~21 nM). What does this predict clinically?",
+  "options": [
+   "More sedation and weight gain than olanzapine at equivalent doses",
+   "Higher prolactin elevation than a full D2 antagonist",
+   "Greater anticholinergic burden than a tricyclic antidepressant",
+   "Less sedation and weight gain than an agent with equal affinity for both"
+  ],
+  "correct_index": 3,
+  "explanation": "A lower H1 affinity (higher Ki) means fewer H1 receptors are occupied at therapeutic doses, so ziprasidone causes less sedation and weight gain than olanzapine, which has roughly equal affinity for 5-HT2A and H1.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1405,
+  "question": "Serotonergic neurons illustrate a 'small source, widespread output' pattern. Where are the vast majority of serotonin cell bodies located?",
+  "options": [
+   "The locus coeruleus of the dorsal pons",
+   "The dorsal and median raphe nuclei of the brainstem",
+   "The substantia nigra pars compacta",
+   "The nucleus basalis of Meynert"
+  ],
+  "correct_index": 1,
+  "explanation": "Most serotonin neurons reside in the dorsal and median raphe nuclei of the brainstem, projecting widely to cortex, limbic system, striatum, and spinal cord — the small-source, widespread-output pattern characteristic of neuromodulatory systems.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1406,
+  "question": "Why do SSRIs often cause increased activation and anxiety in the first 1–2 weeks of treatment?",
+  "options": [
+   "They rapidly block reuptake at the norepinephrine transporter",
+   "Increased serotonin activates presynaptic 5-HT1A autoreceptors, paradoxically reducing serotonin release",
+   "Increased serotonin immediately floods postsynaptic cortical 5-HT2A receptors",
+   "They abruptly antagonize hypothalamic 5-HT2C receptors"
+  ],
+  "correct_index": 1,
+  "explanation": "SSRIs acutely raise synaptic serotonin, activating presynaptic 5-HT1A autoreceptors that paradoxically reduce further serotonin release — the mechanism of early activation and anxiety. Autoreceptor desensitization over weeks yields the net anxiolytic and antidepressant effect.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1407,
+  "question": "Buspirone treats generalized anxiety disorder through which receptor mechanism?",
+  "options": [
+   "Partial agonism at 5-HT1A receptors",
+   "Potent antagonism at H1 receptors",
+   "Antagonism at 5-HT2A receptors",
+   "Full agonism at GABA-A receptors"
+  ],
+  "correct_index": 0,
+  "explanation": "Buspirone is a partial 5-HT1A agonist; postsynaptic 5-HT1A activation in the amygdala and hippocampus mediates its anxiolytic effect in generalized anxiety disorder.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1408,
+  "question": "5-HT2A receptors have two opposing clinical relevances depending on the drug's action. Which pairing is correct?",
+  "options": [
+   "Antagonism causes hallucinations; agonism treats psychosis",
+   "Antagonism causes nausea; agonism relieves nausea",
+   "Antagonism causes weight gain; agonism suppresses appetite",
+   "Antagonism underlies second-generation antipsychotic action; agonism underlies classical hallucinogens"
+  ],
+  "correct_index": 3,
+  "explanation": "5-HT2A antagonism is a core mechanism of second-generation antipsychotics, while 5-HT2A agonism is the mechanism of classical hallucinogens (LSD, psilocybin) — explaining why serotonergic drugs can exacerbate psychosis.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Comparison",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1409,
+  "question": "Antagonism of which serotonin receptor, located in the hypothalamus, drives the weight gain seen with olanzapine, mirtazapine, and quetiapine?",
+  "options": [
+   "5-HT1A",
+   "5-HT3",
+   "5-HT7",
+   "5-HT2C"
+  ],
+  "correct_index": 3,
+  "explanation": "5-HT2C receptors in the hypothalamus regulate appetite and energy homeostasis; antagonism (by olanzapine, mirtazapine, quetiapine) causes weight gain and metabolic dysfunction. 5-HT2C agonists are in development as lower-metabolic-risk antipsychotics.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1410,
+  "question": "The nausea some patients feel when starting an SSRI is attributed to activation of which ionotropic serotonin receptor?",
+  "options": [
+   "5-HT3, in the chemoreceptor trigger zone and GI tract",
+   "5-HT1A, on presynaptic raphe autoreceptors",
+   "5-HT2A, in the visual cortex",
+   "5-HT2C, in the hypothalamus"
+  ],
+  "correct_index": 0,
+  "explanation": "5-HT3 receptors are ionotropic and located in the chemoreceptor trigger zone and GI tract. SSRIs raise serotonin and activate them, causing nausea and GI upset; 5-HT3 antagonists like ondansetron can mitigate this.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1411,
+  "question": "The chapter notes the serotonin hypothesis of depression is 'incomplete.' What is the main reason given?",
+  "options": [
+   "Depression is caused solely by hippocampal volume loss",
+   "SSRIs raise dopamine, not serotonin, at the synapse",
+   "Many patients respond poorly to serotonergic monotherapy and other systems are also dysregulated",
+   "Serotonin has no measurable role in mood regulation"
+  ],
+  "correct_index": 2,
+  "explanation": "The hypothesis is incomplete because many depressed patients respond poorly to serotonergic monotherapy, and serotonin is only one of several dysregulated systems (dopamine/norepinephrine deficiency, HPA hyperactivity, neuroinflammation, reduced neuroplasticity).",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Inference",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1412,
+  "question": "Compared with major depression, how does OCD typically respond to SSRIs?",
+  "options": [
+   "It shows no response to serotonergic agents at any dose",
+   "It requires higher doses and longer duration (8–12 weeks) to show benefit",
+   "It responds to lower doses within a few days",
+   "It responds only to norepinephrine reuptake inhibitors"
+  ],
+  "correct_index": 1,
+  "explanation": "OCD requires higher SSRI doses and longer duration (8–12 weeks) than major depression, suggesting more severe serotonergic dysfunction, possibly related to excessive 5-HT2A signaling in orbitofrontal and anterior cingulate cortex.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Comparison",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1413,
+  "question": "Dopamine is organized into four anatomically distinct pathways. Which pathway's hyperactivity produces the positive symptoms of psychosis?",
+  "options": [
+   "Tuberoinfundibular (hypothalamus → pituitary)",
+   "Nigrostriatal (substantia nigra → dorsal striatum)",
+   "Mesocortical (VTA → prefrontal cortex)",
+   "Mesolimbic (VTA → nucleus accumbens)"
+  ],
+  "correct_index": 3,
+  "explanation": "The mesolimbic pathway (VTA → nucleus accumbens) governs reward, motivation, and salience; hyperactivity produces delusions and hallucinations, and antipsychotic D2 blockade here treats psychosis.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1414,
+  "question": "Hypoactivity of which dopamine pathway is thought to produce the negative symptoms and cognitive deficits of schizophrenia?",
+  "options": [
+   "Tuberoinfundibular (hypothalamus → pituitary)",
+   "Mesocortical (VTA → prefrontal cortex)",
+   "Nigrostriatal (substantia nigra → striatum)",
+   "Mesolimbic (VTA → nucleus accumbens)"
+  ],
+  "correct_index": 1,
+  "explanation": "The mesocortical pathway (VTA → prefrontal cortex) supports executive function and working memory; hypoactivity produces apathy, cognitive deficits, and negative symptoms.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1415,
+  "question": "Antipsychotic D2 blockade in the nigrostriatal pathway is responsible for which adverse effects?",
+  "options": [
+   "Extrapyramidal symptoms and, chronically, tardive dyskinesia",
+   "Sedation and weight gain",
+   "Hyperprolactinemia, amenorrhea, and galactorrhea",
+   "Delusions and auditory hallucinations"
+  ],
+  "correct_index": 0,
+  "explanation": "The nigrostriatal pathway (substantia nigra → dorsal striatum) governs motor control; D2 blockade here causes extrapyramidal symptoms and, with chronic exposure, tardive dyskinesia. Its degeneration causes Parkinson disease.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1416,
+  "question": "D2 blockade in the tuberoinfundibular pathway produces which cluster of effects?",
+  "options": [
+   "Hyperprolactinemia, amenorrhea, galactorrhea, and gynecomastia",
+   "Bradykinesia, rigidity, and resting tremor",
+   "Delusions and disorganized thought",
+   "Orthostatic hypotension and reflex tachycardia"
+  ],
+  "correct_index": 0,
+  "explanation": "Hypothalamic dopamine normally inhibits prolactin release; D2 blockade in the tuberoinfundibular pathway removes this inhibition, causing hyperprolactinemia, amenorrhea, galactorrhea, gynecomastia, and sexual dysfunction.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1417,
+  "question": "According to D2 receptor occupancy theory, what level of striatal/limbic D2 blockade is required for antipsychotic efficacy?",
+  "options": [
+   "30–40% occupancy, which minimizes both efficacy and EPS",
+   "90–100% occupancy for any antipsychotic response",
+   "10–20% occupancy, above which prolactin normalizes",
+   "60–80% occupancy, above which EPS risk escalates without added benefit"
+  ],
+  "correct_index": 3,
+  "explanation": "Antipsychotic efficacy requires roughly 60–80% D2 occupancy in mesolimbic/mesocortical regions; below 60% blockade is insufficient, and above 80% EPS risk escalates without further benefit — explaining antipsychotic dose ceilings.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Key Detail",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1418,
+  "question": "How does aripiprazole's mechanism differ from that of a full D2 antagonist, and what is the clinical consequence?",
+  "options": [
+   "It has no measurable D2 receptor occupancy at all",
+   "It irreversibly destroys D2 receptors over time",
+   "It is a partial agonist that partially activates D2, reducing EPS and hyperprolactinemia",
+   "It fully blocks D2 more completely, increasing prolactin further"
+  ],
+  "correct_index": 2,
+  "explanation": "Aripiprazole is a D2 partial agonist: it occupies D2 receptors but partially activates them, keeping the system in a more physiologic range and reducing EPS and hyperprolactinemia relative to full antagonists.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Comparison",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1419,
+  "question": "Quetiapine's relatively low EPS risk at therapeutic doses is best explained by which pharmacologic property?",
+  "options": [
+   "Selective agonism at nigrostriatal dopamine receptors",
+   "Irreversible, prolonged D2 receptor occupancy",
+   "Rapid dissociation from the D2 receptor, leaving it unblocked much of the time",
+   "Complete absence of any dopamine receptor binding"
+  ],
+  "correct_index": 2,
+  "explanation": "Quetiapine has rapid D2 dissociation kinetics, so receptors remain unblocked much of the time — likely explaining its low EPS risk at therapeutic doses, though it still causes weight gain via H1, alpha-1, and muscarinic antagonism.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1420,
+  "question": "A patient with ADHD has prefrontal deficiency of which neurotransmitters, targeted by stimulant reuptake inhibitors?",
+  "options": [
+   "Serotonin and GABA",
+   "Dopamine and norepinephrine",
+   "Acetylcholine and histamine",
+   "Glutamate and glycine"
+  ],
+  "correct_index": 1,
+  "explanation": "ADHD involves prefrontal dopamine and norepinephrine deficiency. Stimulants (methylphenidate, amphetamine) are dopamine/norepinephrine reuptake inhibitors and first-line; bupropion (NDRI) and atomoxetine (selective NRI) are alternatives.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1421,
+  "question": "Parkinson disease results from degeneration of which dopamine neurons, and how much cell loss is typically present at symptom onset?",
+  "options": [
+   "Raphe neurons, with complete loss at onset",
+   "Nigrostriatal neurons, with over 80% cell loss at onset",
+   "Mesolimbic neurons, with about 10% cell loss at onset",
+   "Tuberoinfundibular neurons, with 50% cell loss at onset"
+  ],
+  "correct_index": 1,
+  "explanation": "Parkinson disease results from degeneration of nigrostriatal dopamine neurons, with over 80% cell loss by symptom onset. Levodopa or dopamine agonists are mainstays; psychiatric side effects include impulse-control disorders and psychosis.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Key Detail",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1422,
+  "question": "Which psychiatric side effects are characteristically produced by dopaminergic Parkinson medications through excess mesolimbic stimulation?",
+  "options": [
+   "Impulse-control disorders such as gambling and hypersexuality, and psychosis",
+   "Anticholinergic delirium and urinary retention",
+   "Extrapyramidal rigidity and bradykinesia",
+   "Hyperprolactinemia and galactorrhea"
+  ],
+  "correct_index": 0,
+  "explanation": "Dopaminergic Parkinson medications can cause impulse-control disorders (gambling, hypersexuality), psychosis, and mood dysregulation from excess mesolimbic dopamine stimulation.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1423,
+  "question": "Norepinephrine neurons originate in which brainstem nucleus, described as the brain's 'alarm system'?",
+  "options": [
+   "The dorsal raphe nucleus",
+   "The nucleus basalis of Meynert",
+   "The locus coeruleus",
+   "The substantia nigra"
+  ],
+  "correct_index": 2,
+  "explanation": "Norepinephrine neurons originate in the locus coeruleus and project diffusely; the LC is the brain's alarm system, increasing activity during arousal, attention, and stress. Chronic stress causes LC hyperactivity in anxiety and PTSD.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1424,
+  "question": "Alpha-1 adrenergic antagonism by TCAs, low-potency antipsychotics, and trazodone characteristically causes which effect?",
+  "options": [
+   "Extrapyramidal rigidity and tremor",
+   "Orthostatic hypotension and dizziness, raising fall risk in the elderly",
+   "Hyperprolactinemia and galactorrhea",
+   "Hypertensive crisis and reflex bradycardia"
+  ],
+  "correct_index": 1,
+  "explanation": "Alpha-1 receptors are postsynaptic; their antagonism causes orthostatic hypotension and dizziness, increasing fall risk in elderly patients. TCAs, some low-potency antipsychotics (chlorpromazine, clozapine), and trazodone have significant alpha-1 antagonism.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1425,
+  "question": "Clonidine and guanfacine act at alpha-2 receptors. What is the consequence of activating these autoreceptors?",
+  "options": [
+   "Direct enhancement of GABA-A chloride currents",
+   "Reduced norepinephrine release, useful in ADHD, anxiety, and opioid withdrawal",
+   "Blockade of postsynaptic serotonin receptors",
+   "Increased norepinephrine release, worsening hyperarousal"
+  ],
+  "correct_index": 1,
+  "explanation": "Alpha-2 receptors are autoreceptors on noradrenergic terminals; their activation by clonidine and guanfacine reduces norepinephrine release, useful in ADHD, anxiety, and opioid withdrawal (dampening locus coeruleus rebound). Mirtazapine's alpha-2 antagonism increases NE release.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1426,
+  "question": "During alcohol or benzodiazepine withdrawal, which neurochemical imbalance produces seizures and autonomic hyperactivity?",
+  "options": [
+   "Loss of GABAergic inhibition combined with retained glutamate excess",
+   "Excess acetylcholine at muscarinic receptors",
+   "Sudden surge of GABA-A activation with glutamate deficiency",
+   "Acute dopamine depletion in the nigrostriatal pathway"
+  ],
+  "correct_index": 0,
+  "explanation": "Chronic alcohol/benzodiazepine use downregulates GABA-A (tolerance) and upregulates glutamate (allostatic adaptation). Abrupt cessation leaves the brain with lost GABAergic inhibition and retained glutamate excess — producing seizures, autonomic hyperactivity, and delirium.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1427,
+  "question": "The NMDA receptor requires two conditions to open. Which pair is correct?",
+  "options": [
+   "Acetylcholine binding and chloride influx",
+   "Glutamate binding and postsynaptic depolarization",
+   "GABA binding and hyperpolarization",
+   "Serotonin binding and calcium efflux"
+  ],
+  "correct_index": 1,
+  "explanation": "The NMDA receptor is a ligand-gated ion channel requiring both glutamate binding and postsynaptic depolarization to open. It is critical for plasticity and learning but causes excitotoxicity when overstimulated.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1428,
+  "question": "Ketamine's rapid antidepressant effect, distinct from SSRIs, is attributed to which mechanism?",
+  "options": [
+   "Irreversible monoamine oxidase inhibition",
+   "Potent H1 receptor antagonism",
+   "Direct serotonin reuptake inhibition at the SERT",
+   "NMDA antagonism leading to increased AMPA trafficking and BDNF-driven synaptogenesis"
+  ],
+  "correct_index": 3,
+  "explanation": "Ketamine and esketamine are use-dependent NMDA antagonists; their rapid antidepressant effects likely involve increased AMPA receptor trafficking and increased BDNF signaling, promoting neuroplasticity and synaptogenesis rather than mere monoamine elevation.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1429,
+  "question": "Memantine, approved for moderate-to-severe Alzheimer disease, works by which mechanism?",
+  "options": [
+   "Blocking pathological NMDA overstimulation while allowing physiologic activation",
+   "Inhibiting acetylcholinesterase to boost acetylcholine",
+   "Fully agonizing NMDA receptors to enhance learning",
+   "Antagonizing dopamine D2 receptors in the striatum"
+  ],
+  "correct_index": 0,
+  "explanation": "Memantine is an NMDA antagonist that reduces excitotoxic damage by blocking pathological overstimulation while still permitting physiologic activation, giving modest cognitive benefit in Alzheimer disease.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1430,
+  "question": "Which anticholinergic property of a psychiatric medication is a contraindication in narrow-angle glaucoma?",
+  "options": [
+   "Clozapine's very high muscarinic antagonism",
+   "Lurasidone's minimal H1 antagonism",
+   "Aripiprazole's minimal muscarinic activity",
+   "Ziprasidone's low anticholinergic burden"
+  ],
+  "correct_index": 0,
+  "explanation": "Clozapine has very high anticholinergic activity, a contraindication in narrow-angle glaucoma. Muscarinic M1 antagonism also causes dry mouth, constipation, urinary retention, blurred vision, and cognitive impairment; aripiprazole and ziprasidone have minimal activity.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1431,
+  "question": "Varenicline aids smoking cessation through which nicotinic-receptor action?",
+  "options": [
+   "Full antagonism that blocks all nicotinic signaling",
+   "Selective agonism at muscarinic M1 receptors",
+   "Partial agonism that reduces craving while blocking full activation by cigarette smoke",
+   "Irreversible inhibition of acetylcholinesterase"
+  ],
+  "correct_index": 2,
+  "explanation": "Varenicline is a partial agonist at nicotinic receptors: it provides partial nicotine-like stimulation to reduce craving while blocking full activation by actual cigarette smoke.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1432,
+  "question": "Acetylcholinesterase inhibitors like donepezil are used in Alzheimer disease to counteract loss of cholinergic neurons in which region?",
+  "options": [
+   "The dorsal raphe nucleus",
+   "The subthalamic nucleus",
+   "The nucleus basalis of Meynert",
+   "The locus coeruleus"
+  ],
+  "correct_index": 2,
+  "explanation": "Alzheimer disease involves loss of cholinergic neurons in the nucleus basalis of Meynert. Acetylcholinesterase inhibitors (donepezil, rivastigmine, galantamine) prevent ACh breakdown, boosting remaining acetylcholine to improve memory and attention.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1433,
+  "question": "Histamine H1 receptors in the hypothalamus regulate sleep-wake cycling and appetite. What does H1 antagonism produce?",
+  "options": [
+   "Insomnia and appetite suppression",
+   "Sedation and weight gain",
+   "Extrapyramidal rigidity",
+   "Hyperprolactinemia"
+  ],
+  "correct_index": 1,
+  "explanation": "H1 receptors in the hypothalamus regulate sleep-wake cycling and appetite; H1 antagonism causes sedation and weight gain. Mirtazapine, olanzapine, low-potency antipsychotics, and TCAs are potent H1 antagonists, whereas aripiprazole and lurasidone are minimal.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1434,
+  "question": "Why is low-dose quetiapine (25–50 mg) commonly described as functioning 'as little more than' an antihistamine?",
+  "options": [
+   "At those doses it selectively blocks serotonin reuptake",
+   "At those doses its H1 antagonism predominates, acting like a sedating antihistamine",
+   "At those doses it acts as an NMDA antagonist",
+   "At those doses it fully saturates striatal D2 receptors"
+  ],
+  "correct_index": 1,
+  "explanation": "Quetiapine at 25–50 mg is often used off-label as a hypnotic, functioning as little more than an H1-blocking antihistamine at these doses, since H1 antagonism predominates well below antipsychotic-level D2 occupancy.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Inference",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1435,
+  "question": "The prefrontal cortex is described as the seat of executive function and is rich in which neurotransmitter synapses, explaining stimulant benefit in ADHD?",
+  "options": [
+   "GABA and glutamate",
+   "Dopamine and norepinephrine",
+   "Serotonin and histamine",
+   "Acetylcholine and glycine"
+  ],
+  "correct_index": 1,
+  "explanation": "The prefrontal cortex supports planning, decision-making, impulse control, and working memory, and is rich in dopamine and norepinephrine synapses — which is why stimulants and certain antidepressants improve ADHD and depression.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1436,
+  "question": "The amygdala is the brain's 'threat detector.' How do SSRIs and SNRIs affect it over weeks?",
+  "options": [
+   "They have no measurable effect on amygdala function",
+   "They acutely increase amygdala reactivity and weaken cortical control",
+   "They reduce amygdala reactivity and strengthen prefrontal-amygdala connections",
+   "They cause permanent amygdala volume loss"
+  ],
+  "correct_index": 2,
+  "explanation": "The amygdala processes fear and emotional significance and is hyperactive in anxiety, PTSD, and BPD. SSRIs and SNRIs reduce amygdala reactivity over weeks via feedback and by strengthening prefrontal-amygdala connections.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1437,
+  "question": "Why should benzodiazepines generally be tapered before starting evidence-based exposure therapy for anxiety?",
+  "options": [
+   "They reduce amygdala activation but impair the extinction learning exposure depends on",
+   "They enhance hippocampal memory formation excessively",
+   "They permanently block serotonin reuptake needed for therapy",
+   "They increase amygdala reactivity during exposure"
+  ],
+  "correct_index": 0,
+  "explanation": "Benzodiazepines rapidly reduce amygdala activation but impair extinction learning if used during therapy. Because exposure therapy works through non-reinforced extinction, benzodiazepines should be tapered before starting evidence-based anxiety treatment.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1438,
+  "question": "Hippocampal volume loss correlating with illness duration is a finding in which conditions, and how may SSRIs help?",
+  "options": [
+   "Schizophrenia only; SSRIs reverse cortical thinning",
+   "Chronic depression and PTSD; SSRIs may promote hippocampal neurogenesis",
+   "OCD only; SSRIs enlarge the basal ganglia",
+   "Parkinson disease; SSRIs restore nigrostriatal neurons"
+  ],
+  "correct_index": 1,
+  "explanation": "Hippocampal volume loss is found in chronic depression and PTSD, correlating with illness duration. SSRIs may promote hippocampal neurogenesis, which contributes to antidepressant effects, whereas benzodiazepines impair hippocampal memory formation.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1439,
+  "question": "The basal ganglia form cortico-striato-thalamic-cortical (CSTC) circuits notably implicated in which disorder?",
+  "options": [
+   "Panic disorder, via locus coeruleus firing",
+   "Social phobia, via raphe dysfunction",
+   "Obsessive-compulsive disorder, via circuit hyperactivity and hyperconnectivity",
+   "Alzheimer disease, via cholinergic loss"
+  ],
+  "correct_index": 2,
+  "explanation": "The basal ganglia (caudate, putamen, globus pallidus, subthalamic nucleus) form CSTC circuits involved in motor control, habit formation, and the obsessive-compulsive cycle; OCD involves hyperactivity and hyperconnectivity here, dampened by D2 blockade or SSRI.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Key Detail",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1440,
+  "question": "The hypothalamus is the command center for which stress-regulating axis, found to be hyperactive in depression and PTSD?",
+  "options": [
+   "The renin-angiotensin-aldosterone system",
+   "The hypothalamic-pituitary-adrenal (HPA) axis",
+   "The mesolimbic reward pathway",
+   "The hypothalamic-pituitary-thyroid axis alone"
+  ],
+  "correct_index": 1,
+  "explanation": "The hypothalamus is the command center for the HPA axis, which regulates cortisol in response to stress. HPA hyperactivity is found in depression and PTSD, and antidepressants normalize HPA function over time.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1441,
+  "question": "A depressed patient also has insomnia and poor appetite. Using the chapter's neuroscience reasoning, which agent addresses both mood and these symptoms in one mechanism?",
+  "options": [
+   "Bupropion, whose dopamine/norepinephrine reuptake inhibition worsens insomnia",
+   "High-dose fluoxetine, chosen for near-maximal SERT occupancy",
+   "Mirtazapine, whose 5-HT2A/2C and potent H1 antagonism aids mood, sleep, and appetite",
+   "Atomoxetine, a selective norepinephrine reuptake inhibitor"
+  ],
+  "correct_index": 2,
+  "explanation": "Mirtazapine (5-HT2A/2C antagonist plus potent H1 antagonist) directly addresses both the serotonergic component of mood and the hypothalamic/H1 contribution to insomnia and appetite loss, so it often outperforms SSRI monotherapy in this presentation.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1442,
+  "question": "A depressed patient's chief complaints are fatigue, poor concentration, and anhedonia. Which agent best targets the implicated deficit, and why is it favored?",
+  "options": [
+   "Bupropion, because anhedonia reflects dopamine deficiency and it avoids sexual side effects",
+   "Mirtazapine, because anhedonia reflects H1 deficiency",
+   "Trazodone, because anhedonia reflects alpha-1 excess",
+   "Paroxetine, because anhedonia reflects excess dopamine"
+  ],
+  "correct_index": 0,
+  "explanation": "Anhedonia — loss of motivation and pleasure — is dopaminergic, so bupropion (a dopamine/norepinephrine reuptake inhibitor) targets it directly and, acting on dopamine rather than serotonin, is less likely to cause sexual dysfunction.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1443,
+  "question": "For OCD with severe intrusive thoughts unresponsive to standard SSRI doses, which neuroscience-based strategy does the chapter describe?",
+  "options": [
+   "Immediate benzodiazepine monotherapy to enhance extinction",
+   "Adding an H1 agonist to reduce obsessions",
+   "Switching to a norepinephrine reuptake inhibitor",
+   "High-dose SSRI or glutamate-modulating augmentation, given glutamate excess in OFC–ACC circuits"
+  ],
+  "correct_index": 3,
+  "explanation": "OCD involves glutamate excess in orbitofrontal–anterior cingulate circuits. High-dose SSRI (which indirectly reduces glutamate) or augmentation with a glutamate modulator (memantine, topiramate, riluzole), or low-dose antipsychotic, may work better than further SSRI escalation.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1444,
+  "question": "Roughly what fraction of depressed patients have treatment-resistant depression, defined as failure of two or more antidepressants?",
+  "options": [
+   "About 90%",
+   "About 5%",
+   "About 60%",
+   "About 30%"
+  ],
+  "correct_index": 3,
+  "explanation": "Treatment-resistant depression — failure of two or more antidepressants — affects roughly 30% of depressed patients. Ketamine and esketamine represent a paradigm shift, working within hours to days rather than weeks.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1445,
+  "question": "Which statement about intranasal esketamine's regulatory status is correct per the chapter?",
+  "options": [
+   "It remains investigational with no FDA approval",
+   "It is FDA-approved only for generalized anxiety disorder",
+   "It is approved solely as an anesthetic, not for depression",
+   "It is FDA-approved for treatment-resistant depression and depression with suicidality"
+  ],
+  "correct_index": 3,
+  "explanation": "Intranasal esketamine is FDA-approved for treatment-resistant depression and for depression with suicidality, reflecting its rapid onset and efficacy where SSRIs have failed.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1446,
+  "question": "Central beta-adrenergic antagonism with propranolol is clinically useful for which indication?",
+  "options": [
+   "Reversing anticholinergic delirium",
+   "Reducing the somatic symptoms of performance or social anxiety",
+   "Treating the positive symptoms of schizophrenia",
+   "Promoting hippocampal neurogenesis"
+  ],
+  "correct_index": 1,
+  "explanation": "Beta receptors mediate peripheral sympathetic effects; central beta antagonism with propranolol can reduce anxiety and tremor, making it useful in performance anxiety or social anxiety disorder.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1447,
+  "question": "Why are several anticonvulsants (valproate, lamotrigine, carbamazepine) also effective mood stabilizers, per the chapter?",
+  "options": [
+   "Mood disorders may involve an altered balance between inhibition and excitation",
+   "They all directly block dopamine D2 receptors",
+   "They act primarily as histamine H1 antagonists",
+   "They inhibit acetylcholinesterase in the cortex"
+  ],
+  "correct_index": 0,
+  "explanation": "Most anticonvulsants enhance GABA function or reduce glutamate; several are also mood stabilizers, suggesting mood disorders may involve an altered balance between inhibition (GABA) and excitation (glutamate).",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Inference",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1448,
+  "question": "Receptor affinity is quantified by the Ki value. What does a lower Ki indicate?",
+  "options": [
+   "That the drug is an agonist rather than an antagonist",
+   "That the receptor is ionotropic rather than metabotropic",
+   "Lower binding affinity, requiring very high doses",
+   "Higher binding affinity, so more receptors are occupied at modest doses"
+  ],
+  "correct_index": 3,
+  "explanation": "Receptor affinity (Ki, in nanomolar concentrations) reflects how strongly a drug binds; a lower Ki means higher affinity, so the drug occupies many receptors at modest doses, producing potent effects and predicting the side-effect profile.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Key Detail",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1449,
+  "question": "MAOIs increase synaptic monoamines through which action?",
+  "options": [
+   "Inhibiting tyrosine hydroxylase synthesis",
+   "Blocking monoamine oxidase, preventing neurotransmitter degradation",
+   "Blocking monoamine reuptake transporters",
+   "Directly agonizing postsynaptic receptors"
+  ],
+  "correct_index": 1,
+  "explanation": "MAOIs block monoamine oxidase, the enzyme that degrades dopamine, serotonin, and norepinephrine — one of the three termination steps — thereby increasing synaptic monoamine availability.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1450,
+  "question": "Why does bupropion, unlike SSRIs, generally avoid causing sexual dysfunction?",
+  "options": [
+   "It fully blocks D2 receptors in the reward pathway",
+   "It enhances GABA-A signaling in the hypothalamus",
+   "It acts on dopamine and norepinephrine rather than serotonin",
+   "It has potent H1 antagonism that offsets serotonergic effects"
+  ],
+  "correct_index": 2,
+  "explanation": "Sexual dysfunction is a common SSRI effect mediated by serotonergic inhibition of circuits supporting sexual response. Bupropion acts on dopamine and norepinephrine, not serotonin, and therefore does not typically impair sexual function.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1451,
+  "question": "Why do low-potency first-generation antipsychotics (chlorpromazine, thioridazine) treat psychosis less effectively than second-generation agents?",
+  "options": [
+   "They have minimal 5-HT2A antagonism, unlike the balanced D2/5-HT2A second-generation agents",
+   "They are pure 5-HT1A partial agonists",
+   "They completely lack any D2 receptor blockade",
+   "They act only on peripheral histamine receptors"
+  ],
+  "correct_index": 0,
+  "explanation": "Low-potency first-generation antipsychotics have minimal 5-HT2A antagonism and are therefore less effective for psychosis than second-generation antipsychotics, which are balanced D2 and 5-HT2A antagonists.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Comparison",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1452,
+  "question": "Which set correctly names the five major neurotransmitter systems the chapter emphasizes for psychiatry?",
+  "options": [
+   "Dopamine, adrenaline, thyroxine, GABA, and glycine",
+   "Serotonin, insulin, cortisol, melatonin, and oxytocin",
+   "Serotonin, dopamine, norepinephrine, GABA/glutamate, and acetylcholine",
+   "Serotonin, dopamine, histamine, substance P, and nitric oxide"
+  ],
+  "correct_index": 2,
+  "explanation": "The chapter organizes psychiatric neuroscience around five major neurotransmitter systems: serotonin (mood, anxiety, OCD), dopamine (motivation, psychosis, motor control), norepinephrine (arousal, attention, stress), GABA/glutamate (inhibition-excitation balance), and acetylcholine (cognition, memory).",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Summary Insight",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1453,
+  "question": "In elderly patients, cumulative anticholinergic burden from multiple medications is a major risk factor for which outcomes?",
+  "options": [
+   "Delirium, urinary retention, acute glaucoma, ileus, and falls",
+   "Serotonin syndrome and clonus",
+   "Hyperprolactinemia and galactorrhea",
+   "Extrapyramidal symptoms and tardive dyskinesia"
+  ],
+  "correct_index": 0,
+  "explanation": "Cumulative anticholinergic effects from multiple medications (e.g., amitriptyline plus benztropine plus an antihistamine) can produce delirium, urinary retention, acute glaucoma, ileus, and falls. Scales like the Anticholinergic Cognitive Burden Scale and Beers Criteria guide selection in older adults.",
+  "source_blog_title": "Neuroscience Foundations for Psychiatry",
+  "source_blog_url": "https://psychopharmref.com/blog/neuroscience-foundations.html",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1454,
+  "question": "The four classic parallel cortico–basal ganglia–thalamo–cortical loops (Alexander, DeLong & Strick, 1986) all share the same basic architecture. Which sequence is it?",
+  "options": [
+   "Cortex → Thalamus → Striatum → Cortex → Cerebellum",
+   "Striatum → Cortex → Cerebellum → Brainstem → Striatum",
+   "Thalamus → Cortex → Hippocampus → Amygdala → Thalamus",
+   "Cortex → Striatum → Globus Pallidus/SNr → Thalamus → Cortex"
+  ],
+  "correct_index": 3,
+  "explanation": "All four parallel loops follow Cortex → Striatum → Globus Pallidus/SNr → Thalamus → Cortex. What differs is which cortical region anchors the loop and therefore which function is modulated.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1455,
+  "question": "Which cortico–basal ganglia loop is the 'executive' circuit, subserving working memory, planning, and cognitive flexibility?",
+  "options": [
+   "The dorsolateral prefrontal (DLPFC) circuit",
+   "The anterior cingulate circuit",
+   "The motor circuit",
+   "The orbitofrontal circuit"
+  ],
+  "correct_index": 0,
+  "explanation": "The dorsolateral prefrontal circuit (DLPFC → caudate → GP/SNr → thalamus → DLPFC) subserves executive function, working memory, planning, and cognitive flexibility. Dysfunction presents as poor organization, impaired working memory, and cognitive slowing.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1456,
+  "question": "Hyperactivation of which cortico–basal ganglia loop is characteristically implicated in OCD?",
+  "options": [
+   "The Papez circuit",
+   "The motor circuit",
+   "The orbitofrontal circuit",
+   "The dorsolateral prefrontal circuit"
+  ],
+  "correct_index": 2,
+  "explanation": "The orbitofrontal circuit governs impulse control, behavioral inhibition, and reward evaluation. OCD involves hyperactivation of the orbitofrontal–caudate–thalamic loop; dysfunction presents as disinhibition, impulsivity, and compulsivity.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1457,
+  "question": "Dysfunction of the anterior cingulate circuit characteristically produces which clinical picture?",
+  "options": [
+   "Rigidity, chorea, and tics",
+   "Disinhibition, impulsivity, and socially inappropriate behavior",
+   "Poor working memory and cognitive slowing",
+   "Apathy, reduced initiative, loss of motivation, and in extreme cases mutism"
+  ],
+  "correct_index": 3,
+  "explanation": "The anterior cingulate circuit (ACC → ventral striatum → ventral pallidum → thalamus) governs motivation and effort allocation; dysfunction presents as apathy, reduced initiative, loss of motivation, and — at the extreme — akinetic mutism.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1458,
+  "question": "The Papez circuit (Hippocampus → fornix → mammillary bodies → anterior thalamus → cingulate) primarily subserves which functions?",
+  "options": [
+   "Reward prediction and incentive salience",
+   "Executive planning and set-shifting",
+   "Emotional processing and episodic memory encoding/consolidation",
+   "Voluntary movement initiation and scaling"
+  ],
+  "correct_index": 2,
+  "explanation": "The Papez circuit subserves emotional processing and episodic memory encoding and consolidation; dysfunction (Alzheimer, Korsakoff, temporal lobe epilepsy) presents as anterograde amnesia, confabulation, and impaired episodic recall.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1459,
+  "question": "A patient with Korsakoff syndrome has damage to which structure within the Papez circuit?",
+  "options": [
+   "The subthalamic nucleus",
+   "The mammillary bodies",
+   "The nucleus accumbens",
+   "The subgenual anterior cingulate"
+  ],
+  "correct_index": 1,
+  "explanation": "The Papez circuit runs hippocampus → fornix → mammillary bodies → anterior thalamus → cingulate. Korsakoff syndrome is classically associated with mammillary body lesions, producing anterograde amnesia and confabulation.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1460,
+  "question": "In the amygdala–prefrontal (fear/salience) circuit, what is the normal role of the ventromedial PFC?",
+  "options": [
+   "It inhibits the amygdala, providing contextual modulation of fear",
+   "It amplifies amygdala output to heighten threat responses",
+   "It initiates voluntary motor programs",
+   "It generates episodic memories independent of the hippocampus"
+  ],
+  "correct_index": 0,
+  "explanation": "In the amygdala–PFC circuit the vmPFC inhibits the amygdala and provides contextual modulation of fear. In PTSD, amygdala hyperactivity with vmPFC hypoactivity impairs extinction, producing hypervigilance, exaggerated startle, and intrusive fear memories.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1461,
+  "question": "The mesolimbic dopamine circuit (VTA → nucleus accumbens) is central to which functions, and what does its dysregulation produce?",
+  "options": [
+   "Episodic memory; anterograde amnesia and confabulation",
+   "Working memory; perseveration and cognitive slowing",
+   "Voluntary movement; rigidity and bradykinesia",
+   "Reward and reinforcement; anhedonia with low DA and positive psychotic symptoms with high DA"
+  ],
+  "correct_index": 3,
+  "explanation": "The mesolimbic circuit governs reward, incentive salience, and reinforcement learning. Low dopamine signaling produces anhedonia; excess striatal dopamine produces positive psychotic symptoms — the pathway where antipsychotic D2 blockade acts.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Comparison",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1462,
+  "question": "The mesocortical dopamine circuit (VTA → PFC) shows an 'inverted-U' relationship with prefrontal function. What does this mean?",
+  "options": [
+   "More dopamine always linearly improves PFC cognition",
+   "Dopamine has no effect on PFC function",
+   "Only complete dopamine absence affects the PFC",
+   "Both too little and too much dopamine tone impair PFC cognition"
+  ],
+  "correct_index": 3,
+  "explanation": "An inverted-U relationship exists between dopamine tone and PFC function: too little (schizophrenia negative symptoms) or too much (stimulant excess) both impair cognition. Antipsychotic D2 blockade here may worsen negative and cognitive symptoms.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Inference",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1463,
+  "question": "The motor basal ganglia circuit is often taught alongside the psychiatric loops for which reason?",
+  "options": [
+   "It is the only loop that bypasses the thalamus",
+   "It uses serotonin rather than dopamine as its transmitter",
+   "It is unaffected by any disease process",
+   "It provides the structural template architecture shared by all parallel BG loops"
+  ],
+  "correct_index": 3,
+  "explanation": "The motor circuit (motor cortex → putamen → GPi/SNr → thalamus → cortex) is included as the structural template for all parallel BG loops. Its dysfunction underlies Parkinson disease, Huntington disease, and tardive dyskinesia.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Key Detail",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1464,
+  "question": "Using the symptom-to-circuit heuristic, a patient presenting primarily with apathy, amotivation, and anhedonia localizes to which circuit?",
+  "options": [
+   "The amygdala–PFC circuit",
+   "The dorsolateral prefrontal circuit",
+   "The motor basal ganglia circuit",
+   "The anterior cingulate circuit"
+  ],
+  "correct_index": 3,
+  "explanation": "In the symptom-to-circuit map, apathy, amotivation, and anhedonia localize to the anterior cingulate circuit (dopamine/mesolimbic), seen in MDD, Parkinson disease, and TBI.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1465,
+  "question": "By the symptom-to-circuit heuristic, executive dysfunction and poor planning map to which circuit and neurotransmitter?",
+  "options": [
+   "DLPFC circuit; dopamine (D1 in PFC)",
+   "Motor circuit; dopamine in the putamen",
+   "Amygdala–PFC circuit; GABA and serotonin",
+   "Papez circuit; acetylcholine and glutamate"
+  ],
+  "correct_index": 0,
+  "explanation": "Executive dysfunction and poor planning map to the DLPFC circuit, with dopamine (D1 receptors in the PFC) as the key neurotransmitter — seen in schizophrenia, ADHD, MDD, and frontotemporal dementia.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1466,
+  "question": "According to the symptom-to-circuit map, memory impairment localizes to the Papez circuit, associated with which neurotransmitters?",
+  "options": [
+   "Serotonin and histamine",
+   "GABA and glycine",
+   "Acetylcholine and glutamate",
+   "Dopamine and norepinephrine"
+  ],
+  "correct_index": 2,
+  "explanation": "Memory impairment maps to the Papez circuit, with acetylcholine and glutamate as the key neurotransmitters — seen in Alzheimer disease, Korsakoff syndrome, and TBI.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1467,
+  "question": "In Mayberg's limbic-cortical model of major depression, which structure is hyperactive and is the primary DBS target for treatment-resistant depression?",
+  "options": [
+   "The nucleus basalis of Meynert",
+   "The subgenual anterior cingulate cortex (sgACC / Area 25)",
+   "The subthalamic nucleus",
+   "The dorsolateral prefrontal cortex"
+  ],
+  "correct_index": 1,
+  "explanation": "Mayberg's limbic-cortical model describes MDD as hyperactivity of the subgenual ACC (sgACC/Area 25) driving negative affect, with hypoactive dorsal PFC. The sgACC is the primary deep brain stimulation target for treatment-resistant depression.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Key Detail",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1468,
+  "question": "In major depression, hypoactivation of which structure underlies anhedonia specifically?",
+  "options": [
+   "The nucleus accumbens",
+   "The mammillary bodies",
+   "The dorsolateral prefrontal cortex",
+   "The superior temporal cortex"
+  ],
+  "correct_index": 0,
+  "explanation": "In the limbic-cortical model of MDD, nucleus accumbens hypoactivation underlies anhedonia, while hippocampal volume loss reflects glucocorticoid toxicity and sgACC hyperactivity drives sustained negative affect.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1469,
+  "question": "A frequently replicated neuroanatomical finding distinguishes bipolar disorder from major depression regarding the amygdala. What is it?",
+  "options": [
+   "Amygdala calcification unique to bipolar disorder",
+   "Identical amygdala volume loss in both disorders",
+   "Amygdala volume enlargement in bipolar disorder, opposite to the reduction seen in MDD",
+   "Complete absence of the amygdala in bipolar disorder"
+  ],
+  "correct_index": 2,
+  "explanation": "Bipolar disorder is associated with amygdala hyperactivity and insufficient prefrontal regulation; amygdala volume enlargement — opposite to MDD's reduction — is among the most replicated findings, with ventral striatum dysregulation driving manic reward hypersensitivity.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Comparison",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1470,
+  "question": "In schizophrenia, the same D2 receptor blocked by antipsychotics has opposing regional effects. Which statement captures this?",
+  "options": [
+   "Both regions improve equally with D2 blockade",
+   "D2 blockade affects only the tuberoinfundibular pathway",
+   "Striatal blockade worsens psychosis while DLPFC blockade improves cognition",
+   "Striatal blockade reduces positive symptoms while DLPFC blockade may worsen negative/cognitive symptoms"
+  ],
+  "correct_index": 3,
+  "explanation": "Schizophrenia involves DLPFC hypofrontality (low dopamine → negative/cognitive symptoms) and mesolimbic hyperdopaminergia (high dopamine → positive symptoms). D2 blockade helps in the striatum but worsens DLPFC function — why antipsychotics treat psychosis yet may worsen cognition.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Comparison",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1471,
+  "question": "In schizophrenia, which structure acts as a sensory gating mechanism whose dysfunction may flood consciousness with irrelevant stimuli?",
+  "options": [
+   "The cerebellum",
+   "The fusiform gyrus",
+   "The mammillary bodies",
+   "The thalamus"
+  ],
+  "correct_index": 3,
+  "explanation": "The thalamus acts as a sensory gating mechanism; thalamic abnormalities in schizophrenia may explain the flooding of consciousness with irrelevant stimuli that contributes to psychosis, alongside hippocampal hyperactivation and temporal-cortex volume loss.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Key Detail",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1472,
+  "question": "In schizophrenia, volume loss in the superior temporal cortex (including Wernicke's area) correlates most closely with which symptom?",
+  "options": [
+   "Resting tremor",
+   "Orthostatic hypotension",
+   "Auditory hallucinations",
+   "Anterograde amnesia"
+  ],
+  "correct_index": 2,
+  "explanation": "Superior temporal cortex volume loss correlates with auditory hallucinations in schizophrenia, while hippocampal hyperactivation disrupts pattern separation, potentially driving the associative loosening and false inference seen in delusions.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1473,
+  "question": "Unlike PTSD's cue-dependent fear, generalized anxiety disorder involves sustained, diffuse apprehension mediated by which structure?",
+  "options": [
+   "The fusiform gyrus",
+   "The subthalamic nucleus",
+   "The bed nucleus of the stria terminalis (BNST)",
+   "The nucleus accumbens"
+  ],
+  "correct_index": 2,
+  "explanation": "GAD involves sustained, diffuse apprehension mediated by the bed nucleus of the stria terminalis (BNST), implicated in anticipatory anxiety, with the insula processing interoceptive signals and prefrontal hypoactivation impairing top-down regulation.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Comparison",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1474,
+  "question": "In OCD, neuroimaging shows increased resting activity in the OFC and caudate that changes how with successful treatment?",
+  "options": [
+   "It remains fixed regardless of treatment response",
+   "It increases further with any effective treatment",
+   "It normalizes with successful SSRI treatment or CBT",
+   "It shifts to the cerebellum after treatment"
+  ],
+  "correct_index": 2,
+  "explanation": "OCD shows hyperactivation of the orbitofrontal–caudate–thalamic loop, with increased OFC and caudate activity at rest that normalizes with successful treatment (SSRIs or CBT) — the loop becomes 'stuck,' generating repetitive compulsive thoughts and behaviors.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Key Detail",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1475,
+  "question": "Tourette syndrome, OCD, and ADHD show high comorbidity. What does the circuit framework attribute this to?",
+  "options": [
+   "Shared degeneration of the mammillary bodies",
+   "Shared overlap in orbitofrontal and frontostriatal (basal ganglia) circuitry",
+   "Identical dopamine excess in the tuberoinfundibular pathway",
+   "A single shared genetic mutation with complete penetrance"
+  ],
+  "correct_index": 1,
+  "explanation": "Tourette involves cortico-striatal sensorimotor loop hyperactivation; its high comorbidity with OCD (same orbitofrontal loop) and ADHD (same frontostriatal network) reflects shared circuit overlap in the basal ganglia.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Inference",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1476,
+  "question": "ADHD, OCD, and Parkinson disease all involve basal ganglia dysfunction but in distinct ways. Which mapping is correct?",
+  "options": [
+   "ADHD: underactive fronto-striatal signaling; OCD: hyperactive orbitofrontal loop; Parkinson: dopamine depletion in motor putamen",
+   "All three share identical basal ganglia overactivation",
+   "ADHD: dopamine excess; OCD: motor putamen depletion; Parkinson: orbitofrontal hyperactivity",
+   "None of the three involves the basal ganglia"
+  ],
+  "correct_index": 0,
+  "explanation": "All three involve basal ganglia dysfunction distinctly: ADHD shows underactive fronto-striatal signaling, OCD shows a hyperactive orbitofrontal loop, and Parkinson shows dopamine depletion in the motor putamen — which is why dopamine-modulating drugs influence all three.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Comparison",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1477,
+  "question": "In ADHD, caudate volume reduction that normalizes with stimulant treatment is interpreted as reflecting what?",
+  "options": [
+   "Amyloid plaque deposition",
+   "Delayed neural maturation rather than fixed structural damage",
+   "A tumor requiring surgical resection",
+   "Irreversible neurodegeneration"
+  ],
+  "correct_index": 1,
+  "explanation": "In ADHD, caudate volume reduction that normalizes with stimulant treatment reflects delayed neural maturation rather than fixed damage; the DLPFC and ACC are hypoactive, with reduced prefrontal dopamine/norepinephrine as the stimulant target.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Inference",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1478,
+  "question": "Autism spectrum disorder involves the 'social brain network.' Which set of regions is described as comprising it?",
+  "options": [
+   "Mammillary bodies, fornix, and anterior thalamus",
+   "Substantia nigra, putamen, GPi, and thalamus",
+   "Superior temporal sulcus, fusiform face area, amygdala, and medial PFC",
+   "Locus coeruleus, raphe nuclei, and VTA"
+  ],
+  "correct_index": 2,
+  "explanation": "Autism involves the social brain network (superior temporal sulcus, fusiform face area, amygdala, medial PFC — face recognition, social perception, theory of mind), plus atypical long-range connectivity and cerebellar circuits affecting timing.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1479,
+  "question": "The autism connectivity pattern is frequently described as which of the following?",
+  "options": [
+   "Completely disconnected from the cerebellum",
+   "Overconnected globally with no local differences",
+   "Identical to the neurotypical connectivity pattern",
+   "Underconnected between distant regions, overconnected locally"
+  ],
+  "correct_index": 3,
+  "explanation": "Autism is frequently characterized by long-range connectivity that is underconnected between distant regions and overconnected locally, alongside social-brain-network and cerebellar circuit differences affecting timing and predictive processing.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Key Detail",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1480,
+  "question": "The parallel-loop framework is described as underlying which three clinical applications?",
+  "options": [
+   "Genetic counseling, newborn screening, and vaccination",
+   "Dietary planning, exercise prescription, and sleep hygiene",
+   "DBS target selection, neuropsychiatric differential diagnosis, and neuroimaging interpretation",
+   "Antibiotic selection, fluid management, and wound care"
+  ],
+  "correct_index": 2,
+  "explanation": "The parallel cortico–basal ganglia–thalamo–cortical loop framework underlies deep brain stimulation target selection, neuropsychiatric differential diagnosis, and neuroimaging interpretation — linking anatomy to cognition, behavior, and symptoms.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Summary Insight",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1481,
+  "question": "A patient presents with positive psychotic symptoms (hallucinations and delusions). Using the symptom-to-circuit heuristic, which circuit and neurotransmitter change is implicated?",
+  "options": [
+   "Motor circuit; dopamine depletion in the putamen",
+   "Papez circuit; acetylcholine deficiency",
+   "DLPFC circuit; decreased D1 signaling in the PFC",
+   "Mesolimbic circuit; increased D2 signaling in the nucleus accumbens"
+  ],
+  "correct_index": 3,
+  "explanation": "Positive psychotic symptoms map to the mesolimbic circuit with increased D2 signaling in the nucleus accumbens — seen in schizophrenia, mania, and stimulant psychosis.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1482,
+  "question": "A patient presents with a movement disorder (rigidity, chorea, or tics). Which circuit does the symptom-to-circuit map implicate?",
+  "options": [
+   "The motor basal ganglia circuit",
+   "The Papez circuit",
+   "The anterior cingulate circuit",
+   "The amygdala–PFC circuit"
+  ],
+  "correct_index": 0,
+  "explanation": "Movement disorders (rigidity, chorea, tics) map to the motor basal ganglia circuit, with dopamine in the putamen as the key transmitter — seen in Parkinson disease, Huntington disease, Tourette syndrome, and tardive dyskinesia.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1483,
+  "question": "In PTSD, impaired fear extinction is attributed to which circuit-level abnormality?",
+  "options": [
+   "Mammillary body degeneration",
+   "Putamen dopamine depletion",
+   "Nucleus accumbens hyperactivity driving reward",
+   "Amygdala hyperactivity with vmPFC hypoactivity failing to suppress it"
+  ],
+  "correct_index": 3,
+  "explanation": "PTSD involves amygdala hyperactivation driving exaggerated fear and intrusive memories, with impaired vmPFC inhibition during extinction and hippocampal volume reduction contributing to generalized, context-independent fear — the amygdala–PFC circuit.",
+  "source_blog_title": "Classic Neuropsychiatric Circuits",
+  "source_blog_url": "https://psychopharmref.com/#neuro-circuits",
+  "frame_used": "Cause & Effect",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1484,
+  "question": "Cognitive domains are described as hierarchical. Which domain sits at the top, depending on the integrity of every domain below it?",
+  "options": [
+   "Executive functioning",
+   "Sensation and perception",
+   "Processing speed",
+   "Attention and concentration"
+  ],
+  "correct_index": 0,
+  "explanation": "Executive functioning is the top-down set of processes coordinating all other domains; it requires the integrity of every lower domain. The hierarchy runs from sensation/perception at the base up to executive control at the top.",
+  "source_blog_title": "Cognitive Domains",
+  "source_blog_url": "https://psychopharmref.com/#cog-domains",
+  "frame_used": "Main Idea",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1485,
+  "question": "On the Wisconsin Card Sorting Test, which error type is the hallmark failure of executive dysfunction?",
+  "options": [
+   "Intrusion errors — inserting unrelated prior list items",
+   "Anomic errors — inability to name common objects",
+   "Constructional errors — inability to copy a figure",
+   "Perseverative errors — repeating a strategy already known to be incorrect"
+  ],
+  "correct_index": 3,
+  "explanation": "Perseverative errors (repeating a response strategy already known to be incorrect) are the hallmark failure on the Wisconsin Card Sorting Test, a classic measure of executive functioning and cognitive flexibility.",
+  "source_blog_title": "Cognitive Domains",
+  "source_blog_url": "https://psychopharmref.com/#cog-domains",
+  "frame_used": "Key Detail",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1486,
+  "question": "Which cognitive domain is often the MOST impaired in schizophrenia and most strongly correlated with functional impairment?",
+  "options": [
+   "Sensation and perception",
+   "Processing speed",
+   "Language",
+   "Semantic memory"
+  ],
+  "correct_index": 1,
+  "explanation": "Processing speed is often the most impaired domain in schizophrenia and most strongly correlated with functional impairment; it affects even 'non-speeded' tasks since stimuli are presented at a fixed rate. Prototypical tasks are Symbol Coding and Trail Making Part A.",
+  "source_blog_title": "Cognitive Domains",
+  "source_blog_url": "https://psychopharmref.com/#cog-domains",
+  "frame_used": "Key Detail",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1487,
+  "question": "Distinguishing an encoding failure from a retrieval failure is clinically important. What is the key differentiator?",
+  "options": [
+   "Encoding failure improves with cueing; retrieval failure does not",
+   "Retrieval failure improves with cueing; encoding failure does not",
+   "Both improve equally with cueing",
+   "Neither is affected by cueing"
+  ],
+  "correct_index": 1,
+  "explanation": "Retrieval failure improves with cueing, whereas encoding failure does not. This distinction (assessed by cued recall and recognition, e.g., the MoCA Memory Index Score) helps separate frontostriatal from cortical (Alzheimer) memory profiles.",
+  "source_blog_title": "Cognitive Domains",
+  "source_blog_url": "https://psychopharmref.com/#cog-domains",
+  "frame_used": "Comparison",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1488,
+  "question": "On the MoCA, backward digit span (repeating 7-4-2 in reverse) specifically assesses which memory subprocess?",
+  "options": [
+   "Working memory manipulation",
+   "Episodic memory consolidation",
+   "Procedural memory",
+   "Semantic memory retrieval"
+  ],
+  "correct_index": 0,
+  "explanation": "Forward digit span assesses working memory maintenance, while backward digit span assesses working memory manipulation — operating on information held in consciousness rather than merely holding it.",
+  "source_blog_title": "Cognitive Domains",
+  "source_blog_url": "https://psychopharmref.com/#cog-domains",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1489,
+  "question": "In Alzheimer disease versus frontostriatal dementia, how do memory profiles typically differ?",
+  "options": [
+   "Both spare recognition equally",
+   "Alzheimer spares delayed recall; frontostriatal impairs it selectively",
+   "Alzheimer impairs encoding, recall, and recognition; frontostriatal often spares recognition/cued recall",
+   "Neither shows any memory impairment"
+  ],
+  "correct_index": 2,
+  "explanation": "Alzheimer disease impairs encoding, delayed recall, and recognition (a cortical amnestic profile), whereas frontostriatal dementia impairs encoding and recall but often spares recognition and cued recall — a retrieval-type profile.",
+  "source_blog_title": "Cognitive Domains",
+  "source_blog_url": "https://psychopharmref.com/#cog-domains",
+  "frame_used": "Comparison",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1490,
+  "question": "Anomia (naming deficit) is described as more characteristic of which condition?",
+  "options": [
+   "Processing-speed disorders",
+   "Cortical dementia such as Alzheimer disease",
+   "Frontostriatal conditions",
+   "Normal aging"
+  ],
+  "correct_index": 1,
+  "explanation": "Naming deficits (anomia) are more characteristic of cortical dementia (Alzheimer, naming > fluency affected) than frontostriatal conditions, where verbal fluency tends to be impaired more than naming.",
+  "source_blog_title": "Cognitive Domains",
+  "source_blog_url": "https://psychopharmref.com/#cog-domains",
+  "frame_used": "Key Detail",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1491,
+  "question": "Which memory subtype is specifically implicated in medication adherence?",
+  "options": [
+   "Prospective memory — remembering to carry out future intentions",
+   "Procedural memory — learned motor skills",
+   "Sensory memory — brief stimulus traces",
+   "Semantic memory — general world knowledge"
+  ],
+  "correct_index": 0,
+  "explanation": "Prospective memory — remembering to carry out future intentions — is implicated in medication adherence. It is distinct from working, episodic, and semantic memory, the latter of which stores general world knowledge and is relatively preserved in aging.",
+  "source_blog_title": "Cognitive Domains",
+  "source_blog_url": "https://psychopharmref.com/#cog-domains",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1492,
+  "question": "Agnosia, a deficit within the sensation/perception domain, is best defined as which of the following?",
+  "options": [
+   "Inability to recognize previously identifiable stimuli despite intact primary sensation, and modality-specific",
+   "Inability to form new memories after an insult",
+   "Loss of the ability to produce fluent speech",
+   "Slowed execution of all cognitive operations"
+  ],
+  "correct_index": 0,
+  "explanation": "Agnosia is the modality-specific inability to recognize previously identifiable stimuli despite intact primary sensation. Neglect — inattention to a full hemifield — is a related perceptual deficit seen after right-hemisphere stroke.",
+  "source_blog_title": "Cognitive Domains",
+  "source_blog_url": "https://psychopharmref.com/#cog-domains",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1493,
+  "question": "On the MoCA, tasks like copying a cube and drawing a clock primarily assess which domain?",
+  "options": [
+   "Semantic memory",
+   "Processing speed",
+   "Motor skills and construction",
+   "Sustained attention"
+  ],
+  "correct_index": 2,
+  "explanation": "Copying a cube and clock drawing assess the motor skills and construction domain (visuospatial construction and praxis). Construction deficits are prominent in right parietal lesions, Alzheimer disease, and Parkinson disease.",
+  "source_blog_title": "Cognitive Domains",
+  "source_blog_url": "https://psychopharmref.com/#cog-domains",
+  "frame_used": "Application",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1494,
+  "question": "On the Montreal Cognitive Assessment (MoCA, 30 points), what is the standard cutoff for normal cognition, and what education adjustment applies?",
+  "options": [
+   "Normal is ≥20; subtract 1 point for college education",
+   "Normal is ≥29; add 3 points for any impairment",
+   "Normal is ≥26; add 1 point if ≤12 years of formal education",
+   "Normal is ≥15; no education adjustment applies"
+  ],
+  "correct_index": 2,
+  "explanation": "On the MoCA, a score ≥26/30 is considered normal, with +1 point added for ≤12 years of formal education. Administration takes ~10 minutes, and training/certification is required for clinical interpretation.",
+  "source_blog_title": "Cognitive Domains",
+  "source_blog_url": "https://psychopharmref.com/#cog-domains",
+  "frame_used": "Key Detail",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1495,
+  "question": "A key practical difference between the SLUMS and the MoCA is which of the following?",
+  "options": [
+   "SLUMS cannot detect dementia; MoCA cannot detect MCI",
+   "SLUMS uses education-adjusted scoring and requires no certification; MoCA requires training/certification",
+   "Neither assesses memory",
+   "MoCA uses a 100-point scale; SLUMS uses 30 points"
+  ],
+  "correct_index": 1,
+  "explanation": "Both are 30-point tests, but SLUMS uses education-adjusted scoring and requires no certification, whereas the MoCA requires training and certification to administer and interpret. SLUMS may be more sensitive than the MMSE for mild impairment.",
+  "source_blog_title": "Cognitive Domains",
+  "source_blog_url": "https://psychopharmref.com/#cog-domains",
+  "frame_used": "Comparison",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1496,
+  "question": "Sustained attention (vigilance), a subtype of the attention domain, is best described as which capacity?",
+  "options": [
+   "Shifting cognitive set in response to feedback",
+   "Dividing attention across two simultaneous tasks",
+   "Attending to one stimulus while ignoring distractors",
+   "Maintaining detection of a target over time"
+  ],
+  "correct_index": 3,
+  "explanation": "Within the attention domain, sustained attention (vigilance) is maintaining detection over time, distinct from selective attention (ignoring distractors) and divided attention (attending to multiple streams). The MoCA's letter-A vigilance task probes sustained attention.",
+  "source_blog_title": "Cognitive Domains",
+  "source_blog_url": "https://psychopharmref.com/#cog-domains",
+  "frame_used": "Factual Recall",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1497,
+  "question": "Which cognitive domain is relatively preserved in normal aging, in contrast to working memory and processing speed?",
+  "options": [
+   "Processing speed",
+   "Executive flexibility",
+   "Semantic memory",
+   "Working memory"
+  ],
+  "correct_index": 2,
+  "explanation": "Semantic memory (general world knowledge) is relatively preserved in normal aging, whereas working memory and processing-speed-dependent tasks decline. This pattern helps distinguish normal aging from a dementing process.",
+  "source_blog_title": "Cognitive Domains",
+  "source_blog_url": "https://psychopharmref.com/#cog-domains",
+  "frame_used": "Comparison",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ },
+ {
+  "id": 1498,
+  "question": "Neither the MoCA nor the SLUMS directly assesses which domain, instead assuming it is intact?",
+  "options": [
+   "Primary sensation and perception",
+   "Language",
+   "Memory",
+   "Executive functioning"
+  ],
+  "correct_index": 0,
+  "explanation": "Neither screen directly assesses primary sensation/perception — both assume intact basic senses, and their perceptual items overlap with language (naming) and attention (shape). Formal sensory testing requires clinical exam or specialized assessment.",
+  "source_blog_title": "Cognitive Domains",
+  "source_blog_url": "https://psychopharmref.com/#cog-domains",
+  "frame_used": "Key Detail",
+  "usmle_category": "29. Neuroscience & Neuroanatomy"
+ }
+]

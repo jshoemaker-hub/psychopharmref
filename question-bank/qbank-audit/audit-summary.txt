@@ -1,9 +1,9 @@
 PsychoPharmRef Question Bank audit — 2026-07-23
-Total items: 1401
+Total items: 1498
 
-correct_index BEFORE: A=351 B=350 C=350 D=350
-correct_index AFTER:  A=351 B=350 C=350 D=350
+correct_index BEFORE: A=376 B=374 C=374 D=374
+correct_index AFTER:  A=375 B=375 C=374 D=374
 
-Longest-option-is-answer items flagged: 1130 (see longest-answer-flags.csv)
+Longest-option-is-answer items flagged: 1211 (see longest-answer-flags.csv)
 frame_used values normalized: 0 (see frame-normalization.csv)
 Mode: REPORT ONLY
