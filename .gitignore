@@ -13,6 +13,9 @@ notes/
 !blog/slides/**
 !hugo-site/static/blog/slides/**
 
+# EXCEPTION: Therapy-Courses blank worksheet PDFs ship with the site
+!hugo-site/static/worksheets/**
+
 # macOS
 .DS_Store
 .AppleDouble
