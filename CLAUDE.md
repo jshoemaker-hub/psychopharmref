@@ -99,6 +99,13 @@ var dateStr = ToolUtils.dateStamp();
 - `sm-` → Find Similar Medications
 - `cm-` → Find Complementary Medications
 - `cs-` → Chem Structure (side-by-side structural comparison)
+- `ba-` → Behavioral Activation for Depression (flagship therapy-course module)
+- `ex-` → Exposure-Based CBT for Anxiety / ERP for OCD (course module 4)
+- `aba-` → ABA & Naturalistic Approaches for Autism Spectrum Disorder (course module 2)
+- `cbp-` → CBT for Psychosis (CBTp) & related approaches for schizophrenia (course module 6)
+- `fnd-` → Foundational Principles of Behavioral & Cognitive-Behavioral Therapy (course module 1)
+- `ang-` → CBT for Anger Management & Parent Management Training (course module 5)
+- `int-` → Integration, Advanced Topics & Implementation (course module 7)
 
 ### Copy-to-Clipboard Pattern
 Never use `alert()`. Always use `ToolUtils.copyWithButton()` for new tools:

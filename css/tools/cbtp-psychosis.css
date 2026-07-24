@@ -1,0 +1,104 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   cbtp-psychosis.css — Course module 6:
+   CBT for Psychosis (CBTp) & Related Approaches for Schizophrenia
+   Prefix: cbp-
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.cbp-root { max-width: 1000px; }
+
+.cbp-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 18px; }
+.cbp-chip { font-size: 11px; font-weight: 600; letter-spacing: .02em; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); background: #fff; color: var(--text); }
+.cbp-chip.cbp-chip-accent { background: rgba(74,124,53,.10); border-color: rgba(74,124,53,.35); color: var(--accent); }
+
+.cbp-tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 2px solid var(--border); margin-bottom: 20px; }
+.cbp-tab { appearance: none; border: none; background: transparent; cursor: pointer; font: inherit; font-size: 13px; font-weight: 600; color: #6b6455; padding: 10px 14px; border-radius: 8px 8px 0 0; border-bottom: 3px solid transparent; margin-bottom: -2px; }
+.cbp-tab:hover { color: var(--text); background: rgba(74,124,53,.06); }
+.cbp-tab.cbp-active { color: var(--accent); border-bottom-color: var(--accent); }
+.cbp-panel { display: none; animation: cbp-fade .18s ease; }
+.cbp-panel.cbp-active { display: block; }
+@keyframes cbp-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+.cbp-learn h3 { color: var(--accent); font-size: 19px; margin: 26px 0 8px; }
+.cbp-learn h4 { color: var(--accent2); font-size: 15px; margin: 18px 0 6px; }
+.cbp-learn p, .cbp-learn li { line-height: 1.62; }
+.cbp-learn ul, .cbp-learn ol { margin: 8px 0 8px 4px; padding-left: 22px; }
+.cbp-learn li { margin: 4px 0; }
+.cbp-lead { font-size: 15px; color: #4a4436; }
+
+.cbp-callout { border: 1px solid var(--border); background: var(--bg2); border-left: 4px solid var(--accent); border-radius: 8px; padding: 12px 16px; margin: 16px 0; }
+.cbp-callout.cbp-warn { border-left-color: #b4531f; background: #f8ede4; }
+.cbp-callout.cbp-tip { border-left-color: var(--accent2); background: #f6f0e2; }
+.cbp-callout .cbp-callout-title { font-weight: 700; display: block; margin-bottom: 4px; }
+
+.cbp-acr { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 12px 0; padding: 12px 16px; background: #fff; border: 1px solid var(--border); border-radius: 8px; }
+.cbp-acr dt { font-weight: 700; color: var(--accent); }
+.cbp-acr dd { margin: 0; }
+
+.cbp-refs { font-size: 13px; color: #5a5346; }
+.cbp-refs li { margin: 6px 0; }
+
+.cbp-ws-intro { color: #4a4436; margin-bottom: 14px; line-height: 1.6; }
+.cbp-card { border: 1px solid var(--border); background: #fff; border-radius: 10px; padding: 16px; margin: 16px 0; }
+.cbp-card h4 { margin: 0 0 10px; color: var(--accent); font-size: 15px; }
+
+.cbp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.cbp-table th, .cbp-table td { border: 1px solid var(--border); padding: 6px 8px; text-align: left; vertical-align: top; }
+.cbp-table th { background: var(--bg2); font-weight: 600; font-size: 12px; }
+.cbp-table input[type="text"], .cbp-table input[type="number"], .cbp-table input[type="date"], .cbp-table select, .cbp-table textarea {
+  width: 100%; box-sizing: border-box; border: 1px solid var(--border); border-radius: 5px; padding: 4px 6px; font: inherit; font-size: 12.5px; background: #fdfcf9;
+}
+.cbp-table textarea { resize: vertical; min-height: 34px; }
+.cbp-num { max-width: 72px; }
+.cbp-row-del { appearance: none; border: 1px solid var(--border); background: #fff; cursor: pointer; border-radius: 6px; width: 26px; height: 26px; line-height: 1; color: #b4531f; font-size: 15px; }
+.cbp-row-del:hover { background: #f8ede4; }
+
+.cbp-field { margin: 10px 0; }
+.cbp-field label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+.cbp-field .cbp-hint { font-weight: 400; color: #7a7364; font-size: 12px; }
+.cbp-field input[type="text"], .cbp-field input[type="date"], .cbp-field textarea, .cbp-field select {
+  width: 100%; box-sizing: border-box; border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; font: inherit; background: #fdfcf9;
+}
+.cbp-field textarea { resize: vertical; min-height: 56px; }
+.cbp-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 640px) { .cbp-grid2 { grid-template-columns: 1fr; } }
+
+/* Conviction / rating slider */
+.cbp-slider-row { display: flex; align-items: center; gap: 12px; margin: 8px 0; }
+.cbp-slider-row input[type="range"] { flex: 1; accent-color: var(--accent); }
+.cbp-slider-val { font-weight: 700; color: var(--accent); min-width: 52px; text-align: right; }
+
+.cbp-btn { appearance: none; cursor: pointer; font: inherit; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: #fff; }
+.cbp-btn:hover { filter: brightness(1.05); }
+.cbp-btn.cbp-btn-ghost { background: #fff; color: var(--accent); }
+.cbp-btn.cbp-btn-ghost:hover { background: rgba(74,124,53,.08); }
+.cbp-btn.cbp-btn-sm { padding: 6px 12px; font-size: 12px; }
+.cbp-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+.cbp-readout { display: flex; flex-wrap: wrap; gap: 16px; align-items: baseline; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; margin: 12px 0; }
+.cbp-readout .cbp-stat { font-size: 13px; color: #5a5346; }
+.cbp-readout .cbp-stat b { font-size: 20px; color: var(--accent); display: block; }
+
+.cbp-preview { border: 1px dashed var(--accent); background: rgba(74,124,53,.05); border-radius: 8px; padding: 12px 16px; margin-top: 10px; font-size: 14px; line-height: 1.55; min-height: 40px; }
+.cbp-preview:empty::before { content: "Fill the fields above to assemble the goal…"; color: #9a9384; font-style: italic; }
+.cbp-gas-level { display: grid; grid-template-columns: 90px 1fr; gap: 8px; align-items: start; margin: 6px 0; }
+.cbp-gas-tag { font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 6px; text-align: center; }
+.cbp-gas--2 { background: #f4dcd0; color: #8a3b12; }
+.cbp-gas--1 { background: #f8ecd9; color: #8a6412; }
+.cbp-gas-0 { background: #e7e0d2; color: #55503f; }
+.cbp-gas-1 { background: #dfe9d4; color: #3f6a2a; }
+.cbp-gas-2 { background: #cfe6c2; color: #2f5a1f; }
+
+.cbp-progress-list { list-style: none; padding: 0; margin: 10px 0; }
+.cbp-progress-list li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; margin: 4px 0; font-size: 13px; background: #fff; }
+.cbp-delta-up { color: var(--accent); font-weight: 600; }
+.cbp-delta-down { color: #b4531f; font-weight: 600; }
+
+/* 4 Ps grid */
+.cbp-4p { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 640px) { .cbp-4p { grid-template-columns: 1fr; } }
+.cbp-4p .cbp-field label { color: var(--accent2); }
+
+@media print {
+  .cbp-tabs, .cbp-actions, .cbp-row-del, .cbp-tab { display: none !important; }
+  .cbp-panel { display: block !important; }
+}

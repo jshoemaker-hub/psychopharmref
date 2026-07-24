@@ -1,0 +1,122 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   aba-autism.css — Course module 2:
+   ABA & Naturalistic Approaches for Autism Spectrum Disorder
+   Prefix: aba-
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.aba-root { max-width: 1000px; }
+
+/* ── Meta chips ──────────────────────────────────────────────────────── */
+.aba-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 18px; }
+.aba-chip {
+  font-size: 11px; font-weight: 600; letter-spacing: .02em;
+  padding: 4px 10px; border-radius: 999px;
+  border: 1px solid var(--border); background: #fff; color: var(--text);
+}
+.aba-chip.aba-chip-accent { background: rgba(74,124,53,.10); border-color: rgba(74,124,53,.35); color: var(--accent); }
+
+/* ── Tabs ────────────────────────────────────────────────────────────── */
+.aba-tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 2px solid var(--border); margin-bottom: 20px; }
+.aba-tab {
+  appearance: none; border: none; background: transparent; cursor: pointer;
+  font: inherit; font-size: 13px; font-weight: 600; color: #6b6455;
+  padding: 10px 14px; border-radius: 8px 8px 0 0; border-bottom: 3px solid transparent; margin-bottom: -2px;
+}
+.aba-tab:hover { color: var(--text); background: rgba(74,124,53,.06); }
+.aba-tab.aba-active { color: var(--accent); border-bottom-color: var(--accent); }
+.aba-panel { display: none; animation: aba-fade .18s ease; }
+.aba-panel.aba-active { display: block; }
+@keyframes aba-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+/* ── Didactic ────────────────────────────────────────────────────────── */
+.aba-learn h3 { color: var(--accent); font-size: 19px; margin: 26px 0 8px; }
+.aba-learn h4 { color: var(--accent2); font-size: 15px; margin: 18px 0 6px; }
+.aba-learn p, .aba-learn li { line-height: 1.62; }
+.aba-learn ul, .aba-learn ol { margin: 8px 0 8px 4px; padding-left: 22px; }
+.aba-learn li { margin: 4px 0; }
+.aba-lead { font-size: 15px; color: #4a4436; }
+
+.aba-callout { border: 1px solid var(--border); background: var(--bg2); border-left: 4px solid var(--accent); border-radius: 8px; padding: 12px 16px; margin: 16px 0; }
+.aba-callout.aba-warn { border-left-color: #b4531f; background: #f8ede4; }
+.aba-callout.aba-tip  { border-left-color: var(--accent2); background: #f6f0e2; }
+.aba-callout .aba-callout-title { font-weight: 700; display: block; margin-bottom: 4px; }
+
+.aba-acr { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 12px 0; padding: 12px 16px; background: #fff; border: 1px solid var(--border); border-radius: 8px; }
+.aba-acr dt { font-weight: 700; color: var(--accent); }
+.aba-acr dd { margin: 0; }
+
+.aba-refs { font-size: 13px; color: #5a5346; }
+.aba-refs li { margin: 6px 0; }
+
+/* ── Worksheet shared ────────────────────────────────────────────────── */
+.aba-ws-intro { color: #4a4436; margin-bottom: 14px; line-height: 1.6; }
+.aba-card { border: 1px solid var(--border); background: #fff; border-radius: 10px; padding: 16px; margin: 16px 0; }
+.aba-card h4 { margin: 0 0 10px; color: var(--accent); font-size: 15px; }
+
+.aba-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.aba-table th, .aba-table td { border: 1px solid var(--border); padding: 6px 8px; text-align: left; vertical-align: top; }
+.aba-table th { background: var(--bg2); font-weight: 600; font-size: 12px; }
+.aba-table input[type="text"], .aba-table input[type="number"], .aba-table input[type="date"], .aba-table select, .aba-table textarea {
+  width: 100%; box-sizing: border-box; border: 1px solid var(--border); border-radius: 5px; padding: 4px 6px; font: inherit; font-size: 12.5px; background: #fdfcf9;
+}
+.aba-table textarea { resize: vertical; min-height: 34px; }
+.aba-num { max-width: 68px; }
+.aba-row-del { appearance: none; border: 1px solid var(--border); background: #fff; cursor: pointer; border-radius: 6px; width: 26px; height: 26px; line-height: 1; color: #b4531f; font-size: 15px; }
+.aba-row-del:hover { background: #f8ede4; }
+
+.aba-field { margin: 10px 0; }
+.aba-field label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+.aba-field .aba-hint { font-weight: 400; color: #7a7364; font-size: 12px; }
+.aba-field input[type="text"], .aba-field input[type="date"], .aba-field textarea, .aba-field select {
+  width: 100%; box-sizing: border-box; border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; font: inherit; background: #fdfcf9;
+}
+.aba-field textarea { resize: vertical; min-height: 56px; }
+.aba-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 640px) { .aba-grid2 { grid-template-columns: 1fr; } }
+
+/* ── Buttons ─────────────────────────────────────────────────────────── */
+.aba-btn { appearance: none; cursor: pointer; font: inherit; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: #fff; }
+.aba-btn:hover { filter: brightness(1.05); }
+.aba-btn.aba-btn-ghost { background: #fff; color: var(--accent); }
+.aba-btn.aba-btn-ghost:hover { background: rgba(74,124,53,.08); }
+.aba-btn.aba-btn-sm { padding: 6px 12px; font-size: 12px; }
+.aba-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+/* ── Readout ─────────────────────────────────────────────────────────── */
+.aba-readout { display: flex; flex-wrap: wrap; gap: 16px; align-items: baseline; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; margin: 12px 0; }
+.aba-readout .aba-stat { font-size: 13px; color: #5a5346; }
+.aba-readout .aba-stat b { font-size: 20px; color: var(--accent); display: block; }
+
+/* ── DTT trial grid ──────────────────────────────────────────────────── */
+.aba-trials { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.aba-trial {
+  width: 40px; height: 40px; border: 1px solid var(--border); border-radius: 8px;
+  background: #fff; font-weight: 700; font-size: 15px; cursor: pointer; color: #6b6455;
+  display: flex; align-items: center; justify-content: center;
+}
+.aba-trial[data-score="+"] { background: #cfe6c2; color: #2f5a1f; border-color: #a9cf96; }
+.aba-trial[data-score="P"] { background: #f8ecd9; color: #8a6412; border-color: #e6cf9f; }
+.aba-trial[data-score="-"] { background: #f4dcd0; color: #8a3b12; border-color: #e0b39c; }
+.aba-trial-legend { font-size: 11px; color: #7a7364; margin: 4px 0 0; }
+.aba-trial-legend b { color: #55503f; }
+
+/* ── SMART / GAS ─────────────────────────────────────────────────────── */
+.aba-preview { border: 1px dashed var(--accent); background: rgba(74,124,53,.05); border-radius: 8px; padding: 12px 16px; margin-top: 10px; font-size: 14px; line-height: 1.55; min-height: 40px; }
+.aba-preview:empty::before { content: "Fill the fields above to assemble the goal…"; color: #9a9384; font-style: italic; }
+.aba-gas-level { display: grid; grid-template-columns: 90px 1fr; gap: 8px; align-items: start; margin: 6px 0; }
+.aba-gas-tag { font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 6px; text-align: center; }
+.aba-gas--2 { background: #f4dcd0; color: #8a3b12; }
+.aba-gas--1 { background: #f8ecd9; color: #8a6412; }
+.aba-gas-0  { background: #e7e0d2; color: #55503f; }
+.aba-gas-1  { background: #dfe9d4; color: #3f6a2a; }
+.aba-gas-2  { background: #cfe6c2; color: #2f5a1f; }
+
+.aba-progress-list { list-style: none; padding: 0; margin: 10px 0; }
+.aba-progress-list li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; margin: 4px 0; font-size: 13px; background: #fff; }
+.aba-delta-up { color: var(--accent); font-weight: 600; }
+.aba-delta-down { color: #b4531f; font-weight: 600; }
+
+@media print {
+  .aba-tabs, .aba-actions, .aba-row-del, .aba-tab { display: none !important; }
+  .aba-panel { display: block !important; }
+}

@@ -1,0 +1,122 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   exposure-anxiety.css — Course module 4:
+   Exposure-Based CBT for Anxiety Disorders (incl. ERP for OCD)
+   Prefix: ex-
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.ex-root { max-width: 1000px; }
+
+/* ── Meta chips ──────────────────────────────────────────────────────── */
+.ex-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 18px; }
+.ex-chip {
+  font-size: 11px; font-weight: 600; letter-spacing: .02em;
+  padding: 4px 10px; border-radius: 999px;
+  border: 1px solid var(--border); background: #fff; color: var(--text);
+}
+.ex-chip.ex-chip-accent { background: rgba(74,124,53,.10); border-color: rgba(74,124,53,.35); color: var(--accent); }
+
+/* ── Tabs ────────────────────────────────────────────────────────────── */
+.ex-tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 2px solid var(--border); margin-bottom: 20px; }
+.ex-tab {
+  appearance: none; border: none; background: transparent; cursor: pointer;
+  font: inherit; font-size: 13px; font-weight: 600; color: #6b6455;
+  padding: 10px 14px; border-radius: 8px 8px 0 0;
+  border-bottom: 3px solid transparent; margin-bottom: -2px;
+}
+.ex-tab:hover { color: var(--text); background: rgba(74,124,53,.06); }
+.ex-tab.ex-active { color: var(--accent); border-bottom-color: var(--accent); }
+.ex-panel { display: none; animation: ex-fade .18s ease; }
+.ex-panel.ex-active { display: block; }
+@keyframes ex-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+/* ── Didactic ────────────────────────────────────────────────────────── */
+.ex-learn h3 { color: var(--accent); font-size: 19px; margin: 26px 0 8px; }
+.ex-learn h4 { color: var(--accent2); font-size: 15px; margin: 18px 0 6px; }
+.ex-learn p, .ex-learn li { line-height: 1.62; }
+.ex-learn ul, .ex-learn ol { margin: 8px 0 8px 4px; padding-left: 22px; }
+.ex-learn li { margin: 4px 0; }
+.ex-lead { font-size: 15px; color: #4a4436; }
+
+.ex-callout {
+  border: 1px solid var(--border); background: var(--bg2);
+  border-left: 4px solid var(--accent); border-radius: 8px; padding: 12px 16px; margin: 16px 0;
+}
+.ex-callout.ex-warn { border-left-color: #b4531f; background: #f8ede4; }
+.ex-callout.ex-tip  { border-left-color: var(--accent2); background: #f6f0e2; }
+.ex-callout .ex-callout-title { font-weight: 700; display: block; margin-bottom: 4px; }
+
+.ex-acr { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 12px 0; padding: 12px 16px; background: #fff; border: 1px solid var(--border); border-radius: 8px; }
+.ex-acr dt { font-weight: 700; color: var(--accent); }
+.ex-acr dd { margin: 0; }
+
+.ex-refs { font-size: 13px; color: #5a5346; }
+.ex-refs li { margin: 6px 0; }
+
+/* ── Worksheet shared ────────────────────────────────────────────────── */
+.ex-ws-intro { color: #4a4436; margin-bottom: 14px; line-height: 1.6; }
+.ex-card { border: 1px solid var(--border); background: #fff; border-radius: 10px; padding: 16px; margin: 16px 0; }
+.ex-card h4 { margin: 0 0 10px; color: var(--accent); font-size: 15px; }
+
+.ex-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.ex-table th, .ex-table td { border: 1px solid var(--border); padding: 6px 8px; text-align: left; vertical-align: top; }
+.ex-table th { background: var(--bg2); font-weight: 600; font-size: 12px; }
+.ex-table input[type="text"], .ex-table input[type="number"], .ex-table input[type="date"], .ex-table select, .ex-table textarea {
+  width: 100%; box-sizing: border-box; border: 1px solid var(--border);
+  border-radius: 5px; padding: 4px 6px; font: inherit; font-size: 12.5px; background: #fdfcf9;
+}
+.ex-table textarea { resize: vertical; min-height: 34px; }
+.ex-num { max-width: 68px; }
+.ex-row-del { appearance: none; border: 1px solid var(--border); background: #fff; cursor: pointer; border-radius: 6px; width: 26px; height: 26px; line-height: 1; color: #b4531f; font-size: 15px; }
+.ex-row-del:hover { background: #f8ede4; }
+
+.ex-field { margin: 10px 0; }
+.ex-field label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+.ex-field .ex-hint { font-weight: 400; color: #7a7364; font-size: 12px; }
+.ex-field input[type="text"], .ex-field input[type="date"], .ex-field textarea, .ex-field select {
+  width: 100%; box-sizing: border-box; border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; font: inherit; background: #fdfcf9;
+}
+.ex-field textarea { resize: vertical; min-height: 56px; }
+.ex-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 640px) { .ex-grid2 { grid-template-columns: 1fr; } }
+
+/* ── Buttons ─────────────────────────────────────────────────────────── */
+.ex-btn { appearance: none; cursor: pointer; font: inherit; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: #fff; }
+.ex-btn:hover { filter: brightness(1.05); }
+.ex-btn.ex-btn-ghost { background: #fff; color: var(--accent); }
+.ex-btn.ex-btn-ghost:hover { background: rgba(74,124,53,.08); }
+.ex-btn.ex-btn-sm { padding: 6px 12px; font-size: 12px; }
+.ex-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+/* ── Readout ─────────────────────────────────────────────────────────── */
+.ex-readout { display: flex; flex-wrap: wrap; gap: 16px; align-items: baseline; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; margin: 12px 0; }
+.ex-readout .ex-stat { font-size: 13px; color: #5a5346; }
+.ex-readout .ex-stat b { font-size: 20px; color: var(--accent); display: block; }
+
+/* ── SUDS thermometer / bands ────────────────────────────────────────── */
+.ex-suds-legend { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 12px; font-size: 11px; }
+.ex-suds-band { padding: 3px 8px; border-radius: 6px; font-weight: 600; }
+.ex-suds-low { background: #dfe9d4; color: #3f6a2a; }
+.ex-suds-mod { background: #f8ecd9; color: #8a6412; }
+.ex-suds-high { background: #f4dcd0; color: #8a3b12; }
+.ex-suds-cell { text-align: center; font-weight: 700; }
+
+/* ── SMART / GAS (shared with BA look) ───────────────────────────────── */
+.ex-preview { border: 1px dashed var(--accent); background: rgba(74,124,53,.05); border-radius: 8px; padding: 12px 16px; margin-top: 10px; font-size: 14px; line-height: 1.55; min-height: 40px; }
+.ex-preview:empty::before { content: "Fill the fields above to assemble your goal statement…"; color: #9a9384; font-style: italic; }
+.ex-gas-level { display: grid; grid-template-columns: 90px 1fr; gap: 8px; align-items: start; margin: 6px 0; }
+.ex-gas-tag { font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 6px; text-align: center; }
+.ex-gas--2 { background: #f4dcd0; color: #8a3b12; }
+.ex-gas--1 { background: #f8ecd9; color: #8a6412; }
+.ex-gas-0  { background: #e7e0d2; color: #55503f; }
+.ex-gas-1  { background: #dfe9d4; color: #3f6a2a; }
+.ex-gas-2  { background: #cfe6c2; color: #2f5a1f; }
+
+.ex-progress-list { list-style: none; padding: 0; margin: 10px 0; }
+.ex-progress-list li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; margin: 4px 0; font-size: 13px; background: #fff; }
+.ex-delta-up { color: var(--accent); font-weight: 600; }
+.ex-delta-down { color: #b4531f; font-weight: 600; }
+
+@media print {
+  .ex-tabs, .ex-actions, .ex-row-del, .ex-tab { display: none !important; }
+  .ex-panel { display: block !important; }
+}

@@ -1,0 +1,100 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   anger-pmt.css — Course module: CBT for Anger Management & Parent Management Training
+   Prefix: ang-
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.ang-root { max-width: 1000px; }
+
+.ang-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 18px; }
+.ang-chip { font-size: 11px; font-weight: 600; letter-spacing: .02em; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); background: #fff; color: var(--text); }
+.ang-chip.ang-chip-accent { background: rgba(74,124,53,.10); border-color: rgba(74,124,53,.35); color: var(--accent); }
+
+.ang-tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 2px solid var(--border); margin-bottom: 20px; }
+.ang-tab { appearance: none; border: none; background: transparent; cursor: pointer; font: inherit; font-size: 13px; font-weight: 600; color: #6b6455; padding: 10px 14px; border-radius: 8px 8px 0 0; border-bottom: 3px solid transparent; margin-bottom: -2px; }
+.ang-tab:hover { color: var(--text); background: rgba(74,124,53,.06); }
+.ang-tab.ang-active { color: var(--accent); border-bottom-color: var(--accent); }
+.ang-panel { display: none; animation: ang-fade .18s ease; }
+.ang-panel.ang-active { display: block; }
+@keyframes ang-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+.ang-learn h3 { color: var(--accent); font-size: 19px; margin: 26px 0 8px; }
+.ang-learn h4 { color: var(--accent2); font-size: 15px; margin: 18px 0 6px; }
+.ang-learn p, .ang-learn li { line-height: 1.62; }
+.ang-learn ul, .ang-learn ol { margin: 8px 0 8px 4px; padding-left: 22px; }
+.ang-learn li { margin: 4px 0; }
+.ang-lead { font-size: 15px; color: #4a4436; }
+
+.ang-callout { border: 1px solid var(--border); background: var(--bg2); border-left: 4px solid var(--accent); border-radius: 8px; padding: 12px 16px; margin: 16px 0; }
+.ang-callout.ang-warn { border-left-color: #b4531f; background: #f8ede4; }
+.ang-callout.ang-tip { border-left-color: var(--accent2); background: #f6f0e2; }
+.ang-callout .ang-callout-title { font-weight: 700; display: block; margin-bottom: 4px; }
+
+.ang-acr { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 12px 0; padding: 12px 16px; background: #fff; border: 1px solid var(--border); border-radius: 8px; }
+.ang-acr dt { font-weight: 700; color: var(--accent); }
+.ang-acr dd { margin: 0; }
+
+.ang-refs { font-size: 13px; color: #5a5346; }
+.ang-refs li { margin: 6px 0; }
+
+.ang-ws-intro { color: #4a4436; margin-bottom: 14px; line-height: 1.6; }
+.ang-card { border: 1px solid var(--border); background: #fff; border-radius: 10px; padding: 16px; margin: 16px 0; }
+.ang-card h4 { margin: 0 0 10px; color: var(--accent); font-size: 15px; }
+
+.ang-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.ang-table th, .ang-table td { border: 1px solid var(--border); padding: 6px 8px; text-align: left; vertical-align: top; }
+.ang-table th { background: var(--bg2); font-weight: 600; font-size: 12px; }
+.ang-table input[type="text"], .ang-table input[type="number"], .ang-table input[type="date"], .ang-table select, .ang-table textarea {
+  width: 100%; box-sizing: border-box; border: 1px solid var(--border); border-radius: 5px; padding: 4px 6px; font: inherit; font-size: 12.5px; background: #fdfcf9;
+}
+.ang-table textarea { resize: vertical; min-height: 34px; }
+.ang-num { max-width: 72px; }
+.ang-row-del { appearance: none; border: 1px solid var(--border); background: #fff; cursor: pointer; border-radius: 6px; width: 26px; height: 26px; line-height: 1; color: #b4531f; font-size: 15px; }
+.ang-row-del:hover { background: #f8ede4; }
+
+.ang-field { margin: 10px 0; }
+.ang-field label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+.ang-field .ang-hint { font-weight: 400; color: #7a7364; font-size: 12px; }
+.ang-field input[type="text"], .ang-field input[type="date"], .ang-field textarea, .ang-field select {
+  width: 100%; box-sizing: border-box; border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; font: inherit; background: #fdfcf9;
+}
+.ang-field textarea { resize: vertical; min-height: 56px; }
+.ang-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 640px) { .ang-grid2 { grid-template-columns: 1fr; } }
+
+.ang-slider-row { display: flex; align-items: center; gap: 12px; margin: 8px 0; }
+.ang-slider-row input[type="range"] { flex: 1; accent-color: var(--accent); }
+.ang-slider-val { font-weight: 700; color: var(--accent); min-width: 52px; text-align: right; }
+
+.ang-btn { appearance: none; cursor: pointer; font: inherit; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: #fff; }
+.ang-btn:hover { filter: brightness(1.05); }
+.ang-btn.ang-btn-ghost { background: #fff; color: var(--accent); }
+.ang-btn.ang-btn-ghost:hover { background: rgba(74,124,53,.08); }
+.ang-btn.ang-btn-sm { padding: 6px 12px; font-size: 12px; }
+.ang-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+.ang-readout { display: flex; flex-wrap: wrap; gap: 16px; align-items: baseline; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; margin: 12px 0; }
+.ang-readout .ang-stat { font-size: 13px; color: #5a5346; }
+.ang-readout .ang-stat b { font-size: 20px; color: var(--accent); display: block; }
+
+.ang-check { display: flex; align-items: flex-start; gap: 8px; margin: 7px 0; font-size: 13.5px; line-height: 1.45; }
+.ang-check input { margin-top: 3px; }
+
+.ang-preview { border: 1px dashed var(--accent); background: rgba(74,124,53,.05); border-radius: 8px; padding: 12px 16px; margin-top: 10px; font-size: 14px; line-height: 1.55; min-height: 40px; }
+.ang-preview:empty::before { content: "Fill the fields above to assemble the goal…"; color: #9a9384; font-style: italic; }
+.ang-gas-level { display: grid; grid-template-columns: 90px 1fr; gap: 8px; align-items: start; margin: 6px 0; }
+.ang-gas-tag { font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 6px; text-align: center; }
+.ang-gas--2 { background: #f4dcd0; color: #8a3b12; }
+.ang-gas--1 { background: #f8ecd9; color: #8a6412; }
+.ang-gas-0 { background: #e7e0d2; color: #55503f; }
+.ang-gas-1 { background: #dfe9d4; color: #3f6a2a; }
+.ang-gas-2 { background: #cfe6c2; color: #2f5a1f; }
+
+.ang-progress-list { list-style: none; padding: 0; margin: 10px 0; }
+.ang-progress-list li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; margin: 4px 0; font-size: 13px; background: #fff; }
+.ang-delta-up { color: var(--accent); font-weight: 600; }
+.ang-delta-down { color: #b4531f; font-weight: 600; }
+
+@media print {
+  .ang-tabs, .ang-actions, .ang-row-del, .ang-tab { display: none !important; }
+  .ang-panel { display: block !important; }
+}

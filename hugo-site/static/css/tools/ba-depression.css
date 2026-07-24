@@ -1,0 +1,162 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   ba-depression.css — Flagship course module:
+   Behavioral Activation & CBT for Depression (interactive "how-to")
+   Prefix: ba-
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.ba-root { max-width: 1000px; }
+
+/* ── Module intro / meta ─────────────────────────────────────────────── */
+.ba-meta {
+  display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 18px;
+}
+.ba-chip {
+  font-size: 11px; font-weight: 600; letter-spacing: .02em;
+  padding: 4px 10px; border-radius: 999px;
+  border: 1px solid var(--border); background: #fff; color: var(--text);
+}
+.ba-chip.ba-chip-accent { background: rgba(74,124,53,.10); border-color: rgba(74,124,53,.35); color: var(--accent); }
+
+/* ── Tabs ────────────────────────────────────────────────────────────── */
+.ba-tabs {
+  display: flex; flex-wrap: wrap; gap: 4px;
+  border-bottom: 2px solid var(--border); margin-bottom: 20px;
+}
+.ba-tab {
+  appearance: none; border: none; background: transparent; cursor: pointer;
+  font: inherit; font-size: 13px; font-weight: 600; color: #6b6455;
+  padding: 10px 14px; border-radius: 8px 8px 0 0;
+  border-bottom: 3px solid transparent; margin-bottom: -2px;
+}
+.ba-tab:hover { color: var(--text); background: rgba(74,124,53,.06); }
+.ba-tab.ba-active { color: var(--accent); border-bottom-color: var(--accent); }
+.ba-panel { display: none; animation: ba-fade .18s ease; }
+.ba-panel.ba-active { display: block; }
+@keyframes ba-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+/* ── Didactic content ────────────────────────────────────────────────── */
+.ba-learn h3 { color: var(--accent); font-size: 19px; margin: 26px 0 8px; }
+.ba-learn h4 { color: var(--accent2); font-size: 15px; margin: 18px 0 6px; }
+.ba-learn p, .ba-learn li { line-height: 1.62; }
+.ba-learn ul, .ba-learn ol { margin: 8px 0 8px 4px; padding-left: 22px; }
+.ba-learn li { margin: 4px 0; }
+.ba-lead { font-size: 15px; color: #4a4436; }
+
+.ba-callout {
+  border: 1px solid var(--border); background: var(--bg2);
+  border-left: 4px solid var(--accent); border-radius: 8px;
+  padding: 12px 16px; margin: 16px 0;
+}
+.ba-callout.ba-warn { border-left-color: #b4531f; background: #f8ede4; }
+.ba-callout.ba-tip  { border-left-color: var(--accent2); background: #f6f0e2; }
+.ba-callout .ba-callout-title { font-weight: 700; display: block; margin-bottom: 4px; }
+
+.ba-cycle {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  justify-content: center; margin: 16px 0; padding: 14px;
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 10px;
+}
+.ba-cycle-node {
+  background: #fff; border: 1px solid var(--border); border-radius: 8px;
+  padding: 8px 12px; font-size: 12.5px; font-weight: 600; text-align: center; max-width: 160px;
+}
+.ba-cycle-arrow { color: var(--accent); font-size: 18px; font-weight: 700; }
+
+.ba-acr {
+  display: grid; grid-template-columns: auto 1fr; gap: 4px 12px;
+  margin: 12px 0; padding: 12px 16px; background: #fff;
+  border: 1px solid var(--border); border-radius: 8px;
+}
+.ba-acr dt { font-weight: 700; color: var(--accent); }
+.ba-acr dd { margin: 0; }
+
+.ba-refs { font-size: 13px; color: #5a5346; }
+.ba-refs li { margin: 6px 0; }
+
+/* ── Worksheet shared UI ─────────────────────────────────────────────── */
+.ba-ws-intro { color: #4a4436; margin-bottom: 14px; line-height: 1.6; }
+.ba-card {
+  border: 1px solid var(--border); background: #fff; border-radius: 10px;
+  padding: 16px; margin: 16px 0;
+}
+.ba-card h4 { margin: 0 0 10px; color: var(--accent); font-size: 15px; }
+
+.ba-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.ba-table th, .ba-table td { border: 1px solid var(--border); padding: 6px 8px; text-align: left; vertical-align: top; }
+.ba-table th { background: var(--bg2); font-weight: 600; font-size: 12px; }
+.ba-table input[type="text"], .ba-table input[type="number"], .ba-table input[type="date"], .ba-table select, .ba-table textarea {
+  width: 100%; box-sizing: border-box; border: 1px solid var(--border);
+  border-radius: 5px; padding: 4px 6px; font: inherit; font-size: 12.5px; background: #fdfcf9;
+}
+.ba-table textarea { resize: vertical; min-height: 34px; }
+.ba-num { max-width: 62px; }
+.ba-row-del {
+  appearance: none; border: 1px solid var(--border); background: #fff; cursor: pointer;
+  border-radius: 6px; width: 26px; height: 26px; line-height: 1; color: #b4531f; font-size: 15px;
+}
+.ba-row-del:hover { background: #f8ede4; }
+
+.ba-field { margin: 10px 0; }
+.ba-field label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+.ba-field .ba-hint { font-weight: 400; color: #7a7364; font-size: 12px; }
+.ba-field input[type="text"], .ba-field input[type="date"], .ba-field textarea, .ba-field select {
+  width: 100%; box-sizing: border-box; border: 1px solid var(--border);
+  border-radius: 6px; padding: 8px 10px; font: inherit; background: #fdfcf9;
+}
+.ba-field textarea { resize: vertical; min-height: 56px; }
+.ba-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 640px) { .ba-grid2 { grid-template-columns: 1fr; } }
+
+/* ── Buttons ─────────────────────────────────────────────────────────── */
+.ba-btn {
+  appearance: none; cursor: pointer; font: inherit; font-size: 13px; font-weight: 600;
+  padding: 8px 16px; border-radius: 8px; border: 1px solid var(--accent);
+  background: var(--accent); color: #fff;
+}
+.ba-btn:hover { filter: brightness(1.05); }
+.ba-btn.ba-btn-ghost { background: #fff; color: var(--accent); }
+.ba-btn.ba-btn-ghost:hover { background: rgba(74,124,53,.08); }
+.ba-btn.ba-btn-sm { padding: 6px 12px; font-size: 12px; }
+.ba-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+/* ── Score / readout ─────────────────────────────────────────────────── */
+.ba-readout {
+  display: flex; flex-wrap: wrap; gap: 16px; align-items: baseline;
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 8px;
+  padding: 10px 16px; margin: 12px 0;
+}
+.ba-readout .ba-stat { font-size: 13px; color: #5a5346; }
+.ba-readout .ba-stat b { font-size: 20px; color: var(--accent); display: block; }
+
+/* ── SMART builder preview ───────────────────────────────────────────── */
+.ba-preview {
+  border: 1px dashed var(--accent); background: rgba(74,124,53,.05);
+  border-radius: 8px; padding: 12px 16px; margin-top: 10px; font-size: 14px; line-height: 1.55;
+  min-height: 40px;
+}
+.ba-preview:empty::before { content: "Fill the fields above to assemble your goal statement…"; color: #9a9384; font-style: italic; }
+
+/* ── GAS levels ──────────────────────────────────────────────────────── */
+.ba-gas-level { display: grid; grid-template-columns: 90px 1fr; gap: 8px; align-items: start; margin: 6px 0; }
+.ba-gas-tag { font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 6px; text-align: center; }
+.ba-gas--2 { background: #f4dcd0; color: #8a3b12; }
+.ba-gas--1 { background: #f8ecd9; color: #8a6412; }
+.ba-gas-0  { background: #e7e0d2; color: #55503f; }
+.ba-gas-1  { background: #dfe9d4; color: #3f6a2a; }
+.ba-gas-2  { background: #cfe6c2; color: #2f5a1f; }
+
+.ba-progress-list { list-style: none; padding: 0; margin: 10px 0; }
+.ba-progress-list li {
+  display: flex; justify-content: space-between; gap: 12px;
+  padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; margin: 4px 0; font-size: 13px; background: #fff;
+}
+.ba-delta-up { color: var(--accent); font-weight: 600; }
+.ba-delta-down { color: #b4531f; font-weight: 600; }
+
+.ba-check { display: flex; align-items: flex-start; gap: 8px; margin: 7px 0; font-size: 13.5px; line-height: 1.45; }
+.ba-check input { margin-top: 3px; }
+
+@media print {
+  .ba-tabs, .ba-actions, .ba-row-del, .ba-tab { display: none !important; }
+  .ba-panel { display: block !important; }
+}
