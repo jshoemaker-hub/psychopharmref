@@ -599,6 +599,19 @@
     '<span class="aba-chip">~5–7 contact hours</span>';
   root.appendChild(meta);
 
+  // Print / Save-as-PDF: build every panel, then print (global print CSS shows only the active section; module CSS reveals all panels).
+  var abaPrintBar = el('div', { class: 'aba-actions' });
+  var abaPrintBtn = el('button', { class: 'aba-btn aba-btn-ghost aba-btn-sm', type: 'button' }, '\u1F5A8 Print / Save as PDF');
+  abaPrintBtn.innerHTML = '&#128424; Print / Save as PDF';
+  abaPrintBtn.onclick = function () {
+    var allTabs = tabBar.querySelectorAll('.aba-tab');
+    Array.prototype.forEach.call(allTabs, function (b) { b.click(); });
+    if (allTabs[0]) allTabs[0].click();
+    window.print();
+  };
+  abaPrintBar.appendChild(abaPrintBtn);
+  root.appendChild(abaPrintBar);
+
   var tabBar = el('div', { class: 'aba-tabs' });
   var panels = el('div');
   TABS.forEach(function (t, i) {

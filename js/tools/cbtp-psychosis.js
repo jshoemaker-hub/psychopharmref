@@ -562,6 +562,19 @@
     '<span class="cbp-chip">~5&ndash;7 contact hours</span>';
   root.appendChild(meta);
 
+  // Print / Save-as-PDF: build every panel, then print (global print CSS shows only the active section; module CSS reveals all panels).
+  var cbpPrintBar = el('div', { class: 'cbp-actions' });
+  var cbpPrintBtn = el('button', { class: 'cbp-btn cbp-btn-ghost cbp-btn-sm', type: 'button' }, '\u1F5A8 Print / Save as PDF');
+  cbpPrintBtn.innerHTML = '&#128424; Print / Save as PDF';
+  cbpPrintBtn.onclick = function () {
+    var allTabs = tabBar.querySelectorAll('.cbp-tab');
+    Array.prototype.forEach.call(allTabs, function (b) { b.click(); });
+    if (allTabs[0]) allTabs[0].click();
+    window.print();
+  };
+  cbpPrintBar.appendChild(cbpPrintBtn);
+  root.appendChild(cbpPrintBar);
+
   var tabBar = el('div', { class: 'cbp-tabs' });
   var panels = el('div');
   TABS.forEach(function (t, i) {

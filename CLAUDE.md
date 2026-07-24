@@ -18,6 +18,7 @@ psychopharm/
 │       ├── index.html, js/app.js, css/styles.css, ...
 ├── blog/               # 80+ standalone HTML blog posts (each fetches blog/sidebar.html)
 ├── build-blog-index.py # Rebuilds js/blog-index.json (search bar data) — run after every new post
+├── build-course-worksheets.py # Regenerates blank Therapy-Courses worksheet PDFs → hugo-site/static/worksheets/ (needs reportlab)
 ├── ref/                # Reference PDFs, source documents, research papers
 │   ├── scales/         # Clinical rating scale PDFs (PANSS, BFCRS, C-SSRS, CDR, SLUMS, etc.)
 │   └── literature/     # Research papers, textbook excerpts, guidelines

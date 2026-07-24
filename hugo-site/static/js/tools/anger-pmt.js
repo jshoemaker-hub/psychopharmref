@@ -227,6 +227,19 @@
   var meta = el('div', { class: 'ang-meta' });
   meta.innerHTML = '<span class="ang-chip ang-chip-accent">Module 5 of 7</span><span class="ang-chip">CBT for Anger</span><span class="ang-chip">Parent Management Training</span><span class="ang-chip">Irritability / Aggression</span><span class="ang-chip">Trainee / advanced student</span><span class="ang-chip">~4&ndash;5 contact hours</span>';
   root.appendChild(meta);
+
+  // Print / Save-as-PDF: build every panel, then print (global print CSS shows only the active section; module CSS reveals all panels).
+  var angPrintBar = el('div', { class: 'ang-actions' });
+  var angPrintBtn = el('button', { class: 'ang-btn ang-btn-ghost ang-btn-sm', type: 'button' }, '\u1F5A8 Print / Save as PDF');
+  angPrintBtn.innerHTML = '&#128424; Print / Save as PDF';
+  angPrintBtn.onclick = function () {
+    var allTabs = tabBar.querySelectorAll('.ang-tab');
+    Array.prototype.forEach.call(allTabs, function (b) { b.click(); });
+    if (allTabs[0]) allTabs[0].click();
+    window.print();
+  };
+  angPrintBar.appendChild(angPrintBtn);
+  root.appendChild(angPrintBar);
   var tabBar = el('div', { class: 'ang-tabs' }), panels = el('div');
   TABS.forEach(function (t, i) {
     var btn = el('button', { class: 'ang-tab' + (i === 0 ? ' ang-active' : ''), type: 'button' }, t.label);

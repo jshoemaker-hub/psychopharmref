@@ -602,6 +602,19 @@
     '<span class="ba-chip">~4&ndash;6 contact hours</span>';
   root.appendChild(meta);
 
+  // Print / Save-as-PDF: build every panel, then print (global print CSS shows only the active section; module CSS reveals all panels).
+  var baPrintBar = el('div', { class: 'ba-actions' });
+  var baPrintBtn = el('button', { class: 'ba-btn ba-btn-ghost ba-btn-sm', type: 'button' }, '\u1F5A8 Print / Save as PDF');
+  baPrintBtn.innerHTML = '&#128424; Print / Save as PDF';
+  baPrintBtn.onclick = function () {
+    var allTabs = tabBar.querySelectorAll('.ba-tab');
+    Array.prototype.forEach.call(allTabs, function (b) { b.click(); });
+    if (allTabs[0]) allTabs[0].click();
+    window.print();
+  };
+  baPrintBar.appendChild(baPrintBtn);
+  root.appendChild(baPrintBar);
+
   var tabBar = el('div', { class: 'ba-tabs' });
   var panels = el('div');
   TABS.forEach(function (t, i) {

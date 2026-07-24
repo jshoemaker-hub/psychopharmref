@@ -232,6 +232,19 @@
   var meta = el('div', { class: 'int-meta' });
   meta.innerHTML = '<span class="int-chip int-chip-accent">Module 7 of 7</span><span class="int-chip">Integration</span><span class="int-chip">Combining with medication</span><span class="int-chip">Fidelity & implementation</span><span class="int-chip">Capstone</span><span class="int-chip">~3&ndash;4 contact hours</span>';
   root.appendChild(meta);
+
+  // Print / Save-as-PDF: build every panel, then print (global print CSS shows only the active section; module CSS reveals all panels).
+  var intPrintBar = el('div', { class: 'int-actions' });
+  var intPrintBtn = el('button', { class: 'int-btn int-btn-ghost int-btn-sm', type: 'button' }, '\u1F5A8 Print / Save as PDF');
+  intPrintBtn.innerHTML = '&#128424; Print / Save as PDF';
+  intPrintBtn.onclick = function () {
+    var allTabs = tabBar.querySelectorAll('.int-tab');
+    Array.prototype.forEach.call(allTabs, function (b) { b.click(); });
+    if (allTabs[0]) allTabs[0].click();
+    window.print();
+  };
+  intPrintBar.appendChild(intPrintBtn);
+  root.appendChild(intPrintBar);
   var tabBar = el('div', { class: 'int-tabs' }), panels = el('div');
   TABS.forEach(function (t, i) {
     var btn = el('button', { class: 'int-tab' + (i === 0 ? ' int-active' : ''), type: 'button' }, t.label);

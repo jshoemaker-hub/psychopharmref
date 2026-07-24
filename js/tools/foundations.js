@@ -334,6 +334,19 @@
   var meta = el('div', { class: 'fnd-meta' });
   meta.innerHTML = '<span class="fnd-chip fnd-chip-accent">Module 1 of 7</span><span class="fnd-chip">Foundations</span><span class="fnd-chip">Behavioral + Cognitive</span><span class="fnd-chip">Shared across all modules</span><span class="fnd-chip">Trainee / advanced student</span><span class="fnd-chip">~3&ndash;4 contact hours</span>';
   root.appendChild(meta);
+
+  // Print / Save-as-PDF: build every panel, then print (global print CSS shows only the active section; module CSS reveals all panels).
+  var fndPrintBar = el('div', { class: 'fnd-actions' });
+  var fndPrintBtn = el('button', { class: 'fnd-btn fnd-btn-ghost fnd-btn-sm', type: 'button' }, '\u1F5A8 Print / Save as PDF');
+  fndPrintBtn.innerHTML = '&#128424; Print / Save as PDF';
+  fndPrintBtn.onclick = function () {
+    var allTabs = tabBar.querySelectorAll('.fnd-tab');
+    Array.prototype.forEach.call(allTabs, function (b) { b.click(); });
+    if (allTabs[0]) allTabs[0].click();
+    window.print();
+  };
+  fndPrintBar.appendChild(fndPrintBtn);
+  root.appendChild(fndPrintBar);
   var tabBar = el('div', { class: 'fnd-tabs' }), panels = el('div');
   TABS.forEach(function (t, i) {
     var btn = el('button', { class: 'fnd-tab' + (i === 0 ? ' fnd-active' : ''), type: 'button' }, t.label);

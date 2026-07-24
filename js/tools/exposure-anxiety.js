@@ -559,6 +559,19 @@
     '<span class="ex-chip">~4&ndash;6 contact hours</span>';
   root.appendChild(meta);
 
+  // Print / Save-as-PDF: build every panel, then print (global print CSS shows only the active section; module CSS reveals all panels).
+  var exPrintBar = el('div', { class: 'ex-actions' });
+  var exPrintBtn = el('button', { class: 'ex-btn ex-btn-ghost ex-btn-sm', type: 'button' }, '\u1F5A8 Print / Save as PDF');
+  exPrintBtn.innerHTML = '&#128424; Print / Save as PDF';
+  exPrintBtn.onclick = function () {
+    var allTabs = tabBar.querySelectorAll('.ex-tab');
+    Array.prototype.forEach.call(allTabs, function (b) { b.click(); });
+    if (allTabs[0]) allTabs[0].click();
+    window.print();
+  };
+  exPrintBar.appendChild(exPrintBtn);
+  root.appendChild(exPrintBar);
+
   var tabBar = el('div', { class: 'ex-tabs' });
   var panels = el('div');
   TABS.forEach(function (t, i) {
