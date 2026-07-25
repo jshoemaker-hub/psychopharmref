@@ -257,6 +257,7 @@ const SECTION_GROUP = {
   'ciwa-tool': 'tools', 'cows-tool': 'tools', 'frailty-tool': 'tools',
   'print-forms': 'forms', 'question-bank': 'qbank',
   'cog-domains': 'insights', 'neuro-circuits': 'insights', 'brain-regions': 'insights', 'brain-explorer': 'insights',
+  'cell-types': 'insights',
   'handouts': 'handouts',
   'fda-search': null, 'overview': null, 'blog-index': 'blog', 'blog-smoking': 'blog', 'blog-weight': 'blog'
 };

@@ -319,6 +319,7 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="neuro-circuits">Neuropsych Circuits</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="brain-regions">Brain Regions</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="brain-explorer">3D Brain Explorer</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="cell-types">Cellular Neuroscience</a></li>
         </ul>
       </li>
 
@@ -642,7 +643,7 @@
           <div class="ic-sub-links">
             <button class="btn-sub" onclick="switchSection('cog-domains')">Cognitive Domains</button>
             <button class="btn-sub" onclick="switchSection('neuro-circuits')">Circuits</button>
-            <button class="btn-sub" onclick="switchSection('brain-explorer')">3D Explorer</button>
+            <button class="btn-sub" onclick="switchSection('brain-explorer')">3D Explorer</button><button class="btn-sub" onclick="switchSection('cell-types')">Cell Types</button>
           </div>
         </div>
         <div class="info-card info-card--topic">
@@ -3076,6 +3077,71 @@
         </div>
       </div>
     </section><!-- end brain-explorer -->
+
+    <section id="cell-types" data-lazy-tool="cell-types" class="section">
+      <div class="section-header">
+        <h2>Cellular Neuroscience</h2>
+        <p class="section-sub">The nerve and glial cells that matter in psychiatry &mdash; where they live, how they work normally, what goes wrong, and how a fever, a sodium of 118, or an arterial pH of 7.52 changes what they do.</p>
+      </div>
+      <div class="nc-wrap">
+        <p class="nc-lede">Psychiatric pharmacology is usually taught as a list of receptors. That works until a patient is febrile, acidotic, hyponatraemic, or seizing &mdash; at which point you need to know <b>which cell</b> the receptor sits on, what that cell's metabolic reserve is, and which systemic variable it cannot tolerate. This section is organised by cell type for that reason. Eighteen populations, each with its anatomy, normal physiology, receptor and transporter complement, the diseases that are genuinely well understood, and the systemic perturbations that alter its function. Written for medical students and residents; the 3D models are procedural and rotatable.</p>
+
+        <div class="nc-tabs">
+          <button class="nc-tabbtn active" data-tab="atlas">Cell atlas</button>
+          <button class="nc-tabbtn" data-tab="models">3D models</button>
+          <button class="nc-tabbtn" data-tab="perturb">pH, fever, seizures &amp; electrolytes</button>
+          <button class="nc-tabbtn" data-tab="quick">Quick reference</button>
+        </div>
+
+        <!-- ATLAS -->
+        <div id="nc-tab-atlas">
+          <div class="nc-grid">
+            <div class="nc-rail" id="nc-rail"></div>
+            <div class="nc-detail" id="nc-detail"></div>
+          </div>
+        </div>
+
+        <!-- 3D MODELS -->
+        <div id="nc-tab-models" style="display:none">
+          <div class="nc-mgrid">
+            <div class="nc-card">
+              <div class="nc-mbar">
+                <button class="nc-mbtn active" data-model="morph">Neuron morphology</button>
+                <button class="nc-mbtn" data-model="synapse">Tripartite synapse</button>
+                <button class="nc-mbtn" data-model="receptor">Receptors &amp; transporters</button>
+                <button class="nc-mbtn" data-model="axon">Myelinated axon</button>
+                <button class="nc-btn" id="nc-reset">Reset view</button>
+                <label class="nc-toggle"><input type="checkbox" id="nc-spin"> Auto-rotate</label>
+              </div>
+              <div class="nc-stagewrap" id="nc-stage">
+                <canvas class="nc-canvas" id="nc-canvas"></canvas>
+                <div class="nc-loading" id="nc-loading">Building the model&hellip;</div>
+              </div>
+            </div>
+            <div class="nc-card nc-mpanel">
+              <h3 id="nc-mname">Neuron morphology comparison</h3>
+              <p class="nc-mhint" id="nc-mhint">Drag to rotate, scroll to zoom, click any labelled part.</p>
+              <div id="nc-minfo"><p class="nc-mplaceholder">Click a labelled part of the model.</p></div>
+            </div>
+          </div>
+          <p class="nc-note">These models are generated procedurally in the browser rather than derived from imaging data. They are schematic teaching objects &mdash; proportions are chosen for legibility, not measured. For expert-segmented anatomical geometry, use the <a href="#" onclick="switchSection('brain-explorer');return false;">3D Brain Explorer</a>.</p>
+        </div>
+
+        <!-- PERTURBATIONS -->
+        <div id="nc-tab-perturb" style="display:none">
+          <p class="nc-lede">Systemic physiology is not a backdrop to neuronal function &mdash; it is a set of operating parameters. Protons gate the NMDA receptor. Magnesium plugs its pore. Sodium powers every monoamine transporter. Temperature sets channel kinetics. The tables below map each derangement to the specific molecule it acts on, then to the bedside.</p>
+          <div id="nc-tables"></div>
+          <p class="nc-note">Correction targets and thresholds cited here reflect widely used guidance and are intended for teaching. Verify against current local protocols before applying them to a patient.</p>
+        </div>
+
+        <!-- QUICK REFERENCE -->
+        <div id="nc-tab-quick" style="display:none">
+          <p class="nc-lede">One row per cell. Click a name to open its full entry in the atlas.</p>
+          <div id="nc-quick"></div>
+        </div>
+      </div>
+    </section><!-- end cell-types -->
+
 
 
     <!-- ── Medication Comparison ─────────────────────────────────────────── -->
@@ -12942,7 +13008,7 @@
 
   <script defer src="js/data.js?v=20260719d"></script>
   <script defer src="js/routes.js?v=20260719d"></script>
-  <script defer src="js/app.js?v=20260723d"></script>
+  <script defer src="js/app.js?v=20260724a"></script>
   <script defer src="js/glossary-data.js?v=20260719d"></script>
   <script defer src="js/glossary-page.js?v=20260719d"></script>
   <script defer src="js/search.js?v=20260722c"></script>

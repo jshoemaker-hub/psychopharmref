@@ -1,0 +1,116 @@
+/* Cellular Neuroscience for Psychiatry — prefixed nc- */
+.nc-wrap{margin-top:20px;}
+
+/* tabs */
+.nc-tabs{display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid var(--border);margin-bottom:18px;padding-bottom:0;}
+.nc-tabbtn{font-size:13px;padding:9px 15px;border:1px solid transparent;border-bottom:none;background:none;color:#8a8065;cursor:pointer;border-radius:10px 10px 0 0;transition:.14s;font-weight:500;}
+.nc-tabbtn:hover{color:var(--text);background:rgba(0,0,0,.03);}
+.nc-tabbtn.active{background:var(--bg2);border-color:var(--border);color:var(--accent);font-weight:600;margin-bottom:-1px;}
+
+.nc-lede{font-size:13.5px;line-height:1.65;color:var(--text);max-width:78ch;margin:0 0 18px;}
+.nc-lede b{color:var(--accent);}
+
+/* atlas layout */
+.nc-grid{display:grid;grid-template-columns:250px 1fr;gap:18px;align-items:start;}
+@media(max-width:900px){.nc-grid{grid-template-columns:1fr;}}
+.nc-rail{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:12px;max-height:78vh;overflow:auto;position:sticky;top:12px;}
+@media(max-width:900px){.nc-rail{position:static;max-height:none;}}
+.nc-rail h4{font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent2);margin:14px 0 6px;line-height:1.4;}
+.nc-rail h4:first-child{margin-top:0;}
+.nc-item{display:flex;gap:8px;align-items:flex-start;width:100%;text-align:left;border:1px solid transparent;background:none;border-radius:9px;padding:7px 8px;cursor:pointer;transition:.14s;color:var(--text);}
+.nc-item:hover{background:rgba(0,0,0,.04);}
+.nc-item.active{background:rgba(74,124,53,.12);border-color:rgba(74,124,53,.35);}
+.nc-sw{width:11px;height:11px;border-radius:3px;flex:none;margin-top:3px;display:inline-block;}
+.nc-nm{font-size:12.5px;font-weight:600;line-height:1.3;}
+.nc-sb{font-size:10px;color:#8a8065;line-height:1.35;}
+
+.nc-detail{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px 22px;}
+@media(max-width:600px){.nc-detail{padding:14px;}}
+
+.nc-dhead{border-left:4px solid var(--accent);padding-left:14px;margin-bottom:18px;}
+.nc-dcat{font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent2);margin:0 0 3px;}
+.nc-dhead h3{font-size:21px;margin:0 0 3px;color:var(--text);line-height:1.25;}
+.nc-dsub{font-size:12px;color:#8a8065;margin:0;}
+
+.nc-figrow{display:grid;grid-template-columns:minmax(240px,340px) 1fr;gap:18px;align-items:start;margin-bottom:20px;}
+@media(max-width:760px){.nc-figrow{grid-template-columns:1fr;}}
+.nc-fig svg{width:100%;height:auto;border:1px solid var(--border);border-radius:10px;display:block;}
+.nc-why p{font-size:13.5px;line-height:1.65;margin:0 0 10px;color:var(--text);}
+.nc-3dbtn{font-size:11.5px;padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--accent);cursor:pointer;transition:.14s;font-weight:500;}
+.nc-3dbtn:hover{border-color:var(--accent);background:rgba(74,124,53,.07);}
+
+.nc-block{margin:0 0 20px;padding-top:16px;border-top:1px dashed var(--border);}
+.nc-k{font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent2);margin:0 0 9px;font-weight:600;}
+.nc-p{font-size:13px;line-height:1.7;margin:0;color:var(--text);}
+
+.nc-phys{margin:0 0 12px;}
+.nc-phys h5{font-size:12.5px;margin:0 0 3px;color:var(--accent);font-weight:600;}
+.nc-phys p{font-size:13px;line-height:1.68;margin:0;color:var(--text);}
+
+.nc-rt{width:100%;border-collapse:collapse;font-size:12.5px;}
+.nc-rt th{text-align:left;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent2);border-bottom:1px solid var(--border);padding:0 10px 6px 0;font-weight:600;}
+.nc-rt td{padding:8px 10px 8px 0;border-bottom:1px solid rgba(207,200,186,.5);vertical-align:top;line-height:1.6;}
+.nc-rt tr:last-child td{border-bottom:none;}
+.nc-rt-n{font-weight:600;color:var(--text);white-space:nowrap;}
+.nc-rt-c{color:#8a8065;font-size:11.5px;white-space:nowrap;}
+@media(max-width:640px){.nc-rt-n,.nc-rt-c{white-space:normal;}}
+
+.nc-dz{margin:0 0 12px;}
+.nc-dz h5{font-size:12.5px;margin:0 0 3px;color:var(--text);font-weight:600;}
+.nc-dz p{font-size:13px;line-height:1.68;margin:0;color:var(--text);}
+
+.nc-pertblock{background:rgba(139,105,20,.05);border:1px solid rgba(139,105,20,.22);border-radius:12px;padding:16px 18px;border-top:1px solid rgba(139,105,20,.22);}
+.nc-pert{display:grid;grid-template-columns:130px 1fr;gap:12px;margin:0 0 11px;}
+@media(max-width:600px){.nc-pert{grid-template-columns:1fr;gap:2px;}}
+.nc-pert:last-child{margin-bottom:0;}
+.nc-pk{font-size:11px;font-weight:600;color:var(--accent2);line-height:1.5;}
+.nc-pert p{font-size:12.8px;line-height:1.65;margin:0;color:var(--text);}
+
+.nc-pearlblock{background:rgba(74,124,53,.06);border:1px solid rgba(74,124,53,.28);border-radius:12px;padding:16px 18px;border-top:1px solid rgba(74,124,53,.28);}
+.nc-pearls{margin:0;padding-left:18px;}
+.nc-pearls li{font-size:13px;line-height:1.65;margin-bottom:7px;color:var(--text);}
+.nc-pearls li:last-child{margin-bottom:0;}
+
+.nc-chaps{display:flex;flex-wrap:wrap;gap:7px;}
+.nc-chap{font-size:11.5px;padding:5px 11px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;transition:.14s;}
+.nc-chap:hover{border-color:var(--accent);color:var(--accent);}
+
+/* 3D models tab */
+.nc-mgrid{display:grid;grid-template-columns:1fr 300px;gap:16px;align-items:start;}
+@media(max-width:1000px){.nc-mgrid{grid-template-columns:1fr;}}
+.nc-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;}
+.nc-mbar{display:flex;gap:7px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.nc-mbtn{font-size:11.5px;padding:6px 11px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);cursor:pointer;transition:.14s;}
+.nc-mbtn:hover{border-color:var(--accent);color:var(--accent);}
+.nc-mbtn.active{background:rgba(74,124,53,.14);border-color:rgba(74,124,53,.45);color:var(--accent);font-weight:600;}
+.nc-btn{font-size:11.5px;padding:6px 11px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--text);cursor:pointer;}
+.nc-btn:hover{border-color:var(--accent);color:var(--accent);}
+.nc-toggle{font-size:11.5px;color:var(--text);display:flex;align-items:center;gap:5px;cursor:pointer;}
+.nc-stagewrap{position:relative;}
+.nc-canvas{width:100%;height:min(64vh,600px);display:block;border-radius:0 0 13px 13px;background:radial-gradient(circle at 50% 38%,#fbf7ee,#e9e0d0);cursor:grab;}
+.nc-canvas:active{cursor:grabbing;}
+.nc-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#8a8065;font-size:13px;pointer-events:none;text-align:center;padding:20px;}
+.nc-mpanel{padding:16px 18px;}
+.nc-mpanel h3{font-size:15px;margin:0 0 6px;color:var(--accent);}
+.nc-mhint{font-size:12px;line-height:1.6;color:#8a8065;margin:0 0 14px;padding-bottom:12px;border-bottom:1px dashed var(--border);}
+.nc-minfo h4{font-size:13px;margin:0 0 5px;color:var(--text);}
+.nc-minfo p{font-size:12.5px;line-height:1.65;margin:0;color:var(--text);}
+.nc-mplaceholder{color:#8a8065;font-style:italic;}
+
+/* tables */
+.nc-tblwrap{margin:0 0 34px;}
+.nc-tbl-title{font-size:17px;margin:0 0 6px;color:var(--accent);line-height:1.3;}
+.nc-tbl-lead{font-size:13px;line-height:1.65;color:var(--text);margin:0 0 14px;max-width:82ch;}
+.nc-scroll{overflow-x:auto;border:1px solid var(--border);border-radius:12px;background:var(--bg2);}
+.nc-table{width:100%;border-collapse:collapse;font-size:12.3px;min-width:760px;}
+.nc-table th{text-align:left;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent2);background:rgba(0,0,0,.03);padding:10px 12px;border-bottom:1px solid var(--border);font-weight:600;vertical-align:bottom;}
+.nc-table td{padding:11px 12px;border-bottom:1px solid rgba(207,200,186,.55);vertical-align:top;line-height:1.6;}
+.nc-table tr:last-child td{border-bottom:none;}
+.nc-table tbody tr:hover{background:rgba(74,124,53,.045);}
+.nc-td1{font-weight:600;min-width:150px;}
+.nc-dim{color:#8a8065;font-weight:400;font-size:11px;}
+.nc-qtable{min-width:1000px;}
+.nc-qlink{color:var(--accent);cursor:pointer;text-decoration:none;border-bottom:1px dotted var(--accent);}
+.nc-qlink:hover{border-bottom-style:solid;}
+
+.nc-note{font-size:11.5px;line-height:1.6;color:#8a8065;margin:22px 0 0;padding-top:12px;border-top:1px dashed var(--border);}
