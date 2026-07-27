@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BHI Medication Reference — Prototype Preview</title>
+<style>
+  :root{
+    --accent:#4a7c35; --text:#231e14; --text-muted:#6b6050;
+    --bg:#f6f1e7; --bg2:#ece6db; --border:#cfc8ba; --accent2:#8b6914;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;padding:28px 20px 60px}
+  .wrap{max-width:900px;margin:0 auto}
+  h1{font-size:24px;margin:0 0 4px}
+  .lede{color:var(--text-muted);font-size:14px;margin:0 0 24px;max-width:640px}
+  .demo-table{width:100%;border-collapse:collapse;background:var(--bg2);
+    border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:8px}
+  .demo-table th,.demo-table td{text-align:left;padding:11px 14px;font-size:14px;border-bottom:1px solid var(--border)}
+  .demo-table th{background:rgba(74,124,53,0.10);font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--text-muted)}
+  .demo-table tr:last-child td{border-bottom:none}
+  .drug-name-cell{font-weight:600}
+  .brand-name{color:var(--text-muted);font-weight:400}
+  .caption{font-size:12px;color:var(--text-muted);margin:0 0 28px}
+  /* Card button */
+  .bhi-btn{padding:4px 10px;background:rgba(74,124,53,0.14);border:1px solid rgba(74,124,53,0.42);
+    border-radius:5px;color:var(--accent);cursor:pointer;font-size:12px;white-space:nowrap;transition:background .15s}
+  .bhi-btn:hover{background:rgba(74,124,53,0.28)}
+  /* Modal */
+  .modal{position:fixed;inset:0;background:rgba(35,30,20,.55);display:flex;align-items:center;
+    justify-content:center;padding:20px;z-index:50}
+  .modal.hidden{display:none}
+  .modal-content{background:var(--bg2);border:1px solid var(--border);border-radius:12px;
+    max-width:640px;width:100%;max-height:85vh;overflow-y:auto;padding:28px;position:relative}
+  .modal-close{position:absolute;top:14px;right:14px;background:transparent;border:none;
+    color:var(--text-muted);font-size:22px;cursor:pointer;line-height:1}
+  .modal-close:hover{color:var(--text)}
+  .bhi-card-name{font-size:22px;font-weight:700;margin-bottom:2px}
+  .bhi-card-brand{font-size:13px;color:var(--text-muted);margin-bottom:16px}
+  .bhi-section{margin-bottom:15px}
+  .bhi-section h4{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--accent);
+    margin:0 0 5px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+  .bhi-section p{font-size:13.5px;line-height:1.6;color:var(--text);margin:0}
+  .bhi-context{background:rgba(74,124,53,0.07);border-left:3px solid var(--accent);border-radius:4px;padding:10px 12px}
+  .bhi-source{font-size:12.5px;color:var(--text-muted);margin:14px 0 18px;padding-top:12px;border-top:1px solid var(--border)}
+  .bhi-source a{color:var(--accent2)}
+  .bhi-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .bhi-copy-btn{padding:9px 18px;background:var(--accent);border:none;border-radius:6px;color:#fff;
+    font-size:14px;font-weight:600;cursor:pointer;transition:opacity .15s,background .15s}
+  .bhi-copy-btn:hover{opacity:.9}
+  .bhi-copy-btn.bhi-copied{background:var(--accent2)}
+  .bhi-copy-note{font-size:12px;color:var(--text-muted)}
+  .bhi-se-grid{display:flex;flex-direction:column;gap:8px}
+  .bhi-se-cat{font-size:13px}
+  .bhi-se-sys{display:inline-block;min-width:108px;font-weight:600;color:var(--text-muted);
+    font-size:11px;text-transform:uppercase;letter-spacing:.5px;vertical-align:top}
+  .bhi-se-tag,.bhi-chip{display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;
+    background:var(--bg);border:1px solid var(--border);border-radius:12px;font-size:12px}
+  .bhi-chips{display:flex;flex-wrap:wrap}
+  .bhi-chip{background:rgba(74,124,53,0.08);border-color:rgba(74,124,53,0.3);color:var(--text)}
+  .bhi-section.bhi-bbw{border:1.5px solid #b03030;background:rgba(176,48,48,0.06);border-radius:6px;padding:12px 14px}
+  .bhi-section.bhi-bbw h4{color:#b03030;margin-top:0}
+  .bhi-bbw-item{font-size:13px;line-height:1.45;margin:6px 0}
+  .bhi-bbw-item + .bhi-bbw-item{padding-top:6px;border-top:1px dashed rgba(176,48,48,0.35)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>BHI Medication Reference — Prototype</h1>
+  <p class="lede">This is exactly how the new <strong>BHI Ref</strong> column will behave in your Drug Database: click <em>View / Copy</em> on any row and the reference card pops out, with a one-click <strong>Copy for EMR</strong> button that puts a clean plain-text version on your clipboard. Each card combines FDA-package-insert dosing prose (starting / stopping / missed doses / converting) with FDA black box warnings, mechanism, indications, dose adjustments, pregnancy &amp; lactation, and common side effects pulled live from your existing database. All 91 medications in the database now have an entry (the 4 originals link to direct FDA PDFs; the rest link to the official DailyMed label). Click any row to review.</p>
+
+  <table class="demo-table">
+    <thead><tr><th>Drug</th><th>Class</th><th>BHI Ref</th></tr></thead>
+    <tbody id="demo-body"></tbody>
+  </table>
+  <p class="caption">(In the live site this sits as the last column of the full Drug Database table. Meds without a reference show a dash.)</p>
+</div>
+
+<div id="bhi-modal" class="modal hidden">
+  <div class="modal-content">
+    <button class="modal-close" id="bhi-modal-close">&times;</button>
+    <div id="bhi-modal-body"></div>
+  </div>
+</div>
+
+<!-- Loads the real database so the card shows the same live data the site will -->
+<script src="js/data.js"></script>
+<script src="js/bhi-references.js"></script>
+<script>
+(function(){
+  var refs = window.BHI_REFERENCES || {};
+  var MEDS = (typeof MEDICATIONS !== 'undefined') ? MEDICATIONS : [];
+  var PERI = (typeof PERINATAL_DATA !== 'undefined') ? PERINATAL_DATA : {};
+  var SAFE = (typeof FDA_SAFETY_DATA !== 'undefined') ? FDA_SAFETY_DATA : {};
+  var clsOf = {};
+  MEDS.forEach(function(m){ clsOf[m.id] = m.class || ''; });
+  // Render every med that has a BHI entry, ordered as in the database.
+  var order = MEDS.map(function(m){ return m.id; }).filter(function(id){ return refs[id]; });
+  document.getElementById('demo-body').innerHTML = order.map(function(id){
+    var r = refs[id]; if(!r) return '';
+    return '<tr><td class="drug-name-cell">'+r.generic+' <span class="brand-name">('+r.brand+')</span></td>'+
+           '<td>'+(clsOf[id]||'')+'</td>'+
+           '<td><button class="bhi-btn" onclick="openBhiCard(\''+id+'\')">View / Copy</button></td></tr>';
+  }).join('');
+
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+  // Mirror of the live-site section model (js/app.js bhiSections).
+  function bhiSections(id, ref){
+    var med = MEDS.find(function(m){return m.id===id;});
+    var safety = SAFE[id]; var peri = PERI[id]; var S=[];
+    S.push({label:'Overview',text:ref.context,context:true});
+    if(safety&&safety.blackBoxWarnings&&safety.blackBoxWarnings.length) S.push({label:'FDA Black Box Warnings',bbw:safety.blackBoxWarnings});
+    if(med&&med.mechanism) S.push({label:'Mechanism',text:med.mechanism});
+    if(med&&med.indications&&med.indications.length){
+      var ind=med.indications.map(function(i){return i.use+(i.year?' ('+i.year+')':'');});
+      S.push({label:'FDA-Approved Indications',text:ind.join('; '),chips:ind});
+    }
+    S.push({label:'Starting',text:ref.starting});
+    S.push({label:'Stopping',text:ref.stopping});
+    S.push({label:'Missed doses',text:ref.missed});
+    S.push({label:'Converting to / from another medication',text:ref.converting});
+    if(med){
+      function adjLine(label,obj){ if(!obj) return label+': Not specified'; if(obj.notes) return label+': '+obj.notes; return label+': '+(obj.modified?'Requires adjustment':'No adjustment needed'); }
+      var adj=[];
+      adj.push(adjLine('Renal',med.renalImpairment));
+      adj.push(adjLine('Hepatic',med.hepaticImpairment));
+      adj.push(adjLine('Geriatric',med.geriatricDosing));
+      adj.push('QT: '+(med.qtInterval?'Prolongs QT — consider ECG monitoring':'Not significant'));
+      S.push({label:'Renal / Hepatic / Geriatric / QT',lines:adj});
+    }
+    if(peri){
+      var pl=[];
+      if(peri.pregnancy) pl.push('Pregnancy: Cat. '+(peri.pregnancy.fdaCategory||'—')+(peri.pregnancy.risk?' ('+peri.pregnancy.risk+')':'')+(peri.pregnancy.notes?'. '+peri.pregnancy.notes:''));
+      if(peri.breastfeeding) pl.push('Breastfeeding: Hale '+(peri.breastfeeding.hale||'—')+(peri.breastfeeding.rid?', RID '+peri.breastfeeding.rid:'')+(peri.breastfeeding.risk?' ('+peri.breastfeeding.risk+')':'')+(peri.breastfeeding.notes?'. '+peri.breastfeeding.notes:''));
+      if(pl.length) S.push({label:'Pregnancy & Lactation',lines:pl});
+    }
+    if(safety&&safety.sideEffects){
+      var sys=Object.keys(safety.sideEffects);
+      if(sys.length){
+        var t=sys.map(function(k){return k+': '+safety.sideEffects[k].join(', ');});
+        S.push({label:'Common Side Effects',text:t.join('; '),se:safety.sideEffects});
+      }
+    }
+    return S;
+  }
+  function sectionHtml(s){
+    var head='<h4>'+esc(s.label)+'</h4>', cls=s.context?'bhi-section bhi-context':(s.bbw?'bhi-section bhi-bbw':'bhi-section'), inner;
+    if(s.bbw){ head='<h4>&#9888; '+esc(s.label)+'</h4>'; inner=s.bbw.map(function(w){return '<div class="bhi-bbw-item">'+esc(w)+'</div>';}).join('');
+    } else if(s.se){ inner='<div class="bhi-se-grid">'+Object.keys(s.se).map(function(k){
+        return '<div class="bhi-se-cat"><span class="bhi-se-sys">'+esc(k)+'</span>'+s.se[k].map(function(x){return '<span class="bhi-se-tag">'+esc(x)+'</span>';}).join('')+'</div>';}).join('')+'</div>';
+    } else if(s.chips){ inner='<div class="bhi-chips">'+s.chips.map(function(c){return '<span class="bhi-chip">'+esc(c)+'</span>';}).join('')+'</div>';
+    } else if(s.lines){ inner='<p>'+s.lines.map(esc).join('<br>')+'</p>';
+    } else { inner='<p>'+esc(s.text)+'</p>'; }
+    return '<div class="'+cls+'">'+head+inner+'</div>';
+  }
+  function bhiPlainText(id,r){
+    var lines=[r.generic+' ('+r.brand+') — '+r.classLine];
+    bhiSections(id,r).forEach(function(s){
+      lines.push('');
+      if(s.bbw){ lines.push('** FDA BLACK BOX WARNINGS **'); s.bbw.forEach(function(w){lines.push('  - '+w);}); }
+      else if(s.lines){ lines.push(s.label+':'); s.lines.forEach(function(l){lines.push('  '+l);}); }
+      else if(s.se){ lines.push(s.label+': '+Object.keys(s.se).map(function(k){return k+': '+s.se[k].join(', ');}).join('; ')); }
+      else if(s.chips){ lines.push(s.label+': '+s.chips.join('; ')); }
+      else { lines.push(s.label+': '+s.text); }
+    });
+    lines.push(''); lines.push(srcParts(r).prefix+r.fdaLabel);
+    return lines.join('\n');
+  }
+  function srcParts(r){
+    if(/dailymed\.nlm\.nih\.gov/i.test(r.fdaLabel||'')) return {prefix:'Source (FDA prescribing information via DailyMed): ',linkText:'DailyMed label'};
+    return {prefix:'Source (FDA package insert'+(r.fdaLabelDate?', '+r.fdaLabelDate:'')+'): ',linkText:'FDA prescribing information (PDF)'};
+  }
+
+  window.openBhiCard = function(id){
+    var r = refs[id]; if(!r) return;
+    var body = document.getElementById('bhi-modal-body');
+    body.innerHTML =
+      '<div class="bhi-card-name">'+esc(r.generic)+'</div>'+
+      '<div class="bhi-card-brand">'+esc(r.brand)+' &bull; '+esc(r.classLine)+'</div>'+
+      bhiSections(id,r).map(sectionHtml).join('')+
+      '<div class="bhi-source">'+esc(srcParts(r).prefix)+
+        '<a href="'+esc(r.fdaLabel)+'" target="_blank" rel="noopener">'+esc(srcParts(r).linkText)+'</a></div>'+
+      '<div class="bhi-actions"><button class="bhi-copy-btn" id="bhi-copy-btn">Copy for EMR</button>'+
+        '<span class="bhi-copy-note">Copies a plain-text version to paste into your note.</span></div>';
+    var btn = document.getElementById('bhi-copy-btn');
+    btn.addEventListener('click',function(){
+      var text = bhiPlainText(id,r), orig = btn.textContent;
+      function fb(ok){btn.textContent=ok?'Copied!':'Copy failed';btn.classList.toggle('bhi-copied',ok);
+        setTimeout(function(){btn.textContent=orig;btn.classList.remove('bhi-copied');},2000);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){fb(true);}).catch(function(){fb(false);});
+      } else { fb(false); }
+    });
+    document.getElementById('bhi-modal').classList.remove('hidden');
+  };
+
+  var modal = document.getElementById('bhi-modal');
+  document.getElementById('bhi-modal-close').addEventListener('click',function(){modal.classList.add('hidden');});
+  modal.addEventListener('click',function(e){if(e.target===e.currentTarget)modal.classList.add('hidden');});
+})();
+</script>
+</body>
+</html>

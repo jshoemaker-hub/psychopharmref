@@ -2010,7 +2010,7 @@ const MEDICATIONS = [
       induces: []
     },
     renalImpairment: { modified: true, moderate: 'Reduce to 50 mg BID (CrCl 5–29)', severe: 'Reduce to 25 mg BID', notes: 'Reduce dose in moderate-severe renal impairment (CrCl <60 mL/min); max 50 mg BID if CrCl 5–29 mL/min.' },
-    hepaticImpairment: { modified: false, notes: 'No dose adjustment in mild-moderate; avoid in severe hepatic impairment.' },
+    hepaticImpairment: { modified: true, notes: 'No dose adjustment in mild-moderate; avoid in severe hepatic impairment.' },
     geriatricDosing: { modified: false, notes: 'Use with caution' },
     qtInterval: false,
     proteinBinding: 13,
@@ -2060,7 +2060,7 @@ const MEDICATIONS = [
       induces: []
     },
     renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required in renal impairment, including severe.' },
-    hepaticImpairment: { modified: false, notes: 'No dose adjustment in mild-moderate; not recommended in severe hepatic impairment.' },
+    hepaticImpairment: { modified: true, notes: 'No dose adjustment in mild-moderate; not recommended in severe hepatic impairment.' },
     geriatricDosing: { modified: false, notes: 'No specific adjustment' },
     qtInterval: false,
     proteinBinding: 98,
@@ -2569,7 +2569,7 @@ const MEDICATIONS = [
       induces: ['CYP3A4']
     },
     renalImpairment: { modified: true, moderate: 'Reduce starting dose by 50% (CrCl <30)', severe: 'Monitor closely', notes: 'Reduce initial dose by 50% if CrCl <30 mL/min; titrate slowly.' },
-    hepaticImpairment: { modified: false, notes: 'No adjustment mild-moderate; avoid severe' },
+    hepaticImpairment: { modified: true, notes: 'No adjustment mild-moderate; avoid severe' },
     geriatricDosing: { modified: false, notes: 'Monitor sodium; hyponatremia risk' },
     qtInterval: false,
     proteinBinding: 40,
@@ -2731,7 +2731,7 @@ const MEDICATIONS = [
       induces: []
     },
     renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; direct glucuronidation — safer than other BZDs in renal impairment.' },
-    hepaticImpairment: { modified: false, notes: 'Safer than other BZDs in liver disease (direct glucuronidation)' },
+    hepaticImpairment: { modified: true, notes: 'Preferred BZD in liver disease — cleared by Phase II glucuronidation (spared when CYP oxidation fails), so clearance is largely preserved even in cirrhosis (half-life roughly doubles). However, per FDA label lorazepam may worsen hepatic encephalopathy: use with caution, reduce the starting dose (~50%) in moderate impairment, and minimize/avoid in severe insufficiency (Child-Pugh C) or overt encephalopathy. Start low, titrate slowly, and monitor for oversedation/CNS depression. Intrinsic hepatotoxicity (DILI) is very rare.' },
     geriatricDosing: { modified: true, notes: 'Reduce dose (Beers List); no active metabolites preferred in elderly' },
     qtInterval: false,
     proteinBinding: 91,
@@ -3102,7 +3102,7 @@ const MEDICATIONS = [
       induces: []
     },
     renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required; de-esterified to ritalinic acid, predominantly renally excreted as inactive metabolite.' },
-    hepaticImpairment: { modified: false, notes: 'No specific adjustment; use with caution in severe hepatic impairment.' },
+    hepaticImpairment: { modified: true, notes: 'No specific adjustment; use with caution in severe hepatic impairment.' },
     geriatricDosing: { modified: false, notes: 'Use with caution; cardiovascular monitoring important. Limited geriatric data.' },
     qtInterval: false,
     proteinBinding: 15,

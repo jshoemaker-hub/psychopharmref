@@ -763,6 +763,222 @@ document.getElementById('drug-modal').addEventListener('click', e => {
   if (e.target === e.currentTarget) e.currentTarget.classList.add('hidden');
 });
 
+/* ── BHI Medication Reference Card ──────────────────────────────────────── */
+// Primary-care-facing reference. Dosing prose (starting / stopping / missed /
+// converting), context, and the FDA package-insert link live in
+// js/bhi-references.js keyed by the drug id. Additional clinical detail
+// (mechanism, indications, dose adjustments, pregnancy/lactation, common side
+// effects) is pulled LIVE from the existing database (MEDICATIONS,
+// PERINATAL_DATA, FDA_SAFETY_DATA) so there is a single source of truth.
+//
+// The card (HTML) and the EMR copy (plain text) are both generated from one
+// section model (bhiSections) so they can never drift apart.
+
+function bhiEsc(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// Source attribution adapts to the link type: direct FDA PDF vs. DailyMed (NLM).
+function bhiSourceParts(ref) {
+  var isDailyMed = /dailymed\.nlm\.nih\.gov/i.test(ref.fdaLabel || '');
+  if (isDailyMed) {
+    return { prefix: 'Source (FDA prescribing information via DailyMed): ', linkText: 'DailyMed label' };
+  }
+  return {
+    prefix: 'Source (FDA package insert' + (ref.fdaLabelDate ? ', ' + ref.fdaLabelDate : '') + '): ',
+    linkText: 'FDA prescribing information (PDF)'
+  };
+}
+
+function bhiSections(id, ref) {
+  var med    = (typeof MEDICATIONS    !== 'undefined') ? MEDICATIONS.find(function(m){ return m.id === id; }) : null;
+  var safety = (typeof FDA_SAFETY_DATA !== 'undefined') ? FDA_SAFETY_DATA[id] : null;
+  var peri   = (typeof PERINATAL_DATA !== 'undefined') ? PERINATAL_DATA[id] : null;
+  var S = [];
+
+  // Overview (highlighted context box, from bhi-references.js)
+  S.push({ label: 'Overview', text: ref.context, context: true });
+
+  // FDA Black Box Warnings (from FDA_SAFETY_DATA) — surfaced prominently
+  if (safety && safety.blackBoxWarnings && safety.blackBoxWarnings.length) {
+    S.push({ label: 'FDA Black Box Warnings', bbw: safety.blackBoxWarnings });
+  }
+
+  // Mechanism (from MEDICATIONS)
+  if (med && med.mechanism) S.push({ label: 'Mechanism', text: med.mechanism });
+
+  // FDA-approved indications (from MEDICATIONS)
+  if (med && med.indications && med.indications.length) {
+    var ind = med.indications.map(function(i){ return i.use + (i.year ? ' (' + i.year + ')' : ''); });
+    S.push({ label: 'FDA-Approved Indications', text: ind.join('; '), chips: ind });
+  }
+
+  // Dosing prose (from bhi-references.js)
+  S.push({ label: 'Starting',    text: ref.starting });
+  S.push({ label: 'Stopping',    text: ref.stopping });
+  S.push({ label: 'Missed doses', text: ref.missed });
+  S.push({ label: 'Converting to / from another medication', text: ref.converting });
+
+  // Dose adjustments (from MEDICATIONS). Always prefer the notes field — the
+  // `modified` boolean alone understates risk (many meds flagged false still
+  // carry "use with caution / avoid in severe" guidance in their notes).
+  if (med) {
+    function adjLine(label, obj) {
+      if (!obj) return label + ': Not specified';
+      if (obj.notes) return label + ': ' + obj.notes;
+      return label + ': ' + (obj.modified ? 'Requires adjustment' : 'No adjustment needed');
+    }
+    var adj = [];
+    adj.push(adjLine('Renal', med.renalImpairment));
+    adj.push(adjLine('Hepatic', med.hepaticImpairment));
+    adj.push(adjLine('Geriatric', med.geriatricDosing));
+    adj.push('QT: ' + (med.qtInterval ? 'Prolongs QT — consider ECG monitoring' : 'Not significant'));
+    S.push({ label: 'Renal / Hepatic / Geriatric / QT', lines: adj });
+  }
+
+  // Pregnancy & Lactation (from PERINATAL_DATA)
+  if (peri) {
+    var pl = [];
+    if (peri.pregnancy) {
+      pl.push('Pregnancy: Cat. ' + (peri.pregnancy.fdaCategory || '—') +
+              (peri.pregnancy.risk ? ' (' + peri.pregnancy.risk + ')' : '') +
+              (peri.pregnancy.notes ? '. ' + peri.pregnancy.notes : ''));
+    }
+    if (peri.breastfeeding) {
+      pl.push('Breastfeeding: Hale ' + (peri.breastfeeding.hale || '—') +
+              (peri.breastfeeding.rid ? ', RID ' + peri.breastfeeding.rid : '') +
+              (peri.breastfeeding.risk ? ' (' + peri.breastfeeding.risk + ')' : '') +
+              (peri.breastfeeding.notes ? '. ' + peri.breastfeeding.notes : ''));
+    }
+    if (pl.length) S.push({ label: 'Pregnancy & Lactation', lines: pl });
+  }
+
+  // Common side effects (from FDA_SAFETY_DATA)
+  if (safety && safety.sideEffects) {
+    var sys = Object.keys(safety.sideEffects);
+    if (sys.length) {
+      var seText = sys.map(function(k){ return k + ': ' + safety.sideEffects[k].join(', '); });
+      S.push({ label: 'Common Side Effects', text: seText.join('; '), se: safety.sideEffects });
+    }
+  }
+
+  return S;
+}
+
+function bhiSectionHtml(s) {
+  var head = '<h4>' + bhiEsc(s.label) + '</h4>';
+  var cls  = s.context ? 'bhi-section bhi-context' : (s.bbw ? 'bhi-section bhi-bbw' : 'bhi-section');
+  var inner;
+  if (s.bbw) {
+    head = '<h4>&#9888; ' + bhiEsc(s.label) + '</h4>';
+    inner = s.bbw.map(function(w){ return '<div class="bhi-bbw-item">' + bhiEsc(w) + '</div>'; }).join('');
+  } else if (s.se) {
+    inner = '<div class="bhi-se-grid">' + Object.keys(s.se).map(function(k){
+      return '<div class="bhi-se-cat"><span class="bhi-se-sys">' + bhiEsc(k) + '</span>' +
+        s.se[k].map(function(x){ return '<span class="bhi-se-tag">' + bhiEsc(x) + '</span>'; }).join('') +
+      '</div>';
+    }).join('') + '</div>';
+  } else if (s.chips) {
+    inner = '<div class="bhi-chips">' + s.chips.map(function(c){ return '<span class="bhi-chip">' + bhiEsc(c) + '</span>'; }).join('') + '</div>';
+  } else if (s.lines) {
+    inner = '<p>' + s.lines.map(bhiEsc).join('<br>') + '</p>';
+  } else {
+    inner = '<p>' + bhiEsc(s.text) + '</p>';
+  }
+  return '<div class="' + cls + '">' + head + inner + '</div>';
+}
+
+function bhiPlainText(id, ref) {
+  // Plain-text version for pasting into the EMR note (no markup, EMR-safe).
+  var lines = [];
+  lines.push(ref.generic + ' (' + ref.brand + ') — ' + ref.classLine);
+  bhiSections(id, ref).forEach(function(s){
+    lines.push('');
+    if (s.bbw) {
+      lines.push('** FDA BLACK BOX WARNINGS **');
+      s.bbw.forEach(function(w){ lines.push('  - ' + w); });
+    } else if (s.lines) {
+      lines.push(s.label + ':');
+      s.lines.forEach(function(l){ lines.push('  ' + l); });
+    } else if (s.se) {
+      lines.push(s.label + ': ' + Object.keys(s.se).map(function(k){ return k + ': ' + s.se[k].join(', '); }).join('; '));
+    } else if (s.chips) {
+      lines.push(s.label + ': ' + s.chips.join('; '));
+    } else {
+      lines.push(s.label + ': ' + s.text);
+    }
+  });
+  lines.push('');
+  lines.push(bhiSourceParts(ref).prefix + ref.fdaLabel);
+  return lines.join('\n');
+}
+
+function openBhiCard(id) {
+  var ref = (typeof BHI_REFERENCES !== 'undefined') ? BHI_REFERENCES[id] : null;
+  if (!ref) return;
+
+  var body = document.getElementById('bhi-modal-body');
+  body.innerHTML =
+    '<div class="bhi-card-name">' + bhiEsc(ref.generic) + '</div>' +
+    '<div class="bhi-card-brand">' + bhiEsc(ref.brand) + ' &bull; ' + bhiEsc(ref.classLine) + '</div>' +
+    bhiSections(id, ref).map(bhiSectionHtml).join('') +
+    '<div class="bhi-source">' + bhiEsc(bhiSourceParts(ref).prefix) +
+      '<a href="' + bhiEsc(ref.fdaLabel) + '" target="_blank" rel="noopener">' + bhiEsc(bhiSourceParts(ref).linkText) + '</a></div>' +
+    '<div class="bhi-actions">' +
+      '<button class="bhi-copy-btn" id="bhi-copy-btn">Copy for EMR</button>' +
+      '<span class="bhi-copy-note">Copies a plain-text version to paste into your note.</span>' +
+    '</div>';
+
+  var copyBtn = document.getElementById('bhi-copy-btn');
+  copyBtn.addEventListener('click', function() {
+    bhiCopyToClipboard(bhiPlainText(id, ref), copyBtn);
+  });
+
+  document.getElementById('bhi-modal').classList.remove('hidden');
+}
+
+// Self-contained copy (ToolUtils is only lazy-loaded on tool pages, not here).
+function bhiCopyToClipboard(text, btn) {
+  var original = btn.textContent;
+  function feedback(ok) {
+    btn.textContent = ok ? 'Copied!' : 'Copy failed';
+    btn.classList.toggle('bhi-copied', ok);
+    setTimeout(function() {
+      btn.textContent = original;
+      btn.classList.remove('bhi-copied');
+    }, 2000);
+  }
+  function legacy() {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.top = '-9999px';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() { feedback(true); })
+      .catch(function() { feedback(legacy()); });
+  } else {
+    feedback(legacy());
+  }
+}
+
+(function initBhiModal() {
+  var modal = document.getElementById('bhi-modal');
+  if (!modal) return;
+  var closeBtn = document.getElementById('bhi-modal-close');
+  if (closeBtn) closeBtn.addEventListener('click', function() { modal.classList.add('hidden'); });
+  modal.addEventListener('click', function(e) {
+    if (e.target === e.currentTarget) e.currentTarget.classList.add('hidden');
+  });
+})();
+
 /* ── Synaptic Binding Helpers ───────────────────────────────────────────── */
 const LOC_META = {
   pre:  { label: 'PRE',  cls: 'syn-pre',  title: 'Pre-synaptic' },
@@ -912,7 +1128,7 @@ function renderDrugTable() {
   const meds  = visibleMeds();
   const tbody = document.getElementById('main-tbody');
   const showSE = !!sideEffectSort;
-  const colCount = showSE ? 16 : 15;
+  const colCount = showSE ? 17 : 16;
 
   tbody.innerHTML = meds.map(m => {
     const renal = m.renalImpairment.modified
@@ -959,6 +1175,11 @@ function renderDrugTable() {
     const pregCell = perinatalCell(pData?.pregnancy);
     const bfCell   = perinatalCell(pData?.breastfeeding, true);
 
+    const hasBhi = typeof BHI_REFERENCES !== 'undefined' && BHI_REFERENCES[m.id];
+    const bhiCell = hasBhi
+      ? `<button class="bhi-btn" data-id="${m.id}" onclick="openBhiCard('${m.id}')">View / Copy</button>`
+      : `<span class="no-badge">—</span>`;
+
     return `<tr>
       <td class="drug-name-cell" style="cursor:pointer" onclick="openDrugModal('${m.id}')">${m.name} <span class="brand-name">(${m.brandName})</span></td>
       ${seCell}
@@ -976,6 +1197,7 @@ function renderDrugTable() {
       <td class="col-route">${routeHTML}</td>
       <td>${synapticHTML}</td>
       <td>${chartBtn}</td>
+      <td class="col-bhi">${bhiCell}</td>
     </tr>`;
   }).join('') || `<tr><td colspan="${colCount}" style="text-align:center;padding:24px;color:var(--text-muted)">No medications match current filters.</td></tr>`;
 

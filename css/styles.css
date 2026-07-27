@@ -4973,3 +4973,80 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
   background: transparent; color: var(--accent2); transition: background 0.15s, border-color 0.15s;
 }
 .filter-mini-btn:hover { background: var(--bg2); border-color: var(--accent2); }
+
+/* ── BHI Medication Reference (Drug Database column + card) ──────────────── */
+.col-bhi { min-width: 96px; }
+.bhi-btn {
+  padding: 4px 10px;
+  background: rgba(74,124,53,0.14);
+  border: 1px solid rgba(74,124,53,0.42);
+  border-radius: 5px;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 12px;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.bhi-btn:hover { background: rgba(74,124,53,0.28); }
+
+.bhi-card-name  { font-size: 22px; font-weight: 700; margin-bottom: 2px; }
+.bhi-card-brand { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
+.bhi-section    { margin-bottom: 15px; }
+.bhi-section h4 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--accent);
+  margin-bottom: 5px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+.bhi-section p { font-size: 13.5px; line-height: 1.6; color: var(--text); margin: 0; }
+.bhi-context {
+  background: rgba(74,124,53,0.07);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  padding: 10px 12px;
+}
+.bhi-context p { color: var(--text); }
+.bhi-source {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin: 14px 0 18px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.bhi-source a { color: var(--accent2); text-decoration: underline; }
+.bhi-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.bhi-copy-btn {
+  padding: 9px 18px;
+  background: var(--accent);
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+}
+.bhi-copy-btn:hover { opacity: 0.9; }
+.bhi-copy-btn.bhi-copied { background: var(--accent2); }
+.bhi-copy-note { font-size: 12px; color: var(--text-muted); }
+
+/* BHI card — enriched sections (side effects grid, indication chips) */
+.bhi-se-grid { display: flex; flex-direction: column; gap: 8px; }
+.bhi-se-cat { font-size: 13px; }
+.bhi-se-sys { display: inline-block; min-width: 108px; font-weight: 600; color: var(--text-muted);
+  font-size: 11px; text-transform: uppercase; letter-spacing: .5px; vertical-align: top; }
+.bhi-se-tag, .bhi-chip {
+  display: inline-block; margin: 2px 4px 2px 0; padding: 2px 8px;
+  background: var(--bg); border: 1px solid var(--border); border-radius: 12px; font-size: 12px;
+}
+.bhi-chips { display: flex; flex-wrap: wrap; }
+.bhi-chip { background: rgba(74,124,53,0.08); border-color: rgba(74,124,53,0.3); color: var(--text); }
+
+/* BHI card — FDA Black Box Warnings block */
+.bhi-section.bhi-bbw { border: 1.5px solid #b03030; background: rgba(176,48,48,0.06); border-radius: 6px; padding: 12px 14px; }
+.bhi-section.bhi-bbw h4 { color: #b03030; margin-top: 0; }
+.bhi-bbw-item { font-size: 13px; line-height: 1.45; margin: 6px 0; }
+.bhi-bbw-item + .bhi-bbw-item { padding-top: 6px; border-top: 1px dashed rgba(176,48,48,0.35); }
