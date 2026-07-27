@@ -921,13 +921,13 @@ function openBhiCard(id) {
   body.innerHTML =
     '<div class="bhi-card-name">' + bhiEsc(ref.generic) + '</div>' +
     '<div class="bhi-card-brand">' + bhiEsc(ref.brand) + ' &bull; ' + bhiEsc(ref.classLine) + '</div>' +
-    bhiSections(id, ref).map(bhiSectionHtml).join('') +
-    '<div class="bhi-source">' + bhiEsc(bhiSourceParts(ref).prefix) +
-      '<a href="' + bhiEsc(ref.fdaLabel) + '" target="_blank" rel="noopener">' + bhiEsc(bhiSourceParts(ref).linkText) + '</a></div>' +
-    '<div class="bhi-actions">' +
+    '<div class="bhi-actions bhi-actions-top">' +
       '<button class="bhi-copy-btn" id="bhi-copy-btn">Copy for EMR</button>' +
       '<span class="bhi-copy-note">Copies a plain-text version to paste into your note.</span>' +
-    '</div>';
+    '</div>' +
+    bhiSections(id, ref).map(bhiSectionHtml).join('') +
+    '<div class="bhi-source">' + bhiEsc(bhiSourceParts(ref).prefix) +
+      '<a href="' + bhiEsc(ref.fdaLabel) + '" target="_blank" rel="noopener">' + bhiEsc(bhiSourceParts(ref).linkText) + '</a></div>';
 
   var copyBtn = document.getElementById('bhi-copy-btn');
   copyBtn.addEventListener('click', function() {

@@ -47,6 +47,7 @@
   .bhi-source{font-size:12.5px;color:var(--text-muted);margin:14px 0 18px;padding-top:12px;border-top:1px solid var(--border)}
   .bhi-source a{color:var(--accent2)}
   .bhi-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .bhi-actions-top{margin:12px 0 4px;padding-bottom:14px;border-bottom:1px solid var(--border)}
   .bhi-copy-btn{padding:9px 18px;background:var(--accent);border:none;border-radius:6px;color:#fff;
     font-size:14px;font-weight:600;cursor:pointer;transition:opacity .15s,background .15s}
   .bhi-copy-btn:hover{opacity:.9}
@@ -69,10 +70,10 @@
 <body>
 <div class="wrap">
   <h1>BHI Medication Reference — Prototype</h1>
-  <p class="lede">This is exactly how the new <strong>BHI Ref</strong> column will behave in your Drug Database: click <em>View / Copy</em> on any row and the reference card pops out, with a one-click <strong>Copy for EMR</strong> button that puts a clean plain-text version on your clipboard. Each card combines FDA-package-insert dosing prose (starting / stopping / missed doses / converting) with FDA black box warnings, mechanism, indications, dose adjustments, pregnancy &amp; lactation, and common side effects pulled live from your existing database. All 91 medications in the database now have an entry (the 4 originals link to direct FDA PDFs; the rest link to the official DailyMed label). Click any row to review.</p>
+  <p class="lede">This is exactly how the new <strong>IBH Ref</strong> column will behave in your Drug Database: click <em>View / Copy</em> on any row and the reference card pops out, with a one-click <strong>Copy for EMR</strong> button that puts a clean plain-text version on your clipboard. Each card combines FDA-package-insert dosing prose (starting / stopping / missed doses / converting) with FDA black box warnings, mechanism, indications, dose adjustments, pregnancy &amp; lactation, and common side effects pulled live from your existing database. All 91 medications in the database now have an entry (the 4 originals link to direct FDA PDFs; the rest link to the official DailyMed label). Click any row to review.</p>
 
   <table class="demo-table">
-    <thead><tr><th>Drug</th><th>Class</th><th>BHI Ref</th></tr></thead>
+    <thead><tr><th>Drug</th><th>Class</th><th>IBH Ref</th></tr></thead>
     <tbody id="demo-body"></tbody>
   </table>
   <p class="caption">(In the live site this sits as the last column of the full Drug Database table. Meds without a reference show a dash.)</p>
@@ -180,11 +181,11 @@
     body.innerHTML =
       '<div class="bhi-card-name">'+esc(r.generic)+'</div>'+
       '<div class="bhi-card-brand">'+esc(r.brand)+' &bull; '+esc(r.classLine)+'</div>'+
+      '<div class="bhi-actions bhi-actions-top"><button class="bhi-copy-btn" id="bhi-copy-btn">Copy for EMR</button>'+
+        '<span class="bhi-copy-note">Copies a plain-text version to paste into your note.</span></div>'+
       bhiSections(id,r).map(sectionHtml).join('')+
       '<div class="bhi-source">'+esc(srcParts(r).prefix)+
-        '<a href="'+esc(r.fdaLabel)+'" target="_blank" rel="noopener">'+esc(srcParts(r).linkText)+'</a></div>'+
-      '<div class="bhi-actions"><button class="bhi-copy-btn" id="bhi-copy-btn">Copy for EMR</button>'+
-        '<span class="bhi-copy-note">Copies a plain-text version to paste into your note.</span></div>';
+        '<a href="'+esc(r.fdaLabel)+'" target="_blank" rel="noopener">'+esc(srcParts(r).linkText)+'</a></div>';
     var btn = document.getElementById('bhi-copy-btn');
     btn.addEventListener('click',function(){
       var text = bhiPlainText(id,r), orig = btn.textContent;

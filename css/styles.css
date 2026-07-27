@@ -5018,6 +5018,7 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
 }
 .bhi-source a { color: var(--accent2); text-decoration: underline; }
 .bhi-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.bhi-actions-top { margin: 12px 0 4px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
 .bhi-copy-btn {
   padding: 9px 18px;
   background: var(--accent);
