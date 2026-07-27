@@ -1184,6 +1184,7 @@ function renderDrugTable() {
       <td class="drug-name-cell" style="cursor:pointer" onclick="openDrugModal('${m.id}')">${m.name} <span class="brand-name">(${m.brandName})</span></td>
       ${seCell}
       <td>${classBadge(m.class)}</td>
+      <td class="col-bhi">${bhiCell}</td>
       <td>${enan}</td>
       <td style="white-space:nowrap">${m.halfLife.drug}</td>
       <td style="font-size:12px;color:var(--text-muted)">${m.halfLife.metabolites}</td>
@@ -1197,7 +1198,6 @@ function renderDrugTable() {
       <td class="col-route">${routeHTML}</td>
       <td>${synapticHTML}</td>
       <td>${chartBtn}</td>
-      <td class="col-bhi">${bhiCell}</td>
     </tr>`;
   }).join('') || `<tr><td colspan="${colCount}" style="text-align:center;padding:24px;color:var(--text-muted)">No medications match current filters.</td></tr>`;
 
