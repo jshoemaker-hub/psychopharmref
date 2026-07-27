@@ -190,3 +190,38 @@
 
 .cs-note { font-size: 12.5px; color: #6b6350; margin-top: 12px; line-height: 1.5; }
 .cs-empty { color: #6b6350; font-size: 14px; padding: 30px; text-align: center; }
+
+/* ── Filter & rank mode ─────────────────────────────────────────────────── */
+.cs-rank-controls { margin-top: 4px; }
+.cs-rank-filters { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; }
+.cs-rank-filters .cs-select-wrap { flex: 1 1 180px; min-width: 150px; }
+.cs-rank-hint { margin-top: 12px; font-size: 12.5px; line-height: 1.45; color: #6b6350; }
+.cs-rank-hint b { color: var(--accent); }
+
+.cs-rank-wrap {
+  margin-top: 4px; overflow-x: auto; border: 1px solid var(--border);
+  border-radius: 12px; background: #fff; max-height: 70vh; overflow-y: auto;
+}
+table.cs-rank { border-collapse: collapse; width: 100%; font-size: 12.8px; }
+.cs-rank th, .cs-rank td {
+  padding: 7px 10px; text-align: right; white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+}
+.cs-rank th {
+  position: sticky; top: 0; z-index: 1; background: var(--bg2); color: #6b6350;
+  font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: .02em;
+  cursor: pointer; user-select: none;
+}
+.cs-rank th:hover { color: var(--accent); }
+.cs-rank th.cs-sorted { color: var(--accent); }
+.cs-rank th.cs-tl, .cs-rank td.cs-tl { text-align: left; }
+.cs-sort-arrow { font-size: 9px; }
+.cs-rank tbody tr { cursor: pointer; }
+.cs-rank tbody tr:hover { background: #f4f2ec; }
+.cs-rank tbody tr.cs-pick-a { background: rgba(74,124,53,.14); }
+.cs-rank tbody tr.cs-pick-a:hover { background: rgba(74,124,53,.20); }
+.cs-rank tbody tr:last-child td { border-bottom: none; }
+.cs-rank-name { font-weight: 700; color: var(--text); }
+.cs-rank-brand { color: var(--accent2); font-weight: 500; }
+.cs-rank td sub { font-size: 10px; }
+.cs-rank-count { font-size: 12px; color: #9a927e; margin-top: 8px; }

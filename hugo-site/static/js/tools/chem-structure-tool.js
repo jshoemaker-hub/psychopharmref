@@ -314,7 +314,8 @@
 
   var spinning = { A: false, B: false };
   var current = { A: null, B: null };
-  var mode = 'compare';   // 'compare' | 'single'
+  var mode = 'compare';   // 'compare' | 'single' | 'rank'
+  var host = null, card = null;   // populated in buildUI (module-scope for setMode/go)
 
   function renderResults(idA, idB) {
     var a = byId[idA], b = byId[idB];
@@ -426,24 +427,142 @@
     ['imipramine', 'desipramine', 'Tertiary amine', 'Secondary amine']
   ];
 
+  // ── Filter & rank table ───────────────────────────────────────────────────
+  // A sortable/filterable table of the whole structure library so the user can
+  // scan similarities and disparities across every listed molecular property.
+  function fmtNum(v, dp) { return (v == null || isNaN(v)) ? '&mdash;' : Number(v).toFixed(dp); }
+  var RANK_COLS = [
+    { key: 'name',           label: 'Drug',              type: 'str', tl: true, cell: function (d) { return '<span class="cs-rank-name">' + esc(d.name) + '</span> <span class="cs-rank-brand">' + esc(d.brand) + '</span>'; } },
+    { key: 'cls',            label: 'Class',             type: 'str', tl: true, cell: function (d) { return esc(d.cls); } },
+    { key: 'category',       label: 'Indication',        type: 'str', tl: true, cell: function (d) { return esc(d.category); } },
+    { key: 'formula',        label: 'Formula',           type: 'str', tl: true, cell: function (d) { return formulaHTML(d.formula); } },
+    { key: 'mw',             label: 'MW (g/mol)',        type: 'num', cell: function (d) { return fmtNum(d.mw, 2); } },
+    { key: 'logP',           label: 'cLogP',             type: 'num', cell: function (d) { return fmtNum(d.logP, 2); } },
+    { key: 'tpsa',           label: 'PSA (Å²)', type: 'num', cell: function (d) { return fmtNum(d.tpsa, 1); } },
+    { key: 'logS',           label: 'Solubility (logS)', type: 'num', cell: function (d) { return fmtNum(d.logS, 2); } },
+    { key: 'pctIonized',     label: '% Ionized (pH 7.4)', type: 'num', cell: function (d) { return d.pctIonized != null ? fmtNum(d.pctIonized, 1) + '%' : '&mdash;'; } },
+    { key: 'messenger',      label: 'Signal entry',      type: 'num', cell: function (d) { return d.messenger ? esc(MSG[d.messenger]) : '&mdash;'; } },
+    { key: 'year',           label: 'Year',              type: 'num', cell: function (d) { return d.year != null ? d.year : '&mdash;'; } },
+    { key: 'hbd',            label: 'H-bond donors',     type: 'num', cell: function (d) { return d.hbd != null ? d.hbd : '&mdash;'; } },
+    { key: 'hba',            label: 'H-bond acceptors',  type: 'num', cell: function (d) { return d.hba != null ? d.hba : '&mdash;'; } },
+    { key: 'rotatableBonds', label: 'Rotatable bonds',   type: 'num', cell: function (d) { return d.rotatableBonds != null ? d.rotatableBonds : '&mdash;'; } }
+  ];
+  function colByKey(k) { for (var i = 0; i < RANK_COLS.length; i++) if (RANK_COLS[i].key === k) return RANK_COLS[i]; return RANK_COLS[0]; }
+  var rankSort = { key: 'name', dir: 1 };   // dir: 1 = ascending, -1 = descending
+  var rankFilters = { cls: '', cat: '', text: '' };
+  var rankPickA = null;                     // id chosen as Structure A from the table
+
+  function rankRows() {
+    var rows = CHEM_STRUCTURES.filter(function (d) {
+      if (rankFilters.cls && d.cls !== rankFilters.cls) return false;
+      if (rankFilters.cat && d.category !== rankFilters.cat) return false;
+      if (rankFilters.text) {
+        var t = rankFilters.text.toLowerCase();
+        if ((d.name || '').toLowerCase().indexOf(t) < 0 && (d.brand || '').toLowerCase().indexOf(t) < 0) return false;
+      }
+      return true;
+    });
+    var col = colByKey(rankSort.key), key = rankSort.key;
+    rows.sort(function (a, b) {
+      var va = a[key], vb = b[key], na = (va == null), nb = (vb == null);
+      if (na && nb) return 0; if (na) return 1; if (nb) return -1;   // nulls always last
+      var c = (col.type === 'num') ? (va - vb) : String(va).localeCompare(String(vb));
+      return c * rankSort.dir;
+    });
+    return rows;
+  }
+  function updateRankHint() {
+    var h = document.getElementById('cs-rank-hint'); if (!h) return;
+    if (rankPickA && byId[rankPickA]) {
+      h.innerHTML = 'Selected <b>' + esc(byId[rankPickA].name) + '</b> as Structure&nbsp;A &mdash; click another row to compare, or click it again to view it alone.';
+    } else {
+      h.innerHTML = 'Click a column header to rank by that property (click again to reverse). Click a row to load it into the comparison viewer.';
+    }
+  }
+  function renderRank() {
+    var box = document.getElementById('cs-results'); if (!box) return;
+    box.style.display = 'block';
+    var rows = rankRows();
+    var thead = RANK_COLS.map(function (c) {
+      var on = (c.key === rankSort.key);
+      var arrow = on ? (rankSort.dir === 1 ? ' ▲' : ' ▼') : '';
+      return '<th class="' + (c.tl ? 'cs-tl' : '') + (on ? ' cs-sorted' : '') + '" data-sortkey="' + c.key + '">' + esc(c.label) + '<span class="cs-sort-arrow">' + arrow + '</span></th>';
+    }).join('');
+    var tbody = rows.map(function (d) {
+      var tds = RANK_COLS.map(function (c) { return '<td class="' + (c.tl ? 'cs-tl' : '') + '">' + c.cell(d) + '</td>'; }).join('');
+      return '<tr data-pickid="' + esc(d.id) + '"' + (d.id === rankPickA ? ' class="cs-pick-a"' : '') + '>' + tds + '</tr>';
+    }).join('');
+    box.innerHTML =
+      '<div class="cs-rank-wrap"><table class="cs-rank"><thead><tr>' + thead + '</tr></thead><tbody>' +
+      (tbody || '<tr><td class="cs-tl" colspan="' + RANK_COLS.length + '">No molecules match these filters.</td></tr>') +
+      '</tbody></table></div>' +
+      '<div class="cs-rank-count">Showing ' + rows.length + ' of ' + CHEM_STRUCTURES.length + ' molecules</div>';
+    box.querySelectorAll('th[data-sortkey]').forEach(function (th) {
+      th.addEventListener('click', function () {
+        var k = th.getAttribute('data-sortkey');
+        if (rankSort.key === k) rankSort.dir = -rankSort.dir;
+        else { rankSort.key = k; rankSort.dir = (colByKey(k).type === 'num') ? -1 : 1; }
+        var s = document.getElementById('cs-sort-sel'); if (s) s.value = rankSort.key;
+        renderRank();
+      });
+    });
+    box.querySelectorAll('tr[data-pickid]').forEach(function (tr) {
+      tr.addEventListener('click', function () { pickFromRank(tr.getAttribute('data-pickid')); });
+    });
+  }
+  function pickFromRank(id) {
+    if (!byId[id]) return;
+    if (!rankPickA) { rankPickA = id; updateRankHint(); renderRank(); return; }
+    if (rankPickA === id) { rankPickA = null; setSelects(id, ''); setMode('single'); return; }
+    var a = rankPickA; rankPickA = null; setSelects(a, id); setMode('compare');
+  }
+
+  // ── go / setMode (module-scope: shared by the mode toggle and the rank table) ─
+  function go() {
+    if (!host) return;
+    var a = host.querySelector('#cs-sel-a').value, b = host.querySelector('#cs-sel-b').value;
+    if (mode === 'single') { if (a) renderSingle(a); }
+    else if (mode === 'rank') { renderRank(); }
+    else if (a && b) renderResults(a, b);
+  }
+  function setMode(m) {
+    if (!host || !card) return;
+    mode = m;
+    card.querySelectorAll('.cs-modeseg').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-mode') === m); });
+    card.classList.toggle('single-mode', m === 'single');
+    var isRank = (m === 'rank');
+    var setupRow = host.querySelector('.cs-setup-row');
+    var quick = host.querySelector('.cs-quickpicks');
+    var rankCtrls = host.querySelector('#cs-rank-controls');
+    if (setupRow) setupRow.style.display = isRank ? 'none' : '';
+    if (quick) quick.style.display = (isRank || m === 'single') ? 'none' : '';
+    if (rankCtrls) rankCtrls.style.display = isRank ? '' : 'none';
+    host.querySelector('#cs-label-a').textContent = (m === 'single') ? 'Medication' : 'Structure A';
+    host.querySelector('#cs-go').innerHTML = (m === 'single') ? 'View ▸' : 'Compare ▸';
+    if (isRank) { rankPickA = null; updateRankHint(); renderRank(); }
+    else go();
+  }
+
   function init() {
-    var host = document.getElementById('cs-mount');
-    if (!host || host.dataset.ready) return;
-    host.dataset.ready = '1';
+    var mount = document.getElementById('cs-mount');
+    if (!mount || mount.dataset.ready) return;
+    mount.dataset.ready = '1';
     var results = document.getElementById('cs-results');
     if (results) { results.style.display = 'block'; results.innerHTML = '<div class="cs-empty">Loading structure library&hellip;</div>'; }
     ensureData().then(function () {
       if (results) { results.style.display = 'none'; results.innerHTML = ''; }
       indexData();
-      buildUI(host);
+      buildUI(mount);
     }).catch(function (e) {
-      host.dataset.ready = '';
+      mount.dataset.ready = '';
       if (results) results.innerHTML = '<div class="cs-empty" style="color:#b04a2c">Could not load the structure library. Please reload the page.</div>';
       console.error('chem-structure: data load failed', e);
     });
   }
 
-  function buildUI(host) {
+  function buildUI(mount) {
+    host = mount;
+    card = host.querySelector('.cs-setup-card');
     host.querySelector('#cs-sel-a').innerHTML = optionList();
     host.querySelector('#cs-sel-b').innerHTML = optionList();
     host.querySelector('#cs-quickpicks').innerHTML = QUICKPICKS.map(function (p) {
@@ -451,11 +570,6 @@
         esc(byId[p[0]].name) + ' <span class="cs-chip-arrow">&rarr;</span> ' + esc(byId[p[1]].name) +
         ' <span style="color:#9a927e">(' + esc(p[2]) + ' vs ' + esc(p[3]) + ')</span></button>';
     }).join('');
-    function go() {
-      var a = host.querySelector('#cs-sel-a').value, b = host.querySelector('#cs-sel-b').value;
-      if (mode === 'single') { if (a) renderSingle(a); }
-      else if (a && b) renderResults(a, b);
-    }
     host.querySelector('#cs-go').addEventListener('click', go);
     host.querySelector('#cs-sel-a').addEventListener('change', function () { if (mode === 'single') go(); });
     host.querySelector('#cs-swap').addEventListener('click', function () {
@@ -470,23 +584,34 @@
       renderResults(chip.getAttribute('data-a'), chip.getAttribute('data-b'));
     });
 
-    // ── mode toggle: compare two ⇄ single medication ──────────────────────
-    var card = host.querySelector('.cs-setup-card');
-    function setMode(m) {
-      mode = m;
-      card.querySelectorAll('.cs-modeseg').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-mode') === m); });
-      card.classList.toggle('single-mode', m === 'single');
-      host.querySelector('#cs-label-a').textContent = (m === 'single') ? 'Medication' : 'Structure A';
-      host.querySelector('#cs-go').innerHTML = (m === 'single') ? 'View ▸' : 'Compare ▸';
-      var quick = host.querySelector('.cs-quickpicks'); if (quick) quick.style.display = (m === 'single') ? 'none' : '';
-      go();
-    }
+    // ── mode toggle: compare two ⇄ single medication ⇄ filter & rank ──────────
     card.querySelectorAll('.cs-modeseg').forEach(function (b) {
       b.addEventListener('click', function () { setMode(b.getAttribute('data-mode')); });
     });
+    buildRankControls();
 
     setSelects('amitriptyline', 'fluoxetine');
     renderResults('amitriptyline', 'fluoxetine');
+  }
+
+  function buildRankControls() {
+    var clsSel = host.querySelector('#cs-filter-class');
+    var catSel = host.querySelector('#cs-filter-cat');
+    var sortSel = host.querySelector('#cs-sort-sel');
+    var txt = host.querySelector('#cs-filter-text');
+    if (!clsSel || !catSel || !sortSel || !txt) return;
+    var classes = {}, cats = {};
+    CHEM_STRUCTURES.forEach(function (d) { if (d.cls) classes[d.cls] = 1; if (d.category) cats[d.category] = 1; });
+    clsSel.innerHTML = '<option value="">All classes</option>' + Object.keys(classes).sort().map(function (c) { return '<option value="' + esc(c) + '">' + esc(c) + '</option>'; }).join('');
+    catSel.innerHTML = '<option value="">All indications</option>' + Object.keys(cats).sort().map(function (c) { return '<option value="' + esc(c) + '">' + esc(c) + '</option>'; }).join('');
+    sortSel.innerHTML = RANK_COLS.map(function (c) { return '<option value="' + c.key + '">' + esc(c.label) + '</option>'; }).join('');
+    sortSel.value = rankSort.key;
+    clsSel.addEventListener('change', function () { rankFilters.cls = clsSel.value; renderRank(); });
+    catSel.addEventListener('change', function () { rankFilters.cat = catSel.value; renderRank(); });
+    txt.addEventListener('input', function () { rankFilters.text = txt.value.trim(); renderRank(); });
+    sortSel.addEventListener('change', function () {
+      var k = sortSel.value; rankSort.key = k; rankSort.dir = (colByKey(k).type === 'num') ? -1 : 1; renderRank();
+    });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

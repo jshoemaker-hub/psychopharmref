@@ -350,7 +350,7 @@ function switchSection(id, skipGroupExpand) {
     // Load CSS
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'css/tools/' + toolId + '.css?v=20260719d';
+    link.href = 'css/tools/' + toolId + '.css?v=20260726g';
     document.head.appendChild(link);
     // Load shared tool-utils.js once (first tool activation), then the tool JS
     function loadToolScript() {
@@ -412,7 +412,7 @@ function switchSection(id, skipGroupExpand) {
         });
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20260719d';
+        script.src = 'js/tools/' + toolId + '.js?v=20260726g';
         document.body.appendChild(script);
       }
     }

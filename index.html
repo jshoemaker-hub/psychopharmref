@@ -3433,6 +3433,28 @@
           <div class="cs-mode-row">
             <button type="button" class="cs-seg cs-modeseg active" data-mode="compare">&#9878; Compare two</button>
             <button type="button" class="cs-seg cs-modeseg" data-mode="single">&#9679; Single medication</button>
+            <button type="button" class="cs-seg cs-modeseg" data-mode="rank">&#9776; Filter &amp; rank</button>
+          </div>
+          <div class="cs-rank-controls" id="cs-rank-controls" style="display:none">
+            <div class="cs-rank-filters">
+              <div class="cs-select-wrap">
+                <label class="cs-select-label" for="cs-filter-class">Drug class</label>
+                <select id="cs-filter-class" class="cs-select"></select>
+              </div>
+              <div class="cs-select-wrap">
+                <label class="cs-select-label" for="cs-filter-cat">Indication</label>
+                <select id="cs-filter-cat" class="cs-select"></select>
+              </div>
+              <div class="cs-select-wrap">
+                <label class="cs-select-label" for="cs-filter-text">Search name</label>
+                <input id="cs-filter-text" class="cs-select" type="search" placeholder="Drug or brand&hellip;" autocomplete="off">
+              </div>
+              <div class="cs-select-wrap">
+                <label class="cs-select-label" for="cs-sort-sel">Sort by</label>
+                <select id="cs-sort-sel" class="cs-select"></select>
+              </div>
+            </div>
+            <div class="cs-rank-hint" id="cs-rank-hint"></div>
           </div>
           <div class="cs-setup-row">
             <div class="cs-select-wrap">
@@ -13018,7 +13040,7 @@
   <script defer src="js/data.js?v=20260726a"></script>
   <script defer src="js/routes.js?v=20260719d"></script>
   <script defer src="js/bhi-references.js?v=20260726b"></script>
-  <script defer src="js/app.js?v=20260726f"></script>
+  <script defer src="js/app.js?v=20260726g"></script>
   <script defer src="js/glossary-data.js?v=20260719d"></script>
   <script defer src="js/glossary-page.js?v=20260719d"></script>
   <script defer src="js/search.js?v=20260722c"></script>
