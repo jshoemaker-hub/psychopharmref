@@ -53,6 +53,7 @@ SMILES = {
  'quetiapine':      'OCCOCCN1CCN(C2=Nc3ccccc3Sc3ccccc32)CC1',
  'aripiprazole':    'O=C1CCc2cc(OCCCCN3CCN(c4cccc(Cl)c4Cl)CC3)ccc2N1',
  'clozapine':       'CN1CCN(C2=Nc3cc(Cl)ccc3Nc3ccccc32)CC1',
+ 'zotepine':        'CN(C)CCOC1=CC2=CC=CC=C2SC3=C1C=C(C=C3)Cl',   # PubChem CID 5311331; dibenzothiepine
  'ziprasidone':     'O=C1Cc2cc(CCN3CCN(c4nsc5ccccc45)CC3)c(Cl)cc2N1',
  'lurasidone':      'O=C1N(C[C@@H]2CCCC[C@@H]2CN2CCN(c3nsc4ccccc34)CC2)C(=O)[C@H]2[C@@H]3CC[C@H](C3)[C@@H]12',
  'asenapine':       'CN1C[C@@H]2c3ccccc3Oc3ccc(Cl)cc3[C@@H]2C1',
@@ -124,7 +125,7 @@ KNOWN_MW = {
  'fluphenazine':437.52,'trifluoperazine':407.50,'perphenazine':403.97,'thioridazine':370.58,
  'thiothixene':443.63,'pimozide':461.55,'loxapine':327.81,'molindone':276.37,
  'risperidone':410.48,'olanzapine':312.43,'quetiapine':383.51,'aripiprazole':448.38,
- 'clozapine':326.82,'ziprasidone':412.94,'lurasidone':492.68,'asenapine':285.77,
+ 'clozapine':326.82,'zotepine':331.86,'ziprasidone':412.94,'lurasidone':492.68,'asenapine':285.77,
  'paliperidone':426.48,'iloperidone':426.48,'brexpiprazole':433.56,'cariprazine':427.41,
  'lumateperone':393.50,'pimavanserin':427.56,'valproate':144.21,
  'lamotrigine':256.09,'carbamazepine':236.27,'oxcarbazepine':252.27,'topiramate':339.36,
@@ -146,4 +147,5 @@ MOIETY_NOTE = {
  'amphetamine-mixed-salts':'A fixed mixture of racemic and dextro amphetamine salts; the amphetamine base is depicted.',
  'dextromethorphan-bupropion':'A combination product (dextromethorphan + bupropion); dextromethorphan, the NMDA-antagonist component, is depicted.',
  'valproate':'Marketed as divalproex/valproate salts; valproic acid (the active moiety) is depicted.',
+ 'zotepine':'A tricyclic dibenzothiepine antipsychotic; the dimethylaminoethyl enol-ether side chain drives its potent 5-HT₂A/D₂ blockade, and — unusually among antipsychotics — it also inhibits norepinephrine reuptake.',
 }

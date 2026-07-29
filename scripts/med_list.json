@@ -551,6 +551,30 @@
   }
  },
  {
+  "id": "zotepine",
+  "name": "Zotepine",
+  "brand": "Zoleptil",
+  "cls": "SGA",
+  "category": "Antipsychotic",
+  "year": 1982,
+  "proteinBinding": 97,
+  "receptorKi": {
+   "SERT": 10000,
+   "NET": 10000,
+   "DAT": 10000,
+   "5HT1A": 10000,
+   "5HT2A": 2.6,
+   "5HT2C": 3.2,
+   "D1": 10000,
+   "D2": 8,
+   "D3": 10000,
+   "H1": 3.3,
+   "alpha1": 7.3,
+   "alpha2": 10000,
+   "M1": 10000
+  }
+ },
+ {
   "id": "ziprasidone",
   "name": "Ziprasidone",
   "brand": "Geodon",
