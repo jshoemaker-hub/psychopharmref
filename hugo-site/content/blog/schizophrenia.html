@@ -229,7 +229,7 @@ draft: false
             </div>
 
             <!-- Symptom Domains Diagram -->
-            <svg class="svg-diagram" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+            <svg class="svg-diagram" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <style>
                         .domain-circle { fill-opacity: 0.2; stroke-width: 2; }
@@ -238,45 +238,49 @@ draft: false
                     </style>
                 </defs>
 
-                <text class="title-text" x="400" y="30" text-anchor="middle">The Five Dimensions of Schizophrenia Symptomatology</text>
-
-                <!-- Positive Symptoms -->
-                <circle class="domain-circle" cx="200" cy="150" r="90" fill="#c04030" stroke="#c04030"/>
-                <text class="domain-label" x="200" y="140" text-anchor="middle" fill="#c04030">POSITIVE</text>
-                <text class="symptom-list" x="200" y="158" text-anchor="middle">Delusions</text>
-                <text class="symptom-list" x="200" y="172" text-anchor="middle">Hallucinations</text>
-                <text class="symptom-list" x="200" y="186" text-anchor="middle">Disorganized Speech</text>
-                <text class="symptom-list" x="200" y="200" text-anchor="middle">Abnormal Motor Behavior</text>
-
-                <!-- Negative Symptoms -->
-                <circle class="domain-circle" cx="600" cy="150" r="90" fill="#3a6e28" stroke="#3a6e28"/>
-                <text class="domain-label" x="600" y="140" text-anchor="middle" fill="#3a6e28">NEGATIVE</text>
-                <text class="symptom-list" x="600" y="158" text-anchor="middle">Blunted Affect</text>
-                <text class="symptom-list" x="600" y="172" text-anchor="middle">Avolition</text>
-                <text class="symptom-list" x="600" y="186" text-anchor="middle">Alogia</text>
-                <text class="symptom-list" x="600" y="200" text-anchor="middle">Anhedonia</text>
-
-                <!-- Disorganization -->
-                <circle class="domain-circle" cx="400" cy="80" r="75" fill="#8b6914" stroke="#8b6914"/>
-                <text class="domain-label" x="400" y="75" text-anchor="middle" fill="#8b6914">DISORGANIZATION</text>
-                <text class="symptom-list" x="400" y="95" text-anchor="middle">Disorganized Behavior</text>
-                <text class="symptom-list" x="400" y="109" text-anchor="middle">Thought Disorder</text>
-
-                <!-- Cognition -->
-                <circle class="domain-circle" cx="300" cy="300" r="70" fill="#b05a20" stroke="#b05a20"/>
-                <text class="domain-label" x="300" y="295" text-anchor="middle" fill="#b05a20">COGNITION</text>
-                <text class="symptom-list" x="300" y="315" text-anchor="middle">Memory Deficit</text>
-                <text class="symptom-list" x="300" y="329" text-anchor="middle">Executive Dysfunction</text>
-
-                <!-- Mood -->
-                <circle class="domain-circle" cx="500" cy="300" r="70" fill="#4a7c35" stroke="#4a7c35"/>
-                <text class="domain-label" x="500" y="295" text-anchor="middle" fill="#4a7c35">MOOD/AFFECT</text>
-                <text class="symptom-list" x="500" y="315" text-anchor="middle">Depression</text>
-                <text class="symptom-list" x="500" y="329" text-anchor="middle">Anxiety</text>
-
-                <!-- Center integration label -->
-                <rect x="350" y="400" width="100" height="30" fill="#e2dbd0" stroke="#cfc8ba" stroke-width="2" rx="4"/>
-                <text class="small-text" x="400" y="420" text-anchor="middle" font-weight="bold">Integrated Assessment</text>
+                <text class="title-text" x="400" y="28" text-anchor="middle">The Five Dimensions of Schizophrenia Symptomatology</text>
+                <!-- POSITIVE -->
+                <rect x="20" y="58" width="240" height="150" rx="6" fill="#fefcf8" stroke="#c04030" stroke-width="2"/>
+                <rect x="20" y="58" width="240" height="30" rx="6" fill="#c04030"/>
+                <rect x="20" y="73" width="240" height="15" fill="#c04030"/>
+                <text x="140" y="78" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">POSITIVE</text>
+                <text x="140" y="110" text-anchor="middle" font-size="12.5" fill="#231e14">Delusions</text>
+                <text x="140" y="129" text-anchor="middle" font-size="12.5" fill="#231e14">Hallucinations</text>
+                <text x="140" y="148" text-anchor="middle" font-size="12.5" fill="#231e14">Disorganized Speech</text>
+                <text x="140" y="167" text-anchor="middle" font-size="12.5" fill="#231e14">Abnormal Motor Behavior</text>
+                <!-- DISORGANIZATION -->
+                <rect x="280" y="58" width="240" height="150" rx="6" fill="#fefcf8" stroke="#8b6914" stroke-width="2"/>
+                <rect x="280" y="58" width="240" height="30" rx="6" fill="#8b6914"/>
+                <rect x="280" y="73" width="240" height="15" fill="#8b6914"/>
+                <text x="400" y="78" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">DISORGANIZATION</text>
+                <text x="400" y="110" text-anchor="middle" font-size="12.5" fill="#231e14">Disorganized Behavior</text>
+                <text x="400" y="129" text-anchor="middle" font-size="12.5" fill="#231e14">Thought Disorder</text>
+                <!-- NEGATIVE -->
+                <rect x="540" y="58" width="240" height="150" rx="6" fill="#fefcf8" stroke="#3a6e28" stroke-width="2"/>
+                <rect x="540" y="58" width="240" height="30" rx="6" fill="#3a6e28"/>
+                <rect x="540" y="73" width="240" height="15" fill="#3a6e28"/>
+                <text x="660" y="78" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">NEGATIVE</text>
+                <text x="660" y="110" text-anchor="middle" font-size="12.5" fill="#231e14">Blunted Affect</text>
+                <text x="660" y="129" text-anchor="middle" font-size="12.5" fill="#231e14">Avolition</text>
+                <text x="660" y="148" text-anchor="middle" font-size="12.5" fill="#231e14">Alogia</text>
+                <text x="660" y="167" text-anchor="middle" font-size="12.5" fill="#231e14">Anhedonia</text>
+                <!-- COGNITION -->
+                <rect x="150" y="225" width="240" height="120" rx="6" fill="#fefcf8" stroke="#b05a20" stroke-width="2"/>
+                <rect x="150" y="225" width="240" height="30" rx="6" fill="#b05a20"/>
+                <rect x="150" y="240" width="240" height="15" fill="#b05a20"/>
+                <text x="270" y="245" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">COGNITION</text>
+                <text x="270" y="277" text-anchor="middle" font-size="12.5" fill="#231e14">Memory Deficit</text>
+                <text x="270" y="296" text-anchor="middle" font-size="12.5" fill="#231e14">Executive Dysfunction</text>
+                <!-- MOOD/AFFECT -->
+                <rect x="410" y="225" width="240" height="120" rx="6" fill="#fefcf8" stroke="#4a7c35" stroke-width="2"/>
+                <rect x="410" y="225" width="240" height="30" rx="6" fill="#4a7c35"/>
+                <rect x="410" y="240" width="240" height="15" fill="#4a7c35"/>
+                <text x="530" y="245" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">MOOD/AFFECT</text>
+                <text x="530" y="277" text-anchor="middle" font-size="12.5" fill="#231e14">Depression</text>
+                <text x="530" y="296" text-anchor="middle" font-size="12.5" fill="#231e14">Anxiety</text>
+                <!-- Integrated assessment -->
+                <rect x="308" y="360" width="184" height="30" rx="4" fill="#e2dbd0" stroke="#cfc8ba" stroke-width="2"/>
+                <text x="400" y="380" text-anchor="middle" font-size="13" font-weight="bold" fill="#231e14">Integrated Assessment</text>
             </svg>
 
             <!-- Types and Presentations Section -->
@@ -613,7 +617,7 @@ draft: false
 
                 <!-- Mesocortical pathway (deficient) -->
                 <path class="dopa-arrow" d="M 140 130 L 300 150"/>
-                <text class="dopa-label" x="220" y="140" text-anchor="middle" fill="#3a6e28" font-weight="bold">MESOCORTICAL (↓)</text>
+                <text class="dopa-label" x="210" y="170" text-anchor="middle" fill="#3a6e28" font-weight="bold">MESOCORTICAL (↓)</text>
                 <circle cx="340" cy="160" r="35" fill="#3a6e28" opacity="0.2" stroke="#3a6e28" stroke-width="2"/>
                 <text class="dopa-circuit" x="340" y="160" text-anchor="middle" fill="#3a6e28">Prefrontal</text>
                 <text class="dopa-circuit" x="340" y="178" text-anchor="middle" fill="#3a6e28">Cortex</text>
@@ -842,6 +846,7 @@ draft: false
 /* SVG responsive sizing fix */
 .diagram-wrapper > div, .diagram-container > div, .svg-container > div, .svg-diagram > div, .diagram-wrap > div, .diagram > div { width: 100%; }
 .diagram-wrapper svg, .diagram-container svg, .svg-container svg, .svg-diagram svg, .diagram-wrap svg, .diagram svg, .ba-body svg { width: 100%; height: auto; max-width: 820px; }
+.ba-act-btn svg, .ba-share-btn svg, .ba-share-menu svg { width: 12px; height: 12px; max-width: none; fill: currentColor; flex-shrink: 0; }
 svg.ba-therapy-icon, svg.ba-insight-icon, svg.ba-stat-icon { width: 32px; height: 32px; max-width: none; flex-shrink: 0; }
                     </style>
                 </defs>

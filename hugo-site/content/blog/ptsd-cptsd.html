@@ -236,33 +236,34 @@ draft: false
                     <text x="350" y="25" style="font-size: 14px; font-weight: 700; fill: #231e14; text-anchor: middle;">Fear Circuit Dysregulation in PTSD</text>
 
                     <!-- Sensory Thalamus -->
-                    <circle cx="120" cy="100" r="35" class="brain-region"/>
-                    <text x="120" y="105" class="brain-label">Sensory<br/>Thalamus</text>
+                    <circle cx="110" cy="105" r="48" class="brain-region"/>
+                    <text x="110" y="101" class="brain-label"><tspan x="110" dy="0">Sensory</tspan><tspan x="110" dy="15">Thalamus</tspan></text>
 
                     <!-- Amygdala -->
-                    <circle cx="350" cy="100" r="40" class="brain-region" style="fill: #c04030; opacity: 0.2;"/>
-                    <text x="350" y="108" class="brain-label">Amygdala<br/>(Hyperactive)</text>
+                    <circle cx="350" cy="105" r="52" class="brain-region" style="fill: #c04030; opacity: 0.2;"/>
+                    <text x="350" y="101" class="brain-label"><tspan x="350" dy="0">Amygdala</tspan><tspan x="350" dy="15">(Hyperactive)</tspan></text>
 
                     <!-- mPFC -->
-                    <circle cx="580" cy="100" r="35" class="brain-region" style="fill: #b0b0b0; opacity: 0.3;"/>
-                    <text x="580" y="105" class="brain-label">mPFC<br/>(Hypoactive)</text>
+                    <circle cx="590" cy="105" r="48" class="brain-region" style="fill: #b0b0b0; opacity: 0.3;"/>
+                    <text x="590" y="101" class="brain-label"><tspan x="590" dy="0">mPFC</tspan><tspan x="590" dy="15">(Hypoactive)</tspan></text>
 
                     <!-- Hippocampus -->
-                    <rect x="280" y="230" width="140" height="50" class="brain-region" rx="8"/>
-                    <text x="350" y="260" class="brain-label">Hippocampus<br/>(Context Deficit)</text>
+                    <rect x="268" y="250" width="164" height="56" class="brain-region" rx="8"/>
+                    <text x="350" y="273" class="brain-label"><tspan x="350" dy="0">Hippocampus</tspan><tspan x="350" dy="15">(Context Deficit)</tspan></text>
 
-                    <!-- Arrows -->
-                    <path d="M 155 100 L 310 100" stroke="#4a7c35" stroke-width="2.5" fill="none" marker-end="url(#arrowgreen)"/>
-                    <text x="230" y="90" class="circuit-label">Rapid Threat Signal</text>
+                    <!-- Horizontal circuit arrows (labels sit above the line) -->
+                    <path d="M 158 105 L 298 105" stroke="#4a7c35" stroke-width="2.5" fill="none" marker-end="url(#arrowgreen)"/>
+                    <text x="228" y="72" class="circuit-label" text-anchor="middle">Rapid Threat Signal</text>
 
-                    <path d="M 390 100 L 545 100" stroke="#b05a20" stroke-width="2.5" fill="none" marker-end="url(#arroworange)"/>
-                    <text x="470" y="90" class="circuit-label">Weak Inhibition</text>
+                    <path d="M 402 105 L 542 105" stroke="#b05a20" stroke-width="2.5" fill="none" marker-end="url(#arroworange)"/>
+                    <text x="472" y="72" class="circuit-label" text-anchor="middle">Weak Inhibition</text>
 
-                    <path d="M 330 140 L 350 230" stroke="#4a7c35" stroke-width="2.5" fill="none" marker-end="url(#arrowgreen)"/>
-                    <text x="315" y="185" class="circuit-label">Memory<br/>Fragmentation</text>
+                    <!-- Diagonal arrows down to hippocampus (labels flank the arrows) -->
+                    <path d="M 345 158 L 332 248" stroke="#4a7c35" stroke-width="2.5" fill="none" marker-end="url(#arrowgreen)"/>
+                    <text x="245" y="196" class="circuit-label" text-anchor="middle"><tspan x="245" dy="0">Memory</tspan><tspan x="245" dy="14">Fragmentation</tspan></text>
 
-                    <path d="M 560 140 L 420 230" stroke="#b05a20" stroke-width="2.5" fill="none" marker-end="url(#arroworange)" stroke-dasharray="5,5"/>
-                    <text x="515" y="185" class="circuit-label">Ineffective<br/>Regulation</text>
+                    <path d="M 572 152 L 392 248" stroke="#b05a20" stroke-width="2.5" fill="none" marker-end="url(#arroworange)" stroke-dasharray="5,5"/>
+                    <text x="535" y="196" class="circuit-label" text-anchor="middle"><tspan x="535" dy="0">Ineffective</tspan><tspan x="535" dy="14">Regulation</tspan></text>
 
                     <!-- Legend -->
                     <text x="50" y="340" style="font-size: 11px; fill: #231e14;"><tspan font-weight="600">mPFC:</tspan> Medial prefrontal cortex (threat extinction, emotional regulation)</text>
@@ -365,7 +366,7 @@ draft: false
                         <style>
                             .hpa-box { fill: #ece6db; stroke: #4a7c35; stroke-width: 2; }
                             .hpa-label { fill: #231e14; font-size: 12px; font-weight: 600; }
-                            .hpa-text { fill: #6b6050; font-size: 10px; }
+                            .hpa-text { fill: #6b6050; font-size:11.5px; }
                         </style>
                         <marker id="arrowhpa" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
                             <path d="M0,0 L0,6 L9,3 z" fill="#4a7c35" />
@@ -399,17 +400,17 @@ draft: false
                     <g>
                         <rect x="450" y="80" width="220" height="80" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="4"/>
                         <text x="460" y="100" style="font-size: 11px; font-weight: 600; fill: #231e14;">PTSD-Specific Profile:</text>
-                        <text x="460" y="118" style="font-size: 10px; fill: #6b6050;">▪ Blunted awakening cortisol</text>
-                        <text x="460" y="133" style="font-size: 10px; fill: #6b6050;">▪ Elevated GR sensitivity</text>
-                        <text x="460" y="148" style="font-size: 10px; fill: #6b6050;">▪ Paradoxical hypo-response</text>
+                        <text x="460" y="118" style="font-size:11.5px; fill: #6b6050;">▪ Blunted awakening cortisol</text>
+                        <text x="460" y="133" style="font-size:11.5px; fill: #6b6050;">▪ Elevated GR sensitivity</text>
+                        <text x="460" y="148" style="font-size:11.5px; fill: #6b6050;">▪ Paradoxical hypo-response</text>
                     </g>
 
                     <g>
                         <rect x="450" y="190" width="220" height="80" fill="#fefcf8" stroke="#cfc8ba" stroke-width="1" rx="4"/>
                         <text x="460" y="210" style="font-size: 11px; font-weight: 600; fill: #231e14;">Clinical Implications:</text>
-                        <text x="460" y="228" style="font-size: 10px; fill: #6b6050;">▪ Impaired negative feedback</text>
-                        <text x="460" y="243" style="font-size: 10px; fill: #6b6050;">▪ Sustained threat vigilance</text>
-                        <text x="460" y="258" style="font-size: 10px; fill: #6b6050;">▪ Poor stress recovery</text>
+                        <text x="460" y="228" style="font-size:11.5px; fill: #6b6050;">▪ Impaired negative feedback</text>
+                        <text x="460" y="243" style="font-size:11.5px; fill: #6b6050;">▪ Sustained threat vigilance</text>
+                        <text x="460" y="258" style="font-size:11.5px; fill: #6b6050;">▪ Poor stress recovery</text>
                     </g>
                 </svg>
             </div>
@@ -715,7 +716,7 @@ draft: false
                         <style>
                             .algo-box { fill: #ece6db; stroke: #4a7c35; stroke-width: 2; }
                             .algo-label { fill: #231e14; font-size: 12px; font-weight: 600; text-anchor: middle; }
-                            .algo-text { fill: #6b6050; font-size: 10px; text-anchor: middle; }
+                            .algo-text { fill: #6b6050; font-size:11px; text-anchor: middle; }
                             .arrow-algo { stroke: #4a7c35; stroke-width: 2.5; fill: none; }
 /* SVG responsive sizing fix */
 .diagram-wrapper > div, .diagram-container > div, .svg-container > div, .svg-diagram > div, .diagram-wrap > div, .diagram > div { width: 100%; }
@@ -753,7 +754,7 @@ draft: false
 
                     <!-- Non-Responder Path -->
                     <path d="M 450 170 L 520 170" class="arrow-algo" stroke="#c04030" marker-end="url(#arrowalgo)"/>
-                    <text x="490" y="155" style="font-size: 10px; fill: #c04030; text-anchor: middle;">Non-Response?</text>
+                    <text x="490" y="155" style="font-size:11.5px; fill: #c04030; text-anchor: middle;">Non-Response?</text>
 
                     <rect x="520" y="140" width="160" height="60" class="algo-box" rx="6" style="stroke: #c04030;"/>
                     <text x="600" y="160" class="algo-label" style="fill: #c04030;">Optimization:</text>
