@@ -1,0 +1,14 @@
+{
+  "name": "PsychoPharmRef",
+  "short_name": "PsychoPharmRef",
+  "description": "Clinical psychopharmacology reference for psychiatrists, residents, and students.",
+  "icons": [
+    { "src": "/favicon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/favicon-512.png", "type": "image/png", "sizes": "512x512" },
+    { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" }
+  ],
+  "theme_color": "#4a7c35",
+  "background_color": "#f5f0e8",
+  "display": "standalone",
+  "start_url": "/"
+}
