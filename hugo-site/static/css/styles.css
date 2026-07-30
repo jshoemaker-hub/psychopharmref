@@ -815,6 +815,8 @@ td {
 .modal-field { flex: 1; min-width: 140px; }
 .modal-field label { font-size: 11px; color: var(--text-muted); display: block; margin-bottom: 2px; }
 .modal-field value { font-size: 13px; }
+.modal-cite { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+.modal-cite a { color: var(--accent); text-decoration: underline; }
 
 /* ── Synaptic Binding ──────────────────────────────────────────────────── */
 .syn-row {

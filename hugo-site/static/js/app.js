@@ -667,10 +667,36 @@ function openDrugModal(id) {
     return `<div style="margin-bottom:4px"><strong>${e}:</strong> ${parts.join(' ')}</div>`;
   }).filter(Boolean).join('') || '<span style="color:var(--text-muted)">No significant P450 interactions</span>';
 
+  const dev  = drug.development;
+  const dose = drug.dosing;
+  const devDosingHTML = (dev || dose) ? `
+    <div class="modal-section">
+      <h4>Development &amp; Dosing</h4>
+      ${dev ? `
+      <div class="modal-row">
+        <div class="modal-field"><label>Discovered / Synthesized</label><div>${dev.discoveryYear ?? '—'}</div></div>
+        <div class="modal-field"><label>First FDA Approval</label><div>${dev.fdaApprovalYear ?? '—'}</div></div>
+      </div>
+      <div class="modal-row">
+        <div class="modal-field"><label>Originator (Developer / Patent Holder)</label><div>${dev.originator ?? '—'}</div></div>
+      </div>` : ''}
+      ${dose ? `
+      <div class="modal-row">
+        <div class="modal-field"><label>Starting Dose</label><div>${dose.start ?? '—'}</div></div>
+        <div class="modal-field"><label>Usual Target</label><div>${dose.target ?? '—'}</div></div>
+      </div>
+      <div class="modal-row">
+        <div class="modal-field"><label>Maximum</label><div>${dose.max ?? '—'}</div></div>
+      </div>
+      ${dose.citation ? `<div class="modal-cite">Dosing source: <a href="${dose.citation.url}" target="_blank" rel="noopener">${dose.citation.label}</a></div>` : ''}
+      ` : ''}
+    </div>` : '';
+
   body.innerHTML = `
     <div class="modal-drug-name">${drug.name}</div>
     <div class="modal-brand">${drug.brandName} &bull; ${classBadge(drug.class)}</div>
 
+    ${devDosingHTML}
     <div class="modal-section">
       <h4>Pharmacokinetics</h4>
       <div class="modal-row">
