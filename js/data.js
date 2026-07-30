@@ -1697,7 +1697,7 @@ const MEDICATIONS = [
   {
     id: 'clozapine',
     development: { discoveryYear: 1958, fdaApprovalYear: 1989, originator: "Wander AG / Sandoz (Novartis)" },
-    dosing: { start: "12.5 mg/day", target: "300–450 mg/day", max: "900 mg/day", formulations: "Tablet • ODT (FazaClo) • Oral suspension (Versacloz)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clozapine" } },
+    dosing: { start: "12.5 mg/day", target: "300–450 mg/day (serum ≥350 ng/mL; usual 350–600 ng/mL)", max: "900 mg/day", formulations: "Tablet • ODT (FazaClo) • Oral suspension (Versacloz)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clozapine" } },
     name: 'Clozapine',
     brandName: 'Clozaril',
     class: 'SGA',
