@@ -1,0 +1,125 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   emdr-trauma.css — Course module 8:
+   EMDR Therapy for Trauma & PTSD
+   Prefix: emdr-
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.emdr-root { max-width: 1000px; }
+
+/* ── Meta chips ──────────────────────────────────────────────────────── */
+.emdr-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 18px; }
+.emdr-chip {
+  font-size: 11px; font-weight: 600; letter-spacing: .02em;
+  padding: 4px 10px; border-radius: 999px;
+  border: 1px solid var(--border); background: #fff; color: var(--text);
+}
+.emdr-chip.emdr-chip-accent { background: rgba(74,124,53,.10); border-color: rgba(74,124,53,.35); color: var(--accent); }
+
+/* ── Tabs ────────────────────────────────────────────────────────────── */
+.emdr-tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 2px solid var(--border); margin-bottom: 20px; }
+.emdr-tab {
+  appearance: none; border: none; background: transparent; cursor: pointer;
+  font: inherit; font-size: 13px; font-weight: 600; color: #6b6455;
+  padding: 10px 14px; border-radius: 8px 8px 0 0;
+  border-bottom: 3px solid transparent; margin-bottom: -2px;
+}
+.emdr-tab:hover { color: var(--text); background: rgba(74,124,53,.06); }
+.emdr-tab.emdr-active { color: var(--accent); border-bottom-color: var(--accent); }
+.emdr-panel { display: none; animation: emdr-fade .18s ease; }
+.emdr-panel.emdr-active { display: block; }
+@keyframes emdr-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+/* ── Didactic ────────────────────────────────────────────────────────── */
+.emdr-learn h3 { color: var(--accent); font-size: 19px; margin: 26px 0 8px; }
+.emdr-learn h4 { color: var(--accent2); font-size: 15px; margin: 18px 0 6px; }
+.emdr-learn p, .emdr-learn li { line-height: 1.62; }
+.emdr-learn ul, .emdr-learn ol { margin: 8px 0 8px 4px; padding-left: 22px; }
+.emdr-learn li { margin: 5px 0; }
+.emdr-lead { font-size: 15px; color: #4a4436; }
+.emdr-phases li { margin: 7px 0; }
+.emdr-disc-inline { font-size: 12.5px; color: #8a8272; font-style: italic; margin-top: 22px; border-top: 1px solid var(--border); padding-top: 12px; }
+
+.emdr-callout {
+  border: 1px solid var(--border); background: var(--bg2);
+  border-left: 4px solid var(--accent); border-radius: 8px; padding: 12px 16px; margin: 16px 0;
+}
+.emdr-callout.emdr-warn { border-left-color: #b4531f; background: #f8ede4; }
+.emdr-callout.emdr-tip  { border-left-color: var(--accent2); background: #f6f0e2; }
+.emdr-callout .emdr-callout-title { font-weight: 700; display: block; margin-bottom: 4px; }
+
+.emdr-acr { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 12px 0; padding: 12px 16px; background: #fff; border: 1px solid var(--border); border-radius: 8px; }
+.emdr-acr dt { font-weight: 700; color: var(--accent); }
+.emdr-acr dd { margin: 0; }
+
+.emdr-refs { font-size: 13px; color: #5a5346; }
+.emdr-refs li { margin: 6px 0; }
+
+/* ── Worksheet shared ────────────────────────────────────────────────── */
+.emdr-ws-intro { color: #4a4436; margin-bottom: 14px; line-height: 1.6; }
+.emdr-card { border: 1px solid var(--border); background: #fff; border-radius: 10px; padding: 16px; margin: 16px 0; }
+.emdr-card h4 { margin: 0 0 10px; color: var(--accent); font-size: 15px; }
+
+.emdr-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.emdr-table th, .emdr-table td { border: 1px solid var(--border); padding: 6px 8px; text-align: left; vertical-align: top; }
+.emdr-table th { background: var(--bg2); font-weight: 600; font-size: 12px; }
+.emdr-table input[type="text"], .emdr-table input[type="number"], .emdr-table input[type="date"], .emdr-table select, .emdr-table textarea {
+  width: 100%; box-sizing: border-box; border: 1px solid var(--border);
+  border-radius: 5px; padding: 4px 6px; font: inherit; font-size: 12.5px; background: #fdfcf9;
+}
+.emdr-table textarea { resize: vertical; min-height: 34px; }
+.emdr-num { max-width: 72px; }
+.emdr-row-del { appearance: none; border: 1px solid var(--border); background: #fff; cursor: pointer; border-radius: 6px; width: 26px; height: 26px; line-height: 1; color: #b4531f; font-size: 15px; }
+.emdr-row-del:hover { background: #f8ede4; }
+
+.emdr-field { margin: 12px 0; }
+.emdr-field label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+.emdr-field .emdr-hint { font-weight: 400; color: #7a7364; font-size: 12px; }
+.emdr-field input[type="text"], .emdr-field input[type="number"], .emdr-field input[type="date"], .emdr-field textarea, .emdr-field select {
+  width: 100%; box-sizing: border-box; border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; font: inherit; background: #fdfcf9;
+}
+.emdr-field textarea { resize: vertical; min-height: 52px; }
+.emdr-field input[type="number"].emdr-num { width: 90px; }
+
+/* ── Checklist ───────────────────────────────────────────────────────── */
+.emdr-checklist { display: flex; flex-direction: column; gap: 4px; }
+.emdr-check-row { display: flex; align-items: flex-start; gap: 9px; padding: 6px 8px; border: 1px solid var(--border); border-radius: 7px; background: #fdfcf9; cursor: pointer; font-size: 13px; line-height: 1.4; }
+.emdr-check-row:hover { background: rgba(74,124,53,.05); }
+.emdr-check-row input { margin-top: 2px; }
+
+/* ── Buttons ─────────────────────────────────────────────────────────── */
+.emdr-btn { appearance: none; cursor: pointer; font: inherit; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: #fff; }
+.emdr-btn:hover { filter: brightness(1.05); }
+.emdr-btn.emdr-btn-ghost { background: #fff; color: var(--accent); }
+.emdr-btn.emdr-btn-ghost:hover { background: rgba(74,124,53,.08); }
+.emdr-btn.emdr-btn-sm { padding: 6px 12px; font-size: 12px; }
+.emdr-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+/* ── Readout ─────────────────────────────────────────────────────────── */
+.emdr-readout { display: flex; flex-wrap: wrap; gap: 16px; align-items: baseline; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; margin: 12px 0; }
+.emdr-readout .emdr-stat { font-size: 13px; color: #5a5346; }
+.emdr-readout .emdr-stat b { font-size: 20px; color: var(--accent); display: block; }
+
+/* ── SUDS / VOC bands ────────────────────────────────────────────────── */
+.emdr-scale-legend { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 6px 0 12px; font-size: 11px; }
+.emdr-band { padding: 3px 8px; border-radius: 6px; font-weight: 600; }
+.emdr-band-low { background: #dfe9d4; color: #3f6a2a; }
+.emdr-band-mod { background: #f8ecd9; color: #8a6412; }
+.emdr-band-high { background: #f4dcd0; color: #8a3b12; }
+
+/* ── SMART preview / progress ────────────────────────────────────────── */
+.emdr-preview { border: 1px dashed var(--accent); background: rgba(74,124,53,.05); border-radius: 8px; padding: 12px 16px; margin-top: 10px; font-size: 14px; line-height: 1.55; min-height: 40px; }
+.emdr-preview:empty::before { content: "Fill the fields above to assemble your goal statement…"; color: #9a9384; font-style: italic; }
+
+.emdr-progress-list { list-style: none; padding: 0; margin: 10px 0; }
+.emdr-progress-list li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 6px; margin: 4px 0; font-size: 13px; background: #fff; }
+.emdr-delta-up { color: var(--accent); font-weight: 600; }
+.emdr-delta-down { color: #b4531f; font-weight: 600; }
+
+@media (max-width: 640px) {
+  .emdr-scale-legend { font-size: 10.5px; }
+}
+
+@media print {
+  .emdr-tabs, .emdr-actions, .emdr-row-del, .emdr-tab { display: none !important; }
+  .emdr-panel { display: block !important; }
+}
