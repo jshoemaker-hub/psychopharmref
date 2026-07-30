@@ -913,7 +913,7 @@ const MEDICATIONS = [
   {
     id: 'fluoxetine',
     development: { discoveryYear: 1972, fdaApprovalYear: 1987, originator: "Eli Lilly" },
-    dosing: { start: "20 mg PO qAM", target: "20–60 mg/day", max: "80 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=fluoxetine" } },
+    dosing: { start: "20 mg PO qAM", target: "20–60 mg/day", max: "80 mg/day", formulations: "IR oral once daily • Delayed-release 90 mg once weekly (Prozac Weekly)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=fluoxetine" } },
     name: 'Fluoxetine',
     brandName: 'Prozac',
     class: 'SSRI',
@@ -1012,7 +1012,7 @@ const MEDICATIONS = [
   {
     id: 'paroxetine',
     development: { discoveryYear: 1975, fdaApprovalYear: 1992, originator: "Ferrosan / SmithKline Beecham" },
-    dosing: { start: "20 mg PO daily", target: "20–50 mg/day", max: "50 mg/day (60 mg OCD)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=paroxetine" } },
+    dosing: { start: "20 mg PO daily", target: "20–50 mg/day", max: "50 mg/day (60 mg OCD)", formulations: "IR once daily (Paxil) • Controlled-release once daily (Paxil CR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=paroxetine" } },
     name: 'Paroxetine',
     brandName: 'Paxil',
     class: 'SSRI',
@@ -1076,7 +1076,7 @@ const MEDICATIONS = [
   {
     id: 'fluvoxamine',
     development: { discoveryYear: 1977, fdaApprovalYear: 1994, originator: "Solvay (Kali-Duphar)" },
-    dosing: { start: "50 mg PO qHS", target: "100–300 mg/day", max: "300 mg/day (divide doses >100 mg)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=fluvoxamine" } },
+    dosing: { start: "50 mg PO qHS", target: "100–300 mg/day", max: "300 mg/day (divide doses >100 mg)", formulations: "IR (BID when >100 mg; Luvox) • CR once daily (Luvox CR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=fluvoxamine" } },
     name: 'Fluvoxamine',
     brandName: 'Luvox',
     class: 'SSRI',
@@ -1108,7 +1108,7 @@ const MEDICATIONS = [
   {
     id: 'venlafaxine',
     development: { discoveryYear: 1983, fdaApprovalYear: 1993, originator: "Wyeth (Pfizer)" },
-    dosing: { start: "37.5–75 mg/day", target: "75–225 mg/day", max: "225 mg/day (XR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=venlafaxine" } },
+    dosing: { start: "37.5–75 mg/day", target: "75–225 mg/day", max: "225 mg/day (XR)", formulations: "IR BID–TID (Effexor) • XR once daily (Effexor XR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=venlafaxine" } },
     name: 'Venlafaxine',
     brandName: 'Effexor',
     class: 'SNRI',
@@ -1263,7 +1263,7 @@ const MEDICATIONS = [
   {
     id: 'imipramine',
     development: { discoveryYear: 1951, fdaApprovalYear: 1959, originator: "Geigy (Novartis)" },
-    dosing: { start: "25–75 mg/day", target: "100–200 mg/day", max: "300 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=imipramine" } },
+    dosing: { start: "25–75 mg/day", target: "100–200 mg/day", max: "300 mg/day", formulations: "IR HCl in divided doses • Pamoate capsules once daily (Tofranil-PM)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=imipramine" } },
     name: 'Imipramine',
     brandName: 'Tofranil',
     class: 'TCA',
@@ -1351,7 +1351,7 @@ const MEDICATIONS = [
   {
     id: 'bupropion',
     development: { discoveryYear: 1969, fdaApprovalYear: 1985, originator: "Burroughs Wellcome (GSK)" },
-    dosing: { start: "150 mg/day (SR/XL)", target: "300 mg/day", max: "450 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=bupropion" } },
+    dosing: { start: "150 mg/day (SR/XL)", target: "300 mg/day", max: "450 mg/day", formulations: "IR BID–TID (Wellbutrin) • SR BID (Wellbutrin SR / Zyban) • XL once daily (Wellbutrin XL)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=bupropion" } },
     name: 'Bupropion',
     brandName: 'Wellbutrin',
     class: 'NDRI',
@@ -1382,7 +1382,7 @@ const MEDICATIONS = [
   {
     id: 'mirtazapine',
     development: { discoveryYear: 1989, fdaApprovalYear: 1996, originator: "Organon (Merck)" },
-    dosing: { start: "15 mg qHS", target: "15–45 mg/day", max: "45 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=mirtazapine" } },
+    dosing: { start: "15 mg qHS", target: "15–45 mg/day", max: "45 mg/day", formulations: "Tablet • Orally disintegrating (SolTab) — both once daily", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=mirtazapine" } },
     name: 'Mirtazapine',
     brandName: 'Remeron',
     class: 'NaSSA',
@@ -1411,7 +1411,7 @@ const MEDICATIONS = [
   {
     id: 'trazodone',
     development: { discoveryYear: 1966, fdaApprovalYear: 1981, originator: "Angelini / Mead Johnson" },
-    dosing: { start: "150 mg/day (depression); 25–100 mg qHS (insomnia)", target: "150–400 mg/day", max: "600 mg/day (inpatient)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=trazodone" } },
+    dosing: { start: "150 mg/day (depression); 25–100 mg qHS (insomnia)", target: "150–400 mg/day", max: "600 mg/day (inpatient)", formulations: "IR BID or qHS • ER once daily (Oleptro)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=trazodone" } },
     name: 'Trazodone',
     brandName: 'Desyrel',
     class: 'SARI',
@@ -1471,7 +1471,7 @@ const MEDICATIONS = [
   {
     id: 'haloperidol',
     development: { discoveryYear: 1958, fdaApprovalYear: 1967, originator: "Janssen" },
-    dosing: { start: "0.5–5 mg BID–TID", target: "5–20 mg/day", max: "30 mg/day (higher in acute agitation)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=haloperidol" } },
+    dosing: { start: "0.5–5 mg BID–TID", target: "5–20 mg/day", max: "30 mg/day (higher in acute agitation)", formulations: "Oral tab/solution • Lactate IM/IV (acute) • Decanoate LAI every ~4 weeks", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=haloperidol" } },
     name: 'Haloperidol',
     brandName: 'Haldol',
     class: 'FGA',
@@ -1502,7 +1502,7 @@ const MEDICATIONS = [
   {
     id: 'chlorpromazine',
     development: { discoveryYear: 1950, fdaApprovalYear: 1954, originator: "Rhône-Poulenc / Smith Kline & French" },
-    dosing: { start: "25–100 mg/day", target: "300–800 mg/day", max: "1000 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=chlorpromazine" } },
+    dosing: { start: "25–100 mg/day", target: "300–800 mg/day", max: "1000 mg/day", formulations: "Oral tablet • IM/IV injection (acute)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=chlorpromazine" } },
     name: 'Chlorpromazine',
     brandName: 'Thorazine',
     class: 'FGA',
@@ -1534,7 +1534,7 @@ const MEDICATIONS = [
   {
     id: 'fluphenazine',
     development: { discoveryYear: 1959, fdaApprovalYear: 1959, originator: "Squibb (Bristol-Myers Squibb)" },
-    dosing: { start: "2.5–10 mg/day", target: "5–20 mg/day", max: "40 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=fluphenazine" } },
+    dosing: { start: "2.5–10 mg/day", target: "5–20 mg/day", max: "40 mg/day", formulations: "Oral tab/elixir • HCl IM (acute) • Decanoate LAI every 2–3 weeks", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=fluphenazine" } },
     name: 'Fluphenazine',
     brandName: 'Prolixin',
     class: 'FGA',
@@ -1566,7 +1566,7 @@ const MEDICATIONS = [
   {
     id: 'risperidone',
     development: { discoveryYear: 1988, fdaApprovalYear: 1993, originator: "Janssen" },
-    dosing: { start: "1 mg BID (2 mg/day)", target: "4–6 mg/day", max: "16 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=risperidone" } },
+    dosing: { start: "1 mg BID (2 mg/day)", target: "4–6 mg/day", max: "16 mg/day", formulations: "Oral tab/solution/ODT • LAI (Consta q2wk; Perseris/Uzedy monthly)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=risperidone" } },
     name: 'Risperidone',
     brandName: 'Risperdal',
     class: 'SGA',
@@ -1597,7 +1597,7 @@ const MEDICATIONS = [
   {
     id: 'olanzapine',
     development: { discoveryYear: 1991, fdaApprovalYear: 1996, originator: "Eli Lilly" },
-    dosing: { start: "5–10 mg/day", target: "10–20 mg/day", max: "20 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=olanzapine" } },
+    dosing: { start: "5–10 mg/day", target: "10–20 mg/day", max: "20 mg/day", formulations: "Oral tab/ODT (Zydis) • IM (acute) • LAI (Relprevv, q2–4 weeks)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=olanzapine" } },
     name: 'Olanzapine',
     brandName: 'Zyprexa',
     class: 'SGA',
@@ -1630,7 +1630,7 @@ const MEDICATIONS = [
   {
     id: 'quetiapine',
     development: { discoveryYear: 1985, fdaApprovalYear: 1997, originator: "Zeneca (AstraZeneca)" },
-    dosing: { start: "25–50 mg BID", target: "400–800 mg/day", max: "800 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=quetiapine" } },
+    dosing: { start: "25–50 mg BID", target: "400–800 mg/day", max: "800 mg/day", formulations: "IR BID (Seroquel) • XR once daily (Seroquel XR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=quetiapine" } },
     name: 'Quetiapine',
     brandName: 'Seroquel',
     class: 'SGA',
@@ -1663,7 +1663,7 @@ const MEDICATIONS = [
   {
     id: 'aripiprazole',
     development: { discoveryYear: 1988, fdaApprovalYear: 2002, originator: "Otsuka / Bristol-Myers Squibb" },
-    dosing: { start: "10–15 mg/day (schizophrenia); 2–5 mg (MDD adjunct)", target: "10–15 mg/day", max: "30 mg/day", citation: { label: "FDA package insert (2022)", url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/021436s048lbledit.pdf" } },
+    dosing: { start: "10–15 mg/day (schizophrenia); 2–5 mg (MDD adjunct)", target: "10–15 mg/day", max: "30 mg/day", formulations: "Oral tab/ODT/solution • LAI (Maintena monthly; Aristada q4–8 weeks)", citation: { label: "FDA package insert (2022)", url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/021436s048lbledit.pdf" } },
     name: 'Aripiprazole',
     brandName: 'Abilify',
     class: 'SGA',
@@ -1697,7 +1697,7 @@ const MEDICATIONS = [
   {
     id: 'clozapine',
     development: { discoveryYear: 1958, fdaApprovalYear: 1989, originator: "Wander AG / Sandoz (Novartis)" },
-    dosing: { start: "12.5 mg/day", target: "300–450 mg/day", max: "900 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clozapine" } },
+    dosing: { start: "12.5 mg/day", target: "300–450 mg/day", max: "900 mg/day", formulations: "Tablet • ODT (FazaClo) • Oral suspension (Versacloz)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clozapine" } },
     name: 'Clozapine',
     brandName: 'Clozaril',
     class: 'SGA',
@@ -1727,7 +1727,7 @@ const MEDICATIONS = [
   {
     id: 'ziprasidone',
     development: { discoveryYear: 1987, fdaApprovalYear: 2001, originator: "Pfizer" },
-    dosing: { start: "20 mg BID with food", target: "40–80 mg BID", max: "80 mg BID (160 mg/day)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=ziprasidone" } },
+    dosing: { start: "20 mg BID with food", target: "40–80 mg BID", max: "80 mg BID (160 mg/day)", formulations: "Oral capsule BID with food • IM (acute agitation)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=ziprasidone" } },
     name: 'Ziprasidone',
     brandName: 'Geodon',
     class: 'SGA',
@@ -1788,7 +1788,7 @@ const MEDICATIONS = [
   {
     id: 'asenapine',
     development: { discoveryYear: 2000, fdaApprovalYear: 2009, originator: "Organon (Merck)" },
-    dosing: { start: "5 mg SL BID", target: "10 mg SL BID", max: "20 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=asenapine" } },
+    dosing: { start: "5 mg SL BID", target: "10 mg SL BID", max: "20 mg/day", formulations: "Sublingual tablet BID • Transdermal patch once daily (Secuado)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=asenapine" } },
     name: 'Asenapine',
     brandName: 'Saphris',
     class: 'SGA',
@@ -1821,7 +1821,7 @@ const MEDICATIONS = [
   {
     id: 'lithium',
     development: { discoveryYear: 1949, fdaApprovalYear: 1970, originator: "Not patented (element; J. Cade, 1949)" },
-    dosing: { start: "300 mg BID–TID", target: "serum 0.6–1.2 mEq/L (≈900–1800 mg/day)", max: "titrate to serum level (≈1800 mg/day)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=lithium" } },
+    dosing: { start: "300 mg BID–TID", target: "serum 0.6–1.2 mEq/L (≈900–1800 mg/day)", max: "titrate to serum level (≈1800 mg/day)", formulations: "IR carbonate BID–TID • ER/CR BID (Lithobid, Eskalith CR) • citrate oral solution", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=lithium" } },
     name: 'Lithium',
     brandName: 'Lithobid',
     class: 'Mood Stabilizer',
@@ -1849,7 +1849,7 @@ const MEDICATIONS = [
   {
     id: 'valproate',
     development: { discoveryYear: 1962, fdaApprovalYear: 1978, originator: "Sanofi / Abbott (divalproex)" },
-    dosing: { start: "250–500 mg BID (20–30 mg/kg/day mania)", target: "serum 50–125 mcg/mL", max: "60 mg/kg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=divalproex" } },
+    dosing: { start: "250–500 mg BID (20–30 mg/kg/day mania)", target: "serum 50–125 mcg/mL", max: "60 mg/kg/day", formulations: "Divalproex DR BID–TID (Depakote) • Divalproex ER once daily (Depakote ER) • valproic acid • IV", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=divalproex" } },
     name: 'Valproate',
     brandName: 'Depakote',
     class: 'Mood Stabilizer',
@@ -1878,7 +1878,7 @@ const MEDICATIONS = [
   {
     id: 'lamotrigine',
     development: { discoveryYear: 1980, fdaApprovalYear: 1994, originator: "Wellcome (GSK)" },
-    dosing: { start: "25 mg/day, slow titration", target: "200 mg/day", max: "400 mg/day (200 mg with valproate)", citation: { label: "FDA package insert (2025)", url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/020241s068s069,020764s061s062,022251s032s033lbl.pdf" } },
+    dosing: { start: "25 mg/day, slow titration", target: "200 mg/day", max: "400 mg/day (200 mg with valproate)", formulations: "IR BID • XR once daily (Lamictal XR) • ODT & chewable", citation: { label: "FDA package insert (2025)", url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/020241s068s069,020764s061s062,022251s032s033lbl.pdf" } },
     name: 'Lamotrigine',
     brandName: 'Lamictal',
     class: 'Mood Stabilizer',
@@ -1906,7 +1906,7 @@ const MEDICATIONS = [
   {
     id: 'carbamazepine',
     development: { discoveryYear: 1953, fdaApprovalYear: 1968, originator: "Geigy (Novartis)" },
-    dosing: { start: "200 mg BID", target: "400–1200 mg/day (serum 4–12 mcg/mL)", max: "1600 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=carbamazepine" } },
+    dosing: { start: "200 mg BID", target: "400–1200 mg/day (serum 4–12 mcg/mL)", max: "1600 mg/day", formulations: "IR tab/chewable/suspension BID–QID (Tegretol) • XR BID (Tegretol-XR) • ER BID (Carbatrol/Equetro)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=carbamazepine" } },
     name: 'Carbamazepine',
     brandName: 'Tegretol',
     class: 'Mood Stabilizer',
@@ -1937,7 +1937,7 @@ const MEDICATIONS = [
   {
     id: 'zolpidem',
     development: { discoveryYear: 1982, fdaApprovalYear: 1992, originator: "Synthélabo (Sanofi)" },
-    dosing: { start: "5 mg qHS (F) / 5–10 mg (M)", target: "5–10 mg qHS", max: "10 mg/day (IR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=zolpidem" } },
+    dosing: { start: "5 mg qHS (F) / 5–10 mg (M)", target: "5–10 mg qHS", max: "10 mg/day (IR)", formulations: "IR (Ambien) • CR (Ambien CR) • sublingual (Edluar/Intermezzo) • oral spray (Zolpimist)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=zolpidem" } },
     name: 'Zolpidem',
     brandName: 'Ambien',
     class: 'Z-Drug',
@@ -2296,7 +2296,7 @@ const MEDICATIONS = [
   ,{
     id: 'doxepin',
     development: { discoveryYear: 1963, fdaApprovalYear: 1969, originator: "Pfizer" },
-    dosing: { start: "25–75 mg/day (depression); 3–6 mg qHS (insomnia)", target: "75–150 mg/day", max: "300 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=doxepin" } },
+    dosing: { start: "25–75 mg/day (depression); 3–6 mg qHS (insomnia)", target: "75–150 mg/day", max: "300 mg/day", formulations: "Oral cap/solution (depression) • Low-dose 3–6 mg tab for insomnia (Silenor)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=doxepin" } },
     name: 'Doxepin',
     brandName: 'Sinequan / Silenor',
     class: 'TCA',
@@ -2458,7 +2458,7 @@ const MEDICATIONS = [
   ,{
     id: 'loxapine',
     development: { discoveryYear: 1968, fdaApprovalYear: 1975, originator: "American Cyanamid (Lederle)" },
-    dosing: { start: "10 mg BID", target: "60–100 mg/day", max: "250 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=loxapine" } },
+    dosing: { start: "10 mg BID", target: "60–100 mg/day", max: "250 mg/day", formulations: "Oral capsule • Inhalation powder for acute agitation (Adasuve)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=loxapine" } },
     name: 'Loxapine',
     brandName: 'Loxitane',
     class: 'FGA',
@@ -2513,7 +2513,7 @@ const MEDICATIONS = [
   ,{
     id: 'paliperidone',
     development: { discoveryYear: 1980, fdaApprovalYear: 2006, originator: "Janssen" },
-    dosing: { start: "6 mg/day", target: "3–12 mg/day", max: "12 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=paliperidone" } },
+    dosing: { start: "6 mg/day", target: "3–12 mg/day", max: "12 mg/day", formulations: "Oral ER once daily (Invega) • LAI (Sustenna monthly; Trinza q3mo; Hafyera q6mo)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=paliperidone" } },
     name: 'Paliperidone',
     brandName: 'Invega',
     class: 'SGA',
@@ -2677,7 +2677,7 @@ const MEDICATIONS = [
   ,{
     id: 'oxcarbazepine',
     development: { discoveryYear: 1966, fdaApprovalYear: 2000, originator: "Geigy (Novartis)" },
-    dosing: { start: "300 mg BID", target: "1200 mg/day", max: "2400 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=oxcarbazepine" } },
+    dosing: { start: "300 mg BID", target: "1200 mg/day", max: "2400 mg/day", formulations: "IR BID (Trileptal) • XR once daily (Oxtellar XR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=oxcarbazepine" } },
     name: 'Oxcarbazepine',
     brandName: 'Trileptal',
     class: 'Mood Stabilizer',
@@ -2704,7 +2704,7 @@ const MEDICATIONS = [
   ,{
     id: 'topiramate',
     development: { discoveryYear: 1979, fdaApprovalYear: 1996, originator: "Ortho-McNeil (Janssen)" },
-    dosing: { start: "25–50 mg/day", target: "100–200 mg/day", max: "400 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=topiramate" } },
+    dosing: { start: "25–50 mg/day", target: "100–200 mg/day", max: "400 mg/day", formulations: "IR BID • XR once daily (Trokendi XR / Qudexy XR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=topiramate" } },
     name: 'Topiramate',
     brandName: 'Topamax',
     class: 'Mood Stabilizer',
@@ -2734,7 +2734,7 @@ const MEDICATIONS = [
   ,{
     id: 'gabapentin',
     development: { discoveryYear: 1977, fdaApprovalYear: 1993, originator: "Parke-Davis (Pfizer)" },
-    dosing: { start: "300 mg/day", target: "900–1800 mg/day", max: "3600 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=gabapentin" } },
+    dosing: { start: "300 mg/day", target: "900–1800 mg/day", max: "3600 mg/day", formulations: "IR TID (Neurontin) • ER once daily (Gralise) • enacarbil ER BID (Horizant)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=gabapentin" } },
     name: 'Gabapentin',
     brandName: 'Neurontin',
     class: 'Gabapentinoid',
@@ -2765,7 +2765,7 @@ const MEDICATIONS = [
   ,{
     id: 'alprazolam',
     development: { discoveryYear: 1969, fdaApprovalYear: 1981, originator: "Upjohn (Pfizer)" },
-    dosing: { start: "0.25–0.5 mg TID", target: "1–4 mg/day", max: "4 mg/day (up to 10 mg for panic)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=alprazolam" } },
+    dosing: { start: "0.25–0.5 mg TID", target: "1–4 mg/day", max: "4 mg/day (up to 10 mg for panic)", formulations: "IR TID (Xanax) • XR once daily (Xanax XR) • ODT", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=alprazolam" } },
     name: 'Alprazolam',
     brandName: 'Xanax',
     class: 'Benzodiazepine',
@@ -2793,7 +2793,7 @@ const MEDICATIONS = [
   ,{
     id: 'clonazepam',
     development: { discoveryYear: 1964, fdaApprovalYear: 1975, originator: "Roche" },
-    dosing: { start: "0.25–0.5 mg BID", target: "1–2 mg/day", max: "4 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clonazepam" } },
+    dosing: { start: "0.25–0.5 mg BID", target: "1–2 mg/day", max: "4 mg/day", formulations: "Tablet • Orally disintegrating wafer — both same dosing", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clonazepam" } },
     name: 'Clonazepam',
     brandName: 'Klonopin',
     class: 'Benzodiazepine',
@@ -2821,7 +2821,7 @@ const MEDICATIONS = [
   ,{
     id: 'diazepam',
     development: { discoveryYear: 1959, fdaApprovalYear: 1963, originator: "Roche" },
-    dosing: { start: "2–10 mg BID–QID", target: "5–40 mg/day", max: "40 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=diazepam" } },
+    dosing: { start: "2–10 mg BID–QID", target: "5–40 mg/day", max: "40 mg/day", formulations: "Oral tab/solution • Rectal gel (Diastat) • Nasal spray (Valtoco) • IV/IM", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=diazepam" } },
     name: 'Diazepam',
     brandName: 'Valium',
     class: 'Benzodiazepine',
@@ -2851,7 +2851,7 @@ const MEDICATIONS = [
   ,{
     id: 'lorazepam',
     development: { discoveryYear: 1963, fdaApprovalYear: 1977, originator: "Wyeth (Pfizer)" },
-    dosing: { start: "0.5–1 mg BID–TID", target: "2–6 mg/day", max: "10 mg/day", citation: { label: "FDA package insert (2021)", url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/017794s048lbl.pdf" } },
+    dosing: { start: "0.5–1 mg BID–TID", target: "2–6 mg/day", max: "10 mg/day", formulations: "Oral tab/concentrate • IV/IM • ER capsule once daily (Loreev XR)", citation: { label: "FDA package insert (2021)", url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/017794s048lbl.pdf" } },
     name: 'Lorazepam',
     brandName: 'Ativan',
     class: 'Benzodiazepine',
@@ -2936,7 +2936,7 @@ const MEDICATIONS = [
   ,{
     id: 'clorazepate',
     development: { discoveryYear: 1968, fdaApprovalYear: 1972, originator: "Abbott" },
-    dosing: { start: "7.5–15 mg/day", target: "15–60 mg/day", max: "90 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clorazepate" } },
+    dosing: { start: "7.5–15 mg/day", target: "15–60 mg/day", max: "90 mg/day", formulations: "Regular tablet (divided) • Once-daily formulation (Tranxene-SD)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clorazepate" } },
     name: 'Clorazepate',
     brandName: 'Tranxene',
     class: 'Benzodiazepine',
@@ -2965,7 +2965,7 @@ const MEDICATIONS = [
   ,{
     id: 'midazolam',
     development: { discoveryYear: 1976, fdaApprovalYear: 1985, originator: "Roche" },
-    dosing: { start: "1–2.5 mg IV (procedural sedation)", target: "titrate to effect", max: "per procedure / route", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=midazolam" } },
+    dosing: { start: "1–2.5 mg IV (procedural sedation)", target: "titrate to effect", max: "per procedure / route", formulations: "IV/IM • Oral syrup • Nasal spray for seizure rescue (Nayzilam)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=midazolam" } },
     name: 'Midazolam',
     brandName: 'Versed',
     class: 'Benzodiazepine',
@@ -3102,7 +3102,7 @@ const MEDICATIONS = [
   ,{
     id: 'pregabalin',
     development: { discoveryYear: 1990, fdaApprovalYear: 2004, originator: "Northwestern Univ. / Parke-Davis (Pfizer)" },
-    dosing: { start: "75 mg BID", target: "150–300 mg/day (divided)", max: "600 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=pregabalin" } },
+    dosing: { start: "75 mg BID", target: "150–300 mg/day (divided)", max: "600 mg/day", formulations: "IR BID–TID (Lyrica) • ER once daily (Lyrica CR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=pregabalin" } },
     name: 'Pregabalin',
     brandName: 'Lyrica',
     class: 'Gabapentinoid',
@@ -3133,7 +3133,7 @@ const MEDICATIONS = [
   ,{
     id: 'propranolol',
     development: { discoveryYear: 1962, fdaApprovalYear: 1967, originator: "ICI (AstraZeneca)" },
-    dosing: { start: "10–20 mg BID (akathisia/performance anxiety)", target: "40–80 mg/day", max: "~160 mg/day (psychiatric off-label)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=propranolol" } },
+    dosing: { start: "10–20 mg BID (akathisia/performance anxiety)", target: "40–80 mg/day", max: "~160 mg/day (psychiatric off-label)", formulations: "IR BID–TID (Inderal) • LA extended-release once daily (Inderal LA / InnoPran XL) • IV", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=propranolol" } },
     name: 'Propranolol',
     brandName: 'Inderal',
     class: 'Beta Blocker',
@@ -3165,7 +3165,7 @@ const MEDICATIONS = [
   ,{
     id: 'clonidine',
     development: { discoveryYear: 1962, fdaApprovalYear: 1974, originator: "Boehringer Ingelheim" },
-    dosing: { start: "0.1 mg qHS", target: "0.1–0.4 mg/day", max: "0.4 mg/day (ADHD, ER)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clonidine" } },
+    dosing: { start: "0.1 mg qHS", target: "0.1–0.4 mg/day", max: "0.4 mg/day (ADHD, ER)", formulations: "IR oral BID (Catapres) • ER oral (Kapvay, ADHD) • weekly transdermal patch (Catapres-TTS)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clonidine" } },
     name: 'Clonidine',
     brandName: 'Catapres',
     class: 'Alpha-2 Agonist',
@@ -3192,7 +3192,7 @@ const MEDICATIONS = [
   ,{
     id: 'guanfacine',
     development: { discoveryYear: 1974, fdaApprovalYear: 1986, originator: "Boehringer Ingelheim / Shire" },
-    dosing: { start: "1 mg/day", target: "1–4 mg/day", max: "4 mg/day (ADHD, ER)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=guanfacine" } },
+    dosing: { start: "1 mg/day", target: "1–4 mg/day", max: "4 mg/day (ADHD, ER)", formulations: "IR (Tenex, hypertension) • ER once daily (Intuniv, ADHD)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=guanfacine" } },
     name: 'Guanfacine',
     brandName: 'Tenex / Intuniv',
     class: 'Alpha-2 Agonist',
@@ -3250,7 +3250,7 @@ const MEDICATIONS = [
   ,{
     id: 'methylphenidate',
     development: { discoveryYear: 1944, fdaApprovalYear: 1955, originator: "Ciba (Novartis)" },
-    dosing: { start: "5 mg BID (IR)", target: "20–40 mg/day", max: "60 mg/day (72 mg some ER)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=methylphenidate" } },
+    dosing: { start: "5 mg BID (IR)", target: "20–40 mg/day", max: "60 mg/day (72 mg some ER)", formulations: "IR BID–TID (Ritalin) • ER/LA/CD once daily • OROS once daily (Concerta) • transdermal patch (Daytrana) • liquid XR (Quillivant)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=methylphenidate" } },
     name: 'Methylphenidate',
     brandName: 'Ritalin',
     class: 'Stimulant',
@@ -3277,7 +3277,7 @@ const MEDICATIONS = [
   ,{
     id: 'dexmethylphenidate',
     development: { discoveryYear: 1999, fdaApprovalYear: 2001, originator: "Novartis / Celgene" },
-    dosing: { start: "2.5 mg BID (IR) / 10 mg XR", target: "10–20 mg/day", max: "40 mg/day (XR), 20 mg (IR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=dexmethylphenidate" } },
+    dosing: { start: "2.5 mg BID (IR) / 10 mg XR", target: "10–20 mg/day", max: "40 mg/day (XR), 20 mg (IR)", formulations: "IR BID (Focalin) • XR once daily (Focalin XR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=dexmethylphenidate" } },
     name: 'Dexmethylphenidate',
     brandName: 'Focalin',
     class: 'Stimulant',
@@ -3304,7 +3304,7 @@ const MEDICATIONS = [
   ,{
     id: 'amphetamine-mixed-salts',
     development: { discoveryYear: 1994, fdaApprovalYear: 1996, originator: "Richwood / Shire (Takeda)" },
-    dosing: { start: "5–10 mg/day", target: "20–30 mg/day", max: "40 mg/day (60 mg some)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=amphetamine+aspartate" } },
+    dosing: { start: "5–10 mg/day", target: "20–30 mg/day", max: "40 mg/day (60 mg some)", formulations: "IR once daily–BID (Adderall) • XR once daily (Adderall XR) • extended (Mydayis)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=amphetamine+aspartate" } },
     name: 'Amphetamine Mixed Salts',
     brandName: 'Adderall',
     class: 'Stimulant',
@@ -3332,7 +3332,7 @@ const MEDICATIONS = [
   ,{
     id: 'dextroamphetamine',
     development: { discoveryYear: 1929, fdaApprovalYear: 1937, originator: "Smith Kline & French" },
-    dosing: { start: "5 mg daily–BID", target: "10–30 mg/day", max: "40 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=dextroamphetamine" } },
+    dosing: { start: "5 mg daily–BID", target: "10–30 mg/day", max: "40 mg/day", formulations: "IR tablet daily–BID • ER spansule once daily (Dexedrine Spansule) • transdermal patch (Xelstrym)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=dextroamphetamine" } },
     name: 'Dextroamphetamine',
     brandName: 'Dexedrine',
     class: 'Stimulant',
@@ -3474,7 +3474,7 @@ const MEDICATIONS = [
   ,{
     id: 'hydroxyzine',
     development: { discoveryYear: 1956, fdaApprovalYear: 1956, originator: "Union Chimique Belge / Pfizer" },
-    dosing: { start: "25–50 mg QID PRN", target: "50–100 mg/day", max: "400 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=hydroxyzine" } },
+    dosing: { start: "25–50 mg QID PRN", target: "50–100 mg/day", max: "400 mg/day", formulations: "HCl tab/syrup & IM (Atarax) • Pamoate cap/suspension (Vistaril)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=hydroxyzine" } },
     name: 'Hydroxyzine',
     brandName: 'Vistaril',
     class: 'Antihistamine',

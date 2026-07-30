@@ -688,6 +688,7 @@ function openDrugModal(id) {
       <div class="modal-row">
         <div class="modal-field"><label>Maximum</label><div>${dose.max ?? '—'}</div></div>
       </div>
+      ${dose.formulations ? `<div class="modal-row"><div class="modal-field" style="flex-basis:100%"><label>Formulations</label><div>${dose.formulations}</div></div></div>` : ''}
       ${dose.citation ? `<div class="modal-cite">Dosing source: <a href="${dose.citation.url}" target="_blank" rel="noopener">${dose.citation.label}</a></div>` : ''}
       ` : ''}
     </div>` : '';
