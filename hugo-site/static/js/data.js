@@ -1108,7 +1108,7 @@ const MEDICATIONS = [
   {
     id: 'venlafaxine',
     development: { discoveryYear: 1983, fdaApprovalYear: 1993, originator: "Wyeth (Pfizer)" },
-    dosing: { start: "37.5–75 mg/day", target: "75–225 mg/day", max: "225 mg/day (XR)", formulations: "IR BID–TID (Effexor) • XR once daily (Effexor XR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=venlafaxine" } },
+    dosing: { start: "37.5–75 mg/day", target: "75–225 mg/day", max: "375 mg/day (IR); 225 mg/day (XR)", formulations: "IR BID–TID (Effexor) • XR once daily (Effexor XR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=venlafaxine" } },
     name: 'Venlafaxine',
     brandName: 'Effexor',
     class: 'SNRI',
@@ -1351,7 +1351,7 @@ const MEDICATIONS = [
   {
     id: 'bupropion',
     development: { discoveryYear: 1969, fdaApprovalYear: 1985, originator: "Burroughs Wellcome (GSK)" },
-    dosing: { start: "150 mg/day (SR/XL)", target: "300 mg/day", max: "450 mg/day", formulations: "IR BID–TID (Wellbutrin) • SR BID (Wellbutrin SR / Zyban) • XL once daily (Wellbutrin XL)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=bupropion" } },
+    dosing: { start: "150 mg/day (SR/XL)", target: "300 mg/day", max: "450 mg/day (IR/XL); 400 mg/day (SR)", formulations: "IR BID–TID (Wellbutrin) • SR BID (Wellbutrin SR / Zyban) • XL once daily (Wellbutrin XL)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=bupropion" } },
     name: 'Bupropion',
     brandName: 'Wellbutrin',
     class: 'NDRI',
@@ -1937,7 +1937,7 @@ const MEDICATIONS = [
   {
     id: 'zolpidem',
     development: { discoveryYear: 1982, fdaApprovalYear: 1992, originator: "Synthélabo (Sanofi)" },
-    dosing: { start: "5 mg qHS (F) / 5–10 mg (M)", target: "5–10 mg qHS", max: "10 mg/day (IR)", formulations: "IR (Ambien) • CR (Ambien CR) • sublingual (Edluar/Intermezzo) • oral spray (Zolpimist)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=zolpidem" } },
+    dosing: { start: "5 mg qHS (F) / 5–10 mg (M)", target: "5–10 mg qHS", max: "10 mg (IR); 12.5 mg (CR)", formulations: "IR (Ambien) • CR (Ambien CR) • sublingual (Edluar/Intermezzo) • oral spray (Zolpimist)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=zolpidem" } },
     name: 'Zolpidem',
     brandName: 'Ambien',
     class: 'Z-Drug',
@@ -2734,7 +2734,7 @@ const MEDICATIONS = [
   ,{
     id: 'gabapentin',
     development: { discoveryYear: 1977, fdaApprovalYear: 1993, originator: "Parke-Davis (Pfizer)" },
-    dosing: { start: "300 mg/day", target: "900–1800 mg/day", max: "3600 mg/day", formulations: "IR TID (Neurontin) • ER once daily (Gralise) • enacarbil ER BID (Horizant)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=gabapentin" } },
+    dosing: { start: "300 mg/day", target: "900–1800 mg/day", max: "3600 mg/day (IR; Gralise ER 1800)", formulations: "IR TID (Neurontin) • ER once daily (Gralise) • enacarbil ER BID (Horizant)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=gabapentin" } },
     name: 'Gabapentin',
     brandName: 'Neurontin',
     class: 'Gabapentinoid',
@@ -3304,7 +3304,7 @@ const MEDICATIONS = [
   ,{
     id: 'amphetamine-mixed-salts',
     development: { discoveryYear: 1994, fdaApprovalYear: 1996, originator: "Richwood / Shire (Takeda)" },
-    dosing: { start: "5–10 mg/day", target: "20–30 mg/day", max: "40 mg/day (60 mg some)", formulations: "IR once daily–BID (Adderall) • XR once daily (Adderall XR) • extended (Mydayis)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=amphetamine+aspartate" } },
+    dosing: { start: "5–10 mg/day", target: "20–30 mg/day", max: "40 mg/day (IR); 30 mg/day (XR, per label)", formulations: "IR once daily–BID (Adderall) • XR once daily (Adderall XR) • extended (Mydayis)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=amphetamine+aspartate" } },
     name: 'Amphetamine Mixed Salts',
     brandName: 'Adderall',
     class: 'Stimulant',
