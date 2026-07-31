@@ -1556,6 +1556,13 @@ mark {
   white-space: nowrap;
 }
 
+/* Antipsychotic-only risk columns (lipid / glucose / EPS).
+   Hidden by default; shown only when #main-table has .show-ap-cols
+   (toggled in renderDrugTable when the category filter = Antipsychotic). */
+.col-ap-risk { display: none; white-space: nowrap; font-size: 12px; }
+#main-table.show-ap-cols th.col-ap-risk,
+#main-table.show-ap-cols td.col-ap-risk { display: table-cell; }
+
 /* ── QT Risk Tool ───────────────────────────────────────────────────────── */
 
 /* Cards */

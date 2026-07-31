@@ -46,7 +46,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
 
-  <link rel="stylesheet" href="css/styles.css?v=20260730a">
+  <link rel="stylesheet" href="css/styles.css?v=20260731b">
   <link rel="canonical" href="https://psychopharmref.com/">
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
@@ -744,6 +744,9 @@
               <th class="col-hepatic">Hepatic Adjust</th>
               <th class="col-geriatric">Geriatric</th>
               <th class="col-qt">QT Prolongation</th>
+              <th class="col-ap-risk" title="Antipsychotics only — curated from Pillinger et al. 2020, Lancet Psychiatry">Lipid &uarr; Risk</th>
+              <th class="col-ap-risk" title="Antipsychotics only — dysglycemia / fasting glucose elevation">Glucose &uarr; Risk</th>
+              <th class="col-ap-risk" title="Antipsychotics only — extrapyramidal / movement-disorder risk">EPS Risk</th>
               <th class="sortable col-pb" data-col="proteinBinding">Protein Binding <span class="sort-arrow"></span></th>
               <th class="sortable col-pregnancy" data-col="pregnancy">Pregnancy <span class="sort-arrow"></span></th>
               <th class="sortable col-breastfeeding" data-col="breastfeeding">Breastfeeding <span class="sort-arrow"></span></th>
@@ -1173,6 +1176,16 @@
         </div>
 
         <div class="ref-method-block">
+          <h4>Antipsychotic Lipid, Glucose &amp; EPS Risk Columns</h4>
+          <p>When the drug database is filtered to <strong>Antipsychotics</strong>, three additional columns appear: <strong>Lipid ↑ Risk</strong>, <strong>Glucose ↑ Risk</strong>, and <strong>EPS Risk</strong>. Unlike the receptor-affinity side-effect scores above, these are <strong>curated per-drug tiers</strong> (Very Low → Very High) drawn directly from comparative clinical trial data, because lipid and glucose effects diverge from in vitro receptor binding and are best separated using head-to-head evidence.</p>
+          <ul class="ref-hale-list">
+            <li><strong>Lipid ↑ and Glucose ↑:</strong> Ranked primarily from the metabolic network meta-analysis of 18 antipsychotics by Pillinger et al. (2020), which reports separate effects on lipids and fasting glucose — olanzapine and clozapine carry the greatest risk on both, while aripiprazole, brexpiprazole, cariprazine, lurasidone, ziprasidone, lumateperone and pimavanserin are most benign. Lipid and glucose are rated independently (e.g. quetiapine: higher lipid than glucose; risperidone/paliperidone raise lipids/weight without substantial fasting-glucose elevation).</li>
+            <li><strong>EPS Risk:</strong> Reflects extrapyramidal / movement-disorder liability from comparative data (Leucht et al. 2013; Huhn et al. 2019), tracking antipsychotic potency — high-potency first-generation agents (haloperidol, fluphenazine, pimozide) highest; clozapine, quetiapine, lumateperone and pimavanserin lowest.</li>
+          </ul>
+          <p class="ref-caveat">&#9888; <strong>Important caveat:</strong> These tiers are a comparative, class-level guide for educational use. Actual risk is dose-dependent and modified by individual patient factors, duration of exposure, and baseline metabolic status; always verify against current prescribing information and monitoring guidelines.</p>
+        </div>
+
+        <div class="ref-method-block">
           <h4>Pregnancy &amp; Breastfeeding Data</h4>
           <p>Pregnancy classifications use the historical <strong>FDA letter category system (A/B/C/D/X)</strong>, which remains widely referenced clinically despite being replaced by the Pregnancy and Lactation Labeling Rule (PLLR) for drugs approved after 2015. Drugs approved under PLLR are labeled "N/A" for category.</p>
           <p>Breastfeeding classifications use <strong>Hale's Lactation Risk Categories (L1–L5)</strong>:</p>
@@ -1204,6 +1217,9 @@
           <li>Hale TW. <em>Medications and Mothers' Milk.</em> 2023 ed. Springer; 2023.</li>
           <li>Briggs GG, Freeman RK, Towers CV, Forinash AB. <em>Drugs in Pregnancy and Lactation.</em> 12th ed. Wolters Kluwer; 2021.</li>
           <li>Tisdale JE, et al. Development and validation of a risk score to predict QT interval prolongation in hospitalized patients. <em>Circ Cardiovasc Qual Outcomes.</em> 2013;6(4):479–487.</li>
+          <li>Pillinger T, McCutcheon RA, Vano L, et al. Comparative effects of 18 antipsychotics on metabolic function in patients with schizophrenia, predictors of metabolic dysregulation, and association with psychopathology: a systematic review and network meta-analysis. <em>Lancet Psychiatry.</em> 2020;7(1):64–77. <a href="https://www.thelancet.com/journals/lanpsy/article/PIIS2215-0366(19)30416-X/fulltext" target="_blank" rel="noopener">thelancet.com</a></li>
+          <li>Huhn M, Nikolakopoulou A, Schneider-Thoma J, et al. Comparative efficacy and tolerability of 32 oral antipsychotics for the acute treatment of adults with multi-episode schizophrenia: a systematic review and network meta-analysis. <em>Lancet.</em> 2019;394(10202):939–951.</li>
+          <li>Leucht S, Cipriani A, Spineli L, et al. Comparative efficacy and tolerability of 15 antipsychotic drugs in schizophrenia: a multiple-treatments meta-analysis. <em>Lancet.</em> 2013;382(9896):951–962.</li>
           <li>Academy of Consultation-Liaison Psychiatry (ACLP). <em>How-To Guide: QTc Prolongation.</em> 2020.</li>
           <li>Woosley RL, Heise CW, Gallo T, et al. CredibleMeds / AZCERT QTDrugs List. <a href="https://crediblemeds.org" target="_blank" rel="noopener">crediblemeds.org</a></li>
           <li>Roden DM. Drug-induced prolongation of the QT interval. <em>N Engl J Med.</em> 2004;350:1013–1022.</li>
@@ -13065,7 +13081,7 @@
   <script defer src="js/data.js?v=20260730d"></script>
   <script defer src="js/routes.js?v=20260719d"></script>
   <script defer src="js/bhi-references.js?v=20260726b"></script>
-  <script defer src="js/app.js?v=20260731a"></script>
+  <script defer src="js/app.js?v=20260731b"></script>
   <script defer src="js/glossary-data.js?v=20260719d"></script>
   <script defer src="js/glossary-page.js?v=20260719d"></script>
   <script defer src="js/search.js?v=20260722c"></script>

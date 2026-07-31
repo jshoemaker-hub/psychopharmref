@@ -163,6 +163,66 @@ function riskLabel(score) {
   return               { text: 'Very High',   cls: 'risk-vhigh' };
 }
 
+/* ── Antipsychotic-specific adverse-effect risk (curated) ───────────────────
+   Lipid elevation, glucose/dysglycemia, and EPS/movement-disorder risk are
+   surfaced as dedicated table columns that appear only when the category
+   filter is set to Antipsychotic. Unlike the receptor-affinity model used for
+   the side-effect sort, these are curated per-drug tiers drawn from comparative
+   clinical data, because lipid vs glucose effects diverge from in-vitro Ki:
+     • Pillinger et al. 2020, Lancet Psychiatry (network meta-analysis of 18
+       antipsychotics on metabolic parameters) — olanzapine & clozapine worst;
+       aripiprazole, brexpiprazole, cariprazine, lurasidone, ziprasidone most
+       benign; risperidone/paliperidone raise weight/lipids but NOT substantial
+       fasting glucose.
+     • Huhn et al. 2019, Lancet (comparative efficacy/tolerability, 32 agents).
+     • Leucht et al. 2013, Lancet — EPS/movement-disorder rankings.
+   Tiers: 'vlow' | 'low' | 'mod' | 'high' | 'vhigh'. Keyed by drug id.       */
+const ANTIPSYCHOTIC_AE_RISK = {
+  // ── SGAs ──
+  clozapine:     { lipid: 'vhigh', glucose: 'vhigh', eps: 'vlow' },
+  olanzapine:    { lipid: 'vhigh', glucose: 'vhigh', eps: 'low'  },
+  quetiapine:    { lipid: 'high',  glucose: 'mod',   eps: 'vlow' },
+  risperidone:   { lipid: 'mod',   glucose: 'low',   eps: 'mod'  },
+  paliperidone:  { lipid: 'mod',   glucose: 'low',   eps: 'mod'  },
+  asenapine:     { lipid: 'mod',   glucose: 'low',   eps: 'low'  },
+  iloperidone:   { lipid: 'mod',   glucose: 'low',   eps: 'vlow' },
+  ziprasidone:   { lipid: 'low',   glucose: 'low',   eps: 'low'  },
+  aripiprazole:  { lipid: 'low',   glucose: 'low',   eps: 'mod'  },
+  brexpiprazole: { lipid: 'low',   glucose: 'low',   eps: 'low'  },
+  cariprazine:   { lipid: 'low',   glucose: 'low',   eps: 'mod'  },
+  lurasidone:    { lipid: 'vlow',  glucose: 'vlow',  eps: 'mod'  },
+  lumateperone:  { lipid: 'vlow',  glucose: 'vlow',  eps: 'vlow' },
+  pimavanserin:  { lipid: 'vlow',  glucose: 'vlow',  eps: 'vlow' },
+  // ── FGAs ──
+  haloperidol:    { lipid: 'low',  glucose: 'low',  eps: 'vhigh' },
+  fluphenazine:   { lipid: 'low',  glucose: 'low',  eps: 'vhigh' },
+  pimozide:       { lipid: 'low',  glucose: 'low',  eps: 'vhigh' },
+  trifluoperazine:{ lipid: 'low',  glucose: 'low',  eps: 'high'  },
+  thiothixene:    { lipid: 'low',  glucose: 'low',  eps: 'high'  },
+  perphenazine:   { lipid: 'low',  glucose: 'low',  eps: 'high'  },
+  loxapine:       { lipid: 'low',  glucose: 'low',  eps: 'high'  },
+  molindone:      { lipid: 'vlow', glucose: 'vlow', eps: 'mod'   },
+  chlorpromazine: { lipid: 'mod',  glucose: 'mod',  eps: 'mod'   },
+  thioridazine:   { lipid: 'mod',  glucose: 'mod',  eps: 'mod'   }
+};
+
+const AP_RISK_TIER = {
+  vlow:  { text: 'Very Low',  cls: 'risk-vlow'  },
+  low:   { text: 'Low',       cls: 'risk-low'   },
+  mod:   { text: 'Moderate',  cls: 'risk-mod'   },
+  high:  { text: 'High',      cls: 'risk-high'  },
+  vhigh: { text: 'Very High', cls: 'risk-vhigh' }
+};
+
+// Build a risk-badge <td> for one antipsychotic AE dimension ('lipid'|'glucose'|'eps').
+function apRiskCell(drugId, dim) {
+  const rec = ANTIPSYCHOTIC_AE_RISK[drugId];
+  const tier = rec && AP_RISK_TIER[rec[dim]];
+  return tier
+    ? `<td class="col-ap-risk"><span class="risk-badge ${tier.cls}">${tier.text}</span></td>`
+    : `<td class="col-ap-risk"><span class="no-badge">—</span></td>`;
+}
+
 /* ── Receptor Action Types ──────────────────────────────────────────────── */
 // Default action type per receptor for the majority of psychiatric drugs.
 const RECEPTOR_DEFAULT_ACTION = {
@@ -1197,7 +1257,8 @@ function renderDrugTable() {
   const meds  = visibleMeds();
   const tbody = document.getElementById('main-tbody');
   const showSE = !!sideEffectSort;
-  const colCount = showSE ? 17 : 16;
+  const showAP = categoryFilter === 'Antipsychotic';
+  const colCount = (showSE ? 17 : 16) + (showAP ? 3 : 0);
 
   tbody.innerHTML = meds.map(m => {
     const renal = m.renalImpairment.modified
@@ -1261,6 +1322,9 @@ function renderDrugTable() {
       <td>${hepatic}</td>
       <td>${geriatric}</td>
       <td>${qt}</td>
+      ${apRiskCell(m.id, 'lipid')}
+      ${apRiskCell(m.id, 'glucose')}
+      ${apRiskCell(m.id, 'eps')}
       <td>${pb}</td>
       <td>${pregCell}</td>
       <td>${bfCell}</td>
@@ -1277,6 +1341,12 @@ function renderDrugTable() {
     const profile = SIDE_EFFECT_PROFILES[sideEffectSort];
     seHeader.textContent = profile.label + ' Risk';
   }
+
+  // Show/hide the antipsychotic-only risk columns (lipid / glucose / EPS).
+  // Both the <th>s and every <td class="col-ap-risk"> carry the class, so a
+  // single toggled class on the table controls all of them.
+  const mainTable = document.getElementById('main-table');
+  if (mainTable) mainTable.classList.toggle('show-ap-cols', showAP);
 
   // Update sort arrows
   document.querySelectorAll('th.sortable').forEach(th => {
