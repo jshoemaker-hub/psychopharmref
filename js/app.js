@@ -1231,6 +1231,17 @@ function visibleMeds() {
     });
   }
 
+  // Antipsychotic curated-risk sort (lipid / glucose / EPS columns)
+  if (sortCol === 'apLipid' || sortCol === 'apGlucose' || sortCol === 'apEps') {
+    const dim = sortCol === 'apLipid' ? 'lipid' : sortCol === 'apGlucose' ? 'glucose' : 'eps';
+    const ORD = { vlow: 1, low: 2, mod: 3, high: 4, vhigh: 5 };
+    return filtered.sort((a, b) => {
+      const va = ORD[ANTIPSYCHOTIC_AE_RISK[a.id]?.[dim]] ?? 99;
+      const vb = ORD[ANTIPSYCHOTIC_AE_RISK[b.id]?.[dim]] ?? 99;
+      return va !== vb ? sortDir * (va - vb) : a.name.localeCompare(b.name);
+    });
+  }
+
   // Perinatal risk sort
   const RISK_ORDER = { low: 1, caution: 2, avoid: 3, unknown: 4 };
   if (sortCol === 'pregnancy' || sortCol === 'breastfeeding') {
