@@ -53,12 +53,54 @@ const SIDE_EFFECT_PROFILES = {
   }
 };
 
+// ── Clinical overrides ──────────────────────────────────────────────────
+// The receptor-affinity model predicts side-effect risk from in-vitro Ki,
+// which reflects binding affinity but NOT in-vivo functional receptor
+// occupancy at therapeutic doses. For weight gain / metabolic effects this
+// diverges from established comparative clinical data (Pillinger et al. 2020,
+// Lancet Psychiatry metabolic network meta-analysis; Leucht et al. 2013).
+// Several modern antipsychotics bind H1/5HT2C potently in vitro yet are
+// weight-neutral clinically (e.g. ziprasidone, brexpiprazole), while a few
+// agents carry more weight risk than their receptor profile suggests.
+// Keyed by side-effect profile → drug id → override score (0–100). When an
+// override exists it supersedes the computed score. Tier reference scores:
+// very low 10, low 30, moderate 50, high 70, very high 90.
+const CLINICAL_SE_OVERRIDES = {
+  weightGain: {
+    olanzapine: 90, clozapine: 90,      // worst offenders — model under-bands (High→Very High)
+    asenapine: 50,                       // model Very High(107) → Moderate clinically
+    ziprasidone: 30, brexpiprazole: 30,  // model High → Low (weight-neutral)
+    aripiprazole: 30, cariprazine: 30,   // model Moderate → Low
+    lurasidone: 30,                      // keep firmly Low
+    pimavanserin: 10,                    // weight-neutral → Very Low
+    paliperidone: 50, iloperidone: 50,   // model under-predicts → Moderate
+    paroxetine: 50                       // most weight-prone SSRI → Moderate
+  },
+  metabolic: {
+    olanzapine: 90, clozapine: 90,       // greatest dyslipidemia/glucose risk
+    asenapine: 50,
+    ziprasidone: 30, brexpiprazole: 30,
+    aripiprazole: 30, cariprazine: 30,
+    lurasidone: 20,                      // among the most metabolically favorable
+    pimavanserin: 10,
+    paliperidone: 50, iloperidone: 50
+  }
+};
+
 // Compute a 0–100 side effect risk score for a drug given a profile key.
 // Returns null if the drug has no receptorKi data (except cardiacQT which
 // can also use the qtInterval flag).
 function sideEffectScore(drug, seKey) {
   const profile = SIDE_EFFECT_PROFILES[seKey];
   if (!profile) return null;
+
+  // ── Clinical override ──
+  // Where validated comparative clinical data contradicts the affinity model,
+  // a curated override wins. See CLINICAL_SE_OVERRIDES for rationale/citations.
+  const overrides = CLINICAL_SE_OVERRIDES[seKey];
+  if (overrides && drug.id && overrides[drug.id] != null) {
+    return overrides[drug.id];
+  }
 
   // ── Special handling for Cardiac / QT Effects ──
   // QT prolongation is primarily driven by hERG (IKr) channel blockade,
@@ -78,7 +120,7 @@ function sideEffectScore(drug, seKey) {
       for (const [receptor, weight] of Object.entries(profile.receptors)) {
         const kiVal = ki[receptor];
         const pkiVal = (kiVal && kiVal < 10000) ? (9 - Math.log10(kiVal)) : 5;
-        const normalized = Math.max(0, (pkiVal - 5) / 4);
+        const normalized = Math.min(1, Math.max(0, (pkiVal - 5) / 4));
         wSum += normalized * weight;
         wTotal += weight;
       }
@@ -105,7 +147,7 @@ function sideEffectScore(drug, seKey) {
     const kiVal = ki[receptor];
     // Normalize: pKi range 5 (Ki=10000) to 9 (Ki=1) → 0 to 1
     const pkiVal = (kiVal && kiVal < 10000) ? (9 - Math.log10(kiVal)) : 5;
-    const normalized = Math.max(0, (pkiVal - 5) / 4); // 0 to 1
+    const normalized = Math.min(1, Math.max(0, (pkiVal - 5) / 4)); // 0 to 1
     weightedSum += normalized * weight;
     totalWeight += weight;
   }
