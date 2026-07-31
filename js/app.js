@@ -84,6 +84,37 @@ const CLINICAL_SE_OVERRIDES = {
     lurasidone: 20,                      // among the most metabolically favorable
     pimavanserin: 10,
     paliperidone: 50, iloperidone: 50
+  },
+  // The affinity model scores sexual dysfunction from SERT (+1.0) and 5HT2A
+  // (+0.4). Both terms diverge from clinical reality: 5HT2A ANTAGONISM relieves
+  // rather than causes serotonergic SD (basis for mirtazapine/nefazodone
+  // augmentation and cyproheptadine rescue), 5HT1A agonism is protective
+  // (vilazodone, vortioxetine), and the model has no D2/prolactin pathway — the
+  // dominant SD mechanism for antipsychotics. So the raw model UNDER-scores
+  // prolactin-elevating antipsychotics (risperidone, paliperidone, FGAs) and
+  // OVER-scores 5HT2A/5HT1A-modulating antidepressants. These curated tiers fix
+  // both. Rates drawn from Montejo et al. 2001/2019 (PRSexDQ), La Torre et al.
+  // 2013 (antipsychotic SD review), Serretti & Chiesa 2011 (antidepressant SD
+  // meta-analysis), Clayton et al. (vilazodone/vortioxetine trials). Tier
+  // reference: very low 10, low 30, moderate 50, high 70, very high 90.
+  sexualDysfunction: {
+    // ── Antipsychotics: SD driven by hyperprolactinemia (D2 blockade), not
+    //    SERT/5HT2A — the model gives all of these ~0–30 without this override.
+    risperidone: 70, paliperidone: 75,   // highest prolactin elevation → highest SD
+    thioridazine: 70,                     // notorious retrograde ejaculation (alpha1)
+    haloperidol: 55, fluphenazine: 60,    // potent D2 → prolactin
+    trifluoperazine: 50, perphenazine: 50, thiothixene: 50, pimozide: 50,
+    chlorpromazine: 50, loxapine: 45, molindone: 45,
+    clozapine: 40, olanzapine: 40, ziprasidone: 40,   // prolactin-sparing but SD via other paths
+    asenapine: 40, iloperidone: 45,
+    quetiapine: 30,                       // low prolactin → lower SD
+    aripiprazole: 20, brexpiprazole: 20,  // partial agonists lower prolactin → lowest SD
+    cariprazine: 20, lumateperone: 20, lurasidone: 30, pimavanserin: 10,
+    // ── Antidepressants the affinity model OVER-scores (protective mechanisms) ──
+    bupropion: 10,                        // NDRI, no SERT — first-line for SD
+    mirtazapine: 10,                      // 5HT2A/2C antagonist — used to REVERSE SD
+    trazodone: 20,                        // low ordinary SD (priapism is a separate rare event)
+    vilazodone: 30, vortioxetine: 30      // 5HT1A agonism mitigates SERT-driven SD
   }
 };
 
