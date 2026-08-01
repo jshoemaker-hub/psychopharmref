@@ -116,6 +116,7 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="glossary">Receptor Glossary</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="pk-curves">PK Curves</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="med-compare">Med Comparison</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="fda-indication">FDA Indication Search</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="similar-meds">Find Similar Meds</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="complementary-meds">Find Complementary Meds</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="chem-structure">Chem Structure</a></li>
@@ -3352,6 +3353,40 @@
       </div>
 
       <div id="sm-results" class="sm-results" style="display:none"></div>
+    </section>
+
+    <!-- ── FDA Indication Search ─────────────────────────────────────────── -->
+    <section id="fda-indication" data-lazy-tool="fda-indication" class="section">
+      <div class="section-header">
+        <h2>FDA Indication Search</h2>
+        <p class="section-sub">Type a diagnosis &mdash; the agents carrying an FDA-approved label for it are listed, grouped by indication and phase. Add a phase or subtype to narrow the results: <em>Bipolar II</em>, <em>bipolar maintenance</em>, <em>acute mania</em>, <em>bipolar depression</em>. Acronyms work too (MDD, OCD, GAD, PTSD).</p>
+      </div>
+
+      <div class="mt-warning">
+        <strong>On-label indications only.</strong> This lists FDA-<em>approved</em> uses recorded in the reference database; it is not a treatment guideline and does not capture the large, legitimate role of evidence-based off-label prescribing. Approval status, phase (acute vs. maintenance), line (monotherapy vs. adjunct), and approved age range are shown where known. Confirm against current prescribing information before clinical use.
+      </div>
+
+      <div class="ref-card fi-card">
+        <label class="fi-search-label" for="fi-search">Search by FDA indication</label>
+        <div class="fi-search-wrap">
+          <span class="fi-search-icon" aria-hidden="true">&#128269;</span>
+          <input type="text" id="fi-search" class="fi-search-input" autocomplete="off" spellcheck="false"
+                 placeholder="e.g. Bipolar II, acute mania, schizophrenia, MDD, OCD&hellip;" aria-label="Search medications by FDA indication">
+          <button type="button" id="fi-clear" class="fi-clear-btn" aria-label="Clear search" style="display:none">&times;</button>
+        </div>
+        <div class="fi-chips" role="group" aria-label="Quick searches">
+          <button type="button" class="fi-chip" data-q="Bipolar I">Bipolar I</button>
+          <button type="button" class="fi-chip" data-q="Bipolar II">Bipolar II</button>
+          <button type="button" class="fi-chip" data-q="Acute mania">Acute mania</button>
+          <button type="button" class="fi-chip" data-q="Bipolar depression">Bipolar depression</button>
+          <button type="button" class="fi-chip" data-q="Bipolar maintenance">Bipolar maintenance</button>
+          <button type="button" class="fi-chip" data-q="Schizophrenia">Schizophrenia</button>
+          <button type="button" class="fi-chip" data-q="MDD">MDD</button>
+          <button type="button" class="fi-chip" data-q="OCD">OCD</button>
+        </div>
+      </div>
+
+      <div id="fi-results" class="fi-results" aria-live="polite"></div>
     </section>
 
     <!-- ── Find Complementary Medications ────────────────────────────────── -->
@@ -13100,7 +13135,7 @@
     })();
   </script>
 
-  <script defer src="js/data.js?v=20260730d"></script>
+  <script defer src="js/data.js?v=20260801b"></script>
   <script defer src="js/routes.js?v=20260719d"></script>
   <script defer src="js/bhi-references.js?v=20260726b"></script>
   <script defer src="js/app.js?v=20260801a"></script>

@@ -1,0 +1,97 @@
+/* ── FDA Indication Search (fi-) ─────────────────────────────────────────── */
+
+.fi-card { margin-bottom: 1rem; }
+.fi-search-label {
+  display: block; font-size: 0.82rem; font-weight: 600;
+  color: var(--text); opacity: 0.85; margin-bottom: 0.4rem;
+}
+.fi-search-wrap { position: relative; display: flex; align-items: center; }
+.fi-search-icon {
+  position: absolute; left: 0.7rem; font-size: 0.95rem;
+  opacity: 0.55; pointer-events: none;
+}
+.fi-search-input {
+  width: 100%; padding: 0.7rem 2.4rem 0.7rem 2.3rem;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: #fff; color: var(--text); font-size: 1.02rem;
+}
+.fi-search-input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.fi-clear-btn {
+  position: absolute; right: 0.55rem; width: 26px; height: 26px;
+  border: none; border-radius: 50%; background: var(--bg2);
+  color: var(--text); font-size: 1.15rem; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.fi-clear-btn:hover { background: var(--border); }
+
+.fi-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.7rem; }
+.fi-chip {
+  padding: 0.32rem 0.7rem; border: 1px solid var(--border); border-radius: 999px;
+  background: #fff; color: var(--text); font-size: 0.82rem; cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+.fi-chip:hover { background: var(--bg2); }
+.fi-chip.fi-chip--on { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* ── Results ─────────────────────────────────────────────────────────────── */
+.fi-results { margin-top: 0.25rem; }
+
+.fi-summary {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 0.6rem; margin: 0.25rem 0 0.9rem;
+}
+.fi-summary-text { font-size: 0.9rem; color: var(--text); opacity: 0.85; }
+.fi-summary-text strong { opacity: 1; }
+.fi-copy-btn {
+  padding: 0.4rem 0.8rem; border: 1px solid var(--accent); border-radius: 7px;
+  background: #fff; color: var(--accent); font-size: 0.8rem; font-weight: 600; cursor: pointer;
+}
+.fi-copy-btn:hover { background: var(--accent); color: #fff; }
+
+.fi-group {
+  border: 1px solid var(--border); border-radius: 10px;
+  background: #fff; margin-bottom: 0.9rem; overflow: hidden;
+}
+.fi-group-head {
+  display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap;
+  padding: 0.6rem 0.9rem; background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+}
+.fi-group-title { font-size: 1rem; font-weight: 700; color: var(--text); margin: 0; }
+.fi-group-count { font-size: 0.8rem; color: var(--text); opacity: 0.7; }
+
+.fi-med {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.5rem 0.7rem;
+  padding: 0.6rem 0.9rem; border-bottom: 1px solid var(--border);
+}
+.fi-med:last-child { border-bottom: none; }
+.fi-med-name { font-weight: 600; color: var(--text); font-size: 0.96rem; }
+.fi-med-brand { font-weight: 400; color: var(--text); opacity: 0.6; font-size: 0.86rem; }
+.fi-med-year {
+  font-size: 0.78rem; color: var(--accent2); font-weight: 600;
+  white-space: nowrap;
+}
+.fi-badges { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-left: auto; }
+.fi-badge {
+  font-size: 0.72rem; padding: 0.12rem 0.5rem; border-radius: 999px;
+  background: var(--bg); border: 1px solid var(--border); color: var(--text);
+  white-space: nowrap;
+}
+.fi-badge--dx { background: #eef3e9; border-color: #cdddbf; color: #3a5f28; }
+.fi-badge--phase { background: #f3eede; border-color: #ddd0ae; color: #6d5410; }
+.fi-badge--line { background: #fff; }
+.fi-badge--age { background: #fff; opacity: 0.85; }
+
+.fi-empty {
+  padding: 1.4rem 1rem; text-align: center; color: var(--text); opacity: 0.7;
+  border: 1px dashed var(--border); border-radius: 10px; background: #fff;
+}
+.fi-empty strong { opacity: 1; }
+.fi-hint {
+  padding: 1.2rem 1rem; color: var(--text); opacity: 0.75; font-size: 0.9rem;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .fi-badges { margin-left: 0; width: 100%; }
+}

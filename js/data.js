@@ -941,7 +941,7 @@ const MEDICATIONS = [
       { use: 'Panic Disorder', year: 1994 },
       { use: 'Bulimia Nervosa', year: 1994 },
       { use: 'Premenstrual Dysphoric Disorder', year: 2000 },
-      { use: 'Bipolar Depression (with olanzapine)', year: 2003 },
+      { use: 'Bipolar Depression', year: 2003, dx: 'Bipolar I', phase: 'Depressive episodes', line: 'With olanzapine (Symbyax / olanzapine-fluoxetine)', age: 'Adults' },
       { use: 'Treatment-Resistant Depression (with olanzapine)', year: 2003 },
     ]
   },
@@ -1528,7 +1528,7 @@ const MEDICATIONS = [
       { use: 'Schizophrenia', year: 1954 },
       { use: 'Nausea / Vomiting', year: 1954 },
       { use: 'Intractable Hiccups', year: 1954 },
-      { use: 'Acute Mania (adjunct)', year: 1954 },
+      { use: 'Bipolar Mania', year: 1957, dx: 'Bipolar I', phase: 'Manic phase', line: 'Monotherapy', age: 'Adults' },
     ]
   },
   {
@@ -1590,7 +1590,8 @@ const MEDICATIONS = [
     },
     indications: [
       { use: 'Schizophrenia', year: 1993 },
-      { use: 'Bipolar Mania', year: 2003 },
+      { use: 'Bipolar Mania', year: 2003, dx: 'Bipolar I', phase: 'Acute manic or mixed episodes', line: 'Monotherapy or adjunct to lithium/valproate', age: 'Adults & 10-17 yr' },
+      { use: 'Bipolar Maintenance', year: 2009, dx: 'Bipolar I', phase: 'Maintenance', line: 'Long-acting injectable (Risperdal Consta); monotherapy or adjunct', age: 'Adults' },
       { use: 'Autism-Associated Irritability', year: 2006 },
     ]
   },
@@ -1621,9 +1622,10 @@ const MEDICATIONS = [
     },
     indications: [
       { use: 'Schizophrenia', year: 1996 },
-      { use: 'Bipolar Mania', year: 1997 },
-      { use: 'Bipolar Depression (with fluoxetine)', year: 2003 },
-      { use: 'Treatment-Resistant Depression (with fluoxetine)', year: 2003 },
+      { use: 'Bipolar Mania', year: 2000, dx: 'Bipolar I', phase: 'Acute manic or mixed episodes', line: 'Monotherapy or adjunct to lithium/valproate', age: 'Adults & 13-17 yr' },
+      { use: 'Bipolar Depression', year: 2003, dx: 'Bipolar I', phase: 'Depressive episodes', line: 'With fluoxetine (Symbyax / olanzapine-fluoxetine)', age: 'Adults' },
+      { use: 'Bipolar Maintenance', year: 2004, dx: 'Bipolar I', phase: 'Maintenance', line: 'Monotherapy', age: 'Adults' },
+      { use: 'Treatment-Resistant Depression (with fluoxetine)', year: 2009 },
       { use: 'Agitation in Schizophrenia/Bipolar (IM)', year: 2004 },
     ]
   },
@@ -1654,10 +1656,10 @@ const MEDICATIONS = [
     },
     indications: [
       { use: 'Schizophrenia', year: 1997 },
-      { use: 'Bipolar Mania', year: 2004 },
-      { use: 'Bipolar Depression', year: 2006 },
+      { use: 'Bipolar Mania', year: 2004, dx: 'Bipolar I', phase: 'Acute manic episodes', line: 'Monotherapy or adjunct to lithium/valproate', age: 'Adults & 10-17 yr' },
+      { use: 'Bipolar Depression', year: 2006, dx: 'Bipolar I or II', phase: 'Depressive episodes', line: 'Monotherapy', age: 'Adults' },
+      { use: 'Bipolar Maintenance', year: 2008, dx: 'Bipolar I', phase: 'Maintenance', line: 'Adjunct to lithium/valproate', age: 'Adults' },
       { use: 'Adjunct for Major Depressive Disorder', year: 2009 },
-      { use: 'Bipolar Maintenance (adjunct)', year: 2008 },
     ]
   },
   {
@@ -1687,11 +1689,11 @@ const MEDICATIONS = [
     },
     indications: [
       { use: 'Schizophrenia', year: 2002 },
-      { use: 'Bipolar Mania', year: 2004 },
+      { use: 'Bipolar Mania', year: 2004, dx: 'Bipolar I', phase: 'Acute manic or mixed episodes', line: 'Monotherapy or adjunct to lithium/valproate', age: 'Adults & 10-17 yr' },
+      { use: 'Bipolar Maintenance', year: 2005, dx: 'Bipolar I', phase: 'Maintenance', line: 'Monotherapy or adjunct; also Abilify Maintena long-acting injectable', age: 'Adults' },
       { use: 'Adjunct for Major Depressive Disorder', year: 2007 },
       { use: 'Autism-Associated Irritability', year: 2009 },
       { use: 'Tourette Syndrome', year: 2014 },
-      { use: 'Bipolar Maintenance', year: 2005 },
     ]
   },
   {
@@ -1751,7 +1753,8 @@ const MEDICATIONS = [
     },
     indications: [
       { use: 'Schizophrenia', year: 2001 },
-      { use: 'Bipolar Mania', year: 2004 },
+      { use: 'Bipolar Mania', year: 2004, dx: 'Bipolar I', phase: 'Acute manic or mixed episodes', line: 'Monotherapy', age: 'Adults' },
+      { use: 'Bipolar Maintenance', year: 2009, dx: 'Bipolar I', phase: 'Maintenance', line: 'Adjunct to lithium/valproate', age: 'Adults' },
       { use: 'Agitation in Schizophrenia (IM)', year: 2002 },
     ]
   },
@@ -1782,7 +1785,7 @@ const MEDICATIONS = [
     },
     indications: [
       { use: 'Schizophrenia', year: 2010 },
-      { use: 'Bipolar Depression', year: 2013 },
+      { use: 'Bipolar Depression', year: 2013, dx: 'Bipolar I', phase: 'Depressive episodes', line: 'Monotherapy or adjunct to lithium/valproate', age: 'Adults & 10-17 yr' },
     ]
   },
   {
@@ -1812,8 +1815,8 @@ const MEDICATIONS = [
     },
     indications: [
       { use: 'Schizophrenia', year: 2009 },
-      { use: 'Bipolar Mania', year: 2009 },
-      { use: 'Bipolar Maintenance (adjunct)', year: 2015 },
+      { use: 'Bipolar Mania', year: 2009, dx: 'Bipolar I', phase: 'Acute manic or mixed episodes', line: 'Monotherapy or adjunct to lithium/valproate', age: 'Adults & 10-17 yr' },
+      { use: 'Bipolar Maintenance', year: 2015, dx: 'Bipolar I', phase: 'Maintenance', line: 'Monotherapy', age: 'Adults' },
     ]
   },
 
@@ -1842,8 +1845,8 @@ const MEDICATIONS = [
     receptorKi: null,
     mechanism: 'Monovalent cation; inhibits GSK-3β and inositol monophosphatase; modulates second-messenger systems; not metabolized by P450',
     indications: [
-      { use: 'Bipolar Mania', year: 1970 },
-      { use: 'Bipolar Maintenance', year: 1974 },
+      { use: 'Bipolar Mania', year: 1970, dx: 'Bipolar I', phase: 'Manic episodes (acute)', line: 'Monotherapy', age: 'Adults & >=7 yr' },
+      { use: 'Bipolar Maintenance', year: 1974, dx: 'Bipolar I', phase: 'Maintenance', line: 'Monotherapy', age: 'Adults & >=7 yr' },
     ]
   },
   {
@@ -1871,7 +1874,7 @@ const MEDICATIONS = [
     mechanism: 'Sodium channel blockade; GABA-transaminase inhibition (↑ GABA); histone deacetylase inhibition; inhibits UGT enzymes',
     indications: [
       { use: 'Epilepsy', year: 1978 },
-      { use: 'Bipolar Mania', year: 1995 },
+      { use: 'Bipolar Mania', year: 1995, dx: 'Bipolar I', phase: 'Acute manic or mixed episodes', line: 'Monotherapy (divalproex)', age: 'Adults' },
       { use: 'Migraine Prophylaxis', year: 1996 },
     ]
   },
@@ -1900,7 +1903,7 @@ const MEDICATIONS = [
     mechanism: 'Voltage-gated sodium channel blocker (Nav1.1, Nav1.6); inhibits glutamate release; metabolized primarily by UGT1A4 glucuronidation (not P450)',
     indications: [
       { use: 'Epilepsy (adjunct)', year: 1994 },
-      { use: 'Bipolar Maintenance', year: 2003 },
+      { use: 'Bipolar Maintenance', year: 2003, dx: 'Bipolar I', phase: 'Maintenance (delays mood episodes, esp. depression)', line: 'Monotherapy', age: 'Adults' },
     ]
   },
   {
@@ -1929,7 +1932,7 @@ const MEDICATIONS = [
     indications: [
       { use: 'Epilepsy', year: 1968 },
       { use: 'Trigeminal Neuralgia', year: 1968 },
-      { use: 'Bipolar Mania', year: 2004 },
+      { use: 'Bipolar Mania', year: 2004, dx: 'Bipolar I', phase: 'Acute manic or mixed episodes', line: 'Monotherapy (Equetro extended-release)', age: 'Adults' },
     ]
   },
 
@@ -2561,6 +2564,7 @@ const MEDICATIONS = [
     receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 0.3, '5HT2C': 10000, D2: 7, D3: 10, H1: 40, alpha1: 0.4, alpha2: 10000, M1: 10000 },
     indications: [
       { use: 'Schizophrenia', year: 2009 },
+      { use: 'Bipolar Mania', year: 2024, dx: 'Bipolar I', phase: 'Acute manic or mixed episodes', line: 'Monotherapy', age: 'Adults' },
     ]
   }
   ,{
@@ -2615,8 +2619,8 @@ const MEDICATIONS = [
     receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 2.6, '5HT2A': 18, '5HT2C': 134, D2: 0.49, D3: 0.08, H1: 40, alpha1: 155, alpha2: 10000, M1: 10000 },
     indications: [
       { use: 'Schizophrenia', year: 2015 },
-      { use: 'Bipolar I Mania/Mixed Episodes', year: 2015 },
-      { use: 'Bipolar I Depression', year: 2019 },
+      { use: 'Bipolar Mania', year: 2015, dx: 'Bipolar I', phase: 'Acute manic or mixed episodes', line: 'Monotherapy', age: 'Adults' },
+      { use: 'Bipolar Depression', year: 2019, dx: 'Bipolar I', phase: 'Depressive episodes', line: 'Monotherapy', age: 'Adults' },
     ]
   }
   ,{
@@ -2643,7 +2647,7 @@ const MEDICATIONS = [
     receptorKi: { SERT: 62, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 0.54, '5HT2C': 10000, D2: 32, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
     indications: [
       { use: 'Schizophrenia', year: 2019 },
-      { use: 'Bipolar I/II Depression', year: 2021 },
+      { use: 'Bipolar Depression', year: 2021, dx: 'Bipolar I or II', phase: 'Depressive episodes', line: 'Monotherapy or adjunct to lithium/valproate', age: 'Adults' },
     ]
   }
   ,{
