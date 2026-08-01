@@ -1813,7 +1813,9 @@ window.renderHeatmap = renderHeatmap;
 
 /* ── Side-by-Side Drug Comparison ───────────────────────────────────────── */
 let compareChartInst = null;
-let compareView = 'bar';           // 'bar' | 'heat' | 'tree'
+let comparePieInstA = null;
+let comparePieInstB = null;
+let compareView = 'bar';           // 'bar' | 'pie' | 'heat' | 'tree'
 let compareDrugs = { a: null, b: null };
 
 function populateCompareSelects() {
@@ -1842,6 +1844,8 @@ function renderCompareChart() {
     container.classList.add('hidden');
     empty.classList.toggle('hidden', !idA && !idB);
     if (compareChartInst) { compareChartInst.destroy(); compareChartInst = null; }
+    if (comparePieInstA) { comparePieInstA.destroy(); comparePieInstA = null; }
+    if (comparePieInstB) { comparePieInstB.destroy(); comparePieInstB = null; }
     compareDrugs = { a: null, b: null };
     return;
   }
@@ -1930,18 +1934,21 @@ function renderCompareFlags(drugA, drugB) {
   wrap.innerHTML = html + '</div>';
 }
 
-// Toggle between bar / heatmap / treemap views.
+// Toggle between bar / pie / heatmap / treemap views.
 function switchCompareView(view) {
   compareView = view;
   const barWrap  = document.getElementById('compare-bar-wrap');
+  const pieWrap  = document.getElementById('compare-pie-wrap');
   const heatWrap = document.getElementById('compare-heatmap-wrap');
   const treeWrap = document.getElementById('compare-treemap-wrap');
   const btnBar  = document.getElementById('cmp-view-bar');
+  const btnPie  = document.getElementById('cmp-view-pie');
   const btnHeat = document.getElementById('cmp-view-heat');
   const btnTree = document.getElementById('cmp-view-tree');
-  [barWrap, heatWrap, treeWrap].forEach(el => { if (el) el.style.display = 'none'; });
-  [btnBar, btnHeat, btnTree].forEach(el => { if (el) el.classList.remove('rb-vt-active'); });
-  if (view === 'heat')      { heatWrap.style.display = ''; btnHeat.classList.add('rb-vt-active'); }
+  [barWrap, pieWrap, heatWrap, treeWrap].forEach(el => { if (el) el.style.display = 'none'; });
+  [btnBar, btnPie, btnHeat, btnTree].forEach(el => { if (el) el.classList.remove('rb-vt-active'); });
+  if (view === 'pie')       { pieWrap.style.display = '';  btnPie.classList.add('rb-vt-active'); }
+  else if (view === 'heat') { heatWrap.style.display = ''; btnHeat.classList.add('rb-vt-active'); }
   else if (view === 'tree') { treeWrap.style.display = ''; btnTree.classList.add('rb-vt-active'); }
   else                      { barWrap.style.display = '';  btnBar.classList.add('rb-vt-active'); }
   renderCompareViews();
@@ -1954,9 +1961,56 @@ function renderCompareViews() {
   const drugA = compareDrugs.a, drugB = compareDrugs.b;
   if (!drugA || !drugB) return;
   const receptors = compareReceptors(drugA, drugB);
-  if (compareView === 'heat')      renderCompareHeatmap(drugA, drugB, receptors);
+  if (compareView === 'pie')       renderComparePie(drugA, drugB);
+  else if (compareView === 'heat') renderCompareHeatmap(drugA, drugB, receptors);
   else if (compareView === 'tree') { if (window.renderCompareTreemap) window.renderCompareTreemap(drugA, drugB); }
   else                             renderCompareBar(drugA, drugB, receptors);
+}
+
+// Two side-by-side pie charts — same 1/Ki normalization & colors as the
+// single-drug Receptor Binding Profiles pie.
+function renderComparePie(drugA, drugB) {
+  const build = (drug, canvasId, titleId, prevInst) => {
+    if (prevInst) { prevInst.destroy(); }
+    const titleEl = document.getElementById(titleId);
+    if (titleEl) titleEl.innerHTML =
+      `${drug.name} <span style="font-weight:400;color:var(--text-muted)">(${drug.brandName})</span>`;
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return null;
+    const data = receptorPieData(drug);
+    const ctx = canvas.getContext('2d');
+    if (!data) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      return null;
+    }
+    const colors = data.labels.map(r => getColor(r));
+    return new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: data.labels,
+        datasets: [{ data: data.values, backgroundColor: colors, borderColor: '#f5f0e8', borderWidth: 2 }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { color: '#6b6050', font: { size: 11 }, padding: 8 } },
+          tooltip: {
+            callbacks: {
+              label: ctx => {
+                const r      = ctx.label;
+                const ki     = drug.receptorKi[r];
+                const action = getReceptorAction(drug.id, r);
+                return ` ${r}: Ki = ${ki} nM | ${action} (${ctx.parsed.toFixed(1)}%)`;
+              }
+            }
+          }
+        }
+      }
+    });
+  };
+  comparePieInstA = build(drugA, 'compare-pie-a', 'compare-pie-title-a', comparePieInstA);
+  comparePieInstB = build(drugB, 'compare-pie-b', 'compare-pie-title-b', comparePieInstB);
 }
 
 function renderCompareBar(drugA, drugB, receptors) {
