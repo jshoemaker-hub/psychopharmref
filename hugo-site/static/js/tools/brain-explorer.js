@@ -13,7 +13,10 @@
    {id:"lc-thal",cat:"Thalamic",name:"Thalamus (Mediodorsal nucleus)",abbr:"MD",color:"#7a6cae",system:"Glutamatergic relay",why:"MD thalamus is the principal thalamic partner of the PFC; volume loss in schizophrenia.",note:"Real dorsomedial (mediodorsal) nucleus, shown embedded in the full thalamic nuclei complex."},
    {id:"vta-snc",cat:"Brainstem nuclei",name:"VTA & Substantia Nigra pars compacta",abbr:"VTA/SNc",color:"#e2542f",system:"Dopamine source",why:"Origin of all four dopamine pathways — one D2 mechanism, four clinical consequences.",note:"Real substantia nigra mesh + bilateral VTA markers medial to it."},
    {id:"raphe",cat:"Brainstem nuclei",name:"Raphe Nuclei",abbr:"DRN/MRN",color:"#e14f97",system:"Serotonin source",why:"5-HT1A autoreceptor desensitisation here over 2–4 weeks explains the therapeutic lag of SSRIs.",note:"Paired paramedian markers along the midline brainstem."},
-   {id:"lc",cat:"Brainstem nuclei",name:"Locus Coeruleus",abbr:"LC",color:"#2f6fb0",system:"Noradrenaline source",why:"Sole source of cortical noradrenaline; hyperactivity maps to hyperarousal and panic. α2 agonists dampen its firing.",note:"Bilateral paired markers, dorsal rostral pons."}
+   {id:"lc",cat:"Brainstem nuclei",name:"Locus Coeruleus",abbr:"LC",color:"#2f6fb0",system:"Noradrenaline source",why:"Sole source of cortical noradrenaline; hyperactivity maps to hyperarousal and panic. α2 agonists dampen its firing.",note:"Bilateral paired markers, dorsal rostral pons."},
+   {id:"broca",cat:"Classic lesion sites",name:"Broca's Area (left inferior frontal gyrus)",abbr:"Broca",color:"#c8791f",system:"Language · speech production",why:"Damage here — patient \"Tan\" (Leborgne), described by Paul Broca in 1861 — produces expressive, non-fluent aphasia: effortful, agrammatic speech with relatively preserved comprehension. The founding demonstration of cortical localization and left-hemisphere language dominance.",note:"Schematic marker on the left inferior frontal gyrus (Broca's area, BA 44/45). Approximate teaching placement, not expert-segmented."},
+   {id:"wernicke",cat:"Classic lesion sites",name:"Wernicke's Area (left posterior superior temporal gyrus)",abbr:"Wernicke",color:"#7a3fa0",system:"Language · comprehension",why:"Damage produces fluent aphasia — smooth, effortless speech full of paraphasias with impaired comprehension. Carl Wernicke (1874) used it to show that comprehension and production are anatomically distinct, and to propose the first connectionist model of language.",note:"Schematic marker on the left posterior superior temporal gyrus (Wernicke's area, BA 22). Approximate teaching placement."},
+   {id:"callosum",cat:"Classic lesion sites",name:"Corpus Callosum",abbr:"CC",color:"#2f7fb0",system:"Interhemispheric commissure",why:"Surgical section (split-brain surgery; Sperry & Gazzaniga) reveals two semi-independent hemispheres in one skull; congenital absence (Kim Peek) illustrates atypical connectivity. ~200 million axons link the hemispheres.",note:"Midsagittal schematic arch of the corpus callosum. Approximate geometry for teaching."}
   ];
   var cmap={}; STRUCTS.forEach(function(s){cmap[s.id]=s;});
 
@@ -29,7 +32,9 @@
    hippocampus:{view:"sag",hs:[[116,98,11,7]]}, nacc:{view:"sag",hs:[[78,90,8,7]]},
    "vta-snc":{view:"sag",hs:[[150,110,7,6]]}, raphe:{view:"sag",hs:[[151,122,6,7]]},
    lc:{view:"sag",hs:[[157,114,6,6]]}, dstriatum:{view:"axi",hs:[[101,80,11,17],[139,80,11,17]]},
-   "lc-thal":{view:"axi",hs:[[112,90,8,12],[128,90,8,12]]}
+   "lc-thal":{view:"axi",hs:[[112,90,8,12],[128,90,8,12]]},
+   broca:{view:"lat",hs:[[66,76,12,9]]}, wernicke:{view:"lat",hs:[[150,86,13,9]]},
+   callosum:{view:"sag",hs:[[116,72,23,9]]}
   };
   var LINKS={
    dlpfc:{c:["be-c-dlpfc","DLPFC executive loop"],r:["be-r-pfc","Prefrontal / frontal cortex"]},
@@ -123,7 +128,22 @@
         if(id.indexOf('ctx-')===0){o.material=mat('#d3ccbe',{transparent:true,opacity:0.5,roughness:.6,depthWrite:false}); o.renderOrder=5; ctxMeshes.push(o); return;}
         var s=cmap[id]; if(s){var dbl=s.cat==='Cortical'; o.material=mat(s.color, dbl?{side:THREE.DoubleSide}:{}); o.userData.base=new THREE.Color(s.color); o.userData.struct=id; meshes[id]=o;}
       });
-      root.add(gltf.scene); root.rotation.x=-Math.PI/2; root.updateMatrixWorld(true);
+      root.add(gltf.scene);
+      // --- Procedural classic-lesion landmarks not present in the GLB.
+      //     GLB coordinate frame: -X = LEFT hemisphere, +Y = anterior, +Z = superior. ---
+      (function(){
+        function lobe(hex,r){var g=new THREE.SphereGeometry(r,26,20); g.scale(1.25,1.0,0.8); return new THREE.Mesh(g,mat(hex,{roughness:.45}));}
+        var add=[];
+        var broca=lobe('#c8791f',7.5); broca.position.set(-46,44,6); add.push(['broca',broca]);
+        var wern=lobe('#7a3fa0',7.5); wern.position.set(-47,-16,-2); add.push(['wernicke',wern]);
+        // Corpus callosum: midsagittal C-arch (X≈0) as a swept tube, genu (anterior) → splenium (posterior).
+        var arch=[[36,4],[31,17],[13,24],[-9,24],[-29,17],[-38,3],[-33,-7]].map(function(p){return new THREE.Vector3(0,p[0],p[1]);});
+        var curve=new THREE.CatmullRomCurve3(arch,false,'catmullrom',0.5);
+        var cc=new THREE.Mesh(new THREE.TubeGeometry(curve,64,4.2,14,false),mat('#2f7fb0',{roughness:.5}));
+        add.push(['callosum',cc]);
+        add.forEach(function(pr){var id=pr[0],o=pr[1]; o.material.side=THREE.DoubleSide; o.userData.base=new THREE.Color(cmap[id].color); o.userData.struct=id; meshes[id]=o; root.add(o);});
+      })();
+      root.rotation.x=-Math.PI/2; root.updateMatrixWorld(true);
       var box=new THREE.Box3().setFromObject(root); var ctr=box.getCenter(new THREE.Vector3());
       root.position.sub(ctr); root.updateMatrixWorld(true);
       R=box.getBoundingSphere(new THREE.Sphere()).radius;

@@ -545,7 +545,7 @@ function switchSection(id, skipGroupExpand) {
         });
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20260726g';
+        script.src = 'js/tools/' + toolId + '.js?v=20260802a';
         document.body.appendChild(script);
       }
     }
@@ -675,6 +675,14 @@ if (sectionFromHash()) {
 }
 __suppressHistory = false;
 history.replaceState({ section: sectionFromHash() || 'overview' }, '', window.location.href);
+
+// Deep-link a specific 3D Brain Explorer structure from blog posts (e.g. the
+// brain-lesion chapter's lesion picker): ?brain=<structure-id>. ppOpenBrain
+// switches to the explorer and queues the focus until the 3D scene is ready.
+try {
+  var __brainParam = new URLSearchParams(window.location.search || '').get('brain');
+  if (__brainParam) { ppOpenBrain(__brainParam); }
+} catch (e) {}
 
 // Keep the SPA in sync with browser-level hash changes (deep links, manual
 // hash edits). Guarded so it never pushes a duplicate history entry.

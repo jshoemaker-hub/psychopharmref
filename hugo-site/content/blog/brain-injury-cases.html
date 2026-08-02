@@ -19,6 +19,14 @@ draft: false
 .bi-lesson { background: #f9f7f4; border: 1px solid var(--border); border-left: 4px solid var(--accent2, #8b6914); padding: 0.85rem 1rem; margin: 1rem 0 1.75rem; border-radius: 4px; }
 .bi-lesson h5 { margin: 0 0 0.4rem 0; color: var(--text); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
 .bi-lesson p { margin: 0.35rem 0; font-size: 0.92rem; line-height: 1.55; }
+.bi-picker { background: linear-gradient(180deg, #f4f8f0, #eef4e8); border: 1px solid rgba(74,124,53,.35); border-radius: 12px; padding: 16px 18px; margin: 1.5rem 0 2rem; }
+.bi-picker-h { font-weight: 700; color: var(--accent, #4a7c35); font-size: 15px; margin-bottom: 4px; }
+.bi-picker-sub { font-size: 12.5px; color: var(--text, #231e14); margin: 0 0 12px; line-height: 1.5; opacity: .85; }
+.bi-picker-grp { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 7px 0; }
+.bi-picker-lab { flex: 0 0 100%; font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; font-weight: 700; color: var(--accent2, #8b6914); margin-bottom: 1px; }
+.bi-chip { display: inline-block; font-size: 11.5px; padding: 5px 11px; border-radius: 999px; border: 1px solid var(--border, #cfc8ba); background: #fff; color: var(--text, #231e14); text-decoration: none; transition: background .15s, border-color .15s, color .15s; }
+.bi-chip:hover { background: var(--accent, #4a7c35); border-color: var(--accent, #4a7c35); color: #fff; }
+@media (min-width: 560px) { .bi-picker-lab { flex: 0 0 150px; margin-bottom: 0; } }
 table.bi-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem; }
 table.bi-table caption { caption-side: top; text-align: left; font-weight: 700; color: var(--text); font-size: 0.95rem; margin-bottom: 0.5rem; }
 table.bi-table th, table.bi-table td { border: 1px solid var(--border); padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; line-height: 1.4; }
@@ -37,6 +45,16 @@ table.bi-table td strong { color: var(--text); }
       <div class="bi-lesson" style="border-left-color: var(--accent);">
         <h5>A note on method — and its limits</h5>
         <p>The lesion method reasons from damage to function: if losing region X abolishes ability Y, region X is necessary for Y. It is powerful but imperfect. Natural lesions rarely respect anatomical boundaries, single cases cannot prove generality, and "necessary for" is not the same as "the seat of." Nineteenth-century over-reading of these cases fed phrenology and crude localizationism; the modern reading is a distributed-network view in which regions are critical <em>nodes</em>, not self-contained organs. Read the cases below as hypotheses that later group studies and imaging largely confirmed and refined — not as the last word.</p>
+      </div>
+
+      <div class="bi-picker">
+        <div class="bi-picker-h">&#129504; Pick a lesion &rarr; visualize it in the 3D Brain Explorer</div>
+        <p class="bi-picker-sub">Each case below maps to the brain structure it damaged. Click any case to open the interactive 3D model with that region highlighted and framed. Broca's area, Wernicke's area, and the corpus callosum were added to the explorer specifically for these cases.</p>
+        <div class="bi-picker-grp"><span class="bi-picker-lab">Frontal lobe &amp; personality</span><a class="bi-chip" href="/?brain=ofc-vmpfc#brain-explorer">Phineas Gage &middot; OFC / vmPFC</a><a class="bi-chip" href="/?brain=ofc-vmpfc#brain-explorer">Patient E.V.R. &middot; vmPFC</a><a class="bi-chip" href="/?brain=amygdala#brain-explorer">Charles Whitman &middot; Amygdala</a></div>
+        <div class="bi-picker-grp"><span class="bi-picker-lab">Language</span><a class="bi-chip" href="/?brain=broca#brain-explorer">&ldquo;Tan&rdquo; / Broca &middot; Broca's area</a><a class="bi-chip" href="/?brain=wernicke#brain-explorer">Wernicke's patient &middot; Wernicke's area</a></div>
+        <div class="bi-picker-grp"><span class="bi-picker-lab">Memory</span><a class="bi-chip" href="/?brain=hippocampus#brain-explorer">H.M. (Molaison) &middot; Hippocampus</a><a class="bi-chip" href="/?brain=hippocampus#brain-explorer">Clive Wearing &middot; Hippocampus</a><a class="bi-chip" href="/?brain=hippocampus#brain-explorer">Patient K.C. &middot; Hippocampus</a></div>
+        <div class="bi-picker-grp"><span class="bi-picker-lab">Emotion &amp; fear</span><a class="bi-chip" href="/?brain=amygdala#brain-explorer">Patient S.M. &middot; Amygdala</a></div>
+        <div class="bi-picker-grp"><span class="bi-picker-lab">The divided brain</span><a class="bi-chip" href="/?brain=callosum#brain-explorer">Split-brain patients &middot; Corpus callosum</a><a class="bi-chip" href="/?brain=callosum#brain-explorer">Kim Peek &middot; Corpus callosum</a></div>
       </div>
 
       <h2>Part 1 — Personality and the Frontal Lobes</h2>
