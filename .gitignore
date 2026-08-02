@@ -13,6 +13,10 @@ notes/
 !blog/slides/**
 !hugo-site/static/blog/slides/**
 
+# EXCEPTION: Neurotransmitter Atlas illustration images ship with the site
+!hugo-site/static/blog/img/atlas/**
+!blog/atlas-media/**
+
 # EXCEPTION: Therapy-Courses blank worksheet PDFs ship with the site
 !hugo-site/static/worksheets/**
 
