@@ -18,7 +18,7 @@
 (function () {
   // The dataset (js/chem-structure-data.js, ~1.8MB / ~250KB gzipped) is lazy-loaded
   // on first open of this tool rather than on every page — see ensureData() below.
-  var DATA_VERSION = '20260729a';
+  var DATA_VERSION = '20260802a';
   var byId = {};
   function indexData() { byId = {}; CHEM_STRUCTURES.forEach(function (d) { byId[d.id] = d; }); }
 
