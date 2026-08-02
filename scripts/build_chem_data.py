@@ -365,6 +365,26 @@ DATA = [
   "proteinNote":"Roughly 50-85% plasma-protein bound; largely excreted unchanged in urine.",
   "receptorNote":"Non-selective antagonist across the M1-M5 muscarinic receptors, acting peripherally on the detrusor muscle rather than centrally.",
  },
+ {
+  "id":"benztropine","name":"Benztropine","brand":"Cogentin","cls":"Antimuscarinic (tertiary amine)",
+  "structClass":"Tropane benzhydryl ether","category":"Anticholinergic",
+  "smiles":"CN1[C@H]2CC[C@@H]1C[C@H](OC(c1ccccc1)c1ccccc1)C2",
+  "year":1954,"yearRef":"Merck; introduced in the 1950s for parkinsonism and drug-induced movement disorders",
+  "messenger":1,
+  "messengerNote":"A workhorse for antipsychotic-induced acute dystonia and parkinsonism. Unlike the quaternary trospium, it is a tertiary amine that readily enters the brain - the source of both its central benefit and its anticholinergic cognitive/confusional load.",
+  "lipoNote":"A lipophilic tertiary amine that freely crosses the blood-brain barrier (contrast trospium's locked-out quaternary charge), giving central antimuscarinic action but also memory impairment and delirium risk.",
+  "receptorNote":"M1-preferring muscarinic antagonist that also blocks histamine H1 receptors and weakly inhibits the dopamine transporter (DAT).",
+ },
+ {
+  "id":"xanomeline","name":"Xanomeline","brand":"Cobenfy (with trospium)","cls":"Muscarinic agonist (M1/M4)",
+  "structClass":"Tetrahydropyridinyl thiadiazole","category":"Antipsychotic",
+  "smiles":"CCCCCCOc1nsnc1C1=CCCN(C)C1",
+  "year":2024,"yearRef":"Eli Lilly (1990s synthesis); FDA-approved 2024 as Cobenfy (xanomeline-trospium, KarXT) for schizophrenia",
+  "messenger":1,
+  "messengerNote":"A first-in-class muscarinic-agonist antipsychotic that treats psychosis without blocking dopamine D2 receptors - avoiding EPS and prolactin elevation. It is co-formulated with trospium, whose peripheral antimuscarinic action offsets xanomeline's cholinergic GI side effects.",
+  "lipoNote":"A lipophilic, CNS-penetrant small molecule - its hexyloxy-thiadiazole tail drives brain entry (and, historically, dose-limiting peripheral cholinergic effects).",
+  "receptorNote":"Agonist preferring the M1 and M4 muscarinic receptors; M4 activation in the striatum is thought to dampen dopaminergic overactivity, producing the antipsychotic effect.",
+ },
  # ── Peptides & biologics (nootropic / anxiolytic / wellness) ─────────────
  {
   "id":"semax","name":"Semax","brand":"ACTH(4-7) analog","cls":"Nootropic Peptide",

@@ -1666,7 +1666,7 @@
   "name": "Diphenhydramine",
   "brand": "Benadryl",
   "cls": "Antihistamine",
-  "category": "Other",
+  "category": "Anticholinergic",
   "year": 1946,
   "proteinBinding": 82,
   "receptorKi": {
@@ -1688,7 +1688,7 @@
   "name": "Trihexyphenidyl",
   "brand": "Artane",
   "cls": "Anticholinergic",
-  "category": "Other",
+  "category": "Anticholinergic",
   "year": 1952,
   "proteinBinding": 25,
   "receptorKi": {
