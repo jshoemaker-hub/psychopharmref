@@ -375,9 +375,8 @@ function getColor(receptor) {
 /* ── Navigation ─────────────────────────────────────────────────────────── */
 // Map each section to its parent group
 const SECTION_GROUP = {
-  'drug-table': 'psychopharm', 'p450': 'psychopharm',
+  'drug-table': 'psychopharm',
   'receptor-binding': 'psychopharm', 'glossary': 'psychopharm', 'pk-curves': 'psychopharm',
-  'price-compare': 'psychopharm',
   'similar-meds': 'psychopharm', 'complementary-meds': 'psychopharm',
   'psychiatry-glossary': 'glossary',
   'qt-risk': 'tools', 'refill-calendar': 'tools', 'med-compare': 'psychopharm', 'med-taper': 'tools',
@@ -464,6 +463,11 @@ function switchSection(id, skipGroupExpand) {
   if (sec) sec.classList.add('active');
   const link = document.querySelector(`[data-section="${id}"]`);
   if (link) link.classList.add('active');
+  // Merged/tabbed nav items cover several sub-sections; keep the single nav
+  // item highlighted whenever any of its member sections is active.
+  document.querySelectorAll('.nav-link[data-sections]').forEach(l => {
+    if (l.dataset.sections.split(' ').indexOf(id) !== -1) l.classList.add('active');
+  });
 
   // Expand the parent group for this section. When skipGroupExpand is set
   // (homepage landing / Home button) collapse all groups instead, so the
@@ -610,6 +614,17 @@ function switchSection(id, skipGroupExpand) {
   // SPA (e.g. handout page → Back → home) instead of leaving the site.
   pushSectionState(id);
 }
+
+// Psychopharm merged-section tabs (Binding/Comparison, Similar/Complementary).
+// Each tab just navigates to its target section; switchSection handles lazy
+// loading and chart rendering, and the visible section carries its own tab bar
+// with the correct tab pre-marked active.
+document.querySelectorAll('.psy-tab').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    switchSection(btn.dataset.target);
+  });
+});
 
 // Parent nav button toggle
 document.querySelectorAll('.nav-parent-btn').forEach(btn => {
@@ -1447,10 +1462,12 @@ document.getElementById('se-sort-dir').addEventListener('click', () => {
   renderDrugTable();
 });
 
-// P450 category filter
-document.getElementById('p450-category').addEventListener('change', e => {
-  renderP450Table(e.target.value);
-});
+// P450 category filter — the standalone P450 tab was folded into the Drug
+// Database (per-drug detail modal), so this control may not exist.
+(function () {
+  const p450Cat = document.getElementById('p450-category');
+  if (p450Cat) p450Cat.addEventListener('change', e => renderP450Table(e.target.value));
+})();
 
 /* ── P450 Table ─────────────────────────────────────────────────────────── */
 function p450Cell(drug, enzyme) {
@@ -1469,10 +1486,12 @@ function p450Cell(drug, enzyme) {
 }
 
 function renderP450Table(catFilter = '') {
+  const tbody = document.getElementById('p450-tbody');
+  if (!tbody) return;  // standalone P450 table removed; data now lives in the drug detail modal
   let meds = MEDICATIONS.filter(m => activeClasses.has(m.class));
   if (catFilter) meds = meds.filter(m => m.category === catFilter);
 
-  document.getElementById('p450-tbody').innerHTML = meds.map(m => `
+  tbody.innerHTML = meds.map(m => `
     <tr>
       <td class="drug-name-cell" style="cursor:pointer;white-space:nowrap" onclick="openDrugModal('${m.id}')">${m.name} <span class="brand-name">(${m.brandName})</span></td>
       <td>${classBadge(m.class)}</td>

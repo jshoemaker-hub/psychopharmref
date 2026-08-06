@@ -46,7 +46,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
 
-  <link rel="stylesheet" href="css/styles.css?v=20260731b">
+  <link rel="stylesheet" href="css/styles.css?v=20260806a">
   <link rel="canonical" href="https://psychopharmref.com/">
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
@@ -110,17 +110,16 @@
           <span class="nav-caret">&#9658;</span>
         </button>
         <ul class="nav-sub">
+          <li class="nav-sub-divider">References</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="drug-table">Drug Database</a></li>
-          <li><a href="#" class="nav-link nav-sub-link" data-section="p450">P450 Interactions</a></li>
-          <li><a href="#" class="nav-link nav-sub-link" data-section="receptor-binding">Binding Profiles</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="glossary">Receptor Glossary</a></li>
-          <li><a href="#" class="nav-link nav-sub-link" data-section="pk-curves">PK Curves</a></li>
-          <li><a href="#" class="nav-link nav-sub-link" data-section="med-compare">Med Comparison</a></li>
+
+          <li class="nav-sub-divider">Tools</li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="receptor-binding" data-sections="receptor-binding med-compare">Binding &amp; Comparison</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="similar-meds" data-sections="similar-meds complementary-meds">Similar &amp; Complementary Meds</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="fda-indication">FDA Indication Search</a></li>
-          <li><a href="#" class="nav-link nav-sub-link" data-section="similar-meds">Find Similar Meds</a></li>
-          <li><a href="#" class="nav-link nav-sub-link" data-section="complementary-meds">Find Complementary Meds</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="pk-curves">PK Curves</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="chem-structure">Chem Structure</a></li>
-          <li><a href="#" class="nav-link nav-sub-link" data-section="price-compare">Price Comparison</a></li>
         </ul>
       </li>
 
@@ -591,7 +590,6 @@
               <a href="#" onclick="switchSection('panss-tool');return false;">PANSS</a>
               <span class="tk-tag tk-tag--new">New</span>
               <a href="/blog/antipsychotic-weight-management/">Antipsychotic Weight Management</a>
-              <a href="#" onclick="switchSection('price-compare');return false;">Price Comparison</a>
               <a href="#" onclick="switchSection('frailty-tool');return false;">SMI Medical Frailty Scale</a>
               <a href="#" onclick="switchSection('handouts');return false;">Patient Handouts</a>
             </div>
@@ -766,57 +764,12 @@
 
     </section>
 
-    <!-- ── P450 Interactions ─────────────────────────────────────────────── -->
-    <section id="p450" class="section">
-      <div class="section-header">
-        <h2>P450 Interactions</h2>
-        <p class="section-sub">CYP enzyme interactions for all medications. S = Substrate &bull; Inhibitor strength shown in color &bull; Ind = Inducer</p>
-      </div>
-
-      <div class="p450-legend">
-        <span class="legend-item"><span class="badge badge-substrate">S</span> Substrate</span>
-        <span class="legend-item"><span class="badge badge-strong">Inh-S</span> Strong Inhibitor</span>
-        <span class="legend-item"><span class="badge badge-moderate">Inh-M</span> Moderate Inhibitor</span>
-        <span class="legend-item"><span class="badge badge-weak">Inh-W</span> Weak Inhibitor</span>
-        <span class="legend-item"><span class="badge badge-inducer">Ind</span> Inducer</span>
-      </div>
-
-      <div class="p450-filter">
-        <label>Filter by category:
-          <select id="p450-category">
-            <option value="">All</option>
-            <option value="Antidepressant">Antidepressants</option>
-            <option value="Antipsychotic">Antipsychotics</option>
-            <option value="Mood Stabilizer">Mood Stabilizers</option>
-            <option value="Sleep">Sleep</option>
-            <option value="Anxiolytic">Anxiolytics</option>
-            <option value="Stimulant">Stimulants</option>
-            <option value="Other">Other</option>
-          </select>
-        </label>
-      </div>
-
-      <div class="table-wrapper">
-        <table id="p450-table">
-          <thead>
-            <tr>
-              <th>Drug</th>
-              <th>Class</th>
-              <th>CYP1A2</th>
-              <th>CYP2B6</th>
-              <th>CYP2C9</th>
-              <th>CYP2C19</th>
-              <th>CYP2D6</th>
-              <th>CYP3A4</th>
-            </tr>
-          </thead>
-          <tbody id="p450-tbody"></tbody>
-        </table>
-      </div>
-    </section>
-
     <!-- ── Receptor Binding ──────────────────────────────────────────────── -->
     <section id="receptor-binding" class="section">
+      <div class="psy-tabs" role="tablist">
+        <button type="button" class="psy-tab active" data-target="receptor-binding">Binding Profiles</button>
+        <button type="button" class="psy-tab" data-target="med-compare">Med Comparison</button>
+      </div>
       <div class="section-header">
         <h2>Receptor Binding Profiles</h2>
         <p class="section-sub">Ki values in nM (lower = higher affinity). Pie shows relative affinity (1/Ki normalized). Bar charts show pKi = &minus;log<sub>10</sub>(Ki) per drug class.</p>
@@ -3196,6 +3149,10 @@
 
     <!-- ── Medication Comparison ─────────────────────────────────────────── -->
     <section id="med-compare" class="section">
+      <div class="psy-tabs" role="tablist">
+        <button type="button" class="psy-tab" data-target="receptor-binding">Binding Profiles</button>
+        <button type="button" class="psy-tab active" data-target="med-compare">Med Comparison</button>
+      </div>
       <div class="section-header">
         <h2>Medication Comparison</h2>
         <p class="section-sub">Compare up to 6 medications across receptor binding, predicted side effects, and neuropsychiatric circuit targets.</p>
@@ -3260,6 +3217,10 @@
 
     <!-- ── Find Similar Medications ──────────────────────────────────────── -->
     <section id="similar-meds" data-lazy-tool="similar-meds" class="section">
+      <div class="psy-tabs" role="tablist">
+        <button type="button" class="psy-tab active" data-target="similar-meds">Find Similar</button>
+        <button type="button" class="psy-tab" data-target="complementary-meds">Find Complementary</button>
+      </div>
       <div class="section-header">
         <h2>Find Similar Medications</h2>
         <p class="section-sub">When a medication that once worked best loses its effect (tachyphylaxis, or &ldquo;poop-out&rdquo;), identify the medications with the most similar pharmacology &mdash; a rational starting point for a switch. Filter by route of administration, target residual symptoms the switch must not lose ground on, and page through beyond the closest three.</p>
@@ -3395,6 +3356,10 @@
 
     <!-- ── Find Complementary Medications ────────────────────────────────── -->
     <section id="complementary-meds" data-lazy-tool="complementary-meds" class="section">
+      <div class="psy-tabs" role="tablist">
+        <button type="button" class="psy-tab" data-target="similar-meds">Find Similar</button>
+        <button type="button" class="psy-tab active" data-target="complementary-meds">Find Complementary</button>
+      </div>
       <div class="section-header">
         <h2>Find Complementary Medications</h2>
         <p class="section-sub">The mirror of &ldquo;Find Similar.&rdquo; For a reference medication, this surfaces two things: the <em>curated, evidence-based combination strategies</em> that agent participates in (TRD, treatment-resistant schizophrenia, and bipolar augmentation), and the agents that treat the same condition but act through a <em>different</em> receptor set &mdash; rational candidates for combination or augmentation rather than a like-for-like switch.</p>
@@ -3560,30 +3525,6 @@
 
         <div id="cs-results" class="cs-results" style="display:none"></div>
       </div>
-    </section>
-
-    <!-- ── Price Comparison ──────────────────────────────────────────────── -->
-    <section id="price-compare" class="section">
-      <div class="section-header">
-        <h2>Medication Price Comparison</h2>
-        <p class="section-sub">Cash prices for psychiatric medications across Mark Cuban Cost Plus Drugs and HealthWarehouse, with NADAC (CMS wholesale acquisition cost) shown as a transparency anchor &mdash; most common form, 30-day supply.</p>
-      </div>
-
-      <div class="pc-meta-bar">
-        <div class="pc-last-updated">
-          <span class="pc-meta-label">Last updated:</span>
-          <span id="pc-last-updated-date">&mdash;</span>
-        </div>
-        <div class="pc-search-wrap">
-          <input id="pc-search" type="search" placeholder="Search by drug name…" autocomplete="off">
-        </div>
-      </div>
-
-      <div id="pc-table-container">
-        <div class="pc-loading">Loading pricing data&hellip;</div>
-      </div>
-
-      <p class="pc-disclaimer">Prices reflect cash pay (no insurance) and may vary by pharmacy, dose, supply, and zip code. Generic equivalents typically used. Always verify current pricing with the source pharmacy before counseling patients. Inclusion of a pharmacy does not imply endorsement.</p>
     </section>
 
     <!-- ── Medication Taper / Start ──────────────────────────────────────── -->
@@ -13142,7 +13083,7 @@
   <script defer src="js/data.js?v=20260801b"></script>
   <script defer src="js/routes.js?v=20260719d"></script>
   <script defer src="js/bhi-references.js?v=20260726b"></script>
-  <script defer src="js/app.js?v=20260802a"></script>
+  <script defer src="js/app.js?v=20260806a"></script>
   <script defer src="js/glossary-data.js?v=20260719d"></script>
   <script defer src="js/glossary-page.js?v=20260719d"></script>
   <script defer src="js/search.js?v=20260722c"></script>

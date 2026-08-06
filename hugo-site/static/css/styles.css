@@ -5060,3 +5060,10 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
 .bhi-section.bhi-bbw h4 { color: #b03030; margin-top: 0; }
 .bhi-bbw-item { font-size: 13px; line-height: 1.45; margin: 6px 0; }
 .bhi-bbw-item + .bhi-bbw-item { padding-top: 6px; border-top: 1px dashed rgba(176,48,48,0.35); }
+
+/* ── Psychopharm merged-section tabs (Binding/Comparison, Similar/Complementary) ── */
+.psy-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 20px;border-bottom:2px solid var(--border)}
+.psy-tab{appearance:none;-webkit-appearance:none;background:none;border:none;padding:9px 18px;font:inherit;font-size:15px;font-weight:600;color:var(--accent2);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;border-radius:6px 6px 0 0;transition:color .15s,background .15s}
+.psy-tab:hover{color:var(--text);background:var(--bg2)}
+.psy-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.psy-tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
