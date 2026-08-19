@@ -55,3 +55,6 @@ deploy-*.zip
 # Node modules (any location)
 node_modules/
 my-blog/
+
+# macOS AppleDouble files (network volume)
+._*
