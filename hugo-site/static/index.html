@@ -112,6 +112,7 @@
         <ul class="nav-sub">
           <li class="nav-sub-divider">References</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="drug-table">Drug Database</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="diagnoses-db">Diagnoses Database</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="p450">P450 Interactions</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="glossary">Receptor Glossary</a></li>
 
@@ -763,6 +764,130 @@
         </table>
       </div>
 
+    </section>
+
+    <!-- ── Diagnoses Database ────────────────────────────── -->
+    <section id="diagnoses-db" class="section">
+      <style>
+        /* Namespaced to avoid any collision with the Drug Database / #drug-modal.
+           The table reuses the site's global table CSS; these rules add only what
+           is specific to the diagnoses table and its detail modal. */
+        #dxdb-table { table-layout: auto; }
+        #dxdb-table thead th:first-child,
+        #dxdb-table tbody td:first-child {
+          position: sticky; left: 0; z-index: 5; background: var(--card);
+          box-shadow: 2px 0 6px rgba(35,30,20,0.06);
+        }
+        #dxdb-table thead th:first-child { z-index: 15; background: var(--bg3); }
+        #dxdb-table tbody tr:hover td:first-child { background: var(--bg3); }
+        #dxdb-table tbody tr { cursor: pointer; }
+        .dxdb-col-dx { min-width: 230px; }
+        .dxdb-col-cat { min-width: 150px; }
+        .dxdb-col-code { min-width: 130px; }
+        .dxdb-col-icd11 { min-width: 90px; }
+        .dxdb-col-prev { min-width: 180px; max-width: 300px; white-space: normal; }
+        .dxdb-col-onset { min-width: 150px; max-width: 240px; white-space: normal; }
+        .dxdb-col-rx { min-width: 220px; max-width: 340px; white-space: normal; }
+        .dxdb-name { font-weight: 600; color: var(--accent); display: block; line-height: 1.25; }
+        .dxdb-sub { color: var(--text-muted); font-size: 11px; display: block; margin-top: 2px; white-space: normal; }
+        .dxdb-code { font-variant-numeric: tabular-nums; color: var(--accent2); font-weight: 600; white-space: nowrap; }
+        .dxdb-icd11 { color: var(--text-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+        .dxdb-catpill { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 11px; font-weight: 600;
+          background: rgba(74,124,53,0.1); color: var(--accent); white-space: nowrap; }
+        .dxdb-more { color: var(--text-muted); font-size: 11px; }
+        .dxdb-count { color: var(--text-muted); font-size: 13px; white-space: nowrap; margin-left: auto; }
+        .dxdb-empty { color: var(--text-muted); padding: 30px 0; text-align: center; font-style: italic; }
+        .dxdb-note { background:#fff8e8; border:1px solid #e6d6a8; border-left:4px solid var(--accent2);
+          color:#5c4d1f; border-radius:8px; padding:9px 14px; margin:0 0 12px; font-size:13px; }
+
+        /* Top horizontal scrollbar, synced with the table — always visible so the
+           left↔right scroll to Prevalence / Onset / Treatment is discoverable. */
+        .dxdb-hscroll { overflow-x: scroll; overflow-y: hidden; height: 16px; margin-bottom: 7px;
+          border: 1px solid var(--border); border-radius: 7px; background: var(--bg2); }
+        .dxdb-hscroll > div { height: 1px; }
+        #dxdb-wrap::-webkit-scrollbar, .dxdb-hscroll::-webkit-scrollbar { height: 14px; width: 13px; }
+        #dxdb-wrap::-webkit-scrollbar-track, .dxdb-hscroll::-webkit-scrollbar-track { background: var(--bg2); border-radius: 7px; }
+        #dxdb-wrap::-webkit-scrollbar-thumb, .dxdb-hscroll::-webkit-scrollbar-thumb {
+          background: #b3a892; border-radius: 7px; border: 3px solid var(--bg2); }
+        #dxdb-wrap::-webkit-scrollbar-thumb:hover, .dxdb-hscroll::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+        #dxdb-wrap::-webkit-scrollbar-corner { background: var(--bg2); }
+        #dxdb-wrap, .dxdb-hscroll { scrollbar-width: auto; scrollbar-color: #b3a892 var(--bg2); }
+
+        /* Detail modal (self-contained; does not reuse global .modal/.overlay) */
+        .dxdb-overlay { position: fixed; inset: 0; background: rgba(35,30,20,0.55); backdrop-filter: blur(2px);
+          display: none; align-items: flex-start; justify-content: center; z-index: 4000; padding: 28px 16px; overflow-y: auto; }
+        .dxdb-overlay.open { display: flex; }
+        .dxdb-modal { background: var(--bg); border-radius: 16px; max-width: 780px; width: 100%;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.35); animation: dxdbPop 0.18s ease; }
+        @keyframes dxdbPop { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: none; } }
+        .dxdb-mhead { background: linear-gradient(135deg, var(--accent-dark, #3a6129), var(--accent)); color: #fff;
+          padding: 20px 24px; border-radius: 16px 16px 0 0; position: relative; }
+        .dxdb-mhead h2 { margin: 0 0 4px; font-size: 1.3rem; padding-right: 34px; color: #fff; }
+        .dxdb-mcat { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.85; }
+        .dxdb-close { position: absolute; top: 16px; right: 18px; background: rgba(255,255,255,0.18); border: none; color: #fff;
+          width: 30px; height: 30px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; line-height: 1; }
+        .dxdb-close:hover { background: rgba(255,255,255,0.32); }
+        .dxdb-mbody { padding: 20px 24px 26px; }
+        .dxdb-desc { font-size: 0.97rem; margin: 0 0 6px; color: var(--text); }
+        .dxdb-codes { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0 4px; }
+        .dxdb-chip { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 6px 11px; font-size: 0.82rem; }
+        .dxdb-chip b { color: var(--accent2); font-weight: 700; margin-right: 5px; }
+        .dxdb-epi { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 10px; margin: 16px 0; }
+        .dxdb-cell { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 11px 13px; }
+        .dxdb-lab { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 700; }
+        .dxdb-val { font-size: 0.85rem; margin-top: 3px; color: var(--text); }
+        .dxdb-block { margin: 16px 0 0; }
+        .dxdb-block h4 { margin: 0 0 7px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em;
+          color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 5px; }
+        .dxdb-block h4.dxdb-warn { color: #a23b2d; }
+        .dxdb-pills { display: flex; gap: 7px; flex-wrap: wrap; }
+        .dxdb-pill { font-size: 0.83rem; background: var(--card); border: 1px solid var(--border); border-radius: 7px; padding: 5px 10px; color: var(--text); }
+        .dxdb-pill.first { border-color: var(--accent); background: #eef4e9; }
+        .dxdb-pill.warnp { border-color: #e2b3aa; background: #fbeeeb; color: #7a2f22; }
+        .dxdb-pill.scale { border-color: #c9b98a; background: #fbf5e4; }
+        .dxdb-lines { margin: 2px 0 0; padding-left: 18px; }
+        .dxdb-lines li { font-size: 0.87rem; margin: 2px 0; }
+        .dxdb-mednote { font-size: 0.82rem; color: var(--text-muted); margin: 8px 0 0; font-style: italic; }
+        .dxdb-sublab { font-size: 0.72rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin: 10px 0 5px; }
+        .dxdb-prose { font-size: 0.9rem; margin: 4px 0 0; color: var(--text); }
+      </style>
+
+      <div class="section-header">
+        <h2>Diagnoses Database</h2>
+        <p class="section-sub">Sortable, filterable reference of psychiatric diagnoses. Click any row for key characteristics, DSM-5-TR / ICD-10-CM / ICD-11 codes, approved &amp; adjunct medications, recommended therapy, epidemiology, differentials, red flags, and rating scales.</p>
+      </div>
+
+      <div class="dxdb-note"><strong>Reference for clinical judgment.</strong> Epidemiologic figures are approximate and codes/FDA indications should be confirmed against a current source. Not a substitute for clinical assessment.</div>
+
+      <div class="table-controls">
+        <input id="dxdb-search" type="search" placeholder="Search diagnoses, codes, medications, symptoms..." autocomplete="off">
+        <select id="dxdb-cat"><option value="">All Categories</option></select>
+        <span class="dxdb-count" id="dxdb-count"></span>
+      </div>
+
+      <div class="dxdb-hscroll" id="dxdb-hscroll" aria-hidden="true"><div id="dxdb-hspacer"></div></div>
+
+      <div class="table-wrapper" id="dxdb-wrap">
+        <table id="dxdb-table">
+          <thead>
+            <tr>
+              <th class="sortable dxdb-col-dx" data-col="name">Diagnosis <span class="sort-arrow"></span></th>
+              <th class="sortable dxdb-col-cat" data-col="cat">Category <span class="sort-arrow"></span></th>
+              <th class="sortable dxdb-col-code" data-col="icd10">ICD-10-CM / DSM-5-TR <span class="sort-arrow"></span></th>
+              <th class="sortable dxdb-col-icd11" data-col="icd11">ICD-11 <span class="sort-arrow"></span></th>
+              <th class="dxdb-col-prev">Prevalence</th>
+              <th class="sortable dxdb-col-onset" data-col="onset">Age of Onset <span class="sort-arrow"></span></th>
+              <th class="dxdb-col-rx">First-line Treatment</th>
+            </tr>
+          </thead>
+          <tbody id="dxdb-tbody"></tbody>
+        </table>
+      </div>
+      <div class="dxdb-empty" id="dxdb-empty" style="display:none">No diagnoses match your search.</div>
+
+      <div class="dxdb-overlay" id="dxdb-overlay">
+        <div class="dxdb-modal" id="dxdb-modal" role="dialog" aria-modal="true"></div>
+      </div>
     </section>
 
     <!-- ── P450 Interactions ────────────────────────────── -->
@@ -13134,6 +13259,8 @@
   <script defer src="js/routes.js?v=20260719d"></script>
   <script defer src="js/bhi-references.js?v=20260726b"></script>
   <script defer src="js/app.js?v=20260819a"></script>
+  <script defer src="js/diagnoses-data.js?v=20260819a"></script>
+  <script defer src="js/diagnoses-page.js?v=20260819a"></script>
   <script defer src="js/glossary-data.js?v=20260719d"></script>
   <script defer src="js/glossary-page.js?v=20260719d"></script>
   <script defer src="js/search.js?v=20260722c"></script>
