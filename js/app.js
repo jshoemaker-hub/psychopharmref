@@ -375,7 +375,7 @@ function getColor(receptor) {
 /* ── Navigation ─────────────────────────────────────────────────────────── */
 // Map each section to its parent group
 const SECTION_GROUP = {
-  'drug-table': 'psychopharm',
+  'drug-table': 'psychopharm', 'p450': 'psychopharm',
   'receptor-binding': 'psychopharm', 'glossary': 'psychopharm', 'pk-curves': 'psychopharm',
   'similar-meds': 'psychopharm', 'complementary-meds': 'psychopharm',
   'psychiatry-glossary': 'glossary',

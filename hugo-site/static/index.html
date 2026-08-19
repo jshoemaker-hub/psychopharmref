@@ -112,6 +112,7 @@
         <ul class="nav-sub">
           <li class="nav-sub-divider">References</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="drug-table">Drug Database</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="p450">P450 Interactions</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="glossary">Receptor Glossary</a></li>
 
           <li class="nav-sub-divider">Tools</li>
@@ -762,6 +763,55 @@
         </table>
       </div>
 
+    </section>
+
+    <!-- ── P450 Interactions ────────────────────────────── -->
+    <section id="p450" class="section">
+      <div class="section-header">
+        <h2>P450 Interactions</h2>
+        <p class="section-sub">CYP enzyme interactions for all medications. S = Substrate &bull; Inhibitor strength shown in color &bull; Ind = Inducer</p>
+      </div>
+
+      <div class="p450-legend">
+        <span class="legend-item"><span class="badge badge-substrate">S</span> Substrate</span>
+        <span class="legend-item"><span class="badge badge-strong">Inh-S</span> Strong Inhibitor</span>
+        <span class="legend-item"><span class="badge badge-moderate">Inh-M</span> Moderate Inhibitor</span>
+        <span class="legend-item"><span class="badge badge-weak">Inh-W</span> Weak Inhibitor</span>
+        <span class="legend-item"><span class="badge badge-inducer">Ind</span> Inducer</span>
+      </div>
+
+      <div class="p450-filter">
+        <label>Filter by category:
+          <select id="p450-category">
+            <option value="">All</option>
+            <option value="Antidepressant">Antidepressants</option>
+            <option value="Antipsychotic">Antipsychotics</option>
+            <option value="Mood Stabilizer">Mood Stabilizers</option>
+            <option value="Sleep">Sleep</option>
+            <option value="Anxiolytic">Anxiolytics</option>
+            <option value="Stimulant">Stimulants</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="p450-table">
+          <thead>
+            <tr>
+              <th>Drug</th>
+              <th>Class</th>
+              <th>CYP1A2</th>
+              <th>CYP2B6</th>
+              <th>CYP2C9</th>
+              <th>CYP2C19</th>
+              <th>CYP2D6</th>
+              <th>CYP3A4</th>
+            </tr>
+          </thead>
+          <tbody id="p450-tbody"></tbody>
+        </table>
+      </div>
     </section>
 
     <!-- ── Receptor Binding ──────────────────────────────────────────────── -->
@@ -13083,7 +13133,7 @@
   <script defer src="js/data.js?v=20260801b"></script>
   <script defer src="js/routes.js?v=20260719d"></script>
   <script defer src="js/bhi-references.js?v=20260726b"></script>
-  <script defer src="js/app.js?v=20260806a"></script>
+  <script defer src="js/app.js?v=20260819a"></script>
   <script defer src="js/glossary-data.js?v=20260719d"></script>
   <script defer src="js/glossary-page.js?v=20260719d"></script>
   <script defer src="js/search.js?v=20260722c"></script>
