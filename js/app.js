@@ -806,6 +806,72 @@ function initQuickSearch() {
   });
 }
 
+/* ── Drug-card visual scales (tolerability) & CYP450 fingerprint ─────────── */
+const DX_TIER_POS = { none: '7%', minimal: '30%', low: '52%', moderate: '74%', high: '93%' };
+function dxScaleRow(label, tier, title) {
+  if (!tier) return '';
+  const t = String(tier).toLowerCase();
+  const pos = DX_TIER_POS[t] || '52%';
+  const name = t.charAt(0).toUpperCase() + t.slice(1);
+  const titleAttr = title ? ` title="${title}"` : '';
+  return `<div class="dx-scale" data-tier="${t}" style="--v:${pos}">
+      <span class="dx-scale-label"${titleAttr}>${label}</span>
+      <span class="dx-scale-track"><span class="dx-scale-marker"></span></span>
+      <span class="dx-scale-tier">${name}</span>
+    </div>`;
+}
+function effectsSectionHTML(drug) {
+  const e = drug.effects;
+  if (!e) return '';
+  const rows = [
+    dxScaleRow('Weight gain', e.weight),
+    dxScaleRow('Sedation', e.sedation),
+    dxScaleRow('Anticholinergic', e.antichol, 'Dry mouth, constipation, urinary retention, blurred vision'),
+    dxScaleRow('Sexual', e.sexual, 'Libido, arousal, and orgasm dysfunction'),
+    dxScaleRow('QTc effect', e.qt)
+  ].filter(Boolean).join('');
+  if (!rows) return '';
+  return `<div class="modal-section">
+      <h4>Tolerability Profile</h4>
+      <div class="dx-scales">${rows}</div>
+      <div class="dx-scale-ends"><span><em>Lower</em><em>Higher</em></span></div>
+      <div class="dx-scale-note">Relative, dose- and patient-dependent estimates; QTc risk is further modified by serum electrolytes, interacting medications, and cardiac history.</div>
+      <div class="dx-scale-src">Tiers synthesized from the Maudsley Guidelines (14th ed.), Stahl&rsquo;s Essential Psychopharmacology (5th ed.), Leucht 2013, Huhn 2019, Cipriani 2018, FDA labeling &amp; CredibleMeds.</div>
+      ${e.review ? '<div class="dx-review-flag">&#9888; Investigator-assigned estimates &mdash; pending clinical review.</div>' : ''}
+    </div>`;
+}
+function cypFingerprintHTML(p450) {
+  if (!p450) return '<span style="color:var(--text-muted)">No significant P450 interactions</span>';
+  const sub = new Set(p450.substrate || []);
+  const inh = p450.inhibits || {};
+  const ind = new Set(p450.induces || []);
+  const rows = P450_ENZYMES.filter(e => sub.has(e) || inh[e] || ind.has(e));
+  if (!rows.length) return '<span style="color:var(--text-muted)">No significant P450 interactions</span>';
+  const none = '<div class="cypfp-cell" title="None">&mdash;</div>';
+  const subCell = on => on ? '<div class="cypfp-cell cypfp-cell--sub" title="Substrate">&#10003;</div>' : none;
+  const indCell = on => on ? '<div class="cypfp-cell cypfp-cell--ind" title="Inducer">&#10003;</div>' : none;
+  const inhCell = v => {
+    if (!v) return none;
+    const letter = v === 'strong' ? 'S' : v === 'moderate' ? 'M' : 'W';
+    const cap = v.charAt(0).toUpperCase() + v.slice(1);
+    return `<div class="cypfp-cell cypfp-cell--${v}" title="${cap} inhibitor">${letter}</div>`;
+  };
+  const body = rows.map(e =>
+    `<div class="cypfp-enz">${e.replace('CYP', '')}</div>${subCell(sub.has(e))}${inhCell(inh[e])}${indCell(ind.has(e))}`
+  ).join('');
+  return `<div class="cypfp">
+      <div></div><div class="cypfp-col">Substrate</div><div class="cypfp-col">Inhibitor</div><div class="cypfp-col">Inducer</div>
+      ${body}
+    </div>
+    <div class="cypfp-legend">
+      <span class="cypfp-key"><span class="cypfp-swatch cypfp-swatch--sub"></span>Substrate</span>
+      <span class="cypfp-key"><span class="cypfp-swatch cypfp-swatch--strong"></span>S&middot;strong</span>
+      <span class="cypfp-key"><span class="cypfp-swatch cypfp-swatch--moderate"></span>M&middot;mod</span>
+      <span class="cypfp-key"><span class="cypfp-swatch cypfp-swatch--weak"></span>W&middot;weak inhib.</span>
+      <span class="cypfp-key"><span class="cypfp-swatch cypfp-swatch--ind"></span>Inducer</span>
+    </div>`;
+}
+
 /* ── Drug Modal ─────────────────────────────────────────────────────────── */
 function openDrugModal(id) {
   const drug = MEDICATIONS.find(m => m.id === id);
@@ -813,15 +879,6 @@ function openDrugModal(id) {
 
   const modal  = document.getElementById('drug-modal');
   const body   = document.getElementById('modal-body');
-
-  const p450Lines = P450_ENZYMES.map(e => {
-    const parts = [];
-    if (drug.p450.substrate?.includes(e)) parts.push('<span class="badge badge-substrate">Substrate</span>');
-    if (drug.p450.inhibits?.[e])  parts.push(`<span class="badge badge-${drug.p450.inhibits[e]}">Inhibitor (${drug.p450.inhibits[e]})</span>`);
-    if (drug.p450.induces?.includes(e)) parts.push('<span class="badge badge-inducer">Inducer</span>');
-    if (!parts.length) return '';
-    return `<div style="margin-bottom:4px"><strong>${e}:</strong> ${parts.join(' ')}</div>`;
-  }).filter(Boolean).join('') || '<span style="color:var(--text-muted)">No significant P450 interactions</span>';
 
   const dev  = drug.development;
   const dose = drug.dosing;
@@ -866,9 +923,11 @@ function openDrugModal(id) {
       </div>
     </div>
 
+    ${effectsSectionHTML(drug)}
+
     <div class="modal-section">
       <h4>P450 Interactions</h4>
-      ${p450Lines}
+      ${cypFingerprintHTML(drug.p450)}
     </div>
 
     <div class="modal-section">

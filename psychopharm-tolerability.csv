@@ -1,0 +1,55 @@
+# PsychoPharmRef relative tolerability tiers (none<minimal<low<moderate<high). Clinician-reviewed 2026-08-20.
+# Caveat: relative, dose- and patient-dependent estimates; QTc risk further modified by electrolytes, interacting meds, and cardiac history. Not a substitute for full prescribing information.
+# Sources: Maudsley Prescribing Guidelines 14e (2021); Stahl Essential Psychopharmacology 5e & Prescriber's Guide 7e (2021); Leucht Lancet 2013;382:951-962; Huhn Lancet 2019;394:939-951; Cipriani Lancet 2018;391:1357-1366; FDA labeling (DailyMed); CredibleMeds QTdrugs List. See psychopharm-tolerability-SOURCES.md.
+drug,brand,class,weight_gain,sedation,sexual,anticholinergic,qtc
+Gepirone,Exxua,Azapirone,minimal,minimal,minimal,minimal,moderate
+Dextromethorphan/Bupropion,Auvelity,Combination,minimal,low,low,minimal,minimal
+Chlorpromazine,Thorazine,FGA,moderate,high,moderate,moderate,moderate
+Fluphenazine,Prolixin,FGA,low,low,moderate,low,low
+Haloperidol,Haldol,FGA,low,low,moderate,minimal,moderate
+Loxapine,Loxitane,FGA,low,moderate,low,low,low
+Molindone,Moban,FGA,minimal,low,low,minimal,minimal
+Perphenazine,Trilafon,FGA,low,low,moderate,low,low
+Pimozide,Orap,FGA,low,low,moderate,low,high
+Thioridazine,Mellaril,FGA,moderate,high,high,high,high
+Thiothixene,Navane,FGA,low,low,moderate,low,low
+Trifluoperazine,Stelazine,FGA,low,low,moderate,low,low
+Phenelzine,Nardil,MAOI,moderate,moderate,high,low,low
+Tranylcypromine,Parnate,MAOI,low,minimal,moderate,low,low
+Bupropion,Wellbutrin,NDRI,minimal,minimal,minimal,minimal,minimal
+Esketamine,Spravato,NMDA Antagonist,minimal,moderate,minimal,minimal,minimal
+Mirtazapine,Remeron,NaSSA,high,high,minimal,low,low
+Brexanolone,Zulresso,Neuroactive Steroid,none,high,none,none,minimal
+Zuranolone,Zurzuvae,Neuroactive Steroid,minimal,high,minimal,minimal,minimal
+Trazodone,Desyrel,SARI,low,high,low,minimal,moderate
+Aripiprazole,Abilify,SGA,low,minimal,minimal,minimal,minimal
+Asenapine,Saphris,SGA,low,moderate,low,minimal,low
+Brexpiprazole,Rexulti,SGA,low,low,minimal,minimal,minimal
+Cariprazine,Vraylar,SGA,low,minimal,minimal,minimal,minimal
+Clozapine,Clozaril,SGA,high,high,low,high,moderate
+Iloperidone,Fanapt,SGA,moderate,moderate,moderate,minimal,high
+Lumateperone,Caplyta,SGA,minimal,low,minimal,minimal,minimal
+Lurasidone,Latuda,SGA,minimal,low,minimal,minimal,minimal
+Olanzapine,Zyprexa,SGA,high,high,low,moderate,low
+Paliperidone,Invega,SGA,moderate,low,high,minimal,low
+Pimavanserin,Nuplazid,SGA,minimal,minimal,none,minimal,moderate
+Quetiapine,Seroquel,SGA,moderate,high,minimal,low,moderate
+Risperidone,Risperdal,SGA,moderate,low,high,minimal,low
+Ziprasidone,Geodon,SGA,minimal,moderate,low,minimal,high
+Desvenlafaxine,Pristiq,SNRI,low,low,moderate,minimal,minimal
+Duloxetine,Cymbalta,SNRI,low,low,moderate,low,minimal
+Levomilnacipran,Fetzima,SNRI,minimal,low,moderate,minimal,minimal
+Milnacipran,Savella,SNRI,minimal,low,moderate,low,minimal
+Venlafaxine,Effexor,SNRI,low,low,high,minimal,low
+Citalopram,Celexa,SSRI,low,low,high,minimal,moderate
+Escitalopram,Lexapro,SSRI,low,low,high,minimal,low
+Fluoxetine,Prozac,SSRI,minimal,minimal,high,minimal,minimal
+Fluvoxamine,Luvox,SSRI,low,moderate,high,minimal,low
+Paroxetine,Paxil,SSRI,moderate,moderate,high,moderate,low
+Sertraline,Zoloft,SSRI,low,low,high,minimal,minimal
+Vilazodone,Viibryd,SSRI/5HT1A,minimal,low,low,minimal,minimal
+Vortioxetine,Trintellix,SSRI/5HT1A,minimal,minimal,low,minimal,minimal
+Amitriptyline,Elavil,TCA,high,high,moderate,high,high
+Doxepin,Sinequan / Silenor,TCA,moderate,high,low,high,moderate
+Imipramine,Tofranil,TCA,moderate,moderate,moderate,high,high
+Nortriptyline,Pamelor,TCA,moderate,moderate,low,moderate,moderate
