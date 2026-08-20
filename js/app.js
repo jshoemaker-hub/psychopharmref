@@ -785,7 +785,7 @@ function initQuickSearch() {
     ).slice(0, 8);
 
     dropdown.innerHTML = matches.map(m => `
-      <div class="search-result-item" data-id="${m.id}">
+      <div class="search-result-item" data-id="${m.id}" data-drug-id="${m.id}">
         <div class="drug-name">${m.name} <span class="brand-name">(${m.brandName})</span></div>
         <div class="drug-meta">${m.class} &bull; ${m.category}</div>
       </div>
@@ -871,6 +871,102 @@ function cypFingerprintHTML(p450) {
       <span class="cypfp-key"><span class="cypfp-swatch cypfp-swatch--ind"></span>Inducer</span>
     </div>`;
 }
+
+/* ── Drug hover preview card ─────────────────────────────────────────────── */
+function cypHoverSummary(p450) {
+  if (!p450) return 'No significant CYP450 interactions';
+  const inh = p450.inhibits || {};
+  const strong = Object.keys(inh).filter(k => inh[k] === 'strong').map(s => s.replace('CYP', ''));
+  const mod    = Object.keys(inh).filter(k => inh[k] === 'moderate').map(s => s.replace('CYP', ''));
+  const ind    = (p450.induces || []).map(s => s.replace('CYP', ''));
+  const sub    = (p450.substrate || []).map(s => s.replace('CYP', ''));
+  const parts = [];
+  if (strong.length) parts.push(`strong inhibitor of ${strong.join(', ')}`);
+  if (mod.length)    parts.push(`moderate inhibitor of ${mod.join(', ')}`);
+  if (ind.length)    parts.push(`inducer of ${ind.join(', ')}`);
+  if (!parts.length && sub.length) parts.push(`substrate of ${sub.slice(0, 3).join(', ')}`);
+  return parts.length ? parts.join('; ') : 'No significant CYP450 interactions';
+}
+function drugHovercardHTML(drug) {
+  const e = drug.effects;
+  const scales = e ? [
+    dxScaleRow('Weight gain', e.weight),
+    dxScaleRow('Sedation', e.sedation),
+    dxScaleRow('Antichol.', e.antichol),
+    dxScaleRow('Sexual', e.sexual),
+    dxScaleRow('QTc effect', e.qt)
+  ].filter(Boolean).join('') : '';
+  return `
+    <div class="dhc-head">
+      <span class="dhc-name">${drug.name}</span>
+      <span class="dhc-sub">${drug.brandName ? drug.brandName + ' &bull; ' : ''}${classBadge(drug.class)}</span>
+    </div>
+    ${scales ? `<div class="dx-scales dhc-scales">${scales}</div>` : ''}
+    <div class="dhc-cyp"><span class="dhc-cyp-lab">CYP450</span> ${cypHoverSummary(drug.p450)}</div>
+    <div class="dhc-hint">Click for full details</div>`;
+}
+(function initDrugHovercards() {
+  // Hover previews are a pointer-only enhancement; tap still opens the modal on touch.
+  if (typeof window === 'undefined' || !window.matchMedia || !window.matchMedia('(hover: hover)').matches) return;
+  let cardEl = null, anchor = null, showTimer = null, hideTimer = null;
+
+  function ensureCard() {
+    if (cardEl) return cardEl;
+    cardEl = document.createElement('div');
+    cardEl.className = 'drug-hovercard';
+    cardEl.style.display = 'none';
+    cardEl.addEventListener('mouseenter', () => clearTimeout(hideTimer));
+    cardEl.addEventListener('mouseleave', scheduleHide);
+    document.body.appendChild(cardEl);
+    return cardEl;
+  }
+  function position(a) {
+    const r = a.getBoundingClientRect();
+    cardEl.style.display = 'block';
+    cardEl.style.visibility = 'hidden';
+    const cw = cardEl.offsetWidth, ch = cardEl.offsetHeight, gap = 8;
+    let left = r.left;
+    let top  = r.bottom + gap;
+    if (left + cw > window.innerWidth - 8) left = window.innerWidth - 8 - cw;
+    if (left < 8) left = 8;
+    if (top + ch > window.innerHeight - 8 && r.top - gap - ch > 8) top = r.top - gap - ch;
+    cardEl.style.left = Math.round(left) + 'px';
+    cardEl.style.top  = Math.round(top) + 'px';
+    cardEl.style.visibility = 'visible';
+  }
+  function show(a) {
+    const id = a.dataset.drugId;
+    const drug = MEDICATIONS.find(m => m.id === id);
+    if (!drug) return;
+    ensureCard();
+    cardEl.innerHTML = drugHovercardHTML(drug);
+    anchor = a;
+    position(a);
+  }
+  function scheduleHide() {
+    clearTimeout(showTimer);
+    hideTimer = setTimeout(() => { if (cardEl) cardEl.style.display = 'none'; anchor = null; }, 140);
+  }
+  document.addEventListener('pointerover', e => {
+    if (e.pointerType === 'touch') return;
+    const a = e.target.closest('[data-drug-id]');
+    if (!a) return;
+    if (a === anchor) { clearTimeout(hideTimer); return; }
+    clearTimeout(showTimer); clearTimeout(hideTimer);
+    showTimer = setTimeout(() => show(a), 220);
+  });
+  document.addEventListener('pointerout', e => {
+    const a = e.target.closest('[data-drug-id]');
+    if (!a) return;
+    const to = e.relatedTarget;
+    if (to && (a.contains(to) || (cardEl && cardEl.contains(to)))) return;
+    clearTimeout(showTimer);
+    scheduleHide();
+  });
+  window.addEventListener('scroll', () => {
+    if (cardEl && cardEl.style.display !== 'none') { clearTimeout(showTimer); if (cardEl) cardEl.style.display = 'none'; anchor = null; }
+  }, true);
+})();
 
 /* ── Drug Modal ─────────────────────────────────────────────────────────── */
 function openDrugModal(id) {
@@ -1435,7 +1531,7 @@ function renderDrugTable() {
       : `<span class="no-badge">—</span>`;
 
     return `<tr>
-      <td class="drug-name-cell" style="cursor:pointer" onclick="openDrugModal('${m.id}')">${m.name} <span class="brand-name">(${m.brandName})</span></td>
+      <td class="drug-name-cell" data-drug-id="${m.id}" style="cursor:pointer" onclick="openDrugModal('${m.id}')">${m.name} <span class="brand-name">(${m.brandName})</span></td>
       ${seCell}
       <td>${classBadge(m.class)}</td>
       <td class="col-bhi">${bhiCell}</td>
@@ -1552,7 +1648,7 @@ function renderP450Table(catFilter = '') {
 
   tbody.innerHTML = meds.map(m => `
     <tr>
-      <td class="drug-name-cell" style="cursor:pointer;white-space:nowrap" onclick="openDrugModal('${m.id}')">${m.name} <span class="brand-name">(${m.brandName})</span></td>
+      <td class="drug-name-cell" data-drug-id="${m.id}" style="cursor:pointer;white-space:nowrap" onclick="openDrugModal('${m.id}')">${m.name} <span class="brand-name">(${m.brandName})</span></td>
       <td>${classBadge(m.class)}</td>
       ${P450_ENZYMES.map(e => `<td class="p450-cell">${p450Cell(m, e)}</td>`).join('')}
     </tr>
@@ -2512,7 +2608,7 @@ function renderQTPsychList() {
   const qtMeds = MEDICATIONS.filter(m => m.qtInterval);
   if (!qtMeds.length) { container.innerHTML = '<p style="color:var(--text-muted)">No medications flagged for QT prolongation in the database.</p>'; return; }
   container.innerHTML = qtMeds.map(m => `
-    <div class="qt-psych-item" onclick="openDrugModal('${m.id}')" title="Click to open drug detail">
+    <div class="qt-psych-item" data-drug-id="${m.id}" onclick="openDrugModal('${m.id}')" title="Click to open drug detail">
       <div class="qt-psych-name">${m.name}</div>
       <div class="qt-psych-sub">${m.brandName} &bull; ${m.class}</div>
       ${classBadge(m.class)}
