@@ -494,44 +494,172 @@
     moderate: ['#f2e3d6', '#9a4d1b'],
     high:     ['#f5ddd9', '#a83526']
   };
+  function stripTags(s) { return String(s).replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim(); }
+
+  /* shared data gatherers (mirror the on-screen renderers) */
+  function classBullets(list) {
+    var classes = []; list.forEach(function (d) { if (classes.indexOf(d.cls) === -1) classes.push(d.cls); });
+    var b = [], seen = {};
+    classes.forEach(function (c) { var cs = CLASS_SAFETY[c]; if (cs) cs.clin.forEach(function (x) { if (!seen[x]) { seen[x] = 1; b.push(x); } }); });
+    if (!b.length) b = ['Review full prescribing information for agent-specific warnings and monitoring.'];
+    return { classes: classes, bullets: b };
+  }
+  function patSafetyRows(list) {
+    var keys = [], seen = {};
+    list.forEach(function (d) { var cs = CLASS_SAFETY[d.cls]; if (cs) cs.pt.forEach(function (k) { if (!seen[k]) { seen[k] = 1; keys.push(k); } }); });
+    if (keys.indexOf('mood') === -1) keys.unshift('mood');
+    return keys.map(function (k) { return PT_SAFETY[k]; }).filter(Boolean);
+  }
+  function patLikertRows(list) {
+    var rows = [];
+    var useCur = list.every(function (d) { return CURATED[d.generic] && CURATED[d.generic].ptLikert; });
+    if (useCur) {
+      var labels = CURATED[list[0].generic].ptLikert.map(function (r) { return r[0]; });
+      labels.forEach(function (lab, ri) {
+        var sub = '';
+        var vals = list.map(function (d) {
+          var arr = CURATED[d.generic].ptLikert;
+          var row = arr[ri] && arr[ri][0] === lab ? arr[ri] : arr.filter(function (r) { return r[0] === lab; })[0];
+          if (row && row[1]) sub = row[1];
+          return row ? row[2] : 1;
+        });
+        rows.push({ label: lab, sub: sub, vals: vals });
+      });
+    } else {
+      PAT_DERIVED.forEach(function (ax) { rows.push({ label: ax[1], sub: '', vals: list.map(function (d) { return TIER_LEVEL[d[ax[0]]]; }) }); });
+    }
+    return rows;
+  }
+  function goodItems(list) {
+    var set = CURATED_SETS[setKey(list)];
+    return (set && set.good) ? set.good : [
+      'Because they work in similar ways, medicines in the same family often share side effects.',
+      'Many early side effects ease over the first few weeks.',
+      'Some people simply tolerate one option better than another — that’s normal.'
+    ];
+  }
+  function pctStr(v) { return v === null ? 'reported' : (v >= 30 ? '~' : '') + v + '%'; }
+
+  /* ── build BOTH export payloads: full rich HTML + linearized plain text ── */
   function buildExport(list) {
     var title = list.map(function (d) { return d.brand + ' (' + d.generic + ')'; }).join(' vs ');
-    var caveat = 'Relative tolerability tiers (none < minimal < low < moderate < high) within the psychotropic landscape — dose- and patient-dependent estimates, not a substitute for full prescribing information. Source: PsychoPharmRef, ' + ToolUtilsDate() + '.';
+    var set = CURATED_SETS[setKey(list)];
+    var cb = classBullets(list);
+    var FF = 'font-family:Segoe UI,Arial,sans-serif';
+    var H = 'style="' + FF + ';font-size:13px;font-weight:bold;text-transform:uppercase;letter-spacing:.04em;color:#4a4030;margin:16px 0 5px"';
+    var TB = 'style="border-collapse:collapse;' + FF + ';font-size:13px;margin:3px 0"';
+    var THs = 'border:1px solid #cfc8ba;background:#ece6db;padding:5px 9px';
+    var TDs = 'border:1px solid #cfc8ba;padding:5px 9px';
+    var UL = 'style="' + FF + ';font-size:13px;margin:3px 0 6px 20px;padding:0"';
 
-    // rich HTML table (inline styles survive a paste into Word / Docs / email)
-    var h = '<table style="border-collapse:collapse;font-family:Segoe UI,Arial,sans-serif;font-size:13px">';
-    h += '<caption style="text-align:left;font-weight:bold;font-size:14px;padding:0 0 6px">Medication Tolerability Comparison — ' + esc(title) + '</caption>';
-    h += '<tr><th style="text-align:left;border:1px solid #cfc8ba;background:#ece6db;padding:6px 10px">Effect</th>';
-    list.forEach(function (d) {
-      h += '<th style="border:1px solid #cfc8ba;background:#ece6db;padding:6px 10px">' + esc(d.brand) +
-        '<br><span style="font-weight:normal;color:#6b6050;font-size:11px">' + esc(d.generic) + '</span></th>';
-    });
-    h += '</tr>';
-    TOL_ROWS.forEach(function (ax) {
-      h += '<tr><td style="border:1px solid #cfc8ba;padding:6px 10px;font-weight:600">' + ax[1] +
-        (ax[2] ? ' <span style="color:#6b6050;font-weight:normal">(' + ax[2] + ')</span>' : '') + '</td>';
-      list.forEach(function (d) {
-        var t = d[ax[0]], tint = TIER_TINT[t] || TIER_TINT.none;
-        h += '<td style="border:1px solid #cfc8ba;padding:6px 10px;text-align:center;background:' + tint[0] +
-          ';color:' + tint[1] + ';font-weight:600">' + TIER_LABEL[t] + '</td>';
+    var h = ['<div style="' + FF + ';color:#231e14;max-width:720px">'];
+    var t = [];
+    h.push('<div style="font-size:15px;font-weight:bold;margin:0 0 2px">Medication Tolerability Comparison</div>');
+    h.push('<div style="font-size:13px;color:#4a4030;margin:0 0 2px">' + esc(title) + '</div>');
+    h.push('<div style="font-size:11px;color:#6b6050;margin:0 0 4px">PsychoPharmRef · ' + esc(ToolUtilsDate()) + '</div>');
+    t.push('MEDICATION TOLERABILITY COMPARISON');
+    t.push(title);
+    t.push('PsychoPharmRef · ' + ToolUtilsDate());
+    if (set && set.vsNote) { h.push('<div style="font-size:12px;color:#6b6050;font-style:italic;margin:0 0 4px">' + esc(set.vsNote) + '</div>'); t.push(set.vsNote); }
+
+    // AT A GLANCE (curated)
+    var factFields = [['indication', 'FDA indication'], ['mechanism', 'Mechanism lean'], ['dosing', 'Dosing'], ['formulation', 'Formulation'], ['firstLine', 'First-line?'], ['boxed', 'Boxed warning']];
+    if (list.some(function (d) { return CURATED[d.generic]; })) {
+      h.push('<div ' + H + '>At a glance</div><table ' + TB + '><tr><th style="' + THs + ';text-align:left"></th>' +
+        list.map(function (d) { return '<th style="' + THs + '">' + esc(d.brand) + '</th>'; }).join('') + '</tr>');
+      t.push(''); t.push('AT A GLANCE');
+      factFields.forEach(function (f) {
+        h.push('<tr><td style="' + TDs + ';font-weight:600;color:#6b6050">' + f[1] + '</td>' +
+          list.map(function (d) { var c = CURATED[d.generic]; return '<td style="' + TDs + '">' + esc(c && c[f[0]] ? c[f[0]] : '—') + '</td>'; }).join('') + '</tr>');
+        t.push('- ' + f[1] + ' — ' + list.map(function (d) { var c = CURATED[d.generic]; return d.brand + ': ' + (c && c[f[0]] ? c[f[0]] : '—'); }).join('; '));
       });
-      h += '</tr>';
-    });
-    h += '</table>';
-    h += '<p style="font-family:Segoe UI,Arial,sans-serif;font-size:11px;color:#6b6050;max-width:640px;margin:8px 0 0">' + esc(caveat) + '</p>';
+      h.push('</table>');
+    }
 
-    // Markdown table (plain-text fallback — renders on GitHub, Obsidian, etc.)
-    var m = [];
-    m.push('**Medication Tolerability Comparison — ' + title + '**');
-    m.push('');
-    m.push('| Effect | ' + list.map(function (d) { return d.brand + ' (' + d.generic + ')'; }).join(' | ') + ' |');
-    m.push('|' + Array(list.length + 2).join('---|'));
+    // TOLERABILITY TIERS
+    h.push('<div ' + H + '>Relative tolerability tiers <span style="font-weight:normal;text-transform:none;color:#6b6050">(none &lt; minimal &lt; low &lt; moderate &lt; high)</span></div>');
+    h.push('<table ' + TB + '><tr><th style="' + THs + ';text-align:left">Effect</th>' +
+      list.map(function (d) { return '<th style="' + THs + '">' + esc(d.brand) + '<br><span style="font-weight:normal;color:#6b6050;font-size:11px">' + esc(d.generic) + '</span></th>'; }).join('') + '</tr>');
+    t.push(''); t.push('RELATIVE TOLERABILITY TIERS (none < minimal < low < moderate < high)');
     TOL_ROWS.forEach(function (ax) {
-      m.push('| ' + ax[1] + ' | ' + list.map(function (d) { return TIER_LABEL[d[ax[0]]]; }).join(' | ') + ' |');
+      h.push('<tr><td style="' + TDs + ';font-weight:600">' + ax[1] + (ax[2] ? ' <span style="color:#6b6050;font-weight:normal">(' + ax[2] + ')</span>' : '') + '</td>' +
+        list.map(function (d) { var tint = TIER_TINT[d[ax[0]]] || TIER_TINT.none; return '<td style="' + TDs + ';text-align:center;background:' + tint[0] + ';color:' + tint[1] + ';font-weight:600">' + TIER_LABEL[d[ax[0]]] + '</td>'; }).join('') + '</tr>');
+      t.push('- ' + ax[1] + (ax[2] ? ' (' + ax[2] + ')' : '') + ' — ' + list.map(function (d) { return d.brand + ': ' + TIER_LABEL[d[ax[0]]]; }).join('; '));
     });
-    m.push('');
-    m.push('_' + caveat + '_');
-    return { html: h, md: m.join('\n') };
+    h.push('</table>');
+
+    // DOCUMENTED INCIDENCE (curated)
+    var withInc = list.filter(function (d) { return CURATED[d.generic] && CURATED[d.generic].incidence; });
+    if (withInc.length) {
+      var labels = [], seenL = {};
+      withInc.forEach(function (d) { CURATED[d.generic].incidence.forEach(function (r) { if (!seenL[r[0]]) { seenL[r[0]] = 1; labels.push(r[0]); } }); });
+      h.push('<div ' + H + '>Documented incidence <span style="font-weight:normal;text-transform:none;color:#6b6050">(FDA labeling; different trial populations)</span></div>');
+      h.push('<table ' + TB + '><tr><th style="' + THs + ';text-align:left">Effect</th>' + withInc.map(function (d) { return '<th style="' + THs + '">' + esc(d.brand) + '</th>'; }).join('') + '</tr>');
+      t.push(''); t.push('DOCUMENTED INCIDENCE (FDA labeling; different trial populations — read as within-drug signals)');
+      labels.forEach(function (lab) {
+        h.push('<tr><td style="' + TDs + '">' + esc(lab) + '</td>' + withInc.map(function (d) {
+          var found = null; CURATED[d.generic].incidence.forEach(function (r) { if (r[0] === lab) found = r; });
+          return '<td style="' + TDs + ';text-align:center">' + (found ? pctStr(found[1]) : '—') + '</td>';
+        }).join('') + '</tr>');
+        t.push('- ' + lab + ' — ' + withInc.map(function (d) { var found = null; CURATED[d.generic].incidence.forEach(function (r) { if (r[0] === lab) found = r; }); return d.brand + ': ' + (found ? pctStr(found[1]) : '—'); }).join('; '));
+      });
+      h.push('</table>');
+    }
+
+    // CLASS SAFETY
+    h.push('<div ' + H + '>Class safety &amp; monitoring <span style="font-weight:normal;text-transform:none;color:#6b6050">(' + esc(cb.classes.join(' · ')) + ')</span></div><ul ' + UL + '>');
+    t.push(''); t.push('CLASS SAFETY & MONITORING (' + cb.classes.join(' · ') + ')');
+    cb.bullets.forEach(function (b) { h.push('<li>' + esc(b) + '</li>'); t.push('- ' + b); });
+    h.push('</ul>');
+
+    // PEARLS (curated set)
+    if (set && set.pearls) {
+      h.push('<div ' + H + '>Clinical pearls</div><ul ' + UL + '>');
+      t.push(''); t.push('CLINICAL PEARLS');
+      set.pearls.forEach(function (p) { h.push('<li>' + p + '</li>'); t.push('- ' + stripTags(p)); });
+      h.push('</ul>');
+    }
+
+    // PATIENT SUMMARY
+    h.push('<div ' + H + '>Patient summary — plain language</div>');
+    t.push(''); t.push('PATIENT SUMMARY — PLAIN LANGUAGE');
+    h.push('<table ' + TB + '><tr><th style="' + THs + ';text-align:left"></th>' + list.map(function (d) { return '<th style="' + THs + '">' + esc(d.brand) + '</th>'; }).join('') + '</tr>');
+    [['ptFor', 'What it treats', function (d) { return esc(d.cls) + ' medication — ask your doctor about its role for you'; }],
+     ['ptTake', 'How you take it', function () { return 'As prescribed by your doctor'; }]].forEach(function (f) {
+      h.push('<tr><td style="' + TDs + ';font-weight:600;color:#6b6050">' + f[1] + '</td>' + list.map(function (d) { var c = CURATED[d.generic]; return '<td style="' + TDs + '">' + esc(c && c[f[0]] ? c[f[0]] : f[2](d)) + '</td>'; }).join('') + '</tr>');
+      t.push('- ' + f[1] + ' — ' + list.map(function (d) { var c = CURATED[d.generic]; return d.brand + ': ' + (c && c[f[0]] ? c[f[0]] : stripTags(f[2](d))); }).join('; '));
+    });
+    h.push('</table>');
+
+    var likRows = patLikertRows(list);
+    h.push('<div style="' + FF + ';font-size:12px;font-weight:600;margin:8px 0 2px">How likely are common effects? (uncommon → common)</div>');
+    h.push('<table ' + TB + '><tr><th style="' + THs + ';text-align:left">Effect</th>' + list.map(function (d) { return '<th style="' + THs + '">' + esc(d.brand) + '</th>'; }).join('') + '</tr>');
+    t.push(''); t.push('How likely are common effects? (uncommon → common)');
+    likRows.forEach(function (r) {
+      h.push('<tr><td style="' + TDs + ';font-weight:600">' + esc(r.label) + (r.sub ? ' <span style="color:#6b6050;font-weight:normal">(' + esc(r.sub) + ')</span>' : '') + '</td>' +
+        r.vals.map(function (v) { return '<td style="' + TDs + ';text-align:center">' + LEVEL_WORD[v] + '</td>'; }).join('') + '</tr>');
+      t.push('- ' + r.label + (r.sub ? ' (' + r.sub + ')' : '') + ' — ' + list.map(function (d, i) { return d.brand + ': ' + LEVEL_WORD[r.vals[i]]; }).join('; '));
+    });
+    h.push('</table>');
+
+    h.push('<div style="' + FF + ';font-size:12px;font-weight:600;margin:10px 0 2px">Good to know</div><ul ' + UL + '>');
+    t.push(''); t.push('Good to know:');
+    goodItems(list).forEach(function (g) { h.push('<li>' + esc(g) + '</li>'); t.push('- ' + stripTags(g)); });
+    h.push('</ul>');
+
+    h.push('<div style="' + FF + ';font-size:12px;font-weight:600;margin:10px 0 2px">Important safety — tell your doctor promptly if you notice</div><ul ' + UL + '>');
+    t.push(''); t.push('Important safety — tell your doctor promptly if you notice:');
+    patSafetyRows(list).forEach(function (s) { h.push('<li>' + s[1] + '</li>'); t.push('- ' + stripTags(s[1])); });
+    h.push('</ul>');
+
+    var disc = 'This is not medical advice — for discussion only. Talk with your doctor about your full health history, other medicines, and goals before starting, stopping, or changing any medication.';
+    h.push('<div style="' + FF + ';font-size:11px;color:#6b6050;background:#f2efe8;border-left:3px solid #8b6914;padding:8px 12px;margin:12px 0 4px">' + esc(disc) + '</div>');
+    h.push('<div style="' + FF + ';font-size:10.5px;color:#6b6050;margin:6px 0 0">Relative, dose- and patient-dependent tolerability tiers — PsychoPharmRef clinician-reviewed dataset (2026-08-20), synthesizing Maudsley 14e, Stahl 5e/PG7e, Cipriani 2018, and FDA labeling. Incidence per FDA labeling. Not a substitute for full prescribing information.</div>');
+    h.push('</div>');
+    t.push(''); t.push(disc);
+    t.push('Source: PsychoPharmRef relative tolerability dataset (2026-08-20). Not a substitute for full prescribing information.');
+
+    return { html: h.join(''), text: t.join('\n') };
   }
   function ToolUtilsDate() {
     if (window.ToolUtils && ToolUtils.dateStamp) return ToolUtils.dateStamp();
@@ -572,34 +700,42 @@
     btn.textContent = msg;
     setTimeout(function () { btn.textContent = btn.dataset.label; }, 1900);
   }
+  function copyPlain(txt, btn, msg) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(function () { flash(btn, msg); });
+    } else {
+      var ta = document.createElement('textarea'); ta.value = txt;
+      ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); flash(btn, msg); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+  }
   var copyBtn = document.getElementById('tc-copy');
   if (copyBtn) {
     copyBtn.addEventListener('click', function () {
       var list = selected();
       if (list.length < 2) return;
       var ex = buildExport(list);
-      function plain() {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(ex.md).then(function () { flash(copyBtn, 'Copied as Markdown'); });
-        } else {
-          var ta = document.createElement('textarea'); ta.value = ex.md;
-          ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
-          try { document.execCommand('copy'); flash(copyBtn, 'Copied as Markdown'); } catch (e) {}
-          document.body.removeChild(ta);
-        }
-      }
       try {
         if (navigator.clipboard && window.ClipboardItem) {
           var item = new ClipboardItem({
             'text/html': new Blob([ex.html], { type: 'text/html' }),
-            'text/plain': new Blob([ex.md], { type: 'text/plain' })
+            'text/plain': new Blob([ex.text], { type: 'text/plain' })
           });
           navigator.clipboard.write([item]).then(
             function () { flash(copyBtn, 'Copied — paste as a table'); },
-            plain
+            function () { copyPlain(ex.text, copyBtn, 'Copied as text'); }
           );
-        } else { plain(); }
-      } catch (e) { plain(); }
+        } else { copyPlain(ex.text, copyBtn, 'Copied as text'); }
+      } catch (e) { copyPlain(ex.text, copyBtn, 'Copied as text'); }
+    });
+  }
+  var epicBtn = document.getElementById('tc-copy-epic');
+  if (epicBtn) {
+    epicBtn.addEventListener('click', function () {
+      var list = selected();
+      if (list.length < 2) return;
+      copyPlain(buildExport(list).text, epicBtn, 'Copied plain text');
     });
   }
 
