@@ -505,7 +505,7 @@ function switchSection(id, skipGroupExpand) {
       } else if (toolId === 'complementary-meds' && !window.CombinationStrategies) {
         // Complementary-meds needs curated overlays before the tool computes scores.
         var deps = [
-          'js/combination-strategies.js?v=20260719d',
+          'js/combination-strategies.js?v=20260820a',
           'js/receptor-actions.js?v=20260719d',
           'js/mechanism-tiers.js?v=20260719d',
           'js/pair-safety.js?v=20260719d',
@@ -549,7 +549,7 @@ function switchSection(id, skipGroupExpand) {
         });
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20260802a';
+        script.src = 'js/tools/' + toolId + '.js?v=20260820a';
         document.body.appendChild(script);
       }
     }
@@ -836,7 +836,7 @@ function effectsSectionHTML(drug) {
       <div class="dx-scales">${rows}</div>
       <div class="dx-scale-ends"><span><em>Lower</em><em>Higher</em></span></div>
       <div class="dx-scale-note">Relative, dose- and patient-dependent estimates; QTc risk is further modified by serum electrolytes, interacting medications, and cardiac history.</div>
-      <div class="dx-scale-src">Tiers synthesized from the Maudsley Guidelines (14th ed.), Stahl&rsquo;s Essential Psychopharmacology (5th ed.), Leucht 2013, Huhn 2019, Cipriani 2018, FDA labeling &amp; CredibleMeds.</div>
+      <div class="dx-scale-src">Tiers are PsychoPharmRef clinician-reviewed estimates synthesized from peer-reviewed meta-analyses, FDA labeling via DailyMed, and QT risk sources such as CredibleMeds.</div>
       ${e.review ? '<div class="dx-review-flag">&#9888; Investigator-assigned estimates &mdash; pending clinical review.</div>' : ''}
     </div>`;
 }

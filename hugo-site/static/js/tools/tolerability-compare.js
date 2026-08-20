@@ -486,25 +486,52 @@
     return '<div class="tc-foot"><b>Tolerability tiers:</b> PsychoPharmRef clinician-reviewed dataset (2026-08-20) synthesizing Maudsley Prescribing Guidelines 14e (2021), Stahl’s Essential Psychopharmacology 5e &amp; Prescriber’s Guide 7e (2021), Cipriani <em>Lancet</em> 2018, and FDA labeling via DailyMed; QTc per CredibleMeds. <b>Incidence figures:</b> FDA product labeling (DailyMed). Relative, dose- and patient-dependent estimates — not a substitute for full prescribing information.</div>';
   }
 
-  /* ── plain-text summary for the copy button ────────────────────────────── */
-  function summaryText(list) {
-    var lines = [];
-    lines.push('MEDICATION TOLERABILITY COMPARISON');
-    lines.push(list.map(function (d) { return d.brand + ' (' + d.generic + ')'; }).join('  vs  '));
-    lines.push(ToolUtilsDate());
-    lines.push('');
-    lines.push('Relative tolerability tiers (none<minimal<low<moderate<high):');
-    var head = 'Effect'.padEnd(16);
-    list.forEach(function (d) { head += (d.brand).padEnd(16); });
-    lines.push(head);
-    TOL_ROWS.forEach(function (ax) {
-      var line = ax[1].padEnd(16);
-      list.forEach(function (d) { line += (TIER_LABEL[d[ax[0]]]).padEnd(16); });
-      lines.push(line);
+  /* ── build export payloads (rich HTML table + Markdown fallback) ────────── */
+  var TIER_TINT = {
+    none:     ['#efece5', '#6b6050'],
+    minimal:  ['#e4ede0', '#2f5d20'],
+    low:      ['#efe7d3', '#7a5c12'],
+    moderate: ['#f2e3d6', '#9a4d1b'],
+    high:     ['#f5ddd9', '#a83526']
+  };
+  function buildExport(list) {
+    var title = list.map(function (d) { return d.brand + ' (' + d.generic + ')'; }).join(' vs ');
+    var caveat = 'Relative tolerability tiers (none < minimal < low < moderate < high) within the psychotropic landscape — dose- and patient-dependent estimates, not a substitute for full prescribing information. Source: PsychoPharmRef, ' + ToolUtilsDate() + '.';
+
+    // rich HTML table (inline styles survive a paste into Word / Docs / email)
+    var h = '<table style="border-collapse:collapse;font-family:Segoe UI,Arial,sans-serif;font-size:13px">';
+    h += '<caption style="text-align:left;font-weight:bold;font-size:14px;padding:0 0 6px">Medication Tolerability Comparison — ' + esc(title) + '</caption>';
+    h += '<tr><th style="text-align:left;border:1px solid #cfc8ba;background:#ece6db;padding:6px 10px">Effect</th>';
+    list.forEach(function (d) {
+      h += '<th style="border:1px solid #cfc8ba;background:#ece6db;padding:6px 10px">' + esc(d.brand) +
+        '<br><span style="font-weight:normal;color:#6b6050;font-size:11px">' + esc(d.generic) + '</span></th>';
     });
-    lines.push('');
-    lines.push('Relative estimates, dose- and patient-dependent. Not a substitute for full prescribing information.');
-    return lines.join('\n');
+    h += '</tr>';
+    TOL_ROWS.forEach(function (ax) {
+      h += '<tr><td style="border:1px solid #cfc8ba;padding:6px 10px;font-weight:600">' + ax[1] +
+        (ax[2] ? ' <span style="color:#6b6050;font-weight:normal">(' + ax[2] + ')</span>' : '') + '</td>';
+      list.forEach(function (d) {
+        var t = d[ax[0]], tint = TIER_TINT[t] || TIER_TINT.none;
+        h += '<td style="border:1px solid #cfc8ba;padding:6px 10px;text-align:center;background:' + tint[0] +
+          ';color:' + tint[1] + ';font-weight:600">' + TIER_LABEL[t] + '</td>';
+      });
+      h += '</tr>';
+    });
+    h += '</table>';
+    h += '<p style="font-family:Segoe UI,Arial,sans-serif;font-size:11px;color:#6b6050;max-width:640px;margin:8px 0 0">' + esc(caveat) + '</p>';
+
+    // Markdown table (plain-text fallback — renders on GitHub, Obsidian, etc.)
+    var m = [];
+    m.push('**Medication Tolerability Comparison — ' + title + '**');
+    m.push('');
+    m.push('| Effect | ' + list.map(function (d) { return d.brand + ' (' + d.generic + ')'; }).join(' | ') + ' |');
+    m.push('|' + Array(list.length + 2).join('---|'));
+    TOL_ROWS.forEach(function (ax) {
+      m.push('| ' + ax[1] + ' | ' + list.map(function (d) { return TIER_LABEL[d[ax[0]]]; }).join(' | ') + ' |');
+    });
+    m.push('');
+    m.push('_' + caveat + '_');
+    return { html: h, md: m.join('\n') };
   }
   function ToolUtilsDate() {
     if (window.ToolUtils && ToolUtils.dateStamp) return ToolUtils.dateStamp();
@@ -540,14 +567,39 @@
       render();
     });
   });
+  function flash(btn, msg) {
+    if (!btn.dataset.label) btn.dataset.label = btn.textContent;
+    btn.textContent = msg;
+    setTimeout(function () { btn.textContent = btn.dataset.label; }, 1900);
+  }
   var copyBtn = document.getElementById('tc-copy');
   if (copyBtn) {
     copyBtn.addEventListener('click', function () {
       var list = selected();
       if (list.length < 2) return;
-      var txt = summaryText(list);
-      if (window.ToolUtils && ToolUtils.copyWithButton) ToolUtils.copyWithButton(txt, copyBtn);
-      else { navigator.clipboard.writeText(txt); var o = copyBtn.textContent; copyBtn.textContent = 'Copied!'; setTimeout(function () { copyBtn.textContent = o; }, 2000); }
+      var ex = buildExport(list);
+      function plain() {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(ex.md).then(function () { flash(copyBtn, 'Copied as Markdown'); });
+        } else {
+          var ta = document.createElement('textarea'); ta.value = ex.md;
+          ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy'); flash(copyBtn, 'Copied as Markdown'); } catch (e) {}
+          document.body.removeChild(ta);
+        }
+      }
+      try {
+        if (navigator.clipboard && window.ClipboardItem) {
+          var item = new ClipboardItem({
+            'text/html': new Blob([ex.html], { type: 'text/html' }),
+            'text/plain': new Blob([ex.md], { type: 'text/plain' })
+          });
+          navigator.clipboard.write([item]).then(
+            function () { flash(copyBtn, 'Copied — paste as a table'); },
+            plain
+          );
+        } else { plain(); }
+      } catch (e) { plain(); }
     });
   }
 
