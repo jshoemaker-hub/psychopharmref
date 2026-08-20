@@ -379,7 +379,7 @@ const SECTION_GROUP = {
   'receptor-binding': 'psychopharm', 'glossary': 'psychopharm', 'pk-curves': 'psychopharm',
   'similar-meds': 'psychopharm', 'complementary-meds': 'psychopharm',
   'psychiatry-glossary': 'glossary',
-  'qt-risk': 'tools', 'refill-calendar': 'tools', 'med-compare': 'psychopharm', 'med-taper': 'tools',
+  'qt-risk': 'tools', 'refill-calendar': 'tools', 'med-compare': 'psychopharm', 'tolerability-compare': 'psychopharm', 'med-taper': 'tools',
   'cdr-tool': 'tools', 'slums-tool': 'tools', 'asd-tool': 'tools', 'aq-tool': 'tools',
   'adl-tool': 'tools', 'ace-tool': 'tools', 'asrs-tool': 'tools', 'cidi-tool': 'tools', 'ymrs-tool': 'tools',
   'phq9-tool': 'tools', 'gad7-tool': 'tools',

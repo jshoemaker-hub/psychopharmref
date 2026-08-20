@@ -117,7 +117,7 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="glossary">Receptor Glossary</a></li>
 
           <li class="nav-sub-divider">Tools</li>
-          <li><a href="#" class="nav-link nav-sub-link" data-section="receptor-binding" data-sections="receptor-binding med-compare">Binding &amp; Comparison</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="receptor-binding" data-sections="receptor-binding med-compare tolerability-compare">Binding &amp; Comparison</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="similar-meds" data-sections="similar-meds complementary-meds">Similar &amp; Complementary Meds</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="fda-indication">FDA Indication Search</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="pk-curves">PK Curves</a></li>
@@ -944,6 +944,7 @@
       <div class="psy-tabs" role="tablist">
         <button type="button" class="psy-tab active" data-target="receptor-binding">Binding Profiles</button>
         <button type="button" class="psy-tab" data-target="med-compare">Med Comparison</button>
+        <button type="button" class="psy-tab" data-target="tolerability-compare">Tolerability</button>
       </div>
       <div class="section-header">
         <h2>Receptor Binding Profiles</h2>
@@ -3327,6 +3328,7 @@
       <div class="psy-tabs" role="tablist">
         <button type="button" class="psy-tab" data-target="receptor-binding">Binding Profiles</button>
         <button type="button" class="psy-tab active" data-target="med-compare">Med Comparison</button>
+        <button type="button" class="psy-tab" data-target="tolerability-compare">Tolerability</button>
       </div>
       <div class="section-header">
         <h2>Medication Comparison</h2>
@@ -3389,6 +3391,49 @@
         </section>
       </div>
     </section>
+
+    <!-- ── Tolerability Comparison ──────────────────────────── -->
+    <section id="tolerability-compare" data-lazy-tool="tolerability-compare" class="section">
+      <div class="psy-tabs" role="tablist">
+        <button type="button" class="psy-tab" data-target="receptor-binding">Binding Profiles</button>
+        <button type="button" class="psy-tab" data-target="med-compare">Med Comparison</button>
+        <button type="button" class="psy-tab active" data-target="tolerability-compare">Tolerability</button>
+      </div>
+      <div class="section-header">
+        <h2>Tolerability Comparison</h2>
+        <p class="section-sub">Compare the relative side-effect profiles of two to four medications side by side, then switch between a clinician view (full tiers, incidence, class safety) and a simplified patient handout view for chairside discussion.</p>
+      </div>
+
+      <div class="mt-warning">
+        <strong>Relative, not absolute.</strong> Tolerability tiers are dose- and patient-dependent estimates of burden <em>relative to other psychotropics</em>, synthesized from prescribing guidelines, network meta-analyses, and FDA labeling &mdash; not incidence rates for an individual. QTc risk is further modified by electrolytes, interacting drugs, and cardiac history. Use alongside full prescribing information and clinical judgment.
+      </div>
+
+      <div class="ref-card tc-setup">
+        <h3 class="ref-card-title">&#9878; Select medications</h3>
+        <div class="tc-count-row">
+          <span class="tc-count-label">Number to compare:</span>
+          <div class="tc-count-pills">
+            <button class="tc-count-btn active" data-n="2">2</button>
+            <button class="tc-count-btn" data-n="3">3</button>
+            <button class="tc-count-btn" data-n="4">4</button>
+          </div>
+        </div>
+        <div class="tc-slots" id="tc-slots"></div>
+      </div>
+
+      <div class="tc-toggle-row">
+        <div>
+          <div class="tc-seg" role="tablist" aria-label="Choose results view">
+            <button role="tab" data-view="clin" aria-selected="true">Clinician view</button>
+            <button role="tab" data-view="pat" aria-selected="false">Patient view</button>
+          </div>
+          <div class="tc-desc" id="tc-hint" style="margin:8px 0 0">Clinician view &mdash; full 5-domain tolerability, incidence data, and class safety.</div>
+        </div>
+        <button class="tc-copy-btn" id="tc-copy" type="button">Copy summary</button>
+      </div>
+
+      <div id="tc-body"></div>
+    </section><!-- end tolerability-compare -->
 
     <!-- ── Find Similar Medications ──────────────────────────────────────── -->
     <section id="similar-meds" data-lazy-tool="similar-meds" class="section">
@@ -13258,11 +13303,11 @@
   <script defer src="js/data.js?v=20260801b"></script>
   <script defer src="js/routes.js?v=20260719d"></script>
   <script defer src="js/bhi-references.js?v=20260726b"></script>
-  <script defer src="js/app.js?v=20260819a"></script>
+  <script defer src="js/app.js?v=20260820a"></script>
   <script defer src="js/diagnoses-data.js?v=20260819a"></script>
   <script defer src="js/diagnoses-page.js?v=20260819a"></script>
   <script defer src="js/glossary-data.js?v=20260719d"></script>
   <script defer src="js/glossary-page.js?v=20260719d"></script>
-  <script defer src="js/search.js?v=20260722c"></script>
+  <script defer src="js/search.js?v=20260820a"></script>
 </body>
 </html>
