@@ -46,7 +46,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
 
-  <link rel="stylesheet" href="css/styles.css?v=20260806b">
+  <link rel="stylesheet" href="css/styles.css?v=20260825a">
   <link rel="canonical" href="https://psychopharmref.com/">
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
@@ -601,80 +601,269 @@
         </div>
       </div>
 
-      <!-- 8 navigation tiles, one per main section -->
-      <div class="overview-cards overview-cards--topics home-tiles">
-        <div class="info-card info-card--topic">
-          <button class="ic-title-btn" onclick="switchSection('drug-table')"><span class="ic-icon">&#128138;</span><span>Psychopharmacology</span></button>
-          <p>Searchable drug database, CYP450 interaction checker, receptor binding profiles, and PK curve comparisons.</p>
-          <div class="ic-sub-links">
-            <button class="btn-sub" onclick="switchSection('drug-table')">Drug Database</button>
-            <button class="btn-sub" onclick="switchSection('p450')">P450 Interactions</button>
-            <button class="btn-sub" onclick="switchSection('receptor-binding')">Binding Profiles</button>
-            <button class="btn-sub" onclick="switchSection('pk-curves')">PK Curves</button>
+      <!-- Task-based router: 7 core clinical tasks, each an expandable pathway -->
+      <div class="tr-eyebrow">Start with your task</div>
+      <p class="tr-lead">Seven core clinical tasks. Open one to follow its pathway to the right tool, scale, or chapter.</p>
+      <div class="tr-grid">
+        <details class="tr-card" open>
+          <summary class="tr-head">
+            <span class="tr-num">1</span>
+            <span class="tr-icon" aria-hidden="true">&#128269;</span>
+            <span class="tr-titlewrap"><span class="tr-title">Diagnostic assessment</span>
+              <span class="tr-desc">Screen, confirm, and characterize a psychiatric diagnosis.</span></span>
+            <span class="tr-chev" aria-hidden="true">&#9660;</span>
+          </summary>
+          <div class="tr-pathway">
+            <div class="tr-step"><span class="tr-dot">1</span>
+              <div class="tr-step-label">Screen by presentation</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('phq9-tool');return false;" class="tr-chip">PHQ-9</a>
+              <a href="#" onclick="switchSection('gad7-tool');return false;" class="tr-chip">GAD-7</a>
+              <a href="#" onclick="switchSection('cidi-tool');return false;" class="tr-chip">CIDI bipolar screen</a>
+              <a href="#" onclick="switchSection('asrs-tool');return false;" class="tr-chip">Adult ADHD (ASRS)</a>
+              <a href="#" onclick="switchSection('pcl5-tool');return false;" class="tr-chip">PCL-5 (PTSD)</a>
+              <a href="#" onclick="switchSection('ybocs-tool');return false;" class="tr-chip">Y-BOCS (OCD)</a>
+              <a href="#" onclick="switchSection('msibpd-tool');return false;" class="tr-chip">MSI-BPD (borderline)</a>
+              <a href="#" onclick="switchSection('aq-tool');return false;" class="tr-chip">Autism (AQ)</a>
+              <a href="#" onclick="switchSection('sud-tool');return false;" class="tr-chip">DSM-5-TR SUD</a>
+              <a href="#" onclick="switchSection('slums-tool');return false;" class="tr-chip">SLUMS / CDR (cognitive)</a>
+              </div>
+            </div>
+            <div class="tr-step"><span class="tr-dot">2</span>
+              <div class="tr-step-label">Confirm &amp; grade severity</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('panss-tool');return false;" class="tr-chip">PANSS</a>
+              <a href="#" onclick="switchSection('ymrs-tool');return false;" class="tr-chip">YMRS (mania)</a>
+              <a href="#" onclick="switchSection('bprs-tool');return false;" class="tr-chip">BPRS</a>
+              <a href="#" onclick="switchSection('bfcrs-tool');return false;" class="tr-chip">Catatonia (BFCRS)</a>
+              <a href="#" onclick="switchSection('adl-tool');return false;" class="tr-chip">ADL / IADL</a>
+              </div>
+            </div>
+            <div class="tr-step"><span class="tr-dot">3</span>
+              <div class="tr-step-label">Reference &amp; framing</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('diagnoses-db');return false;" class="tr-chip">Diagnoses Database</a>
+              <a href="#" onclick="switchSection('psychiatry-glossary');return false;" class="tr-chip">Psychiatry Glossary</a>
+              <a href="#" onclick="switchSection('blog-index');return false;" class="tr-chip">Chapters</a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="info-card info-card--topic">
-          <button class="ic-title-btn" onclick="switchSection('psychiatry-glossary')"><span class="ic-icon">&#128214;</span><span>Glossary</span></button>
-          <p>Psychiatry-specific language with concise definitions, cross-links, and tool/chapter references.</p>
-          <div class="ic-sub-links">
-            <button class="btn-sub" onclick="switchSection('psychiatry-glossary')">All Terms</button>
-            <button class="btn-sub" onclick="switchSection('psychiatry-glossary');window.glossarySetCategory&amp;&amp;window.glossarySetCategory('Phenomenology')">Phenomenology</button>
-            <button class="btn-sub" onclick="switchSection('psychiatry-glossary');window.glossarySetCategory&amp;&amp;window.glossarySetCategory('Eponyms &amp; Syndromes')">Eponyms</button>
+        </details>
+        <details class="tr-card">
+          <summary class="tr-head">
+            <span class="tr-num">2</span>
+            <span class="tr-icon" aria-hidden="true">&#9888;</span>
+            <span class="tr-titlewrap"><span class="tr-title">Risk assessment</span>
+              <span class="tr-desc">Identify acute safety, medical, and treatment-emergent risk.</span></span>
+            <span class="tr-chev" aria-hidden="true">&#9660;</span>
+          </summary>
+          <div class="tr-pathway">
+            <div class="tr-step"><span class="tr-dot">1</span>
+              <div class="tr-step-label">Safety &amp; capacity</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('suicide-risk-tools');return false;" class="tr-chip">Suicide Risk Tools</a>
+              <a href="#" onclick="switchSection('ace-tool');return false;" class="tr-chip">Aid to Capacity Eval (ACE)</a>
+              </div>
+            </div>
+            <div class="tr-step"><span class="tr-dot">2</span>
+              <div class="tr-step-label">Cardiac &amp; medical risk</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('qt-risk');return false;" class="tr-chip">QT Prolongation Risk</a>
+              <a href="#" onclick="switchSection('frailty-tool');return false;" class="tr-chip">SMI Medical Frailty</a>
+              </div>
+            </div>
+            <div class="tr-step"><span class="tr-dot">3</span>
+              <div class="tr-step-label">Withdrawal &amp; intoxication</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('ciwa-tool');return false;" class="tr-chip">CIWA-Ar (alcohol)</a>
+              <a href="#" onclick="switchSection('cows-tool');return false;" class="tr-chip">COWS (opioid)</a>
+              </div>
+            </div>
+            <div class="tr-step"><span class="tr-dot">4</span>
+              <div class="tr-step-label">Movement &amp; emergent effects</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('aims-tool');return false;" class="tr-chip">AIMS (tardive dyskinesia)</a>
+              <a href="/blog/serotonin-syndrome-nms/" class="tr-chip tr-chip--chapter">Serotonin Syndrome &amp; NMS</a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="info-card info-card--topic">
-          <button class="ic-title-btn" onclick="switchSection('qt-risk')"><span class="ic-icon">&#128295;</span><span>Clinical Tools</span></button>
-          <p>Interactive decision support and 25+ validated rating scales, each with a copy-to-EMR report.</p>
-          <div class="ic-sub-links">
-            <button class="btn-sub" onclick="switchSection('qt-risk')">QT Risk</button>
-            <button class="btn-sub" onclick="switchSection('phq9-tool')">PHQ-9</button>
-            <button class="btn-sub" onclick="switchSection('panss-tool')">PANSS</button>
-            <button class="btn-sub" onclick="switchSection('suicide-risk-tools')">Suicide Risk</button>
+        </details>
+        <details class="tr-card">
+          <summary class="tr-head">
+            <span class="tr-num">3</span>
+            <span class="tr-icon" aria-hidden="true">&#128200;</span>
+            <span class="tr-titlewrap"><span class="tr-title">Follow-up assessment</span>
+              <span class="tr-desc">Track response and monitor safety over time.</span></span>
+            <span class="tr-chev" aria-hidden="true">&#9660;</span>
+          </summary>
+          <div class="tr-pathway">
+            <div class="tr-step"><span class="tr-dot">1</span>
+              <div class="tr-step-label">Re-measure symptom trajectory</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('phq9-tool');return false;" class="tr-chip">PHQ-9</a>
+              <a href="#" onclick="switchSection('gad7-tool');return false;" class="tr-chip">GAD-7</a>
+              <a href="#" onclick="switchSection('panss-tool');return false;" class="tr-chip">PANSS</a>
+              <a href="#" onclick="switchSection('ymrs-tool');return false;" class="tr-chip">YMRS</a>
+              <a href="#" onclick="switchSection('ybocs-tool');return false;" class="tr-chip">Y-BOCS</a>
+              </div>
+            </div>
+            <div class="tr-step"><span class="tr-dot">2</span>
+              <div class="tr-step-label">Monitor treatment safety</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('aims-tool');return false;" class="tr-chip">AIMS surveillance</a>
+              <a href="#" onclick="switchSection('print-forms');return false;" class="tr-chip">Metabolic monitoring forms</a>
+              <a href="#" onclick="switchSection('frailty-tool');return false;" class="tr-chip">SMI Frailty</a>
+              </div>
+            </div>
+            <div class="tr-step"><span class="tr-dot">3</span>
+              <div class="tr-step-label">Adherence &amp; function</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('refill-calendar');return false;" class="tr-chip">Refill Calendar</a>
+              <a href="#" onclick="switchSection('adl-tool');return false;" class="tr-chip">ADL / IADL</a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="info-card info-card--topic">
-          <button class="ic-title-btn" onclick="switchSection('print-forms')"><span class="ic-icon">&#128424;</span><span>Printable Forms</span></button>
-          <p>Print-ready documentation, medication safety, and screening forms for the clinic and chart.</p>
-          <div class="ic-sub-links">
-            <button class="btn-sub" onclick="switchSection('print-forms')">All Forms</button>
-            <button class="btn-sub" onclick="ppGoSection('print-forms','pf-cat-docs')">Documentation</button>
-            <button class="btn-sub" onclick="ppGoSection('print-forms','pf-cat-meds')">Medication Safety</button>
+        </details>
+        <details class="tr-card">
+          <summary class="tr-head">
+            <span class="tr-num">4</span>
+            <span class="tr-icon" aria-hidden="true">&#127919;</span>
+            <span class="tr-titlewrap"><span class="tr-title">Choosing appropriate therapies</span>
+              <span class="tr-desc">Select an evidence-based first-line treatment.</span></span>
+            <span class="tr-chev" aria-hidden="true">&#9660;</span>
+          </summary>
+          <div class="tr-pathway">
+            <div class="tr-step"><span class="tr-dot">1</span>
+              <div class="tr-step-label">Match to indication</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('fda-indication');return false;" class="tr-chip">FDA Indication Search</a>
+              <a href="#" onclick="switchSection('drug-table');return false;" class="tr-chip">Drug Database</a>
+              <a href="#" onclick="switchSection('diagnoses-db');return false;" class="tr-chip">Diagnoses Database</a>
+              </div>
+            </div>
+            <div class="tr-step"><span class="tr-dot">2</span>
+              <div class="tr-step-label">Compare candidate options</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('med-compare');return false;" class="tr-chip">Medication Comparison</a>
+              <a href="#" onclick="switchSection('similar-meds');return false;" class="tr-chip">Find Similar Medications</a>
+              <a href="#" onclick="switchSection('receptor-binding');return false;" class="tr-chip">Receptor Binding</a>
+              </div>
+            </div>
+            <div class="tr-step"><span class="tr-dot">3</span>
+              <div class="tr-step-label">Plan the start (drug + non-drug)</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('med-taper');return false;" class="tr-chip">Taper / Start Scheduler</a>
+              <a href="#" onclick="switchSection('therapy-course');return false;" class="tr-chip">Therapy Courses</a>
+              <a href="#" onclick="switchSection('handouts');return false;" class="tr-chip">Patient Handouts</a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="info-card info-card--topic">
-          <button class="ic-title-btn" onclick="switchSection('handouts')"><span class="ic-icon">&#128196;</span><span>Handouts</span></button>
-          <p>Plain-language patient education on therapy skills, diagnoses, and psychiatric medications.</p>
-          <div class="ic-sub-links">
-            <button class="btn-sub" onclick="ppOpenHandouts('therapy')">Therapy Handouts</button>
-            <button class="btn-sub" onclick="ppOpenHandouts('medication')">Medication Ed.</button>
-            <button class="btn-sub" onclick="ppOpenHandouts('dementia')">Dementia Handouts</button>
+        </details>
+        <details class="tr-card">
+          <summary class="tr-head">
+            <span class="tr-num">5</span>
+            <span class="tr-icon" aria-hidden="true">&#9881;</span>
+            <span class="tr-titlewrap"><span class="tr-title">Refining therapeutic choices</span>
+              <span class="tr-desc">Optimize when the first choice falls short.</span></span>
+            <span class="tr-chev" aria-hidden="true">&#9660;</span>
+          </summary>
+          <div class="tr-pathway">
+            <div class="tr-step"><span class="tr-dot">1</span>
+              <div class="tr-step-label">Reassess response &amp; tolerability</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('tolerability-compare');return false;" class="tr-chip">Tolerability Comparison</a>
+              <a href="#" onclick="switchSection('med-compare');return false;" class="tr-chip">Medication Comparison</a>
+              </div>
+            </div>
+            <div class="tr-step"><span class="tr-dot">2</span>
+              <div class="tr-step-label">Switch, augment, or combine</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('complementary-meds');return false;" class="tr-chip">Find Complementary Meds</a>
+              <a href="#" onclick="switchSection('med-taper');return false;" class="tr-chip">Cross-taper (Taper / Start)</a>
+              <a href="#" onclick="switchSection('similar-meds');return false;" class="tr-chip">Find Similar Meds</a>
+              </div>
+            </div>
+            <div class="tr-step"><span class="tr-dot">3</span>
+              <div class="tr-step-label">Pharmacology-guided fine-tuning</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('pk-curves');return false;" class="tr-chip">PK Curves</a>
+              <a href="#" onclick="switchSection('receptor-binding');return false;" class="tr-chip">Receptor Binding</a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="info-card info-card--topic">
-          <button class="ic-title-btn" onclick="switchSection('cog-domains')"><span class="ic-icon">&#129504;</span><span>Neuroscience</span></button>
-          <p>Cognitive domains, classic neurocircuits, brain-region involvement, and a 3D brain explorer.</p>
-          <div class="ic-sub-links">
-            <button class="btn-sub" onclick="switchSection('cog-domains')">Cognitive Domains</button>
-            <button class="btn-sub" onclick="switchSection('neuro-circuits')">Circuits</button>
-            <button class="btn-sub" onclick="switchSection('brain-explorer')">3D Explorer</button><button class="btn-sub" onclick="switchSection('cell-types')">Cell Types</button>
+        </details>
+        <details class="tr-card">
+          <summary class="tr-head">
+            <span class="tr-num">6</span>
+            <span class="tr-icon" aria-hidden="true">&#128737;</span>
+            <span class="tr-titlewrap"><span class="tr-title">Managing therapeutic risks</span>
+              <span class="tr-desc">Anticipate and mitigate side effects and known hazards.</span></span>
+            <span class="tr-chev" aria-hidden="true">&#9660;</span>
+          </summary>
+          <div class="tr-pathway">
+            <div class="tr-step"><span class="tr-dot">1</span>
+              <div class="tr-step-label">Screen interactions</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('p450');return false;" class="tr-chip">P450 Interactions</a>
+              </div>
+            </div>
+            <div class="tr-step"><span class="tr-dot">2</span>
+              <div class="tr-step-label">Cardiac, movement &amp; metabolic</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('qt-risk');return false;" class="tr-chip">QT Risk Tool</a>
+              <a href="#" onclick="switchSection('aims-tool');return false;" class="tr-chip">AIMS</a>
+              <a href="#" onclick="switchSection('tolerability-compare');return false;" class="tr-chip">Tolerability Comparison</a>
+              <a href="#" onclick="switchSection('print-forms');return false;" class="tr-chip">Metabolic monitoring forms</a>
+              </div>
+            </div>
+            <div class="tr-step"><span class="tr-dot">3</span>
+              <div class="tr-step-label">Recognize serious reactions</div>
+              <div class="tr-chips">
+              <a href="/blog/serotonin-syndrome-nms/" class="tr-chip tr-chip--chapter">Serotonin Syndrome &amp; NMS</a>
+              <a href="#" onclick="switchSection('frailty-tool');return false;" class="tr-chip">SMI Frailty</a>
+              </div>
+            </div>
+            <div class="tr-step"><span class="tr-dot">4</span>
+              <div class="tr-step-label">Educate the patient</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('handouts');return false;" class="tr-chip">Medication Handouts</a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="info-card info-card--topic">
-          <button class="ic-title-btn" onclick="switchSection('blog-index')"><span class="ic-icon">&#9998;</span><span>Chapters</span></button>
-          <p>Evidence-based clinical commentary, pharmacology explainers, and case-based learning.</p>
-          <div class="ic-sub-links">
-            <button class="btn-sub" onclick="switchSection('blog-index')">All Chapters</button>
-            <a href="/blog/smoking-cessation/" class="btn-sub">Smoking Cessation</a>
-            <a href="/blog/alcohol-use-disorder/" class="btn-sub">Alcohol Use Disorder</a>
+        </details>
+        <details class="tr-card">
+          <summary class="tr-head">
+            <span class="tr-num">7</span>
+            <span class="tr-icon" aria-hidden="true">&#129516;</span>
+            <span class="tr-titlewrap"><span class="tr-title">Personalizing care</span>
+              <span class="tr-desc">Tailor treatment to the individual patient.</span></span>
+            <span class="tr-chev" aria-hidden="true">&#9660;</span>
+          </summary>
+          <div class="tr-pathway">
+            <div class="tr-step"><span class="tr-dot">1</span>
+              <div class="tr-step-label">Special populations</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('drug-table');return false;" class="tr-chip">Pregnancy / lactation (Drug DB)</a>
+              <a href="#" onclick="switchSection('drug-table');return false;" class="tr-chip">Renal / hepatic / geriatric (Drug DB)</a>
+              </div>
+            </div>
+            <div class="tr-step"><span class="tr-dot">2</span>
+              <div class="tr-step-label">Pharmacologic individualization</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('receptor-binding');return false;" class="tr-chip">Receptor Binding</a>
+              <a href="#" onclick="switchSection('pk-curves');return false;" class="tr-chip">PK Curves</a>
+              </div>
+            </div>
+            <div class="tr-step"><span class="tr-dot">3</span>
+              <div class="tr-step-label">History &amp; shared decisions</div>
+              <div class="tr-chips">
+              <a href="#" onclick="switchSection('med-history-tool');return false;" class="tr-chip">Medication History Form</a>
+              <a href="#" onclick="switchSection('handouts');return false;" class="tr-chip">Patient Handouts</a>
+              <a href="#" onclick="switchSection('psychiatry-glossary');return false;" class="tr-chip">Psychiatry Glossary</a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="info-card info-card--topic">
-          <button class="ic-title-btn" onclick="switchSection('question-bank')"><span class="ic-icon">&#127891;</span><span>QBank</span></button>
-          <p>Board-style practice questions with detailed explanations for exam prep and self-study.</p>
-          <div class="ic-sub-links">
-            <button class="btn-sub" onclick="switchSection('question-bank')">Question Bank</button>
-          </div>
-        </div>
+        </details>
       </div>
 
       <!-- Newsletter Sign-Up -->
