@@ -1229,6 +1229,9 @@ function bhiSectionHtml(s) {
 function bhiPlainText(id, ref) {
   // Plain-text version for pasting into the EMR note (no markup, EMR-safe).
   var lines = [];
+  lines.push('--------------------------------------------------');
+  lines.push('General information about ' + ref.generic + ' (' + ref.brand + ').');
+  lines.push('');
   lines.push(ref.generic + ' (' + ref.brand + ') — ' + ref.classLine);
   bhiSections(id, ref).forEach(function(s){
     lines.push('');
@@ -1248,7 +1251,37 @@ function bhiPlainText(id, ref) {
   });
   lines.push('');
   lines.push(bhiSourceParts(ref).prefix + ref.fdaLabel);
+  lines.push('--------------------------------------------------');
   return lines.join('\n');
+}
+
+function bhiRichHtml(id, ref) {
+  // Rich-text (HTML) version — EMRs that accept formatting render real bold
+  // labels/headers and horizontal rules; plain-text fields use bhiPlainText().
+  var out = [];
+  out.push('<hr>');
+  out.push('<p><b>General information about ' + bhiEsc(ref.generic) + ' (' + bhiEsc(ref.brand) + ').</b></p>');
+  out.push('<p><b>' + bhiEsc(ref.generic) + ' (' + bhiEsc(ref.brand) + ')</b> \u2014 ' + bhiEsc(ref.classLine) + '</p>');
+  bhiSections(id, ref).forEach(function(s) {
+    if (s.bbw) {
+      out.push('<p><b>\u26A0 FDA Black Box Warnings</b><br>' +
+        s.bbw.map(function(w) { return '&nbsp;&nbsp;\u2022 ' + bhiEsc(w); }).join('<br>') + '</p>');
+    } else if (s.lines) {
+      out.push('<p><b>' + bhiEsc(s.label) + ':</b><br>' +
+        s.lines.map(function(l) { return '&nbsp;&nbsp;' + bhiEsc(l); }).join('<br>') + '</p>');
+    } else if (s.se) {
+      out.push('<p><b>' + bhiEsc(s.label) + ':</b> ' +
+        bhiEsc(Object.keys(s.se).map(function(k) { return k + ': ' + s.se[k].join(', '); }).join('; ')) + '</p>');
+    } else if (s.chips) {
+      out.push('<p><b>' + bhiEsc(s.label) + ':</b> ' + bhiEsc(s.chips.join('; ')) + '</p>');
+    } else {
+      out.push('<p><b>' + bhiEsc(s.label) + ':</b> ' + bhiEsc(s.text) + '</p>');
+    }
+  });
+  var sp = bhiSourceParts(ref);
+  out.push('<p>' + bhiEsc(sp.prefix) + '<a href="' + bhiEsc(ref.fdaLabel) + '">' + bhiEsc(ref.fdaLabel) + '</a></p>');
+  out.push('<hr>');
+  return '<div>' + out.join('') + '</div>';
 }
 
 function openBhiCard(id) {
@@ -1269,14 +1302,14 @@ function openBhiCard(id) {
 
   var copyBtn = document.getElementById('bhi-copy-btn');
   copyBtn.addEventListener('click', function() {
-    bhiCopyToClipboard(bhiPlainText(id, ref), copyBtn);
+    bhiCopyToClipboard(bhiPlainText(id, ref), copyBtn, bhiRichHtml(id, ref));
   });
 
   document.getElementById('bhi-modal').classList.remove('hidden');
 }
 
 // Self-contained copy (ToolUtils is only lazy-loaded on tool pages, not here).
-function bhiCopyToClipboard(text, btn) {
+function bhiCopyToClipboard(text, btn, html) {
   var original = btn.textContent;
   function feedback(ok) {
     btn.textContent = ok ? 'Copied!' : 'Copy failed';
@@ -1299,11 +1332,29 @@ function bhiCopyToClipboard(text, btn) {
     document.body.removeChild(ta);
     return ok;
   }
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(function() { feedback(true); })
-      .catch(function() { feedback(legacy()); });
+  function writePlain() {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function() { feedback(true); })
+        .catch(function() { feedback(legacy()); });
+    } else {
+      feedback(legacy());
+    }
+  }
+  // Prefer copying rich text (real bold) + plain together: rich EMR note fields
+  // render the formatting, plain-text fields fall back to the clean text version.
+  if (html && navigator.clipboard && typeof navigator.clipboard.write === 'function' && typeof ClipboardItem !== 'undefined') {
+    try {
+      var item = new ClipboardItem({
+        'text/html':  new Blob([html], { type: 'text/html' }),
+        'text/plain': new Blob([text], { type: 'text/plain' })
+      });
+      navigator.clipboard.write([item]).then(function() { feedback(true); })
+        .catch(function() { writePlain(); });
+    } catch (e) {
+      writePlain();
+    }
   } else {
-    feedback(legacy());
+    writePlain();
   }
 }
 
