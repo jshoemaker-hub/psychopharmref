@@ -5251,3 +5251,12 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
   transition:border-color .14s, background .14s, color .14s;}
 .tr-chip:hover{border-color:var(--accent);background:#fff;color:var(--green);}
 .tr-chip--chapter{background:#f3eee2;border-style:dashed;}
+
+/* ── Chapters page: browse intro button (reuses tr- card system) ───────── */
+.ch-intro{text-align:center;margin:6px auto 26px;}
+.ch-browse-btn{display:inline-block;background:var(--accent);color:#fff;padding:12px 32px;
+  border-radius:8px;text-decoration:none;font-weight:600;font-size:15px;
+  transition:background .2s, box-shadow .2s;}
+.ch-browse-btn:hover{background:var(--green,var(--accent));box-shadow:0 6px 18px -8px rgba(35,30,20,.45);}
+#blog-index .tr-grid{margin-top:4px;}
+

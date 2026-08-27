@@ -561,6 +561,19 @@
       comorbid: ['Dementia', 'Multimorbidity', 'Polypharmacy']
     },
     {
+      id: 'alcohol-cognitive', name: 'Alcohol-Related Cognitive Disorders (Wernicke\u2013Korsakoff)', cat: 'neurocognitive',
+      desc: 'A spectrum of alcohol-related brain injury driven by thiamine (B1) deficiency and direct neurotoxicity: acute, reversible Wernicke encephalopathy (confusion, ophthalmoplegia, ataxia); the chronic amnestic Korsakoff syndrome (dense anterograde amnesia with confabulation); and a broader, partly reversible alcohol-related dementia.',
+      codes: { dsm: 'F10.26 / F10.96 (alcohol-induced major/mild NCD)', icd10: 'E51.2 (Wernicke); F10.26 (Korsakoff)', icd11: '6D72' },
+      meds: { first: ['High-dose parenteral thiamine (e.g., 500 mg IV three times daily for 2\u20133 days, then taper) \u2014 treat on clinical suspicion', 'Thiamine BEFORE any glucose/dextrose'], adjunct: ['Magnesium repletion and multivitamins', 'Treat alcohol use disorder (naltrexone, acamprosate); manage withdrawal safely'], note: 'No agent reliably reverses established Korsakoff amnesia; prevention via prophylactic parenteral thiamine in at-risk/withdrawing patients is essential.' },
+      therapy: ['Abstinence and nutritional rehabilitation', 'Cognitive rehabilitation; structured or supported living', 'Capacity and safety assessment'],
+      epi: { incidence: 'Wernicke encephalopathy frequently underdiagnosed (identified at autopsy in ~1\u20132% of general populations)', prevalence: 'Higher in chronic heavy alcohol use and malnutrition', mortality: 'Untreated Wernicke encephalopathy carries significant mortality; ~80% of survivors of untreated cases develop Korsakoff', onset: 'Wernicke acute (hours\u2013days); Korsakoff chronic; alcohol-related dementia insidious' },
+      ddx: ['Alzheimer disease and other dementias', 'Delirium', 'Hepatic encephalopathy', 'Vitamin B12 deficiency', 'Subdural hematoma', 'Alcohol withdrawal / intoxication'],
+      redFlags: ['Confusion + ophthalmoplegia + ataxia \u2014 treat immediately', 'Give thiamine BEFORE glucose to avoid precipitating Wernicke', 'Do not delay thiamine for labs or imaging'],
+      scales: ['Caine operational criteria (Wernicke)', 'MoCA (once any delirium clears)'],
+      course: 'Wernicke encephalopathy is reversible if treated early; Korsakoff syndrome is largely permanent (~20% substantial recovery); alcohol-related dementia may stabilize or partially improve with sustained abstinence.',
+      comorbid: ['Alcohol use disorder', 'Malnutrition', 'Peripheral neuropathy', 'Liver disease']
+    },
+    {
       id: 'alzheimers', name: 'Major Neurocognitive Disorder due to Alzheimer’s Disease', cat: 'neurocognitive',
       desc: 'A gradual, progressive decline led by memory and learning impairment, later spreading to language, visuospatial ability, and executive function, eroding independence — the most common cause of dementia, underpinned by amyloid and tau pathology.',
       codes: { dsm: 'G30.9 + F02.8x', icd10: 'G30.9 (with F02.80/F02.81)', icd11: '6D80' },
