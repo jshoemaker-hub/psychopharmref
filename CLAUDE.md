@@ -89,6 +89,7 @@ var dateStr = ToolUtils.dateStamp();
 - `ym-` → YMRS (Mania)
 - `yb-` → Y-BOCS (OCD)
 - `ai-` → AIMS (Dyskinesia)
+- `mda-` → Movement Disorder Assessment (bedside phenomenology exam / MotorSign)
 - `bp-` → BPRS (Brief Psychiatric Rating Scale)
 - `adl-` → ADL / IADL
 - `aq-` → Autism Screening (AQ)

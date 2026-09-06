@@ -1,0 +1,236 @@
+/* mda-tool.css — Movement Disorder Assessment. Prefix: mda-
+   Uses the PsychoPharmRef palette (var(--card), --accent, etc.). Light theme. */
+
+#mda-root { --mda-radius: 12px; color: var(--text); }
+#mda-root * { box-sizing: border-box; }
+#mda-root [hidden], .mda-atlas-overlay[hidden] { display: none !important; }
+
+/* ---- top bar ---- */
+.mda-topbar {
+  display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between;
+  margin-bottom: 14px;
+}
+.mda-topbar-left, .mda-topbar-right { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.mda-savestatus { font-size: 12px; color: var(--text-muted); min-width: 56px; }
+
+/* ---- buttons ---- */
+.mda-btn {
+  font: inherit; font-size: 14px; font-weight: 600; line-height: 1;
+  border-radius: 999px; padding: 10px 16px; cursor: pointer;
+  border: 1px solid transparent; transition: background .15s, border-color .15s, color .15s;
+}
+.mda-btn:disabled { opacity: .4; cursor: default; }
+.mda-btn-primary { background: var(--accent); color: #fff; }
+.mda-btn-primary:hover:not(:disabled) { background: #3d6a2c; }
+.mda-btn-outline { background: var(--card); border-color: var(--border); color: var(--text); }
+.mda-btn-outline:hover:not(:disabled) { background: var(--bg2); }
+.mda-btn-ghost { background: transparent; color: var(--text-muted); border-color: transparent; }
+.mda-btn-ghost:hover:not(:disabled) { background: var(--bg2); color: var(--text); }
+
+/* ---- progress + rail ---- */
+.mda-progress-track { height: 4px; background: var(--bg3); border-radius: 4px; overflow: hidden; margin-bottom: 12px; }
+.mda-progress-bar { height: 100%; background: var(--accent); border-radius: 4px; transition: width .25s; }
+.mda-rail {
+  display: flex; gap: 6px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 16px;
+  scrollbar-width: thin;
+}
+.mda-rail-chip {
+  flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  min-width: 62px; padding: 8px 10px; border-radius: 10px; cursor: pointer;
+  background: var(--card); border: 1px solid var(--border); color: var(--text-muted); font: inherit;
+  transition: all .15s;
+}
+.mda-rail-chip:hover { border-color: var(--accent); }
+.mda-rail-short { font-weight: 700; font-size: 13px; color: var(--text); }
+.mda-rail-label { font-size: 10px; text-transform: uppercase; letter-spacing: .03em; white-space: nowrap; }
+.mda-rail-on { background: var(--accent); border-color: var(--accent); }
+.mda-rail-on .mda-rail-short, .mda-rail-on .mda-rail-label { color: #fff; }
+.mda-rail-done { border-color: var(--accent); }
+.mda-rail-done .mda-rail-short { color: var(--accent); }
+.mda-rail-on.mda-rail-done .mda-rail-short { color: #fff; }
+.mda-rail-skip { border-style: dashed; opacity: .7; }
+
+/* ---- card + station header ---- */
+.mda-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--mda-radius); padding: 22px; }
+.mda-station-head { margin-bottom: 18px; }
+.mda-station-kicker { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--accent2); font-weight: 700; }
+.mda-station-title { font-size: 22px; font-weight: 700; margin: 2px 0 12px; color: var(--text); }
+.mda-proto { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; }
+.mda-proto-title { font-weight: 700; font-size: 13px; margin-bottom: 6px; color: var(--text); }
+.mda-proto-steps { margin: 0; padding-left: 18px; }
+.mda-proto-steps li { font-size: 13px; line-height: 1.5; color: var(--text-muted); margin-bottom: 4px; }
+.mda-proto-phys { margin-top: 6px; background: none; border: none; color: var(--accent); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; padding: 0; }
+.mda-proto-phys:hover { text-decoration: underline; }
+
+.mda-subhead { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--accent2); margin: 22px 0 10px; }
+
+/* ---- privacy / skip boxes ---- */
+.mda-privacy, .mda-skipbox {
+  font-size: 13px; line-height: 1.55; border-radius: 8px; padding: 12px 14px; margin-bottom: 16px;
+}
+.mda-privacy { background: rgba(74,124,53,.08); border: 1px solid rgba(74,124,53,.3); color: var(--text-muted); }
+.mda-privacy strong { color: var(--accent); }
+.mda-skipbox { background: rgba(139,105,20,.08); border: 1px dashed rgba(139,105,20,.5); color: var(--text-muted); }
+.mda-skipbox strong { color: var(--accent2); }
+
+/* ---- fields ---- */
+.mda-field { margin-bottom: 16px; }
+.mda-field-label { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 7px; display: flex; align-items: center; gap: 2px; }
+.mda-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px; }
+.mda-input, .mda-textarea, .mda-select {
+  width: 100%; font: inherit; font-size: 14px; color: var(--text);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 9px 11px;
+}
+.mda-textarea { resize: vertical; min-height: 40px; }
+.mda-input:focus, .mda-textarea:focus, .mda-select:focus { outline: 2px solid rgba(74,124,53,.4); outline-offset: 0; border-color: var(--accent); }
+.mda-freq { display: flex; flex-direction: column; gap: 8px; }
+.mda-freq-input-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.mda-freq-input-row .mda-input { max-width: 120px; }
+.mda-freq-tapbtn { white-space: nowrap; }
+.mda-freq-pad { max-width: 360px; }
+.mda-freq-pad .mda-tap-sub { font-size: 11px; opacity: .8; margin-top: 2px; }
+.mda-freq-note { font-size: 12.5px; color: var(--accent); font-weight: 600; }
+
+/* ---- chips ---- */
+.mda-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.mda-chip {
+  font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+  padding: 8px 14px; border-radius: 999px; background: var(--card); border: 1px solid var(--border); color: var(--text);
+  transition: all .12s;
+}
+.mda-chip:hover { background: var(--bg2); }
+.mda-chip-on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.mda-chip-add { border-style: dashed; color: var(--text-muted); }
+
+/* ---- severity ---- */
+.mda-sev { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.mda-sev-btn {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  min-height: 54px; border-radius: 10px; cursor: pointer; font: inherit;
+  background: var(--card); border: 1px solid var(--border); color: var(--text); transition: all .12s;
+}
+.mda-sev-btn:hover { background: var(--bg2); }
+.mda-sev-num { font-size: 17px; font-weight: 700; }
+.mda-sev-full { font-size: 9px; text-transform: uppercase; letter-spacing: .04em; opacity: .8; }
+.mda-sev-high:not(.mda-sev-on) .mda-sev-num { color: var(--red); }
+.mda-sev-on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.mda-sev-on .mda-sev-num, .mda-sev-on .mda-sev-full { color: #fff; }
+
+/* ---- toggles ---- */
+.mda-toggle-stack { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.mda-toggle {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%;
+  padding: 12px 14px; border-radius: 10px; cursor: pointer; text-align: left; font: inherit;
+  background: var(--card); border: 1px solid var(--border); color: var(--text);
+}
+.mda-toggle-on { border-color: var(--accent); background: rgba(74,124,53,.06); }
+.mda-toggle-text { display: flex; flex-direction: column; gap: 2px; }
+.mda-toggle-label { font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 4px; }
+.mda-toggle-hint { font-size: 12px; color: var(--text-muted); }
+.mda-switch { flex: 0 0 auto; width: 42px; height: 24px; border-radius: 999px; background: var(--bg3); padding: 3px; transition: background .15s; }
+.mda-switch-on { background: var(--accent); }
+.mda-switch-knob { display: block; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25); transition: transform .15s; }
+.mda-switch-on .mda-switch-knob { transform: translateX(18px); }
+
+/* ---- observation cards ---- */
+.mda-obs { border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-bottom: 14px; background: var(--bg); }
+.mda-obs-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+.mda-obs-body { margin-top: 14px; }
+.mda-hidden { display: none; }
+.mda-side-card { border: 1px solid var(--border); border-radius: 12px; padding: 14px; background: var(--bg); }
+.mda-side-title { font-weight: 700; font-size: 14px; margin-bottom: 10px; }
+.mda-region-body { margin-top: 4px; }
+
+/* ---- signature hint ---- */
+.mda-signature { border: 1px dashed var(--border); border-radius: 12px; padding: 14px; background: var(--bg2); margin-top: 6px; }
+.mda-sig-tag { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); font-weight: 700; }
+.mda-sig-cat { font-size: 18px; font-weight: 700; color: var(--accent); margin: 3px 0 8px; }
+.mda-sig-reasons { margin: 0; padding-left: 18px; }
+.mda-sig-reasons li { font-size: 12.5px; line-height: 1.5; color: var(--text-muted); margin-bottom: 4px; }
+.mda-sig-foot { font-size: 12px; color: var(--text-muted); margin: 8px 0 0; font-style: italic; }
+
+/* ---- signs ---- */
+.mda-signs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mda-sign { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; background: var(--card); }
+.mda-sign:hover { background: var(--bg2); }
+.mda-sign-cb { margin-top: 2px; width: 17px; height: 17px; accent-color: var(--accent); flex: 0 0 auto; }
+.mda-sign-text { display: flex; flex-direction: column; gap: 2px; }
+.mda-sign-label { font-size: 13px; font-weight: 600; color: var(--text); display: inline-flex; align-items: center; gap: 4px; }
+.mda-sign-hint { font-size: 11.5px; color: var(--text-muted); line-height: 1.4; }
+
+/* ---- brady / tap pad ---- */
+.mda-brady > * { margin-bottom: 12px; }
+.mda-brady .mda-muted { font-size: 12.5px; }
+.mda-muted { color: var(--text-muted); }
+.mda-tap { margin-top: 6px; }
+.mda-tap-hint { font-size: 11.5px; color: var(--text-muted); line-height: 1.45; margin: 0 0 8px; }
+.mda-tap-start { width: 100%; }
+.mda-tap-pad {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  width: 100%; min-height: 96px; border-radius: 14px; cursor: pointer; border: none;
+  background: var(--accent); color: #fff; font: inherit; touch-action: manipulation; user-select: none;
+}
+.mda-tap-time { font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.mda-tap-count { font-size: 13px; opacity: .85; }
+.mda-tap-readout { font-size: 13px; color: var(--text-muted); font-weight: 600; }
+
+/* ---- note ---- */
+.mda-note-actions { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 12px; }
+.mda-note-wrap { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.mda-note {
+  margin: 0; padding: 16px; background: var(--bg); color: var(--text);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 12.5px; line-height: 1.55;
+  white-space: pre-wrap; word-break: break-word; max-height: 460px; overflow: auto;
+}
+.mda-note-foot { font-size: 12px; margin-top: 10px; }
+
+/* ---- nav ---- */
+.mda-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+.mda-nav-right { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* ---- help affordance ---- */
+.mda-help { position: relative; display: inline-flex; }
+.mda-help-btn {
+  width: 16px; height: 16px; line-height: 15px; text-align: center; border-radius: 50%;
+  background: var(--bg3); color: var(--text-muted); border: none; font-size: 11px; font-weight: 700; cursor: pointer; padding: 0;
+}
+.mda-help-btn:hover { background: var(--accent); color: #fff; }
+.mda-help-detail {
+  position: absolute; z-index: 30; top: 22px; left: 0; width: 280px; max-width: calc(100vw - 40px);
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px;
+  font-size: 12px; font-weight: 400; line-height: 1.5; color: var(--text); box-shadow: 0 6px 20px rgba(0,0,0,.12);
+}
+.mda-help-detail strong { color: var(--accent); }
+
+/* ---- atlas drawer ---- */
+.mda-atlas-overlay { position: fixed; inset: 0; z-index: 2000; background: rgba(35,30,20,.4); display: flex; justify-content: flex-end; }
+.mda-atlas { width: min(560px, 94vw); height: 100%; background: var(--bg); border-left: 1px solid var(--border); display: flex; flex-direction: column; box-shadow: -8px 0 30px rgba(0,0,0,.2); }
+.mda-atlas-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+.mda-atlas-title { font-size: 17px; font-weight: 700; }
+.mda-atlas-close { background: none; border: none; font-size: 18px; cursor: pointer; color: var(--text-muted); }
+.mda-atlas-tabs { display: flex; gap: 4px; padding: 10px 16px 0; border-bottom: 1px solid var(--border); }
+.mda-atlas-tab { background: none; border: none; border-bottom: 2px solid transparent; padding: 8px 10px; font: inherit; font-size: 13px; font-weight: 600; color: var(--text-muted); cursor: pointer; }
+.mda-atlas-tab-on { color: var(--accent); border-bottom-color: var(--accent); }
+.mda-atlas-content { padding: 16px 20px; overflow: auto; flex: 1; }
+.mda-atlas-content h4 { font-size: 14px; margin: 16px 0 6px; color: var(--accent2); }
+.mda-atlas-content h4:first-child { margin-top: 0; }
+.mda-atlas-content p { font-size: 13px; line-height: 1.6; color: var(--text); margin: 0 0 10px; }
+.mda-atlas-term { font-size: 13px; line-height: 1.55; color: var(--text-muted); margin-bottom: 10px; }
+.mda-atlas-term strong { color: var(--text); }
+.mda-atlas-search { margin-bottom: 12px; }
+
+/* ---- saved drawer ---- */
+.mda-saved-row { display: flex; align-items: stretch; gap: 8px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+.mda-saved-open { flex: 1; text-align: left; background: var(--card); border: none; padding: 12px 14px; cursor: pointer; font: inherit; display: flex; flex-direction: column; gap: 3px; }
+.mda-saved-open:hover { background: var(--bg2); }
+.mda-saved-name { font-size: 14px; font-weight: 600; color: var(--text); }
+.mda-saved-when { font-size: 11.5px; color: var(--text-muted); }
+.mda-saved-del { flex: 0 0 auto; color: var(--red); }
+
+/* ---- responsive ---- */
+@media (max-width: 640px) {
+  .mda-card { padding: 16px; }
+  .mda-grid2 { grid-template-columns: 1fr; }
+  .mda-signs { grid-template-columns: 1fr; }
+  .mda-sev-full { display: none; }
+}

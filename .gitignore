@@ -52,9 +52,15 @@ newsletter/package-lock.json
 deploy-*.zip
 *.zip
 
+# Monthly review exports
+.review-data/
+
 # Node modules (any location)
 node_modules/
 my-blog/
 
 # macOS AppleDouble files (network volume)
 ._*
+
+# Vendored source repos imported only to port from (not part of the site)
+_import/
