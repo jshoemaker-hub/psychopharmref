@@ -10,6 +10,190 @@
  */
 window.GLOSSARY_TERMS = [
   {
+    term: "Tremor",
+    aliases: ["rest tremor", "postural tremor", "action tremor", "kinetic tremor", "intention tremor"],
+    category: "Catatonia & Movement",
+    def: "A rhythmic, oscillatory involuntary movement about a fixed point — the only truly rhythmic hyperkinesia. Classified by when it appears: at rest (parkinsonian), on posture or action (essential, enhanced physiologic, lithium or valproate), on nearing a target (intention, cerebellar outflow), or only during a specific task. Quote frequency in hertz and amplitude together.",
+    seeAlso: ["Re-emergent tremor", "Orthostatic tremor", "Parkinsonism", "Rabbit syndrome"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Re-emergent tremor",
+    aliases: ["reemergent tremor"],
+    category: "Catatonia & Movement",
+    def: "A postural tremor that appears only after a latency of several seconds once the arms are held out. It is the parkinsonian rest oscillator re-expressing itself in posture, not essential tremor.",
+    seeAlso: ["Tremor", "Parkinsonism"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Orthostatic tremor",
+    aliases: ["primary orthostatic tremor"],
+    category: "Catatonia & Movement",
+    def: "A very fast (13–18 Hz) tremor of the legs and trunk present only while standing still and relieved by walking or sitting; often felt as unsteadiness more than it is seen.",
+    seeAlso: ["Tremor"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Asterixis",
+    aliases: ["flapping tremor", "negative myoclonus"],
+    category: "Catatonia & Movement",
+    def: "Brief, arrhythmic lapses of a sustained posture — a drop-and-recovery that is negative myoclonus, not a true tremor. A classic flag for metabolic encephalopathy (hepatic, uremic, hypercapnic) and some drugs.",
+    seeAlso: ["Myoclonus"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Ballism",
+    aliases: ["ballismus", "hemiballismus"],
+    category: "Catatonia & Movement",
+    def: "Large, flinging, proximal involuntary movements — chorea turned up, usually affecting one side of the body (hemiballismus). Classically from a lesion of the contralateral subthalamic nucleus; it often settles into distal chorea.",
+    seeAlso: ["Chorea"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Cervical dystonia",
+    aliases: ["spasmodic torticollis", "torticollis", "laterocollis", "anterocollis", "retrocollis"],
+    category: "Catatonia & Movement",
+    def: "Patterned dystonic posturing of the neck — name each component: torticollis (rotation), laterocollis (tilt), anterocollis (chin down), retrocollis (chin up); most patients combine them. Look for a sensory trick, muscle hypertrophy, and an irregular dystonic head tremor with a null point.",
+    seeAlso: ["Dystonia", "Sensory trick", "Tremor"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Oromandibular dystonia",
+    aliases: ["jaw dystonia", "Meige syndrome"],
+    category: "Catatonia & Movement",
+    def: "Patterned involuntary jaw-opening, jaw-closing, or deviation, often action-induced and often eased by a sensory trick. Name the direction of pull; combined with blepharospasm it is Meige syndrome.",
+    seeAlso: ["Dystonia", "Blepharospasm", "Sensory trick"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Blepharospasm",
+    aliases: ["benign essential blepharospasm"],
+    category: "Catatonia & Movement",
+    def: "Forceful, bilateral, involuntary closure of orbicularis oculi — a focal dystonia worsened by bright light, wind, and reading and sometimes eased by a sensory trick. Watch the brow to separate it from apraxia of eyelid opening.",
+    seeAlso: ["Apraxia of eyelid opening", "Dystonia", "Sensory trick", "Hemifacial spasm"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Apraxia of eyelid opening",
+    aliases: ["ALO"],
+    category: "Catatonia & Movement",
+    def: "Inability to initiate eyelid opening in the absence of orbicularis spasm; the brow climbs as the patient struggles to raise the lids. Common with blepharospasm and progressive supranuclear palsy.",
+    seeAlso: ["Blepharospasm", "Parkinsonism"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Oculogyric crisis",
+    aliases: ["oculogyric"],
+    category: "Catatonia & Movement",
+    def: "Sustained, involuntary conjugate upward (or lateral) deviation of the eyes — an acute dystonic reaction to dopamine blockade. It is not a gaze palsy: the range is not restricted, the eyes are pulled.",
+    seeAlso: ["Dystonia", "Tardive dyskinesia"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Hemifacial spasm",
+    aliases: ["HFS"],
+    category: "Catatonia & Movement",
+    def: "Unilateral, irregular twitching that usually begins in orbicularis oculi and spreads over one side of the face; it may persist in sleep. A peripheral facial-nerve (CN VII) disorder, often from vascular compression — distinct from bilateral blepharospasm.",
+    seeAlso: ["Blepharospasm", "Myokymia"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Sensory trick",
+    aliases: ["geste antagoniste", "alleviating maneuver"],
+    category: "Catatonia & Movement",
+    def: "A light, self-applied touch (for example a finger to the chin or cheek) that transiently relieves a dystonia. It is nearly specific for dystonia — ask for it and watch.",
+    seeAlso: ["Dystonia", "Cervical dystonia"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Fasciculation",
+    aliases: ["muscle twitch"],
+    category: "Catatonia & Movement",
+    def: "A single motor-unit flicker under the skin or mucosa that does not move a joint. On the tongue, call it only at rest on the floor of the mouth — protrusion produces a normal fine tremor that mimics it.",
+    seeAlso: ["Myokymia"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Myokymia",
+    aliases: ["facial myokymia", "eyelid myokymia"],
+    category: "Catatonia & Movement",
+    def: "Continuous, fine, undulating 'bag-of-worms' rippling of muscle. Facial myokymia localizes to the pons (multiple sclerosis, pontine glioma); isolated eyelid myokymia is usually benign.",
+    seeAlso: ["Fasciculation", "Hemifacial spasm"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Myorhythmia",
+    aliases: ["oculomasticatory myorhythmia"],
+    category: "Catatonia & Movement",
+    def: "A slow (1–4 Hz) rhythmic movement, often cranial and often persisting at rest. Oculomasticatory myorhythmia — pendular convergence with jaw contractions — is a classic flag for Whipple disease.",
+    seeAlso: ["Tremor"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Orolingual dyskinesia",
+    aliases: ["orobuccal dyskinesia", "buccolingual dyskinesia", "bon-bon sign"],
+    category: "Catatonia & Movement",
+    def: "Tongue rolling and writhing in the mouth with chewing, puckering, and lip-smacking — the AIMS rest position and a classic tardive pattern (stereotypy mixed with chorea).",
+    seeAlso: ["Tardive dyskinesia", "Stereotypy", "Chorea"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Hypomimia",
+    aliases: ["masked facies", "masked face", "facial masking"],
+    category: "Catatonia & Movement",
+    def: "Poverty of spontaneous facial expression and reduced blink — bradykinesia of the face. It pairs with reduced arm swing and rest tremor in parkinsonism.",
+    seeAlso: ["Parkinsonism", "Bradykinesia"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Striatal toe",
+    aliases: [],
+    category: "Catatonia & Movement",
+    def: "Spontaneous dystonic extension of the great toe — a pseudo-Babinski without the rest of the reflex. Seen in parkinsonism and off-state dystonia.",
+    seeAlso: ["Dystonia", "Parkinsonism"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Camptocormia",
+    aliases: ["bent spine syndrome"],
+    category: "Catatonia & Movement",
+    def: "Marked forward flexion of the trunk that appears on standing or walking and corrects when the patient is supine. Seen in parkinsonism and axial myopathy; the supine test separates it from fixed skeletal deformity.",
+    seeAlso: ["Pisa syndrome", "Parkinsonism"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Pisa syndrome",
+    aliases: ["pleurothotonus"],
+    category: "Catatonia & Movement",
+    def: "Sustained lateral flexion of the trunk (a 'leaning tower' posture), usually improved by lying down. An axial dystonia that is often drug-related or part of Parkinson disease.",
+    seeAlso: ["Camptocormia", "Dystonia"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Festination",
+    aliases: ["festinating gait"],
+    category: "Catatonia & Movement",
+    def: "Involuntary hurrying of gait into progressively shorter, faster steps as the trunk's centre of gravity outruns the feet. A parkinsonian sign.",
+    seeAlso: ["Parkinsonism", "Freezing of gait"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Freezing of gait",
+    aliases: ["motor block", "start hesitation"],
+    category: "Catatonia & Movement",
+    def: "A brief, involuntary motor block in which the feet feel glued to the floor — typically at gait initiation, on turning, in doorways, or on nearing a target. A parkinsonian and higher-level gait-disorder sign.",
+    seeAlso: ["Parkinsonism", "Festination"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
+    term: "Motor impersistence",
+    aliases: ["flycatcher tongue", "trombone tongue"],
+    category: "Catatonia & Movement",
+    def: "Inability to sustain a voluntary posture, such as keeping the tongue protruded — the darting 'flycatcher' or 'trombone' tongue of chorea. Distinct from a patterned dystonic thrust.",
+    seeAlso: ["Chorea"],
+    link: { section: "mda-tool", label: "Movement Disorder Assessment tool" }
+  },
+  {
     term: "Abulia",
     aliases: ["aboulia"],
     category: "Phenomenology",

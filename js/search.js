@@ -55,6 +55,7 @@
       { title: 'YMRS (Mania)', section: 'ymrs-tool', cat: 'Rating Scale' },
       { title: 'BFCRS (Catatonia)', section: 'bfcrs-tool', cat: 'Rating Scale' },
       { title: 'AIMS (Dyskinesia)', section: 'aims-tool', cat: 'Rating Scale' },
+      { title: 'Movement Disorder Assessment', section: 'mda-tool', cat: 'Clinical Tool' },
       { title: 'Suicide Risk Assessment', section: 'suicide-risk-tools', cat: 'Rating Scale' },
       { title: 'CIDI Bipolar Screen', section: 'cidi-tool', cat: 'Rating Scale' },
       { title: 'MSI-BPD (Borderline)', section: 'msibpd-tool', cat: 'Rating Scale' },
