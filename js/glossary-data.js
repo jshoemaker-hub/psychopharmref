@@ -2532,7 +2532,63 @@ window.GLOSSARY_TERMS = [
     category: "Pediatric & Developmental",
     def: "Normal developmental fear of unfamiliar people in infants around 6-12 months; indicates secure attachment.",
     seeAlso: ["Attachment", "Developmental milestone"]
+  },
+  {
+    term: "Allopregnanolone",
+    aliases: ["allopreg", "3-alpha-hydroxy-5-alpha-pregnan-20-one", "neurosteroid", "neuroactive steroid"],
+    category: "Neurochemistry",
+    def: "A neuroactive metabolite of progesterone that is a potent positive allosteric modulator of the GABA-A receptor — effectively an endogenous anxiolytic and hypnotic. Its decline and fluctuation across the menopause transition, the luteal phase, and the postpartum period reduce inhibitory tone, contributing to anxiety, irritability, and insomnia. It is the pharmacological template for the neurosteroid antidepressants brexanolone and zuranolone.",
+    seeAlso: ["Vasomotor symptoms", "KNDy neurons"],
+    link: { blogSlug: "menopause-neuropsychiatry", label: "Menopause & Neuropsychiatry" }
+  },
+  {
+    term: "KNDy neurons",
+    aliases: ["kndy", "kndy neurons", "kisspeptin neurokinin B dynorphin neurons"],
+    category: "Neurochemistry",
+    def: "Neurons of the hypothalamic arcuate (infundibular) nucleus that co-express kisspeptin, neurokinin B, and dynorphin. Normally restrained by estrogen; when estrogen falls in menopause they hypertrophy and increase neurokinin B output onto the median preoptic thermoregulatory center — the proximate trigger for hot flashes and the target of the newer non-hormonal vasomotor drugs.",
+    seeAlso: ["Neurokinin B", "Vasomotor symptoms", "Thermoneutral zone", "Neurokinin receptor antagonist"],
+    link: { blogSlug: "menopause-neuropsychiatry", label: "Menopause & Neuropsychiatry" }
+  },
+  {
+    term: "Neurokinin B",
+    aliases: ["NKB", "NK3 receptor", "neurokinin 3 receptor", "TAC3"],
+    category: "Neurochemistry",
+    def: "A tachykinin neuropeptide released by KNDy neurons that signals through the NK3 receptor. With loss of estrogen restraint, increased neurokinin B / NK3 signaling onto the hypothalamic thermoregulatory center drives menopausal hot flashes — the mechanistic basis for NK3-targeted therapy.",
+    seeAlso: ["KNDy neurons", "Neurokinin receptor antagonist", "Vasomotor symptoms"],
+    link: { blogSlug: "menopause-neuropsychiatry", label: "Menopause & Neuropsychiatry" }
+  },
+  {
+    term: "Thermoneutral zone",
+    aliases: ["thermoregulatory zone", "thermoregulatory null zone"],
+    category: "Neurochemistry",
+    def: "The narrow range of core body temperature between the sweating and shivering thresholds within which no thermoregulatory response occurs. Estrogen withdrawal — via increased central noradrenergic and serotonergic signaling — narrows this zone, so trivial rises in core temperature cross the sweating threshold and produce a hot flash. Serotonergic/noradrenergic antidepressants are thought to widen it.",
+    seeAlso: ["Vasomotor symptoms", "KNDy neurons"],
+    link: { blogSlug: "menopause-neuropsychiatry", label: "Menopause & Neuropsychiatry" }
+  },
+  {
+    term: "Vasomotor symptoms",
+    aliases: ["VMS", "hot flashes", "hot flushes", "night sweats"],
+    category: "Neurochemistry",
+    def: "Hot flashes and night sweats: the sudden heat-dissipation responses (flushing, sweating) of the menopause transition, arising from a narrowed hypothalamic thermoneutral zone driven by estrogen withdrawal and increased neurokinin B / NK3 signaling. Treated with hormone therapy, SSRIs/SNRIs (a low-dose thermoregulatory effect distinct from their antidepressant effect), gabapentin, and neurokinin receptor antagonists.",
+    seeAlso: ["Thermoneutral zone", "KNDy neurons", "Neurokinin receptor antagonist"],
+    link: { blogSlug: "menopause-neuropsychiatry", label: "Menopause & Neuropsychiatry" }
+  },
+  {
+    term: "Estrogen hypothesis of schizophrenia",
+    aliases: ["oestrogen hypothesis of schizophrenia", "estrogen protection hypothesis"],
+    category: "Psychosis",
+    def: "The proposal that estrogen exerts a protective, functionally antidopaminergic effect that raises the threshold for psychosis. It accounts for women's later and second (perimenopausal, ~45–50) incidence peak of psychosis onset, and for the relapse vulnerability and higher antipsychotic dose requirements seen in postmenopausal women with schizophrenia. Estrogen and the SERM raloxifene have been studied as adjuncts to antipsychotics.",
+    seeAlso: ["Vasomotor symptoms"],
+    link: { blogSlug: "menopause-neuropsychiatry", label: "Menopause & Neuropsychiatry" }
+  },
+  {
+    term: "Neurokinin receptor antagonist",
+    aliases: ["NK3 antagonist", "NK3 receptor antagonist", "fezolinetant", "Veozah", "elinzanetant", "Lynkuet", "neurokinin-3 antagonist"],
+    category: "Pharmacology",
+    def: "Non-hormonal agents that block neurokinin signaling on hypothalamic thermoregulatory neurons to treat vasomotor symptoms. Fezolinetant (Veozah) is a selective NK3 antagonist (FDA-approved 2023); elinzanetant (Lynkuet) is a dual NK1/NK3 antagonist (FDA-approved October 2025) whose NK1 component also improves sleep. Both target the KNDy pathway directly rather than acting through monoamines.",
+    seeAlso: ["Neurokinin B", "KNDy neurons", "Vasomotor symptoms"],
+    link: { blogSlug: "menopause-neuropsychiatry", label: "Menopause & Neuropsychiatry" }
   }
 ];
 
-// Total entries: 403
+// Total entries: 410
