@@ -387,6 +387,7 @@ const SECTION_GROUP = {
   'bfcrs-tool': 'tools', 'aims-tool': 'tools', 'mda-tool': 'tools', 'bprs-tool': 'tools', 'suicide-risk-tools': 'tools',
   'ess-tool': 'tools', 'bat-tool': 'tools', 'sud-tool': 'tools', 'med-history-tool': 'tools',
   'ciwa-tool': 'tools', 'cows-tool': 'tools', 'frailty-tool': 'tools',
+  'caffeine-tool': 'tools', 'thc-tool': 'tools', 'alcohol-tool': 'tools',
   'print-forms': 'forms', 'question-bank': 'qbank',
   'cog-domains': 'insights', 'neuro-circuits': 'insights', 'brain-regions': 'insights', 'brain-explorer': 'insights',
   'cell-types': 'insights',

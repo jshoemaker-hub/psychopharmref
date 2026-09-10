@@ -195,6 +195,9 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="sud-tool">DSM-5-TR SUD</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="ciwa-tool">CIWA-Ar (Alcohol)</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="cows-tool">COWS (Opiate)</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="caffeine-tool">Caffeine Intake (24h)</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="thc-tool">THC Intake (24h)</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="alcohol-tool">Alcohol Intake (24h)</a></li>
 
           <li class="nav-sub-divider">Safety</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="suicide-risk-tools">Suicide Risk</a></li>
@@ -685,6 +688,9 @@
               <div class="tr-chips">
               <a href="#" onclick="switchSection('ciwa-tool');return false;" class="tr-chip">CIWA-Ar (alcohol)</a>
               <a href="#" onclick="switchSection('cows-tool');return false;" class="tr-chip">COWS (opioid)</a>
+              <a href="#" onclick="switchSection('caffeine-tool');return false;" class="tr-chip">Caffeine intake</a>
+              <a href="#" onclick="switchSection('thc-tool');return false;" class="tr-chip">THC intake</a>
+              <a href="#" onclick="switchSection('alcohol-tool');return false;" class="tr-chip">Alcohol intake</a>
               </div>
             </div>
             <div class="tr-step"><span class="tr-dot">4</span>
@@ -11930,6 +11936,40 @@
   </div>
 </section><!-- end cows-tool -->
 
+<section id="caffeine-tool" data-lazy-tool="caffeine-tool" class="section">
+  <div class="section-header">
+    <h2>24-Hour Caffeine Intake Calculator</h2>
+    <p>Document the caffeine-containing products a patient used over a 24-hour period to estimate total caffeine intake in milligrams. Per-serving values are typical estimates and can be edited to match a specific brand or brew strength.</p>
+  </div>
+  <div class="caf-warning mt-warning">
+    <strong>Clinical use:</strong> Totals are estimates based on typical serving content and vary by brand and preparation. Up to 400&nbsp;mg/day is generally cited as safe for healthy adults (FDA); the commonly cited limit in pregnancy is &lt;200&nbsp;mg/day.
+  </div>
+  <div class="caf-container" id="caf-container"></div>
+</section><!-- end caffeine-tool -->
+
+<section id="thc-tool" data-lazy-tool="thc-tool" class="section">
+  <div class="section-header">
+    <h2>24-Hour THC Intake Calculator</h2>
+    <p>Document the cannabis products a patient used over a 24-hour period to estimate total THC content in milligrams. Flower, vape oil and concentrate are entered as amount &times; potency; edibles, beverages and tinctures are entered as milligrams per unit &times; units.</p>
+  </div>
+  <div class="thc-warning mt-warning">
+    <strong>Clinical use:</strong> This estimates the total THC <em>content</em> consumed from product labels and typical potency &mdash; not the absorbed (bioavailable) dose, which is lower and route-dependent. A standard retail serving is 10&nbsp;mg THC.
+  </div>
+  <div class="thc-container" id="thc-container"></div>
+</section><!-- end thc-tool -->
+
+<section id="alcohol-tool" data-lazy-tool="alcohol-tool" class="section">
+  <div class="section-header">
+    <h2>24-Hour Alcohol Intake Calculator</h2>
+    <p>Document the alcoholic beverages a patient used over a 24-hour period to total US standard drinks and grams of ethanol. Preset volumes and ABV are editable to match the actual drink.</p>
+  </div>
+  <div class="alc-warning mt-warning">
+    <strong>Clinical use:</strong> One US standard drink = 14&nbsp;g pure ethanol (0.6&nbsp;fl&nbsp;oz). NIAAA low-risk limits: men &le;4/day &amp; &le;14/week; women &le;3/day &amp; &le;7/week.
+  </div>
+  <div class="alc-container" id="alc-container"></div>
+</section><!-- end alcohol-tool -->
+
+
 
 
 <!-- ── ASRS v1.1 ─────────────────────────────────────────────────────── -->
@@ -13790,7 +13830,7 @@
   <script defer src="js/data.js?v=20260820a"></script>
   <script defer src="js/routes.js?v=20260719d"></script>
   <script defer src="js/bhi-references.js?v=20260726b"></script>
-  <script defer src="js/app.js?v=20260820b"></script>
+  <script defer src="js/app.js?v=20260910a"></script>
   <script defer src="js/diagnoses-data.js?v=20260827a"></script>
   <script defer src="js/diagnoses-page.js?v=20260819a"></script>
   <script defer src="js/glossary-data.js?v=20260719d"></script>

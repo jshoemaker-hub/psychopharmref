@@ -67,6 +67,9 @@
       { title: 'ASD Severity (DSM-5-TR)', section: 'asd-tool', cat: 'Rating Scale' },
       { title: 'CIWA-Ar (Alcohol Withdrawal)', section: 'ciwa-tool', cat: 'Rating Scale' },
       { title: 'COWS (Opiate Withdrawal)', section: 'cows-tool', cat: 'Rating Scale' },
+      { title: 'Caffeine Intake (24h)', section: 'caffeine-tool', cat: 'Clinical Tool' },
+      { title: 'THC Intake (24h)', section: 'thc-tool', cat: 'Clinical Tool' },
+      { title: 'Alcohol Intake (24h)', section: 'alcohol-tool', cat: 'Clinical Tool' },
       { title: 'DSM-5-TR Substance Use Disorder', section: 'sud-tool', cat: 'Rating Scale' },
       { title: 'Printable Clinical Forms', section: 'print-forms', cat: 'Clinical Tools' },
     ];

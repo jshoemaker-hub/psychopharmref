@@ -1,0 +1,177 @@
+/* thc-tool.css — 24-Hour Intake Calculator (thc-) */
+
+#thc-container {
+  max-width: 760px;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+.thc-grid-head,
+.thc-row {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1.2fr 0.9fr;
+  gap: 10px;
+  align-items: center;
+  min-width: 540px;
+}
+
+.thc-grid-head {
+  padding: 8px 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  border-bottom: 2px solid var(--border);
+}
+
+.thc-rows {
+  margin-bottom: 18px;
+}
+
+.thc-row {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.15s;
+}
+
+.thc-row.thc-has {
+  background: rgba(74, 124, 53, 0.09);
+}
+
+.thc-name {
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.thc-name em {
+  font-style: normal;
+  color: #7a7363;
+  font-size: 0.8rem;
+}
+
+.thc-row input[type="number"],
+.thc-row input[type="text"] {
+  width: 100%;
+  max-width: 100%;
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: #fff;
+  color: var(--text);
+  box-sizing: border-box;
+}
+
+.thc-row input[type="number"] {
+  text-align: right;
+}
+
+.thc-row input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(74, 124, 53, 0.15);
+}
+
+.thc-row em {
+  display: inline-block;
+  margin-left: 4px;
+  font-style: normal;
+  font-size: 0.74rem;
+  color: #7a7363;
+}
+
+/* input + unit pairs sit side by side */
+.thc-a, .thc-b, .thc-vol, .thc-abv, .thc-mg {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.thc-sub {
+  text-align: right;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.thc-total-bar {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+
+.thc-total-num {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.thc-total-num .thc-unit {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.thc-total-label {
+  font-size: 0.82rem;
+  color: #6b6454;
+  margin-top: 3px;
+}
+
+.thc-flags {
+  margin-top: 8px;
+}
+
+.thc-flag {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.thc-ok   { background: #e8f5e9; color: #2e5e33; }
+.thc-warn { background: #fff3e0; color: #8a5a00; }
+.thc-high { background: #ffe3e0; color: #9b2c22; }
+
+.thc-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.thc-btn {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.thc-btn-primary { background: var(--accent); color: #fff; }
+.thc-btn-primary:hover { background: #3d6429; }
+.thc-btn-ghost { background: #d0ccc0; color: var(--text); }
+.thc-btn-ghost:hover { background: #c0bab0; }
+
+.thc-report-out {
+  width: 100%;
+  min-height: 200px;
+  padding: 12px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #f9f7f2;
+  color: var(--text);
+  box-sizing: border-box;
+  white-space: pre;
+}
