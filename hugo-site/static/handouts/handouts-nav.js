@@ -31,6 +31,10 @@
       ]],
       ["Crisis", [
         ["safety-plan", "Safety Plan"]
+      ]],
+      ["Domestic Violence", [
+        ["domestic-violence",           "Understanding Abuse"],
+        ["domestic-violence-resources", "Getting Help &amp; Resources"]
       ]]
     ]],
     ["Dementia", [

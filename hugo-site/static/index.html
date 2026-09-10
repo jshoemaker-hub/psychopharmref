@@ -201,6 +201,7 @@
 
           <li class="nav-sub-divider">Safety</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="suicide-risk-tools">Suicide Risk</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="dv-tool">DV / IPV Assessment</a></li>
 
           <li class="nav-sub-divider">Wellness</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="bat-tool">Burnout (BAT)</a></li>
@@ -267,6 +268,10 @@
 
           <li class="nav-sub-divider">Crisis</li>
           <li><a href="/handouts/safety-plan.html" class="nav-link nav-sub-link">Safety Plan</a></li>
+
+          <li class="nav-sub-divider">Domestic Violence</li>
+          <li><a href="/handouts/domestic-violence.html" class="nav-link nav-sub-link">Understanding Abuse</a></li>
+          <li><a href="/handouts/domestic-violence-resources.html" class="nav-link nav-sub-link">Getting Help &amp; Resources</a></li>
 
           <li class="nav-sub-section">Dementia</li>
           <li><a href="/handouts/understanding-dementia.html" class="nav-link nav-sub-link">Understanding Dementia</a></li>
@@ -466,6 +471,7 @@
 
           <li class="nav-sub-divider">Clinical Practice</li>
           <li><a href="/blog/suicide-risk-assessments/" class="nav-link nav-sub-link">Suicide Risk Assessment</a></li>
+          <li><a href="/blog/domestic-violence/" class="nav-link nav-sub-link">Domestic &amp; IPV</a></li>
           <li><a href="/blog/grief-bereavement/" class="nav-link nav-sub-link">Grief &amp; Bereavement</a></li>
           <li><a href="/blog/medication-changes/" class="nav-link nav-sub-link">Medication Changes</a></li>
           <li><a href="/blog/history-psychiatric-medications/" class="nav-link nav-sub-link">Psych Med History</a></li>
@@ -12321,6 +12327,104 @@
   </div>
 </section><!-- end frailty-tool -->
 
+<section id="dv-tool" data-lazy-tool="dv-tool" class="section">
+  <div class="section-header">
+    <h2>DV / IPV Assessment</h2>
+    <p>
+      A point-of-care intimate partner violence tool combining the validated <strong>HITS</strong> screen
+      (Hurt, Insult, Threaten, Scream) with a structured, evidence-based <strong>lethality / danger review</strong>.
+      Generates an EMR-ready summary. Use it to support recognition, danger assessment, and safety planning — see the
+      <a href="../index.html#blog-index">Domestic &amp; Intimate Partner Violence chapter</a> for clinical context.
+    </p>
+  </div>
+
+  <div class="dv-warning mt-warning">
+    <strong>Educational tool — not a diagnosis.</strong> The HITS is a screen, not a diagnostic instrument, and the
+    danger review supports (does not replace) clinical judgment or a specialist assessment. <strong>Screening or asking
+    about abuse in the presence of the partner can escalate danger</strong> — interview the patient alone, never use
+    family or the partner as interpreter, and verify what is safe to document and to release before completing this form.
+    A positive or high-risk result should prompt validation, warm referral to a DV advocate, the National DV Hotline
+    (1-800-799-7233), and attention to your jurisdiction’s mandatory-reporting duties.
+  </div>
+
+  <div class="dv-container">
+    <div class="dv-intro-box">
+      Interview the patient <strong>privately</strong>. Frame screening universally ("Because abuse is common and
+      affects health, I ask everyone"). Complete Part A (HITS) with the patient; complete Part B (danger review) from
+      the interview and record. The highest-risk period is during and just after leaving.
+    </div>
+
+    <div class="dv-field">
+      <label class="dv-field-label" for="dv-relationship">Relationship context (optional)</label>
+      <select id="dv-relationship" class="dv-select">
+        <option value="">Select…</option>
+        <option value="Current partner">Current partner</option>
+        <option value="Former partner">Former partner</option>
+        <option value="Family / household member">Family / household member</option>
+        <option value="Not specified">Prefer not to specify</option>
+      </select>
+    </div>
+
+    <!-- Part A: HITS -->
+    <div class="dv-domain">
+      <div class="dv-domain-header">Part A · HITS Screen</div>
+      <div class="dv-domain-sub">Over the last 12 months, how often did your partner… (Never 1 · Rarely 2 · Sometimes 3 · Fairly often 4 · Frequently 5). Range 4–20; a total ≥ 11 is a positive screen.</div>
+      <div id="dv-hits-container"></div>
+    </div>
+
+    <!-- Scores -->
+    <div class="dv-score-display">
+      <div class="dv-score-card dv-score-card--hits">
+        <div class="dv-score-num" id="dv-hits-num">0 / 20</div>
+        <div class="dv-score-label">HITS total</div>
+        <div class="dv-severity dv-sev-neg" id="dv-hits-sev">0 / 4 answered</div>
+      </div>
+      <div class="dv-score-card dv-score-card--danger">
+        <div class="dv-score-num" id="dv-danger-num">0</div>
+        <div class="dv-score-label">Danger-review items endorsed</div>
+        <div class="dv-severity dv-sev-low" id="dv-danger-sev">None endorsed</div>
+      </div>
+    </div>
+
+    <div class="dv-alert" id="dv-alert"></div>
+
+    <!-- Part B: high-risk markers -->
+    <div class="dv-domain">
+      <div class="dv-domain-header dv-domain-header--danger">Part B · Lethality / Danger Review — High-Risk Markers</div>
+      <div class="dv-domain-sub">Sentinel factors most strongly associated with intimate partner homicide. Any "Yes" warrants urgent safety planning.</div>
+      <div id="dv-highrisk-container"></div>
+    </div>
+
+    <!-- Part B: additional risk factors -->
+    <div class="dv-domain">
+      <div class="dv-domain-header dv-domain-header--danger">Part B · Additional Risk Factors</div>
+      <div class="dv-domain-sub">Contributing factors from the femicide-risk literature. More factors indicate greater concern; there is no validated cutoff.</div>
+      <div id="dv-risk-container"></div>
+    </div>
+
+    <div class="dv-field">
+      <label class="dv-field-label" for="dv-note">Clinician note (optional)</label>
+      <textarea id="dv-note" class="dv-textarea" rows="3" placeholder="Context, disposition, referrals made, what is safe to document…"></textarea>
+    </div>
+
+    <div class="dv-btn-row">
+      <button id="dv-report-btn" class="dv-btn dv-btn-primary" type="button">Generate Report &amp; Copy</button>
+      <button id="dv-reset-btn" class="dv-btn dv-btn-secondary" type="button">Reset</button>
+    </div>
+
+    <div class="dv-interp">
+      <div class="dv-interp-title">Interpretation &amp; Response</div>
+      <p><strong>HITS ≥ 11 (positive):</strong> discuss the result, validate ("this is not your fault"), assess danger, and make a warm referral. A negative screen does not rule out abuse — clinical suspicion overrides a negative screen.</p>
+      <p><strong>Any high-risk marker (Part B):</strong> firearm access, prior strangulation, threats to kill, or the patient's belief the partner could kill them — prioritize urgent, private safety planning with a DV advocate and address medical needs (e.g., strangulation evaluation).</p>
+      <p><strong>Response, in brief:</strong> believe and validate → respect autonomy (do not pressure to leave) → assess danger and children's safety → warm referral + hotline + safety plan → document objectively and safely → know your reporting duties.</p>
+      <hr class="dv-interp-divider">
+      <div class="dv-interp-fine">
+        HITS: Sherin KM et al., <em>Fam Med</em> 1998 (score range 4–20; ≥ 11 positive). Danger review adapted from Campbell JC et al., <em>Am J Public Health</em> 2003 (Danger Assessment) and Glass N et al., <em>J Emerg Med</em> 2008 (non-fatal strangulation). USPSTF 2025 recommends IPV screening for women of reproductive age, including pregnant and postpartum patients (Grade B). This tool is educational and does not determine risk on its own; use professional judgment and specialist danger assessment. Reports contain no attribution line and are formatted for EMR pasting.
+      </div>
+    </div>
+  </div>
+</section><!-- end dv-tool -->
+
 <section id="aq-tool" data-lazy-tool="aq-tool" class="section">
   <div class="section-header">
     <h2>Autism Screening (AQ)</h2>
@@ -12748,6 +12852,20 @@
       <h3>My Safety Plan</h3>
       <p>A fill-in safety plan: warning signs, coping steps, supports, and crisis contacts.</p>
       <a class="tt-l-btn" href="/handouts/safety-plan.html">Open handout &rarr;</a>
+    </div>
+
+    <div class="tt-l-card">
+      <div class="tt-l-topic">Safety</div>
+      <h3>Understanding Abuse</h3>
+      <p>What abuse and coercive control are, why it’s not your fault, and that support exists.</p>
+      <a class="tt-l-btn" href="/handouts/domestic-violence.html">Open handout &rarr;</a>
+    </div>
+
+    <div class="tt-l-card">
+      <div class="tt-l-topic">Safety</div>
+      <h3>Getting Help &amp; Resources</h3>
+      <p>Hotlines, what advocates do, online safety, planning ahead, and legal options.</p>
+      <a class="tt-l-btn" href="/handouts/domestic-violence-resources.html">Open handout &rarr;</a>
     </div>
 
     <div class="tt-l-card">
@@ -13295,12 +13413,12 @@
     <section id="blog-index" class="section">
       <div class="section-header">
         <h2>Chapters</h2>
-        <p class="section-sub">108 evidence-based clinical articles on psychopharmacology, psychiatric disorders, clinical practice, and more.</p>
+        <p class="section-sub">109 evidence-based clinical articles on psychopharmacology, psychiatric disorders, clinical practice, and more.</p>
       </div>
 
       <div class="ch-intro">
         <p class="tr-lead" style="margin-bottom:16px;">Browse every chapter by category below, or open the full blog for search and filtering.</p>
-        <a href="/blog/" class="ch-browse-btn">Browse All 108 Articles &rarr;</a>
+        <a href="/blog/" class="ch-browse-btn">Browse All 109 Articles &rarr;</a>
       </div>
       <div class="tr-grid ch-grid">
         <details class="tr-card">
@@ -13440,6 +13558,7 @@
                 <a href="/blog/psychiatric-interview/" class="tr-chip tr-chip--chapter">Psychiatric Interview</a>
                 <a href="/blog/suicide-risk-assessments/" class="tr-chip tr-chip--chapter">Suicide Risk Assessment</a>
                 <a href="/blog/emergency-psychiatry/" class="tr-chip tr-chip--chapter">Emergency Psychiatry</a>
+                <a href="/blog/domestic-violence/" class="tr-chip tr-chip--chapter">Domestic &amp; IPV</a>
                 <a href="/blog/fatigue-differential-diagnosis/" class="tr-chip tr-chip--chapter">Fatigue Differential</a>
                 <a href="/blog/ekg-findings-psychiatry/" class="tr-chip tr-chip--chapter">EKG Findings in Psychiatry</a>
                 <a href="/blog/serotonin-syndrome-nms/" class="tr-chip tr-chip--chapter">SS vs NMS</a>
