@@ -2588,7 +2588,479 @@ window.GLOSSARY_TERMS = [
     def: "Non-hormonal agents that block neurokinin signaling on hypothalamic thermoregulatory neurons to treat vasomotor symptoms. Fezolinetant (Veozah) is a selective NK3 antagonist (FDA-approved 2023); elinzanetant (Lynkuet) is a dual NK1/NK3 antagonist (FDA-approved October 2025) whose NK1 component also improves sleep. Both target the KNDy pathway directly rather than acting through monoamines.",
     seeAlso: ["Neurokinin B", "KNDy neurons", "Vasomotor symptoms"],
     link: { blogSlug: "menopause-neuropsychiatry", label: "Menopause & Neuropsychiatry" }
+  },
+  {
+    term: "Least restrictive alternative",
+    aliases: ["LRA", "least restrictive environment"],
+    category: "Mental Health Law",
+    def: "The principle that a person meeting commitment criteria may not be confined in a hospital if a less-restrictive option (outpatient care, supervised community living) would serve the purpose. Originating in Lake v. Cameron (1966), it is now written into most state commitment statutes and underlies Olmstead.",
+    seeAlso: ["Lake v. Cameron", "Olmstead v. L.C.", "Civil commitment"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Lake v. Cameron",
+    aliases: ["Lake v Cameron"],
+    category: "Mental Health Law",
+    def: "1966 D.C. Circuit decision establishing the least-restrictive-alternative principle: a non-dangerous person who merely wanders cannot be hospitalized if a lesser community option exists.",
+    seeAlso: ["Least restrictive alternative", "O'Connor v. Donaldson"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Lessard v. Schmidt",
+    aliases: ["Lessard"],
+    category: "Mental Health Law",
+    def: "1972 federal decision requiring full due process for civil commitment—notice, counsel, a hearing, and a high burden of proof—treating commitment as a massive deprivation of liberty comparable to criminal process.",
+    seeAlso: ["Addington v. Texas", "Civil commitment", "Clear and convincing evidence"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "O'Connor v. Donaldson",
+    aliases: ["OConnor v Donaldson", "Donaldson"],
+    category: "Mental Health Law",
+    def: "1975 U.S. Supreme Court decision holding a state cannot confine a non-dangerous person capable of surviving safely in freedom; mental illness alone is not a sufficient basis for involuntary commitment. A major accelerant of falling hospital census.",
+    seeAlso: ["Least restrictive alternative", "Civil commitment", "Deinstitutionalization"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Addington v. Texas",
+    aliases: ["Addington"],
+    category: "Mental Health Law",
+    def: "1979 U.S. Supreme Court decision requiring at least clear and convincing evidence for civil commitment—more than a preponderance, less than the criminal beyond-a-reasonable-doubt standard.",
+    seeAlso: ["Clear and convincing evidence", "Civil commitment", "Lessard v. Schmidt"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Clear and convincing evidence",
+    aliases: ["clear & convincing"],
+    category: "Mental Health Law",
+    def: "The intermediate evidentiary standard the Constitution requires for civil commitment (Addington v. Texas, 1979): the fact-finder must be persuaded to a high degree of certainty that the statutory criteria are met.",
+    seeAlso: ["Addington v. Texas", "Civil commitment"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Parham v. J.R.",
+    aliases: ["Parham", "Parham v JR"],
+    category: "Mental Health Law",
+    def: "1979 U.S. Supreme Court decision on admitting minors to psychiatric hospitals on a parent's application: no full adversarial hearing is required, but a neutral medical decision-maker must independently confirm that admission criteria are met.",
+    seeAlso: ["Civil commitment"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Zinermon v. Burch",
+    aliases: ["Zinermon"],
+    category: "Mental Health Law",
+    def: "1990 U.S. Supreme Court decision holding that admitting a person incompetent to consent as a 'voluntary' patient, bypassing commitment safeguards, can violate due process. A signature on an admission form does not substitute for capacity.",
+    seeAlso: ["Capacity to consent to admission", "Civil commitment"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Rouse v. Cameron",
+    aliases: ["Rouse"],
+    category: "Mental Health Law",
+    def: "1966 D.C. Circuit decision, an early recognition that involuntary hospitalization implies a right to treatment rather than mere custody; a forerunner of Wyatt v. Stickney.",
+    seeAlso: ["Right to treatment", "Wyatt v. Stickney"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Wyatt v. Stickney",
+    aliases: ["Wyatt", "Wyatt standards"],
+    category: "Mental Health Law",
+    def: "1971-72 Alabama federal case establishing a constitutional right to a humane environment, adequate staffing, and individualized treatment for committed patients. The 'Wyatt standards' became the national model for hospital reform.",
+    seeAlso: ["Right to treatment", "Rouse v. Cameron", "Deinstitutionalization"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Right to treatment",
+    aliases: ["right-to-treatment"],
+    category: "Mental Health Law",
+    def: "The principle that a person confined for treatment is owed actual treatment, not custody. Recognized in Rouse v. Cameron (1966) and given enforceable standards in Wyatt v. Stickney.",
+    seeAlso: ["Wyatt v. Stickney", "Rouse v. Cameron"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Youngberg v. Romeo",
+    aliases: ["Youngberg", "professional judgment standard"],
+    category: "Mental Health Law",
+    def: "1982 U.S. Supreme Court decision recognizing institutionalized persons' rights to reasonably safe conditions, freedom from undue restraint, and minimally adequate training. Courts defer to qualified professionals under the 'professional judgment' standard.",
+    seeAlso: ["Right to treatment"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Rennie v. Klein",
+    aliases: ["Rennie"],
+    category: "Mental Health Law",
+    def: "1983 Third Circuit case recognizing a qualified right of committed patients to refuse antipsychotics, resolved through a largely clinical/administrative review—one of the two U.S. models for medication refusal (contrast Rogers).",
+    seeAlso: ["Right to refuse treatment", "Rogers v. Commissioner", "Washington v. Harper"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Rogers v. Commissioner",
+    aliases: ["Rogers", "Rogers guardianship", "Rogers order"],
+    category: "Mental Health Law",
+    def: "1983 Massachusetts decision requiring a judicial determination of incompetence and a substituted-judgment analysis before non-emergency forced medication—the 'judicial' model of the right to refuse (contrast Rennie).",
+    seeAlso: ["Right to refuse treatment", "Riese hearing", "Rennie v. Klein"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Riese hearing",
+    aliases: ["Riese"],
+    category: "Mental Health Law",
+    def: "A California capacity hearing (from Riese v. St. Mary's) determining whether an involuntarily detained patient has the capacity to refuse antipsychotic medication; the West-Coast analogue of the Rogers substituted-judgment process.",
+    seeAlso: ["Rogers v. Commissioner", "Right to refuse treatment"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Right to refuse treatment",
+    aliases: ["right to refuse medication", "right to refuse antipsychotics"],
+    category: "Mental Health Law",
+    def: "The qualified right of an involuntarily committed patient to decline antipsychotic medication; overriding it generally requires a finding of incompetence or dangerousness plus a defined administrative or judicial process (Rennie, Rogers, Harper).",
+    seeAlso: ["Rennie v. Klein", "Rogers v. Commissioner", "Washington v. Harper", "Sell v. United States"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Washington v. Harper",
+    aliases: ["Harper"],
+    category: "Mental Health Law",
+    def: "1990 U.S. Supreme Court decision permitting forced antipsychotic medication of a prisoner who is dangerous and for whom treatment is medically appropriate, after an administrative hearing rather than a full judicial trial.",
+    seeAlso: ["Right to refuse treatment", "Sell v. United States"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Sell v. United States",
+    aliases: ["Sell", "Sell order"],
+    category: "Mental Health Law",
+    def: "2003 U.S. Supreme Court decision setting a demanding four-part test for medicating a defendant involuntarily solely to restore competency to stand trial: important government interest, likely effectiveness, necessity, and medical appropriateness. 'Sell orders' are rare.",
+    seeAlso: ["Competency to stand trial", "Washington v. Harper", "Right to refuse treatment"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Tarasoff v. Regents",
+    aliases: ["Tarasoff", "duty to warn", "duty to protect"],
+    category: "Mental Health Law",
+    def: "1976 California decision creating a therapist's duty to use reasonable care to protect an identifiable victim of a patient's serious threat—by warning, notifying police, or other steps. 'The protective privilege ends where the public peril begins.' Adopted with variations in most states.",
+    seeAlso: ["Confidentiality", "Jaffee v. Redmond"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Jaffee v. Redmond",
+    aliases: ["Jaffee", "psychotherapist-patient privilege"],
+    category: "Mental Health Law",
+    def: "1996 U.S. Supreme Court decision recognizing a federal psychotherapist-patient privilege protecting confidential treatment communications, extending to licensed social workers and not subject to case-by-case balancing.",
+    seeAlso: ["Tarasoff v. Regents", "Confidentiality"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Canterbury v. Spence",
+    aliases: ["Canterbury"],
+    category: "Mental Health Law",
+    def: "1972 D.C. Circuit decision adopting the reasonable-patient (materiality) standard for informed consent: physicians must disclose the risks and alternatives a reasonable patient would consider material, not merely what physicians customarily disclose.",
+    seeAlso: ["Informed consent (legal standard)"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Informed consent (legal standard)",
+    aliases: ["reasonable patient standard", "materiality standard"],
+    category: "Mental Health Law",
+    def: "The legal requirement to disclose material risks and alternatives before treatment. Two standards exist: the physician-based standard and the patient-based 'reasonable patient' standard from Canterbury v. Spence (1972); which applies is state-specific.",
+    seeAlso: ["Canterbury v. Spence"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Dusky v. United States",
+    aliases: ["Dusky", "Dusky standard"],
+    category: "Mental Health Law",
+    def: "1960 U.S. Supreme Court decision defining competency to stand trial: the defendant must have a rational and factual understanding of the proceedings and sufficient present ability to consult counsel with a reasonable degree of rational understanding.",
+    seeAlso: ["Competency to stand trial", "Jackson v. Indiana"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Competency to stand trial",
+    aliases: ["CST", "fitness to stand trial", "adjudicative competence"],
+    category: "Mental Health Law",
+    def: "A defendant's present ability to understand the proceedings and assist counsel (the Dusky standard). It is a functional legal question distinct from diagnosis and from criminal responsibility; a defendant found incompetent may receive restoration treatment.",
+    seeAlso: ["Dusky v. United States", "Jackson v. Indiana", "Sell v. United States"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Jackson v. Indiana",
+    aliases: ["Jackson"],
+    category: "Mental Health Law",
+    def: "1972 U.S. Supreme Court decision holding a defendant committed solely as incompetent to stand trial cannot be held indefinitely; confinement must bear a reasonable relation to restoring competence, or the state must civilly commit or release.",
+    seeAlso: ["Competency to stand trial"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Foucha v. Louisiana",
+    aliases: ["Foucha"],
+    category: "Mental Health Law",
+    def: "1992 U.S. Supreme Court decision holding an insanity acquittee who is no longer mentally ill cannot be confined on dangerousness alone; continued commitment requires both mental illness and dangerousness.",
+    seeAlso: ["Insanity defense", "Kansas v. Hendricks"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Kansas v. Hendricks",
+    aliases: ["Hendricks", "Kansas v Crane"],
+    category: "Mental Health Law",
+    def: "1997 U.S. Supreme Court decision upholding post-sentence civil commitment of 'sexually violent predators' who have a mental abnormality making predatory sexual violence likely. Kansas v. Crane (2002) added a volitional-impairment requirement.",
+    seeAlso: ["Sexually violent predator commitment", "Foucha v. Louisiana", "Adam Walsh Act (18 U.S.C. 4248)"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Sexually violent predator commitment",
+    aliases: ["SVP", "SVP commitment", "sexually dangerous person"],
+    category: "Mental Health Law",
+    def: "Post-sentence civil commitment of certain sex offenders based on a mental abnormality that makes future predatory sexual violence likely; upheld in Kansas v. Hendricks and paralleled federally by the Adam Walsh Act. Draws psychiatry deeply into risk assessment.",
+    seeAlso: ["Kansas v. Hendricks", "Adam Walsh Act (18 U.S.C. 4248)"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "Olmstead v. L.C.",
+    aliases: ["Olmstead", "integration mandate"],
+    category: "Mental Health Law",
+    def: "1999 U.S. Supreme Court decision holding that unjustified institutional isolation of people with disabilities is discrimination under the ADA. States must offer community placement when professionals find it appropriate, the person does not oppose it, and it can be reasonably accommodated.",
+    seeAlso: ["Americans with Disabilities Act (ADA)", "Least restrictive alternative", "Deinstitutionalization"],
+    link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
+  },
+  {
+    term: "National Mental Health Act of 1946",
+    aliases: ["NIMH founding", "1946 mental health act"],
+    category: "Mental Health Law",
+    def: "The 1946 statute that created what became the National Institute of Mental Health (NIMH) and a federal role in mental-health research, training, and demonstration—professionalizing U.S. psychiatry after World War II.",
+    seeAlso: ["Community Mental Health Act of 1963"],
+    link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
+  },
+  {
+    term: "Community Mental Health Act of 1963",
+    aliases: ["CMHC Act", "Community Mental Health Centers Act", "Mental Retardation Facilities and Community Mental Health Centers Construction Act"],
+    category: "Mental Health Law",
+    def: "Kennedy's 1963 law funding construction of community mental health centers to replace state hospitals—the statutory engine of deinstitutionalization, though its operating funds were never fully appropriated.",
+    seeAlso: ["Deinstitutionalization", "IMD exclusion"],
+    link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
+  },
+  {
+    term: "IMD exclusion",
+    aliases: ["Institutions for Mental Diseases exclusion", "IMD rule"],
+    category: "Mental Health Law",
+    def: "A 1965 Medicaid rule barring federal matching funds for adults 21-64 in psychiatric hospitals with more than 16 beds. It pushed states to shrink hospitals and still shapes bed supply, length of stay, and ED boarding.",
+    seeAlso: ["Community Mental Health Act of 1963", "Deinstitutionalization"],
+    link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
+  },
+  {
+    term: "Lanterman-Petris-Short Act",
+    aliases: ["LPS Act", "LPS", "Lanterman Petris Short"],
+    category: "Mental Health Law",
+    def: "California's 1967 civil-commitment statute that tied involuntary treatment to danger to self/others or grave disability and created time-limited holds (e.g., 5150). An influential model copied by many states.",
+    seeAlso: ["Civil commitment", "Grave disability"],
+    link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
+  },
+  {
+    term: "Rehabilitation Act Section 504",
+    aliases: ["Section 504", "Rehabilitation Act of 1973"],
+    category: "Mental Health Law",
+    def: "The first major federal ban on disability discrimination by recipients of federal funds (1973); the direct ancestor of the ADA's integration and access protections.",
+    seeAlso: ["Americans with Disabilities Act (ADA)"],
+    link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
+  },
+  {
+    term: "Individuals with Disabilities Education Act",
+    aliases: ["IDEA", "Education for All Handicapped Children Act", "FAPE"],
+    category: "Mental Health Law",
+    def: "The federal law (1975, later renamed IDEA) guaranteeing a free appropriate public education, including related mental-health services and IEPs, for children with disabilities—reshaping school-based child psychiatry.",
+    seeAlso: ["Rehabilitation Act Section 504"],
+    link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
+  },
+  {
+    term: "Civil Rights of Institutionalized Persons Act",
+    aliases: ["CRIPA"],
+    category: "Mental Health Law",
+    def: "The 1980 statute authorizing the U.S. Department of Justice to investigate and sue over patterns of unconstitutional conditions in state hospitals, jails, and other institutions—an enforcement tool after Wyatt.",
+    seeAlso: ["Wyatt v. Stickney", "Protection and Advocacy for Individuals with Mental Illness Act"],
+    link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
+  },
+  {
+    term: "Protection and Advocacy for Individuals with Mental Illness Act",
+    aliases: ["PAIMI"],
+    category: "Mental Health Law",
+    def: "The 1986 law creating state protection-and-advocacy agencies with authority to investigate abuse and neglect and litigate for people with serious mental illness, in institutions and (after 2000) the community.",
+    seeAlso: ["Civil Rights of Institutionalized Persons Act"],
+    link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
+  },
+  {
+    term: "EMTALA",
+    aliases: ["Emergency Medical Treatment and Labor Act", "emergency medical treatment and active labor act"],
+    category: "Mental Health Law",
+    def: "The 1986 law requiring Medicare-participating hospitals with emergency departments to screen and stabilize emergency conditions—including psychiatric emergencies—regardless of ability to pay. The legal basis for ED psychiatric holds and transfers.",
+    seeAlso: ["Psychiatric boarding"],
+    link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
+  },
+  {
+    term: "Americans with Disabilities Act (ADA)",
+    aliases: ["ADA", "Americans with Disabilities Act"],
+    category: "Mental Health Law",
+    def: "The 1990 civil-rights law prohibiting disability discrimination in employment, public services, and accommodations. Title II's integration mandate is the statutory basis for Olmstead; psychiatric disabilities are covered.",
+    seeAlso: ["Olmstead v. L.C.", "Rehabilitation Act Section 504"],
+    link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
+  },
+  {
+    term: "Mental Health Parity and Addiction Equity Act",
+    aliases: ["MHPAEA", "Wellstone-Domenici", "mental health parity", "parity law"],
+    category: "Mental Health Law",
+    def: "The 2008 federal parity law (building on the 1996 Mental Health Parity Act) requiring comparable coverage for mental-health and substance-use benefits, including financial requirements, treatment limits, and non-quantitative limits like prior authorization and step therapy.",
+    seeAlso: ["Affordable Care Act"],
+    link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
+  },
+  {
+    term: "Insanity Defense Reform Act of 1984",
+    aliases: ["IDRA", "Insanity Defense Reform Act"],
+    category: "Mental Health Law",
+    def: "The post-Hinckley federal statute narrowing the insanity defense to a cognitive prong, shifting the burden of proof to the defendant, and tightening release of NGRI acquittees. It influenced many state laws.",
+    seeAlso: ["Insanity defense", "Foucha v. Louisiana"],
+    link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
+  },
+  {
+    term: "Assisted outpatient treatment",
+    aliases: ["AOT", "outpatient commitment", "involuntary outpatient commitment", "Kendra's Law", "Laura's Law"],
+    category: "Mental Health Law",
+    def: "Court-ordered outpatient treatment for people with serious mental illness and a history of nonadherence and crisis. Authorized/funded federally via the 21st Century Cures Act and enacted in many states (e.g., Kendra's Law, Laura's Law); clinically effective but ethically debated.",
+    seeAlso: ["21st Century Cures Act", "Civil commitment"],
+    link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
+  },
+  {
+    term: "21st Century Cures Act",
+    aliases: ["Cures Act", "Helping Families in Mental Health Crisis Act", "CCBHC"],
+    category: "Mental Health Law",
+    def: "The 2016 law that reorganized SAMHSA leadership, expanded Certified Community Behavioral Health Clinics (CCBHCs), funded assisted outpatient treatment, and (separately) advanced EHR interoperability and information-blocking rules.",
+    seeAlso: ["Assisted outpatient treatment", "988 Suicide and Crisis Lifeline"],
+    link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
+  },
+  {
+    term: "988 Suicide and Crisis Lifeline",
+    aliases: ["988", "National Suicide Hotline Designation Act", "suicide and crisis lifeline"],
+    category: "Mental Health Law",
+    def: "The three-digit crisis line designated by the 2020 National Suicide Hotline Designation Act (launched July 2022), routing callers to local crisis centers and mobile teams—a front door to psychiatric emergency care that diverts crises from police and EDs.",
+    seeAlso: ["21st Century Cures Act"],
+    link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
+  },
+  {
+    term: "Adam Walsh Act (18 U.S.C. 4248)",
+    aliases: ["Adam Walsh Act", "18 USC 4248", "section 4248", "United States v. Comstock"],
+    category: "Mental Health Law",
+    def: "The 2006 federal provision authorizing civil commitment of 'sexually dangerous' persons in Bureau of Prisons custody after their sentence—the federal counterpart to state SVP laws, upheld in United States v. Comstock (2010).",
+    seeAlso: ["Sexually violent predator commitment", "Kansas v. Hendricks"],
+    link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
+  },
+  {
+    term: "Deinstitutionalization",
+    aliases: ["deinstitutionalisation"],
+    category: "History & Ethics",
+    def: "The mid-20th-century collapse of the U.S. state-hospital population (from ~559,000 in 1955 to under 40,000 today), driven by antipsychotics, court rulings, the CMHC Act, and Medicaid's IMD exclusion. Its underfunded community system left gaps now filled by homelessness and jails.",
+    seeAlso: ["Community Mental Health Act of 1963", "IMD exclusion", "Transinstitutionalization", "O'Connor v. Donaldson"],
+    link: { blogSlug: "deinstitutionalization", label: "Deinstitutionalization" }
+  },
+  {
+    term: "Transinstitutionalization",
+    aliases: ["transinstitutionalisation", "criminalization of mental illness"],
+    category: "History & Ethics",
+    def: "The shift of people with serious mental illness from psychiatric hospitals into other institutions not designed for care—nursing homes and, especially, jails and prisons—a documented consequence of deinstitutionalization.",
+    seeAlso: ["Deinstitutionalization"],
+    link: { blogSlug: "deinstitutionalization", label: "Deinstitutionalization" }
+  },
+  {
+    term: "Moral treatment",
+    aliases: ["traitement moral", "moral therapy"],
+    category: "History & Ethics",
+    def: "The late-18th/19th-century reform (Pinel, the Tukes' York Retreat) that treated insanity with humane routine, work, and respectful relationships rather than restraint. It worked at small scale and was overwhelmed as asylums overcrowded.",
+    seeAlso: ["Kirkbride plan", "Deinstitutionalization"],
+    link: { blogSlug: "moral-treatment-asylum-era", label: "Moral Treatment & the Asylum Era" }
+  },
+  {
+    term: "Kirkbride plan",
+    aliases: ["Kirkbride", "Kirkbride asylum"],
+    category: "History & Ethics",
+    def: "Thomas Story Kirkbride's mid-19th-century asylum architecture—a central core with staggered wings for light and air—embodying the belief that the building itself was therapeutic. The template for many American state hospitals.",
+    seeAlso: ["Moral treatment"],
+    link: { blogSlug: "moral-treatment-asylum-era", label: "Moral Treatment & the Asylum Era" }
+  },
+  {
+    term: "Total institution",
+    aliases: ["Goffman total institution"],
+    category: "History & Ethics",
+    def: "Erving Goffman's term (Asylums, 1961) for an enclosed setting like a psychiatric hospital or prison that strips inmates of prior identity through a 'mortification of the self,' producing much of the passivity later blamed on illness.",
+    seeAlso: ["Antipsychiatry", "Deinstitutionalization"],
+    link: { blogSlug: "antipsychiatry-rosenhan", label: "Antipsychiatry & the Rosenhan Study" }
+  },
+  {
+    term: "Antipsychiatry",
+    aliases: ["anti-psychiatry", "antipsychiatry movement"],
+    category: "History & Ethics",
+    def: "A 1960s-70s intellectual movement (Szasz, Laing, Goffman, Foucault) challenging the legitimacy of psychiatric diagnosis, institutions, and coercion. Wrong in its strongest claims but a spur to diagnostic rigor (DSM-III) and civil-liberties reform.",
+    seeAlso: ["Rosenhan experiment", "Total institution"],
+    link: { blogSlug: "antipsychiatry-rosenhan", label: "Antipsychiatry & the Rosenhan Study" }
+  },
+  {
+    term: "Rosenhan experiment",
+    aliases: ["Rosenhan", "On Being Sane in Insane Places", "pseudopatient study"],
+    category: "History & Ethics",
+    def: "David Rosenhan's 1973 study in which healthy 'pseudopatients' were admitted to psychiatric hospitals and labeled, purporting to show diagnosis could not distinguish the sane from the insane. It spurred DSM-III's push for reliability; Susannah Cahalan's 2019 reporting cast serious doubt on how much of it was real.",
+    seeAlso: ["Antipsychiatry"],
+    link: { blogSlug: "antipsychiatry-rosenhan", label: "Antipsychiatry & the Rosenhan Study" }
+  },
+  {
+    term: "Buck v. Bell",
+    aliases: ["Buck v Bell", "eugenic sterilization", "three generations of imbeciles"],
+    category: "History & Ethics",
+    def: "The 1927 U.S. Supreme Court decision (8-1, Holmes) upholding compulsory sterilization of the 'feebleminded,' enabling the forced sterilization of tens of thousands and later admired by Nazi Germany. Widely repudiated but never formally overruled.",
+    seeAlso: ["Belmont Report", "Tuskegee syphilis study"],
+    link: { blogSlug: "research-ethics-abuses", label: "Research-Ethics Abuses in Psychiatry" }
+  },
+  {
+    term: "Tuskegee syphilis study",
+    aliases: ["Tuskegee", "Tuskegee experiment", "USPHS syphilis study"],
+    category: "History & Ethics",
+    def: "The U.S. Public Health Service study (1932-1972) that deceived ~600 poor Black men and withheld penicillin to observe untreated syphilis. Its exposure drove the National Research Act and the Belmont Report, and it remains a source of medical mistrust.",
+    seeAlso: ["Belmont Report", "Nuremberg Code", "Institutional review board (IRB)"],
+    link: { blogSlug: "research-ethics-abuses", label: "Research-Ethics Abuses in Psychiatry" }
+  },
+  {
+    term: "MKUltra",
+    aliases: ["MK-Ultra", "MK Ultra", "CIA mind control"],
+    category: "History & Ethics",
+    def: "The CIA's covert 1953-73 program that administered LSD, hypnosis, and other techniques—often to unwitting subjects, including psychiatric patients (e.g., Ewen Cameron's 'depatterning')—without consent or oversight. Exposed by the Church Committee.",
+    seeAlso: ["Nuremberg Code", "Belmont Report"],
+    link: { blogSlug: "research-ethics-abuses", label: "Research-Ethics Abuses in Psychiatry" }
+  },
+  {
+    term: "Willowbrook hepatitis studies",
+    aliases: ["Willowbrook"],
+    category: "History & Ethics",
+    def: "Studies (1955-70s) in which children with intellectual disabilities at Willowbrook State School were deliberately infected with hepatitis, with 'consent' coerced by conditioning admission on enrollment. A landmark case of exploiting institutionalized subjects.",
+    seeAlso: ["Belmont Report", "Institutional review board (IRB)"],
+    link: { blogSlug: "research-ethics-abuses", label: "Research-Ethics Abuses in Psychiatry" }
+  },
+  {
+    term: "Nuremberg Code",
+    aliases: ["Nuremberg"],
+    category: "History & Ethics",
+    def: "The 1947 international ethics code arising from the Nazi Doctors' Trial whose first principle is that 'the voluntary consent of the human subject is absolutely essential.' The foundation of modern research consent.",
+    seeAlso: ["Belmont Report", "Tuskegee syphilis study"],
+    link: { blogSlug: "research-ethics-abuses", label: "Research-Ethics Abuses in Psychiatry" }
+  },
+  {
+    term: "Belmont Report",
+    aliases: ["Belmont"],
+    category: "History & Ethics",
+    def: "The 1979 U.S. report setting the three core principles of research ethics—respect for persons, beneficence, and justice—in response to Tuskegee. The basis of the Common Rule and IRB review.",
+    seeAlso: ["Nuremberg Code", "Institutional review board (IRB)", "Tuskegee syphilis study"],
+    link: { blogSlug: "research-ethics-abuses", label: "Research-Ethics Abuses in Psychiatry" }
+  },
+  {
+    term: "Institutional review board (IRB)",
+    aliases: ["IRB", "Common Rule", "45 CFR 46", "human subjects protection"],
+    category: "History & Ethics",
+    def: "The committee that reviews and monitors human-subjects research for ethical compliance, mandated by the 1974 National Research Act and codified in the Common Rule (45 CFR 46), with extra protections for vulnerable populations.",
+    seeAlso: ["Belmont Report", "Nuremberg Code"],
+    link: { blogSlug: "research-ethics-abuses", label: "Research-Ethics Abuses in Psychiatry" }
   }
 ];
 
-// Total entries: 410
+// Total entries: 417
