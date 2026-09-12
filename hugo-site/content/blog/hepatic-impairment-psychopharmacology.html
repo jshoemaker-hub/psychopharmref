@@ -1,0 +1,204 @@
+---
+title: "Psychopharmacology in Hepatic Impairment"
+date: 2026-09-12
+description: "How liver disease alters psychotropic metabolism, protein binding and hepatic-encephalopathy risk — with a drug-by-drug guide to preferred and hazardous agents in cirrhosis and liver failure."
+category: "Psychopharmacology"
+subtitle: "How liver disease alters psychotropic metabolism, protein binding and encephalopathy risk — with a drug-by-drug guide to preferred and hazardous agents in cirrhosis and liver failure"
+readTime: "15 min read"
+clinicalSummary: "Hepatic dosing is graded by Child-Pugh, not a single number; phase II glucuronidation is relatively preserved so LOT benzodiazepines (lorazepam, oxazepam, temazepam) and renally cleared agents (gabapentin, pregabalin, lithium) are preferred, protein-bound drug levels (valproate) understate active drug when albumin is low, sedatives and anticholinergics can precipitate hepatic encephalopathy, and directly hepatotoxic agents (nefazodone, valproate, duloxetine, chlorpromazine, clozapine) should be avoided."
+related: ["renal-impairment-psychopharmacology", "alcohol-use-disorder", "organ-dysfunction-psychiatry"]
+draft: false
+---
+
+<style>
+.sp-table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+table.sp-table { border-collapse: collapse; width: 100%; min-width: 660px; font-size: 0.92rem; }
+table.sp-table th, table.sp-table td { border: 1px solid var(--border, #cfc8ba); padding: 0.6rem 0.75rem; text-align: left; vertical-align: top; line-height: 1.5; }
+table.sp-table th { background: var(--accent, #4a7c35); color: #fff; font-weight: 700; }
+table.sp-table tr:nth-child(even) td { background: #f9f7f4; }
+table.sp-table td strong { color: var(--text, #231e14); }
+.sp-callout { background: var(--bg2, #ece6db); border-left: 4px solid var(--accent, #4a7c35); padding: 1rem 1.15rem; margin: 1.5rem 0; border-radius: 4px; }
+.sp-callout h4 { margin: 0 0 0.5rem 0; color: var(--accent, #4a7c35); font-size: 1rem; }
+.sp-callout p { margin: 0.5rem 0; font-size: 0.95rem; line-height: 1.6; }
+.sp-callout.sp-warn { border-left-color: #c04030; }
+.sp-callout.sp-warn h4 { color: #c04030; }
+.sp-refs { font-size: 0.88rem; line-height: 1.55; color: var(--text, #231e14); }
+.sp-refs li { margin: 0.4rem 0; }
+</style>
+
+<p class="ba-lead">The liver metabolizes most psychotropics, so it would be reasonable to expect liver disease to be the mirror image of kidney disease. It is not — it is harder. Renal function can be captured in a single number and drug clearance scales with it fairly predictably; hepatic function cannot. The liver's reserve is large and non-linear, its two great metabolic pathways fail at different rates, it also makes the albumin that carries drugs and the clotting factors that keep patients safe, and — uniquely — the failing liver produces a brain-sensitizing state, hepatic encephalopathy, that the very drugs we prescribe can unmask or worsen. Prescribing well in liver disease means holding four questions at once: is metabolism reduced, is protein binding reduced, will this drug precipitate encephalopathy, and is this drug itself hepatotoxic?</p>
+
+<div class="ba-summary-box">
+  <h3>Clinical Bottom Line</h3>
+  <ul>
+    <li><strong>Phase II beats phase I in a failing liver.</strong> Glucuronidation is relatively preserved, so the "LOT" benzodiazepines — <strong>l</strong>orazepam, <strong>o</strong>xazepam, <strong>t</strong>emazepam — are the preferred sedatives when one is truly needed.</li>
+    <li><strong>Grade the disease.</strong> Use the Child-Pugh class to gauge severity; reserve is large, so significant dose changes are mostly for moderate-to-severe (Child-Pugh B/C) disease. Start low, go slow, and lengthen intervals.</li>
+    <li><strong>Sedation can tip into encephalopathy.</strong> Any CNS depressant can precipitate or mask hepatic encephalopathy; TCAs add a constipation/anticholinergic route to the same endpoint.</li>
+    <li><strong>Some psychotropics are directly hepatotoxic:</strong> nefazodone (black-box), valproate, and duloxetine warrant particular caution; agomelatine requires scheduled LFT monitoring; chlorpromazine and clozapine are best avoided.</li>
+    <li><strong>Renally cleared agents become useful here:</strong> gabapentin, pregabalin, and lithium bypass hepatic metabolism (mind lithium's volume sensitivity with ascites and diuresis).</li>
+    <li><strong>Reasonable defaults:</strong> escitalopram/citalopram or sertraline (low, slow) for depression; haloperidol at low dose for agitation/psychosis; a LOT benzodiazepine only when unavoidable.</li>
+  </ul>
+</div>
+
+<div class="svg-diagram">
+  <svg viewBox="0 0 850 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of the four ways liver disease changes psychotropic prescribing: reduced phase I metabolism, reduced protein synthesis, hepatic encephalopathy vulnerability, and intrinsic drug hepatotoxicity">
+    <defs>
+      <style>
+        .d-title { font-size: 15px; font-weight: 700; fill: #231e14; }
+        .d-box   { font-size: 12.5px; fill: #231e14; font-weight: 600; }
+        .d-sub   { font-size: 11px; fill: #6b6050; }
+        .liver   { fill: #8b6914; opacity: 0.14; stroke: #8b6914; stroke-width: 1.5; }
+        .cons    { fill: #c04030; opacity: 0.13; stroke: #c04030; stroke-width: 1.5; }
+        .flow    { stroke: #6b6050; stroke-width: 1.4; fill: none; opacity: 0.7; }
+      </style>
+      <marker id="hp-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6b6050"/></marker>
+    </defs>
+
+    <text class="d-title" x="180" y="26" text-anchor="middle">Failing liver &#8212; four changes</text>
+    <text class="d-title" x="670" y="26" text-anchor="middle">Prescribing consequence</text>
+
+    <rect class="liver" x="30" y="55"  width="300" height="66" rx="6"/>
+    <text class="d-box" x="180" y="82" text-anchor="middle">&#8595; Phase I oxidation (CYP), &#8595; first-pass</text>
+    <text class="d-sub" x="180" y="102" text-anchor="middle">phase II glucuronidation relatively spared</text>
+
+    <rect class="liver" x="30" y="150" width="300" height="66" rx="6"/>
+    <text class="d-box" x="180" y="177" text-anchor="middle">&#8595; Albumin synthesis</text>
+    <text class="d-sub" x="180" y="197" text-anchor="middle">&#8593; free fraction of protein-bound drugs</text>
+
+    <rect class="liver" x="30" y="245" width="300" height="66" rx="6"/>
+    <text class="d-box" x="180" y="272" text-anchor="middle">Hepatic encephalopathy vulnerability</text>
+    <text class="d-sub" x="180" y="292" text-anchor="middle">brain sensitized to sedation &amp; constipation</text>
+
+    <rect class="liver" x="30" y="340" width="300" height="66" rx="6"/>
+    <text class="d-box" x="180" y="367" text-anchor="middle">Reduced tolerance for hepatotoxins</text>
+    <text class="d-sub" x="180" y="387" text-anchor="middle">less reserve to absorb further injury</text>
+
+    <rect class="cons" x="520" y="55"  width="300" height="66" rx="6"/>
+    <text class="d-box" x="670" y="82" text-anchor="middle">Phase-I drugs accumulate</text>
+    <text class="d-sub" x="670" y="102" text-anchor="middle">prefer LOT benzodiazepines</text>
+
+    <rect class="cons" x="520" y="150" width="300" height="66" rx="6"/>
+    <text class="d-box" x="670" y="177" text-anchor="middle">Total levels mislead</text>
+    <text class="d-sub" x="670" y="197" text-anchor="middle">more active drug than the number implies</text>
+
+    <rect class="cons" x="520" y="245" width="300" height="66" rx="6"/>
+    <text class="d-box" x="670" y="272" text-anchor="middle">Sedatives can precipitate HE</text>
+    <text class="d-sub" x="670" y="292" text-anchor="middle">avoid long-acting CNS depressants, TCAs</text>
+
+    <rect class="cons" x="520" y="340" width="300" height="66" rx="6"/>
+    <text class="d-box" x="670" y="367" text-anchor="middle">Avoid direct hepatotoxins</text>
+    <text class="d-sub" x="670" y="387" text-anchor="middle">nefazodone, valproate, duloxetine, chlorpromazine</text>
+
+    <line class="flow" x1="332" y1="88"  x2="518" y2="88"  marker-end="url(#hp-ah)"/>
+    <line class="flow" x1="332" y1="183" x2="518" y2="183" marker-end="url(#hp-ah)"/>
+    <line class="flow" x1="332" y1="278" x2="518" y2="278" marker-end="url(#hp-ah)"/>
+    <line class="flow" x1="332" y1="373" x2="518" y2="373" marker-end="url(#hp-ah)"/>
+
+    <text class="d-sub" x="425" y="445" text-anchor="middle">Hold four questions at once: reduced metabolism, reduced binding, encephalopathy risk, and intrinsic hepatotoxicity.</text>
+  </svg>
+</div>
+
+<h2>Why the liver is not just "the kidney with a different organ"</h2>
+<p>Four features make hepatic dosing genuinely harder than renal dosing.</p>
+<p><strong>There is no single "hepatic GFR."</strong> The liver has enormous functional reserve and its impairment is not linear: a drug's clearance may be near-normal until disease is advanced, then fall steeply. Clinicians grade severity instead with the <strong>Child-Pugh classification</strong> (bilirubin, albumin, INR, ascites, encephalopathy), and most meaningful dose reductions apply to moderate-to-severe (Child-Pugh B and C) disease. The practical corollary is caution and titration rather than a formula.</p>
+<p><strong>The two metabolic pathways fail at different rates.</strong> Phase I reactions (oxidation, largely cytochrome P450) are more vulnerable in cirrhosis than phase II reactions (conjugation, especially glucuronidation). This asymmetry is the single most useful fact in the chapter, because it identifies drugs whose metabolism is relatively spared even in significant disease.</p>
+<p><strong>The liver makes the proteins that carry drugs.</strong> Reduced albumin synthesis raises the free (active) fraction of highly protein-bound drugs, so a "therapeutic" total level can represent a supratherapeutic active concentration — total valproate levels are the classic trap. Reduced clotting-factor synthesis (a rising INR) is also part of the Child-Pugh score and a reminder of how sick the patient is.</p>
+<p><strong>The failing liver sensitizes the brain.</strong> Hepatic encephalopathy is a state of heightened cerebral vulnerability in which sedatives, and anything that worsens constipation or shifts fluids, can precipitate or deepen delirium. This is a pharmacodynamic hazard layered on top of the pharmacokinetic ones and it changes drug <em>selection</em>, not just dose.</p>
+
+<h2>Phase I vs phase II: the LOT rule</h2>
+<p>Because glucuronidation (phase II) is relatively preserved while oxidative (phase I) metabolism is impaired, benzodiazepines that are cleared purely by glucuronidation and have no active metabolites are the preferred sedatives in liver disease. These are <strong>lorazepam, oxazepam, and temazepam</strong> — the "LOT" mnemonic. Agents that require phase I oxidation and generate long-acting active metabolites — diazepam, chlordiazepoxide, clonazepam, alprazolam — accumulate and are best avoided or roughly halved. The same principle favors, among antidepressants, agents with simpler metabolism and no accumulating active metabolites, and it is one reason renally cleared drugs (which skip the liver entirely) become attractive here.</p>
+<div class="sp-callout">
+  <h4>Alcohol-related liver disease is the common scenario</h4>
+  <p>Many patients needing psychotropics in liver disease have alcohol-related cirrhosis, and they may also need management of alcohol withdrawal. The LOT logic applies directly: lorazepam or oxazepam are the standard benzodiazepines for withdrawal in significant hepatic impairment because they do not depend on the compromised phase I pathway. See <a href="/blog/alcohol-use-disorder/">Alcohol Use Disorder</a> for the withdrawal protocols.</p>
+</div>
+
+<h2>Hepatotoxic psychotropics: drugs the liver would rather you avoid</h2>
+<p>A separate concern from clearance is that several psychotropics can injure the liver, and a patient with little hepatic reserve tolerates that injury poorly.</p>
+<p><strong>Nefazodone</strong> carries a black-box warning for rare but potentially fatal hepatic failure and is generally avoided. <strong>Valproate</strong> can cause dose-independent hepatotoxicity and hyperammonemia — a particularly bad choice when the goal is to protect a struggling liver and avoid encephalopathy. <strong>Duloxetine</strong> carries labeling cautions against use in hepatic impairment and in chronic heavy alcohol use because of hepatocellular injury. <strong>Agomelatine</strong> (where available) requires scheduled liver-function monitoring. Among antipsychotics, <strong>chlorpromazine</strong> (cholestatic injury) and <strong>clozapine</strong> (contraindicated in active or progressive liver disease) are best avoided, and <strong>carbamazepine</strong> and <strong>MAOIs</strong> add hepatotoxic potential of their own. This does not mean transient, benign transaminase elevations — common and often not a reason to stop a needed drug — but it does mean choosing agents with clean hepatic records when a choice exists, and monitoring when it does not.</p>
+
+<h2>The encephalopathy trap</h2>
+<p>The most avoidable harm in this population is precipitating hepatic encephalopathy with a sedating regimen. Long-acting benzodiazepines and other CNS depressants can tip a compensated patient into overt encephalopathy; anticholinergic drugs (low-potency antipsychotics and TCAs) add constipation, which raises ammonia and does the same by a different route. When agitation or psychosis in a cirrhotic patient must be treated, low-dose <strong>haloperidol</strong> is a common choice precisely because it is not strongly sedating or anticholinergic; and the first move in a newly confused cirrhotic patient is always to ask whether encephalopathy — not a primary psychiatric process — is the diagnosis, and whether a drug helped cause it. See <a href="/blog/delirium/">Delirium</a> and <a href="/blog/organ-dysfunction-psychiatry/">Psychiatric Changes in Severe Organ Dysfunction</a> for that workup.</p>
+
+<h2>Drug-by-drug guidance</h2>
+<div class="sp-table-wrap">
+  <table class="sp-table">
+    <thead>
+      <tr><th>Class / agent</th><th>Status in hepatic impairment</th><th>Practical approach</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Citalopram / escitalopram</strong></td><td>Reasonable first-line</td><td>Minimal-to-modest reduction; start low. (Balance against dose-dependent QT effect, especially in the cardio-hepatic patient.)</td></tr>
+      <tr><td><strong>Sertraline, paroxetine, fluoxetine, fluvoxamine</strong></td><td>Usable with lower doses</td><td>Lower starting and target doses; sertraline is commonly used in hepatitis C and mild-to-moderate disease. Fluoxetine's long half-life makes titration sluggish.</td></tr>
+      <tr><td><strong>Venlafaxine</strong></td><td>Reduce</td><td>Roughly &gt;50% reduction in moderate hepatic disease.</td></tr>
+      <tr><td><strong>Desvenlafaxine</strong></td><td>Relatively favorable</td><td>Largely renally cleared; little hepatic adjustment (do not exceed 100 mg/day in hepatic impairment per labeling).</td></tr>
+      <tr><td><strong>Duloxetine</strong></td><td>Avoid</td><td>Labeling cautions against use in hepatic impairment and chronic alcohol use (hepatocellular injury).</td></tr>
+      <tr><td><strong>Bupropion</strong></td><td>Reduce</td><td>Reduced dose/frequency even in mild (Child-Pugh A) disease; more so in B/C.</td></tr>
+      <tr><td><strong>Vortioxetine, levomilnacipran</strong></td><td>Often no reduction</td><td>No hepatic dose adjustment for mild-to-moderate disease per labeling; still start conservatively.</td></tr>
+      <tr><td><strong>Mirtazapine, trazodone</strong></td><td>Reduce</td><td>Clearance falls; useful sedating/appetite effects but titrate and watch for over-sedation and HE.</td></tr>
+      <tr><td><strong>TCAs</strong></td><td>Second-line</td><td>Anticholinergic constipation can precipitate encephalopathy; nortriptyline is among the safer choices with level monitoring if used.</td></tr>
+      <tr><td><strong>Nefazodone, MAOIs</strong></td><td>Avoid</td><td>Nefazodone black-box hepatic failure; MAOIs carry intrinsic hepatotoxicity and interaction danger.</td></tr>
+      <tr><td><strong>Haloperidol</strong></td><td>Preferred for agitation/psychosis</td><td>Low doses; not strongly sedating or anticholinergic. Monitor QT.</td></tr>
+      <tr><td><strong>Aripiprazole, risperidone, olanzapine, quetiapine</strong></td><td>Usable, reduced</td><td>Start low and titrate; quetiapine and olanzapine add sedation that can matter in HE.</td></tr>
+      <tr><td><strong>Chlorpromazine, clozapine</strong></td><td>Avoid</td><td>Chlorpromazine cholestasis; clozapine contraindicated in active/progressive liver disease (and heavily sedating/anticholinergic).</td></tr>
+      <tr><td><strong>Valproate, carbamazepine</strong></td><td>Avoid / relatively contraindicated</td><td>Hepatotoxicity and (valproate) hyperammonemia; poor choices when protecting the liver and avoiding HE.</td></tr>
+      <tr><td><strong>Lamotrigine</strong></td><td>Reduce</td><td>Reduce per severity (glucuronidated; clearance falls in moderate-severe disease).</td></tr>
+      <tr><td><strong>Lithium</strong></td><td>Hepatically neutral</td><td>Not hepatically metabolized, so attractive on that axis — but watch volume shifts from ascites and diuretics, which move levels.</td></tr>
+      <tr><td><strong>Gabapentin / pregabalin</strong></td><td>Favorable</td><td>Renally cleared; bypass the liver. Useful for anxiety/sleep/neuropathic pain when hepatic metabolism is the constraint (mind renal function).</td></tr>
+      <tr><td><strong>Benzodiazepines</strong></td><td>LOT preferred</td><td>Lorazepam, oxazepam, temazepam (glucuronidation, no active metabolites). Halve or avoid diazepam, chlordiazepoxide, clonazepam, alprazolam; avoid all if overt encephalopathy is a risk.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="ba-summary-box">
+  <h3>Clinical Takeaways</h3>
+  <ul>
+    <li>Grade severity with Child-Pugh; expect the largest reductions in class B/C disease, and titrate rather than trusting a formula.</li>
+    <li>Exploit the phase I/phase II asymmetry: LOT benzodiazepines and renally cleared agents are your friends.</li>
+    <li>Interpret protein-bound drug levels (valproate especially) with the low albumin in mind — the total number understates active drug.</li>
+    <li>Select against hepatotoxins: avoid nefazodone, valproate, duloxetine, chlorpromazine and clozapine when alternatives exist; monitor LFTs where required.</li>
+    <li>Protect against encephalopathy: minimize sedatives and anticholinergics; use low-dose haloperidol for agitation; treat new confusion as possible HE until proven otherwise.</li>
+    <li>Coordinate with the alcohol-withdrawal plan when the underlying disease is alcohol-related cirrhosis.</li>
+  </ul>
+</div>
+
+<p>This chapter pairs with <a href="/blog/renal-impairment-psychopharmacology/">Psychopharmacology in Renal Impairment</a> and the other special-population chapters on <a href="/blog/malabsorption-short-gut-psychopharmacology/">malabsorption &amp; short gut</a> and <a href="/blog/long-qt-syndrome-psychopharmacology/">long QT syndrome</a>; the underlying principles are developed in <a href="/blog/pharmacokinetics/">Pharmacokinetics</a>.</p>
+
+<h2>References &amp; Further Reading</h2>
+<ol class="sp-refs">
+  <li>Crone CC, et al. Gastrointestinal and hepatic disease. In: <em>Textbook of Psychosomatic Medicine and Consultation-Liaison Psychiatry.</em></li>
+  <li>Mullish BH, et al. The management of neuropsychiatric symptoms in patients with liver disease. <em>Aliment Pharmacol Ther.</em></li>
+  <li>Prescribing psychotropic medications in hepatic and renal impairment (clinical reference summaries).</li>
+  <li>DeSanty KP, Amabile CM. Antidepressant-induced liver injury. <em>Ann Pharmacother.</em></li>
+  <li>Verbeeck RK. Pharmacokinetics and dosage adjustment in patients with hepatic dysfunction. <em>Eur J Clin Pharmacol.</em></li>
+  <li>Voican CS, et al. Antidepressant-induced liver injury: a review for clinicians. <em>Am J Psychiatry.</em></li>
+</ol>
+
+<p style="font-size:0.85rem;color:var(--muted,#6b6050);margin-top:1.5rem;">This chapter is an educational review for clinicians and trainees. It reflects evidence current as of September 2026 and should be validated against current product labeling and institutional protocols; it is not a substitute for clinical judgment.</p>
+
+<div class="ba-related">
+  <h4>Related Articles</h4>
+  <div class="ba-related-grid">
+    <a href="renal-impairment-psychopharmacology.html" class="ba-related-link">Psychopharmacology in Renal Impairment</a>
+    <a href="malabsorption-short-gut-psychopharmacology.html" class="ba-related-link">Malabsorption &amp; Short Gut</a>
+    <a href="long-qt-syndrome-psychopharmacology.html" class="ba-related-link">Long QT Syndrome</a>
+    <a href="alcohol-use-disorder.html" class="ba-related-link">Alcohol Use Disorder</a>
+    <a href="organ-dysfunction-psychiatry.html" class="ba-related-link">Psychiatry in Organ Dysfunction</a>
+    <a href="pharmacokinetics.html" class="ba-related-link">Pharmacokinetics</a>
+  </div>
+  <div class="ba-share-row">
+    <a href="https://twitter.com/intent/tweet?text=Psychopharmacology%20in%20Hepatic%20Impairment&amp;url=https%3A%2F%2Fpsychopharmref.com%2Fblog%2Fhepatic-impairment-psychopharmacology.html" target="_blank" rel="noopener" class="ba-share-btn ba-share-btn--x">Share on X</a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://psychopharmref.com/blog/hepatic-impairment-psychopharmacology.html" target="_blank" rel="noopener" class="ba-share-btn ba-share-btn--li">Share on LinkedIn</a>
+    <a href="mailto:?subject=Psychopharmacology in Hepatic Impairment&amp;body=Check out this article: https://psychopharmref.com/blog/hepatic-impairment-psychopharmacology.html" class="ba-share-btn ba-share-btn--email">Email</a>
+    <button class="ba-share-btn ba-share-btn--copy" onclick="navigator.clipboard.writeText('https://psychopharmref.com/blog/hepatic-impairment-psychopharmacology.html').then(function(){var b=this;b.textContent='Copied!';setTimeout(function(){b.textContent='Copy Link'},2000)}.bind(this))">Copy Link</button>
+  </div>
+</div>
+
+<div class="nl-blog-cta">
+  <h4>PsychoPharmRef Newsletter</h4>
+  <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
+  <a href="https://subscribe-forms.beehiiv.com/5f2b3081-aa41-452c-95c8-69a5ae899cf8" target="_blank" rel="noopener" class="nl-subscribe-btn">Subscribe — it's free</a>
+</div>
+
+<footer class="ba-footer">
+  <p>This article is intended for educational purposes for healthcare professionals. Information presented reflects current evidence as of September 2026 and should be validated against current clinical guidelines and institutional protocols.</p>
+  <p><a href="../" class="btn-primary">← Back to Blog</a></p>
+</footer>

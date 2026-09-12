@@ -3060,7 +3060,95 @@ window.GLOSSARY_TERMS = [
     def: "The committee that reviews and monitors human-subjects research for ethical compliance, mandated by the 1974 National Research Act and codified in the Common Rule (45 CFR 46), with extra protections for vulnerable populations.",
     seeAlso: ["Belmont Report", "Nuremberg Code"],
     link: { blogSlug: "research-ethics-abuses", label: "Research-Ethics Abuses in Psychiatry" }
+  },
+  {
+    term: "Child-Pugh classification",
+    aliases: ["Child-Pugh score", "Child-Turcotte-Pugh", "CTP class"],
+    category: "Pharmacology",
+    def: "A five-variable score (bilirubin, albumin, INR, ascites, encephalopathy) grading the severity of chronic liver disease into classes A, B and C. Because the liver has no single 'GFR equivalent', it is the practical anchor for dosing psychotropics in hepatic impairment, with the largest reductions reserved for class B and C.",
+    seeAlso: ["LOT benzodiazepines", "Hepatic encephalopathy"],
+    link: { blogSlug: "hepatic-impairment-psychopharmacology", label: "Psychopharmacology in Hepatic Impairment" }
+  },
+  {
+    term: "LOT benzodiazepines",
+    aliases: ["lorazepam oxazepam temazepam", "glucuronidated benzodiazepines", "LOT rule"],
+    category: "Pharmacology",
+    def: "Lorazepam, Oxazepam and Temazepam — benzodiazepines cleared by phase II glucuronidation with no active metabolites, making them the preferred agents in significant liver disease (and reasonable in the elderly), because glucuronidation is relatively preserved when oxidative CYP metabolism fails.",
+    seeAlso: ["Glucuronidation", "Child-Pugh classification"],
+    link: { blogSlug: "hepatic-impairment-psychopharmacology", label: "Psychopharmacology in Hepatic Impairment" }
+  },
+  {
+    term: "Glucuronidation",
+    aliases: ["phase II metabolism", "conjugation", "UGT"],
+    category: "Pharmacology",
+    def: "A phase II (conjugation) metabolic pathway that attaches glucuronic acid to a drug to aid excretion. It is relatively preserved in cirrhosis compared with phase I oxidation (cytochrome P450), which is why glucuronidated agents such as the LOT benzodiazepines and lamotrigine are comparatively favored in liver disease.",
+    seeAlso: ["LOT benzodiazepines", "First-pass metabolism"],
+    link: { blogSlug: "hepatic-impairment-psychopharmacology", label: "Psychopharmacology in Hepatic Impairment" }
+  },
+  {
+    term: "Hepatic encephalopathy",
+    aliases: ["HE", "portosystemic encephalopathy"],
+    category: "Pharmacology",
+    def: "A neuropsychiatric syndrome of confusion and altered consciousness in liver failure, driven by accumulated gut-derived toxins such as ammonia. Sedatives and anticholinergic drugs (which worsen constipation) can precipitate or deepen it, so prescribing in cirrhosis minimizes CNS depressants and treats new confusion as possible HE until proven otherwise.",
+    seeAlso: ["Child-Pugh classification", "Delirium"],
+    link: { blogSlug: "hepatic-impairment-psychopharmacology", label: "Psychopharmacology in Hepatic Impairment" }
+  },
+  {
+    term: "Torsades de pointes",
+    aliases: ["TdP", "polymorphic ventricular tachycardia", "torsade"],
+    category: "Pharmacology",
+    def: "A polymorphic ventricular tachycardia arising on a prolonged QT interval, capable of causing syncope or degenerating into ventricular fibrillation and sudden death. QT-prolonging psychotropics raise its risk additively with a vulnerable substrate (congenital LQTS, low potassium or magnesium, bradycardia).",
+    seeAlso: ["Long QT syndrome (LQTS)", "QTc prolongation", "hERG channel (IKr)"],
+    link: { blogSlug: "long-qt-syndrome-psychopharmacology", label: "Psychopharmacology in Long QT Syndrome" }
+  },
+  {
+    term: "Long QT syndrome (LQTS)",
+    aliases: ["LQTS", "congenital long QT", "LQT1", "LQT2", "LQT3", "channelopathy"],
+    category: "Pharmacology",
+    def: "An inherited or acquired disorder of delayed cardiac repolarization predisposing to torsades de pointes. Common congenital subtypes are LQT1 (KCNQ1/IKs, exertion-triggered), LQT2 (KCNH2/hERG/IKr, arousal- and auditory-triggered) and LQT3 (SCN5A, rest/sleep). Beta-blockade is the mainstay, and QT-prolonging drugs are avoided.",
+    seeAlso: ["hERG channel (IKr)", "Torsades de pointes", "QTc prolongation"],
+    link: { blogSlug: "long-qt-syndrome-psychopharmacology", label: "Psychopharmacology in Long QT Syndrome" }
+  },
+  {
+    term: "hERG channel (IKr)",
+    aliases: ["hERG", "IKr", "KCNH2", "rapid delayed rectifier potassium channel"],
+    category: "Pharmacology",
+    def: "The potassium channel carrying the rapid delayed-rectifier current (IKr) that drives ventricular repolarization. Most QT-prolonging drugs act by blocking hERG, and it is the channel mutated in LQT2 — so these patients have the least reserve for exactly the medications psychiatry most often uses.",
+    seeAlso: ["Long QT syndrome (LQTS)", "Torsades de pointes"],
+    link: { blogSlug: "long-qt-syndrome-psychopharmacology", label: "Psychopharmacology in Long QT Syndrome" }
+  },
+  {
+    term: "Nephrogenic diabetes insipidus",
+    aliases: ["NDI", "lithium-induced diabetes insipidus", "nephrogenic DI"],
+    category: "Pharmacology",
+    def: "Impaired renal concentrating ability causing polyuria and polydipsia despite adequate ADH, classically a chronic complication of lithium therapy. It exemplifies lithium's bidirectional relationship with the kidney — the drug can both harm renal function and become dangerous to dose as renal function declines.",
+    seeAlso: ["Volume of distribution"],
+    link: { blogSlug: "renal-impairment-psychopharmacology", label: "Psychopharmacology in Renal Impairment" }
+  },
+  {
+    term: "Roux-en-Y gastric bypass",
+    aliases: ["RYGB", "gastric bypass", "bariatric surgery drug absorption"],
+    category: "Pharmacology",
+    def: "A bariatric procedure that both restricts the stomach and reroutes the small bowel to exclude the duodenum and proximal jejunum — the main site of drug absorption and bile mixing — producing the largest, least predictable reduction in oral drug uptake. Extended-release psychotropics are switched to immediate-release, and lithium levels rechecked for toxicity from a shifting volume of distribution.",
+    seeAlso: ["Short bowel syndrome", "Orally disintegrating tablet (ODT)"],
+    link: { blogSlug: "malabsorption-short-gut-psychopharmacology", label: "Psychopharmacology in Malabsorption & Short Gut" }
+  },
+  {
+    term: "Short bowel syndrome",
+    aliases: ["SBS", "short gut", "intestinal failure"],
+    category: "Pharmacology",
+    def: "Malabsorption resulting from loss of small-intestinal length or function (from resection for Crohn's disease, ischemia, volvulus or trauma), combining reduced absorptive surface with rapid transit. Oral drug uptake becomes unreliable, favoring immediate-release, liquid or gut-bypassing formulations.",
+    seeAlso: ["Roux-en-Y gastric bypass", "Orally disintegrating tablet (ODT)"],
+    link: { blogSlug: "malabsorption-short-gut-psychopharmacology", label: "Psychopharmacology in Malabsorption & Short Gut" }
+  },
+  {
+    term: "Orally disintegrating tablet (ODT)",
+    aliases: ["ODT", "orodispersible tablet", "sublingual formulation"],
+    category: "Pharmacology",
+    def: "A tablet that dissolves in the mouth, available for olanzapine, risperidone, aripiprazole and mirtazapine among others. Useful for adherence and swallowing difficulty; because the drug is still ultimately absorbed enterically it only partly addresses true malabsorption, where gut-bypassing routes (long-acting injectable, transdermal, sublingual asenapine) are preferred.",
+    seeAlso: ["Short bowel syndrome", "Roux-en-Y gastric bypass"],
+    link: { blogSlug: "malabsorption-short-gut-psychopharmacology", label: "Psychopharmacology in Malabsorption & Short Gut" }
   }
 ];
 
-// Total entries: 417
+// Total entries: 428

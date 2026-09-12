@@ -1,0 +1,202 @@
+---
+title: "Psychopharmacology in Long QT Syndrome"
+date: 2026-09-12
+description: "Prescribing psychiatric medications for the patient who already has a prolonged QT — congenital LQTS or acquired baseline prolongation: the additive-risk model, drug risk tiers, and a practical framework."
+category: "Psychopharmacology"
+subtitle: "Prescribing for the patient who already has a prolonged QT — congenital LQTS or an acquired baseline: the additive-risk model, drug risk tiers, and a practical framework for treating psychiatric illness safely"
+readTime: "15 min read"
+clinicalSummary: "In the patient who already has congenital LQTS or a prolonged baseline QTc, treat QT risk as additive: prefer minimal-signal antipsychotics (aripiprazole, lurasidone, brexpiprazole, cariprazine) and sertraline; avoid thioridazine, pimozide, IV haloperidol, droperidol, ziprasidone, iloperidone, TCAs, high-dose citalopram and mind methadone; and win safety on the modifiable amplifiers — potassium and magnesium, bradycardia, CYP interactions, organ-based accumulation, lowest dose — acting at QTc >500 ms or a >60 ms rise with cardiology co-management."
+related: ["ekg-findings-psychiatry", "renal-impairment-psychopharmacology", "antipsychotic-review"]
+draft: false
+---
+
+<style>
+.sp-table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+table.sp-table { border-collapse: collapse; width: 100%; min-width: 660px; font-size: 0.92rem; }
+table.sp-table th, table.sp-table td { border: 1px solid var(--border, #cfc8ba); padding: 0.6rem 0.75rem; text-align: left; vertical-align: top; line-height: 1.5; }
+table.sp-table th { background: var(--accent, #4a7c35); color: #fff; font-weight: 700; }
+table.sp-table tr:nth-child(even) td { background: #f9f7f4; }
+table.sp-table td strong { color: var(--text, #231e14); }
+.sp-callout { background: var(--bg2, #ece6db); border-left: 4px solid var(--accent, #4a7c35); padding: 1rem 1.15rem; margin: 1.5rem 0; border-radius: 4px; }
+.sp-callout h4 { margin: 0 0 0.5rem 0; color: var(--accent, #4a7c35); font-size: 1rem; }
+.sp-callout p { margin: 0.5rem 0; font-size: 0.95rem; line-height: 1.6; }
+.sp-callout.sp-warn { border-left-color: #c04030; }
+.sp-callout.sp-warn h4 { color: #c04030; }
+.sp-refs { font-size: 0.88rem; line-height: 1.55; color: var(--text, #231e14); }
+.sp-refs li { margin: 0.4rem 0; }
+.sp-tier { border-left-width: 5px; }
+.sp-tier.sp-avoid { border-left-color:#c04030; }
+.sp-tier.sp-caution { border-left-color:#b05a20; }
+.sp-tier.sp-preferred { border-left-color:#3a6e28; }
+</style>
+
+<p class="ba-lead">Most discussions of QT and psychiatry ask "does this drug prolong the QT?" This chapter asks a different, harder question that comes up whenever a cardiologist's note or a screening ECG lands in the chart: the patient <em>already</em> has a long QT — congenital long QT syndrome, or an acquired baseline prolongation — and still needs treatment for depression, psychosis, agitation, or a substance use disorder. Here the drug is not the whole story; it is one input added to a substrate that is already close to the edge. Prescribing well means understanding that additive-risk model, knowing which psychotropics sit where on the risk ladder, aggressively controlling the modifiable amplifiers, and choosing the genuinely low-risk agents that let you treat the psychiatric illness without courting torsades de pointes. For the general EKG primer, ion-channel physiology, and routine drug-induced monitoring, see the companion chapter <a href="/blog/ekg-findings-psychiatry/">EKG Findings in Psychiatric Practice</a>; this chapter is about the at-risk patient specifically.</p>
+
+<div class="ba-summary-box">
+  <h3>Clinical Bottom Line</h3>
+  <ul>
+    <li><strong>Think additively.</strong> QT prolongation and torsades risk are multifactorial; a drug's few milliseconds matter far more against a congenital or already-prolonged baseline than against a normal one.</li>
+    <li><strong>The channel matters.</strong> Most QT-prolonging psychotropics block the hERG/I<sub>Kr</sub> potassium channel — the same channel mutated in the common LQT2 subtype — so these patients have the least reserve for exactly the drugs psychiatry reaches for.</li>
+    <li><strong>Lowest-risk psychotropics exist and are effective:</strong> aripiprazole, lurasidone, brexpiprazole and cariprazine carry minimal QT signal, and are the antipsychotics of choice in this population.</li>
+    <li><strong>Highest-risk agents to avoid:</strong> thioridazine, IV haloperidol, droperidol, ziprasidone, iloperidone, pimozide; among antidepressants, higher-dose citalopram and TCAs.</li>
+    <li><strong>Fix the amplifiers you can:</strong> replete potassium and magnesium, avoid bradycardia, screen for CYP interactions that raise drug levels, keep doses low, and avoid stacking two QT-prolonging drugs.</li>
+    <li><strong>Act at QTc &gt;500 ms or a rise &gt;60 ms from baseline</strong> — and treat congenital LQTS as a cardiology co-management relationship, not a solo psychiatric decision.</li>
+  </ul>
+</div>
+
+<div class="svg-diagram">
+  <svg viewBox="0 0 850 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Additive-risk diagram: a vulnerable repolarization substrate plus a QT-prolonging drug together block the hERG potassium channel, prolong repolarization, and can trigger torsades de pointes">
+    <defs>
+      <style>
+        .d-title { font-size: 15px; font-weight: 700; fill: #231e14; }
+        .d-box   { font-size: 12.5px; fill: #231e14; font-weight: 600; }
+        .d-sub   { font-size: 11px; fill: #6b6050; }
+        .sub     { fill: #8b6914; opacity: 0.14; stroke: #8b6914; stroke-width: 1.5; }
+        .drug    { fill: #b05a20; opacity: 0.14; stroke: #b05a20; stroke-width: 1.5; }
+        .mech    { fill: #4a7c35; opacity: 0.13; stroke: #4a7c35; stroke-width: 1.5; }
+        .bad     { fill: #c04030; opacity: 0.14; stroke: #c04030; stroke-width: 1.5; }
+        .flow    { stroke: #6b6050; stroke-width: 1.5; fill: none; opacity: 0.7; }
+      </style>
+      <marker id="qt-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6b6050"/></marker>
+    </defs>
+
+    <rect class="sub" x="20" y="55" width="230" height="130" rx="6"/>
+    <text class="d-box" x="135" y="80" text-anchor="middle">Vulnerable substrate</text>
+    <text class="d-sub" x="135" y="102" text-anchor="middle">congenital LQTS (LQT1/2/3)</text>
+    <text class="d-sub" x="135" y="120" text-anchor="middle">&#8595; K+, &#8595; Mg2+, bradycardia</text>
+    <text class="d-sub" x="135" y="138" text-anchor="middle">female sex, structural disease</text>
+    <text class="d-sub" x="135" y="156" text-anchor="middle">renal/hepatic drug accumulation</text>
+    <text class="d-sub" x="135" y="174" text-anchor="middle">CYP-inhibitor interactions</text>
+
+    <rect class="drug" x="20" y="255" width="230" height="110" rx="6"/>
+    <text class="d-box" x="135" y="280" text-anchor="middle">QT-prolonging drug</text>
+    <text class="d-sub" x="135" y="302" text-anchor="middle">antipsychotic / antidepressant</text>
+    <text class="d-sub" x="135" y="320" text-anchor="middle">methadone, antiemetics,</text>
+    <text class="d-sub" x="135" y="338" text-anchor="middle">antibiotics &amp; others (additive)</text>
+
+    <rect class="mech" x="330" y="150" width="210" height="120" rx="6"/>
+    <text class="d-box" x="435" y="185" text-anchor="middle">hERG / I<tspan baseline-shift="sub" font-size="9">Kr</tspan> block</text>
+    <text class="d-sub" x="435" y="212" text-anchor="middle">&#8595; repolarizing K+ current</text>
+    <text class="d-sub" x="435" y="232" text-anchor="middle">&#8594; prolonged repolarization</text>
+    <text class="d-sub" x="435" y="252" text-anchor="middle">(QT lengthens)</text>
+
+    <rect class="bad" x="620" y="90" width="210" height="90" rx="6"/>
+    <text class="d-box" x="725" y="122" text-anchor="middle">Early afterdepolarizations</text>
+    <text class="d-sub" x="725" y="150" text-anchor="middle">trigger for re-entry</text>
+
+    <rect class="bad" x="620" y="240" width="210" height="90" rx="6"/>
+    <text class="d-box" x="725" y="272" text-anchor="middle">Torsades de pointes</text>
+    <text class="d-sub" x="725" y="300" text-anchor="middle">syncope, VF, sudden death</text>
+
+    <line class="flow" x1="252" y1="120" x2="328" y2="185" marker-end="url(#qt-ah)"/>
+    <line class="flow" x1="252" y1="305" x2="328" y2="235" marker-end="url(#qt-ah)"/>
+    <line class="flow" x1="542" y1="200" x2="618" y2="150" marker-end="url(#qt-ah)"/>
+    <line class="flow" x1="725" y1="182" x2="725" y2="238" marker-end="url(#qt-ah)"/>
+
+    <text class="d-sub" x="425" y="400" text-anchor="middle">Substrate and drug are additive. The same few milliseconds are trivial on a normal heart and dangerous on a vulnerable one.</text>
+  </svg>
+</div>
+
+<h2>Who this chapter is about</h2>
+<p>Two overlapping groups arrive at the psychiatrist already carrying QT risk.</p>
+<p><strong>Congenital long QT syndrome (LQTS)</strong> is an inherited channelopathy, usually diagnosed by cardiology, in which repolarization is genetically impaired. The three common subtypes are worth knowing because their triggers differ. <strong>LQT1</strong> (loss-of-function in the KCNQ1/I<sub>Ks</sub> potassium channel) is the exercise- and swimming-triggered form. <strong>LQT2</strong> (KCNH2/hERG, the I<sub>Kr</sub> potassium channel) is triggered by emotional arousal and sudden auditory stimuli and has a recognized postpartum vulnerability — and it is mechanistically the most important subtype for us, because hERG/I<sub>Kr</sub> is the very channel that most QT-prolonging drugs block. <strong>LQT3</strong> (SCN5A sodium channel) causes events at rest and during sleep/bradycardia. Beta-blockade is the mainstay of management (particularly effective in LQT1 and LQT2), and avoidance of QT-prolonging drugs is a standing instruction for all of them.</p>
+<p><strong>Acquired baseline prolongation</strong> is the more common scenario in general psychiatry: a patient without a named syndrome whose screening or pre-treatment ECG already shows a prolonged QTc — from age, structural heart disease, prior cardiotoxic therapy, electrolyte problems, renal or hepatic disease that raises drug levels, or the cumulative effect of several drugs. Functionally, these patients occupy the same position as the congenital group: reduced repolarization reserve and little room for a drug to add more.</p>
+
+<h2>The mechanism in one paragraph</h2>
+<p>Ventricular repolarization depends heavily on the rapid delayed-rectifier potassium current, I<sub>Kr</sub>, carried by the hERG channel. The great majority of QT-prolonging drugs — across psychiatry, cardiology, infectious disease and oncology — work by blocking hERG, reducing outward potassium current and lengthening the action potential. When repolarization is prolonged far enough, early afterdepolarizations can arise and trigger the polymorphic ventricular tachycardia called torsades de pointes, which may self-terminate (syncope) or degenerate into ventricular fibrillation and sudden death. In a patient whose hERG function is already reduced — genetically in LQT2, or functionally by low potassium, low magnesium, or bradycardia — the same degree of drug block produces a disproportionately larger and more dangerous effect. This is why the framing is additive, not absolute.</p>
+
+<h2>The additive-risk model</h2>
+<p>The single most useful mental model is that QTc on any given day is the sum of a patient's fixed substrate plus every reversible contributor stacked on top. The drug you prescribe is only one term in that sum, and often not the largest. This reframes the clinical task: rather than asking only "how many milliseconds does this drug add," ask "what is this patient's total burden, and which terms can I reduce?" A modest-risk antipsychotic given to a patient with a normal ECG, normal electrolytes, and no interacting drugs may be entirely reasonable; the same drug given to a patient with congenital LQT2, a potassium of 3.1, and a CYP inhibitor on board is not. The corollary is optimistic: because several terms are modifiable, you can frequently create enough repolarization headroom to treat the psychiatric illness safely.</p>
+
+<h2>Risk stratification of psychotropic medications</h2>
+<p>The tiers below reflect converging network-meta-analytic and pharmacovigilance data. They are a guide to <em>selection</em> in the at-risk patient, not a claim that "safe" agents are risk-free — every antipsychotic warrants attention to the modifiable amplifiers.</p>
+
+<div class="sp-callout sp-tier sp-preferred">
+  <h4>Preferred — minimal QT signal (reach for these)</h4>
+  <p><strong>Antipsychotics:</strong> aripiprazole, brexpiprazole, cariprazine, and lurasidone carry minimal-to-no QT prolongation and are the antipsychotics of choice in LQTS and baseline prolongation. The newer muscarinic agent xanomeline&#8211;trospium has shown no QT signal in trials. <strong>Antidepressants:</strong> among SSRIs, sertraline and (with attention to dose) escitalopram are commonly chosen; bupropion and mirtazapine are reasonable non-serotonergic options with limited QT effect. Psychotherapy and non-pharmacologic strategies gain relative value in the highest-risk patients.</p>
+</div>
+<div class="sp-callout sp-tier sp-caution">
+  <h4>Use with caution, monitoring, and lowest effective dose</h4>
+  <p><strong>Antipsychotics:</strong> risperidone, olanzapine, quetiapine, and oral haloperidol cluster in the moderate range (oral/IM haloperidol adds only ~5&#8211;8 ms, actually less than several atypicals, but still requires care in this population). <strong>Antidepressants:</strong> citalopram is dose-dependent and carries an FDA maximum of 40 mg/day, reduced to 20 mg/day in patients over 60, in hepatic impairment, in CYP2C19 poor metabolizers, or with CYP2C19 inhibitors; escitalopram is less potent on the QT but is not exempt. These agents can be used when justified, with a baseline and follow-up ECG and correction of electrolytes.</p>
+</div>
+<div class="sp-callout sp-tier sp-avoid">
+  <h4>Avoid in the patient with LQTS or marked baseline prolongation</h4>
+  <p><strong>Antipsychotics:</strong> thioridazine (and other low-potency phenothiazines), pimozide, IV haloperidol, droperidol, ziprasidone, and iloperidone carry the greatest risk. Ziprasidone prolongs the QT by roughly 10&#8211;20 ms on average and about one in five patients exceed a 60 ms increase; IV haloperidol and droperidol carry specific torsades warnings. <strong>Antidepressants:</strong> tricyclic antidepressants (dose-dependent QT effect and dangerous in overdose) and high-dose citalopram. <strong>Other:</strong> methadone is a well-recognized, dose-dependent torsades risk relevant to co-managed opioid use disorder.</p>
+</div>
+
+<h2>The modifiable amplifiers</h2>
+<p>Because the substrate is fixed but the amplifiers are not, controlling them is where most of the safety is won.</p>
+<p><strong>Electrolytes.</strong> Hypokalemia and hypomagnesemia both reduce repolarization reserve and are common in exactly the patients who worry us — those with eating disorders, alcohol use disorder, diuretic use, or GI losses. Repleting potassium (commonly targeted to at least 4.0 mmol/L in the high-risk patient, though newer inpatient evidence suggests 3.5 may suffice for lower-risk cases) and magnesium is a fast, high-yield intervention, and IV magnesium is the acute treatment for torsades itself.</p>
+<p><strong>Heart rate.</strong> Bradycardia lengthens the QT and is a particular hazard in LQT3; conversely, the beta-blockade used to protect LQTS patients is antiarrhythmic in that context even though it slows the rate — a reminder to coordinate rather than second-guess the cardiology plan.</p>
+<p><strong>Drug interactions.</strong> Two mechanisms compound risk. Pharmacodynamic stacking — two or more QT-prolonging drugs together (an antipsychotic plus an antiemetic like ondansetron, plus a fluoroquinolone or azole, plus methadone) — is additive. Pharmacokinetic interactions raise the level of a QT-prolonging drug by inhibiting its metabolism (for example a strong CYP2C19 inhibitor raising citalopram, or a CYP3A4 inhibitor raising a substrate antipsychotic). Renal and hepatic impairment do the same by reducing clearance — the reason this chapter's siblings on <a href="/blog/renal-impairment-psychopharmacology/">renal</a> and <a href="/blog/hepatic-impairment-psychopharmacology/">hepatic</a> impairment intersect here.</p>
+<p><strong>Dose and route.</strong> QT effects are dose- and concentration-dependent, so the lowest effective dose is a safety measure, not just good practice. Intravenous administration produces higher peak concentrations and carries specific torsades associations (IV haloperidol), so the route itself is a risk lever.</p>
+
+<div class="sp-callout sp-warn">
+  <h4>The stacked-risk patient is the real danger</h4>
+  <p>Torsades in psychiatry rarely follows a single moderate-risk drug given carefully. It follows the accumulation of terms: a vulnerable substrate, an uncorrected low potassium, a QT-prolonging antipsychotic, an added antiemetic or antibiotic, and a metabolic interaction that raises the level of one of them. The habit that prevents it is to total the burden before adding anything, and to remove a term whenever you add one.</p>
+</div>
+
+<h2>A practical prescribing framework</h2>
+<p>For the patient who arrives with congenital LQTS or a prolonged baseline QTc:</p>
+<ol>
+  <li><strong>Establish the baseline.</strong> Obtain a current ECG with a properly measured QTc, know the diagnosis (congenital subtype if applicable), and review prior events and the cardiology plan.</li>
+  <li><strong>Clear the reversible terms first.</strong> Check and correct potassium and magnesium, review the full medication list (prescribed, over-the-counter, and methadone) for other QT-prolonging or interacting drugs, and address bradycardia and renal/hepatic accumulation.</li>
+  <li><strong>Choose from the preferred tier.</strong> Default to aripiprazole, lurasidone, brexpiprazole or cariprazine for antipsychotic needs and sertraline or a non-serotonergic option for depression; escalate to a caution-tier agent only with justification and monitoring.</li>
+  <li><strong>Dose low and monitor.</strong> Use the lowest effective dose, obtain a follow-up ECG after initiation or dose increase (and at steady state for interacting regimens), and act on QTc &gt;500 ms or a &gt;60 ms rise from baseline by reducing dose, switching agent, or removing a stacked contributor.</li>
+  <li><strong>Co-manage.</strong> Treat congenital LQTS as a shared decision with cardiology, do not stop protective beta-blockade, and document the risk-benefit reasoning when a moderate-risk agent is genuinely needed for a severe psychiatric illness.</li>
+</ol>
+
+<div class="ba-summary-box">
+  <h3>Clinical Takeaways</h3>
+  <ul>
+    <li>Frame QT risk as additive: the drug is one term added to a fixed substrate plus several reversible amplifiers.</li>
+    <li>Reach first for aripiprazole, lurasidone, brexpiprazole or cariprazine; sertraline (and cautious escitalopram) among antidepressants.</li>
+    <li>Avoid thioridazine, pimozide, IV haloperidol, droperidol, ziprasidone, iloperidone, TCAs and high-dose citalopram in these patients; mind methadone.</li>
+    <li>Respect the hERG/I<sub>Kr</sub> mechanism — LQT2 patients have the least reserve for the drugs psychiatry most often uses.</li>
+    <li>Win safety on the modifiable amplifiers: potassium and magnesium, avoiding bradycardia, checking CYP interactions and organ-based accumulation, lowest effective dose, and no drug stacking.</li>
+    <li>Act at QTc &gt;500 ms or a &gt;60 ms rise; co-manage congenital LQTS with cardiology and keep protective beta-blockade.</li>
+  </ul>
+</div>
+
+<p>For EKG interpretation, ion-channel detail, and routine drug-induced QT monitoring, see <a href="/blog/ekg-findings-psychiatry/">EKG Findings in Psychiatric Practice</a>. This chapter completes the special-population set with <a href="/blog/renal-impairment-psychopharmacology/">renal impairment</a>, <a href="/blog/hepatic-impairment-psychopharmacology/">hepatic impairment</a>, and <a href="/blog/malabsorption-short-gut-psychopharmacology/">malabsorption &amp; short gut</a>.</p>
+
+<h2>References &amp; Further Reading</h2>
+<ol class="sp-refs">
+  <li>Woosley RL, et al. CredibleMeds / QTdrugs List categories of risk of torsades de pointes (crediblemeds.org).</li>
+  <li>Beach SR, et al. QTc prolongation, torsades de pointes, and psychotropic medications. <em>Psychosomatics.</em></li>
+  <li>Funk MC, et al. QT prolongation with antipsychotics: risk stratification and EKG monitoring. (Clinical review.)</li>
+  <li>US FDA Drug Safety Communication: Celexa (citalopram) dose-dependent QT prolongation and revised maximum dosing.</li>
+  <li>Schwartz PJ, Ackerman MJ. The long QT syndrome: a transatlantic clinical approach to diagnosis and therapy. <em>Eur Heart J.</em></li>
+  <li>Wenzel-Seifert K, et al. QTc prolongation by psychotropic drugs and the risk of torsade de pointes. <em>Dtsch Arztebl Int.</em></li>
+</ol>
+
+<p style="font-size:0.85rem;color:var(--muted,#6b6050);margin-top:1.5rem;">This chapter is an educational review for clinicians and trainees. It reflects evidence current as of September 2026 and should be validated against current product labeling, cardiology guidance, and institutional protocols; it is not a substitute for clinical judgment or cardiology co-management.</p>
+
+<div class="ba-related">
+  <h4>Related Articles</h4>
+  <div class="ba-related-grid">
+    <a href="ekg-findings-psychiatry.html" class="ba-related-link">EKG Findings in Psychiatric Practice</a>
+    <a href="renal-impairment-psychopharmacology.html" class="ba-related-link">Psychopharmacology in Renal Impairment</a>
+    <a href="hepatic-impairment-psychopharmacology.html" class="ba-related-link">Psychopharmacology in Hepatic Impairment</a>
+    <a href="malabsorption-short-gut-psychopharmacology.html" class="ba-related-link">Malabsorption &amp; Short Gut</a>
+    <a href="antipsychotic-review.html" class="ba-related-link">Antipsychotics Review</a>
+    <a href="common-side-effects-warnings.html" class="ba-related-link">Common Side Effects &amp; Warnings</a>
+  </div>
+  <div class="ba-share-row">
+    <a href="https://twitter.com/intent/tweet?text=Psychopharmacology%20in%20Long%20QT%20Syndrome&amp;url=https%3A%2F%2Fpsychopharmref.com%2Fblog%2Flong-qt-syndrome-psychopharmacology.html" target="_blank" rel="noopener" class="ba-share-btn ba-share-btn--x">Share on X</a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://psychopharmref.com/blog/long-qt-syndrome-psychopharmacology.html" target="_blank" rel="noopener" class="ba-share-btn ba-share-btn--li">Share on LinkedIn</a>
+    <a href="mailto:?subject=Psychopharmacology in Long QT Syndrome&amp;body=Check out this article: https://psychopharmref.com/blog/long-qt-syndrome-psychopharmacology.html" class="ba-share-btn ba-share-btn--email">Email</a>
+    <button class="ba-share-btn ba-share-btn--copy" onclick="navigator.clipboard.writeText('https://psychopharmref.com/blog/long-qt-syndrome-psychopharmacology.html').then(function(){var b=this;b.textContent='Copied!';setTimeout(function(){b.textContent='Copy Link'},2000)}.bind(this))">Copy Link</button>
+  </div>
+</div>
+
+<div class="nl-blog-cta">
+  <h4>PsychoPharmRef Newsletter</h4>
+  <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
+  <a href="https://subscribe-forms.beehiiv.com/5f2b3081-aa41-452c-95c8-69a5ae899cf8" target="_blank" rel="noopener" class="nl-subscribe-btn">Subscribe — it's free</a>
+</div>
+
+<footer class="ba-footer">
+  <p>This article is intended for educational purposes for healthcare professionals. Information presented reflects current evidence as of September 2026 and should be validated against current clinical guidelines and institutional protocols.</p>
+  <p><a href="../" class="btn-primary">← Back to Blog</a></p>
+</footer>
