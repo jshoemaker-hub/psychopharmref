@@ -1,0 +1,134 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   cbti-insomnia.css — Course module 9:
+   CBT for Insomnia (CBT-I): A How-To
+   Prefix: cbti-
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.cbti-root { max-width: 1000px; }
+
+/* ── Meta chips ──────────────────────────────────────────────────────── */
+.cbti-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 18px; }
+.cbti-chip {
+  font-size: 11px; font-weight: 600; letter-spacing: .02em;
+  padding: 4px 10px; border-radius: 999px;
+  border: 1px solid var(--border); background: #fff; color: var(--text);
+}
+.cbti-chip.cbti-chip-accent { background: rgba(74,124,53,.10); border-color: rgba(74,124,53,.35); color: var(--accent); }
+
+/* ── Tabs ────────────────────────────────────────────────────────────── */
+.cbti-tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 2px solid var(--border); margin-bottom: 20px; }
+.cbti-tab {
+  appearance: none; border: none; background: transparent; cursor: pointer;
+  font: inherit; font-size: 13px; font-weight: 600; color: #6b6455;
+  padding: 10px 14px; border-radius: 8px 8px 0 0;
+  border-bottom: 3px solid transparent; margin-bottom: -2px;
+}
+.cbti-tab:hover { color: var(--text); background: rgba(74,124,53,.06); }
+.cbti-tab.cbti-active { color: var(--accent); border-bottom-color: var(--accent); }
+.cbti-panel { display: none; animation: cbti-fade .18s ease; }
+.cbti-panel.cbti-active { display: block; }
+@keyframes cbti-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+/* ── Didactic ────────────────────────────────────────────────────────── */
+.cbti-learn h3 { color: var(--accent); font-size: 19px; margin: 26px 0 8px; }
+.cbti-learn h4 { color: var(--accent2); font-size: 15px; margin: 18px 0 6px; }
+.cbti-learn p, .cbti-learn li { line-height: 1.62; }
+.cbti-learn ul, .cbti-learn ol { margin: 8px 0 8px 4px; padding-left: 22px; }
+.cbti-learn li { margin: 4px 0; }
+.cbti-lead { font-size: 15px; color: #4a4436; }
+
+.cbti-callout {
+  border: 1px solid var(--border); background: var(--bg2);
+  border-left: 4px solid var(--accent); border-radius: 8px; padding: 12px 16px; margin: 16px 0;
+}
+.cbti-callout.cbti-warn { border-left-color: #b4531f; background: #f8ede4; }
+.cbti-callout.cbti-tip  { border-left-color: var(--accent2); background: #f6f0e2; }
+.cbti-callout .cbti-callout-title { font-weight: 700; display: block; margin-bottom: 4px; }
+
+.cbti-acr { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 12px 0; padding: 12px 16px; background: #fff; border: 1px solid var(--border); border-radius: 8px; }
+.cbti-acr dt { font-weight: 700; color: var(--accent); }
+.cbti-acr dd { margin: 0; }
+
+.cbti-refs { font-size: 13px; color: #5a5346; }
+.cbti-refs li { margin: 6px 0; }
+
+/* ── Worksheet shared ────────────────────────────────────────────────── */
+.cbti-ws-intro { color: #4a4436; margin-bottom: 14px; line-height: 1.6; }
+.cbti-card { border: 1px solid var(--border); background: #fff; border-radius: 10px; padding: 16px; margin: 16px 0; }
+.cbti-card h4 { margin: 0 0 10px; color: var(--accent); font-size: 15px; }
+
+.cbti-tablewrap { overflow-x: auto; }
+.cbti-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 640px; }
+.cbti-table th, .cbti-table td { border: 1px solid var(--border); padding: 6px 8px; text-align: left; vertical-align: top; }
+.cbti-table th { background: var(--bg2); font-weight: 600; font-size: 12px; }
+.cbti-table th.cbti-th-calc { background: rgba(74,124,53,.10); color: var(--accent); text-align: center; }
+.cbti-table input[type="text"], .cbti-table input[type="number"], .cbti-table input[type="date"], .cbti-table input[type="time"], .cbti-table select, .cbti-table textarea {
+  width: 100%; box-sizing: border-box; border: 1px solid var(--border);
+  border-radius: 5px; padding: 4px 6px; font: inherit; font-size: 12.5px; background: #fdfcf9;
+}
+.cbti-table textarea { resize: vertical; min-height: 40px; }
+.cbti-num { max-width: 100px; }
+.cbti-calc { text-align: center; font-weight: 700; color: #5a5346; background: #fbfaf6; white-space: nowrap; }
+.cbti-se-cell { font-size: 13px; }
+.cbti-row-del { appearance: none; border: 1px solid var(--border); background: #fff; cursor: pointer; border-radius: 6px; width: 26px; height: 26px; line-height: 1; color: #b4531f; font-size: 15px; }
+.cbti-row-del:hover { background: #f8ede4; }
+
+.cbti-field { margin: 10px 0; }
+.cbti-field label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+.cbti-field .cbti-hint { font-weight: 400; color: #7a7364; font-size: 12px; }
+.cbti-field input[type="text"], .cbti-field input[type="date"], .cbti-field input[type="time"], .cbti-field textarea, .cbti-field select {
+  width: 100%; box-sizing: border-box; border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; font: inherit; background: #fdfcf9;
+}
+.cbti-hm { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #5a5346; }
+.cbti-hm input { width: 72px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; font: inherit; background: #fdfcf9; }
+.cbti-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 640px) { .cbti-grid2 { grid-template-columns: 1fr; } }
+
+/* ── Buttons ─────────────────────────────────────────────────────────── */
+.cbti-btn { appearance: none; cursor: pointer; font: inherit; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: #fff; }
+.cbti-btn:hover { filter: brightness(1.05); }
+.cbti-btn.cbti-btn-ghost { background: #fff; color: var(--accent); }
+.cbti-btn.cbti-btn-ghost:hover { background: rgba(74,124,53,.08); }
+.cbti-btn.cbti-btn-sm { padding: 6px 12px; font-size: 12px; }
+.cbti-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+/* ── Readout ─────────────────────────────────────────────────────────── */
+.cbti-readout { display: flex; flex-wrap: wrap; gap: 16px; align-items: baseline; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; margin: 12px 0; }
+.cbti-readout .cbti-stat { font-size: 13px; color: #5a5346; }
+.cbti-readout .cbti-stat b { font-size: 20px; color: var(--accent); display: block; }
+
+/* ── Sleep-efficiency bands ──────────────────────────────────────────── */
+.cbti-se-legend { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 12px; font-size: 11px; align-items: center; }
+.cbti-se-band { padding: 3px 8px; border-radius: 6px; font-weight: 600; }
+.cbti-se-high { background: #dfe9d4; color: #3f6a2a; }
+.cbti-se-mod  { background: #f8ecd9; color: #8a6412; }
+.cbti-se-low  { background: #f4dcd0; color: #8a3b12; }
+
+/* ── Prescription readouts ───────────────────────────────────────────── */
+.cbti-rx { margin-top: 12px; }
+.cbti-rx-empty { color: #9a9384; font-style: italic; font-size: 13px; }
+.cbti-rx-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.cbti-rx-item { flex: 1 1 140px; border: 1px solid var(--border); background: var(--bg2); border-radius: 8px; padding: 12px; text-align: center; }
+.cbti-rx-val { display: block; font-size: 22px; font-weight: 700; color: var(--accent); }
+.cbti-rx-lab { display: block; font-size: 11.5px; color: #6b6455; margin-top: 2px; }
+.cbti-rx-note { margin-top: 10px; font-size: 12.5px; color: #8a3b12; background: #f8ede4; border-radius: 6px; padding: 8px 12px; }
+.cbti-rec { display: inline-block; font-weight: 700; font-size: 15px; padding: 8px 14px; border-radius: 8px; margin-bottom: 6px; }
+.cbti-rec .cbti-rec-verb { text-transform: uppercase; letter-spacing: .03em; }
+.cbti-rec.cbti-se-high { background: #dfe9d4; color: #2f5a1f; }
+.cbti-rec.cbti-se-mod  { background: #f8ecd9; color: #8a6412; }
+.cbti-rec.cbti-se-low  { background: #f4dcd0; color: #8a3b12; }
+
+/* ── Stimulus-control checklist ──────────────────────────────────────── */
+.cbti-sc-list { display: flex; flex-direction: column; gap: 12px; }
+.cbti-sc-item { border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; background: #fdfcf9; }
+.cbti-sc-head { display: flex; align-items: flex-start; gap: 8px; font-weight: 700; color: var(--text); cursor: pointer; }
+.cbti-sc-head input { margin-top: 3px; }
+.cbti-sc-rule { font-size: 14px; }
+.cbti-sc-why { font-size: 12.5px; color: #6b6455; margin: 6px 0 8px 24px; line-height: 1.55; }
+.cbti-sc-note { width: 100%; box-sizing: border-box; border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font: inherit; font-size: 12.5px; background: #fff; resize: vertical; min-height: 40px; }
+
+/* ── Print ───────────────────────────────────────────────────────────── */
+@media print {
+  .cbti-tabs, .cbti-actions, .cbti-row-del, .cbti-tab { display: none !important; }
+  .cbti-panel { display: block !important; }
+}

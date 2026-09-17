@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Generate blank fill-by-hand worksheet PDF packets for the Therapy Courses modules."""
 import os
+import sys
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
 from reportlab.lib import colors
@@ -531,6 +532,41 @@ MODULES.append(dict(file="emdr-trauma-worksheets.pdf",
                        ("table", ["Session date", "Measure", "Total score", "Note (target processed)"], [1, 1, 0.8, 1.4], 6)]),
     ]))
 
+# Module 9 — CBT for Insomnia (CBT-I)
+MODULES.append(dict(file="cbti-insomnia-worksheets.pdf",
+    title="Module 9 — CBT for Insomnia (CBT-I)",
+    subtitle="Sleep diary & efficiency · sleep-restriction prescription & titration · stimulus control · cognitive restructuring",
+    worksheets=[
+        dict(name="Sleep Diary (1–2 week baseline)",
+             instruction="Complete each morning. Sleep efficiency (SE) = total sleep time ÷ time in bed × 100.  TIB = out of bed − into bed.  TST = (final wake − lights out) − minutes to fall asleep − minutes awake in the night.",
+             elements=[("table",
+                 ["Date", "Into bed", "Lights out", "Min to fall asleep", "Min awake in night", "Final wake", "Out of bed", "SE %"],
+                 [1.0, 0.8, 0.8, 0.95, 0.95, 0.8, 0.8, 0.7], 9, 26),
+                 ("fields", [("Week mean TST: __________     Week mean TIB: __________     Week mean SE: __________ %", 0)])]),
+        dict(name="Sleep-Restriction Prescription & Weekly Titration",
+             instruction="Set the initial time-in-bed prescription from the baseline diary, then titrate weekly by sleep efficiency. Never prescribe below a 5-hour floor.",
+             elements=[("fields", [("Baseline mean total sleep time (TST)", 1),
+                                   ("Fixed rise (out-of-bed) time — anchor to obligations", 1),
+                                   ("Prescribed time in bed  =  mean TST  (minimum 5 hours)", 1),
+                                   ("Prescribed bedtime  =  rise time − prescribed time in bed", 1)]),
+                 ("note", "Weekly titration guide — SE ≥ 90%: increase time in bed by 15 min · SE 85–89%: hold · SE < 85%: decrease by 15 min (not below the 5-hour floor). Keep the rise time fixed and adjust bedtime."),
+                 ("table", ["Week", "Time in bed", "Bedtime", "Rise time", "Mean SE %", "Action / next-week TIB"],
+                  [0.55, 1.0, 0.9, 0.9, 0.8, 1.3], 6, 26)]),
+        dict(name="Stimulus-Control Plan",
+             instruction="Bootzin's stimulus-control rules. Tick those in effect and note the individualized plan and obstacles.",
+             elements=[("checklist", ["Go to bed only when sleepy (not merely tired or on schedule)",
+                                      "Use the bed only for sleep and sex — no phone, TV, reading, working, or worrying in bed",
+                                      "If not asleep in ~15–20 minutes, get out of bed; do something quiet in dim light; return only when sleepy (repeat as needed)",
+                                      "Keep a fixed rise time every day of the week, regardless of how the night went",
+                                      "Do not nap during the day (or keep any nap brief and early)"]),
+                       ("fields", [("Individualized plan / obstacles / this-week adherence", 3)])]),
+        dict(name="Cognitive Restructuring — Beliefs About Sleep",
+             instruction="For each unhelpful belief about sleep, rate how strongly it is held (0–100%), weigh the evidence for and against, build a balanced alternative, then re-rate.",
+             elements=[("table", ["Unhelpful belief about sleep", "% before", "Evidence for / against", "Balanced alternative belief", "% after"],
+                        [1.4, 0.6, 1.5, 1.5, 0.6], 5, 44),
+                       ("note", "Common targets: unrealistic sleep-need expectations · catastrophizing after a poor night · belief that sleep is uncontrollable · monitoring/clock-watching · effortful trying to sleep.")]),
+    ]))
+
 # Patch the special values worksheet element
 for m in MODULES:
     for ws in m["worksheets"]:
@@ -548,7 +584,10 @@ def render_elements(elems):  # noqa
     return flow
 
 built = []
+_sel = set(sys.argv[1:])
 for m in MODULES:
+    if _sel and m["file"] not in _sel:
+        continue
     p = build_pdf(m["file"], m["title"], m["subtitle"], m["worksheets"])
     built.append(p)
     print("built", os.path.basename(p))
