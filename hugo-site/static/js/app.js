@@ -388,6 +388,7 @@ const SECTION_GROUP = {
   'ess-tool': 'tools', 'bat-tool': 'tools', 'sud-tool': 'tools', 'med-history-tool': 'tools',
   'ciwa-tool': 'tools', 'cows-tool': 'tools', 'frailty-tool': 'tools',
   'caffeine-tool': 'tools', 'thc-tool': 'tools', 'alcohol-tool': 'tools',
+  'anticholinergic-tool': 'tools',
   'print-forms': 'forms', 'question-bank': 'qbank',
   'cog-domains': 'insights', 'neuro-circuits': 'insights', 'brain-regions': 'insights', 'brain-explorer': 'insights',
   'cell-types': 'insights',
@@ -1008,6 +1009,7 @@ function openDrugModal(id) {
     <div class="modal-brand">${drug.brandName} &bull; ${classBadge(drug.class)}</div>
 
     ${devDosingHTML}
+    ${buildAdministrationHTML(drug.id)}
     <div class="modal-section">
       <h4>Pharmacokinetics</h4>
       <div class="modal-row">
@@ -1065,6 +1067,21 @@ function openDrugModal(id) {
 }
 
 /* ── FDA Safety Data Helpers ──────────────────────────────────────────────── */
+function buildAdministrationHTML(drugId) {
+  const a = typeof ADMINISTRATION_DATA !== 'undefined' ? ADMINISTRATION_DATA[drugId] : null;
+  if (!a) return '';
+  const pearls = (a.pearls || []).map(p => `<li>${p}</li>`).join('');
+  return `
+  <div class="modal-section">
+    <h4>How to Take</h4>
+    <div class="modal-row">
+      <div class="modal-field"><label>Food</label><div>${a.food || '\u2014'}</div></div>
+      <div class="modal-field"><label>Timing</label><div>${a.timing || '\u2014'}</div></div>
+    </div>
+    ${pearls ? `<div class="modal-row"><div class="modal-field" style="flex-basis:100%"><label>Counseling Pearls</label><ul style="margin:6px 0 0 0;padding-left:18px;line-height:1.6;font-size:13px;color:var(--text)">${pearls}</ul></div></div>` : ''}
+  </div>`;
+}
+
 function buildBlackBoxHTML(drugId) {
   const safety = typeof FDA_SAFETY_DATA !== 'undefined' ? FDA_SAFETY_DATA[drugId] : null;
   if (!safety || !safety.blackBoxWarnings || !safety.blackBoxWarnings.length) return '';

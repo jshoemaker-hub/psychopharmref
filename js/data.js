@@ -912,7 +912,7 @@ const MEDICATIONS = [
   // ── SSRIs ──────────────────────────────────────────────────────────────────
   {
     id: 'fluoxetine',
-    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'high', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'high', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1972, fdaApprovalYear: 1987, originator: "Eli Lilly" },
     dosing: { start: "20 mg PO qAM", target: "20–60 mg/day", max: "80 mg/day", formulations: "IR oral once daily • Delayed-release 90 mg once weekly (Prozac Weekly)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=fluoxetine" } },
     name: 'Fluoxetine',
@@ -948,7 +948,7 @@ const MEDICATIONS = [
   },
   {
     id: 'sertraline',
-    effects: { weight: 'low', sedation: 'low', sexual: 'high', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'low', sexual: 'high', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1977, fdaApprovalYear: 1991, originator: "Pfizer" },
     dosing: { start: "50 mg PO daily", target: "50–200 mg/day", max: "200 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=sertraline" } },
     name: 'Sertraline',
@@ -983,7 +983,7 @@ const MEDICATIONS = [
   },
   {
     id: 'escitalopram',
-    effects: { weight: 'low', sedation: 'low', sexual: 'high', antichol: 'minimal', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'low', sexual: 'high', antichol: 'minimal', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1997, fdaApprovalYear: 2002, originator: "H. Lundbeck / Forest" },
     dosing: { start: "10 mg PO daily", target: "10–20 mg/day", max: "20 mg/day (10 mg in elderly/hepatic)", citation: { label: "FDA package insert (2023)", url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2023/021323s055,021365s039lbl.pdf" } },
     name: 'Escitalopram',
@@ -1014,7 +1014,7 @@ const MEDICATIONS = [
   },
   {
     id: 'paroxetine',
-    effects: { weight: 'moderate', sedation: 'moderate', sexual: 'high', antichol: 'moderate', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'moderate', sedation: 'moderate', sexual: 'high', antichol: 'moderate', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1975, fdaApprovalYear: 1992, originator: "Ferrosan / SmithKline Beecham" },
     dosing: { start: "20 mg PO daily", target: "20–50 mg/day", max: "50 mg/day (60 mg OCD)", formulations: "IR once daily (Paxil) • Controlled-release once daily (Paxil CR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=paroxetine" } },
     name: 'Paroxetine',
@@ -1050,7 +1050,7 @@ const MEDICATIONS = [
   },
   {
     id: 'citalopram',
-    effects: { weight: 'low', sedation: 'low', sexual: 'high', antichol: 'minimal', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'low', sexual: 'high', antichol: 'minimal', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1972, fdaApprovalYear: 1998, originator: "H. Lundbeck / Forest" },
     dosing: { start: "20 mg PO daily", target: "20–40 mg/day", max: "40 mg/day (20 mg if >60 yr, hepatic, or CYP2C19 PM)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=citalopram" } },
     name: 'Citalopram',
@@ -1080,7 +1080,7 @@ const MEDICATIONS = [
   },
   {
     id: 'fluvoxamine',
-    effects: { weight: 'low', sedation: 'moderate', sexual: 'high', antichol: 'minimal', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'moderate', sexual: 'high', antichol: 'minimal', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1977, fdaApprovalYear: 1994, originator: "Solvay (Kali-Duphar)" },
     dosing: { start: "50 mg PO qHS", target: "100–300 mg/day", max: "300 mg/day (divide doses >100 mg)", formulations: "IR (BID when >100 mg; Luvox) • CR once daily (Luvox CR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=fluvoxamine" } },
     name: 'Fluvoxamine',
@@ -1113,7 +1113,7 @@ const MEDICATIONS = [
   // ── SNRIs ──────────────────────────────────────────────────────────────────
   {
     id: 'venlafaxine',
-    effects: { weight: 'low', sedation: 'low', sexual: 'high', antichol: 'minimal', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'low', sexual: 'high', antichol: 'minimal', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1983, fdaApprovalYear: 1993, originator: "Wyeth (Pfizer)" },
     dosing: { start: "37.5–75 mg/day", target: "75–225 mg/day", max: "375 mg/day (IR); 225 mg/day (XR)", formulations: "IR BID–TID (Effexor) • XR once daily (Effexor XR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=venlafaxine" } },
     name: 'Venlafaxine',
@@ -1146,7 +1146,7 @@ const MEDICATIONS = [
   },
   {
     id: 'duloxetine',
-    effects: { weight: 'low', sedation: 'low', sexual: 'moderate', antichol: 'low', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'low', sexual: 'moderate', antichol: 'low', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1988, fdaApprovalYear: 2004, originator: "Eli Lilly" },
     dosing: { start: "30–60 mg/day", target: "60 mg/day", max: "120 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=duloxetine" } },
     name: 'Duloxetine',
@@ -1181,7 +1181,7 @@ const MEDICATIONS = [
   },
   {
     id: 'desvenlafaxine',
-    effects: { weight: 'low', sedation: 'low', sexual: 'moderate', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'low', sexual: 'moderate', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1996, fdaApprovalYear: 2008, originator: "Wyeth (Pfizer)" },
     dosing: { start: "50 mg PO daily", target: "50 mg/day", max: "400 mg/day (no added benefit >50 mg)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=desvenlafaxine" } },
     name: 'Desvenlafaxine',
@@ -1213,7 +1213,7 @@ const MEDICATIONS = [
   // ── TCAs ───────────────────────────────────────────────────────────────────
   {
     id: 'amitriptyline',
-    effects: { weight: 'high', sedation: 'high', sexual: 'moderate', antichol: 'high', qt: 'high' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'high', sedation: 'high', sexual: 'moderate', antichol: 'high', qt: 'high' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1960, fdaApprovalYear: 1961, originator: "Merck" },
     dosing: { start: "25–50 mg qHS", target: "100–200 mg/day", max: "300 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=amitriptyline" } },
     name: 'Amitriptyline',
@@ -1243,7 +1243,7 @@ const MEDICATIONS = [
   },
   {
     id: 'nortriptyline',
-    effects: { weight: 'moderate', sedation: 'moderate', sexual: 'low', antichol: 'moderate', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'moderate', sedation: 'moderate', sexual: 'low', antichol: 'moderate', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1962, fdaApprovalYear: 1964, originator: "Eli Lilly" },
     dosing: { start: "25 mg qHS", target: "75–100 mg/day", max: "150 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=nortriptyline" } },
     name: 'Nortriptyline',
@@ -1273,7 +1273,7 @@ const MEDICATIONS = [
   },
   {
     id: 'imipramine',
-    effects: { weight: 'moderate', sedation: 'moderate', sexual: 'moderate', antichol: 'high', qt: 'high' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'moderate', sedation: 'moderate', sexual: 'moderate', antichol: 'high', qt: 'high' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1951, fdaApprovalYear: 1959, originator: "Geigy (Novartis)" },
     dosing: { start: "25–75 mg/day", target: "100–200 mg/day", max: "300 mg/day", formulations: "IR HCl in divided doses • Pamoate capsules once daily (Tofranil-PM)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=imipramine" } },
     name: 'Imipramine',
@@ -1306,7 +1306,7 @@ const MEDICATIONS = [
   // ── MAOIs ──────────────────────────────────────────────────────────────────
   {
     id: 'phenelzine',
-    effects: { weight: 'moderate', sedation: 'moderate', sexual: 'high', antichol: 'low', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'moderate', sedation: 'moderate', sexual: 'high', antichol: 'low', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1959, fdaApprovalYear: 1961, originator: "Warner-Chilcott (Parke-Davis)" },
     dosing: { start: "15 mg TID", target: "60–90 mg/day", max: "90 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=phenelzine" } },
     name: 'Phenelzine',
@@ -1334,7 +1334,7 @@ const MEDICATIONS = [
   },
   {
     id: 'tranylcypromine',
-    effects: { weight: 'low', sedation: 'minimal', sexual: 'moderate', antichol: 'low', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'minimal', sexual: 'moderate', antichol: 'low', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1948, fdaApprovalYear: 1961, originator: "Smith Kline & French" },
     dosing: { start: "10 mg BID", target: "30–60 mg/day", max: "60 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=tranylcypromine" } },
     name: 'Tranylcypromine',
@@ -1364,7 +1364,7 @@ const MEDICATIONS = [
   // ── Other Antidepressants ──────────────────────────────────────────────────
   {
     id: 'bupropion',
-    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1969, fdaApprovalYear: 1985, originator: "Burroughs Wellcome (GSK)" },
     dosing: { start: "150 mg/day (SR/XL)", target: "300 mg/day", max: "450 mg/day (IR/XL); 400 mg/day (SR)", formulations: "IR BID–TID (Wellbutrin) • SR BID (Wellbutrin SR / Zyban) • XL once daily (Wellbutrin XL)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=bupropion" } },
     name: 'Bupropion',
@@ -1396,7 +1396,7 @@ const MEDICATIONS = [
   },
   {
     id: 'mirtazapine',
-    effects: { weight: 'high', sedation: 'high', sexual: 'minimal', antichol: 'low', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'high', sedation: 'high', sexual: 'minimal', antichol: 'low', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1989, fdaApprovalYear: 1996, originator: "Organon (Merck)" },
     dosing: { start: "15 mg qHS", target: "15–45 mg/day", max: "45 mg/day", formulations: "Tablet • Orally disintegrating (SolTab) — both once daily", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=mirtazapine" } },
     name: 'Mirtazapine',
@@ -1426,7 +1426,7 @@ const MEDICATIONS = [
   },
   {
     id: 'trazodone',
-    effects: { weight: 'low', sedation: 'high', sexual: 'low', antichol: 'minimal', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'high', sexual: 'low', antichol: 'minimal', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1966, fdaApprovalYear: 1981, originator: "Angelini / Mead Johnson" },
     dosing: { start: "150 mg/day (depression); 25–100 mg qHS (insomnia)", target: "150–400 mg/day", max: "600 mg/day (inpatient)", formulations: "IR BID or qHS • ER once daily (Oleptro)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=trazodone" } },
     name: 'Trazodone',
@@ -1456,7 +1456,7 @@ const MEDICATIONS = [
   },
   {
     id: 'vilazodone',
-    effects: { weight: 'minimal', sedation: 'low', sexual: 'low', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'minimal', sedation: 'low', sexual: 'low', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 2001, fdaApprovalYear: 2011, originator: "Merck KGaA / Clinical Data" },
     dosing: { start: "10 mg/day ×7 d, then 20 mg ×7 d", target: "40 mg/day", max: "40 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=vilazodone" } },
     name: 'Vilazodone',
@@ -1488,7 +1488,7 @@ const MEDICATIONS = [
   // ── FGAs (First-Generation Antipsychotics) ─────────────────────────────────
   {
     id: 'haloperidol',
-    effects: { weight: 'low', sedation: 'low', sexual: 'moderate', antichol: 'minimal', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'low', sexual: 'moderate', antichol: 'minimal', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1958, fdaApprovalYear: 1967, originator: "Janssen" },
     dosing: { start: "0.5–5 mg BID–TID", target: "5–20 mg/day", max: "30 mg/day (higher in acute agitation)", formulations: "Oral tab/solution • Lactate IM/IV (acute) • Decanoate LAI every ~4 weeks", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=haloperidol" } },
     name: 'Haloperidol',
@@ -1520,7 +1520,7 @@ const MEDICATIONS = [
   },
   {
     id: 'chlorpromazine',
-    effects: { weight: 'moderate', sedation: 'high', sexual: 'moderate', antichol: 'moderate', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'moderate', sedation: 'high', sexual: 'moderate', antichol: 'moderate', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1950, fdaApprovalYear: 1954, originator: "Rhône-Poulenc / Smith Kline & French" },
     dosing: { start: "25–100 mg/day", target: "300–800 mg/day", max: "1000 mg/day", formulations: "Oral tablet • IM/IV injection (acute)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=chlorpromazine" } },
     name: 'Chlorpromazine',
@@ -1553,7 +1553,7 @@ const MEDICATIONS = [
   },
   {
     id: 'fluphenazine',
-    effects: { weight: 'low', sedation: 'low', sexual: 'moderate', antichol: 'low', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'low', sexual: 'moderate', antichol: 'low', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1959, fdaApprovalYear: 1959, originator: "Squibb (Bristol-Myers Squibb)" },
     dosing: { start: "2.5–10 mg/day", target: "5–20 mg/day", max: "40 mg/day", formulations: "Oral tab/elixir • HCl IM (acute) • Decanoate LAI every 2–3 weeks", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=fluphenazine" } },
     name: 'Fluphenazine',
@@ -1586,7 +1586,7 @@ const MEDICATIONS = [
   // ── SGAs (Second-Generation Antipsychotics) ────────────────────────────────
   {
     id: 'risperidone',
-    effects: { weight: 'moderate', sedation: 'low', sexual: 'high', antichol: 'minimal', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'moderate', sedation: 'low', sexual: 'high', antichol: 'minimal', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1988, fdaApprovalYear: 1993, originator: "Janssen" },
     dosing: { start: "1 mg BID (2 mg/day)", target: "4–6 mg/day", max: "16 mg/day", formulations: "Oral tab/solution/ODT • LAI (Consta q2wk; Perseris/Uzedy monthly)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=risperidone" } },
     name: 'Risperidone',
@@ -1619,7 +1619,7 @@ const MEDICATIONS = [
   },
   {
     id: 'olanzapine',
-    effects: { weight: 'high', sedation: 'high', sexual: 'low', antichol: 'moderate', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'high', sedation: 'high', sexual: 'low', antichol: 'moderate', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1991, fdaApprovalYear: 1996, originator: "Eli Lilly" },
     dosing: { start: "5–10 mg/day", target: "10–20 mg/day", max: "20 mg/day", formulations: "Oral tab/ODT (Zydis) • IM (acute) • LAI (Relprevv, q2–4 weeks)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=olanzapine" } },
     name: 'Olanzapine',
@@ -1654,7 +1654,7 @@ const MEDICATIONS = [
   },
   {
     id: 'quetiapine',
-    effects: { weight: 'moderate', sedation: 'high', sexual: 'minimal', antichol: 'low', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'moderate', sedation: 'high', sexual: 'minimal', antichol: 'low', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1985, fdaApprovalYear: 1997, originator: "Zeneca (AstraZeneca)" },
     dosing: { start: "25–50 mg BID", target: "400–800 mg/day", max: "800 mg/day", formulations: "IR BID (Seroquel) • XR once daily (Seroquel XR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=quetiapine" } },
     name: 'Quetiapine',
@@ -1688,7 +1688,7 @@ const MEDICATIONS = [
   },
   {
     id: 'aripiprazole',
-    effects: { weight: 'low', sedation: 'minimal', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'minimal', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1988, fdaApprovalYear: 2002, originator: "Otsuka / Bristol-Myers Squibb" },
     dosing: { start: "10–15 mg/day (schizophrenia); 2–5 mg (MDD adjunct)", target: "10–15 mg/day", max: "30 mg/day", formulations: "Oral tab/ODT/solution • LAI (Maintena monthly; Aristada q4–8 weeks)", citation: { label: "FDA package insert (2022)", url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/021436s048lbledit.pdf" } },
     name: 'Aripiprazole',
@@ -1723,7 +1723,7 @@ const MEDICATIONS = [
   },
   {
     id: 'clozapine',
-    effects: { weight: 'high', sedation: 'high', sexual: 'low', antichol: 'high', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'high', sedation: 'high', sexual: 'low', antichol: 'high', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1958, fdaApprovalYear: 1989, originator: "Wander AG / Sandoz (Novartis)" },
     dosing: { start: "12.5 mg/day", target: "300–450 mg/day (serum ≥350 ng/mL; usual 350–600 ng/mL)", max: "900 mg/day", formulations: "Tablet • ODT (FazaClo) • Oral suspension (Versacloz)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clozapine" } },
     name: 'Clozapine',
@@ -1754,7 +1754,7 @@ const MEDICATIONS = [
   },
   {
     id: 'ziprasidone',
-    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'minimal', qt: 'high' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'minimal', qt: 'high' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1987, fdaApprovalYear: 2001, originator: "Pfizer" },
     dosing: { start: "20 mg BID with food", target: "40–80 mg BID", max: "80 mg BID (160 mg/day)", formulations: "Oral capsule BID with food • IM (acute agitation)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=ziprasidone" } },
     name: 'Ziprasidone',
@@ -1787,7 +1787,7 @@ const MEDICATIONS = [
   },
   {
     id: 'lurasidone',
-    effects: { weight: 'minimal', sedation: 'low', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'minimal', sedation: 'low', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 2003, fdaApprovalYear: 2010, originator: "Dainippon Sumitomo (Sunovion)" },
     dosing: { start: "40 mg/day with food (≥350 kcal)", target: "40–80 mg/day", max: "160 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=lurasidone" } },
     name: 'Lurasidone',
@@ -1818,7 +1818,7 @@ const MEDICATIONS = [
   },
   {
     id: 'asenapine',
-    effects: { weight: 'low', sedation: 'moderate', sexual: 'low', antichol: 'minimal', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'moderate', sexual: 'low', antichol: 'minimal', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 2000, fdaApprovalYear: 2009, originator: "Organon (Merck)" },
     dosing: { start: "5 mg SL BID", target: "10 mg SL BID", max: "20 mg/day", formulations: "Sublingual tablet BID • Transdermal patch once daily (Secuado)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=asenapine" } },
     name: 'Asenapine',
@@ -2105,7 +2105,7 @@ const MEDICATIONS = [
   // ── Additional SNRIs ────────────────────────────────────────────────────
   ,{
     id: 'milnacipran',
-    effects: { weight: 'minimal', sedation: 'low', sexual: 'moderate', antichol: 'low', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'minimal', sedation: 'low', sexual: 'moderate', antichol: 'low', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1985, fdaApprovalYear: 2009, originator: "Pierre Fabre / Forest" },
     dosing: { start: "12.5 mg/day", target: "100 mg/day (50 mg BID)", max: "200 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=milnacipran" } },
     name: 'Milnacipran',
@@ -2132,7 +2132,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'levomilnacipran',
-    effects: { weight: 'minimal', sedation: 'low', sexual: 'moderate', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'minimal', sedation: 'low', sexual: 'moderate', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 2004, fdaApprovalYear: 2013, originator: "Forest / Pierre Fabre" },
     dosing: { start: "20 mg/day ×2 days", target: "40–120 mg/day", max: "120 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=levomilnacipran" } },
     name: 'Levomilnacipran',
@@ -2161,7 +2161,7 @@ const MEDICATIONS = [
   // ── SSRI/5HT Multimodal ─────────────────────────────────────────────────
   ,{
     id: 'vortioxetine',
-    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'low', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'low', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 2001, fdaApprovalYear: 2013, originator: "Lundbeck / Takeda" },
     dosing: { start: "10 mg/day", target: "10–20 mg/day", max: "20 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=vortioxetine" } },
     name: 'Vortioxetine',
@@ -2190,7 +2190,7 @@ const MEDICATIONS = [
   // ── Azapirone Antidepressant ────────────────────────────────────────────
   ,{
     id: 'gepirone',
-    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'minimal', antichol: 'minimal', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'minimal', antichol: 'minimal', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1986, fdaApprovalYear: 2023, originator: "Bristol-Myers Squibb / Fabre-Kramer" },
     dosing: { start: "18.2 mg/day", target: "18.2–61.8 mg/day", max: "79.8 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=gepirone" } },
     name: 'Gepirone',
@@ -2219,7 +2219,7 @@ const MEDICATIONS = [
   // ── Novel Antidepressants ───────────────────────────────────────────────
   ,{
     id: 'esketamine',
-    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1962, fdaApprovalYear: 2019, originator: "Janssen (parent ketamine, Parke-Davis 1962)" },
     dosing: { start: "56 mg intranasal", target: "56–84 mg twice weekly (induction)", max: "84 mg/dose", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=esketamine" } },
     name: 'Esketamine',
@@ -2248,7 +2248,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'brexanolone',
-    effects: { weight: 'none', sedation: 'high', sexual: 'none', antichol: 'none', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'none', sedation: 'high', sexual: 'none', antichol: 'none', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 2011, fdaApprovalYear: 2019, originator: "Sage Therapeutics" },
     dosing: { start: "30 mcg/kg/hr IV", target: "titrate to 90 mcg/kg/hr over 60-hr infusion", max: "90 mcg/kg/hr", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=brexanolone" } },
     name: 'Brexanolone',
@@ -2276,7 +2276,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'zuranolone',
-    effects: { weight: 'minimal', sedation: 'high', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 2014, fdaApprovalYear: 2023, originator: "Sage Therapeutics / Biogen" },
     dosing: { start: "50 mg PO qPM ×14 days", target: "50 mg/day", max: "50 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=zuranolone" } },
     name: 'Zuranolone',
@@ -2305,7 +2305,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'dextromethorphan-bupropion',
-    effects: { weight: 'minimal', sedation: 'low', sexual: 'low', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'minimal', sedation: 'low', sexual: 'low', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 2017, fdaApprovalYear: 2022, originator: "Axsome Therapeutics" },
     dosing: { start: "45/105 mg qAM ×3 days", target: "45/105 mg BID", max: "45/105 mg BID", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=Auvelity" } },
     name: 'Dextromethorphan/Bupropion',
@@ -2335,7 +2335,7 @@ const MEDICATIONS = [
   // ── Additional TCA ──────────────────────────────────────────────────────
   ,{
     id: 'doxepin',
-    effects: { weight: 'moderate', sedation: 'high', sexual: 'low', antichol: 'high', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'moderate', sedation: 'high', sexual: 'low', antichol: 'high', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1963, fdaApprovalYear: 1969, originator: "Pfizer" },
     dosing: { start: "25–75 mg/day (depression); 3–6 mg qHS (insomnia)", target: "75–150 mg/day", max: "300 mg/day", formulations: "Oral cap/solution (depression) • Low-dose 3–6 mg tab for insomnia (Silenor)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=doxepin" } },
     name: 'Doxepin',
@@ -2365,7 +2365,7 @@ const MEDICATIONS = [
   // ── Additional FGAs ─────────────────────────────────────────────────────
   ,{
     id: 'trifluoperazine',
-    effects: { weight: 'low', sedation: 'low', sexual: 'moderate', antichol: 'low', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'low', sexual: 'moderate', antichol: 'low', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1958, fdaApprovalYear: 1959, originator: "Smith Kline & French" },
     dosing: { start: "2–5 mg BID", target: "15–20 mg/day", max: "40 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=trifluoperazine" } },
     name: 'Trifluoperazine',
@@ -2393,7 +2393,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'perphenazine',
-    effects: { weight: 'low', sedation: 'low', sexual: 'moderate', antichol: 'low', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'low', sexual: 'moderate', antichol: 'low', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1957, fdaApprovalYear: 1957, originator: "Schering" },
     dosing: { start: "4–8 mg TID", target: "16–24 mg/day", max: "64 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=perphenazine" } },
     name: 'Perphenazine',
@@ -2421,7 +2421,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'thiothixene',
-    effects: { weight: 'low', sedation: 'low', sexual: 'moderate', antichol: 'low', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'low', sexual: 'moderate', antichol: 'low', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1965, fdaApprovalYear: 1967, originator: "Pfizer" },
     dosing: { start: "2 mg TID", target: "15–30 mg/day", max: "60 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=thiothixene" } },
     name: 'Thiothixene',
@@ -2448,7 +2448,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'pimozide',
-    effects: { weight: 'low', sedation: 'low', sexual: 'moderate', antichol: 'low', qt: 'high' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'low', sexual: 'moderate', antichol: 'low', qt: 'high' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1963, fdaApprovalYear: 1984, originator: "Janssen" },
     dosing: { start: "1–2 mg/day", target: "1–10 mg/day", max: "10 mg/day or 0.2 mg/kg", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=pimozide" } },
     name: 'Pimozide',
@@ -2476,7 +2476,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'thioridazine',
-    effects: { weight: 'moderate', sedation: 'high', sexual: 'high', antichol: 'high', qt: 'high' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'moderate', sedation: 'high', sexual: 'high', antichol: 'high', qt: 'high' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1958, fdaApprovalYear: 1962, originator: "Sandoz (Novartis)" },
     dosing: { start: "50–100 mg TID", target: "200–800 mg/day", max: "800 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=thioridazine" } },
     name: 'Thioridazine',
@@ -2503,7 +2503,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'loxapine',
-    effects: { weight: 'low', sedation: 'moderate', sexual: 'low', antichol: 'low', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'moderate', sexual: 'low', antichol: 'low', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1968, fdaApprovalYear: 1975, originator: "American Cyanamid (Lederle)" },
     dosing: { start: "10 mg BID", target: "60–100 mg/day", max: "250 mg/day", formulations: "Oral capsule • Inhalation powder for acute agitation (Adasuve)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=loxapine" } },
     name: 'Loxapine',
@@ -2531,7 +2531,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'molindone',
-    effects: { weight: 'minimal', sedation: 'low', sexual: 'low', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'minimal', sedation: 'low', sexual: 'low', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1966, fdaApprovalYear: 1974, originator: "Endo Laboratories" },
     dosing: { start: "50–75 mg/day", target: "50–100 mg/day", max: "225 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=molindone" } },
     name: 'Molindone',
@@ -2560,7 +2560,7 @@ const MEDICATIONS = [
   // ── Additional SGAs ─────────────────────────────────────────────────────
   ,{
     id: 'paliperidone',
-    effects: { weight: 'moderate', sedation: 'low', sexual: 'high', antichol: 'minimal', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'moderate', sedation: 'low', sexual: 'high', antichol: 'minimal', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1980, fdaApprovalYear: 2006, originator: "Janssen" },
     dosing: { start: "6 mg/day", target: "3–12 mg/day", max: "12 mg/day", formulations: "Oral ER once daily (Invega) • LAI (Sustenna monthly; Trinza q3mo; Hafyera q6mo)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=paliperidone" } },
     name: 'Paliperidone',
@@ -2588,7 +2588,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'iloperidone',
-    effects: { weight: 'moderate', sedation: 'moderate', sexual: 'moderate', antichol: 'minimal', qt: 'high' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'moderate', sedation: 'moderate', sexual: 'moderate', antichol: 'minimal', qt: 'high' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1995, fdaApprovalYear: 2009, originator: "Hoechst Marion Roussel / Vanda" },
     dosing: { start: "1 mg BID, titrate over ~7 days", target: "12–24 mg/day", max: "24 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=iloperidone" } },
     name: 'Iloperidone',
@@ -2616,7 +2616,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'brexpiprazole',
-    effects: { weight: 'low', sedation: 'low', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'low', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 2006, fdaApprovalYear: 2015, originator: "Otsuka / Lundbeck" },
     dosing: { start: "1 mg/day", target: "2–4 mg/day", max: "4 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=brexpiprazole" } },
     name: 'Brexpiprazole',
@@ -2645,7 +2645,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'cariprazine',
-    effects: { weight: 'low', sedation: 'minimal', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'low', sedation: 'minimal', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 2004, fdaApprovalYear: 2015, originator: "Gedeon Richter / AbbVie" },
     dosing: { start: "1.5 mg/day", target: "1.5–6 mg/day", max: "6 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=cariprazine" } },
     name: 'Cariprazine',
@@ -2674,7 +2674,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'lumateperone',
-    effects: { weight: 'minimal', sedation: 'low', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'minimal', sedation: 'low', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 2010, fdaApprovalYear: 2019, originator: "Intra-Cellular Therapies" },
     dosing: { start: "42 mg/day", target: "42 mg/day", max: "42 mg/day (fixed dose)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=lumateperone" } },
     name: 'Lumateperone',
@@ -2702,7 +2702,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'pimavanserin',
-    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'none', antichol: 'minimal', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): Maudsley 14e / Stahl 5e / Leucht 2013 / Huhn 2019 / Cipriani 2018 / FDA / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'none', antichol: 'minimal', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 2001, fdaApprovalYear: 2016, originator: "Acadia Pharmaceuticals" },
     dosing: { start: "34 mg/day", target: "34 mg/day", max: "34 mg/day (fixed dose)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=pimavanserin" } },
     name: 'Pimavanserin',
@@ -4483,3 +4483,99 @@ trihexyphenidyl: {
 
 };
 
+// ─── Administration & Counseling ("How to Take") ───────────────────────────
+// Concise per-drug guidance: food, timing, and 1–3 counseling pearls.
+// Sources: FDA labeling (DailyMed) + standard prescribing references.
+const ADMINISTRATION_DATA = {
+  "fluoxetine": { food: "With or without food", timing: "Morning", pearls: ["Long half-life makes an occasional missed dose low-risk for discontinuation symptoms.", "Can be activating — morning dosing helps limit insomnia."] },
+  "sertraline": { food: "With food", timing: "Morning", pearls: ["Taking with food improves absorption and reduces nausea.", "Oral concentrate must be diluted in ~4 oz of water or juice immediately before taking."] },
+  "escitalopram": { food: "With or without food", timing: "Any consistent time", pearls: ["Well tolerated; choose morning vs. evening based on whether it is activating or sedating for the patient."] },
+  "paroxetine": { food: "With or without food", timing: "Morning", pearls: ["Take with food if GI upset occurs; swallow CR tablets whole.", "Do not stop abruptly — high discontinuation-syndrome risk; taper slowly."] },
+  "citalopram": { food: "With or without food", timing: "Any consistent time", pearls: ["Dose-dependent QT prolongation — max 40 mg/day (20 mg if >60 yr, hepatic impairment, or CYP2C19 poor metabolizer)."] },
+  "fluvoxamine": { food: "With or without food", timing: "Bedtime", pearls: ["Often dosed at bedtime because it is sedating.", "Divide doses >100 mg/day into BID."] },
+  "venlafaxine": { food: "With food", timing: "Morning", pearls: ["Take with food to reduce nausea; swallow XR whole or sprinkle on applesauce (do not chew).", "Taper to stop — notable discontinuation syndrome; can raise blood pressure at higher doses."] },
+  "duloxetine": { food: "With or without food", timing: "Any consistent time", pearls: ["Swallow whole; do not crush, chew, or open the delayed-release capsule.", "Avoid in significant hepatic impairment or heavy alcohol use."] },
+  "desvenlafaxine": { food: "With or without food", timing: "Any consistent time", pearls: ["Swallow whole; an empty tablet shell may appear in the stool — this is expected."] },
+  "milnacipran": { food: "With or without food", timing: "Morning (BID)", pearls: ["Take with food if nausea occurs.", "Dosed twice daily; give the second dose earlier in the day to limit insomnia."] },
+  "levomilnacipran": { food: "With or without food", timing: "Any consistent time", pearls: ["Swallow the ER capsule whole; do not open, chew, or crush."] },
+  "vortioxetine": { food: "With or without food", timing: "Any consistent time", pearls: ["Nausea is the most common early effect and usually improves over 1–2 weeks; taking with food can help."] },
+  "gepirone": { food: "With food", timing: "Any consistent time", pearls: ["Extended-release — take consistently with regard to food and swallow whole."] },
+  "amitriptyline": { food: "With or without food", timing: "Bedtime", pearls: ["Sedating and anticholinergic — dose at bedtime.", "Highly toxic in overdose — limit quantity dispensed in at-risk patients."] },
+  "nortriptyline": { food: "With or without food", timing: "Bedtime", pearls: ["Less sedating and anticholinergic than amitriptyline.", "Therapeutic level 50–150 ng/mL — useful for dose guidance."] },
+  "imipramine": { food: "With or without food", timing: "Bedtime", pearls: ["Take with food to reduce GI upset.", "Toxic in overdose — limit quantity dispensed in at-risk patients."] },
+  "doxepin": { food: "With or without food", timing: "Bedtime", pearls: ["Low doses (3–6 mg) are used for insomnia — take 30 min before bed with ≥7 hr available for sleep.", "At hypnotic doses, avoid taking within 3 hr of a meal (delays onset)."] },
+  "phenelzine": { food: "With or without food", timing: "Morning (BID)", pearls: ["Strict low-tyramine diet required — avoid aged cheeses, cured/fermented foods, and tap/draft beer.", "Avoid sympathomimetics and serotonergic drugs; observe washout when switching (5 weeks from fluoxetine)."] },
+  "tranylcypromine": { food: "With or without food", timing: "Morning", pearls: ["Low-tyramine diet required.", "More activating — avoid evening dosing to limit insomnia; observe washout periods when switching antidepressants."] },
+  "bupropion": { food: "With or without food", timing: "Morning (avoid late day)", pearls: ["Take XL once each morning; SR twice daily with the second dose by mid-afternoon to limit insomnia.", "Swallow whole — do not crush or chew (dose-dumping raises seizure risk).", "Lowers seizure threshold; contraindicated in eating disorders and seizure disorder."] },
+  "mirtazapine": { food: "With or without food", timing: "Bedtime", pearls: ["More sedating at LOWER doses (stronger antihistamine effect); sedation often eases as the dose increases.", "Take at bedtime; commonly increases appetite and weight."] },
+  "trazodone": { food: "With food", timing: "Bedtime", pearls: ["Take with a snack or meal to reduce dizziness and improve absorption.", "Useful for sleep due to sedation; counsel to seek care for any erection lasting >4 hr (priapism)."] },
+  "vilazodone": { food: "With food — required", timing: "Any consistent time", pearls: ["MUST be taken with food — absorption drops ~50% on an empty stomach, reducing efficacy.", "Titrate over ≥1 week to reduce GI effects."] },
+  "haloperidol": { food: "With or without food", timing: "Divided / daily", pearls: ["Dilute the oral concentrate in water or juice (not coffee or tea).", "Monitor for EPS and akathisia; a long-acting decanoate depot is available for adherence."] },
+  "chlorpromazine": { food: "With or without food", timing: "Divided / bedtime", pearls: ["Sedating and hypotensive — advise rising slowly.", "Causes photosensitivity — recommend sunscreen; dilute the oral concentrate before use."] },
+  "fluphenazine": { food: "With or without food", timing: "Divided", pearls: ["Dilute the oral concentrate (avoid caffeinated drinks, tannic-acid teas, and apple juice).", "A decanoate IM depot is available."] },
+  "trifluoperazine": { food: "With or without food", timing: "Divided", pearls: ["Take with food if GI upset occurs; monitor for EPS."] },
+  "perphenazine": { food: "With or without food", timing: "Divided", pearls: ["Mid-potency FGA; dilute the oral concentrate before use."] },
+  "thiothixene": { food: "With or without food", timing: "Bedtime or divided", pearls: ["Take with food to reduce GI upset; monitor for EPS."] },
+  "pimozide": { food: "With or without food", timing: "Any consistent time", pearls: ["QT prolongation — obtain baseline and periodic ECGs; avoid CYP3A4/CYP2D6 inhibitors and grapefruit juice."] },
+  "thioridazine": { food: "With food", timing: "Divided", pearls: ["Boxed warning for dose-dependent QT prolongation — reserved for refractory cases with ECG monitoring."] },
+  "loxapine": { food: "With or without food", timing: "Divided", pearls: ["Oral form with or without food; the inhaled form is a single supervised dose (bronchospasm risk, REMS)."] },
+  "molindone": { food: "With or without food", timing: "Divided", pearls: ["Take with food if GI upset occurs; relatively weight-neutral among antipsychotics."] },
+  "risperidone": { food: "With or without food", timing: "Any (often evening)", pearls: ["Oral solution can be mixed with water, coffee, orange juice, or low-fat milk (not cola or tea).", "Prolactin elevation is common; long-acting injectables are available."] },
+  "olanzapine": { food: "With or without food", timing: "Bedtime", pearls: ["Sedating — usually dosed at night; the orally disintegrating tablet dissolves on the tongue.", "High metabolic risk — monitor weight, glucose, and lipids; never give IM olanzapine with IV benzodiazepines."] },
+  "quetiapine": { food: "XR without food or with a light snack", timing: "Bedtime", pearls: ["IR is sedating — dose at bedtime; take XR without food or with a light meal (≤300 kcal) to avoid raised peak levels.", "Swallow XR tablets whole."] },
+  "aripiprazole": { food: "With or without food", timing: "Morning", pearls: ["Can be activating and cause akathisia — morning dosing is preferred.", "Counsel about rare impulse-control behaviors (gambling, hypersexuality)."] },
+  "clozapine": { food: "With or without food", timing: "Divided / bedtime", pearls: ["Requires REMS ANC monitoring for agranulocytosis; titrate slowly (orthostasis, sedation, seizures).", "Smoking cessation raises levels — reassess dose; monitor bowel function (constipation can be severe)."] },
+  "ziprasidone": { food: "With food — required (≥500 kcal)", timing: "Morning and evening (BID)", pearls: ["MUST be taken with a meal of ≥500 kcal — food doubles absorption; empty-stomach dosing can halve levels and efficacy.", "Obtain baseline and periodic ECGs (QT)."] },
+  "lurasidone": { food: "With food — required (≥350 kcal)", timing: "Evening", pearls: ["Take with a meal of at least 350 kcal — absorption roughly doubles with food.", "Avoid strong CYP3A4 inhibitors/inducers and grapefruit."] },
+  "asenapine": { food: "Sublingual — no food or drink for 10 min", timing: "BID", pearls: ["Place under the tongue and let it dissolve; do NOT swallow, chew, or crush, and avoid eating/drinking for 10 minutes.", "Transient oral numbness is common; a transdermal patch (Secuado) is an alternative."] },
+  "paliperidone": { food: "With food recommended (ER)", timing: "Morning", pearls: ["Take Invega ER consistently — with breakfast is recommended (food increases absorption); swallow whole (the OROS shell passes in stool).", "Long-acting IM depots are available."] },
+  "iloperidone": { food: "With or without food", timing: "BID", pearls: ["Titrate slowly to limit orthostatic hypotension.", "QT prolongation — avoid combining with other QT-prolonging drugs."] },
+  "brexpiprazole": { food: "With or without food", timing: "Any consistent time", pearls: ["Lower akathisia than aripiprazole; still counsel about impulse-control behaviors.", "Reduce dose for CYP2D6 poor metabolizers and strong inhibitors."] },
+  "cariprazine": { food: "With or without food", timing: "Any consistent time", pearls: ["Very long-acting active metabolites (weeks) — effects and side effects shift slowly after dose changes.", "Akathisia is common."] },
+  "lumateperone": { food: "With or without food", timing: "Bedtime", pearls: ["Often dosed at night due to sedation; swallow the capsule whole.", "Avoid CYP3A4 inducers and strong inhibitors."] },
+  "pimavanserin": { food: "With or without food", timing: "Any consistent time", pearls: ["For Parkinson disease psychosis; no dopamine blockade, so no worsening of motor symptoms.", "QT prolongation — avoid other QT-prolonging agents; benefit builds over weeks."] },
+  "lithium": { food: "With food", timing: "Divided (bedtime for ER)", pearls: ["Take with food or after meals to reduce GI upset.", "Keep salt and fluid intake steady — dehydration, NSAIDs, ACE inhibitors, and thiazides raise levels.", "Check levels 12 hr post-dose; narrow therapeutic index."] },
+  "valproate": { food: "With food", timing: "Divided / bedtime", pearls: ["Take with food to reduce GI upset; swallow DR/ER whole (sprinkle capsules may be opened onto soft food).", "Teratogen (neural tube defects) — avoid in pregnancy or those who may conceive; monitor LFTs, platelets, and ammonia."] },
+  "lamotrigine": { food: "With or without food", timing: "Any consistent time", pearls: ["Titrate slowly per the starter kit — rapid escalation raises serious-rash (SJS) risk.", "Valproate roughly doubles levels (use a lower titration); estrogen-containing contraceptives lower levels."] },
+  "carbamazepine": { food: "With food", timing: "Divided", pearls: ["Take with food to reduce GI upset; swallow ER forms whole.", "Autoinduces its own metabolism (levels fall over the first weeks) and is a strong CYP3A4 inducer with many interactions.", "Consider HLA-B*1502 testing in at-risk ancestries (SJS); monitor CBC and sodium."] },
+  "oxcarbazepine": { food: "With or without food", timing: "BID", pearls: ["Fewer interactions than carbamazepine but still an inducer; watch for hyponatremia.", "Cross-reactive rash is possible in carbamazepine-allergic patients."] },
+  "topiramate": { food: "With or without food", timing: "BID", pearls: ["Titrate slowly to reduce cognitive/word-finding effects and paresthesias.", "Stay hydrated (kidney-stone risk); can cause metabolic acidosis and lowers contraceptive efficacy at higher doses."] },
+  "gabapentin": { food: "With or without food", timing: "TID / bedtime", pearls: ["Separate from antacids by ≥2 hours (they reduce absorption).", "Absorption is saturable — higher single doses are absorbed less efficiently; taper to stop and reduce dose in renal impairment."] },
+  "zolpidem": { food: "Empty stomach — required", timing: "Bedtime", pearls: ["Take on an empty stomach right before bed — food delays onset.", "Only take with ≥7–8 hr available for sleep; use the lower dose in women and older adults (next-morning impairment).", "Complex sleep behaviors (sleep-driving) can occur."] },
+  "eszopiclone": { food: "Empty stomach", timing: "Bedtime", pearls: ["Do not take with or right after a high-fat meal (delays onset).", "A metallic/bitter taste is common; ensure ≥7–8 hr in bed."] },
+  "temazepam": { food: "With or without food", timing: "Bedtime", pearls: ["Take ~30 min before bed with ≥7–8 hr available for sleep.", "Sedation and fall risk — use cautiously in older adults."] },
+  "ramelteon": { food: "Empty stomach — avoid fatty meals", timing: "Bedtime", pearls: ["Do NOT take with or after a high-fat meal — it markedly delays and reduces absorption.", "Take within 30 min of bedtime; non-scheduled with no abuse potential."] },
+  "suvorexant": { food: "Empty stomach for faster onset", timing: "Within 30 min of bed", pearls: ["Take within 30 min of bedtime with ≥7 hr remaining; onset is delayed if taken with or soon after a meal.", "Watch for next-morning somnolence and rare sleep paralysis."] },
+  "esketamine": { food: "Intranasal — in-clinic (REMS)", timing: "In-clinic, monitored", pearls: ["Avoid food for ≥2 hr and liquids for ≥30 min before dosing to limit nausea.", "Given under REMS with ≥2 hr monitoring; do not drive until the next day after restful sleep."] },
+  "brexanolone": { food: "IV infusion — inpatient (REMS)", timing: "Continuous 60-hr infusion", pearls: ["Administered as a continuous 60-hour IV infusion with monitoring for excessive sedation or sudden loss of consciousness (REMS)."] },
+  "zuranolone": { food: "With a fat-containing meal", timing: "Evening", pearls: ["Take in the evening with a fat-containing meal to ensure absorption.", "14-day course; do not drive within 12 hr of each dose (CNS depression)."] },
+  "dextromethorphan-bupropion": { food: "With or without food", timing: "Morning and evening (≥8 hr apart)", pearls: ["Swallow whole and space the two daily doses at least 8 hours apart; no more than 2 tablets in 24 hr.", "Contains bupropion — mind the seizure threshold and drug interactions."] },
+  "alprazolam": { food: "With or without food", timing: "As prescribed", pearls: ["Short-acting with interdose rebound anxiety — the XR form smooths this; swallow XR whole.", "High dependence/withdrawal potential — do not stop abruptly."] },
+  "clonazepam": { food: "With or without food", timing: "Divided", pearls: ["Longer-acting — provides smoother coverage for panic and anxiety.", "An orally disintegrating wafer is available; taper to discontinue."] },
+  "diazepam": { food: "With or without food", timing: "As prescribed", pearls: ["Long half-life with active metabolites — accumulates in older adults and hepatic impairment.", "Rapid onset; taper slowly after chronic use."] },
+  "lorazepam": { food: "With or without food", timing: "Divided", pearls: ["No active metabolites and glucuronidated — preferred in hepatic impairment and older adults.", "Reliable IM absorption; taper to stop."] },
+  "oxazepam": { food: "With or without food", timing: "Divided", pearls: ["Slow onset and no active metabolites — lower abuse appeal and safer in hepatic impairment and the elderly."] },
+  "chlordiazepoxide": { food: "With or without food", timing: "Divided", pearls: ["Long-acting — commonly used for alcohol withdrawal; accumulates in the elderly and hepatic impairment."] },
+  "clorazepate": { food: "With or without food", timing: "Divided", pearls: ["Prodrug converted to long-acting desmethyldiazepam; avoid taking antacids at the same time (they reduce conversion)."] },
+  "midazolam": { food: "Not for outpatient self-administration", timing: "Procedural / monitored", pearls: ["Short-acting — used for procedural sedation and acute agitation in monitored settings (respiratory depression risk)."] },
+  "triazolam": { food: "Empty stomach", timing: "Bedtime", pearls: ["Very short-acting — take right at bedtime with ≥7–8 hr for sleep; avoid grapefruit and CYP3A4 inhibitors.", "Anterograde amnesia can occur."] },
+  "estazolam": { food: "Empty stomach", timing: "Bedtime", pearls: ["Intermediate-acting hypnotic — take right before bed; high-fat meals slow onset."] },
+  "flurazepam": { food: "With or without food", timing: "Bedtime", pearls: ["Very long-acting with active metabolites — daytime carryover and accumulation, especially in older adults (avoid)."] },
+  "buspirone": { food: "Consistent with regard to food", timing: "BID–TID", pearls: ["Take consistently — always with food or always without (food raises levels).", "Avoid grapefruit juice; anxiolytic effect builds over 1–2 weeks and is not suitable for PRN/acute use."] },
+  "pregabalin": { food: "With or without food", timing: "BID–TID", pearls: ["Schedule V — euphoria and misuse are possible; taper to stop.", "Renally cleared — reduce dose in renal impairment; watch for dose-dependent edema and sedation."] },
+  "propranolol": { food: "With or without food (be consistent)", timing: "As prescribed", pearls: ["Take consistently with respect to food; used for performance anxiety, tremor, and akathisia.", "Do not stop abruptly (rebound); use caution in asthma, bradycardia, and diabetes (masks hypoglycemia)."] },
+  "clonidine": { food: "With or without food", timing: "Bedtime (sedation)", pearls: ["Do not stop abruptly — rebound hypertension; taper off.", "Swallow ER tablets whole; sedation and dry mouth are common."] },
+  "guanfacine": { food: "With or without food (avoid high-fat meals for ER)", timing: "Bedtime or morning", pearls: ["Swallow ER whole and do NOT give with a high-fat meal (raises levels).", "Less sedating than clonidine; taper to stop."] },
+  "doxylamine": { food: "With or without food", timing: "Bedtime", pearls: ["OTC antihistamine hypnotic — strongly anticholinergic; avoid routine use in older adults.", "Tolerance to the sedating effect develops within days."] },
+  "hydroxyzine": { food: "With or without food", timing: "As needed / divided", pearls: ["Non-scheduled anxiolytic and antipruritic; sedating and anticholinergic.", "QT prolongation at higher doses — use caution with other QT drugs and in the elderly."] },
+  "diphenhydramine": { food: "With or without food", timing: "Bedtime (for sleep)", pearls: ["Strongly anticholinergic — avoid for routine sleep in older adults (confusion, falls, urinary retention).", "Tolerance to the sedating effect develops quickly."] },
+  "trihexyphenidyl": { food: "With or without food (be consistent)", timing: "Divided", pearls: ["For drug-induced parkinsonism/dystonia; take with food if GI upset, or before meals if dry mouth interferes with eating.", "Strongly anticholinergic — avoid in the elderly and in tardive dyskinesia; can impair memory."] },
+  "methylphenidate": { food: "With or without food", timing: "Morning (+ midday for IR)", pearls: ["Give long-acting forms in the morning; short-acting may need a midday dose — avoid late-day dosing (insomnia).", "Do not crush ER forms; some capsules may be opened and sprinkled on applesauce.", "Monitor blood pressure, heart rate, appetite, sleep, and (in youth) growth."] },
+  "dexmethylphenidate": { food: "With or without food", timing: "Morning", pearls: ["The ER capsule may be opened and sprinkled on applesauce.", "Avoid late-day dosing to protect sleep."] },
+  "amphetamine-mixed-salts": { food: "With or without food", timing: "Morning", pearls: ["Avoid taking with vitamin C / acidic juices or urinary acidifiers (they reduce absorption and levels).", "Swallow XR whole or sprinkle on applesauce; avoid late-day dosing.", "Schedule II — monitor for misuse, blood pressure, heart rate, sleep, and appetite."] },
+  "dextroamphetamine": { food: "With or without food", timing: "Morning (+ early afternoon if needed)", pearls: ["Avoid acidic foods and juices near dosing.", "Short-acting may need a second early-afternoon dose; avoid late dosing."] },
+  "lisdexamfetamine": { food: "With or without food", timing: "Morning", pearls: ["Prodrug activated after absorption — smoother, lower-abuse profile; may be taken whole or the capsule contents dissolved in water/yogurt and consumed immediately.", "Also approved for binge-eating disorder."] },
+  "modafinil": { food: "With or without food", timing: "Morning", pearls: ["Take in the morning (or before a shift for shift-work disorder).", "Reduces the efficacy of estrogen-containing contraceptives — advise an additional or alternative method."] },
+  "armodafinil": { food: "With or without food", timing: "Morning", pearls: ["Longer-acting R-enantiomer of modafinil — morning dosing.", "Lowers hormonal-contraceptive efficacy — advise a backup method."] },
+  "solriamfetol": { food: "On waking; avoid near bedtime", timing: "Morning", pearls: ["Take on waking and avoid dosing within 9 hours of bedtime (insomnia).", "Monitor blood pressure and heart rate; reduce dose in renal impairment."] }
+};

@@ -104,6 +104,7 @@ var dateStr = ToolUtils.dateStamp();
 - `caf-` → Caffeine Intake Calculator (24 h)
 - `thc-` → THC Intake Calculator (24 h)
 - `alc-` → Alcohol Intake Calculator (24 h)
+- `acb-` → Anticholinergic Burden (ACB + ARS scales)
 - `dv-` → DV / IPV Assessment (HITS screen + evidence-based lethality/danger review)
 - `ba-` → Behavioral Activation for Depression (flagship therapy-course module)
 - `ex-` → Exposure-Based CBT for Anxiety / ERP for OCD (course module 4)

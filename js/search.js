@@ -70,6 +70,7 @@
       { title: 'Caffeine Intake (24h)', section: 'caffeine-tool', cat: 'Clinical Tool' },
       { title: 'THC Intake (24h)', section: 'thc-tool', cat: 'Clinical Tool' },
       { title: 'Alcohol Intake (24h)', section: 'alcohol-tool', cat: 'Clinical Tool' },
+      { title: 'Anticholinergic Burden (ACB / ARS)', section: 'anticholinergic-tool', cat: 'Clinical Tool' },
       { title: 'DSM-5-TR Substance Use Disorder', section: 'sud-tool', cat: 'Rating Scale' },
       { title: 'Printable Clinical Forms', section: 'print-forms', cat: 'Clinical Tools' },
     ];
