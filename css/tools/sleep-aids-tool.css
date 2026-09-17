@@ -1,0 +1,69 @@
+/* sleep-aids-tool.css — OTC / Non-Prescription Sleep Aid Comparison (prefix: sa-) */
+
+#sa-container { max-width: 960px; margin: 0 auto; }
+
+/* ── Controls ─────────────────────────────────────────────────── */
+.sa-controls { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+.sa-search {
+  width: 100%; box-sizing: border-box; padding: 11px 14px; font-size: 0.95rem;
+  color: var(--text); background: var(--bg, #fff); border: 1.5px solid var(--border); border-radius: 8px;
+}
+.sa-search:focus { outline: none; border-color: var(--accent); }
+
+.sa-filter-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.sa-filter-label {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--accent); margin-right: 2px;
+}
+.sa-chip {
+  padding: 5px 12px; font-size: 0.82rem; font-weight: 600; border-radius: 16px;
+  border: 1.5px solid var(--border); background: var(--bg2, #ece6db); color: var(--text);
+  cursor: pointer; transition: all 0.15s;
+}
+.sa-chip:hover { border-color: var(--accent); }
+.sa-chip.sa-active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+.sa-toolbar { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; }
+.sa-toggle { display: inline-flex; align-items: center; gap: 7px; font-size: 0.85rem; color: var(--text); cursor: pointer; }
+.sa-toggle input { width: 16px; height: 16px; accent-color: var(--accent); }
+.sa-sort { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--text); }
+.sa-sort select { padding: 5px 8px; border: 1.5px solid var(--border); border-radius: 6px; background: var(--bg, #fff); color: var(--text); font-size: 0.85rem; }
+.sa-count { font-size: 0.8rem; color: var(--text-muted, #7a7363); }
+
+/* ── Cards ────────────────────────────────────────────────────── */
+.sa-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.sa-card {
+  border: 1px solid var(--border); border-radius: 10px; background: var(--card, #fefcf8);
+  padding: 14px 15px; display: flex; flex-direction: column; gap: 9px;
+}
+.sa-card.sa-avoid-elderly { border-left: 4px solid #c04030; }
+.sa-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.sa-name { font-size: 1.02rem; font-weight: 700; color: var(--text); line-height: 1.2; }
+.sa-name em { display: block; font-style: normal; font-weight: 400; font-size: 0.78rem; color: var(--text-muted, #7a7363); margin-top: 2px; }
+.sa-badges { display: flex; flex-direction: column; gap: 4px; align-items: flex-end; flex-shrink: 0; }
+.sa-cat-badge { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; padding: 2px 8px; border-radius: 10px; color: #fff; white-space: nowrap; }
+.sa-cat-antihist { background: #9a5a3a; }
+.sa-cat-melatonin { background: #8b6914; }
+.sa-cat-herbal { background: #4a7c35; }
+.sa-cat-mineral { background: #3a6ea5; }
+.sa-cat-cannabis { background: #5a4a86; }
+.sa-grade { font-size: 0.66rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; color: #fff; white-space: nowrap; }
+.sa-g-mod { background: #4a7c35; }
+.sa-g-low { background: #8b6914; }
+.sa-g-min { background: #9a5a3a; }
+.sa-g-none { background: #8a8175; }
+
+.sa-rows { display: flex; flex-direction: column; gap: 6px; }
+.sa-row { display: grid; grid-template-columns: 84px 1fr; gap: 8px; font-size: 0.84rem; line-height: 1.45; }
+.sa-k { font-weight: 700; color: var(--text-muted, #6b6050); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em; padding-top: 1px; }
+.sa-v { color: var(--text); }
+.sa-flag { display: inline-flex; align-items: center; gap: 5px; font-size: 0.78rem; font-weight: 600; color: #c04030; background: rgba(192,64,48,0.08); border-radius: 6px; padding: 5px 9px; margin-top: 2px; }
+
+.sa-empty { text-align: center; color: var(--text-muted, #7a7363); padding: 40px 20px; font-size: 0.95rem; }
+
+.sa-footnote { margin-top: 18px; font-size: 0.78rem; line-height: 1.55; color: var(--text-muted, #6b6050); border-top: 1px solid var(--border); padding-top: 12px; }
+
+@media (max-width: 560px) {
+  .sa-grid { grid-template-columns: 1fr; }
+  .sa-toolbar { flex-direction: column; align-items: flex-start; }
+}

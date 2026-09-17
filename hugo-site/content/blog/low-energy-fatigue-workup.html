@@ -1,0 +1,229 @@
+---
+title: "Low Energy: The Non-Psychiatric Workup"
+date: 2026-09-17
+description: "A structured differential for fatigue and low energy beyond depression: organ-system causes common and rare, a three-tiered symptom checklist, a history-and-exam checklist, and a stepwise laboratory workup."
+category: "Clinical Practice"
+subtitle: "Fatigue is one of the most common complaints in medicine — and one of the easiest to misattribute to depression. A structured differential of every organ-system cause, common and rare, with a three-tiered symptom check, a history-and-exam checklist, and a stepwise laboratory workup"
+readTime: "16 min read"
+clinicalSummary: "First clarify sleepiness vs fatigue vs weakness. Screen Tier-1 red flags (weight loss, fever/night sweats, lymphadenopathy, bleeding, chest pain/dyspnea, focal neuro deficits) that redirect the workup; Tier-2 common pointers (sleep apnea, thyroid, glucose, anemia, heart failure, COPD, medications, nutrition, mood); Tier-3 targeted/rare (adrenal insufficiency, hemochromatosis, hypercalcemia, autoimmune, hypogonadism, chronic infection, Lyme, environmental). First-line labs: CBC, TSH, CMP, HbA1c, ferritin/iron, CRP/ESR; second-line guided by clues. Untargeted testing is low-yield, and mold / heavy-metal / chronic-Lyme panels are unvalidated — test only with genuine exposure."
+related: ["insomnia", "non-prescription-sleep-aids", "delirium"]
+draft: false
+---
+
+<style>
+.sp-table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+table.sp-table { border-collapse: collapse; width: 100%; min-width: 660px; font-size: 0.9rem; }
+table.sp-table th, table.sp-table td { border: 1px solid var(--border, #cfc8ba); padding: 0.55rem 0.7rem; text-align: left; vertical-align: top; line-height: 1.45; }
+table.sp-table th { background: var(--accent, #4a7c35); color: #fff; font-weight: 700; }
+table.sp-table tr:nth-child(even) td { background: #f9f7f4; }
+table.sp-table td strong { color: var(--text, #231e14); }
+.sp-callout { background: var(--bg2, #ece6db); border-left: 4px solid var(--accent, #4a7c35); padding: 1rem 1.15rem; margin: 1.5rem 0; border-radius: 4px; }
+.sp-callout h4 { margin: 0 0 0.5rem 0; color: var(--accent, #4a7c35); font-size: 1rem; }
+.sp-callout p { margin: 0.5rem 0; font-size: 0.95rem; line-height: 1.6; }
+.sp-callout.sp-warn { border-left-color: #c04030; }
+.sp-callout.sp-warn h4 { color: #c04030; }
+.sp-callout.sp-key { border-left-color: #8b6914; }
+.sp-callout.sp-key h4 { color: #8b6914; }
+.sp-refs { font-size: 0.88rem; line-height: 1.55; color: var(--text, #231e14); }
+.sp-refs li { margin: 0.4rem 0; }
+/* tiered symptom blocks */
+.fx-tier { border: 1px solid var(--border,#cfc8ba); border-radius: 8px; margin: 1rem 0; overflow: hidden; }
+.fx-tier-head { padding: 0.7rem 1rem; color: #fff; font-weight: 700; font-size: 1rem; }
+.fx-tier-body { padding: 0.9rem 1.15rem; background: var(--card,#fefcf8); }
+.fx-tier-body ul { margin: 0.4rem 0 0.2rem 1.1rem; padding: 0; }
+.fx-tier-body li { margin: 0.32rem 0; font-size: 0.94rem; line-height: 1.5; }
+.fx-t1 .fx-tier-head { background: #c04030; }
+.fx-t2 .fx-tier-head { background: #8b6914; }
+.fx-t3 .fx-tier-head { background: #4a7c35; }
+.fx-tier-sub { font-size: 0.82rem; font-weight: 500; opacity: 0.92; }
+/* checklist */
+.fx-check { background: var(--card,#fefcf8); border: 1px solid var(--border,#cfc8ba); border-radius: 8px; padding: 1rem 1.2rem; margin: 1.2rem 0; }
+.fx-check h4 { margin: 0.2rem 0 0.5rem; color: var(--accent,#4a7c35); font-size: 0.98rem; }
+.fx-check ul { list-style: none; margin: 0 0 0.6rem; padding: 0; }
+.fx-check li { position: relative; padding-left: 1.6rem; margin: 0.3rem 0; font-size: 0.92rem; line-height: 1.5; }
+.fx-check li::before { content: "\2610"; position: absolute; left: 0; top: -1px; font-size: 1.05rem; color: var(--accent,#4a7c35); }
+</style>
+
+<p class="ba-lead">"I'm just tired all the time" is one of the most common things a patient will ever say to a clinician — and one of the most treacherous. Fatigue is the presenting complaint in a large share of primary care and psychiatric visits, and because low energy is a cardinal symptom of depression, it is the complaint most likely to be anchored prematurely on a psychiatric label. Sometimes that label is right. But hypothyroidism, anemia, sleep apnea, heart failure, occult malignancy, and a long tail of rarer disorders all announce themselves first as fatigue, and each is missed when "depression" closes the differential before it opens. This chapter is a deliberate counterweight: a structured tour of the <em>non-psychiatric</em> causes of low energy, common and rare, with three practical instruments — a three-tiered symptom check to triage what to ask first, a history-and-exam checklist, and a stepwise laboratory workup — so that the psychiatric diagnosis, when it is made, is made <em>alongside</em> a medical evaluation rather than instead of one.</p>
+
+<div class="sp-callout sp-key">
+  <h4>Before anything else: what does the patient mean by "tired"?</h4>
+  <p>Three distinct complaints hide under one word, and they point to different differentials. <strong>Sleepiness</strong> (a propensity to doze) points toward sleep disorders — obstructive sleep apnea, insufficient sleep, narcolepsy — and can be quantified with the Epworth Sleepiness Scale. <strong>Fatigue</strong> (low energy, exhaustion that is not relieved by the urge to sleep) points toward the systemic differential below. <strong>Weakness</strong> (loss of motor power) or <strong>dyspnea/exercise intolerance</strong> points toward neuromuscular, cardiac, or pulmonary disease. A single clarifying question — "Do you feel sleepy and likely to nod off, worn out and low on energy, or physically weak and short of breath?" — reshapes the entire evaluation.</p>
+</div>
+
+<p>Two more framing questions do most of the triage work. <strong>Acute versus chronic:</strong> fatigue under a few weeks is usually an acute illness, medication effect, or situational sleep loss; fatigue persisting beyond six months with characteristic features may be myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS) or fibromyalgia. <strong>Post-exertional malaise</strong> — a disproportionate crash lasting more than a day after minor exertion — is the hallmark of ME/CFS and, importantly, is a reason <em>not</em> to prescribe graded exercise reflexively.</p>
+
+<h2 class="ba-h2">The three-tiered symptom check — what to ask first</h2>
+<p>Not all symptoms carry equal weight. The tiers below order the review of systems by urgency and yield: <strong>Tier 1</strong> are the can't-miss red flags that, if present, redirect the workup immediately; <strong>Tier 2</strong> are the high-yield pointers to the common systemic causes; <strong>Tier 3</strong> are targeted clues to the less common and rare diagnoses, pursued when the first two tiers are unrevealing or a specific clue appears.</p>
+
+<div class="fx-tier fx-t1">
+  <div class="fx-tier-head">Tier 1 — Red flags (screen first; presence redirects the workup urgently) <span class="fx-tier-sub"></span></div>
+  <div class="fx-tier-body">
+    <ul>
+      <li><strong>Unintentional weight loss</strong> (&gt;5% in 6–12 months) — malignancy, hyperthyroidism, chronic infection, adrenal insufficiency, malabsorption</li>
+      <li><strong>Fever, drenching night sweats</strong> — infection (TB, endocarditis, HIV), lymphoma, other malignancy, connective-tissue disease</li>
+      <li><strong>Lymphadenopathy, hepatosplenomegaly</strong> — hematologic malignancy, chronic infection</li>
+      <li><strong>Unexplained bleeding or easy bruising, pallor</strong> — marrow failure, leukemia, severe anemia</li>
+      <li><strong>Chest pain, exertional dyspnea, orthopnea, palpitations, syncope</strong> — heart failure, ischemia, arrhythmia, severe anemia, pulmonary disease</li>
+      <li><strong>Focal neurologic deficit, new severe headache, visual change</strong> — CNS lesion, demyelination, intracranial process</li>
+      <li><strong>Hemoptysis, progressive dyspnea</strong> — malignancy, TB, cardiopulmonary disease</li>
+      <li><strong>Rapidly progressive or profoundly disabling symptoms</strong> — any of the above; escalate promptly</li>
+    </ul>
+  </div>
+</div>
+
+<div class="fx-tier fx-t2">
+  <div class="fx-tier-head">Tier 2 — High-yield common pointers (ask in every fatigue evaluation)</div>
+  <div class="fx-tier-body">
+    <ul>
+      <li><strong>Sleep:</strong> loud snoring, witnessed apneas, morning headache, unrefreshing sleep, daytime dozing (obstructive sleep apnea); total sleep time and schedule (insufficient sleep); restless legs</li>
+      <li><strong>Thyroid:</strong> cold intolerance, weight gain, constipation, dry skin, hair thinning, bradycardia (hypothyroid); or heat intolerance, weight loss, tremor, palpitations (hyperthyroid)</li>
+      <li><strong>Glucose:</strong> polyuria, polydipsia, blurred vision, recurrent infections (diabetes/hyperglycemia); shakiness, sweating, relief with eating (hypoglycemia)</li>
+      <li><strong>Anemia:</strong> pallor, dyspnea on exertion, heavy menses, GI blood loss, pica, dietary history</li>
+      <li><strong>Cardiopulmonary:</strong> dyspnea, orthopnea, edema, reduced exercise tolerance (heart failure); chronic cough, wheeze, smoking history (COPD)</li>
+      <li><strong>Medications and substances:</strong> beta-blockers, antihistamines, opioids, benzodiazepines, gabapentinoids, sedating antidepressants, antihypertensives, antiepileptics; alcohol, cannabis, stimulant withdrawal — <em>review the full list, prescribed and OTC</em></li>
+      <li><strong>Nutrition/GI:</strong> diet adequacy, weight change, diarrhea/steatorrhea, bariatric surgery, restrictive eating (malnutrition, malabsorption, vitamin deficiency)</li>
+      <li><strong>Mood/sleep-appetite-anhedonia:</strong> screen for depression and anxiety (PHQ-9 / GAD-7) — but as one branch of the differential, not the default endpoint</li>
+    </ul>
+  </div>
+</div>
+
+<div class="fx-tier fx-t3">
+  <div class="fx-tier-head">Tier 3 — Targeted / rare pointers (pursue on specific clues or when Tiers 1–2 are unrevealing)</div>
+  <div class="fx-tier-body">
+    <ul>
+      <li><strong>Adrenal insufficiency:</strong> orthostatic dizziness, salt craving, hyperpigmentation, nausea, hyponatremia; hypercalcemia can be a clue</li>
+      <li><strong>Hemochromatosis:</strong> arthralgia (2nd/3rd MCP joints), bronze skin, new diabetes, family history, hepatic dysfunction</li>
+      <li><strong>Hypercalcemia / hyperparathyroidism:</strong> "stones, bones, groans, psychic moans," constipation, polyuria</li>
+      <li><strong>Autoimmune/inflammatory:</strong> arthralgia, morning stiffness, rash, photosensitivity, dry eyes/mouth, proximal girdle pain in older adults (polymyalgia rheumatica), sicca (Sjögren), sarcoid</li>
+      <li><strong>Hypogonadism:</strong> low libido, erectile dysfunction, loss of morning erections, decreased muscle mass (men); menstrual/menopausal history</li>
+      <li><strong>Chronic infection:</strong> HIV risk factors, hepatitis exposure, prior mononucleosis, TB exposure, post-viral/long-COVID history</li>
+      <li><strong>Tick exposure / endemic-area travel:</strong> erythema migrans, arthritis, cranial neuropathy (Lyme) — test with a pretest-probability–appropriate exposure</li>
+      <li><strong>Environmental/occupational:</strong> water-damaged buildings and mold exposure; occupational heavy-metal exposure (lead, mercury, arsenic); carbon monoxide (recurrent headache/fatigue that improves away from home)</li>
+      <li><strong>Neurologic:</strong> multiple sclerosis, Parkinson disease, myasthenia gravis (fatigable weakness), dysautonomia/POTS (orthostatic fatigue, tachycardia on standing)</li>
+      <li><strong>Renal/hepatic:</strong> chronic kidney disease (uremic fatigue), cirrhosis/liver failure (hepatic fatigue, encephalopathy)</li>
+    </ul>
+  </div>
+</div>
+
+<h2 class="ba-h2">The comprehensive differential, by organ system</h2>
+<p>The table below expands the classic fatigue differential across every major system. It folds in the disorders clinicians most often think of first (thyroid, anemia, diabetes, heart failure, COPD, renal and liver failure) and the ones easy to overlook (adrenal insufficiency, hemochromatosis, hypercalcemia, celiac disease, occult malignancy, chronic infection). The contested environmental causes — mold, heavy metals, chronic Lyme — are addressed in a dedicated evidence box afterward.</p>
+
+<div class="sp-table-wrap">
+<table class="sp-table">
+<thead><tr><th>System</th><th>Common causes</th><th>Uncommon / rare causes</th><th>Discriminating clues</th></tr></thead>
+<tbody>
+<tr><td><strong>Endocrine / metabolic</strong></td><td>Hypothyroidism; type 2 diabetes / hyperglycemia; hypoglycemia; obesity/metabolic syndrome</td><td>Hyperthyroidism; adrenal insufficiency (Addison, secondary); Cushing syndrome; hypercalcemia / hyperparathyroidism; hypogonadism (low testosterone); panhypopituitarism; hemochromatosis</td><td>Cold vs heat intolerance; polyuria/polydipsia; orthostasis/hyperpigmentation; bronze skin + arthralgia + diabetes</td></tr>
+<tr><td><strong>Hematologic</strong></td><td>Iron-deficiency anemia; anemia of chronic disease; iron deficiency <em>without</em> anemia</td><td>B12/folate deficiency (megaloblastic); hemolytic anemia; leukemia; myelodysplasia; multiple myeloma; polycythemia</td><td>Pallor, exertional dyspnea; heavy menses/GI loss; neuro signs with B12; bone pain/hypercalcemia with myeloma</td></tr>
+<tr><td><strong>Cardiopulmonary</strong></td><td>Heart failure; coronary disease; COPD; asthma; deconditioning</td><td>Pulmonary hypertension; valvular disease; chronic PE; interstitial lung disease; chronic hypoxemia; chronic CO exposure</td><td>Orthopnea, edema, dyspnea on exertion; chronic cough/smoking; hypoxia on pulse oximetry</td></tr>
+<tr><td><strong>Renal / hepatic</strong></td><td>Chronic kidney disease (uremia); cirrhosis / chronic liver disease</td><td>End-stage renal disease; hepatic encephalopathy; renal tubular disorders; electrolyte wasting</td><td>↑ creatinine/urea; jaundice, ascites, LFT abnormalities; electrolyte derangement</td></tr>
+<tr><td><strong>Infectious</strong></td><td>Recent viral illness; post-viral fatigue; long COVID; mononucleosis (EBV/CMV)</td><td>HIV; hepatitis B/C; tuberculosis; infective endocarditis; Lyme disease; chronic parasitic infection</td><td>Fever/night sweats; risk factors/exposures; lymphadenopathy; endemic travel or tick exposure</td></tr>
+<tr><td><strong>Nutritional</strong></td><td>Malnutrition / inadequate intake; vitamin D deficiency; iron deficiency</td><td>B12/folate deficiency; thiamine deficiency; malabsorption (celiac, IBD, short gut, pancreatic insufficiency); post-bariatric deficiencies; refeeding</td><td>Diet history; diarrhea/steatorrhea; restrictive eating; surgical history</td></tr>
+<tr><td><strong>Rheumatologic / inflammatory</strong></td><td>—</td><td>SLE; rheumatoid arthritis; Sjögren; polymyalgia rheumatica / giant cell arteritis; sarcoidosis; vasculitis</td><td>Arthralgia, morning stiffness, rash, sicca; elevated ESR/CRP; proximal pain in older adults</td></tr>
+<tr><td><strong>Neurologic / sleep</strong></td><td>Obstructive sleep apnea; insufficient sleep; restless legs</td><td>Narcolepsy; multiple sclerosis; Parkinson disease; myasthenia gravis; dysautonomia / POTS</td><td>Snoring/witnessed apneas; fatigable weakness; orthostatic tachycardia; neuro exam findings</td></tr>
+<tr><td><strong>Oncologic</strong></td><td>—</td><td>Occult solid tumors; hematologic malignancy; paraneoplastic syndromes; cancer-related fatigue during/after treatment</td><td>Weight loss, night sweats, anemia, age-appropriate screening gaps</td></tr>
+<tr><td><strong>Medications / substances</strong></td><td>Beta-blockers, antihistamines, opioids, benzodiazepines, gabapentinoids, sedating antidepressants, antihypertensives, antiepileptics; alcohol</td><td>Statin-associated myopathy; chemotherapy; interferon; polypharmacy interactions; cannabis; stimulant/caffeine withdrawal</td><td>Temporal link to a start/dose change; sedation profile; substance history</td></tr>
+<tr><td><strong>Environmental / toxic</strong></td><td>—</td><td>Lead, mercury, arsenic toxicity (with genuine exposure); carbon monoxide; mold-related allergic/asthmatic disease</td><td>Occupational/hobby exposure; symptoms tracking to a location; confirmatory testing only with real pretest probability</td></tr>
+<tr><td><strong>Physiologic / primary</strong></td><td>Pregnancy; deconditioning; chronic pain; overwork/burnout</td><td>ME/CFS; fibromyalgia; idiopathic chronic fatigue</td><td>Post-exertional malaise (ME/CFS); widespread tenderness (fibromyalgia); diagnosis of exclusion</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sp-callout sp-warn">
+  <h4>The contested causes: mold, heavy metals, and "chronic Lyme"</h4>
+  <p>Patients frequently arrive convinced that fatigue is due to <strong>toxic mold</strong>, <strong>heavy metals</strong>, or <strong>chronic Lyme disease</strong>. An evidence-based stance takes each seriously without overtesting. <strong>Mold:</strong> water-damaged environments genuinely cause allergic rhinitis, asthma, and hypersensitivity pneumonitis, and those are testable and treatable; "toxic mold illness" or "chronic inflammatory response syndrome (CIRS)" as a distinct fatigue-causing entity is <em>not</em> a validated diagnosis, and commercial mycotoxin urine panels are not clinically validated. <strong>Heavy metals:</strong> test only with a credible exposure history (occupational, environmental, or specific ingestions); untargeted "toxic metal" panels — especially provoked/chelation-challenge urine testing — are not validated and generate false positives. <strong>Lyme:</strong> use standard two-tier serology in patients with an appropriate exposure and pretest probability; "chronic Lyme" treated with prolonged antibiotics is not supported by evidence and carries real harm. In all three, the right move is to validate the patient's distress, test appropriately, and keep the broader differential open rather than either dismissing the concern or ordering unvalidated panels.</p>
+</div>
+
+<h2 class="ba-h2">The history-and-exam checklist</h2>
+<p>A disciplined history and a focused examination — cardiopulmonary, neurologic, thyroid/lymphatic, and skin — resolve more fatigue than any lab panel. Use the checklist below at the bedside.</p>
+
+<div class="fx-check">
+  <h4>History</h4>
+  <ul>
+    <li>Clarify the complaint: sleepiness vs fatigue vs weakness vs dyspnea</li>
+    <li>Onset, duration (acute &lt;1 mo / subacute / chronic &gt;6 mo), pattern, and trajectory</li>
+    <li>Post-exertional malaise? (crash &gt;24 h after minor exertion → ME/CFS)</li>
+    <li>Sleep: hours, schedule, snoring, witnessed apneas, restfulness, restless legs</li>
+    <li>Full Tier-1 red-flag review (weight loss, fevers/night sweats, bleeding, chest pain/dyspnea, neuro deficits)</li>
+    <li>Complete medication reconciliation — prescribed, OTC, supplements, cannabis</li>
+    <li>Substance use: alcohol, cannabis, stimulants, caffeine, withdrawal states</li>
+    <li>Diet, weight change, GI symptoms, surgical/bariatric history</li>
+    <li>Menstrual/reproductive history; pregnancy possibility; menopausal status</li>
+    <li>Exposures: travel, ticks, occupational toxins, water-damaged buildings, pets, sick contacts</li>
+    <li>Mood, anhedonia, anxiety, stress, function (PHQ-9 / GAD-7) — as one branch, not the endpoint</li>
+    <li>Past medical history, family history (thyroid, autoimmune, hemochromatosis, malignancy)</li>
+  </ul>
+  <h4>Examination</h4>
+  <ul>
+    <li>Vitals incl. orthostatic BP/HR, BMI, oxygen saturation, temperature</li>
+    <li>General: pallor, jaundice, cachexia, hyperpigmentation, skin/hair changes</li>
+    <li>Thyroid palpation; lymph node survey; hepatosplenomegaly</li>
+    <li>Cardiopulmonary: murmurs, JVD, crackles, wheeze, edema</li>
+    <li>Neurologic: focal deficits, proximal muscle strength, fatigable weakness, reflexes</li>
+    <li>Musculoskeletal: joint swelling/tenderness, temporal artery tenderness in older adults</li>
+  </ul>
+</div>
+
+<h2 class="ba-h2">The laboratory workup — first-line, second-line, and specialist</h2>
+<p>Guideline reviews are clear that <strong>untargeted lab testing is low-yield</strong> — it changes management in only about 5% of patients — so testing should be guided by the history and exam. That said, a compact first-line panel is reasonable in most patients with unexplained, persistent fatigue; second-line and specialist testing are then driven by specific clues.</p>
+
+<div class="sp-table-wrap">
+<table class="sp-table">
+<thead><tr><th>Tier</th><th>Tests</th><th>What they screen for</th></tr></thead>
+<tbody>
+<tr><td><strong>First-line<br>(most patients)</strong></td><td>CBC with differential; TSH (± free T4); comprehensive metabolic panel (glucose, electrolytes, Ca, renal, hepatic); HbA1c or fasting glucose; ferritin + iron studies; CRP and/or ESR</td><td>Anemia, leukemia clues; thyroid disease; diabetes/glucose; renal and liver failure; hypercalcemia; iron deficiency (with or without anemia); systemic inflammation</td></tr>
+<tr><td><strong>Second-line<br>(clinically guided)</strong></td><td>Vitamin B12 and folate; vitamin D (25-OH); tissue transglutaminase IgA (celiac); HIV; hepatitis B/C serology; morning cortisol (± ACTH stim); testosterone (men); pregnancy test; creatine kinase (if myopathy/statin); ANA (if autoimmune features); monospot/EBV; urinalysis</td><td>Nutritional deficiencies; celiac; chronic infection; adrenal insufficiency; hypogonadism; pregnancy; myopathy; connective-tissue disease</td></tr>
+<tr><td><strong>Specialist / targeted</strong></td><td>Polysomnography (OSA/narcolepsy); iron saturation + ferritin → transferrin saturation for hemochromatosis (with genetic testing); SPEP/free light chains (myeloma); chest X-ray/CT; ECG/echo/BNP (cardiac); PFTs; Lyme two-tier serology (with exposure); heavy-metal levels (with exposure); further imaging or biopsy</td><td>Sleep disorders; iron overload; plasma-cell dyscrasia; cardiopulmonary disease; malignancy; targeted infectious/toxic causes</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sp-callout">
+  <h4>Age-appropriate cancer screening is part of the fatigue workup</h4>
+  <p>Persistent, unexplained fatigue — especially with any Tier-1 red flag — is a prompt to confirm that routine, age-appropriate cancer screening (colorectal, breast, cervical, lung where indicated) is up to date. Occult malignancy is a classic cause of fatigue that no single blood test excludes.</p>
+</div>
+
+<h2 class="ba-h2">Where psychiatry fits</h2>
+<p>Depression, anxiety, somatic symptom disorder, and burnout are common and legitimate causes of low energy, and this site covers them in depth. The argument of this chapter is not that psychiatric causes are rare — it is that they should be diagnosed <em>with</em> a medical evaluation rather than as a way of avoiding one. Fatigue-predominant depression and undiagnosed hypothyroidism, sleep apnea, or anemia frequently coexist, and treating only the mood disorder leaves the patient half-better and puzzled. Screen for mood at Tier 2, treat what you find, and re-evaluate persistent fatigue that does not track with mood improvement. The companion <a href="#" onclick="if(window.switchSection){switchSection('fatigue-workup-tool');}return false;">Fatigue Workup tool</a> turns the tiered symptom check and lab tiers into an interactive, EMR-ready summary.</p>
+
+<h2>References &amp; Further Reading</h2>
+<ol class="sp-refs">
+  <li>Rosenthal TC, et al. Fatigue: an overview. <em>Am Fam Physician.</em> 2008;78(10):1173–1179.</li>
+  <li>Maisel P, et al. Fatigue in adults: evaluation and management. <em>Am Fam Physician.</em> 2023;108(1):58–69.</li>
+  <li>Approach to the adult patient with fatigue. <em>UpToDate.</em> (Wolters Kluwer; accessed 2026.)</li>
+  <li>A practical diagnostic framework for fatigue in primary care. (Primary-care review; PMC, 2024.)</li>
+  <li>Institute of Medicine (National Academy of Medicine). Beyond Myalgic Encephalomyelitis/Chronic Fatigue Syndrome: Redefining an Illness. 2015 (diagnostic criteria; post-exertional malaise).</li>
+  <li>Lacasse A, et al. Health-related quality of life and the contested syndromes; and CDC/IDSA guidance on Lyme disease diagnosis and treatment.</li>
+  <li>Institute of Medicine. Damp Indoor Spaces and Health. 2004 (mold-associated respiratory disease vs. unvalidated "toxic mold" syndromes).</li>
+</ol>
+
+<p style="font-size:0.85rem;color:var(--muted,#6b6050);margin-top:1.5rem;">This chapter is an educational review for clinicians and trainees. The tiers, checklist, and laboratory panels are decision-support frameworks, not a substitute for individualized clinical judgment, local guidelines, or a complete evaluation.</p>
+
+<div class="ba-related">
+  <h4>Related Articles</h4>
+  <div class="ba-related-grid">
+    <a href="insomnia.html" class="ba-related-link">Insomnia: A Comprehensive Clinical Guide</a>
+    <a href="non-prescription-sleep-aids.html" class="ba-related-link">Non-Prescription Sleep Aids</a>
+    <a href="renal-impairment-psychopharmacology.html" class="ba-related-link">Renal Impairment</a>
+    <a href="hepatic-impairment-psychopharmacology.html" class="ba-related-link">Hepatic Impairment</a>
+    <a href="common-side-effects-warnings.html" class="ba-related-link">Common Side Effects &amp; Warnings</a>
+    <a href="delirium.html" class="ba-related-link">Delirium</a>
+  </div>
+  <div class="ba-share-row">
+    <a href="https://twitter.com/intent/tweet?text=Low%20Energy%3A%20The%20Non-Psychiatric%20Workup&amp;url=https%3A%2F%2Fpsychopharmref.com%2Fblog%2Flow-energy-fatigue-workup.html" target="_blank" rel="noopener" class="ba-share-btn ba-share-btn--x">Share on X</a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://psychopharmref.com/blog/low-energy-fatigue-workup.html" target="_blank" rel="noopener" class="ba-share-btn ba-share-btn--li">Share on LinkedIn</a>
+    <a href="mailto:?subject=Low Energy: The Non-Psychiatric Workup&amp;body=Check out this article: https://psychopharmref.com/blog/low-energy-fatigue-workup.html" class="ba-share-btn ba-share-btn--email">Email</a>
+    <button class="ba-share-btn ba-share-btn--copy" onclick="navigator.clipboard.writeText('https://psychopharmref.com/blog/low-energy-fatigue-workup.html').then(function(){var b=this;b.textContent='Copied!';setTimeout(function(){b.textContent='Copy Link'},2000)}.bind(this))">Copy Link</button>
+  </div>
+</div>
+
+<div class="nl-blog-cta">
+  <h4>PsychoPharmRef Newsletter</h4>
+  <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
+  <a href="https://subscribe-forms.beehiiv.com/5f2b3081-aa41-452c-95c8-69a5ae899cf8" target="_blank" rel="noopener" class="nl-subscribe-btn">Subscribe — it's free</a>
+</div>
+
+<footer class="ba-footer">
+  <p>This article is intended for educational purposes for healthcare professionals. Information presented reflects current evidence as of September 2026 and should be validated against current clinical guidelines and institutional protocols.</p>
+  <p><a href="../" class="btn-primary">← Back to Blog</a></p>
+</footer>

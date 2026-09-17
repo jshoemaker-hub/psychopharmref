@@ -1,0 +1,54 @@
+/* fatigue-workup-tool.css — Fatigue / Low Energy Workup (prefix: fw-) */
+
+#fw-container { max-width: 900px; margin: 0 auto; }
+
+.fw-intro { font-size: 0.9rem; color: var(--text-muted, #6b6050); line-height: 1.55; margin-bottom: 14px; }
+
+.fw-layout { display: grid; grid-template-columns: 1fr; gap: 18px; }
+
+.fw-tier { border: 1px solid var(--border, #cfc8ba); border-radius: 10px; overflow: hidden; }
+.fw-tier-head { padding: 9px 14px; color: #fff; font-weight: 700; font-size: 0.95rem; display: flex; justify-content: space-between; align-items: center; }
+.fw-tier-head small { font-weight: 500; opacity: 0.92; font-size: 0.76rem; }
+.fw-t1 .fw-tier-head { background: #c04030; }
+.fw-t2 .fw-tier-head { background: #8b6914; }
+.fw-t3 .fw-tier-head { background: #4a7c35; }
+.fw-tier-body { padding: 10px 14px; background: var(--card, #fefcf8); }
+.fw-group-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-muted, #7a7363); margin: 10px 0 4px; }
+.fw-group-label:first-child { margin-top: 0; }
+
+.fw-item { display: flex; align-items: flex-start; gap: 9px; padding: 6px 8px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; line-height: 1.4; color: var(--text); }
+.fw-item:hover { background: rgba(74,124,53,0.08); }
+.fw-item input { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--accent); flex-shrink: 0; }
+.fw-t1 .fw-item input { accent-color: #c04030; }
+
+/* clarify complaint */
+.fw-clarify { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 4px; }
+.fw-clarify-btn { padding: 6px 13px; font-size: 0.85rem; font-weight: 600; border-radius: 18px; border: 1.5px solid var(--border); background: var(--bg2, #ece6db); color: var(--text); cursor: pointer; }
+.fw-clarify-btn.fw-on { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* results */
+.fw-results { border: 1px solid var(--border, #cfc8ba); border-radius: 10px; background: var(--bg2, #ece6db); padding: 14px 16px; }
+.fw-alert { background: #c04030; color: #fff; border-radius: 8px; padding: 10px 14px; font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; line-height: 1.45; }
+.fw-res-block { margin: 12px 0; }
+.fw-res-block h4 { margin: 0 0 6px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--accent); }
+.fw-res-block.fw-warnh h4 { color: #c04030; }
+.fw-chiplist { display: flex; flex-wrap: wrap; gap: 6px; }
+.fw-chip { font-size: 0.8rem; padding: 3px 10px; border-radius: 12px; background: var(--card, #fefcf8); border: 1px solid var(--border); color: var(--text); }
+.fw-chip-lab { border-color: #3a6ea5; }
+.fw-chip-lab-1 { background: #eaf1f8; border-color: #3a6ea5; }
+.fw-res-empty { font-size: 0.88rem; color: var(--text-muted, #6b6050); font-style: italic; }
+.fw-ddx { font-size: 0.88rem; line-height: 1.5; color: var(--text); }
+.fw-ddx li { margin: 3px 0; }
+
+.fw-actions { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+.fw-btn { padding: 9px 18px; font-size: 0.9rem; font-weight: 600; border-radius: 8px; cursor: pointer; border: 1.5px solid var(--accent); }
+.fw-btn-primary { background: var(--accent); color: #fff; }
+.fw-btn-ghost { background: transparent; color: var(--accent); }
+.fw-report-out { width: 100%; box-sizing: border-box; margin-top: 12px; min-height: 200px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.8rem; padding: 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg, #fff); color: var(--text); }
+
+.fw-footnote { margin-top: 16px; font-size: 0.78rem; line-height: 1.55; color: var(--text-muted, #6b6050); border-top: 1px solid var(--border); padding-top: 12px; }
+
+@media (min-width: 820px) {
+  .fw-layout { grid-template-columns: 1.15fr 0.85fr; align-items: start; }
+  .fw-results { position: sticky; top: 12px; }
+}
