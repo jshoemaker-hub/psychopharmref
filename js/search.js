@@ -62,6 +62,7 @@
       { title: 'ASRS (ADHD)', section: 'asrs-tool', cat: 'Rating Scale' },
       { title: 'ADL / IADL', section: 'adl-tool', cat: 'Rating Scale' },
       { title: 'Epworth Sleepiness', section: 'ess-tool', cat: 'Rating Scale' },
+      { title: 'Insomnia Severity Index (ISI)', section: 'isi-tool', cat: 'Rating Scale' },
       { title: 'Burnout (BAT)', section: 'bat-tool', cat: 'Rating Scale' },
       { title: 'Autism Screening (AQ)', section: 'aq-tool', cat: 'Rating Scale' },
       { title: 'ASD Severity (DSM-5-TR)', section: 'asd-tool', cat: 'Rating Scale' },

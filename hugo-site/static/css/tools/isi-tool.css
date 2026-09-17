@@ -1,0 +1,37 @@
+
+    .isi-container { background-color: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; }
+    .isi-instructions { font-size: 0.9rem; color: var(--text); margin-bottom: 1.25rem; line-height: 1.5; }
+    .isi-items { display: flex; flex-direction: column; gap: 14px; }
+    .isi-item { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+    .isi-q { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 12px; line-height: 1.45; }
+    .isi-q-num { color: var(--accent); font-weight: 700; margin-right: 4px; }
+    .isi-opts { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .isi-opt { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; padding: 8px 4px; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; transition: background 0.15s, border-color 0.15s; }
+    .isi-opt:hover { background-color: rgba(74,124,53,0.06); border-color: var(--accent); }
+    .isi-opt input[type="radio"] { accent-color: var(--accent); cursor: pointer; width: 18px; height: 18px; margin: 0; }
+    .isi-opt:has(input:checked) { background-color: rgba(74,124,53,0.12); border-color: var(--accent); }
+    .isi-opt-num { font-size: 0.85rem; font-weight: 700; color: var(--accent); }
+    .isi-opt-label { font-size: 0.72rem; color: var(--text); line-height: 1.25; }
+    .isi-score-box { background: white; border: 2px solid var(--accent); border-radius: 8px; padding: 20px; text-align: center; margin-top: 1.5rem; }
+    .isi-score-num { font-size: 36px; font-weight: 700; color: var(--accent); }
+    .isi-score-max { font-size: 14px; color: var(--text); }
+    .isi-interp { font-size: 0.95rem; font-weight: 600; padding: 12px; border-radius: 4px; margin-top: 12px; }
+    .isi-interp.isi-none { background-color: rgba(74,124,53,0.1); border-left: 4px solid var(--accent); color: var(--text); }
+    .isi-interp.isi-sub  { background-color: rgba(139,105,20,0.1); border-left: 4px solid var(--accent2); color: var(--text); }
+    .isi-interp.isi-mod  { background-color: rgba(217,119,6,0.12); border-left: 4px solid #b45309; color: var(--text); }
+    .isi-interp.isi-sev  { background-color: rgba(185,28,28,0.1); border-left: 4px solid #b91c1c; color: var(--text); }
+    .isi-cbti { margin-top: 1.25rem; padding: 12px 14px; background-color: rgba(74,124,53,0.07); border: 1px dashed var(--accent); border-radius: 6px; font-size: 0.9rem; color: var(--text); }
+    .isi-cbti-link { color: var(--accent); font-weight: 600; text-decoration: none; }
+    .isi-cbti-link:hover { text-decoration: underline; }
+    .isi-buttons { display: flex; gap: 12px; margin-top: 1.5rem; }
+    .isi-btn { padding: 0.75rem 1.5rem; font-size: 0.95rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.2s; color: white; }
+    .isi-btn-primary { background-color: var(--accent); }
+    .isi-btn-primary:hover { background-color: #3d6429; }
+    .isi-btn-secondary { background-color: var(--accent2); }
+    .isi-btn-secondary:hover { background-color: #6f5410; }
+    .isi-refs { margin-top: 1.5rem; font-size: 0.72rem; color: var(--text); line-height: 1.5; opacity: 0.85; }
+    @media (max-width: 640px) {
+      .isi-opts { grid-template-columns: repeat(5, 1fr); gap: 4px; }
+      .isi-opt { padding: 6px 2px; }
+      .isi-opt-label { font-size: 0.62rem; }
+    }

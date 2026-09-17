@@ -96,6 +96,7 @@ var dateStr = ToolUtils.dateStamp();
 - `asrs-` → ASRS (ADHD)
 - `bat-` → BAT (Brief Anxiety)
 - `es-` → Epworth Sleepiness Scale
+- `isi-` → Insomnia Severity Index (7-item, 0–28)
 - `msibpd-` → MSI-BPD
 - `sud-` → DSM-5-TR Substance Use Disorder Tool
 - `sm-` → Find Similar Medications

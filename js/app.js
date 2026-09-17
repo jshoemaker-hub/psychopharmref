@@ -385,7 +385,7 @@ const SECTION_GROUP = {
   'phq9-tool': 'tools', 'gad7-tool': 'tools',
   'pcl5-tool': 'tools', 'ybocs-tool': 'tools', 'msibpd-tool': 'tools', 'panss-tool': 'tools',
   'bfcrs-tool': 'tools', 'aims-tool': 'tools', 'mda-tool': 'tools', 'bprs-tool': 'tools', 'suicide-risk-tools': 'tools',
-  'ess-tool': 'tools', 'bat-tool': 'tools', 'sud-tool': 'tools', 'med-history-tool': 'tools',
+  'ess-tool': 'tools', 'isi-tool': 'tools', 'bat-tool': 'tools', 'sud-tool': 'tools', 'med-history-tool': 'tools',
   'ciwa-tool': 'tools', 'cows-tool': 'tools', 'frailty-tool': 'tools',
   'caffeine-tool': 'tools', 'thc-tool': 'tools', 'alcohol-tool': 'tools',
   'anticholinergic-tool': 'tools',

@@ -191,6 +191,7 @@
 
           <li class="nav-sub-divider">Sleep</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="ess-tool">Epworth (Sleepiness)</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="isi-tool">Insomnia Severity (ISI)</a></li>
 
           <li class="nav-sub-divider">Addiction</li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="sud-tool">DSM-5-TR SUD</a></li>
@@ -12131,6 +12132,20 @@
   </div>
 </section><!-- end ess-tool -->
 
+<!-- ── Insomnia Severity Index (ISI) ───────────────── -->
+<section id="isi-tool" data-lazy-tool="isi-tool" class="section">
+  <div class="section-header">
+    <h2>Insomnia Severity Index (ISI)</h2>
+    <p>Seven-item self-report measure of insomnia severity over the past two weeks (Morin). Total 0&ndash;28 across four severity bands. First-line treatment for chronic insomnia is <a href="#" onclick="switchSection('cbti-insomnia');return false;">CBT-I</a>.</p>
+  </div>
+
+  <div class="isi-warning mt-warning">
+    <strong>Clinical Note:</strong> The ISI is a screening and outcome-tracking measure, not a stand-alone diagnosis. Interpret alongside history, a sleep diary, and evaluation for contributing medical, psychiatric, circadian, and substance factors.
+  </div>
+
+  <div id="isi-root" class="isi-root"></div>
+</section><!-- end isi-tool -->
+
 <section id="bat-tool" data-lazy-tool="bat-tool" class="section">
   <div class="section-header">
     <h2>Burnout Assessment Tool (BAT)</h2>
@@ -12652,7 +12667,7 @@
 <section id="ba-depression" data-lazy-tool="ba-depression" class="section">
   <div class="section-header">
     <h2>Module 3 &mdash; Behavioral Activation &amp; CBT for Depression</h2>
-    <p class="section-sub">A practical how-to for delivering Behavioral Activation, with interactive worksheets and goal-setting tools. <a href="#" onclick="switchSection('therapy-course');return false;">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/ba-depression-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
+    <p class="section-sub">A practical how-to for delivering Behavioral Activation, with interactive worksheets and goal-setting tools. <a href="#" onclick="switchSection('therapy-course');return false;">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/ba-depression-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a> &nbsp;&middot;&nbsp; <a href="#" onclick="switchSection('isi-tool');return false;">Measure baseline severity with the ISI &rarr;</a></p>
   </div>
 
   <div class="mt-warning">
@@ -14004,11 +14019,11 @@
   <script defer src="js/data.js?v=20260917a"></script>
   <script defer src="js/routes.js?v=20260719d"></script>
   <script defer src="js/bhi-references.js?v=20260726b"></script>
-  <script defer src="js/app.js?v=20260917a"></script>
+  <script defer src="js/app.js?v=20260917b"></script>
   <script defer src="js/diagnoses-data.js?v=20260827a"></script>
   <script defer src="js/diagnoses-page.js?v=20260819a"></script>
   <script defer src="js/glossary-data.js?v=20260912b"></script>
   <script defer src="js/glossary-page.js?v=20260719d"></script>
-  <script defer src="js/search.js?v=20260917a"></script>
+  <script defer src="js/search.js?v=20260917b"></script>
 </body>
 </html>
