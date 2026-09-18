@@ -148,9 +148,9 @@
       add: { id: 'mirtazapine' },
       nickname: 'California Rocket Fuel',
       evidence: 'empirical',
-      rationale: 'Stahl’s "rocket fuel": an SNRI (SERT + NET reuptake blockade) combined with mirtazapine’s α2 presynaptic blockade and 5-HT2A/2C/3 antagonism. The mechanisms stack into a fourfold boost of noradrenergic and serotonergic output — reuptake block plus release disinhibition plus favorable postsynaptic receptor steering — reserved for severe or resistant cases.',
+      rationale: 'Often nicknamed "California Rocket Fuel": an SNRI (SERT + NET reuptake blockade) combined with mirtazapine’s α2 presynaptic blockade and 5-HT2A/2C/3 antagonism. The mechanisms stack into a fourfold boost of noradrenergic and serotonergic output — reuptake block plus release disinhibition plus favorable postsynaptic receptor steering — reserved for severe or resistant cases.',
       monitoring: 'Sedation, weight gain, venlafaxine-related blood-pressure elevation; cumulative serotonergic load.',
-      ref: 'Stahl, Essential Psychopharmacology'
+      ref: 'Clinical psychopharmacology convention; combination-pharmacotherapy literature'
     },
     {
       id: 'combo-t-rex',
