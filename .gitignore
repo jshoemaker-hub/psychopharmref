@@ -64,3 +64,9 @@ my-blog/
 
 # Vendored source repos imported only to port from (not part of the site)
 _import/
+
+# Claude/agent scratch outputs (keep local, not in repo)
+Claude outputs/
+_to_delete/
+*-preview.html
+HEAD.lock.stale*
