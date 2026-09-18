@@ -6,7 +6,11 @@ import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const briefsDir = path.join(__dirname, '..', 'briefs');
+const newsletterDir = path.join(__dirname, '..');
+const siteRootDir = path.resolve(newsletterDir, '..');
+const briefsDir = path.join(newsletterDir, 'briefs');
+const blogIndexPath = path.join(newsletterDir, 'blog-index.json');
+const blogDir = path.join(siteRootDir, 'blog');
 
 /**
  * fetchWithTimeout — fetch wrapper with AbortController timeout
@@ -1093,7 +1097,7 @@ export async function fetchSupplyGenerics(topicKey, config) {
   ]);
 }
 
-// ── s1-policy-fda-watch: federal legislation → FDA labeling/REMS → CMS/state/guideline ──
+// ── s1-policy-fda-watch: federal legislation → FDA/access/generics → CMS/state/guideline ──
 export async function fetchPolicyFdaWatch(topicKey, config) {
   const gate = { requirePsychRelevance: true, requireMetadata: true };
   return runFallbackChain(topicKey, [
@@ -1103,9 +1107,19 @@ export async function fetchPolicyFdaWatch(topicKey, config) {
       fn: () => fetchCongress(topicKey, config),
     },
     {
-      description: 'Recent FDA labeling / REMS / advisory committee action (FDA RSS)',
+      description: 'Recent FDA action, access issue, shortage, or generic approval (xAI/Grok)',
       gate,
-      fn: () => fetchFdaRss(topicKey, config),
+      fn: () => fetchPerplexity(topicKey, {
+        ...config,
+        topics: {
+          ...config.topics,
+          [topicKey]: {
+            ...config.topics[topicKey],
+            focusArea: 'recent FDA psychiatric labeling changes, REMS updates, advisory committee actions, active psychiatric-drug shortages, or FDA ANDA approvals of generic psychiatric medications; emphasize the prescribing or access consequence',
+          },
+        },
+        recencyCutoff: { ...config.recencyCutoff, [topicKey]: 180 },
+      }),
     },
     {
       description: 'CMS, state scope-of-practice, or major guideline update (xAI/Grok)',
@@ -1122,6 +1136,104 @@ export async function fetchPolicyFdaWatch(topicKey, config) {
       }),
     },
   ]);
+}
+
+function cleanSiteTitle(title) {
+  return String(title || '')
+    .replace(/\s*\|\s*PsychoPharmRef\s*$/i, '')
+    .replace(/\s*-\s*PsychoPharmRef\s*$/i, '')
+    .trim();
+}
+
+function summarizeSitePost(post) {
+  const bits = [
+    cleanSiteTitle(post.title),
+    post.description,
+    post.firstParagraph,
+  ].filter(Boolean);
+  return bits.join(' — ').replace(/\s+/g, ' ').slice(0, 600);
+}
+
+// ── s2-site-updates: local psychopharmref.com index → latest updated pages ──
+export async function fetchSiteUpdates(topicKey, config) {
+  const retrievedDate = new Date().toISOString().slice(0, 10);
+  const max = config?.siteUpdateMaxItems || 4;
+
+  try {
+    if (!fs.existsSync(blogIndexPath)) {
+      return validateBrief({
+        topic: topicKey,
+        sources: [],
+        relevantBlogPosts: [],
+        warnings: ['blog-index.json not found — run node newsletter/build-blog-index.js'],
+      });
+    }
+
+    const index = JSON.parse(fs.readFileSync(blogIndexPath, 'utf8'));
+    const candidates = index
+      .map(post => {
+        const filePath = path.join(blogDir, post.filename || '');
+        if (!post.filename || !fs.existsSync(filePath)) return null;
+        const stat = fs.statSync(filePath);
+        return {
+          post,
+          modifiedDate: stat.mtime.toISOString().slice(0, 10),
+          modifiedMs: stat.mtimeMs,
+        };
+      })
+      .filter(Boolean)
+      .sort((a, b) => b.modifiedMs - a.modifiedMs)
+      .slice(0, max);
+
+    const sources = candidates.map(({ post, modifiedDate }) => ({
+      title: cleanSiteTitle(post.title) || post.filename,
+      url: post.url || `${config?.blogBaseUrl || 'https://psychopharmref.com'}/blog/${post.filename}`,
+      publishedDate: modifiedDate,
+      retrievedDate,
+      excerpt: `Recently updated on psychopharmref.com: ${summarizeSitePost(post)}`,
+    }));
+
+    const relevantBlogPosts = sources.map(source => ({
+      title: source.title,
+      url: source.url,
+      similarity: 1,
+    }));
+
+    return validateBrief({
+      topic: topicKey,
+      sources,
+      relevantBlogPosts,
+      warnings: sources.length === 0 ? ['No site update candidates found in blog-index.json'] : [],
+    });
+  } catch (err) {
+    return validateBrief({
+      topic: topicKey,
+      sources: [],
+      relevantBlogPosts: [],
+      warnings: [`Site update index error: ${err.message}`],
+    });
+  }
+}
+
+// ── s3-popular-papers: high-attention papers from the last 6 months ──
+export async function fetchPopularPapers(topicKey, config) {
+  return fetchPerplexity(topicKey, {
+    ...config,
+    topics: {
+      ...config.topics,
+      [topicKey]: {
+        ...config.topics[topicKey],
+        focusArea: [
+          'most read, cited, downloaded, discussed, guideline-relevant, or Altmetric-attention peer-reviewed psychiatry and psychopharmacology papers from the last six months',
+          'include PubMed-indexed trials, meta-analyses, major cohort studies, and highly discussed clinical papers',
+          'prioritize papers that could change prescribing, monitoring, diagnosis, or counseling for practicing psychiatrists',
+          'do not rank by popularity unless a source provides a clear popularity metric; otherwise describe the popularity signal or attention proxy',
+        ].join('; '),
+      },
+    },
+    recencyCutoff: { ...config.recencyCutoff, [topicKey]: 183 },
+    maxBriefSources: Math.max(config?.maxBriefSources || 5, 6),
+  });
 }
 
 // ── s2 handlers: single-rung research wrappers with landmark fallback for comparison ──
@@ -1288,10 +1400,12 @@ export const dispatch = {
   's1-pipeline-drugs': fetchPipelineDrugs,
   's1-supply-generics': fetchSupplyGenerics,
   's1-policy-fda-watch': fetchPolicyFdaWatch,
+  's2-site-updates': fetchSiteUpdates,
   's2-med-comparison': fetchMedComparison,
   's2-how-things-work': fetchHowThingsWork,
   's2-survey-review': fetchSurveyReview,
   's2-adverse-effects': fetchAdverseEffects,
+  's3-popular-papers': fetchPopularPapers,
   's3-diagnosis-history': fetchS3WithFallback,
   's3-drug-discovery': fetchS3WithFallback,
   's3-scientific-process': fetchS3WithFallback,

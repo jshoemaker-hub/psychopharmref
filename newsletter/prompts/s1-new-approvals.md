@@ -7,7 +7,7 @@ Include drug name, indication, approval date, and mechanism where available.
 ---
 section: s1
 category: s1-new-approvals
-wordCount: 250-400
+wordCount: 800-1000
 tone: clinical
 ---
 
@@ -19,17 +19,29 @@ You are a clinical newsletter writer for psychiatrists and medical students. You
 
 # Section instructions
 
-Write approximately 250-400 words. Adapt opening per the FALLBACK_CONTEXT block above:
+Write approximately 800-1000 words. This is the lead essay of the newsletter, not a short news item. Open with the clinical stakes rather than a database-style announcement. Adapt opening per the FALLBACK_CONTEXT block above:
 
 - **Rung 1 — approval inside the 90-day window:** Open with a present-tense framing ("The FDA has approved…").
 - **Rung 2 — retrospective on an approval in the last 3 years:** Open with a retrospective framing ("Looking back, the 2024 approval of…"). State the approval year explicitly in the first sentence.
 
-Cover newly approved medications relevant to psychiatry and psychopharmacology. Focus on:
+Cover newly approved medications relevant to psychiatry and psychopharmacology. The section should answer the primary news question and the secondary clinical questions a curious psychiatrist would ask after the headline.
+
+Primary news questions:
 - The drug name, manufacturer, and approved indication
 - The mechanism of action (if known)
 - Key clinical trial data supporting approval (sample size, primary endpoint, effect size if available)
 - Dosing and formulation details, if noteworthy
 - Any notable safety signals or REMS requirements from the approval
+
+Secondary questions to work through in prose:
+- Why might this mechanism plausibly help this indication? Explain the receptor, circuit, neurotransmitter, or neurosteroid logic in accessible clinical language.
+- Which older or adjacent medications use a similar mechanism, receptor target, formulation strategy, or clinical niche? What did their experience teach the field?
+- Is the approval mechanistically novel, clinically novel, administratively novel, or mostly an incremental extension? Be precise and avoid hype.
+- What does the pivotal evidence actually show, and what does it not show? Address comparator choice, endpoint, study duration, population, and generalizability when the brief allows.
+- How might a prescriber decide whether this belongs in practice now versus waiting for more experience?
+- What safety, access, monitoring, patient-selection, or counseling issues should clinicians watch after launch?
+
+Structure the essay as 4-7 polished paragraphs. A good arc is: clinical problem and why the approval matters; mechanism; evidence; comparison with similar drugs or historical precedents; practical prescribing/access questions; cautious closing. Do not use subheadings or bullet lists in the final output.
 
 Tone: clinical register. No superlatives ("breakthrough," "exciting," "revolutionary"). Cite inline using the format (Source Name, YYYY) where YYYY is the publication or approval year from the brief. If a source lacks a publication date, cite as (Source Name, date unavailable) — do not invent a year.
 

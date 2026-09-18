@@ -1,44 +1,64 @@
 // config.js — Newsletter pipeline configuration for PsychoPharmRef
 //
-// Structure (4-4-4, set 2026-04-16 — see Newsletter-Improvements-Plan.md):
-//   S1 News & Regulatory:     approvals, pipeline, supply-generics, policy-fda-watch
-//   S2 Educational/Evidence:  med-comparison, how-things-work, survey-review, adverse-effects
-//   S3 Deep Dive:             diagnosis-history, drug-discovery, scientific-process, historical-legal
+// Structure (3-1-1, revised 2026-08-26):
+//   S1 Lead Essay:            approvals, pipeline, policy/FDA/access watch
+//   S2 Site Update:           what is new on psychopharmref.com
+//   S3 Literature Review:     popular psychopharmacology papers from the last 6 months
 //
-// Rotation: 16-letter Graeco-Latin square. anchorDate is letter 1; the next letter
-// the pipeline generates is whatever (anchorLetterNumber + elapsed_weeks) resolves to.
+// Rotation: 3-letter lead-topic cycle. S2 and S3 are fixed recurring sections.
 
 const config = {
   blogBaseUrl: 'https://psychopharmref.com',
+  newsletterFormatVersion: 2,
 
   topics: {
     // Section 1: News & Regulatory (4)
     's1-new-approvals': {
       section: 's1',
       label: 'Newly Approved Medications',
-      handler: 'fetchFdaRss',
+      handler: 'fetchNewApprovals',
       focusArea: 'FDA drug approvals and new psychiatric medications',
+      wordCount: '800-1000',
+      maxTokens: 2600,
     },
     's1-pipeline-drugs': {
       section: 's1',
       label: 'Pipeline Drugs',
-      handler: 'fetchClinicalTrials',
+      handler: 'fetchPipelineDrugs',
       focusArea: 'psychiatric drug clinical trials (Phase 3 preferred, then Phase 2, then Phase 1)',
+      wordCount: '800-1000',
+      maxTokens: 2600,
     },
+    // Retained for backward compatibility with older saved configs. The active
+    // rotation folds supply/generic access into s1-policy-fda-watch.
     's1-supply-generics': {
       section: 's1',
       label: 'Supply & Generics',
       handler: 'fetchSupplyGenerics',
       focusArea: 'psychiatric drug supply shortages and recent generic approvals',
+      wordCount: '900-1100',
+      maxTokens: 2600,
     },
     's1-policy-fda-watch': {
       section: 's1',
-      label: 'Policy & FDA Watch',
+      label: 'Policy, FDA Watch & Access',
       handler: 'fetchPolicyFdaWatch',
-      focusArea: 'mental health legislation, FDA labeling/REMS/advisory decisions, and major guideline updates',
+      focusArea: 'mental health legislation, FDA labeling/REMS/advisory decisions, supply shortages, generic approvals, access issues, and major guideline updates',
+      wordCount: '800-1000',
+      maxTokens: 2600,
     },
 
-    // Section 2: Educational / Evidence (4)
+    // Section 2: recurring website update (active)
+    's2-site-updates': {
+      section: 's2',
+      label: 'New on PsychoPharmRef',
+      handler: 'fetchSiteUpdates',
+      focusArea: 'new and recently updated clinical resources on psychopharmref.com',
+      wordCount: '125-200',
+      maxTokens: 700,
+    },
+
+    // Legacy Section 2 educational topics retained for older saved configs.
     's2-med-comparison': {
       section: 's2',
       label: 'Medication Comparison',
@@ -64,7 +84,17 @@ const config = {
       focusArea: 'clinically meaningful adverse effects of psychiatric medications, monitoring, and management',
     },
 
-    // Section 3: Deep Dives (4, unchanged)
+    // Section 3: recurring literature review (active)
+    's3-popular-papers': {
+      section: 's3',
+      label: 'Popular Papers: Last 6 Months',
+      handler: 'fetchPopularPapers',
+      focusArea: 'most read, cited, discussed, downloaded, or otherwise high-attention peer-reviewed psychiatry and psychopharmacology papers published in the last six months; prioritize papers with practical implications for prescribing psychiatrists',
+      wordCount: '650-850',
+      maxTokens: 2000,
+    },
+
+    // Legacy Section 3 deep dives retained for older saved configs.
     // The `handler` field is documentation-only; the live dispatch is in
     // lib/research.js. All S3 topics now resolve to fetchS3WithFallback, which
     // wraps the underlying research call (the function still named
@@ -102,31 +132,30 @@ const config = {
     's1-pipeline-drugs': 30,
     's1-supply-generics': 90,
     's1-policy-fda-watch': 30,
+    's2-site-updates': 90,
     's2-med-comparison': 365,
     's2-how-things-work': 365,
     's2-survey-review': 365,
     's2-adverse-effects': 365,
-    // S3 categories: no key = no recency cutoff
+    's3-popular-papers': 183,
+    // Legacy S3 deep-dive categories: no key = no recency cutoff
   },
 
-  // 16-letter Graeco-Latin rotation. sections.sN is the ordered list of topic keys
-  // for that section; schedule[i] is a 1-indexed triple [s1Slot, s2Slot, s3Slot].
-  // Verified properties: all 16 triples unique; (s1,s2), (s1,s3), (s2,s3) pairs all
-  // unique; each topic per section appears exactly 4x; zero adjacent collisions.
+  // 3-letter rotation. S1 rotates the lead essay; S2/S3 are fixed recurring
+  // sections. schedule[i] is a 1-indexed triple [s1Slot, s2Slot, s3Slot].
   rotation: {
     anchorDate: '2026-04-17',        // letter 1 was sent on this date
     anchorLetterNumber: 1,
     cadenceDays: 7,                  // weekly
     sections: {
-      s1: ['s1-new-approvals', 's1-pipeline-drugs', 's1-supply-generics', 's1-policy-fda-watch'],
-      s2: ['s2-med-comparison', 's2-how-things-work', 's2-survey-review', 's2-adverse-effects'],
-      s3: ['s3-diagnosis-history', 's3-drug-discovery', 's3-scientific-process', 's3-historical-legal'],
+      s1: ['s1-new-approvals', 's1-pipeline-drugs', 's1-policy-fda-watch'],
+      s2: ['s2-site-updates'],
+      s3: ['s3-popular-papers'],
     },
     schedule: [
-      [1, 1, 1], [2, 2, 2], [3, 3, 3], [4, 4, 4],
-      [1, 2, 3], [2, 1, 4], [3, 4, 1], [4, 3, 2],
-      [2, 4, 3], [1, 3, 4], [3, 1, 2], [4, 2, 1],
-      [1, 4, 2], [2, 3, 1], [3, 2, 4], [4, 1, 3],
+      [1, 1, 1],
+      [2, 1, 1],
+      [3, 1, 1],
     ],
   },
 

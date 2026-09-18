@@ -31,6 +31,25 @@ function readSharedRules() {
   return _sharedRulesCache;
 }
 
+// Cache the pipeline reference file (PIPELINE_MEDS.md at the repo root). It is
+// inlined into any prompt containing the {PIPELINE_REFERENCE} placeholder
+// (currently s1-pipeline-drugs) to ground drug names, classes, sponsors/tickers,
+// and trial phase. Reference only — the weekly research brief still governs
+// recency and citations.
+const pipelineRefPath = path.join(__dirname, '..', 'PIPELINE_MEDS.md');
+let _pipelineRefCache = null;
+function readPipelineReference() {
+  if (_pipelineRefCache !== null) return _pipelineRefCache;
+  try {
+    _pipelineRefCache = fs.existsSync(pipelineRefPath)
+      ? fs.readFileSync(pipelineRefPath, 'utf8').trim()
+      : '';
+  } catch {
+    _pipelineRefCache = '';
+  }
+  return _pipelineRefCache;
+}
+
 // Generic fallback prompt template used when a topic-specific file doesn't exist
 const GENERIC_TEMPLATE = `You are a clinical newsletter writer for psychiatrists and medical students. Write a concise, well-sourced section for the PsychoPharmRef weekly newsletter.
 
@@ -88,6 +107,17 @@ export function loadPromptTemplate(topicKey, options = {}) {
   // Inline all shared house-style rule files (primer rule, structure rule, etc.)
   // into the template. Prompts previously referenced these by path only, and
   // Claude never saw the rule text itself.
+  // Inline the pipeline reference file for prompts that request it via the
+  // {PIPELINE_REFERENCE} placeholder (currently s1-pipeline-drugs). Replaced to
+  // empty if the file is missing so no stray placeholder survives.
+  if (text.includes('{PIPELINE_REFERENCE}')) {
+    const pipelineRef = readPipelineReference();
+    const refBlock = pipelineRef
+      ? `# Reference: current psychiatric pipeline (internal grounding)\n\nUse the curated list below to ground drug names, drug classes, sponsors/tickers, and trial phase. It is a background snapshot, NOT this week's research brief: prefer the brief for anything time-sensitive, do not cite this list as a source, and do not reproduce it verbatim or as a table. If the brief and this list disagree, trust the brief.\n\n${pipelineRef}`
+      : '';
+    text = text.replace('{PIPELINE_REFERENCE}', refBlock);
+  }
+
   const sharedRules = readSharedRules();
   if (sharedRules && !text.includes('# Primer rule for unfamiliar named entities')) {
     text = `${text.trim()}\n\n---\n\n${sharedRules}`;
@@ -295,9 +325,15 @@ export async function draftSection(topicKey, brief, config, options = {}) {
 
     const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
+    const maxTokens = topicConf.maxTokens || (
+      section === 's1' ? 2600 :
+      section === 's3' ? 2000 :
+      1024
+    );
+
     const message = await client.messages.create({
       model,
-      max_tokens: 1024,
+      max_tokens: maxTokens,
       messages: [{ role: 'user', content: fullPrompt }],
     });
 

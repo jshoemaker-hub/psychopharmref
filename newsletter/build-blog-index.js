@@ -75,7 +75,10 @@ function main() {
   }
 
   const files = fs.readdirSync(blogDir)
-    .filter(f => f.endsWith('.html') && f !== 'blog.css');
+    .filter(f => f.endsWith('.html')
+      && !path.basename(f).startsWith('._')  // skip macOS AppleDouble sidecars (USB/exFAT)
+      && f !== 'blog.css'
+      && f !== 'sidebar.html');               // skip non-article shell pages
 
   console.log(`Found ${files.length} blog HTML files in ${blogDir}`);
 

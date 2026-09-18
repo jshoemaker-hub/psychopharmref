@@ -5,6 +5,26 @@ import natural from 'natural';
 
 const { TfIdf } = natural;
 
+const QUERY_STOPWORDS = new Set([
+  'psychopharmref', 'psychiatry', 'psychiatric', 'psychopharmacology',
+  'clinical', 'clinician', 'clinicians', 'medical', 'medicine',
+  'treatment', 'treatments', 'management', 'patient', 'patients',
+  'medication', 'medications', 'medicine', 'medicines', 'drug', 'drugs',
+  'source', 'sources', 'published', 'retrieved', 'current', 'recent',
+  'updated', 'review', 'guide', 'overview', 'comprehensive',
+]);
+
+function tokenizeQuery(query) {
+  return query
+    .toLowerCase()
+    .replace(/[^a-z0-9+#.-]+/g, ' ')
+    .split(/\s+/)
+    .map(t => t.replace(/^[-.]+|[-.]+$/g, ''))
+    .filter(t => t.length > 2)
+    .filter(t => !QUERY_STOPWORDS.has(t))
+    .filter(t => !/^\d+$/.test(t));
+}
+
 /**
  * buildCorpus — reads blog-index.json and builds a TF-IDF corpus.
  *
@@ -45,8 +65,7 @@ export function buildCorpus(blogIndexPath) {
 export function findRelevantPosts(query, corpus, blogIndex, threshold = 0.15) {
   const { tfidf, index } = corpus;
 
-  const queryLower = query.toLowerCase();
-  const queryTokens = queryLower.split(/\s+/).filter(t => t.length > 2);
+  const queryTokens = tokenizeQuery(query);
 
   if (queryTokens.length === 0) return [];
 

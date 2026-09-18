@@ -1,4 +1,4 @@
-You are generating metadata for a clinical psychiatry newsletter aimed at practicing psychiatrists and medical students. Given three section topic labels, produce four distinct fields:
+You are generating metadata for a clinical psychiatry newsletter aimed at practicing psychiatrists and medical students. Given three section labels, produce four distinct fields. The first section is the lead essay; the second is a short PsychoPharmRef site update; the third is a recent-paper review.
 
 1. **title** — the web-version post title. A descriptive noun phrase under ~65 characters. Names the substance of the letter, not the newsletter itself. Read as a thoughtful table-of-contents line.
 
@@ -17,13 +17,13 @@ Shared rules:
 
 Example input:
   Section 1: Newly Approved Medications
-  Section 2: Medication Comparison
-  Section 3: History of a Diagnosis
+  Section 2: New on PsychoPharmRef
+  Section 3: Popular Papers: Last 6 Months
 
 Example output:
   {
-    "title": "New FDA approvals, antipsychotic comparisons, and diagnostic history",
-    "subtitle": "What got approved this cycle, how the comparators stack up, and how we arrived at the modern category",
-    "subject": "New approvals, a drug-class comparison, and how a diagnosis became official",
-    "previewText": "The approvals, the evidence behind the comparison, and the history that shapes how the diagnosis reads today."
+    "title": "New approvals, site updates, and recent papers",
+    "subtitle": "A closer look at the approval story, new clinical resources, and papers drawing attention this cycle",
+    "subject": "A closer look at new approvals and recent papers",
+    "previewText": "Mechanism, evidence, site updates, and the papers clinicians are discussing now."
   }

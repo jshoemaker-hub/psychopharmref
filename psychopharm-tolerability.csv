@@ -1,6 +1,6 @@
 # PsychoPharmRef relative tolerability tiers (none<minimal<low<moderate<high). Clinician-reviewed 2026-08-20.
 # Caveat: relative, dose- and patient-dependent estimates; QTc risk further modified by electrolytes, interacting meds, and cardiac history. Not a substitute for full prescribing information.
-# Sources: Maudsley Prescribing Guidelines 14e (2021); Stahl Essential Psychopharmacology 5e & Prescriber's Guide 7e (2021); Leucht Lancet 2013;382:951-962; Huhn Lancet 2019;394:939-951; Cipriani Lancet 2018;391:1357-1366; FDA labeling (DailyMed); CredibleMeds QTdrugs List. See psychopharm-tolerability-SOURCES.md.
+# Sources: Leucht Lancet 2013;382:951-962; Huhn Lancet 2019;394:939-951; Pillinger Lancet Psychiatry 2020;7:64-77; Cipriani Lancet 2018;391:1357-1366; FDA labeling (DailyMed); CredibleMeds QTdrugs List. See psychopharm-tolerability-SOURCES.md.
 drug,brand,class,weight_gain,sedation,sexual,anticholinergic,qtc
 Gepirone,Exxua,Azapirone,minimal,minimal,minimal,minimal,moderate
 Dextromethorphan/Bupropion,Auvelity,Combination,minimal,low,low,minimal,minimal

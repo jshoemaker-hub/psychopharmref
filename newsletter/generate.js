@@ -49,6 +49,65 @@ function findLatestConfig() {
   return path.join(briefsDir, files[files.length - 1]);
 }
 
+function activeTopicKeys() {
+  return new Set(Object.values(config.rotation?.sections || {}).flat());
+}
+
+function isCurrentFormatConfig(data) {
+  if (!data || typeof data !== 'object') return false;
+  if (config.newsletterFormatVersion && data.formatVersion !== config.newsletterFormatVersion) {
+    return false;
+  }
+  const active = activeTopicKeys();
+  return ['s1', 's2', 's3'].every(section => active.has(data[section]));
+}
+
+function findLatestCurrentConfig() {
+  // Prefer the most recently written current-format config (the issue just
+  // picked), not the lexicographically latest filename. Leftover future-dated
+  // files would otherwise steal --research / --draft from this week's letter.
+  const files = fs.readdirSync(briefsDir)
+    .filter(f => f.endsWith('-config.json') && !f.startsWith('._'));
+
+  let bestPath = null;
+  let bestMtime = -1;
+  for (const f of files) {
+    try {
+      const fullPath = path.join(briefsDir, f);
+      const data = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+      if (!isCurrentFormatConfig(data)) continue;
+      const mtime = fs.statSync(fullPath).mtimeMs;
+      if (mtime > bestMtime) {
+        bestMtime = mtime;
+        bestPath = fullPath;
+      }
+    } catch { /* ignore bad config files */ }
+  }
+  return bestPath;
+}
+
+function requireCurrentConfig(commandName) {
+  const currentPath = findLatestCurrentConfig();
+  if (currentPath) return currentPath;
+
+  const latestPath = findLatestConfig();
+  if (!latestPath) {
+    console.error('No config file found. Run --pick-topics first.');
+    process.exit(1);
+  }
+
+  let detail = '';
+  try {
+    const latest = JSON.parse(fs.readFileSync(latestPath, 'utf8'));
+    detail = ` Latest config is ${path.basename(latestPath)} with topics: ${latest.s1 || 'n/a'} | ${latest.s2 || 'n/a'} | ${latest.s3 || 'n/a'}.`;
+  } catch { /* keep detail empty */ }
+
+  console.error(`No current-format newsletter config found for ${commandName}.${detail}`);
+  console.error('Run: node generate.js --pick-topics');
+  console.error('Then run: node generate.js --research');
+  process.exit(1);
+}
+
 /**
  * findPreviousConfigDate — return the date string (YYYY-MM-DD) of the most
  * recent config strictly before `currentDate`. Used by the recency probe to
@@ -131,29 +190,30 @@ function scheduledSendDate(letterNumber, rotation) {
   return addDays(rotation.anchorDate, offsetWeeks * rotation.cadenceDays);
 }
 
-// Infer the next letter number to generate. Scans briefs/ for existing config
-// files, finds the max letterNumber present, and returns max + 1. If none exist,
-// returns anchorLetterNumber.
-function inferNextLetterNumber(rotation) {
-  if (!fs.existsSync(briefsDir)) return rotation.anchorLetterNumber;
-  const configFiles = fs.readdirSync(briefsDir).filter(f => f.endsWith('-config.json'));
+// Days from YYYY-MM-DD `fromStr` to `toStr` (UTC).
+function daysBetween(fromStr, toStr) {
+  return Math.round((parseDateUtc(toStr) - parseDateUtc(fromStr)) / 86400000);
+}
 
-  let maxLetterSeen = rotation.anchorLetterNumber - 1;
-  for (const f of configFiles) {
-    try {
-      const data = JSON.parse(fs.readFileSync(path.join(briefsDir, f), 'utf8'));
-      if (typeof data.letterNumber === 'number' && data.letterNumber > maxLetterSeen) {
-        maxLetterSeen = data.letterNumber;
-      }
-    } catch { /* ignore bad files */ }
-  }
-  // If no config files had letterNumber recorded (pre-rotation legacy files),
-  // anchor the first run at anchorLetterNumber + (existing file count) so
-  // existing 2026-04-17-config.json counts as letter 1 retroactively.
-  if (maxLetterSeen < rotation.anchorLetterNumber && configFiles.length > 0) {
-    return rotation.anchorLetterNumber + configFiles.length;
-  }
-  return maxLetterSeen + 1;
+// Next cadence send date on or after `dateStr` (weekly Fridays from the anchor).
+function nextCadenceDateOnOrAfter(dateStr, rotation) {
+  const days = daysBetween(rotation.anchorDate, dateStr);
+  const cadence = rotation.cadenceDays;
+  if (days <= 0) return rotation.anchorDate;
+  if (days % cadence === 0) return dateStr;
+  return addDays(rotation.anchorDate, Math.ceil(days / cadence) * cadence);
+}
+
+function letterNumberForDate(dateStr, rotation) {
+  const days = daysBetween(rotation.anchorDate, dateStr);
+  return rotation.anchorLetterNumber + Math.round(days / rotation.cadenceDays);
+}
+
+// Infer the next letter from the live Friday calendar, not leftover config files.
+// Passing asOfDate is for tests; the CLI uses today (UTC).
+function inferNextLetterNumber(rotation, asOfDate = todayStr()) {
+  const sendDate = nextCadenceDateOnOrAfter(asOfDate, rotation);
+  return letterNumberForDate(sendDate, rotation);
 }
 
 // Append one entry to rotation-log.json. Creates the file if absent.
@@ -171,18 +231,30 @@ function appendRotationLog(entry) {
   fs.writeFileSync(rotationLogPath, JSON.stringify(log, null, 2));
 }
 
+function mergeBlogPostLists(primary = [], secondary = []) {
+  const seen = new Set();
+  const merged = [];
+  for (const post of [...primary, ...secondary]) {
+    const key = post?.url || post?.title;
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    merged.push(post);
+  }
+  return merged.slice(0, 4);
+}
+
 // Print upcoming rotation rows.
 function printSchedule(rotation, count = 16, startLetter) {
   const firstLetter = startLetter ?? inferNextLetterNumber(rotation);
   console.log(`\nRotation schedule (anchor: letter ${rotation.anchorLetterNumber} = ${rotation.anchorDate}, weekly):\n`);
   console.log('Letter | Send date  | S1                         | S2                        | S3');
-  console.log('-------|------------|----------------------------|---------------------------|----------------------------');
+  console.log('-------|------------|----------------------------|---------------------------|--------------------------------');
   for (let n = firstLetter; n < firstLetter + count; n++) {
     const r = resolveRotationForLetter(n, rotation);
     const d = scheduledSendDate(n, rotation);
     const s1Label = (config.topics[r.s1]?.label || r.s1).padEnd(26).slice(0, 26);
     const s2Label = (config.topics[r.s2]?.label || r.s2).padEnd(25).slice(0, 25);
-    const s3Label = (config.topics[r.s3]?.label || r.s3).padEnd(26).slice(0, 26);
+    const s3Label = (config.topics[r.s3]?.label || r.s3).padEnd(30).slice(0, 30);
     console.log(`${String(n).padStart(6)} | ${d} | ${s1Label} | ${s2Label} | ${s3Label}`);
   }
   console.log('');
@@ -284,8 +356,8 @@ async function pickTopics(options = {}) {
 
     console.log('\n=== PsychoPharmRef Newsletter — Manual Topic Override ===');
     const s1Pick = await pickFromGroup('Section 1 (News & Regulatory):', s1Keys);
-    const s2Pick = await pickFromGroup('Section 2 (Educational / Evidence):', s2Keys);
-    const s3Pick = await pickFromGroup('Section 3 (Deep Dive):', s3Keys);
+    const s2Pick = await pickFromGroup('Section 2 (Site Update):', s2Keys);
+    const s3Pick = await pickFromGroup('Section 3 (Popular Papers):', s3Keys);
     rl.close();
 
     letterNumber = letterOverride ?? inferNextLetterNumber(rotation);
@@ -303,6 +375,7 @@ async function pickTopics(options = {}) {
 
   const sendDate = scheduledSendDate(letterNumber, rotation);
   const configData = {
+    formatVersion: config.newsletterFormatVersion,
     date: sendDate,
     letterNumber,
     scheduleRow,
@@ -319,6 +392,7 @@ async function pickTopics(options = {}) {
     s1, s2, s3,
     scheduleRow,
     pickMode,
+    formatVersion: config.newsletterFormatVersion,
     pickedAt: new Date().toISOString(),
   });
 
@@ -332,13 +406,8 @@ async function pickTopics(options = {}) {
 
 // Research step: fetch briefs for all 3 sections
 async function runResearch() {
+  const configPath = requireCurrentConfig('--research');
   validateEnv();
-
-  const configPath = findLatestConfig();
-  if (!configPath) {
-    console.error('No config file found. Run --pick-topics first.');
-    process.exit(1);
-  }
 
   const weekConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
   const { date, s1, s2, s3 } = weekConfig;
@@ -404,7 +473,8 @@ async function runResearch() {
     // Run blog linker
     if (corpus && blogIndex.length > 0) {
       const query = [brief.topic, ...((brief.sources || []).map(s => s.excerpt || ''))].join(' ');
-      brief.relevantBlogPosts = findRelevantPosts(query, corpus, blogIndex, config.blogSimilarityThreshold);
+      const matchedPosts = findRelevantPosts(query, corpus, blogIndex, config.blogSimilarityThreshold);
+      brief.relevantBlogPosts = mergeBlogPostLists(brief.relevantBlogPosts || [], matchedPosts);
       console.log(`  Blog posts linked for ${sec.label}: ${brief.relevantBlogPosts.length}`);
     } else {
       brief.relevantBlogPosts = brief.relevantBlogPosts || [];
@@ -554,13 +624,8 @@ async function runResearch() {
 
 // Draft step: generate newsletter HTML
 async function runDraft() {
+  const configPath = requireCurrentConfig('--draft');
   validateEnv();
-
-  const configPath = findLatestConfig();
-  if (!configPath) {
-    console.error('No config file found. Run --pick-topics first.');
-    process.exit(1);
-  }
 
   const weekConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
   const { date, s1, s2, s3 } = weekConfig;
@@ -774,11 +839,7 @@ async function runPost(options = {}) {
   // Only require env vars used by the handoff path (none) or API path.
   // Draft/post metadata just need the filesystem.
 
-  const configPath = findLatestConfig();
-  if (!configPath) {
-    console.error('No config file found.');
-    process.exit(1);
-  }
+  const configPath = requireCurrentConfig('--post');
 
   const weekConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
   const { date } = weekConfig;

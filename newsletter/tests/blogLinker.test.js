@@ -127,4 +127,11 @@ describe('findRelevantPosts', () => {
     const results = findRelevantPosts(query, corpus, mockBlogIndex, 0.001);
     expect(results.length).toBeLessThanOrEqual(2);
   });
+
+  test('generic clinical words do not overwhelm specific medication matches', () => {
+    const query = 'psychiatric medication treatment clinical patient lisdexamfetamine ADHD stimulant shortage';
+    const results = findRelevantPosts(query, corpus, mockBlogIndex, 0.001);
+    expect(results.length).toBeLessThanOrEqual(2);
+    expect(results.map(r => r.title)).not.toContain('Clozapine Monitoring Guidelines');
+  });
 });
