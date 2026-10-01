@@ -726,9 +726,11 @@ let activeRoutes = new Set(window.Routes ? Object.keys(window.Routes.ROUTES) : [
 
 document.querySelectorAll('.class-filter').forEach(cb => {
   cb.addEventListener('change', () => {
-    activeClasses = new Set(
-      [...document.querySelectorAll('.class-filter:checked')].map(c => c.value)
+    // Hide only classes whose box is unticked, so classes without a checkbox stay visible.
+    const unticked = new Set(
+      [...document.querySelectorAll('.class-filter:not(:checked)')].map(c => c.value)
     );
+    activeClasses = new Set(MEDICATIONS.map(m => m.class).filter(c => !unticked.has(c)));
     renderDrugTable();
     renderP450Table();
   });
@@ -4520,7 +4522,7 @@ function initMedTaper() {
     }
 
     // Group MEDICATIONS by category, then sort by class then name within each group
-    const CATEGORY_ORDER = ['Antidepressant', 'Antipsychotic', 'Anxiolytic', 'Mood Stabilizer', 'Stimulant', 'Sleep', 'Other'];
+    const CATEGORY_ORDER = ['Antidepressant', 'Antipsychotic', 'Anxiolytic', 'Mood Stabilizer', 'Stimulant', 'ADHD (non-stimulant)', 'Sleep', 'Movement Disorder (VMAT2)', 'Substance Use', 'Other'];
     const byCategory = {};
     MEDICATIONS.forEach(m => {
       const cat = m.category || 'Other';

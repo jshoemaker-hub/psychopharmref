@@ -903,6 +903,17 @@ const PERINATAL_DATA = {
   hydroxyzine:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal withdrawal near term. Commonly used in 1st trimester for nausea; avoid near delivery.' }, breastfeeding: { rid: 'Not established', hale: 'L1', risk: 'low', notes: 'Generally considered compatible. Monitor for sedation.' } },
   diphenhydramine:      { pregnancy: { fdaCategory: 'B', risk: 'low',     notes: 'Commonly used first-line for insomnia/allergy in pregnancy. Avoid near term — neonatal withdrawal, respiratory depression at high doses.' }, breastfeeding: { rid: 'Not established', hale: 'L2', risk: 'low', notes: 'Low dose compatible. High doses or frequent use may reduce milk supply and cause infant sedation.' } },
   trihexyphenidyl:      { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Anticholinergic — may impair fetal gut motility, tachycardia. Very limited data. Avoid if alternatives exist.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'caution', notes: 'Doses up to 4 mg/day with haloperidol or risperidone caused no infant adverse effects (follow-up to adulthood). Long-term use may reduce milk supply.' } },
+  // ── Added 2026-10-01 (round 4) ──
+  'xanomeline-trospium': { pregnancy: { fdaCategory: null, risk: 'unknown', notes: 'Limited human data; post-2015 label with no letter category. Weigh risk and benefit.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No data on xanomeline or trospium in human milk (label).' } },
+  'olanzapine-samidorphan': { pregnancy: { fdaCategory: null, risk: 'caution', notes: 'Olanzapine data generally reassuring for major malformations; limited samidorphan data. Neonatal EPS/withdrawal possible after third-trimester antipsychotic exposure.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'caution', notes: 'Olanzapine and samidorphan are present in milk at low levels (label); monitor infant for sedation, irritability, poor feeding, and EPS.' } },
+  lemborexant: { pregnancy: { fdaCategory: null, risk: 'unknown', notes: 'Limited human data; post-2015 label with no letter category.' }, breastfeeding: { rid: '0.9–2%', hale: 'unknown', risk: 'low', notes: 'Low milk levels (RID ~0.9–2%); five infants without adverse effects at 1 month. LactMed: not a reason to stop breastfeeding; monitor for sedation, especially newborn/preterm.' } },
+  daridorexant: { pregnancy: { fdaCategory: null, risk: 'unknown', notes: 'Limited human data; post-2015 label with no letter category.' }, breastfeeding: { rid: '~0.2%', hale: 'unknown', risk: 'low', notes: 'Very low milk levels (RID ~0.22–0.25%). Monitor infant for sedation, poor feeding, and weight gain.' } },
+  atomoxetine: { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited human pregnancy data; weigh ADHD severity against risk.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'caution', notes: 'No milk-level data; manufacturer reported no serious adverse effects in two infants (both slept longer). LactMed: stimulants may be preferred, especially for newborn/preterm infants.' } },
+  viloxazine: { pregnancy: { fdaCategory: null, risk: 'unknown', notes: 'Limited human data; post-2015 label with no letter category.' }, breastfeeding: { rid: '~1%', hale: 'unknown', risk: 'caution', notes: 'Milk levels low (RID ~1%; metabolite ~0.07%) in 15 women on 600 mg/day. No infant outcome data; alternatives may be preferred for newborn/preterm infants.' } },
+  valbenazine: { pregnancy: { fdaCategory: null, risk: 'unknown', notes: 'Limited human data; post-2015 label with no letter category.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'avoid', notes: 'No human data. Label advises avoiding breastfeeding during treatment and for 5 days after the last dose.' } },
+  deutetrabenazine: { pregnancy: { fdaCategory: null, risk: 'unknown', notes: 'Limited human data; post-2015 label with no letter category.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No human lactation data.' } },
+  naltrexone: { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited human data; growing observational data without a clear malformation signal. For OUD in pregnancy, buprenorphine or methadone is preferred.' }, breastfeeding: { rid: '~0.9%', hale: 'unknown', risk: 'low', notes: 'Minimal milk excretion (RID ~0.8–0.9%); infant plasma levels undetectable in a case report. LactMed: not a reason to stop breastfeeding.' } },
+  buprenorphine: { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Recommended first-line OUD treatment in pregnancy (with methadone); lower NOWS severity than methadone. Mono-product or combination with naloxone are both acceptable.' }, breastfeeding: { rid: '0.2–0.8%', hale: 'unknown', risk: 'low', notes: 'Low milk transfer (RID ~0.2–0.8%). Stable mothers on buprenorphine are encouraged to breastfeed; monitor infant for drowsiness, breathing, and weight gain.' } },
 };
 
 // Ki values in nM. Use 10000 for no clinically significant affinity.
@@ -1852,7 +1863,7 @@ const MEDICATIONS = [
   // ── Mood Stabilizers ───────────────────────────────────────────────────────
   {
     id: 'lithium',
-    effects: { weight: 'moderate', sedation: 'low', sexual: 'low', antichol: 'none', qt: 'low' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'moderate', sedation: 'low', sexual: 'low', antichol: 'none', qt: 'low', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1949, fdaApprovalYear: 1970, originator: "Not patented (element; J. Cade, 1949)" },
     dosing: { start: "300 mg BID–TID", target: "serum 0.6–1.2 mEq/L (≈900–1800 mg/day)", max: "titrate to serum level (≈1800 mg/day)", formulations: "IR carbonate BID–TID • ER/CR BID (Lithobid, Eskalith CR) • citrate oral solution", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=lithium" } },
     name: 'Lithium',
@@ -1881,7 +1892,7 @@ const MEDICATIONS = [
   },
   {
     id: 'valproate',
-    effects: { weight: 'high', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'high', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1962, fdaApprovalYear: 1978, originator: "Sanofi / Abbott (divalproex)" },
     dosing: { start: "250–500 mg BID (20–30 mg/kg/day mania)", target: "serum 50–125 mcg/mL", max: "60 mg/kg/day", formulations: "Divalproex DR BID–TID (Depakote) • Divalproex ER once daily (Depakote ER) • valproic acid • IV", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=divalproex" } },
     name: 'Valproate',
@@ -1911,7 +1922,7 @@ const MEDICATIONS = [
   },
   {
     id: 'lamotrigine',
-    effects: { weight: 'minimal', sedation: 'low', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'low', sexual: 'minimal', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1980, fdaApprovalYear: 1994, originator: "Wellcome (GSK)" },
     dosing: { start: "25 mg/day, slow titration", target: "200 mg/day", max: "Bipolar target: 200 mg/day monotherapy; 100 mg/day with valproate; 400 mg/day with carbamazepine or other enzyme inducers", formulations: "IR BID • XR once daily (Lamictal XR) • ODT & chewable", citation: { label: "FDA package insert (2025)", url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/020241s068s069,020764s061s062,022251s032s033lbl.pdf" } },
     name: 'Lamotrigine',
@@ -1940,7 +1951,7 @@ const MEDICATIONS = [
   },
   {
     id: 'carbamazepine',
-    effects: { weight: 'low', sedation: 'moderate', sexual: 'low', antichol: 'low', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'low', sedation: 'moderate', sexual: 'low', antichol: 'low', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1953, fdaApprovalYear: 1968, originator: "Geigy (Novartis)" },
     dosing: { start: "200 mg BID", target: "400–1200 mg/day (serum 4–12 mcg/mL)", max: "1600 mg/day", formulations: "IR tab/chewable/suspension BID–QID (Tegretol) • XR BID (Tegretol-XR) • ER BID (Carbatrol/Equetro)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=carbamazepine" } },
     name: 'Carbamazepine',
@@ -1972,7 +1983,7 @@ const MEDICATIONS = [
   // ── Sleep Medications ──────────────────────────────────────────────────────
   {
     id: 'zolpidem',
-    effects: { weight: 'minimal', sedation: 'high', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'minimal', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1982, fdaApprovalYear: 1992, originator: "Synthélabo (Sanofi)" },
     dosing: { start: "5 mg qHS (F) / 5–10 mg (M)", target: "5–10 mg qHS", max: "10 mg (IR); 12.5 mg (CR)", formulations: "IR (Ambien) • CR (Ambien CR) • sublingual (Edluar/Intermezzo) • oral spray (Zolpimist)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=zolpidem" } },
     name: 'Zolpidem',
@@ -2000,7 +2011,7 @@ const MEDICATIONS = [
   },
   {
     id: 'eszopiclone',
-    effects: { weight: 'minimal', sedation: 'high', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'minimal', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1986, fdaApprovalYear: 2004, originator: "Sepracor (Sunovion)" },
     dosing: { start: "1 mg qHS", target: "1–3 mg qHS", max: "3 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=eszopiclone" } },
     name: 'Eszopiclone',
@@ -2028,7 +2039,7 @@ const MEDICATIONS = [
   },
   {
     id: 'temazepam',
-    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1964, fdaApprovalYear: 1981, originator: "Sandoz / Mallinckrodt" },
     dosing: { start: "7.5–15 mg qHS", target: "15–30 mg qHS", max: "30 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=temazepam" } },
     name: 'Temazepam',
@@ -2056,7 +2067,7 @@ const MEDICATIONS = [
   },
   {
     id: 'ramelteon',
-    effects: { weight: 'none', sedation: 'moderate', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'none', sedation: 'moderate', sexual: 'minimal', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1996, fdaApprovalYear: 2005, originator: "Takeda" },
     dosing: { start: "8 mg qHS", target: "8 mg qHS", max: "8 mg/day (fixed dose)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=ramelteon" } },
     name: 'Ramelteon',
@@ -2084,7 +2095,7 @@ const MEDICATIONS = [
   },
   {
     id: 'suvorexant',
-    effects: { weight: 'minimal', sedation: 'high', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'minimal', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 2008, fdaApprovalYear: 2014, originator: "Merck" },
     dosing: { start: "10 mg qHS", target: "10–20 mg qHS", max: "20 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=suvorexant" } },
     name: 'Suvorexant',
@@ -2741,7 +2752,7 @@ const MEDICATIONS = [
   // ── Additional Mood Stabilizers ─────────────────────────────────────────
   ,{
     id: 'oxcarbazepine',
-    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'minimal', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1966, fdaApprovalYear: 2000, originator: "Geigy (Novartis)" },
     dosing: { start: "300 mg BID", target: "1200 mg/day", max: "2400 mg/day", formulations: "IR BID (Trileptal) • XR once daily (Oxtellar XR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=oxcarbazepine" } },
     name: 'Oxcarbazepine',
@@ -2769,7 +2780,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'topiramate',
-    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1979, fdaApprovalYear: 1996, originator: "Ortho-McNeil (Janssen)" },
     dosing: { start: "25–50 mg/day", target: "100–200 mg/day", max: "400 mg/day", formulations: "IR BID • XR once daily (Trokendi XR / Qudexy XR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=topiramate" } },
     name: 'Topiramate',
@@ -2800,7 +2811,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'gabapentin',
-    effects: { weight: 'low', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'low', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1977, fdaApprovalYear: 1993, originator: "Parke-Davis (Pfizer)" },
     dosing: { start: "300 mg/day", target: "900–1800 mg/day", max: "3600 mg/day (IR; Gralise ER 1800)", formulations: "IR TID (Neurontin) • ER once daily (Gralise) • enacarbil ER BID (Horizant)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=gabapentin" } },
     name: 'Gabapentin',
@@ -2832,7 +2843,7 @@ const MEDICATIONS = [
   // ── Benzodiazepines (Anxiolytics) ───────────────────────────────────────
   ,{
     id: 'alprazolam',
-    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1969, fdaApprovalYear: 1981, originator: "Upjohn (Pfizer)" },
     dosing: { start: "0.25–0.5 mg TID", target: "1–4 mg/day", max: "4 mg/day (up to 10 mg for panic)", formulations: "IR TID (Xanax) • XR once daily (Xanax XR) • ODT", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=alprazolam" } },
     name: 'Alprazolam',
@@ -2861,7 +2872,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'clonazepam',
-    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1964, fdaApprovalYear: 1975, originator: "Roche" },
     dosing: { start: "0.25–0.5 mg BID", target: "1–2 mg/day", max: "4 mg/day", formulations: "Tablet • Orally disintegrating wafer — both same dosing", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clonazepam" } },
     name: 'Clonazepam',
@@ -2890,7 +2901,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'diazepam',
-    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1959, fdaApprovalYear: 1963, originator: "Roche" },
     dosing: { start: "2–10 mg BID–QID", target: "5–40 mg/day", max: "40 mg/day", formulations: "Oral tab/solution • Rectal gel (Diastat) • Nasal spray (Valtoco) • IV/IM", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=diazepam" } },
     name: 'Diazepam',
@@ -2921,7 +2932,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'lorazepam',
-    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1963, fdaApprovalYear: 1977, originator: "Wyeth (Pfizer)" },
     dosing: { start: "0.5–1 mg BID–TID", target: "2–6 mg/day", max: "10 mg/day", formulations: "Oral tab/concentrate • IV/IM • ER capsule once daily (Loreev XR)", citation: { label: "FDA package insert (2021)", url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/017794s048lbl.pdf" } },
     name: 'Lorazepam',
@@ -2951,7 +2962,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'oxazepam',
-    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1961, fdaApprovalYear: 1965, originator: "Wyeth (Pfizer)" },
     dosing: { start: "10–15 mg TID–QID", target: "30–60 mg/day", max: "120 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=oxazepam" } },
     name: 'Oxazepam',
@@ -2980,7 +2991,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'chlordiazepoxide',
-    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1955, fdaApprovalYear: 1960, originator: "Roche" },
     dosing: { start: "5–10 mg TID–QID", target: "15–40 mg/day", max: "100 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=chlordiazepoxide" } },
     name: 'Chlordiazepoxide',
@@ -3009,7 +3020,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'clorazepate',
-    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1968, fdaApprovalYear: 1972, originator: "Abbott" },
     dosing: { start: "7.5–15 mg/day", target: "15–60 mg/day", max: "90 mg/day", formulations: "Regular tablet (divided) • Once-daily formulation (Tranxene-SD)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clorazepate" } },
     name: 'Clorazepate',
@@ -3039,7 +3050,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'midazolam',
-    effects: { weight: 'none', sedation: 'high', sexual: 'none', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'none', sedation: 'high', sexual: 'none', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1976, fdaApprovalYear: 1985, originator: "Roche" },
     dosing: { start: "1–2.5 mg IV (procedural sedation)", target: "titrate to effect", max: "per procedure / route", formulations: "IV/IM • Oral syrup • Nasal spray for seizure rescue (Nayzilam)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=midazolam" } },
     name: 'Midazolam',
@@ -3068,7 +3079,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'triazolam',
-    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1970, fdaApprovalYear: 1982, originator: "Upjohn (Pfizer)" },
     dosing: { start: "0.125–0.25 mg qHS", target: "0.25 mg qHS", max: "0.5 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=triazolam" } },
     name: 'Triazolam',
@@ -3096,7 +3107,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'estazolam',
-    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1967, fdaApprovalYear: 1990, originator: "Abbott" },
     dosing: { start: "1 mg qHS", target: "1–2 mg qHS", max: "2 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=estazolam" } },
     name: 'Estazolam',
@@ -3124,7 +3135,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'flurazepam',
-    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1968, fdaApprovalYear: 1970, originator: "Roche" },
     dosing: { start: "15 mg qHS", target: "15–30 mg qHS", max: "30 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=flurazepam" } },
     name: 'Flurazepam',
@@ -3154,7 +3165,7 @@ const MEDICATIONS = [
   // ── Other Anxiolytics ───────────────────────────────────────────────────
   ,{
     id: 'buspirone',
-    effects: { weight: 'none', sedation: 'low', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'none', sedation: 'low', sexual: 'minimal', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1972, fdaApprovalYear: 1986, originator: "Bristol-Myers Squibb" },
     dosing: { start: "7.5 mg BID", target: "20–30 mg/day", max: "60 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=buspirone" } },
     name: 'Buspirone',
@@ -3181,7 +3192,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'pregabalin',
-    effects: { weight: 'moderate', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'moderate', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1990, fdaApprovalYear: 2004, originator: "Northwestern Univ. / Parke-Davis (Pfizer)" },
     dosing: { start: "75 mg BID", target: "150–300 mg/day (divided)", max: "600 mg/day", formulations: "IR BID–TID (Lyrica) • ER once daily (Lyrica CR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=pregabalin" } },
     name: 'Pregabalin',
@@ -3213,7 +3224,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'propranolol',
-    effects: { weight: 'low', sedation: 'low', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'low', sedation: 'low', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1962, fdaApprovalYear: 1967, originator: "ICI (AstraZeneca)" },
     dosing: { start: "10–20 mg BID (akathisia/performance anxiety)", target: "40–80 mg/day", max: "~160 mg/day (psychiatric off-label)", formulations: "IR BID–TID (Inderal) • LA extended-release once daily (Inderal LA / InnoPran XL) • IV", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=propranolol" } },
     name: 'Propranolol',
@@ -3246,7 +3257,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'clonidine',
-    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'minimal', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'minimal', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1962, fdaApprovalYear: 1974, originator: "Boehringer Ingelheim" },
     dosing: { start: "0.1 mg qHS", target: "0.1–0.4 mg/day", max: "0.4 mg/day (ADHD, ER)", formulations: "IR oral BID (Catapres) • ER oral (Kapvay, ADHD) • weekly transdermal patch (Catapres-TTS)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clonidine" } },
     name: 'Clonidine',
@@ -3274,7 +3285,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'guanfacine',
-    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'minimal', antichol: 'minimal', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1974, fdaApprovalYear: 1986, originator: "Boehringer Ingelheim / Shire" },
     dosing: { start: "1 mg/day", target: "1–4 mg/day", max: "4 mg/day (ADHD, ER)", formulations: "IR (Tenex, hypertension) • ER once daily (Intuniv, ADHD)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=guanfacine" } },
     name: 'Guanfacine',
@@ -3304,7 +3315,7 @@ const MEDICATIONS = [
   // ── Antihistamines / Sleep ──────────────────────────────────────────────
   ,{
     id: 'doxylamine',
-    effects: { weight: 'low', sedation: 'high', sexual: 'minimal', antichol: 'high', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'low', sedation: 'high', sexual: 'minimal', antichol: 'high', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1948, fdaApprovalYear: 1948, originator: "Various (OTC)" },
     dosing: { start: "25 mg qHS", target: "25 mg qHS", max: "25 mg/day (OTC hypnotic)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=doxylamine" } },
     name: 'Doxylamine',
@@ -3334,7 +3345,7 @@ const MEDICATIONS = [
   // ── Stimulants ──────────────────────────────────────────────────────────
   ,{
     id: 'methylphenidate',
-    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1944, fdaApprovalYear: 1955, originator: "Ciba (Novartis)" },
     dosing: { start: "5 mg BID (IR)", target: "20–40 mg/day", max: "60 mg/day (72 mg some ER)", formulations: "IR BID–TID (Ritalin) • ER/LA/CD once daily • OROS once daily (Concerta) • transdermal patch (Daytrana) • liquid XR (Quillivant)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=methylphenidate" } },
     name: 'Methylphenidate',
@@ -3362,7 +3373,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'dexmethylphenidate',
-    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1999, fdaApprovalYear: 2001, originator: "Novartis / Celgene" },
     dosing: { start: "2.5 mg BID (IR) / 10 mg XR", target: "10–20 mg/day", max: "40 mg/day (XR), 20 mg (IR)", formulations: "IR BID (Focalin) • XR once daily (Focalin XR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=dexmethylphenidate" } },
     name: 'Dexmethylphenidate',
@@ -3390,7 +3401,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'amphetamine-mixed-salts',
-    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1994, fdaApprovalYear: 1996, originator: "Richwood / Shire (Takeda)" },
     dosing: { start: "5–10 mg/day", target: "20–30 mg/day", max: "40 mg/day (IR); 30 mg/day (XR, per label)", formulations: "IR once daily–BID (Adderall) • XR once daily (Adderall XR) • extended (Mydayis)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=amphetamine+aspartate" } },
     name: 'Amphetamine Mixed Salts',
@@ -3419,7 +3430,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'dextroamphetamine',
-    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1929, fdaApprovalYear: 1937, originator: "Smith Kline & French" },
     dosing: { start: "5 mg daily–BID", target: "10–30 mg/day", max: "40 mg/day", formulations: "IR tablet daily–BID • ER spansule once daily (Dexedrine Spansule) • transdermal patch (Xelstrym)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=dextroamphetamine" } },
     name: 'Dextroamphetamine',
@@ -3447,7 +3458,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'lisdexamfetamine',
-    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'low', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 2003, fdaApprovalYear: 2007, originator: "New River / Shire (Takeda)" },
     dosing: { start: "30 mg qAM", target: "30–70 mg/day", max: "70 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=lisdexamfetamine" } },
     name: 'Lisdexamfetamine',
@@ -3476,7 +3487,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'modafinil',
-    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'minimal', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1974, fdaApprovalYear: 1998, originator: "Lafon / Cephalon (Teva)" },
     dosing: { start: "200 mg qAM", target: "200 mg/day", max: "200 mg/day (up to 400 mg tolerated; no consistent added benefit)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=modafinil" } },
     name: 'Modafinil',
@@ -3506,7 +3517,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'armodafinil',
-    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'minimal', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1994, fdaApprovalYear: 2007, originator: "Cephalon (Teva)" },
     dosing: { start: "150 mg qAM", target: "150–250 mg/day", max: "250 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=armodafinil" } },
     name: 'Armodafinil',
@@ -3536,7 +3547,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'solriamfetol',
-    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'minimal', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 2005, fdaApprovalYear: 2019, originator: "Aerial / Jazz Pharmaceuticals" },
     dosing: { start: "37.5–75 mg qAM", target: "75–150 mg/day", max: "150 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=solriamfetol" } },
     name: 'Solriamfetol',
@@ -3566,7 +3577,7 @@ const MEDICATIONS = [
   // ── Anticholinergics / Antihistamines ───────────────────────────────────
   ,{
     id: 'hydroxyzine',
-    effects: { weight: 'low', sedation: 'high', sexual: 'minimal', antichol: 'moderate', qt: 'low' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'low', sedation: 'high', sexual: 'minimal', antichol: 'moderate', qt: 'low', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1956, fdaApprovalYear: 1956, originator: "Union Chimique Belge / Pfizer" },
     dosing: { start: "25–50 mg QID PRN", target: "50–100 mg/day", max: "400 mg/day", formulations: "HCl tab/syrup & IM (Atarax) • Pamoate cap/suspension (Vistaril)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=hydroxyzine" } },
     name: 'Hydroxyzine',
@@ -3595,7 +3606,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'diphenhydramine',
-    effects: { weight: 'low', sedation: 'high', sexual: 'minimal', antichol: 'high', qt: 'low' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'low', sedation: 'high', sexual: 'minimal', antichol: 'high', qt: 'low', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1943, fdaApprovalYear: 1946, originator: "Parke-Davis" },
     dosing: { start: "25–50 mg qHS", target: "25–50 mg qHS", max: "50 mg/day (hypnotic)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=diphenhydramine" } },
     name: 'Diphenhydramine',
@@ -3624,7 +3635,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'trihexyphenidyl',
-    effects: { weight: 'none', sedation: 'low', sexual: 'minimal', antichol: 'high', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
+    effects: { weight: 'none', sedation: 'low', sexual: 'minimal', antichol: 'high', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1949, fdaApprovalYear: 1949, originator: "American Cyanamid (Lederle)" },
     dosing: { start: "1 mg/day", target: "6–10 mg/day", max: "15 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=trihexyphenidyl" } },
     name: 'Trihexyphenidyl',
@@ -3649,6 +3660,377 @@ const MEDICATIONS = [
       { use: 'Parkinsonism (all forms)', year: 1952 },
       { use: 'Drug-Induced Extrapyramidal Symptoms', year: 1952 },
     ]
+  },
+  // ── Added 2026-10-01 (round 4): label-sourced; effects tiers pending clinician review ──
+  {
+    id: 'xanomeline-trospium',
+    effects: { weight: 'minimal', sedation: 'low', sexual: 'minimal', antichol: 'moderate', qt: 'minimal', review: true },
+    development: { discoveryYear: null, fdaApprovalYear: 2024, originator: 'Karuna Therapeutics (Bristol Myers Squibb)' },
+    dosing: {
+      start: '50 mg/20 mg BID ×≥2 days',
+      target: '100 mg/20 mg BID',
+      max: '125 mg/30 mg BID',
+      formulations: 'Capsules BID on an empty stomach (≥1 h before or ≥2 h after a meal); do not open',
+      citation: { label: 'DailyMed (FDA label)', url: 'https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=cobenfy' }
+    },
+    name: 'Xanomeline/Trospium',
+    brandName: 'Cobenfy',
+    class: 'Muscarinic Agonist',
+    category: 'Antipsychotic',
+    activeEnantiomer: { has: false, name: null },
+    halfLife: { drug: 'Xanomeline ~5 hr; trospium ~6 hr', metabolites: 'None clinically significant' },
+    tmax: 2,
+    p450: {
+      substrate: ['CYP2D6'],
+      inhibits: {},
+      induces: {}
+    },
+    renalImpairment: {
+      modified: true,
+      moderate: 'Not recommended (eGFR <60)',
+      severe: 'Not recommended',
+      notes: 'Trospium is renally cleared; not recommended with eGFR <60 (anticholinergic adverse reactions). No adjustment for mild impairment.'
+    },
+    hepaticImpairment: { modified: true, notes: 'Contraindicated in moderate/severe impairment; not recommended in mild impairment' },
+    geriatricDosing: { modified: true, notes: 'Start 50 mg/20 mg BID, consider slower titration; max 100 mg/20 mg BID' },
+    qtInterval: false,
+    proteinBinding: 95,
+    receptorKi: null,
+    indications: [
+      { use: 'Schizophrenia', year: 2024, age: 'Adults' },
+    ],
+    mechanism: 'M1/M4 muscarinic agonist (xanomeline) combined with a peripherally restricted muscarinic antagonist (trospium); no direct D2 blockade.'
+  },
+  {
+    id: 'olanzapine-samidorphan',
+    effects: { weight: 'moderate', sedation: 'high', sexual: 'low', antichol: 'moderate', qt: 'low', review: true },
+    development: { discoveryYear: null, fdaApprovalYear: 2021, originator: 'Alkermes' },
+    dosing: {
+      start: '5/10 or 10/10 mg daily (schizophrenia); 10/10 or 15/10 mg (bipolar)',
+      target: '10/10–20/10 mg daily',
+      max: '20 mg/10 mg daily',
+      formulations: 'Tablets once daily; do not split or crush',
+      citation: { label: 'DailyMed (FDA label)', url: 'https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=lybalvi' }
+    },
+    name: 'Olanzapine/Samidorphan',
+    brandName: 'Lybalvi',
+    class: 'SGA',
+    category: 'Antipsychotic',
+    activeEnantiomer: { has: false, name: null },
+    halfLife: { drug: 'Olanzapine 35–52 hr; samidorphan 7–11 hr', metabolites: 'N-desmethylolanzapine: weak' },
+    tmax: 6,
+    p450: {
+      substrate: ['CYP1A2', 'CYP2D6', 'CYP3A4'],
+      inhibits: { CYP1A2: 'weak' },
+      induces: {}
+    },
+    renalImpairment: {
+      modified: true,
+      moderate: null,
+      severe: 'Not recommended in end-stage renal disease (eGFR <15)',
+      notes: 'No adjustment for mild to severe impairment; not recommended in ESRD.'
+    },
+    hepaticImpairment: { modified: false, notes: 'No dose adjustment; use caution and monitor LFTs' },
+    geriatricDosing: { modified: true, notes: 'Consider 5 mg/10 mg start; increased mortality in dementia' },
+    qtInterval: false,
+    proteinBinding: 93,
+    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 4400, '5HT2A': 4, '5HT2C': 11, D1: 32, D2: 11, D3: 49, H1: 7, alpha1: 19, alpha2: 10000, M1: 1.9 },
+    indications: [
+      { use: 'Schizophrenia', year: 2021, age: 'Adults' },
+      {
+  use: 'Bipolar Mania',
+  year: 2021,
+  dx: 'Bipolar I',
+  phase: 'Acute manic or mixed episodes',
+  line: 'Monotherapy or adjunct to lithium/valproate',
+  age: 'Adults'
+},
+      { use: 'Bipolar Maintenance', year: 2021, dx: 'Bipolar I', phase: 'Maintenance', line: 'Monotherapy', age: 'Adults' },
+    ],
+    mechanism: 'Olanzapine (D2/5-HT2A antagonist) plus samidorphan (opioid receptor antagonist) to attenuate olanzapine-associated weight gain.'
+  },
+  {
+    id: 'lemborexant',
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'minimal', antichol: 'minimal', qt: 'minimal', review: true },
+    development: { discoveryYear: null, fdaApprovalYear: 2019, originator: 'Eisai' },
+    dosing: {
+      start: '5 mg qHS',
+      target: '5–10 mg qHS',
+      max: '10 mg/night',
+      formulations: 'Tablets immediately before bed, with ≥7 h before planned waking',
+      citation: { label: 'DailyMed (FDA label)', url: 'https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=dayvigo' }
+    },
+    name: 'Lemborexant',
+    brandName: 'Dayvigo',
+    class: 'Orexin Antagonist',
+    category: 'Sleep',
+    activeEnantiomer: { has: false, name: null },
+    halfLife: { drug: '17–19 hr (effective)', metabolites: 'M10 (minor active)' },
+    tmax: 2,
+    p450: {
+      substrate: ['CYP3A4'],
+      inhibits: {},
+      induces: { CYP2B6: 'weak' }
+    },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No adjustment; severe impairment may increase somnolence.' },
+    hepaticImpairment: { modified: true, notes: 'Moderate: max 5 mg; severe: not recommended' },
+    geriatricDosing: { modified: false, notes: 'No adjustment; caution for falls with nighttime awakening' },
+    qtInterval: false,
+    proteinBinding: 94,
+    receptorKi: null,
+    indications: [
+      { use: 'Insomnia (sleep onset and maintenance)', year: 2019, age: 'Adults' },
+    ],
+    mechanism: 'Dual orexin receptor (OX1R/OX2R) antagonist.'
+  },
+  {
+    id: 'daridorexant',
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'minimal', antichol: 'minimal', qt: 'minimal', review: true },
+    development: { discoveryYear: null, fdaApprovalYear: 2022, originator: 'Idorsia' },
+    dosing: {
+      start: '25–50 mg qHS',
+      target: '25–50 mg qHS',
+      max: '50 mg/night (25 mg with moderate CYP3A4 inhibitors)',
+      formulations: 'Tablets within 30 min of bedtime, with ≥7 h before planned waking',
+      citation: { label: 'DailyMed (FDA label)', url: 'https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=quviviq' }
+    },
+    name: 'Daridorexant',
+    brandName: 'Quviviq',
+    class: 'Orexin Antagonist',
+    category: 'Sleep',
+    activeEnantiomer: { has: false, name: null },
+    halfLife: { drug: '~8 hr', metabolites: 'None clinically significant' },
+    tmax: 1.5,
+    p450: {
+      substrate: ['CYP3A4'],
+      inhibits: {},
+      induces: {}
+    },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment, including severe impairment.' },
+    hepaticImpairment: { modified: true, notes: 'Moderate: max 25 mg; severe: not recommended' },
+    geriatricDosing: { modified: false, notes: 'No adjustment; caution for falls with nighttime awakening' },
+    qtInterval: false,
+    proteinBinding: 99.7,
+    receptorKi: null,
+    indications: [
+      { use: 'Insomnia (sleep onset and maintenance)', year: 2022, age: 'Adults' },
+    ],
+    mechanism: 'Dual orexin receptor (OX1R/OX2R) antagonist with a shorter half-life than lemborexant or suvorexant.'
+  },
+  {
+    id: 'atomoxetine',
+    effects: { weight: 'minimal', sedation: 'low', sexual: 'low', antichol: 'minimal', qt: 'minimal', review: true },
+    development: { discoveryYear: null, fdaApprovalYear: 2002, originator: 'Eli Lilly' },
+    dosing: {
+      start: '0.5 mg/kg/day (<70 kg); 40 mg/day (≥70 kg & adults)',
+      target: '1.2 mg/kg/day; 80 mg/day',
+      max: '1.4 mg/kg/day or 100 mg/day, whichever is less',
+      formulations: 'Capsules once daily (AM) or divided BID; do not open',
+      citation: { label: 'DailyMed (FDA label)', url: 'https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=strattera' }
+    },
+    name: 'Atomoxetine',
+    brandName: 'Strattera',
+    class: 'NRI',
+    category: 'ADHD (non-stimulant)',
+    activeEnantiomer: { has: false, name: null },
+    halfLife: { drug: '5.2 hr (extensive metabolizers); 21.6 hr (CYP2D6 poor metabolizers)', metabolites: '4-hydroxyatomoxetine (active, rapidly glucuronidated)' },
+    tmax: 1,
+    p450: {
+      substrate: ['CYP2D6'],
+      inhibits: {},
+      induces: {}
+    },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment.' },
+    hepaticImpairment: { modified: true, notes: 'Moderate: 50% of usual dose; severe: 25%' },
+    geriatricDosing: { modified: false, notes: 'Limited data; monitor BP and heart rate' },
+    qtInterval: false,
+    proteinBinding: 98,
+    receptorKi: null,
+    indications: [
+      { use: 'ADHD', year: 2002, age: 'Adults & ≥6 yr' },
+    ],
+    mechanism: 'Selective norepinephrine reuptake inhibitor (also raises prefrontal dopamine).'
+  },
+  {
+    id: 'viloxazine',
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'minimal', antichol: 'minimal', qt: 'minimal', review: true },
+    development: { discoveryYear: null, fdaApprovalYear: 2021, originator: 'Supernus Pharmaceuticals (ER formulation)' },
+    dosing: {
+      start: '100 mg (6–11 yr); 200 mg (12–17 yr & adults)',
+      target: '200–400 mg/day',
+      max: '400 mg/day (children); 600 mg/day (adults)',
+      formulations: 'ER capsules once daily; may be sprinkled on applesauce',
+      citation: { label: 'DailyMed (FDA label)', url: 'https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=qelbree' }
+    },
+    name: 'Viloxazine ER',
+    brandName: 'Qelbree',
+    class: 'NRI',
+    category: 'ADHD (non-stimulant)',
+    activeEnantiomer: { has: false, name: null },
+    halfLife: { drug: '~7 hr', metabolites: '5-hydroxyviloxazine glucuronide (inactive)' },
+    tmax: 5,
+    p450: {
+      substrate: ['CYP2D6'],
+      inhibits: { CYP1A2: 'strong', CYP2D6: 'weak', CYP3A4: 'weak' },
+      induces: {}
+    },
+    renalImpairment: {
+      modified: true,
+      moderate: null,
+      severe: 'eGFR <30: start 100 mg; titrate 50–100 mg weekly; max 200 mg/day',
+      notes: 'Renally excreted; reduce dose in severe impairment.'
+    },
+    hepaticImpairment: { modified: false, notes: 'Not studied in hepatic impairment; use caution' },
+    geriatricDosing: { modified: false, notes: 'Not studied in older adults' },
+    qtInterval: false,
+    proteinBinding: 79,
+    receptorKi: null,
+    indications: [
+      { use: 'ADHD', year: 2021, age: 'Adults & ≥6 yr', line: 'Children 6–17 (2021); adults (2022)' },
+    ],
+    mechanism: 'Selective norepinephrine reuptake inhibitor with serotonergic (5-HT2B antagonist, 5-HT2C agonist) activity.'
+  },
+  {
+    id: 'valbenazine',
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'minimal', antichol: 'low', qt: 'low', review: true },
+    development: { discoveryYear: null, fdaApprovalYear: 2017, originator: 'Neurocrine Biosciences' },
+    dosing: {
+      start: '40 mg daily',
+      target: '80 mg daily (40–60 mg acceptable)',
+      max: '80 mg/day (40 mg with strong CYP3A4 or CYP2D6 inhibitors, CYP2D6 poor metabolizers, or moderate/severe hepatic impairment)',
+      formulations: 'Capsules or sprinkle capsules once daily',
+      citation: { label: 'DailyMed (FDA label)', url: 'https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=ingrezza' }
+    },
+    name: 'Valbenazine',
+    brandName: 'Ingrezza',
+    class: 'VMAT2 Inhibitor',
+    category: 'Movement Disorder (VMAT2)',
+    activeEnantiomer: { has: true, name: '[+]-α-dihydrotetrabenazine ([+]-α-HTBZ, active metabolite)' },
+    halfLife: { drug: '15–22 hr', metabolites: '[+]-α-HTBZ (active): 15–22 hr' },
+    tmax: 1,
+    p450: {
+      substrate: ['CYP3A4', 'CYP2D6'],
+      inhibits: {},
+      induces: {}
+    },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment.' },
+    hepaticImpairment: { modified: true, notes: 'Moderate/severe: 40 mg daily' },
+    geriatricDosing: { modified: false, notes: 'No specific adjustment' },
+    qtInterval: true,
+    proteinBinding: 99,
+    receptorKi: null,
+    indications: [
+      { use: 'Tardive Dyskinesia', year: 2017, age: 'Adults' },
+      { use: 'Huntington\'s Disease Chorea', year: 2023, age: 'Adults' },
+    ],
+    mechanism: 'Selective, reversible VMAT2 inhibitor; reduces presynaptic dopamine packaging and release.'
+  },
+  {
+    id: 'deutetrabenazine',
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'minimal', antichol: 'minimal', qt: 'low', review: true },
+    development: { discoveryYear: null, fdaApprovalYear: 2017, originator: 'Auspex / Teva' },
+    dosing: {
+      start: '6 mg BID (IR) or 12 mg once daily (XR)',
+      target: 'Titrate by 6 mg/day weekly to effect',
+      max: '48 mg/day (36 mg/day with strong CYP2D6 inhibitors or poor metabolizers)',
+      formulations: 'IR tablets BID with food • XR tablets once daily',
+      citation: { label: 'DailyMed (FDA label)', url: 'https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=austedo' }
+    },
+    name: 'Deutetrabenazine',
+    brandName: 'Austedo',
+    class: 'VMAT2 Inhibitor',
+    category: 'Movement Disorder (VMAT2)',
+    activeEnantiomer: { has: false, name: null },
+    halfLife: { drug: 'Total (α+β)-HTBZ 9–10 hr', metabolites: 'α-HTBZ ~12 hr; β-HTBZ ~7.5 hr (active)' },
+    tmax: 3,
+    p450: {
+      substrate: ['CYP2D6'],
+      inhibits: {},
+      induces: {}
+    },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'Not studied; use caution.' },
+    hepaticImpairment: { modified: true, notes: 'Contraindicated in hepatic impairment' },
+    geriatricDosing: { modified: false, notes: 'No specific adjustment' },
+    qtInterval: true,
+    proteinBinding: 82,
+    receptorKi: null,
+    indications: [
+      { use: 'Huntington\'s Disease Chorea', year: 2017, age: 'Adults' },
+      { use: 'Tardive Dyskinesia', year: 2017, age: 'Adults' },
+    ],
+    mechanism: 'Deuterated tetrabenazine: reversible VMAT2 inhibitor with longer-acting, less variable active metabolites.'
+  },
+  {
+    id: 'naltrexone',
+    effects: { weight: 'minimal', sedation: 'low', sexual: 'minimal', antichol: 'minimal', qt: 'minimal', review: true },
+    development: { discoveryYear: 1963, fdaApprovalYear: 1984, originator: 'Endo Laboratories (DuPont); Vivitrol: Alkermes' },
+    dosing: {
+      start: '25–50 mg PO daily after an opioid-free period',
+      target: '50 mg/day PO or 380 mg IM every 4 weeks',
+      max: '50 mg/day PO; 380 mg IM q4wk',
+      formulations: 'Oral tablets • Vivitrol 380 mg deep IM gluteal every 4 weeks',
+      citation: { label: 'DailyMed (FDA label)', url: 'https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=naltrexone' }
+    },
+    name: 'Naltrexone',
+    brandName: 'Revia / Vivitrol',
+    class: 'Opioid Antagonist',
+    category: 'Substance Use',
+    activeEnantiomer: { has: false, name: null },
+    halfLife: { drug: '4 hr (oral); 5–10 days (Vivitrol)', metabolites: '6-β-naltrexol (active): ~13 hr' },
+    tmax: 1,
+    p450: {
+      substrate: [],
+      inhibits: {},
+      induces: {}
+    },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'Use caution; metabolites are renally excreted.' },
+    hepaticImpairment: { modified: true, notes: 'Use caution; monitor LFTs (hepatotoxicity reported, mostly at high doses)' },
+    geriatricDosing: { modified: false, notes: 'No specific adjustment' },
+    qtInterval: false,
+    proteinBinding: 21,
+    receptorKi: null,
+    indications: [
+      { use: 'Alcohol Use Disorder', year: 1994, line: 'Oral (1994); Vivitrol IM (2006)', age: 'Adults' },
+      { use: 'Opioid Use Disorder (relapse prevention after detoxification)', year: 1984, line: 'Oral (1984); Vivitrol IM (2010)', age: 'Adults' },
+    ],
+    mechanism: 'Competitive mu-opioid receptor antagonist (also kappa/delta).'
+  },
+  {
+    id: 'buprenorphine',
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'minimal', qt: 'low', review: true },
+    development: { discoveryYear: 1966, fdaApprovalYear: 2002, originator: 'Reckitt & Colman (Indivior)' },
+    dosing: {
+      start: '2–4 mg SL (with naloxone 4:1) once objective withdrawal is present; up to 8 mg day 1',
+      target: '16 mg/4 mg daily',
+      max: '24 mg/6 mg daily (SL); Sublocade 300 mg ×2, then 100 mg monthly',
+      formulations: 'SL film/tablet (± naloxone) • Buccal film • Sublocade monthly SC • Brixadi weekly/monthly SC',
+      citation: { label: 'DailyMed (FDA label)', url: 'https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=buprenorphine+naloxone' }
+    },
+    name: 'Buprenorphine',
+    brandName: 'Suboxone / Sublocade',
+    class: 'Partial Opioid Agonist',
+    category: 'Substance Use',
+    activeEnantiomer: { has: false, name: null },
+    halfLife: { drug: '24–42 hr (SL)', metabolites: 'Norbuprenorphine (active)' },
+    tmax: 1,
+    p450: {
+      substrate: ['CYP3A4'],
+      inhibits: {},
+      induces: {}
+    },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment.' },
+    hepaticImpairment: {
+      modified: true,
+      notes: 'Buprenorphine/naloxone not recommended in severe impairment and may not be appropriate in moderate impairment (naloxone exposure rises); consider mono-product'
+    },
+    geriatricDosing: { modified: true, notes: 'Monitor for sedation and respiratory depression' },
+    qtInterval: false,
+    proteinBinding: 96,
+    receptorKi: null,
+    indications: [
+      { use: 'Opioid Use Disorder', year: 2002, line: 'SL ± naloxone (2002); Sublocade (2017); Brixadi (2023)', age: 'Adults' },
+    ],
+    mechanism: 'High-affinity partial mu-opioid agonist and kappa antagonist; ceiling effect on respiratory depression.'
   }
 ];
 
@@ -3706,9 +4088,25 @@ const PK_SPECIAL_INTERACTIONS = {
     { a: 'valproate', b: ['lorazepam'], sev: 'mod', tag: 'UGT',
       text: 'Valproate inhibits lorazepam glucuronidation and raises lorazepam levels; the lorazepam label advises reducing the lorazepam dose by about 50%.' },
     { a: 'carbamazepine', b: ['paliperidone'], sev: 'mod', tag: 'P-gp',
-      text: 'Carbamazepine lowered paliperidone exposure about 37% (likely renal P-gp induction, not CYP). Reassess the paliperidone dose when starting or stopping carbamazepine.' }
+      text: 'Carbamazepine lowered paliperidone exposure about 37% (likely renal P-gp induction, not CYP). Reassess the paliperidone dose when starting or stopping carbamazepine.' },
+    { a: 'olanzapine-samidorphan', b: ['buprenorphine'], sev: 'high', tag: 'Contraindicated',
+      text: 'Lybalvi is contraindicated with opioids: samidorphan precipitates withdrawal in patients on buprenorphine and blocks its effect.' },
+    { a: 'naltrexone', b: ['buprenorphine'], sev: 'high', tag: 'Contraindicated',
+      text: 'Naltrexone is contraindicated in patients taking opioids, including buprenorphine: it precipitates withdrawal. Transition requires an opioid-free interval (typically 7–14 days after buprenorphine).' },
+    { a: 'deutetrabenazine', b: ['valbenazine'], sev: 'high', tag: 'Contraindicated',
+      text: 'Deutetrabenazine is contraindicated with valbenazine (and tetrabenazine or reserpine): additive VMAT2 inhibition.' },
+    { a: 'viloxazine', b: ['ramelteon', 'duloxetine'], sev: 'high', tag: 'Contraindicated',
+      text: 'Viloxazine (strong CYP1A2 inhibitor) is contraindicated with sensitive CYP1A2 substrates such as ramelteon and duloxetine (large exposure increases).' },
+    { a: 'buprenorphine', b: ['alprazolam', 'clonazepam', 'diazepam', 'lorazepam', 'oxazepam', 'chlordiazepoxide', 'clorazepate', 'midazolam', 'triazolam', 'estazolam', 'flurazepam', 'temazepam'], sev: 'mod', tag: 'CNS depression',
+      text: 'Buprenorphine with benzodiazepines raises the risk of respiratory depression, overdose, and death. Do not withhold OUD treatment; taper or limit the benzodiazepine where possible, monitor closely, and co-prescribe naloxone.' }
   ],
   drugs: [
+    { id: 'olanzapine-samidorphan', sev: 'high', tag: 'Opioids',
+      text: 'Contraindicated with opioids and in acute opioid withdrawal (samidorphan is an opioid antagonist). Opioid-free ≥7 days (short-acting) or ≥14 days (long-acting) before starting; overcoming the blockade risks fatal overdose.' },
+    { id: 'olanzapine-samidorphan', sev: 'low', tag: 'Smoking',
+      text: 'Tobacco smoke induces CYP1A2 and lowers olanzapine levels; levels rise after quitting. Watch for sedation and adjust dose when smoking status changes.' },
+    { id: 'naltrexone', sev: 'high', tag: 'Opioids',
+      text: 'Blocks opioid analgesics and precipitates withdrawal in opioid-dependent patients (contraindicated with opioids). After stopping, reduced tolerance raises overdose risk.' },
     { id: 'lithium', sev: 'mod', tag: 'Renal',
       text: 'Lithium levels rise with NSAIDs, ACE inhibitors, ARBs, and thiazide diuretics (reduced renal clearance). Check levels when these are started, stopped, or dose-changed.' },
     { id: 'clozapine', sev: 'mod', tag: 'Smoking',
@@ -4577,6 +4975,97 @@ trihexyphenidyl: {
     'Cardiovascular': ['tachycardia'],
     'Other': ['blurred vision', 'urinary retention', 'mydriasis']
   }
+},
+
+// ── Added 2026-10-01 (round 4) ───────────────────────────────────────────────
+'xanomeline-trospium': {
+  blackBoxWarnings: [],
+  keyWarnings: ['Contraindicated in urinary retention, gastric retention, untreated narrow-angle glaucoma, and moderate/severe hepatic impairment.', 'Urinary retention risk (trospium); caution in bladder outlet obstruction, BPH, and the elderly.', 'Hepatic: check LFTs and bilirubin at baseline and as indicated; avoid in biliary disease.', 'Increased heart rate: assess at baseline and during treatment.', 'Decreased GI motility (caution in ulcerative colitis, intestinal atony, myasthenia gravis); angioedema (trospium).', 'Strong CYP2D6 inhibitors raise xanomeline exposure — monitor for adverse reactions. Xanomeline transiently inhibits gut CYP3A4 and P-gp; monitor sensitive oral substrates.', 'No boxed warning; no direct D2 blockade (no dementia-mortality class box).'],
+  sideEffects: {
+    'GI': ['nausea', 'dyspepsia', 'constipation', 'vomiting', 'abdominal pain', 'diarrhea', 'GERD'],
+    'Cardiovascular': ['hypertension', 'tachycardia'],
+    'CNS': ['dizziness']
+  }
+},
+'olanzapine-samidorphan': {
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  keyWarnings: ['Contraindicated with opioids or during acute opioid withdrawal: samidorphan precipitates withdrawal; opioid-free ≥7 days (short-acting) or ≥14 days (long-acting) before starting.', 'Attempting to overcome opioid blockade (or relapse after stopping) can cause fatal overdose.', 'Olanzapine class warnings: NMS, DRESS, hyperglycemia/dyslipidemia, weight gain (less than olanzapine alone in trials but still monitor), hyperprolactinemia, tardive dyskinesia, orthostasis, leukopenia, seizures, anticholinergic effects.', 'Strong CYP3A4 inducers not recommended; consider olanzapine dose adjustment with strong CYP1A2 inhibitors or inducers (including smoking).'],
+  sideEffects: {
+    'Metabolic/Endocrine': ['weight gain', 'hyperglycemia', 'dyslipidemia'],
+    'CNS': ['somnolence', 'sedation', 'dizziness'],
+    'GI': ['dry mouth', 'constipation'],
+    'Other': ['headache', 'orthostatic hypotension']
+  }
+},
+lemborexant: {
+  blackBoxWarnings: [],
+  keyWarnings: ['Contraindicated in narcolepsy.', 'CNS depression and next-day impairment: risk rises if taken with less than a full night (7 h) remaining or with other CNS depressants; caution with driving.', 'Sleep paralysis, hypnagogic/hypnopompic hallucinations, and cataplexy-like symptoms.', 'Complex sleep behaviors (sleepwalking, sleep-driving); discontinue if they occur.', 'Worsening depression or suicidal ideation; caution in compromised respiratory function (OSA, COPD).', 'Schedule IV controlled substance.', 'Avoid with strong or moderate CYP3A inhibitors (max 5 mg with weak inhibitors) and with strong/moderate CYP3A inducers; lowers exposure of CYP2B6 substrates.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'headache', 'nightmares / abnormal dreams'],
+    'Other': ['fatigue']
+  }
+},
+daridorexant: {
+  blackBoxWarnings: [],
+  keyWarnings: ['Contraindicated in narcolepsy.', 'CNS depression and next-day impairment: risk rises if taken with less than a full night (7 h) remaining or with other CNS depressants; caution with driving.', 'Sleep paralysis, hypnagogic/hypnopompic hallucinations, and cataplexy-like symptoms.', 'Complex sleep behaviors (sleepwalking, sleep-driving); discontinue if they occur.', 'Worsening depression or suicidal ideation; caution in compromised respiratory function (OSA, COPD).', 'Schedule IV controlled substance.', 'Angioedema with pharyngeal involvement has been reported.', 'Avoid with strong CYP3A4 inhibitors (max 25 mg with moderate inhibitors) and with strong/moderate CYP3A4 inducers.'],
+  sideEffects: {
+    'CNS': ['headache', 'somnolence', 'fatigue', 'dizziness'],
+    'GI': ['nausea']
+  }
+},
+atomoxetine: {
+  blackBoxWarnings: ['Suicidal thoughts and behaviors: higher rates than placebo in pediatric patients; monitor closely, especially during the first months of treatment and after dose changes.'],
+  keyWarnings: ['Contraindicated with MAOIs (within 14 days), narrow-angle glaucoma, pheochromocytoma, and severe cardiovascular disorders.', 'Severe liver injury (rare): stop and do not restart if jaundice or lab evidence of liver injury.', 'Serious cardiovascular events and sudden death in patients with structural cardiac abnormalities; assess cardiac history.', 'Increases blood pressure and heart rate; emergent psychosis or mania (screen for bipolar disorder); priapism; urinary retention; growth suppression in children.', 'CYP2D6 poor metabolizers or strong CYP2D6 inhibitors (fluoxetine, paroxetine, bupropion): raise to target only if symptoms persist after 4 weeks.'],
+  sideEffects: {
+    'GI': ['nausea', 'vomiting', 'decreased appetite', 'abdominal pain', 'constipation', 'dry mouth'],
+    'CNS': ['somnolence', 'fatigue', 'dizziness', 'insomnia'],
+    'Sexual': ['erectile dysfunction'],
+    'Other': ['urinary hesitation', 'increased heart rate']
+  }
+},
+viloxazine: {
+  blackBoxWarnings: ['Suicidal thoughts and behaviors: higher rates than placebo in ADHD trials; monitor closely, especially during the first months of treatment and after dose changes.'],
+  keyWarnings: ['Contraindicated with MAOIs (within 14 days) and with sensitive or narrow-therapeutic-range CYP1A2 substrates (e.g., ramelteon, duloxetine, tizanidine, theophylline).', 'Strong CYP1A2 inhibitor; weak CYP2D6 and CYP3A4 inhibitor — monitor and adjust other substrates.', 'Increased heart rate and blood pressure.', 'Activation of mania or hypomania: screen for bipolar disorder before starting.', 'Somnolence and fatigue: caution with driving.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'headache', 'insomnia', 'fatigue', 'irritability'],
+    'GI': ['decreased appetite', 'nausea', 'vomiting', 'dry mouth', 'constipation']
+  }
+},
+valbenazine: {
+  blackBoxWarnings: ['Depression and suicidality in patients with Huntington\'s disease: increases the risk of depression and suicidal thoughts and behavior; balance risks with clinical need, monitor for emergent or worsening depression, and inform patients and caregivers.'],
+  keyWarnings: ['Somnolence and sedation.', 'QT prolongation: avoid in congenital long QT or arrhythmias with prolonged QT; higher exposure in CYP2D6 poor metabolizers or with strong CYP2D6/3A4 inhibitors (use 40 mg).', 'Neuroleptic malignant syndrome; parkinsonism.', 'Avoid MAOIs; strong CYP3A4 inducers not recommended; may raise digoxin levels (P-gp).'],
+  sideEffects: {
+    'CNS': ['somnolence', 'balance disorders / falls', 'headache', 'akathisia'],
+    'GI': ['dry mouth', 'nausea', 'vomiting'],
+    'Other': ['arthralgia']
+  }
+},
+deutetrabenazine: {
+  blackBoxWarnings: ['Depression and suicidality in patients with Huntington\'s disease: increases the risk of depression and suicidal thoughts and behavior; balance risks with clinical need, monitor for emergent or worsening depression, and inform patients and caregivers.'],
+  keyWarnings: ['Contraindicated: suicidal patients or untreated/inadequately treated depression (Huntington\'s disease), hepatic impairment, MAOIs (within 14 days), reserpine (within 20 days), tetrabenazine, or valbenazine.', 'QT prolongation: avoid in congenital long QT or arrhythmias with prolonged QT.', 'Neuroleptic malignant syndrome; akathisia, agitation, restlessness; parkinsonism; sedation.', 'Max 36 mg/day with strong CYP2D6 inhibitors or in CYP2D6 poor metabolizers.'],
+  sideEffects: {
+    'CNS': ['somnolence', 'insomnia', 'depression', 'akathisia', 'anxiety'],
+    'GI': ['diarrhea', 'dry mouth', 'constipation'],
+    'Other': ['fatigue', 'nasopharyngitis']
+  }
+},
+naltrexone: {
+  blackBoxWarnings: [],
+  keyWarnings: ['Contraindicated with opioid analgesics, current physiologic opioid dependence, acute opioid withdrawal, or a failed naloxone challenge / positive opioid screen.', 'Precipitated opioid withdrawal: opioid-free for 7–10 days first (longer after methadone or buprenorphine).', 'Vulnerability to opioid overdose after stopping, missing a dose, or trying to overcome the blockade.', 'Hepatotoxicity (oral boxed warning removed in 2013): monitor LFTs; caution in liver disease.', 'Injection-site reactions with Vivitrol (some requiring surgery); monitor for depression and suicidality.'],
+  sideEffects: {
+    'GI': ['nausea', 'vomiting', 'abdominal pain', 'decreased appetite'],
+    'CNS': ['headache', 'dizziness', 'insomnia', 'anxiety'],
+    'Other': ['fatigue', 'injection-site reactions (Vivitrol)']
+  }
+},
+buprenorphine: {
+  blackBoxWarnings: [],
+  keyWarnings: ['Sublocade (ER injection) boxed warning: serious harm or death with intravenous self-administration (forms a solid depot); available only through a restricted REMS. SL and buccal products have no boxed warning.', 'Respiratory and CNS depression, especially with benzodiazepines, alcohol, or other CNS depressants — do not withhold OUD treatment, but taper/monitor and co-prescribe naloxone.', 'Precipitated withdrawal if started before objective withdrawal; neonatal opioid withdrawal syndrome with use in pregnancy.', 'Hepatitis and hepatic events (monitor LFTs); adrenal insufficiency; accidental pediatric exposure can be fatal.', 'Dental problems (caries, tooth loss) with SL/buccal products; QT prolongation minimal at therapeutic doses (≤15 ms) — caution with other risk factors.'],
+  sideEffects: {
+    'CNS': ['headache', 'insomnia', 'sedation'],
+    'GI': ['nausea', 'constipation', 'vomiting'],
+    'Other': ['sweating', 'withdrawal symptoms', 'oral hypoesthesia (film)', 'dental problems']
+  }
 }
 
 };
@@ -4675,5 +5164,15 @@ const ADMINISTRATION_DATA = {
   "lisdexamfetamine": { food: "With or without food", timing: "Morning", pearls: ["Prodrug activated after absorption — smoother, lower-abuse profile; may be taken whole or the capsule contents dissolved in water/yogurt and consumed immediately.", "Also approved for binge-eating disorder."] },
   "modafinil": { food: "With or without food", timing: "Morning", pearls: ["Take in the morning (or before a shift for shift-work disorder).", "Reduces the efficacy of estrogen-containing contraceptives — advise an additional or alternative method."] },
   "armodafinil": { food: "With or without food", timing: "Morning", pearls: ["Longer-acting R-enantiomer of modafinil — morning dosing.", "Lowers hormonal-contraceptive efficacy — advise a backup method."] },
-  "solriamfetol": { food: "On waking; avoid near bedtime", timing: "Morning", pearls: ["Take on waking and avoid dosing within 9 hours of bedtime (insomnia).", "Monitor blood pressure and heart rate; reduce dose in renal impairment."] }
+  "solriamfetol": { food: "On waking; avoid near bedtime", timing: "Morning", pearls: ["Take on waking and avoid dosing within 9 hours of bedtime (insomnia).", "Monitor blood pressure and heart rate; reduce dose in renal impairment."] },
+  "xanomeline-trospium": { food: "Empty stomach: ≥1 h before or ≥2 h after a meal", timing: "Twice daily", pearls: ["Do not open capsules; taking with food increases nausea and GI effects.", "Check LFTs/bilirubin and heart rate at baseline; ask about urinary retention, constipation, and glaucoma."] },
+  "olanzapine-samidorphan": { food: "With or without food", timing: "Once daily", pearls: ["Do not split or crush tablets.", "Must be opioid-free ≥7 days (short-acting) or ≥14 days (long-acting) first; carry a wallet card about opioid blockade."] },
+  "lemborexant": { food: "Food delays onset — take on an empty stomach for faster effect", timing: "Immediately before bed", pearls: ["Take only with ≥7 hours available for sleep; next-morning impairment is possible, especially at 10 mg.", "Avoid moderate/strong CYP3A inhibitors and inducers; max 5 mg with weak inhibitors."] },
+  "daridorexant": { food: "A high-fat meal delays onset (~1.3 h)", timing: "Within 30 min of bedtime", pearls: ["Take only with ≥7 hours available for sleep.", "Max 25 mg with moderate CYP3A4 inhibitors; avoid strong inhibitors and inducers."] },
+  "atomoxetine": { food: "With or without food (food may reduce nausea)", timing: "Once daily (morning) or divided BID", pearls: ["Do not open capsules (eye irritant).", "Full effect may take 4–6 weeks; check BP/HR and screen for bipolar disorder first."] },
+  "viloxazine": { food: "With or without food", timing: "Once daily", pearls: ["Swallow whole or sprinkle on a spoonful of applesauce (eat within 2 h); do not chew.", "Strong CYP1A2 inhibitor: avoid ramelteon, duloxetine, tizanidine, theophylline; caffeine levels rise."] },
+  "valbenazine": { food: "With or without food", timing: "Once daily", pearls: ["Sprinkle capsules can be opened onto soft food.", "40 mg max with strong CYP3A4/CYP2D6 inhibitors or in CYP2D6 poor metabolizers; review QT risk factors."] },
+  "deutetrabenazine": { food: "IR with food; XR with or without food", timing: "IR twice daily; XR once daily", pearls: ["Swallow tablets whole; do not crush or chew.", "Switching from tetrabenazine: stop tetrabenazine and start deutetrabenazine the next day at the conversion dose."] },
+  "naltrexone": { food: "With or without food (food may reduce nausea)", timing: "Once daily (oral) or every 4 weeks (IM)", pearls: ["Must be opioid-free 7–10 days first (longer after methadone/buprenorphine); consider a naloxone challenge.", "Opioid analgesics will be blocked; overdose risk is high if opioids are used after stopping or to overcome blockade."] },
+  "buprenorphine": { food: "Dissolve under the tongue or buccally — do not chew or swallow", timing: "Once daily", pearls: ["Start only when objective withdrawal is present (e.g., COWS ≥8–12) to avoid precipitated withdrawal.", "After it dissolves, swish water and swallow; wait 1 h before brushing (dental problems). Co-prescribe naloxone."] }
 };
