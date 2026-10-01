@@ -1,6 +1,6 @@
 {
   "$schema": "{drugName: cpdProductUrl} pairs to scrape via Claude in Chrome. Cloudflare blocks unauth Node fetches with HTTP 403.",
-  "generatedAt": "2026-04-30T06:11:29.022Z",
+  "generatedAt": "2026-10-01T21:52:05.331Z",
   "targets": {
     "Fluoxetine": "https://www.costplusdrugs.com/medications/fluoxetine-20mg-capsule/",
     "Sertraline": "https://www.costplusdrugs.com/medications/sertraline-50mg-tablet/",
@@ -48,6 +48,8 @@
     "Ramelteon": "https://www.costplusdrugs.com/medications/ramelteon-8mg-tablet-rozerem/",
     "Guanfacine": "https://www.costplusdrugs.com/medications/GuanfacineHCL-1mg-Tablet/",
     "Propranolol": "https://www.costplusdrugs.com/medications/PropranololHCl-20mg-Tablet/",
-    "Trihexyphenidyl": "https://www.costplusdrugs.com/medications/trihexyphenidylhcl-2mg-tablet/"
+    "Trihexyphenidyl": "https://www.costplusdrugs.com/medications/trihexyphenidylhcl-2mg-tablet/",
+    "Atomoxetine": "https://www.costplusdrugs.com/medications/AtomoxetineHCl-40mg-Capsule/",
+    "Naltrexone": "https://www.costplusdrugs.com/medications/NaltrexoneHCl-50mg-Tablet/"
   }
 }

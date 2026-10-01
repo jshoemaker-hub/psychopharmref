@@ -46,6 +46,43 @@ const PRICES    = path.join(REPO_ROOT, 'data', 'prices.json');
 const HUGO      = path.join(REPO_ROOT, 'hugo-site', 'static', 'data', 'prices.json');
 const CPD_IN    = path.join(REPO_ROOT, 'data', 'cpd-prices.json');
 const HW_IN     = path.join(REPO_ROOT, 'data', 'hw-prices.json');
+const SKUS_IN   = path.join(REPO_ROOT, 'data', 'drug-skus.json');
+const SKUS      = (JSON.parse(fs.readFileSync(SKUS_IN, 'utf8')).skus) || {};
+
+// ── Sanity checks on retail matches (round 7) ──────────────────────────────
+// Returns { ok, price, reason } after normalizing pack counts and rejecting
+// wrong-product matches. Never publishes a price it cannot reconcile.
+function firstNumber(s) { const m = String(s || '').match(/[\d.]+/); return m ? parseFloat(m[0]) : null; }
+function vetRetail(drugName, entry, nadac) {
+  const sku = SKUS[drugName] || {};
+  // Product slug = last path segment (CPD URLs are /medications/<slug>/)
+  const slug = String(entry.url || '').toLowerCase().replace(/[?#].*$/, '').replace(/\/+$/, '').split('/').pop() || '';
+  let price = entry.price;
+  const nameTokens = drugName.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+  // 1) Strength in the product slug must match the SKU strength (e.g. 150mg ≠ 50 mg, 2-5mg ≠ 5 mg)
+  const sm = slug.match(/(?:^|[^0-9])(\d+(?:-\d+)?)mg/);
+  const skuStrength = firstNumber(sku.strength);
+  if (sm && skuStrength != null) {
+    const slugStrength = parseFloat(sm[1].replace('-', '.'));
+    if (Math.abs(slugStrength - skuStrength) > 1e-6) return { ok: false, reason: `strength mismatch (${sm[1]}mg page vs ${sku.strength} SKU)` };
+  }
+  // 2) Generic SKU matched to a brand-prefixed or combination product page
+  if (sku.generic && nameTokens.length && !slug.startsWith(nameTokens[0])) {
+    return { ok: false, reason: 'brand or combination product page matched for a generic SKU' };
+  }
+  // 3) Multi-pack listings ("...-30ct-pack" with packSize = number of packs): rescale to SKU quantity
+  const ct = slug.match(/(\d+)ct/);
+  if (ct && typeof entry.unitPrice === 'number' && sku.quantity) {
+    price = +(entry.unitPrice * sku.quantity / parseInt(ct[1], 10)).toFixed(2);
+  } else if (typeof entry.packSize === 'number' && sku.quantity && entry.packSize !== sku.quantity && entry.packSize >= 10) {
+    price = +(entry.price * sku.quantity / entry.packSize).toFixed(2);
+  }
+  // 4) Outlier guard: >10× NADAC AND >$50 above it (cheap generics legitimately retail at many × NADAC)
+  if (nadac && nadac.available && typeof nadac.price === 'number' && nadac.price > 0 && price > 10 * nadac.price && price - nadac.price > 50) {
+    return { ok: false, reason: `outlier (>10× NADAC: $${price} vs $${nadac.price})` };
+  }
+  return { ok: true, price };
+}
 
 function logInfo(m)  { console.log(`[info]  ${m}`); }
 function logWarn(m)  { console.warn(`[warn]  ${m}`); }
@@ -80,14 +117,24 @@ function mergeOneSource(sourceKey, inputPath, label) {
   }
   const blob = JSON.parse(fs.readFileSync(inputPath, 'utf8'));
   const results = blob.results || blob;
-  let merged = 0, failed = 0;
+  // asOf = when the browser phase actually scraped, not when this merge ran
+  const scrapedOn = (blob.generatedAt || '').slice(0, 10) || today;
+  let merged = 0, failed = 0, rejected = 0;
 
   for (const [drugName, entry] of Object.entries(results)) {
     if (!prices.prices[drugName]) prices.prices[drugName] = {};
     clearSourceErrors(drugName, sourceKey);
 
     if (entry && entry.available && typeof entry.price === 'number') {
-      const out = { available: true, price: entry.price, url: entry.url, asOf: today };
+      const vet = vetRetail(drugName, entry, prices.prices[drugName].NADAC);
+      if (!vet.ok) {
+        rejected++;
+        prices.prices[drugName][sourceKey] = { available: false, reason: 'Excluded: ' + vet.reason, url: entry.url, asOf: scrapedOn };
+        addError(drugName, `${sourceKey}: excluded — ${vet.reason} (${entry.url})`);
+        continue;
+      }
+      const out = { available: true, price: vet.price, url: entry.url, asOf: scrapedOn };
+      if (vet.price !== entry.price) out.rawPrice = entry.price;
       if (typeof entry.packSize === 'number' && entry.packSize > 0) out.packSize = entry.packSize;
       prices.prices[drugName][sourceKey] = out;
       merged++;
@@ -98,7 +145,7 @@ function mergeOneSource(sourceKey, inputPath, label) {
     }
   }
 
-  logInfo(`${label}: merged ${merged} prices, ${failed} failures.`);
+  logInfo(`${label}: merged ${merged} prices, ${failed} failures, ${rejected} excluded by sanity checks.`);
   prices.stats[sourceKey] = merged;
   return merged;
 }

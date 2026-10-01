@@ -346,6 +346,7 @@ async function loadNadacIndex() {
     unit:    idx('pricing_unit'),
     type:    idx('pharmacy_type_indicator'),    // B(rand) or G(eneric)
     eff:     idx('effective_date'),
+    asOf:    idx('as_of_date'),
   };
   for (const [k, v] of Object.entries(cols)) {
     if (v < 0) throw new Error(`NADAC CSV missing column: ${k} (header was: ${header.join('|')})`);
@@ -359,28 +360,47 @@ async function loadNadacIndex() {
       unit:    r[cols.unit],
       type:    r[cols.type],
       eff:     r[cols.eff],
+      asOf:    r[cols.asOf],
     }))
     .filter(r => Number.isFinite(r.perUnit) && r.perUnit > 0);
-  logInfo(`  → ${data.length} NADAC rows parsed.`);
+  // The yearly file holds every weekly snapshot (~39 × 30k rows). Keep only the
+  // newest "As of Date" so medians reflect current prices, not a year-long blend.
+  const toKey = d => { const m = String(d || '').match(/(\d{2})\/(\d{2})\/(\d{4})/); return m ? m[3] + m[1] + m[2] : ''; };
+  const latestKey = data.reduce((mx, r) => { const k = toKey(r.asOf); return k > mx ? k : mx; }, '');
+  const latest = latestKey ? data.filter(r => toKey(r.asOf) === latestKey) : data;
+  logInfo(`  → ${data.length} NADAC rows parsed; using ${latest.length} from the latest snapshot (${latestKey}).`);
+  data.length = 0; latest.forEach(r => data.push(r));
   nadacIndex = { data, datasetTitle, downloadUrl, modified };
   return nadacIndex;
 }
 
 function findNadacRows(index, drugName, sku) {
+  // 1) Explicit CMS description(s) from drug-skus.json win over fuzzy matching.
+  if (sku.nadacDesc) {
+    const wanted = (Array.isArray(sku.nadacDesc) ? sku.nadacDesc : [sku.nadacDesc]).map(d => d.trim().toUpperCase().replace(/\s+/g, ' '));
+    const exact = index.data.filter(r => wanted.includes(r.desc.trim().toUpperCase().replace(/\s+/g, ' ')));
+    if (exact.length) return exact;
+    logWarn(`${drugName}: nadacDesc not found in NADAC file — falling back to fuzzy match`);
+  }
   const drugTokens = tokenize(drugName);
+  const wantsODT = /(odt|disintegrat)/i.test(sku.form || '');
   const sd         = strengthDigits(sku.strength);
   const profile    = formProfile(sku.form);
   // Match on description: must contain all drug-name tokens, the strength digits, and a form keyword
-  const formWord = profile.dose === 'tablet' ? 'TABLET'
-    : profile.dose === 'capsule' ? 'CAPSULE'
+  const formWord = profile.dose === 'tablet' ? '\\bTAB'
+    : profile.dose === 'capsule' ? '\\bCAP'
     : profile.dose === 'spray' ? 'SPRAY'
     : profile.dose === 'liquid' ? '(SOLUTION|SYRUP|CONCENTRATE|LIQUID)'
     : null;
 
   const matches = index.data.filter(r => {
     const desc = r.desc.toUpperCase();
-    if (!drugTokens.every(t => desc.includes(t.toUpperCase()))) return false;
-    if (sd && !new RegExp(`(^|\\D)${sd.replace('.', '\\.')}\\s*MG`).test(desc)) return false;
+    // Whole-word drug tokens (so MODAFINIL does not match ARMODAFINIL)
+    if (!drugTokens.every(t => new RegExp(`(^|[^A-Z0-9])${t.toUpperCase()}([^A-Z0-9]|$)`).test(desc))) return false;
+    // Strength must not be preceded by a digit or decimal point (so 5 MG does not match 2.5 MG)
+    if (sd && !new RegExp(`(^|[^\\d.])${sd.replace('.', '\\.')}\\s*MG`).test(desc)) return false;
+    // Orally disintegrating / chewable rows only when the SKU is that form
+    if (!wantsODT && /(\bDIS\b|\bODT\b|DISINTEGRAT|\bCHEW)/.test(desc)) return false;
     if (formWord && !new RegExp(formWord).test(desc)) return false;
     // Release-type filter
     const wantsER = profile.release === 'er';
@@ -429,6 +449,7 @@ async function main() {
     { key: 'NADAC',           displayName: 'NADAC (wholesale)', url: 'https://data.medicaid.gov/dataset/', type: 'wholesale', excludeFromBest: true },
   ];
 
+  const clinicOnly = Object.entries(skus).filter(([, s]) => s.clinicOnly);
   const drugList = Object.entries(skus)
     .filter(([, s]) => !s.clinicOnly)
     .filter(([name]) => !ONLY.length || ONLY.includes(name));
@@ -451,6 +472,9 @@ async function main() {
     process.stdout.write(`  ${drugName.padEnd(28)}`);
     const drugErrors = [];
     const drugPrices = {};
+    drugPrices.form = `${sku.strength} ${sku.form} × ${sku.quantity}`;
+    // Cost Plus Drugs does not sell federally controlled substances
+    if (sku.controlled) drugPrices.CostPlusDrugs = { available: false, reason: 'Not sold (controlled)' };
 
     // Both retail sources are bot-protected. CPD returns 403, HW returns a
     // soft-404 (Next.js [...dynamicRoutes] catchall) — same end result: no
@@ -470,7 +494,9 @@ async function main() {
     }
 
     // NADAC (offline lookup, no network call per drug)
-    if (nadac) {
+    if (nadac && sku.noNadac) {
+      drugPrices.NADAC = { available: false, reason: sku.noNadac };
+    } else if (nadac) {
       const matches = findNadacRows(nadac, drugName, sku);
       const summary = summarizeNadacMatches(matches, sku);
       if (!summary) drugErrors.push('NADAC: no matching NDC rows');
@@ -481,11 +507,16 @@ async function main() {
     }
 
     // Output line
-    const tag = (k) => drugPrices[k] ? `${k.slice(0,3)}=$${drugPrices[k].price.toFixed(2)}` : `${k.slice(0,3)}=—`;
+    const tag = (k) => (drugPrices[k] && typeof drugPrices[k].price === 'number') ? `${k.slice(0,3)}=$${drugPrices[k].price.toFixed(2)}` : `${k.slice(0,3)}=—`;
     process.stdout.write(`  ${tag('CostPlusDrugs')}  ${tag('HealthWarehouse')}  ${tag('NADAC')}\n`);
 
     prices[drugName] = drugPrices;
     if (drugErrors.length) errors[drugName] = drugErrors;
+  }
+
+  // Clinic/REMS-only products: no retail or NADAC lookup, just an explanatory note
+  for (const [drugName, sku] of clinicOnly) {
+    prices[drugName] = { note: sku.priceNote || 'Not retail-priced: REMS/clinic only' };
   }
 
   const output = {
@@ -525,14 +556,18 @@ async function main() {
     generatedAt: new Date().toISOString(),
     targets: cpdTargets,
   }, null, 2);
-  fs.writeFileSync(CPD_TARGETS_OUT, cpdJson);
-  logInfo(`Wrote ${CPD_TARGETS_OUT} (${Object.keys(cpdTargets).length} target URLs)`);
+  // Don't clobber the last good target list if the sitemap failed to load this run
+  if (cpdSitemap.length) {
+    fs.writeFileSync(CPD_TARGETS_OUT, cpdJson);
+    logInfo(`Wrote ${CPD_TARGETS_OUT} (${Object.keys(cpdTargets).length} target URLs)`);
+  } else logWarn(`CPD sitemap unavailable — kept existing ${CPD_TARGETS_OUT}`);
 
   const hwJson = JSON.stringify({
     $schema: '{drugName: [url1, url2, url3]} candidate-list pairs (top 3 sitemap matches per drug, in score order). Browser phase tries each until one returns product data — handles HW soft-404 catchall on retired SKUs.',
     generatedAt: new Date().toISOString(),
     targets: hwTargets,
   }, null, 2);
+  if (!hwSitemap.length) { logWarn(`HW sitemap unavailable — kept existing ${HW_TARGETS_OUT}`); return; }
   fs.writeFileSync(HW_TARGETS_OUT, hwJson);
   const totalCandidates = Object.values(hwTargets).reduce((s, arr) => s + arr.length, 0);
   logInfo(`Wrote ${HW_TARGETS_OUT} (${Object.keys(hwTargets).length} drugs, ${totalCandidates} candidate URLs)`);
