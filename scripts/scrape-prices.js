@@ -474,8 +474,18 @@ async function main() {
     const drugErrors = [];
     const drugPrices = {};
     drugPrices.form = `${sku.strength} ${sku.form} × ${sku.quantity}`;
-    // Cost Plus Drugs does not sell federally controlled substances
-    if (sku.controlled) drugPrices.CostPlusDrugs = { available: false, reason: 'Not sold (controlled)' };
+    // Standing reasons (overwritten by the merge step if a real price is found)
+    // Cost Plus Drugs does not sell federally controlled substances; HealthWarehouse
+    // hides controlled-product prices online (state-dependent).
+    if (sku.controlled) {
+      drugPrices.CostPlusDrugs   = { available: false, reason: 'Not sold (controlled)' };
+      drugPrices.HealthWarehouse = { available: false, reason: 'Controlled — price not shown online (state-dependent)' };
+    }
+    if (sku.retailReason) {
+      drugPrices.CostPlusDrugs   = drugPrices.CostPlusDrugs   || { available: false, reason: sku.retailReason };
+      drugPrices.HealthWarehouse = drugPrices.HealthWarehouse || { available: false, reason: sku.retailReason };
+    }
+    if (sku.hwReason) drugPrices.HealthWarehouse = { available: false, reason: sku.hwReason };
 
     // Both retail sources are bot-protected. CPD returns 403, HW returns a
     // soft-404 (Next.js [...dynamicRoutes] catchall) — same end result: no
@@ -483,12 +493,14 @@ async function main() {
     // actual product-page fetch to the browser phase, where we navigate once
     // (setting CF/session cookies) and fetch all targets same-origin.
     if (cpdSitemap.length) {
-      const url = findCpdUrl(cpdSitemap, drugName, sku);
+      const url = sku.cpdUrl || findCpdUrl(cpdSitemap, drugName, sku);
       if (!url) drugErrors.push('CostPlusDrugs: no slug match');
       else { cpdTargets[drugName] = url; }
     }
 
-    if (hwSitemap.length) {
+    if (sku.hwUrl) {
+      hwTargets[drugName] = [sku.hwUrl];   // verified product page (drug-skus.json override)
+    } else if (hwSitemap.length) {
       const urls = findHwUrls(hwSitemap, drugName, sku);
       if (!urls.length) drugErrors.push('HealthWarehouse: no slug match');
       else { hwTargets[drugName] = urls; }   // top 3 candidates; browser phase tries in order
@@ -518,7 +530,8 @@ async function main() {
 
   // Clinic/REMS-only products: no retail or NADAC lookup, just an explanatory note
   for (const [drugName, sku] of clinicOnly) {
-    prices[drugName] = { note: sku.priceNote || 'Not retail-priced: REMS/clinic only' };
+    const rems = { available: false, reason: 'REMS — dispensed only at certified clinics' };
+    prices[drugName] = { note: sku.priceNote || 'Not retail-priced: REMS/clinic only', CostPlusDrugs: rems, HealthWarehouse: rems, NADAC: rems };
   }
 
   const output = {

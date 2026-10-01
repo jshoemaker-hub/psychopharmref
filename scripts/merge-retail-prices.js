@@ -67,7 +67,8 @@ function vetRetail(drugName, entry, nadac) {
     if (Math.abs(slugStrength - skuStrength) > 1e-6) return { ok: false, reason: `strength mismatch (${sm[1]}mg page vs ${sku.strength} SKU)` };
   }
   // 2) Generic SKU matched to a brand-prefixed or combination product page
-  if (sku.generic && nameTokens.length && !slug.startsWith(nameTokens[0])) {
+  const prefixes = [nameTokens[0], ...((sku.aliases || []).map(a => String(a).toLowerCase()))].filter(Boolean);
+  if (sku.generic && prefixes.length && !prefixes.some(p => slug.startsWith(p))) {
     return { ok: false, reason: 'brand or combination product page matched for a generic SKU' };
   }
   // 3) Multi-pack listings ("...-30ct-pack" with packSize = number of packs): rescale to SKU quantity
@@ -133,7 +134,7 @@ function mergeOneSource(sourceKey, inputPath, label) {
         addError(drugName, `${sourceKey}: excluded — ${vet.reason} (${entry.url})`);
         continue;
       }
-      const out = { available: true, price: vet.price, url: entry.url, asOf: scrapedOn };
+      const out = { available: true, price: vet.price, url: entry.url, asOf: entry.asOf || scrapedOn };
       if (vet.price !== entry.price) out.rawPrice = entry.price;
       if (typeof entry.packSize === 'number' && entry.packSize > 0) out.packSize = entry.packSize;
       prices.prices[drugName][sourceKey] = out;
@@ -152,6 +153,18 @@ function mergeOneSource(sourceKey, inputPath, label) {
 
 const cpdMerged = mergeOneSource('CostPlusDrugs',   CPD_IN, 'Cost Plus Drugs');
 const hwMerged  = mergeOneSource('HealthWarehouse', HW_IN,  'HealthWarehouse');
+
+// Every retail cell gets either a price or a reason — never a bare blank.
+for (const [drugName, sku] of Object.entries(SKUS)) {
+  if (sku.clinicOnly) continue;
+  const row = prices.prices[drugName] = prices.prices[drugName] || {};
+  for (const [key, file] of [['CostPlusDrugs', CPD_IN], ['HealthWarehouse', HW_IN]]) {
+    if (row[key]) continue;
+    let when = '';
+    try { when = (JSON.parse(fs.readFileSync(file, 'utf8')).generatedAt || '').slice(0, 10); } catch (e) {}
+    row[key] = { available: false, reason: `No listing found${when ? ' (last checked ' + when + ')' : ''}` };
+  }
+}
 
 prices.lastUpdated = new Date().toISOString();
 

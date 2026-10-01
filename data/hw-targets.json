@@ -1,5 +1,5 @@
 {
-  "$schema": "{drugName: [url1, url2, url3]} candidate-list pairs (top 3 sitemap matches per drug, in score order). Browser phase tries each until one returns product data — handles HW soft-404 catchall on retired SKUs.",
+  "$schema": "{drugName: [url1, url2, url3]} candidate-list pairs (top 3 sitemap matches per drug, in score order). Browser phase tries each until one returns product data \u2014 handles HW soft-404 catchall on retired SKUs.",
   "generatedAt": "2026-04-30T06:11:29.023Z",
   "targets": {
     "Fluoxetine": [
@@ -23,8 +23,8 @@
       "https://www.healthwarehouse.com/escitalopram-oxalate-20-mg-tablets"
     ],
     "Fluvoxamine": [
-      "https://www.healthwarehouse.com/fluvoxamine-150mg-tablets",
-      "https://www.healthwarehouse.com/fluvoxamine-50mg-tablets"
+      "https://www.healthwarehouse.com/fluvoxamine-50mg-tablets",
+      "https://www.healthwarehouse.com/fluvoxamine-150mg-tablets"
     ],
     "Vilazodone": [
       "https://www.healthwarehouse.com/vilazodone-hcl-40mg-tablet"
@@ -56,6 +56,7 @@
       "https://www.healthwarehouse.com/wholesale-trazodone-50mg-tablets-100-count-bottle"
     ],
     "Amitriptyline": [
+      "https://www.healthwarehouse.com/amitriptyline-25mg-tablets-1",
       "https://www.healthwarehouse.com/perphenazine-amitriptyline-2-25mg-tablets",
       "https://www.healthwarehouse.com/amitriptyline-25mg-tablets",
       "https://www.healthwarehouse.com/amitriptyline-25mg-tablet"
@@ -238,6 +239,27 @@
       "https://www.healthwarehouse.com/pregabalin-generic-lyrica-75mg-capsules",
       "https://www.healthwarehouse.com/lyrica-pregabalin-75mg-capsules",
       "https://www.healthwarehouse.com/pregabalin-generic-lyrica-75mg-capsules-greenstone"
+    ],
+    "Vortioxetine": [
+      "https://www.healthwarehouse.com/trintellix-10mg-tabs"
+    ],
+    "Clozapine": [
+      "https://www.healthwarehouse.com/clozapine-100mg-tablets"
+    ],
+    "Cariprazine": [
+      "https://www.healthwarehouse.com/vraylar-1-5mg-capsules-30-count-bottle"
+    ],
+    "Valproate": [
+      "https://www.healthwarehouse.com/divalproex-500mg-dr-tablets"
+    ],
+    "Clonidine": [
+      "https://www.healthwarehouse.com/clonidine-0-1mg-tablets"
+    ],
+    "Atomoxetine": [
+      "https://www.healthwarehouse.com/atomoxetine-hcl-40mg-capsules"
+    ],
+    "Naltrexone": [
+      "https://www.healthwarehouse.com/naltrexone-50mg-tablets"
     ]
   }
 }

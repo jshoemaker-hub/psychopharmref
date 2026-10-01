@@ -4,11 +4,12 @@
   "results": {
     "Fluvoxamine": {
       "available": true,
-      "price": 105.3,
-      "url": "https://www.healthwarehouse.com/fluvoxamine-150mg-tablets",
-      "strategy": "next-priceTiers-slug",
+      "price": 15.3,
+      "url": "https://www.healthwarehouse.com/fluvoxamine-50mg-tablets",
+      "strategy": "manual-verified (product page, 30-count tier)",
       "packSize": 30,
-      "unitPrice": 3.51
+      "unitPrice": 0.51,
+      "asOf": "2026-10-01"
     },
     "Fluoxetine": {
       "available": true,
@@ -108,11 +109,12 @@
     },
     "Amitriptyline": {
       "available": true,
-      "price": 56.1,
-      "url": "https://www.healthwarehouse.com/perphenazine-amitriptyline-2-25mg-tablets",
-      "strategy": "next-priceTiers-slug",
+      "price": 12.3,
+      "url": "https://www.healthwarehouse.com/amitriptyline-25mg-tablets-1",
+      "strategy": "manual-verified (product page, 30-count tier)",
       "packSize": 30,
-      "unitPrice": 1.87
+      "unitPrice": 0.41,
+      "asOf": "2026-10-01"
     },
     "Haloperidol": {
       "available": true,
@@ -481,6 +483,51 @@
       "strategy": "next-priceTiers-slug",
       "packSize": 30,
       "unitPrice": 0.4
+    },
+    "Clozapine": {
+      "available": true,
+      "price": 60.0,
+      "url": "https://www.healthwarehouse.com/clozapine-100mg-tablets",
+      "strategy": "manual-verified (product page, 30-count tier)",
+      "packSize": 30,
+      "unitPrice": 2.0,
+      "asOf": "2026-10-01"
+    },
+    "Valproate": {
+      "available": true,
+      "price": 15.3,
+      "url": "https://www.healthwarehouse.com/divalproex-500mg-dr-tablets",
+      "strategy": "manual-verified (product page, 30-count tier)",
+      "packSize": 30,
+      "unitPrice": 0.51,
+      "asOf": "2026-10-01"
+    },
+    "Clonidine": {
+      "available": true,
+      "price": 9.9,
+      "url": "https://www.healthwarehouse.com/clonidine-0-1mg-tablets",
+      "strategy": "manual-verified (product page, 30-count tier)",
+      "packSize": 30,
+      "unitPrice": 0.33,
+      "asOf": "2026-10-01"
+    },
+    "Vortioxetine": {
+      "available": true,
+      "price": 597.9,
+      "url": "https://www.healthwarehouse.com/trintellix-10mg-tabs",
+      "strategy": "manual-verified (product page, 30-count tier)",
+      "packSize": 30,
+      "unitPrice": 19.93,
+      "asOf": "2026-10-01"
+    },
+    "Cariprazine": {
+      "available": true,
+      "price": 1645.53,
+      "url": "https://www.healthwarehouse.com/vraylar-1-5mg-capsules-30-count-bottle",
+      "strategy": "manual-verified (product page, 30-count tier)",
+      "packSize": 30,
+      "unitPrice": 54.851,
+      "asOf": "2026-10-01"
     }
   }
 }

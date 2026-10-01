@@ -4548,12 +4548,17 @@ function initMedTaper() {
 
     if (lastUpdEl) {
       // Show when each source was actually scraped, not just when the file was written
-      const asOfBy = key => {
+      const asOfRange = key => {
         const ds = Object.values(pricesData.prices || {}).map(e => e && e[key] && e[key].available && e[key].asOf).filter(Boolean).sort();
-        return ds.length ? ds[ds.length - 1] : null;
+        return ds.length ? [ds[0], ds[ds.length - 1]] : null;
       };
+      const short = d => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
       const parts = [['NADAC', 'NADAC'], ['CostPlusDrugs', 'Cost Plus'], ['HealthWarehouse', 'HealthWarehouse']]
-        .map(([k, label]) => { const d = asOfBy(k); return d ? `${label} ${fmtRelativeDate(d)}` : null; })
+        .map(([k, label]) => {
+          const r = asOfRange(k);
+          if (!r) return null;
+          return r[0] === r[1] ? `${label} ${fmtRelativeDate(r[1])}` : `${label} ${short(r[0])}–${short(r[1])}`;
+        })
         .filter(Boolean);
       lastUpdEl.textContent = parts.length ? parts.join(' · ') : fmtRelativeDate(pricesData.lastUpdated);
     }
@@ -4625,10 +4630,12 @@ function initMedTaper() {
           if (!p) return `<td class="pc-cell pc-cell-empty${wholesaleCls}">&mdash;</td>`;
           if (p.available === false) {
             const reason = p.reason || `Not available at ${s.displayName}`;
-            const label = /^Not sold/i.test(reason) ? 'Not sold<br><small>(controlled)</small>'
-              : /^(No NADAC|OTC)/i.test(reason) ? 'No listing'
-              : 'N/A';
-            return `<td class="pc-cell pc-cell-na${wholesaleCls}" title="${reason.replace(/"/g, '&quot;')}">${label}</td>`;
+            // Show the reason itself (short form); full text on hover
+            const esc = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+            const short = /^Not sold \(controlled\)/i.test(reason) ? 'Not sold (controlled)'
+              : /^No NADAC/i.test(reason) ? 'No NADAC listing'
+              : reason.replace(/^Excluded:\s*/i, 'Excluded: ').replace(/\s*\(.*$/, '').replace(/\s+—.*$/, '');
+            return `<td class="pc-cell pc-cell-na${wholesaleCls}" title="${esc(reason)}"><small style="color:var(--text-muted);line-height:1.3;display:inline-block">${esc(short)}</small></td>`;
           }
           if (typeof p.price !== 'number') return `<td class="pc-cell pc-cell-empty${wholesaleCls}">&mdash;</td>`;
           const isBest = !s.excludeFromBest && p.price === bestPrice && numericPrices.length > 1;
