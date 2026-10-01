@@ -1807,7 +1807,8 @@ function renderPieChart(drug) {
   if (!drug.receptorKi) {
     container.classList.add('hidden');
     noData.classList.remove('hidden');
-    noData.innerHTML = `<strong>${drug.name}</strong> — ${drug.mechanism || 'No receptor binding data available for this medication.'}`;
+    noData.innerHTML = `<strong>${drug.name}</strong> — ${drug.mechanism || 'No receptor binding data available for this medication.'}`
+      + (drug.receptorNote ? `<div class="ki-note" style="margin-top:8px;font-size:13px;color:var(--text-muted)">${drug.receptorNote}</div>` : '');
     return;
   }
 
@@ -1826,14 +1827,18 @@ function renderPieChart(drug) {
   document.getElementById('pie-drug-info').innerHTML = `
     <h3>${drug.name} <span style="font-weight:400;font-size:16px;color:var(--text-muted)">(${drug.brandName})</span></h3>
     <p>${classBadge(drug.class)} &bull; Relative receptor affinity (1/Ki normalized). Only receptors with Ki &lt; 5000 nM shown.</p>
+    ${drug.receptorNote ? `<p class="ki-note" style="font-size:13px;color:var(--text-muted);margin:4px 0 0">&#9432; ${drug.receptorNote}</p>` : ''}
+    <p class="ki-footnote" style="font-size:12px;color:var(--text-muted);margin:4px 0 0">Ki values vary 2–5&times; between studies; displayed values are representative human-receptor data (FDA labels where available). 10,000 nM = no meaningful binding.</p>
   `;
 
   // Ki table
   const allReceptors = Object.keys(drug.receptorKi).sort((a, b) => drug.receptorKi[a] - drug.receptorKi[b]);
   document.getElementById('ki-tbody').innerHTML = allReceptors.map(r => {
     const ki = drug.receptorKi[r];
-    const pkiVal = ki < 10000 ? (-Math.log10(ki)).toFixed(2) : null;
-    const barW = ki < 10000 ? Math.min(100, ((-Math.log10(ki)) / 11) * 100) : 0;
+    // pKi = -log10(Ki in M) = 9 - log10(Ki in nM)
+    const pkiNum = ki < 10000 ? 9 - Math.log10(ki) : null;
+    const pkiVal = pkiNum != null ? pkiNum.toFixed(2) : null;
+    const barW = pkiNum != null ? Math.max(0, Math.min(100, (pkiNum / 11) * 100)) : 0;
     const color = getColor(r);
     const actBadge = ki < 10000 ? actionBadge(drug.id, r) : '<span style="color:var(--text-muted)">—</span>';
     return `<tr>

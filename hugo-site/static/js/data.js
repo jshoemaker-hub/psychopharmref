@@ -1145,7 +1145,7 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 27,
     receptorKi: {
-      SERT: 7.5, NET: 2480, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000,
+      SERT: 82, NET: 2480, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000,
       D2: 10000, H1: 10000, alpha1: 10000, M1: 10000
     },
     indications: [
@@ -1396,7 +1396,7 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 84,
     receptorKi: {
-      SERT: 10000, NET: 52, DAT: 526, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000,
+      SERT: 10000, NET: 10000, DAT: 526, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000,
       D2: 4550, H1: 6700, alpha1: 10000, M1: 10000
     },
     indications: [
@@ -1458,7 +1458,7 @@ const MEDICATIONS = [
     qtInterval: true,
     proteinBinding: 92,
     receptorKi: {
-      SERT: 160, NET: 8300, DAT: 10000, '5HT1A': 14, '5HT2A': 36, '5HT2C': 230,
+      SERT: 160, NET: 8300, DAT: 10000, '5HT1A': 100, '5HT2A': 36, '5HT2C': 230,
       D2: 2500, H1: 220, alpha1: 18, alpha2: 10000, M1: 10000
     },
     indications: [
@@ -1586,7 +1586,7 @@ const MEDICATIONS = [
     proteinBinding: 99,
     receptorKi: {
       SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 820, '5HT2A': 8, '5HT2C': 29,
-      D1: 12, D2: 1, D3: 10000, H1: 10, alpha1: 7, M1: 10000
+      D1: 12, D2: 1, D3: 1, H1: 10, alpha1: 7, M1: 10000
     },
     indications: [
       { use: 'Schizophrenia', year: 1959 },
@@ -1619,7 +1619,8 @@ const MEDICATIONS = [
     proteinBinding: 88,
     receptorKi: {
       SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 210, '5HT2A': 0.16, '5HT2C': 25,
-      D1: 10000, D2: 3.6, D3: 10, H1: 41, alpha1: 2.1, alpha2: 10, M1: 10000
+      D1: 400, D2: 3.6, D3: 10, H1: 41, alpha1: 2.1, alpha2: 10,
+      M1: 10000
     },
     indications: [
       { use: 'Schizophrenia', year: 1993 },
@@ -1652,8 +1653,10 @@ const MEDICATIONS = [
     proteinBinding: 93,
     receptorKi: {
       SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 4400, '5HT2A': 4, '5HT2C': 11,
-      D1: 32, D2: 11, D3: 49, H1: 7, alpha1: 19, alpha2: 10000, M1: 1.9
+      D1: 32, D2: 11, D3: 49, H1: 7, alpha1: 19, alpha2: 230,
+      M1: 73
     },
+    receptorNote: 'Muscarinic M1–M5 Ki 73, 96, 132, 32, 48 nM (human cloned receptors, label §12.2); older rat-tissue values (~2 nM) overstated muscarinic affinity.',
     indications: [
       { use: 'Schizophrenia', year: 1996 },
       { use: 'Bipolar Mania', year: 2000, dx: 'Bipolar I', phase: 'Acute manic or mixed episodes', line: 'Monotherapy or adjunct to lithium/valproate', age: 'Adults & 13-17 yr' },
@@ -1687,8 +1690,10 @@ const MEDICATIONS = [
     proteinBinding: 83,
     receptorKi: {
       SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 5300, '5HT2A': 22, '5HT2C': 220,
-      D1: 10000, D2: 170, D3: 10000, H1: 30, alpha1: 94, alpha2: 10000, M1: 10000
+      D1: 10000, D2: 170, D3: 340, H1: 30, alpha1: 94, alpha2: 10000,
+      M1: 300
     },
+    receptorNote: 'Parent quetiapine has modest muscarinic affinity; the active metabolite norquetiapine binds M1 more strongly (Ki ~39 nM) and inhibits NET, which explains anticholinergic and antidepressant effects.',
     indications: [
       { use: 'Schizophrenia', year: 1997 },
       { use: 'Bipolar Mania', year: 2004, dx: 'Bipolar I', phase: 'Acute manic episodes', line: 'Monotherapy or adjunct to lithium/valproate', age: 'Adults & 10-17 yr' },
@@ -1721,7 +1726,8 @@ const MEDICATIONS = [
     proteinBinding: 99,
     receptorKi: {
       SERT: 98, NET: 10000, DAT: 10000, '5HT1A': 5.1, '5HT2A': 3.4, '5HT2C': 15,
-      D1: 265, D2: 0.34, D3: 0.8, H1: 61, alpha1: 57, alpha2: 10000, M1: 10000
+      D1: 265, D2: 0.34, D3: 0.8, H1: 61, alpha1: 57, alpha2: 75,
+      M1: 10000
     },
     indications: [
       { use: 'Schizophrenia', year: 2002 },
@@ -1756,7 +1762,8 @@ const MEDICATIONS = [
     proteinBinding: 97,
     receptorKi: {
       SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 195, '5HT2A': 5.4, '5HT2C': 8.9,
-      D1: 141, D2: 157, D3: 180, H1: 6.2, alpha1: 7, alpha2: 10000, M1: 2.8
+      D1: 141, D2: 157, D3: 180, H1: 6.2, alpha1: 7, alpha2: 100,
+      M1: 2.8
     },
     indications: [
       { use: 'Treatment-Resistant Schizophrenia', year: 1989 },
@@ -1786,8 +1793,9 @@ const MEDICATIONS = [
     qtInterval: true,
     proteinBinding: 99,
     receptorKi: {
-      SERT: 2.5, NET: 160, DAT: 10000, '5HT1A': 3.4, '5HT2A': 0.4, '5HT2C': 1.3,
-      D1: 10000, D2: 4.8, D3: 7.2, H1: 47, alpha1: 10, alpha2: 10000, M1: 10000
+      SERT: 53, NET: 48, DAT: 10000, '5HT1A': 3.4, '5HT2A': 0.4, '5HT2C': 1.3,
+      D1: 525, D2: 4.8, D3: 7.2, H1: 47, alpha1: 10, alpha2: 10000,
+      M1: 10000
     },
     indications: [
       { use: 'Schizophrenia', year: 2001 },
@@ -1851,7 +1859,8 @@ const MEDICATIONS = [
     proteinBinding: 95,
     receptorKi: {
       SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 2.5, '5HT2A': 0.07, '5HT2C': 0.03,
-      D1: 10000, D2: 1.3, D3: 0.42, H1: 1.0, alpha1: 1.2, alpha2: 1.2, M1: 10000
+      D1: 1.4, D2: 1.3, D3: 0.42, H1: 1, alpha1: 1.2, alpha2: 1.2,
+      M1: 10000
     },
     indications: [
       { use: 'Schizophrenia', year: 2009 },
@@ -2172,7 +2181,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with caution' },
     qtInterval: false,
     proteinBinding: 22,
-    receptorKi: { SERT: 11, NET: 10, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, D2: 10000, H1: 10000, alpha1: 10000, M1: 10000 },
+    receptorKi: {
+      SERT: 11, NET: 91, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, D2: 10000,
+      H1: 10000, alpha1: 10000, M1: 10000
+    },
     indications: [
       { use: 'Major Depressive Disorder', year: 2013 },
     ]
@@ -2487,7 +2499,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: true, notes: 'High EPS and QT risk; use with great caution' },
     qtInterval: true,
     proteinBinding: 99,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 1.0, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
+    receptorKi: {
+      SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 30, '5HT2C': 10000,
+      D2: 1, D3: 1, H1: 10000, alpha1: 40, alpha2: 10000, M1: 10000
+    },
     mechanism: 'D2 receptor antagonist; also a calcium channel blocker (cardiac Na/K/Ca channels); FDA approved for Tourette syndrome; significant QT prolongation risk — requires ECG monitoring; many drug interactions via CYP3A4',
     indications: [
       { use: "Tourette's Syndrome", year: 1984 },
@@ -2542,7 +2557,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: true, notes: 'High EPS/sedation risk' },
     qtInterval: true,
     proteinBinding: 97,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 2, '5HT2C': 10000, D2: 10, H1: 4, alpha1: 14, alpha2: 10000, M1: 200 },
+    receptorKi: {
+      SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 2, '5HT2C': 12,
+      D2: 10, H1: 4, alpha1: 14, alpha2: 10000, M1: 200
+    },
     indications: [
       { use: 'Schizophrenia', year: 1975 },
       { use: 'Acute Agitation in Schizophrenia/Bipolar (inhaled)', year: 2012 },
@@ -2599,7 +2617,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: true, notes: 'Renal function decreases with age; dose-adjust accordingly' },
     qtInterval: true,
     proteinBinding: 74,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 0.5, '5HT2C': 10000, D2: 2.0, D3: 10, H1: 6, alpha1: 1.0, alpha2: 10000, M1: 10000 },
+    receptorKi: {
+      SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 0.5, '5HT2C': 10000,
+      D2: 2, D3: 10, H1: 6, alpha1: 1, alpha2: 10, M1: 10000
+    },
     indications: [
       { use: 'Schizophrenia', year: 2006 },
       { use: 'Schizoaffective Disorder', year: 2009 },
@@ -2627,7 +2648,11 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with caution; orthostatic hypotension and QT risks increase with age.' },
     qtInterval: true,
     proteinBinding: 95,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 0.3, '5HT2C': 10000, D2: 7, D3: 10, H1: 40, alpha1: 0.4, alpha2: 10000, M1: 10000 },
+    receptorKi: {
+      SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 168, '5HT2A': 5.6, '5HT2C': 10000,
+      D1: 216, D2: 6.3, D3: 7.1, H1: 437, alpha1: 0.36, alpha2: 10000,
+      M1: 10000
+    },
     indications: [
       { use: 'Schizophrenia', year: 2009 },
       { use: 'Bipolar Mania', year: 2024, dx: 'Bipolar I', phase: 'Acute manic or mixed episodes', line: 'Monotherapy', age: 'Adults' },
@@ -2714,7 +2739,11 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with caution; approved for bipolar depression in adults. Monitor for sedation and orthostasis.' },
     qtInterval: false,
     proteinBinding: 97,
-    receptorKi: { SERT: 62, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 0.54, '5HT2C': 10000, D2: 32, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
+    receptorKi: {
+      SERT: 33, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 0.54, '5HT2C': 10000,
+      D1: 41, D2: 32, D3: 10000, H1: 10000, alpha1: 73, alpha2: 10000,
+      M1: 10000
+    },
     indications: [
       { use: 'Schizophrenia', year: 2019 },
       { use: 'Bipolar Depression', year: 2021, dx: 'Bipolar I or II', phase: 'Depressive episodes', line: 'Monotherapy or adjunct to lithium/valproate', age: 'Adults' },
@@ -3185,7 +3214,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Good option; no abuse potential' },
     qtInterval: false,
     proteinBinding: 86,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 40, '5HT2A': 10000, '5HT2C': 10000, D2: 190, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
+    receptorKi: {
+      SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 40, '5HT2A': 10000, '5HT2C': 10000,
+      D2: 190, D3: 98, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000
+    },
     indications: [
       { use: 'Generalized Anxiety Disorder', year: 1986 },
     ]
@@ -3277,7 +3309,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Monitor blood pressure carefully' },
     qtInterval: false,
     proteinBinding: 30,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 50, alpha2: 0.5, M1: 10000 },
+    receptorKi: {
+      SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000,
+      D2: 10000, D3: 10000, H1: 10000, alpha1: 500, alpha2: 0.5, M1: 10000
+    },
     indications: [
       { use: 'Hypertension', year: 1974 },
       { use: 'ADHD (Kapvay ER)', year: 2010 },
@@ -3421,8 +3456,12 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with extreme caution; significant cardiovascular risks in elderly. Not well studied.' },
     qtInterval: false,
     proteinBinding: 25,
-    receptorKi: { SERT: 100, NET: 20, DAT: 10, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
+    receptorKi: {
+      SERT: 10000, NET: 70, DAT: 600, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000,
+      D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000
+    },
     mechanism: 'Monoamine releasing agent: reverses DAT/NET/SERT to release dopamine, norepinephrine, serotonin into synapse; also displaces vesicular storage via VMAT2; weak MAO inhibitor; approved for ADHD and narcolepsy; urine pH affects clearance (acidic → faster elimination)',
+    receptorNote: 'Amphetamine is a transporter substrate and releaser (reverses DAT/NET via VMAT2/TAAR1), so binding Ki understates its effect on dopamine and norepinephrine release.',
     indications: [
       { use: 'ADHD', year: 1996 },
       { use: 'Narcolepsy', year: 1996 },
@@ -3450,7 +3489,11 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with extreme caution; cardiovascular risk. Not well studied in elderly.' },
     qtInterval: false,
     proteinBinding: 20,
-    receptorKi: { SERT: 100, NET: 18, DAT: 8, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
+    receptorKi: {
+      SERT: 10000, NET: 70, DAT: 600, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000,
+      D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000
+    },
+    receptorNote: 'Amphetamine is a transporter substrate and releaser (reverses DAT/NET via VMAT2/TAAR1), so binding Ki understates its effect on dopamine and norepinephrine release.',
     indications: [
       { use: 'ADHD', year: 1937 },
       { use: 'Narcolepsy', year: 1937 },
@@ -3478,8 +3521,12 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with extreme caution; cardiovascular monitoring essential. Not studied in elderly.' },
     qtInterval: false,
     proteinBinding: 98,
-    receptorKi: { SERT: 100, NET: 18, DAT: 8, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
+    receptorKi: {
+      SERT: 10000, NET: 70, DAT: 600, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000,
+      D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000
+    },
     mechanism: 'Prodrug of d-amphetamine; cleaved in RBCs by peptidases; abuse-deterrent formulation (oral route-specific activation); same pharmacology as dextroamphetamine once cleaved; also FDA-approved for binge eating disorder',
+    receptorNote: 'Amphetamine is a transporter substrate and releaser (reverses DAT/NET via VMAT2/TAAR1), so binding Ki understates its effect on dopamine and norepinephrine release.',
     indications: [
       { use: 'ADHD', year: 2007 },
       { use: 'Moderate-to-Severe Binge Eating Disorder', year: 2015 },
@@ -3567,7 +3614,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with caution; monitor cardiovascular effects. Limited geriatric data.' },
     qtInterval: false,
     proteinBinding: 13,
-    receptorKi: { SERT: 10000, NET: 21, DAT: 53, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000 },
+    receptorKi: {
+      SERT: 10000, NET: 3700, DAT: 14200, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000,
+      D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000
+    },
     indications: [
       { use: 'Excessive Daytime Sleepiness with Narcolepsy', year: 2019 },
       { use: 'Excessive Daytime Sleepiness with OSA', year: 2019 },
@@ -3626,7 +3676,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List); very high anticholinergic burden; confusion/delirium risk' },
     qtInterval: false,
     proteinBinding: 82,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000, D2: 10000, H1: 1.0, alpha1: 10000, alpha2: 10000, M1: 15 },
+    receptorKi: {
+      SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000,
+      D2: 10000, H1: 15, alpha1: 10000, alpha2: 10000, M1: 80
+    },
     indications: [
       { use: 'Allergic Conditions / Urticaria', year: 1946 },
       { use: 'Motion Sickness', year: 1946 },
@@ -3696,6 +3749,7 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 95,
     receptorKi: null,
+    receptorNote: 'Xanomeline is a muscarinic AGONIST (M1–M5 Ki 10, 12, 17, 7, 22 nM; preferential M1/M4 agonist activity), so its binding is not charted as anticholinergic. Trospium is a peripherally restricted muscarinic antagonist (no label Ki).',
     indications: [
       { use: 'Schizophrenia', year: 2024, age: 'Adults' },
     ],
@@ -3734,7 +3788,12 @@ const MEDICATIONS = [
     geriatricDosing: { modified: true, notes: 'Consider 5 mg/10 mg start; increased mortality in dementia' },
     qtInterval: false,
     proteinBinding: 93,
-    receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 4400, '5HT2A': 4, '5HT2C': 11, D1: 32, D2: 11, D3: 49, H1: 7, alpha1: 19, alpha2: 10000, M1: 1.9 },
+    receptorKi: {
+      SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 4400, '5HT2A': 4, '5HT2C': 11,
+      D1: 32, D2: 11, D3: 49, H1: 7, alpha1: 19, alpha2: 230,
+      M1: 73
+    },
+    receptorNote: 'Olanzapine values shown. Samidorphan binds opioid receptors: mu 0.052 nM (antagonist), kappa 0.23 nM, delta 2.7 nM (partial agonist) — label §12.2. Olanzapine M1–M5 Ki 73, 96, 132, 32, 48 nM.',
     indications: [
       { use: 'Schizophrenia', year: 2021, age: 'Adults' },
       {
@@ -3777,7 +3836,10 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'No adjustment; caution for falls with nighttime awakening' },
     qtInterval: false,
     proteinBinding: 94,
-    receptorKi: null,
+    receptorKi: {
+      OX1R: 6.1, OX2R: 2.6
+    },
+    receptorNote: 'OX1R/OX2R values are IC50s from the Dayvigo label (Ki not reported). Active metabolite M10: OX1R 4.2 nM, OX2R 2.9 nM.',
     indications: [
       { use: 'Insomnia (sleep onset and maintenance)', year: 2019, age: 'Adults' },
     ],
@@ -3811,7 +3873,9 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'No adjustment; caution for falls with nighttime awakening' },
     qtInterval: false,
     proteinBinding: 99.7,
-    receptorKi: null,
+    receptorKi: {
+      OX1R: 0.47, OX2R: 0.93
+    },
     indications: [
       { use: 'Insomnia (sleep onset and maintenance)', year: 2022, age: 'Adults' },
     ],
@@ -3846,6 +3910,7 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 98,
     receptorKi: null,
+    receptorNote: 'Selective NET inhibitor; binding values not yet added (literature Ki pending verification).',
     indications: [
       { use: 'ADHD', year: 2002, age: 'Adults & ≥6 yr' },
     ],
@@ -3885,6 +3950,7 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 79,
     receptorKi: null,
+    receptorNote: 'NET inhibitor with 5-HT2B antagonist and 5-HT2C agonist activity; binding values not yet added (pending verification).',
     indications: [
       { use: 'ADHD', year: 2021, age: 'Adults & ≥6 yr', line: 'Children 6–17 (2021); adults (2022)' },
     ],
@@ -3919,6 +3985,7 @@ const MEDICATIONS = [
     qtInterval: true,
     proteinBinding: 99,
     receptorKi: null,
+    receptorNote: 'VMAT2 inhibitor: valbenazine Ki ~150 nM; active metabolite [+]-α-HTBZ Ki ~3 nM. No appreciable binding (Ki >5,000 nM) at dopamine (incl. D2), serotonin, adrenergic, histamine, or muscarinic receptors (label §12.2).',
     indications: [
       { use: 'Tardive Dyskinesia', year: 2017, age: 'Adults' },
       { use: 'Huntington\'s Disease Chorea', year: 2023, age: 'Adults' },
@@ -3954,6 +4021,7 @@ const MEDICATIONS = [
     qtInterval: true,
     proteinBinding: 82,
     receptorKi: null,
+    receptorNote: 'Reversible VMAT2 inhibitor via active metabolites (α- and β-HTBZ); not charted because VMAT2 is not one of the displayed targets.',
     indications: [
       { use: 'Huntington\'s Disease Chorea', year: 2017, age: 'Adults' },
       { use: 'Tardive Dyskinesia', year: 2017, age: 'Adults' },
@@ -3989,6 +4057,7 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 21,
     receptorKi: null,
+    receptorNote: 'Opioid receptor antagonist (mu > kappa > delta); not charted because opioid receptors are not among the displayed targets.',
     indications: [
       { use: 'Alcohol Use Disorder', year: 1994, line: 'Oral (1994); Vivitrol IM (2006)', age: 'Adults' },
       { use: 'Opioid Use Disorder (relapse prevention after detoxification)', year: 1984, line: 'Oral (1984); Vivitrol IM (2010)', age: 'Adults' },
@@ -4027,6 +4096,7 @@ const MEDICATIONS = [
     qtInterval: false,
     proteinBinding: 96,
     receptorKi: null,
+    receptorNote: 'High-affinity partial mu-opioid agonist and kappa antagonist; not charted because opioid receptors are not among the displayed targets.',
     indications: [
       { use: 'Opioid Use Disorder', year: 2002, line: 'SL ± naloxone (2002); Sublocade (2017); Brixadi (2023)', age: 'Adults' },
     ],
