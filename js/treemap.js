@@ -93,7 +93,8 @@
           var activeRec = activeReceptors;
 
           if (!meds.length) {
-            container.innerHTML = '<div style="padding:40px;text-align:center;color:#999;">No receptor data for this class.</div>';
+            var note = (typeof CLASS_MECH_NOTE !== 'undefined' && CLASS_MECH_NOTE[cls]) ? '<div style="margin-top:8px;font-size:13px;line-height:1.6">' + CLASS_MECH_NOTE[cls] + '</div>' : '';
+            container.innerHTML = '<div style="padding:40px;text-align:center;color:#999;">No receptor data for this class.' + note + '</div>';
             return;
           }
 

@@ -1950,7 +1950,16 @@ function sortReceptorsByClassActivity(meds, receptors) {
 const CLASS_MECH_NOTE = {
   'Gabapentinoid': 'Gabapentin and pregabalin bind the α2δ auxiliary subunit of voltage-gated calcium channels — not classic neurotransmitter receptors. No receptor-affinity (Ki) data applies, so this class has no heat-map columns.',
   'Neuroactive Steroid': 'Brexanolone and zuranolone are positive allosteric modulators at synaptic and extrasynaptic GABA-A receptors. Their action is functional modulation rather than competitive (orthosteric) binding, so no receptor Ki values are represented here.',
-  'NMDA Antagonist': 'Esketamine is an uncompetitive NMDA-receptor channel blocker, with additional σ-1 and μ/κ-opioid activity. These targets are not part of the monoamine Ki panel, so no heat-map columns apply.'
+  'NMDA Antagonist': 'Esketamine is an uncompetitive NMDA-receptor channel blocker, with additional σ-1 and μ/κ-opioid activity. These targets are not part of the monoamine Ki panel, so no heat-map columns apply.',
+  'MAOI': 'Phenelzine and tranylcypromine irreversibly inhibit monoamine oxidase A and B (an enzyme, not a receptor), raising synaptic serotonin, norepinephrine, and dopamine. No receptor-affinity (Ki) data applies.',
+  'Mood Stabilizer': 'This class acts on ion channels, second-messenger enzymes (e.g., GSK-3, inositol monophosphatase), and GABA/glutamate signaling rather than the monoamine receptors in this panel, so no Ki values are charted.',
+  'Beta Blocker': 'Propranolol blocks β1/β2-adrenergic receptors; β-receptors are not part of this panel, so no Ki values are charted.',
+  'Combination': 'Auvelity: dextromethorphan is an NMDA-receptor antagonist and σ-1 agonist; bupropion inhibits NET/DAT and CYP2D6 (raising dextromethorphan levels). See bupropion (NDRI) for its transporter Ki values.',
+  'Muscarinic Agonist': 'Cobenfy: xanomeline is an M1/M4-preferring muscarinic AGONIST (M1–M5 Ki 10, 12, 17, 7, 22 nM); trospium is a peripherally restricted muscarinic antagonist. Agonist binding is not charted so it is not mistaken for anticholinergic activity.',
+  'NRI': 'Atomoxetine and viloxazine are norepinephrine reuptake inhibitors (viloxazine also has 5-HT2B antagonist / 5-HT2C agonist activity). Their binding values are pending source verification and are not yet charted.',
+  'VMAT2 Inhibitor': 'Valbenazine and deutetrabenazine inhibit the vesicular monoamine transporter 2 (VMAT2), which is not in this panel. Valbenazine Ki ~150 nM (active metabolite [+]-α-HTBZ ~3 nM), with no appreciable binding at D2, 5-HT, adrenergic, H1, or muscarinic receptors.',
+  'Opioid Antagonist': 'Naltrexone is a competitive mu-opioid (and kappa/delta) receptor antagonist; opioid receptors are not part of this panel.',
+  'Partial Opioid Agonist': 'Buprenorphine is a high-affinity partial mu-opioid agonist and kappa antagonist; opioid receptors are not part of this panel.',
 };
 
 function renderBarChart() {
@@ -1959,9 +1968,30 @@ function renderBarChart() {
   const receptors = sortReceptorsByClassActivity(
     meds, RECEPTOR_LIST.filter(r => activeReceptors.has(r)));
 
-  if (!meds.length || !receptors.length) return;
+  // Classes with no Ki data: clear the old chart and explain instead of leaving it stale.
+  const barCanvas = document.getElementById('bar-chart');
+  let barEmpty = document.getElementById('bar-chart-empty');
+  if (!barEmpty && barCanvas) {
+    barEmpty = document.createElement('div');
+    barEmpty.id = 'bar-chart-empty';
+    barEmpty.style.cssText = 'display:none;padding:18px 20px;color:#6b6050;line-height:1.6;font-size:13px';
+    barCanvas.parentNode.insertBefore(barEmpty, barCanvas);
+  }
+  if (!meds.length) {
+    if (barChartInst) { barChartInst.destroy(); barChartInst = null; }
+    if (barCanvas) barCanvas.style.display = 'none';
+    if (barEmpty) {
+      const note = CLASS_MECH_NOTE[cls];
+      barEmpty.innerHTML = '<strong>No receptor-affinity data for this class.</strong>' + (note ? '<br>' + note : '');
+      barEmpty.style.display = '';
+    }
+    return;
+  }
+  if (barCanvas) barCanvas.style.display = '';
+  if (barEmpty) barEmpty.style.display = 'none';
+  if (!receptors.length) return;
 
-  const ctx = document.getElementById('bar-chart').getContext('2d');
+  const ctx = barCanvas.getContext('2d');
   if (barChartInst) { barChartInst.destroy(); barChartInst = null; }
 
   barChartInst = new Chart(ctx, {
