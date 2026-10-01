@@ -924,7 +924,7 @@ const MEDICATIONS = [
     tmax: 6,
     p450: {
       substrate: ['CYP2D6','CYP2C9'],
-      inhibits: { 'CYP2D6': 'strong', 'CYP2C9': 'moderate', 'CYP2C19': 'moderate', 'CYP3A4': 'weak' },
+      inhibits: { 'CYP2D6': 'strong', 'CYP2C9': 'moderate', 'CYP2C19': 'strong', 'CYP3A4': 'weak' },
       induces: []
     },
     renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required; use with caution in severe renal impairment. Dialysis does not significantly remove fluoxetine.' },
@@ -959,7 +959,7 @@ const MEDICATIONS = [
     halfLife: { drug: '26 hr', metabolites: 'N-desmethylsertraline: ~66 hr (weak)' },
     tmax: 6,
     p450: {
-      substrate: ['CYP2D6','CYP2C19','CYP3A4'],
+      substrate: ['CYP2D6','CYP2C19','CYP3A4','CYP2B6'],
       inhibits: { 'CYP2D6': 'moderate', 'CYP2C19': 'weak' },
       induces: []
     },
@@ -994,7 +994,7 @@ const MEDICATIONS = [
     halfLife: { drug: '27–32 hr', metabolites: 'None significant' },
     tmax: 4,
     p450: {
-      substrate: ['CYP2C19','CYP3A4'],
+      substrate: ['CYP2C19','CYP3A4','CYP2D6'],
       inhibits: { 'CYP2D6': 'weak' },
       induces: []
     },
@@ -1061,7 +1061,7 @@ const MEDICATIONS = [
     halfLife: { drug: '35 hr', metabolites: 'Desmethylcitalopram: weak, ~50 hr' },
     tmax: 4,
     p450: {
-      substrate: ['CYP2C19','CYP3A4'],
+      substrate: ['CYP2C19','CYP3A4','CYP2D6'],
       inhibits: { 'CYP2D6': 'weak' },
       induces: []
     },
@@ -1893,7 +1893,7 @@ const MEDICATIONS = [
     tmax: 3,
     p450: {
       substrate: ['CYP2C9','CYP2C19'],
-      inhibits: { 'CYP2C9': 'moderate', 'CYP2C19': 'weak' },
+      inhibits: { 'CYP2C9': 'moderate', 'CYP2C19': 'weak', 'UGT': 'strong' },
       induces: []
     },
     renalImpairment: { modified: false, moderate: null, severe: null },
@@ -1922,7 +1922,7 @@ const MEDICATIONS = [
     halfLife: { drug: '25–33 hr (monotherapy)', metabolites: 'None significant' },
     tmax: 2.5,
     p450: {
-      substrate: [],
+      substrate: ['UGT'],
       inhibits: {},
       induces: []
     },
@@ -1953,7 +1953,7 @@ const MEDICATIONS = [
     p450: {
       substrate: ['CYP3A4','CYP2C8'],
       inhibits: {},
-      induces: ['CYP1A2','CYP2B6','CYP2C9','CYP2C19','CYP3A4']
+      induces: { 'CYP3A4': 'strong', 'CYP2B6': 'moderate', 'CYP2C9': 'moderate', 'CYP2C19': 'moderate', 'CYP1A2': 'moderate', 'UGT': 'strong' }
     },
     renalImpairment: { modified: false, moderate: null, severe: null },
     hepaticImpairment: { modified: true, notes: 'Use with caution; avoid in severe' },
@@ -2325,7 +2325,7 @@ const MEDICATIONS = [
     tmax: 4,
     p450: {
       substrate: ['CYP2D6', 'CYP2B6'],
-      inhibits: { 'CYP2D6': 'moderate' },
+      inhibits: { 'CYP2D6': 'strong' },
       induces: []
     },
     renalImpairment: { modified: true, moderate: 'Use with caution', severe: null, notes: 'Reduce dose in moderate-severe renal impairment (CrCl <60 mL/min): max 45 mg/105 mg/day. Avoid in ESRD.' },
@@ -2354,8 +2354,8 @@ const MEDICATIONS = [
     halfLife: { drug: '8–24 hr', metabolites: 'Desmethyldoxepin: 33–80 hr' },
     tmax: 3.5,
     p450: {
-      substrate: ['CYP2D6', 'CYP1A2', 'CYP3A4'],
-      inhibits: { 'CYP2D6': 'weak' },
+      substrate: ['CYP2C19','CYP2D6','CYP1A2','CYP2C9'],
+      inhibits: {},
       induces: []
     },
     renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required for low-dose insomnia use; caution at antidepressant doses.' },
@@ -2467,7 +2467,7 @@ const MEDICATIONS = [
     halfLife: { drug: '55 hr', metabolites: 'None significant' },
     tmax: 6,
     p450: {
-      substrate: ['CYP3A4', 'CYP1A2'],
+      substrate: ['CYP3A4','CYP1A2','CYP2D6'],
       inhibits: {},
       induces: []
     },
@@ -2579,7 +2579,7 @@ const MEDICATIONS = [
     halfLife: { drug: '23 hr', metabolites: 'None (primarily renal elimination)' },
     tmax: 24,
     p450: {
-      substrate: ['CYP3A4', 'CYP2D6'],
+      substrate: [],
       inhibits: {},
       induces: []
     },
@@ -2754,7 +2754,7 @@ const MEDICATIONS = [
     p450: {
       substrate: [],
       inhibits: { 'CYP2C19': 'moderate' },
-      induces: ['CYP3A4']
+      induces: { 'CYP3A4': 'weak' }
     },
     renalImpairment: { modified: true, moderate: 'Reduce starting dose by 50% (CrCl <30)', severe: 'Monitor closely', notes: 'Reduce initial dose by 50% if CrCl <30 mL/min; titrate slowly.' },
     hepaticImpairment: { modified: true, notes: 'No adjustment mild-moderate; avoid severe' },
@@ -2782,7 +2782,7 @@ const MEDICATIONS = [
     p450: {
       substrate: ['CYP2C19', 'CYP3A4'],
       inhibits: { 'CYP2C19': 'weak' },
-      induces: ['CYP3A4']
+      induces: { 'CYP3A4': 'weak' }
     },
     renalImpairment: { modified: true, moderate: 'Reduce dose 50% (CrCl <70)', severe: 'Hemodialysis patients supplement dose', notes: 'Reduce dose by approximately 50% in moderate-severe renal impairment (CrCl <70 mL/min).' },
     hepaticImpairment: { modified: true, notes: 'Use with caution' },
@@ -2932,7 +2932,7 @@ const MEDICATIONS = [
     halfLife: { drug: '10–20 hr', metabolites: 'None active (direct glucuronidation)' },
     tmax: 2,
     p450: {
-      substrate: [],
+      substrate: ['UGT'],
       inhibits: {},
       induces: []
     },
@@ -3020,7 +3020,7 @@ const MEDICATIONS = [
     halfLife: { drug: 'Parent very short (prodrug); nordiazepam: 36–200 hr', metabolites: 'Nordiazepam: 36–200 hr' },
     tmax: 1,
     p450: {
-      substrate: [],
+      substrate: ['CYP3A4','CYP2C19'],
       inhibits: {},
       induces: []
     },
@@ -3458,7 +3458,7 @@ const MEDICATIONS = [
     halfLife: { drug: 'Parent: <1 hr; d-amphetamine produced: 10–12 hr', metabolites: 'd-Amphetamine: 10–12 hr' },
     tmax: 3.5,
     p450: {
-      substrate: [],
+      substrate: ['CYP2D6'],
       inhibits: {},
       induces: []
     },
@@ -3489,7 +3489,7 @@ const MEDICATIONS = [
     p450: {
       substrate: ['CYP3A4'],
       inhibits: { 'CYP2C19': 'moderate' },
-      induces: ['CYP3A4', 'CYP1A2']
+      induces: { 'CYP3A4': 'weak', 'CYP1A2': 'weak' }
     },
     renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required in renal impairment; primarily hepatically metabolized.' },
     hepaticImpairment: { modified: true, notes: 'Reduce dose by 50% in severe' },
@@ -3519,7 +3519,7 @@ const MEDICATIONS = [
     p450: {
       substrate: ['CYP3A4'],
       inhibits: { 'CYP2C19': 'moderate' },
-      induces: ['CYP3A4']
+      induces: { 'CYP3A4': 'weak' }
     },
     renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required; primarily hepatically metabolized.' },
     hepaticImpairment: { modified: true, notes: 'Reduce dose by 50% in severe' },
@@ -3577,7 +3577,7 @@ const MEDICATIONS = [
     halfLife: { drug: '20–25 hr', metabolites: 'Cetirizine: 8–10 hr' },
     tmax: 2,
     p450: {
-      substrate: ['CYP2D6'],
+      substrate: ['CYP3A4'],
       inhibits: { 'CYP2D6': 'weak' },
       induces: []
     },
@@ -3635,7 +3635,7 @@ const MEDICATIONS = [
     halfLife: { drug: '3–4 hr', metabolites: 'None significant' },
     tmax: 1.5,
     p450: {
-      substrate: ['CYP2D6'],
+      substrate: [],
       inhibits: {},
       induces: []
     },
@@ -3688,6 +3688,36 @@ const CIRCUIT_CONDITIONS_MAP = {
 
 
 // ─── FDA Safety Data: Black Box Warnings & Common Side Effects ───────────────
+// ── Label-based pharmacokinetic notes the CYP model cannot express ─────────
+// Pair notes fire when both drugs are selected (b may list several ids);
+// drug notes fire whenever that drug is selected. sev: 'high' | 'mod' | 'low'.
+const PK_SPECIAL_INTERACTIONS = {
+  pairs: [
+    { a: 'valproate', b: ['lamotrigine'], sev: 'high', tag: 'UGT',
+      text: 'Valproate inhibits lamotrigine glucuronidation and roughly doubles lamotrigine levels, raising the risk of serious rash (SJS/TEN). Use the valproate titration schedule (about half the usual dose, slower escalation; bipolar target 100 mg/day).' },
+    { a: 'carbamazepine', b: ['lamotrigine'], sev: 'high', tag: 'UGT',
+      text: 'Carbamazepine induces lamotrigine glucuronidation and roughly halves lamotrigine levels. Use the enzyme-inducer titration (bipolar target up to 400 mg/day) and readjust if carbamazepine is stopped.' },
+    { a: 'pimozide', b: ['paroxetine', 'fluoxetine', 'bupropion', 'dextromethorphan-bupropion'], sev: 'high', tag: 'Contraindicated',
+      text: 'Pimozide with paroxetine or other strong CYP2D6 inhibitors is contraindicated (paroxetine raised pimozide AUC 151%); risk of QT prolongation and arrhythmia.' },
+    { a: 'pimozide', b: ['sertraline'], sev: 'high', tag: 'Contraindicated',
+      text: 'Pimozide with sertraline is contraindicated per the pimozide label (raised pimozide exposure; QT risk).' },
+    { a: 'pimozide', b: ['citalopram', 'escitalopram'], sev: 'high', tag: 'Contraindicated',
+      text: 'Citalopram and escitalopram labels contraindicate pimozide (additive QT prolongation).' },
+    { a: 'valproate', b: ['lorazepam'], sev: 'mod', tag: 'UGT',
+      text: 'Valproate inhibits lorazepam glucuronidation and raises lorazepam levels; the lorazepam label advises reducing the lorazepam dose by about 50%.' },
+    { a: 'carbamazepine', b: ['paliperidone'], sev: 'mod', tag: 'P-gp',
+      text: 'Carbamazepine lowered paliperidone exposure about 37% (likely renal P-gp induction, not CYP). Reassess the paliperidone dose when starting or stopping carbamazepine.' }
+  ],
+  drugs: [
+    { id: 'lithium', sev: 'mod', tag: 'Renal',
+      text: 'Lithium levels rise with NSAIDs, ACE inhibitors, ARBs, and thiazide diuretics (reduced renal clearance). Check levels when these are started, stopped, or dose-changed.' },
+    { id: 'clozapine', sev: 'mod', tag: 'Smoking',
+      text: 'Tobacco smoke induces CYP1A2 and lowers clozapine levels; levels can rise sharply within days of quitting (nicotine replacement does not induce). Monitor levels and toxicity when smoking status changes.' },
+    { id: 'olanzapine', sev: 'low', tag: 'Smoking',
+      text: 'Tobacco smoke induces CYP1A2 and lowers olanzapine levels; levels rise after quitting. Watch for sedation and adjust dose when smoking status changes.' }
+  ]
+};
+
 const FDA_SAFETY_DATA = {
 
 // ── SSRIs ────────────────────────────────────────────────────────────────────
@@ -4025,7 +4055,7 @@ thiothixene: {
 },
 pimozide: {
   blackBoxWarnings: [],
-  keyWarnings: ['Dose-dependent QT prolongation; baseline ECG and periodic monitoring required.'],
+  keyWarnings: ['Dose-dependent QT prolongation; baseline ECG and periodic monitoring required.', 'Contraindicated with strong CYP2D6 inhibitors (e.g., paroxetine, fluoxetine, bupropion), with sertraline, with strong CYP3A4 inhibitors, and with macrolide antibiotics. CYP2D6 genotyping is required at doses above 4 mg/day (0.05 mg/kg/day in children); poor metabolizers should not exceed those doses.'],
   sideEffects: {
     'CNS': ['extrapyramidal symptoms', 'akathisia', 'tardive dyskinesia', 'sedation'],
     'Cardiovascular': ['orthostatic hypotension', 'QT prolongation'],
@@ -4228,6 +4258,7 @@ lamotrigine: {
 },
 carbamazepine: {
   blackBoxWarnings: ['Serious dermatologic reactions including SJS and TEN; risk strongly associated with HLA-B*1502 allele. Screen patients of Asian ancestry before initiating.', 'Aplastic anemia and agranulocytosis; monitor CBC at baseline and periodically.'],
+  keyWarnings: ['Autoinduction: carbamazepine induces its own metabolism, so levels fall over the first 3–5 weeks; recheck levels and adjust dose.', 'Strong CYP3A4 and UGT inducer: lowers levels of many drugs (e.g., quetiapine, lurasidone, lamotrigine, hormonal contraceptives) — contraceptives may fail.'],
   sideEffects: {
     'CNS': ['dizziness', 'ataxia', 'diplopia', 'blurred vision', 'sedation', 'headache'],
     'GI': ['nausea', 'vomiting'],
@@ -4238,6 +4269,7 @@ carbamazepine: {
 },
 oxcarbazepine: {
   blackBoxWarnings: [],
+  keyWarnings: ['Reduces hormonal contraceptive levels (ethinyl estradiol, levonorgestrel) through CYP3A4 induction; contraceptives may be less effective — use an additional or non-hormonal method.'],
   sideEffects: {
     'CNS': ['dizziness', 'ataxia', 'diplopia', 'somnolence', 'headache', 'tremor'],
     'GI': ['nausea', 'vomiting'],
@@ -4247,7 +4279,7 @@ oxcarbazepine: {
 },
 topiramate: {
   blackBoxWarnings: [],
-  keyWarnings: ['Oral clefts (cleft lip/palate) reported with first trimester exposure; avoid in pregnancy when possible.'],
+  keyWarnings: ['Oral clefts (cleft lip/palate) reported with first trimester exposure; avoid in pregnancy when possible.', 'Reduces estrogen-containing contraceptive exposure, mainly at doses above 200 mg/day; consider decreased contraceptive efficacy and increased breakthrough bleeding.'],
   sideEffects: {
     'CNS': ['cognitive impairment', 'word-finding difficulty', 'dizziness', 'sedation', 'paresthesia'],
     'GI': ['anorexia', 'nausea', 'weight loss'],
@@ -4456,7 +4488,7 @@ lisdexamfetamine: {
 },
 modafinil: {
   blackBoxWarnings: [],
-  keyWarnings: ['Serious dermatologic reactions including SJS and TEN reported; discontinue at first sign of rash.'],
+  keyWarnings: ['Serious dermatologic reactions including SJS and TEN reported; discontinue at first sign of rash.', 'Weak CYP3A4 inducer: steroidal contraceptives may be less effective during treatment and for 1 month after stopping; use an alternative or additional method.'],
   sideEffects: {
     'CNS': ['headache', 'insomnia', 'nervousness', 'dizziness', 'anxiety'],
     'Cardiovascular': ['elevated blood pressure', 'palpitations'],
@@ -4466,7 +4498,7 @@ modafinil: {
 },
 armodafinil: {
   blackBoxWarnings: [],
-  keyWarnings: ['Serious dermatologic reactions including SJS and TEN reported; discontinue at first sign of rash.'],
+  keyWarnings: ['Serious dermatologic reactions including SJS and TEN reported; discontinue at first sign of rash.', 'Weak CYP3A4 inducer: steroidal contraceptives may be less effective during treatment and for 1 month after stopping; use an alternative or additional method.'],
   sideEffects: {
     'CNS': ['headache', 'insomnia', 'dizziness', 'anxiety'],
     'Cardiovascular': ['elevated blood pressure', 'palpitations'],

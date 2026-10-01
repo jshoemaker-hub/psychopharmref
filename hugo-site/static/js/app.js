@@ -520,7 +520,7 @@ function switchSection(id, skipGroupExpand) {
           d.onload = function() {
             if (--pending === 0) {
               var script = document.createElement('script');
-              script.src = 'js/tools/' + toolId + '.js?v=20260719d';
+              script.src = 'js/tools/' + toolId + '.js?v=20261001b';
               document.body.appendChild(script);
             }
           };
@@ -842,16 +842,55 @@ function effectsSectionHTML(drug) {
       ${e.review ? '<div class="dx-review-flag">&#9888; Investigator-assigned estimates &mdash; pending clinical review.</div>' : ''}
     </div>`;
 }
+// p450.induces is an object {enzyme: 'strong'|'moderate'|'weak'}; legacy arrays are
+// treated as moderate. 'UGT' (glucuronidation) is modeled alongside the CYP enzymes.
+function p450InducerMap(p450) {
+  const v = p450 && p450.induces;
+  if (!v) return {};
+  if (Array.isArray(v)) { const o = {}; v.forEach(e => { o[e] = 'moderate'; }); return o; }
+  return v;
+}
+const P450_EXTRA_KEYS = ['UGT'];
+function strengthLetter(v) { return v === 'strong' ? 'S' : v === 'moderate' ? 'M' : 'W'; }
+
+// Label-based notes the CYP model cannot express (PK_SPECIAL_INTERACTIONS in data.js).
+function pkSpecialNotes(drugs) {
+  const src = typeof PK_SPECIAL_INTERACTIONS !== 'undefined' ? PK_SPECIAL_INTERACTIONS : null;
+  if (!src) return [];
+  const ids = new Set(drugs.map(d => d.id));
+  const out = [];
+  (src.pairs || []).forEach(p => {
+    if (!ids.has(p.a)) return;
+    p.b.forEach(b => { if (ids.has(b)) out.push({ sev: p.sev, tag: p.tag, text: p.text }); });
+  });
+  (src.drugs || []).forEach(n => { if (ids.has(n.id)) out.push({ sev: n.sev, tag: n.tag, text: n.text }); });
+  const rank = { high: 3, mod: 2, low: 1 };
+  return out.sort((x, y) => (rank[y.sev] || 0) - (rank[x.sev] || 0));
+}
+function pkNotesHTML(drugs) {
+  const notes = pkSpecialNotes(drugs);
+  if (!notes.length) return '';
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return notes.map(n => `
+        <div class="mc-qt-flag mc-pk-note mc-pk-note--${n.sev}">
+          <span class="mc-qt-flag-badge">${esc(n.tag)}</span>
+          <div class="mc-qt-flag-text">${esc(n.text)}</div>
+        </div>`).join('');
+}
 function cypFingerprintHTML(p450) {
   if (!p450) return '<span style="color:var(--text-muted)">No significant P450 interactions</span>';
   const sub = new Set(p450.substrate || []);
   const inh = p450.inhibits || {};
-  const ind = new Set(p450.induces || []);
-  const rows = P450_ENZYMES.filter(e => sub.has(e) || inh[e] || ind.has(e));
+  const ind = p450InducerMap(p450);
+  const rows = P450_ENZYMES.concat(P450_EXTRA_KEYS).filter(e => sub.has(e) || inh[e] || ind[e]);
   if (!rows.length) return '<span style="color:var(--text-muted)">No significant P450 interactions</span>';
   const none = '<div class="cypfp-cell" title="None">&mdash;</div>';
   const subCell = on => on ? '<div class="cypfp-cell cypfp-cell--sub" title="Substrate">&#10003;</div>' : none;
-  const indCell = on => on ? '<div class="cypfp-cell cypfp-cell--ind" title="Inducer">&#10003;</div>' : none;
+  const indCell = v => {
+    if (!v) return none;
+    const cap = v.charAt(0).toUpperCase() + v.slice(1);
+    return `<div class="cypfp-cell cypfp-cell--ind" title="${cap} inducer">${strengthLetter(v)}</div>`;
+  };
   const inhCell = v => {
     if (!v) return none;
     const letter = v === 'strong' ? 'S' : v === 'moderate' ? 'M' : 'W';
@@ -859,7 +898,7 @@ function cypFingerprintHTML(p450) {
     return `<div class="cypfp-cell cypfp-cell--${v}" title="${cap} inhibitor">${letter}</div>`;
   };
   const body = rows.map(e =>
-    `<div class="cypfp-enz">${e.replace('CYP', '')}</div>${subCell(sub.has(e))}${inhCell(inh[e])}${indCell(ind.has(e))}`
+    `<div class="cypfp-enz">${e.replace('CYP', '')}</div>${subCell(sub.has(e))}${inhCell(inh[e])}${indCell(ind[e])}`
   ).join('');
   return `<div class="cypfp">
       <div></div><div class="cypfp-col">Substrate</div><div class="cypfp-col">Inhibitor</div><div class="cypfp-col">Inducer</div>
@@ -870,7 +909,7 @@ function cypFingerprintHTML(p450) {
       <span class="cypfp-key"><span class="cypfp-swatch cypfp-swatch--strong"></span>S&middot;strong</span>
       <span class="cypfp-key"><span class="cypfp-swatch cypfp-swatch--moderate"></span>M&middot;mod</span>
       <span class="cypfp-key"><span class="cypfp-swatch cypfp-swatch--weak"></span>W&middot;weak inhib.</span>
-      <span class="cypfp-key"><span class="cypfp-swatch cypfp-swatch--ind"></span>Inducer</span>
+      <span class="cypfp-key"><span class="cypfp-swatch cypfp-swatch--ind"></span>Inducer (S/M/W)</span>
     </div>`;
 }
 
@@ -880,7 +919,8 @@ function cypHoverSummary(p450) {
   const inh = p450.inhibits || {};
   const strong = Object.keys(inh).filter(k => inh[k] === 'strong').map(s => s.replace('CYP', ''));
   const mod    = Object.keys(inh).filter(k => inh[k] === 'moderate').map(s => s.replace('CYP', ''));
-  const ind    = (p450.induces || []).map(s => s.replace('CYP', ''));
+  const indMap = p450InducerMap(p450);
+  const ind    = Object.keys(indMap).map(s => s.replace('CYP', '') + ' (' + indMap[s] + ')');
   const sub    = (p450.substrate || []).map(s => s.replace('CYP', ''));
   const parts = [];
   if (strong.length) parts.push(`strong inhibitor of ${strong.join(', ')}`);
@@ -1719,8 +1759,9 @@ function p450Cell(drug, enzyme) {
     const label = str === 'strong' ? 'Inh-S' : str === 'moderate' ? 'Inh-M' : 'Inh-W';
     parts.push(`<span class="badge badge-${cls}">${label}</span>`);
   }
-  if (drug.p450.induces?.includes(enzyme))
-    parts.push('<span class="badge badge-inducer">Ind</span>');
+  const indStr = p450InducerMap(drug.p450)[enzyme];
+  if (indStr)
+    parts.push(`<span class="badge badge-inducer" title="${indStr} inducer">Ind-${strengthLetter(indStr)}</span>`);
   return parts.length ? parts.join(' ') : `<span style="color:var(--border)">—</span>`;
 }
 
@@ -2135,7 +2176,7 @@ function renderCompareChart() {
 const CMP_SEV_RANK = { strong: 3, moderate: 2, weak: 1 };
 function cmpP450Fields(med) {
   const p = med.p450 || {};
-  return { substrate: p.substrate || [], inhibits: p.inhibits || {}, induces: p.induces || [] };
+  return { substrate: p.substrate || [], inhibits: p.inhibits || {}, induces: p450InducerMap(p) };
 }
 function cmpP450Conflicts(drugA, drugB) {
   const out = [];
@@ -2146,17 +2187,17 @@ function cmpP450Conflicts(drugA, drugB) {
         out.push({ enzyme: e, actor: actor.name, target: target.name, effect: 'inhibits', strength: a.inhibits[e] });
       }
     }
-    a.induces.forEach(e => {
+    for (const e in a.induces) {
       if (b.substrate.indexOf(e) !== -1) {
-        out.push({ enzyme: e, actor: actor.name, target: target.name, effect: 'induces', strength: 'inducer' });
+        out.push({ enzyme: e, actor: actor.name, target: target.name, effect: 'induces', strength: a.induces[e] });
       }
-    });
+    }
   };
   scan(drugA, drugB);
   scan(drugB, drugA);
   out.sort((x, y) => {
-    const rx = x.effect === 'induces' ? 3 : (CMP_SEV_RANK[x.strength] || 0);
-    const ry = y.effect === 'induces' ? 3 : (CMP_SEV_RANK[y.strength] || 0);
+    const rx = CMP_SEV_RANK[x.strength] || 0;
+    const ry = CMP_SEV_RANK[y.strength] || 0;
     return ry - rx;
   });
   return out;
@@ -2164,7 +2205,7 @@ function cmpP450Conflicts(drugA, drugB) {
 function cmpConflictSeverity(list) {
   let max = 0;
   list.forEach(c => {
-    const r = c.effect === 'induces' ? 3 : (CMP_SEV_RANK[c.strength] || 0);
+    const r = CMP_SEV_RANK[c.strength] || 0;
     if (r > max) max = r;
   });
   return max;
@@ -2175,13 +2216,15 @@ function renderCompareFlags(drugA, drugB) {
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const conflicts = cmpP450Conflicts(drugA, drugB);
   const qt = !!drugA.qtInterval && !!drugB.qtInterval;
+  const notes = pkSpecialNotes([drugA, drugB]);
 
-  if (!qt && !conflicts.length) {
+  if (!qt && !conflicts.length && !notes.length) {
     wrap.innerHTML = '<div class="cmp-flags cmp-flags--clear"><span class="cmp-flag-dot">&#10003;</span>'
       + 'No additive QT or known P450 interaction between ' + esc(drugA.name) + ' and ' + esc(drugB.name) + '.</div>';
     return;
   }
-  const sev = cmpConflictSeverity(conflicts);
+  const NOTE_RANK = { high: 3, mod: 2, low: 1 };
+  const sev = Math.max(cmpConflictSeverity(conflicts), ...notes.map(n => NOTE_RANK[n.sev] || 0), 0);
   const lvl = qt ? 'high' : (sev >= 3 ? 'high' : (sev === 2 ? 'mod' : 'low'));
   let html = '<div class="cmp-flags cmp-flags--' + lvl + '">';
   html += '<div class="cmp-flags-title">&#9888; Interaction flags</div>';
@@ -2189,11 +2232,14 @@ function renderCompareFlags(drugA, drugB) {
     html += '<div class="cmp-flag"><span class="cmp-flag-badge cmp-flag-badge--qt">QT</span>'
       + 'Additive QT prolongation &mdash; both agents prolong QT. Avoid combining or monitor ECG and electrolytes.</div>';
   }
+  notes.forEach(n => {
+    html += '<div class="cmp-flag"><span class="cmp-flag-badge cmp-flag-badge--' + n.sev + '">' + esc(n.tag) + '</span>' + esc(n.text) + '</div>';
+  });
   conflicts.forEach(c => {
-    const bsev = c.effect === 'induces' ? 'high' : (c.strength === 'strong' ? 'high' : (c.strength === 'moderate' ? 'mod' : 'low'));
+    const bsev = c.strength === 'strong' ? 'high' : (c.strength === 'moderate' ? 'mod' : 'low');
     html += '<div class="cmp-flag"><span class="cmp-flag-badge cmp-flag-badge--' + bsev + '">' + esc(c.enzyme) + '</span>'
       + esc(c.actor) + (c.effect === 'induces'
-          ? ' induces ' + esc(c.enzyme) + ' &rarr; &darr; ' + esc(c.target) + ' levels'
+          ? ' (' + esc(c.strength) + ' ' + esc(c.enzyme) + ' inducer) &rarr; &darr; ' + esc(c.target) + ' levels'
           : ' (' + esc(c.strength) + ' ' + esc(c.enzyme) + ' inhibitor) &rarr; &uarr; ' + esc(c.target) + ' levels')
       + '</div>';
   });
@@ -3306,15 +3352,15 @@ function initMedCompare() {
         const A = drugs[i], B = drugs[j];
         if (!A.p450 || !B.p450) continue;
         const aInh = A.p450.inhibits || {};
-        const aInd = A.p450.induces || [];
+        const aInd = p450InducerMap(A.p450);
         const bSub = B.p450.substrate || [];
         // A inhibits an enzyme that metabolizes B → ↑ B
         for (const enz of bSub) {
           if (aInh[enz]) {
             edges.push({ from: A.name, to: B.name, enzyme: enz, mechanism: 'inhibition', severity: aInh[enz], direction: 'up' });
           }
-          if (aInd.includes(enz)) {
-            edges.push({ from: A.name, to: B.name, enzyme: enz, mechanism: 'induction', severity: 'moderate', direction: 'down' });
+          if (aInd[enz]) {
+            edges.push({ from: A.name, to: B.name, enzyme: enz, mechanism: 'induction', severity: aInd[enz], direction: 'down' });
           }
         }
       }
@@ -3409,9 +3455,9 @@ function initMedCompare() {
     if (mcP450Interactions.length === 0) {
       const hasAnyData = drugs.some(d => d.p450);
       if (!hasAnyData) {
-        container.innerHTML = qtBlock + '<div class="mt-warning" style="margin:12px 0">No P450 metabolism data available for the selected medications.</div>';
+        container.innerHTML = qtBlock + pkNotesHTML(drugs) + '<div class="mt-warning" style="margin:12px 0">No P450 metabolism data available for the selected medications.</div>';
       } else {
-        container.innerHTML = qtBlock + '<div class="mc-p450-clear"><span class="mc-p450-clear-icon">&#10003;</span> <strong>No CYP450-mediated interactions detected</strong> between the selected medications based on substrate / inhibitor / inducer data on file. This does not rule out non-CYP interactions (UGT, transporter, pharmacodynamic).</div>';
+        container.innerHTML = qtBlock + pkNotesHTML(drugs) + '<div class="mc-p450-clear"><span class="mc-p450-clear-icon">&#10003;</span> <strong>No CYP450-mediated interactions detected</strong> between the selected medications based on substrate / inhibitor / inducer data on file. This does not rule out non-CYP interactions (UGT, transporter, pharmacodynamic).</div>';
       }
       return;
     }
@@ -3501,7 +3547,7 @@ function initMedCompare() {
             : `${dirArrow} ${e.to} levels fall`;
           const mechText = e.mechanism === 'inhibition'
             ? `via ${enz} <span class="mc-p450-mech-action">(${SEV_LABEL[e.severity].toLowerCase()} inhibition)</span>`
-            : `via ${enz} <span class="mc-p450-mech-action">(induction)</span>`;
+            : `via ${enz} <span class="mc-p450-mech-action">(${SEV_LABEL[e.severity].toLowerCase()} induction)</span>`;
           const action = (ACTION[`${e.severity}-${e.direction}`] || '').replace(/\{to\}/g, e.to);
           return `
             <div class="mc-p450-card mc-p450-card--${e.severity}">
@@ -3553,6 +3599,7 @@ function initMedCompare() {
 
     container.innerHTML = `
       ${qtBlock}
+      ${pkNotesHTML(drugs)}
       ${summaryHTML}
       <div class="mc-p450-overview">
         <div class="mc-p450-overview-stat">
@@ -3561,7 +3608,7 @@ function initMedCompare() {
         </div>
         <div class="mc-p450-overview-stat">
           <div class="mc-p450-overview-num">${enzymeCount}</div>
-          <div class="mc-p450-overview-lbl">CYP enzyme${enzymeCount === 1 ? '' : 's'}</div>
+          <div class="mc-p450-overview-lbl">Enzyme${enzymeCount === 1 ? '' : 's'} (CYP/UGT)</div>
         </div>
         <div class="mc-p450-overview-severity">
           <div class="mc-p450-sev-bar">${sevBarSegs}</div>
@@ -3569,7 +3616,7 @@ function initMedCompare() {
         </div>
       </div>
       ${enzymeBlocks}
-      <p class="mc-p450-disclaimer">CYP-based predictions only. Clinical impact depends on dose, genetics (poor/ultra-rapid metabolizers), comorbidity, and other concurrent medications. Always verify with a current interaction reference before prescribing.</p>
+      <p class="mc-p450-disclaimer">CYP/UGT-based predictions plus selected label-based notes (renal, P-gp, smoking) &mdash; not a complete interaction screen. Clinical impact depends on dose, genetics (poor/ultra-rapid metabolizers), comorbidity, and other concurrent medications. Always verify with a current interaction reference before prescribing.</p>
     `;
   }
 

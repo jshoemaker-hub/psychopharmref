@@ -3484,6 +3484,11 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
   margin-top: 1px;
 }
 .mc-qt-flag-text { font-weight: 500; }
+/* Label-based PK notes (UGT, renal, P-gp, smoking) reuse the QT flag layout */
+.mc-pk-note--mod { border-color: rgba(196,140,20,0.5); border-left-color: #c48c14; background: rgba(196,140,20,0.10); }
+.mc-pk-note--mod .mc-qt-flag-badge { background: #c48c14; }
+.mc-pk-note--low { border-color: rgba(139,105,20,0.45); border-left-color: #8b6914; background: rgba(139,105,20,0.08); }
+.mc-pk-note--low .mc-qt-flag-badge { background: #8b6914; }
 
 .mc-p450-sum-strong   { color: #e85a3c; font-weight: 600; }
 .mc-p450-sum-moderate { color: #d99834; font-weight: 600; }
