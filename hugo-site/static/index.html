@@ -121,6 +121,7 @@
           <li><a href="#" class="nav-link nav-sub-link" data-section="similar-meds" data-sections="similar-meds complementary-meds">Similar &amp; Complementary Meds</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="fda-indication">FDA Indication Search</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="pk-curves">PK Curves</a></li>
+          <li><a href="#" class="nav-link nav-sub-link" data-section="price-compare">Price Comparison</a></li>
           <li><a href="#" class="nav-link nav-sub-link" data-section="chem-structure">Chem Structure</a></li>
         </ul>
       </li>
@@ -1528,6 +1529,29 @@
 
       <script src="js/pk-curves.js?v=20261001a"></script>
     </section><!-- end pk-curves -->
+
+    <section id="price-compare" class="section">
+      <div class="section-header">
+        <h2>Medication Price Comparison</h2>
+        <p class="section-sub">Cash prices for common strengths from Mark Cuban Cost Plus Drugs and HealthWarehouse, with the CMS NADAC wholesale cost shown as a reference point. Each row lists the strength and quantity priced (based on usual dosing, roughly a 30-day supply).</p>
+      </div>
+
+      <div class="pc-meta-bar">
+        <div class="pc-last-updated">
+          <span class="pc-meta-label">Prices as of:</span>
+          <span id="pc-last-updated-date">&mdash;</span>
+        </div>
+        <div class="pc-search-wrap">
+          <input id="pc-search" type="search" placeholder="Search by drug name…" autocomplete="off" aria-label="Search medications">
+        </div>
+      </div>
+
+      <div id="pc-table-container">
+        <div class="pc-loading">Loading pricing data&hellip;</div>
+      </div>
+
+      <p class="pc-disclaimer">Prices are cash pay (no insurance) for the listed strength and quantity, and change often; they may vary by pharmacy and zip code. NADAC is what pharmacies pay wholesale, not a price a patient can buy at, so it is excluded from &ldquo;Best.&rdquo; Cost Plus Drugs does not sell controlled substances. Insurance copays or discount coupons may be lower. Always verify current pricing with the pharmacy before counseling patients. Inclusion of a pharmacy does not imply endorsement. Not medical or financial advice.</p>
+    </section><!-- end price-compare -->
 
 
     <!-- ── FDA References ───────────────────────────────────────────────── -->
@@ -14074,7 +14098,7 @@
   <script defer src="js/data.js?v=20261001f"></script>
   <script defer src="js/routes.js?v=20260719d"></script>
   <script defer src="js/bhi-references.js?v=20260726b"></script>
-  <script defer src="js/app.js?v=20261001f"></script>
+  <script defer src="js/app.js?v=20261001g"></script>
   <script defer src="js/diagnoses-data.js?v=20260827a"></script>
   <script defer src="js/diagnoses-page.js?v=20260819a"></script>
   <script defer src="js/glossary-data.js?v=20260912b"></script>

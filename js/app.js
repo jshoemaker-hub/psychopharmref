@@ -376,7 +376,7 @@ function getColor(receptor) {
 // Map each section to its parent group
 const SECTION_GROUP = {
   'drug-table': 'psychopharm', 'p450': 'psychopharm',
-  'receptor-binding': 'psychopharm', 'glossary': 'psychopharm', 'pk-curves': 'psychopharm',
+  'receptor-binding': 'psychopharm', 'glossary': 'psychopharm', 'pk-curves': 'psychopharm', 'price-compare': 'psychopharm',
   'similar-meds': 'psychopharm', 'complementary-meds': 'psychopharm',
   'psychiatry-glossary': 'glossary',
   'qt-risk': 'tools', 'refill-calendar': 'tools', 'med-compare': 'psychopharm', 'tolerability-compare': 'psychopharm', 'med-taper': 'tools',
@@ -4546,7 +4546,17 @@ function initMedTaper() {
     const lastUpdEl = document.getElementById('pc-last-updated-date');
     if (!container || !pricesData) return;
 
-    if (lastUpdEl) lastUpdEl.textContent = fmtRelativeDate(pricesData.lastUpdated);
+    if (lastUpdEl) {
+      // Show when each source was actually scraped, not just when the file was written
+      const asOfBy = key => {
+        const ds = Object.values(pricesData.prices || {}).map(e => e && e[key] && e[key].available && e[key].asOf).filter(Boolean).sort();
+        return ds.length ? ds[ds.length - 1] : null;
+      };
+      const parts = [['NADAC', 'NADAC'], ['CostPlusDrugs', 'Cost Plus'], ['HealthWarehouse', 'HealthWarehouse']]
+        .map(([k, label]) => { const d = asOfBy(k); return d ? `${label} ${fmtRelativeDate(d)}` : null; })
+        .filter(Boolean);
+      lastUpdEl.textContent = parts.length ? parts.join(' · ') : fmtRelativeDate(pricesData.lastUpdated);
+    }
 
     const sources = pricesData.sources || [];
     const prices = pricesData.prices || {};
@@ -4613,7 +4623,13 @@ function initMedTaper() {
           const p = drugPrices[s.key];
           const wholesaleCls = s.excludeFromBest ? ' pc-cell-wholesale' : '';
           if (!p) return `<td class="pc-cell pc-cell-empty${wholesaleCls}">&mdash;</td>`;
-          if (p.available === false) return `<td class="pc-cell pc-cell-na${wholesaleCls}" title="Not available at ${s.displayName}">N/A</td>`;
+          if (p.available === false) {
+            const reason = p.reason || `Not available at ${s.displayName}`;
+            const label = /^Not sold/i.test(reason) ? 'Not sold<br><small>(controlled)</small>'
+              : /^(No NADAC|OTC)/i.test(reason) ? 'No listing'
+              : 'N/A';
+            return `<td class="pc-cell pc-cell-na${wholesaleCls}" title="${reason.replace(/"/g, '&quot;')}">${label}</td>`;
+          }
           if (typeof p.price !== 'number') return `<td class="pc-cell pc-cell-empty${wholesaleCls}">&mdash;</td>`;
           const isBest = !s.excludeFromBest && p.price === bestPrice && numericPrices.length > 1;
           const cls = `pc-cell pc-cell-price${wholesaleCls}${isBest ? ' pc-cell-best-price' : ''}`;
@@ -4650,10 +4666,14 @@ function initMedTaper() {
         }
 
         const formText = drugPrices.form || '';
+        // Row-level note: clinic/REMS-only products, or why NADAC has no listing
+        const nadacReason = drugPrices.NADAC && drugPrices.NADAC.available === false ? drugPrices.NADAC.reason : '';
+        const noteText = drugPrices.note || nadacReason || '';
         html += `<tr class="pc-drug-row" data-drug-name="${m.name.toLowerCase()}" data-cat="${cat}">
           <td class="pc-cell pc-cell-drug">
             <div class="pc-drug-name">${m.name}</div>
             <div class="pc-drug-meta">${m.class || ''}${formText ? ' &middot; ' + formText : ''}</div>
+            ${noteText ? `<div class="pc-drug-meta" style="font-style:italic">${noteText}</div>` : ''}
           </td>
           ${priceCells}
           ${bestCell}

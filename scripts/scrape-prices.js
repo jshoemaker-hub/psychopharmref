@@ -370,7 +370,8 @@ async function loadNadacIndex() {
   const latest = latestKey ? data.filter(r => toKey(r.asOf) === latestKey) : data;
   logInfo(`  → ${data.length} NADAC rows parsed; using ${latest.length} from the latest snapshot (${latestKey}).`);
   data.length = 0; latest.forEach(r => data.push(r));
-  nadacIndex = { data, datasetTitle, downloadUrl, modified };
+  const snapshotDate = latestKey ? `${latestKey.slice(0, 4)}-${latestKey.slice(4, 6)}-${latestKey.slice(6, 8)}` : null;
+  nadacIndex = { data, datasetTitle, downloadUrl, modified, snapshotDate };
   return nadacIndex;
 }
 
@@ -501,7 +502,8 @@ async function main() {
       const summary = summarizeNadacMatches(matches, sku);
       if (!summary) drugErrors.push('NADAC: no matching NDC rows');
       else {
-        drugPrices.NADAC = { ...summary, asOf: new Date().toISOString().slice(0, 10) };
+        // asOf = the CMS snapshot the price comes from, not the day the script ran
+        drugPrices.NADAC = { ...summary, asOf: nadac.snapshotDate || new Date().toISOString().slice(0, 10) };
         stats.NADAC++;
       }
     }

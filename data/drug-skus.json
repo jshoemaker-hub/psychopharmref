@@ -77,7 +77,7 @@
     "Midazolam":             { "form": "syrup",   "strength": "2 mg/mL", "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-IV", "notes": "Rarely outpatient", "limitedRetail": true },
 
     "Buspirone":             { "form": "tablet",  "strength": "10 mg",   "quantity": 60, "supplyDays": 30, "generic": true,  "notes": "BID" },
-    "Gepirone":              { "form": "ER tablet", "strength": "18.2 mg", "quantity": 30, "supplyDays": 30, "generic": false, "notes": "Exxua — newer", "nadacDesc": "EXXUA ER 18.2 MG TAB (TITRATN)" },
+    "Gepirone":              { "form": "ER tablet", "strength": "54.5 mg", "quantity": 30, "supplyDays": 30, "generic": false, "notes": "Exxua — newer", "nadacDesc": "EXXUA ER 54.5 MG TABLET" },
     "Hydroxyzine":           { "form": "tablet",  "strength": "25 mg",   "quantity": 30, "supplyDays": 30, "generic": true,  "notes": "HCl" },
     "Doxylamine":            { "form": "tablet",  "strength": "25 mg",   "quantity": 30, "supplyDays": 30, "generic": true,  "notes": "OTC", "noNadac": "OTC — no NADAC listing for single-ingredient doxylamine" },
     "Diphenhydramine":       { "form": "capsule", "strength": "25 mg",   "quantity": 30, "supplyDays": 30, "generic": true,  "notes": "OTC" },

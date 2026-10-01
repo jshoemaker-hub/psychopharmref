@@ -1,6 +1,6 @@
 {
   "$schema": "{drugName: cpdProductUrl} pairs to scrape via Claude in Chrome. Cloudflare blocks unauth Node fetches with HTTP 403.",
-  "generatedAt": "2026-10-01T21:52:05.331Z",
+  "generatedAt": "2026-10-01T22:06:32.379Z",
   "targets": {
     "Fluoxetine": "https://www.costplusdrugs.com/medications/fluoxetine-20mg-capsule/",
     "Sertraline": "https://www.costplusdrugs.com/medications/sertraline-50mg-tablet/",
