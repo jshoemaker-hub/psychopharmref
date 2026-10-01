@@ -931,7 +931,7 @@ const MEDICATIONS = [
     class: 'SSRI',
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: '24–72 hr', metabolites: 'Norfluoxetine: 4–16 days' },
+    halfLife: { drug: '1–3 days (acute); 4–6 days (chronic)', metabolites: 'Norfluoxetine: 4–16 days' },
     tmax: 6,
     p450: {
       substrate: ['CYP2D6','CYP2C9'],
@@ -1326,7 +1326,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '11–12 hr', metabolites: 'Irreversible MAO-A/B inhibition persists 2–3 weeks' },
-    tmax: 2,
+    tmax: 0.75,
     p450: {
       substrate: [],
       inhibits: {},
@@ -1336,7 +1336,8 @@ const MEDICATIONS = [
     hepaticImpairment: { modified: true, notes: 'Use with caution; contraindicated in severe' },
     geriatricDosing: { modified: true, notes: 'Use with caution; fall/orthostatic risk' },
     qtInterval: false,
-    proteinBinding: 13,
+    proteinBinding: null,
+    proteinBindingNote: 'Not reported in the label',
     receptorKi: null,
     mechanism: 'Irreversible non-selective MAO-A and MAO-B inhibitor; increases synaptic monoamines (NE, 5HT, DA)',
     indications: [
@@ -1364,7 +1365,8 @@ const MEDICATIONS = [
     hepaticImpairment: { modified: true, notes: 'Contraindicated in hepatic disease' },
     geriatricDosing: { modified: true, notes: 'Use with caution' },
     qtInterval: false,
-    proteinBinding: 0,
+    proteinBinding: null,
+    proteinBindingNote: 'Not reported in the label',
     receptorKi: null,
     mechanism: 'Irreversible non-selective MAO-A and MAO-B inhibitor; mild dopamine-releasing properties',
     indications: [
@@ -1445,7 +1447,7 @@ const MEDICATIONS = [
     class: 'SARI',
     category: 'Sleep',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: '7–10 hr', metabolites: 'mCPP (active, 5HT2C agonist): 4–8 hr' },
+    halfLife: { drug: '5–9 hr (terminal; biphasic, initial phase 3–6 hr)', metabolites: 'mCPP (active, 5HT2C agonist): 4–8 hr' },
     tmax: 1,
     p450: {
       substrate: ['CYP3A4'],
@@ -1748,7 +1750,7 @@ const MEDICATIONS = [
     class: 'SGA',
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: '12 hr', metabolites: 'N-desmethylclozapine (active): 20 hr' },
+    halfLife: { drug: '12 hr', metabolites: 'N-desmethylclozapine (norclozapine; limited activity, M1 agonist): 20 hr' },
     tmax: 2.5,
     p450: {
       substrate: ['CYP1A2','CYP2D6','CYP3A4'],
@@ -1780,8 +1782,8 @@ const MEDICATIONS = [
     class: 'SGA',
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: '7 hr', metabolites: 'None significant (aldehyde oxidase primary)' },
-    tmax: 5,
+    halfLife: { drug: '7 hr (Tmax 6–8 hr with food)', metabolites: 'None significant (aldehyde oxidase primary)' },
+    tmax: 7,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -1814,7 +1816,7 @@ const MEDICATIONS = [
     class: 'SGA',
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: '18–40 hr', metabolites: 'ID-14283 and ID-14326 (active)' },
+    halfLife: { drug: '18 hr (40 mg); longer at higher doses', metabolites: 'ID-14283 and ID-14326 (active)' },
     tmax: 3,
     p450: {
       substrate: ['CYP3A4'],
@@ -1880,7 +1882,7 @@ const MEDICATIONS = [
     class: 'Mood Stabilizer',
     category: 'Mood Stabilizer',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: '18–24 hr', metabolites: 'Not applicable (monovalent cation)' },
+    halfLife: { drug: '18–36 hr', metabolites: 'Not applicable (monovalent cation)' },
     tmax: 2,
     p450: {
       substrate: [],
@@ -2000,7 +2002,7 @@ const MEDICATIONS = [
     class: 'Z-Drug',
     category: 'Sleep',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: '1.5–2.4 hr', metabolites: 'None significant' },
+    halfLife: { drug: '~2.5 hr (range 1.4–4.5)', metabolites: 'None significant' },
     tmax: 1.5,
     p450: {
       substrate: ['CYP3A4','CYP2C9'],
@@ -2056,7 +2058,7 @@ const MEDICATIONS = [
     class: 'Benzodiazepine',
     category: 'Sleep',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: '8–20 hr', metabolites: 'None significant (direct glucuronidation)' },
+    halfLife: { drug: '~9 hr (range 3.5–18)', metabolites: 'None significant (direct glucuronidation)' },
     tmax: 1.5,
     p450: {
       substrate: [],
@@ -2230,8 +2232,8 @@ const MEDICATIONS = [
     class: 'Azapirone',
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: '~5 hr (ER formulation)', metabolites: 'None significant' },
-    tmax: 3,
+    halfLife: { drug: '~5 hr (ER; Tmax ~6 hr fasting, ~3 hr with a high-fat meal)', metabolites: '1-PP and 3\'-OH-gepirone (both active; circulate at higher levels than parent)' },
+    tmax: 6,
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
@@ -2241,7 +2243,7 @@ const MEDICATIONS = [
     hepaticImpairment: { modified: true, notes: 'Avoid in moderate-severe' },
     geriatricDosing: { modified: false, notes: 'Use with caution; no specific dose adjustment but start low given limited geriatric data.' },
     qtInterval: true,
-    proteinBinding: 97,
+    proteinBinding: 72,
     receptorKi: { '5HT1A': 21, SERT: 160, NET: 10000, DAT: 10000, '5HT2A': 10000, D2: 500, H1: 10000, alpha1: 10000, M1: 10000 },
     indications: [
       { use: 'Major Depressive Disorder', year: 2023 },
@@ -2289,7 +2291,7 @@ const MEDICATIONS = [
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '9 hr', metabolites: 'None significant' },
-    tmax: 1,
+    tmax: null,
     p450: {
       substrate: [],
       inhibits: {},
@@ -2344,8 +2346,8 @@ const MEDICATIONS = [
     class: 'Combination',
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: 'DXM ~21 hr (with CYP2D6 inhibition); bupropion ~21 hr', metabolites: 'None significant' },
-    tmax: 4,
+    halfLife: { drug: 'DXM ~22 hr (with CYP2D6 inhibition by bupropion); bupropion ~15 hr', metabolites: 'Dextrorphan (active); hydroxybupropion ~35 hr, erythrohydrobupropion ~44 hr, threohydrobupropion ~33 hr (active)' },
+    tmax: 3,
     p450: {
       substrate: ['CYP2D6', 'CYP2B6'],
       inhibits: { 'CYP2D6': 'strong' },
@@ -2355,7 +2357,8 @@ const MEDICATIONS = [
     hepaticImpairment: { modified: true, notes: 'Avoid in severe' },
     geriatricDosing: { modified: false, notes: 'No specific geriatric adjustment; use with caution given CNS and cardiac effects.' },
     qtInterval: false,
-    proteinBinding: 90,
+    proteinBinding: null,
+    proteinBindingNote: 'Dextromethorphan ~60–70%; bupropion 84% (label)',
     receptorKi: null,
     mechanism: 'Dextromethorphan: uncompetitive NMDA receptor antagonist + sigma-1 receptor agonist + SERT/NET inhibitor; bupropion: NDRI + CYP2D6 inhibitor (increases DXM bioavailability 10-fold); together produce rapid antidepressant effect; approved for MDD in adults',
     indications: [
@@ -2545,7 +2548,7 @@ const MEDICATIONS = [
     class: 'FGA',
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: '8–12 hr', metabolites: 'None significant' },
+    halfLife: { drug: '~4–8 hr (oral ~4 hr; inhaled Adasuve ~7.6 hr)', metabolites: 'None significant' },
     tmax: 2,
     p450: {
       substrate: ['CYP1A2', 'CYP2D6', 'CYP3A4'],
@@ -2636,7 +2639,7 @@ const MEDICATIONS = [
     class: 'SGA',
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: '18 hr', metabolites: 'P88, P95: 26–37 hr' },
+    halfLife: { drug: '18 hr', metabolites: 'P88: 26 hr (37 hr in CYP2D6 PMs); P95: 23 hr (31 hr in PMs)' },
     tmax: 3,
     p450: {
       substrate: ['CYP2D6', 'CYP3A4'],
@@ -2647,7 +2650,7 @@ const MEDICATIONS = [
     hepaticImpairment: { modified: true, notes: 'Avoid in hepatic impairment' },
     geriatricDosing: { modified: false, notes: 'Use with caution; orthostatic hypotension and QT risks increase with age.' },
     qtInterval: true,
-    proteinBinding: 95,
+    proteinBinding: 97,
     receptorKi: {
       SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 168, '5HT2A': 5.6, '5HT2C': 10000,
       D1: 216, D2: 6.3, D3: 7.1, H1: 437, alpha1: 0.36, alpha2: 10000,
@@ -2697,7 +2700,7 @@ const MEDICATIONS = [
     class: 'SGA',
     category: 'Antipsychotic',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: '2–4 days', metabolites: 'DCAR: 1–3 days; DDCAR: 1–3 weeks' },
+    halfLife: { drug: '2–4 days', metabolites: 'DCAR: 1–2 days; DDCAR: 1–3 weeks' },
     tmax: 4,
     p450: {
       substrate: ['CYP3A4'],
@@ -2789,7 +2792,7 @@ const MEDICATIONS = [
     class: 'Mood Stabilizer',
     category: 'Mood Stabilizer',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: 'Parent very short; MHD (active metabolite): 8–10 hr', metabolites: 'MHD (eslicarbazepine): 8–10 hr' },
+    halfLife: { drug: '~2 hr (parent); MHD ~9 hr', metabolites: 'MHD (licarbazepine, racemic 10-monohydroxy derivative, active): ~9 hr' },
     tmax: 4.5,
     p450: {
       substrate: [],
@@ -2829,6 +2832,7 @@ const MEDICATIONS = [
     geriatricDosing: { modified: false, notes: 'Use with caution; cognitive side effects (word-finding) may be more pronounced. Adjust for renal function.' },
     qtInterval: false,
     proteinBinding: 15,
+    proteinBindingNote: '15–41%, concentration-dependent (label)',
     receptorKi: null,
     mechanism: 'Multiple mechanisms: voltage-gated Na⁺ channel blockade; GABA-A PAM at non-BZD site; AMPA/kainate glutamate receptor antagonism; carbonic anhydrase inhibition; weight loss is common (unique among anticonvulsants); cognitive side effects ("dopamax")',
     indications: [
@@ -2938,7 +2942,7 @@ const MEDICATIONS = [
     class: 'Benzodiazepine',
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: '20–70 hr', metabolites: 'Nordiazepam (active): 36–200 hr; desmethyldiazepam' },
+    halfLife: { drug: '20–70 hr', metabolites: 'Nordiazepam (N-desmethyldiazepam, active): 36–200 hr; also temazepam, oxazepam' },
     tmax: 1,
     p450: {
       substrate: ['CYP2C19', 'CYP3A4'],
@@ -2949,7 +2953,7 @@ const MEDICATIONS = [
     hepaticImpairment: { modified: true, notes: 'Reduce dose; prolonged half-life' },
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List); extremely long half-life accumulation risk' },
     qtInterval: false,
-    proteinBinding: 99,
+    proteinBinding: 98,
     receptorKi: { 'GABA-A': 5.0 },
     mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); long half-life with very long-acting active metabolites; used for anxiety, muscle relaxation, alcohol withdrawal, seizures; significant accumulation in elderly',
     indications: [
@@ -2980,7 +2984,7 @@ const MEDICATIONS = [
     hepaticImpairment: { modified: true, notes: 'Preferred BZD in liver disease — cleared by Phase II glucuronidation (spared when CYP oxidation fails), so clearance is largely preserved even in cirrhosis (half-life roughly doubles). However, per FDA label lorazepam may worsen hepatic encephalopathy: use with caution, reduce the starting dose (~50%) in moderate impairment, and minimize/avoid in severe insufficiency (Child-Pugh C) or overt encephalopathy. Start low, titrate slowly, and monitor for oversedation/CNS depression. Intrinsic hepatotoxicity (DILI) is very rare.' },
     geriatricDosing: { modified: true, notes: 'Reduce dose (Beers List); no active metabolites preferred in elderly' },
     qtInterval: false,
-    proteinBinding: 91,
+    proteinBinding: 85,
     receptorKi: { 'GABA-A': 2.0 },
     mechanism: 'GABA-A receptor positive allosteric modulator (BZD site); medium-potency; direct glucuronidation — safer in hepatic disease; no active metabolites; parenteral forms available for status epilepticus',
     indications: [
@@ -2999,7 +3003,7 @@ const MEDICATIONS = [
     class: 'Benzodiazepine',
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: '4–15 hr', metabolites: 'None active (direct glucuronidation)' },
+    halfLife: { drug: '~8 hr (range 5.7–10.9)', metabolites: 'None active (direct glucuronidation)' },
     tmax: 3,
     p450: {
       substrate: [],
@@ -3416,7 +3420,7 @@ const MEDICATIONS = [
     class: 'Stimulant',
     category: 'Stimulant',
     activeEnantiomer: { has: true, name: 'd-threo-methylphenidate (active enantiomer of methylphenidate)' },
-    halfLife: { drug: '~2.2 hr', metabolites: 'None significant' },
+    halfLife: { drug: '~3 hr adults (2–3 hr children)', metabolites: 'None significant' },
     tmax: 1.5,
     p450: {
       substrate: [],
@@ -3520,7 +3524,8 @@ const MEDICATIONS = [
     hepaticImpairment: { modified: false, notes: 'No dose adjustment required; hydrolyzed to d-amphetamine in blood.' },
     geriatricDosing: { modified: false, notes: 'Use with extreme caution; cardiovascular monitoring essential. Not studied in elderly.' },
     qtInterval: false,
-    proteinBinding: 98,
+    proteinBinding: null,
+    proteinBindingNote: 'Not reported in the label (prodrug); d-amphetamine is ~15–40% bound',
     receptorKi: {
       SERT: 10000, NET: 70, DAT: 600, '5HT1A': 10000, '5HT2A': 10000, '5HT2C': 10000,
       D2: 10000, D3: 10000, H1: 10000, alpha1: 10000, alpha2: 10000, M1: 10000

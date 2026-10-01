@@ -100,13 +100,14 @@
           drugs = [];
           MEDICATIONS.forEach(function(m) {
             var hl = parseHL(m.halfLife);
-            if (!m.tmax || !hl || !m.receptorKi) return;
+            // Drugs without receptor Ki data still get a curve (neutral peak height).
+            if (!m.tmax || !hl) return;
             var pr = primaryRec(m.receptorKi);
             drugs.push({
               id: m.id, name: m.name, brand: m.brandName,
               cat: m.category, cls: m.class,
               tmax: m.tmax, hl: hl,
-              pr: pr, peak: peakPct(pr ? pr.ki : 10000)
+              pr: pr, peak: pr ? peakPct(pr.ki) : 50
             });
           });
           drugs.sort(function(a,b){ return a.name.localeCompare(b.name); });

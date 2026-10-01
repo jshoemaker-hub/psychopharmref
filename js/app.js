@@ -1059,7 +1059,7 @@ function openDrugModal(id) {
         <div class="modal-field"><label>Active Metabolites</label><div>${drug.halfLife.metabolites}</div></div>
       </div>
       <div class="modal-row">
-        <div class="modal-field"><label>Protein Binding</label><div>${drug.proteinBinding != null ? drug.proteinBinding + '%' : 'N/A'}</div></div>
+        <div class="modal-field"><label>Protein Binding</label><div>${drug.proteinBinding != null ? drug.proteinBinding + '%' : 'N/A'}${drug.proteinBindingNote ? `<br><small style="color:var(--text-muted)">${drug.proteinBindingNote}</small>` : ''}</div></div>
         <div class="modal-field"><label>Active Enantiomer</label><div>${drug.activeEnantiomer.has ? '✓ ' + drug.activeEnantiomer.name : '—'}</div></div>
       </div>
     </div>
@@ -1619,7 +1619,7 @@ function renderDrugTable() {
     const qt = m.qtInterval
       ? `<span class="yes-badge">Yes</span>`
       : `<span class="no-badge">No</span>`;
-    const pb = m.proteinBinding != null ? m.proteinBinding + '%' : '—';
+    const pb = m.proteinBinding != null ? m.proteinBinding + '%' : (m.proteinBindingNote ? `<span title="${m.proteinBindingNote.replace(/"/g, '&quot;')}">—*</span>` : '—');
     const enan = m.activeEnantiomer.has
       ? `<span style="color:var(--accent)">Yes</span>`
       : `<span class="no-badge">No</span>`;
