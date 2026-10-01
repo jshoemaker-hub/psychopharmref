@@ -937,7 +937,7 @@
    "Only 3–10% of eligible patients receive it versus an estimated 50–60% who would benefit"
   ],
   "correct_index": 3,
-  "explanation": "In most countries only 3–10% of eligible patients receive clozapine, compared to the estimated 50–60% who would benefit. Barriers include REMS requirements, tolerability, and monitoring burden — real but surmountable with systematic preparation.",
+  "explanation": "In most countries only 3–10% of eligible patients receive clozapine, compared to the estimated 50–60% who would benefit. Barriers include ANC monitoring, tolerability, and titration burden — real but surmountable with systematic preparation.",
   "source_blog_title": "Difficult-to-Treat Schizophrenia",
   "source_blog_url": "https://psychopharmref.com/blog/difficult-to-treat-schizophrenia.html",
   "frame_used": "Factual Recall",
@@ -993,7 +993,7 @@
  },
  {
   "id": 1063,
-  "question": "Under the current Clozapine REMS ANC protocol, which action is required when the absolute neutrophil count falls below 500/mm³?",
+  "question": "Under the current clozapine label ANC protocol, which action is required when the absolute neutrophil count falls below 500/mm³?",
   "options": [
    "Discontinue immediately, consider G-CSF, and obtain hematology consult",
    "Increase the dose to overcome marrow suppression",
@@ -1001,7 +1001,7 @@
    "Continue at the same dose with weekly monitoring"
   ],
   "correct_index": 0,
-  "explanation": "ANC <1500 interrupts clozapine, <1000 discontinues, and <500 (severe neutropenia) requires immediate discontinuation, consideration of G-CSF, and hematology consult. Patients with documented benign ethnic neutropenia may use modified thresholds.",
+  "explanation": "Per the current label (general population): ANC 1000–1499 → continue with ANC three times weekly; 500–999 → interrupt, hematology consult, resume once ≥1000; <500 (severe neutropenia) → discontinue, hematology consult, and consider G-CSF. Patients with benign ethnic neutropenia have a lower normal range (≥1000) and continue at 500–999.",
   "source_blog_title": "Difficult-to-Treat Schizophrenia",
   "source_blog_url": "https://psychopharmref.com/blog/difficult-to-treat-schizophrenia.html",
   "frame_used": "Best Practice",

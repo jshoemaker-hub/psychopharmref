@@ -406,8 +406,8 @@
       name: 'Clozapine', brand: 'Clozaril', code: 'CLOZ', class: 'SGA', group: 'Antipsychotics',
       p450sub: ['1A2', '2D6', '3A4', '2C19'], p450inh: [],
       receptors: ['D1-ant', 'D2-ant (loose)', 'D4-ant', '5HT2A-ant', '5HT2C-ant', 'H1-ant', 'M1-ant', 'α1-ant', 'α2-ant'],
-      sideEffects: ['Agranulocytosis / neutropenia (requires REMS monitoring)', 'Weight gain (severe)', 'Metabolic syndrome', 'Hypersalivation / drooling', 'Sedation', 'Hypotension', 'Constipation / ileus', 'Seizures (dose-dependent)', 'Myocarditis / cardiomyopathy', 'Fever', 'Tachycardia', 'Enuresis'],
-      blackBox: ['Agranulocytosis — REMS program required (weekly ANC monitoring initially)', 'Seizure risk (dose-dependent)', 'Myocarditis / cardiomyopathy', 'Orthostatic hypotension, bradycardia, syncope', 'Increased mortality in elderly with dementia-related psychosis'],
+      sideEffects: ['Severe neutropenia / agranulocytosis (requires ANC monitoring)', 'Weight gain (severe)', 'Metabolic syndrome', 'Hypersalivation / drooling', 'Sedation', 'Hypotension', 'Constipation / ileus', 'Seizures (dose-dependent)', 'Myocarditis / cardiomyopathy', 'Fever', 'Tachycardia', 'Enuresis'],
+      blackBox: ['Severe neutropenia — ANC monitoring per label (weekly initially; REMS eliminated 2025)', 'Seizure risk (dose-dependent)', 'Myocarditis / cardiomyopathy', 'Orthostatic hypotension, bradycardia, syncope', 'Increased mortality in elderly with dementia-related psychosis'],
     },
     {
       name: 'Lumateperone', brand: 'Caplyta', code: 'LUMA', class: 'SGA', group: 'Antipsychotics',

@@ -825,11 +825,11 @@ const PERINATAL_DATA = {
   mirtazapine:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Commonly used off-label for hyperemesis gravidarum. Limited but generally reassuring data for short-term use.' }, breastfeeding: { rid: '0.6–3%', hale: 'L3', risk: 'caution', notes: 'Detected in milk at low levels. Sedation possible. Monitor infant.' } },
   trazodone:            { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited human data. Animal studies show no teratogenicity. Commonly used at low doses for insomnia.' }, breastfeeding: { rid: '0.6–2.8%', hale: 'L2', risk: 'low', notes: 'Low relative infant dose. Generally considered compatible at low doses.' } },
   vilazodone:           { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited human data. SSRI-like neonatal adaptation risk.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No published human lactation data. Avoid if alternatives exist.' } },
-  vortioxetine:         { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited human data. Novel mechanism. Avoid unless benefit clearly outweighs risk.' }, breastfeeding: { rid: '1.1–1.7%', hale: 'unknown', risk: 'unknown', notes: 'No published human lactation data.' } },
+  vortioxetine:         { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited human data. Novel mechanism. Avoid unless benefit clearly outweighs risk.' }, breastfeeding: { rid: '0.3–1.7%', hale: 'unknown', risk: 'low', notes: 'Milk levels low; no adverse effects in reported infants (1–9 months). LactMed: if required, not a reason to discontinue breastfeeding; monitor infant.' } },
   gepirone:             { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited data. Novel 5HT1A partial agonist antidepressant. Avoid if possible.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No human lactation data.' } },
   esketamine:           { pregnancy: { fdaCategory: 'C', risk: 'avoid',   notes: 'NMDA antagonism — animal data shows potential neurotoxicity. Avoid in pregnancy. REMS program.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'avoid', notes: 'No lactation data. CNS-active nasal spray — avoid.' } },
-  brexanolone:          { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'Approved for postpartum depression only. Use occurs in postpartum period; safety in pregnancy not established.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'Approved for PPD but no breastfeeding safety data. Use caution; pump and discard during and shortly after infusion.' } },
-  zuranolone:           { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'PLLR-era label only. Animal data shows fetal harm. Contraceptive use required. Very limited human data.' }, breastfeeding: { rid: '0.4–1%', hale: 'unknown', risk: 'avoid', notes: 'No human lactation data. Neuroactive steroid — avoid.' } },
+  brexanolone:          { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'Approved for postpartum depression only. Use occurs in postpartum period; safety in pregnancy not established.' }, breastfeeding: { rid: '~0.7% (max ~1.3%)', hale: 'unknown', risk: 'low', notes: 'Low milk levels and poor oral bioavailability; milk levels undetectable in most women ~3 days after infusion. Breastfeeding not contraindicated; arrange separate infant care during the infusion because of maternal sedation/loss of consciousness.' } },
+  zuranolone:           { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'PLLR-era label only. Animal data shows fetal harm. Contraceptive use required. Very limited human data.' }, breastfeeding: { rid: '~0.7% (label: <1%)', hale: 'unknown', risk: 'low', notes: 'Lactation study: RID ~0.74%; milk levels undetectable 4–6 days after the last dose. LactMed: not expected to cause adverse effects in breastfed infants; monitor for sedation, especially newborn/preterm.' } },
   'dextromethorphan-bupropion': { pregnancy: { fdaCategory: 'N/A', risk: 'caution', notes: 'Combination product. DXM has limited pregnancy data. See bupropion concerns. Avoid unless clearly needed.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'caution', notes: 'No published lactation data for combination. Bupropion concerns apply.' } },
   // FGAs
   haloperidol:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limb reduction defects in early reports (disputed). Neonatal EPS and withdrawal. Most studied FGA; used in hyperemesis.' }, breastfeeding: { rid: '0.2–12%', hale: 'L3', risk: 'caution', notes: 'Low relative infant dose. Developmental concerns with long-term exposure. Use lowest effective dose.' } },
@@ -848,13 +848,13 @@ const PERINATAL_DATA = {
   quetiapine:           { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Gestational diabetes risk. Neonatal withdrawal. Commonly used; limited teratogenicity signal.' }, breastfeeding: { rid: '0.07–0.1%', hale: 'L2', risk: 'low', notes: 'Among the lowest relative infant doses of the SGAs (<1%). Generally considered compatible with monitoring for infant sedation.' } },
   aripiprazole:         { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal EPS and withdrawal. Limited but growing data; no strong teratogenicity signal.' }, breastfeeding: { rid: '0.7–8.3%', hale: 'L3', risk: 'caution', notes: 'Detectable in milk; half-life 75 hr means accumulation. Monitor infant.' } },
   clozapine:            { pregnancy: { fdaCategory: 'B', risk: 'caution', notes: 'Category B but agranulocytosis monitoring required. Neonatal hypotonia, seizures reported. Reserve for refractory illness.' }, breastfeeding: { rid: '~1.4%', hale: 'L3', risk: 'avoid', notes: 'Risk of infant agranulocytosis and sedation. Avoid; if used, monitor infant CBC.' } },
-  ziprasidone:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited data. QT prolongation consideration. No strong teratogenicity signal.' }, breastfeeding: { rid: '0.07–1.2%', hale: 'unknown', risk: 'unknown', notes: 'No reliable lactation data. Avoid if alternative exists.' } },
-  lurasidone:           { pregnancy: { fdaCategory: 'B', risk: 'low',     notes: 'Category B — animal studies reassuring. Limited human data. Neonatal EPS/withdrawal possible.' }, breastfeeding: { rid: '1.2–3%', hale: 'unknown', risk: 'unknown', notes: 'No published human lactation data. Caution warranted.' } },
+  ziprasidone:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited data. QT prolongation consideration. No strong teratogenicity signal.' }, breastfeeding: { rid: '0.07–1.2%', hale: 'unknown', risk: 'caution', notes: 'Limited data: one case with milk ≤11 mcg/L and normal infant development; registry data show no adverse effects with SGAs. LactMed: other antipsychotics may be preferred, especially for newborn/preterm infants. Monitor for sedation, poor feeding, EPS.' } },
+  lurasidone:           { pregnancy: { fdaCategory: 'B', risk: 'low',     notes: 'Category B — animal studies reassuring. Limited human data. Neonatal EPS/withdrawal possible.' }, breastfeeding: { rid: '~1.2% (up to ~3% at 80 mg)', hale: 'unknown', risk: 'caution', notes: '>99% protein bound; low milk excretion. Infants in a case and a 9-pair PK study had normal growth and development. LactMed: alternatives may be preferred for newborn/preterm infants.' } },
   asenapine:            { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited human data. Neonatal EPS possible. Sublingual route limits maternal systemic exposure.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No human lactation data.' } },
   paliperidone:         { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Active metabolite of risperidone. Neonatal EPS/withdrawal. Similar concerns to risperidone.' }, breastfeeding: { rid: '~1%', hale: 'L3', risk: 'caution', notes: 'Detected in milk (similar to risperidone). Monitor infant.' } },
   iloperidone:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited human data. QT prolongation. Neonatal EPS possible.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No human lactation data.' } },
-  brexpiprazole:        { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited data. Long half-life. Neonatal EPS/withdrawal possible.' }, breastfeeding: { rid: '~0.7%', hale: 'unknown', risk: 'unknown', notes: 'No human lactation data. Long half-life a concern.' } },
-  cariprazine:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited data. Ultra-long half-life of DCAR metabolite (~1–3 weeks) is a concern.' }, breastfeeding: { rid: '2.5–3%', hale: 'unknown', risk: 'avoid', notes: 'No data; ultra-long-acting metabolite would persist in infant for weeks. Avoid.' } },
+  brexpiprazole:        { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited data. Long half-life. Neonatal EPS/withdrawal possible.' }, breastfeeding: { rid: '~0.7%', hale: 'unknown', risk: 'caution', notes: 'One case: milk 1–6 mcg/L (RID ~0.7%); 3 infants had normal growth and development at 1 month. Several reports of decreased milk supply; monitor infant weight gain. Not a reason to stop breastfeeding if needed.' } },
+  cariprazine:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited data. Ultra-long half-life of DCAR metabolite (~1–3 weeks) is a concern.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'avoid', notes: 'No human lactation data. >90% protein bound, so milk transfer is likely low, but the very long-acting metabolite (DDCAR) could accumulate in the infant over weeks and lactation may be suppressed. LactMed: alternatives (e.g., quetiapine, olanzapine) may be preferred.' } },
   lumateperone:         { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'PLLR label only. Limited human data. Avoid unless clearly necessary.' }, breastfeeding: { rid: '<0.1%', hale: 'unknown', risk: 'unknown', notes: 'No human lactation data.' } },
   pimavanserin:         { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'PLLR label. Very limited data. Use in PD psychosis context — weigh risks carefully.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No human lactation data.' } },
   // Mood stabilizers
@@ -884,8 +884,8 @@ const PERINATAL_DATA = {
   estazolam:            { pregnancy: { fdaCategory: 'X', risk: 'avoid',   notes: 'Category X. Contraindicated in pregnancy.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'caution', notes: 'No published lactation data. Avoid.' } },
   flurazepam:           { pregnancy: { fdaCategory: 'X', risk: 'avoid',   notes: 'Category X. Ultra-long half-life active metabolite. Contraindicated.' }, breastfeeding: { rid: 'Not established', hale: 'L3', risk: 'avoid', notes: 'Long-acting metabolites accumulate. Avoid during breastfeeding.' } },
   // Other anxiolytics
-  buspirone:            { pregnancy: { fdaCategory: 'B', risk: 'low',     notes: 'Category B. Animal studies reassuring. Limited human data but no strong teratogenicity signal. First-line anxiolytic consideration in pregnancy.' }, breastfeeding: { rid: '0.2–2.2%', hale: 'unknown', risk: 'unknown', notes: 'No published human lactation data. Short half-life may be favorable, but data lacking.' } },
-  pregabalin:           { pregnancy: { fdaCategory: 'C', risk: 'avoid',   notes: 'Emerging signal for major congenital malformations (cardiac, musculoskeletal). EURAP and Nordic studies raise concern. Avoid.' }, breastfeeding: { rid: '~7%', hale: 'unknown', risk: 'caution', notes: 'Detected in breast milk in case reports. Limited safety data.' } },
+  buspirone:            { pregnancy: { fdaCategory: 'B', risk: 'low',     notes: 'Category B. Animal studies reassuring. Limited human data but no strong teratogenicity signal. First-line anxiolytic consideration in pregnancy.' }, breastfeeding: { rid: '~0.9% (0.2–2.2%)', hale: 'unknown', risk: 'caution', notes: 'Low milk levels at doses up to 45 mg/day; parent drug often undetectable but active metabolite present. No long-term data; LactMed suggests an alternative may be preferred for newborn/preterm infants.' } },
+  pregabalin:           { pregnancy: { fdaCategory: 'C', risk: 'avoid',   notes: 'Emerging signal for major congenital malformations (cardiac, musculoskeletal). EURAP and Nordic studies raise concern. Avoid.' }, breastfeeding: { rid: '~7%', hale: 'unknown', risk: 'caution', notes: 'Milk levels low (~7% weight-adjusted); modeling suggests subtherapeutic infant levels at 150 mg BID. One infant breastfed 3 months without adverse effects. Monitor for sedation and feeding.' } },
   propranolol:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Fetal bradycardia, IUGR, neonatal hypoglycemia. Commonly used for performance anxiety; avoid chronic use near term.' }, breastfeeding: { rid: '<0.5%', hale: 'L2', risk: 'low', notes: 'Low milk transfer. Compatible with infant monitoring for bradycardia.' } },
   clonidine:            { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal hypotension, rebound hypertension if abruptly stopped. Used for ADHD/HTN; weigh benefit vs. risk.' }, breastfeeding: { rid: '4.1–8.4%', hale: 'L3', risk: 'caution', notes: 'Excreted in milk; neonatal sedation and hypotension possible.' } },
   guanfacine:           { pregnancy: { fdaCategory: 'B', risk: 'low',     notes: 'Category B. Animal studies reassuring. Limited human data. Used for ADHD in pregnancy with caution.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No published human lactation data.' } },
@@ -896,7 +896,7 @@ const PERINATAL_DATA = {
   'amphetamine-mixed-salts': { pregnancy: { fdaCategory: 'C', risk: 'avoid', notes: 'Preterm birth, IUGR, neonatal withdrawal. Vasoconstrictive effects on placenta. Avoid if possible; if continued, close OB monitoring.' }, breastfeeding: { rid: '1.8–7.5%', hale: 'L3', risk: 'avoid', notes: 'Amphetamines concentrated in milk. Irritability, poor sleep in infant. Generally avoid; pump and discard.' } },
   dextroamphetamine:    { pregnancy: { fdaCategory: 'C', risk: 'avoid',   notes: 'Same vasoconstrictive/withdrawal concerns as mixed amphetamine salts. Avoid.' }, breastfeeding: { rid: '~2–7%', hale: 'L4', risk: 'avoid', notes: 'Significant infant exposure. Avoid breastfeeding.' } },
   lisdexamfetamine:     { pregnancy: { fdaCategory: 'C', risk: 'avoid',   notes: 'Prodrug of d-amphetamine. Same pregnancy concerns. Avoid.' }, breastfeeding: { rid: '2–13.8%', hale: 'L4', risk: 'avoid', notes: 'Prodrug — converts to d-amphetamine. Avoid breastfeeding.' } },
-  modafinil:            { pregnancy: { fdaCategory: 'C', risk: 'avoid',   notes: 'Facial cleft signal in post-marketing data. Manufacturer recommends effective contraception. Avoid in pregnancy.' }, breastfeeding: { rid: '~5.3%', hale: 'unknown', risk: 'unknown', notes: 'No published lactation data. Avoid given teratogenicity concerns.' } },
+  modafinil:            { pregnancy: { fdaCategory: 'C', risk: 'avoid',   notes: 'Facial cleft signal in post-marketing data. Manufacturer recommends effective contraception. Avoid in pregnancy.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'caution', notes: 'Very limited data: low R-modafinil levels in milk of two mothers; infant serum ~1.6% of maternal (S-enantiomer not measured). No adverse effects reported. LactMed: use with careful infant monitoring, or prefer an alternative.' } },
   armodafinil:          { pregnancy: { fdaCategory: 'C', risk: 'avoid',   notes: 'R-enantiomer of modafinil. Same facial cleft concern and contraception requirement.' }, breastfeeding: { rid: '~5.3%', hale: 'unknown', risk: 'unknown', notes: 'No lactation data. Avoid.' } },
   solriamfetol:         { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'PLLR label. Very limited data. Dopamine/norepinephrine reuptake inhibitor — neonatal effects unknown.' }, breastfeeding: { rid: '~5.5%', hale: 'unknown', risk: 'unknown', notes: 'No human lactation data.' } },
   // Anticholinergics / Antihistamines
@@ -943,7 +943,7 @@ const MEDICATIONS = [
       { use: 'Bulimia Nervosa', year: 1994 },
       { use: 'Premenstrual Dysphoric Disorder', year: 2000 },
       { use: 'Bipolar Depression', year: 2003, dx: 'Bipolar I', phase: 'Depressive episodes', line: 'With olanzapine (Symbyax / olanzapine-fluoxetine)', age: 'Adults' },
-      { use: 'Treatment-Resistant Depression (with olanzapine)', year: 2003 },
+      { use: 'Treatment-Resistant Depression (with olanzapine)', year: 2009 },
     ]
   },
   {
@@ -1183,7 +1183,7 @@ const MEDICATIONS = [
     id: 'desvenlafaxine',
     effects: { weight: 'low', sedation: 'low', sexual: 'moderate', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1996, fdaApprovalYear: 2008, originator: "Wyeth (Pfizer)" },
-    dosing: { start: "50 mg PO daily", target: "50 mg/day", max: "400 mg/day (no added benefit >50 mg)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=desvenlafaxine" } },
+    dosing: { start: "50 mg PO daily", target: "50 mg/day", max: "50 mg/day recommended (up to 400 mg studied; no added benefit >50 mg)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=desvenlafaxine" } },
     name: 'Desvenlafaxine',
     brandName: 'Pristiq',
     class: 'SNRI',
@@ -1444,7 +1444,7 @@ const MEDICATIONS = [
     renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required per labeling. Use with caution in severe renal impairment; monitor for adverse effects.' },
     hepaticImpairment: { modified: true, notes: 'Use with caution' },
     geriatricDosing: { modified: true, notes: 'Start low; orthostatic/fall risk' },
-    qtInterval: false,
+    qtInterval: true,
     proteinBinding: 92,
     receptorKi: {
       SERT: 160, NET: 8300, DAT: 10000, '5HT1A': 14, '5HT2A': 36, '5HT2C': 230,
@@ -1910,7 +1910,7 @@ const MEDICATIONS = [
   {
     id: 'lamotrigine',
     development: { discoveryYear: 1980, fdaApprovalYear: 1994, originator: "Wellcome (GSK)" },
-    dosing: { start: "25 mg/day, slow titration", target: "200 mg/day", max: "400 mg/day (200 mg with valproate)", formulations: "IR BID • XR once daily (Lamictal XR) • ODT & chewable", citation: { label: "FDA package insert (2025)", url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/020241s068s069,020764s061s062,022251s032s033lbl.pdf" } },
+    dosing: { start: "25 mg/day, slow titration", target: "200 mg/day", max: "Bipolar target: 200 mg/day monotherapy; 100 mg/day with valproate; 400 mg/day with carbamazepine or other enzyme inducers", formulations: "IR BID • XR once daily (Lamictal XR) • ODT & chewable", citation: { label: "FDA package insert (2025)", url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/020241s068s069,020764s061s062,022251s032s033lbl.pdf" } },
     name: 'Lamotrigine',
     brandName: 'Lamictal',
     class: 'Mood Stabilizer',
@@ -2192,7 +2192,7 @@ const MEDICATIONS = [
     id: 'gepirone',
     effects: { weight: 'minimal', sedation: 'minimal', sexual: 'minimal', antichol: 'minimal', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1986, fdaApprovalYear: 2023, originator: "Bristol-Myers Squibb / Fabre-Kramer" },
-    dosing: { start: "18.2 mg/day", target: "18.2–61.8 mg/day", max: "79.8 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=gepirone" } },
+    dosing: { start: "18.2 mg/day", target: "18.2–72.6 mg/day", max: "72.6 mg/day (36.3 mg/day max if ≥65 yr, CrCl <50, or moderate hepatic impairment; reduce dose 50% with moderate CYP3A4 inhibitors)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=gepirone" } },
     name: 'Gepirone',
     brandName: 'Exxua',
     class: 'Azapirone',
@@ -2208,7 +2208,7 @@ const MEDICATIONS = [
     renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No formal recommendations; use with caution in severe renal impairment.' },
     hepaticImpairment: { modified: true, notes: 'Avoid in moderate-severe' },
     geriatricDosing: { modified: false, notes: 'Use with caution; no specific dose adjustment but start low given limited geriatric data.' },
-    qtInterval: false,
+    qtInterval: true,
     proteinBinding: 97,
     receptorKi: { '5HT1A': 21, SERT: 160, NET: 10000, DAT: 10000, '5HT2A': 10000, D2: 500, H1: 10000, alpha1: 10000, M1: 10000 },
     indications: [
@@ -2242,7 +2242,7 @@ const MEDICATIONS = [
     receptorKi: null,
     mechanism: 'NMDA receptor uncompetitive antagonist; also acts at opioid mu/kappa receptors and sigma receptors; rapidly reduces depressive symptoms; administered intranasally in-office under REMS program; also increases AMPA/mTOR signaling downstream',
     indications: [
-      { use: 'Treatment-Resistant Depression (adults)', year: 2019 },
+      { use: 'Treatment-Resistant Depression (adults)', year: 2019, line: 'Monotherapy (added Jan 2025) or with an oral antidepressant' },
       { use: 'MDD with Acute Suicidal Ideation or Behavior (adults)', year: 2020 },
     ]
   }
@@ -2299,7 +2299,6 @@ const MEDICATIONS = [
     receptorKi: null,
     mechanism: 'GABA-A receptor positive allosteric modulator (neuroactive steroid); oral formulation; taken daily for 14 days; acts at synaptic and extrasynaptic GABA-A receptors; CNS depressant effects — driving restriction for 12 hours after each dose',
     indications: [
-      { use: 'Major Depressive Disorder (adults)', year: 2023 },
       { use: 'Postpartum Depression (adults)', year: 2023 },
     ]
   }
@@ -2667,9 +2666,10 @@ const MEDICATIONS = [
     proteinBinding: 91,
     receptorKi: { SERT: 10000, NET: 10000, DAT: 10000, '5HT1A': 2.6, '5HT2A': 18, '5HT2C': 134, D2: 0.49, D3: 0.08, H1: 40, alpha1: 155, alpha2: 10000, M1: 10000 },
     indications: [
-      { use: 'Schizophrenia', year: 2015 },
-      { use: 'Bipolar Mania', year: 2015, dx: 'Bipolar I', phase: 'Acute manic or mixed episodes', line: 'Monotherapy', age: 'Adults' },
+      { use: 'Schizophrenia', year: 2015, age: 'Adults & 13-17 yr', line: 'Pediatric (13-17 yr) indication added 2025' },
+      { use: 'Bipolar Mania', year: 2015, dx: 'Bipolar I', phase: 'Acute manic or mixed episodes', line: 'Monotherapy; pediatric (10-17 yr) indication added 2025', age: 'Adults & 10-17 yr' },
       { use: 'Bipolar Depression', year: 2019, dx: 'Bipolar I', phase: 'Depressive episodes', line: 'Monotherapy', age: 'Adults' },
+      { use: 'Adjunct for Major Depressive Disorder', year: 2022 },
     ]
   }
   ,{
@@ -2698,6 +2698,7 @@ const MEDICATIONS = [
     indications: [
       { use: 'Schizophrenia', year: 2019 },
       { use: 'Bipolar Depression', year: 2021, dx: 'Bipolar I or II', phase: 'Depressive episodes', line: 'Monotherapy or adjunct to lithium/valproate', age: 'Adults' },
+      { use: 'Adjunct for Major Depressive Disorder', year: 2025, age: 'Adults', line: 'Adjunctive to antidepressants' },
     ]
   }
   ,{
@@ -3442,7 +3443,7 @@ const MEDICATIONS = [
   ,{
     id: 'modafinil',
     development: { discoveryYear: 1974, fdaApprovalYear: 1998, originator: "Lafon / Cephalon (Teva)" },
-    dosing: { start: "200 mg qAM", target: "200 mg/day", max: "400 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=modafinil" } },
+    dosing: { start: "200 mg qAM", target: "200 mg/day", max: "200 mg/day (up to 400 mg tolerated; no consistent added benefit)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=modafinil" } },
     name: 'Modafinil',
     brandName: 'Provigil',
     class: 'Wake-Promoting Agent',
@@ -3669,7 +3670,8 @@ sertraline: {
   }
 },
 escitalopram: {
-  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.', 'QT prolongation at doses above 20 mg/day; dose-dependent risk of torsades de pointes.'],
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  keyWarnings: ['QT prolongation at doses above 20 mg/day; dose-dependent risk of torsades de pointes.'],
   sideEffects: {
     'CNS': ['insomnia', 'somnolence', 'tremor', 'headache', 'dizziness'],
     'GI': ['nausea', 'diarrhea', 'dry mouth'],
@@ -3679,7 +3681,8 @@ escitalopram: {
   }
 },
 paroxetine: {
-  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.', 'Cardiovascular malformations associated with first trimester exposure; avoid in pregnancy when possible.'],
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  keyWarnings: ['Cardiovascular malformations associated with first trimester exposure; avoid in pregnancy when possible.'],
   sideEffects: {
     'CNS': ['somnolence', 'insomnia', 'tremor', 'headache', 'dizziness'],
     'GI': ['nausea', 'constipation', 'dry mouth', 'diarrhea'],
@@ -3689,7 +3692,8 @@ paroxetine: {
   }
 },
 citalopram: {
-  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.', 'Dose-dependent QT prolongation; maximum recommended dose 40 mg/day (20 mg in elderly).'],
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  keyWarnings: ['Dose-dependent QT prolongation; maximum recommended dose 40 mg/day (20 mg in elderly).'],
   sideEffects: {
     'CNS': ['somnolence', 'insomnia', 'tremor', 'headache'],
     'GI': ['nausea', 'dry mouth', 'diarrhea'],
@@ -3720,7 +3724,8 @@ venlafaxine: {
   }
 },
 duloxetine: {
-  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.', 'Hepatotoxicity risk; contraindicated in chronic liver disease or hepatic cirrhosis.'],
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  keyWarnings: ['Hepatotoxicity risk; contraindicated in chronic liver disease or hepatic cirrhosis.'],
   sideEffects: {
     'CNS': ['somnolence', 'headache', 'dizziness', 'insomnia', 'tremor'],
     'GI': ['nausea', 'dry mouth', 'constipation', 'diarrhea'],
@@ -3806,7 +3811,8 @@ doxepin: {
 
 // ── MAOIs ────────────────────────────────────────────────────────────────────
 phenelzine: {
-  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.', 'Hypertensive crisis risk with tyramine-containing foods, sympathomimetics, and serotonergic drugs; strict dietary restrictions required.'],
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  keyWarnings: ['Hypertensive crisis risk with tyramine-containing foods, sympathomimetics, and serotonergic drugs; strict dietary restrictions required.'],
   sideEffects: {
     'CNS': ['somnolence', 'headache', 'tremor', 'dizziness', 'insomnia'],
     'GI': ['dry mouth', 'constipation', 'nausea'],
@@ -3829,7 +3835,8 @@ tranylcypromine: {
 
 // ── Other Antidepressants ────────────────────────────────────────────────────
 bupropion: {
-  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.', 'Dose-dependent seizure risk; contraindicated in seizure disorders, eating disorders, and abrupt discontinuation of alcohol or sedatives.'],
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  keyWarnings: ['Dose-dependent seizure risk; contraindicated in seizure disorders, eating disorders, and abrupt discontinuation of alcohol or sedatives.'],
   sideEffects: {
     'CNS': ['insomnia', 'headache', 'tremor', 'agitation', 'dizziness'],
     'GI': ['dry mouth', 'nausea', 'constipation'],
@@ -3883,7 +3890,7 @@ gepirone: {
   }
 },
 esketamine: {
-  blackBoxWarnings: ['Sedation, dissociation, and abuse potential; available only through a restricted REMS program requiring administration in certified healthcare settings with patient monitoring.', 'Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  blackBoxWarnings: ['Sedation, dissociation, respiratory depression, and abuse/misuse; available only through a restricted REMS program requiring administration in certified healthcare settings with post-dose monitoring.', 'Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
   sideEffects: {
     'CNS': ['dissociation', 'somnolence', 'sedation', 'dizziness', 'headache', 'vertigo'],
     'GI': ['nausea', 'vomiting', 'dry mouth'],
@@ -3901,7 +3908,8 @@ brexanolone: {
   }
 },
 zuranolone: {
-  blackBoxWarnings: ['CNS depressant effects including somnolence, dizziness, and impaired concentration; patients should not drive or operate machinery for at least 12 hours after dosing.', 'Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  blackBoxWarnings: ['Impaired ability to drive or engage in other potentially hazardous activities: CNS depressant effects; do not drive or operate machinery for at least 12 hours after each dose. Patients may not be able to assess their own impairment.'],
+  keyWarnings: ['Suicidal thoughts and behaviors: monitor for worsening depression and emergence of suicidal thoughts; consider changing the regimen if they emerge.'],
   sideEffects: {
     'CNS': ['somnolence', 'dizziness', 'sedation', 'headache'],
     'GI': ['diarrhea', 'nausea'],
@@ -3909,7 +3917,8 @@ zuranolone: {
   }
 },
 'dextromethorphan-bupropion': {
-  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.', 'Dose-dependent seizure risk from bupropion component; contraindicated in seizure disorders and eating disorders.'],
+  blackBoxWarnings: ['Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
+  keyWarnings: ['Dose-dependent seizure risk from bupropion component; contraindicated in seizure disorders and eating disorders.'],
   sideEffects: {
     'CNS': ['dizziness', 'headache', 'somnolence'],
     'GI': ['diarrhea', 'nausea', 'dry mouth'],
@@ -3975,7 +3984,8 @@ thiothixene: {
   }
 },
 pimozide: {
-  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.', 'Dose-dependent QT prolongation; baseline ECG and periodic monitoring required.'],
+  blackBoxWarnings: [],
+  keyWarnings: ['Dose-dependent QT prolongation; baseline ECG and periodic monitoring required.'],
   sideEffects: {
     'CNS': ['extrapyramidal symptoms', 'akathisia', 'tardive dyskinesia', 'sedation'],
     'Cardiovascular': ['orthostatic hypotension', 'QT prolongation'],
@@ -4013,7 +4023,8 @@ molindone: {
 
 // ── Second-Generation Antipsychotics (SGAs) ──────────────────────────────────
 risperidone: {
-  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.', 'Cerebrovascular adverse events (stroke, TIA) reported in elderly patients with dementia.'],
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  keyWarnings: ['Cerebrovascular adverse events (stroke, TIA) reported in elderly patients with dementia.'],
   sideEffects: {
     'CNS': ['sedation', 'extrapyramidal symptoms', 'akathisia', 'tremor', 'insomnia'],
     'Cardiovascular': ['orthostatic hypotension', 'tachycardia'],
@@ -4051,7 +4062,7 @@ aripiprazole: {
   }
 },
 clozapine: {
-  blackBoxWarnings: ['Severe neutropenia (agranulocytosis); requires enrollment in Clozapine REMS program with mandatory ANC monitoring.', 'Myocarditis and cardiomyopathy; highest risk in first month of treatment. Monitor for tachycardia, chest pain, dyspnea.', 'Seizure risk, especially at doses >600 mg/day; dose-dependent.', 'Severe orthostatic hypotension with or without syncope; can cause cardiorespiratory arrest during initial titration.', 'Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  blackBoxWarnings: ['Severe neutropenia: obtain baseline ANC and monitor ANC per label. Do not initiate if baseline ANC < 1500/µL (< 1000/µL for benign ethnic neutropenia / Duffy-null). The Clozapine REMS was eliminated in 2025; ANC monitoring is still required.', 'Orthostatic hypotension, bradycardia, and syncope: risk highest during initial titration and dose increases; can lead to cardiorespiratory arrest. Start at 12.5 mg and titrate slowly.', 'Seizure risk, especially at doses >600 mg/day; dose-dependent.', 'Myocarditis, pericarditis, and cardiomyopathy: highest risk in the first month of treatment. Monitor for tachycardia, chest pain, dyspnea, and fever; discontinue if suspected.', 'Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
   sideEffects: {
     'CNS': ['sedation', 'dizziness', 'seizures', 'tremor', 'headache'],
     'Cardiovascular': ['orthostatic hypotension', 'tachycardia', 'myocarditis'],
@@ -4062,7 +4073,8 @@ clozapine: {
   }
 },
 ziprasidone: {
-  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.', 'QT prolongation risk; avoid in patients with known QT prolongation or recent MI.'],
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  keyWarnings: ['QT prolongation risk; avoid in patients with known QT prolongation or recent MI.'],
   sideEffects: {
     'CNS': ['sedation', 'akathisia', 'headache', 'dizziness', 'extrapyramidal symptoms'],
     'Cardiovascular': ['orthostatic hypotension', 'QT prolongation'],
@@ -4125,7 +4137,7 @@ cariprazine: {
   }
 },
 lumateperone: {
-  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.', 'Increased risk of suicidal thinking and behavior in children, adolescents, and young adults (18-24) taking antidepressants for MDD and other psychiatric disorders.'],
   sideEffects: {
     'CNS': ['sedation', 'somnolence', 'dizziness'],
     'Metabolic/Endocrine': ['weight gain (minimal)'],
@@ -4133,7 +4145,8 @@ lumateperone: {
   }
 },
 pimavanserin: {
-  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.', 'QT prolongation risk; avoid in patients with known QT prolongation.'],
+  blackBoxWarnings: ['Increased mortality in elderly patients with dementia-related psychosis; not approved for this use.'],
+  keyWarnings: ['QT prolongation risk; avoid in patients with known QT prolongation.'],
   sideEffects: {
     'CNS': ['confusion', 'hallucinations', 'headache'],
     'Cardiovascular': ['QT prolongation'],
@@ -4155,7 +4168,7 @@ lithium: {
   }
 },
 valproate: {
-  blackBoxWarnings: ['Hepatotoxicity including fatal hepatic failure; highest risk in children under 2 and patients on polytherapy. Monitor LFTs frequently, especially in first 6 months.', 'Major congenital malformations including neural tube defects; contraindicated for migraine prophylaxis in pregnancy. Pregnancy category X.', 'Life-threatening pancreatitis reported; discontinue immediately if pancreatitis is diagnosed.'],
+  blackBoxWarnings: ['Hepatotoxicity including fatal hepatic failure; highest risk in children under 2 and patients on polytherapy. Monitor LFTs frequently, especially in first 6 months.', 'Fetal risk: major congenital malformations (especially neural tube defects), decreased IQ, and neurodevelopmental disorders. Contraindicated in pregnancy for migraine prophylaxis; avoid in women of childbearing potential unless alternatives are inadequate.', 'Life-threatening pancreatitis reported; discontinue immediately if pancreatitis is diagnosed.'],
   sideEffects: {
     'CNS': ['sedation', 'tremor', 'ataxia', 'dizziness', 'headache'],
     'GI': ['nausea', 'vomiting', 'diarrhea', 'abdominal pain'],
@@ -4192,7 +4205,8 @@ oxcarbazepine: {
   }
 },
 topiramate: {
-  blackBoxWarnings: ['Oral clefts (cleft lip/palate) reported with first trimester exposure; avoid in pregnancy when possible.'],
+  blackBoxWarnings: [],
+  keyWarnings: ['Oral clefts (cleft lip/palate) reported with first trimester exposure; avoid in pregnancy when possible.'],
   sideEffects: {
     'CNS': ['cognitive impairment', 'word-finding difficulty', 'dizziness', 'sedation', 'paresthesia'],
     'GI': ['anorexia', 'nausea', 'weight loss'],
@@ -4220,42 +4234,42 @@ pregabalin: {
 
 // ── Benzodiazepines ──────────────────────────────────────────────────────────
 alprazolam: {
-  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Abuse, misuse, and addiction: benzodiazepine use exposes users to risks of abuse, misuse, and addiction, which can lead to overdose or death. Assess risk before prescribing and throughout treatment.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
   sideEffects: {
     'CNS': ['sedation', 'dizziness', 'ataxia', 'memory impairment', 'cognitive impairment'],
     'Other': ['dependence', 'fatigue']
   }
 },
 clonazepam: {
-  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Abuse, misuse, and addiction: benzodiazepine use exposes users to risks of abuse, misuse, and addiction, which can lead to overdose or death. Assess risk before prescribing and throughout treatment.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
   sideEffects: {
     'CNS': ['sedation', 'dizziness', 'ataxia', 'cognitive impairment', 'depression'],
     'Other': ['dependence', 'fatigue']
   }
 },
 diazepam: {
-  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Abuse, misuse, and addiction: benzodiazepine use exposes users to risks of abuse, misuse, and addiction, which can lead to overdose or death. Assess risk before prescribing and throughout treatment.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
   sideEffects: {
     'CNS': ['sedation', 'dizziness', 'ataxia', 'memory impairment', 'confusion'],
     'Other': ['dependence', 'fatigue']
   }
 },
 lorazepam: {
-  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Abuse, misuse, and addiction: benzodiazepine use exposes users to risks of abuse, misuse, and addiction, which can lead to overdose or death. Assess risk before prescribing and throughout treatment.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
   sideEffects: {
     'CNS': ['sedation', 'dizziness', 'weakness', 'ataxia', 'memory impairment'],
     'Other': ['dependence']
   }
 },
 oxazepam: {
-  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Abuse, misuse, and addiction: benzodiazepine use exposes users to risks of abuse, misuse, and addiction, which can lead to overdose or death. Assess risk before prescribing and throughout treatment.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
   sideEffects: {
     'CNS': ['sedation', 'dizziness', 'ataxia', 'memory impairment'],
     'Other': ['dependence']
   }
 },
 chlordiazepoxide: {
-  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Abuse, misuse, and addiction: benzodiazepine use exposes users to risks of abuse, misuse, and addiction, which can lead to overdose or death. Assess risk before prescribing and throughout treatment.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
   sideEffects: {
     'CNS': ['sedation', 'dizziness', 'ataxia', 'confusion'],
     'GI': ['nausea', 'constipation'],
@@ -4263,14 +4277,14 @@ chlordiazepoxide: {
   }
 },
 clorazepate: {
-  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Abuse, misuse, and addiction: benzodiazepine use exposes users to risks of abuse, misuse, and addiction, which can lead to overdose or death. Assess risk before prescribing and throughout treatment.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
   sideEffects: {
     'CNS': ['sedation', 'dizziness', 'ataxia', 'memory impairment'],
     'Other': ['dependence']
   }
 },
 midazolam: {
-  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'IV/IM administration carries risk of respiratory depression and arrest; resuscitation equipment must be available.'],
+  blackBoxWarnings: ['IV/IM administration carries risk of respiratory depression and arrest; resuscitation equipment must be available.', 'Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Abuse, misuse, and addiction: benzodiazepine use exposes users to risks of abuse, misuse, and addiction, which can lead to overdose or death. Assess risk before prescribing and throughout treatment.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
   sideEffects: {
     'CNS': ['sedation', 'amnesia', 'dizziness', 'headache'],
     'Cardiovascular': ['hypotension', 'bradycardia'],
@@ -4278,21 +4292,22 @@ midazolam: {
   }
 },
 triazolam: {
-  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Complex sleep behaviors including sleep-walking and sleep-driving reported.'],
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Abuse, misuse, and addiction: benzodiazepine use exposes users to risks of abuse, misuse, and addiction, which can lead to overdose or death. Assess risk before prescribing and throughout treatment.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
+  keyWarnings: ['Complex sleep behaviors including sleep-walking and sleep-driving reported.'],
   sideEffects: {
     'CNS': ['sedation', 'dizziness', 'amnesia', 'headache'],
     'Other': ['dependence', 'rebound insomnia']
   }
 },
 estazolam: {
-  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.'],
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Abuse, misuse, and addiction: benzodiazepine use exposes users to risks of abuse, misuse, and addiction, which can lead to overdose or death. Assess risk before prescribing and throughout treatment.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
   sideEffects: {
     'CNS': ['sedation', 'dizziness', 'headache', 'memory impairment'],
     'Other': ['dependence', 'rebound insomnia']
   }
 },
 flurazepam: {
-  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.'],
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Abuse, misuse, and addiction: benzodiazepine use exposes users to risks of abuse, misuse, and addiction, which can lead to overdose or death. Assess risk before prescribing and throughout treatment.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
   sideEffects: {
     'CNS': ['sedation', 'dizziness', 'ataxia', 'memory impairment', 'hangover effect'],
     'Other': ['dependence', 'rebound insomnia']
@@ -4317,7 +4332,8 @@ eszopiclone: {
   }
 },
 temazepam: {
-  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Complex sleep behaviors including sleep-walking and sleep-driving reported.'],
+  blackBoxWarnings: ['Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death; reserve concurrent use for patients with inadequate alternatives.', 'Abuse, misuse, and addiction: benzodiazepine use exposes users to risks of abuse, misuse, and addiction, which can lead to overdose or death. Assess risk before prescribing and throughout treatment.', 'Physical dependence and withdrawal reactions; abrupt discontinuation or rapid dose reduction may be life-threatening. Taper gradually.'],
+  keyWarnings: ['Complex sleep behaviors including sleep-walking and sleep-driving reported.'],
   sideEffects: {
     'CNS': ['sedation', 'dizziness', 'headache', 'memory impairment'],
     'Other': ['dependence', 'rebound insomnia', 'hangover effect']
@@ -4332,7 +4348,8 @@ ramelteon: {
   }
 },
 suvorexant: {
-  blackBoxWarnings: ['Complex sleep behaviors including sleep-walking, sleep-driving, and sleep-eating; may result in serious injury or death. Discontinue if complex sleep behavior occurs.'],
+  blackBoxWarnings: [],
+  keyWarnings: ['Complex sleep behaviors including sleep-walking, sleep-driving, and sleep-eating; may result in serious injury or death. Discontinue if complex sleep behavior occurs.'],
   sideEffects: {
     'CNS': ['somnolence', 'headache', 'dizziness'],
     'Other': ['next-day impairment', 'sleep paralysis']
@@ -4367,7 +4384,8 @@ dexmethylphenidate: {
   }
 },
 'amphetamine-mixed-salts': {
-  blackBoxWarnings: ['High potential for abuse and dependence (Schedule II). Assess risk before prescribing and monitor for signs of misuse, abuse, and addiction.', 'Sudden death reported in patients with pre-existing structural cardiac abnormalities; assess cardiac history before initiation.'],
+  blackBoxWarnings: ['High potential for abuse and dependence (Schedule II). Assess risk before prescribing and monitor for signs of misuse, abuse, and addiction.'],
+  keyWarnings: ['Sudden death reported in patients with pre-existing structural cardiac abnormalities; assess cardiac history before initiation.'],
   sideEffects: {
     'CNS': ['insomnia', 'nervousness', 'headache', 'anxiety', 'tremor'],
     'Cardiovascular': ['increased heart rate', 'elevated blood pressure', 'palpitations'],
@@ -4376,7 +4394,8 @@ dexmethylphenidate: {
   }
 },
 dextroamphetamine: {
-  blackBoxWarnings: ['High potential for abuse and dependence (Schedule II). Assess risk before prescribing and monitor for signs of misuse, abuse, and addiction.', 'Sudden death reported in patients with pre-existing structural cardiac abnormalities; assess cardiac history before initiation.'],
+  blackBoxWarnings: ['High potential for abuse and dependence (Schedule II). Assess risk before prescribing and monitor for signs of misuse, abuse, and addiction.'],
+  keyWarnings: ['Sudden death reported in patients with pre-existing structural cardiac abnormalities; assess cardiac history before initiation.'],
   sideEffects: {
     'CNS': ['insomnia', 'nervousness', 'headache', 'anxiety', 'tremor'],
     'Cardiovascular': ['increased heart rate', 'elevated blood pressure', 'palpitations'],
@@ -4385,7 +4404,8 @@ dextroamphetamine: {
   }
 },
 lisdexamfetamine: {
-  blackBoxWarnings: ['High potential for abuse and dependence (Schedule II). Assess risk before prescribing and monitor for signs of misuse, abuse, and addiction.', 'Sudden death reported in patients with pre-existing structural cardiac abnormalities; assess cardiac history before initiation.'],
+  blackBoxWarnings: ['High potential for abuse and dependence (Schedule II). Assess risk before prescribing and monitor for signs of misuse, abuse, and addiction.'],
+  keyWarnings: ['Sudden death reported in patients with pre-existing structural cardiac abnormalities; assess cardiac history before initiation.'],
   sideEffects: {
     'CNS': ['insomnia', 'nervousness', 'headache', 'anxiety', 'irritability'],
     'Cardiovascular': ['increased heart rate', 'elevated blood pressure', 'palpitations'],
@@ -4394,7 +4414,8 @@ lisdexamfetamine: {
   }
 },
 modafinil: {
-  blackBoxWarnings: ['Serious dermatologic reactions including SJS and TEN reported; discontinue at first sign of rash.'],
+  blackBoxWarnings: [],
+  keyWarnings: ['Serious dermatologic reactions including SJS and TEN reported; discontinue at first sign of rash.'],
   sideEffects: {
     'CNS': ['headache', 'insomnia', 'nervousness', 'dizziness', 'anxiety'],
     'Cardiovascular': ['elevated blood pressure', 'palpitations'],
@@ -4403,7 +4424,8 @@ modafinil: {
   }
 },
 armodafinil: {
-  blackBoxWarnings: ['Serious dermatologic reactions including SJS and TEN reported; discontinue at first sign of rash.'],
+  blackBoxWarnings: [],
+  keyWarnings: ['Serious dermatologic reactions including SJS and TEN reported; discontinue at first sign of rash.'],
   sideEffects: {
     'CNS': ['headache', 'insomnia', 'dizziness', 'anxiety'],
     'Cardiovascular': ['elevated blood pressure', 'palpitations'],
@@ -4456,7 +4478,8 @@ propranolol: {
   }
 },
 clonidine: {
-  blackBoxWarnings: ['Rebound hypertension may occur with abrupt discontinuation; taper gradually.'],
+  blackBoxWarnings: [],
+  keyWarnings: ['Rebound hypertension may occur with abrupt discontinuation; taper gradually.'],
   sideEffects: {
     'Cardiovascular': ['hypotension', 'bradycardia'],
     'CNS': ['sedation', 'dizziness', 'fatigue', 'headache'],
@@ -4464,7 +4487,8 @@ clonidine: {
   }
 },
 guanfacine: {
-  blackBoxWarnings: ['Rebound hypertension may occur with abrupt discontinuation; taper gradually.'],
+  blackBoxWarnings: [],
+  keyWarnings: ['Rebound hypertension may occur with abrupt discontinuation; taper gradually.'],
   sideEffects: {
     'Cardiovascular': ['hypotension', 'bradycardia', 'syncope'],
     'CNS': ['sedation', 'somnolence', 'dizziness', 'fatigue'],
@@ -4524,7 +4548,7 @@ const ADMINISTRATION_DATA = {
   "olanzapine": { food: "With or without food", timing: "Bedtime", pearls: ["Sedating — usually dosed at night; the orally disintegrating tablet dissolves on the tongue.", "High metabolic risk — monitor weight, glucose, and lipids; never give IM olanzapine with IV benzodiazepines."] },
   "quetiapine": { food: "XR without food or with a light snack", timing: "Bedtime", pearls: ["IR is sedating — dose at bedtime; take XR without food or with a light meal (≤300 kcal) to avoid raised peak levels.", "Swallow XR tablets whole."] },
   "aripiprazole": { food: "With or without food", timing: "Morning", pearls: ["Can be activating and cause akathisia — morning dosing is preferred.", "Counsel about rare impulse-control behaviors (gambling, hypersexuality)."] },
-  "clozapine": { food: "With or without food", timing: "Divided / bedtime", pearls: ["Requires REMS ANC monitoring for agranulocytosis; titrate slowly (orthostasis, sedation, seizures).", "Smoking cessation raises levels — reassess dose; monitor bowel function (constipation can be severe)."] },
+  "clozapine": { food: "With or without food", timing: "Divided / bedtime", pearls: ["Requires ANC monitoring for severe neutropenia per label (REMS eliminated 2025); titrate slowly (orthostasis, sedation, seizures).", "Smoking cessation raises levels — reassess dose; monitor bowel function (constipation can be severe)."] },
   "ziprasidone": { food: "With food — required (≥500 kcal)", timing: "Morning and evening (BID)", pearls: ["MUST be taken with a meal of ≥500 kcal — food doubles absorption; empty-stomach dosing can halve levels and efficacy.", "Obtain baseline and periodic ECGs (QT)."] },
   "lurasidone": { food: "With food — required (≥350 kcal)", timing: "Evening", pearls: ["Take with a meal of at least 350 kcal — absorption roughly doubles with food.", "Avoid strong CYP3A4 inhibitors/inducers and grapefruit."] },
   "asenapine": { food: "Sublingual — no food or drink for 10 min", timing: "BID", pearls: ["Place under the tongue and let it dissolve; do NOT swallow, chew, or crush, and avoid eating/drinking for 10 minutes.", "Transient oral numbness is common; a transdermal patch (Secuado) is an alternative."] },

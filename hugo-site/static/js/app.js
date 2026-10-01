@@ -496,7 +496,7 @@ function switchSection(id, skipGroupExpand) {
       // Question bank needs data file loaded first
       if (toolId === 'question-bank-tool' && !window.QBANK_DATA) {
         var dataScript = document.createElement('script');
-        dataScript.src = 'js/qbank-data.js?v=20260723d';
+        dataScript.src = 'js/qbank-data.js?v=20261001a';
         dataScript.onload = function() {
           var script = document.createElement('script');
           script.src = 'js/tools/' + toolId + '.js?v=20260719d';
@@ -551,7 +551,7 @@ function switchSection(id, skipGroupExpand) {
         });
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20260918a';
+        script.src = 'js/tools/' + toolId + '.js?v=20261001a';
         document.body.appendChild(script);
       }
     }
@@ -1084,14 +1084,25 @@ function buildAdministrationHTML(drugId) {
 
 function buildBlackBoxHTML(drugId) {
   const safety = typeof FDA_SAFETY_DATA !== 'undefined' ? FDA_SAFETY_DATA[drugId] : null;
-  if (!safety || !safety.blackBoxWarnings || !safety.blackBoxWarnings.length) return '';
-  return `
+  if (!safety) return '';
+  const boxed = Array.isArray(safety.blackBoxWarnings) ? safety.blackBoxWarnings : [];
+  const key   = Array.isArray(safety.keyWarnings) ? safety.keyWarnings : [];
+  let html = '';
+  if (boxed.length) html += `
   <div class="modal-section modal-bbw">
     <h4>&#9888; FDA Black Box Warnings</h4>
     <div class="bbw-container">
-      ${safety.blackBoxWarnings.map(w => `<div class="bbw-item">${w}</div>`).join('')}
+      ${boxed.map(w => `<div class="bbw-item">${w}</div>`).join('')}
     </div>
   </div>`;
+  if (key.length) html += `
+  <div class="modal-section modal-keywarn">
+    <h4>Key Warnings (not boxed)</h4>
+    <div class="kw-container">
+      ${key.map(w => `<div class="kw-item">${w}</div>`).join('')}
+    </div>
+  </div>`;
+  return html;
 }
 
 function buildSideEffectsHTML(drugId) {
@@ -1159,6 +1170,9 @@ function bhiSections(id, ref) {
   if (safety && safety.blackBoxWarnings && safety.blackBoxWarnings.length) {
     S.push({ label: 'FDA Black Box Warnings', bbw: safety.blackBoxWarnings });
   }
+  if (safety && safety.keyWarnings && safety.keyWarnings.length) {
+    S.push({ label: 'Key Warnings (not boxed)', text: safety.keyWarnings.join(' \u2022 ') });
+  }
 
   // Mechanism (from MEDICATIONS)
   if (med && med.mechanism) S.push({ label: 'Mechanism', text: med.mechanism });
@@ -1196,7 +1210,7 @@ function bhiSections(id, ref) {
   if (peri) {
     var pl = [];
     if (peri.pregnancy) {
-      pl.push('Pregnancy: Cat. ' + (peri.pregnancy.fdaCategory || '—') +
+      pl.push('Pregnancy: former FDA Cat. ' + (peri.pregnancy.fdaCategory || '—') + ' (pre-2015)' +
               (peri.pregnancy.risk ? ' (' + peri.pregnancy.risk + ')' : '') +
               (peri.pregnancy.notes ? '. ' + peri.pregnancy.notes : ''));
     }
@@ -1433,7 +1447,7 @@ function buildPerinatalHTML(drugId) {
   const pregHTML = preg ? `
     <div class="modal-field">
       <label>Pregnancy</label>
-      <div>${badge(preg.risk)}${preg.fdaCategory ? ` <span class="peri-cat">Cat. ${preg.fdaCategory}</span>` : ''}
+      <div>${badge(preg.risk)}${preg.fdaCategory ? ` <span class="peri-cat" title="${PERI_FORMER_CAT_TITLE}">Former FDA Cat. ${preg.fdaCategory}</span>` : ''}
         ${preg.notes ? `<br><small>${preg.notes}</small>` : ''}
       </div>
     </div>` : '';
@@ -1461,12 +1475,13 @@ const PERINATAL_RISK_BADGE = {
   unknown: { cls: 'peri-unknown', label: 'Unknown'     },
 };
 
+const PERI_FORMER_CAT_TITLE = 'Former FDA letter category (pre-2015). Letter categories were retired under the 2015 Pregnancy and Lactation Labeling Rule (PLLR); see notes and current labeling.';
 function perinatalCell(data, isBF = false) {
   if (!data) return '<span class="no-badge">—</span>';
   const b = PERINATAL_RISK_BADGE[data.risk] || PERINATAL_RISK_BADGE.unknown;
   const cat = isBF
     ? (data.hale && data.hale !== 'unknown' ? `<span class="peri-cat">Hale ${data.hale}</span>` : '')
-    : (data.fdaCategory ? `<span class="peri-cat">Cat. ${data.fdaCategory}</span>` : '');
+    : (data.fdaCategory ? `<span class="peri-cat" title="${PERI_FORMER_CAT_TITLE}">Former Cat. ${data.fdaCategory}</span>` : '');
   const rid = (isBF && data.rid)
     ? `<span class="peri-rid" title="Relative Infant Dose">RID ${data.rid}</span>`
     : '';
