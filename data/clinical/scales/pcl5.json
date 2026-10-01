@@ -170,15 +170,15 @@
     }
   ],
   "severity_bands": [
-    { "min": 0, "max": 10, "label": "Minimal symptoms (0-10)", "class": "pc-severity-minimal", "action": "Low current self-reported PTSD symptom burden; interpret in context of trauma exposure and clinical interview" },
-    { "min": 11, "max": 20, "label": "Mild symptoms (11-20)", "class": "pc-severity-mild", "action": "Mild current self-reported PTSD symptom burden; monitor clinically if trauma-related impairment is present" },
-    { "min": 21, "max": 32, "label": "Moderate symptoms (21-32)", "class": "pc-severity-moderate", "action": "Moderate current self-reported PTSD symptom burden; consider further assessment" },
-    { "min": 33, "max": 51, "label": "Moderately severe symptoms (33-51)", "class": "pc-severity-moderately-severe", "action": "At or above this tool's probable PTSD cutoff; further clinical assessment recommended" },
-    { "min": 52, "max": 80, "label": "Severe symptoms (52-80)", "class": "pc-severity-severe", "action": "High current self-reported PTSD symptom burden; further clinical assessment recommended" }
+    { "min": 0, "max": 10, "label": "Minimal symptoms (0-10; descriptive band)", "class": "pc-severity-minimal", "action": "Low current self-reported PTSD symptom burden; interpret in context of trauma exposure and clinical interview" },
+    { "min": 11, "max": 20, "label": "Mild symptoms (11-20; descriptive band)", "class": "pc-severity-mild", "action": "Mild current self-reported PTSD symptom burden; monitor clinically if trauma-related impairment is present" },
+    { "min": 21, "max": 32, "label": "Moderate symptoms (21-32; descriptive band)", "class": "pc-severity-moderate", "action": "Moderate current self-reported PTSD symptom burden; consider further assessment" },
+    { "min": 33, "max": 51, "label": "Moderately severe symptoms (33-51; descriptive band)", "class": "pc-severity-moderately-severe", "action": "At or above this tool's probable PTSD cutoff; further clinical assessment recommended" },
+    { "min": 52, "max": 80, "label": "Severe symptoms (52-80; descriptive band)", "class": "pc-severity-severe", "action": "High current self-reported PTSD symptom burden; further clinical assessment recommended" }
   ],
   "report": {
     "heading": "PCL-5 (PTSD Checklist for DSM-5)",
-    "scoring_note": "Scoring: total symptom severity score ranges 0-80; DSM-5 cluster scores are B items 1-5, C items 6-7, D items 8-14, and E items 15-20.",
+    "scoring_note": "Scoring: total symptom severity score ranges 0-80; DSM-5 cluster scores are B items 1-5, C items 6-7, D items 8-14, and E items 15-20. The 0-80 severity bands are descriptive (not from Blevins 2015 or the National Center for PTSD); the primary interpretation is the >=33 probable-PTSD cut-off. For monitoring, a 5-10 point change is reliable change and a 10-20 point change is clinically meaningful (NCPTSD).",
     "screening_note": "Provisional PTSD diagnosis: count each item rated 2 or higher as endorsed, requiring at least 1 B item, 1 C item, 2 D items, and 2 E items. PCL-5 results require clinical confirmation; CAPS-5 is the diagnostic gold standard."
   },
   "test_vectors": [
@@ -186,7 +186,7 @@
       "name": "all_zero",
       "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       "expected_score": 0,
-      "expected_severity": "Minimal symptoms (0-10)",
+      "expected_severity": "Minimal symptoms (0-10; descriptive band)",
       "expected_subscales": {
         "cluster-b": 0,
         "cluster-c": 0,
@@ -207,7 +207,7 @@
       "name": "cutoff_and_criteria_met",
       "responses": [3, 0, 0, 0, 0, 2, 0, 2, 2, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4],
       "expected_score": 33,
-      "expected_severity": "Moderately severe symptoms (33-51)",
+      "expected_severity": "Moderately severe symptoms (33-51; descriptive band)",
       "expected_subscales": {
         "cluster-b": 3,
         "cluster-c": 2,
@@ -228,7 +228,7 @@
       "name": "below_cutoff_partial_criteria",
       "responses": [2, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       "expected_score": 6,
-      "expected_severity": "Minimal symptoms (0-10)",
+      "expected_severity": "Minimal symptoms (0-10; descriptive band)",
       "expected_subscales": {
         "cluster-b": 4,
         "cluster-c": 0,

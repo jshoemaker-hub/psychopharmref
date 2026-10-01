@@ -48,11 +48,11 @@
       { id: 'probable-ptsd', threshold: 33, operator: 'greater_than_or_equal', label_above: 'Above threshold (>=33)', label_below: 'Below threshold (<33)', report_label_above: 'Above threshold', report_label_below: 'Below threshold', display_element_id: 'pc-cutoff' }
     ],
     severity_bands: [
-      { min: 0, max: 10, label: 'Minimal symptoms (0-10)', class: 'pc-severity-minimal' },
-      { min: 11, max: 20, label: 'Mild symptoms (11-20)', class: 'pc-severity-mild' },
-      { min: 21, max: 32, label: 'Moderate symptoms (21-32)', class: 'pc-severity-moderate' },
-      { min: 33, max: 51, label: 'Moderately severe symptoms (33-51)', class: 'pc-severity-moderately-severe' },
-      { min: 52, max: 80, label: 'Severe symptoms (52-80)', class: 'pc-severity-severe' }
+      { min: 0, max: 10, label: 'Minimal symptoms (0-10; descriptive band)', class: 'pc-severity-minimal' },
+      { min: 11, max: 20, label: 'Mild symptoms (11-20; descriptive band)', class: 'pc-severity-mild' },
+      { min: 21, max: 32, label: 'Moderate symptoms (21-32; descriptive band)', class: 'pc-severity-moderate' },
+      { min: 33, max: 51, label: 'Moderately severe symptoms (33-51; descriptive band)', class: 'pc-severity-moderately-severe' },
+      { min: 52, max: 80, label: 'Severe symptoms (52-80; descriptive band)', class: 'pc-severity-severe' }
     ],
     report: {
       heading: 'PCL-5 (PTSD Checklist for DSM-5)',

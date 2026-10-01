@@ -20,14 +20,15 @@
       { id: 'ess-8', number: 8, text: 'In a car, while stopped for a few minutes in traffic or at a light' }
     ],
     severity_bands: [
-      { min: 0, max: 7, label: 'Unlikely that you are abnormally sleepy', class: 'es-normal', action: 'Monitor clinically; no abnormal daytime sleepiness suggested by score alone' },
-      { min: 8, max: 9, label: 'Average amount of daytime sleepiness', class: 'es-average', action: 'Monitor symptoms and context; reassess if impairment or safety concerns are present' },
-      { min: 10, max: 15, label: 'Excessive daytime sleepiness - further evaluation recommended', class: 'es-excessive', action: 'Consider formal sleep evaluation and review sleep, medication, and medical contributors' },
-      { min: 16, max: 24, label: 'Excessive daytime sleepiness - strongly consider seeking medical attention', class: 'es-excessive', action: 'Strongly consider physician or sleep-medicine evaluation, especially with driving or occupational risk' }
+      { min: 0, max: 5, label: 'Lower normal daytime sleepiness', class: 'es-normal', action: 'Within the normal range; no excessive daytime sleepiness suggested by score alone' },
+      { min: 6, max: 10, label: 'Higher normal daytime sleepiness', class: 'es-average', action: 'Upper end of normal; monitor if symptoms, impairment, or safety concerns are present' },
+      { min: 11, max: 12, label: 'Mild excessive daytime sleepiness', class: 'es-excessive', action: 'Excessive daytime sleepiness (ESS >10); review sleep, medication, and medical contributors' },
+      { min: 13, max: 15, label: 'Moderate excessive daytime sleepiness', class: 'es-excessive', action: 'Consider formal sleep evaluation; review sleep, medication, and medical contributors' },
+      { min: 16, max: 24, label: 'Severe excessive daytime sleepiness', class: 'es-excessive', action: 'Strongly consider physician or sleep-medicine evaluation, especially with driving or occupational risk' }
     ],
     report: {
       heading: 'Epworth Sleepiness Scale (ESS)',
-      scoring_note: 'Scoring: 0-7 unlikely abnormal sleepiness, 8-9 average daytime sleepiness, 10-15 excessive daytime sleepiness, 16-24 high excessive daytime sleepiness.'
+      scoring_note: 'Scoring (Johns, current ESS bands): 0-5 lower normal, 6-10 higher normal, 11-12 mild excessive, 13-15 moderate excessive, 16-24 severe excessive daytime sleepiness. A total >10 indicates excessive daytime sleepiness.'
     },
     references: [
       { label: 'Johns MW. A new method for measuring daytime sleepiness: the Epworth sleepiness scale. Sleep. 1991;14(6):540-545.' }

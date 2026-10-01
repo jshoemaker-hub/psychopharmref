@@ -77,11 +77,11 @@
     ],
     severity_bands: [
       { min: 0, max: 0, label: 'Not rated', display_label: '-' },
-      { min: 1, max: 57, label: 'Mild illness' },
-      { min: 58, max: 74, label: 'Moderate illness' },
-      { min: 75, max: 95, label: 'Marked illness' },
-      { min: 96, max: 115, label: 'Severe illness' },
-      { min: 116, max: 210, label: 'Extremely severe' }
+      { min: 1, max: 57, label: 'Below mildly ill (minimal/borderline)' },
+      { min: 58, max: 74, label: 'Mildly ill' },
+      { min: 75, max: 94, label: 'Moderately ill' },
+      { min: 95, max: 115, label: 'Markedly ill' },
+      { min: 116, max: 210, label: 'Severely ill' }
     ],
     report: {
       panss6_note: 'Interpret in clinical context alongside CGI-S rating. No formal severity cut-offs established.'

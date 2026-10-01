@@ -551,7 +551,7 @@ function switchSection(id, skipGroupExpand) {
         });
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20261001a';
+        script.src = 'js/tools/' + toolId + '.js?v=20261001c';
         document.body.appendChild(script);
       }
     }
@@ -588,7 +588,7 @@ function switchSection(id, skipGroupExpand) {
 
     if (shouldLoadToolUtils()) {
       const utils = document.createElement('script');
-      utils.src = 'js/tools/tool-utils.js?v=20260719d';
+      utils.src = 'js/tools/tool-utils.js?v=20261001a';
       utils.onload = loadToolScript;
       utils.onerror = function() { console.error('Failed to load tool-utils.js'); };
       document.body.appendChild(utils);

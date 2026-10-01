@@ -22,7 +22,7 @@
       { id: 'trunk', label: 'Trunk Movements', item_numbers: [7], max: 4, display_element_id: 'ai-trunk-score' }
     ],
     screening_rules: [
-      { id: 'td-screen', threshold: 2, movement_item_numbers: [1, 2, 3, 4, 5, 6, 7], global_item_number: 8, positive_label: 'POSITIVE', negative_label: 'NEGATIVE', display_element_id: 'ai-screen-status' }
+      { id: 'td-screen', two_items_at: 2, one_item_at: 3, criterion_label: 'Schooler–Kane: ≥2 in two areas or ≥3 in one', movement_item_numbers: [1, 2, 3, 4, 5, 6, 7], global_item_number: 8, positive_label: 'POSITIVE', negative_label: 'NEGATIVE', display_element_id: 'ai-screen-status' }
     ],
     severity_bands: [
       { min: 0, max: 0, label: 'No Dyskinesia' },
@@ -34,7 +34,7 @@
     report: {
       heading: 'Abnormal Involuntary Movement Scale (AIMS)',
       scoring_note: 'Scoring: total movement score is the sum of items 1-7 (0-28). Items 8-10 are global judgments; items 11-12 document dental status.',
-      screening_note: 'This tool flags a positive TD screen when any movement item 1-7 is rated 2 or higher, or item 8 is rated 2 or higher.'
+      screening_note: 'Positive TD screen uses the Schooler–Kane criterion: a rating of 2 (mild) or higher in at least two body areas (items 1-7), or 3 (moderate) or higher in at least one area. Global item 8 is reported but does not count toward the screen by itself.'
     },
     references: [
       { label: 'Guy W. ECDEU Assessment Manual for Psychopharmacology, Revised. Rockville, MD: U.S. Department of Health, Education, and Welfare; 1976:534-537.' }
@@ -88,28 +88,37 @@
     return itemSum(getScoredItemNumbers());
   }
 
+  // Schooler–Kane research criterion: >=2 (mild) in at least two body areas
+  // (items 1-7), or >=3 (moderate) in at least one. Global item 8 is reported
+  // but does not count toward the screen by itself.
+  function screenThresholds(rule) {
+    return {
+      two: rule.two_items_at != null ? rule.two_items_at : (rule.threshold != null ? rule.threshold : 2),
+      one: rule.one_item_at != null ? rule.one_item_at : 3
+    };
+  }
+
   function positiveItems() {
     var rule = getScreenRule();
+    var t = screenThresholds(rule);
     var items = [];
     (rule.movement_item_numbers || []).forEach(function(itemNumber) {
       var value = getItemValue(itemNumber);
-      if (value >= rule.threshold) {
+      if (value >= t.two) {
         var item = getItem(itemNumber);
         items.push('Item ' + itemNumber + ' (' + item.text + '): ' + value + '/' + item.max);
       }
     });
-
-    var globalValue = getItemValue(rule.global_item_number);
-    if (globalValue >= rule.threshold) {
-      var globalItem = getItem(rule.global_item_number);
-      items.push('Item ' + globalItem.number + ' (' + globalItem.text + '): ' + globalValue + '/' + globalItem.max);
-    }
-
     return items;
   }
 
   function isPositiveScreen() {
-    return positiveItems().length > 0;
+    var rule = getScreenRule();
+    var t = screenThresholds(rule);
+    var values = (rule.movement_item_numbers || []).map(getItemValue);
+    var atTwo = values.filter(function(v) { return v >= t.two; }).length;
+    var atOne = values.some(function(v) { return v >= t.one; });
+    return atTwo >= 2 || atOne;
   }
 
   function updateScores() {
@@ -170,10 +179,11 @@
     lines.push('  11. Current dental/denture problems: ' + yesNo(11));
     lines.push('  12. Usually wears dentures: ' + yesNo(12));
     lines.push('');
-    lines.push(rule.label + ': ' + (positive ? rule.positive_label : rule.negative_label));
+    lines.push(rule.label + ': ' + (positive ? rule.positive_label : rule.negative_label) +
+      ' (' + (rule.criterion_label || 'Schooler–Kane: ≥2 in two areas or ≥3 in one') + ')');
 
     var positives = positiveItems();
-    if (positives.length) lines.push('Items meeting threshold (>=2): ' + positives.join(', '));
+    if (positives.length) lines.push('Movement items rated >=2: ' + positives.join(', '));
 
     lines.push('');
     lines.push('Clinical Note: ' + (positive

@@ -70,15 +70,15 @@
   },
   "severity_bands": [
     { "min": 0, "max": 0, "label": "No catatonia detected", "class": "negative", "action": "No catatonic signs endorsed in this scoring session" },
-    { "min": 1, "max": 10, "label": "Mild catatonia", "class": "mild", "action": "Mild catatonic sign burden; interpret in clinical context" },
-    { "min": 11, "max": 20, "label": "Moderate catatonia", "class": "moderate", "action": "Moderate catatonic sign burden" },
-    { "min": 21, "max": 30, "label": "Severe catatonia", "class": "severe", "action": "Severe catatonic sign burden" },
-    { "min": 31, "max": 69, "label": "Extreme catatonia", "class": "extreme", "action": "Extreme catatonic sign burden" }
+    { "min": 1, "max": 10, "label": "Mild catatonia (descriptive band)", "class": "mild", "action": "Mild catatonic sign burden; interpret in clinical context" },
+    { "min": 11, "max": 20, "label": "Moderate catatonia (descriptive band)", "class": "moderate", "action": "Moderate catatonic sign burden" },
+    { "min": 21, "max": 30, "label": "Severe catatonia (descriptive band)", "class": "severe", "action": "Severe catatonic sign burden" },
+    { "min": 31, "max": 69, "label": "Extreme catatonia (descriptive band)", "class": "extreme", "action": "Extreme catatonic sign burden" }
   ],
   "report": {
     "heading": "Bush-Francis Catatonia Rating Scale (BFCRS)",
     "screening_heading": "Bush-Francis Catatonia Screening Instrument (BFCSI)",
-    "scoring_note": "Scoring: the full BFCRS severity score is the sum of items 1-23 (0-69). Items 12 and 17-21 are binary and are scored 0 or 3 only.",
+    "scoring_note": "Scoring: the full BFCRS severity score is the sum of items 1-23 (0-69). Items 12 and 17-21 are binary and are scored 0 or 3 only. Severity bands are descriptive, not validated: Bush 1996 defines the screen (>=2 of items 1-14) and the 0-69 total but no mild/moderate/severe cut-offs. Track the total over time (e.g., response to lorazepam challenge).",
     "screening_note": "The 14-item screening instrument is positive when two or more screening items are present."
   },
   "test_vectors": [
@@ -97,7 +97,7 @@
       "name": "positive_screen_mild",
       "responses": [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       "expected_score": 2,
-      "expected_severity": "Mild catatonia",
+      "expected_severity": "Mild catatonia (descriptive band)",
       "expected_subscales": {
         "screening": 2,
         "retarded": 2,
@@ -108,7 +108,7 @@
       "name": "binary_items_moderate",
       "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 3, 3, 3, 3, 0, 0],
       "expected_score": 18,
-      "expected_severity": "Moderate catatonia",
+      "expected_severity": "Moderate catatonia (descriptive band)",
       "expected_subscales": {
         "screening": 3,
         "retarded": 0,
@@ -119,7 +119,7 @@
       "name": "malignant_warning_shape",
       "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 2],
       "expected_score": 5,
-      "expected_severity": "Mild catatonia",
+      "expected_severity": "Mild catatonia (descriptive band)",
       "expected_subscales": {
         "screening": 3,
         "retarded": 0,

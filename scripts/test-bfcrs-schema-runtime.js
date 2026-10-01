@@ -161,7 +161,7 @@ async function main() {
   assert.strictEqual(window.document.getElementById('bf-crs-severity').textContent, '10');
   assert.strictEqual(window.document.getElementById('bf-crs-items-present').textContent, '5');
   assert.strictEqual(window.document.getElementById('bf-crs-screening-positive').textContent, '4');
-  assert.strictEqual(window.document.getElementById('bf-crs-interpretation').textContent, 'Mild catatonia');
+  assert.strictEqual(window.document.getElementById('bf-crs-interpretation').textContent, 'Mild catatonia (descriptive band)');
   assert.strictEqual(window.document.getElementById('bf-crs-subtype').textContent, 'Predominant subtype: Excited');
   assert(window.document.getElementById('bf-crs-warning').textContent.includes('malignant catatonia'), 'CRS warning did not appear');
 

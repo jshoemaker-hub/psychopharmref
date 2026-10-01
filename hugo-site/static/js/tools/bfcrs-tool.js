@@ -45,15 +45,15 @@
     },
     severity_bands: [
       { min: 0, max: 0, label: 'No catatonia detected', class: 'negative' },
-      { min: 1, max: 10, label: 'Mild catatonia', class: 'mild' },
-      { min: 11, max: 20, label: 'Moderate catatonia', class: 'moderate' },
-      { min: 21, max: 30, label: 'Severe catatonia', class: 'severe' },
-      { min: 31, max: 69, label: 'Extreme catatonia', class: 'extreme' }
+      { min: 1, max: 10, label: 'Mild catatonia (descriptive band)', class: 'mild' },
+      { min: 11, max: 20, label: 'Moderate catatonia (descriptive band)', class: 'moderate' },
+      { min: 21, max: 30, label: 'Severe catatonia (descriptive band)', class: 'severe' },
+      { min: 31, max: 69, label: 'Extreme catatonia (descriptive band)', class: 'extreme' }
     ],
     report: {
       heading: 'Bush-Francis Catatonia Rating Scale (BFCRS)',
       screening_heading: 'Bush-Francis Catatonia Screening Instrument (BFCSI)',
-      scoring_note: 'Scoring: the full BFCRS severity score is the sum of items 1-23 (0-69). Items 12 and 17-21 are binary and are scored 0 or 3 only.',
+      scoring_note: 'Scoring: the full BFCRS severity score is the sum of items 1-23 (0-69). Items 12 and 17-21 are binary and are scored 0 or 3 only. Severity bands are descriptive, not validated; track the total over time.',
       screening_note: 'The 14-item screening instrument is positive when two or more screening items are present.'
     },
     references: [

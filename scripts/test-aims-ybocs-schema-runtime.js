@@ -189,14 +189,31 @@ async function runAimsCase() {
   assert.strictEqual(window.document.getElementById('ai-total-score').textContent, '2/28');
   assert.strictEqual(window.document.getElementById('ai-severity-level').textContent, 'Minimal Dyskinesia');
   assert.strictEqual(window.document.getElementById('ai-facial-score').textContent, '2/16');
-  assert.strictEqual(window.document.getElementById('ai-screen-status').textContent, 'POSITIVE');
+  // Schooler-Kane: a single movement item at 2 is NOT a positive screen; global item 8 doesn't count.
+  assert.strictEqual(window.document.getElementById('ai-screen-status').textContent, 'NEGATIVE');
 
   window.document.getElementById('ai-report-btn').click();
   await wait(20);
 
-  const report = stubs.getCopiedText();
+  let report = stubs.getCopiedText();
   assert(report.includes('Total Movement Score: 2/28'), 'AIMS report missing total');
-  assert(report.includes('Tardive Dyskinesia Screen: POSITIVE'), 'AIMS report missing screen');
+  assert(report.includes('Tardive Dyskinesia Screen: NEGATIVE'), 'AIMS report missing negative screen');
+
+  // Two body areas at >=2 -> POSITIVE
+  selectResponses(window, 'ai-item', [0, 2, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0]);
+  await wait(20);
+  assert.strictEqual(window.document.getElementById('ai-screen-status').textContent, 'POSITIVE');
+
+  // One body area at >=3 -> POSITIVE
+  selectResponses(window, 'ai-item', [0, 0, 0, 0, 3, 0, 0, 3, 0, 0, 0, 0]);
+  await wait(20);
+  assert.strictEqual(window.document.getElementById('ai-screen-status').textContent, 'POSITIVE');
+
+  window.document.getElementById('ai-report-btn').click();
+  await wait(20);
+  report = stubs.getCopiedText();
+  assert(report.includes('Tardive Dyskinesia Screen: POSITIVE'), 'AIMS report missing positive screen');
+  assert(report.includes('Schooler'), 'AIMS report missing Schooler-Kane criterion');
   assert(report.includes('Reference: Guy W. ECDEU Assessment Manual'), 'AIMS report missing reference');
   dom.window.close();
 }

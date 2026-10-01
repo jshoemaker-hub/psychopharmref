@@ -17,7 +17,7 @@
       { number: 10, text: 'Orientation / Clouding of Sensorium', max: 4 }
     ],
     severity_bands: [
-      { min: 0, max: 9, label: 'Minimal to mild withdrawal', class: 'ciwa-severity-minimal', action: 'Scores <10 do not usually require additional medication for withdrawal. Continue symptom-triggered reassessment per protocol.' },
+      { min: 0, max: 9, label: 'Minimal to mild withdrawal', class: 'ciwa-severity-minimal', action: 'Scores below 8-10 usually do not require medication for withdrawal; many symptom-triggered protocols begin benzodiazepine dosing at a score of 8-10 or higher. Continue symptom-triggered reassessment per protocol.' },
       { min: 10, max: 15, label: 'Moderate withdrawal', class: 'ciwa-severity-moderate', action: 'Marked autonomic arousal. Consider benzodiazepine and continued frequent (q1h) reassessment.' },
       { min: 16, max: 67, label: 'Severe withdrawal', class: 'ciwa-severity-severe', action: 'Impending delirium tremens risk. Treat with benzodiazepine promptly, monitor closely, and consider higher level of care.' }
     ],

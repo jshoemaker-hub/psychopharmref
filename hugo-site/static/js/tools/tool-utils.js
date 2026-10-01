@@ -141,10 +141,13 @@ var ToolUtils = (function() {
     return clinicalSourcesPromise;
   }
 
+  // Bump when any data/clinical/scales/*.json changes so browsers/CDN refetch.
+  var SCALE_DATA_VERSION = '20261001a';
+
   function loadClinicalScale(scaleId) {
     if (!clinicalScalePromises[scaleId]) {
       clinicalScalePromises[scaleId] = Promise.all([
-        fetchJson('data/clinical/scales/' + scaleId + '.json'),
+        fetchJson('data/clinical/scales/' + scaleId + '.json?v=' + SCALE_DATA_VERSION),
         loadClinicalSources()
       ]).then(function(results) {
         var scale = results[0];

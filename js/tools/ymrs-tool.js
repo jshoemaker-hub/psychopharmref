@@ -17,8 +17,8 @@
       { id: 'ymrs-11', number: 11, text: 'Insight', max: 4 }
     ],
     severity_bands: [
-      { min: 0, max: 11, label: 'Remission', class: 'ym-severity-remission' },
-      { min: 12, max: 19, label: 'Mild mania', class: 'ym-severity-mild' },
+      { min: 0, max: 12, label: 'Remission / minimal', class: 'ym-severity-remission' },
+      { min: 13, max: 19, label: 'Mild mania', class: 'ym-severity-mild' },
       { min: 20, max: 25, label: 'Moderate mania', class: 'ym-severity-moderate' },
       { min: 26, max: 60, label: 'Severe mania', class: 'ym-severity-severe' }
     ],

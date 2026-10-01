@@ -100,32 +100,32 @@
     {
       "min": 1,
       "max": 57,
-      "label": "Mild illness",
-      "action": "Interpret alongside clinical interview and CGI-S rating."
+      "label": "Below mildly ill (minimal/borderline)",
+      "action": "Below the Leucht 2005 \"mildly ill\" anchor (total 58 ≈ CGI-S 3); interpret alongside clinical interview and CGI-S."
     },
     {
       "min": 58,
       "max": 74,
-      "label": "Moderate illness",
-      "action": "Approximately near the mild-to-moderate CGI-S anchor range; interpret in clinical context."
+      "label": "Mildly ill",
+      "action": "Leucht 2005: total 58 ≈ CGI-S 3 (mildly ill); interpret in clinical context."
     },
     {
       "min": 75,
-      "max": 95,
-      "label": "Marked illness",
-      "action": "Approximately near the moderate-to-marked CGI-S anchor range; interpret in clinical context."
+      "max": 94,
+      "label": "Moderately ill",
+      "action": "Leucht 2005: total 75 ≈ CGI-S 4 (moderately ill); interpret in clinical context."
     },
     {
-      "min": 96,
+      "min": 95,
       "max": 115,
-      "label": "Severe illness",
-      "action": "Approximately near the marked-to-severe CGI-S anchor range; interpret in clinical context."
+      "label": "Markedly ill",
+      "action": "Leucht 2005: total 95 ≈ CGI-S 5 (markedly ill); interpret in clinical context."
     },
     {
       "min": 116,
       "max": 210,
-      "label": "Extremely severe",
-      "action": "High PANSS total; interpret with full diagnostic formulation and risk/functional assessment."
+      "label": "Severely ill",
+      "action": "Leucht 2005: total 116 ≈ CGI-S 6 (severely ill); interpret with full diagnostic formulation and risk/functional assessment."
     }
   ],
   "report": {
@@ -190,7 +190,133 @@
         "negative": 7,
         "general": 16
       },
-      "expected_severity": "Mild illness"
+      "expected_severity": "Below mildly ill (minimal/borderline)"
+    },
+    {
+      "name": "panss30_total_60_mildly_ill",
+      "responses": {
+        "P1": 2,
+        "P2": 2,
+        "P3": 2,
+        "P4": 2,
+        "P5": 2,
+        "P6": 2,
+        "P7": 2,
+        "N1": 2,
+        "N2": 2,
+        "N3": 2,
+        "N4": 2,
+        "N5": 2,
+        "N6": 2,
+        "N7": 2,
+        "G1": 2,
+        "G2": 2,
+        "G3": 2,
+        "G4": 2,
+        "G5": 2,
+        "G6": 2,
+        "G7": 2,
+        "G8": 2,
+        "G9": 2,
+        "G10": 2,
+        "G11": 2,
+        "G12": 2,
+        "G13": 2,
+        "G14": 2,
+        "G15": 2,
+        "G16": 2
+      },
+      "expected_total": 60,
+      "expected_subscales": {
+        "positive": 14,
+        "negative": 14,
+        "general": 32
+      },
+      "expected_severity": "Mildly ill"
+    },
+    {
+      "name": "panss30_total_80_moderately_ill",
+      "responses": {
+        "P1": 3,
+        "P2": 3,
+        "P3": 3,
+        "P4": 3,
+        "P5": 3,
+        "P6": 3,
+        "P7": 3,
+        "N1": 3,
+        "N2": 3,
+        "N3": 3,
+        "N4": 3,
+        "N5": 3,
+        "N6": 3,
+        "N7": 3,
+        "G1": 3,
+        "G2": 3,
+        "G3": 3,
+        "G4": 3,
+        "G5": 3,
+        "G6": 3,
+        "G7": 2,
+        "G8": 2,
+        "G9": 2,
+        "G10": 2,
+        "G11": 2,
+        "G12": 2,
+        "G13": 2,
+        "G14": 2,
+        "G15": 2,
+        "G16": 2
+      },
+      "expected_total": 80,
+      "expected_subscales": {
+        "positive": 21,
+        "negative": 21,
+        "general": 38
+      },
+      "expected_severity": "Moderately ill"
+    },
+    {
+      "name": "panss30_total_100_markedly_ill",
+      "responses": {
+        "P1": 4,
+        "P2": 4,
+        "P3": 4,
+        "P4": 4,
+        "P5": 4,
+        "P6": 4,
+        "P7": 4,
+        "N1": 4,
+        "N2": 4,
+        "N3": 4,
+        "N4": 3,
+        "N5": 3,
+        "N6": 3,
+        "N7": 3,
+        "G1": 3,
+        "G2": 3,
+        "G3": 3,
+        "G4": 3,
+        "G5": 3,
+        "G6": 3,
+        "G7": 3,
+        "G8": 3,
+        "G9": 3,
+        "G10": 3,
+        "G11": 3,
+        "G12": 3,
+        "G13": 3,
+        "G14": 3,
+        "G15": 3,
+        "G16": 3
+      },
+      "expected_total": 100,
+      "expected_subscales": {
+        "positive": 28,
+        "negative": 24,
+        "general": 48
+      },
+      "expected_severity": "Markedly ill"
     }
   ]
 }

@@ -121,7 +121,7 @@ async function main() {
   await wait(20);
 
   assert.strictEqual(window.document.getElementById('pc-total').textContent, '33');
-  assert.strictEqual(window.document.getElementById('pc-severity').textContent, 'Moderately severe symptoms (33-51)');
+  assert.strictEqual(window.document.getElementById('pc-severity').textContent, 'Moderately severe symptoms (33-51; descriptive band)');
   assert.strictEqual(window.document.getElementById('pc-clusterB').textContent, '3');
   assert.strictEqual(window.document.getElementById('pc-clusterC').textContent, '2');
   assert.strictEqual(window.document.getElementById('pc-clusterD').textContent, '4');

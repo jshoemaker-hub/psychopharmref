@@ -124,10 +124,10 @@ async function main() {
     resetButtonId: 'es-reset-btn',
     responses: [3, 3, 3, 2, 2, 1, 1, 1],
     expectedScore: '16',
-    expectedSeverity: 'Excessive daytime sleepiness - strongly consider seeking medical attention',
+    expectedSeverity: 'Severe excessive daytime sleepiness',
     expectedReportIncludes: [
       'Total: 16 / 24',
-      'Severity: Excessive daytime sleepiness - strongly consider seeking medical attention',
+      'Severity: Severe excessive daytime sleepiness',
       'Reference: Johns MW.'
     ],
   });

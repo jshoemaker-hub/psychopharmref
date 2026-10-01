@@ -38,8 +38,8 @@
     { "id": "ymrs-11", "number": 11, "text": "Insight", "max": 4, "allowed_values": [0, 1, 2, 3, 4] }
   ],
   "severity_bands": [
-    { "min": 0, "max": 11, "label": "Remission", "class": "ym-severity-remission", "action": "Manic symptom burden is in the remission range by this tool's display bands; interpret in clinical context" },
-    { "min": 12, "max": 19, "label": "Mild mania", "class": "ym-severity-mild", "action": "Mild current manic symptom burden; consider monitoring, functional impact, and longitudinal change" },
+    { "min": 0, "max": 12, "label": "Remission / minimal", "class": "ym-severity-remission", "action": "YMRS ≤12 is the conventional remission threshold used in most trials; interpret in clinical context" },
+    { "min": 13, "max": 19, "label": "Mild mania", "class": "ym-severity-mild", "action": "Mild current manic symptom burden; consider monitoring, functional impact, and longitudinal change" },
     { "min": 20, "max": 25, "label": "Moderate mania", "class": "ym-severity-moderate", "action": "Moderate current manic symptom burden; further clinical assessment and treatment planning are usually warranted" },
     { "min": 26, "max": 60, "label": "Severe mania", "class": "ym-severity-severe", "action": "High current manic symptom burden; assess safety, psychosis, impairment, and need for urgent treatment setting" }
   ],
@@ -53,12 +53,12 @@
       "name": "all_zero",
       "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       "expected_score": 0,
-      "expected_severity": "Remission"
+      "expected_severity": "Remission / minimal"
     },
     {
       "name": "mild",
-      "responses": [2, 2, 1, 1, 2, 2, 1, 0, 0, 1, 0],
-      "expected_score": 12,
+      "responses": [2, 2, 1, 1, 2, 2, 1, 0, 0, 1, 1],
+      "expected_score": 13,
       "expected_severity": "Mild mania"
     },
     {
@@ -72,6 +72,7 @@
       "responses": [3, 3, 3, 3, 4, 4, 2, 2, 2, 0, 0],
       "expected_score": 26,
       "expected_severity": "Severe mania"
-    }
+    },
+    {"name": "remission_boundary_12", "responses": [2, 2, 1, 1, 2, 2, 1, 0, 0, 1, 0], "expected_score": 12, "expected_severity": "Remission / minimal"}
   ]
 }
