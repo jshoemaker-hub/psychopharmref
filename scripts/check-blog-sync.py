@@ -100,8 +100,9 @@ def main() -> int:
         print(f"ERROR: expected both {LEGACY} and {HUGO} to exist.", file=sys.stderr)
         return 2
 
-    legacy_files = {p.name for p in LEGACY.glob("*.html") if p.name != "sidebar.html"}
-    hugo_files = {p.name for p in HUGO.glob("*.html")}
+    # skip macOS AppleDouble metadata ("._name.html") created on non-HFS drives
+    legacy_files = {p.name for p in LEGACY.glob("*.html") if p.name != "sidebar.html" and not p.name.startswith("._")}
+    hugo_files = {p.name for p in HUGO.glob("*.html") if not p.name.startswith("._")}
 
     only_legacy = sorted(legacy_files - hugo_files)
     only_hugo = sorted(hugo_files - legacy_files)

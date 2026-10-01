@@ -67,7 +67,7 @@ const CASES = [
     scoreElementId: 'pc-total',
     expectedScore: '3',
     severityElementId: 'pc-severity',
-    expectedSeverity: 'Minimal symptoms (0-10)',
+    expectedSeverity: 'Minimal symptoms (0-10; descriptive band)',
     requiredToolUtilsMethod: 'loadClinicalScale',
   },
   {
@@ -77,7 +77,7 @@ const CASES = [
     scoreElementId: 'ym-total-score',
     expectedScore: '3',
     severityElementId: 'ym-severity-level',
-    expectedSeverity: 'Remission',
+    expectedSeverity: 'Remission / minimal',
     requiredToolUtilsMethod: 'loadClinicalScale',
   },
   {
@@ -122,7 +122,7 @@ const CASES = [
     scoreElementId: 'bf-crs-severity',
     expectedScore: '1',
     severityElementId: 'bf-crs-interpretation',
-    expectedSeverity: 'Mild catatonia',
+    expectedSeverity: 'Mild catatonia (descriptive band)',
     requiredToolUtilsMethod: 'loadClinicalScale',
     reportButtonId: 'bf-crs-generate',
     expectedReportText: 'Severity Score: 1/69',

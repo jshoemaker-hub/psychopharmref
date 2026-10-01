@@ -2400,18 +2400,18 @@
       }
     },
     "Brexanolone": {
-      "note": "Not retail-priced: REMS/clinic only",
+      "note": "Discontinued — Zulresso no longer marketed (Sage, end of 2024)",
       "CostPlusDrugs": {
         "available": false,
-        "reason": "REMS — dispensed only at certified clinics"
+        "reason": "Discontinued — no longer marketed"
       },
       "HealthWarehouse": {
         "available": false,
-        "reason": "REMS — dispensed only at certified clinics"
+        "reason": "Discontinued — no longer marketed"
       },
       "NADAC": {
         "available": false,
-        "reason": "REMS — dispensed only at certified clinics"
+        "reason": "Discontinued — no longer marketed"
       }
     }
   },

@@ -44,7 +44,7 @@
     ['Bupropion', 'Wellbutrin', 'NDRI', 'minimal', 'minimal', 'minimal', 'minimal', 'minimal'],
     ['Esketamine', 'Spravato', 'NMDA Antagonist', 'minimal', 'moderate', 'minimal', 'minimal', 'minimal'],
     ['Mirtazapine', 'Remeron', 'NaSSA', 'high', 'high', 'minimal', 'low', 'low'],
-    ['Brexanolone', 'Zulresso', 'Neuroactive Steroid', 'none', 'high', 'none', 'none', 'minimal'],
+    ['Brexanolone', 'Zulresso — discontinued', 'Neuroactive Steroid', 'none', 'high', 'none', 'none', 'minimal'],
     ['Zuranolone', 'Zurzuvae', 'Neuroactive Steroid', 'minimal', 'high', 'minimal', 'minimal', 'minimal'],
     ['Trazodone', 'Desyrel', 'SARI', 'low', 'high', 'low', 'minimal', 'moderate'],
     ['Aripiprazole', 'Abilify', 'SGA', 'low', 'minimal', 'minimal', 'minimal', 'minimal'],

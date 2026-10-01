@@ -551,7 +551,7 @@ function switchSection(id, skipGroupExpand) {
         });
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20261001c';
+        script.src = 'js/tools/' + toolId + '.js?v=20261001d';
         document.body.appendChild(script);
       }
     }

@@ -106,7 +106,7 @@
     "Pregabalin":            { "form": "capsule", "strength": "75 mg",   "quantity": 60, "supplyDays": 30, "generic": true,  "controlled": "C-V", "notes": "BID" },
 
     "Esketamine":            { "form": "nasal spray", "strength": "84 mg", "quantity": 1, "supplyDays": 7, "generic": false, "controlled": "C-III", "notes": "Spravato — clinic-administered only", "clinicOnly": true },
-    "Brexanolone":           { "form": "IV infusion", "strength": "5 mg/mL", "quantity": 1, "supplyDays": 1, "generic": false, "notes": "Zulresso — clinic IV only", "clinicOnly": true },
+    "Brexanolone":           { "form": "IV infusion", "strength": "5 mg/mL", "quantity": 1, "supplyDays": 1, "generic": false, "notes": "Zulresso — discontinued by Sage (end of 2024)", "clinicOnly": true, "priceNote": "Discontinued — Zulresso no longer marketed (Sage, end of 2024)", "retailReason": "Discontinued — no longer marketed" },
     "Zuranolone":            { "form": "capsule", "strength": "50 mg",   "quantity": 14, "supplyDays": 14, "generic": false, "controlled": "C-IV", "notes": "Zurzuvae — 14-day course only", "noNadac": "No NADAC listing (specialty distribution)" },
     "Xanomeline/Trospium":   { "form": "capsule", "strength": "100 mg/20 mg", "quantity": 60, "supplyDays": 30, "generic": false, "notes": "Cobenfy, BID", "nadacDesc": "COBENFY 100 MG-20 MG CAPSULE", "retailReason": "Brand only — not stocked by this pharmacy" },
     "Olanzapine/Samidorphan": { "form": "tablet", "strength": "10 mg/10 mg", "quantity": 30, "supplyDays": 30, "generic": false, "notes": "Lybalvi", "nadacDesc": "LYBALVI 10-10 MG TABLET", "hwReason": "Strength not stocked online (HealthWarehouse lists 5/10 and 15/10 mg)" },

@@ -5,7 +5,7 @@ check-sidebars.py — detect drift between the three PsychoPharmRef sidebars.
 The site keeps three separately-maintained sidebars that must stay in sync:
   1. index.html                              in-page SPA sidebar   (tool links: data-section="id"; chapter links: /blog/slug/)
   2. blog/sidebar.html                       fetched by every static blog post   (tools: ../index.html#id; chapters: slug.html)
-  3. hugo-site/layouts/partials/sidebar.html Hugo template   (tools: /#id; chapters: {{ "/blog/slug" | relURL }})
+  3. hugo-site/layouts/partials/sidebar.html Hugo template   (tools: /#id; chapters: {{ "/blog/slug/" | relURL }})
 
 They drift when a tool section or chapter is added to one but not the others. The
 symptom is nav entries that "drop off" when you open a blog post (because the shared

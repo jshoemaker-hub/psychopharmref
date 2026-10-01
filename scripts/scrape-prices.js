@@ -530,7 +530,7 @@ async function main() {
 
   // Clinic/REMS-only products: no retail or NADAC lookup, just an explanatory note
   for (const [drugName, sku] of clinicOnly) {
-    const rems = { available: false, reason: 'REMS — dispensed only at certified clinics' };
+    const rems = { available: false, reason: sku.retailReason || 'REMS — dispensed only at certified clinics' };
     prices[drugName] = { note: sku.priceNote || 'Not retail-priced: REMS/clinic only', CostPlusDrugs: rems, HealthWarehouse: rems, NADAC: rems };
   }
 

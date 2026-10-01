@@ -9,6 +9,14 @@ notes/
 *.jpg
 *.jpeg
 
+# EXCEPTION: site icons + social share image ship with the site
+!favicon-*.png
+!apple-touch-icon.png
+!og-image.png
+!hugo-site/static/favicon-*.png
+!hugo-site/static/apple-touch-icon.png
+!hugo-site/static/og-image.png
+
 # EXCEPTION: per-chapter NotebookLM slide decks ship with the site
 !blog/slides/**
 !hugo-site/static/blog/slides/**
