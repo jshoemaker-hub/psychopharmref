@@ -2748,7 +2748,7 @@ const MEDICATIONS = [
       M1: 10000
     },
     indications: [
-      { use: 'Schizophrenia', year: 2019 },
+      { use: 'Schizophrenia', year: 2019, phase: 'Acute; relapse prevention added April 2026' },
       { use: 'Bipolar Depression', year: 2021, dx: 'Bipolar I or II', phase: 'Depressive episodes', line: 'Monotherapy or adjunct to lithium/valproate', age: 'Adults' },
       { use: 'Adjunct for Major Depressive Disorder', year: 2025, age: 'Adults', line: 'Adjunctive to antidepressants' },
     ]
