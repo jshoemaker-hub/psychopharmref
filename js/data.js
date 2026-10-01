@@ -803,93 +803,93 @@ const PERINATAL_DATA = {
   fluoxetine:           { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'PPHN risk with late 3rd-trimester use. Neonatal adaptation syndrome. Generally weigh benefit vs. risk.' }, breastfeeding: { rid: '1.6–14.6%', hale: 'L2', risk: 'low', notes: 'Detectable in milk; long half-life of norfluoxetine. Monitor infant for sedation. Many prefer sertraline.' } },
   sertraline:           { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Most studied SSRI in pregnancy. Neonatal adaptation syndrome possible. Preferred SSRI if treatment needed.' }, breastfeeding: { rid: '0.4–2.2%', hale: 'L2', risk: 'low', notes: 'Preferred SSRI during breastfeeding. Low milk-to-plasma ratio; minimal infant exposure.' } },
   escitalopram:         { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited data vs. citalopram; cardiac defect risk signal weaker. Neonatal adaptation syndrome.' }, breastfeeding: { rid: '5.2–7.9%', hale: 'L2', risk: 'low', notes: 'Low relative infant dose. Generally considered compatible with monitoring.' } },
-  paroxetine:           { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Category D — associated with cardiac septal defects (OR ~1.5–2.0). Avoid in 1st trimester; switch if planning pregnancy.' }, breastfeeding: { rid: '1.2–2.8%', hale: 'L2', risk: 'low', notes: 'Low milk transfer. Compatible if clinically needed, though cardiac risk in pregnancy limits broader use.' } },
+  paroxetine:           { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Associated with cardiac septal defects (OR ~1.5–2.0). Avoid in 1st trimester; switch if planning pregnancy.' }, breastfeeding: { rid: '1.2–2.8%', hale: 'L2', risk: 'low', notes: 'Low milk transfer. Compatible if clinically needed, though cardiac risk in pregnancy limits broader use.' } },
   citalopram:           { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Cardiac malformation signal at high doses (>40 mg). Neonatal adaptation syndrome. Use lowest effective dose.' }, breastfeeding: { rid: '3–10%', hale: 'L2', risk: 'low', notes: 'Higher milk-to-plasma ratio than sertraline. Monitor infant; sertraline preferred.' } },
   fluvoxamine:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited human data; animal studies reassuring. Neonatal adaptation syndrome. CYP interactions may complicate dosing.' }, breastfeeding: { rid: '0.3–1.6%', hale: 'L2', risk: 'low', notes: 'Low infant relative dose. Compatible with monitoring.' } },
   // SNRIs
   venlafaxine:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal adaptation syndrome common; PPHN risk similar to SSRIs. Abrupt discontinuation in neonate causes withdrawal.' }, breastfeeding: { rid: '6.4–8.1%', hale: 'L3', risk: 'caution', notes: 'O-desmethylvenlafaxine accumulates in milk. Monitor infant for agitation, poor feeding.' } },
   duloxetine:           { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal adaptation syndrome. Some pain-indication data. Avoid abrupt cessation near term.' }, breastfeeding: { rid: '0.1–1.1%', hale: 'L3', risk: 'caution', notes: 'Low relative infant dose but limited safety data. Use with monitoring.' } },
   desvenlafaxine:       { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Active metabolite of venlafaxine. Neonatal adaptation syndrome risk. Limited specific data.' }, breastfeeding: { rid: '~6.8%', hale: 'L3', risk: 'caution', notes: 'Excreted in breast milk. Insufficient long-term infant safety data.' } },
-  milnacipran:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited human pregnancy data. Approved for fibromyalgia, not MDD. Avoid unless clearly necessary.' }, breastfeeding: { rid: '2.8–5%', hale: 'unknown', risk: 'unknown', notes: 'Insufficient human data. Avoid unless no alternative.' } },
-  levomilnacipran:      { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Active enantiomer of milnacipran. Very limited pregnancy data.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No human lactation data available.' } },
+  milnacipran:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited human pregnancy data. Approved for fibromyalgia, not MDD. Avoid unless clearly necessary.' }, breastfeeding: { rid: '2.8–5%', hale: 'unknown', risk: 'caution', notes: 'Milk levels low (RID ~2.8–5%); not expected to cause adverse effects. No published infant outcome data; caution pending more data.' } },
+  levomilnacipran:      { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Active enantiomer of milnacipran. Very limited pregnancy data.' }, breastfeeding: { rid: '~2.8% (racemic milnacipran data)', hale: 'unknown', risk: 'caution', notes: 'No direct data; racemic milnacipran gives RID ~2.8%. LactMed: use with caution, especially with newborn/preterm infants; monitor for agitation, irritability, poor feeding.' } },
   // TCAs
   amitriptyline:        { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal withdrawal, tachycardia. Limb reduction defects debated. Use lowest dose; avoid near term if possible.' }, breastfeeding: { rid: '0.9–2.8%', hale: 'L2', risk: 'low', notes: 'Low infant serum levels in most studies. Monitor for sedation.' } },
-  nortriptyline:        { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Category D. Neonatal withdrawal, urinary retention. Preferred TCA if TCA is necessary during breastfeeding but caution in pregnancy.' }, breastfeeding: { rid: '1.3–2.3%', hale: 'L2', risk: 'low', notes: 'Preferred TCA during breastfeeding; low relative infant dose.' } },
-  imipramine:           { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Category D. Neonatal withdrawal symptoms. Limb/cardiovascular defect signal; avoid in 1st trimester.' }, breastfeeding: { rid: '0.1–4.4%', hale: 'L2', risk: 'low', notes: 'Low milk transfer. Monitor infant for sedation.' } },
+  nortriptyline:        { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Neonatal withdrawal, urinary retention. Preferred TCA if TCA is necessary during breastfeeding but caution in pregnancy.' }, breastfeeding: { rid: '1.3–2.3%', hale: 'L2', risk: 'low', notes: 'Preferred TCA during breastfeeding; low relative infant dose.' } },
+  imipramine:           { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Neonatal withdrawal symptoms. Limb/cardiovascular defect signal; avoid in 1st trimester.' }, breastfeeding: { rid: '0.1–4.4%', hale: 'L2', risk: 'low', notes: 'Low milk transfer. Monitor infant for sedation.' } },
   doxepin:              { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited data at psychiatric doses. Topical formulation considered safer.' }, breastfeeding: { rid: '~1.2–3%', hale: 'L5', risk: 'avoid',   notes: 'Avoid — case reports of infant respiratory depression and sedation. Contraindicated during breastfeeding.' } },
   // MAOIs
-  phenelzine:           { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited human data. MAO inhibition may affect fetal development. Avoid if alternatives exist.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'avoid', notes: 'No human lactation data. MAO inhibitor class — avoid due to unknown neonatal risk.' } },
-  tranylcypromine:      { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Stimulant properties; vasoconstriction risk. Very limited data. Avoid if possible.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'avoid', notes: 'No human lactation data. Avoid.' } },
+  phenelzine:           { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited human data. MAO inhibition may affect fetal development. Avoid if alternatives exist.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'avoid', notes: 'No published lactation data; may raise prolactin. LactMed: other antidepressants (e.g., sertraline, paroxetine, nortriptyline) are preferred.' } },
+  tranylcypromine:      { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Stimulant properties; vasoconstriction risk. Very limited data. Avoid if possible.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'avoid', notes: 'No milk-level data. One case of abdominal distension and feeding intolerance (maternal 100–120 mg/day) that resolved after weaning. LactMed: an alternative is preferred.' } },
   // Other antidepressants
   bupropion:            { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Some signal for cardiac defects at high doses (disputed). Commonly used for depression/smoking cessation. Neonatal seizure risk at high doses.' }, breastfeeding: { rid: '0.1–2%', hale: 'L3', risk: 'caution', notes: 'Hydroxybupropion accumulates in milk. Case report of infant seizure. Use caution; monitor infant.' } },
   mirtazapine:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Commonly used off-label for hyperemesis gravidarum. Limited but generally reassuring data for short-term use.' }, breastfeeding: { rid: '0.6–3%', hale: 'L3', risk: 'caution', notes: 'Detected in milk at low levels. Sedation possible. Monitor infant.' } },
   trazodone:            { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited human data. Animal studies show no teratogenicity. Commonly used at low doses for insomnia.' }, breastfeeding: { rid: '0.6–2.8%', hale: 'L2', risk: 'low', notes: 'Low relative infant dose. Generally considered compatible at low doses.' } },
-  vilazodone:           { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited human data. SSRI-like neonatal adaptation risk.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No published human lactation data. Avoid if alternatives exist.' } },
+  vilazodone:           { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited human data. SSRI-like neonatal adaptation risk.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No published experience. LactMed: an alternate drug may be preferred, especially for newborn/preterm infants.' } },
   vortioxetine:         { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited human data. Novel mechanism. Avoid unless benefit clearly outweighs risk.' }, breastfeeding: { rid: '0.3–1.7%', hale: 'unknown', risk: 'low', notes: 'Milk levels low; no adverse effects in reported infants (1–9 months). LactMed: if required, not a reason to discontinue breastfeeding; monitor infant.' } },
-  gepirone:             { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited data. Novel 5HT1A partial agonist antidepressant. Avoid if possible.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No human lactation data.' } },
-  esketamine:           { pregnancy: { fdaCategory: 'C', risk: 'avoid',   notes: 'NMDA antagonism — animal data shows potential neurotoxicity. Avoid in pregnancy. REMS program.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'avoid', notes: 'No lactation data. CNS-active nasal spray — avoid.' } },
+  gepirone:             { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited data. Novel 5HT1A partial agonist antidepressant. Avoid if possible.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No lactation data. Poor oral bioavailability makes significant infant absorption unlikely. Monitor for irritability, somnolence, poor feeding.' } },
+  esketamine:           { pregnancy: { fdaCategory: 'C', risk: 'avoid',   notes: 'NMDA antagonism — animal data shows potential neurotoxicity. Avoid in pregnancy. REMS program.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'avoid', notes: 'No milk data for the nasal spray. Single IV doses at cesarean appear safe, but LactMed advises that repeated intranasal dosing should probably be avoided during breastfeeding.' } },
   brexanolone:          { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'Approved for postpartum depression only. Use occurs in postpartum period; safety in pregnancy not established.' }, breastfeeding: { rid: '~0.7% (max ~1.3%)', hale: 'unknown', risk: 'low', notes: 'Low milk levels and poor oral bioavailability; milk levels undetectable in most women ~3 days after infusion. Breastfeeding not contraindicated; arrange separate infant care during the infusion because of maternal sedation/loss of consciousness.' } },
   zuranolone:           { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'PLLR-era label only. Animal data shows fetal harm. Contraceptive use required. Very limited human data.' }, breastfeeding: { rid: '~0.7% (label: <1%)', hale: 'unknown', risk: 'low', notes: 'Lactation study: RID ~0.74%; milk levels undetectable 4–6 days after the last dose. LactMed: not expected to cause adverse effects in breastfed infants; monitor for sedation, especially newborn/preterm.' } },
-  'dextromethorphan-bupropion': { pregnancy: { fdaCategory: 'N/A', risk: 'caution', notes: 'Combination product. DXM has limited pregnancy data. See bupropion concerns. Avoid unless clearly needed.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'caution', notes: 'No published lactation data for combination. Bupropion concerns apply.' } },
+  'dextromethorphan-bupropion': { pregnancy: { fdaCategory: 'N/A', risk: 'caution', notes: 'Combination product. DXM has limited pregnancy data. See bupropion concerns. Avoid unless clearly needed.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'avoid', notes: 'Manufacturer recommends avoiding breastfeeding during treatment and for 5 days after the last dose. Components: dextromethorphan milk levels very low (RID <0.5%); bupropion levels low but rare infant seizures reported.' } },
   // FGAs
   haloperidol:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limb reduction defects in early reports (disputed). Neonatal EPS and withdrawal. Most studied FGA; used in hyperemesis.' }, breastfeeding: { rid: '0.2–12%', hale: 'L3', risk: 'caution', notes: 'Low relative infant dose. Developmental concerns with long-term exposure. Use lowest effective dose.' } },
   chlorpromazine:       { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal EPS, jaundice, sedation. Used historically but less preferred than haloperidol.' }, breastfeeding: { rid: 'Not established', hale: 'L3', risk: 'caution', notes: 'Detected in milk. Neonatal sedation and galactorrhea risk. Monitor closely.' } },
   fluphenazine:         { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal EPS. Limited data specific to fluphenazine. Long-acting depot adds complexity.' }, breastfeeding: { rid: 'Not established', hale: 'L4', risk: 'avoid', notes: 'Limited data; depot formulation prolongs exposure. Avoid if possible.' } },
-  trifluoperazine:      { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal EPS. Limited human data. Avoid if alternative antipsychotic available.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No reliable lactation data. Avoid.' } },
+  trifluoperazine:      { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal EPS. Limited human data. Avoid if alternative antipsychotic available.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'caution', notes: 'Limited data: milk levels undetectable (<1 mcg/L) at 5–10 mg/day; exposed infants had normal development. Limited experience overall; monitor for sedation and EPS.' } },
   perphenazine:         { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal EPS, sedation. Some use in refractory hyperemesis. Limited data.' }, breastfeeding: { rid: '~0.1%', hale: 'L3', risk: 'caution', notes: 'Low milk concentrations in limited studies. Monitor infant.' } },
-  thiothixene:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited data. Neonatal EPS possible. Class effect applies.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No published lactation data.' } },
-  pimozide:             { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited data. QT prolongation adds concern. Avoid in pregnancy if possible.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'avoid', notes: 'No lactation data. QT prolongation risk. Avoid.' } },
-  thioridazine:         { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal EPS, sedation. Withdrawn from many markets due to QT risk. Avoid.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'avoid', notes: 'No lactation data. QT risk and limited data. Avoid.' } },
-  loxapine:             { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal EPS. Inhaled formulation not studied in pregnancy. Limited data.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No published lactation data.' } },
-  molindone:            { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited data. Neonatal EPS expected as class effect.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No published lactation data.' } },
+  thiothixene:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited data. Neonatal EPS possible. Class effect applies.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No published experience; raises prolactin. LactMed: other antipsychotics are preferred.' } },
+  pimozide:             { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited data. QT prolongation adds concern. Avoid in pregnancy if possible.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'avoid', notes: 'No published experience; raises prolactin. QT risk. LactMed: haloperidol, olanzapine, quetiapine, or risperidone preferred.' } },
+  thioridazine:         { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal EPS, sedation. Withdrawn from many markets due to QT risk. Avoid.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'avoid', notes: 'No published experience; raises prolactin; QT risk. LactMed: an alternative (haloperidol, olanzapine, quetiapine, risperidone) is preferred.' } },
+  loxapine:             { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal EPS. Inhaled formulation not studied in pregnancy. Limited data.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No published experience; raises prolactin. LactMed: an alternate drug may be preferred, especially for newborns.' } },
+  molindone:            { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited data. Neonatal EPS expected as class effect.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No published experience; galactorrhea reported. LactMed: other antipsychotics are preferred.' } },
   // SGAs
   risperidone:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal EPS and withdrawal reported. Gestational diabetes risk. Most studied SGA after olanzapine.' }, breastfeeding: { rid: '2.3–4.7%', hale: 'L3', risk: 'caution', notes: 'Low relative infant dose. Monitor for sedation and EPS.' } },
   olanzapine:           { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Gestational diabetes, excessive weight gain. Neonatal EPS/withdrawal. Most studied SGA in pregnancy.' }, breastfeeding: { rid: '0.3–2.2%', hale: 'L2', risk: 'low', notes: 'Low relative infant dose. Sedation possible. Monitor weight gain in infant.' } },
   quetiapine:           { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Gestational diabetes risk. Neonatal withdrawal. Commonly used; limited teratogenicity signal.' }, breastfeeding: { rid: '0.07–0.1%', hale: 'L2', risk: 'low', notes: 'Among the lowest relative infant doses of the SGAs (<1%). Generally considered compatible with monitoring for infant sedation.' } },
   aripiprazole:         { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal EPS and withdrawal. Limited but growing data; no strong teratogenicity signal.' }, breastfeeding: { rid: '0.7–8.3%', hale: 'L3', risk: 'caution', notes: 'Detectable in milk; half-life 75 hr means accumulation. Monitor infant.' } },
-  clozapine:            { pregnancy: { fdaCategory: 'B', risk: 'caution', notes: 'Category B but agranulocytosis monitoring required. Neonatal hypotonia, seizures reported. Reserve for refractory illness.' }, breastfeeding: { rid: '~1.4%', hale: 'L3', risk: 'avoid', notes: 'Risk of infant agranulocytosis and sedation. Avoid; if used, monitor infant CBC.' } },
+  clozapine:            { pregnancy: { fdaCategory: 'B', risk: 'caution', notes: 'Agranulocytosis monitoring required. Neonatal hypotonia, seizures reported. Reserve for refractory illness.' }, breastfeeding: { rid: '~1.4%', hale: 'L3', risk: 'avoid', notes: 'Risk of infant agranulocytosis and sedation. Avoid; if used, monitor infant CBC.' } },
   ziprasidone:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited data. QT prolongation consideration. No strong teratogenicity signal.' }, breastfeeding: { rid: '0.07–1.2%', hale: 'unknown', risk: 'caution', notes: 'Limited data: one case with milk ≤11 mcg/L and normal infant development; registry data show no adverse effects with SGAs. LactMed: other antipsychotics may be preferred, especially for newborn/preterm infants. Monitor for sedation, poor feeding, EPS.' } },
-  lurasidone:           { pregnancy: { fdaCategory: 'B', risk: 'low',     notes: 'Category B — animal studies reassuring. Limited human data. Neonatal EPS/withdrawal possible.' }, breastfeeding: { rid: '~1.2% (up to ~3% at 80 mg)', hale: 'unknown', risk: 'caution', notes: '>99% protein bound; low milk excretion. Infants in a case and a 9-pair PK study had normal growth and development. LactMed: alternatives may be preferred for newborn/preterm infants.' } },
-  asenapine:            { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited human data. Neonatal EPS possible. Sublingual route limits maternal systemic exposure.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No human lactation data.' } },
+  lurasidone:           { pregnancy: { fdaCategory: 'B', risk: 'low',     notes: 'Animal studies reassuring. Limited human data. Neonatal EPS/withdrawal possible.' }, breastfeeding: { rid: '~1.2% (up to ~3% at 80 mg)', hale: 'unknown', risk: 'caution', notes: '>99% protein bound; low milk excretion. Infants in a case and a 9-pair PK study had normal growth and development. LactMed: alternatives may be preferred for newborn/preterm infants.' } },
+  asenapine:            { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited human data. Neonatal EPS possible. Sublingual route limits maternal systemic exposure.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No asenapine-specific data; SGA registry (576 women) showed no infant harm. LactMed: if required, not a reason to stop breastfeeding.' } },
   paliperidone:         { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Active metabolite of risperidone. Neonatal EPS/withdrawal. Similar concerns to risperidone.' }, breastfeeding: { rid: '~1%', hale: 'L3', risk: 'caution', notes: 'Detected in milk (similar to risperidone). Monitor infant.' } },
-  iloperidone:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited human data. QT prolongation. Neonatal EPS possible.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No human lactation data.' } },
+  iloperidone:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited human data. QT prolongation. Neonatal EPS possible.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No iloperidone-specific data; SGA registry showed no infant harm. LactMed: an alternate drug may be preferred, especially for newborn/preterm infants.' } },
   brexpiprazole:        { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited data. Long half-life. Neonatal EPS/withdrawal possible.' }, breastfeeding: { rid: '~0.7%', hale: 'unknown', risk: 'caution', notes: 'One case: milk 1–6 mcg/L (RID ~0.7%); 3 infants had normal growth and development at 1 month. Several reports of decreased milk supply; monitor infant weight gain. Not a reason to stop breastfeeding if needed.' } },
   cariprazine:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Very limited data. Ultra-long half-life of DCAR metabolite (~1–3 weeks) is a concern.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'avoid', notes: 'No human lactation data. >90% protein bound, so milk transfer is likely low, but the very long-acting metabolite (DDCAR) could accumulate in the infant over weeks and lactation may be suppressed. LactMed: alternatives (e.g., quetiapine, olanzapine) may be preferred.' } },
-  lumateperone:         { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'PLLR label only. Limited human data. Avoid unless clearly necessary.' }, breastfeeding: { rid: '<0.1%', hale: 'unknown', risk: 'unknown', notes: 'No human lactation data.' } },
-  pimavanserin:         { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'PLLR label. Very limited data. Use in PD psychosis context — weigh risks carefully.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No human lactation data.' } },
+  lumateperone:         { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'PLLR label only. Limited human data. Avoid unless clearly necessary.' }, breastfeeding: { rid: '~0.06%', hale: 'unknown', risk: 'low', notes: 'Milk levels of drug and metabolites low (RID ~0.06%). LactMed: not expected to cause adverse effects; if required, not a reason to stop breastfeeding.' } },
+  pimavanserin:         { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'PLLR label. Very limited data. Use in PD psychosis context — weigh risks carefully.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No lactation data. LactMed: if required, not a reason to stop breastfeeding, though haloperidol, olanzapine, quetiapine, or risperidone may be preferred for newborn/preterm infants.' } },
   // Mood stabilizers
-  lithium:              { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Category D. Ebstein\'s anomaly risk (small absolute increase). Neonatal toxicity (floppy baby, cyanosis). If continued, monitor levels closely; hold during labor.' }, breastfeeding: { rid: '12–30%', hale: 'L4', risk: 'avoid', notes: 'High milk-to-plasma ratio. Neonatal toxicity (hypotonia, cyanosis). Avoid; if used, monitor infant levels and hydration.' } },
-  valproate:            { pregnancy: { fdaCategory: 'X', risk: 'avoid',   notes: 'Category X for migraine; D for epilepsy. Major teratogen — neural tube defects (1–5%), cognitive impairment, autism risk. Avoid in women of childbearing potential unless no alternative.' }, breastfeeding: { rid: '1–5.6%', hale: 'L2', risk: 'low', notes: 'Low relative infant dose; low milk transfer. Compatible with monitoring of infant LFTs and CBC with long-term use.' } },
+  lithium:              { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Ebstein\'s anomaly risk (small absolute increase). Neonatal toxicity (floppy baby, cyanosis). If continued, monitor levels closely; hold during labor.' }, breastfeeding: { rid: '12–30%', hale: 'L4', risk: 'avoid', notes: 'High milk-to-plasma ratio. Neonatal toxicity (hypotonia, cyanosis). Avoid; if used, monitor infant levels and hydration.' } },
+  valproate:            { pregnancy: { fdaCategory: 'X', risk: 'avoid',   notes: 'Contraindicated in pregnancy for migraine prophylaxis; for epilepsy or bipolar disorder, use only if alternatives are inadequate. Major teratogen — neural tube defects (1–5%), cognitive impairment, autism risk.' }, breastfeeding: { rid: '1–5.6%', hale: 'L2', risk: 'low', notes: 'Low relative infant dose; low milk transfer. Compatible with monitoring of infant LFTs and CBC with long-term use.' } },
   lamotrigine:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Oral cleft risk (small, primarily with high doses). Levels drop significantly during pregnancy — monitor closely. Generally preferred mood stabilizer in pregnancy.' }, breastfeeding: { rid: '9.2–18.3%', hale: 'L3', risk: 'caution', notes: 'Significant milk transfer. Infant serum levels can be 30–50% of maternal. Monitor infant for rash, apnea.' } },
-  carbamazepine:        { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Category D. Neural tube defects (~1%), craniofacial anomalies, fetal growth restriction. Avoid; if used, folate supplementation essential.' }, breastfeeding: { rid: '3.4–5.9%', hale: 'L2', risk: 'low', notes: 'Low relative infant dose. Neonatal cholestasis risk with long-term exposure. Monitor LFTs.' } },
+  carbamazepine:        { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Neural tube defects (~1%), craniofacial anomalies, fetal growth restriction. Avoid; if used, folate supplementation essential.' }, breastfeeding: { rid: '3.4–5.9%', hale: 'L2', risk: 'low', notes: 'Low relative infant dose. Neonatal cholestasis risk with long-term exposure. Monitor LFTs.' } },
   oxcarbazepine:        { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Structural analogue of carbamazepine. Hyponatremia risk. Fetal growth concern. Folate supplementation advised.' }, breastfeeding: { rid: '~1.5%', hale: 'L3', risk: 'caution', notes: 'Active metabolite detected in milk. Monitor infant.' } },
-  topiramate:           { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Category D. Oral clefts (OR ~11×), fetal growth restriction. Contraception required. Avoid if alternatives exist.' }, breastfeeding: { rid: '3–24.5%', hale: 'L3', risk: 'caution', notes: 'Detected in milk; infant serum levels variable. Monitor for sedation, poor feeding.' } },
+  topiramate:           { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Oral clefts (OR ~11×), fetal growth restriction. Contraception required. Avoid if alternatives exist.' }, breastfeeding: { rid: '3–24.5%', hale: 'L3', risk: 'caution', notes: 'Detected in milk; infant serum levels variable. Monitor for sedation, poor feeding.' } },
   gabapentin:           { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal abstinence syndrome with high maternal doses. Fetal anomaly data mixed. Avoid unless clearly necessary.' }, breastfeeding: { rid: '1.3–6.6%', hale: 'L2', risk: 'low', notes: 'Low relative infant dose. Generally considered compatible.' } },
   // Sleep
   zolpidem:             { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal withdrawal, respiratory depression at high doses. Avoid chronic use. Lowest dose if used.' }, breastfeeding: { rid: '0.02–0.19%', hale: 'L3', risk: 'caution', notes: 'Low milk transfer but sedation risk. Avoid or use single dose and monitor infant.' } },
-  eszopiclone:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited human data. Avoid chronic use; neonatal respiratory depression possible.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No published lactation data. Avoid.' } },
-  temazepam:            { pregnancy: { fdaCategory: 'X', risk: 'avoid',   notes: 'Category X. Benzodiazepine — neonatal withdrawal, floppy baby, cleft palate risk. Contraindicated in pregnancy.' }, breastfeeding: { rid: '<1%', hale: 'L3', risk: 'caution', notes: 'Excreted in milk. Neonatal sedation. Avoid with newborns; limited use if needed.' } },
-  ramelteon:            { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Melatonin receptor agonist. Limited human data. Animal data shows reproductive effects at high doses.' }, breastfeeding: { rid: '~0.24%', hale: 'unknown', risk: 'unknown', notes: 'No human lactation data. Melatonin itself is present in breast milk naturally; drug form unstudied.' } },
-  suvorexant:           { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Orexin antagonist. Limited human data. Avoid chronic use in pregnancy.' }, breastfeeding: { rid: '<1%', hale: 'unknown', risk: 'unknown', notes: 'No published lactation data.' } },
+  eszopiclone:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Limited human data. Avoid chronic use; neonatal respiratory depression possible.' }, breastfeeding: { rid: '~1.2–1.4%', hale: 'unknown', risk: 'caution', notes: 'Peak milk ~55 mcg/L; RID ~1.2–1.4%. Occasional use with an older infant poses little risk; an alternative hypnotic may be preferred for newborn/preterm infants.' } },
+  temazepam:            { pregnancy: { fdaCategory: 'X', risk: 'avoid',   notes: 'Benzodiazepine — neonatal sedation and withdrawal (floppy infant) with late-pregnancy use; cleft palate signal. Some current labels still list pregnancy as a contraindication.' }, breastfeeding: { rid: '<1%', hale: 'L3', risk: 'caution', notes: 'Excreted in milk. Neonatal sedation. Avoid with newborns; limited use if needed.' } },
+  ramelteon:            { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Melatonin receptor agonist. Limited human data. Animal data shows reproductive effects at high doses.' }, breastfeeding: { rid: '~0.24%', hale: 'unknown', risk: 'caution', notes: 'One case: low milk levels (RID ~0.24%). Monitor infant for drowsiness and feeding; LactMed suggests an alternate drug may be preferred until more data exist.' } },
+  suvorexant:           { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Orexin antagonist. Limited human data. Avoid chronic use in pregnancy.' }, breastfeeding: { rid: '<1%', hale: 'unknown', risk: 'low', notes: 'Milk levels very low (RID <1%). LactMed: if required, not a reason to stop breastfeeding; monitor for sedation in newborn/preterm infants.' } },
   // Benzodiazepines
-  alprazolam:           { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Category D. Neonatal withdrawal, floppy baby syndrome. Avoid especially in 1st trimester and near term.' }, breastfeeding: { rid: '3–8.5%', hale: 'L3', risk: 'caution', notes: 'Detected in milk. Neonatal sedation, poor feeding. Limit use; monitor infant.' } },
-  clonazepam:           { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Category D. Neonatal withdrawal, apnea, hypotonia. Avoid if possible.' }, breastfeeding: { rid: '~2.8%', hale: 'L3', risk: 'caution', notes: 'Accumulates with repeated dosing. Monitor for sedation.' } },
-  diazepam:             { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Category D. Neonatal withdrawal, floppy infant, cleft palate signal. Active metabolites persist weeks in neonate.' }, breastfeeding: { rid: 'Not established', hale: 'L3', risk: 'caution', notes: 'Long-acting metabolites accumulate in infant. Use with caution; prefer shorter-acting alternatives.' } },
-  lorazepam:            { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Category D. Neonatal sedation, respiratory depression. No active metabolites — preferred benzo if needed acutely.' }, breastfeeding: { rid: '~2.5%', hale: 'L3', risk: 'caution', notes: 'Short-acting; lower accumulation than diazepam. Single doses generally safer than chronic use.' } },
-  oxazepam:             { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Category D. Direct conjugation — no active metabolites. Neonatal withdrawal still possible.' }, breastfeeding: { rid: '~1%', hale: 'L3', risk: 'caution', notes: 'Low milk transfer. One of safer benzos during breastfeeding if needed.' } },
-  chlordiazepoxide:     { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Category D. Active metabolites persist. Withdrawal risk. Avoid.' }, breastfeeding: { rid: 'Not established', hale: 'L3', risk: 'caution', notes: 'Active metabolites detected in milk. Sedation risk.' } },
-  clorazepate:          { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Category D. Prodrug of desmethyldiazepam. Prolonged neonatal effect.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'caution', notes: 'No specific data; active metabolite (desmethyldiazepam) expected in milk.' } },
-  midazolam:            { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Category D. Short-acting; used in anesthesia. Neonatal respiratory depression with chronic/high-dose use.' }, breastfeeding: { rid: '~0.6%', hale: 'L3', risk: 'caution', notes: 'Short half-life; single procedural doses compatible. Pump and discard 4 hrs after single dose.' } },
-  triazolam:            { pregnancy: { fdaCategory: 'X', risk: 'avoid',   notes: 'Category X. Contraindicated in pregnancy.' }, breastfeeding: { rid: 'Not established', hale: 'L3', risk: 'caution', notes: 'Short-acting. Avoid in breastfeeding newborns; single doses may be permissible.' } },
-  estazolam:            { pregnancy: { fdaCategory: 'X', risk: 'avoid',   notes: 'Category X. Contraindicated in pregnancy.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'caution', notes: 'No published lactation data. Avoid.' } },
-  flurazepam:           { pregnancy: { fdaCategory: 'X', risk: 'avoid',   notes: 'Category X. Ultra-long half-life active metabolite. Contraindicated.' }, breastfeeding: { rid: 'Not established', hale: 'L3', risk: 'avoid', notes: 'Long-acting metabolites accumulate. Avoid during breastfeeding.' } },
+  alprazolam:           { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Neonatal withdrawal, floppy baby syndrome. Avoid especially in 1st trimester and near term.' }, breastfeeding: { rid: '3–8.5%', hale: 'L3', risk: 'caution', notes: 'Detected in milk. Neonatal sedation, poor feeding. Limit use; monitor infant.' } },
+  clonazepam:           { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Neonatal withdrawal, apnea, hypotonia. Avoid if possible.' }, breastfeeding: { rid: '~2.8%', hale: 'L3', risk: 'caution', notes: 'Accumulates with repeated dosing. Monitor for sedation.' } },
+  diazepam:             { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Neonatal withdrawal, floppy infant, cleft palate signal. Active metabolites persist weeks in neonate.' }, breastfeeding: { rid: 'Not established', hale: 'L3', risk: 'caution', notes: 'Long-acting metabolites accumulate in infant. Use with caution; prefer shorter-acting alternatives.' } },
+  lorazepam:            { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Neonatal sedation, respiratory depression. No active metabolites — preferred benzo if needed acutely.' }, breastfeeding: { rid: '~2.5%', hale: 'L3', risk: 'caution', notes: 'Short-acting; lower accumulation than diazepam. Single doses generally safer than chronic use.' } },
+  oxazepam:             { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Direct conjugation — no active metabolites. Neonatal withdrawal still possible.' }, breastfeeding: { rid: '~1%', hale: 'L3', risk: 'caution', notes: 'Low milk transfer. One of safer benzos during breastfeeding if needed.' } },
+  chlordiazepoxide:     { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Active metabolites persist. Withdrawal risk. Avoid.' }, breastfeeding: { rid: 'Not established', hale: 'L3', risk: 'caution', notes: 'Active metabolites detected in milk. Sedation risk.' } },
+  clorazepate:          { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Prodrug of desmethyldiazepam. Prolonged neonatal effect.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'caution', notes: 'Excreted into milk; active metabolite (desmethyldiazepam) accumulates in infant serum; infant sedation reported. LactMed: alternatives preferred, especially for newborns.' } },
+  midazolam:            { pregnancy: { fdaCategory: 'D', risk: 'avoid',   notes: 'Short-acting; used in anesthesia. Neonatal respiratory depression with chronic/high-dose use.' }, breastfeeding: { rid: '~0.6%', hale: 'L3', risk: 'caution', notes: 'Short half-life; single procedural doses compatible. Pump and discard 4 hrs after single dose.' } },
+  triazolam:            { pregnancy: { fdaCategory: 'X', risk: 'avoid',   notes: 'Neonatal sedation and withdrawal risk with late-pregnancy use; weigh risk and benefit; avoid as a first choice.' }, breastfeeding: { rid: 'Not established', hale: 'L3', risk: 'caution', notes: 'Short-acting. Avoid in breastfeeding newborns; single doses may be permissible.' } },
+  estazolam:            { pregnancy: { fdaCategory: 'X', risk: 'avoid',   notes: 'Neonatal sedation and withdrawal risk with late-pregnancy use; weigh risk and benefit; avoid as a first choice.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'caution', notes: 'No milk data. Long duration of action — LactMed prefers an alternate hypnotic, especially for newborn/preterm infants. Monitor for sedation and feeding.' } },
+  flurazepam:           { pregnancy: { fdaCategory: 'X', risk: 'avoid',   notes: 'Ultra-long half-life active metabolite. Neonatal sedation and withdrawal risk with late-pregnancy use; weigh risk and benefit; avoid as a first choice.' }, breastfeeding: { rid: 'Not established', hale: 'L3', risk: 'avoid', notes: 'Long-acting metabolites accumulate. Avoid during breastfeeding.' } },
   // Other anxiolytics
-  buspirone:            { pregnancy: { fdaCategory: 'B', risk: 'low',     notes: 'Category B. Animal studies reassuring. Limited human data but no strong teratogenicity signal. First-line anxiolytic consideration in pregnancy.' }, breastfeeding: { rid: '~0.9% (0.2–2.2%)', hale: 'unknown', risk: 'caution', notes: 'Low milk levels at doses up to 45 mg/day; parent drug often undetectable but active metabolite present. No long-term data; LactMed suggests an alternative may be preferred for newborn/preterm infants.' } },
+  buspirone:            { pregnancy: { fdaCategory: 'B', risk: 'low',     notes: 'Animal studies reassuring. Limited human data but no strong teratogenicity signal. First-line anxiolytic consideration in pregnancy.' }, breastfeeding: { rid: '~0.9% (0.2–2.2%)', hale: 'unknown', risk: 'caution', notes: 'Low milk levels at doses up to 45 mg/day; parent drug often undetectable but active metabolite present. No long-term data; LactMed suggests an alternative may be preferred for newborn/preterm infants.' } },
   pregabalin:           { pregnancy: { fdaCategory: 'C', risk: 'avoid',   notes: 'Emerging signal for major congenital malformations (cardiac, musculoskeletal). EURAP and Nordic studies raise concern. Avoid.' }, breastfeeding: { rid: '~7%', hale: 'unknown', risk: 'caution', notes: 'Milk levels low (~7% weight-adjusted); modeling suggests subtherapeutic infant levels at 150 mg BID. One infant breastfed 3 months without adverse effects. Monitor for sedation and feeding.' } },
   propranolol:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Fetal bradycardia, IUGR, neonatal hypoglycemia. Commonly used for performance anxiety; avoid chronic use near term.' }, breastfeeding: { rid: '<0.5%', hale: 'L2', risk: 'low', notes: 'Low milk transfer. Compatible with infant monitoring for bradycardia.' } },
   clonidine:            { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal hypotension, rebound hypertension if abruptly stopped. Used for ADHD/HTN; weigh benefit vs. risk.' }, breastfeeding: { rid: '4.1–8.4%', hale: 'L3', risk: 'caution', notes: 'Excreted in milk; neonatal sedation and hypotension possible.' } },
-  guanfacine:           { pregnancy: { fdaCategory: 'B', risk: 'low',     notes: 'Category B. Animal studies reassuring. Limited human data. Used for ADHD in pregnancy with caution.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No published human lactation data.' } },
-  doxylamine:           { pregnancy: { fdaCategory: 'A', risk: 'low',     notes: 'Category A. FDA-approved for nausea/vomiting of pregnancy (Diclegis/Bonjesta with B6). Extensively studied. Safe first-line option.' }, breastfeeding: { rid: 'Not established', hale: 'L1', risk: 'low', notes: 'Category L1 — safest. Antihistamine at low doses. Use with standard dosing; monitor infant for sedation.' } },
+  guanfacine:           { pregnancy: { fdaCategory: 'B', risk: 'low',     notes: 'Animal studies reassuring. Limited human data. Used for ADHD in pregnancy with caution.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No lactation data. LactMed: other agents may be preferred, especially for newborn/preterm infants.' } },
+  doxylamine:           { pregnancy: { fdaCategory: 'A', risk: 'low',     notes: 'FDA-approved for nausea/vomiting of pregnancy (Diclegis/Bonjesta with B6). Extensively studied. Safe first-line option.' }, breastfeeding: { rid: 'Not established', hale: 'L1', risk: 'low', notes: 'Category L1 — safest. Antihistamine at low doses. Use with standard dosing; monitor infant for sedation.' } },
   // Stimulants
   methylphenidate:      { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal sympathomimetic effects. Cardiac malformation signal (disputed). ADHD treatment usually held in pregnancy; weigh individual risk.' }, breastfeeding: { rid: '0.2–0.4%', hale: 'L3', risk: 'caution', notes: 'Low milk transfer in most studies. Monitor infant for decreased appetite, irritability.' } },
   dexmethylphenidate:   { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Active enantiomer of methylphenidate. Same concerns apply.' }, breastfeeding: { rid: '0.2–0.7%', hale: 'L3', risk: 'caution', notes: 'Same as methylphenidate. Monitor infant.' } },
@@ -897,12 +897,12 @@ const PERINATAL_DATA = {
   dextroamphetamine:    { pregnancy: { fdaCategory: 'C', risk: 'avoid',   notes: 'Same vasoconstrictive/withdrawal concerns as mixed amphetamine salts. Avoid.' }, breastfeeding: { rid: '~2–7%', hale: 'L4', risk: 'avoid', notes: 'Significant infant exposure. Avoid breastfeeding.' } },
   lisdexamfetamine:     { pregnancy: { fdaCategory: 'C', risk: 'avoid',   notes: 'Prodrug of d-amphetamine. Same pregnancy concerns. Avoid.' }, breastfeeding: { rid: '2–13.8%', hale: 'L4', risk: 'avoid', notes: 'Prodrug — converts to d-amphetamine. Avoid breastfeeding.' } },
   modafinil:            { pregnancy: { fdaCategory: 'C', risk: 'avoid',   notes: 'Facial cleft signal in post-marketing data. Manufacturer recommends effective contraception. Avoid in pregnancy.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'caution', notes: 'Very limited data: low R-modafinil levels in milk of two mothers; infant serum ~1.6% of maternal (S-enantiomer not measured). No adverse effects reported. LactMed: use with careful infant monitoring, or prefer an alternative.' } },
-  armodafinil:          { pregnancy: { fdaCategory: 'C', risk: 'avoid',   notes: 'R-enantiomer of modafinil. Same facial cleft concern and contraception requirement.' }, breastfeeding: { rid: '~5.3%', hale: 'unknown', risk: 'unknown', notes: 'No lactation data. Avoid.' } },
-  solriamfetol:         { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'PLLR label. Very limited data. Dopamine/norepinephrine reuptake inhibitor — neonatal effects unknown.' }, breastfeeding: { rid: '~5.5%', hale: 'unknown', risk: 'unknown', notes: 'No human lactation data.' } },
+  armodafinil:          { pregnancy: { fdaCategory: 'C', risk: 'avoid',   notes: 'R-enantiomer of modafinil. Same facial cleft concern and contraception requirement.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'caution', notes: 'Data from modafinil: low R-modafinil milk levels; infant serum ~1.6% of maternal; no adverse effects in limited reports. LactMed: use with careful infant monitoring or prefer an alternative.' } },
+  solriamfetol:         { pregnancy: { fdaCategory: 'N/A', risk: 'unknown', notes: 'PLLR label. Very limited data. Dopamine/norepinephrine reuptake inhibitor — neonatal effects unknown.' }, breastfeeding: { rid: '~5.5%', hale: 'unknown', risk: 'caution', notes: 'Milk levels low (~5.5% of weight-adjusted dose in 6 women); not expected to cause adverse effects. Monitor for agitation, insomnia, poor weight gain.' } },
   // Anticholinergics / Antihistamines
   hydroxyzine:          { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Neonatal withdrawal near term. Commonly used in 1st trimester for nausea; avoid near delivery.' }, breastfeeding: { rid: 'Not established', hale: 'L1', risk: 'low', notes: 'Generally considered compatible. Monitor for sedation.' } },
-  diphenhydramine:      { pregnancy: { fdaCategory: 'B', risk: 'low',     notes: 'Category B. Commonly used first-line for insomnia/allergy in pregnancy. Avoid near term — neonatal withdrawal, respiratory depression at high doses.' }, breastfeeding: { rid: 'Not established', hale: 'L2', risk: 'low', notes: 'Low dose compatible. High doses or frequent use may reduce milk supply and cause infant sedation.' } },
-  trihexyphenidyl:      { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Anticholinergic — may impair fetal gut motility, tachycardia. Very limited data. Avoid if alternatives exist.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'unknown', notes: 'No published lactation data. Anticholinergic effects may suppress lactation.' } },
+  diphenhydramine:      { pregnancy: { fdaCategory: 'B', risk: 'low',     notes: 'Commonly used first-line for insomnia/allergy in pregnancy. Avoid near term — neonatal withdrawal, respiratory depression at high doses.' }, breastfeeding: { rid: 'Not established', hale: 'L2', risk: 'low', notes: 'Low dose compatible. High doses or frequent use may reduce milk supply and cause infant sedation.' } },
+  trihexyphenidyl:      { pregnancy: { fdaCategory: 'C', risk: 'caution', notes: 'Anticholinergic — may impair fetal gut motility, tachycardia. Very limited data. Avoid if alternatives exist.' }, breastfeeding: { rid: 'Not established', hale: 'unknown', risk: 'caution', notes: 'Doses up to 4 mg/day with haloperidol or risperidone caused no infant adverse effects (follow-up to adulthood). Long-term use may reduce milk supply.' } },
 };
 
 // Ki values in nM. Use 10000 for no clinically significant affinity.
@@ -1852,6 +1852,7 @@ const MEDICATIONS = [
   // ── Mood Stabilizers ───────────────────────────────────────────────────────
   {
     id: 'lithium',
+    effects: { weight: 'moderate', sedation: 'low', sexual: 'low', antichol: 'none', qt: 'low' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1949, fdaApprovalYear: 1970, originator: "Not patented (element; J. Cade, 1949)" },
     dosing: { start: "300 mg BID–TID", target: "serum 0.6–1.2 mEq/L (≈900–1800 mg/day)", max: "titrate to serum level (≈1800 mg/day)", formulations: "IR carbonate BID–TID • ER/CR BID (Lithobid, Eskalith CR) • citrate oral solution", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=lithium" } },
     name: 'Lithium',
@@ -1880,6 +1881,7 @@ const MEDICATIONS = [
   },
   {
     id: 'valproate',
+    effects: { weight: 'high', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1962, fdaApprovalYear: 1978, originator: "Sanofi / Abbott (divalproex)" },
     dosing: { start: "250–500 mg BID (20–30 mg/kg/day mania)", target: "serum 50–125 mcg/mL", max: "60 mg/kg/day", formulations: "Divalproex DR BID–TID (Depakote) • Divalproex ER once daily (Depakote ER) • valproic acid • IV", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=divalproex" } },
     name: 'Valproate',
@@ -1909,6 +1911,7 @@ const MEDICATIONS = [
   },
   {
     id: 'lamotrigine',
+    effects: { weight: 'minimal', sedation: 'low', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1980, fdaApprovalYear: 1994, originator: "Wellcome (GSK)" },
     dosing: { start: "25 mg/day, slow titration", target: "200 mg/day", max: "Bipolar target: 200 mg/day monotherapy; 100 mg/day with valproate; 400 mg/day with carbamazepine or other enzyme inducers", formulations: "IR BID • XR once daily (Lamictal XR) • ODT & chewable", citation: { label: "FDA package insert (2025)", url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/020241s068s069,020764s061s062,022251s032s033lbl.pdf" } },
     name: 'Lamotrigine',
@@ -1937,6 +1940,7 @@ const MEDICATIONS = [
   },
   {
     id: 'carbamazepine',
+    effects: { weight: 'low', sedation: 'moderate', sexual: 'low', antichol: 'low', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1953, fdaApprovalYear: 1968, originator: "Geigy (Novartis)" },
     dosing: { start: "200 mg BID", target: "400–1200 mg/day (serum 4–12 mcg/mL)", max: "1600 mg/day", formulations: "IR tab/chewable/suspension BID–QID (Tegretol) • XR BID (Tegretol-XR) • ER BID (Carbatrol/Equetro)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=carbamazepine" } },
     name: 'Carbamazepine',
@@ -1968,6 +1972,7 @@ const MEDICATIONS = [
   // ── Sleep Medications ──────────────────────────────────────────────────────
   {
     id: 'zolpidem',
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1982, fdaApprovalYear: 1992, originator: "Synthélabo (Sanofi)" },
     dosing: { start: "5 mg qHS (F) / 5–10 mg (M)", target: "5–10 mg qHS", max: "10 mg (IR); 12.5 mg (CR)", formulations: "IR (Ambien) • CR (Ambien CR) • sublingual (Edluar/Intermezzo) • oral spray (Zolpimist)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=zolpidem" } },
     name: 'Zolpidem',
@@ -1995,6 +2000,7 @@ const MEDICATIONS = [
   },
   {
     id: 'eszopiclone',
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1986, fdaApprovalYear: 2004, originator: "Sepracor (Sunovion)" },
     dosing: { start: "1 mg qHS", target: "1–3 mg qHS", max: "3 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=eszopiclone" } },
     name: 'Eszopiclone',
@@ -2022,6 +2028,7 @@ const MEDICATIONS = [
   },
   {
     id: 'temazepam',
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1964, fdaApprovalYear: 1981, originator: "Sandoz / Mallinckrodt" },
     dosing: { start: "7.5–15 mg qHS", target: "15–30 mg qHS", max: "30 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=temazepam" } },
     name: 'Temazepam',
@@ -2049,6 +2056,7 @@ const MEDICATIONS = [
   },
   {
     id: 'ramelteon',
+    effects: { weight: 'none', sedation: 'moderate', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1996, fdaApprovalYear: 2005, originator: "Takeda" },
     dosing: { start: "8 mg qHS", target: "8 mg qHS", max: "8 mg/day (fixed dose)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=ramelteon" } },
     name: 'Ramelteon',
@@ -2076,6 +2084,7 @@ const MEDICATIONS = [
   },
   {
     id: 'suvorexant',
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 2008, fdaApprovalYear: 2014, originator: "Merck" },
     dosing: { start: "10 mg qHS", target: "10–20 mg qHS", max: "20 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=suvorexant" } },
     name: 'Suvorexant',
@@ -2732,6 +2741,7 @@ const MEDICATIONS = [
   // ── Additional Mood Stabilizers ─────────────────────────────────────────
   ,{
     id: 'oxcarbazepine',
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1966, fdaApprovalYear: 2000, originator: "Geigy (Novartis)" },
     dosing: { start: "300 mg BID", target: "1200 mg/day", max: "2400 mg/day", formulations: "IR BID (Trileptal) • XR once daily (Oxtellar XR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=oxcarbazepine" } },
     name: 'Oxcarbazepine',
@@ -2759,6 +2769,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'topiramate',
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1979, fdaApprovalYear: 1996, originator: "Ortho-McNeil (Janssen)" },
     dosing: { start: "25–50 mg/day", target: "100–200 mg/day", max: "400 mg/day", formulations: "IR BID • XR once daily (Trokendi XR / Qudexy XR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=topiramate" } },
     name: 'Topiramate',
@@ -2789,6 +2800,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'gabapentin',
+    effects: { weight: 'low', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1977, fdaApprovalYear: 1993, originator: "Parke-Davis (Pfizer)" },
     dosing: { start: "300 mg/day", target: "900–1800 mg/day", max: "3600 mg/day (IR; Gralise ER 1800)", formulations: "IR TID (Neurontin) • ER once daily (Gralise) • enacarbil ER BID (Horizant)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=gabapentin" } },
     name: 'Gabapentin',
@@ -2820,6 +2832,7 @@ const MEDICATIONS = [
   // ── Benzodiazepines (Anxiolytics) ───────────────────────────────────────
   ,{
     id: 'alprazolam',
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1969, fdaApprovalYear: 1981, originator: "Upjohn (Pfizer)" },
     dosing: { start: "0.25–0.5 mg TID", target: "1–4 mg/day", max: "4 mg/day (up to 10 mg for panic)", formulations: "IR TID (Xanax) • XR once daily (Xanax XR) • ODT", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=alprazolam" } },
     name: 'Alprazolam',
@@ -2848,6 +2861,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'clonazepam',
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1964, fdaApprovalYear: 1975, originator: "Roche" },
     dosing: { start: "0.25–0.5 mg BID", target: "1–2 mg/day", max: "4 mg/day", formulations: "Tablet • Orally disintegrating wafer — both same dosing", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clonazepam" } },
     name: 'Clonazepam',
@@ -2876,6 +2890,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'diazepam',
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1959, fdaApprovalYear: 1963, originator: "Roche" },
     dosing: { start: "2–10 mg BID–QID", target: "5–40 mg/day", max: "40 mg/day", formulations: "Oral tab/solution • Rectal gel (Diastat) • Nasal spray (Valtoco) • IV/IM", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=diazepam" } },
     name: 'Diazepam',
@@ -2906,6 +2921,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'lorazepam',
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1963, fdaApprovalYear: 1977, originator: "Wyeth (Pfizer)" },
     dosing: { start: "0.5–1 mg BID–TID", target: "2–6 mg/day", max: "10 mg/day", formulations: "Oral tab/concentrate • IV/IM • ER capsule once daily (Loreev XR)", citation: { label: "FDA package insert (2021)", url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/017794s048lbl.pdf" } },
     name: 'Lorazepam',
@@ -2935,6 +2951,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'oxazepam',
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1961, fdaApprovalYear: 1965, originator: "Wyeth (Pfizer)" },
     dosing: { start: "10–15 mg TID–QID", target: "30–60 mg/day", max: "120 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=oxazepam" } },
     name: 'Oxazepam',
@@ -2963,6 +2980,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'chlordiazepoxide',
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1955, fdaApprovalYear: 1960, originator: "Roche" },
     dosing: { start: "5–10 mg TID–QID", target: "15–40 mg/day", max: "100 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=chlordiazepoxide" } },
     name: 'Chlordiazepoxide',
@@ -2991,6 +3009,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'clorazepate',
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1968, fdaApprovalYear: 1972, originator: "Abbott" },
     dosing: { start: "7.5–15 mg/day", target: "15–60 mg/day", max: "90 mg/day", formulations: "Regular tablet (divided) • Once-daily formulation (Tranxene-SD)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clorazepate" } },
     name: 'Clorazepate',
@@ -3020,6 +3039,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'midazolam',
+    effects: { weight: 'none', sedation: 'high', sexual: 'none', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1976, fdaApprovalYear: 1985, originator: "Roche" },
     dosing: { start: "1–2.5 mg IV (procedural sedation)", target: "titrate to effect", max: "per procedure / route", formulations: "IV/IM • Oral syrup • Nasal spray for seizure rescue (Nayzilam)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=midazolam" } },
     name: 'Midazolam',
@@ -3048,6 +3068,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'triazolam',
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1970, fdaApprovalYear: 1982, originator: "Upjohn (Pfizer)" },
     dosing: { start: "0.125–0.25 mg qHS", target: "0.25 mg qHS", max: "0.5 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=triazolam" } },
     name: 'Triazolam',
@@ -3075,6 +3096,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'estazolam',
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1967, fdaApprovalYear: 1990, originator: "Abbott" },
     dosing: { start: "1 mg qHS", target: "1–2 mg qHS", max: "2 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=estazolam" } },
     name: 'Estazolam',
@@ -3102,6 +3124,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'flurazepam',
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1968, fdaApprovalYear: 1970, originator: "Roche" },
     dosing: { start: "15 mg qHS", target: "15–30 mg qHS", max: "30 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=flurazepam" } },
     name: 'Flurazepam',
@@ -3131,6 +3154,7 @@ const MEDICATIONS = [
   // ── Other Anxiolytics ───────────────────────────────────────────────────
   ,{
     id: 'buspirone',
+    effects: { weight: 'none', sedation: 'low', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1972, fdaApprovalYear: 1986, originator: "Bristol-Myers Squibb" },
     dosing: { start: "7.5 mg BID", target: "20–30 mg/day", max: "60 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=buspirone" } },
     name: 'Buspirone',
@@ -3157,6 +3181,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'pregabalin',
+    effects: { weight: 'moderate', sedation: 'moderate', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1990, fdaApprovalYear: 2004, originator: "Northwestern Univ. / Parke-Davis (Pfizer)" },
     dosing: { start: "75 mg BID", target: "150–300 mg/day (divided)", max: "600 mg/day", formulations: "IR BID–TID (Lyrica) • ER once daily (Lyrica CR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=pregabalin" } },
     name: 'Pregabalin',
@@ -3188,6 +3213,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'propranolol',
+    effects: { weight: 'low', sedation: 'low', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1962, fdaApprovalYear: 1967, originator: "ICI (AstraZeneca)" },
     dosing: { start: "10–20 mg BID (akathisia/performance anxiety)", target: "40–80 mg/day", max: "~160 mg/day (psychiatric off-label)", formulations: "IR BID–TID (Inderal) • LA extended-release once daily (Inderal LA / InnoPran XL) • IV", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=propranolol" } },
     name: 'Propranolol',
@@ -3220,6 +3246,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'clonidine',
+    effects: { weight: 'minimal', sedation: 'high', sexual: 'low', antichol: 'minimal', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1962, fdaApprovalYear: 1974, originator: "Boehringer Ingelheim" },
     dosing: { start: "0.1 mg qHS", target: "0.1–0.4 mg/day", max: "0.4 mg/day (ADHD, ER)", formulations: "IR oral BID (Catapres) • ER oral (Kapvay, ADHD) • weekly transdermal patch (Catapres-TTS)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=clonidine" } },
     name: 'Clonidine',
@@ -3247,6 +3274,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'guanfacine',
+    effects: { weight: 'minimal', sedation: 'moderate', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1974, fdaApprovalYear: 1986, originator: "Boehringer Ingelheim / Shire" },
     dosing: { start: "1 mg/day", target: "1–4 mg/day", max: "4 mg/day (ADHD, ER)", formulations: "IR (Tenex, hypertension) • ER once daily (Intuniv, ADHD)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=guanfacine" } },
     name: 'Guanfacine',
@@ -3276,6 +3304,7 @@ const MEDICATIONS = [
   // ── Antihistamines / Sleep ──────────────────────────────────────────────
   ,{
     id: 'doxylamine',
+    effects: { weight: 'low', sedation: 'high', sexual: 'minimal', antichol: 'high', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1948, fdaApprovalYear: 1948, originator: "Various (OTC)" },
     dosing: { start: "25 mg qHS", target: "25 mg qHS", max: "25 mg/day (OTC hypnotic)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=doxylamine" } },
     name: 'Doxylamine',
@@ -3305,6 +3334,7 @@ const MEDICATIONS = [
   // ── Stimulants ──────────────────────────────────────────────────────────
   ,{
     id: 'methylphenidate',
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1944, fdaApprovalYear: 1955, originator: "Ciba (Novartis)" },
     dosing: { start: "5 mg BID (IR)", target: "20–40 mg/day", max: "60 mg/day (72 mg some ER)", formulations: "IR BID–TID (Ritalin) • ER/LA/CD once daily • OROS once daily (Concerta) • transdermal patch (Daytrana) • liquid XR (Quillivant)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=methylphenidate" } },
     name: 'Methylphenidate',
@@ -3332,6 +3362,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'dexmethylphenidate',
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1999, fdaApprovalYear: 2001, originator: "Novartis / Celgene" },
     dosing: { start: "2.5 mg BID (IR) / 10 mg XR", target: "10–20 mg/day", max: "40 mg/day (XR), 20 mg (IR)", formulations: "IR BID (Focalin) • XR once daily (Focalin XR)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=dexmethylphenidate" } },
     name: 'Dexmethylphenidate',
@@ -3359,6 +3390,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'amphetamine-mixed-salts',
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1994, fdaApprovalYear: 1996, originator: "Richwood / Shire (Takeda)" },
     dosing: { start: "5–10 mg/day", target: "20–30 mg/day", max: "40 mg/day (IR); 30 mg/day (XR, per label)", formulations: "IR once daily–BID (Adderall) • XR once daily (Adderall XR) • extended (Mydayis)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=amphetamine+aspartate" } },
     name: 'Amphetamine Mixed Salts',
@@ -3387,6 +3419,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'dextroamphetamine',
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1929, fdaApprovalYear: 1937, originator: "Smith Kline & French" },
     dosing: { start: "5 mg daily–BID", target: "10–30 mg/day", max: "40 mg/day", formulations: "IR tablet daily–BID • ER spansule once daily (Dexedrine Spansule) • transdermal patch (Xelstrym)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=dextroamphetamine" } },
     name: 'Dextroamphetamine',
@@ -3414,6 +3447,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'lisdexamfetamine',
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'low', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 2003, fdaApprovalYear: 2007, originator: "New River / Shire (Takeda)" },
     dosing: { start: "30 mg qAM", target: "30–70 mg/day", max: "70 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=lisdexamfetamine" } },
     name: 'Lisdexamfetamine',
@@ -3442,6 +3476,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'modafinil',
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1974, fdaApprovalYear: 1998, originator: "Lafon / Cephalon (Teva)" },
     dosing: { start: "200 mg qAM", target: "200 mg/day", max: "200 mg/day (up to 400 mg tolerated; no consistent added benefit)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=modafinil" } },
     name: 'Modafinil',
@@ -3471,6 +3506,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'armodafinil',
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1994, fdaApprovalYear: 2007, originator: "Cephalon (Teva)" },
     dosing: { start: "150 mg qAM", target: "150–250 mg/day", max: "250 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=armodafinil" } },
     name: 'Armodafinil',
@@ -3500,6 +3536,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'solriamfetol',
+    effects: { weight: 'minimal', sedation: 'minimal', sexual: 'minimal', antichol: 'none', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 2005, fdaApprovalYear: 2019, originator: "Aerial / Jazz Pharmaceuticals" },
     dosing: { start: "37.5–75 mg qAM", target: "75–150 mg/day", max: "150 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=solriamfetol" } },
     name: 'Solriamfetol',
@@ -3529,6 +3566,7 @@ const MEDICATIONS = [
   // ── Anticholinergics / Antihistamines ───────────────────────────────────
   ,{
     id: 'hydroxyzine',
+    effects: { weight: 'low', sedation: 'high', sexual: 'minimal', antichol: 'moderate', qt: 'low' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1956, fdaApprovalYear: 1956, originator: "Union Chimique Belge / Pfizer" },
     dosing: { start: "25–50 mg QID PRN", target: "50–100 mg/day", max: "400 mg/day", formulations: "HCl tab/syrup & IM (Atarax) • Pamoate cap/suspension (Vistaril)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=hydroxyzine" } },
     name: 'Hydroxyzine',
@@ -3557,6 +3595,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'diphenhydramine',
+    effects: { weight: 'low', sedation: 'high', sexual: 'minimal', antichol: 'high', qt: 'low' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1943, fdaApprovalYear: 1946, originator: "Parke-Davis" },
     dosing: { start: "25–50 mg qHS", target: "25–50 mg qHS", max: "50 mg/day (hypnotic)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=diphenhydramine" } },
     name: 'Diphenhydramine',
@@ -3585,6 +3624,7 @@ const MEDICATIONS = [
   }
   ,{
     id: 'trihexyphenidyl',
+    effects: { weight: 'none', sedation: 'low', sexual: 'minimal', antichol: 'high', qt: 'minimal' }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 1949, fdaApprovalYear: 1949, originator: "American Cyanamid (Lederle)" },
     dosing: { start: "1 mg/day", target: "6–10 mg/day", max: "15 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=trihexyphenidyl" } },
     name: 'Trihexyphenidyl',
@@ -4158,6 +4198,7 @@ pimavanserin: {
 // ── Mood Stabilizers ─────────────────────────────────────────────────────────
 lithium: {
   blackBoxWarnings: ['Lithium toxicity is closely related to serum levels and can occur at therapeutic doses; facilities for prompt and accurate serum lithium monitoring must be available.'],
+  keyWarnings: ['Unmasking of Brugada syndrome (postmarketing reports): avoid in patients with Brugada syndrome or suspected Brugada syndrome; consider cardiology consultation for unexplained syncope or palpitations. ECG changes, including QTc prolongation, can occur, especially with toxicity.'],
   sideEffects: {
     'CNS': ['tremor', 'cognitive dulling', 'memory impairment', 'ataxia', 'headache'],
     'GI': ['nausea', 'vomiting', 'diarrhea'],
@@ -4453,6 +4494,7 @@ buspirone: {
 },
 hydroxyzine: {
   blackBoxWarnings: [],
+  keyWarnings: ['QT prolongation and torsade de pointes (postmarketing): use caution with other QT-prolonging drugs, electrolyte abnormalities, bradycardia, or congenital long QT; elderly at higher risk.'],
   sideEffects: {
     'CNS': ['somnolence', 'dizziness', 'headache'],
     'GI': ['dry mouth'],
