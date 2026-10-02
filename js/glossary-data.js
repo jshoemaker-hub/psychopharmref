@@ -1,5 +1,5 @@
 /* PsychoPharmRef — Psychiatry Glossary Data
- * ~400 curated terms unique to or particularly important in psychiatry.
+ * ~450 curated terms unique to or particularly important in psychiatry.
  * Each entry: { term, aliases, category, def, seeAlso, link }
  *   - term: canonical term (case as commonly written, e.g., "Capgras syndrome")
  *   - aliases: array of alternate spellings/synonyms used in search (lowercase OK)
@@ -198,7 +198,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["aboulia"],
     category: "Phenomenology",
     def: "Severe reduction in motivation, initiative, and self-generated action; lies on a spectrum with apathy and akinetic mutism. Common in frontal lobe lesions, advanced Parkinson disease, and depression with psychomotor retardation.",
-    seeAlso: ["Apathy", "Akinetic mutism", "Avolition"]
+    seeAlso: ["Apathy", "Mutism", "Avolition"]
   },
   {
     term: "Alogia",
@@ -213,13 +213,6 @@ window.GLOSSARY_TERMS = [
     category: "Phenomenology",
     def: "Loss of motivation to initiate and persist in goal-directed activity; may manifest as neglect of grooming, hygiene, or work. A negative symptom.",
     seeAlso: ["Apathy", "Abulia", "Negative symptoms"]
-  },
-  {
-    term: "Blocking",
-    aliases: ["thought blocking"],
-    category: "Phenomenology",
-    def: "Sudden interruption in the stream of speech or thought, experienced as an abrupt emptying of mind. The speaker may pause mid-sentence and then resume without completion of the original thought.",
-    seeAlso: ["Formal thought disorder", "Loose associations"]
   },
   {
     term: "Circumstantiality",
@@ -247,7 +240,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["echokinesis variant"],
     category: "Phenomenology",
     def: "Automatic repetition of words, phrases, or sentences spoken by another person. Common in autism, severe schizophrenia, and catatonia.",
-    seeAlso: ["Catatonia", "Palilalia", "Stereotypy"]
+    seeAlso: ["Catatonia", "Stereotypy"]
   },
   {
     term: "Flight of ideas",
@@ -323,22 +316,22 @@ window.GLOSSARY_TERMS = [
     term: "Thought blocking",
     aliases: ["blocking"],
     category: "Phenomenology",
-    def: "Sudden interruption in thought or speech, often described as the mind going blank; the person stops mid-sentence unable to continue.",
-    seeAlso: ["Blocking", "Formal thought disorder"]
+    def: "Sudden interruption in the stream of thought or speech, often described as the mind going blank; the person stops mid-sentence and may resume on a different topic without completing the original thought.",
+    seeAlso: ["Formal thought disorder", "Derailment"]
   },
   {
     term: "Verbigeration",
     aliases: ["palilalia variant"],
     category: "Phenomenology",
     def: "Repetitive, purposeless utterance of words or phrases; meaningless recitation. Seen in catatonia and late-stage dementia.",
-    seeAlso: ["Catatonia", "Palilalia", "Perseveration"]
+    seeAlso: ["Catatonia", "Echolalia", "Perseveration"]
   },
   {
     term: "Anhedonia",
     aliases: ["loss of pleasure"],
     category: "Mood & Affect",
     def: "Loss of pleasure in activities that normally bring enjoyment; a core symptom of depression and negative symptoms of schizophrenia.",
-    seeAlso: ["Depression", "Negative symptoms", "Major depressive disorder"]
+    seeAlso: ["Major depressive disorder", "Negative symptoms"]
   },
   {
     term: "Anergia",
@@ -362,13 +355,6 @@ window.GLOSSARY_TERMS = [
     seeAlso: ["Flat affect", "Restricted affect", "Negative symptoms"]
   },
   {
-    term: "Constricted affect",
-    aliases: ["restricted affect variant"],
-    category: "Mood & Affect",
-    def: "Mild to moderate reduction in emotional expression; narrower range of emotional response than normal but not as severe as blunted or flat affect.",
-    seeAlso: ["Blunted affect", "Flat affect", "Restricted affect"]
-  },
-  {
     term: "Dysphoria",
     aliases: ["depressed mood"],
     category: "Mood & Affect",
@@ -388,7 +374,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["euthymic"],
     category: "Mood & Affect",
     def: "Normal mood; the state of being neither depressed nor elevated. A clinical goal in mood disorder treatment.",
-    seeAlso: ["Dysphoria", "Mood"]
+    seeAlso: ["Dysphoria"]
   },
   {
     term: "Flat affect",
@@ -409,35 +395,35 @@ window.GLOSSARY_TERMS = [
     aliases: ["irritable mood"],
     category: "Mood & Affect",
     def: "Tendency to become easily annoyed, angered, or impatient; heightened sensitivity to perceived slights. Common in mania, borderline personality disorder, and disruptive behavior disorders.",
-    seeAlso: ["Lability", "Anger", "Borderline personality disorder"]
+    seeAlso: ["Lability", "Borderline personality disorder"]
   },
   {
     term: "Lability",
     aliases: ["emotional lability", "mood lability"],
     category: "Mood & Affect",
     def: "Rapid, unpredictable shifts in emotional state; frequent changes in mood from one moment to the next. Seen in bipolar disorder, borderline personality disorder, and organic brain syndromes.",
-    seeAlso: ["Irritability", "Inappropriate affect", "Bipolar disorder"]
+    seeAlso: ["Irritability", "Inappropriate affect", "Bipolar I disorder"]
   },
   {
     term: "Mood-congruent psychosis",
     aliases: ["mood-congruent delusions"],
     category: "Mood & Affect",
     def: "Psychotic symptoms (delusions or hallucinations) with content that is consistent with the current mood (e.g., grandiose delusions in mania, nihilistic delusions in depression).",
-    seeAlso: ["Mood-incongruent psychosis", "Psychosis", "Bipolar disorder"]
+    seeAlso: ["Psychosis", "Bipolar I disorder"]
   },
   {
     term: "Restricted affect",
-    aliases: ["constricted affect variant"],
+    aliases: ["constricted affect"],
     category: "Mood & Affect",
-    def: "Narrowing of the range of emotional expression; less variability in emotional response than normal. Can occur in depression, anxiety, and schizophrenia.",
-    seeAlso: ["Blunted affect", "Constricted affect", "Flat affect"]
+    def: "Mild to moderate narrowing of the range and intensity of emotional expression (also called constricted affect), less reduced than blunted or flat affect. Can occur in depression, anxiety, and schizophrenia.",
+    seeAlso: ["Blunted affect", "Flat affect"]
   },
   {
     term: "Autoscopy",
     aliases: ["heautoscopy"],
     category: "Psychosis",
     def: "Visual hallucination of one's own body; the person sees themselves from outside their body. A rare form of hallucination seen in psychosis and dissociative states.",
-    seeAlso: ["Hallucination", "Out-of-body experience", "Psychosis"]
+    seeAlso: ["Hallucination", "Psychosis"]
   },
   {
     term: "Command auditory hallucinations",
@@ -485,8 +471,8 @@ window.GLOSSARY_TERMS = [
     term: "First-rank symptoms",
     aliases: ["Schneiderian first-rank symptoms"],
     category: "Psychosis",
-    def: "Specific psychotic symptoms considered highly suggestive of schizophrenia: thought broadcasting, insertion, withdrawal; auditory hallucinations (e.g., commenting voices); somatic delusions.",
-    seeAlso: ["Thought broadcasting", "Schizophrenia", "Psychosis"]
+    def: "Kurt Schneider's symptoms once considered highly suggestive of schizophrenia: audible thoughts; voices arguing, or commenting on one's actions; thought insertion, withdrawal, and broadcasting; delusional perception; somatic passivity (bodily sensations imposed by an outside agency); and made feelings, impulses, and actions. They also occur in other psychoses and are no longer given special diagnostic weight in DSM-5 or ICD-11.",
+    seeAlso: ["Thought broadcasting", "Thought insertion", "Schizophrenia", "Psychosis"]
   },
   {
     term: "Hallucination",
@@ -556,14 +542,14 @@ window.GLOSSARY_TERMS = [
     aliases: ["overvaluation"],
     category: "Psychosis",
     def: "Unreasonable belief or preoccupation held with intense conviction but not to delusional intensity; some insight may be retained. Seen in OCD, body dysmorphia, and eating disorders.",
-    seeAlso: ["Delusion", "Obsession", "OCD"]
+    seeAlso: ["Delusion", "OCD"]
   },
   {
     term: "Persecutory delusion",
     aliases: ["delusion of persecution"],
     category: "Psychosis",
     def: "False belief that one is being conspired against, spied upon, followed, or plotted against by others. Most common type of delusion.",
-    seeAlso: ["Delusion", "Paranoia", "Schizophrenia"]
+    seeAlso: ["Delusion", "Schizophrenia"]
   },
   {
     term: "Religiosity",
@@ -605,7 +591,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["acathisia", "restlessness"],
     category: "Catatonia & Movement",
     def: "Subjective sense of inner restlessness and urge to move, often with difficulty sitting still. An extrapyramidal side effect of antipsychotics; can be distressing and mistaken for anxiety.",
-    seeAlso: ["Extrapyramidal symptoms", "Antipsychotic side effects"]
+    seeAlso: ["Extrapyramidal symptoms"]
   },
   {
     term: "Akinesia",
@@ -662,21 +648,21 @@ window.GLOSSARY_TERMS = [
     aliases: ["abnormal movement"],
     category: "Catatonia & Movement",
     def: "Abnormal involuntary movement; a broad category including tardive dyskinesia, choreiform movements, and athetosis. Often an adverse effect of antipsychotics.",
-    seeAlso: ["Tardive dyskinesia", "Extrapyramidal symptoms", "AIMS"]
+    seeAlso: ["Tardive dyskinesia", "Extrapyramidal symptoms"]
   },
   {
     term: "Dystonia",
     aliases: ["dystonic reaction"],
     category: "Catatonia & Movement",
     def: "Involuntary, sustained muscle contraction causing abnormal postures or repetitive movements (e.g., oculogyric crisis, torticollis). An acute extrapyramidal side effect of antipsychotics.",
-    seeAlso: ["Extrapyramidal symptoms", "Antipsychotic side effects"]
+    seeAlso: ["Extrapyramidal symptoms"]
   },
   {
     term: "Extrapyramidal symptoms",
     aliases: ["EPS", "extrapyramidal side effects"],
     category: "Catatonia & Movement",
     def: "Movement abnormalities arising from antipsychotic effect on extrapyramidal motor pathways; include akathisia, akinesia, dystonia, and parkinsonism.",
-    seeAlso: ["Tardive dyskinesia", "Antipsychotic side effects", "Parkinsonism"],
+    seeAlso: ["Tardive dyskinesia", "Parkinsonism"],
     link: { blogSlug: "antipsychotic-movement-disorders" }
   },
   {
@@ -684,7 +670,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["festination"],
     category: "Catatonia & Movement",
     def: "Gait that progressively accelerates as the person walks, becoming involuntary and quickened; typical of Parkinson disease.",
-    seeAlso: ["Gait disturbance", "Parkinson disease"]
+    seeAlso: ["Parkinson disease"]
   },
   {
     term: "Gegenhalten",
@@ -702,16 +688,16 @@ window.GLOSSARY_TERMS = [
   },
   {
     term: "Mitgehen",
-    aliases: ["mitmachen variant"],
+    aliases: ["anglepoise lamp sign"],
     category: "Catatonia & Movement",
-    def: "Automatic, unresisting compliance with passive movement by examiner; also called mitmachen when the person also initiates movement.",
+    def: "Extreme form of mitmachen: the patient's limb moves in the direction of even the lightest pressure from the examiner (the 'anglepoise lamp' sign), despite being told to resist. A catatonic sign.",
     seeAlso: ["Mitmachen", "Catatonia", "Automatic obedience"]
   },
   {
     term: "Mitmachen",
-    aliases: ["mitgehen variant"],
+    aliases: [],
     category: "Catatonia & Movement",
-    def: "Excessive compliance with the examiner's suggestions; the person takes the position or movement suggested or implied even without explicit command.",
+    def: "The body can be placed in any position by the examiner, despite instructions to resist, and returns to its resting position once released. A catatonic sign; mitgehen is its extreme form.",
     seeAlso: ["Mitgehen", "Catatonia"]
   },
   {
@@ -719,14 +705,14 @@ window.GLOSSARY_TERMS = [
     aliases: ["myoclonic jerks"],
     category: "Catatonia & Movement",
     def: "Brief, involuntary jerks of muscles or groups of muscles; can be seen in sleep, seizure disorders, metabolic encephalopathy, and medication effects.",
-    seeAlso: ["Tic", "Seizure"]
+    seeAlso: ["Tic"]
   },
   {
     term: "Negativism",
-    aliases: ["oppositional behavior"],
+    aliases: ["catatonic negativism"],
     category: "Catatonia & Movement",
-    def: "Motiveless opposition to suggestions or instructions; the person does the opposite of what is requested. Seen in catatonia and oppositional defiant disorder.",
-    seeAlso: ["Catatonia", "Oppositional defiant disorder"]
+    def: "Motiveless opposition or resistance to instructions or external stimuli: the person does the opposite of what is asked or resists being moved. A catatonic sign (Bush-Francis Catatonia Rating Scale).",
+    seeAlso: ["Catatonia", "Gegenhalten", "Automatic obedience"]
   },
   {
     term: "Parkinsonism",
@@ -768,7 +754,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["TD"],
     category: "Catatonia & Movement",
     def: "Involuntary choreiform or athetoid movements of the face, tongue, lips, or extremities developing after prolonged antipsychotic exposure. Risk increases with duration of use, dose, and age.",
-    seeAlso: ["Dyskinesia", "Extrapyramidal symptoms", "Antipsychotic side effects"]
+    seeAlso: ["Dyskinesia", "Extrapyramidal symptoms"]
   },
   {
     term: "Tic",
@@ -782,14 +768,14 @@ window.GLOSSARY_TERMS = [
     aliases: ["intention tremor"],
     category: "Catatonia & Movement",
     def: "Tremor that appears during purposeful, directed movement (e.g., reaching for an object). Characteristic of cerebellar disease.",
-    seeAlso: ["Tremor", "Tremor, resting", "Cerebellar disease"]
+    seeAlso: ["Tremor", "Tremor, resting"]
   },
   {
     term: "Tremor, postural",
     aliases: ["postural tremor"],
     category: "Catatonia & Movement",
     def: "Tremor that appears when the limb is held in position against gravity. Seen in essential tremor and hyperthyroidism.",
-    seeAlso: ["Tremor", "Essential tremor"]
+    seeAlso: ["Tremor"]
   },
   {
     term: "Tremor, resting",
@@ -831,14 +817,14 @@ window.GLOSSARY_TERMS = [
     aliases: ["behavioral acting"],
     category: "Defense Mechanisms",
     def: "Expression of emotional conflict or unconscious wishes through action rather than words; avoids conscious awareness of the underlying impulse.",
-    seeAlso: ["Avoidance", "Repression"]
+    seeAlso: ["Repression"]
   },
   {
     term: "Projection",
     aliases: ["psychological projection"],
     category: "Defense Mechanisms",
     def: "Attribution of one's own unacceptable thoughts or feelings to another person; seeing in others what one unconsciously possesses.",
-    seeAlso: ["Projective identification", "Paranoia"]
+    seeAlso: ["Projective identification", "Persecutory delusion"]
   },
   {
     term: "Splitting",
@@ -859,7 +845,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["passive-aggressive behavior"],
     category: "Defense Mechanisms",
     def: "Indirect expression of anger or hostility through passivity, procrastination, or non-compliance rather than direct confrontation.",
-    seeAlso: ["Aggression", "Acting out"]
+    seeAlso: ["Acting out"]
   },
   {
     term: "Intellectualization",
@@ -908,13 +894,13 @@ window.GLOSSARY_TERMS = [
     aliases: ["dissociative response"],
     category: "Defense Mechanisms",
     def: "Unconscious separation of thoughts, feelings, memories, or identity from conscious awareness; a spectrum from normal daydreaming to pathological dissociative disorders.",
-    seeAlso: ["Depersonalization", "Derealization", "Dissociative identity disorder"]
+    seeAlso: ["Depersonalization", "Dissociative identity disorder"]
   },
   {
     term: "Isolation of affect",
     aliases: ["isolation"],
     category: "Defense Mechanisms",
-    def: "Conscious separation of feeling from thought or memory; the person can discuss a traumatic event without emotion.",
+    def: "Unconscious (neurotic-level) defense that separates feeling from thought or memory; the person can discuss a traumatic event in detail without the accompanying emotion.",
     seeAlso: ["Intellectualization", "Undoing"]
   },
   {
@@ -922,7 +908,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["psychological identification"],
     category: "Defense Mechanisms",
     def: "Unconscious adoption of characteristics of another person, often a parent or admired figure; an aspect of normal development and defense.",
-    seeAlso: ["Introjection", "Idealization"]
+    seeAlso: ["Introjection", "Splitting"]
   },
   {
     term: "Introjection",
@@ -1006,11 +992,11 @@ window.GLOSSARY_TERMS = [
     aliases: ["temporal lobe epilepsy syndrome"],
     category: "Eponyms & Syndromes",
     def: "Proposed behavioral syndrome associated with temporal lobe epilepsy: hypergraphia, heightened emotionality, intensified cognitive and emotional concerns, religiosity, and altered sexuality.",
-    seeAlso: ["Religiosity", "Seizure disorder"]
+    seeAlso: ["Religiosity"]
   },
   {
     term: "Gilles de la Tourette syndrome",
-    aliases: ["Tourette syndrome"],
+    aliases: ["Tourette syndrome", "Gilles de la Tourette"],
     category: "Eponyms & Syndromes",
     def: "Neurodevelopmental disorder with multiple motor and vocal tics lasting >1 year, onset before age 18. Often associated with ADHD and OCD.",
     seeAlso: ["Tic", "ADHD", "OCD"]
@@ -1020,21 +1006,21 @@ window.GLOSSARY_TERMS = [
     aliases: ["sleeping beauty syndrome"],
     category: "Eponyms & Syndromes",
     def: "Rare disorder of recurrent hypersomnia with behavioral changes; episodes of excessive sleep lasting days to weeks separated by normal periods.",
-    seeAlso: ["Hypersomnia", "Sleep disorder"]
+    seeAlso: ["Hypersomnia", "Polysomnography"]
   },
   {
     term: "Klüver-Bucy syndrome",
     aliases: ["Kluver-Bucy"],
     category: "Eponyms & Syndromes",
     def: "Behavioral syndrome from bilateral temporal lobe lesions characterized by hypersexuality, hyperorality, hyperphagia, placidity, and visual agnosia.",
-    seeAlso: ["Agnosia", "Neurological disorder"]
+    seeAlso: ["Agnosia"]
   },
   {
     term: "Korsakoff syndrome",
     aliases: ["Wernicke-Korsakoff", "alcoholic amnestic disorder"],
     category: "Eponyms & Syndromes",
     def: "Amnestic disorder caused by severe thiamine deficiency, often from chronic alcohol use; characterized by anterograde and retrograde amnesia with confabulation.",
-    seeAlso: ["Wernicke encephalopathy", "Amnesia", "Alcohol use disorder"]
+    seeAlso: ["Wernicke encephalopathy", "Amnesia, anterograde"]
   },
   {
     term: "Munchausen syndrome",
@@ -1055,7 +1041,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["Pick's disease"],
     category: "Eponyms & Syndromes",
     def: "Progressive neurodegenerative disorder within frontotemporal dementia; characterized by tau-positive inclusions and early behavioral/personality changes.",
-    seeAlso: ["Frontotemporal dementia", "Dementia"],
+    seeAlso: ["Dementia"],
     link: { blogSlug: "frontotemporal-dementia" }
   },
   {
@@ -1063,35 +1049,35 @@ window.GLOSSARY_TERMS = [
     aliases: ["Rett disorder"],
     category: "Eponyms & Syndromes",
     def: "Neurodevelopmental disorder affecting primarily females; normal development followed by loss of purposeful hand skills, autism spectrum features, and loss of language.",
-    seeAlso: ["Autism spectrum disorder", "Developmental disorder"]
+    seeAlso: ["Autism spectrum disorder"]
   },
   {
     term: "Stockholm syndrome",
     aliases: ["trauma bonding"],
     category: "Eponyms & Syndromes",
     def: "Psychological response in which hostages develop positive feelings or identification with their captors as a survival mechanism.",
-    seeAlso: ["Trauma", "Bonding"]
+    seeAlso: ["ACE", "Attachment, secure"]
   },
   {
     term: "Wernicke encephalopathy",
     aliases: ["acute thiamine deficiency"],
     category: "Eponyms & Syndromes",
     def: "Acute neuropsychiatric emergency from severe thiamine deficiency; triad of ophthalmoplegia, ataxia, and confusion. Requires immediate treatment to prevent permanent Korsakoff syndrome.",
-    seeAlso: ["Korsakoff syndrome", "Thiamine deficiency", "Alcohol use disorder"]
+    seeAlso: ["Korsakoff syndrome"]
   },
   {
     term: "Charles Bonnet syndrome",
     aliases: ["visual release phenomenon"],
     category: "Eponyms & Syndromes",
     def: "Visual hallucinations in persons with significant visual loss but preserved cognitive function; hallucinations are typically non-threatening and the person retains insight.",
-    seeAlso: ["Hallucination", "Visual loss"]
+    seeAlso: ["Hallucination"]
   },
   {
     term: "Diogenes syndrome",
     aliases: ["senile squalor"],
     category: "Eponyms & Syndromes",
     def: "Condition in older adults characterized by extreme self-neglect, compulsive hoarding, and social withdrawal, often without psychiatric diagnosis.",
-    seeAlso: ["Hoarding disorder", "Self-neglect"]
+    seeAlso: ["Hoarding disorder"]
   },
   {
     term: "Folie à deux",
@@ -1117,24 +1103,24 @@ window.GLOSSARY_TERMS = [
   },
   {
     term: "Lesch-Nyhan syndrome",
-    aliases: ["HGPRT deficiency"],
+    aliases: ["HGPRT deficiency", "HPRT1 deficiency"],
     category: "Eponyms & Syndromes",
-    def: "Rare X-linked genetic disorder causing severe intellectual disability, gout, and characteristic self-injurious behavior (self-biting, self-hitting).",
-    seeAlso: ["Intellectual disability", "Self-injury"]
+    def: "Rare X-linked disorder of purine metabolism from HPRT1 deficiency, causing hyperuricemia (gout, kidney stones), severe dystonia and other motor disability, and compulsive self-injury such as lip and finger biting. Cognitive impairment is usually mild to moderate.",
+    seeAlso: ["Nonsuicidal self-injury", "Dystonia"]
   },
   {
     term: "Smith-Magenis syndrome",
     aliases: ["SMS"],
     category: "Eponyms & Syndromes",
     def: "Developmental disorder from 17p11.2 deletion; features intellectual disability, behavioral problems, speech delay, and distinctive facial features.",
-    seeAlso: ["Developmental disorder", "Intellectual disability"]
+    seeAlso: ["Lesch-Nyhan syndrome", "Rett syndrome"]
   },
   {
     term: "Adjustment disorder",
     aliases: ["situational disorder"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Development of emotional or behavioral symptoms in response to an identifiable stressor, within 3 months of onset, and with distress exceeding expected response.",
-    seeAlso: ["Stressor", "Grief", "Trauma"],
+    seeAlso: ["Prolonged grief disorder", "ACE"],
     link: { blogSlug: "adjustment-disorder" }
   },
   {
@@ -1142,7 +1128,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["avoidant/restrictive food intake disorder"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Persistent restriction of food intake leading to nutritional deficiency or functional impairment; not due to food unavailability or cultural norms, but to sensory or anxiety-related avoidance.",
-    seeAlso: ["Anorexia nervosa", "Eating disorder"]
+    seeAlso: ["Failure to thrive", "Specific phobia"]
   },
   {
     term: "Autism spectrum disorder",
@@ -1185,10 +1171,10 @@ window.GLOSSARY_TERMS = [
     link: { blogSlug: "first-break-psychosis" }
   },
   {
-    term: "Conversion disorder",
-    aliases: ["functional neurological symptom disorder"],
+    term: "Functional neurological symptom disorder",
+    aliases: ["conversion disorder", "FND", "functional neurological disorder"],
     category: "Diagnoses (DSM-5-TR)",
-    def: "Presence of motor or sensory neurological symptoms without medical explanation; symptoms are incompatible with known neurological disease. Psychological stressor often precedes onset.",
+    def: "DSM-5-TR's primary name for conversion disorder. Motor or sensory symptoms (weakness, abnormal movements, non-epileptic seizures, sensory loss) with clinical findings showing they are incompatible with recognized neurological disease, such as a positive Hoover sign. A preceding psychological stressor is common but no longer required.",
     seeAlso: ["Somatic symptom disorder", "Illness anxiety disorder"]
   },
   {
@@ -1210,30 +1196,30 @@ window.GLOSSARY_TERMS = [
     term: "Delusional disorder",
     aliases: ["monosymptomatic delusion"],
     category: "Diagnoses (DSM-5-TR)",
-    def: "Non-bizarre delusions present for at least 1 month in the absence of prominent hallucinations, negative symptoms, or cognitive decline. Functioning typically preserved outside the delusion.",
+    def: "One or more delusions lasting at least 1 month in a person who has never met criteria for schizophrenia; hallucinations, if present, are not prominent and relate to the delusional theme. Apart from the impact of the delusion, functioning is not markedly impaired. Since DSM-5 the delusions need not be non-bizarre; bizarre content is a specifier.",
     seeAlso: ["Delusion", "Schizophrenia", "Psychosis"],
     link: { blogSlug: "first-break-psychosis" }
   },
   {
     term: "Depersonalization-derealization disorder",
-    aliases: ["depersonalization disorder"],
+    aliases: ["depersonalization disorder", "depersonalization", "derealization"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Recurrent episodes of depersonalization (feeling detached from self) or derealization (feeling world is unreal) that cause significant distress and impairment.",
-    seeAlso: ["Dissociation", "PTSD", "Anxiety"]
+    seeAlso: ["Dissociation", "PTSD", "Generalized anxiety disorder"]
   },
   {
     term: "Disorganized attachment",
     aliases: ["disordered attachment"],
-    category: "Diagnoses (DSM-5-TR)",
-    def: "Incoherent responses to caregiver; mixing approach and avoidance, fearfulness, or freeze responses. Results from frightened or frightening caregiver.",
-    seeAlso: ["Attachment disorder", "Reactive attachment disorder", "Childhood trauma"]
+    category: "Pediatric & Developmental",
+    def: "An attachment classification (Main and Solomon), not a DSM diagnosis: the child shows incoherent responses to the caregiver, mixing approach and avoidance, fearfulness, or freezing. Associated with a frightened or frightening caregiver and with maltreatment.",
+    seeAlso: ["Reactive attachment disorder", "ACE"]
   },
   {
     term: "Dissociative identity disorder",
     aliases: ["DID", "multiple personality disorder"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Presence of two or more distinct personality states with recurrent gaps in recall of important personal information, events, or skills; typically preceded by severe childhood trauma.",
-    seeAlso: ["Dissociation", "Trauma", "Other specified dissociative disorder"],
+    seeAlso: ["Dissociation", "ACE"],
     link: { blogSlug: "dissociative-disorders" }
   },
   {
@@ -1248,7 +1234,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["GAD"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Persistent excessive worry about multiple aspects of daily life (≥6 months), accompanied by physical symptoms; causing significant distress or impairment.",
-    seeAlso: ["Anxiety", "Panic disorder", "OCD"]
+    seeAlso: ["Panic disorder", "OCD"]
   },
   {
     term: "Hoarding disorder",
@@ -1259,31 +1245,31 @@ window.GLOSSARY_TERMS = [
   },
   {
     term: "Illness anxiety disorder",
-    aliases: ["hypochondriasis"],
+    aliases: ["hypochondriasis", "health anxiety"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Preoccupation with having or acquiring a serious illness (despite minimal symptoms), high anxiety about health, and excessive health-checking behaviors.",
-    seeAlso: ["Somatic symptom disorder", "Health anxiety"]
+    seeAlso: ["Somatic symptom disorder"]
   },
   {
     term: "Intermittent explosive disorder",
     aliases: ["IED"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Recurrent behavioral outbursts with verbal or physical aggression out of proportion to the situation; person experiences remorse afterward.",
-    seeAlso: ["Anger", "Impulse control disorder"]
+    seeAlso: ["Irritability", "Kleptomania"]
   },
   {
     term: "Kleptomania",
     aliases: ["compulsive stealing"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Recurrent failure to resist the urge to steal; items taken are not needed or wanted; theft produces tension and relief or gratification.",
-    seeAlso: ["Pyromania", "Impulse control disorder"]
+    seeAlso: ["Pyromania"]
   },
   {
     term: "Major depressive disorder",
     aliases: ["MDD", "major depression"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Presence of depressed mood or loss of interest/pleasure for ≥2 weeks with ≥5 symptoms (sleep, appetite, guilt, concentration, fatigue, psychomotor change, suicidal ideation); causing significant distress.",
-    seeAlso: ["Depression", "Dysthymia", "Bipolar disorder"],
+    seeAlso: ["Dysthymia", "Bipolar I disorder"],
     link: { blogSlug: "major-depressive-disorder" }
   },
   {
@@ -1291,15 +1277,15 @@ window.GLOSSARY_TERMS = [
     aliases: ["NPD"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Pervasive pattern of grandiosity, need for excessive admiration, and lack of empathy; preoccupation with fantasies of power or achievement.",
-    seeAlso: ["Personality disorder", "Grandiosity"],
+    seeAlso: ["Personality disorder", "Delusion of grandeur"],
     link: { blogSlug: "personality-disorders" }
   },
   {
     term: "OCD",
     aliases: ["obsessive-compulsive disorder"],
     category: "Diagnoses (DSM-5-TR)",
-    def: "Presence of obsessions (intrusive thoughts, images, or urges) and/or compulsions (repetitive behaviors or mental acts); person recognizes obsessions as irrational and compulsions as time-consuming.",
-    seeAlso: ["Obsession", "Compulsion", "OCPD"],
+    def: "Presence of obsessions (intrusive, unwanted thoughts, images, or urges) and/or compulsions (repetitive behaviors or mental acts performed to reduce distress) that are time-consuming (e.g., more than 1 hour a day) or cause significant distress or impairment. Insight is a specifier, ranging from good or fair to poor to absent (delusional beliefs); recognizing the obsessions as irrational is no longer required.",
+    seeAlso: ["Hoarding disorder", "Trichotillomania", "Orbitofrontal cortex", "SSRI"],
     link: { blogSlug: "obsessive-compulsive-disorder" }
   },
   {
@@ -1314,7 +1300,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["panic attack disorder"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Recurrent unexpected panic attacks with persistent worry about future attacks and/or avoidance of situations following attacks.",
-    seeAlso: ["Panic attack", "Agoraphobia", "Anxiety disorder"],
+    seeAlso: ["Generalized anxiety disorder"],
     link: { blogSlug: "panic-attacks-gad" }
   },
   {
@@ -1322,13 +1308,13 @@ window.GLOSSARY_TERMS = [
     aliases: ["paranoid PD"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Pervasive pattern of distrust and suspicion; interpreting motives of others as malevolent; holding grudges; suspicious of fidelity of partner.",
-    seeAlso: ["Personality disorder", "Paranoia"]
+    seeAlso: ["Personality disorder", "Persecutory delusion"]
   },
   {
     term: "Persistent depressive disorder",
     aliases: ["dysthymia"],
     category: "Diagnoses (DSM-5-TR)",
-    def: "Chronic depressed mood for ≥2 years in adults; symptoms meet criteria for mild depression but are more enduring.",
+    def: "Depressed mood most of the day, more days than not, for at least 2 years in adults (1 year in children and adolescents), with at least 2 of 6 associated symptoms and no symptom-free period longer than 2 months. Since DSM-5 it merges dysthymia and chronic major depression, so full major depressive episodes may persist throughout.",
     seeAlso: ["Dysthymia", "Major depressive disorder"]
   },
   {
@@ -1336,14 +1322,14 @@ window.GLOSSARY_TERMS = [
     aliases: ["PMDD"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Severe cyclic mood changes, irritability, and anxiety occurring in the luteal phase of the menstrual cycle for most cycles over a year; causing marked distress.",
-    seeAlso: ["Mood disorder", "Premenstrual tension"]
+    seeAlso: ["Major depressive disorder"]
   },
   {
     term: "Prolonged grief disorder",
     aliases: ["complicated grief"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Intense yearning and/or preoccupation with the deceased for ≥12 months after death (≥6 months in children), causing clinically significant impairment.",
-    seeAlso: ["Grief", "Bereavement"],
+    seeAlso: ["Major depressive disorder", "Adjustment disorder", "Posttraumatic stress disorder"],
     link: { blogSlug: "grief-bereavement" }
   },
   {
@@ -1351,14 +1337,14 @@ window.GLOSSARY_TERMS = [
     aliases: ["compulsive fire-setting"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Recurrent failure to resist urge to set fires; person feels tension before the fire-setting and experiences pleasure or relief afterward.",
-    seeAlso: ["Kleptomania", "Impulse control disorder"]
+    seeAlso: ["Kleptomania"]
   },
   {
     term: "Schizoaffective disorder",
     aliases: ["schizoaffective"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Concurrent presence of schizophrenia symptoms and a mood episode; psychotic symptoms also occur without mood symptoms.",
-    seeAlso: ["Schizophrenia", "Bipolar disorder", "Psychosis"],
+    seeAlso: ["Schizophrenia", "Bipolar I disorder", "Psychosis"],
     link: { blogSlug: "schizophrenia" }
   },
   {
@@ -1394,15 +1380,15 @@ window.GLOSSARY_TERMS = [
     term: "Selective mutism",
     aliases: ["elective mutism"],
     category: "Diagnoses (DSM-5-TR)",
-    def: "Persistent failure to speak in specific social situations despite speaking in other settings; causes functional impairment; onset before age 5.",
-    seeAlso: ["Mutism", "Anxiety disorder", "Communication disorder"]
+    def: "Persistent failure to speak in specific social situations (such as school) despite speaking in other settings, lasting at least 1 month (not limited to the first month of school) and causing functional impairment. Onset is usually before age 5.",
+    seeAlso: ["Mutism", "Generalized anxiety disorder"]
   },
   {
     term: "Social anxiety disorder",
     aliases: ["social phobia"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Marked fear or anxiety in social situations where scrutiny is possible; fear of embarrassment or negative evaluation; avoidance or endurance with distress.",
-    seeAlso: ["Anxiety", "Phobia", "Panic disorder"],
+    seeAlso: ["Generalized anxiety disorder", "Specific phobia", "Panic disorder"],
     link: { blogSlug: "social-anxiety-phobias" }
   },
   {
@@ -1417,168 +1403,168 @@ window.GLOSSARY_TERMS = [
     aliases: ["simple phobia"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Marked fear or anxiety toward a specific object or situation; person avoids phobic stimulus; fear is disproportionate to actual danger.",
-    seeAlso: ["Phobia", "Anxiety disorder", "Social anxiety disorder"]
+    seeAlso: ["Generalized anxiety disorder", "Social anxiety disorder"]
   },
   {
     term: "Trichotillomania",
     aliases: ["hair-pulling disorder"],
     category: "Diagnoses (DSM-5-TR)",
     def: "Recurrent hair-pulling resulting in noticeable hair loss; repeated attempts to resist or decrease the behavior.",
-    seeAlso: ["NSSI", "OCD", "Body-focused repetitive behavior"]
+    seeAlso: ["NSSI", "OCD"]
   },
   {
     term: "Amygdala",
     aliases: ["amygdalae"],
     category: "Neuroanatomy",
     def: "Almond-shaped limbic structure involved in emotion processing, fear conditioning, and memory consolidation; critical for emotional responses.",
-    seeAlso: ["Limbic system", "Fear conditioning", "PTSD"]
+    seeAlso: ["PTSD"]
   },
   {
     term: "Anterior cingulate cortex",
     aliases: ["ACC"],
     category: "Neuroanatomy",
     def: "Region in the medial frontal cortex involved in emotion regulation, error detection, and conflict monitoring; implicated in mood disorders and anxiety.",
-    seeAlso: ["Cingulate gyrus", "Emotion regulation"]
+    seeAlso: ["Cingulate gyrus"]
   },
   {
     term: "Basal ganglia",
     aliases: ["striatum complex"],
     category: "Neuroanatomy",
     def: "Cluster of nuclei involved in motor control, habit formation, reward processing, and motivation; dysfunction implicated in movement disorders and addiction.",
-    seeAlso: ["Caudate", "Putamen", "Nucleus accumbens", "Motor control"]
+    seeAlso: ["Caudate", "Nucleus accumbens"]
   },
   {
     term: "Caudate",
     aliases: ["caudate nucleus"],
     category: "Neuroanatomy",
     def: "Part of the basal ganglia involved in motor planning and reward processing; implicated in OCD and addiction.",
-    seeAlso: ["Basal ganglia", "Putamen", "OCD"]
+    seeAlso: ["Basal ganglia", "OCD"]
   },
   {
     term: "Cingulate gyrus",
     aliases: ["cingulum"],
     category: "Neuroanatomy",
     def: "Cortical region surrounding the corpus callosum; involved in emotion regulation, pain processing, and decision-making.",
-    seeAlso: ["Anterior cingulate cortex", "Limbic system"]
+    seeAlso: ["Anterior cingulate cortex", "Amygdala"]
   },
   {
     term: "Corpus callosum",
     aliases: ["CC"],
     category: "Neuroanatomy",
     def: "Large white matter tract connecting the left and right cerebral hemispheres; allows interhemispheric communication.",
-    seeAlso: ["Commissure", "White matter"]
+    seeAlso: ["Default mode network"]
   },
   {
     term: "Default mode network",
     aliases: ["DMN"],
     category: "Neuroanatomy",
     def: "Large-scale brain network active at rest; includes medial prefrontal cortex, posterior cingulate, and angular gyrus; implicated in self-referential thinking and mind-wandering.",
-    seeAlso: ["Salience network", "Resting state"]
+    seeAlso: ["Salience network"]
   },
   {
     term: "Dorsolateral prefrontal cortex",
     aliases: ["dlPFC"],
     category: "Neuroanatomy",
     def: "Brain region involved in executive function, working memory, and cognitive control; implicated in depression, ADHD, and schizophrenia.",
-    seeAlso: ["Prefrontal cortex", "Executive function"]
+    seeAlso: ["Executive dysfunction"]
   },
   {
     term: "Entorhinal cortex",
     aliases: ["entorhinal"],
     category: "Neuroanatomy",
     def: "Cortical region serving as gateway between hippocampus and neocortex; critical for memory formation and spatial navigation.",
-    seeAlso: ["Hippocampus", "Memory"]
+    seeAlso: ["Hippocampus"]
   },
   {
     term: "Hippocampus",
     aliases: ["hippocampi"],
     category: "Neuroanatomy",
     def: "Medial temporal lobe structure critical for explicit memory formation and consolidation; also involved in emotional memory and contextual fear.",
-    seeAlso: ["Memory", "PTSD", "Temporal lobe"]
+    seeAlso: ["PTSD"]
   },
   {
     term: "Hypothalamus",
     aliases: ["hypothalamic"],
     category: "Neuroanatomy",
     def: "Small region below the thalamus controlling autonomic nervous system, hormone release, temperature, and homeostasis; key in stress response.",
-    seeAlso: ["Neuroendocrine", "HPA axis", "Stress response"]
+    seeAlso: ["Tuberoinfundibular pathway", "Amygdala", "Narcolepsy type 1"]
   },
   {
     term: "Insula",
     aliases: ["insular cortex"],
     category: "Neuroanatomy",
     def: "Cortical region involved in interoception, emotional awareness, and salience detection; implicated in anxiety and addiction.",
-    seeAlso: ["Salience network", "Interoception", "Anxiety"]
+    seeAlso: ["Salience network", "Generalized anxiety disorder"]
   },
   {
     term: "Locus coeruleus",
     aliases: ["LC"],
     category: "Neuroanatomy",
     def: "Small brainstem nucleus containing most of the brain's norepinephrine-producing neurons; critical for arousal, attention, and stress response.",
-    seeAlso: ["Norepinephrine", "Stress response", "Attention"]
+    seeAlso: ["Norepinephrine", "Hypothalamus"]
   },
   {
     term: "Nucleus accumbens",
     aliases: ["NAcc"],
     category: "Neuroanatomy",
     def: "Key reward center in the striatum involved in pleasure, motivation, and reinforcement; target of addictive drugs.",
-    seeAlso: ["Reward circuit", "Dopamine", "Addiction"]
+    seeAlso: ["Mesolimbic pathway", "Dopamine"]
   },
   {
     term: "Orbitofrontal cortex",
     aliases: ["OFC"],
     category: "Neuroanatomy",
     def: "Prefrontal region involved in reward evaluation, decision-making, and impulse control; implicated in addiction and OCD.",
-    seeAlso: ["Prefrontal cortex", "Decision-making", "Reward"]
+    seeAlso: ["Dorsolateral prefrontal cortex", "Mesolimbic pathway"]
   },
   {
     term: "Raphe nuclei",
     aliases: ["median raphe", "dorsal raphe"],
     category: "Neuroanatomy",
     def: "Brainstem structures containing most serotonin-producing neurons; projects widely throughout brain; implicated in mood regulation.",
-    seeAlso: ["Serotonin", "Mood regulation"]
+    seeAlso: ["Serotonin"]
   },
   {
     term: "Salience network",
     aliases: ["SN"],
     category: "Neuroanatomy",
     def: "Brain network including anterior insula and anterior cingulate cortex; responsible for detecting behaviorally significant events.",
-    seeAlso: ["Default mode network", "Insula", "Executive control"]
+    seeAlso: ["Default mode network", "Insula", "Executive dysfunction"]
   },
   {
     term: "Substantia nigra",
     aliases: ["SNc"],
     category: "Neuroanatomy",
     def: "Midbrain structure containing dopamine neurons in nigrostriatal pathway; degeneration occurs in Parkinson disease.",
-    seeAlso: ["Dopamine", "Parkinson disease", "Motor control"]
+    seeAlso: ["Dopamine", "Parkinson disease", "Basal ganglia"]
   },
   {
     term: "Thalamus",
     aliases: ["thalami"],
     category: "Neuroanatomy",
     def: "Large relay nucleus receiving sensory information and projecting to cortex; also involved in consciousness and attention.",
-    seeAlso: ["Sensory relay", "Consciousness"]
+    seeAlso: ["Basal ganglia", "Delirium"]
   },
   {
     term: "Ventral tegmental area",
     aliases: ["VTA"],
     category: "Neuroanatomy",
     def: "Midbrain dopamine nucleus in mesolimbic/mesocortical pathways; central to reward, motivation, and addiction.",
-    seeAlso: ["Dopamine", "Reward circuit", "Addiction"]
+    seeAlso: ["Dopamine", "Mesolimbic pathway", "Nucleus accumbens"]
   },
   {
     term: "Ventromedial prefrontal cortex",
     aliases: ["vmPFC"],
     category: "Neuroanatomy",
     def: "Region involved in emotion regulation, decision-making, and fear extinction; implicated in anxiety and PTSD.",
-    seeAlso: ["Prefrontal cortex", "Emotion regulation", "PTSD"]
+    seeAlso: ["Dorsolateral prefrontal cortex", "PTSD"]
   },
   {
     term: "5-HT1A receptor",
     aliases: ["serotonin 1A"],
     category: "Neurochemistry",
     def: "Serotonin receptor subtype; postsynaptic locations involved in anxiety and depression; presynaptic autoreceptors regulate serotonin release.",
-    seeAlso: ["Serotonin", "SSRI", "Buspirone"]
+    seeAlso: ["Serotonin", "SSRI"]
   },
   {
     term: "5-HT2A receptor",
@@ -1592,28 +1578,28 @@ window.GLOSSARY_TERMS = [
     aliases: ["serotonin 2C"],
     category: "Neurochemistry",
     def: "Serotonin receptor involved in appetite regulation and mood; blockade associated with weight gain in antipsychotics.",
-    seeAlso: ["Serotonin", "Weight gain", "Antipsychotic side effects"]
+    seeAlso: ["Serotonin", "Extrapyramidal symptoms"]
   },
   {
     term: "Alpha-1 adrenergic receptor",
     aliases: ["alpha-1 receptor"],
     category: "Neurochemistry",
     def: "Norepinephrine receptor involved in arousal and vascular function; blockade causes orthostatic hypotension and sedation.",
-    seeAlso: ["Norepinephrine", "Orthostatic hypotension", "Antipsychotic side effects"]
+    seeAlso: ["Norepinephrine", "Extrapyramidal symptoms"]
   },
   {
     term: "Alpha-2 adrenergic receptor",
     aliases: ["alpha-2 receptor"],
     category: "Neurochemistry",
     def: "Norepinephrine receptor involved in arousal and blood pressure regulation; agonists used for ADHD (guanfacine, clonidine).",
-    seeAlso: ["Norepinephrine", "ADHD", "Blood pressure"]
+    seeAlso: ["Norepinephrine", "ADHD"]
   },
   {
     term: "D1 dopamine receptor",
     aliases: ["D1 receptor"],
     category: "Neurochemistry",
     def: "Dopamine receptor subtype; primarily excitatory; involved in motor control and reward.",
-    seeAlso: ["Dopamine", "Antipsychotic", "Motor control"]
+    seeAlso: ["Dopamine", "Antipsychotic", "Basal ganglia"]
   },
   {
     term: "D2 dopamine receptor",
@@ -1627,7 +1613,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["D3 receptor"],
     category: "Neurochemistry",
     def: "Dopamine receptor involved in reward and motivation; potential target for addiction treatment.",
-    seeAlso: ["Dopamine", "Reward", "Addiction"]
+    seeAlso: ["Dopamine", "Mesolimbic pathway", "Nucleus accumbens"]
   },
   {
     term: "D4 dopamine receptor",
@@ -1641,55 +1627,55 @@ window.GLOSSARY_TERMS = [
     aliases: ["DA"],
     category: "Neurochemistry",
     def: "Neurotransmitter involved in reward, motivation, motor control, and cognition; dysregulation implicated in schizophrenia, ADHD, and addiction.",
-    seeAlso: ["D1 receptor", "D2 receptor", "Reward circuit"]
+    seeAlso: ["D1 receptor", "D2 receptor", "Mesolimbic pathway"]
   },
   {
     term: "GABA",
     aliases: ["gamma-aminobutyric acid"],
     category: "Neurochemistry",
     def: "Primary inhibitory neurotransmitter in the CNS; reduced function implicated in anxiety; enhanced by benzodiazepines.",
-    seeAlso: ["GABA-A receptor", "Benzodiazepine", "Anxiety"]
+    seeAlso: ["GABA-A receptor", "Benzodiazepine", "Generalized anxiety disorder"]
   },
   {
     term: "GABA-A receptor",
     aliases: ["GABAR"],
     category: "Neurochemistry",
     def: "Ionotropic receptor for GABA; target of benzodiazepines, barbiturates, and alcohol; enhances chloride influx.",
-    seeAlso: ["GABA", "Benzodiazepine", "Alcohol"]
+    seeAlso: ["GABA", "Benzodiazepine"]
   },
   {
     term: "Glutamate",
     aliases: ["L-glutamate"],
     category: "Neurochemistry",
     def: "Primary excitatory neurotransmitter in the CNS; excessive glutamate implicated in excitotoxicity, neurodegenerative diseases, and schizophrenia.",
-    seeAlso: ["NMDA receptor", "Ketamine", "Schizophrenia"]
+    seeAlso: ["NMDA receptor", "Schizophrenia"]
   },
   {
     term: "H1 histamine receptor",
     aliases: ["H1 receptor"],
     category: "Neurochemistry",
-    def: "Histamine receptor blocked by first-generation antipsychotics and antihistamines; blockade causes sedation and weight gain.",
-    seeAlso: ["Histamine", "Sedation", "Weight gain"]
+    def: "Histamine receptor whose blockade causes sedation and weight gain. The strongest H1 blockers among psychotropics include several second-generation antipsychotics (clozapine, olanzapine, quetiapine), low-potency first-generation antipsychotics, mirtazapine, tricyclic antidepressants, and first-generation antihistamines.",
+    seeAlso: ["5-HT2C receptor"]
   },
   {
     term: "M1 muscarinic receptor",
     aliases: ["M1 receptor"],
     category: "Neurochemistry",
     def: "Acetylcholine receptor involved in cognition and memory; some antipsychotics block M1 receptors, causing anticholinergic effects.",
-    seeAlso: ["Acetylcholine", "Anticholinergic effects", "Memory"]
+    seeAlso: ["Acetylcholine", "Anticholinergic effects", "Hippocampus"]
   },
   {
     term: "NMDA receptor",
     aliases: ["N-methyl-D-aspartate receptor"],
     category: "Neurochemistry",
     def: "Ionotropic glutamate receptor; blocked by ketamine and memantine; implicated in memory and learning.",
-    seeAlso: ["Glutamate", "Ketamine", "Memory"]
+    seeAlso: ["Glutamate", "Hippocampus"]
   },
   {
     term: "Norepinephrine",
     aliases: ["NE", "noradrenaline"],
     category: "Neurochemistry",
-    def: "Neurotransmitter involved in arousal, attention, and mood; depleted in depression; target of SNRIs and tricyclic antidepressants.",
+    def: "Neurotransmitter involved in arousal, attention, and mood; implicated in depression (the monoamine hypothesis); target of SNRIs, norepinephrine reuptake inhibitors, and tricyclic antidepressants.",
     seeAlso: ["Locus coeruleus", "SNRI", "Antidepressant"]
   },
   {
@@ -1697,49 +1683,49 @@ window.GLOSSARY_TERMS = [
     aliases: ["5-hydroxytryptamine", "5-HT"],
     category: "Neurochemistry",
     def: "Neurotransmitter involved in mood, anxiety, sleep, and aggression; dysregulation implicated in depression, anxiety, and OCD; target of SSRIs.",
-    seeAlso: ["SSRI", "Mood disorder", "Raphe nuclei"]
+    seeAlso: ["SSRI", "Major depressive disorder", "Raphe nuclei"]
   },
   {
     term: "Sigma-1 receptor",
     aliases: ["sigma receptor"],
     category: "Neurochemistry",
     def: "Intracellular receptor involved in neuroprotection and inflammation; target of fluvoxamine, an SSRI with sigma-1 agonist activity.",
-    seeAlso: ["Fluvoxamine", "Neuroprotection"]
+    seeAlso: ["CYP1A2"]
   },
   {
     term: "Acetylcholine",
     aliases: ["ACh"],
     category: "Neurochemistry",
     def: "Neurotransmitter involved in memory, attention, and motor control; reduced in Alzheimer disease; blocked by anticholinergic drugs.",
-    seeAlso: ["Anticholinergic", "Memory", "M1 receptor"]
+    seeAlso: ["Anticholinergic", "Hippocampus", "M1 receptor"]
   },
   {
     term: "Mesocortical pathway",
     aliases: ["mesocortical dopamine"],
     category: "Neurochemistry",
     def: "Dopamine pathway from VTA to prefrontal cortex; involved in cognition, motivation, and emotion; dysregulation implicated in schizophrenia.",
-    seeAlso: ["Dopamine", "Prefrontal cortex", "Schizophrenia"]
+    seeAlso: ["Dopamine", "Dorsolateral prefrontal cortex", "Schizophrenia"]
   },
   {
     term: "Mesolimbic pathway",
     aliases: ["mesolimbic dopamine"],
     category: "Neurochemistry",
     def: "Dopamine pathway from VTA to limbic structures; involved in reward and motivation; hyperactivity implicated in psychosis.",
-    seeAlso: ["Dopamine", "Reward", "Psychosis"]
+    seeAlso: ["Dopamine", "Psychosis"]
   },
   {
     term: "Nigrostriatal pathway",
     aliases: ["nigrostriatal dopamine"],
     category: "Neurochemistry",
     def: "Dopamine pathway from substantia nigra to striatum; critical for motor control; degenerates in Parkinson disease; blocked by antipsychotics, causing EPS.",
-    seeAlso: ["Dopamine", "Motor control", "Extrapyramidal symptoms"]
+    seeAlso: ["Dopamine", "Basal ganglia", "Extrapyramidal symptoms"]
   },
   {
     term: "Tuberoinfundibular pathway",
     aliases: ["hypothalamic-pituitary axis"],
     category: "Neurochemistry",
     def: "Dopamine pathway from hypothalamus to pituitary; dopamine inhibits prolactin release; blocking this pathway causes hyperprolactinemia.",
-    seeAlso: ["Dopamine", "Hyperprolactinemia", "Antipsychotic side effects"]
+    seeAlso: ["Dopamine", "Hyperprolactinemia", "Extrapyramidal symptoms"]
   },
   {
     term: "Agonist",
@@ -1753,7 +1739,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["allosteric agent"],
     category: "Pharmacology",
     def: "Drug that binds to a receptor at a site distinct from the orthosteric (main) binding site, modulating the effect of the natural ligand.",
-    seeAlso: ["Receptor binding", "Agonist", "Antagonist"]
+    seeAlso: ["Agonist", "Antagonist"]
   },
   {
     term: "Antagonist",
@@ -1764,7 +1750,7 @@ window.GLOSSARY_TERMS = [
   },
   {
     term: "Anticholinergic effects",
-    aliases: ["anticholinergic side effects"],
+    aliases: ["anticholinergic side effects", "anticholinergic"],
     category: "Pharmacology",
     def: "Side effects from blockade of muscarinic acetylcholine receptors: dry mouth, constipation, urinary retention, mydriasis, tachycardia, impaired cognition.",
     seeAlso: ["Anticholinergic burden", "M1 receptor"]
@@ -1774,14 +1760,14 @@ window.GLOSSARY_TERMS = [
     aliases: ["anticholinergic load"],
     category: "Pharmacology",
     def: "Cumulative anticholinergic effect from medications; associated with cognitive decline, delirium, and adverse outcomes in older adults.",
-    seeAlso: ["Anticholinergic effects", "Polypharmacy"]
+    seeAlso: ["Anticholinergic effects"]
   },
   {
     term: "AUC",
     aliases: ["area under the curve"],
     category: "Pharmacology",
     def: "The integral of plasma concentration over time; used to calculate total drug exposure and bioavailability.",
-    seeAlso: ["Pharmacokinetics", "Steady state", "Cmax"]
+    seeAlso: ["Pharmacokinetics", "Steady state"]
   },
   {
     term: "Bioavailability",
@@ -1795,13 +1781,13 @@ window.GLOSSARY_TERMS = [
     aliases: ["cytochrome P450 1A2"],
     category: "Pharmacology",
     def: "Enzyme that metabolizes theophylline, caffeine, and some antipsychotics; induced by smoking.",
-    seeAlso: ["P450 system", "Drug interaction", "Metabolism"]
+    seeAlso: ["P450 system"]
   },
   {
     term: "CYP2C19",
     aliases: ["cytochrome P450 2C19"],
     category: "Pharmacology",
-    def: "Enzyme that metabolizes SSRIs, citalopram, escitalopram, and some antipsychotics; subject to pharmacogenetic variation.",
+    def: "Enzyme that metabolizes citalopram, escitalopram, and sertraline, along with clobazam, diazepam, and proton-pump inhibitors, and activates clopidogrel. Common loss-of-function and ultrarapid variants make it a key pharmacogenomic target.",
     seeAlso: ["P450 system", "SSRI", "Pharmacogenomics"]
   },
   {
@@ -1809,28 +1795,28 @@ window.GLOSSARY_TERMS = [
     aliases: ["cytochrome P450 2D6"],
     category: "Pharmacology",
     def: "Enzyme that metabolizes tricyclic antidepressants, antipsychotics, beta-blockers, and opioids; most variable P450 enzyme; subject to pharmacogenetic variation.",
-    seeAlso: ["P450 system", "Pharmacogenomics", "Drug interaction"]
+    seeAlso: ["P450 system", "Pharmacogenomics"]
   },
   {
     term: "CYP3A4",
     aliases: ["cytochrome P450 3A4"],
     category: "Pharmacology",
     def: "Most abundant P450 enzyme; metabolizes many drugs; subject to induction and inhibition; major source of drug interactions.",
-    seeAlso: ["P450 system", "Drug interaction", "CYP3A4 inhibitor"]
+    seeAlso: ["P450 system"]
   },
   {
     term: "Discontinuation syndrome",
     aliases: ["withdrawal syndrome"],
     category: "Pharmacology",
     def: "Constellation of symptoms occurring after abrupt discontinuation of a medication; most common with SSRIs and SNRIs. Symptoms may include dizziness, paresthesias, mood disturbance.",
-    seeAlso: ["SSRI", "Antidepressant", "Withdrawal"]
+    seeAlso: ["SSRI", "Antidepressant"]
   },
   {
     term: "Downregulation",
     aliases: ["receptor downregulation"],
     category: "Pharmacology",
     def: "Decrease in number of available receptors in response to chronic excess ligand; occurs with long-term agonist use.",
-    seeAlso: ["Upregulation", "Tolerance", "Receptor"]
+    seeAlso: ["Upregulation", "Tolerance", "Agonist"]
   },
   {
     term: "Drug holiday",
@@ -1844,27 +1830,27 @@ window.GLOSSARY_TERMS = [
     aliases: ["first-pass effect"],
     category: "Pharmacology",
     def: "Hepatic metabolism of orally administered drugs before reaching systemic circulation; reduces bioavailability of some drugs.",
-    seeAlso: ["Bioavailability", "Metabolism", "CYP system"]
+    seeAlso: ["Bioavailability", "P450 system"]
   },
   {
     term: "Half-life",
     aliases: ["t1/2"],
     category: "Pharmacology",
     def: "Time required for plasma concentration of a drug to decrease by 50%; used to predict accumulation and clearance time.",
-    seeAlso: ["Steady state", "Clearance", "Pharmacokinetics"]
+    seeAlso: ["Steady state", "Pharmacokinetics"]
   },
   {
     term: "Hyperprolactinemia",
     aliases: ["elevated prolactin"],
     category: "Pharmacology",
     def: "Elevated prolactin level from dopamine D2 blockade; causes amenorrhea, sexual dysfunction, and galactorrhea; common with antipsychotics.",
-    seeAlso: ["Antipsychotic side effects", "Dopamine", "Tuberoinfundibular pathway"]
+    seeAlso: ["Extrapyramidal symptoms", "Dopamine", "Tuberoinfundibular pathway"]
   },
   {
     term: "Inverse agonist",
     aliases: ["inverse agonist drug"],
     category: "Pharmacology",
-    def: "Drug that reduces receptor activity below baseline (resting) levels; stronger effect than antagonist.",
+    def: "Drug that binds the same receptor as an agonist but produces the opposite effect, reducing constitutive (baseline) receptor activity below resting levels. A neutral antagonist only blocks agonists without changing baseline activity. Pimavanserin, a 5-HT2A inverse agonist, is a clinical example.",
     seeAlso: ["Antagonist", "Agonist"]
   },
   {
@@ -1872,29 +1858,29 @@ window.GLOSSARY_TERMS = [
     aliases: ["behavioral kindling"],
     category: "Pharmacology",
     def: "Progressive sensitization to repeated doses of a drug or repeated stimulation; seen in substance withdrawal and mood cycling.",
-    seeAlso: ["Tolerance", "Sensitization", "Substance use"]
+    seeAlso: ["Tolerance", "Sensitization"]
   },
   {
     term: "Neuroleptic malignant syndrome",
     aliases: ["NMS"],
     category: "Pharmacology",
     def: "Medical emergency from antipsychotic use: fever, rigidity, altered consciousness, autonomic instability, elevated CK. Requires immediate discontinuation and supportive care.",
-    seeAlso: ["Antipsychotic side effects", "Antipsychotic", "Medical emergency"],
+    seeAlso: ["Extrapyramidal symptoms", "Antipsychotic"],
     link: { blogSlug: "serotonin-syndrome-nms" }
   },
   {
     term: "P450 system",
-    aliases: ["cytochrome P450"],
+    aliases: ["cytochrome P450", "CYP system"],
     category: "Pharmacology",
     def: "Family of hepatic enzymes responsible for metabolism of most medications; subject to induction and inhibition, causing drug interactions.",
-    seeAlso: ["CYP2D6", "CYP3A4", "CYP2C19", "Drug interaction"]
+    seeAlso: ["CYP2D6", "CYP3A4", "CYP2C19"]
   },
   {
     term: "Partial agonist",
     aliases: ["partial agonism"],
     category: "Pharmacology",
     def: "Drug that binds to a receptor and produces a submaximal response; may act as antagonist in presence of full agonist.",
-    seeAlso: ["Agonist", "Antipsychotic", "Aripiprazole"]
+    seeAlso: ["Agonist", "Antipsychotic"]
   },
   {
     term: "Pharmacogenomics",
@@ -1909,7 +1895,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["PK"],
     category: "Pharmacology",
     def: "Study of how the body processes drugs: absorption, distribution, metabolism, and elimination.",
-    seeAlso: ["Half-life", "Steady state", "Metabolism"],
+    seeAlso: ["Half-life", "Steady state", "P450 system"],
     link: { blogSlug: "pharmacokinetics" }
   },
   {
@@ -1917,14 +1903,14 @@ window.GLOSSARY_TERMS = [
     aliases: ["inactive drug"],
     category: "Pharmacology",
     def: "Medication that is inactive until metabolized by the body into an active form; used to improve absorption or prolong action.",
-    seeAlso: ["Metabolism", "Active metabolite"]
+    seeAlso: ["P450 system"]
   },
   {
     term: "QTc prolongation",
     aliases: ["QT interval prolongation"],
     category: "Pharmacology",
     def: "Prolongation of the QT interval on EKG from antiarrhythmics, antipsychotics, or other drugs; increases risk of torsades de pointes.",
-    seeAlso: ["Antipsychotic side effects", "Torsades de pointes", "EKG"],
+    seeAlso: ["Extrapyramidal symptoms", "Torsades de pointes"],
     link: { section: "qt-risk", label: "Open QT Risk Tool" }
   },
   {
@@ -1938,8 +1924,8 @@ window.GLOSSARY_TERMS = [
     term: "Serotonin syndrome",
     aliases: ["serotonin toxicity"],
     category: "Pharmacology",
-    def: "Medical emergency from excessive serotonergic activity; presents with agitation, confusion, rapid heart rate, muscle rigidity, and hyperthermia. Caused by SSRI/MAOI interaction or serotonergic overdose.",
-    seeAlso: ["SSRI", "MAOI", "Antidepressant"],
+    def: "Potentially life-threatening serotonin toxicity, usually beginning within hours of starting, raising, or combining serotonergic drugs. The defining findings (Hunter criteria) are clonus (inducible, spontaneous, or ocular) and hyperreflexia, typically worse in the legs, with tremor, agitation, diaphoresis, mydriasis, diarrhea, tachycardia, and hyperthermia; rigidity appears only in severe cases. Classic triggers pair an SSRI, SNRI, or MAOI with linezolid, methylene blue, tramadol, meperidine, or another serotonergic drug. Treatment: stop the agents, supportive care, benzodiazepines, and cyproheptadine for moderate cases. Contrast neuroleptic malignant syndrome (lead-pipe rigidity, reduced reflexes, onset over days).",
+    seeAlso: ["SSRI", "MAOI", "Neuroleptic malignant syndrome", "Myoclonus"],
     link: { blogSlug: "serotonin-syndrome-nms" }
   },
   {
@@ -1947,7 +1933,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["steady-state concentration"],
     category: "Pharmacology",
     def: "Point at which drug intake equals drug elimination; reached after approximately 5 half-lives of a medication.",
-    seeAlso: ["Half-life", "Accumulation", "Pharmacokinetics"]
+    seeAlso: ["Half-life", "Pharmacokinetics"]
   },
   {
     term: "Tachyphylaxis",
@@ -1968,14 +1954,14 @@ window.GLOSSARY_TERMS = [
     aliases: ["receptor upregulation"],
     category: "Pharmacology",
     def: "Increase in number of available receptors in response to chronic deficit of ligand; occurs with chronic antagonist use.",
-    seeAlso: ["Downregulation", "Receptor"]
+    seeAlso: ["Downregulation", "Agonist"]
   },
   {
     term: "Washout",
     aliases: ["wash-out period"],
     category: "Pharmacology",
     def: "Time required for plasma concentration of a drug to become negligible (typically 5-7 half-lives); important before starting a new medication to avoid interactions.",
-    seeAlso: ["Half-life", "Cross-taper", "Drug interaction"]
+    seeAlso: ["Half-life", "P450 system"]
   },
   {
     term: "logP",
@@ -2054,7 +2040,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["protein binding", "protein-bound", "free fraction", "unbound fraction", "albumin binding"],
     category: "Pharmacology",
     def: "The reversible equilibrium between drug bound to plasma proteins (albumin for acidic/neutral drugs; alpha1-acid glycoprotein for many bases) and the free fraction. Only free drug is active, distributable, metabolized, and filtered. In hypoalbuminemia, a highly bound drug's free fraction rises while the total measured level may look normal — check a free level for narrow-index drugs like phenytoin and valproate.",
-    seeAlso: ["Volume of distribution", "Hypoalbuminemia", "Free fraction", "Drug interaction"],
+    seeAlso: ["Volume of distribution", "P450 system"],
     link: { blogSlug: "medicinal-chemistry" }
   },
   {
@@ -2070,7 +2056,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["renal clearance", "renal elimination", "urinary excretion"],
     category: "Pharmacology",
     def: "Elimination of unchanged drug by the kidney, favored by small size, low lipophilicity (low logP, high TPSA), charge/ionization, and low protein binding. Renally cleared psychotropics (lithium, gabapentin, pregabalin, topiramate, paliperidone, memantine) need dose reduction in renal impairment. Contrast with hepatic metabolism, favored by lipophilic, neutral, highly bound drugs.",
-    seeAlso: ["Ionization", "Plasma protein binding", "logP", "First-pass metabolism", "Dialyzability"],
+    seeAlso: ["Ionization", "Plasma protein binding", "logP", "First-pass metabolism"],
     link: { blogSlug: "medicinal-chemistry" }
   },
   {
@@ -2086,70 +2072,70 @@ window.GLOSSARY_TERMS = [
     aliases: ["inability to recognize"],
     category: "Cognition & Dementia",
     def: "Inability to recognize or identify sensory stimuli despite intact sensation; can be visual (faces, objects), auditory, or tactile.",
-    seeAlso: ["Prosopagnosia", "Aphasia", "Apraxia"]
+    seeAlso: ["Prosopagnosia", "Aphasia, Broca", "Apraxia, ideomotor"]
   },
   {
     term: "Alexia",
     aliases: ["word blindness"],
     category: "Cognition & Dementia",
     def: "Inability to read despite intact vision and language; usually results from brain damage in regions involved in reading.",
-    seeAlso: ["Dyslexia", "Aphasia"]
+    seeAlso: ["Aphasia, Broca"]
   },
   {
     term: "Amnesia, anterograde",
     aliases: ["anterograde amnesia"],
     category: "Cognition & Dementia",
     def: "Inability to form new memories after the brain damage or insult; affected persons may remember the past but not new information.",
-    seeAlso: ["Amnesia", "Korsakoff syndrome", "Memory"]
+    seeAlso: ["Korsakoff syndrome", "Hippocampus"]
   },
   {
     term: "Amnesia, retrograde",
     aliases: ["retrograde amnesia"],
     category: "Cognition & Dementia",
-    def: "Loss of memory for events that occurred before the brain damage or insult; typically affects remote memories more than recent.",
-    seeAlso: ["Amnesia", "Memory loss"]
+    def: "Loss of memory for events that occurred before the brain injury or insult. It typically follows a temporal gradient (Ribot's law): the most recent memories are lost first, while remote memories are relatively spared.",
+    seeAlso: ["Amnesia, anterograde"]
   },
   {
     term: "Aphasia, Broca",
-    aliases: ["expressive aphasia"],
+    aliases: ["expressive aphasia", "Broca aphasia"],
     category: "Cognition & Dementia",
     def: "Language deficit with preserved comprehension but impaired speech production; speech is slow, effortful, and agrammatical.",
-    seeAlso: ["Aphasia", "Wernicke aphasia"]
+    seeAlso: ["Wernicke aphasia"]
   },
   {
     term: "Aphasia, Wernicke",
-    aliases: ["receptive aphasia"],
+    aliases: ["receptive aphasia", "Wernicke aphasia"],
     category: "Cognition & Dementia",
     def: "Language deficit with impaired comprehension but relatively preserved fluent speech; patient produces fluent but meaningless speech and cannot understand spoken language.",
-    seeAlso: ["Aphasia", "Broca aphasia"]
+    seeAlso: ["Aphasia, Broca"]
   },
   {
     term: "Apraxia, constructional",
     aliases: ["constructional apraxia"],
     category: "Cognition & Dementia",
     def: "Difficulty copying, drawing, or assembling objects despite intact motor and sensory function; associated with right parietal lobe lesions.",
-    seeAlso: ["Apraxia", "Neglect"]
+    seeAlso: ["Apraxia, ideomotor", "Neglect"]
   },
   {
     term: "Apraxia, ideational",
     aliases: ["ideational apraxia"],
     category: "Cognition & Dementia",
     def: "Inability to perform purposeful motor sequences despite intact motor function; patient understands the task but cannot execute it correctly.",
-    seeAlso: ["Apraxia", "Ideomotor apraxia"]
+    seeAlso: ["Apraxia, ideomotor"]
   },
   {
     term: "Apraxia, ideomotor",
     aliases: ["ideomotor apraxia"],
     category: "Cognition & Dementia",
     def: "Difficulty performing purposeful movements to command despite understanding the command and having intact motor function.",
-    seeAlso: ["Apraxia", "Ideational apraxia"]
+    seeAlso: ["Ideational apraxia"]
   },
   {
     term: "CDR",
     aliases: ["clinical dementia rating"],
     category: "Cognition & Dementia",
     def: "Rating scale assessing severity of cognitive and functional decline across six domains; produces global score from 0 (normal) to 3 (severe dementia).",
-    seeAlso: ["Dementia", "Cognition"],
+    seeAlso: ["Dementia", "MoCA"],
     link: { section: "cdr-tool", label: "Open CDR Tool" }
   },
   {
@@ -2157,49 +2143,49 @@ window.GLOSSARY_TERMS = [
     aliases: ["false memory"],
     category: "Cognition & Dementia",
     def: "Unconscious filling in of memory gaps with fabricated or distorted information; characteristic of Korsakoff syndrome.",
-    seeAlso: ["Korsakoff syndrome", "Memory", "Amnesia"]
+    seeAlso: ["Korsakoff syndrome", "Hippocampus", "Amnesia, anterograde"]
   },
   {
     term: "Executive dysfunction",
     aliases: ["frontal lobe dysfunction"],
     category: "Cognition & Dementia",
     def: "Impairment in planning, organization, initiation, and cognitive flexibility; affects problem-solving and decision-making.",
-    seeAlso: ["Prefrontal cortex", "Planning", "Cognition"]
+    seeAlso: ["Dorsolateral prefrontal cortex", "Planning", "MoCA"]
   },
   {
     term: "FAST",
     aliases: ["functional assessment staging tool"],
     category: "Cognition & Dementia",
     def: "Seven-stage scale rating functional decline in dementia from normal cognition to advanced dementia with minimal verbal output.",
-    seeAlso: ["Dementia", "Functional decline"]
+    seeAlso: ["Dementia"]
   },
   {
     term: "Grasp reflex",
     aliases: ["palmar grasp"],
     category: "Cognition & Dementia",
     def: "Automatic grasping of objects placed in the palm; a frontal release sign indicating frontal lobe dysfunction.",
-    seeAlso: ["Frontal lobe signs", "Palmar-mental reflex"]
+    seeAlso: ["Executive dysfunction", "Major neurocognitive disorder"]
   },
   {
     term: "MMSE",
     aliases: ["mini-mental state examination"],
     category: "Cognition & Dementia",
-    def: "Brief (5-10 min) cognitive screening test; 30 items covering orientation, memory, attention, language. Cutoffs: 24-30 normal, 18-23 mild impairment, <18 severe impairment.",
-    seeAlso: ["Cognition", "Dementia screening"]
+    def: "Brief (5–10 min) cognitive screening test with 30 points covering orientation, memory, attention, language, and visuospatial copying. Commonly used bands: 24–30 normal, 19–23 mild, 10–18 moderate, 9 or less severe impairment; cutoffs should be adjusted for education. Less sensitive than the MoCA for mild impairment.",
+    seeAlso: ["MoCA"]
   },
   {
     term: "MoCA",
     aliases: ["Montreal Cognitive Assessment"],
     category: "Cognition & Dementia",
     def: "10-minute cognitive screening tool more sensitive for mild cognitive impairment than MMSE; covers executive function, visuospatial skills, memory, language.",
-    seeAlso: ["Cognition", "MMSE", "Mild cognitive impairment"]
+    seeAlso: ["MMSE", "Mild cognitive impairment"]
   },
   {
     term: "Neglect",
     aliases: ["unilateral neglect"],
     category: "Cognition & Dementia",
     def: "Failure to attend to or respond to stimuli on one side of space, typically the left side; results from right parietal lobe lesion.",
-    seeAlso: ["Parietal lobe", "Apraxia"]
+    seeAlso: ["Apraxia, ideomotor"]
   },
   {
     term: "Prosopagnosia",
@@ -2213,7 +2199,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["St. Louis University Mental Status"],
     category: "Cognition & Dementia",
     def: "11-item cognitive screening test more sensitive for mild cognitive impairment and dementia in educated older adults; takes 5-7 minutes.",
-    seeAlso: ["Cognition", "MMSE", "MoCA"],
+    seeAlso: ["MoCA", "MMSE"],
     link: { section: "slums-tool", label: "Open SLUMS Tool" }
   },
   {
@@ -2221,70 +2207,70 @@ window.GLOSSARY_TERMS = [
     aliases: ["sundown syndrome"],
     category: "Cognition & Dementia",
     def: "Increase in confusion, agitation, and behavioral problems in late afternoon/evening in dementia; mechanism unknown but may relate to reduced light.",
-    seeAlso: ["Dementia", "Delirium", "Confusion"]
+    seeAlso: ["Dementia", "Delirium"]
   },
   {
     term: "REM sleep behavior disorder",
     aliases: ["RBD"],
     category: "Sleep",
     def: "Parasomnia with acting out of dreams during REM sleep; person may strike bed partner; associated with Parkinson disease and other neurodegenerative conditions.",
-    seeAlso: ["Sleep disorder", "Parasomnia", "Parkinson disease"]
+    seeAlso: ["Polysomnography", "Parkinson disease"]
   },
   {
     term: "Restless legs syndrome",
     aliases: ["RLS"],
     category: "Sleep",
     def: "Urge to move legs at night, often with uncomfortable sensations; sleep onset and maintenance insomnia; associated with anemia, renal disease, and pregnancy.",
-    seeAlso: ["Sleep disorder", "Insomnia"]
+    seeAlso: ["Polysomnography", "Insomnia"]
   },
   {
     term: "Narcolepsy type 1",
     aliases: ["narcolepsy with cataplexy"],
     category: "Sleep",
     def: "Sleep disorder with excessive daytime sleepiness and cataplexy (sudden loss of muscle tone); caused by loss of orexin (hypocretin) neurons.",
-    seeAlso: ["Narcolepsy", "Cataplexy", "Sleep paralysis"]
+    seeAlso: ["Cataplexy", "Sleep paralysis"]
   },
   {
     term: "Narcolepsy type 2",
     aliases: ["narcolepsy without cataplexy"],
     category: "Sleep",
     def: "Sleep disorder with excessive daytime sleepiness but without cataplexy; may have sleep paralysis and hypnagogic hallucinations.",
-    seeAlso: ["Narcolepsy type 1", "Sleep disorder"]
+    seeAlso: ["Narcolepsy type 1", "Polysomnography"]
   },
   {
     term: "Cataplexy",
     aliases: ["attack of weakness"],
     category: "Sleep",
     def: "Sudden loss of voluntary muscle tone triggered by emotion (especially laughter); characteristic of narcolepsy type 1.",
-    seeAlso: ["Narcolepsy type 1", "Sleep disorder"]
+    seeAlso: ["Narcolepsy type 1", "Polysomnography"]
   },
   {
     term: "Sleep paralysis",
     aliases: ["REM atonia"],
     category: "Sleep",
     def: "Temporary inability to move or speak occurring while falling asleep or awakening; person is conscious but cannot move; associated with narcolepsy.",
-    seeAlso: ["Narcolepsy", "Sleep disorder"]
+    seeAlso: ["Narcolepsy type 1", "Polysomnography"]
   },
   {
     term: "Sleep architecture",
     aliases: ["sleep structure"],
     category: "Sleep",
     def: "Pattern of sleep stages throughout the night; normal architecture includes cycling through NREM stages and REM sleep.",
-    seeAlso: ["REM sleep", "NREM sleep", "Polysomnography"]
+    seeAlso: ["Polysomnography"]
   },
   {
     term: "Polysomnography",
     aliases: ["PSG", "sleep study"],
     category: "Sleep",
     def: "Overnight test measuring brain activity, eye movement, muscle activity, breathing, and heart rate to diagnose sleep disorders.",
-    seeAlso: ["Sleep disorder", "Sleep architecture"]
+    seeAlso: ["Sleep architecture"]
   },
   {
     term: "Multiple sleep latency test",
     aliases: ["MSLT"],
     category: "Sleep",
     def: "Daytime test measuring how quickly a person falls asleep; used to diagnose narcolepsy and hypersomnias.",
-    seeAlso: ["Narcolepsy", "Hypersomnolence"]
+    seeAlso: ["Narcolepsy type 1", "Hypersomnolence"]
   },
   {
     term: "Sleep efficiency",
@@ -2297,44 +2283,44 @@ window.GLOSSARY_TERMS = [
     term: "Sleep onset latency",
     aliases: ["latency to sleep"],
     category: "Sleep",
-    def: "Time from when person gets into bed to onset of sleep; normal is <10 minutes; prolonged latency seen in insomnia.",
-    seeAlso: ["Insomnia", "Sleep initiation"]
+    def: "Time from lights-out to the onset of sleep. Normal adult latency on polysomnography is about 10–20 minutes; consistently under 10 minutes (or a mean of 8 minutes or less on the MSLT) suggests sleep debt or pathological sleepiness, while more than 30 minutes is the usual threshold for sleep-onset insomnia.",
+    seeAlso: ["Insomnia"]
   },
   {
     term: "Insomnia",
     aliases: ["sleeplessness"],
     category: "Sleep",
     def: "Difficulty initiating or maintaining sleep, or early morning awakening, with daytime impairment; persistent and causing significant distress.",
-    seeAlso: ["Sleep disorder", "Sleep maintenance"],
+    seeAlso: ["Polysomnography", "Sleep efficiency"],
     link: { blogSlug: "insomnia" }
   },
   {
     term: "Hypersomnia",
-    aliases: ["excessive daytime sleepiness"],
+    aliases: ["excessive daytime sleepiness", "hypersomnolence"],
     category: "Sleep",
     def: "Excessive daytime sleepiness; may involve long sleep duration or difficulty awakening; seen in narcolepsy, depression, and sleep apnea.",
-    seeAlso: ["Sleep disorder", "Narcolepsy"]
+    seeAlso: ["Polysomnography", "Narcolepsy type 1"]
   },
   {
     term: "Obstructive sleep apnea",
-    aliases: ["OSA"],
+    aliases: ["OSA", "sleep apnea"],
     category: "Sleep",
     def: "Repeated complete or partial collapse of the airway during sleep causing apneas or hypopneas; results in sleep fragmentation and hypoxia.",
-    seeAlso: ["Sleep apnea", "Hypersomnia"]
+    seeAlso: ["Hypersomnia"]
   },
   {
     term: "Circadian rhythm sleep-wake disorder",
     aliases: ["CRSD"],
     category: "Sleep",
     def: "Misalignment between internal circadian rhythm and external light-dark cycle; includes advanced sleep phase, delayed sleep phase, and non-24-hour sleep-wake rhythm.",
-    seeAlso: ["Sleep disorder", "Circadian rhythm"]
+    seeAlso: ["Polysomnography"]
   },
   {
     term: "Advanced sleep phase",
     aliases: ["ASPS"],
     category: "Sleep",
     def: "Sleep timing disorder with early sleep onset and early morning awakening; circadian rhythm phase-advanced relative to social schedule.",
-    seeAlso: ["Circadian rhythm sleep-wake disorder", "Sleep timing"]
+    seeAlso: ["Circadian rhythm sleep-wake disorder"]
   },
   {
     term: "Delayed sleep phase",
@@ -2347,78 +2333,78 @@ window.GLOSSARY_TERMS = [
     term: "Active ideation",
     aliases: ["active suicidal ideation"],
     category: "Suicide & Self-Injury",
-    def: "Thoughts of suicide with plan and intent; imminent risk; requires emergency intervention.",
-    seeAlso: ["Suicidal ideation", "Passive ideation", "Suicide risk"]
+    def: "Thoughts of killing oneself, as opposed to passive wishes to be dead or not wake up (C-SSRS item 2). Risk rises as a method, intent, and a specific plan are added (C-SSRS items 3–5), and the response is matched to that level rather than being automatically emergent.",
+    seeAlso: ["Passive ideation", "C-SSRS", "Safety plan"]
   },
   {
     term: "Passive ideation",
     aliases: ["passive suicidal ideation"],
     category: "Suicide & Self-Injury",
     def: "Thoughts of death or wishing to be dead without specific plan or intent to act; lower immediate risk but still concerning.",
-    seeAlso: ["Suicidal ideation", "Active ideation"]
+    seeAlso: ["Active ideation"]
   },
   {
     term: "Aborted attempt",
     aliases: ["aborted suicide attempt"],
     category: "Suicide & Self-Injury",
     def: "Person begins suicide attempt but stops before contact with method; indicates significant intent despite last-minute change.",
-    seeAlso: ["Suicide attempt", "Interrupted attempt"]
+    seeAlso: ["Interrupted attempt"]
   },
   {
     term: "Interrupted attempt",
     aliases: ["interrupted suicide attempt"],
     category: "Suicide & Self-Injury",
-    def: "Suicide attempt interrupted by external circumstance (e.g., discovered by someone); may indicate lower lethality intent than completed attempt.",
-    seeAlso: ["Suicide attempt", "Aborted attempt"]
+    def: "A suicide attempt stopped by an outside circumstance (e.g., being discovered or physically prevented) before injury or completion of the act. The C-SSRS counts it as suicidal behavior, and it warrants the same careful risk assessment as an actual attempt.",
+    seeAlso: ["Aborted attempt"]
   },
   {
     term: "Suicidal gesture",
-    aliases: ["parasuicide variant"],
+    aliases: [],
     category: "Suicide & Self-Injury",
-    def: "Non-lethal self-injurious behavior without intent to die; sometimes used to communicate distress or manipulate others, though intent may be ambiguous.",
-    seeAlso: ["NSSI", "Parasuicide"]
+    def: "Older term for non-lethal self-injurious behavior without intent to die, sometimes used to communicate distress; intent is often ambiguous. The term is now discouraged because it minimizes risk: describe the behavior and assess intent (e.g., with the C-SSRS) instead.",
+    seeAlso: ["Nonsuicidal self-injury", "C-SSRS"]
   },
   {
     term: "Lethality",
     aliases: ["method lethality"],
     category: "Suicide & Self-Injury",
     def: "Degree of danger of a method used in suicide attempt; firearms and hanging have high lethality, whereas overdose varies.",
-    seeAlso: ["Suicide risk", "Means restriction"]
+    seeAlso: ["C-SSRS", "Safety plan"]
   },
   {
     term: "Ambivalence",
     aliases: ["suicidal ambivalence"],
     category: "Suicide & Self-Injury",
     def: "Mixed feelings about death and living; person may simultaneously experience suicidal intent and desire to live.",
-    seeAlso: ["Suicidal ideation", "Suicide risk"]
+    seeAlso: ["Active ideation", "C-SSRS"]
   },
   {
     term: "Hopelessness",
     aliases: ["sense of hopelessness"],
     category: "Suicide & Self-Injury",
     def: "Belief that the future is bleak and nothing will improve; core cognitive factor in suicide risk independent of depression severity.",
-    seeAlso: ["Depression", "Suicide risk"]
+    seeAlso: ["Major depressive disorder", "C-SSRS"]
   },
   {
     term: "Perceived burdensomeness",
     aliases: ["thwarted belongingness"],
     category: "Suicide & Self-Injury",
     def: "Belief that one is a burden to loved ones; component of interpersonal theory of suicide (Joiner).",
-    seeAlso: ["Suicide risk", "Joiner theory"]
+    seeAlso: ["C-SSRS"]
   },
   {
     term: "Thwarted belongingness",
     aliases: ["disconnection"],
     category: "Suicide & Self-Injury",
     def: "Lack of connectedness and feeling of isolation; component of interpersonal theory of suicide (Joiner).",
-    seeAlso: ["Suicide risk", "Joiner theory"]
+    seeAlso: ["C-SSRS", "Perceived burdensomeness"]
   },
   {
     term: "C-SSRS",
     aliases: ["Columbia Suicide Severity Rating Scale"],
     category: "Suicide & Self-Injury",
     def: "Gold-standard suicide risk assessment tool with sections on ideation (frequency, intensity, control) and behavior (attempts, preparatory acts, non-suicidal self-injury).",
-    seeAlso: ["Suicide risk", "Assessment"],
+    seeAlso: ["Active ideation", "Passive ideation", "Aborted attempt", "Interrupted attempt", "Safety plan"],
     link: { section: "suicide-risk-tools", label: "Open Suicide Risk Tools" }
   },
   {
@@ -2426,55 +2412,55 @@ window.GLOSSARY_TERMS = [
     aliases: ["Suicidal Behaviors Questionnaire-Revised"],
     category: "Suicide & Self-Injury",
     def: "Brief 4-item screening tool for suicide risk; focuses on frequency of ideation, intent, planning, and communication of intent.",
-    seeAlso: ["Suicide risk", "Screening"]
+    seeAlso: ["C-SSRS"]
   },
   {
     term: "P4 screener",
     aliases: ["P4 suicide screener"],
     category: "Suicide & Self-Injury",
-    def: "Brief four-question screening tool: previous attempt, prescription drug access, previous psychiatric episode, and psychiatric problems.",
-    seeAlso: ["Suicide risk", "Screening"]
+    def: "Brief four-item suicide risk screener for primary care (Dube et al., 2010), used after a patient endorses suicidal thoughts: Past suicide attempts, a suicide Plan, the Probability of acting on it, and Preventive (protective) factors. Answers stratify risk as minimal, lower, or higher.",
+    seeAlso: ["C-SSRS", "Active ideation", "Safety plan"]
   },
   {
     term: "Safety plan",
     aliases: ["suicide safety plan"],
     category: "Suicide & Self-Injury",
     def: "Collaborative document between clinician and patient listing warning signs, internal coping strategies, people to contact, and places to go during suicidal crisis.",
-    seeAlso: ["Suicide risk", "Crisis intervention"]
+    seeAlso: ["C-SSRS", "988 Suicide and Crisis Lifeline"]
   },
   {
     term: "ACE",
     aliases: ["adverse childhood experiences"],
     category: "Pediatric & Developmental",
     def: "Traumatic events experienced in childhood (abuse, neglect, household dysfunction); each ACE increases risk for physical and mental health problems.",
-    seeAlso: ["Trauma", "Childhood trauma"]
+    seeAlso: ["Posttraumatic stress disorder", "Reactive attachment disorder"]
   },
   {
     term: "Attachment, secure",
     aliases: ["secure attachment"],
     category: "Pediatric & Developmental",
     def: "Child's confidence in caregiver's availability and responsiveness; allows exploration and independence; protective for mental health.",
-    seeAlso: ["Attachment", "Parental bonding"]
+    seeAlso: ["Attachment, avoidant", "Attachment, ambivalent", "Disorganized attachment"]
   },
   {
     term: "Attachment, avoidant",
     aliases: ["avoidant attachment"],
     category: "Pediatric & Developmental",
     def: "Child avoids and ignores caregiver upon reunion after separation; learns caregiver is unresponsive to distress.",
-    seeAlso: ["Attachment", "Disorganized attachment"]
+    seeAlso: ["Attachment, secure", "Disorganized attachment"]
   },
   {
     term: "Attachment, ambivalent",
     aliases: ["resistant attachment"],
     category: "Pediatric & Developmental",
     def: "Child shows mixed response to caregiver: simultaneously seeking and resisting comfort; results from inconsistent caregiving.",
-    seeAlso: ["Attachment", "Disorganized attachment"]
+    seeAlso: ["Attachment, secure", "Disorganized attachment"]
   },
   {
     term: "Enuresis",
     aliases: ["bedwetting"],
     category: "Pediatric & Developmental",
-    def: "Involuntary urination during sleep in children >5 years; can be primary (never achieved dryness) or secondary (after period of dryness).",
+    def: "Repeated voiding of urine into bed or clothes, nocturnal, diurnal, or both, at least twice a week for 3 months (or with significant distress), in a child at least 5 years old or at an equivalent developmental level. Primary if dryness was never achieved; secondary after a period of dryness.",
     seeAlso: ["Encopresis"]
   },
   {
@@ -2489,49 +2475,49 @@ window.GLOSSARY_TERMS = [
     aliases: ["FTT", "growth failure"],
     category: "Pediatric & Developmental",
     def: "Inadequate weight gain and growth in infants/young children; can be organic (medical) or inorganic (due to neglect/inadequate nutrition).",
-    seeAlso: ["Neglect", "Attachment disorder"]
+    seeAlso: ["Neglect", "Reactive attachment disorder"]
   },
   {
     term: "Reactive attachment disorder",
     aliases: ["RAD"],
     category: "Pediatric & Developmental",
     def: "Disorder of children with history of inadequate care (neglect, deprivation); minimal attachment behaviors and limited emotional responsiveness.",
-    seeAlso: ["Attachment", "Neglect"]
+    seeAlso: ["Attachment, secure", "Neglect"]
   },
   {
     term: "Theory of mind",
     aliases: ["mentalizing", "ToM"],
     category: "Pediatric & Developmental",
     def: "Ability to understand that others have beliefs, desires, and mental states different from one's own; develops by age 4; impaired in autism.",
-    seeAlso: ["Autism spectrum disorder", "Cognitive development"]
+    seeAlso: ["Autism spectrum disorder"]
   },
   {
     term: "Temperament",
     aliases: ["behavioral disposition"],
     category: "Pediatric & Developmental",
     def: "Inborn behavioral tendencies (activity level, distractibility, emotionality); relatively stable across situations and time.",
-    seeAlso: ["Personality", "Developmental psychology"]
+    seeAlso: ["Attachment, secure"]
   },
   {
     term: "Conduct disorder",
     aliases: ["CD"],
     category: "Pediatric & Developmental",
     def: "Repetitive and persistent pattern of violating rights of others or major social norms; includes aggression, destruction, theft, and rule-breaking.",
-    seeAlso: ["Oppositional defiant disorder", "Antisocial personality disorder"]
+    seeAlso: ["Oppositional defiant disorder"]
   },
   {
     term: "Separation anxiety disorder",
     aliases: ["SAD"],
     category: "Pediatric & Developmental",
     def: "Intense anxiety upon separation from attachment figures; child may refuse school or be fearful when separated.",
-    seeAlso: ["Anxiety disorder", "School refusal"]
+    seeAlso: ["Generalized anxiety disorder"]
   },
   {
     term: "Stranger anxiety",
     aliases: ["stranger wariness"],
     category: "Pediatric & Developmental",
-    def: "Normal developmental fear of unfamiliar people in infants around 6-12 months; indicates secure attachment.",
-    seeAlso: ["Attachment", "Developmental milestone"]
+    def: "Normal developmental wariness of unfamiliar people that emerges around 6–12 months. It is a milestone seen across attachment styles and reflects the infant's ability to tell familiar from unfamiliar faces.",
+    seeAlso: ["Attachment, secure"]
   },
   {
     term: "Allopregnanolone",
@@ -2650,7 +2636,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["Zinermon"],
     category: "Mental Health Law",
     def: "1990 U.S. Supreme Court decision holding that admitting a person incompetent to consent as a 'voluntary' patient, bypassing commitment safeguards, can violate due process. A signature on an admission form does not substitute for capacity.",
-    seeAlso: ["Capacity to consent to admission", "Civil commitment"],
+    seeAlso: ["Civil commitment"],
     link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
   },
   {
@@ -2738,7 +2724,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["Tarasoff", "duty to warn", "duty to protect"],
     category: "Mental Health Law",
     def: "1976 California decision creating a therapist's duty to use reasonable care to protect an identifiable victim of a patient's serious threat—by warning, notifying police, or other steps. 'The protective privilege ends where the public peril begins.' Adopted with variations in most states.",
-    seeAlso: ["Confidentiality", "Jaffee v. Redmond"],
+    seeAlso: ["Jaffee v. Redmond"],
     link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
   },
   {
@@ -2746,7 +2732,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["Jaffee", "psychotherapist-patient privilege"],
     category: "Mental Health Law",
     def: "1996 U.S. Supreme Court decision recognizing a federal psychotherapist-patient privilege protecting confidential treatment communications, extending to licensed social workers and not subject to case-by-case balancing.",
-    seeAlso: ["Tarasoff v. Regents", "Confidentiality"],
+    seeAlso: ["Tarasoff v. Regents"],
     link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
   },
   {
@@ -2794,7 +2780,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["Foucha"],
     category: "Mental Health Law",
     def: "1992 U.S. Supreme Court decision holding an insanity acquittee who is no longer mentally ill cannot be confined on dangerousness alone; continued commitment requires both mental illness and dangerousness.",
-    seeAlso: ["Insanity defense", "Kansas v. Hendricks"],
+    seeAlso: ["Insanity Defense Reform Act of 1984", "Kansas v. Hendricks"],
     link: { blogSlug: "landmark-cases-mental-health-law", label: "Landmark Cases in Mental Health Law" }
   },
   {
@@ -2850,7 +2836,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["LPS Act", "LPS", "Lanterman Petris Short"],
     category: "Mental Health Law",
     def: "California's 1967 civil-commitment statute that tied involuntary treatment to danger to self/others or grave disability and created time-limited holds (e.g., 5150). An influential model copied by many states.",
-    seeAlso: ["Civil commitment", "Grave disability"],
+    seeAlso: ["Civil commitment"],
     link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
   },
   {
@@ -2889,8 +2875,8 @@ window.GLOSSARY_TERMS = [
     term: "EMTALA",
     aliases: ["Emergency Medical Treatment and Labor Act", "emergency medical treatment and active labor act"],
     category: "Mental Health Law",
-    def: "The 1986 law requiring Medicare-participating hospitals with emergency departments to screen and stabilize emergency conditions—including psychiatric emergencies—regardless of ability to pay. The legal basis for ED psychiatric holds and transfers.",
-    seeAlso: ["Psychiatric boarding"],
+    def: "The 1986 law requiring Medicare-participating hospitals with emergency departments to screen and stabilize emergency conditions, including psychiatric emergencies, regardless of ability to pay, and to arrange an appropriate transfer when they cannot stabilize. It does not itself authorize involuntary holds, which come from state civil commitment law, but it shapes ED psychiatric evaluation, boarding, and transfer obligations.",
+    seeAlso: ["Civil commitment"],
     link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
   },
   {
@@ -2906,7 +2892,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["MHPAEA", "Wellstone-Domenici", "mental health parity", "parity law"],
     category: "Mental Health Law",
     def: "The 2008 federal parity law (building on the 1996 Mental Health Parity Act) requiring comparable coverage for mental-health and substance-use benefits, including financial requirements, treatment limits, and non-quantitative limits like prior authorization and step therapy.",
-    seeAlso: ["Affordable Care Act"],
+    seeAlso: ["21st Century Cures Act"],
     link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
   },
   {
@@ -2914,7 +2900,7 @@ window.GLOSSARY_TERMS = [
     aliases: ["IDRA", "Insanity Defense Reform Act"],
     category: "Mental Health Law",
     def: "The post-Hinckley federal statute narrowing the insanity defense to a cognitive prong, shifting the burden of proof to the defendant, and tightening release of NGRI acquittees. It influenced many state laws.",
-    seeAlso: ["Insanity defense", "Foucha v. Louisiana"],
+    seeAlso: ["Foucha v. Louisiana"],
     link: { blogSlug: "federal-mental-health-statutes", label: "Federal Mental Health Statutes" }
   },
   {
@@ -3148,7 +3134,168 @@ window.GLOSSARY_TERMS = [
     def: "A tablet that dissolves in the mouth, available for olanzapine, risperidone, aripiprazole and mirtazapine among others. Useful for adherence and swallowing difficulty; because the drug is still ultimately absorbed enterically it only partly addresses true malabsorption, where gut-bypassing routes (long-acting injectable, transdermal, sublingual asenapine) are preferred.",
     seeAlso: ["Short bowel syndrome", "Roux-en-Y gastric bypass"],
     link: { blogSlug: "malabsorption-short-gut-psychopharmacology", label: "Psychopharmacology in Malabsorption & Short Gut" }
+  },
+  {
+    term: "Psychosis",
+    aliases: ["psychotic", "psychotic symptoms"],
+    category: "Psychosis",
+    def: "A state of impaired reality testing marked by delusions, hallucinations, or disorganized thinking and behavior. It is a syndrome, not a diagnosis: causes include schizophrenia-spectrum and mood disorders, delirium, substances, and neurologic or medical illness, so new-onset psychosis needs a medical workup.",
+    seeAlso: ["Delusion", "Hallucination", "Formal thought disorder", "Schizophrenia", "Delirium"]
+  },
+  {
+    term: "Negative symptoms",
+    aliases: ["negative symptom", "deficit symptoms"],
+    category: "Psychosis",
+    def: "Reductions in normal function in schizophrenia: diminished emotional expression (blunted affect, alogia) and avolition-apathy (avolition, anhedonia, asociality). They drive much of the long-term disability, respond poorly to D2 antagonists, and must be distinguished from depression and antipsychotic-induced parkinsonism (secondary negative symptoms).",
+    seeAlso: ["Avolition", "Alogia", "Blunted affect", "Anhedonia", "Schizophrenia"]
+  },
+  {
+    term: "Mania",
+    aliases: ["manic episode", "manic", "hypomania", "hypomanic episode"],
+    category: "Mood & Affect",
+    def: "An abnormally and persistently elevated, expansive, or irritable mood with increased energy or activity lasting at least 1 week (or any duration if hospitalized), with symptoms such as grandiosity, decreased need for sleep, pressured speech, flight of ideas, distractibility, and risky behavior, causing marked impairment or psychosis. Hypomania is the same picture for at least 4 days without marked impairment or psychosis. A single manic episode establishes bipolar I disorder.",
+    seeAlso: ["Bipolar I disorder", "Bipolar II disorder", "Flight of ideas", "Pressured speech", "Delusion of grandeur"]
+  },
+  {
+    term: "Major neurocognitive disorder",
+    aliases: ["dementia", "major NCD", "mild neurocognitive disorder", "mild cognitive impairment", "MCI"],
+    category: "Cognition & Dementia",
+    def: "The DSM-5-TR term for dementia: significant decline from a previous level in one or more cognitive domains (memory, executive function, attention, language, perceptual-motor, or social cognition) that interferes with independence in everyday activities and does not occur only during delirium. Mild neurocognitive disorder (mild cognitive impairment) is a modest decline with independence preserved. The cause is specified, e.g., Alzheimer's disease, vascular, Lewy body, or frontotemporal.",
+    seeAlso: ["MMSE", "MoCA", "Delirium", "Pick disease", "Sundowning"]
+  },
+  {
+    term: "Parkinson disease",
+    aliases: ["Parkinson's disease", "idiopathic Parkinson disease"],
+    category: "Catatonia & Movement",
+    def: "A neurodegenerative disorder from loss of dopaminergic neurons in the substantia nigra, with Lewy body (alpha-synuclein) pathology. It is defined by bradykinesia plus rest tremor and/or rigidity, usually asymmetric and levodopa-responsive. Depression, anxiety, apathy, REM sleep behavior disorder, psychosis, and dementia are common; most antipsychotics worsen motor symptoms, so pimavanserin, low-dose quetiapine, or clozapine are used for psychosis.",
+    seeAlso: ["Parkinsonism", "Substantia nigra", "Nigrostriatal pathway", "Bradykinesia", "REM sleep behavior disorder"]
+  },
+  {
+    term: "Malingering",
+    aliases: ["feigning", "symptom exaggeration"],
+    category: "Diagnoses (DSM-5-TR)",
+    def: "Intentional production or exaggeration of symptoms motivated by external incentives such as avoiding work or prosecution, or obtaining compensation or drugs. It is not a mental disorder in DSM-5-TR; it is listed among other conditions that may be a focus of clinical attention (Z76.5). Contrast factitious disorder, where the deception occurs without obvious external reward.",
+    seeAlso: ["Factitious disorder", "Munchausen syndrome", "Ganser syndrome"]
+  },
+  {
+    term: "Nonsuicidal self-injury",
+    aliases: ["NSSI", "non-suicidal self-injury", "self-harm", "self-injury", "parasuicide"],
+    category: "Suicide & Self-Injury",
+    def: "Deliberate, self-inflicted damage to body tissue without suicidal intent, such as cutting, burning, or hitting, usually to relieve intense negative emotion or as self-punishment. It strongly predicts later suicide attempts, so intent should be assessed at every episode. DSM-5-TR adds codes for current or past NSSI (R45.88, Z91.52); NSSI disorder remains a condition for further study.",
+    seeAlso: ["Suicidal gesture", "C-SSRS", "Safety plan", "Borderline personality disorder"]
+  },
+  {
+    term: "Civil commitment",
+    aliases: ["involuntary commitment", "involuntary hospitalization", "involuntary hold", "grave disability"],
+    category: "Mental Health Law",
+    def: "Court-ordered, involuntary psychiatric hospitalization (or outpatient treatment) of a person who, because of mental illness, is dangerous to self or others or, in most states, gravely disabled. Standards and procedures come from state law; due process requires notice, a hearing, counsel, and proof by clear and convincing evidence (Addington v. Texas), and mental illness alone is not enough to confine a person who is not dangerous (O'Connor v. Donaldson).",
+    seeAlso: ["Addington v. Texas", "O'Connor v. Donaldson", "Clear and convincing evidence", "Least restrictive alternative", "Assisted outpatient treatment", "Lanterman-Petris-Short Act"]
+  },
+  {
+    term: "Posttraumatic stress disorder",
+    aliases: ["PTSD", "post-traumatic stress disorder"],
+    category: "Diagnoses (DSM-5-TR)",
+    def: "Symptoms lasting more than 1 month after exposure to actual or threatened death, serious injury, or sexual violence: intrusions (memories, nightmares, flashbacks), avoidance, negative changes in mood and cognition, and changes in arousal and reactivity. Trauma-focused psychotherapy is first-line; sertraline and paroxetine are the FDA-approved medications.",
+    seeAlso: ["ACE", "Adjustment disorder", "Dissociation"]
+  },
+  {
+    term: "Attention-deficit/hyperactivity disorder",
+    aliases: ["ADHD", "ADD", "attention deficit hyperactivity disorder"],
+    category: "Diagnoses (DSM-5-TR)",
+    def: "A neurodevelopmental pattern of inattention and/or hyperactivity-impulsivity, with several symptoms present before age 12 and in two or more settings, that interferes with functioning (6 symptoms in a domain for children, 5 from age 17). Stimulants (methylphenidate, amphetamine) are the most effective treatment; atomoxetine, viloxazine, and extended-release guanfacine and clonidine are approved non-stimulants.",
+    seeAlso: ["Executive dysfunction", "Oppositional defiant disorder", "Tic", "Dorsolateral prefrontal cortex"]
+  },
+  {
+    term: "Personality disorder",
+    aliases: ["personality disorders", "cluster A", "cluster B", "cluster C"],
+    category: "Diagnoses (DSM-5-TR)",
+    def: "An enduring, inflexible pattern of inner experience and behavior that deviates markedly from cultural expectations, begins by adolescence or early adulthood, is pervasive across situations, and causes distress or impairment. DSM-5-TR groups the ten types into cluster A (odd), B (dramatic), and C (anxious); ICD-11 replaces the types with a single severity rating plus trait qualifiers.",
+    seeAlso: ["Borderline personality disorder", "Narcissistic personality disorder", "Paranoid personality disorder", "Schizotypal personality disorder"]
+  },
+  {
+    term: "SSRI",
+    aliases: ["SSRIs", "selective serotonin reuptake inhibitor"],
+    category: "Pharmacology",
+    def: "Selective serotonin reuptake inhibitor: blocks the serotonin transporter (SERT), raising synaptic serotonin. First-line for depression, most anxiety disorders, and OCD (fluoxetine, sertraline, paroxetine, citalopram, escitalopram, fluvoxamine). Common effects are GI upset, sexual dysfunction, and activation; risks include hyponatremia, bleeding with antiplatelets or anticoagulants, QT prolongation (citalopram), discontinuation symptoms, and the boxed warning for suicidality under age 25.",
+    seeAlso: ["Serotonin", "Serotonin syndrome", "Discontinuation syndrome", "CYP2D6"]
+  },
+  {
+    term: "SNRI",
+    aliases: ["SNRIs", "serotonin-norepinephrine reuptake inhibitor"],
+    category: "Pharmacology",
+    def: "Serotonin-norepinephrine reuptake inhibitor (venlafaxine, desvenlafaxine, duloxetine, levomilnacipran, milnacipran): blocks both SERT and NET. Used for depression, anxiety, and chronic pain conditions; adds noradrenergic effects such as sweating and a dose-related rise in blood pressure, and venlafaxine has a prominent discontinuation syndrome.",
+    seeAlso: ["Norepinephrine", "Serotonin", "Discontinuation syndrome"]
+  },
+  {
+    term: "MAOI",
+    aliases: ["MAOIs", "monoamine oxidase inhibitor"],
+    category: "Pharmacology",
+    def: "Monoamine oxidase inhibitor (phenelzine, tranylcypromine, isocarboxazid, transdermal selegiline): blocks breakdown of serotonin, norepinephrine, and dopamine. Effective in treatment-resistant and atypical depression, but requires a tyramine-restricted diet to avoid hypertensive crisis (not needed at the lowest selegiline patch dose) and a washout before or after other serotonergic drugs (e.g., 2 weeks; 5 weeks after fluoxetine) to avoid serotonin syndrome.",
+    seeAlso: ["Serotonin syndrome", "Washout", "Norepinephrine"]
+  },
+  {
+    term: "Antidepressant",
+    aliases: ["antidepressants"],
+    category: "Pharmacology",
+    def: "Drug used to treat depression. Classes include SSRIs, SNRIs, bupropion, mirtazapine, tricyclics, MAOIs, vortioxetine, and vilazodone, plus faster-acting agents (esketamine, dextromethorphan-bupropion, and zuranolone for postpartum depression). Most also treat anxiety disorders. All carry a boxed warning for increased suicidal thoughts and behavior in patients under 25.",
+    seeAlso: ["SSRI", "SNRI", "MAOI", "Treatment-resistant depression", "Discontinuation syndrome"]
+  },
+  {
+    term: "Antipsychotic",
+    aliases: ["antipsychotics", "neuroleptic", "antipsychotic medication"],
+    category: "Pharmacology",
+    def: "Drug that treats psychosis, mainly through D2 receptor antagonism or partial agonism. First-generation agents carry more extrapyramidal and prolactin effects; second-generation agents add 5-HT2A antagonism and more metabolic risk. Xanomeline-trospium (2024) is the first approved antipsychotic acting through muscarinic receptors rather than D2. All carry a boxed warning for increased mortality in older adults with dementia-related psychosis.",
+    seeAlso: ["D2 dopamine receptor", "Extrapyramidal symptoms", "Tardive dyskinesia", "Neuroleptic malignant syndrome", "Long-acting injectable antipsychotic"]
+  },
+  {
+    term: "Benzodiazepine",
+    aliases: ["benzodiazepines", "benzo", "BZD"],
+    category: "Pharmacology",
+    def: "Positive allosteric modulators of the GABA-A receptor that increase how often its chloride channel opens. Used for acute anxiety, panic, alcohol withdrawal, seizures, catatonia (lorazepam), and procedural sedation. Risks include sedation, falls, cognitive impairment, dependence, withdrawal seizures, and respiratory depression with opioids (boxed warning).",
+    seeAlso: ["GABA-A receptor", "Allosteric modulator", "LOT benzodiazepines", "Tolerance", "Catatonia"]
+  },
+  {
+    term: "Long-acting injectable antipsychotic",
+    aliases: ["LAI", "long-acting injectable", "depot antipsychotic"],
+    category: "Pharmacology",
+    def: "Depot or extended-release antipsychotic injection given every 2 weeks to 6 months (e.g., paliperidone palmitate, aripiprazole, risperidone, olanzapine pamoate, haloperidol and fluphenazine decanoate). It removes daily adherence, makes nonadherence visible, and lowers relapse and rehospitalization in schizophrenia. Oral tolerability is usually established first; olanzapine pamoate requires 3 hours of post-injection monitoring for delirium-sedation syndrome.",
+    seeAlso: ["Antipsychotic", "Half-life", "Pharmacokinetics"]
+  },
+  {
+    term: "VMAT2 inhibitor",
+    aliases: ["VMAT2 inhibitors", "valbenazine", "deutetrabenazine", "tetrabenazine"],
+    category: "Pharmacology",
+    def: "Drugs that block vesicular monoamine transporter 2, depleting presynaptic dopamine. Valbenazine and deutetrabenazine are FDA-approved for tardive dyskinesia and Huntington disease chorea; tetrabenazine for Huntington chorea. Side effects include somnolence and parkinsonism, and labels warn of depression and suicidality in Huntington disease.",
+    seeAlso: ["Tardive dyskinesia", "Chorea", "Dopamine"]
+  },
+  {
+    term: "REMS",
+    aliases: ["Risk Evaluation and Mitigation Strategy"],
+    category: "Pharmacology",
+    def: "Risk Evaluation and Mitigation Strategy: an FDA-required safety program for a drug with serious risks, which can mandate prescriber or pharmacy certification, patient enrollment, or monitoring. Psychiatric examples include esketamine (Spravato; certified-site administration with 2-hour monitoring), olanzapine pamoate (Zyprexa Relprevv), and sodium oxybate. The clozapine REMS was eliminated in 2025.",
+    seeAlso: ["Clozapine ANC monitoring", "Long-acting injectable antipsychotic"]
+  },
+  {
+    term: "Treatment-resistant depression",
+    aliases: ["TRD", "treatment resistant depression", "refractory depression"],
+    category: "Pharmacology",
+    def: "Major depression that has not responded adequately to at least two antidepressant trials of adequate dose and duration in the current episode. Options include augmentation (atypical antipsychotics, lithium), switching class, esketamine nasal spray (FDA-approved for TRD), ECT, and TMS.",
+    seeAlso: ["Major depressive disorder", "Antidepressant", "NMDA receptor"]
+  },
+  {
+    term: "Clozapine ANC monitoring",
+    aliases: ["clozapine monitoring", "clozapine REMS", "ANC monitoring"],
+    category: "Pharmacology",
+    def: "Absolute neutrophil count (ANC) monitoring for clozapine-induced severe neutropenia: a baseline ANC, then weekly for 6 months, every 2 weeks for months 6–12, and monthly thereafter, per the label. The FDA eliminated the Clozapine REMS in 2025, so prescribers and pharmacies no longer certify or report ANC, but the schedule and boxed warning remain. Patients with benign ethnic neutropenia have lower label thresholds.",
+    seeAlso: ["REMS", "Antipsychotic", "Schizophrenia"]
+  },
+  {
+    term: "Blood-brain barrier",
+    aliases: ["BBB"],
+    category: "Pharmacology",
+    def: "The tight-junctioned endothelium of brain capillaries, with efflux pumps such as P-glycoprotein, that limits entry of polar and large molecules into the CNS. Psychotropics are typically small, lipophilic molecules with low polar surface area; peripherally restricted drugs such as trospium are designed not to cross it.",
+    seeAlso: ["logP", "Polar surface area (TPSA)", "Lipinski's rule of five"]
   }
 ];
 
-// Total entries: 428
+// Total entries: 449

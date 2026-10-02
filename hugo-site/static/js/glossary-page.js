@@ -34,6 +34,13 @@
     window.GLOSSARY_TERMS.forEach(function(e) {
       termIndex[e.term.toLowerCase()] = e;
     });
+    // Aliases resolve to their entry too (a real term always wins over an alias)
+    window.GLOSSARY_TERMS.forEach(function(e) {
+      (e.aliases || []).forEach(function(a) {
+        var k = String(a).toLowerCase();
+        if (!termIndex[k]) termIndex[k] = e;
+      });
+    });
     return termIndex;
   }
 
@@ -185,6 +192,9 @@
     if (typeof window.switchSection === 'function') {
       window.switchSection('psychiatry-glossary');
     }
+    // Accept an alias and jump to its canonical entry
+    var hit = buildIndex()[String(term || '').toLowerCase()];
+    if (hit) term = hit.term;
     // Reset filters so the term is visible
     activeCategory = 'all';
     activeLetter = 'all';
