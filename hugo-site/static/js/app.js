@@ -1059,7 +1059,7 @@ function openDrugModal(id) {
         <div class="modal-field"><label>Active Metabolites</label><div>${drug.halfLife.metabolites}</div></div>
       </div>
       <div class="modal-row">
-        <div class="modal-field"><label>Protein Binding</label><div>${drug.proteinBinding != null ? drug.proteinBinding + '%' : 'N/A'}${drug.proteinBindingNote ? `<br><small style="color:var(--text-muted)">${drug.proteinBindingNote}</small>` : ''}</div></div>
+        <div class="modal-field"><label>Protein Binding</label><div>${drug.proteinBinding != null ? drug.proteinBinding + '%' + (drug.proteinBindingNote ? `<br><small style="color:var(--text-muted)">${drug.proteinBindingNote}</small>` : '') : (drug.proteinBindingNote || 'N/A')}</div></div>
         <div class="modal-field"><label>Active Enantiomer</label><div>${drug.activeEnantiomer.has ? '✓ ' + drug.activeEnantiomer.name : '—'}</div></div>
       </div>
     </div>
