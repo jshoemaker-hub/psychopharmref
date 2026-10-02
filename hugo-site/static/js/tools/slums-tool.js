@@ -186,7 +186,7 @@
     var interpDiv = document.getElementById('sl-interpretation');
     interpDiv.className = interpretationClass(interp.label);
     interpDiv.querySelector('.sl-interp-category').textContent = interp.label;
-    interpDiv.querySelector('.sl-interp-note').textContent = interp.note;
+    interpDiv.querySelector('.sl-interp-note').textContent = interp.note + ' (Interpretation assumes the full exam was administered; unmarked items count as 0 points.)';
   }
 
   function updateDomainDisplay(domain, score, maxScore) {

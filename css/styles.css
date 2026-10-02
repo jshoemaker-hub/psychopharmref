@@ -5292,3 +5292,6 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
 .ch-browse-btn:hover{background:var(--green,var(--accent));box-shadow:0 6px 18px -8px rgba(35,30,20,.45);}
 #blog-index .tr-grid{margin-top:4px;}
 
+
+/* Rating scales: severity hidden until every item is answered */
+.scale-incomplete { color: var(--text-muted, #6b6050) !important; font-style: italic; background: none !important; }

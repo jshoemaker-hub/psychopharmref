@@ -57,7 +57,7 @@ const CASES = [
     scoreElementId: 'bp-total-score',
     expectedScore: '3',
     severityElementId: 'bp-severity',
-    expectedSeverity: 'Below Mild',
+    expectedSeverity: '1 / 18 answered',
     requiredToolUtilsMethod: 'loadClinicalScale',
   },
   {
@@ -67,7 +67,7 @@ const CASES = [
     scoreElementId: 'pc-total',
     expectedScore: '3',
     severityElementId: 'pc-severity',
-    expectedSeverity: 'Minimal symptoms (0-10; descriptive band)',
+    expectedSeverity: '1 / 20 answered',
     requiredToolUtilsMethod: 'loadClinicalScale',
   },
   {
@@ -77,7 +77,7 @@ const CASES = [
     scoreElementId: 'ym-total-score',
     expectedScore: '3',
     severityElementId: 'ym-severity-level',
-    expectedSeverity: 'Remission / minimal',
+    expectedSeverity: '1 / 11 answered',
     requiredToolUtilsMethod: 'loadClinicalScale',
   },
   {
@@ -112,7 +112,7 @@ const CASES = [
     scoreElementId: 'ai-total-score',
     expectedScore: '2/28',
     severityElementId: 'ai-severity-level',
-    expectedSeverity: 'Minimal Dyskinesia',
+    expectedSeverity: '1 / 7 answered (items 1–7)',
     requiredToolUtilsMethod: 'loadClinicalScale',
   },
   {
@@ -122,7 +122,7 @@ const CASES = [
     scoreElementId: 'bf-crs-severity',
     expectedScore: '1',
     severityElementId: 'bf-crs-interpretation',
-    expectedSeverity: 'Mild catatonia (descriptive band)',
+    expectedSeverity: '1 / 23 answered',
     requiredToolUtilsMethod: 'loadClinicalScale',
     reportButtonId: 'bf-crs-generate',
     expectedReportText: 'Severity Score: 1/69',
@@ -348,7 +348,7 @@ async function runCase(testCase) {
       severityEl = dom.window.document.getElementById(testCase.severityElementId);
       assert(
         severityEl.textContent === testCase.expectedSeverity,
-        `${testCase.label}: answered count did not update`
+        `${testCase.label}: answered count did not update (got "${severityEl.textContent}")`
       );
     }
 

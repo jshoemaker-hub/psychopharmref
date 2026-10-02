@@ -159,8 +159,11 @@
 
     var severity = severityForScore(total);
     var severityDiv = document.getElementById('pc-severity');
-    severityDiv.textContent = severity.label;
-    severityDiv.className = 'pc-severity ' + (severity.class || '');
+    var pcNames = getItems().map(function(item) { return 'pc-item-' + item.number; });
+    var pcAnswered = ToolUtils.countAnswered(document, pcNames);
+    var pcComplete = pcAnswered >= pcNames.length;
+    severityDiv.textContent = pcComplete ? severity.label : ToolUtils.incompleteText(pcAnswered, pcNames.length);
+    severityDiv.className = 'pc-severity ' + (pcComplete ? (severity.class || '') : 'scale-incomplete');
 
     var cutoff = getCutoff();
     var cutoffSpan = document.getElementById(cutoff.display_element_id);
@@ -200,7 +203,7 @@
       'Date: ' + ToolUtils.dateStamp(),
       '',
       'Total Score: ' + total + '/' + scale.score.max,
-      'Severity: ' + severity.label,
+      'Severity: ' + (ToolUtils.countAnswered(document, getItems().map(function(item) { return 'pc-item-' + item.number; })) >= getItems().length ? severity.label : 'Not classified (not all 20 items answered)'),
       '',
       'Cluster Scores:'
     ];

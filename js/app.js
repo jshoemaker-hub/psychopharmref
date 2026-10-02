@@ -499,7 +499,7 @@ function switchSection(id, skipGroupExpand) {
         dataScript.src = 'js/qbank-data.js?v=20261001a';
         dataScript.onload = function() {
           var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20260719d';
+          script.src = 'js/tools/' + toolId + '.js?v=20261001e';
           document.body.appendChild(script);
         };
         dataScript.onerror = function() { console.error('Failed to load qbank-data.js'); };
@@ -542,7 +542,7 @@ function switchSection(id, skipGroupExpand) {
           d.onload = function() {
             if (--smPending === 0) {
               var script = document.createElement('script');
-              script.src = 'js/tools/' + toolId + '.js?v=20260719d';
+              script.src = 'js/tools/' + toolId + '.js?v=20261001e';
               document.body.appendChild(script);
             }
           };
@@ -551,7 +551,7 @@ function switchSection(id, skipGroupExpand) {
         });
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20261001d';
+        script.src = 'js/tools/' + toolId + '.js?v=20261001e';
         document.body.appendChild(script);
       }
     }
@@ -588,7 +588,7 @@ function switchSection(id, skipGroupExpand) {
 
     if (shouldLoadToolUtils()) {
       const utils = document.createElement('script');
-      utils.src = 'js/tools/tool-utils.js?v=20261001a';
+      utils.src = 'js/tools/tool-utils.js?v=20261001b';
       utils.onload = loadToolScript;
       utils.onerror = function() { console.error('Failed to load tool-utils.js'); };
       document.body.appendChild(utils);
@@ -4646,7 +4646,13 @@ function initMedTaper() {
           const linkHTML = p.url
             ? `<a href="${p.url}" target="_blank" rel="noopener">${fmtMoney(p.price)}</a>`
             : fmtMoney(p.price);
-          return `<td class="${cls}"${tooltip}>${linkHTML}</td>`;
+          // Flag prices more than 30 days old so a stale scrape is visible in the cell
+          let staleHTML = '';
+          if (p.asOf && !s.excludeFromBest) {
+            const ageDays = (Date.now() - new Date(p.asOf + 'T12:00:00').getTime()) / 86400000;
+            if (ageDays > 30) staleHTML = `<div class="pc-asof" style="font-size:0.72em;color:var(--text-muted)">as of ${new Date(p.asOf + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</div>`;
+          }
+          return `<td class="${cls}"${tooltip}>${linkHTML}${staleHTML}</td>`;
         }).join('');
 
         let bestCell = '<td class="pc-cell pc-cell-best-empty">&mdash;</td>';

@@ -161,6 +161,12 @@ async function main() {
   assert.strictEqual(window.document.getElementById('bf-crs-severity').textContent, '10');
   assert.strictEqual(window.document.getElementById('bf-crs-items-present').textContent, '5');
   assert.strictEqual(window.document.getElementById('bf-crs-screening-positive').textContent, '4');
+  // Severity band is withheld until all 23 items are rated
+  assert.strictEqual(window.document.getElementById('bf-crs-interpretation').textContent, '5 / 23 answered');
+  for (let i = 1; i <= 23; i++) {
+    if (!window.document.querySelector('input[name="bf-crs-' + i + '"]:checked')) check(window, 'input[name="bf-crs-' + i + '"][value="0"]');
+  }
+  await wait(20);
   assert.strictEqual(window.document.getElementById('bf-crs-interpretation').textContent, 'Mild catatonia (descriptive band)');
   assert.strictEqual(window.document.getElementById('bf-crs-subtype').textContent, 'Predominant subtype: Excited');
   assert(window.document.getElementById('bf-crs-warning').textContent.includes('malignant catatonia'), 'CRS warning did not appear');
@@ -171,6 +177,7 @@ async function main() {
   const crsReport = stubs.getCopiedText();
   assert(crsReport.includes('Bush-Francis Catatonia Rating Scale'), 'CRS report missing heading');
   assert(crsReport.includes('Severity Score: 10/69'), 'CRS report missing severity score');
+  assert(crsReport.includes('Severity: Mild catatonia'), 'CRS report missing severity band');
   assert(crsReport.includes('12. Waxy Flexibility: 3/3'), 'CRS report missing binary item score');
   assert(crsReport.includes('Screening Items Positive: 4/14'), 'CRS report missing screening count');
   assert(crsReport.includes('WARNING - Autonomic instability present'), 'CRS report missing malignant warning');

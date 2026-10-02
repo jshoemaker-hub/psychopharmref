@@ -17,7 +17,7 @@
     "Milnacipran":           { "form": "tablet",     "strength": "50 mg",  "quantity": 60, "supplyDays": 30, "generic": true,  "notes": "BID dosing", "nadacDesc": "MILNACIPRAN HCL 50 MG TABLET", "hwReason": "Only brand Savella listed ($318 per 30) — no generic price" },
     "Levomilnacipran":       { "form": "ER capsule", "strength": "40 mg",  "quantity": 30, "supplyDays": 30, "generic": false, "notes": "Fetzima — brand only", "nadacDesc": "FETZIMA ER 40 MG CAPSULE", "retailReason": "Brand only — not stocked by this pharmacy" },
 
-    "Bupropion":             { "form": "ER tablet",  "strength": "150 mg", "quantity": 30, "supplyDays": 30, "generic": true,  "notes": "XL once-daily formulation" },
+    "Bupropion":             { "form": "XL tablet",  "strength": "150 mg", "quantity": 30, "supplyDays": 30, "generic": true,  "notes": "XL once-daily formulation", "nadacDesc": "BUPROPION HCL XL 150 MG TABLET", "cpdName": "Bupropion XL", "hwUrl": "https://www.healthwarehouse.com/bupropion-hcl-xl-150mg-tablets" },
     "Mirtazapine":           { "form": "tablet",     "strength": "15 mg",  "quantity": 30, "supplyDays": 30, "generic": true },
     "Trazodone":             { "form": "tablet",     "strength": "50 mg",  "quantity": 30, "supplyDays": 30, "generic": true },
     "Dextromethorphan/Bupropion": { "form": "ER tablet", "strength": "45/105 mg", "quantity": 60, "supplyDays": 30, "generic": false, "notes": "Auvelity — BID dosing", "nadacDesc": "AUVELITY ER 45-105 MG TABLET", "retailReason": "Brand only — not stocked by this pharmacy" },
@@ -88,7 +88,7 @@
     "Suvorexant":            { "form": "tablet",  "strength": "10 mg",   "quantity": 30, "supplyDays": 30, "generic": false, "controlled": "C-IV", "notes": "Belsomra", "nadacDesc": "BELSOMRA 10 MG TABLET" },
 
     "Methylphenidate":       { "form": "tablet",  "strength": "10 mg",   "quantity": 60, "supplyDays": 30, "generic": true,  "controlled": "C-II", "notes": "IR, BID-TID" },
-    "Dexmethylphenidate":    { "form": "ER capsule", "strength": "10 mg", "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-II", "notes": "Focalin XR", "nadacDesc": "DEXMETHYLPHENIDATE 10 MG TAB" },
+    "Dexmethylphenidate":    { "form": "ER capsule", "strength": "10 mg", "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-II", "notes": "Focalin XR", "nadacDesc": "DEXMETHYLPHENIDATE ER 10 MG CP" },
     "Amphetamine Mixed Salts": { "form": "tablet", "strength": "10 mg",  "quantity": 60, "supplyDays": 30, "generic": true,  "controlled": "C-II", "notes": "Adderall IR, BID", "nadacDesc": "DEXTROAMP-AMPHETAMIN 10 MG TAB" },
     "Dextroamphetamine":     { "form": "tablet",  "strength": "10 mg",   "quantity": 60, "supplyDays": 30, "generic": true,  "controlled": "C-II", "notes": "BID", "nadacDesc": "DEXTROAMPHETAMINE 10 MG TAB" },
     "Lisdexamfetamine":      { "form": "capsule", "strength": "30 mg",   "quantity": 30, "supplyDays": 30, "generic": true,  "controlled": "C-II", "notes": "Vyvanse" },

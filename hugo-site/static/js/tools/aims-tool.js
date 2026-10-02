@@ -129,7 +129,12 @@
 
     var total = totalMovementScore();
     document.getElementById('ai-total-score').textContent = total + '/' + scale.score.max;
-    document.getElementById('ai-severity-level').textContent = severityForScore(total).label;
+    var aiMove = (getScreenRule().movement_item_numbers || [1, 2, 3, 4, 5, 6, 7]);
+    var aiAnswered = ToolUtils.countAnswered(section, aiMove.map(function(n) { return 'ai-item' + n; }));
+    var aiComplete = aiAnswered >= aiMove.length;
+    var aiSevEl = document.getElementById('ai-severity-level');
+    aiSevEl.textContent = aiComplete ? severityForScore(total).label : ToolUtils.incompleteText(aiAnswered, aiMove.length) + ' (items 1–7)';
+    aiSevEl.classList.toggle('scale-incomplete', !aiComplete);
 
     var rule = getScreenRule();
     var screenElement = document.getElementById(rule.display_element_id);
@@ -167,7 +172,8 @@
     });
 
     lines.push('Total Movement Score: ' + total + '/' + scale.score.max);
-    lines.push('Severity: ' + severity.label);
+    var aiDone = ToolUtils.countAnswered(section, (getScreenRule().movement_item_numbers || [1, 2, 3, 4, 5, 6, 7]).map(function(n) { return 'ai-item' + n; })) >= (getScreenRule().movement_item_numbers || [1, 2, 3, 4, 5, 6, 7]).length;
+    lines.push('Severity: ' + (aiDone ? severity.label : 'Not classified (not all movement items 1-7 rated)'));
     lines.push('');
     lines.push('GLOBAL JUDGMENTS');
     [8, 9, 10].forEach(function(itemNumber) {

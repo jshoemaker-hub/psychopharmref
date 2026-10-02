@@ -229,7 +229,10 @@
     var generalScore = sumItems('ps30', general.item_ids);
     var totalScore = sumItems('ps30', totalVersion.item_ids);
     var compositeIndex = positiveScore - negativeScore;
-    var severity = totalScore > 0 ? getSeverity(totalScore).label : '\u2014';
+    var psForm = getForm('ps30');
+    var psAnswered = ToolUtils.countAnswered(psForm, (totalVersion.item_ids || []).map(function(id) { return 'ps30-' + id; }));
+    var psTotalItems = (totalVersion.item_ids || []).length;
+    var severity = totalScore === 0 ? '\u2014' : (psAnswered >= psTotalItems ? getSeverity(totalScore).label : ToolUtils.incompleteText(psAnswered, psTotalItems));
     var marder = getMarderFactors();
 
     setText('.ps-30-positive', displayScore(positiveScore));
@@ -320,7 +323,8 @@
 
     lines.push('TOTAL PANSS: ' + totalScore + '/' + version.max);
     lines.push('Composite Index (P - N): ' + formatComposite(compositeIndex));
-    lines.push('Severity: ' + severity);
+    var psDone = ToolUtils.countAnswered(getForm('ps30'), (version.item_ids || []).map(function(id) { return 'ps30-' + id; })) >= (version.item_ids || []).length;
+    lines.push('Severity: ' + (psDone ? severity : 'Not classified (not all 30 items rated)'));
     lines.push('');
     lines.push('MARDER FACTOR ANALYSIS:');
 

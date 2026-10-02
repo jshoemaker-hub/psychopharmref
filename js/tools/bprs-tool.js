@@ -132,8 +132,11 @@
 
     var sev = severityLabel(total);
     var sevEl = document.getElementById('bp-severity');
-    sevEl.textContent = sev.text;
-    sevEl.className = 'bp-severity-label ' + sev.cls;
+    var bpNames = getItems().map(function(item) { return 'bp-item' + item.number; });
+    var bpAnswered = ToolUtils.countAnswered(document, bpNames);
+    var bpComplete = bpAnswered >= bpNames.length;
+    sevEl.textContent = bpComplete ? sev.text : ToolUtils.incompleteText(bpAnswered, bpNames.length);
+    sevEl.className = 'bp-severity-label ' + (bpComplete ? sev.cls : 'scale-incomplete');
 
     getSubscales().forEach(function(subscale) {
       var key = subscale.id || slugify(subscale.label);
@@ -168,8 +171,9 @@
     });
 
     lines.push('');
-    lines.push('Total Score: ' + total + ' - ' + sev.reportText);
-    if (sev.action) lines.push('Interpretation: ' + sev.action);
+    var bpDone = ToolUtils.countAnswered(document, getItems().map(function(item) { return 'bp-item' + item.number; })) >= getItems().length;
+    lines.push('Total Score: ' + total + ' - ' + (bpDone ? sev.reportText : 'not classified (not all items rated)'));
+    if (bpDone && sev.action) lines.push('Interpretation: ' + sev.action);
     lines.push('');
     lines.push(report.scoring_note || 'Severity anchors (Leucht et al., 2005): mildly ill ~= 31, moderately ill ~= 41, markedly ill ~= 53.');
 

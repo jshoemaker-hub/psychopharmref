@@ -60,10 +60,11 @@ function vetRetail(drugName, entry, nadac) {
   let price = entry.price;
   const nameTokens = drugName.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
   // 1) Strength in the product slug must match the SKU strength (e.g. 150mg ≠ 50 mg, 2-5mg ≠ 5 mg)
-  const sm = slug.match(/(?:^|[^0-9])(\d+(?:-\d+)?)mg/);
+  // CPD writes decimals as 0_1mg / 37_5mg; some slugs use 2-5mg for 2.5 mg
+  const sm = slug.match(/(?:^|[^0-9])(\d+(?:[-_]\d+)?)mg/);
   const skuStrength = firstNumber(sku.strength);
   if (sm && skuStrength != null) {
-    const slugStrength = parseFloat(sm[1].replace('-', '.'));
+    const slugStrength = parseFloat(sm[1].replace(/[-_]/, '.'));
     if (Math.abs(slugStrength - skuStrength) > 1e-6) return { ok: false, reason: `strength mismatch (${sm[1]}mg page vs ${sku.strength} SKU)` };
   }
   // 2) Generic SKU matched to a brand-prefixed or combination product page
@@ -99,6 +100,7 @@ const prices = JSON.parse(fs.readFileSync(PRICES, 'utf8'));
 const today  = new Date().toISOString().slice(0, 10);
 prices.errors = prices.errors || {};
 prices.stats  = prices.stats  || {};
+delete prices.errors['(pipeline)'];
 
 function clearSourceErrors(drug, sourceKey) {
   if (!prices.errors[drug]) return;
@@ -121,6 +123,14 @@ function mergeOneSource(sourceKey, inputPath, label) {
   // asOf = when the browser phase actually scraped, not when this merge ran
   const scrapedOn = (blob.generatedAt || '').slice(0, 10) || today;
   let merged = 0, failed = 0, rejected = 0;
+  // Stale input = the fetch/browser step failed or was skipped. Say so in
+  // prices.json errors instead of silently re-merging old prices.
+  const ageDays = scrapedOn ? Math.floor((Date.parse(today) - Date.parse(scrapedOn)) / 86400000) : null;
+  if (ageDays != null && ageDays > 8) {
+    const msg = `${sourceKey}: input ${path.basename(inputPath)} is ${ageDays} days old (generated ${scrapedOn}); the fetch step failed or was skipped`;
+    logError(msg);
+    addError('(pipeline)', msg);
+  }
 
   for (const [drugName, entry] of Object.entries(results)) {
     if (!prices.prices[drugName]) prices.prices[drugName] = {};
@@ -139,6 +149,9 @@ function mergeOneSource(sourceKey, inputPath, label) {
       if (typeof entry.packSize === 'number' && entry.packSize > 0) out.packSize = entry.packSize;
       prices.prices[drugName][sourceKey] = out;
       merged++;
+    } else if (entry && entry.notListed) {
+      // Clean "not carried" answer from the Cost Plus API: a reason, not an error
+      prices.prices[drugName][sourceKey] = { available: false, reason: entry.reason || 'Not listed', asOf: scrapedOn };
     } else {
       failed++;
       const errMsg = entry?.error || 'no price returned';

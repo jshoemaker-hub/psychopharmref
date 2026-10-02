@@ -2340,7 +2340,7 @@ const MEDICATIONS = [
     id: 'dextromethorphan-bupropion',
     effects: { weight: 'minimal', sedation: 'low', sexual: 'low', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 2017, fdaApprovalYear: 2022, originator: "Axsome Therapeutics" },
-    dosing: { start: "45/105 mg qAM ×3 days", target: "45/105 mg BID", max: "45/105 mg BID", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=Auvelity" } },
+    dosing: { start: "MDD: 45/105 mg qAM ×3 days • AD agitation: 30/105 mg qAM, then 30/105 mg BID from day 8", target: "MDD: 45/105 mg BID • AD agitation: 45/105 mg BID from day 15", max: "45/105 mg BID (≥8 h apart); max one 45/105 mg tablet daily in moderate renal impairment, CYP2D6 poor metabolizers, or with strong CYP2D6 inhibitors", formulations: "ER tablets 45/105 mg and 30/105 mg", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=Auvelity" } },
     name: 'Dextromethorphan/Bupropion',
     brandName: 'Auvelity',
     class: 'Combination',
@@ -2353,16 +2353,17 @@ const MEDICATIONS = [
       inhibits: { 'CYP2D6': 'strong' },
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Use with caution', severe: null, notes: 'Reduce dose in moderate-severe renal impairment (CrCl <60 mL/min): max 45 mg/105 mg/day. Avoid in ESRD.' },
+    renalImpairment: { modified: true, moderate: 'Max one 45/105 mg tablet daily (CrCl 30–59 mL/min)', severe: 'Not recommended', notes: 'Moderate renal impairment: max one 45/105 mg tablet daily. Not recommended in severe renal impairment (CrCl <30 mL/min).' },
     hepaticImpairment: { modified: true, notes: 'Avoid in severe' },
     geriatricDosing: { modified: false, notes: 'No specific geriatric adjustment; use with caution given CNS and cardiac effects.' },
     qtInterval: false,
     proteinBinding: null,
     proteinBindingNote: 'Dextromethorphan ~60–70%; bupropion 84% (label)',
     receptorKi: null,
-    mechanism: 'Dextromethorphan: uncompetitive NMDA receptor antagonist + sigma-1 receptor agonist + SERT/NET inhibitor; bupropion: NDRI + CYP2D6 inhibitor (increases DXM bioavailability 10-fold); together produce rapid antidepressant effect; approved for MDD in adults',
+    mechanism: 'Dextromethorphan: uncompetitive NMDA receptor antagonist + sigma-1 receptor agonist + SERT/NET inhibitor; bupropion: NDRI + CYP2D6 inhibitor (increases DXM bioavailability 10-fold); together produce rapid antidepressant effect; approved for MDD in adults (2022) and for agitation associated with Alzheimer\'s dementia (April 2026, the first non-antipsychotic for this use; not for PRN use). Label warnings include seizures and hyponatremia',
     indications: [
       { use: 'Major Depressive Disorder (adults)', year: 2022 },
+      { use: "Agitation associated with dementia due to Alzheimer's disease", year: 2026, age: 'Adults' },
     ]
   }
 

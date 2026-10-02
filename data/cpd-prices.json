@@ -1,242 +1,459 @@
 {
-  "generatedAt": "2026-04-29T23:08:12.867Z",
-  "source": "CostPlusDrugs",
+  "generatedAt": "2026-10-02T06:03:43.241Z",
+  "source": "https://us-central1-costplusdrugs-publicapi.cloudfunctions.net/main",
   "results": {
     "Fluoxetine": {
       "available": true,
       "price": 5.44,
-      "url": "https://www.costplusdrugs.com/medications/fluoxetine-20mg-capsule/"
-    },
-    "Fluvoxamine": {
-      "available": true,
-      "price": 7.87,
-      "url": "https://www.costplusdrugs.com/medications/fluvoxamine-maleate-50mg-tablet/"
-    },
-    "Paroxetine": {
-      "available": true,
-      "price": 5.95,
-      "url": "https://www.costplusdrugs.com/medications/paroxetine-20mg-tablet/"
-    },
-    "Escitalopram": {
-      "available": true,
-      "price": 6.25,
-      "url": "https://www.costplusdrugs.com/medications/EscitalopramOxalate-10mg-Tablet/"
+      "unitPrice": 0.0147,
+      "url": "https://www.costplusdrugs.com/medications/fluoxetine-20mg-capsule/",
+      "product": "Fluoxetine 20mg Capsule",
+      "asOf": "2026-10-02"
     },
     "Sertraline": {
       "available": true,
       "price": 5.69,
-      "url": "https://www.costplusdrugs.com/medications/sertraline-50mg-tablet/"
+      "unitPrice": 0.023,
+      "url": "https://www.costplusdrugs.com/medications/sertraline-50mg-tablet/",
+      "product": "Sertraline 50mg Tablet",
+      "asOf": "2026-10-02"
+    },
+    "Escitalopram": {
+      "available": true,
+      "price": 6.25,
+      "unitPrice": 0.0416,
+      "url": "https://www.costplusdrugs.com/medications/EscitalopramOxalate-10mg-Tablet/",
+      "product": "Escitalopram Oxalate 10mg Tablet",
+      "asOf": "2026-10-02"
+    },
+    "Paroxetine": {
+      "available": true,
+      "price": 5.95,
+      "unitPrice": 0.0317,
+      "url": "https://www.costplusdrugs.com/medications/paroxetine-20mg-tablet/",
+      "product": "Paroxetine 20mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Citalopram": {
       "available": true,
-      "price": 5.62,
-      "url": "https://www.costplusdrugs.com/medications/CitalopramHydrobromide-20mg-Tablet/"
+      "price": 5.52,
+      "unitPrice": 0.0174,
+      "url": "https://www.costplusdrugs.com/medications/CitalopramHydrobromide-20mg-Tablet/",
+      "product": "Citalopram Hydrobromide 20mg Tablet",
+      "asOf": "2026-10-02"
     },
-    "Venlafaxine": {
+    "Fluvoxamine": {
       "available": true,
-      "price": 6.01,
-      "url": "https://www.costplusdrugs.com/medications/venlafaxineextendedreleaseer-75mg-capsule/"
-    },
-    "Duloxetine": {
-      "available": true,
-      "price": 5.89,
-      "url": "https://www.costplusdrugs.com/medications/duloxetinedelayedreleasedr-30mg-capsule/"
-    },
-    "Desvenlafaxine": {
-      "available": true,
-      "price": 13.21,
-      "url": "https://www.costplusdrugs.com/medications/desvenlafaxinesuccinateextendedreleaseer-50mg-tablet/"
+      "price": 10.74,
+      "unitPrice": 0.0957,
+      "url": "https://www.costplusdrugs.com/medications/fluvoxamine-maleate-50mg-tablet/",
+      "product": "Fluvoxamine Maleate 50mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Vilazodone": {
       "available": true,
       "price": 15.13,
-      "url": "https://www.costplusdrugs.com/medications/vilazodone-hcl-40mg-tablet/"
+      "unitPrice": 0.3377,
+      "url": "https://www.costplusdrugs.com/medications/vilazodone-hcl-40mg-tablet/",
+      "product": "Vilazodone HCl 40mg Tablet",
+      "asOf": "2026-10-02"
     },
-    "Bupropion": {
+    "Vortioxetine": {
+      "available": false,
+      "notListed": true,
+      "reason": "Not listed by Cost Plus for this strength/form (checked 2026-10-02)"
+    },
+    "Venlafaxine": {
       "available": true,
-      "price": 11.48,
-      "url": "https://www.costplusdrugs.com/medications/bupropion-hcl-er-smoking-det-150mg-tablet-extended-release-zyban/"
+      "price": 6.01,
+      "unitPrice": 0.0336,
+      "url": "https://www.costplusdrugs.com/medications/venlafaxineextendedreleaseer-75mg-capsule/",
+      "product": "Venlafaxine HCl ER 75mg Extended Release Capsule",
+      "asOf": "2026-10-02"
+    },
+    "Duloxetine": {
+      "available": true,
+      "price": 5.88,
+      "unitPrice": 0.0295,
+      "url": "https://www.costplusdrugs.com/medications/duloxetinedelayedreleasedr-30mg-capsule/",
+      "product": "Duloxetine Delayed Release (DR) 30mg Delayed Release Capsule",
+      "asOf": "2026-10-02"
+    },
+    "Desvenlafaxine": {
+      "available": true,
+      "price": 13.21,
+      "unitPrice": 0.2737,
+      "url": "https://www.costplusdrugs.com/medications/desvenlafaxinesuccinateextendedreleaseer-50mg-tablet/",
+      "product": "Desvenlafaxine Succinate Extended Release (ER) 50mg Extended Release Tablet",
+      "asOf": "2026-10-02"
     },
     "Milnacipran": {
       "available": true,
-      "price": 69.58,
-      "url": "https://www.costplusdrugs.com/medications/milnacipran-hcl-50mg-tablet/"
+      "price": 77.35,
+      "unitPrice": 1.2058,
+      "url": "https://www.costplusdrugs.com/medications/milnacipran-hcl-50mg-tablet/",
+      "product": "Milnacipran HCl 50mg Tablet",
+      "asOf": "2026-10-02"
+    },
+    "Bupropion": {
+      "available": true,
+      "price": 5.99,
+      "unitPrice": 0.0329,
+      "url": "https://www.costplusdrugs.com/medications/bupropionxl-150mg-tablet/",
+      "product": "Bupropion XL 150mg Extended Release Tablet",
+      "asOf": "2026-10-02"
     },
     "Mirtazapine": {
       "available": true,
-      "price": 5.9,
-      "url": "https://www.costplusdrugs.com/medications/mirtazapine-15mg-tablet/"
-    },
-    "Amitriptyline": {
-      "available": true,
-      "price": 6.59,
-      "url": "https://www.costplusdrugs.com/medications/amitriptyline-25mg-tablet/"
-    },
-    "Doxepin": {
-      "available": true,
-      "price": 7.38,
-      "url": "https://www.costplusdrugs.com/medications/doxepinhcl-25mg-capsule/"
-    },
-    "Imipramine": {
-      "available": true,
-      "price": 6.22,
-      "url": "https://www.costplusdrugs.com/medications/imipramine-hcl-25mg-tablet/"
+      "price": 5.8,
+      "unitPrice": 0.0268,
+      "url": "https://www.costplusdrugs.com/medications/mirtazapine-15mg-tablet/",
+      "product": "Mirtazapine 15mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Trazodone": {
       "available": true,
       "price": 5.45,
-      "url": "https://www.costplusdrugs.com/medications/trazodone-50mg-tablet/"
+      "unitPrice": 0.0151,
+      "url": "https://www.costplusdrugs.com/medications/trazodone-50mg-tablet/",
+      "product": "Trazodone 50mg Tablet",
+      "asOf": "2026-10-02"
+    },
+    "Amitriptyline": {
+      "available": true,
+      "price": 6.59,
+      "unitPrice": 0.053,
+      "url": "https://www.costplusdrugs.com/medications/amitriptyline-25mg-tablet/",
+      "product": "Amitriptyline 25mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Nortriptyline": {
       "available": true,
       "price": 6.89,
-      "url": "https://www.costplusdrugs.com/medications/nortriptylinehcl-25mg-capsule/"
+      "unitPrice": 0.0631,
+      "url": "https://www.costplusdrugs.com/medications/nortriptylinehcl-25mg-capsule/",
+      "product": "Nortriptyline HCl 25mg Capsule",
+      "asOf": "2026-10-02"
     },
-    "Haloperidol": {
+    "Imipramine": {
       "available": true,
-      "price": 10.08,
-      "url": "https://www.costplusdrugs.com/medications/haloperidol-0_5mg-tablet/"
+      "price": 6.22,
+      "unitPrice": 0.0406,
+      "url": "https://www.costplusdrugs.com/medications/imipramine-hcl-25mg-tablet/",
+      "product": "Imipramine HCl 25mg Tablet",
+      "asOf": "2026-10-02"
+    },
+    "Doxepin": {
+      "available": true,
+      "price": 6.57,
+      "unitPrice": 0.0522,
+      "url": "https://www.costplusdrugs.com/medications/doxepinhcl-25mg-capsule/",
+      "product": "Doxepin HCl 25mg Capsule",
+      "asOf": "2026-10-02"
     },
     "Phenelzine": {
       "available": true,
-      "price": 23.52,
-      "url": "https://www.costplusdrugs.com/medications/phenelzine-sulfate-15mg-tablet-nardil/"
+      "price": 60.57,
+      "unitPrice": 0.6174,
+      "url": "https://www.costplusdrugs.com/medications/phenelzine-sulfate-15mg-tablet-nardil/",
+      "product": "Phenelzine Sulfate 15mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Tranylcypromine": {
       "available": true,
-      "price": 13.62,
-      "url": "https://www.costplusdrugs.com/medications/tranylcypromine-sulfate-10mg-tablet-parnate/"
+      "price": 29.15,
+      "unitPrice": 0.4025,
+      "url": "https://www.costplusdrugs.com/medications/tranylcypromine-sulfate-10mg-tablet-parnate/",
+      "product": "Tranylcypromine Sulfate 10mg Tablet",
+      "asOf": "2026-10-02"
+    },
+    "Haloperidol": {
+      "available": true,
+      "price": 11.44,
+      "unitPrice": 0.2146,
+      "url": "https://www.costplusdrugs.com/medications/Haloperidol-5mg-Tablet/",
+      "product": "Haloperidol 5mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Chlorpromazine": {
       "available": true,
-      "price": 8.12,
-      "url": "https://www.costplusdrugs.com/medications/chlorpromazinehcl-50mg-tablet/"
+      "price": 8.11,
+      "unitPrice": 0.1038,
+      "url": "https://www.costplusdrugs.com/medications/chlorpromazinehcl-50mg-tablet/",
+      "product": "Chlorpromazine HCl 50mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Fluphenazine": {
       "available": true,
-      "price": 9.56,
+      "price": 7,
+      "unitPrice": 0.0667,
       "url": "https://www.costplusdrugs.com/medications/fluphenazine-hcl-5mg-tablet/",
-      "note": "fallback: first priceCalculation"
+      "product": "Fluphenazine HCl 5mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Trifluoperazine": {
       "available": true,
       "price": 15.64,
-      "url": "https://www.costplusdrugs.com/medications/trifluoperazine-hcl-5mg-tablet-stelazine/"
+      "unitPrice": 0.3547,
+      "url": "https://www.costplusdrugs.com/medications/trifluoperazine-hcl-5mg-tablet-stelazine/",
+      "product": "Trifluoperazine HCl 5mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Perphenazine": {
       "available": true,
-      "price": 7.03,
-      "url": "https://www.costplusdrugs.com/medications/perphenazine-8mg-tablet/"
+      "price": 7.21,
+      "unitPrice": 0.0738,
+      "url": "https://www.costplusdrugs.com/medications/perphenazine-8mg-tablet/",
+      "product": "Perphenazine 8mg Tablet",
+      "asOf": "2026-10-02"
+    },
+    "Thiothixene": {
+      "available": true,
+      "price": 29.61,
+      "unitPrice": 0.8203,
+      "url": "https://www.costplusdrugs.com/medications/thiothixene-5mg-capsule-navane/",
+      "product": "Thiothixene 5mg Capsule",
+      "asOf": "2026-10-02"
     },
     "Pimozide": {
       "available": true,
       "price": 50.84,
-      "url": "https://www.costplusdrugs.com/medications/pimozide-2mg-tablet-orap/"
+      "unitPrice": 1.5279,
+      "url": "https://www.costplusdrugs.com/medications/pimozide-2mg-tablet-orap/",
+      "product": "Pimozide 2mg Tablet",
+      "asOf": "2026-10-02"
     },
-    "Thiothixene": {
+    "Thioridazine": {
+      "available": false,
+      "notListed": true,
+      "reason": "Not listed by Cost Plus for this strength/form (checked 2026-10-02)"
+    },
+    "Loxapine": {
       "available": true,
-      "price": 27.98,
-      "url": "https://www.costplusdrugs.com/medications/thiothixene-5mg-capsule-navane/"
+      "price": 13.65,
+      "unitPrice": 0.2884,
+      "url": "https://www.costplusdrugs.com/medications/loxapine-succinate-10mg-capsule-loxitane/",
+      "product": "Loxapine Succinate 10mg Capsule",
+      "asOf": "2026-10-02"
     },
     "Risperidone": {
       "available": true,
       "price": 6.28,
-      "url": "https://www.costplusdrugs.com/medications/Risperidone-2mg-Tablet/"
-    },
-    "Loxapine": {
-      "available": true,
-      "price": 13.97,
-      "url": "https://www.costplusdrugs.com/medications/loxapine-succinate-10mg-capsule-loxitane/"
+      "unitPrice": 0.0427,
+      "url": "https://www.costplusdrugs.com/medications/Risperidone-2mg-Tablet/",
+      "product": "Risperidone 2mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Olanzapine": {
       "available": true,
       "price": 6.73,
-      "url": "https://www.costplusdrugs.com/medications/Olanzapine-10mg-Tablet/"
+      "unitPrice": 0.0576,
+      "url": "https://www.costplusdrugs.com/medications/Olanzapine-10mg-Tablet/",
+      "product": "Olanzapine 10mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Quetiapine": {
       "available": true,
       "price": 5.97,
-      "url": "https://www.costplusdrugs.com/medications/QuetiapineFumarate-100mg-Tablet/"
+      "unitPrice": 0.0322,
+      "url": "https://www.costplusdrugs.com/medications/QuetiapineFumarate-100mg-Tablet/",
+      "product": "Quetiapine Fumarate 100mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Aripiprazole": {
       "available": true,
       "price": 7.76,
-      "url": "https://www.costplusdrugs.com/medications/aripiprazole-10mg-tablet/"
+      "unitPrice": 0.0921,
+      "url": "https://www.costplusdrugs.com/medications/aripiprazole-10mg-tablet/",
+      "product": "Aripiprazole 10mg Tablet",
+      "asOf": "2026-10-02"
+    },
+    "Clozapine": {
+      "available": false,
+      "notListed": true,
+      "reason": "Not listed by Cost Plus for this strength/form (checked 2026-10-02)"
     },
     "Ziprasidone": {
       "available": true,
-      "price": 8.58,
-      "url": "https://www.costplusdrugs.com/medications/ziprasidonehcl-40mg-capsule/"
-    },
-    "Asenapine": {
-      "available": true,
-      "price": 65.18,
-      "url": "https://www.costplusdrugs.com/medications/asenapine-maleate-5mg-carton-of-sublingual-tablets-60-saphris/"
+      "price": 12.16,
+      "unitPrice": 0.1194,
+      "url": "https://www.costplusdrugs.com/medications/ziprasidonehcl-40mg-capsule/",
+      "product": "Ziprasidone HCl 40mg Capsule",
+      "asOf": "2026-10-02"
     },
     "Lurasidone": {
       "available": true,
       "price": 8.42,
-      "url": "https://www.costplusdrugs.com/medications/lurasidone-hcl-40mg-tablet/"
+      "unitPrice": 0.1139,
+      "url": "https://www.costplusdrugs.com/medications/lurasidone-hcl-40mg-tablet/",
+      "product": "Lurasidone HCl 40mg Tablet",
+      "asOf": "2026-10-02"
     },
-    "Lithium": {
+    "Asenapine": {
       "available": true,
-      "price": 7.68,
-      "url": "https://www.costplusdrugs.com/medications/lithium-carbonate-300mg-capsule-eskalith/"
-    },
-    "Lamotrigine": {
-      "available": true,
-      "price": 6.3,
-      "url": "https://www.costplusdrugs.com/medications/lamotrigine-100mg-tablet/"
-    },
-    "Carbamazepine": {
-      "available": true,
-      "price": 6.65,
-      "url": "https://www.costplusdrugs.com/medications/Carbamazepine-200mg-Tablet/"
+      "price": 65.18,
+      "unitPrice": 1.003,
+      "url": "https://www.costplusdrugs.com/medications/asenapine-maleate-5mg-carton-of-sublingual-tablets-60-saphris/",
+      "product": "Asenapine Maleate 5mg Carton of Sublingual Tablets",
+      "asOf": "2026-10-02"
     },
     "Paliperidone": {
       "available": true,
-      "price": 23.98,
-      "url": "https://www.costplusdrugs.com/medications/paliperidoneer-6mg-tablet/"
+      "price": 13.37,
+      "unitPrice": 0.2791,
+      "url": "https://www.costplusdrugs.com/medications/paliperidoneer-6mg-tablet/",
+      "product": "Paliperidone ER 6mg Extended Release Tablet",
+      "asOf": "2026-10-02"
+    },
+    "Iloperidone": {
+      "available": false,
+      "notListed": true,
+      "reason": "Not listed by Cost Plus for this strength/form (checked 2026-10-02)"
+    },
+    "Brexpiprazole": {
+      "available": false,
+      "notListed": true,
+      "reason": "Not listed by Cost Plus for this strength/form (checked 2026-10-02)"
+    },
+    "Cariprazine": {
+      "available": false,
+      "notListed": true,
+      "reason": "Not listed by Cost Plus for this strength/form (checked 2026-10-02)"
+    },
+    "Lithium": {
+      "available": true,
+      "price": 10.03,
+      "unitPrice": 0.0838,
+      "url": "https://www.costplusdrugs.com/medications/lithium-carbonate-300mg-capsule-eskalith/",
+      "product": "Lithium Carbonate 300mg Capsule",
+      "asOf": "2026-10-02"
+    },
+    "Valproate": {
+      "available": true,
+      "price": 10.47,
+      "unitPrice": 0.0912,
+      "url": "https://www.costplusdrugs.com/medications/DivalproexSodium-500mg-Tablet/",
+      "product": "Divalproex Sodium Delayed Release (DR) 500mg Delayed Release Tablet",
+      "asOf": "2026-10-02"
+    },
+    "Lamotrigine": {
+      "available": true,
+      "price": 7.59,
+      "unitPrice": 0.0432,
+      "url": "https://www.costplusdrugs.com/medications/lamotrigine-100mg-tablet/",
+      "product": "Lamotrigine 100mg Tablet",
+      "asOf": "2026-10-02"
+    },
+    "Carbamazepine": {
+      "available": true,
+      "price": 8.3,
+      "unitPrice": 0.055,
+      "url": "https://www.costplusdrugs.com/medications/Carbamazepine-200mg-Tablet/",
+      "product": "Carbamazepine 200mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Oxcarbazepine": {
       "available": true,
-      "price": 7.85,
-      "url": "https://www.costplusdrugs.com/medications/Oxcarbazepine-300mg-Tablet/"
+      "price": 10.71,
+      "unitPrice": 0.0952,
+      "url": "https://www.costplusdrugs.com/medications/Oxcarbazepine-300mg-Tablet/",
+      "product": "Oxcarbazepine 300mg Tablet",
+      "asOf": "2026-10-02"
+    },
+    "Topiramate": {
+      "available": true,
+      "price": 6.82,
+      "unitPrice": 0.0303,
+      "url": "https://www.costplusdrugs.com/medications/topiramate-100mg-tablet/",
+      "product": "Topiramate 100mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Buspirone": {
       "available": true,
-      "price": 5.62,
-      "url": "https://www.costplusdrugs.com/medications/BuspironeHCL-10mg-Tablet/"
+      "price": 6.07,
+      "unitPrice": 0.0179,
+      "url": "https://www.costplusdrugs.com/medications/BuspironeHCL-10mg-Tablet/",
+      "product": "Buspirone HCl 10mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Hydroxyzine": {
       "available": true,
       "price": 6.5,
-      "url": "https://www.costplusdrugs.com/medications/hydroxyzine-hcl-25mg-tablet/"
-    },
-    "Topiramate": {
-      "available": true,
-      "price": 5.91,
-      "url": "https://www.costplusdrugs.com/medications/topiramate-100mg-tablet/"
-    },
-    "Guanfacine": {
-      "available": true,
-      "price": 6.71,
-      "url": "https://www.costplusdrugs.com/medications/GuanfacineHCL-1mg-Tablet/"
+      "unitPrice": 0.05,
+      "url": "https://www.costplusdrugs.com/medications/hydroxyzine-hcl-25mg-tablet/",
+      "product": "Hydroxyzine HCl 25mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Ramelteon": {
       "available": true,
       "price": 13.75,
-      "url": "https://www.costplusdrugs.com/medications/ramelteon-8mg-tablet-rozerem/"
+      "unitPrice": 0.2916,
+      "url": "https://www.costplusdrugs.com/medications/ramelteon-8mg-tablet-rozerem/",
+      "product": "Ramelteon 8mg Tablet",
+      "asOf": "2026-10-02"
+    },
+    "Clonidine": {
+      "available": true,
+      "price": 6.19,
+      "unitPrice": 0.0199,
+      "url": "https://www.costplusdrugs.com/medications/clonidine-0_1mg-tablet/",
+      "product": "Clonidine 0.1mg Tablet",
+      "asOf": "2026-10-02"
+    },
+    "Guanfacine": {
+      "available": true,
+      "price": 6.71,
+      "unitPrice": 0.0569,
+      "url": "https://www.costplusdrugs.com/medications/GuanfacineHCL-1mg-Tablet/",
+      "product": "Guanfacine HCl 1mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Propranolol": {
       "available": true,
-      "price": 5.92,
-      "url": "https://www.costplusdrugs.com/medications/PropranololHCl-20mg-Tablet/"
+      "price": 6.85,
+      "unitPrice": 0.0308,
+      "url": "https://www.costplusdrugs.com/medications/PropranololHCl-20mg-Tablet/",
+      "product": "Propranolol HCl 20mg Tablet",
+      "asOf": "2026-10-02"
     },
     "Trihexyphenidyl": {
       "available": true,
       "price": 8.64,
-      "url": "https://www.costplusdrugs.com/medications/trihexyphenidylhcl-2mg-tablet/"
+      "unitPrice": 0.1212,
+      "url": "https://www.costplusdrugs.com/medications/trihexyphenidylhcl-2mg-tablet/",
+      "product": "Trihexyphenidyl HCl 2mg Tablet",
+      "asOf": "2026-10-02"
+    },
+    "Gabapentin": {
+      "available": false,
+      "notListed": true,
+      "reason": "Not listed by Cost Plus for this strength/form (checked 2026-10-02)"
+    },
+    "Olanzapine/Samidorphan": {
+      "available": false,
+      "notListed": true,
+      "reason": "Not listed by Cost Plus for this strength/form (checked 2026-10-02)"
+    },
+    "Atomoxetine": {
+      "available": true,
+      "price": 10.87,
+      "unitPrice": 0.1955,
+      "url": "https://www.costplusdrugs.com/medications/AtomoxetineHCl-40mg-Capsule/",
+      "product": "Atomoxetine HCl 40mg Capsule",
+      "asOf": "2026-10-02"
+    },
+    "Viloxazine ER": {
+      "available": false,
+      "notListed": true,
+      "reason": "Not listed by Cost Plus for this strength/form (checked 2026-10-02)"
+    },
+    "Naltrexone": {
+      "available": true,
+      "price": 22.94,
+      "unitPrice": 0.598,
+      "url": "https://www.costplusdrugs.com/medications/NaltrexoneHCl-50mg-Tablet/",
+      "product": "Naltrexone HCl 50mg Tablet",
+      "asOf": "2026-10-02"
     }
   }
 }

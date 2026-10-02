@@ -47,7 +47,10 @@
 node scripts/scrape-prices.js</pre>
 <p>This populates NADAC into <code>data/prices.json</code> and writes <code>data/cpd-targets.json</code> and <code>data/hw-targets.json</code>.</p>
 
-<h3>Phase 2 — Cost Plus Drugs scrape</h3>
+<h3>Phase 2 — Cost Plus Drugs prices (API)</h3>
+<p>As of October 2026, Cost Plus prices come from Cost Plus&rsquo;s public price API, so no browser step is needed:</p>
+<pre>node scripts/fetch-cpd-prices.js</pre>
+<p>It writes <code>data/cpd-prices.json</code> (price = unit price incl. 15% markup &times; quantity + $5 pharmacy fee). If the API call fails it exits with an error and leaves the old file; <code>merge-retail-prices.js</code> then records the stale file under <code>errors["(pipeline)"]</code>. The bookmarklet steps below are kept only as a fallback.</p>
 <ol>
   <li>Copy CPD targets to clipboard:
     <pre>cat data/cpd-targets.json | jq .targets | pbcopy</pre>

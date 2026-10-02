@@ -211,9 +211,12 @@
     if (severityEl) severityEl.textContent = total;
     if (presentEl) presentEl.textContent = present.length;
     if (screeningEl) screeningEl.textContent = screeningPositive.length;
+    var bfNames = getItems().map(function(item) { return 'bf-crs-' + item.number; });
+    var bfAnswered = ToolUtils.countAnswered(section, bfNames);
+    var bfComplete = bfAnswered >= bfNames.length;
     if (interpDiv) {
-      interpDiv.className = 'bf-interpretation ' + (severity.class || '');
-      interpDiv.textContent = severity.label;
+      interpDiv.className = 'bf-interpretation ' + (bfComplete ? (severity.class || '') : 'scale-incomplete');
+      interpDiv.textContent = bfComplete ? severity.label : ToolUtils.incompleteText(bfAnswered, bfNames.length);
     }
     if (subtypeDiv) subtypeDiv.textContent = subtypeResult();
     if (warningDiv) {
@@ -285,7 +288,8 @@
     lines.push('Severity Score: ' + total + '/' + scale.score.max);
     lines.push('Items Present: ' + present.length + '/23');
     lines.push('Screening Items Positive: ' + screeningPositive.length + '/14');
-    lines.push('Severity: ' + severity.label);
+    var bfDone = ToolUtils.countAnswered(section, getItems().map(function(item) { return 'bf-crs-' + item.number; })) >= getItems().length;
+    lines.push('Severity: ' + (bfDone ? severity.label : 'Not classified (not all 23 items rated)'));
     if (subtypeResult()) lines.push(subtypeResult());
     if (hasMalignantWarning()) {
       lines.push('');

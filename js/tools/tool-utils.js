@@ -370,8 +370,24 @@ var ToolUtils = (function() {
     };
   }
 
+  // Count how many of the named radio groups have an answer (unanswered items otherwise score 0)
+  function countAnswered(root, names) {
+    var scope = root || document;
+    var n = 0;
+    (names || []).forEach(function(name) {
+      if (scope.querySelector('input[name="' + name + '"]:checked')) n++;
+    });
+    return n;
+  }
+
+  function incompleteText(answered, total) {
+    return answered + ' / ' + total + ' answered';
+  }
+
   // Public API
   return {
+    countAnswered: countAnswered,
+    incompleteText: incompleteText,
     copyWithButton: copyWithButton,
     copyWithMessage: copyWithMessage,
     copyText: copyText,

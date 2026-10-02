@@ -75,9 +75,12 @@
     var result = calculateScore();
     var severity = getSeverityLevel(result.total);
 
+    var ymNames = getItems().map(function(item) { return 'ym-item' + item.number; });
+    var answered = ToolUtils.countAnswered(form, ymNames);
+    var complete = answered >= ymNames.length;
     totalScoreEl.textContent = result.total;
-    severityEl.textContent = severity.label;
-    severityEl.className = 'ym-severity-label ' + (severity.class || '');
+    severityEl.textContent = complete ? severity.label : ToolUtils.incompleteText(answered, ymNames.length);
+    severityEl.className = 'ym-severity-label ' + (complete ? (severity.class || '') : 'scale-incomplete');
 
     summaryGrid.innerHTML = '';
     getItems().forEach(function(item) {
@@ -97,16 +100,22 @@
     var result = calculateScore();
     var severity = getSeverityLevel(result.total);
     var reportMeta = scale.report || FALLBACK_SCALE.report;
+    var ymTotal = getItems().length;
+    var ymAnswered = ToolUtils.countAnswered(form, getItems().map(function(item) { return 'ym-item' + item.number; }));
+    var ymComplete = ymAnswered >= ymTotal;
     var lines = [
       reportMeta.heading || 'Young Mania Rating Scale (YMRS)',
       'Date: ' + ToolUtils.dateStamp(),
       '',
       'Total Score: ' + result.total + '/' + scale.score.max,
-      'Severity: ' + severity.label,
+      'Severity: ' + (ymComplete ? severity.label : 'Not classified (' + ymAnswered + '/' + ymTotal + ' items answered)'),
       ''
     ];
 
-    if (severity.action) {
+    if (!ymComplete) {
+      lines.push('Clinical Note: Rate all items before interpreting severity.');
+      lines.push('');
+    } else if (severity.action) {
       lines.push('Clinical Note: ' + severity.action);
       lines.push('');
     } else {
