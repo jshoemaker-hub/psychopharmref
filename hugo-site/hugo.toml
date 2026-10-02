@@ -2,6 +2,9 @@ baseURL = "https://psychopharmref.com"
 languageCode = "en-us"
 title = "PsychoPharmRef — Psychopharmacology Reference for Clinicians"
 defaultContentLanguage = "en"
+# No content uses the categories/tags taxonomies, and there are no templates for them,
+# so /categories/ and /tags/ were 404s listed in the sitemap. Disable those page kinds.
+disableKinds = ["taxonomy", "term"]
 
 [params]
   description = "Free clinical psychopharmacology reference with 101 medications, receptor binding profiles, P450 interactions, 30+ clinical tools, and 100+ evidence-based blog posts."
