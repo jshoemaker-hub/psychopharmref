@@ -5,7 +5,7 @@
   "short_title": "PCL-5",
   "domain": "ptsd",
   "status": "pilot-source-of-truth",
-  "last_reviewed": "2026-07-18",
+  "last_reviewed": "2026-10-02",
   "source_ids": ["national-center-ptsd-pcl5", "blevins-2015-pcl5"],
   "instructions": "In the past month, indicate how much you have been bothered by each problem in response to a very stressful experience.",
   "score": {
@@ -178,7 +178,7 @@
   ],
   "report": {
     "heading": "PCL-5 (PTSD Checklist for DSM-5)",
-    "scoring_note": "Scoring: total symptom severity score ranges 0-80; DSM-5 cluster scores are B items 1-5, C items 6-7, D items 8-14, and E items 15-20. The 0-80 severity bands are descriptive (not from Blevins 2015 or the National Center for PTSD); the primary interpretation is the >=33 probable-PTSD cut-off. For monitoring, a 5-10 point change is reliable change and a 10-20 point change is clinically meaningful (NCPTSD).",
+    "scoring_note": "Scoring: total symptom severity score ranges 0-80; DSM-5 cluster scores are B items 1-5, C items 6-7, D items 8-14, and E items 15-20. The 0-80 severity bands are descriptive, not validated severity categories (not from Blevins 2015 or the National Center for PTSD); the validated decision point is the probable-PTSD cut-off (31-33; this tool uses >=33). For monitoring, a 5-10 point change is reliable change and a 10-20 point change is clinically meaningful (NCPTSD).",
     "screening_note": "Provisional PTSD diagnosis: count each item rated 2 or higher as endorsed, requiring at least 1 B item, 1 C item, 2 D items, and 2 E items. PCL-5 results require clinical confirmation; CAPS-5 is the diagnostic gold standard."
   },
   "test_vectors": [

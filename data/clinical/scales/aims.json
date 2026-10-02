@@ -5,7 +5,7 @@
   "short_title": "AIMS",
   "domain": "tardive dyskinesia",
   "status": "pilot-source-of-truth",
-  "last_reviewed": "2026-07-18",
+  "last_reviewed": "2026-10-02",
   "source_ids": ["guy-1976-aims"],
   "instructions": "Clinician-rated examination for abnormal involuntary movements, including activation maneuvers and dental status.",
   "score": {
@@ -57,15 +57,15 @@
     }
   ],
   "severity_bands": [
-    { "min": 0, "max": 0, "label": "No Dyskinesia", "class": "ai-severity-negative", "action": "No scored abnormal movements on items 1-7" },
-    { "min": 1, "max": 7, "label": "Minimal Dyskinesia", "class": "ai-severity-minimal", "action": "Minimal movement burden; continue monitoring and clinical correlation" },
-    { "min": 8, "max": 14, "label": "Mild Dyskinesia", "class": "ai-severity-mild", "action": "Mild movement burden; review medication exposure and functional impact" },
-    { "min": 15, "max": 21, "label": "Moderate Dyskinesia", "class": "ai-severity-moderate", "action": "Moderate movement burden; consider treatment modification or specialist input" },
-    { "min": 22, "max": 28, "label": "Severe Dyskinesia", "class": "ai-severity-positive", "action": "Severe movement burden; assess safety, impairment, and treatment urgency" }
+    { "min": 0, "max": 0, "label": "No movements rated (0)", "class": "ai-severity-negative", "action": "No scored abnormal movements on items 1-7" },
+    { "min": 1, "max": 7, "label": "Total 1–7 (descriptive)", "class": "ai-severity-minimal", "action": "Descriptive total only (AIMS has no validated total-score severity bands); use the Schooler–Kane screen and global item 8 for severity" },
+    { "min": 8, "max": 14, "label": "Total 8–14 (descriptive)", "class": "ai-severity-mild", "action": "Descriptive total only; use the Schooler–Kane screen and global item 8 for severity. Review medication exposure and functional impact" },
+    { "min": 15, "max": 21, "label": "Total 15–21 (descriptive)", "class": "ai-severity-moderate", "action": "Descriptive total only; use the Schooler–Kane screen and global item 8 for severity. Consider treatment modification or specialist input" },
+    { "min": 22, "max": 28, "label": "Total 22–28 (descriptive)", "class": "ai-severity-positive", "action": "Descriptive total only; use the Schooler–Kane screen and global item 8 for severity. Assess safety, impairment, and treatment urgency" }
   ],
   "report": {
     "heading": "Abnormal Involuntary Movement Scale (AIMS)",
-    "scoring_note": "Scoring: total movement score is the sum of items 1-7 (0-28). Items 8-10 are global judgments; items 11-12 document dental status.",
+    "scoring_note": "Scoring: total movement score is the sum of items 1-7 (0-28). AIMS has no validated total-score severity bands; total-score bands shown here are descriptive only. Severity comes from the Schooler–Kane screen and global item 8. Items 8-10 are global judgments; items 11-12 document dental status.",
     "screening_note": "Positive TD screen uses the Schooler–Kane criterion: a rating of 2 (mild) or higher in at least two body areas (items 1-7), or 3 (moderate) or higher in at least one area. Global item 8 is reported but does not count toward the screen by itself."
   },
   "test_vectors": [
@@ -73,7 +73,7 @@
       "name": "all_zero",
       "responses": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       "expected_score": 0,
-      "expected_severity": "No Dyskinesia",
+      "expected_severity": "No movements rated (0)",
       "expected_subscales": {
         "facial-oral": 0,
         "extremity": 0,
@@ -84,7 +84,7 @@
       "name": "single_item_minimal_total",
       "responses": [0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 1, 0],
       "expected_score": 2,
-      "expected_severity": "Minimal Dyskinesia",
+      "expected_severity": "Total 1–7 (descriptive)",
       "expected_subscales": {
         "facial-oral": 2,
         "extremity": 0,
@@ -95,15 +95,15 @@
       "name": "severe_total",
       "responses": [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1],
       "expected_score": 28,
-      "expected_severity": "Severe Dyskinesia",
+      "expected_severity": "Total 22–28 (descriptive)",
       "expected_subscales": {
         "facial-oral": 16,
         "extremity": 8,
         "trunk": 4
       }
     },
-    {"name": "screen_one_item_at_2_negative", "responses": [0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 1, 0], "expected_score": 2, "expected_severity": "Minimal Dyskinesia", "expected_screen": "NEGATIVE"},
-    {"name": "screen_two_items_at_2_positive", "responses": [0, 2, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0], "expected_score": 4, "expected_severity": "Minimal Dyskinesia", "expected_screen": "POSITIVE"},
-    {"name": "screen_one_item_at_3_positive", "responses": [0, 0, 0, 0, 3, 0, 0, 3, 0, 0, 0, 0], "expected_score": 3, "expected_severity": "Minimal Dyskinesia", "expected_screen": "POSITIVE"}
+    {"name": "screen_one_item_at_2_negative", "responses": [0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 1, 0], "expected_score": 2, "expected_severity": "Total 1–7 (descriptive)", "expected_screen": "NEGATIVE"},
+    {"name": "screen_two_items_at_2_positive", "responses": [0, 2, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0], "expected_score": 4, "expected_severity": "Total 1–7 (descriptive)", "expected_screen": "POSITIVE"},
+    {"name": "screen_one_item_at_3_positive", "responses": [0, 0, 0, 0, 3, 0, 0, 3, 0, 0, 0, 0], "expected_score": 3, "expected_severity": "Total 1–7 (descriptive)", "expected_screen": "POSITIVE"}
   ]
 }

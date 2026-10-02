@@ -5,7 +5,7 @@
   "short_title": "BPRS",
   "domain": "psychiatric symptom severity",
   "status": "pilot-source-of-truth",
-  "last_reviewed": "2026-07-18",
+  "last_reviewed": "2026-10-02",
   "source_ids": ["overall-1962-bprs", "leucht-2005-bprs"],
   "instructions": "Rate psychiatric symptoms over the past week using observed behavior and verbal report.",
   "score": {
@@ -182,7 +182,7 @@
   ],
   "report": {
     "heading": "BPRS (Brief Psychiatric Rating Scale)",
-    "scoring_note": "Severity anchors (Leucht et al., 2005): mildly ill ~= 31, moderately ill ~= 41, markedly ill ~= 53."
+    "scoring_note": "Severity anchors (Leucht et al., 2005): mildly ill ~= 31, moderately ill ~= 41, markedly ill ~= 53. Items are rated 1-7 (0 = not assessed), so the effective total is 18-126 once all items are rated. Subscales are site groupings for convenience, not a published factor model."
   },
   "test_vectors": [
     {

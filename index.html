@@ -2404,7 +2404,7 @@
 
         <div class="cog-score-section">
           <h4 class="cog-score-test-title" style="color:#5a7db8">Montreal Cognitive Assessment (MoCA) — 30 Points</h4>
-          <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">+1 point if ≤12 years formal education (max 30). Administration ~10 minutes. Normal ≥26/30. Training and certification required for clinical interpretation (www.mocatest.org).</p>
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">+1 point if ≤12 years formal education (max 30). Administration ~10 minutes. Conventional cutoff ≥26/30. The impairment bands below are commonly used but not validated. Training and certification required for clinical interpretation (www.mocatest.org).</p>
           <div class="cog-score-grid">
             <div class="cog-score-box" style="--sc:#4caf50">
               <div class="cog-score-range">26–30</div>
@@ -2423,7 +2423,7 @@
               <div class="cog-score-label">Severe Impairment</div>
             </div>
           </div>
-          <p class="ref-caveat">MoCA sensitivity for MCI ~90%; specificity ~87% (Nasreddine et al., J Am Geriatr Soc, 2005). A score below 26 does not automatically indicate dementia; scores must be interpreted alongside clinical history, education, and medical evaluation. A score ≥26 after a dementia diagnosis does not indicate resolution.</p>
+          <p class="ref-caveat">MoCA sensitivity for MCI ~90%; specificity ~87% (Nasreddine et al., J Am Geriatr Soc, 2005). A score below 26 does not automatically indicate dementia; scores must be interpreted alongside clinical history, education, and medical evaluation. A score ≥26 after a dementia diagnosis does not indicate resolution. The ≥26 cutoff can over-call impairment in older, less-educated, or diverse populations; a cutoff of 23 improved accuracy in a meta-analysis (Carson et al., 2018).</p>
         </div>
 
         <div class="cog-score-section" style="margin-top:24px">
@@ -4675,9 +4675,10 @@
           <p style="color: #666; font-size: 14px; margin-bottom: 20px;">Rapid assessment of suicidal ideation and behavior. Answers help determine risk level and need for further evaluation.</p>
     
           <form id="sr-screen-form">
+            <p class="sr-helper-text" style="display:block;margin-bottom:12px;"><strong>Ask Q1–Q5 about the past month.</strong> Ask Q3–Q5 only if Q2 is Yes. Q6 is asked for lifetime, followed by the past-3-months question.</p>
             <!-- Q1: Wish to be dead -->
             <div class="sr-question-group">
-              <label class="sr-question-label">Q1: Have you wished you were dead or wished you could go to sleep and not wake up?</label>
+              <label class="sr-question-label">Q1 (past month): Have you wished you were dead or wished you could go to sleep and not wake up?</label>
               <div class="sr-radio-group">
                 <div class="sr-radio-wrapper">
                   <input type="radio" id="q1_yes" name="q1" value="yes">
@@ -4754,8 +4755,8 @@
     
             <!-- Q6: Actual attempt/preparation -->
             <div class="sr-question-group">
-              <label class="sr-question-label">Q6: Have you ever done anything, started to do anything, or prepared to do anything to end your life?</label>
-              <span class="sr-helper-text">Examples: collecting pills, obtaining a gun, giving away valuables, writing a will or suicide note, stockpiling medication, searching for methods online.</span>
+              <label class="sr-question-label">Q6 (lifetime): Have you ever done anything, started to do anything, or prepared to do anything to end your life?</label>
+              <span class="sr-helper-text">Examples: collected pills, obtained a gun, gave away valuables, wrote a will or suicide note, took out pills but didn&rsquo;t swallow any, held a gun but changed your mind or it was grabbed from your hand, went to the roof but didn&rsquo;t jump; or actually took pills, tried to shoot yourself, cut yourself, tried to hang yourself, etc.</span>
               <div class="sr-radio-group">
                 <div class="sr-radio-wrapper">
                   <input type="radio" id="q6_yes" name="q6" value="yes">
@@ -5138,9 +5139,9 @@
                 <select class="sr-select sr-intensity-select" name="intensity_frequency" disabled>
                   <option value="">-- Select --</option>
                   <option value="1">1: Less than once a week</option>
-                  <option value="2">2: Once a week or a few times</option>
-                  <option value="3">3: A few times a week</option>
-                  <option value="4">4: Nearly every day</option>
+                  <option value="2">2: Once a week</option>
+                  <option value="3">3: 2–5 times in a week</option>
+                  <option value="4">4: Daily or almost daily</option>
                   <option value="5">5: Many times each day</option>
                 </select>
               </div>
@@ -5149,24 +5150,24 @@
                 <label class="sr-intensity-label">Duration (1-5):</label>
                 <select class="sr-select sr-intensity-select" name="intensity_duration" disabled>
                   <option value="">-- Select --</option>
-                  <option value="1">1: Fleeting (seconds)</option>
-                  <option value="2">2: Brief (minutes)</option>
-                  <option value="3">3: Several minutes to an hour</option>
-                  <option value="4">4: Several hours</option>
-                  <option value="5">5: More than 8 hours</option>
+                  <option value="1">1: Fleeting — a few seconds or minutes</option>
+                  <option value="2">2: Less than 1 hour / some of the time</option>
+                  <option value="3">3: 1–4 hours / a lot of time</option>
+                  <option value="4">4: 4–8 hours / most of the day</option>
+                  <option value="5">5: More than 8 hours / persistent or continuous</option>
                 </select>
               </div>
     
               <div class="sr-intensity-row">
-                <label class="sr-intensity-label">Controllability (0-5):</label>
+                <label class="sr-intensity-label">Controllability (0-5): could/can you stop thinking about killing yourself or wanting to die if you want to?</label>
                 <select class="sr-select sr-intensity-select" name="intensity_control" disabled>
                   <option value="">-- Select --</option>
-                  <option value="0">0: N/A</option>
-                  <option value="1">1: Does not attempt to control thoughts</option>
-                  <option value="2">2: Reluctant to resist</option>
-                  <option value="3">3: Makes some effort to control</option>
-                  <option value="4">4: Active attempts to control</option>
-                  <option value="5">5: Unable to control</option>
+                  <option value="1">1: Easily able to control thoughts</option>
+                  <option value="2">2: Can control thoughts with little difficulty</option>
+                  <option value="3">3: Can control thoughts with some difficulty</option>
+                  <option value="4">4: Can control thoughts with a lot of difficulty</option>
+                  <option value="5">5: Unable to control thoughts</option>
+                  <option value="0">0: Does not attempt to control thoughts</option>
                 </select>
               </div>
     
@@ -5188,11 +5189,11 @@
                 <select class="sr-select sr-intensity-select" name="intensity_reasons" disabled>
                   <option value="">-- Select --</option>
                   <option value="0">0: N/A</option>
-                  <option value="1">1: Completely to get attention/manipulate</option>
-                  <option value="2">2: Primarily to get attention/manipulate</option>
-                  <option value="3">3: Both to get attention and to end pain</option>
-                  <option value="4">4: Primarily to end pain</option>
-                  <option value="5">5: Completely to end pain</option>
+                  <option value="1">1: Completely to get attention, revenge, or a reaction from others</option>
+                  <option value="2">2: Mostly to get attention, revenge, or a reaction from others</option>
+                  <option value="3">3: Equally to get attention, revenge, or a reaction and to end/stop the pain</option>
+                  <option value="4">4: Mostly to end or stop the pain</option>
+                  <option value="5">5: Completely to end or stop the pain</option>
                 </select>
               </div>
             </div>
@@ -5334,24 +5335,24 @@
                     <input type="date" class="sr-behavior-input" id="lethality_recent_date" name="lethality_recent_date">
                   </div>
                   <div class="sr-lethality-row">
-                    <label class="sr-lethality-label">Actual Lethality (0-5):</label>
+                    <label class="sr-lethality-label">Actual Lethality / Medical Damage (0-5):</label>
                     <select class="sr-select" id="lethality_recent_actual" name="lethality_recent_actual">
                       <option value="">-- Select --</option>
-                      <option value="0">0: Behavior not likely to result in death</option>
-                      <option value="1">1: Behavior somewhat likely to result in death</option>
-                      <option value="2">2: Behavior likely to result in death</option>
-                      <option value="3">3: Behavior very likely to result in death</option>
-                      <option value="4">4: Behavior almost certainly would have resulted in death absent intervention</option>
-                      <option value="5">5: Behavior would have resulted in death</option>
+                      <option value="0">0: No physical damage or very minor physical damage (e.g., surface scratches)</option>
+                      <option value="1">1: Minor physical damage (e.g., lethargic speech, first-degree burns, mild bleeding, sprains)</option>
+                      <option value="2">2: Moderate physical damage; medical attention needed (e.g., conscious but sleepy, second-degree burns, bleeding of major vessel)</option>
+                      <option value="3">3: Moderately severe physical damage; hospitalization, likely intensive care (e.g., comatose with reflexes intact, third-degree burns &lt;20% of body, extensive blood loss but can recover, major fractures)</option>
+                      <option value="4">4: Severe physical damage; hospitalization with intensive care (e.g., comatose without reflexes, third-degree burns &gt;20% of body, extensive blood loss with unstable vital signs, major damage to a vital area)</option>
+                      <option value="5">5: Death</option>
                     </select>
                   </div>
                   <div class="sr-lethality-row" id="lethality_recent_potential_row" style="display: none;">
-                    <label class="sr-lethality-label">Potential Lethality (0-2):</label>
+                    <label class="sr-lethality-label">Potential Lethality (0-2) — only if Actual Lethality = 0:</label>
                     <select class="sr-select" id="lethality_recent_potential" name="lethality_recent_potential">
                       <option value="">-- Select --</option>
-                      <option value="0">0: Low</option>
-                      <option value="1">1: Moderate</option>
-                      <option value="2">2: High</option>
+                      <option value="0">0: Behavior not likely to result in injury</option>
+                      <option value="1">1: Behavior likely to result in injury but not likely to cause death</option>
+                      <option value="2">2: Behavior likely to result in death despite available medical care</option>
                     </select>
                   </div>
                 </div>
@@ -5364,24 +5365,24 @@
                     <input type="date" class="sr-behavior-input" id="lethality_lethal_date" name="lethality_lethal_date">
                   </div>
                   <div class="sr-lethality-row">
-                    <label class="sr-lethality-label">Actual Lethality (0-5):</label>
+                    <label class="sr-lethality-label">Actual Lethality / Medical Damage (0-5):</label>
                     <select class="sr-select" id="lethality_lethal_actual" name="lethality_lethal_actual">
                       <option value="">-- Select --</option>
-                      <option value="0">0: Behavior not likely to result in death</option>
-                      <option value="1">1: Behavior somewhat likely to result in death</option>
-                      <option value="2">2: Behavior likely to result in death</option>
-                      <option value="3">3: Behavior very likely to result in death</option>
-                      <option value="4">4: Behavior almost certainly would have resulted in death absent intervention</option>
-                      <option value="5">5: Behavior would have resulted in death</option>
+                      <option value="0">0: No physical damage or very minor physical damage (e.g., surface scratches)</option>
+                      <option value="1">1: Minor physical damage (e.g., lethargic speech, first-degree burns, mild bleeding, sprains)</option>
+                      <option value="2">2: Moderate physical damage; medical attention needed (e.g., conscious but sleepy, second-degree burns, bleeding of major vessel)</option>
+                      <option value="3">3: Moderately severe physical damage; hospitalization, likely intensive care (e.g., comatose with reflexes intact, third-degree burns &lt;20% of body, extensive blood loss but can recover, major fractures)</option>
+                      <option value="4">4: Severe physical damage; hospitalization with intensive care (e.g., comatose without reflexes, third-degree burns &gt;20% of body, extensive blood loss with unstable vital signs, major damage to a vital area)</option>
+                      <option value="5">5: Death</option>
                     </select>
                   </div>
                   <div class="sr-lethality-row" id="lethality_lethal_potential_row" style="display: none;">
-                    <label class="sr-lethality-label">Potential Lethality (0-2):</label>
+                    <label class="sr-lethality-label">Potential Lethality (0-2) — only if Actual Lethality = 0:</label>
                     <select class="sr-select" id="lethality_lethal_potential" name="lethality_lethal_potential">
                       <option value="">-- Select --</option>
-                      <option value="0">0: Low</option>
-                      <option value="1">1: Moderate</option>
-                      <option value="2">2: High</option>
+                      <option value="0">0: Behavior not likely to result in injury</option>
+                      <option value="1">1: Behavior likely to result in injury but not likely to cause death</option>
+                      <option value="2">2: Behavior likely to result in death despite available medical care</option>
                     </select>
                   </div>
                 </div>
@@ -5394,24 +5395,24 @@
                     <input type="date" class="sr-behavior-input" id="lethality_initial_date" name="lethality_initial_date">
                   </div>
                   <div class="sr-lethality-row">
-                    <label class="sr-lethality-label">Actual Lethality (0-5):</label>
+                    <label class="sr-lethality-label">Actual Lethality / Medical Damage (0-5):</label>
                     <select class="sr-select" id="lethality_initial_actual" name="lethality_initial_actual">
                       <option value="">-- Select --</option>
-                      <option value="0">0: Behavior not likely to result in death</option>
-                      <option value="1">1: Behavior somewhat likely to result in death</option>
-                      <option value="2">2: Behavior likely to result in death</option>
-                      <option value="3">3: Behavior very likely to result in death</option>
-                      <option value="4">4: Behavior almost certainly would have resulted in death absent intervention</option>
-                      <option value="5">5: Behavior would have resulted in death</option>
+                      <option value="0">0: No physical damage or very minor physical damage (e.g., surface scratches)</option>
+                      <option value="1">1: Minor physical damage (e.g., lethargic speech, first-degree burns, mild bleeding, sprains)</option>
+                      <option value="2">2: Moderate physical damage; medical attention needed (e.g., conscious but sleepy, second-degree burns, bleeding of major vessel)</option>
+                      <option value="3">3: Moderately severe physical damage; hospitalization, likely intensive care (e.g., comatose with reflexes intact, third-degree burns &lt;20% of body, extensive blood loss but can recover, major fractures)</option>
+                      <option value="4">4: Severe physical damage; hospitalization with intensive care (e.g., comatose without reflexes, third-degree burns &gt;20% of body, extensive blood loss with unstable vital signs, major damage to a vital area)</option>
+                      <option value="5">5: Death</option>
                     </select>
                   </div>
                   <div class="sr-lethality-row" id="lethality_initial_potential_row" style="display: none;">
-                    <label class="sr-lethality-label">Potential Lethality (0-2):</label>
+                    <label class="sr-lethality-label">Potential Lethality (0-2) — only if Actual Lethality = 0:</label>
                     <select class="sr-select" id="lethality_initial_potential" name="lethality_initial_potential">
                       <option value="">-- Select --</option>
-                      <option value="0">0: Low</option>
-                      <option value="1">1: Moderate</option>
-                      <option value="2">2: High</option>
+                      <option value="0">0: Behavior not likely to result in injury</option>
+                      <option value="1">1: Behavior likely to result in injury but not likely to cause death</option>
+                      <option value="2">2: Behavior likely to result in death despite available medical care</option>
                     </select>
                   </div>
                 </div>
@@ -7008,18 +7009,18 @@
           <div class="ps-severity-text"><span class="ps-30-severity">—</span></div>
         </div>
         <div class="ps-marder-box">
-          <div class="ps-marder-title">Marder Factor Analysis:</div>
+          <div class="ps-marder-title">Marder Factor Analysis (Marder et al., 1997):</div>
           <div class="ps-marder-item">
-            <span class="ps-marder-label">Positive Symptoms (P1,P3,P5,P6,G9):</span>
-            <span class="ps-marder-positive">—</span>/35
+            <span class="ps-marder-label">Positive Symptoms (P1,P3,P5,P6,N7,G1,G9,G12):</span>
+            <span class="ps-marder-positive">—</span>/56
           </div>
           <div class="ps-marder-item">
-            <span class="ps-marder-label">Negative Symptoms (N1,N2,N3,N4,N6,G7):</span>
-            <span class="ps-marder-negative">—</span>/42
+            <span class="ps-marder-label">Negative Symptoms (N1,N2,N3,N4,N6,G7,G16):</span>
+            <span class="ps-marder-negative">—</span>/49
           </div>
           <div class="ps-marder-item">
-            <span class="ps-marder-label">Disorganized Thought (P2,N5,G11):</span>
-            <span class="ps-marder-disorg">—</span>/21
+            <span class="ps-marder-label">Disorganized Thought (P2,N5,G5,G10,G11,G13,G15):</span>
+            <span class="ps-marder-disorg">—</span>/49
           </div>
           <div class="ps-marder-item">
             <span class="ps-marder-label">Uncontrolled Hostility/Excitement (P4,P7,G8,G14):</span>
@@ -10615,15 +10616,19 @@
         <span class="ai-subscale-score" id="ai-total-score" style="font-size: 20px;">0/28</span>
       </div>
       <div class="ai-subscale-row">
-        <span class="ai-subscale-label"><strong>Severity Level:</strong></span>
-        <span class="ai-subscale-score" id="ai-severity-level">—</span>
-      </div>
-      <div class="ai-subscale-row">
-        <span class="ai-subscale-label"><strong>Tardive Dyskinesia Screen:</strong></span>
+        <span class="ai-subscale-label"><strong>Tardive Dyskinesia Screen (Schooler–Kane):</strong></span>
         <span class="ai-severity-negative" id="ai-screen-status">NEGATIVE</span>
       </div>
       <div class="ai-subscale-row">
-        <span class="ai-subscale-label" style="font-style: italic; font-size: 13px;"><strong>Positive Screen Criteria:</strong> ≥2 on any item 1–7 or ≥2 on item 8</span>
+        <span class="ai-subscale-label"><strong>Global Severity (Item 8):</strong></span>
+        <span class="ai-subscale-score" id="ai-global-severity">—</span>
+      </div>
+      <div class="ai-subscale-row">
+        <span class="ai-subscale-label"><strong>Total-Score Band (descriptive, not validated):</strong></span>
+        <span class="ai-subscale-score" id="ai-severity-level">—</span>
+      </div>
+      <div class="ai-subscale-row">
+        <span class="ai-subscale-label" style="font-style: italic; font-size: 13px;"><strong>Positive Screen Criteria (Schooler–Kane):</strong> ≥2 (mild) in two or more areas, or ≥3 (moderate) in one area, on items 1–7</span>
       </div>
     </div>
 
@@ -10960,7 +10965,8 @@
         <span class="bp-score-label">Severity:</span>
         <span class="bp-severity-label bp-severity-normal" id="bp-severity">&mdash;</span>
       </div>
-      <div class="bp-subscale-grid" style="margin-top:14px;">
+      <p style="font-size:12px;color:var(--text-muted);margin:14px 0 4px;">Subscales are site groupings for convenience, not a published factor model. Items are rated 1–7 (0 = not assessed), so the effective total is 18–126 once all items are rated.</p>
+      <div class="bp-subscale-grid" style="margin-top:6px;">
         <div class="bp-subscale-row"><span class="bp-subscale-name">Positive Symptoms</span><span class="bp-subscale-score" id="bp-sub-positive-symptoms">0</span></div>
         <div class="bp-subscale-row"><span class="bp-subscale-name">Negative Symptoms</span><span class="bp-subscale-score" id="bp-sub-negative-symptoms">0</span></div>
         <div class="bp-subscale-row"><span class="bp-subscale-name">Affective Symptoms</span><span class="bp-subscale-score" id="bp-sub-affective-symptoms">0</span></div>
@@ -11302,7 +11308,7 @@
         <span class="ph-interp-score">5–9</span>   <span class="ph-interp-label">Mild</span>           <span class="ph-interp-action">Watchful waiting; repeat PHQ-9 at follow-up</span>
         <span class="ph-interp-score">10–14</span> <span class="ph-interp-label">Moderate</span>       <span class="ph-interp-action">Treatment plan, considering counseling, follow-up, and/or pharmacotherapy</span>
         <span class="ph-interp-score">15–19</span> <span class="ph-interp-label">Moderately Severe</span> <span class="ph-interp-action">Active treatment with pharmacotherapy and/or psychotherapy</span>
-        <span class="ph-interp-score">20–27</span> <span class="ph-interp-label">Severe</span>         <span class="ph-interp-action">Immediate pharmacotherapy; consider expedited referral to mental health specialist</span>
+        <span class="ph-interp-score">20–27</span> <span class="ph-interp-label">Severe</span>         <span class="ph-interp-action">Immediate initiation of pharmacotherapy and, if severe impairment or poor response to therapy, expedited referral to a mental health specialist for psychotherapy and/or collaborative management</span>
       </div>
     </div>
   </div>
@@ -11312,7 +11318,7 @@
 <section id="gad7-tool" data-lazy-tool="gad7-tool" class="section">
   <div class="section-header">
     <h2>GAD-7 (Generalized Anxiety Disorder 7-item Scale)</h2>
-    <p>Validated 7-item anxiety screening and severity tool. Scores range 0–21 with four severity bands. Also screens for panic disorder, social anxiety, and PTSD. Generates an EMR-ready summary.</p>
+    <p>Validated 7-item anxiety screening and severity tool. Scores range 0–21 with four severity bands. At ≥10 it also detects panic disorder, social anxiety, and PTSD with moderate sensitivity (about 66–74%; Kroenke 2007). Generates an EMR-ready summary.</p>
   </div>
 
   <div class="mt-warning">
@@ -11568,7 +11574,7 @@
   </div>
 
   <div class="ciwa-warning mt-warning">
-    <strong>Clinical Use:</strong> CIWA-Ar is validated for adults with known alcohol withdrawal; it assumes the patient can communicate and is not heavily sedated. Patients with impaired consciousness, acute medical illness, or severe comorbidity (e.g., hepatic encephalopathy, head trauma) may require fixed-dose regimens instead of symptom-triggered protocols. Score &ge;15 signals impending delirium tremens and warrants urgent treatment.
+    <strong>Clinical Use:</strong> CIWA-Ar is validated for adults with known alcohol withdrawal; it assumes the patient can communicate and is not heavily sedated. Patients with impaired consciousness, acute medical illness, or severe comorbidity (e.g., hepatic encephalopathy, head trauma) may require fixed-dose regimens instead of symptom-triggered protocols. Scores &gt;15 indicate severe withdrawal with increased risk of seizures and delirium tremens; treat promptly and monitor closely.
   </div>
 
   <div class="ciwa-container">
@@ -12273,19 +12279,16 @@
 
     <!-- Interpretation Guide -->
     <div class="bo-interp">
-      <div class="bo-interp-title">Interpretation Guide (Mean Scores)</div>
+      <div class="bo-interp-title">Interpretation Guide (BAT-23 Total Mean Score)</div>
       <div class="bo-interp-grid">
-        <span class="bo-interp-range">1.00 – 1.49</span>
-        <span class="bo-interp-desc">No/very low risk of burnout</span>
-        <span class="bo-interp-range">1.50 – 2.49</span>
-        <span class="bo-interp-desc">Low risk — some burnout symptoms present</span>
-        <span class="bo-interp-range">2.50 – 3.49</span>
-        <span class="bo-interp-desc">At risk — clinically meaningful burnout symptoms</span>
-        <span class="bo-interp-range">3.50 – 4.49</span>
-        <span class="bo-interp-desc">High risk — significant burnout warranting intervention</span>
-        <span class="bo-interp-range">4.50 – 5.00</span>
-        <span class="bo-interp-desc">Very high risk — severe burnout, urgent clinical attention</span>
+        <span class="bo-interp-range">1.00 – 2.58</span>
+        <span class="bo-interp-desc">No risk of burnout</span>
+        <span class="bo-interp-range">2.59 – 3.01</span>
+        <span class="bo-interp-desc">At risk for burnout</span>
+        <span class="bo-interp-range">3.02 – 5.00</span>
+        <span class="bo-interp-desc">Severe burnout likely — further clinical evaluation</span>
       </div>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">Clinically validated cut-offs from Schaufeli et al., 2023 (<em>Scand J Work Environ Health</em>; pooled Dutch, Flemish and Finnish samples). Subscale cut-offs (at risk / severe): exhaustion 3.06 / 3.31, mental distance 2.10 / 3.30, cognitive impairment 2.70 / 3.10, emotional impairment 2.30 / 2.90. Derived for the work-related BAT-23; apply with caution to the general version.</p>
     </div>
   </div>
 </section><!-- end bat-tool -->
@@ -14096,10 +14099,10 @@
     })();
   </script>
 
-  <script defer src="js/data.js?v=20261002c"></script>
+  <script defer src="js/data.js?v=20261002d"></script>
   <script defer src="js/routes.js?v=20260719d"></script>
   <script defer src="js/bhi-references.js?v=20261002a"></script>
-  <script defer src="js/app.js?v=20261002a"></script>
+  <script defer src="js/app.js?v=20261002b"></script>
   <script defer src="js/diagnoses-data.js?v=20261002a"></script>
   <script defer src="js/diagnoses-page.js?v=20261002a"></script>
   <script defer src="js/glossary-data.js?v=20261002a"></script>

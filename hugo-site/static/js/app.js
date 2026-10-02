@@ -499,7 +499,7 @@ function switchSection(id, skipGroupExpand) {
         dataScript.src = 'js/qbank-data.js?v=20261001a';
         dataScript.onload = function() {
           var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20261001e';
+          script.src = 'js/tools/' + toolId + '.js?v=20261002a';
           document.body.appendChild(script);
         };
         dataScript.onerror = function() { console.error('Failed to load qbank-data.js'); };
@@ -542,7 +542,7 @@ function switchSection(id, skipGroupExpand) {
           d.onload = function() {
             if (--smPending === 0) {
               var script = document.createElement('script');
-              script.src = 'js/tools/' + toolId + '.js?v=20261001e';
+              script.src = 'js/tools/' + toolId + '.js?v=20261002a';
               document.body.appendChild(script);
             }
           };
@@ -551,7 +551,7 @@ function switchSection(id, skipGroupExpand) {
         });
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20261001e';
+        script.src = 'js/tools/' + toolId + '.js?v=20261002a';
         document.body.appendChild(script);
       }
     }
@@ -588,7 +588,7 @@ function switchSection(id, skipGroupExpand) {
 
     if (shouldLoadToolUtils()) {
       const utils = document.createElement('script');
-      utils.src = 'js/tools/tool-utils.js?v=20261001b';
+      utils.src = 'js/tools/tool-utils.js?v=20261002a';
       utils.onload = loadToolScript;
       utils.onerror = function() { console.error('Failed to load tool-utils.js'); };
       document.body.appendChild(utils);

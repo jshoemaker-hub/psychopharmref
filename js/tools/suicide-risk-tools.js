@@ -275,7 +275,8 @@
           intensityFields.forEach(field => {
             const select = document.querySelector(`select[name="${field}"]`);
             if (select && select.value) {
-              const label = document.querySelector(`label[for="${field}"]`)?.textContent || field;
+              const INTENSITY_LABELS = { intensity_frequency: 'Frequency', intensity_duration: 'Duration', intensity_control: 'Controllability', intensity_deterrents: 'Deterrents', intensity_reasons: 'Reasons for Ideation' };
+              const label = document.querySelector(`label[for="${field}"]`)?.textContent || INTENSITY_LABELS[field] || field;
               const option = select.options[select.selectedIndex];
               summary += `  ${label.trim()}: ${option.text}\n`;
             }

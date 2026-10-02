@@ -5,7 +5,7 @@
   "short_title": "BFCRS",
   "domain": "catatonia",
   "status": "pilot-source-of-truth",
-  "last_reviewed": "2026-07-18",
+  "last_reviewed": "2026-10-02",
   "source_ids": ["bush-1996-bfcrs", "urmc-bfcrs"],
   "instructions": "Clinician-administered bedside assessment for catatonia. Items 1-14 form the Catatonia Screening Instrument; items 1-23 are summed for the full severity rating.",
   "score": {
@@ -78,7 +78,7 @@
   "report": {
     "heading": "Bush-Francis Catatonia Rating Scale (BFCRS)",
     "screening_heading": "Bush-Francis Catatonia Screening Instrument (BFCSI)",
-    "scoring_note": "Scoring: the full BFCRS severity score is the sum of items 1-23 (0-69). Items 12 and 17-21 are binary and are scored 0 or 3 only. Severity bands are descriptive, not validated: Bush 1996 defines the screen (>=2 of items 1-14) and the 0-69 total but no mild/moderate/severe cut-offs. Track the total over time (e.g., response to lorazepam challenge).",
+    "scoring_note": "Scoring: the full BFCRS severity score is the sum of items 1-23 (0-69). Items 12 and 17-21 are binary and are scored 0 or 3 only. Severity bands are descriptive, not validated severity categories; the validated decision point is the screen (>=2 of items 1-14). Bush 1996 defines the screen (>=2 of items 1-14) and the 0-69 total but no mild/moderate/severe cut-offs. Track the total over time (e.g., response to lorazepam challenge).",
     "screening_note": "The 14-item screening instrument is positive when two or more screening items are present."
   },
   "test_vectors": [

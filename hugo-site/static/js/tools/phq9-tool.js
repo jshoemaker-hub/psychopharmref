@@ -34,7 +34,7 @@
       { min: 5, max: 9, label: 'Mild', class: 'ph-sev-mild', action: 'Watchful waiting; repeat PHQ-9 at follow-up' },
       { min: 10, max: 14, label: 'Moderate', class: 'ph-sev-moderate', action: 'Treatment plan, considering counseling, follow-up, and/or pharmacotherapy' },
       { min: 15, max: 19, label: 'Moderately Severe', class: 'ph-sev-mod-sev', action: 'Active treatment with pharmacotherapy and/or psychotherapy' },
-      { min: 20, max: 27, label: 'Severe', class: 'ph-sev-severe', action: 'Immediate initiation of pharmacotherapy and, if severe impairment or poor response, expedited referral to mental health specialist' }
+      { min: 20, max: 27, label: 'Severe', class: 'ph-sev-severe', action: 'Immediate initiation of pharmacotherapy and, if severe impairment or poor response to therapy, expedited referral to a mental health specialist for psychotherapy and/or collaborative management' }
     ],
     report: {
       heading: 'Patient Health Questionnaire-9 (PHQ-9)',

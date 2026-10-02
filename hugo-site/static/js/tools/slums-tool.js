@@ -41,12 +41,12 @@
       'high-school': [
         { min: 27, max: 30, label: 'Normal', note: 'No cognitive impairment detected.' },
         { min: 21, max: 26, label: 'Mild Neurocognitive Disorder (MNCD)', note: 'Cognitive decline present; comprehensive evaluation recommended.' },
-        { min: 0, max: 20, label: 'Dementia', note: 'Significant cognitive impairment; urgent neuropsychological evaluation indicated.' }
+        { min: 0, max: 20, label: 'Dementia', note: 'Significant cognitive impairment; comprehensive evaluation for dementia recommended (history, collateral, labs, imaging; neuropsychological testing as needed).' }
       ],
       'less-than-high-school': [
         { min: 25, max: 30, label: 'Normal', note: 'No cognitive impairment detected.' },
         { min: 20, max: 24, label: 'Mild Neurocognitive Disorder (MNCD)', note: 'Cognitive decline present; comprehensive evaluation recommended.' },
-        { min: 0, max: 19, label: 'Dementia', note: 'Significant cognitive impairment; urgent neuropsychological evaluation indicated.' }
+        { min: 0, max: 19, label: 'Dementia', note: 'Significant cognitive impairment; comprehensive evaluation for dementia recommended (history, collateral, labs, imaging; neuropsychological testing as needed).' }
       ]
     },
     report: { heading: 'SLUMS Examination Summary' },
@@ -145,7 +145,7 @@
     for (var i = 0; i < bands.length; i++) {
       if (score >= bands[i].min && score <= bands[i].max) return bands[i];
     }
-    return bands[bands.length - 1] || { label: 'Dementia', note: 'Significant cognitive impairment; urgent neuropsychological evaluation indicated.' };
+    return bands[bands.length - 1] || { label: 'Dementia', note: 'Significant cognitive impairment; comprehensive evaluation for dementia recommended (history, collateral, labs, imaging; neuropsychological testing as needed).' };
   }
 
   function interpretationClass(label) {

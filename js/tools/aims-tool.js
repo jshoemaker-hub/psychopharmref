@@ -25,15 +25,15 @@
       { id: 'td-screen', two_items_at: 2, one_item_at: 3, criterion_label: 'Schooler–Kane: ≥2 in two areas or ≥3 in one', movement_item_numbers: [1, 2, 3, 4, 5, 6, 7], global_item_number: 8, positive_label: 'POSITIVE', negative_label: 'NEGATIVE', display_element_id: 'ai-screen-status' }
     ],
     severity_bands: [
-      { min: 0, max: 0, label: 'No Dyskinesia' },
-      { min: 1, max: 7, label: 'Minimal Dyskinesia' },
-      { min: 8, max: 14, label: 'Mild Dyskinesia' },
-      { min: 15, max: 21, label: 'Moderate Dyskinesia' },
-      { min: 22, max: 28, label: 'Severe Dyskinesia' }
+      { min: 0, max: 0, label: 'No movements rated (0)' },
+      { min: 1, max: 7, label: 'Total 1–7 (descriptive)' },
+      { min: 8, max: 14, label: 'Total 8–14 (descriptive)' },
+      { min: 15, max: 21, label: 'Total 15–21 (descriptive)' },
+      { min: 22, max: 28, label: 'Total 22–28 (descriptive)' }
     ],
     report: {
       heading: 'Abnormal Involuntary Movement Scale (AIMS)',
-      scoring_note: 'Scoring: total movement score is the sum of items 1-7 (0-28). Items 8-10 are global judgments; items 11-12 document dental status.',
+      scoring_note: 'Scoring: total movement score is the sum of items 1-7 (0-28). AIMS has no validated total-score severity bands; total-score bands shown here are descriptive only. Severity comes from the Schooler–Kane screen and global item 8. Items 8-10 are global judgments; items 11-12 document dental status.',
       screening_note: 'Positive TD screen uses the Schooler–Kane criterion: a rating of 2 (mild) or higher in at least two body areas (items 1-7), or 3 (moderate) or higher in at least one area. Global item 8 is reported but does not count toward the screen by itself.'
     },
     references: [
@@ -132,6 +132,12 @@
     var aiMove = (getScreenRule().movement_item_numbers || [1, 2, 3, 4, 5, 6, 7]);
     var aiAnswered = ToolUtils.countAnswered(section, aiMove.map(function(n) { return 'ai-item' + n; }));
     var aiComplete = aiAnswered >= aiMove.length;
+    var aiGlobalEl = document.getElementById('ai-global-severity');
+    if (aiGlobalEl) {
+      var g8 = getItemValue(8);
+      var g8Answered = ToolUtils.countAnswered(section, ['ai-item8']) >= 1;
+      aiGlobalEl.textContent = g8Answered ? (g8 + '/4 — ' + GLOBAL8_ANCHORS[g8]) : '—';
+    }
     var aiSevEl = document.getElementById('ai-severity-level');
     aiSevEl.textContent = aiComplete ? severityForScore(total).label : ToolUtils.incompleteText(aiAnswered, aiMove.length) + ' (items 1–7)';
     aiSevEl.classList.toggle('scale-incomplete', !aiComplete);
@@ -143,6 +149,8 @@
     screenElement.classList.toggle('ai-severity-positive', positive);
     screenElement.classList.toggle('ai-severity-negative', !positive);
   }
+
+  var GLOBAL8_ANCHORS = ['None, normal', 'Minimal', 'Mild', 'Moderate', 'Severe'];
 
   function yesNo(itemNumber) {
     return getItemValue(itemNumber) ? 'Yes' : 'No';
@@ -157,6 +165,10 @@
     var lines = [
       reportMeta.heading || 'Abnormal Involuntary Movement Scale (AIMS)',
       'Date: ' + ToolUtils.dateStamp(),
+      '',
+      'SUMMARY',
+      '  ' + rule.label + ': ' + (positive ? rule.positive_label : rule.negative_label) + ' (' + (rule.criterion_label || 'Schooler–Kane: ≥2 in two areas or ≥3 in one') + ')',
+      '  Global severity (item 8): ' + getItemValue(8) + '/4 — ' + GLOBAL8_ANCHORS[getItemValue(8)],
       '',
       'MOVEMENT RATINGS'
     ];
@@ -173,7 +185,7 @@
 
     lines.push('Total Movement Score: ' + total + '/' + scale.score.max);
     var aiDone = ToolUtils.countAnswered(section, (getScreenRule().movement_item_numbers || [1, 2, 3, 4, 5, 6, 7]).map(function(n) { return 'ai-item' + n; })) >= (getScreenRule().movement_item_numbers || [1, 2, 3, 4, 5, 6, 7]).length;
-    lines.push('Severity: ' + (aiDone ? severity.label : 'Not classified (not all movement items 1-7 rated)'));
+    lines.push('Total-score band (descriptive, not validated): ' + (aiDone ? severity.label : 'Not classified (not all movement items 1-7 rated)'));
     lines.push('');
     lines.push('GLOBAL JUDGMENTS');
     [8, 9, 10].forEach(function(itemNumber) {

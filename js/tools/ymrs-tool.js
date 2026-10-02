@@ -18,13 +18,13 @@
     ],
     severity_bands: [
       { min: 0, max: 12, label: 'Remission / minimal', class: 'ym-severity-remission' },
-      { min: 13, max: 19, label: 'Mild mania', class: 'ym-severity-mild' },
-      { min: 20, max: 25, label: 'Moderate mania', class: 'ym-severity-moderate' },
-      { min: 26, max: 60, label: 'Severe mania', class: 'ym-severity-severe' }
+      { min: 13, max: 19, label: 'Mild (13–19; descriptive band)', class: 'ym-severity-mild' },
+      { min: 20, max: 25, label: 'Moderate (20–25; descriptive band)', class: 'ym-severity-moderate' },
+      { min: 26, max: 60, label: 'Severe (≥26; descriptive band)', class: 'ym-severity-severe' }
     ],
     report: {
       heading: 'Young Mania Rating Scale (YMRS)',
-      scoring_note: 'Scoring: 11 clinician-rated items summed for a 0-60 total; items 5, 6, 8, and 9 use 0/2/4/6/8 scoring.'
+      scoring_note: 'Scoring: 11 clinician-rated items summed for a 0-60 total; items 5, 6, 8, and 9 use 0/2/4/6/8 scoring. YMRS ≤12 is the conventional remission threshold; bands above 12 are descriptive, not validated severity categories (Lukasiewicz 2013 maps YMRS to CGI-BP with different breakpoints).'
     },
     references: [
       { label: 'Young RC, Biggs JT, Ziegler VE, Meyer DA. A rating scale for mania: reliability, validity and sensitivity. Br J Psychiatry. 1978;133:429-435.' }

@@ -18,8 +18,8 @@
       { number: 11, text: 'Gooseflesh Skin', max: 5 }
     ],
     severity_bands: [
-      { min: 0, max: 4, label: 'No significant withdrawal', class: 'cows-severity-minimal', action: 'Minimal signs of opioid withdrawal. Buprenorphine induction not yet recommended; reassess in 1-2 hours or await further objective signs.' },
-      { min: 5, max: 12, label: 'Mild withdrawal', class: 'cows-severity-mild', action: 'Mild withdrawal. Generally considered the lower threshold for initiating buprenorphine when clinically appropriate.' },
+      { min: 0, max: 4, label: 'No significant withdrawal', class: 'cows-severity-minimal', action: 'Minimal signs of opioid withdrawal. Buprenorphine induction not yet recommended; reassess in 1-2 hours or await further objective signs. With fentanyl exposure, withdrawal can be delayed; reassess in 1-2 h and consider low-dose (micro) induction per protocol.' },
+      { min: 5, max: 12, label: 'Mild withdrawal', class: 'cows-severity-mild', action: 'Mild withdrawal. Standard buprenorphine induction usually waits for COWS ≥8 (short-acting opioids) or ≥12-13 (methadone). With fentanyl exposure, consider low-dose (micro) or high-dose induction per protocol.' },
       { min: 13, max: 24, label: 'Moderate withdrawal', class: 'cows-severity-moderate', action: 'Moderate withdrawal. Appropriate for buprenorphine induction; consider adjunctive supportive medications.' },
       { min: 25, max: 36, label: 'Moderately severe withdrawal', class: 'cows-severity-msevere', action: 'Moderately severe withdrawal. Initiate treatment promptly and monitor for dehydration and electrolyte disturbance.' },
       { min: 37, max: 48, label: 'Severe withdrawal', class: 'cows-severity-severe', action: 'Severe withdrawal. Consider higher level of care, aggressive symptom control, and rapid initiation of MOUD per program.' }

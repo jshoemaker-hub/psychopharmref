@@ -227,11 +227,11 @@
   }
 
   function getSeverity(avg) {
-    if (avg < 1.5) return { label: 'No/very low risk', cls: 'bo-severity-low' };
-    if (avg < 2.5) return { label: 'Low risk', cls: 'bo-severity-low' };
-    if (avg < 3.5) return { label: 'At risk', cls: 'bo-severity-moderate' };
-    if (avg < 4.5) return { label: 'High risk', cls: 'bo-severity-high' };
-    return { label: 'Very high risk', cls: 'bo-severity-very-high' };
+    // Clinically validated BAT-23 total cut-offs (Schaufeli et al., 2023,
+    // Scand J Work Environ Health; pooled NL / Flanders / Finland samples).
+    if (avg < 2.59) return { label: 'No risk (below 2.59)', cls: 'bo-severity-low' };
+    if (avg < 3.02) return { label: 'At risk for burnout (2.59–3.01)', cls: 'bo-severity-moderate' };
+    return { label: 'Severe burnout likely (≥3.02)', cls: 'bo-severity-very-high' };
   }
 
   function updateScores() {
@@ -365,7 +365,7 @@
     });
 
     lines.push('');
-    lines.push('Interpretation: Mean scores ≥ 3.50 suggest significant burnout risk warranting clinical attention.');
+    lines.push('Interpretation (BAT-23 total, Schaufeli et al., 2023): <2.59 no risk; 2.59–3.01 at risk; ≥3.02 severe burnout likely. Subscale cut-offs (at risk / severe): exhaustion 3.06 / 3.31, mental distance 2.10 / 3.30, cognitive impairment 2.70 / 3.10, emotional impairment 2.30 / 2.90. Cut-offs were derived for the work-related BAT-23; apply with caution to the general version. A screening result, not a diagnosis.');
     lines.push('Reference: Schaufeli, W.B., De Witte, H. & Desart, S. (2019). BAT – Test Manual. KU Leuven.');
 
     return lines.join('\n');

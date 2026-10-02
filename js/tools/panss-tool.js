@@ -69,9 +69,9 @@
       { id: 'general', label: 'General Psychopathology', report_heading: 'GENERAL PSYCHOPATHOLOGY (G1-G16)', item_ids: ['G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10', 'G11', 'G12', 'G13', 'G14', 'G15', 'G16'], max: 112 }
     ],
     marder_factors: [
-      { id: 'positive', label: 'Positive Symptoms', item_ids: ['P1', 'P3', 'P5', 'P6', 'G9'], max: 35 },
-      { id: 'negative', label: 'Negative Symptoms', item_ids: ['N1', 'N2', 'N3', 'N4', 'N6', 'G7'], max: 42 },
-      { id: 'disorganized', label: 'Disorganized Thought', item_ids: ['P2', 'N5', 'G11'], max: 21 },
+      { id: 'positive', label: 'Positive Symptoms', item_ids: ['P1', 'P3', 'P5', 'P6', 'N7', 'G1', 'G9', 'G12'], max: 56 },
+      { id: 'negative', label: 'Negative Symptoms', item_ids: ['N1', 'N2', 'N3', 'N4', 'N6', 'G7', 'G16'], max: 49 },
+      { id: 'disorganized', label: 'Disorganized Thought', item_ids: ['P2', 'N5', 'G5', 'G10', 'G11', 'G13', 'G15'], max: 49 },
       { id: 'hostility', label: 'Uncontrolled Hostility/Excitement', item_ids: ['P4', 'P7', 'G8', 'G14'], max: 28 },
       { id: 'anxiety', label: 'Anxiety/Depression', item_ids: ['G2', 'G3', 'G4', 'G6'], max: 28 }
     ],

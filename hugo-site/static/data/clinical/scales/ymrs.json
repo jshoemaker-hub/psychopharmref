@@ -5,7 +5,7 @@
   "short_title": "YMRS",
   "domain": "mania",
   "status": "pilot-source-of-truth",
-  "last_reviewed": "2026-07-18",
+  "last_reviewed": "2026-10-02",
   "source_ids": ["young-1978-ymrs", "lukasiewicz-2013-ymrs"],
   "instructions": "Clinician-administered rating of manic symptoms based on interview, observed behavior, and reported subjective experience.",
   "score": {
@@ -39,13 +39,13 @@
   ],
   "severity_bands": [
     { "min": 0, "max": 12, "label": "Remission / minimal", "class": "ym-severity-remission", "action": "YMRS ≤12 is the conventional remission threshold used in most trials; interpret in clinical context" },
-    { "min": 13, "max": 19, "label": "Mild mania", "class": "ym-severity-mild", "action": "Mild current manic symptom burden; consider monitoring, functional impact, and longitudinal change" },
-    { "min": 20, "max": 25, "label": "Moderate mania", "class": "ym-severity-moderate", "action": "Moderate current manic symptom burden; further clinical assessment and treatment planning are usually warranted" },
-    { "min": 26, "max": 60, "label": "Severe mania", "class": "ym-severity-severe", "action": "High current manic symptom burden; assess safety, psychosis, impairment, and need for urgent treatment setting" }
+    { "min": 13, "max": 19, "label": "Mild (13–19; descriptive band)", "class": "ym-severity-mild", "action": "Mild current manic symptom burden; consider monitoring, functional impact, and longitudinal change" },
+    { "min": 20, "max": 25, "label": "Moderate (20–25; descriptive band)", "class": "ym-severity-moderate", "action": "Moderate current manic symptom burden; further clinical assessment and treatment planning are usually warranted" },
+    { "min": 26, "max": 60, "label": "Severe (≥26; descriptive band)", "class": "ym-severity-severe", "action": "High current manic symptom burden; assess safety, psychosis, impairment, and need for urgent treatment setting" }
   ],
   "report": {
     "heading": "Young Mania Rating Scale (YMRS)",
-    "scoring_note": "Scoring: 11 clinician-rated items summed for a 0-60 total; items 5, 6, 8, and 9 use 0/2/4/6/8 scoring.",
+    "scoring_note": "Scoring: 11 clinician-rated items summed for a 0-60 total; items 5, 6, 8, and 9 use 0/2/4/6/8 scoring. YMRS ≤12 is the conventional remission threshold; bands above 12 are descriptive, not validated severity categories (Lukasiewicz 2013 maps YMRS to CGI-BP with different breakpoints).",
     "screening_note": "Lukasiewicz et al. identified a YMRS severity threshold of 25 for CGI-BP mania marked illness in the EMBLEM cohort and a minimal clinically significant difference of 6.6 points."
   },
   "test_vectors": [
@@ -59,19 +59,19 @@
       "name": "mild",
       "responses": [2, 2, 1, 1, 2, 2, 1, 0, 0, 1, 1],
       "expected_score": 13,
-      "expected_severity": "Mild mania"
+      "expected_severity": "Mild (13–19; descriptive band)"
     },
     {
       "name": "moderate",
       "responses": [2, 2, 2, 2, 4, 4, 2, 0, 0, 1, 1],
       "expected_score": 20,
-      "expected_severity": "Moderate mania"
+      "expected_severity": "Moderate (20–25; descriptive band)"
     },
     {
       "name": "severe",
       "responses": [3, 3, 3, 3, 4, 4, 2, 2, 2, 0, 0],
       "expected_score": 26,
-      "expected_severity": "Severe mania"
+      "expected_severity": "Severe (≥26; descriptive band)"
     },
     {"name": "remission_boundary_12", "responses": [2, 2, 1, 1, 2, 2, 1, 0, 0, 1, 0], "expected_score": 12, "expected_severity": "Remission / minimal"}
   ]

@@ -49,7 +49,7 @@
     ],
     report: {
       heading: 'BPRS (Brief Psychiatric Rating Scale)',
-      scoring_note: 'Severity anchors (Leucht et al., 2005): mildly ill ~= 31, moderately ill ~= 41, markedly ill ~= 53.'
+      scoring_note: 'Severity anchors (Leucht et al., 2005): mildly ill ~= 31, moderately ill ~= 41, markedly ill ~= 53. Items are rated 1-7 (0 = not assessed), so the effective total is 18-126 once all items are rated. Subscales are site groupings for convenience, not a published factor model.'
     },
     references: [
       { label: 'Overall JE, Gorham DR. The Brief Psychiatric Rating Scale. Psychol Rep. 1962;10(3):799-812.' },

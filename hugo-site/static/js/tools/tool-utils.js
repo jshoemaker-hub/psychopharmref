@@ -142,7 +142,7 @@ var ToolUtils = (function() {
   }
 
   // Bump when any data/clinical/scales/*.json changes so browsers/CDN refetch.
-  var SCALE_DATA_VERSION = '20261001a';
+  var SCALE_DATA_VERSION = '20261002a';
 
   function loadClinicalScale(scaleId) {
     if (!clinicalScalePromises[scaleId]) {

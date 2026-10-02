@@ -19,7 +19,7 @@
     severity_bands: [
       { min: 0, max: 9, label: 'Minimal to mild withdrawal', class: 'ciwa-severity-minimal', action: 'Scores below 8-10 usually do not require medication for withdrawal; many symptom-triggered protocols begin benzodiazepine dosing at a score of 8-10 or higher. Continue symptom-triggered reassessment per protocol.' },
       { min: 10, max: 15, label: 'Moderate withdrawal', class: 'ciwa-severity-moderate', action: 'Marked autonomic arousal. Consider benzodiazepine and continued frequent (q1h) reassessment.' },
-      { min: 16, max: 67, label: 'Severe withdrawal', class: 'ciwa-severity-severe', action: 'Impending delirium tremens risk. Treat with benzodiazepine promptly, monitor closely, and consider higher level of care.' }
+      { min: 16, max: 67, label: 'Severe withdrawal', class: 'ciwa-severity-severe', action: 'Severe withdrawal (>15) with increased risk of seizures and delirium tremens. Treat with benzodiazepine promptly, monitor closely, and consider higher level of care.' }
     ],
     report: {
       heading: 'CIWA-Ar (Clinical Institute Withdrawal Assessment - Alcohol, Revised)',
