@@ -31,12 +31,14 @@
         /* ── Helpers ─── */
         function parseHL(obj) {
           if (!obj || !obj.drug) return null;
-          var s = obj.drug;
-          // Try to get the first number
-          var m = s.match(/([\d.]+)/);
+          // First number WITH its own unit ("4 hr (oral); 5–10 days" -> 4 h, not 96 h)
+          var m = obj.drug.match(/([\d.]+)(?:\s*[\u2013-]\s*[\d.]+)?\s*(hours?|hrs?|h\b|days?|d\b|min(?:utes?)?|weeks?|wk)/i);
           if (!m) return null;
           var v = parseFloat(m[1]);
-          if (/day/i.test(s)) v *= 24;
+          var u = m[2].toLowerCase();
+          if (u.charAt(0) === 'd') v *= 24;
+          else if (u.charAt(0) === 'w') v *= 168;
+          else if (u.indexOf('min') === 0) v /= 60;
           return v > 0 ? v : null;
         }
 
@@ -99,14 +101,17 @@
           if (typeof MEDICATIONS === 'undefined') return;
           drugs = [];
           MEDICATIONS.forEach(function(m) {
-            var hl = parseHL(m.halfLife);
+            // Per-drug override (data.js pkCurve) wins over parsing the half-life text
+            var pc = m.pkCurve || {};
+            var hl = pc.hl || parseHL(m.halfLife);
+            var tmax = pc.tmax || m.tmax;
             // Drugs without receptor Ki data still get a curve (neutral peak height).
-            if (!m.tmax || !hl) return;
+            if (!tmax || !hl) return;
             var pr = primaryRec(m.receptorKi);
             drugs.push({
               id: m.id, name: m.name, brand: m.brandName,
               cat: m.category, cls: m.class,
-              tmax: m.tmax, hl: hl,
+              tmax: tmax, hl: hl, note: pc.note || '',
               pr: pr, peak: pr ? peakPct(pr.ki) : 50
             });
           });
@@ -163,7 +168,8 @@
             el.innerHTML = '<div class="pk-leg-swatch" style="background:' + (colorOf[id]||'#999') + '"></div>' +
               '<span class="pk-leg-name">' + d.name + '</span>' +
               '<span class="pk-leg-detail">Tmax ' + d.tmax + 'h &middot; t&frac12; ' + d.hl.toFixed(1) + 'h' +
-              (d.pr ? ' &middot; ' + d.pr.name : '') + '</span>';
+              (d.pr ? ' &middot; ' + d.pr.name : '') +
+              (d.note ? ' &middot; <em>' + d.note.replace(/</g, '&lt;') + '</em>' : '') + '</span>';
             el.addEventListener('click', function() {
               hidden[id] = !hidden[id];
               el.classList.toggle('dimmed');

@@ -933,6 +933,7 @@ const MEDICATIONS = [
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '1–3 days (acute); 4–6 days (chronic)', metabolites: 'Norfluoxetine: 4–16 days' },
     tmax: 6,
+    pkCurve: { hl: 96, tmax: 6, note: 'chronic dosing; norfluoxetine 4–16 d' },
     p450: {
       substrate: ['CYP2D6','CYP2C9'],
       inhibits: { 'CYP2D6': 'strong', 'CYP2C9': 'moderate', 'CYP2C19': 'strong', 'CYP3A4': 'weak' },
@@ -1040,7 +1041,7 @@ const MEDICATIONS = [
       inhibits: { 'CYP2D6': 'strong', 'CYP3A4': 'weak' },
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Reduce dose', severe: 'Max 40 mg/day', notes: 'Reduce dose in severe renal impairment (CrCl <30 mL/min): initiate at lower end of dosing range.' },
+    renalImpairment: { modified: true, moderate: 'Use with caution', severe: 'CrCl <30: start 10 mg/day (IR); max 40 mg/day', notes: 'Dose reduction applies to severe renal impairment (CrCl <30): start 10 mg/day IR (12.5 mg CR); max 40 mg/day IR (50 mg CR).' },
     hepaticImpairment: { modified: true, notes: 'Use with caution; reduce dose' },
     geriatricDosing: { modified: true, notes: 'Use with caution (anticholinergic burden)' },
     qtInterval: false,
@@ -1333,7 +1334,7 @@ const MEDICATIONS = [
       induces: []
     },
     renalImpairment: { modified: true, moderate: 'Use with caution', severe: 'Use with caution' },
-    hepaticImpairment: { modified: true, notes: 'Use with caution; contraindicated in severe' },
+    hepaticImpairment: { modified: true, notes: 'Contraindicated with a history of liver disease or abnormal liver function tests.' },
     geriatricDosing: { modified: true, notes: 'Use with caution; fall/orthostatic risk' },
     qtInterval: false,
     proteinBinding: null,
@@ -1393,7 +1394,7 @@ const MEDICATIONS = [
       induces: []
     },
     renalImpairment: { modified: true, moderate: 'Use with caution', severe: 'Reduce dose/frequency' },
-    hepaticImpairment: { modified: true, notes: 'Reduce dose; avoid in severe (cirrhosis)' },
+    hepaticImpairment: { modified: true, notes: 'Severe hepatic cirrhosis: max 75 mg/day (IR), 100 mg/day or 150 mg every other day (SR), 150 mg every other day (XL). Mild-moderate impairment: consider reducing the dose and/or frequency.' },
     geriatricDosing: { modified: true, notes: 'Start low; seizure risk consideration' },
     qtInterval: false,
     proteinBinding: 84,
@@ -1424,7 +1425,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Use with caution', severe: 'Use with caution; clearance decreased ~30%' },
+    renalImpairment: { modified: true, moderate: 'GFR 11–39: clearance decreased ~30%; use with caution', severe: 'GFR <10: clearance decreased ~50%; use with caution' },
     hepaticImpairment: { modified: true, notes: 'Use with caution; clearance decreased ~30%' },
     geriatricDosing: { modified: true, notes: 'Start 7.5 mg; clearance reduced in elderly' },
     qtInterval: false,
@@ -1609,6 +1610,7 @@ const MEDICATIONS = [
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '3 hr (20 hr in CYP2D6 PMs)', metabolites: '9-OH-risperidone (paliperidone): 21 hr' },
     tmax: 1,
+    pkCurve: { note: 'parent; active moiety with 9-OH ~20 h' },
     p450: {
       substrate: ['CYP2D6','CYP3A4'],
       inhibits: {},
@@ -1757,8 +1759,8 @@ const MEDICATIONS = [
       inhibits: { 'CYP2D6': 'weak' },
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; use with extreme caution. Clozapine metabolites may accumulate; risk of agranulocytosis monitoring unchanged.' },
-    hepaticImpairment: { modified: true, notes: 'Use with caution; monitor LFTs' },
+    renalImpairment: { modified: true, moderate: 'Dose reduction may be necessary', severe: 'Dose reduction may be necessary', notes: 'Label: dose reduction may be necessary in significant renal impairment. Use caution; ANC monitoring schedule is unchanged.' },
+    hepaticImpairment: { modified: true, notes: 'Label: dose reduction may be necessary in significant hepatic impairment; monitor LFTs.' },
     geriatricDosing: { modified: true, notes: 'Significant orthostatic/sedation risk' },
     qtInterval: true,
     proteinBinding: 97,
@@ -1823,7 +1825,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Max 80 mg/day', severe: 'Max 40 mg/day' },
+    renalImpairment: { modified: true, moderate: 'CrCl 30–<50: start 20 mg; max 80 mg/day', severe: 'CrCl <30: start 20 mg; max 80 mg/day', notes: 'Moderate and severe renal impairment: start 20 mg/day, maximum 80 mg/day.' },
     hepaticImpairment: { modified: true, notes: 'Moderate: max 80 mg; Severe: max 40 mg' },
     geriatricDosing: { modified: true, notes: 'Start low' },
     qtInterval: false,
@@ -2010,7 +2012,7 @@ const MEDICATIONS = [
       induces: []
     },
     renalImpairment: { modified: false, moderate: null, severe: null },
-    hepaticImpairment: { modified: true, notes: 'Max 5 mg/night; use with caution' },
+    hepaticImpairment: { modified: true, notes: 'Mild-moderate impairment: 5 mg (IR) or 6.25 mg (CR); avoid in severe impairment (may contribute to encephalopathy).' },
     geriatricDosing: { modified: true, notes: 'Max 5 mg (Beers List); fall risk' },
     qtInterval: false,
     proteinBinding: 92,
@@ -2086,7 +2088,7 @@ const MEDICATIONS = [
     class: 'Melatonin Agonist',
     category: 'Sleep',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: '1–2.6 hr', metabolites: 'M-II (active, 20× more potent at MT receptors): 2–5 hr' },
+    halfLife: { drug: '1–2.6 hr', metabolites: 'M-II (active): 2–5 hr; about 1/10–1/5 the receptor affinity of ramelteon but 20–100× higher exposure, so it likely contributes to the effect' },
     tmax: 0.75,
     p450: {
       substrate: ['CYP1A2','CYP3A4','CYP2C9'],
@@ -2151,7 +2153,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Reduce to 50 mg BID (CrCl 5–29)', severe: 'Reduce to 25 mg BID', notes: 'Reduce dose in moderate-severe renal impairment (CrCl <60 mL/min); max 50 mg BID if CrCl 5–29 mL/min.' },
+    renalImpairment: { modified: true, moderate: 'CrCl 30–49: use with caution', severe: 'CrCl 5–29: reduce maintenance 50% to 25 mg BID (may increase to 50 mg BID by response)', notes: 'Savella label: severe renal impairment (CrCl 5–29) — reduce the maintenance dose by 50% to 50 mg/day (25 mg BID), may increase to 100 mg/day based on response; moderate (CrCl 30–49) — use with caution; end-stage renal disease — not recommended.' },
     hepaticImpairment: { modified: true, notes: 'No dose adjustment in mild-moderate; avoid in severe hepatic impairment.' },
     geriatricDosing: { modified: false, notes: 'Use with caution' },
     qtInterval: false,
@@ -2226,7 +2228,7 @@ const MEDICATIONS = [
     id: 'gepirone',
     effects: { weight: 'minimal', sedation: 'minimal', sexual: 'minimal', antichol: 'minimal', qt: 'moderate' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1986, fdaApprovalYear: 2023, originator: "Bristol-Myers Squibb / Fabre-Kramer" },
-    dosing: { start: "18.2 mg/day", target: "18.2–72.6 mg/day", max: "72.6 mg/day (36.3 mg/day max if ≥65 yr, CrCl <50, or moderate hepatic impairment; reduce dose 50% with moderate CYP3A4 inhibitors)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=gepirone" } },
+    dosing: { start: "18.2 mg/day", target: "18.2–72.6 mg/day", max: "72.6 mg/day (36.3 mg/day max if ≥65 yr, CrCl <50, or moderate hepatic impairment; reduce dose 50% with moderate CYP3A4 inhibitors; strong CYP3A4 inhibitors contraindicated; avoid strong inducers)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=gepirone" } },
     name: 'Gepirone',
     brandName: 'Exxua',
     class: 'Azapirone',
@@ -2239,9 +2241,9 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No formal recommendations; use with caution in severe renal impairment.' },
-    hepaticImpairment: { modified: true, notes: 'Avoid in moderate-severe' },
-    geriatricDosing: { modified: false, notes: 'Use with caution; no specific dose adjustment but start low given limited geriatric data.' },
+    renalImpairment: { modified: true, moderate: 'CrCl <50: start 18.2 mg; max 36.3 mg/day (increase only after Day 7)', severe: 'CrCl <50: start 18.2 mg; max 36.3 mg/day', notes: 'Label (Exxua): CrCl <50 mL/min — start 18.2 mg daily; may increase to a maximum of 36.3 mg after Day 7.' },
+    hepaticImpairment: { modified: true, notes: 'Mild: no adjustment. Moderate (Child-Pugh B): start 18.2 mg; max 36.3 mg/day after Day 7. Severe (Child-Pugh C): contraindicated.' },
+    geriatricDosing: { modified: true, notes: 'Age ≥65: start 18.2 mg; max 36.3 mg/day (increase only after Day 7).' },
     qtInterval: true,
     proteinBinding: 72,
     receptorKi: { '5HT1A': 21, SERT: 160, NET: 10000, DAT: 10000, '5HT2A': 10000, D2: 500, H1: 10000, alpha1: 10000, M1: 10000 },
@@ -2286,7 +2288,7 @@ const MEDICATIONS = [
     development: { discoveryYear: 2011, fdaApprovalYear: 2019, originator: "Sage Therapeutics" },
     dosing: { start: "30 mcg/kg/hr IV", target: "titrate to 90 mcg/kg/hr over 60-hr infusion", max: "90 mcg/kg/hr", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=brexanolone" } },
     name: 'Brexanolone',
-    brandName: 'Zulresso — discontinued',
+    brandName: 'Zulresso — withdrawn (2025)',
     class: 'Neuroactive Steroid',
     category: 'Antidepressant',
     activeEnantiomer: { has: false, name: null },
@@ -2312,7 +2314,7 @@ const MEDICATIONS = [
     id: 'zuranolone',
     effects: { weight: 'minimal', sedation: 'high', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 2014, fdaApprovalYear: 2023, originator: "Sage Therapeutics / Biogen" },
-    dosing: { start: "50 mg PO qPM ×14 days", target: "50 mg/day", max: "50 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=zuranolone" } },
+    dosing: { start: "50 mg PO qPM ×14 days", target: "50 mg/day", max: "50 mg/day (40 mg if CNS depressant effects; 30 mg with strong CYP3A4 inhibitors, eGFR <60, or Child-Pugh C; avoid CYP3A4 inducers)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=zuranolone" } },
     name: 'Zuranolone',
     brandName: 'Zurzuvae',
     class: 'Neuroactive Steroid',
@@ -2325,9 +2327,9 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required in mild-moderate renal impairment. Not studied in severe.' },
-    hepaticImpairment: { modified: true, notes: 'Avoid in severe (Child-Pugh C)' },
-    geriatricDosing: { modified: false, notes: 'Use with caution; sedation and CNS depression risk. Start at 20 mg. Not studied in elderly.' },
+    renalImpairment: { modified: true, moderate: 'eGFR <60: 30 mg once daily for 14 days', severe: '30 mg once daily for 14 days', notes: 'Moderate or severe renal impairment (eGFR <60 mL/min/1.73 m²): reduce to 30 mg once daily for 14 days.' },
+    hepaticImpairment: { modified: true, notes: 'Severe (Child-Pugh C): 30 mg once daily for 14 days. No adjustment in mild or moderate impairment.' },
+    geriatricDosing: { modified: false, notes: 'No specific geriatric adjustment in the label; apply the renal criterion (eGFR <60 → 30 mg) and monitor for sedation.' },
     qtInterval: false,
     proteinBinding: 99,
     receptorKi: null,
@@ -2582,6 +2584,7 @@ const MEDICATIONS = [
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '~1.5 hr (parent); active metabolites ~24 hr', metabolites: 'Active metabolites: ~24 hr' },
     tmax: 1.5,
+    pkCurve: { note: 'parent only; active metabolites ~24 h' },
     p450: {
       substrate: ['CYP2D6'],
       inhibits: {},
@@ -2648,7 +2651,7 @@ const MEDICATIONS = [
       induces: []
     },
     renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required; not significantly renally excreted.' },
-    hepaticImpairment: { modified: true, notes: 'Avoid in hepatic impairment' },
+    hepaticImpairment: { modified: true, notes: 'Mild: no adjustment. Moderate: use with caution. Severe: not recommended.' },
     geriatricDosing: { modified: false, notes: 'Use with caution; orthostatic hypotension and QT risks increase with age.' },
     qtInterval: true,
     proteinBinding: 97,
@@ -2679,8 +2682,8 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Max 2 mg/day (CrCl <60)', severe: 'Max 2 mg/day', notes: 'Max 2 mg/day in severe renal impairment (CrCl <30 mL/min or ESRD).' },
-    hepaticImpairment: { modified: true, notes: 'Max 2 mg/day in moderate-severe' },
+    renalImpairment: { modified: true, moderate: 'CrCl <60: max 2 mg/day (MDD, AD agitation) or 3 mg/day (schizophrenia)', severe: 'Max 2 mg/day (MDD, AD agitation) or 3 mg/day (schizophrenia)', notes: 'Moderate, severe, or end-stage renal impairment (CrCl <60): maximum 2 mg/day for MDD and for agitation in Alzheimer dementia; 3 mg/day for schizophrenia.' },
+    hepaticImpairment: { modified: true, notes: 'Moderate-severe (Child-Pugh ≥7): maximum 2 mg/day for MDD and for agitation in Alzheimer dementia; 3 mg/day for schizophrenia.' },
     geriatricDosing: { modified: false, notes: 'No specific adjustment; monitor for orthostatic hypotension and EPS.' },
     qtInterval: false,
     proteinBinding: 99,
@@ -2725,7 +2728,7 @@ const MEDICATIONS = [
     id: 'lumateperone',
     effects: { weight: 'minimal', sedation: 'low', sexual: 'minimal', antichol: 'minimal', qt: 'minimal' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 2010, fdaApprovalYear: 2019, originator: "Intra-Cellular Therapies" },
-    dosing: { start: "42 mg/day", target: "42 mg/day", max: "42 mg/day (fixed dose)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=lumateperone" } },
+    dosing: { start: "42 mg/day", target: "42 mg/day", max: "42 mg/day (fixed dose; 21 mg with moderate CYP3A4 inhibitors or moderate–severe hepatic impairment; 10.5 mg with strong CYP3A4 inhibitors; avoid CYP3A4 inducers)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=lumateperone" } },
     name: 'Lumateperone',
     brandName: 'Caplyta',
     class: 'SGA',
@@ -2739,8 +2742,8 @@ const MEDICATIONS = [
       induces: []
     },
     renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required in mild-moderate renal impairment.' },
-    hepaticImpairment: { modified: true, notes: 'Avoid in moderate-severe (Child-Pugh B/C)' },
-    geriatricDosing: { modified: false, notes: 'Use with caution; approved for bipolar depression in adults. Monitor for sedation and orthostasis.' },
+    hepaticImpairment: { modified: true, notes: 'Moderate or severe (Child-Pugh B/C): 21 mg once daily.' },
+    geriatricDosing: { modified: false, notes: 'Use with caution; approved in adults for schizophrenia, bipolar I or II depression, and (Nov 2025) adjunctive MDD. Boxed warning for increased mortality in older patients with dementia-related psychosis. Monitor for sedation and orthostasis.' },
     qtInterval: false,
     proteinBinding: 97,
     receptorKi: {
@@ -2771,8 +2774,8 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment required in mild-moderate renal impairment. Not studied in severe (CrCl <30 mL/min).' },
-    hepaticImpairment: { modified: true, notes: 'Avoid in hepatic impairment (not studied)' },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No dose adjustment for mild to severe renal impairment or ESRD; use caution in severe impairment (CrCl <30) and ESRD, where exposure is higher and experience is limited. Not removed by dialysis.' },
+    hepaticImpairment: { modified: false, notes: 'No dose adjustment needed in hepatic impairment (label).' },
     geriatricDosing: { modified: false, notes: 'Main population; well studied in elderly with PD psychosis' },
     qtInterval: true,
     proteinBinding: 95,
@@ -2795,6 +2798,7 @@ const MEDICATIONS = [
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '~2 hr (parent); MHD ~9 hr', metabolites: 'MHD (licarbazepine, racemic 10-monohydroxy derivative, active): ~9 hr' },
     tmax: 4.5,
+    pkCurve: { hl: 9, tmax: 4.5, note: 'MHD (active metabolite)' },
     p450: {
       substrate: [],
       inhibits: { 'CYP2C19': 'moderate' },
@@ -2860,7 +2864,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Reduce based on CrCl (see full prescribing info)', severe: 'Supplement dose after dialysis', notes: 'Dose-adjust based on CrCl: significant reductions required. CrCl 30–59: max 700 mg TID; CrCl 15–29: 200–700 mg BID; CrCl <15: 100–300 mg/day. Supplemental dose after dialysis.' },
+    renalImpairment: { modified: true, moderate: 'CrCl 30–59: 400–1,400 mg/day as 200–700 mg BID', severe: 'CrCl 15–29: 200–700 mg/day once daily; CrCl <15: 100–300 mg/day once daily', notes: 'Label renal table (Neurontin): CrCl ≥60: 900–3,600 mg/day divided TID; CrCl 30–59: 400–1,400 mg/day divided BID (200–700 mg BID); CrCl 15–29: 200–700 mg/day once daily; CrCl <15: 100–300 mg/day once daily. Hemodialysis: supplemental dose after each session (125–350 mg, based on the maintenance dose).' },
     hepaticImpairment: { modified: false, notes: 'No dose adjustment required; gabapentin is not hepatically metabolized.' },
     geriatricDosing: { modified: false, notes: 'Reduce dose for age-related renal decline' },
     qtInterval: false,
@@ -3177,14 +3181,15 @@ const MEDICATIONS = [
     class: 'Benzodiazepine',
     category: 'Anxiolytic',
     activeEnantiomer: { has: false, name: null },
-    halfLife: { drug: '2–3 hr (parent)', metabolites: 'Desalkylflurazepam (active): 47–100 hr' },
+    halfLife: { drug: '2–3 hr (parent)', metabolites: 'Desalkylflurazepam (active): 47–100 hr (longer in older adults, up to ~250 hr reported)' },
     tmax: 1,
+    pkCurve: { note: 'parent only; desalkylflurazepam 47–100 h' },
     p450: {
       substrate: ['CYP3A4'],
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; use with caution. Very long-acting active metabolite (desalkylflurazepam, t½ 40–250 hr) may accumulate.' },
+    renalImpairment: { modified: false, moderate: null, severe: null, notes: 'No specific dose adjustment; use with caution. Very long-acting active metabolite (desalkylflurazepam, t½ 47–100 hr, longer in older adults) may accumulate.' },
     hepaticImpairment: { modified: true, notes: 'Use with caution; long-acting metabolites accumulate' },
     geriatricDosing: { modified: true, notes: 'Avoid (Beers List); extreme accumulation risk with long-lived metabolite' },
     qtInterval: false,
@@ -3340,8 +3345,8 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'No specific adjustment needed', severe: 'Possible dose reduction', notes: 'Reduce dose in significant renal impairment; up to 80% excreted renally unchanged.' },
-    hepaticImpairment: { modified: false, notes: 'Use with caution; partially hepatically metabolized.' },
+    renalImpairment: { modified: true, moderate: 'No specific adjustment needed', severe: 'Possible dose reduction', notes: 'Reduce dose in significant renal impairment; about 50% (40–75%) excreted unchanged in urine.' },
+    hepaticImpairment: { modified: true, notes: 'Dose reduction may be needed in significant hepatic impairment (Intuniv label); metabolized by CYP3A4.' },
     geriatricDosing: { modified: false, notes: 'Use with caution; monitor blood pressure and heart rate. Sedation risk.' },
     qtInterval: false,
     proteinBinding: 70,
@@ -3516,12 +3521,13 @@ const MEDICATIONS = [
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: 'Parent: <1 hr; d-amphetamine produced: 10–12 hr', metabolites: 'd-Amphetamine: 10–12 hr' },
     tmax: 3.5,
+    pkCurve: { hl: 11, tmax: 3.5, note: 'd-amphetamine (active)' },
     p450: {
       substrate: ['CYP2D6'],
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Max 50 mg/day (CrCl 15–29)', severe: 'Max 30 mg/day', notes: 'Reduce max dose in moderate-severe renal impairment: max 50 mg/day (GFR 15–29); max 30 mg/day (GFR <15 or ESRD).' },
+    renalImpairment: { modified: true, moderate: 'No adjustment', severe: 'GFR 15–29: max 50 mg/day; GFR <15/ESRD: max 30 mg/day', notes: 'Severe renal impairment (GFR 15–29): max 50 mg/day; end-stage renal disease (GFR <15): max 30 mg/day.' },
     hepaticImpairment: { modified: false, notes: 'No dose adjustment required; hydrolyzed to d-amphetamine in blood.' },
     geriatricDosing: { modified: false, notes: 'Use with extreme caution; cardiovascular monitoring essential. Not studied in elderly.' },
     qtInterval: false,
@@ -3602,7 +3608,7 @@ const MEDICATIONS = [
     id: 'solriamfetol',
     effects: { weight: 'minimal', sedation: 'minimal', sexual: 'minimal', antichol: 'none', qt: 'minimal', review: true }, // tiers (drafted 2026-10-01 from FDA labeling adverse reactions / W&P; pending clinician review — not yet in psychopharm-tolerability.csv)
     development: { discoveryYear: 2005, fdaApprovalYear: 2019, originator: "Aerial / Jazz Pharmaceuticals" },
-    dosing: { start: "37.5–75 mg qAM", target: "75–150 mg/day", max: "150 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=solriamfetol" } },
+    dosing: { start: "37.5 mg qAM (OSA) or 75 mg qAM (narcolepsy)", target: "75–150 mg/day", max: "150 mg/day", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=solriamfetol" } },
     name: 'Solriamfetol',
     brandName: 'Sunosi',
     class: 'Wake-Promoting Agent',
@@ -3615,7 +3621,7 @@ const MEDICATIONS = [
       inhibits: {},
       induces: []
     },
-    renalImpairment: { modified: true, moderate: 'Max 75 mg/day (CrCl 15–59)', severe: 'Avoid (CrCl <15)', notes: 'Reduce dose in renal impairment: max 75 mg/day (CrCl 15–59); avoid if CrCl <15 mL/min or ESRD. Primarily renally excreted unchanged.' },
+    renalImpairment: { modified: true, moderate: 'eGFR 30–59: start 37.5 mg; may increase to max 75 mg after ≥7 days', severe: 'eGFR 15–29: 37.5 mg/day (max 37.5 mg); eGFR <15/ESRD: not recommended', notes: 'Primarily renally excreted unchanged. Moderate (eGFR 30–59): start 37.5 mg, max 75 mg/day after at least 7 days. Severe (eGFR 15–29): start and max 37.5 mg/day. ESRD (eGFR <15): not recommended.' },
     hepaticImpairment: { modified: false, notes: 'No dose adjustment required; not significantly hepatically metabolized.' },
     geriatricDosing: { modified: false, notes: 'Use with caution; monitor cardiovascular effects. Limited geriatric data.' },
     qtInterval: false,
@@ -4052,6 +4058,7 @@ const MEDICATIONS = [
     activeEnantiomer: { has: false, name: null },
     halfLife: { drug: '4 hr (oral); 5–10 days (Vivitrol)', metabolites: '6-β-naltrexol (active): ~13 hr' },
     tmax: 1,
+    pkCurve: { hl: 4, tmax: 1, note: 'oral; Vivitrol not shown' },
     p450: {
       substrate: [],
       inhibits: {},
