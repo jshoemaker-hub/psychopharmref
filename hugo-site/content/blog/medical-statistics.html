@@ -1,6 +1,7 @@
 ---
 title: "Medical Statistics: What Every Doctor and Student Needs to Know"
 date: 2026-03-21
+lastmod: 2026-10-01
 description: "From p-values to NNT, confidence intervals to machine learning — a practical guide to biostatistics for clinicians"
 category: "Medical Education"
 subtitle: "From p-values to NNT, confidence intervals to machine learning — a practical guide to biostatistics for clinicians"
@@ -52,9 +53,9 @@ draft: false
                 </div>
 
                 <div class="ba-timeline-item">
-                    <div class="ba-timeline-date">1940s–1950s</div>
+                    <div class="ba-timeline-date">1940s–1960s</div>
                     <div class="ba-timeline-text">
-                        <strong>Clinical trials emerge as the gold standard.</strong> The British conduct the first randomized controlled trial of streptomycin for tuberculosis (1946). The FDA mandates efficacy trials for new drugs. Statistics becomes inseparable from clinical research.
+                        <strong>Clinical trials emerge as the gold standard.</strong> The British Medical Research Council's trial of streptomycin for tuberculosis (run 1946–47, published 1948) is widely regarded as the first randomized controlled trial. In 1962, the Kefauver-Harris Amendments required proof of efficacy from adequate and well-controlled studies before FDA approval. Statistics becomes inseparable from clinical research.
                     </div>
                 </div>
 
@@ -201,7 +202,7 @@ draft: false
 
             <ul>
                 <li><strong>Absolute Risk Reduction (ARR):</strong> The difference in event rates between groups. If 60% of treated patients recover and 50% of control patients recover, ARR = 10 percentage points.</li>
-                <li><strong>Relative Risk (RR):</strong> The ratio of risks. RR = 0.60 / 0.50 = 1.2. The treated group has 1.2 times the risk (or in this framing, 20% higher odds of recovery).</li>
+                <li><strong>Relative Risk (RR):</strong> The ratio of risks. RR = 0.60 / 0.50 = 1.2. The treated group has 1.2 times the risk (or in this framing, 20% higher chance (risk) of recovery).</li>
                 <li><strong>Cohen's d:</strong> Standardized difference in means. d = 0.2 is small, 0.5 is medium, 0.8 is large. Useful for comparing studies with different measurement scales.</li>
                 <li><strong>Odds Ratio (OR):</strong> Discussed in detail below, but briefly: the odds of an event in one group divided by the odds in another.</li>
             </ul>
@@ -336,7 +337,7 @@ draft: false
             </ul>
 
             <div class="ba-insight-box">
-                <strong>Clinical Pearl:</strong> PPV and NPV depend on disease prevalence. A test with 95% sensitivity and 95% specificity sounds excellent, but if you use it to screen for a rare disease (prevalence 1%), a positive test still has a low probability of indicating true disease. Always adjust your interpretation to your population.
+                <strong>Clinical Pearl:</strong> PPV and NPV depend on disease prevalence. A test with 95% sensitivity and 95% specificity sounds excellent, but if you use it to screen for a rare disease (prevalence 1%), a positive test still has a low probability of indicating true disease: at 1% prevalence, the PPV is only about 16% (roughly five false positives for every true positive). Always adjust your interpretation to your population.
             </div>
 
             <h3 class="ba-h3">ROC Curves and AUC</h3>

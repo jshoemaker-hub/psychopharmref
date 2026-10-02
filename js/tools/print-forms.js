@@ -15,12 +15,12 @@
         { num: 2, text: 'Female sex', points: 1 },
         { num: 3, text: 'Loop diuretic use', points: 1 },
         { num: 4, text: 'Serum potassium ≤3.5 mEq/L', points: 2 },
-        { num: 5, text: 'Admission QTc 450-499 ms', points: 2 },
+        { num: 5, text: 'Admission QTc ≥450 ms', points: 2 },
         { num: 6, text: 'Acute myocardial infarction', points: 2 },
         { num: 7, text: 'Heart failure', points: 3 },
         { num: 8, text: 'Sepsis or systemic infection', points: 3 },
-        { num: 9, text: 'One QT-prolonging drug', points: 3 },
-        { num: 10, text: 'Two or more QT-prolonging drugs', points: 3 }
+        { num: 9, text: 'One or more QT-prolonging drugs', points: 3 },
+        { num: 10, text: 'Two or more QT-prolonging drugs (also score item 9)', points: 3 }
       ],
       interpretation: '≤6 = Low risk | 7-10 = Moderate risk | ≥11 = High risk'
     },

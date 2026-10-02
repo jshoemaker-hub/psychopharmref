@@ -865,7 +865,7 @@
       <h3 class="ba-h3">The Relapse Problem: Prevention Strategies</h3>
 
       <p>
-        One of the greatest challenges in ECT practice is preventing relapse. <strong>50–60% of patients relapse within 6 months if discharged on pharmacotherapy alone without maintenance ECT.</strong> This high relapse rate necessitates either robust maintenance ECT schedules or aggressive pharmacological prophylaxis.
+        One of the greatest challenges in ECT practice is preventing relapse. <strong>Without continuation treatment, most patients relapse within 6 months (84% on placebo in Sackeim 2001).</strong> Relapse on medication depends on the regimen: 60% on nortriptyline alone versus 39% on nortriptyline plus lithium at 24 weeks. In the CORE trial (Kellner 2006), continuation ECT and continuation pharmacotherapy performed about the same (37% vs 32% relapse at 6 months). In older adults, the PRIDE trial (Kellner 2016) found that continuation ECT plus medication outperformed medication alone. Continuation treatment, by ECT or optimized medication, is therefore essential.
       </p>
 
       <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
@@ -877,7 +877,7 @@
           </linearGradient>
         </defs>
 
-        <text x="400" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#231e14">Relapse Rates: With and Without Maintenance</text>
+        <text x="400" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#231e14">Relapse in the 6 Months After Successful ECT</text>
 
         <!-- Axes -->
         <line x1="80" y1="380" x2="750" y2="380" stroke="#231e14" stroke-width="2"/>
@@ -887,7 +887,7 @@
         <text x="80" y="410" font-size="12" fill="#231e14">0 months</text>
         <text x="300" y="410" font-size="12" fill="#231e14">3 months</text>
         <text x="520" y="410" font-size="12" fill="#231e14">6 months</text>
-        <text x="750" y="410" font-size="12" fill="#231e14">12 months</text>
+        <text x="750" y="410" font-size="12" fill="#231e14" text-anchor="end">12 months</text>
 
         <!-- Y-axis label -->
         <text x="20" y="200" font-size="12" fill="#231e14" transform="rotate(-90 20 200)">Relapse-Free Rate (%)</text>
@@ -908,33 +908,20 @@
         <text x="70" y="185" font-size="11" text-anchor="end" fill="#231e14">80%</text>
         <text x="70" y="135" font-size="11" text-anchor="end" fill="#231e14">100%</text>
 
-        <!-- Curve 1: No Maintenance (Medications only) -->
-        <path d="M 80 80 Q 200 330 300 350 T 520 365 T 750 378"
-              stroke="#c04030" stroke-width="4" fill="none"/>
-        <text x="150" y="100" font-size="12" font-weight="bold" fill="#c04030">No Maintenance ECT</text>
-        <text x="150" y="118" font-size="10" fill="#6b6050">(Medications only)</text>
-
-        <!-- Curve 2: With Maintenance ECT -->
-        <path d="M 80 80 Q 250 90 300 92 Q 400 95 520 110 Q 650 130 750 160"
-              stroke="#3a6e28" stroke-width="4" fill="none"/>
-        <text x="450" y="70" font-size="12" font-weight="bold" fill="#3a6e28">With Maintenance ECT</text>
-        <text x="450" y="88" font-size="10" fill="#6b6050">(Weekly to monthly)</text>
-
-        <!-- Annotations -->
-        <circle cx="520" cy="365" r="5" fill="#c04030" stroke="#8b0000" stroke-width="2"/>
-        <text x="530" y="370" font-size="11" fill="#c04030" font-weight="bold">60% relapse by 6 mo</text>
-
-        <circle cx="520" cy="110" r="5" fill="#3a6e28" stroke="#1d4d18" stroke-width="2"/>
-        <text x="530" y="115" font-size="11" fill="#3a6e28" font-weight="bold">≤15% relapse by 6 mo</text>
-
-        <!-- Legend box -->
-        <rect x="580" y="250" width="160" height="100" fill="#f9f6f0" stroke="#8b6914" stroke-width="2" rx="4"/>
-        <text x="660" y="270" font-size="11" font-weight="bold" text-anchor="middle" fill="#231e14">Key Insight:</text>
-        <text x="590" y="290" font-size="10" fill="#6b6050">Maintenance ECT is most</text>
-        <text x="590" y="305" font-size="10" fill="#6b6050">effective strategy for</text>
-        <text x="590" y="320" font-size="10" fill="#6b6050">preventing relapse; consider</text>
-        <text x="590" y="335" font-size="10" fill="#6b6050">in all TRD and psychotic</text>
-        <text x="590" y="350" font-size="10" fill="#6b6050">depression patients</text>
+        <!-- Trial data: Sackeim 2001 (JAMA) and CORE (Kellner 2006), 24 weeks after successful ECT -->
+        <path d="M 80 130 Q 180 300 300 325 Q 420 337 520 340" stroke="#c04030" stroke-width="4" fill="none"/>
+        <path d="M 80 130 Q 200 190 300 205 T 520 228" stroke="#8b6914" stroke-width="4" fill="none"/>
+        <path d="M 80 130 Q 220 180 300 195 T 520 222" stroke="#3a6e28" stroke-width="4" fill="none" stroke-dasharray="8,5"/>
+        <circle cx="520" cy="340" r="5" fill="#c04030"/>
+        <text x="530" y="362" font-size="11" fill="#c04030" font-weight="bold">Placebo: 84% relapse</text>
+        <circle cx="520" cy="228" r="5" fill="#8b6914"/>
+        <text x="530" y="246" font-size="11" fill="#8b6914" font-weight="bold">Nortriptyline + lithium: 39%</text>
+        <circle cx="520" cy="222" r="5" fill="#3a6e28"/>
+        <text x="530" y="208" font-size="11" fill="#3a6e28" font-weight="bold">Continuation ECT: 37% (CORE)</text>
+        <rect x="560" y="265" width="185" height="62" fill="#f9f6f0" stroke="#8b6914" stroke-width="2" rx="4"/>
+        <text x="570" y="283" font-size="10" fill="#6b6050">Continuation ECT and optimized</text>
+        <text x="570" y="298" font-size="10" fill="#6b6050">medication perform similarly;</text>
+        <text x="570" y="313" font-size="10" fill="#6b6050">placebo relapse is very high</text>
       </svg>
 
       <h3 class="ba-h3">Maintenance ECT Schedules</h3>
@@ -948,19 +935,19 @@
           <h4>Aggressive Maintenance (Weekly to Biweekly)</h4>
           <p><strong>Indication:</strong> Severe TRD with rapid relapse history, psychotic depression, high suicide risk.</p>
           <p><strong>Schedule:</strong> ECT every 1–2 weeks indefinitely or until pharmacotherapy can assume prophylaxis.</p>
-          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);"><strong>Pros:</strong> Lowest relapse rate (~5–10% at 1 year). <strong>Cons:</strong> Cognitive burden, patient burden, ongoing anesthetic risk.</p>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);"><strong>Pros:</strong> An option for patients who relapse despite optimized medication; trials have not shown lower relapse than optimized pharmacotherapy (CORE: 37% vs 32% at 6 months). <strong>Cons:</strong> Cognitive burden, patient burden, ongoing anesthetic risk.</p>
         </div>
         <div class="ba-stacked-card">
           <h4>Standard Maintenance (Biweekly to Monthly)</h4>
           <p><strong>Indication:</strong> Moderate-severe TRD; moderate relapse risk.</p>
           <p><strong>Schedule:</strong> ECT every 2–4 weeks; taper gradually if pharmacotherapy optimized.</p>
-          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);"><strong>Pros:</strong> Good relapse prevention (~20–30% at 1 year) with reduced burden. <strong>Cons:</strong> Still requires ongoing procedure commitments.</p>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);"><strong>Pros:</strong> In older adults, continuation ECT plus medication outperformed medication alone (PRIDE, Kellner 2016), with reduced burden compared with weekly treatment. <strong>Cons:</strong> Still requires ongoing procedure commitments.</p>
         </div>
         <div class="ba-stacked-card">
           <h4>Medication-First Prophylaxis (Post-Acute Pharmacotherapy)</h4>
           <p><strong>Indication:</strong> Mild-moderate TRD; patient preference against continued procedures.</p>
           <p><strong>Approach:</strong> Acute ECT course followed by optimized medication (e.g., nortriptyline + lithium + antipsychotic augmentation).</p>
-          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);"><strong>Pros:</strong> No ongoing anesthesia risk; improved quality of life. <strong>Cons:</strong> ~50–60% relapse within 6–12 months; requires close monitoring and willingness to re-initiate ECT if relapse occurs.</p>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);"><strong>Pros:</strong> No ongoing anesthesia risk; improved quality of life. <strong>Cons:</strong> relapse depends on the regimen (about 40% at 6 months with nortriptyline + lithium vs 84% on placebo; Sackeim 2001); requires close monitoring and willingness to re-initiate ECT if relapse occurs.</p>
         </div>
       </div>
 
@@ -989,16 +976,16 @@
         <div class="ba-stacked-card">
           <h4>Deep TMS (dTMS)</h4>
           <p><strong>Mechanism:</strong> H-coil design penetrates deeper (4–6 cm) than rTMS, activating both dorsolateral PFC and limbic circuits.</p>
-          <p><strong>Efficacy:</strong> FDA-approved for MDD (2018); response rates 35–45% in controlled trials; promising preliminary data in TRD and bipolar depression.</p>
+          <p><strong>Efficacy:</strong> FDA-cleared for MDD (2013) and for OCD (2018); response rates 35–45% in controlled trials; promising preliminary data in TRD and bipolar depression.</p>
           <p><strong>Advantages:</strong> Deeper brain penetration; faster response than rTMS (possibly weeks vs. months); outpatient; no anesthesia.</p>
           <p><strong>Disadvantages:</strong> Still slower than ECT; requires specialized equipment and training; cognitive effects minimal.</p>
         </div>
         <div class="ba-stacked-card">
           <h4>Theta-Burst Stimulation (TBS)</h4>
           <p><strong>Mechanism:</strong> Bursts of 3 pulses at 50 Hz, repeated at 5-Hz intervals; brief stimulation (3 min) but potent.</p>
-          <p><strong>Efficacy:</strong> Preliminary data promising (response rates 40–50% in open studies); FDA approval pending.</p>
+          <p><strong>Efficacy:</strong> Intermittent theta-burst stimulation (iTBS) was noninferior to standard 10-Hz rTMS in a large RCT (THREE-D, Blumberger 2018) and was FDA-cleared in 2018; an accelerated, fMRI-guided iTBS protocol (SAINT/SNT) was cleared in 2022.</p>
           <p><strong>Advantages:</strong> Dramatically shorter session duration; potentially faster antidepressant effects; outpatient.</p>
-          <p><strong>Disadvantages:</strong> Controlled RCT data still limited; requires further validation.</p>
+          <p><strong>Disadvantages:</strong> Accelerated protocols are resource-intensive; durability data are still accumulating.</p>
         </div>
       </div>
 
@@ -1010,7 +997,7 @@
 
       <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
         <li><strong>FDA Approval:</strong> Approved for TRD in 2005; also used off-label for bipolar disorder and anxiety.</li>
-        <li><strong>Efficacy:</strong> Response rates ~30–40% in TRD at 12 weeks; similar or slightly lower than ECT; onset slower (weeks to months).</li>
+        <li><strong>Efficacy:</strong> Response rates ~30–40% in TRD; lower than ECT, and benefit accrues slowly (over months to years).</li>
         <li><strong>Mechanism:</strong> Stimulation of the vagus nerve increases norepinephrine, serotonin, and GABA; anti-inflammatory effects.</li>
         <li><strong>Advantages:</strong> Implantable; can be titrated or discontinued; no seizure; no cognitive effects; minimal medication interactions.</li>
         <li><strong>Disadvantages:</strong> Requires surgical implantation; cost ($20,000–$30,000 device + surgery); hoarseness/voice changes; slow onset.</li>
@@ -1188,13 +1175,15 @@
         <ol class="ba-ref-list">
           <li>Fink, M., & Kellner, C. H. (2010). Electroconvulsive therapy: Effective for severe psychiatric illness. <em>Australian and New Zealand Journal of Psychiatry</em>, 44(11), 988–991. doi:10.3109/00048674.2010.523837</li>
 
-          <li>Kellner, C. H., Knapp, R. G., Petrides, G., et al. (2016). Continuation electroconvulsive therapy vs. pharmacotherapy for relapse prevention in major depression: A multisite study from The Consortium for Research in Electroconvulsive Therapy (CORE). <em>Archives of General Psychiatry</em>, 63(12), 1337–1344. doi:10.1001/archpsyc.63.12.1337</li>
+          <li>Kellner, C. H., Knapp, R. G., Petrides, G., et al. (2006). Continuation electroconvulsive therapy vs. pharmacotherapy for relapse prevention in major depression: A multisite study from The Consortium for Research in Electroconvulsive Therapy (CORE). <em>Archives of General Psychiatry</em>, 63(12), 1337–1344. doi:10.1001/archpsyc.63.12.1337</li>
 
-          <li>Medda, P., Toni, C., Mariani, M. G., et al. (2015). Electroconvulsive therapy in treatment-resistant bipolar depression: Application in a sample of patients with severe motor poverty. <em>Journal of ECT</em>, 41(1), 35–39. doi:10.1097/YCT.0000000000000179</li>
+          <li>Medda, P., Toni, C., Mariani, M. G., et al. (2015). Electroconvulsive therapy in treatment-resistant bipolar depression: Application in a sample of patients with severe motor poverty. <em>Journal of ECT</em>, 31(1), 35–39. doi:10.1097/YCT.0000000000000179</li>
 
           <li>Sackeim, H. A., Haskett, R. F., Mulsant, B. H., et al. (2001). Continuation pharmacotherapy in the prevention of relapse following electroconvulsive therapy. <em>JAMA</em>, 285(10), 1299–1307. doi:10.1001/jama.285.10.1299</li>
 
-          <li>Bailine, S. H., Rifkin, A., Kayne, E., et al. (2010). Comparison of bifrontal and bitemporal ECT for major depression. <em>American Journal of Psychiatry</em>, 157(1), 121–123. doi:10.1176/appi.ajp.157.1.121</li>
+          <li>Kellner, C. H., Husain, M. M., Knapp, R. G., et al. (2016). A novel strategy for continuation ECT in geriatric depression: Phase 2 of the PRIDE study. <em>American Journal of Psychiatry</em>, 173(11), 1110–1118.</li>
+
+          <li>Bailine, S. H., Rifkin, A., Kayne, E., et al. (2000). Comparison of bifrontal and bitemporal ECT for major depression. <em>American Journal of Psychiatry</em>, 157(1), 121–123. doi:10.1176/appi.ajp.157.1.121</li>
 
           <li>Semkovska, M., & McLoughlin, D. M. (2010). Objective cognitive performance associated with electroconvulsive therapy for depression: A systematic review and meta-analysis. <em>Journal of ECT</em>, 26(3), 175–181. doi:10.1097/YCT.0b013e3181f7b042</li>
 
@@ -1222,17 +1211,11 @@
 
           <li>Merkl, A., Neumann, W. J., Schlee, W., et al. (2018). Vagus nerve stimulation modulates cortisol and facilitates Neuromodulation in treatment-resistant depression. <em>Translational Psychiatry</em>, 8(1), 112. doi:10.1038/s41398-018-0161-3</li>
 
-          <li>McCall, W. V., Rosenquist, P. B., Kimball, J., et al. (2011). Prospective comparison of maintenance electroconvulsive therapy versus pharmacotherapy continuation after acute course of ECT in major depression. <em>Convulsive Therapy</em>, 16(1), 18–26.</li>
-
-          <li>Jauhar, S., Dimitrova, D., Wall, M. B., et al. (2019). Antipsychotic augmentation with high-dose buprenorphine in treatment-resistant schizophrenia. <em>JAMA Psychiatry</em>, 75(10), 981–989. doi:10.1001/jamapsychiatry.2018.1537</li>
-
-          <li>Kellner, C. H. (Ed.). (2019). <em>ECT Handbook: The Third Edition</em>. The Royal College of Psychiatrists. ISBN: 978-1-908020-49-9</li>
+          <li>Waite, J., & Easton, A. (Eds.). (2013). <em>The ECT Handbook</em> (3rd ed.). RCPsych Publications.</li>
 
           <li>Lisanby, S. H., Schlaepfer, T. E., Fisch, H. U., et al. (2001). Magnetic seizure therapy of major depression. <em>Archives of General Psychiatry</em>, 58(3), 303–305. doi:10.1001/archpsyc.58.3.303</li>
 
-          <li>American Psychiatric Association. (2020). <em>The Practice of Electroconvulsive Therapy: Recommendations for Treatment, Training, and Privileging (2nd ed.)</em>. APA Publishing.</li>
-
-          <li>Rami-Gonzalez, L., Gasull, T., Catalán, R., et al. (2003). Subjective memory complaints in normal and pathological aging. <em>Journal of Neurology</em>, 250(1), 58–63. doi:10.1007/s00415-003-0952-0</li>
+          <li>American Psychiatric Association. (2001). <em>The Practice of Electroconvulsive Therapy: Recommendations for Treatment, Training, and Privileging (2nd ed.)</em>. APA Publishing.</li>
 
           <li>Perera, T. D., Coplan, J. D., Lisanby, S. H., et al. (2011). Antidepressant-induced neurogenesis in the hippocampus of adult nonhuman primates. <em>Journal of Neuroscience</em>, 31(25), 9104–9110. doi:10.1523/JNEUROSCI.1741-07.2011</li>
         </ol>
@@ -1245,7 +1228,7 @@
           <li>Modern, modified ECT with anesthesia, muscle relaxation, and cardiac monitoring is a safe procedure with minimal serious adverse events (&lt;1%).</li>
           <li>Memory impairment is the most feared side effect; objective cognitive testing shows minimal deficits at 6 months, though some patients report persistent autobiographical memory loss.</li>
           <li>Right unilateral or bifrontal electrode placement balances efficacy with reduced cognitive burden compared to bilateral placement.</li>
-          <li>Relapse prevention is critical: 50–60% of patients relapse within 6 months on medications alone; maintenance ECT or aggressive pharmacological prophylaxis is necessary.</li>
+          <li>Relapse prevention is critical: most patients relapse within 6 months without continuation treatment, and relapse on medication depends on the regimen (about 40% with nortriptyline + lithium); maintenance ECT or aggressive pharmacological prophylaxis is necessary.</li>
           <li>Emerging neuromodulation alternatives (TMS, dTMS, VNS, tDCS, MST) offer lower-burden options for mild–moderate illness but remain inferior to ECT for severe presentations.</li>
           <li>Shared decision-making, informed consent, and realistic expectations about efficacy, side effects, and maintenance strategies are essential for patient engagement and outcome optimization.</li>
         </ul>
