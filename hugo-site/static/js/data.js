@@ -2305,7 +2305,7 @@ const MEDICATIONS = [
     receptorKi: null,
     mechanism: 'GABA-A receptor positive allosteric modulator (neuroactive steroid); acts at synaptic and extrasynaptic GABA-A receptors including delta subunit-containing; IV 60-hour infusion; approved specifically for postpartum depression; no abuse potential designation',
     indications: [
-      { use: 'Postpartum Depression (adults)', year: 2019 },
+      { use: 'Postpartum Depression (adults)', year: 2019, line: 'No longer marketed: sales ended Dec 31, 2024; FDA approval withdrawn Apr 14, 2025 at Sage\'s request (not for safety). Use zuranolone.' },
     ]
   }
   ,{
