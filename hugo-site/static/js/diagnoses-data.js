@@ -4,11 +4,11 @@
    original wording (NOT copied from DSM/ICD text), coding, treatment, and
    epidemiology.
 
-   DRAFT FOR CLINICAL REVIEW. Figures are drawn from standard clinical sources
-   and are approximate; codes and epidemiology should be verified against a
-   current ICD-10-CM / DSM-5-TR / ICD-11 reference before publication. FDA
-   indications are current to 2026 and distinguish first-line from adjunct/second-
-   line agents — they do not capture every labeled or off-label option.
+   Clinically reviewed 2026-10-02 (codes checked against ICD-10-CM FY2026 and
+   ICD-11 MMS; medications against current FDA labeling). Epidemiology figures
+   are approximate. Medications are FDA-approved FOR THAT DIAGNOSIS unless the
+   text says "off-label"; the lists do not capture every labeled or off-label
+   option.
 
    Coding note: DSM-5-TR adopts ICD-10-CM codes, so the "DSM-5-TR" code and the
    ICD-10-CM code are the same string; the ICD-11 code is shown alongside for
@@ -43,7 +43,8 @@
      cat       category id (see CATEGORIES)
      desc      key characteristics, original wording
      codes     { dsm, icd10, icd11 }   dsm === icd10 by design in DSM-5-TR
-     meds      { first:[], adjunct:[], note:'' }  FDA-approved unless marked off-label
+     codeNote  optional coding detail shown in the modal (severity digits, mappings)
+     meds      { first:[], adjunct:[], note:'' }  FDA-approved for this diagnosis unless the text says off-label
      therapy   [] recommended psychotherapies / non-pharm
      epi       { incidence, prevalence, mortality, onset }
      ddx       [] key differentials
@@ -62,9 +63,9 @@
       desc: 'At least two weeks of pervasive low mood or loss of interest, plus a cluster of sleep, appetite, energy, concentration, guilt, psychomotor, and suicidality changes that mark a clear break from prior functioning.',
       codes: { dsm: 'F33.9 (recurrent) / F32.9 (single)', icd10: 'F32.9, F33.9', icd11: '6A70 / 6A71' },
       meds: {
-        first: ['SSRIs (sertraline, escitalopram, fluoxetine)', 'SNRIs (venlafaxine, duloxetine)', 'Bupropion', 'Mirtazapine'],
-        adjunct: ['Atypical antipsychotics as augmentation (aripiprazole, brexpiprazole, quetiapine XR, cariprazine)', 'Lithium augmentation', 'Esketamine (Spravato) for treatment-resistant depression', 'Dextromethorphan-bupropion (Auvelity)', 'Vortioxetine, vilazodone'],
-        note: 'Choice guided by side-effect profile, prior response, and target residual symptoms. ECT/TMS for severe or refractory illness.'
+        first: ['SSRIs (sertraline, escitalopram, fluoxetine)', 'SNRIs (venlafaxine, duloxetine)', 'Bupropion', 'Mirtazapine', 'Other approved monotherapies: vortioxetine, vilazodone, dextromethorphan-bupropion (Auvelity), gepirone (Exxua)'],
+        adjunct: ['Atypical antipsychotics as augmentation (aripiprazole, brexpiprazole, quetiapine XR, cariprazine)', 'Lithium augmentation (off-label)', 'Esketamine (Spravato) for treatment-resistant depression'],
+        note: 'Choice guided by side-effect profile, prior response, and target residual symptoms. ECT/TMS for severe or refractory illness. For postpartum depression, zuranolone (Zurzuvae, 2023) is FDA-approved as a 14-day oral course.'
       },
       therapy: ['Cognitive behavioral therapy (CBT)', 'Behavioral activation', 'Interpersonal therapy (IPT)', 'Problem-solving therapy', 'Exercise as adjunct'],
       epi: { incidence: '~1.5% of adults develop a new episode per year', prevalence: '~8% 12-month, ~21% lifetime (US adults)', mortality: 'Elevated all-cause and suicide mortality; ~60% of suicides occur in mood disorders', onset: 'Median mid-20s; can occur across the lifespan' },
@@ -78,7 +79,7 @@
       id: 'pdd', name: 'Persistent Depressive Disorder (Dysthymia)', cat: 'depressive',
       desc: 'A low-grade but tenacious depression lasting two years or more, where the depressed state becomes the person’s baseline rather than a discrete episode; symptom-free intervals never exceed two months.',
       codes: { dsm: 'F34.1', icd10: 'F34.1', icd11: '6A72' },
-      meds: { first: ['SSRIs', 'SNRIs'], adjunct: ['Augmentation strategies as in MDD when superimposed major episodes occur ("double depression")'], note: 'Pharmacotherapy plus psychotherapy generally outperforms either alone in chronic depression.' },
+      meds: { first: ['SSRIs, SNRIs (off-label — no agent is FDA-approved specifically for PDD)'], adjunct: ['Augmentation strategies as in MDD when superimposed major episodes occur ("double depression")'], note: 'Pharmacotherapy plus psychotherapy generally outperforms either alone in chronic depression.' },
       therapy: ['CBASP (Cognitive Behavioral Analysis System of Psychotherapy)', 'CBT', 'IPT'],
       epi: { incidence: 'Less well characterized than MDD', prevalence: '~1.5% 12-month (US adults)', mortality: 'Chronic disability; suicide risk comparable to MDD', onset: 'Often early — childhood, adolescence, or early adulthood (early-onset < age 21)' },
       ddx: ['MDD', 'Bipolar II', 'Personality disorder', 'Medical/endocrine causes'],
@@ -91,7 +92,7 @@
       id: 'pmdd', name: 'Premenstrual Dysphoric Disorder', cat: 'depressive',
       desc: 'Marked mood instability, irritability, and tension confined to the luteal phase, resolving within days of menses onset, and severe enough to disrupt relationships or work — distinct from ordinary premenstrual discomfort.',
       codes: { dsm: 'F32.81', icd10: 'F32.81', icd11: 'GA34.41' },
-      meds: { first: ['SSRIs — continuous or luteal-phase dosing (fluoxetine, sertraline, paroxetine)'], adjunct: ['Combined oral contraceptive with drospirenone (e.g., drospirenone/ethinyl estradiol)', 'GnRH agonists for refractory cases (with add-back)'], note: 'SSRIs often work within days for PMDD, unlike the weeks needed in MDD.' },
+      meds: { first: ['SSRIs — continuous or luteal-phase dosing (fluoxetine, sertraline, paroxetine)'], adjunct: ['Combined oral contraceptive with drospirenone (e.g., drospirenone/ethinyl estradiol)', 'GnRH agonists for refractory cases, with add-back (off-label)'], note: 'SSRIs often work within days for PMDD, unlike the weeks needed in MDD.' },
       therapy: ['CBT', 'Symptom charting', 'Lifestyle: exercise, sleep, reduced caffeine/alcohol'],
       epi: { incidence: 'N/A', prevalence: '~1.8–5.8% of menstruating women', mortality: 'Increased suicidal ideation risk in luteal phase', onset: 'Reproductive years; may worsen approaching menopause' },
       ddx: ['Premenstrual exacerbation of MDD/anxiety/bipolar', 'Thyroid disease', 'Perimenopause'],
@@ -103,7 +104,8 @@
     {
       id: 'dmdd', name: 'Disruptive Mood Dysregulation Disorder', cat: 'depressive',
       desc: 'A childhood pattern of persistently irritable or angry mood punctuated by frequent, developmentally inappropriate temper outbursts — conceived to curb over-diagnosis of pediatric bipolar disorder.',
-      codes: { dsm: 'F34.81', icd10: 'F34.81', icd11: '— (no direct equivalent; oppositional defiant with chronic irritability)' },
+      codes: { dsm: 'F34.81', icd10: 'F34.81', icd11: '6C90.0 (closest)' },
+      codeNote: 'ICD-11 has no DMDD category; 6C90.0 (oppositional defiant disorder with chronic irritability-anger) is the usual mapping.',
       meds: { first: ['No FDA-approved agent; treat the predominant problem'], adjunct: ['Stimulants if comorbid ADHD', 'SSRIs for mood/irritability (off-label)', 'Atypical antipsychotics (e.g., risperidone, off-label) for severe aggression'], note: 'Diagnosis requires onset before age 10 and is not made for the first time before 6 or after 18.' },
       therapy: ['Parent management training', 'CBT', 'Family-focused approaches'],
       epi: { incidence: 'N/A', prevalence: '~2–5% of children', mortality: 'Low direct mortality; functional impairment', onset: 'By definition before age 10' },
@@ -121,9 +123,10 @@
       id: 'bipolar1', name: 'Bipolar I Disorder', cat: 'bipolar',
       desc: 'Defined by at least one full manic episode — a week or more (or any duration if hospitalized) of elevated or irritable mood with inflated self-regard, decreased need for sleep, pressured drive, and risk-taking; depressive episodes usually occur but are not required.',
       codes: { dsm: 'F31.x', icd10: 'F31.9 (unspecified)', icd11: '6A60' },
+      codeNote: 'Billable current-episode codes: F31.1x/F31.2 manic, F31.3x/F31.4/F31.5 depressed, F31.7x in remission.',
       meds: {
-        first: ['Lithium', 'Valproate (avoid in pregnancy/childbearing potential)', 'Atypical antipsychotics (quetiapine, aripiprazole, risperidone, cariprazine, asenapine, olanzapine)', 'Milsaperidone (Bysanti, 2026)'],
-        adjunct: ['Lamotrigine (maintenance, more for depression prevention)', 'Lithium + antipsychotic for acute severe mania', 'Cariprazine/lurasidone/quetiapine for bipolar depression', 'ECT for refractory/psychotic/pregnant patients'],
+        first: ['Lithium', 'Valproate (avoid in pregnancy/childbearing potential)', 'Atypical antipsychotics (quetiapine, aripiprazole, risperidone, cariprazine, asenapine, olanzapine)', 'Milsaperidone (Bysanti, 2026) — active metabolite of iloperidone that interconverts with it; not yet in the drug database, see iloperidone'],
+        adjunct: ['Lamotrigine (maintenance, more for depression prevention)', 'Lithium + antipsychotic for acute severe mania', 'Bipolar I depression: quetiapine, lurasidone, cariprazine, lumateperone (Caplyta), olanzapine-fluoxetine', 'ECT for refractory/psychotic/pregnant patients'],
         note: 'Antidepressant monotherapy is avoided — risk of manic switch and cycle acceleration.'
       },
       therapy: ['Psychoeducation', 'Interpersonal and social rhythm therapy (IPSRT)', 'Family-focused therapy', 'CBT for adherence and relapse prevention'],
@@ -138,7 +141,7 @@
       id: 'bipolar2', name: 'Bipolar II Disorder', cat: 'bipolar',
       desc: 'A pattern of recurrent major depression interleaved with hypomania — briefer, less severe high-energy states that never cause the marked impairment, hospitalization, or psychosis that would make them manic. The depressive burden usually dominates.',
       codes: { dsm: 'F31.81', icd10: 'F31.81', icd11: '6A61' },
-      meds: { first: ['Quetiapine', 'Lithium', 'Lamotrigine (for depressive pole/maintenance)', 'Lurasidone (bipolar depression)'], adjunct: ['Cautious antidepressant use only with a mood stabilizer', 'Cariprazine'], note: 'Hypomania can be subtle; careful history distinguishes it from euthymic energetic states.' },
+      meds: { first: ['Quetiapine (bipolar depression)', 'Lumateperone (Caplyta) — approved for bipolar I or II depression (2021)'], adjunct: ['Lithium (off-label in bipolar II)', 'Lamotrigine for the depressive pole/maintenance (off-label in bipolar II)', 'Lurasidone (off-label in bipolar II; approved for bipolar I depression)', 'Cariprazine (off-label in bipolar II)', 'Cautious antidepressant use only with a mood stabilizer'], note: 'Hypomania can be subtle; careful history distinguishes it from euthymic energetic states.' },
       therapy: ['IPSRT', 'CBT', 'Psychoeducation', 'Family-focused therapy'],
       epi: { incidence: 'Not well established', prevalence: '~0.3–0.8% lifetime', mortality: 'High suicide attempt rate — often exceeds Bipolar I', onset: 'Mid-20s' },
       ddx: ['Bipolar I', 'MDD', 'Cyclothymia', 'Borderline personality disorder'],
@@ -168,7 +171,7 @@
       id: 'gad', name: 'Generalized Anxiety Disorder', cat: 'anxiety',
       desc: 'Chronic, free-floating worry about everyday matters that the person finds hard to control, tethered to physical tension — restlessness, fatigue, muscle tightness, poor concentration, and disturbed sleep — for six months or more.',
       codes: { dsm: 'F41.1', icd10: 'F41.1', icd11: '6B00' },
-      meds: { first: ['SSRIs (escitalopram, paroxetine, sertraline)', 'SNRIs (venlafaxine, duloxetine)'], adjunct: ['Buspirone', 'Pregabalin (off-label in US)', 'Hydroxyzine for short-term use', 'Benzodiazepines short-term only'], note: 'Avoid long-term benzodiazepines given dependence and cognitive risk.' },
+      meds: { first: ['SSRIs (escitalopram, paroxetine)', 'SNRIs (venlafaxine XR, duloxetine)'], adjunct: ['Buspirone (FDA-approved; slower onset, less help for comorbid depression)', 'Sertraline and other SSRIs (off-label, widely used)', 'Pregabalin (off-label in US)', 'Hydroxyzine for short-term use', 'Benzodiazepines short-term only'], note: 'Avoid long-term benzodiazepines given dependence and cognitive risk.' },
       therapy: ['CBT', 'Applied relaxation', 'Mindfulness-based approaches'],
       epi: { incidence: '~2% per year', prevalence: '~3% 12-month, ~9% lifetime', mortality: 'Low direct; elevated cardiovascular risk', onset: 'Median early 30s; often gradual' },
       ddx: ['MDD', 'Panic disorder', 'Social anxiety', 'Hyperthyroidism', 'Caffeine/stimulant effect', 'Substance withdrawal'],
@@ -181,7 +184,7 @@
       id: 'panic', name: 'Panic Disorder', cat: 'anxiety',
       desc: 'Recurrent, unexpected surges of intense fear that crest within minutes with pounding heart, breathlessness, chest tightness, and a sense of doom, followed by persistent dread of the next attack or maladaptive avoidance.',
       codes: { dsm: 'F41.0', icd10: 'F41.0', icd11: '6B01' },
-      meds: { first: ['SSRIs', 'SNRIs (venlafaxine)'], adjunct: ['Benzodiazepines for short-term bridging', 'TCAs (off-label)'], note: 'Start SSRIs low and go slow — early activation can mimic/trigger panic.' },
+      meds: { first: ['SSRIs (fluoxetine, sertraline, paroxetine)', 'SNRI (venlafaxine XR)'], adjunct: ['Benzodiazepines for short-term bridging (alprazolam, clonazepam)', 'TCAs (off-label)'], note: 'Start SSRIs low and go slow — early activation can mimic/trigger panic.' },
       therapy: ['CBT with interoceptive exposure', 'Panic-focused psychodynamic therapy', 'Breathing retraining'],
       epi: { incidence: '~1% per year', prevalence: '~2–3% 12-month', mortality: 'Low direct; frequent ER utilization', onset: 'Late adolescence to mid-30s' },
       ddx: ['Cardiac arrhythmia / ACS', 'Hyperthyroidism', 'Pheochromocytoma', 'Asthma/PE', 'Substance intoxication or withdrawal', 'Other anxiety disorders'],
@@ -194,7 +197,7 @@
       id: 'sad', name: 'Social Anxiety Disorder', cat: 'anxiety',
       desc: 'A marked, enduring fear of scrutiny in social or performance situations — of visibly showing anxiety or being judged — leading to avoidance or endurance under distress that constrains work and relationships.',
       codes: { dsm: 'F40.10', icd10: 'F40.10', icd11: '6B04' },
-      meds: { first: ['SSRIs (paroxetine, sertraline, fluvoxamine)', 'SNRI (venlafaxine)'], adjunct: ['Beta-blockers (propranolol) for discrete performance anxiety', 'Benzodiazepines short-term'], note: 'Beta-blockers help physical performance symptoms but not generalized social anxiety.' },
+      meds: { first: ['SSRIs (paroxetine, sertraline)', 'SNRI (venlafaxine XR)'], adjunct: ['Fluvoxamine (off-label; only the discontinued CR form was approved for social anxiety)', 'Beta-blockers (propranolol) for discrete performance anxiety (off-label)', 'Benzodiazepines short-term (off-label)'], note: 'Beta-blockers help physical performance symptoms but not generalized social anxiety.' },
       therapy: ['CBT with social exposure', 'Social skills training', 'Group CBT'],
       epi: { incidence: 'N/A', prevalence: '~7% 12-month, ~12% lifetime', mortality: 'Low direct; substantial disability', onset: 'Early — median around age 13' },
       ddx: ['Avoidant personality disorder', 'Panic disorder', 'Autism spectrum disorder', 'Body dysmorphic disorder', 'Normal shyness'],
@@ -207,7 +210,7 @@
       id: 'agoraphobia', name: 'Agoraphobia', cat: 'anxiety',
       desc: 'Fear or avoidance of situations where escape might be hard or help unavailable if panic-like symptoms strike — public transit, open or enclosed spaces, crowds, or being outside the home alone — often collapsing a person’s world to a safe radius.',
       codes: { dsm: 'F40.00', icd10: 'F40.00', icd11: '6B02' },
-      meds: { first: ['SSRIs', 'SNRIs'], adjunct: ['Benzodiazepines short-term for exposure work'], note: 'Frequently co-occurs with panic disorder; treat both.' },
+      meds: { first: ['SSRIs, SNRIs (approved for panic disorder with or without agoraphobia; off-label for agoraphobia alone)'], adjunct: ['Benzodiazepines short-term for exposure work'], note: 'Frequently co-occurs with panic disorder; treat both.' },
       therapy: ['CBT with graded in-vivo exposure', 'Virtual-reality exposure'],
       epi: { incidence: 'N/A', prevalence: '~1.3% 12-month', mortality: 'Low direct; high disability, housebound risk', onset: 'Late adolescence to early adulthood' },
       ddx: ['Panic disorder', 'Specific phobia', 'Social anxiety', 'PTSD', 'Depression with avoidance'],
@@ -220,7 +223,7 @@
       id: 'specific-phobia', name: 'Specific Phobia', cat: 'anxiety',
       desc: 'An out-of-proportion, immediate fear of a particular object or situation — heights, animals, blood/injection/injury, flying — that is actively avoided or endured with intense distress, recognized by the person as excessive.',
       codes: { dsm: 'F40.2xx', icd10: 'F40.218–F40.298', icd11: '6B03' },
-      meds: { first: ['No routine pharmacotherapy — exposure therapy is definitive'], adjunct: ['Short-term benzodiazepine or beta-blocker for unavoidable exposures (e.g., single flight)'], note: 'Blood-injection-injury type uses applied tension to counter the vasovagal drop.' },
+      meds: { first: ['No routine pharmacotherapy — exposure therapy is definitive'], adjunct: ['Short-term benzodiazepine or beta-blocker for unavoidable exposures, e.g., a single flight (off-label)'], note: 'Blood-injection-injury type uses applied tension to counter the vasovagal drop.' },
       therapy: ['In-vivo graded exposure (often single-session)', 'Applied tension for BII type'],
       epi: { incidence: 'N/A', prevalence: '~7–9% 12-month', mortality: 'Low', onset: 'Childhood (median ~7–10)' },
       ddx: ['Agoraphobia', 'Social anxiety', 'PTSD', 'OCD', 'Panic disorder'],
@@ -237,7 +240,7 @@
       id: 'ocd', name: 'Obsessive-Compulsive Disorder', cat: 'ocd',
       desc: 'Unwanted, intrusive thoughts, images, or urges that spike anxiety, coupled with rituals — checking, washing, counting, mental undoing — performed to neutralize the distress, consuming time and eroding function despite the person often knowing the fears are irrational.',
       codes: { dsm: 'F42.2', icd10: 'F42.2', icd11: '6B20' },
-      meds: { first: ['SSRIs at higher-than-antidepressant doses (fluoxetine, sertraline, fluvoxamine, paroxetine)', 'Clomipramine'], adjunct: ['Low-dose atypical antipsychotic augmentation (aripiprazole, risperidone)', 'Consider glutamatergic agents in research settings'], note: 'OCD often needs higher doses and longer trials (8–12 weeks) than depression.' },
+      meds: { first: ['SSRIs at higher-than-antidepressant doses (fluoxetine, sertraline, fluvoxamine, paroxetine)', 'Clomipramine'], adjunct: ['Low-dose atypical antipsychotic augmentation (aripiprazole, risperidone; off-label)', 'Consider glutamatergic agents in research settings'], note: 'OCD often needs higher doses and longer trials (8–12 weeks) than depression.' },
       therapy: ['Exposure and response prevention (ERP) — first-line', 'CBT', 'Deep brain stimulation for severe refractory cases'],
       epi: { incidence: 'N/A', prevalence: '~1.2% 12-month, ~2–3% lifetime', mortality: 'Elevated suicide risk; low direct medical mortality', onset: 'Bimodal — childhood/adolescence and early adulthood; earlier in males' },
       ddx: ['Generalized anxiety disorder', 'OCPD', 'Body dysmorphic disorder', 'Hoarding disorder', 'Tic disorders', 'Psychosis (poor-insight OCD)'],
@@ -250,7 +253,7 @@
       id: 'bdd', name: 'Body Dysmorphic Disorder', cat: 'ocd',
       desc: 'A consuming preoccupation with a perceived flaw in appearance that others cannot see or find trivial, driving mirror-checking, grooming, reassurance-seeking, or camouflage, and frequently steering people toward futile cosmetic procedures.',
       codes: { dsm: 'F45.22', icd10: 'F45.22', icd11: '6B21' },
-      meds: { first: ['SSRIs at higher doses (as in OCD)'], adjunct: ['Antipsychotic augmentation for delusional-level BDD'], note: 'Insight is often poor or absent; cosmetic surgery rarely helps and may worsen symptoms.' },
+      meds: { first: ['SSRIs at higher doses, as in OCD (off-label)'], adjunct: ['Antipsychotic augmentation for delusional-level BDD (off-label)'], note: 'Insight is often poor or absent; cosmetic surgery rarely helps and may worsen symptoms.' },
       therapy: ['CBT tailored for BDD (with ERP and perceptual retraining)'],
       epi: { incidence: 'N/A', prevalence: '~2% general population; higher in cosmetic/dermatology settings', mortality: 'High suicidal ideation and attempt rates', onset: 'Adolescence (mid-teens)' },
       ddx: ['OCD', 'Social anxiety disorder', 'Eating disorders', 'Delusional disorder', 'MDD'],
@@ -263,7 +266,7 @@
       id: 'hoarding', name: 'Hoarding Disorder', cat: 'ocd',
       desc: 'Persistent difficulty parting with possessions regardless of value, driven by a perceived need to save and distress at discarding, until accumulated clutter overwhelms living spaces and their intended use.',
       codes: { dsm: 'F42.3', icd10: 'F42.3', icd11: '6B24' },
-      meds: { first: ['SSRIs (limited evidence)'], adjunct: ['Treat comorbid depression/anxiety/ADHD'], note: 'Responds less well to standard OCD pharmacotherapy than OCD itself.' },
+      meds: { first: ['SSRIs (off-label; limited evidence)'], adjunct: ['Treat comorbid depression/anxiety/ADHD'], note: 'Responds less well to standard OCD pharmacotherapy than OCD itself.' },
       therapy: ['Specialized CBT for hoarding (skills training, sorting, cognitive work)', 'Home-based interventions'],
       epi: { incidence: 'N/A', prevalence: '~2–6%', mortality: 'Fire, fall, and sanitation hazards; social isolation', onset: 'Symptoms begin in adolescence, worsen with age; often severe by 50s+' },
       ddx: ['OCD', 'MDD', 'Neurocognitive disorder', 'Autism spectrum', 'Psychotic disorders'],
@@ -276,7 +279,7 @@
       id: 'trichotillomania', name: 'Trichotillomania (Hair-Pulling Disorder)', cat: 'ocd',
       desc: 'Recurrent pulling out of one’s own hair resulting in visible hair loss, preceded by rising tension or done automatically, with repeated efforts to stop — a body-focused repetitive behavior rather than a response to obsessions.',
       codes: { dsm: 'F63.3', icd10: 'F63.3', icd11: '6B25.0' },
-      meds: { first: ['No FDA-approved agent'], adjunct: ['N-acetylcysteine (off-label)', 'SSRIs (mixed evidence)', 'Olanzapine (off-label)'], note: 'Behavioral therapy outperforms medication for most patients.' },
+      meds: { first: ['No FDA-approved agent'], adjunct: ['N-acetylcysteine (off-label)', 'SSRIs (off-label; mixed evidence)', 'Olanzapine (off-label)'], note: 'Behavioral therapy outperforms medication for most patients.' },
       therapy: ['Habit reversal training (first-line)', 'Comprehensive behavioral (ComB) model', 'Acceptance and commitment therapy'],
       epi: { incidence: 'N/A', prevalence: '~1–2%', mortality: 'Rare — trichobezoar/GI obstruction if hair ingested', onset: 'Early adolescence' },
       ddx: ['OCD', 'Excoriation disorder', 'Dermatologic alopecia', 'Body dysmorphic disorder', 'Psychotic disorder'],
@@ -293,7 +296,7 @@
       id: 'ptsd', name: 'Posttraumatic Stress Disorder', cat: 'trauma',
       desc: 'After exposure to actual or threatened death, injury, or violence, a syndrome of intrusive re-experiencing (memories, nightmares, flashbacks), avoidance of reminders, negative shifts in mood and cognition, and hyperarousal persisting beyond a month.',
       codes: { dsm: 'F43.10', icd10: 'F43.10', icd11: '6B40' },
-      meds: { first: ['SSRIs (sertraline, paroxetine — FDA-approved)', 'SNRI (venlafaxine)'], adjunct: ['Prazosin for trauma nightmares/sleep', 'Atypical antipsychotic augmentation for refractory cases', 'Avoid benzodiazepines — worsen outcomes'], note: 'Trauma-focused psychotherapy is first-line; medication is adjunctive or for those preferring it.' },
+      meds: { first: ['SSRIs (sertraline, paroxetine — the only FDA-approved agents)'], adjunct: ['Venlafaxine (off-label; guideline-supported)', 'Prazosin for trauma nightmares/sleep (off-label)', 'Atypical antipsychotic augmentation for refractory cases (off-label)', 'Avoid benzodiazepines — worsen outcomes'], note: 'Trauma-focused psychotherapy is first-line; medication is adjunctive or for those preferring it.' },
       therapy: ['Prolonged exposure', 'Cognitive processing therapy (CPT)', 'EMDR', 'Trauma-focused CBT'],
       epi: { incidence: 'Varies with trauma exposure', prevalence: '~3.5% 12-month, ~6–8% lifetime (US)', mortality: 'Elevated suicide and cardiovascular risk', onset: 'Any age; usually within 3 months of trauma but can be delayed' },
       ddx: ['Acute stress disorder', 'Adjustment disorder', 'MDD', 'Panic disorder', 'Complex PTSD', 'TBI', 'Dissociative disorders'],
@@ -337,9 +340,9 @@
       desc: 'A chronic disorder in which positive symptoms (delusions, hallucinations, disorganized speech/behavior) coexist with negative symptoms (blunted affect, avolition, social withdrawal) and cognitive impairment, producing a lasting decline in functioning of six months or more.',
       codes: { dsm: 'F20.9', icd10: 'F20.9', icd11: '6A20' },
       meds: {
-        first: ['Second-generation antipsychotics (risperidone, olanzapine, aripiprazole, paliperidone, quetiapine, lurasidone, cariprazine)', 'Xanomeline-trospium (Cobenfy) — muscarinic agonist, 2024', 'Milsaperidone (Bysanti, 2026)', 'Long-acting injectables for adherence'],
+        first: ['Second-generation antipsychotics (risperidone, olanzapine, aripiprazole, paliperidone, quetiapine, lurasidone, cariprazine)', 'Xanomeline-trospium (Cobenfy) — muscarinic agonist, 2024', 'Milsaperidone (Bysanti, 2026) — active metabolite of iloperidone that interconverts with it; not yet in the drug database, see iloperidone', 'Long-acting injectables for adherence'],
         adjunct: ['Clozapine for treatment-resistant schizophrenia (gold standard after 2 failed trials)', 'Adjunctive treatment of depression/anxiety as needed'],
-        note: 'Clozapine is uniquely effective for refractory illness and reduces suicidality, but requires ANC monitoring.'
+        note: 'Clozapine is uniquely effective for refractory illness and reduces suicidality. It still requires ANC monitoring per label (weekly for 6 months, every 2 weeks to 12 months, then monthly); the Clozapine REMS registry was eliminated in 2025, so prescribers and pharmacies no longer enroll patients or report ANC.'
       },
       therapy: ['CBT for psychosis (CBTp)', 'Family psychoeducation', 'Supported employment', 'Assertive community treatment', 'Cognitive remediation', 'Social skills training'],
       epi: { incidence: '~15 per 100,000 per year', prevalence: '~0.3–0.7% lifetime', mortality: 'Life expectancy reduced ~15–20 years; suicide ~5–10% lifetime; high cardiometabolic mortality', onset: 'Late teens to mid-30s; earlier and often more severe in males' },
@@ -353,7 +356,7 @@
       id: 'schizoaffective', name: 'Schizoaffective Disorder', cat: 'psychotic',
       desc: 'An uninterrupted illness combining the psychosis of schizophrenia with prominent mood episodes, in which delusions or hallucinations persist for at least two weeks in the absence of a mood episode — distinguishing it from a mood disorder with psychotic features.',
       codes: { dsm: 'F25.x', icd10: 'F25.0 (bipolar) / F25.1 (depressive) / F25.9', icd11: '6A21' },
-      meds: { first: ['Antipsychotics (paliperidone is FDA-approved specifically for schizoaffective disorder)', 'Mood stabilizers for bipolar type', 'Antidepressants for depressive type'], adjunct: ['Clozapine for refractory cases', 'ECT for severe mood/psychotic exacerbations'], note: 'Treatment targets both the psychotic and mood dimensions concurrently.' },
+      meds: { first: ['Antipsychotics (paliperidone is FDA-approved specifically for schizoaffective disorder)', 'Mood stabilizers for bipolar type (off-label)', 'Antidepressants for depressive type (off-label)'], adjunct: ['Clozapine for refractory cases', 'ECT for severe mood/psychotic exacerbations'], note: 'Treatment targets both the psychotic and mood dimensions concurrently.' },
       therapy: ['CBTp', 'Family psychoeducation', 'Psychosocial rehabilitation'],
       epi: { incidence: 'Uncommon', prevalence: '~0.3% lifetime', mortality: 'High suicide risk; intermediate between schizophrenia and mood disorders', onset: 'Early adulthood' },
       ddx: ['Schizophrenia', 'Bipolar/MDD with psychotic features', 'Substance-induced psychosis'],
@@ -365,8 +368,9 @@
     {
       id: 'schizophreniform', name: 'Schizophreniform Disorder', cat: 'psychotic',
       desc: 'The symptom picture of schizophrenia lasting between one and six months — a provisional diagnosis while it remains unclear whether the illness will resolve or persist into full schizophrenia.',
-      codes: { dsm: 'F20.81', icd10: 'F20.81', icd11: '6A23 (acute and transient psychotic disorder, related)' },
-      meds: { first: ['Antipsychotics as in first-episode schizophrenia'], adjunct: ['Reassess duration and diagnosis at 6 months'], note: 'About two-thirds progress to schizophrenia or schizoaffective disorder.' },
+      codes: { dsm: 'F20.81', icd10: 'F20.81', icd11: '6A20.0 (closest)' },
+      codeNote: 'ICD-11 has no schizophreniform category; usually coded 6A20.0 (schizophrenia, first episode), or 6A23 if the course is acute and polymorphic.',
+      meds: { first: ['Antipsychotics as in first-episode schizophrenia (off-label; approved for schizophrenia)'], adjunct: ['Reassess duration and diagnosis at 6 months'], note: 'About two-thirds progress to schizophrenia or schizoaffective disorder.' },
       therapy: ['Psychoeducation', 'CBTp', 'Early-intervention services'],
       epi: { incidence: 'Uncommon', prevalence: '~0.07% (lower in higher-income countries)', mortality: 'Suicide risk as in early psychosis', onset: 'Late teens to early adulthood' },
       ddx: ['Schizophrenia', 'Brief psychotic disorder', 'Mood disorder with psychosis', 'Substance-induced psychosis'],
@@ -379,7 +383,7 @@
       id: 'brief-psychotic', name: 'Brief Psychotic Disorder', cat: 'psychotic',
       desc: 'A sudden eruption of psychotic symptoms lasting at least a day but under a month, often triggered by marked stress (including the postpartum period), followed by a full return to premorbid functioning.',
       codes: { dsm: 'F23', icd10: 'F23', icd11: '6A23' },
-      meds: { first: ['Short-term antipsychotic'], adjunct: ['Benzodiazepine for acute agitation'], note: 'Ensure medical and substance causes are excluded; monitor for recurrence.' },
+      meds: { first: ['Short-term antipsychotic (off-label)'], adjunct: ['Benzodiazepine for acute agitation'], note: 'Ensure medical and substance causes are excluded; monitor for recurrence.' },
       therapy: ['Supportive therapy', 'Psychoeducation', 'Stress management'],
       epi: { incidence: 'Rare', prevalence: 'Uncommon; higher in postpartum context', mortality: 'Risk during acute episode (impulsivity, postpartum harm)', onset: 'Average onset in the 30s–40s; postpartum variant peripartum' },
       ddx: ['Schizophreniform disorder', 'Substance-induced psychosis', 'Mood disorder with psychosis', 'Delirium', 'Postpartum psychosis'],
@@ -392,7 +396,7 @@
       id: 'delusional', name: 'Delusional Disorder', cat: 'psychotic',
       desc: 'One or more fixed false beliefs held for a month or longer — persecutory, jealous, erotomanic, grandiose, or somatic — in a person whose functioning and behavior are otherwise largely intact and who lacks the broader disorganization of schizophrenia.',
       codes: { dsm: 'F22', icd10: 'F22', icd11: '6A24' },
-      meds: { first: ['Antipsychotics (often modest response)'], adjunct: ['SSRIs if depressive features'], note: 'Poor insight makes engagement and adherence the central challenge.' },
+      meds: { first: ['Antipsychotics (off-label; often modest response)'], adjunct: ['SSRIs if depressive features (off-label)'], note: 'Poor insight makes engagement and adherence the central challenge.' },
       therapy: ['Cultivating therapeutic alliance', 'CBT (limited by insight)', 'Supportive therapy'],
       epi: { incidence: 'Rare', prevalence: '~0.02–0.03%', mortality: 'Variable; risk tied to acting on delusions', onset: 'Middle to late adulthood (later than schizophrenia)' },
       ddx: ['Schizophrenia', 'Paranoid personality disorder', 'Mood disorder with psychosis', 'Substance/medical causes', 'Dementia'],
@@ -422,7 +426,7 @@
       id: 'asd', name: 'Autism Spectrum Disorder', cat: 'neurodev',
       desc: 'A developmental condition marked by persistent differences in social communication and reciprocity alongside restricted, repetitive behaviors, interests, or sensory patterns, present from early childhood and spanning a wide range of language and cognitive ability.',
       codes: { dsm: 'F84.0', icd10: 'F84.0', icd11: '6A02' },
-      meds: { first: ['No medication treats core social-communication features'], adjunct: ['Risperidone and aripiprazole — FDA-approved for irritability/aggression in autism', 'SSRIs for comorbid anxiety/OCD (variable)', 'Stimulants/alpha-2 agonists for comorbid ADHD'], note: 'Pharmacotherapy targets comorbid symptoms (irritability, ADHD, anxiety), not autism itself.' },
+      meds: { first: ['No medication treats core social-communication features'], adjunct: ['Risperidone and aripiprazole — FDA-approved for irritability/aggression in autism', 'SSRIs for comorbid anxiety/OCD (variable; off-label in children)', 'Stimulants/alpha-2 agonists for comorbid ADHD'], note: 'Pharmacotherapy targets comorbid symptoms (irritability, ADHD, anxiety), not autism itself.' },
       therapy: ['Applied behavior analysis (ABA) and naturalistic developmental behavioral interventions', 'Speech and language therapy', 'Occupational therapy', 'Social skills training', 'Parent-mediated interventions'],
       epi: { incidence: 'N/A', prevalence: '~1 in 31 US children (recent CDC estimates)', mortality: 'Elevated — accidents, drowning, epilepsy, and suicide in higher-functioning individuals', onset: 'Early childhood (signs typically before age 2–3)' },
       ddx: ['Intellectual disability', 'Language disorder', 'ADHD', 'Social anxiety', 'Reactive attachment disorder', 'Hearing impairment', 'Rett/genetic syndromes'],
@@ -435,7 +439,7 @@
       id: 'tourette', name: 'Tourette’s Disorder', cat: 'neurodev',
       desc: 'Multiple motor tics plus at least one vocal tic persisting more than a year with childhood onset — brief, repetitive, semi-voluntary movements or sounds that wax and wane and are often preceded by an uncomfortable premonitory urge.',
       codes: { dsm: 'F95.2', icd10: 'F95.2', icd11: '8A05.00' },
-      meds: { first: ['Alpha-2 agonists (guanfacine, clonidine) for mild-moderate tics'], adjunct: ['Antipsychotics (aripiprazole is FDA-approved; haloperidol, pimozide, risperidone)', 'VMAT2 inhibitors (off-label)', 'Botulinum toxin for focal tics'], note: 'Treat only if tics are impairing; manage comorbid ADHD and OCD, which often cause more disability than tics.' },
+      meds: { first: ['Alpha-2 agonists (guanfacine, clonidine) for mild-moderate tics — off-label but guideline-preferred, especially with ADHD', 'FDA-approved for Tourette: aripiprazole, haloperidol, pimozide'], adjunct: ['Risperidone (off-label)', 'VMAT2 inhibitors (off-label)', 'Botulinum toxin for focal tics'], note: 'Treat only if tics are impairing; manage comorbid ADHD and OCD, which often cause more disability than tics.' },
       therapy: ['Comprehensive Behavioral Intervention for Tics (CBIT) — first-line', 'Habit reversal training', 'Psychoeducation'],
       epi: { incidence: 'N/A', prevalence: '~0.3–0.9% of children', mortality: 'Low direct', onset: 'Childhood (typically 4–8 years), peak severity around 10–12' },
       ddx: ['Provisional/persistent tic disorder', 'Stereotypies', 'OCD', 'Myoclonus', 'Medication-induced movements', 'Functional movement disorder'],
@@ -451,8 +455,9 @@
     {
       id: 'anorexia', name: 'Anorexia Nervosa', cat: 'eating',
       desc: 'Restriction of intake driving significantly low body weight, coupled with an intense fear of weight gain and a distorted experience of one’s body, in which the seriousness of the low weight goes unrecognized — subtyped as restricting or binge-eating/purging.',
-      codes: { dsm: 'F50.0x', icd10: 'F50.01 (restricting) / F50.02 (binge-purge)', icd11: '6B80' },
-      meds: { first: ['No medication is first-line; nutritional rehabilitation is the priority'], adjunct: ['Olanzapine may modestly aid weight gain', 'SSRIs for comorbid depression/anxiety after weight restoration'], note: 'SSRIs are ineffective at very low weight; refeeding is the essential intervention.' },
+      codes: { dsm: 'F50.01x / F50.02x', icd10: 'F50.01x / F50.02x', icd11: '6B80' },
+      codeNote: 'Since FY2025, F50.01 (restricting) and F50.02 (binge-eating/purging) are not billable on their own; add the severity digit (BMI-based): 0 mild, 1 moderate, 2 severe, 3 extreme, 4 in remission, 9 unspecified (e.g., F50.011).',
+      meds: { first: ['No medication is first-line; nutritional rehabilitation is the priority'], adjunct: ['Olanzapine may modestly aid weight gain (off-label)', 'SSRIs for comorbid depression/anxiety after weight restoration'], note: 'SSRIs are ineffective at very low weight; refeeding is the essential intervention.' },
       therapy: ['Family-based treatment (FBT) for adolescents — first-line', 'CBT-E (enhanced)', 'Specialist supportive clinical management', 'Nutritional rehabilitation'],
       epi: { incidence: 'N/A', prevalence: '~0.6% lifetime; up to ~4% in women', mortality: 'Highest mortality of any psychiatric disorder (~5–6x expected); cardiac and suicide deaths', onset: 'Adolescence (peak 15–19)' },
       ddx: ['Bulimia nervosa', 'ARFID', 'Depression with appetite loss', 'Hyperthyroidism/malabsorption', 'Body dysmorphic disorder', 'OCD'],
@@ -464,8 +469,9 @@
     {
       id: 'bulimia', name: 'Bulimia Nervosa', cat: 'eating',
       desc: 'Recurrent binge episodes marked by a sense of lost control, followed by compensatory purging, fasting, or over-exercise, at least weekly for three months, in a person whose self-worth is unduly tied to shape and weight — usually at normal or above-normal weight.',
-      codes: { dsm: 'F50.2', icd10: 'F50.2', icd11: '6B81' },
-      meds: { first: ['Fluoxetine (60 mg) — FDA-approved for bulimia'], adjunct: ['Other SSRIs', 'Topiramate (off-label)', 'Avoid bupropion (seizure risk in purging patients)'], note: 'Bupropion is contraindicated in eating disorders with purging.' },
+      codes: { dsm: 'F50.2x', icd10: 'F50.20–F50.25', icd11: '6B81' },
+      codeNote: 'Since FY2025, F50.2 is not billable: F50.20 unspecified; F50.21 mild, F50.22 moderate, F50.23 severe, F50.24 extreme, F50.25 in remission.',
+      meds: { first: ['Fluoxetine (60 mg) — FDA-approved for bulimia'], adjunct: ['Other SSRIs (off-label)', 'Topiramate (off-label)', 'Avoid bupropion (seizure risk in purging patients)'], note: 'Bupropion is contraindicated in eating disorders with purging.' },
       therapy: ['CBT-E (first-line)', 'Interpersonal therapy', 'DBT for emotion regulation', 'Guided self-help'],
       epi: { incidence: 'N/A', prevalence: '~0.3–1% lifetime', mortality: 'Elevated (~2x); electrolyte disturbance and suicide', onset: 'Late adolescence to early adulthood' },
       ddx: ['Anorexia binge-purge type', 'Binge-eating disorder', 'MDD', 'Borderline personality disorder', 'GI causes of vomiting'],
@@ -477,7 +483,8 @@
     {
       id: 'bed', name: 'Binge-Eating Disorder', cat: 'eating',
       desc: 'Recurrent episodes of eating unusually large amounts rapidly and to uncomfortable fullness, with distress and loss of control but no regular compensatory behavior — the most common eating disorder and a driver of obesity.',
-      codes: { dsm: 'F50.81', icd10: 'F50.81', icd11: '6B82' },
+      codes: { dsm: 'F50.81x', icd10: 'F50.81x', icd11: '6B82' },
+      codeNote: 'Since FY2025, F50.81 is not billable on its own; add the severity digit: 0 mild, 1 moderate, 2 severe, 3 extreme, 4 in remission, 9 unspecified (e.g., F50.812).',
       meds: { first: ['Lisdexamfetamine (Vyvanse) — FDA-approved for moderate-severe BED'], adjunct: ['SSRIs for comorbid mood/anxiety', 'Topiramate (off-label)'], note: 'Lisdexamfetamine reduces binge frequency; screen for cardiovascular risk and misuse.' },
       therapy: ['CBT-E (first-line)', 'Interpersonal therapy', 'DBT', 'Behavioral weight management as adjunct'],
       epi: { incidence: 'N/A', prevalence: '~1.2% 12-month, ~2–3% lifetime (most common eating disorder)', mortality: 'Related to obesity comorbidities', onset: 'Late adolescence to early adulthood; broader age range than other eating disorders' },
@@ -508,7 +515,7 @@
       id: 'oud', name: 'Opioid Use Disorder', cat: 'substance',
       desc: 'Compulsive opioid use with tolerance, withdrawal, and continued use despite escalating harm; a relapsing condition in which pharmacotherapy dramatically reduces overdose death and is the standard of care.',
       codes: { dsm: 'F11.1x/F11.2x', icd10: 'F11.20 (mod-severe)', icd11: '6C43.2' },
-      meds: { first: ['Buprenorphine (± naloxone)', 'Methadone (opioid treatment programs)'], adjunct: ['Extended-release naltrexone (after detox)', 'Naloxone for overdose reversal (prescribe to all)', 'Clonidine/lofexidine for withdrawal symptoms'], note: 'Medications for OUD (MOUD) are lifesaving; avoid detox-only approaches, which raise overdose risk.' },
+      meds: { first: ['Buprenorphine (± naloxone)', 'Methadone (opioid treatment programs)'], adjunct: ['Extended-release naltrexone (after detox)', 'Naloxone for overdose reversal (prescribe to all)', 'Lofexidine (approved) or clonidine (off-label) for withdrawal symptoms'], note: 'Medications for OUD (MOUD) are lifesaving; avoid detox-only approaches, which raise overdose risk.' },
       therapy: ['Contingency management', 'CBT', 'Motivational interviewing', 'Peer recovery support'],
       epi: { incidence: 'Rising with synthetic opioids', prevalence: '~2% of US adults (varies by region)', mortality: 'Very high — driven by fentanyl overdose; leading cause of accidental death in many age groups', onset: 'Adolescence to adulthood; often begins with prescription opioids' },
       ddx: ['Chronic pain with physiologic dependence (not automatically OUD)', 'Other substance use disorders'],
@@ -551,7 +558,7 @@
       id: 'delirium', name: 'Delirium', cat: 'neurocognitive',
       desc: 'An acute, fluctuating disturbance of attention and awareness caused by an underlying medical condition, substance, or withdrawal — developing over hours to days and often missed in its hypoactive form. A medical emergency, not a primary psychiatric illness.',
       codes: { dsm: 'F05', icd10: 'F05', icd11: '6D70' },
-      meds: { first: ['Treat the underlying cause; nonpharmacologic measures first'], adjunct: ['Low-dose antipsychotic (haloperidol, quetiapine) for dangerous agitation only', 'Dexmedetomidine in ICU settings', 'Benzodiazepines only for alcohol/sedative withdrawal delirium'], note: 'Antipsychotics do not shorten delirium; reserve for safety. Avoid benzodiazepines except in withdrawal delirium.' },
+      meds: { first: ['Treat the underlying cause; nonpharmacologic measures first'], adjunct: ['Low-dose antipsychotic (haloperidol, quetiapine) for dangerous agitation only (off-label)', 'Dexmedetomidine in ICU settings (approved for ICU sedation; off-label for delirium)', 'Benzodiazepines only for alcohol/sedative withdrawal delirium'], note: 'Antipsychotics do not shorten delirium; reserve for safety. Avoid benzodiazepines except in withdrawal delirium.' },
       therapy: ['Reorientation, sensory aids, sleep-wake normalization, early mobilization', 'Family presence', 'Minimize deliriogenic medications'],
       epi: { incidence: 'Very common in hospitalized elderly', prevalence: '~20–30% of older inpatients; up to ~80% in ICU', mortality: 'Independently associated with increased mortality and long-term cognitive decline', onset: 'Acute, at any age but especially older adults' },
       ddx: ['Dementia', 'Depression (hypoactive delirium)', 'Primary psychosis', 'Nonconvulsive status epilepticus', 'Wernicke encephalopathy'],
@@ -576,7 +583,8 @@
     {
       id: 'alzheimers', name: 'Major Neurocognitive Disorder due to Alzheimer’s Disease', cat: 'neurocognitive',
       desc: 'A gradual, progressive decline led by memory and learning impairment, later spreading to language, visuospatial ability, and executive function, eroding independence — the most common cause of dementia, underpinned by amyloid and tau pathology.',
-      codes: { dsm: 'G30.9 + F02.8x', icd10: 'G30.9 (with F02.80/F02.81)', icd11: '6D80' },
+      codes: { dsm: 'G30.9 + F02.[8/A/B/C]x', icd10: 'G30.9 + F02.x', icd11: '6D80' },
+      codeNote: 'Code the etiology first, then F02: F02.80–F02.84 when severity is unspecified, or F02.A- / F02.B- / F02.C- for mild / moderate / severe; the final characters specify behavioral (e.g., agitation), psychotic, mood, or anxiety disturbance, or none.',
       meds: { first: ['Cholinesterase inhibitors (donepezil, rivastigmine, galantamine)', 'Memantine (moderate-severe)'], adjunct: ['Anti-amyloid monoclonal antibodies (lecanemab, donanemab) for early disease — require MRI monitoring for ARIA', 'Brexpiprazole or dextromethorphan-bupropion (Auvelity) for Alzheimer’s agitation', 'Avoid antipsychotics where possible (boxed warning: mortality in dementia)'], note: 'Symptomatic drugs slow decline modestly; anti-amyloid antibodies target underlying pathology in early stages.' },
       therapy: ['Cognitive stimulation', 'Structured routines and environmental cues', 'Caregiver education and support', 'Behavioral management of agitation'],
       epi: { incidence: 'Rises sharply with age', prevalence: '~10% of those 65+, ~⅓ of those 85+', mortality: 'A leading cause of death in older adults; median survival ~4–8 years from diagnosis', onset: 'Usually after 65 (late-onset); rarer early-onset familial forms' },
@@ -589,10 +597,11 @@
     {
       id: 'lewy-body', name: 'Neurocognitive Disorder with Lewy Bodies', cat: 'neurocognitive',
       desc: 'A dementia distinguished by fluctuating cognition and alertness, recurrent well-formed visual hallucinations, spontaneous parkinsonism, and REM sleep behavior disorder, with a dangerous sensitivity to antipsychotics.',
-      codes: { dsm: 'G31.83 + F02.8x', icd10: 'G31.83', icd11: '6D82' },
-      meds: { first: ['Cholinesterase inhibitors (rivastigmine, donepezil) — often notably effective'], adjunct: ['Memantine', 'Cautious low-dose quetiapine or pimavanserin for psychosis', 'Carbidopa-levodopa for motor symptoms (may worsen hallucinations)'], note: 'Avoid typical and most atypical antipsychotics — severe neuroleptic sensitivity can be life-threatening.' },
+      codes: { dsm: 'G31.83 + F02.[8/A/B/C]x', icd10: 'G31.83 + F02.x', icd11: '6D82' },
+      codeNote: 'Code the etiology first, then F02: F02.80–F02.84 when severity is unspecified, or F02.A- / F02.B- / F02.C- for mild / moderate / severe; the final characters specify behavioral (e.g., agitation), psychotic, mood, or anxiety disturbance, or none.',
+      meds: { first: ['Cholinesterase inhibitors (rivastigmine, donepezil) — often notably effective; off-label in the US for DLB (rivastigmine is approved for Parkinson’s disease dementia)'], adjunct: ['Memantine (off-label)', 'Cautious low-dose quetiapine or pimavanserin for psychosis (off-label; pimavanserin is approved for Parkinson’s disease psychosis)', 'Carbidopa-levodopa for motor symptoms (may worsen hallucinations)'], note: 'Avoid typical and most atypical antipsychotics — severe neuroleptic sensitivity can be life-threatening.' },
       therapy: ['Caregiver education on fluctuations and falls', 'Environmental safety', 'Sleep management'],
-      epi: { incidence: 'N/A', prevalence: 'Second or third most common degenerative dementia (~4–5% of dementia)', mortality: 'Progressive; survival similar to or shorter than Alzheimer’s', onset: 'Typically after 50–60' },
+      epi: { incidence: 'N/A', prevalence: 'Second or third most common degenerative dementia (~5–8% of clinically diagnosed dementia; Lewy pathology in ~15–20% at autopsy)', mortality: 'Progressive; survival similar to or shorter than Alzheimer’s', onset: 'Typically after 50–60' },
       ddx: ['Alzheimer’s disease', 'Parkinson’s disease dementia', 'Delirium', 'Vascular dementia', 'Progressive supranuclear palsy'],
       redFlags: ['Neuroleptic sensitivity reaction', 'Falls/syncope from autonomic dysfunction', 'REM behavior disorder injury risk'],
       scales: ['MoCA', 'CDR'],
@@ -602,8 +611,9 @@
     {
       id: 'ftd', name: 'Frontotemporal Neurocognitive Disorder', cat: 'neurocognitive',
       desc: 'An early-onset dementia striking the frontal and temporal lobes, presenting either as a behavioral variant with disinhibition, apathy, and loss of empathy, or as progressive aphasia — often mistaken for a primary psychiatric disorder at first.',
-      codes: { dsm: 'G31.09 + F02.8x', icd10: 'G31.09', icd11: '6D83' },
-      meds: { first: ['No disease-specific or approved cognitive therapy'], adjunct: ['SSRIs for behavioral symptoms (disinhibition, compulsions)', 'Trazodone', 'Avoid cholinesterase inhibitors (may worsen behavior) and antipsychotics where possible'], note: 'Cholinesterase inhibitors are generally unhelpful and can worsen behavioral symptoms.' },
+      codes: { dsm: 'G31.09 + F02.[8/A/B/C]x', icd10: 'G31.09 + F02.x', icd11: '6D83' },
+      codeNote: 'Code the etiology first, then F02: F02.80–F02.84 when severity is unspecified, or F02.A- / F02.B- / F02.C- for mild / moderate / severe; the final characters specify behavioral (e.g., agitation), psychotic, mood, or anxiety disturbance, or none.',
+      meds: { first: ['No disease-specific or approved cognitive therapy'], adjunct: ['SSRIs for behavioral symptoms such as disinhibition and compulsions (off-label)', 'Trazodone (off-label)', 'Avoid cholinesterase inhibitors (may worsen behavior) and antipsychotics where possible'], note: 'Cholinesterase inhibitors are generally unhelpful and can worsen behavioral symptoms.' },
       therapy: ['Behavioral management', 'Caregiver support and safety planning', 'Speech therapy for aphasic variants'],
       epi: { incidence: 'N/A', prevalence: 'A leading cause of dementia before age 65', mortality: 'Progressive; median survival ~6–11 years from onset', onset: 'Usually 45–65 (younger than Alzheimer’s)' },
       ddx: ['Alzheimer’s disease', 'Primary psychiatric illness (bipolar, depression)', 'Primary progressive aphasia', 'ALS-FTD spectrum'],
@@ -619,8 +629,9 @@
     {
       id: 'insomnia', name: 'Insomnia Disorder', cat: 'sleep',
       desc: 'Persistent dissatisfaction with sleep — trouble falling asleep, staying asleep, or early waking — occurring despite adequate opportunity, at least three nights a week for three months, with daytime consequences.',
-      codes: { dsm: 'F51.01', icd10: 'F51.01 (chronic insomnia G47.00)', icd11: '7A00' },
-      meds: { first: ['CBT-I is first-line, not medication'], adjunct: ['Dual orexin receptor antagonists (suvorexant, lemborexant, daridorexant)', 'Low-dose doxepin', 'Z-drugs (zolpidem, eszopiclone) short-term', 'Melatonin/ramelteon for circadian onset', 'Avoid chronic benzodiazepines'], note: 'Orexin antagonists and low-dose doxepin are favored over benzodiazepine-receptor agonists for chronic use.' },
+      codes: { dsm: 'F51.01', icd10: 'F51.01 / G47.00', icd11: '7A00' },
+      codeNote: 'F51.01 is primary insomnia (DSM-5-TR insomnia disorder); G47.00 is insomnia, unspecified, used for insomnia attributed to a medical (organic) cause.',
+      meds: { first: ['CBT-I is first-line, not medication'], adjunct: ['Dual orexin receptor antagonists (suvorexant, lemborexant, daridorexant)', 'Low-dose doxepin', 'Z-drugs (zolpidem, eszopiclone) short-term', 'Ramelteon for sleep-onset insomnia', 'Melatonin (dietary supplement, not an FDA-approved drug)', 'Avoid chronic benzodiazepines'], note: 'Orexin antagonists and low-dose doxepin are favored over benzodiazepine-receptor agonists for chronic use.' },
       therapy: ['Cognitive behavioral therapy for insomnia (CBT-I)', 'Sleep hygiene', 'Stimulus control', 'Sleep restriction'],
       epi: { incidence: 'N/A', prevalence: '~10% chronic insomnia disorder; up to ~30% report symptoms', mortality: 'Low direct; linked to accidents and cardiometabolic risk', onset: 'Any age; rises with age and in women' },
       ddx: ['Sleep apnea', 'Restless legs syndrome', 'Circadian rhythm disorders', 'Depression/anxiety', 'Substance/medication effects'],
@@ -633,7 +644,7 @@
       id: 'narcolepsy', name: 'Narcolepsy', cat: 'sleep',
       desc: 'Chronic, irresistible daytime sleep attacks with intrusion of REM phenomena — cataplexy (sudden emotion-triggered muscle weakness in type 1), sleep paralysis, and hypnagogic hallucinations — reflecting loss of hypothalamic orexin signaling.',
       codes: { dsm: 'G47.4xx', icd10: 'G47.411 (with cataplexy) / G47.419', icd11: '7A20' },
-      meds: { first: ['Wake-promoting agents (modafinil, armodafinil)', 'Solriamfetol', 'Stimulants'], adjunct: ['Sodium oxybate / oxybate salts for cataplexy and disrupted night sleep', 'Pitolisant', 'SNRIs/venlafaxine for cataplexy (off-label)'], note: 'Type 1 (with cataplexy) reflects orexin deficiency; oxybate addresses both sleepiness and cataplexy.' },
+      meds: { first: ['Wake-promoting agents (modafinil, armodafinil)', 'Solriamfetol', 'Stimulants (methylphenidate, amphetamine)'], adjunct: ['Sodium oxybate / oxybate salts for cataplexy and disrupted night sleep', 'Pitolisant', 'SNRIs/venlafaxine for cataplexy (off-label)'], note: 'Type 1 (with cataplexy) reflects orexin deficiency; oxybate addresses both sleepiness and cataplexy.' },
       therapy: ['Scheduled naps', 'Sleep hygiene', 'Safety counseling (driving)', 'Psychoeducation'],
       epi: { incidence: 'N/A', prevalence: '~0.02–0.05% (type 1)', mortality: 'Accident risk from sleep attacks', onset: 'Adolescence to young adulthood (bimodal peaks ~15 and ~35)' },
       ddx: ['Obstructive sleep apnea', 'Idiopathic hypersomnia', 'Insufficient sleep', 'Depression', 'Seizures (cataplexy mimic)'],
@@ -650,7 +661,7 @@
       id: 'bpd', name: 'Borderline Personality Disorder', cat: 'personality',
       desc: 'A pervasive pattern of instability in emotions, relationships, self-image, and impulse control — frantic efforts to avoid abandonment, intense unstable relationships, chronic emptiness, and recurrent self-harm or suicidality — emerging by early adulthood.',
       codes: { dsm: 'F60.3', icd10: 'F60.3', icd11: '6D10 + 6D11.5 (borderline pattern)' },
-      meds: { first: ['No FDA-approved medication; psychotherapy is primary'], adjunct: ['Targeted, time-limited use: mood stabilizers for impulsivity, low-dose atypical antipsychotics for transient psychosis/anger, SSRIs for comorbid depression/anxiety'], note: 'Avoid polypharmacy and benzodiazepines (disinhibition, overdose risk); medications treat symptoms, not the disorder.' },
+      meds: { first: ['No FDA-approved medication; psychotherapy is primary'], adjunct: ['Targeted, time-limited use (all off-label): mood stabilizers for impulsivity, low-dose atypical antipsychotics for transient psychosis/anger, SSRIs for comorbid depression/anxiety'], note: 'Avoid polypharmacy and benzodiazepines (disinhibition, overdose risk); medications treat symptoms, not the disorder.' },
       therapy: ['Dialectical behavior therapy (DBT) — strongest evidence', 'Mentalization-based treatment', 'Transference-focused psychotherapy', 'Good psychiatric management', 'Schema therapy'],
       epi: { incidence: 'N/A', prevalence: '~1.4–2.7% general population; up to ~20% of psychiatric inpatients', mortality: 'Suicide rate ~8–10%; high self-harm burden', onset: 'Adolescence to early adulthood' },
       ddx: ['Bipolar II disorder', 'PTSD/complex PTSD', 'Other personality disorders', 'ADHD', 'Substance use disorders'],
@@ -706,7 +717,7 @@
       id: 'iad', name: 'Illness Anxiety Disorder', cat: 'somatic',
       desc: 'Preoccupation with having or acquiring a serious illness in the near-absence of somatic symptoms, sustained by excessive health-checking or, conversely, maladaptive avoidance of medical care — the former "hypochondriasis."',
       codes: { dsm: 'F45.21', icd10: 'F45.21', icd11: '6B23' },
-      meds: { first: ['SSRIs/SNRIs'], adjunct: ['Treat comorbid anxiety/depression'], note: 'Distinguish care-seeking from care-avoidant types; both need addressing.' },
+      meds: { first: ['SSRIs/SNRIs (off-label)'], adjunct: ['Treat comorbid anxiety/depression'], note: 'Distinguish care-seeking from care-avoidant types; both need addressing.' },
       therapy: ['CBT', 'Exposure and response prevention for reassurance-seeking', 'Mindfulness'],
       epi: { incidence: 'N/A', prevalence: '~1.3–10% depending on definition/setting', mortality: 'Low direct', onset: 'Early to middle adulthood' },
       ddx: ['Somatic symptom disorder', 'OCD', 'Panic disorder', 'GAD', 'Delusional disorder (somatic type)'],
@@ -732,7 +743,7 @@
       id: 'did', name: 'Dissociative Identity Disorder', cat: 'somatic',
       desc: 'A disruption of identity involving two or more distinct personality states with recurrent gaps in memory for everyday events and personal information, typically rooted in severe, repeated early-childhood trauma.',
       codes: { dsm: 'F44.81', icd10: 'F44.81', icd11: '6B64' },
-      meds: { first: ['No medication for the dissociation itself'], adjunct: ['Treat comorbid PTSD, depression, and anxiety', 'Prazosin for nightmares'], note: 'Avoid over-medication; phased trauma-focused psychotherapy is the mainstay.' },
+      meds: { first: ['No medication for the dissociation itself'], adjunct: ['Treat comorbid PTSD, depression, and anxiety', 'Prazosin for nightmares (off-label)'], note: 'Avoid over-medication; phased trauma-focused psychotherapy is the mainstay.' },
       therapy: ['Phase-oriented trauma-focused psychotherapy (stabilization → trauma processing → integration)', 'DBT skills for affect regulation'],
       epi: { incidence: 'N/A', prevalence: '~1–1.5% (contested; varies by setting)', mortality: 'High self-harm and suicide risk', onset: 'Origins in childhood trauma; often identified in adulthood' },
       ddx: ['PTSD/complex PTSD', 'Borderline personality disorder', 'Psychotic disorders', 'Factitious disorder', 'Seizure disorders'],

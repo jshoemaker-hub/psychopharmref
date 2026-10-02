@@ -144,6 +144,7 @@
             '<span class="dxdb-chip"><b>ICD-10-CM</b>' + esc(d.codes.icd10) + '</span>' +
             '<span class="dxdb-chip"><b>ICD-11</b>' + esc(d.codes.icd11) + '</span>' +
           '</div>' +
+          (d.codeNote ? '<p class="dxdb-mednote">' + esc(d.codeNote) + '</p>' : '') +
           '<div class="dxdb-epi">' +
             '<div class="dxdb-cell"><div class="dxdb-lab">Incidence</div><div class="dxdb-val">' + esc(d.epi.incidence) + '</div></div>' +
             '<div class="dxdb-cell"><div class="dxdb-lab">Prevalence</div><div class="dxdb-val">' + esc(d.epi.prevalence) + '</div></div>' +
@@ -151,7 +152,7 @@
             '<div class="dxdb-cell"><div class="dxdb-lab">Age of Onset</div><div class="dxdb-val">' + esc(d.epi.onset) + '</div></div>' +
           '</div>' +
           '<div class="dxdb-block"><h4>Medications</h4>' +
-            '<div class="dxdb-sublab">First-line / FDA-approved</div><div class="dxdb-pills">' + pills(d.meds.first, 'first') + '</div>' +
+            '<div class="dxdb-sublab">First-line</div><div class="dxdb-pills">' + pills(d.meds.first, 'first') + '</div>' +
             '<div class="dxdb-sublab">Adjunct / second-line</div><div class="dxdb-pills">' + pills(d.meds.adjunct, '') + '</div>' + medNote + '</div>' +
           '<div class="dxdb-block"><h4>Recommended Therapy</h4><div class="dxdb-pills">' + pills(d.therapy, '') + '</div></div>' +
           '<div class="dxdb-block"><h4>Differential Diagnosis</h4>' + lines(d.ddx) + '</div>' +
