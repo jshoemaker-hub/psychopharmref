@@ -499,7 +499,7 @@ function switchSection(id, skipGroupExpand) {
         dataScript.src = 'js/qbank-data.js?v=20261001a';
         dataScript.onload = function() {
           var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20261002a';
+          script.src = 'js/tools/' + toolId + '.js?v=20261002b';
           document.body.appendChild(script);
         };
         dataScript.onerror = function() { console.error('Failed to load qbank-data.js'); };
@@ -542,7 +542,7 @@ function switchSection(id, skipGroupExpand) {
           d.onload = function() {
             if (--smPending === 0) {
               var script = document.createElement('script');
-              script.src = 'js/tools/' + toolId + '.js?v=20261002a';
+              script.src = 'js/tools/' + toolId + '.js?v=20261002b';
               document.body.appendChild(script);
             }
           };
@@ -551,7 +551,7 @@ function switchSection(id, skipGroupExpand) {
         });
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20261002a';
+        script.src = 'js/tools/' + toolId + '.js?v=20261002b';
         document.body.appendChild(script);
       }
     }
@@ -4635,7 +4635,8 @@ function initMedTaper() {
             const short = /^Not sold \(controlled\)/i.test(reason) ? 'Not sold (controlled)'
               : /^No NADAC/i.test(reason) ? 'No NADAC listing'
               : reason.replace(/^Excluded:\s*/i, 'Excluded: ').replace(/\s*\(.*$/, '').replace(/\s+—.*$/, '');
-            return `<td class="pc-cell pc-cell-na${wholesaleCls}" title="${esc(reason)}"><small style="color:var(--text-muted);line-height:1.3;display:inline-block">${esc(short)}</small></td>`;
+            const naText = p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(short)}</a>` : esc(short);
+            return `<td class="pc-cell pc-cell-na${wholesaleCls}" title="${esc(reason)}"><small style="color:var(--text-muted);line-height:1.3;display:inline-block">${naText}</small></td>`;
           }
           if (typeof p.price !== 'number') return `<td class="pc-cell pc-cell-empty${wholesaleCls}">&mdash;</td>`;
           const isBest = !s.excludeFromBest && p.price === bestPrice && numericPrices.length > 1;

@@ -2405,6 +2405,7 @@
         <div class="cog-score-section">
           <h4 class="cog-score-test-title" style="color:#5a7db8">Montreal Cognitive Assessment (MoCA) — 30 Points</h4>
           <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px">+1 point if ≤12 years formal education (max 30). Administration ~10 minutes. Conventional cutoff ≥26/30. The impairment bands below are commonly used but not validated. Training and certification required for clinical interpretation (www.mocatest.org).</p>
+          <p style="font-size:12px;color:var(--text-muted);margin:0 0 8px;font-style:italic">Impairment bands (18–25, 10–17, &lt;10): commonly used, not validated cutoffs.</p>
           <div class="cog-score-grid">
             <div class="cog-score-box" style="--sc:#4caf50">
               <div class="cog-score-range">26–30</div>
@@ -2412,15 +2413,15 @@
             </div>
             <div class="cog-score-box" style="--sc:#ff9800">
               <div class="cog-score-range">18–25</div>
-              <div class="cog-score-label">Mild Cognitive Impairment</div>
+              <div class="cog-score-label">Mild Cognitive Impairment <small style="font-weight:400">(not validated)</small></div>
             </div>
             <div class="cog-score-box" style="--sc:#f44336">
               <div class="cog-score-range">10–17</div>
-              <div class="cog-score-label">Moderate Impairment</div>
+              <div class="cog-score-label">Moderate Impairment <small style="font-weight:400">(not validated)</small></div>
             </div>
             <div class="cog-score-box" style="--sc:#9c27b0">
               <div class="cog-score-range">&lt;10</div>
-              <div class="cog-score-label">Severe Impairment</div>
+              <div class="cog-score-label">Severe Impairment <small style="font-weight:400">(not validated)</small></div>
             </div>
           </div>
           <p class="ref-caveat">MoCA sensitivity for MCI ~90%; specificity ~87% (Nasreddine et al., J Am Geriatr Soc, 2005). A score below 26 does not automatically indicate dementia; scores must be interpreted alongside clinical history, education, and medical evaluation. A score ≥26 after a dementia diagnosis does not indicate resolution. The ≥26 cutoff can over-call impairment in older, less-educated, or diverse populations; a cutoff of 23 improved accuracy in a meta-analysis (Carson et al., 2018).</p>
@@ -11593,7 +11594,7 @@
         </div>
         <div class="ciwa-item-prompt">Ask &quot;Do you feel sick to your stomach? Have you vomited?&quot; (Observation.)</div>
         <div class="ciwa-options">
-          <div class="ciwa-option"><input type="radio" id="ciwa-item1-0" name="ciwa-item1" value="0" checked> <label for="ciwa-item1-0"><strong>0</strong> = No nausea and no vomiting</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item1-0" name="ciwa-item1" value="0"> <label for="ciwa-item1-0"><strong>0</strong> = No nausea and no vomiting</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item1-1" name="ciwa-item1" value="1"> <label for="ciwa-item1-1"><strong>1</strong> = Mild nausea with no vomiting</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item1-2" name="ciwa-item1" value="2"> <label for="ciwa-item1-2"><strong>2</strong> = (interpolate between anchors)</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item1-3" name="ciwa-item1" value="3"> <label for="ciwa-item1-3"><strong>3</strong> = (interpolate between anchors)</label></div>
@@ -11613,7 +11614,7 @@
         </div>
         <div class="ciwa-item-prompt">Arms extended and fingers spread apart. (Observation.)</div>
         <div class="ciwa-options">
-          <div class="ciwa-option"><input type="radio" id="ciwa-item2-0" name="ciwa-item2" value="0" checked> <label for="ciwa-item2-0"><strong>0</strong> = No tremor</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item2-0" name="ciwa-item2" value="0"> <label for="ciwa-item2-0"><strong>0</strong> = No tremor</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item2-1" name="ciwa-item2" value="1"> <label for="ciwa-item2-1"><strong>1</strong> = Not visible, but can be felt fingertip to fingertip</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item2-2" name="ciwa-item2" value="2"> <label for="ciwa-item2-2"><strong>2</strong> = (interpolate between anchors)</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item2-3" name="ciwa-item2" value="3"> <label for="ciwa-item2-3"><strong>3</strong> = (interpolate between anchors)</label></div>
@@ -11633,7 +11634,7 @@
         </div>
         <div class="ciwa-item-prompt">Observation.</div>
         <div class="ciwa-options">
-          <div class="ciwa-option"><input type="radio" id="ciwa-item3-0" name="ciwa-item3" value="0" checked> <label for="ciwa-item3-0"><strong>0</strong> = No sweat visible</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item3-0" name="ciwa-item3" value="0"> <label for="ciwa-item3-0"><strong>0</strong> = No sweat visible</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item3-1" name="ciwa-item3" value="1"> <label for="ciwa-item3-1"><strong>1</strong> = Barely perceptible sweating, palms moist</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item3-2" name="ciwa-item3" value="2"> <label for="ciwa-item3-2"><strong>2</strong> = (interpolate between anchors)</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item3-3" name="ciwa-item3" value="3"> <label for="ciwa-item3-3"><strong>3</strong> = (interpolate between anchors)</label></div>
@@ -11653,7 +11654,7 @@
         </div>
         <div class="ciwa-item-prompt">Ask &quot;Do you feel nervous?&quot; (Observation.)</div>
         <div class="ciwa-options">
-          <div class="ciwa-option"><input type="radio" id="ciwa-item4-0" name="ciwa-item4" value="0" checked> <label for="ciwa-item4-0"><strong>0</strong> = No anxiety, at ease</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item4-0" name="ciwa-item4" value="0"> <label for="ciwa-item4-0"><strong>0</strong> = No anxiety, at ease</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item4-1" name="ciwa-item4" value="1"> <label for="ciwa-item4-1"><strong>1</strong> = Mildly anxious</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item4-2" name="ciwa-item4" value="2"> <label for="ciwa-item4-2"><strong>2</strong> = (interpolate between anchors)</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item4-3" name="ciwa-item4" value="3"> <label for="ciwa-item4-3"><strong>3</strong> = (interpolate between anchors)</label></div>
@@ -11673,7 +11674,7 @@
         </div>
         <div class="ciwa-item-prompt">Observation.</div>
         <div class="ciwa-options">
-          <div class="ciwa-option"><input type="radio" id="ciwa-item5-0" name="ciwa-item5" value="0" checked> <label for="ciwa-item5-0"><strong>0</strong> = Normal activity</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item5-0" name="ciwa-item5" value="0"> <label for="ciwa-item5-0"><strong>0</strong> = Normal activity</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item5-1" name="ciwa-item5" value="1"> <label for="ciwa-item5-1"><strong>1</strong> = Somewhat more than normal activity</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item5-2" name="ciwa-item5" value="2"> <label for="ciwa-item5-2"><strong>2</strong> = (interpolate between anchors)</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item5-3" name="ciwa-item5" value="3"> <label for="ciwa-item5-3"><strong>3</strong> = (interpolate between anchors)</label></div>
@@ -11693,7 +11694,7 @@
         </div>
         <div class="ciwa-item-prompt">Ask &quot;Have you any itching, pins and needles sensations, any burning, any numbness, or do you feel bugs crawling on or under your skin?&quot; (Observation.)</div>
         <div class="ciwa-options">
-          <div class="ciwa-option"><input type="radio" id="ciwa-item6-0" name="ciwa-item6" value="0" checked> <label for="ciwa-item6-0"><strong>0</strong> = None</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item6-0" name="ciwa-item6" value="0"> <label for="ciwa-item6-0"><strong>0</strong> = None</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item6-1" name="ciwa-item6" value="1"> <label for="ciwa-item6-1"><strong>1</strong> = Very mild itching, pins and needles, burning, or numbness</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item6-2" name="ciwa-item6" value="2"> <label for="ciwa-item6-2"><strong>2</strong> = Mild itching, pins and needles, burning, or numbness</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item6-3" name="ciwa-item6" value="3"> <label for="ciwa-item6-3"><strong>3</strong> = Moderate itching, pins and needles, burning, or numbness</label></div>
@@ -11713,7 +11714,7 @@
         </div>
         <div class="ciwa-item-prompt">Ask &quot;Are you more aware of sounds around you? Are they harsh? Do they frighten you? Are you hearing anything that is disturbing to you? Are you hearing things you know are not there?&quot; (Observation.)</div>
         <div class="ciwa-options">
-          <div class="ciwa-option"><input type="radio" id="ciwa-item7-0" name="ciwa-item7" value="0" checked> <label for="ciwa-item7-0"><strong>0</strong> = Not present</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item7-0" name="ciwa-item7" value="0"> <label for="ciwa-item7-0"><strong>0</strong> = Not present</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item7-1" name="ciwa-item7" value="1"> <label for="ciwa-item7-1"><strong>1</strong> = Very mild harshness or ability to frighten</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item7-2" name="ciwa-item7" value="2"> <label for="ciwa-item7-2"><strong>2</strong> = Mild harshness or ability to frighten</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item7-3" name="ciwa-item7" value="3"> <label for="ciwa-item7-3"><strong>3</strong> = Moderate harshness or ability to frighten</label></div>
@@ -11733,7 +11734,7 @@
         </div>
         <div class="ciwa-item-prompt">Ask &quot;Does the light appear to be too bright? Is its color different? Does it hurt your eyes? Are you seeing anything that is disturbing to you? Are you seeing things you know are not there?&quot; (Observation.)</div>
         <div class="ciwa-options">
-          <div class="ciwa-option"><input type="radio" id="ciwa-item8-0" name="ciwa-item8" value="0" checked> <label for="ciwa-item8-0"><strong>0</strong> = Not present</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item8-0" name="ciwa-item8" value="0"> <label for="ciwa-item8-0"><strong>0</strong> = Not present</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item8-1" name="ciwa-item8" value="1"> <label for="ciwa-item8-1"><strong>1</strong> = Very mild sensitivity</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item8-2" name="ciwa-item8" value="2"> <label for="ciwa-item8-2"><strong>2</strong> = Mild sensitivity</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item8-3" name="ciwa-item8" value="3"> <label for="ciwa-item8-3"><strong>3</strong> = Moderate sensitivity</label></div>
@@ -11753,7 +11754,7 @@
         </div>
         <div class="ciwa-item-prompt">Ask &quot;Does your head feel different? Does it feel like there is a band around your head?&quot; Do not rate for dizziness or lightheadedness. Otherwise, rate severity.</div>
         <div class="ciwa-options">
-          <div class="ciwa-option"><input type="radio" id="ciwa-item9-0" name="ciwa-item9" value="0" checked> <label for="ciwa-item9-0"><strong>0</strong> = Not present</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item9-0" name="ciwa-item9" value="0"> <label for="ciwa-item9-0"><strong>0</strong> = Not present</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item9-1" name="ciwa-item9" value="1"> <label for="ciwa-item9-1"><strong>1</strong> = Very mild</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item9-2" name="ciwa-item9" value="2"> <label for="ciwa-item9-2"><strong>2</strong> = Mild</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item9-3" name="ciwa-item9" value="3"> <label for="ciwa-item9-3"><strong>3</strong> = Moderate</label></div>
@@ -11773,7 +11774,7 @@
         </div>
         <div class="ciwa-item-prompt">Ask &quot;What day is this? Where are you? Who am I?&quot;</div>
         <div class="ciwa-options">
-          <div class="ciwa-option"><input type="radio" id="ciwa-item10-0" name="ciwa-item10" value="0" checked> <label for="ciwa-item10-0"><strong>0</strong> = Oriented and can do serial additions</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item10-0" name="ciwa-item10" value="0"> <label for="ciwa-item10-0"><strong>0</strong> = Oriented and can do serial additions</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item10-1" name="ciwa-item10" value="1"> <label for="ciwa-item10-1"><strong>1</strong> = Cannot do serial additions or is uncertain about date</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item10-2" name="ciwa-item10" value="2"> <label for="ciwa-item10-2"><strong>2</strong> = Disoriented for date by no more than 2 calendar days</label></div>
           <div class="ciwa-option"><input type="radio" id="ciwa-item10-3" name="ciwa-item10" value="3"> <label for="ciwa-item10-3"><strong>3</strong> = Disoriented for date by more than 2 calendar days</label></div>
@@ -11787,6 +11788,7 @@
     <div class="ciwa-score-display">
       <div class="ciwa-total-score" id="ciwa-total-score">0</div>
       <div class="ciwa-max-label">/ 67</div>
+      <div class="ciwa-answered" id="ciwa-answered" style="font-size:13px;color:var(--text-muted);">0 / 10 answered</div>
       <div class="ciwa-severity-label ciwa-severity-minimal" id="ciwa-severity-level">Minimal to mild withdrawal</div>
       <div class="ciwa-guidance" id="ciwa-guidance"></div>
     </div>
@@ -11831,7 +11833,7 @@
         </div>
         <div class="cows-item-prompt">Measured after patient is sitting or lying for one minute.</div>
         <div class="cows-options">
-          <div class="cows-option"><input type="radio" id="cows-item1-0" name="cows-item1" value="0" checked> <label for="cows-item1-0"><strong>0</strong> = Pulse rate 80 or below</label></div>
+          <div class="cows-option"><input type="radio" id="cows-item1-0" name="cows-item1" value="0"> <label for="cows-item1-0"><strong>0</strong> = Pulse rate 80 or below</label></div>
           <div class="cows-option"><input type="radio" id="cows-item1-1" name="cows-item1" value="1"> <label for="cows-item1-1"><strong>1</strong> = Pulse rate 81–100</label></div>
           <div class="cows-option"><input type="radio" id="cows-item1-2" name="cows-item1" value="2"> <label for="cows-item1-2"><strong>2</strong> = Pulse rate 101–120</label></div>
           <div class="cows-option"><input type="radio" id="cows-item1-4" name="cows-item1" value="4"> <label for="cows-item1-4"><strong>4</strong> = Pulse rate greater than 120</label></div>
@@ -11847,7 +11849,7 @@
         </div>
         <div class="cows-item-prompt">Over past ½ hour, not accounted for by room temperature or patient activity.</div>
         <div class="cows-options">
-          <div class="cows-option"><input type="radio" id="cows-item2-0" name="cows-item2" value="0" checked> <label for="cows-item2-0"><strong>0</strong> = No report of chills or flushing</label></div>
+          <div class="cows-option"><input type="radio" id="cows-item2-0" name="cows-item2" value="0"> <label for="cows-item2-0"><strong>0</strong> = No report of chills or flushing</label></div>
           <div class="cows-option"><input type="radio" id="cows-item2-1" name="cows-item2" value="1"> <label for="cows-item2-1"><strong>1</strong> = Subjective report of chills or flushing</label></div>
           <div class="cows-option"><input type="radio" id="cows-item2-2" name="cows-item2" value="2"> <label for="cows-item2-2"><strong>2</strong> = Flushed or observable moistness on face</label></div>
           <div class="cows-option"><input type="radio" id="cows-item2-3" name="cows-item2" value="3"> <label for="cows-item2-3"><strong>3</strong> = Beads of sweat on brow or face</label></div>
@@ -11864,7 +11866,7 @@
         </div>
         <div class="cows-item-prompt">Observation during assessment.</div>
         <div class="cows-options">
-          <div class="cows-option"><input type="radio" id="cows-item3-0" name="cows-item3" value="0" checked> <label for="cows-item3-0"><strong>0</strong> = Able to sit still</label></div>
+          <div class="cows-option"><input type="radio" id="cows-item3-0" name="cows-item3" value="0"> <label for="cows-item3-0"><strong>0</strong> = Able to sit still</label></div>
           <div class="cows-option"><input type="radio" id="cows-item3-1" name="cows-item3" value="1"> <label for="cows-item3-1"><strong>1</strong> = Reports difficulty sitting still, but is able to do so</label></div>
           <div class="cows-option"><input type="radio" id="cows-item3-3" name="cows-item3" value="3"> <label for="cows-item3-3"><strong>3</strong> = Frequent shifting or extraneous movements of legs/arms</label></div>
           <div class="cows-option"><input type="radio" id="cows-item3-5" name="cows-item3" value="5"> <label for="cows-item3-5"><strong>5</strong> = Unable to sit still for more than a few seconds</label></div>
@@ -11880,7 +11882,7 @@
         </div>
         <div class="cows-item-prompt">Assess in ambient room light.</div>
         <div class="cows-options">
-          <div class="cows-option"><input type="radio" id="cows-item4-0" name="cows-item4" value="0" checked> <label for="cows-item4-0"><strong>0</strong> = Pupils pinned or normal size for room light</label></div>
+          <div class="cows-option"><input type="radio" id="cows-item4-0" name="cows-item4" value="0"> <label for="cows-item4-0"><strong>0</strong> = Pupils pinned or normal size for room light</label></div>
           <div class="cows-option"><input type="radio" id="cows-item4-1" name="cows-item4" value="1"> <label for="cows-item4-1"><strong>1</strong> = Pupils possibly larger than normal for room light</label></div>
           <div class="cows-option"><input type="radio" id="cows-item4-2" name="cows-item4" value="2"> <label for="cows-item4-2"><strong>2</strong> = Pupils moderately dilated</label></div>
           <div class="cows-option"><input type="radio" id="cows-item4-5" name="cows-item4" value="5"> <label for="cows-item4-5"><strong>5</strong> = Pupils so dilated that only the rim of the iris is visible</label></div>
@@ -11896,7 +11898,7 @@
         </div>
         <div class="cows-item-prompt">If patient was having pain previously, only the additional component attributed to opiate withdrawal is scored.</div>
         <div class="cows-options">
-          <div class="cows-option"><input type="radio" id="cows-item5-0" name="cows-item5" value="0" checked> <label for="cows-item5-0"><strong>0</strong> = Not present</label></div>
+          <div class="cows-option"><input type="radio" id="cows-item5-0" name="cows-item5" value="0"> <label for="cows-item5-0"><strong>0</strong> = Not present</label></div>
           <div class="cows-option"><input type="radio" id="cows-item5-1" name="cows-item5" value="1"> <label for="cows-item5-1"><strong>1</strong> = Mild diffuse discomfort</label></div>
           <div class="cows-option"><input type="radio" id="cows-item5-2" name="cows-item5" value="2"> <label for="cows-item5-2"><strong>2</strong> = Patient reports severe diffuse aching of joints/muscles</label></div>
           <div class="cows-option"><input type="radio" id="cows-item5-4" name="cows-item5" value="4"> <label for="cows-item5-4"><strong>4</strong> = Patient is rubbing joints or muscles and is unable to sit still because of discomfort</label></div>
@@ -11912,7 +11914,7 @@
         </div>
         <div class="cows-item-prompt">Not accounted for by cold symptoms or allergies.</div>
         <div class="cows-options">
-          <div class="cows-option"><input type="radio" id="cows-item6-0" name="cows-item6" value="0" checked> <label for="cows-item6-0"><strong>0</strong> = Not present</label></div>
+          <div class="cows-option"><input type="radio" id="cows-item6-0" name="cows-item6" value="0"> <label for="cows-item6-0"><strong>0</strong> = Not present</label></div>
           <div class="cows-option"><input type="radio" id="cows-item6-1" name="cows-item6" value="1"> <label for="cows-item6-1"><strong>1</strong> = Nasal stuffiness or unusually moist eyes</label></div>
           <div class="cows-option"><input type="radio" id="cows-item6-2" name="cows-item6" value="2"> <label for="cows-item6-2"><strong>2</strong> = Nose running or tearing</label></div>
           <div class="cows-option"><input type="radio" id="cows-item6-4" name="cows-item6" value="4"> <label for="cows-item6-4"><strong>4</strong> = Nose constantly running or tears streaming down cheeks</label></div>
@@ -11928,7 +11930,7 @@
         </div>
         <div class="cows-item-prompt">Over last ½ hour.</div>
         <div class="cows-options">
-          <div class="cows-option"><input type="radio" id="cows-item7-0" name="cows-item7" value="0" checked> <label for="cows-item7-0"><strong>0</strong> = No GI symptoms</label></div>
+          <div class="cows-option"><input type="radio" id="cows-item7-0" name="cows-item7" value="0"> <label for="cows-item7-0"><strong>0</strong> = No GI symptoms</label></div>
           <div class="cows-option"><input type="radio" id="cows-item7-1" name="cows-item7" value="1"> <label for="cows-item7-1"><strong>1</strong> = Stomach cramps</label></div>
           <div class="cows-option"><input type="radio" id="cows-item7-2" name="cows-item7" value="2"> <label for="cows-item7-2"><strong>2</strong> = Nausea or loose stool</label></div>
           <div class="cows-option"><input type="radio" id="cows-item7-3" name="cows-item7" value="3"> <label for="cows-item7-3"><strong>3</strong> = Vomiting or diarrhea</label></div>
@@ -11945,7 +11947,7 @@
         </div>
         <div class="cows-item-prompt">Observation of outstretched hands.</div>
         <div class="cows-options">
-          <div class="cows-option"><input type="radio" id="cows-item8-0" name="cows-item8" value="0" checked> <label for="cows-item8-0"><strong>0</strong> = No tremor</label></div>
+          <div class="cows-option"><input type="radio" id="cows-item8-0" name="cows-item8" value="0"> <label for="cows-item8-0"><strong>0</strong> = No tremor</label></div>
           <div class="cows-option"><input type="radio" id="cows-item8-1" name="cows-item8" value="1"> <label for="cows-item8-1"><strong>1</strong> = Tremor can be felt, but not observed</label></div>
           <div class="cows-option"><input type="radio" id="cows-item8-2" name="cows-item8" value="2"> <label for="cows-item8-2"><strong>2</strong> = Slight tremor observable</label></div>
           <div class="cows-option"><input type="radio" id="cows-item8-4" name="cows-item8" value="4"> <label for="cows-item8-4"><strong>4</strong> = Gross tremor or muscle twitching</label></div>
@@ -11961,7 +11963,7 @@
         </div>
         <div class="cows-item-prompt">Observation during assessment.</div>
         <div class="cows-options">
-          <div class="cows-option"><input type="radio" id="cows-item9-0" name="cows-item9" value="0" checked> <label for="cows-item9-0"><strong>0</strong> = No yawning</label></div>
+          <div class="cows-option"><input type="radio" id="cows-item9-0" name="cows-item9" value="0"> <label for="cows-item9-0"><strong>0</strong> = No yawning</label></div>
           <div class="cows-option"><input type="radio" id="cows-item9-1" name="cows-item9" value="1"> <label for="cows-item9-1"><strong>1</strong> = Yawning once or twice during assessment</label></div>
           <div class="cows-option"><input type="radio" id="cows-item9-2" name="cows-item9" value="2"> <label for="cows-item9-2"><strong>2</strong> = Yawning three or more times during assessment</label></div>
           <div class="cows-option"><input type="radio" id="cows-item9-4" name="cows-item9" value="4"> <label for="cows-item9-4"><strong>4</strong> = Yawning several times per minute</label></div>
@@ -11977,7 +11979,7 @@
         </div>
         <div class="cows-item-prompt">Observation and self-report.</div>
         <div class="cows-options">
-          <div class="cows-option"><input type="radio" id="cows-item10-0" name="cows-item10" value="0" checked> <label for="cows-item10-0"><strong>0</strong> = None</label></div>
+          <div class="cows-option"><input type="radio" id="cows-item10-0" name="cows-item10" value="0"> <label for="cows-item10-0"><strong>0</strong> = None</label></div>
           <div class="cows-option"><input type="radio" id="cows-item10-1" name="cows-item10" value="1"> <label for="cows-item10-1"><strong>1</strong> = Patient reports increasing irritability or anxiousness</label></div>
           <div class="cows-option"><input type="radio" id="cows-item10-2" name="cows-item10" value="2"> <label for="cows-item10-2"><strong>2</strong> = Patient obviously irritable or anxious</label></div>
           <div class="cows-option"><input type="radio" id="cows-item10-4" name="cows-item10" value="4"> <label for="cows-item10-4"><strong>4</strong> = Patient so irritable or anxious that participation in the assessment is difficult</label></div>
@@ -11993,7 +11995,7 @@
         </div>
         <div class="cows-item-prompt">Observation.</div>
         <div class="cows-options">
-          <div class="cows-option"><input type="radio" id="cows-item11-0" name="cows-item11" value="0" checked> <label for="cows-item11-0"><strong>0</strong> = Skin is smooth</label></div>
+          <div class="cows-option"><input type="radio" id="cows-item11-0" name="cows-item11" value="0"> <label for="cows-item11-0"><strong>0</strong> = Skin is smooth</label></div>
           <div class="cows-option"><input type="radio" id="cows-item11-3" name="cows-item11" value="3"> <label for="cows-item11-3"><strong>3</strong> = Piloerection of skin can be felt or hairs standing up on arms</label></div>
           <div class="cows-option"><input type="radio" id="cows-item11-5" name="cows-item11" value="5"> <label for="cows-item11-5"><strong>5</strong> = Prominent piloerection</label></div>
         </div>
@@ -12005,6 +12007,7 @@
     <div class="cows-score-display">
       <div class="cows-total-score" id="cows-total-score">0</div>
       <div class="cows-max-label">/ 48</div>
+      <div class="cows-answered" id="cows-answered" style="font-size:13px;color:var(--text-muted);">0 / 11 answered</div>
       <div class="cows-severity-label cows-severity-minimal" id="cows-severity-level">No significant withdrawal</div>
       <div class="cows-guidance" id="cows-guidance"></div>
     </div>
@@ -14102,8 +14105,8 @@
   <script defer src="js/data.js?v=20261002d"></script>
   <script defer src="js/routes.js?v=20260719d"></script>
   <script defer src="js/bhi-references.js?v=20261002a"></script>
-  <script defer src="js/app.js?v=20261002b"></script>
-  <script defer src="js/diagnoses-data.js?v=20261002a"></script>
+  <script defer src="js/app.js?v=20261002c"></script>
+  <script defer src="js/diagnoses-data.js?v=20261002b"></script>
   <script defer src="js/diagnoses-page.js?v=20261002a"></script>
   <script defer src="js/glossary-data.js?v=20261002a"></script>
   <script defer src="js/glossary-page.js?v=20261002a"></script>

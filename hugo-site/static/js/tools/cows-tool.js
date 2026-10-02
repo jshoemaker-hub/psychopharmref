@@ -49,6 +49,14 @@
     return scale.items || FALLBACK_SCALE.items;
   }
 
+  function answeredCount() {
+    return ToolUtils.countAnswered(form, getItems().map(function(item) { return 'cows-item' + item.number; }));
+  }
+
+  function isAnswered(itemNumber) {
+    return !!form.querySelector('input[name="cows-item' + itemNumber + '"]:checked');
+  }
+
   function getItemValue(itemNumber) {
     var selected = form.querySelector('input[name="cows-item' + itemNumber + '"]:checked');
     return selected ? parseInt(selected.value, 10) : 0;
@@ -77,10 +85,21 @@
     var res = calculateScore();
     var sev = getSeverity(res.total);
 
+    var nItems = getItems().length;
+    var answered = answeredCount();
+    var complete = answered >= nItems;
     totalScoreEl.textContent = res.total;
-    severityEl.textContent = sev.label;
-    severityEl.className = 'cows-severity-label ' + (sev.class || '');
-    guidanceEl.textContent = sev.action || '';
+    var answeredEl = document.getElementById('cows-answered');
+    if (answeredEl) answeredEl.textContent = ToolUtils.incompleteText(answered, nItems);
+    if (complete) {
+      severityEl.textContent = sev.label;
+      severityEl.className = 'cows-severity-label ' + (sev.class || '');
+      guidanceEl.textContent = sev.action || '';
+    } else {
+      severityEl.textContent = 'Incomplete — partial score';
+      severityEl.className = 'cows-severity-label scale-incomplete';
+      guidanceEl.textContent = 'Rate all ' + nItems + ' items before interpreting. Unanswered items currently count as 0, so the total may underestimate withdrawal severity.';
+    }
 
     summaryGrid.innerHTML = '';
     getItems().forEach(function(item) {
@@ -89,7 +108,7 @@
       cell.className = 'cows-summary-item';
       cell.innerHTML =
         '<div class="cows-summary-item-label">' + item.number + '. ' + item.text + '</div>' +
-        '<div><span class="cows-summary-item-score">' + score + '/' + item.max + '</span></div>';
+        '<div><span class="cows-summary-item-score">' + (isAnswered(item.number) ? score : '—') + '/' + item.max + '</span></div>';
       summaryGrid.appendChild(cell);
     });
     summarySection.classList.add('cows-show');
@@ -108,16 +127,18 @@
     if (reason) lines.push('Reason for assessment: ' + reason);
     lines.push('');
     lines.push('Total Score: ' + res.total + ' / ' + scale.score.max);
-    lines.push('Severity: ' + sev.label);
+    var nRated = answeredCount(), nAll = getItems().length;
+    if (nRated < nAll) lines.push('INCOMPLETE — partial score: ' + nRated + ' of ' + nAll + ' items rated; unanswered items counted as 0.');
+    lines.push('Severity: ' + (nRated < nAll ? 'Incomplete — partial score (not interpretable)' : sev.label));
     lines.push('');
     lines.push('Individual Item Scores:');
     getItems().forEach(function(item) {
-      lines.push((item.number < 10 ? '  ' : ' ') + item.number + '. ' + item.text + ': ' + res.scores[item.number] + '/' + item.max);
+      lines.push((item.number < 10 ? '  ' : ' ') + item.number + '. ' + item.text + ': ' + (isAnswered(item.number) ? res.scores[item.number] : 'not rated') + '/' + item.max);
     });
     lines.push('');
     if (reportMeta.screening_note) lines.push(reportMeta.screening_note);
     lines.push('');
-    lines.push('Clinical Interpretation: ' + (sev.action || ''));
+    lines.push('Clinical Interpretation: ' + (nRated < nAll ? 'Not interpreted until all items are rated.' : (sev.action || '')));
     lines.push('');
     if (reportMeta.scoring_note) lines.push(reportMeta.scoring_note);
     (scale.references || FALLBACK_SCALE.references).forEach(function(ref) {

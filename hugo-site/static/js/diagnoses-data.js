@@ -123,7 +123,7 @@
       id: 'bipolar1', name: 'Bipolar I Disorder', cat: 'bipolar',
       desc: 'Defined by at least one full manic episode — a week or more (or any duration if hospitalized) of elevated or irritable mood with inflated self-regard, decreased need for sleep, pressured drive, and risk-taking; depressive episodes usually occur but are not required.',
       codes: { dsm: 'F31.x', icd10: 'F31.9 (unspecified)', icd11: '6A60' },
-      codeNote: 'Billable current-episode codes: F31.1x/F31.2 manic, F31.3x/F31.4/F31.5 depressed, F31.7x in remission.',
+      codeNote: 'Billable current-episode codes: F31.0 hypomanic, F31.1x/F31.2 manic, F31.3x/F31.4/F31.5 depressed, F31.7x in remission (ICD-10-CM also has F31.6x mixed; DSM-5-TR codes mixed features as a specifier).',
       meds: {
         first: ['Lithium', 'Valproate (avoid in pregnancy/childbearing potential)', 'Atypical antipsychotics (quetiapine, aripiprazole, risperidone, cariprazine, asenapine, olanzapine)', 'Milsaperidone (Bysanti, 2026) — active metabolite of iloperidone that interconverts with it; not yet in the drug database, see iloperidone'],
         adjunct: ['Lamotrigine (maintenance, more for depression prevention)', 'Lithium + antipsychotic for acute severe mania', 'Bipolar I depression: quetiapine, lurasidone, cariprazine, lumateperone (Caplyta), olanzapine-fluoxetine', 'ECT for refractory/psychotic/pregnant patients'],

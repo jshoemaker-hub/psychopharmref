@@ -102,7 +102,7 @@
     "Propranolol":           { "form": "tablet",  "strength": "20 mg",   "quantity": 60, "supplyDays": 30, "generic": true,  "notes": "BID for psychiatric use" },
     "Trihexyphenidyl":       { "form": "tablet",  "strength": "2 mg",    "quantity": 30, "supplyDays": 30, "generic": true },
 
-    "Gabapentin":            { "form": "capsule", "strength": "300 mg",  "quantity": 90, "supplyDays": 30, "generic": true,  "notes": "TID" },
+    "Gabapentin":            { "form": "capsule", "strength": "300 mg",  "quantity": 90, "supplyDays": 30, "generic": true,  "notes": "TID", "hwReason": "State-scheduled — HealthWarehouse shows price only after state selection" },
     "Pregabalin":            { "form": "capsule", "strength": "75 mg",   "quantity": 60, "supplyDays": 30, "generic": true,  "controlled": "C-V", "notes": "BID" },
 
     "Esketamine":            { "form": "nasal spray", "strength": "84 mg", "quantity": 1, "supplyDays": 7, "generic": false, "controlled": "C-III", "notes": "Spravato — clinic-administered only", "clinicOnly": true },

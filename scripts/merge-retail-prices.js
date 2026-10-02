@@ -135,6 +135,13 @@ function mergeOneSource(sourceKey, inputPath, label) {
   for (const [drugName, entry] of Object.entries(results)) {
     if (!prices.prices[drugName]) prices.prices[drugName] = {};
     clearSourceErrors(drugName, sourceKey);
+    // HealthWarehouse hides controlled / state-scheduled prices until a state is
+    // chosen, so a scraped number for these is stale or wrong. Keep the reason.
+    const skuInfo = SKUS[drugName] || {};
+    if (sourceKey === 'HealthWarehouse' && (skuInfo.controlled || skuInfo.hwReason)) {
+      prices.prices[drugName][sourceKey] = { available: false, reason: skuInfo.hwReason || 'Controlled — HealthWarehouse shows price only after state selection', url: entry && entry.url, asOf: scrapedOn };
+      continue;
+    }
 
     if (entry && entry.available && typeof entry.price === 'number') {
       const vet = vetRetail(drugName, entry, prices.prices[drugName].NADAC);
