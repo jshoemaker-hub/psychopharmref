@@ -194,6 +194,13 @@ function riskLabel(score) {
   return               { text: 'Very High',   cls: 'risk-vhigh' };
 }
 
+// Same cutoffs as riskLabel(). Null scores sort after every band.
+const RISK_BAND_RANK = { 'Very Low': 1, 'Low': 2, 'Moderate': 3, 'High': 4, 'Very High': 5 };
+function riskBand(score) {
+  const label = riskLabel(score);
+  return label ? RISK_BAND_RANK[label.text] : 99;
+}
+
 /* ── Antipsychotic-specific adverse-effect risk (curated) ───────────────────
    Lipid elevation, glucose/dysglycemia, and EPS/movement-disorder risk are
    surfaced as dedicated table columns that appear only when the category
@@ -496,10 +503,10 @@ function switchSection(id, skipGroupExpand) {
       // Question bank needs data file loaded first
       if (toolId === 'question-bank-tool' && !window.QBANK_DATA) {
         var dataScript = document.createElement('script');
-        dataScript.src = 'js/qbank-data.js?v=20261001a';
+        dataScript.src = 'js/qbank-data.js?v=20261008a';
         dataScript.onload = function() {
           var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20261002b';
+          script.src = 'js/tools/' + toolId + '.js?v=20261008a';
           document.body.appendChild(script);
         };
         dataScript.onerror = function() { console.error('Failed to load qbank-data.js'); };
@@ -1539,6 +1546,8 @@ let sortDir = 1;
 let tableSearch = '';
 let categoryFilter = '';
 let sideEffectSort = ''; // key into SIDE_EFFECT_PROFILES, or ''
+let sideEffectSort2 = ''; // optional second trait; orders within the primary risk band
+let sortDir2 = 1;
 
 function visibleMeds() {
   const filtered = MEDICATIONS.filter(m => {
@@ -1556,13 +1565,24 @@ function visibleMeds() {
   });
 
   if (sideEffectSort) {
+    // Scores are continuous 0–100, so an exact-tie secondary key almost never
+    // fires. Group by the primary trait's risk band (riskLabel cutoffs), then
+    // order by the secondary score inside each band.
     return filtered.sort((a, b) => {
       const sa = sideEffectScore(a, sideEffectSort);
       const sb = sideEffectScore(b, sideEffectSort);
       if (sa === null && sb === null) return a.name.localeCompare(b.name);
       if (sa === null) return 1;
       if (sb === null) return -1;
-      return sortDir * (sa - sb);
+      if (!sideEffectSort2) return sortDir * (sa - sb) || a.name.localeCompare(b.name);
+      const d1 = riskBand(sa) - riskBand(sb);
+      if (d1) return sortDir * d1;
+      const ta = sideEffectScore(a, sideEffectSort2);
+      const tb = sideEffectScore(b, sideEffectSort2);
+      if (ta === null && tb === null) return sortDir * (sa - sb) || a.name.localeCompare(b.name);
+      if (ta === null) return 1;
+      if (tb === null) return -1;
+      return (sortDir2 * (ta - tb)) || (sortDir * (sa - sb)) || a.name.localeCompare(b.name);
     });
   }
 
@@ -1599,14 +1619,24 @@ function visibleMeds() {
   });
 }
 
+function seRiskCell(drug, seKey) {
+  const score = sideEffectScore(drug, seKey);
+  const risk = riskLabel(score);
+  return risk
+    ? `<td><span class="risk-badge ${risk.cls}">${risk.text}</span><span class="risk-score">${score}</span></td>`
+    : `<td><span class="no-badge">N/A</span></td>`;
+}
+
 function renderDrugTable() {
   const meds  = visibleMeds();
   const tbody = document.getElementById('main-tbody');
   const showSE = !!sideEffectSort;
+  const showSE2 = !!(showSE && sideEffectSort2);
   const showAP = categoryFilter === 'Antipsychotic';
-  const colCount = (showSE ? 17 : 16) + (showAP ? 3 : 0);
+  const colCount = (showSE ? 17 : 16) + (showSE2 ? 1 : 0) + (showAP ? 3 : 0);
+  const primaryProfile = showSE ? SIDE_EFFECT_PROFILES[sideEffectSort] : null;
 
-  tbody.innerHTML = meds.map(m => {
+  tbody.innerHTML = meds.map((m, i) => {
     const renal = m.renalImpairment.modified
       ? `<span class="modified-yes">Yes</span>`
       : `<span class="no-badge">No</span>`;
@@ -1638,14 +1668,8 @@ function renderDrugTable() {
         }).join('')
       : '—';
 
-    let seCell = '';
-    if (showSE) {
-      const score = sideEffectScore(m, sideEffectSort);
-      const risk = riskLabel(score);
-      seCell = risk
-        ? `<td><span class="risk-badge ${risk.cls}">${risk.text}</span><span class="risk-score">${score}</span></td>`
-        : `<td><span class="no-badge">N/A</span></td>`;
-    }
+    const seCell = showSE ? seRiskCell(m, sideEffectSort) : '';
+    const seCell2 = showSE2 ? seRiskCell(m, sideEffectSort2) : '';
 
     const pData = PERINATAL_DATA[m.id];
     const pregCell = perinatalCell(pData?.pregnancy);
@@ -1656,9 +1680,20 @@ function renderDrugTable() {
       ? `<button class="bhi-btn" data-id="${m.id}" onclick="openBhiCard('${m.id}')">View / Copy</button>`
       : `<span class="no-badge">—</span>`;
 
-    return `<tr>
+    let bandRow = '';
+    if (showSE2) {
+      const band = riskBand(sideEffectScore(m, sideEffectSort));
+      const prev = i === 0 ? null : riskBand(sideEffectScore(meds[i - 1], sideEffectSort));
+      if (band !== prev) {
+        const lab = riskLabel(sideEffectScore(m, sideEffectSort));
+        bandRow = `<tr class="se-band-row"><td colspan="${colCount}">${lab ? lab.text : 'Unscored'} · ${primaryProfile.label}</td></tr>`;
+      }
+    }
+
+    return bandRow + `<tr>
       <td class="drug-name-cell" data-drug-id="${m.id}" style="cursor:pointer" onclick="openDrugModal('${m.id}')">${m.name} <span class="brand-name">(${m.brandName})</span></td>
       ${seCell}
+      ${seCell2}
       <td>${classBadge(m.class)}</td>
       <td class="col-bhi">${bhiCell}</td>
       <td>${enan}</td>
@@ -1687,6 +1722,11 @@ function renderDrugTable() {
     const profile = SIDE_EFFECT_PROFILES[sideEffectSort];
     seHeader.textContent = profile.label + ' Risk';
   }
+  const seHeader2 = document.getElementById('th-se-risk2');
+  if (seHeader2) {
+    seHeader2.style.display = showSE2 ? '' : 'none';
+    if (showSE2) seHeader2.textContent = SIDE_EFFECT_PROFILES[sideEffectSort2].label + ' Risk';
+  }
 
   // Show/hide the antipsychotic-only risk columns (lipid / glucose / EPS).
   // Both the <th>s and every <td class="col-ap-risk"> carry the class, so a
@@ -1705,6 +1745,8 @@ function renderDrugTable() {
   // Update SE sort direction indicator
   const seBtn = document.getElementById('se-sort-dir');
   if (seBtn) seBtn.textContent = sortDir === 1 ? 'Least → Most risky' : 'Most → Least risky';
+  const seBtn2 = document.getElementById('se-sort2-dir');
+  if (seBtn2) seBtn2.textContent = sortDir2 === 1 ? 'Least → Most risky' : 'Most → Least risky';
 }
 
 // Sorting
@@ -1728,18 +1770,71 @@ document.getElementById('category-filter').addEventListener('change', e => {
   renderDrugTable();
 });
 
+function rebuildSecondarySortOptions() {
+  const sel = document.getElementById('se-sort2');
+  const label = document.getElementById('se-sort2-label');
+  const primary = document.getElementById('se-sort');
+  if (!sel || !primary) return;
+  const show = !!sideEffectSort;
+  if (label) label.style.display = show ? '' : 'none';
+  sel.style.display = show ? '' : 'none';
+  if (!show) {
+    sideEffectSort2 = '';
+    sortDir2 = 1;
+    sel.innerHTML = '<option value="">— None —</option>';
+    const dir = document.getElementById('se-sort2-dir');
+    if (dir) dir.style.display = 'none';
+    return;
+  }
+  if (sideEffectSort2 === sideEffectSort) {
+    sideEffectSort2 = '';
+    sortDir2 = 1;
+  }
+  const options = ['<option value="">— None —</option>'];
+  Array.from(primary.options).forEach(opt => {
+    if (!opt.value || opt.value === sideEffectSort) return;
+    const selected = opt.value === sideEffectSort2 ? ' selected' : '';
+    options.push(`<option value="${opt.value}"${selected}>${opt.textContent}</option>`);
+  });
+  sel.innerHTML = options.join('');
+  if (sideEffectSort2 && ![...sel.options].some(o => o.value === sideEffectSort2)) sideEffectSort2 = '';
+  const dir = document.getElementById('se-sort2-dir');
+  if (dir) dir.style.display = sideEffectSort2 ? '' : 'none';
+}
+
 // Side effect sort dropdown
 document.getElementById('se-sort').addEventListener('change', e => {
   sideEffectSort = e.target.value;
   sortDir = 1; // default least → most risky
+  if (!sideEffectSort || sideEffectSort === sideEffectSort2) {
+    sideEffectSort2 = '';
+    sortDir2 = 1;
+  }
   document.getElementById('se-sort-dir').style.display = sideEffectSort ? '' : 'none';
+  rebuildSecondarySortOptions();
   renderDrugTable();
 });
 
-// Side effect sort direction toggle
+const seSort2El = document.getElementById('se-sort2');
+if (seSort2El) seSort2El.addEventListener('change', e => {
+  sideEffectSort2 = e.target.value === sideEffectSort ? '' : e.target.value;
+  sortDir2 = 1;
+  const dir = document.getElementById('se-sort2-dir');
+  if (dir) dir.style.display = sideEffectSort2 ? '' : 'none';
+  renderDrugTable();
+});
+
+// Side effect sort direction toggles. Each button flips only its own trait.
 document.getElementById('se-sort-dir').addEventListener('click', () => {
   if (!sideEffectSort) return;
   sortDir *= -1;
+  renderDrugTable();
+});
+
+const seSort2DirEl = document.getElementById('se-sort2-dir');
+if (seSort2DirEl) seSort2DirEl.addEventListener('click', () => {
+  if (!sideEffectSort2) return;
+  sortDir2 *= -1;
   renderDrugTable();
 });
 
