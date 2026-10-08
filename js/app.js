@@ -503,7 +503,7 @@ function switchSection(id, skipGroupExpand) {
       // Question bank needs data file loaded first
       if (toolId === 'question-bank-tool' && !window.QBANK_DATA) {
         var dataScript = document.createElement('script');
-        dataScript.src = 'js/qbank-data.js?v=20261008a';
+        dataScript.src = 'js/qbank-data.js?v=20261008b';
         dataScript.onload = function() {
           var script = document.createElement('script');
           script.src = 'js/tools/' + toolId + '.js?v=20261008a';
