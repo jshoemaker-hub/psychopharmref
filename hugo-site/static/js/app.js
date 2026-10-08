@@ -503,10 +503,10 @@ function switchSection(id, skipGroupExpand) {
       // Question bank needs data file loaded first
       if (toolId === 'question-bank-tool' && !window.QBANK_DATA) {
         var dataScript = document.createElement('script');
-        dataScript.src = 'js/qbank-data.js?v=20261008b';
+        dataScript.src = 'js/qbank-data.js?v=20261008c';
         dataScript.onload = function() {
           var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20261008a';
+          script.src = 'js/tools/' + toolId + '.js?v=20261008b';
           document.body.appendChild(script);
         };
         dataScript.onerror = function() { console.error('Failed to load qbank-data.js'); };

@@ -266,7 +266,17 @@
       var c = q.usmle_category || 'Uncategorized';
       catCounts[c] = (catCounts[c] || 0) + 1;
     });
-    var cats = Object.keys(catCounts).sort();
+    // Leading numbers are not zero-padded, so a plain string sort puts
+    // "10." before "2.". Sort on the numeric prefix, then the label.
+    function categoryNumber(label) {
+      var m = /^(\d+)\s*\./.exec(label);
+      return m ? parseInt(m[1], 10) : 10000;
+    }
+    var cats = Object.keys(catCounts).sort(function (a, b) {
+      var d = categoryNumber(a) - categoryNumber(b);
+      if (d) return d;
+      return a < b ? -1 : (a > b ? 1 : 0);
+    });
 
     var html = '<h3>Select Topics</h3><div class="qb-cat-grid">';
     cats.forEach(function (c) {
