@@ -1555,6 +1555,23 @@ mark {
   transition: background 0.12s;
 }
 .se-dir-btn:hover { background: rgba(74,124,53,0.2); }
+.se-band-row td {
+  background: rgba(74, 124, 53, 0.08);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 7px 12px;
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 700px) {
+  .se-sort-bar select {
+    min-width: 0;
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
 
 /* ── Risk Badges ────────────────────────────────────────────────────────── */
 .risk-badge {

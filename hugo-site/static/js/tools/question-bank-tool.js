@@ -334,7 +334,11 @@
     if (pool.length === 0) return;
 
     shuffle(pool);
-    questions = pool.slice(0, Math.min(SET_SIZE, pool.length));
+    // Shuffle each item's options once, when the quiz set is built, and keep
+    // that order for the rest of the attempt. Stored correct_index values stay
+    // put in qbank-data.js (so letter position cannot be memorized across
+    // attempts) and re-renders do not reshuffle under the student's selection.
+    questions = pool.slice(0, Math.min(SET_SIZE, pool.length)).map(shuffleQuestionOptions);
     currentIdx = 0;
     answers = questions.map(function () { return -1; });
     revealed = questions.map(function () { return false; });
@@ -382,7 +386,7 @@
 
     // Explanation
     html += '<div class="qb-explanation' + (revealed[currentIdx] ? ' qb-show' : '') + '" id="qb-explanation">';
-    html += q.explanation || '';
+    html += explanationBody(q);
     if (q.source_blog_title) {
       html += '<span class="qb-source">Source: ' + q.source_blog_title + '</span>';
     }
@@ -615,6 +619,29 @@
   }
 
   /* ── Helpers ── */
+  // Drop a trailing "Source: …" from the explanation when the renderer will
+  // add its own source line. Items with no source_blog_title keep whatever
+  // source note is already in the explanation.
+  function explanationBody(q) {
+    var text = q.explanation || '';
+    if (q.source_blog_title) {
+      text = text.replace(/\s*Source:\s*[^\n]*\s*$/i, '');
+    }
+    return text;
+  }
+
+  // Permute option indexes so duplicate option text cannot move the key.
+  function shuffleQuestionOptions(q) {
+    var order = [];
+    var i;
+    for (i = 0; i < q.options.length; i++) order.push(i);
+    shuffle(order);
+    return Object.assign({}, q, {
+      options: order.map(function (idx) { return q.options[idx]; }),
+      correct_index: order.indexOf(q.correct_index)
+    });
+  }
+
   function shuffle(arr) {
     for (var i = arr.length - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));

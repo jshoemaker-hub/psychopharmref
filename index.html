@@ -46,7 +46,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
 
-  <link rel="stylesheet" href="css/styles.css?v=20261001c">
+  <link rel="stylesheet" href="css/styles.css?v=20261008a">
   <link rel="canonical" href="https://psychopharmref.com/">
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
@@ -970,6 +970,11 @@
             <option value="cardiacQT">Cardiac / QT Effects</option>
           </select>
           <button id="se-sort-dir" class="se-dir-btn" style="display:none">Least → Most risky</button>
+          <label class="se-sort-label" id="se-sort2-label" style="display:none">then by:</label>
+          <select id="se-sort2" style="display:none">
+            <option value="">— None —</option>
+          </select>
+          <button id="se-sort2-dir" class="se-dir-btn" style="display:none">Least → Most risky</button>
         </div>
       </div>
 
@@ -981,6 +986,7 @@
             <tr>
               <th class="sortable col-name" data-col="name">Drug <span class="sort-arrow"></span></th>
               <th id="th-se-risk" class="col-se-risk" style="display:none">Risk</th>
+              <th id="th-se-risk2" class="col-se-risk" style="display:none">Risk</th>
               <th class="sortable col-class" data-col="class">Class <span class="sort-arrow"></span></th>
               <th class="col-bhi">IBH Ref</th>
               <th class="col-enantiomer">Active Enantiomer</th>
@@ -12871,13 +12877,13 @@
 <section id="question-bank" data-lazy-tool="question-bank-tool" class="section">
   <div class="section-header">
     <h2>Question Bank</h2>
-    <p class="section-sub">1,000 USMLE-style psychiatry questions across 62+ topics. Sign in to start a quiz.</p>
+    <p class="section-sub">1,494 USMLE-style psychiatry questions across 25 categories and 110 source chapters. Sign in to start a quiz.</p>
   </div>
 
   <!-- Auth overlay (shown when logged out) -->
   <div class="qb-auth-overlay" id="qb-auth-overlay">
     <h3>Question Bank</h3>
-    <p>Sign in to access 1,000 USMLE-style psychiatry questions</p>
+    <p>Sign in to access 1,494 USMLE-style psychiatry questions</p>
     <div class="qb-auth-tabs">
       <button class="qb-auth-tab qb-active" data-tab="login">Sign In</button>
       <button class="qb-auth-tab" data-tab="register">Register</button>
@@ -14105,7 +14111,7 @@
   <script defer src="js/data.js?v=20261002d"></script>
   <script defer src="js/routes.js?v=20260719d"></script>
   <script defer src="js/bhi-references.js?v=20261002a"></script>
-  <script defer src="js/app.js?v=20261002c"></script>
+  <script defer src="js/app.js?v=20261008a"></script>
   <script defer src="js/diagnoses-data.js?v=20261002b"></script>
   <script defer src="js/diagnoses-page.js?v=20261002a"></script>
   <script defer src="js/glossary-data.js?v=20261002a"></script>
