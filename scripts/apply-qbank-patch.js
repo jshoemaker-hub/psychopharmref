@@ -13,6 +13,8 @@
  * A field edit is written only when the current value deep-equals `old`.
  * If the current value already deep-equals `new`, the edit is skipped.
  * Any other difference is reported and left unchanged.
+ * `old: null` matches a field that is absent on the record, so a patch can
+ * add source_blog_title / source_blog_url to questions that lack those keys.
  *
  * Usage:
  *   node scripts/apply-qbank-patch.js <patch.json> [--data js/qbank-data.js] [--dry-run]
@@ -164,8 +166,19 @@ function main() {
       continue;
     }
     const q = arr[idxs[0]];
-    if (!Object.prototype.hasOwnProperty.call(q, entry.field)) {
-      mismatch(entry, 'field missing on record', undefined);
+    const hasField = Object.prototype.hasOwnProperty.call(q, entry.field);
+    if (!hasField) {
+      if (entry.old !== null) {
+        mismatch(entry, 'field missing on record', undefined);
+        continue;
+      }
+      if (entry.new === null) {
+        skip(entry, 'already equals new');
+        continue;
+      }
+      q[entry.field] = entry.new;
+      report.applied++;
+      report.appliedEdits.push({ id: entry.id, field: entry.field });
       continue;
     }
     const current = q[entry.field];
