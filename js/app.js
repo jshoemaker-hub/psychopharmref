@@ -3455,13 +3455,32 @@ function initMedCompare() {
       }
     }
     if (drugs.length < 2) {
-      const mcErr = document.getElementById('mc-results');
-      if (mcErr) { mcErr.style.display = ''; mcErr.innerHTML = '<div class="mt-warning" style="margin:12px 0">Please select at least 2 medications to compare.</div>'; }
+      // Do not replace #mc-results innerHTML. That node holds the report
+      // template (chart, side effects, P450). Wiping it makes every later
+      // comparison throw and leaves stale sections on screen.
+      const host = document.querySelector('.mc-setup-card') || document.getElementById('med-compare');
+      let note = document.getElementById('mc-select-warning');
+      if (!note && host) {
+        note = document.createElement('div');
+        note.id = 'mc-select-warning';
+        note.className = 'mt-warning';
+        note.style.margin = '12px 0';
+        host.appendChild(note);
+      }
+      if (note) {
+        note.hidden = false;
+        note.textContent = 'Please select at least 2 medications to compare.';
+      }
       return;
     }
+    const selectNote = document.getElementById('mc-select-warning');
+    if (selectNote) selectNote.hidden = true;
     mcCurrentDrugs = drugs;
-    renderComparison(drugs);
+    // Show the report before drawing so a chart created inside a
+    // display:none panel is not left at 0×0, and so a later render
+    // error cannot leave the previous report hidden.
     document.getElementById('mc-results').style.display = '';
+    renderComparison(drugs);
   });
 
   document.getElementById('mc-print-btn').addEventListener('click', () => {
@@ -4053,14 +4072,23 @@ function initMedCompare() {
       drugs.some(d => d.receptorKi && (d.receptorKi[r] || 10000) <= KI_CHART)
     );
 
-    // Rebuild chart
-    const ctx = document.getElementById('mc-bar-chart');
+    // Rebuild chart. The empty-data path used to replace the canvas and
+    // leave no #mc-bar-chart node, so the next comparison threw on
+    // ctx.closest(...) and never refreshed side effects, circuits, or P450.
     if (mcChart) { mcChart.destroy(); mcChart = null; }
+    const section = document.getElementById('mc-section-receptors');
+    if (!section) return;
+    let wrap = section.querySelector('.mc-chart-wrap');
+    if (!wrap) {
+      wrap = document.createElement('div');
+      wrap.className = 'mc-chart-wrap';
+      section.insertBefore(wrap, document.getElementById('mc-receptor-table'));
+    }
 
     if (activeReceptors.length === 0) {
-      ctx.closest('.mc-chart-wrap').innerHTML = '<p style="color:var(--text-muted);padding:20px">No receptor Ki data available for selected medications.</p>';
+      wrap.innerHTML = '<p style="color:var(--text-muted);padding:20px">No receptor Ki data available for selected medications.</p>';
     } else {
-      ctx.closest('.mc-chart-wrap').innerHTML = '<canvas id="mc-bar-chart"></canvas>';
+      wrap.innerHTML = '<canvas id="mc-bar-chart"></canvas>';
       const newCtx = document.getElementById('mc-bar-chart');
       const datasets = drugs.map((drug, idx) => ({
         label: drug.name,
