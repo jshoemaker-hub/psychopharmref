@@ -1,5 +1,9 @@
 {{ define "head" }}
 <link rel="stylesheet" href="{{ "css/slides.css" | relURL }}">
+{{ if in .Content "rv-section" }}
+<link rel="stylesheet" href="{{ "css/videos.css" | relURL }}?v=20261013a">
+<script src="{{ "js/videos.js" | relURL }}?v=20261013a" defer></script>
+{{ end }}
 <style>
 .btn-primary {
   display: inline-block;
