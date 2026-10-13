@@ -114,6 +114,7 @@ var dateStr = ToolUtils.dateStamp();
 - `fnd-` → Foundational Principles of Behavioral & Cognitive-Behavioral Therapy (course module 1)
 - `ang-` → CBT for Anger Management & Parent Management Training (course module 5)
 - `int-` → Integration, Advanced Topics & Implementation (course module 7)
+- `mct-` → Marriage & Couples Therapy (course module 10)
 - `sa-` → OTC / Non-Prescription Sleep Aid Comparison
 - `fw-` → Fatigue / Low Energy Workup (tiered symptom → labs + differential)
 
