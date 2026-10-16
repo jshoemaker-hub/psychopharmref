@@ -1637,7 +1637,7 @@ const MEDICATIONS = [
     id: 'olanzapine',
     effects: { weight: 'high', sedation: 'high', sexual: 'low', antichol: 'moderate', qt: 'low' }, // tiers (clinician-reviewed 2026-08-20): peer-reviewed comparative literature / FDA labeling / CredibleMeds (see psychopharm-tolerability-SOURCES.md)
     development: { discoveryYear: 1991, fdaApprovalYear: 1996, originator: "Eli Lilly" },
-    dosing: { start: "5–10 mg/day", target: "10–20 mg/day", max: "20 mg/day", formulations: "Oral tab/ODT (Zydis) • IM (acute) • LAI (Relprevv, q2–4 weeks)", citation: { label: "DailyMed (FDA label)", url: "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=olanzapine" } },
+    dosing: { start: "5–10 mg/day", target: "10–20 mg/day", max: "20 mg/day", formulations: "Oral tab/ODT (Zydis) • IM (acute) • LAI (Relprevv, q2–4 weeks; REMS still required after the May 7, 2026 FDA modification, with at least 3 hours of post-injection observation)", citation: { label: "Zyprexa Relprevv prescribing information, revised May 2026", url: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/022173s043lbl022173s040lbl.pdf" } },
     name: 'Olanzapine',
     brandName: 'Zyprexa',
     class: 'SGA',

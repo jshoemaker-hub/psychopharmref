@@ -954,7 +954,29 @@ function drugHovercardHTML(drug) {
     </div>
     ${scales ? `<div class="dx-scales dhc-scales">${scales}</div>` : ''}
     <div class="dhc-cyp"><span class="dhc-cyp-lab">CYP450</span> ${cypHoverSummary(drug.p450)}</div>
+    ${drug.monitoring ? `<div class="dhc-cyp"><span class="dhc-cyp-lab">Monitor</span> ${escMonitoring(drug.monitoring.summary)}</div>` : ''}
     <div class="dhc-hint">Click for full details</div>`;
+}
+function escMonitoring(s) {
+  return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function monitoringScheduleHTML(drug) {
+  const mon = drug && drug.monitoring;
+  if (!mon || !mon.schedule || !mon.schedule.length) return '';
+  const rows = mon.schedule.map(s =>
+    `<li><strong>${escMonitoring(s.item)}</strong> — ${escMonitoring(s.timing)}</li>`
+  ).join('');
+  const clinical = mon.clinical
+    ? `<div style="font-size:13px;color:var(--text-muted);line-height:1.6;margin-top:8px">${escMonitoring(mon.clinical)}</div>`
+    : '';
+  const source = mon.source ? `<div class="modal-cite">Basis: ${escMonitoring(mon.source)}</div>` : '';
+  return `
+    <div class="modal-section">
+      <h4>Monitoring</h4>
+      <ul style="margin:0;padding-left:18px;line-height:1.55;font-size:13px">${rows}</ul>
+      ${clinical}
+      ${source}
+    </div>`;
 }
 (function initDrugHovercards() {
   // Hover previews are a pointer-only enhancement; tap still opens the modal on touch.
@@ -1089,6 +1111,8 @@ function openDrugModal(id) {
         <div class="modal-field"><label>QT Prolongation</label><div>${drug.qtInterval ? '<span class="yes-badge">Yes – monitor ECG</span>' : '<span class="no-badge">Not significant</span>'}</div></div>
       </div>
     </div>
+
+    ${monitoringScheduleHTML(drug)}
 
     <div class="modal-section">
       <h4>Pre / Post-Synaptic Binding</h4>
@@ -1253,6 +1277,13 @@ function bhiSections(id, ref) {
     adj.push(adjLine('Geriatric', med.geriatricDosing));
     adj.push('QT: ' + (med.qtInterval ? 'Prolongs QT — consider ECG monitoring' : 'Not significant'));
     S.push({ label: 'Renal / Hepatic / Geriatric / QT', lines: adj });
+  }
+
+  if (med && med.monitoring && med.monitoring.schedule && med.monitoring.schedule.length) {
+    var monLines = med.monitoring.schedule.map(function(s){ return s.item + ': ' + s.timing; });
+    if (med.monitoring.clinical) monLines.push('Clinical: ' + med.monitoring.clinical);
+    if (med.monitoring.source) monLines.push('Basis: ' + med.monitoring.source);
+    S.push({ label: 'Monitoring', lines: monLines });
   }
 
   // Pregnancy & Lactation (from PERINATAL_DATA)

@@ -3258,7 +3258,7 @@ window.GLOSSARY_TERMS = [
     term: "Long-acting injectable antipsychotic",
     aliases: ["LAI", "long-acting injectable", "depot antipsychotic"],
     category: "Pharmacology",
-    def: "Depot or extended-release antipsychotic injection given every 2 weeks to 6 months (e.g., paliperidone palmitate, aripiprazole, risperidone, olanzapine pamoate, haloperidol and fluphenazine decanoate). It removes daily adherence, makes nonadherence visible, and lowers relapse and rehospitalization in schizophrenia. Oral tolerability is usually established first; olanzapine pamoate requires 3 hours of post-injection monitoring for delirium-sedation syndrome.",
+    def: "Depot or extended-release antipsychotic injection given every 2 weeks to 6 months (e.g., paliperidone palmitate, aripiprazole, risperidone, olanzapine pamoate, haloperidol and fluphenazine decanoate). It removes daily adherence, makes nonadherence visible, and lowers relapse and rehospitalization in schizophrenia. Oral tolerability is usually established first. Olanzapine pamoate (Zyprexa Relprevv) remains under an FDA REMS modified on May 7, 2026: the prescriber, healthcare setting, patient, and pharmacy must enroll, and a clinician must observe the patient for at least 3 hours after every injection for post-injection delirium/sedation syndrome.",
     seeAlso: ["Antipsychotic", "Half-life", "Pharmacokinetics"]
   },
   {
@@ -3272,7 +3272,7 @@ window.GLOSSARY_TERMS = [
     term: "REMS",
     aliases: ["Risk Evaluation and Mitigation Strategy"],
     category: "Pharmacology",
-    def: "Risk Evaluation and Mitigation Strategy: an FDA-required safety program for a drug with serious risks, which can mandate prescriber or pharmacy certification, patient enrollment, or monitoring. Psychiatric examples include esketamine (Spravato; certified-site administration with 2-hour monitoring), olanzapine pamoate (Zyprexa Relprevv), and sodium oxybate. The clozapine REMS was eliminated in 2025.",
+    def: "Risk Evaluation and Mitigation Strategy: an FDA-required safety program for a drug with serious risks, which can mandate prescriber or pharmacy certification, patient enrollment, or monitoring. Psychiatric examples include esketamine (Spravato; certified-site administration with 2-hour monitoring), olanzapine pamoate (Zyprexa Relprevv; REMS modified May 7, 2026 and still required, including 3-hour post-injection observation), and sodium oxybate. The clozapine REMS was eliminated in 2025. The Zyprexa Relprevv REMS was not.",
     seeAlso: ["Clozapine ANC monitoring", "Long-acting injectable antipsychotic"]
   },
   {
