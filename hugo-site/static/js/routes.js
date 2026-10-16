@@ -53,7 +53,7 @@
       lai: 'Invega Sustenna (monthly), Trinza (q3mo), Hafyera (q6mo)' } },
     olanzapine: { routes: ['oral', 'im', 'lai'], notes: {
       im: 'Short-acting IM for agitation — avoid combining with parenteral benzodiazepines',
-      lai: 'Zyprexa Relprevv — REMS; post-injection delirium/sedation syndrome requires 3-hour observation' } },
+      lai: 'Zyprexa Relprevv — REMS still required (FDA modification approved May 7, 2026; not released). Post-injection delirium/sedation syndrome: observe at least 3 hours in a certified setting. Prescriber, healthcare setting, patient, and pharmacy must enroll.' } },
     aripiprazole: { routes: ['oral', 'lai'], notes: {
       lai: 'Abilify Maintena (monthly), Aristada (q4–8wk), Abilify Asimtufii (q2mo)' } },
     ziprasidone: { routes: ['oral', 'im'], notes: {
