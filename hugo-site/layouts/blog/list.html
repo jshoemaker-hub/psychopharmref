@@ -44,29 +44,5 @@
 #blog-list-search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(74,124,53,0.15); outline: none; }
 </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var input = document.getElementById('blog-list-search');
-  var grid = document.getElementById('blog-post-grid');
-  if (!input || !grid) return;
-  var cards = Array.from(grid.querySelectorAll('.blog-post-card'));
-  var timer;
-  input.addEventListener('input', function() {
-    clearTimeout(timer);
-    timer = setTimeout(function() {
-      var q = input.value.trim().toLowerCase();
-      if (!q) {
-        cards.forEach(function(c) { c.classList.remove('hidden-by-search'); });
-        return;
-      }
-      var terms = q.split(/\s+/);
-      cards.forEach(function(card) {
-        var text = card.textContent.toLowerCase();
-        var match = terms.every(function(t) { return text.indexOf(t) >= 0; });
-        card.classList.toggle('hidden-by-search', !match);
-      });
-    }, 150);
-  });
-});
-</script>
+<script src="{{ "js/blog-list.js" | relURL }}?v=20261024a"></script>
 {{ end }}

@@ -546,7 +546,7 @@ function switchSection(id, skipGroupExpand) {
         dataScript.src = 'js/qbank-data.js?v=20261008c';
         dataScript.onload = function() {
           var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20261023a';
+          script.src = 'js/tools/' + toolId + '.js?v=20261024a';
           document.body.appendChild(script);
         };
         dataScript.onerror = function() { console.error('Failed to load qbank-data.js'); };
@@ -589,7 +589,7 @@ function switchSection(id, skipGroupExpand) {
           d.onload = function() {
             if (--smPending === 0) {
               var script = document.createElement('script');
-              script.src = 'js/tools/' + toolId + '.js?v=20261023a';
+              script.src = 'js/tools/' + toolId + '.js?v=20261024a';
               document.body.appendChild(script);
             }
           };
@@ -598,7 +598,7 @@ function switchSection(id, skipGroupExpand) {
         });
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20261023a';
+        script.src = 'js/tools/' + toolId + '.js?v=20261024a';
         document.body.appendChild(script);
       }
     }
@@ -1730,7 +1730,7 @@ function renderDrugTable() {
       : `<span class="no-badge">No</span>`;
 
     const chartBtn = m.receptorKi
-      ? `<button class="chart-btn" data-id="${m.id}" onclick="jumpToReceptorChart('${m.id}')">View Chart</button>`
+      ? `<button class="chart-btn" data-id="${m.id}" data-call="jumpToReceptorChart" data-arg="${m.id}">View Chart</button>`
       : `<span class="no-badge">${m.mechanism ? 'See mechanism' : '—'}</span>`;
 
     const synapticHTML = synapticCell(m.id);
@@ -1752,7 +1752,7 @@ function renderDrugTable() {
 
     const hasBhi = typeof BHI_REFERENCES !== 'undefined' && BHI_REFERENCES[m.id];
     const bhiCell = hasBhi
-      ? `<button class="bhi-btn" data-id="${m.id}" onclick="openBhiCard('${m.id}')">View / Copy</button>`
+      ? `<button class="bhi-btn" data-id="${m.id}" data-call="openBhiCard" data-arg="${m.id}">View / Copy</button>`
       : `<span class="no-badge">—</span>`;
 
     let bandRow = '';
@@ -1766,7 +1766,7 @@ function renderDrugTable() {
     }
 
     return bandRow + `<tr>
-      <td class="drug-name-cell" data-drug-id="${m.id}" style="cursor:pointer" onclick="openDrugModal('${m.id}')">${m.name} <span class="brand-name">(${m.brandName})</span></td>
+      <td class="drug-name-cell" data-drug-id="${m.id}" style="cursor:pointer" data-call="openDrugModal" data-arg="${m.id}">${m.name} <span class="brand-name">(${m.brandName})</span></td>
       ${seCell}
       ${seCell2}
       <td>${classBadge(m.class)}</td>
@@ -1945,7 +1945,7 @@ function renderP450Table(catFilter = '') {
 
   tbody.innerHTML = meds.map(m => `
     <tr>
-      <td class="drug-name-cell" data-drug-id="${m.id}" style="cursor:pointer;white-space:nowrap" onclick="openDrugModal('${m.id}')">${m.name} <span class="brand-name">(${m.brandName})</span></td>
+      <td class="drug-name-cell" data-drug-id="${m.id}" style="cursor:pointer;white-space:nowrap" data-call="openDrugModal" data-arg="${m.id}">${m.name} <span class="brand-name">(${m.brandName})</span></td>
       <td>${classBadge(m.class)}</td>
       ${P450_ENZYMES.map(e => `<td class="p450-cell">${p450Cell(m, e)}</td>`).join('')}
     </tr>
@@ -2077,7 +2077,7 @@ function renderReceptorToggles() {
     const color = getColor(r);
     return `<button class="receptor-toggle-btn active" data-receptor="${r}"
       style="background:${color}22;color:${color};border-color:${color}66"
-      onclick="toggleReceptor('${r}',this)">${r}</button>`;
+      data-call="toggleReceptor" data-arg="${r}" data-with-el="last">${r}</button>`;
   }).join('');
 }
 
@@ -2787,7 +2787,7 @@ function renderGlossary() {
 
     return `
       <div class="glossary-card" id="glossary-${entry.receptor}">
-        <div class="glossary-card-header" onclick="toggleGlossaryCard('${entry.receptor}')">
+        <div class="glossary-card-header" data-call="toggleGlossaryCard" data-arg="${entry.receptor}">
           <div class="glossary-receptor-name">
             <span class="receptor-dot" style="background:${entry.color}"></span>
             <span class="receptor-symbol">${entry.receptor}</span>
@@ -2945,7 +2945,7 @@ function renderQTPsychList() {
   const qtMeds = MEDICATIONS.filter(m => m.qtInterval);
   if (!qtMeds.length) { container.innerHTML = '<p style="color:var(--text-muted)">No medications flagged for QT prolongation in the database.</p>'; return; }
   container.innerHTML = qtMeds.map(m => `
-    <div class="qt-psych-item" data-drug-id="${m.id}" onclick="openDrugModal('${m.id}')" title="Click to open drug detail">
+    <div class="qt-psych-item" data-drug-id="${m.id}" data-call="openDrugModal" data-arg="${m.id}" title="Click to open drug detail">
       <div class="qt-psych-name">${m.name}</div>
       <div class="qt-psych-sub">${m.brandName} &bull; ${m.class}</div>
       ${classBadge(m.class)}
@@ -3174,7 +3174,7 @@ function calcDaysBetween() {
     <div class="rc-big-num">${diff} <span class="rc-big-unit">days</span></div>
     <div class="rc-detail">From <strong>${fmtDate(earlier)}</strong> to <strong>${fmtDate(later)}</strong></div>
     <div class="rc-detail">${Math.floor(diff / 7)} weeks and ${diff % 7} days &bull; ~${(diff / 30.44).toFixed(1)} months</div>
-    <button class="rc-copy-btn" onclick="rcCopy(this, \`${copyText.replace(/`/g, '\\`')}\`)">Copy</button>
+    <button class="rc-copy-btn" data-call="rcCopy" data-with-el="first" data-arg="${escAttr(copyText)}">Copy</button>
   `;
 }
 
@@ -3250,7 +3250,7 @@ function calcUsage() {
       ${rxRate > 0 ? `&bull; Rx rate: <strong>${rxRate} pills/day</strong>` : ''}
       ${remaining > 0 ? `&bull; Remaining: <strong>${remaining} pills</strong>` : ''}
     </div>
-    <button class="rc-copy-btn" onclick="rcCopy(this, \`${ucCopy.replace(/`/g, '\\`')}\`)">Copy</button>
+    <button class="rc-copy-btn" data-call="rcCopy" data-with-el="first" data-arg="${escAttr(ucCopy)}">Copy</button>
   `;
 }
 
@@ -3287,7 +3287,7 @@ function calcForwardRefills() {
   res.innerHTML = `
     <div class="rc-detail" style="margin-bottom:10px">Starting from fill on <strong>${fmtDate(start)}</strong>, every <strong>${daysVal} days</strong>:</div>
     <table class="rc-fill-table"><tbody>${rows}</tbody></table>
-    <button class="rc-copy-btn" onclick="rcCopy(this, \`${fwdCopy.replace(/`/g, '\\`')}\`)">Copy</button>
+    <button class="rc-copy-btn" data-call="rcCopy" data-with-el="first" data-arg="${escAttr(fwdCopy)}">Copy</button>
   `;
 }
 
@@ -3324,7 +3324,7 @@ function calcReverseRefills() {
     <div class="rc-detail" style="margin-bottom:10px">Working back from <strong>${fmtDate(latest)}</strong>, every <strong>${daysVal} days</strong>:</div>
     <table class="rc-fill-table"><tbody>${rows}</tbody></table>
     <div class="rc-detail" style="margin-top:10px;font-style:italic;color:var(--text-muted)">These are <em>expected</em> dates based on a consistent fill interval. Actual fill dates may vary.</div>
-    <button class="rc-copy-btn" onclick="rcCopy(this, \`${revCopy.replace(/`/g, '\\`')}\`)">Copy</button>
+    <button class="rc-copy-btn" data-call="rcCopy" data-with-el="first" data-arg="${escAttr(revCopy)}">Copy</button>
   `;
 }
 
@@ -3442,7 +3442,12 @@ function calcMedSync() {
   var copyText = 'Medication Sync Plan\nDate: ' + fmtDate(new Date()) + '\nTarget Sync Date: ' + fmtDate(target) + '\n\n' + planText(planA) + '\n' + planText(planB) + '\nAfter the sync fill, both medications align on ' + fmtDate(target) + ' and remain synced going forward.';
 
   res.className = 'rc-result';
-  res.innerHTML = '<div class="rc-detail" style="font-weight:600;margin-bottom:12px">&#128197; Target Sync Date: <strong>' + fmtDate(target) + '</strong></div>' + renderPlan(planA) + renderPlan(planB) + '<div class="rc-detail" style="margin-top:12px;font-style:italic">After the sync fill, both medications align on <strong>' + fmtDate(target) + '</strong> and stay synced every ' + (daysA === daysB ? daysA + ' days' : daysA + '/' + daysB + ' days') + '.</div>' + '<button class="rc-copy-btn" onclick="rcCopy(this, `' + copyText.replace(/`/g, '\\`').replace(/\n/g, '\\n') + '`)">Copy</button>';
+  res.innerHTML = '<div class="rc-detail" style="font-weight:600;margin-bottom:12px">&#128197; Target Sync Date: <strong>' + fmtDate(target) + '</strong></div>' + renderPlan(planA) + renderPlan(planB) + '<div class="rc-detail" style="margin-top:12px;font-style:italic">After the sync fill, both medications align on <strong>' + fmtDate(target) + '</strong> and stay synced every ' + (daysA === daysB ? daysA + ' days' : daysA + '/' + daysB + ' days') + '.</div>' + '<button class="rc-copy-btn" data-call="rcCopy" data-with-el="first" data-arg="' + escAttr(copyText) + '">Copy</button>';
+}
+
+// Escape text for use inside a double-quoted HTML attribute
+function escAttr(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
 function rcCopy(btn, text) {
@@ -4517,7 +4522,7 @@ function initMedTaper() {
             ${intervalLabel} per step &nbsp;|&nbsp;
             Final dose: <strong>${formatDose(lastDose)}</strong>
           </div>
-          <button class="mt-print-btn" onclick="window.print()">&#128438; Print / Save PDF</button>
+          <button class="mt-print-btn" data-print>&#128438; Print / Save PDF</button>
         </div>
         <div class="mt-table-wrap">
           <table class="mt-schedule-table">
@@ -4559,7 +4564,7 @@ function initMedTaper() {
             <span class="mt-output-drug" style="color:#57c785">${drugB} &#8593;</span>
           </div>
           <div class="mt-output-meta">${count} steps &nbsp;|&nbsp; ${intervalLabel} per step</div>
-          <button class="mt-print-btn" onclick="window.print()">&#128438; Print / Save PDF</button>
+          <button class="mt-print-btn" data-print>&#128438; Print / Save PDF</button>
         </div>
         <div class="mt-table-wrap">
           <table class="mt-schedule-table">

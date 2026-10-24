@@ -1500,11 +1500,14 @@
       + '.ff-print-btn { position: fixed; top: 10px; right: 10px; padding: 8px 14px; background: #4a7c35; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 12px; z-index: 100; }'
       + '@media print { .ff-print-btn { display: none !important; } }'
       + '</style></head><body>'
-      + '<button class="ff-print-btn" onclick="window.print()">Print this form</button>'
+      + '<button class="ff-print-btn" type="button">Print this form</button>'
       + bodyHtml
       + '</body></html>';
     w.document.write(html);
     w.document.close();
+    // The pop-up inherits this page's CSP, so wire the button here, not inline
+    var printBtn = w.document.querySelector('.ff-print-btn');
+    if (printBtn) printBtn.addEventListener('click', function() { w.print(); });
     setTimeout(function() { try { w.print(); } catch (e) {} }, 250);
   }
 
