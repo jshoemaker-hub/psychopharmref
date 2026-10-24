@@ -1,0 +1,499 @@
+    
+      <!-- Clinical Warning Box -->
+      <div class="mt-warning">
+        <strong>Clinical Use Only</strong> — The SLUMS is a screening instrument and does not replace comprehensive neuropsychological evaluation. Results should be interpreted in the context of the patient's educational background, medical history, cultural factors, and baseline functioning. Sensitivity to mild cognitive impairment may exceed the MMSE (Tariq et al., 2006).
+      </div>
+    
+      <!-- Patient Information & Education Level -->
+      <div class="sl-patient-info">
+        <h3>Patient Information</h3>
+        <fieldset class="sl-education-group">
+          <legend>Education Level (affects scoring thresholds)</legend>
+          <label class="sl-radio-label">
+            <input type="radio" name="sl-education" value="high-school" checked>
+            <span>High School Education or Higher</span>
+          </label>
+          <label class="sl-radio-label">
+            <input type="radio" name="sl-education" value="less-than-high-school">
+            <span>Less Than High School Education</span>
+          </label>
+        </fieldset>
+      </div>
+    
+      <!-- Exam Questions Container -->
+      <div class="sl-questions-container">
+    
+        <!-- Q1: Day of Week -->
+        <div class="sl-question-card sl-domain-orientation">
+          <div class="sl-q-header">
+            <div class="sl-q-number">Q1</div>
+            <div class="sl-q-info">
+              <span class="sl-domain-badge sl-badge-orientation">Orientation</span>
+              <span class="sl-q-points">1 point</span>
+            </div>
+          </div>
+          <div class="sl-q-text">"What day of the week is it?"</div>
+          <div class="sl-q-scoring">
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="1" data-points="1" data-domain="orientation">
+              <span>Correct</span>
+            </label>
+          </div>
+        </div>
+    
+        <!-- Q2: Year -->
+        <div class="sl-question-card sl-domain-orientation">
+          <div class="sl-q-header">
+            <div class="sl-q-number">Q2</div>
+            <div class="sl-q-info">
+              <span class="sl-domain-badge sl-badge-orientation">Orientation</span>
+              <span class="sl-q-points">1 point</span>
+            </div>
+          </div>
+          <div class="sl-q-text">"What is the year?"</div>
+          <div class="sl-q-scoring">
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="2" data-points="1" data-domain="orientation">
+              <span>Correct</span>
+            </label>
+          </div>
+        </div>
+    
+        <!-- Q3: State -->
+        <div class="sl-question-card sl-domain-orientation">
+          <div class="sl-q-header">
+            <div class="sl-q-number">Q3</div>
+            <div class="sl-q-info">
+              <span class="sl-domain-badge sl-badge-orientation">Orientation</span>
+              <span class="sl-q-points">1 point</span>
+            </div>
+          </div>
+          <div class="sl-q-text">"What state are we in?"</div>
+          <div class="sl-q-scoring">
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="3" data-points="1" data-domain="orientation">
+              <span>Correct</span>
+            </label>
+          </div>
+        </div>
+    
+        <!-- Q4: Registration (Encoding) -->
+        <div class="sl-question-card sl-domain-registration">
+          <div class="sl-q-header">
+            <div class="sl-q-number">Q4</div>
+            <div class="sl-q-info">
+              <span class="sl-domain-badge sl-badge-memory">Registration</span>
+              <span class="sl-q-points">0 points (encoding only)</span>
+            </div>
+          </div>
+          <div class="sl-q-text">"Please remember these five objects. I will ask you what they are later:"</div>
+          <div class="sl-registration-objects">
+            <div class="sl-object">Apple</div>
+            <div class="sl-object">Pen</div>
+            <div class="sl-object">Tie</div>
+            <div class="sl-object">House</div>
+            <div class="sl-object">Car</div>
+          </div>
+          <p class="sl-domain-note"><em>Encoding phase — scored in Q7 (Delayed Recall)</em></p>
+        </div>
+    
+        <!-- Q5: Calculations -->
+        <div class="sl-question-card sl-domain-executive">
+          <div class="sl-q-header">
+            <div class="sl-q-number">Q5</div>
+            <div class="sl-q-info">
+              <span class="sl-domain-badge sl-badge-executive">Executive/Attention</span>
+              <span class="sl-q-points">3 points</span>
+            </div>
+          </div>
+          <div class="sl-q-text">"You have $100 and you go to the store and buy a dozen apples for $3 and a tricycle for $20."</div>
+    
+          <div class="sl-subquestion">
+            <div class="sl-subq-label">A. "How much did you spend?"</div>
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="5a" data-points="1" data-domain="executive">
+              <span>Correct ($23)</span>
+            </label>
+          </div>
+    
+          <div class="sl-subquestion">
+            <div class="sl-subq-label">B. "How much do you have left?"</div>
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="5b" data-points="2" data-domain="executive">
+              <span>Correct ($77)</span>
+            </label>
+          </div>
+        </div>
+    
+        <!-- Q6: Animal Naming / Verbal Fluency -->
+        <div class="sl-question-card sl-domain-language">
+          <div class="sl-q-header">
+            <div class="sl-q-number">Q6</div>
+            <div class="sl-q-info">
+              <span class="sl-domain-badge sl-badge-language">Language/Processing</span>
+              <span class="sl-q-points">3 points</span>
+            </div>
+          </div>
+          <div class="sl-q-text">"Please name as many animals as you can in one minute."</div>
+
+          <!-- 1-Minute Timer -->
+          <div class="sl-timer-wrap" id="sl-timer-wrap">
+            <div class="sl-timer-ring-container">
+              <svg class="sl-timer-ring" viewBox="0 0 120 120">
+                <circle class="sl-timer-track" cx="60" cy="60" r="52" fill="none" stroke="var(--border)" stroke-width="8"/>
+                <circle class="sl-timer-progress" id="sl-timer-progress" cx="60" cy="60" r="52" fill="none" stroke="var(--accent)" stroke-width="8" stroke-linecap="round" stroke-dasharray="326.73" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+              </svg>
+              <div class="sl-timer-display" id="sl-timer-display">1:00</div>
+            </div>
+            <div class="sl-timer-buttons">
+              <button type="button" class="sl-timer-btn sl-timer-start" id="sl-timer-start">Start</button>
+              <button type="button" class="sl-timer-btn sl-timer-reset" id="sl-timer-reset">Reset</button>
+            </div>
+          </div>
+
+          <div class="sl-q-scoring">
+            <div class="sl-radio-group">
+              <label class="sl-radio-label">
+                <input type="radio" name="sl-q6" class="sl-q-radio" data-question="6" data-points="0" data-domain="language">
+                <span>0–4 animals (0 pts)</span>
+              </label>
+              <label class="sl-radio-label">
+                <input type="radio" name="sl-q6" class="sl-q-radio" data-question="6" data-points="1" data-domain="language">
+                <span>5–9 animals (1 pt)</span>
+              </label>
+              <label class="sl-radio-label">
+                <input type="radio" name="sl-q6" class="sl-q-radio" data-question="6" data-points="2" data-domain="language">
+                <span>10–14 animals (2 pts)</span>
+              </label>
+              <label class="sl-radio-label">
+                <input type="radio" name="sl-q6" class="sl-q-radio" data-question="6" data-points="3" data-domain="language">
+                <span>15+ animals (3 pts)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Q7: Delayed Recall -->
+        <div class="sl-question-card sl-domain-memory">
+          <div class="sl-q-header">
+            <div class="sl-q-number">Q7</div>
+            <div class="sl-q-info">
+              <span class="sl-domain-badge sl-badge-memory">Memory</span>
+              <span class="sl-q-points">5 points</span>
+            </div>
+          </div>
+          <div class="sl-q-text">"What were the five objects I asked you to remember? 1 point for each one correct."</div>
+          <div class="sl-q-scoring">
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="7-apple" data-points="1" data-domain="memory">
+              <span>Apple</span>
+            </label>
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="7-pen" data-points="1" data-domain="memory">
+              <span>Pen</span>
+            </label>
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="7-tie" data-points="1" data-domain="memory">
+              <span>Tie</span>
+            </label>
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="7-house" data-points="1" data-domain="memory">
+              <span>House</span>
+            </label>
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="7-car" data-points="1" data-domain="memory">
+              <span>Car</span>
+            </label>
+          </div>
+        </div>
+    
+        <!-- Q8: Digit Span Backwards -->
+        <div class="sl-question-card sl-domain-workingmemory">
+          <div class="sl-q-header">
+            <div class="sl-q-number">Q8</div>
+            <div class="sl-q-info">
+              <span class="sl-domain-badge sl-badge-workingmemory">Working Memory</span>
+              <span class="sl-q-points">2 points</span>
+            </div>
+          </div>
+          <div class="sl-q-text">"I am going to give you a series of numbers and I would like you to give them to me backwards."</div>
+    
+          <div class="sl-subquestion">
+            <div class="sl-subq-label sl-practice-label">Practice: "87 → 78" (0 pts)</div>
+            <label class="sl-checkbox-label sl-practice-item">
+              <input type="checkbox" disabled>
+              <span>Example only</span>
+            </label>
+          </div>
+    
+          <div class="sl-subquestion">
+            <div class="sl-subq-label">648 reversed correctly (1 pt)</div>
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="8-648" data-points="1" data-domain="workingmemory">
+              <span>648 → 846</span>
+            </label>
+          </div>
+    
+          <div class="sl-subquestion">
+            <div class="sl-subq-label">8537 reversed correctly (1 pt)</div>
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="8-8537" data-points="1" data-domain="workingmemory">
+              <span>8537 → 7358</span>
+            </label>
+          </div>
+        </div>
+    
+        <!-- Q9: Clock Drawing -->
+        <div class="sl-question-card sl-domain-visuospatial">
+          <div class="sl-q-header">
+            <div class="sl-q-number">Q9</div>
+            <div class="sl-q-info">
+              <span class="sl-domain-badge sl-badge-visuospatial">Visuospatial/Executive</span>
+              <span class="sl-q-points">4 points</span>
+            </div>
+          </div>
+          <div class="sl-q-text">"Please put in the hour markers and set the time to 10 minutes to 11 o'clock (10:50)."</div>
+    
+          <div class="sl-subquestion">
+            <div class="sl-subq-label">Hour markers present and correct (2 pts)</div>
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="9-markers" data-points="2" data-domain="visuospatial">
+              <span>Correct</span>
+            </label>
+          </div>
+    
+          <div class="sl-subquestion">
+            <div class="sl-subq-label">Time (10:50) set correctly (2 pts)</div>
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="9-time" data-points="2" data-domain="visuospatial">
+              <span>Correct</span>
+            </label>
+          </div>
+        </div>
+    
+        <!-- Q10: Shape Recognition -->
+        <div class="sl-question-card sl-domain-attention">
+          <div class="sl-q-header">
+            <div class="sl-q-number">Q10</div>
+            <div class="sl-q-info">
+              <span class="sl-domain-badge sl-badge-attention">Attention/Perception</span>
+              <span class="sl-q-points">2 points</span>
+            </div>
+          </div>
+          <div class="sl-q-text">"Please place an X in the triangle. Which of the above figures is largest?"</div>
+    
+          <div class="sl-shapes-display">
+            <svg class="sl-shape" viewBox="0 0 60 60" width="60" height="60">
+              <rect x="10" y="10" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <svg class="sl-shape" viewBox="0 0 60 60" width="60" height="60">
+              <polygon points="30,10 50,50 10,50" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <svg class="sl-shape" viewBox="0 0 60 60" width="60" height="60">
+              <circle cx="30" cy="30" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+    
+          <div class="sl-subquestion">
+            <div class="sl-subq-label">X placed in triangle (1 pt)</div>
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="10-triangle" data-points="1" data-domain="attention">
+              <span>Correct</span>
+            </label>
+          </div>
+    
+          <div class="sl-subquestion">
+            <div class="sl-subq-label">Correctly identified largest figure (1 pt)</div>
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="10-largest" data-points="1" data-domain="attention">
+              <span>Correct (Square)</span>
+            </label>
+          </div>
+        </div>
+    
+        <!-- Q11: Story Recall -->
+        <div class="sl-question-card sl-domain-memory">
+          <div class="sl-q-header">
+            <div class="sl-q-number">Q11</div>
+            <div class="sl-q-info">
+              <span class="sl-domain-badge sl-badge-memory">Memory/Executive</span>
+              <span class="sl-q-points">8 points</span>
+            </div>
+          </div>
+          <div class="sl-q-text">"I am going to tell you a story. Please listen carefully because afterwards, I'm going to ask you some questions about it."</div>
+    
+          <blockquote class="sl-story-block">
+            Jill was a very successful stockbroker. She made a lot of money on the stock market. She then met Jack, a devastatingly handsome man. She married him and had three children. They lived in Chicago. She then stopped work and stayed at home to bring up her children. When they were teenagers, she went back to work. She and Jack lived happily ever after.
+          </blockquote>
+    
+          <div class="sl-subquestion">
+            <div class="sl-subq-label">"What was the female's name?" (2 pts)</div>
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="11-name" data-points="2" data-domain="memory">
+              <span>Correct (Jill)</span>
+            </label>
+          </div>
+    
+          <div class="sl-subquestion">
+            <div class="sl-subq-label">"What work did she do?" (2 pts)</div>
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="11-work" data-points="2" data-domain="memory">
+              <span>Correct (Stockbroker)</span>
+            </label>
+          </div>
+    
+          <div class="sl-subquestion">
+            <div class="sl-subq-label">"When did she go back to work?" (2 pts)</div>
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="11-when" data-points="2" data-domain="memory">
+              <span>Correct (When children were teenagers)</span>
+            </label>
+          </div>
+    
+          <div class="sl-subquestion">
+            <div class="sl-subq-label">"What state did she live in?" (2 pts)</div>
+            <label class="sl-checkbox-label">
+              <input type="checkbox" class="sl-q-check" data-question="11-state" data-points="2" data-domain="memory">
+              <span>Correct (Illinois — Chicago)</span>
+            </label>
+          </div>
+        </div>
+    
+      </div>
+    
+      <!-- Results & Scoring Section -->
+      <div class="sl-results-section">
+    
+        <!-- Score Card -->
+        <div class="sl-score-card">
+          <div class="sl-score-display">
+            <div class="sl-score-number" id="sl-total-score">0</div>
+            <div class="sl-score-label">/ 30 points</div>
+          </div>
+          <div class="sl-interpretation" id="sl-interpretation">
+            <div class="sl-interp-category">—</div>
+            <div class="sl-interp-note"></div>
+          </div>
+        </div>
+    
+        <!-- Domain Analysis Panel -->
+        <div class="sl-domain-analysis">
+          <h3>Cognitive Domain Analysis</h3>
+    
+          <div class="sl-domain-item">
+            <div class="sl-domain-header">
+              <span class="sl-domain-name">Orientation / Temporal-Spatial Awareness</span>
+              <span class="sl-domain-score"><span id="sl-score-orientation">0</span>/3</span>
+            </div>
+            <div class="sl-domain-bar">
+              <div class="sl-domain-progress" id="sl-bar-orientation" style="width: 0%"></div>
+            </div>
+            <div class="sl-domain-note-text" id="sl-note-orientation">
+              <strong>Brain Regions:</strong> Hippocampus, medial temporal lobe, thalamus<br>
+              <strong>Clinical Significance:</strong> Orientation requires intact episodic and semantic memory circuits. Temporal disorientation often precedes spatial disorientation in Alzheimer's disease.
+            </div>
+          </div>
+    
+          <div class="sl-domain-item">
+            <div class="sl-domain-header">
+              <span class="sl-domain-name">Executive Functioning</span>
+              <span class="sl-domain-score"><span id="sl-score-executive">0</span>/3</span>
+            </div>
+            <div class="sl-domain-bar">
+              <div class="sl-domain-progress" id="sl-bar-executive" style="width: 0%"></div>
+            </div>
+            <div class="sl-domain-note-text" id="sl-note-executive">
+              <strong>Brain Regions:</strong> Prefrontal cortex (dorsolateral), anterior cingulate<br>
+              <strong>Clinical Significance:</strong> Scored on Q5 calculation (multi-step reasoning). Clock drawing (Q9, scored under Visuospatial) and story recall (Q11, scored under Memory) also engage executive function. Classical frontal-subcortical circuit involvement.
+            </div>
+          </div>
+    
+          <div class="sl-domain-item">
+            <div class="sl-domain-header">
+              <span class="sl-domain-name">Attention & Concentration</span>
+              <span class="sl-domain-score"><span id="sl-score-attention">0</span>/2</span>
+            </div>
+            <div class="sl-domain-bar">
+              <div class="sl-domain-progress" id="sl-bar-attention" style="width: 0%"></div>
+            </div>
+            <div class="sl-domain-note-text" id="sl-note-attention">
+              <strong>Brain Regions:</strong> Frontal/parietal networks, reticular activating system<br>
+              <strong>Clinical Significance:</strong> Sustained attention required for multi-step math problems; selective visual attention for shape identification. Impaired early in delirium and ADHD.
+            </div>
+          </div>
+    
+          <div class="sl-domain-item">
+            <div class="sl-domain-header">
+              <span class="sl-domain-name">Memory — Episodic Retrieval</span>
+              <span class="sl-domain-score"><span id="sl-score-memory">0</span>/13</span>
+            </div>
+            <div class="sl-domain-bar">
+              <div class="sl-domain-progress" id="sl-bar-memory" style="width: 0%"></div>
+            </div>
+            <div class="sl-domain-note-text" id="sl-note-memory">
+              <strong>Brain Regions:</strong> Hippocampus, medial temporal lobe, Papez circuit<br>
+              <strong>Clinical Significance:</strong> Delayed recall (Q7) and narrative memory (Q11) together comprise 13/30 points—the largest domain weight. Disproportionate memory loss relative to other domains suggests Alzheimer's-pattern impairment. Encoding failure (poor registration) vs. retrieval failure (poor recall with preserved recognition) helps distinguish cortical vs. subcortical dementia.
+            </div>
+          </div>
+    
+          <div class="sl-domain-item">
+            <div class="sl-domain-header">
+              <span class="sl-domain-name">Working Memory</span>
+              <span class="sl-domain-score"><span id="sl-score-workingmemory">0</span>/2</span>
+            </div>
+            <div class="sl-domain-bar">
+              <div class="sl-domain-progress" id="sl-bar-workingmemory" style="width: 0%"></div>
+            </div>
+            <div class="sl-domain-note-text" id="sl-note-workingmemory">
+              <strong>Brain Regions:</strong> Dorsolateral prefrontal cortex, posterior parietal cortex<br>
+              <strong>Clinical Significance:</strong> Digit span backwards requires active manipulation of held information. Impaired in frontostriatal conditions, schizophrenia, and delirium.
+            </div>
+          </div>
+    
+          <div class="sl-domain-item">
+            <div class="sl-domain-header">
+              <span class="sl-domain-name">Language & Verbal Skills / Processing Speed</span>
+              <span class="sl-domain-score"><span id="sl-score-language">0</span>/3</span>
+            </div>
+            <div class="sl-domain-bar">
+              <div class="sl-domain-progress" id="sl-bar-language" style="width: 0%"></div>
+            </div>
+            <div class="sl-domain-note-text" id="sl-note-language">
+              <strong>Brain Regions:</strong> Left temporal lobe (Wernicke's area), frontal-subcortical circuits<br>
+              <strong>Clinical Significance:</strong> Animal fluency is a timed semantic retrieval task that taxes both language networks and processing speed. Reduced output may reflect frontal-subcortical dysfunction (clustering/switching deficit) or temporal lobe pathology (semantic store depletion).
+            </div>
+          </div>
+    
+          <div class="sl-domain-item">
+            <div class="sl-domain-header">
+              <span class="sl-domain-name">Visuospatial / Construction</span>
+              <span class="sl-domain-score"><span id="sl-score-visuospatial">0</span>/4</span>
+            </div>
+            <div class="sl-domain-bar">
+              <div class="sl-domain-progress" id="sl-bar-visuospatial" style="width: 0%"></div>
+            </div>
+            <div class="sl-domain-note-text" id="sl-note-visuospatial">
+              <strong>Brain Regions:</strong> Right parietal lobe, parietal-occipital junction<br>
+              <strong>Clinical Significance:</strong> Scored on Q9 clock drawing (visuospatial construction + executive planning). Shape tasks (Q10) scored under Attention. Disproportionate visuospatial impairment suggests right parietal pathology or Lewy body dementia.
+            </div>
+          </div>
+    
+        </div>
+    
+        <!-- Question-by-Question Summary -->
+        <div class="sl-summary-section">
+          <h3>Question-by-Question Results</h3>
+          <button class="sl-btn sl-btn-copy" id="sl-copy-summary">Copy Summary to Clipboard</button>
+          <div class="sl-copy-feedback" id="sl-copy-feedback"></div>
+          <pre class="sl-summary-text" id="sl-summary-text"></pre>
+        </div>
+    
+        <!-- Action Buttons -->
+        <div class="sl-action-buttons">
+          <button class="sl-btn sl-btn-reset" id="sl-reset-btn">Reset Exam</button>
+        </div>
+    
+      </div>
+    
+      <!-- Styles -->
+<!-- JavaScript Logic -->

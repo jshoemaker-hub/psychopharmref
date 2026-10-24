@@ -1,0 +1,33 @@
+      <div class="be-wrap">
+        <div class="be-grid">
+          <div class="be-card be-side" id="be-side"></div>
+          <div class="be-card">
+            <div class="be-toolbar">
+              <button class="be-btn" id="be-reset">Reset view</button>
+              <label class="be-toggle"><input type="checkbox" id="be-shell" checked> Brain shell</label>
+              <label class="be-toggle"><input type="checkbox" id="be-ctx" checked> Context structures</label>
+              <label class="be-toggle"><input type="checkbox" id="be-spin"> Auto-rotate</label>
+            </div>
+            <div class="be-stagewrap"><canvas class="be-canvas" id="be-canvas"></canvas><div class="be-loading" id="be-loading">Loading brain model&hellip;</div></div>
+          </div>
+          <div class="be-card">
+            <div class="be-panel">
+              <h3 id="be-name">Pick a structure</h3>
+              <p class="be-abbr" id="be-abbr">SPL expert-segmented atlas &middot; 10 structures</p>
+              <div id="be-detail" style="display:none">
+                <div class="be-row"><p class="be-k">System</p><p class="be-v" id="be-system"></p></div>
+                <div class="be-row"><p class="be-k">Why it matters</p><p class="be-v" id="be-why"></p></div>
+                <div class="be-row"><p class="be-k">On this model</p><p class="be-v" id="be-note"></p></div>
+                <div class="be-links" id="be-links"></div>
+              </div>
+              <p class="be-hint" id="be-hint">Drag to rotate &middot; scroll to zoom &middot; click any structure. Toggle the brain shell and context nuclei to isolate what you need. Raphe and locus coeruleus are shown as bilateral markers.</p>
+              <p class="be-cred">3D models: SPL-PNL Brain Atlas, Surgical Planning Laboratory &amp; Psychiatry Neuroimaging Laboratory, Brigham &amp; Women's Hospital / Harvard (<a href="http://www.spl.harvard.edu/publications/item/view/1265" target="_blank" rel="noopener">spl.harvard.edu</a>), 3D Slicer (BSD-style) license.</p>
+            </div>
+            <div class="be-loc empty" id="be-loc">
+              <p class="be-loc-k" id="be-loc-k">Location</p>
+              <div id="be-locator"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    

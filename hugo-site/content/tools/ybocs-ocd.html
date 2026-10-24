@@ -1,26 +1,45 @@
 ---
-title: "Y-BOCS — Yale-Brown Obsessive Compulsive Scale"
-description: "Interactive Y-BOCS scoring tool for OCD severity assessment. Score obsession and compulsion severity across 5 dimensions each with symptom checklist and severity interpretation."
+title: "Y-BOCS OCD Severity Scale: Score and Severity Bands"
+description: "Score the 10-item Yale-Brown Obsessive Compulsive Scale (0–40) with obsession and compulsion subtotals, a symptom checklist, and a copyable report."
 layout: "tool"
 tool_section: "ybocs-tool"
 category: "Rating Scales"
+date: 2026-10-23
+lastmod: 2026-10-23
 ---
 
 <div class="tool-landing">
   <div class="tool-landing-header">
     <span class="tool-landing-category">Rating Scales</span>
-    <h1>Y-BOCS — Yale-Brown Obsessive Compulsive Scale</h1>
-    <p class="tool-landing-desc">Interactive Y-BOCS scoring tool for OCD severity assessment. Score obsession and compulsion severity across 5 dimensions each with symptom checklist and severity interpretation.</p>
+    <h1>Y-BOCS OCD Severity Scale: Score and Severity Bands</h1>
+    <p class="tool-landing-desc">Score the 10-item Yale-Brown Obsessive Compulsive Scale (0–40) with obsession and compulsion subtotals, a symptom checklist, and a copyable report.</p>
   </div>
   <div class="tool-landing-cta">
-    <a href="/#ybocs-tool" class="tool-launch-btn" id="tool-launch">Open Interactive Tool</a>
-    <p class="tool-landing-note">This tool runs in the PsychoPharmRef clinical reference application.</p>
+    <a href="/#ybocs-tool" class="tool-launch-btn">Open the Y-BOCS</a>
+    <p class="tool-landing-note">Runs free in your browser. Scores are calculated on your device and not sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it measures</h2>
+    <p>The Yale-Brown Obsessive Compulsive Scale (Y-BOCS) is a clinician-administered measure of obsessive-compulsive symptom severity. The tool has two tabs. The Symptom Checklist records which obsessions and compulsions are present now (past week) or were present in the past, grouped by theme: aggressive, contamination, sexual, hoarding, religious, symmetry, somatic, and miscellaneous obsessions, and cleaning, checking, counting, ordering, hoarding, and miscellaneous compulsions. The Severity Scale rates how much those symptoms affect the patient.</p>
+
+    <h2>Items and scoring</h2>
+    <p>The ten core items are each rated 0–4 using anchor descriptions. Items 1–5 rate obsessions (time occupied, interference, distress, resistance, control) and items 6–10 rate compulsions on the same five dimensions. Each subtotal ranges 0–20 and the total ranges 0–40. The tool applies these severity bands to the total:</p>
+    <table>
+      <thead><tr><th>Total (items 1–10)</th><th>Severity</th></tr></thead>
+      <tbody>
+        <tr><td>0–7</td><td>Subclinical</td></tr>
+        <tr><td>8–15</td><td>Mild</td></tr>
+        <tr><td>16–23</td><td>Moderate</td></tr>
+        <tr><td>24–31</td><td>Severe</td></tr>
+        <tr><td>32–40</td><td>Extreme</td></tr>
+      </tbody>
+    </table>
+    <p>Supplemental items 1b and 6b (obsession-free and compulsion-free intervals) and investigational items 11–19 (insight, avoidance, indecisiveness, overvalued responsibility, pervasive slowness, pathological doubting, global severity, global improvement, and reliability) can be rated for context. They are not added to the 0–40 total, and checklist selections are descriptive only.</p>
+
+    <h2>What the report includes</h2>
+    <p>The main report lists the date, both subtotals, the total, the severity band, each core item score, the supplemental and investigational ratings, and the current and past checklist items. Separate buttons copy just the checklist or just the investigational items. Reports are plain text for pasting into an EMR. A blank form can also be printed.</p>
+
+    <h2>Limitations</h2>
+    <p>Unanswered core items count as 0, so rate all ten items before interpreting the total. Severity bands are a guide and should be read in clinical context. The scale was developed by Goodman and colleagues (Arch Gen Psychiatry, 1989), the reference cited in the tool's report.</p>
   </div>
 </div>
-
-<script>
-// Auto-redirect to the SPA section after a brief delay for SEO crawlers
-if (!navigator.userAgent.match(/bot|crawl|spider|google|bing|yandex|baidu/i)) {
-  window.location.href = '/#ybocs-tool';
-}
-</script>

@@ -48,10 +48,11 @@
     var panel  = root.querySelector('.ba-slides-panel');
     if (!track || !panel || !toggle) return;
 
-    // Image elements (lazy-loaded). First two eager so opening feels instant.
+    // Image elements. The src is held back until the panel is first opened,
+    // so a collapsed deck costs nothing; after that, slides past the second lazy-load.
     pages.forEach(function (src, i) {
       var img = document.createElement('img');
-      img.src = src;
+      img.setAttribute('data-src', src);
       img.alt = (manifest.title || slug) + ' — slide ' + (i + 1) + ' of ' + pages.length;
       img.loading = i < 2 ? 'eager' : 'lazy';
       img.decoding = 'async';
@@ -99,8 +100,19 @@
     if (prev) prev.addEventListener('click', function () { go(idx - 1); });
     if (next) next.addEventListener('click', function () { go(idx + 1); });
 
+    var loaded = false;
+    function loadImages() {
+      if (loaded) return;
+      loaded = true;
+      track.querySelectorAll('img[data-src]').forEach(function (img) {
+        img.src = img.getAttribute('data-src');
+        img.removeAttribute('data-src');
+      });
+    }
+
     // Collapsible toggle (collapsed by default)
     toggle.addEventListener('click', function () {
+      loadImages();
       var open = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', open ? 'false' : 'true');
       if (open) panel.setAttribute('hidden', '');

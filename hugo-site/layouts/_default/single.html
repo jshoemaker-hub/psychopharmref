@@ -77,7 +77,7 @@
 
   {{ with .Params.clinicalSummary }}
   <div class="ba-clinical-summary">
-    <h4>Clinical Summary</h4>
+    <h2 class="ba-cs-title">Clinical Summary</h2>
     <p>{{ . }}</p>
   </div>
   {{ end }}
@@ -105,7 +105,7 @@
   <!-- Related Posts -->
   {{ if .Params.related }}
   <div class="ba-related">
-    <h4>Related Articles</h4>
+    <h2 class="ba-related-title">Related Articles</h2>
     <div class="ba-related-grid">
       {{ range .Params.related }}
         {{ with site.GetPage (printf "/blog/%s" .) }}
@@ -128,7 +128,7 @@
 
 <!-- Newsletter CTA -->
 <div class="nl-blog-cta">
-  <h4>PsychoPharmRef Newsletter</h4>
+  <h2 class="nl-cta-title">PsychoPharmRef Newsletter</h2>
   <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
   <a href="https://subscribe-forms.beehiiv.com/5f2b3081-aa41-452c-95c8-69a5ae899cf8" target="_blank" rel="noopener" class="nl-subscribe-btn">Subscribe — it's free</a>
 </div>

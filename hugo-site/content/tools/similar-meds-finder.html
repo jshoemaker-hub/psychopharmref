@@ -1,0 +1,46 @@
+---
+title: "Find Similar Medications: Switching After Poop-Out"
+description: "Rank psychiatric drugs by pharmacologic similarity to one that stopped working, using receptor binding, action, class, indications, and residual symptoms."
+layout: "tool"
+tool_section: "similar-meds"
+category: "Psychopharmacology"
+date: 2026-10-23
+lastmod: 2026-10-23
+---
+
+<div class="tool-landing">
+  <div class="tool-landing-header">
+    <span class="tool-landing-category">Psychopharmacology</span>
+    <h1>Find Similar Medications: Switching After Poop-Out</h1>
+    <p class="tool-landing-desc">Rank psychiatric drugs by pharmacologic similarity to one that stopped working, using receptor binding, action, class, indications, and residual symptoms.</p>
+  </div>
+  <div class="tool-landing-cta">
+    <a href="/#similar-meds" class="tool-launch-btn">Open Find Similar Medications</a>
+    <p class="tool-landing-note">Runs free in your browser. Rankings are calculated on your device and not sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it does</h2>
+    <p>When a medication that once worked best loses its effect (tachyphylaxis, or "poop-out"), this tool lists the agents in the PsychoPharmRef database with the most similar pharmacology, as a starting point for a switch. Select the reference medication and the tool ranks the others by percent match, six at a time, with a button to show the next six. You can restrict results to the same category, filter by route (oral, long-acting injectable, intramuscular, or intravenous), and tick residual symptoms that the new agent should still cover.</p>
+
+    <h2>How similarity is scored</h2>
+    <p>Each candidate is compared with the reference on up to six axes, and you can adjust the weight of each with a slider:</p>
+    <table>
+      <thead><tr><th>Axis</th><th>What it compares</th><th>Default weight</th></tr></thead>
+      <tbody>
+        <tr><td>Receptor binding</td><td>Cosine similarity of the two drugs' binding profiles (pKi above a floor of 5, which is Ki 10,000 nM)</td><td>60</td></tr>
+        <tr><td>Action match</td><td>Whether both drugs do the same thing (for example both antagonists) at receptors both bind with pKi ≥ 6</td><td>15</td></tr>
+        <tr><td>Cascade-tier match</td><td>Agreement in the level of signal transduction</td><td>10</td></tr>
+        <tr><td>Class match</td><td>Same class scores 100%, same category 50%</td><td>25</td></tr>
+        <tr><td>Shared indications</td><td>Overlap in FDA indications</td><td>15</td></tr>
+        <tr><td>Symptom coverage</td><td>Whether the candidate's mechanism plausibly covers the ticked residual symptoms</td><td>30</td></tr>
+      </tbody>
+    </table>
+    <p>Any axis that cannot be measured for a pair is dropped, and the remaining weights are rescaled to sum to 100%. Residual symptom options are insomnia, anhedonia, anxiety, cognition or inattention, agitation, psychotic symptoms, poor appetite, sexual dysfunction, and somatic pain. Candidates whose mechanism may worsen a ticked symptom are flagged.</p>
+
+    <h2>What the report includes</h2>
+    <p>Each result card explains the match. The copyable summary lists the date, the reference drug, any route and symptom filters, and for each candidate the overall match, the per-axis scores, available routes, shared receptor targets, receptors with the same or a different action, symptom coverage and "may worsen" flags, and shared indications. A receptor comparison table is shown when the reference has binding data.</p>
+
+    <h2>Limitations</h2>
+    <p>Pharmacologic similarity does not guarantee comparable efficacy or tolerability in an individual patient. For apparent tachyphylaxis the tool advises first reassessing adherence, dosing, substance use, and the diagnosis. Some patients do better with a switch to a different mechanism or with augmentation; the companion Find Complementary tool covers that question.</p>
+  </div>
+</div>

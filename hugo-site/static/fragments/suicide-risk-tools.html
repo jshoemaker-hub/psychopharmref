@@ -1,0 +1,1106 @@
+    
+      <div class="sr-warning-box">
+        <strong>⚠ Clinical Notice:</strong> These screening tools are designed to facilitate clinical assessment and should not be used as standalone diagnostic instruments. They supplement, not replace, comprehensive clinical evaluation, risk assessment, and clinical judgment. All positive screens require immediate further evaluation by qualified mental health professionals. For crisis support: <strong>988 Suicide & Crisis Lifeline</strong> (call or text 988, available 24/7).
+      </div>
+<!-- TAB NAVIGATION -->
+      <div class="sr-tab-bar">
+        <button class="sr-tab-btn sr-active" data-tab="ssrs-screen">C-SSRS Screen</button>
+        <button class="sr-tab-btn" data-tab="ssrs-full">C-SSRS Full Assessment</button>
+        <button class="sr-tab-btn" data-tab="risk-factors">Risk & Protective Factors</button>
+      </div>
+    
+      <!-- TAB 1: C-SSRS SCREEN VERSION -->
+      <div id="ssrs-screen" class="sr-tab-content sr-active">
+        <div class="sr-tool-container">
+          <h3>Columbia-Suicide Severity Rating Scale: Screen Version</h3>
+          <p style="color: #666; font-size: 14px; margin-bottom: 20px;">Rapid assessment of suicidal ideation and behavior. Answers help determine risk level and need for further evaluation.</p>
+    
+          <form id="sr-screen-form">
+            <p class="sr-helper-text" style="display:block;margin-bottom:12px;"><strong>Ask Q1–Q5 about the past month.</strong> Ask Q3–Q5 only if Q2 is Yes. Q6 is asked for lifetime, followed by the past-3-months question.</p>
+            <!-- Q1: Wish to be dead -->
+            <div class="sr-question-group">
+              <label class="sr-question-label">Q1 (past month): Have you wished you were dead or wished you could go to sleep and not wake up?</label>
+              <div class="sr-radio-group">
+                <div class="sr-radio-wrapper">
+                  <input type="radio" id="q1_yes" name="q1" value="yes">
+                  <label for="q1_yes">Yes</label>
+                </div>
+                <div class="sr-radio-wrapper">
+                  <input type="radio" id="q1_no" name="q1" value="no" checked>
+                  <label for="q1_no">No</label>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Q2: Suicidal thoughts -->
+            <div class="sr-question-group">
+              <label class="sr-question-label">Q2: Have you actually had any thoughts of killing yourself?</label>
+              <div class="sr-radio-group">
+                <div class="sr-radio-wrapper">
+                  <input type="radio" id="q2_yes" name="q2" value="yes">
+                  <label for="q2_yes">Yes</label>
+                </div>
+                <div class="sr-radio-wrapper">
+                  <input type="radio" id="q2_no" name="q2" value="no" checked>
+                  <label for="q2_no">No</label>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Q3: Method (conditional) -->
+            <div class="sr-question-group sr-hidden" id="q3-group">
+              <label class="sr-question-label">Q3: Have you been thinking about how you might do this?</label>
+              <span class="sr-helper-text">E.g., thought about a method but never made a specific plan.</span>
+              <div class="sr-radio-group">
+                <div class="sr-radio-wrapper">
+                  <input type="radio" id="q3_yes" name="q3" value="yes">
+                  <label for="q3_yes">Yes</label>
+                </div>
+                <div class="sr-radio-wrapper">
+                  <input type="radio" id="q3_no" name="q3" value="no" checked>
+                  <label for="q3_no">No</label>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Q4: Intent (conditional) -->
+            <div class="sr-question-group sr-hidden" id="q4-group">
+              <label class="sr-question-label">Q4: Have you had these thoughts and had some intention of acting on them?</label>
+              <span class="sr-helper-text">As opposed to "I have the thoughts but I definitely will not do anything about them."</span>
+              <div class="sr-radio-group">
+                <div class="sr-radio-wrapper">
+                  <input type="radio" id="q4_yes" name="q4" value="yes">
+                  <label for="q4_yes">Yes</label>
+                </div>
+                <div class="sr-radio-wrapper">
+                  <input type="radio" id="q4_no" name="q4" value="no" checked>
+                  <label for="q4_no">No</label>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Q5: Plan and intent (conditional) -->
+            <div class="sr-question-group sr-hidden" id="q5-group">
+              <label class="sr-question-label">Q5: Have you started to work out or worked out the details of how to kill yourself? Do you intend to carry out this plan?</label>
+              <div class="sr-radio-group">
+                <div class="sr-radio-wrapper">
+                  <input type="radio" id="q5_yes" name="q5" value="yes">
+                  <label for="q5_yes">Yes</label>
+                </div>
+                <div class="sr-radio-wrapper">
+                  <input type="radio" id="q5_no" name="q5" value="no" checked>
+                  <label for="q5_no">No</label>
+                </div>
+              </div>
+            </div>
+    
+            <!-- Q6: Actual attempt/preparation -->
+            <div class="sr-question-group">
+              <label class="sr-question-label">Q6 (lifetime): Have you ever done anything, started to do anything, or prepared to do anything to end your life?</label>
+              <span class="sr-helper-text">Examples: collected pills, obtained a gun, gave away valuables, wrote a will or suicide note, took out pills but didn&rsquo;t swallow any, held a gun but changed your mind or it was grabbed from your hand, went to the roof but didn&rsquo;t jump; or actually took pills, tried to shoot yourself, cut yourself, tried to hang yourself, etc.</span>
+              <div class="sr-radio-group">
+                <div class="sr-radio-wrapper">
+                  <input type="radio" id="q6_yes" name="q6" value="yes">
+                  <label for="q6_yes">Yes</label>
+                </div>
+                <div class="sr-radio-wrapper">
+                  <input type="radio" id="q6_no" name="q6" value="no" checked>
+                  <label for="q6_no">No</label>
+                </div>
+              </div>
+    
+              <!-- Q6 subquestion -->
+              <div style="margin-top: 16px; padding: 12px; background: var(--bg2); border-radius: 4px; display: none;" id="q6-subquestion">
+                <label class="sr-question-label">If yes to Q6: Was this within the past three months?</label>
+                <div class="sr-radio-group">
+                  <div class="sr-radio-wrapper">
+                    <input type="radio" id="q6sub_yes" name="q6sub" value="yes">
+                    <label for="q6sub_yes">Yes</label>
+                  </div>
+                  <div class="sr-radio-wrapper">
+                    <input type="radio" id="q6sub_no" name="q6sub" value="no" checked>
+                    <label for="q6sub_no">No</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+    
+          <!-- RESULT BOX -->
+          <div id="sr-screen-result" style="display: none;"></div>
+    
+          <!-- BUTTONS -->
+          <div class="sr-button-group">
+            <button class="sr-btn sr-btn-primary" id="sr-screen-score">Calculate Risk Level</button>
+            <button class="sr-btn sr-btn-secondary" id="sr-screen-copy" style="display: none;">Copy Summary</button>
+          </div>
+        </div>
+      </div>
+    
+      <!-- TAB 2: C-SSRS FULL ASSESSMENT -->
+      <div id="ssrs-full" class="sr-tab-content">
+        <div class="sr-tool-container">
+          <h3>Columbia-Suicide Severity Rating Scale: Full Risk Assessment</h3>
+          <p style="color: #666; font-size: 14px; margin-bottom: 20px;">Comprehensive multi-section assessment of suicidal ideation, behavior, and intensity. Click sections to expand.</p>
+    
+          <form id="sr-full-form">
+            <!-- SECTION A: RISK & PROTECTIVE FACTORS -->
+            <button class="sr-accordion-header sr-open" type="button">
+              Section A: Risk & Protective Factors Checklist
+            </button>
+            <div class="sr-accordion-content sr-open">
+              <div class="sr-factor-grid">
+                <!-- LEFT COLUMN: RISK FACTORS -->
+                <div class="sr-factor-column">
+                  <h4 style="color: #c04030;">Risk Factors</h4>
+    
+                  <div class="sr-factor-category">
+                    <div class="sr-factor-category-title">Suicidal & Self-Injury Behavior (Past Week)</div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_attempt" name="risk_attempt">
+                      <label for="risk_attempt">Actual suicide attempt</label>
+                    </div>
+                    <div class="sr-checkbox-sublevel">
+                      <input type="checkbox" id="risk_attempt_lt" name="risk_attempt_lt">
+                      <label for="risk_attempt_lt" style="font-size: 12px;">Lifetime</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_interrupted" name="risk_interrupted">
+                      <label for="risk_interrupted">Interrupted attempt</label>
+                    </div>
+                    <div class="sr-checkbox-sublevel">
+                      <input type="checkbox" id="risk_interrupted_lt" name="risk_interrupted_lt">
+                      <label for="risk_interrupted_lt" style="font-size: 12px;">Lifetime</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_aborted" name="risk_aborted">
+                      <label for="risk_aborted">Aborted attempt</label>
+                    </div>
+                    <div class="sr-checkbox-sublevel">
+                      <input type="checkbox" id="risk_aborted_lt" name="risk_aborted_lt">
+                      <label for="risk_aborted_lt" style="font-size: 12px;">Lifetime</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_prep" name="risk_prep">
+                      <label for="risk_prep">Other preparatory acts to kill self</label>
+                    </div>
+                    <div class="sr-checkbox-sublevel">
+                      <input type="checkbox" id="risk_prep_lt" name="risk_prep_lt">
+                      <label for="risk_prep_lt" style="font-size: 12px;">Lifetime</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_nssi" name="risk_nssi">
+                      <label for="risk_nssi">Self-injury behavior w/o suicide intent</label>
+                    </div>
+                    <div class="sr-checkbox-sublevel">
+                      <input type="checkbox" id="risk_nssi_lt" name="risk_nssi_lt">
+                      <label for="risk_nssi_lt" style="font-size: 12px;">Lifetime</label>
+                    </div>
+                  </div>
+    
+                  <div class="sr-factor-category">
+                    <div class="sr-factor-category-title">Suicide Ideation (Most Severe Past Week)</div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_wish_dead" name="risk_wish_dead">
+                      <label for="risk_wish_dead">Wish to be dead</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_thoughts" name="risk_thoughts">
+                      <label for="risk_thoughts">Suicidal thoughts</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_method" name="risk_method">
+                      <label for="risk_method">Suicidal thoughts with method (no plan/intent)</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_intent" name="risk_intent">
+                      <label for="risk_intent">Suicidal intent (no specific plan)</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_plan_intent" name="risk_plan_intent">
+                      <label for="risk_plan_intent">Suicidal intent with specific plan</label>
+                    </div>
+                  </div>
+    
+                  <div class="sr-factor-category">
+                    <div class="sr-factor-category-title">Activating Events (Recent)</div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_loss" name="risk_loss">
+                      <label for="risk_loss">Recent loss or significant negative event</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_legal" name="risk_legal">
+                      <label for="risk_legal">Pending incarceration or homelessness</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_isolation" name="risk_isolation">
+                      <label for="risk_isolation">Current or pending isolation/feeling alone</label>
+                    </div>
+                  </div>
+    
+                  <div class="sr-factor-category">
+                    <div class="sr-factor-category-title">Treatment History</div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_prior_tx" name="risk_prior_tx">
+                      <label for="risk_prior_tx">Previous psychiatric diagnoses/treatments</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_hopeless_tx" name="risk_hopeless_tx">
+                      <label for="risk_hopeless_tx">Hopeless or dissatisfied with treatment</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_noncompliant" name="risk_noncompliant">
+                      <label for="risk_noncompliant">Noncompliant with treatment</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_no_tx" name="risk_no_tx">
+                      <label for="risk_no_tx">Not receiving treatment</label>
+                    </div>
+                  </div>
+    
+                  <div class="sr-factor-category">
+                    <div class="sr-factor-category-title">Clinical Status (Recent)</div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_hopeless" name="risk_hopeless">
+                      <label for="risk_hopeless">Hopelessness</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_helpless" name="risk_helpless">
+                      <label for="risk_helpless">Helplessness</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_trapped" name="risk_trapped">
+                      <label for="risk_trapped">Feeling trapped</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_mde" name="risk_mde">
+                      <label for="risk_mde">Major depressive episode</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_mixed" name="risk_mixed">
+                      <label for="risk_mixed">Mixed affective episode</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_command" name="risk_command">
+                      <label for="risk_command">Command hallucinations to hurt self</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_impulsive" name="risk_impulsive">
+                      <label for="risk_impulsive">Highly impulsive behavior</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_substance" name="risk_substance">
+                      <label for="risk_substance">Substance abuse or dependence</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_agitation" name="risk_agitation">
+                      <label for="risk_agitation">Agitation or severe anxiety</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_burden" name="risk_burden">
+                      <label for="risk_burden">Perceived burden on family/others</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_pain" name="risk_pain">
+                      <label for="risk_pain">Chronic physical pain or acute medical problem</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_homicidal" name="risk_homicidal">
+                      <label for="risk_homicidal">Homicidal ideation</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_aggressive" name="risk_aggressive">
+                      <label for="risk_aggressive">Aggressive behavior towards others</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_method_avail" name="risk_method_avail">
+                      <label for="risk_method_avail">Method for suicide available (gun, pills, etc.)</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_refuse_safety" name="risk_refuse_safety">
+                      <label for="risk_refuse_safety">Refuses or feels unable to agree to safety plan</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_sexual_abuse" name="risk_sexual_abuse">
+                      <label for="risk_sexual_abuse">Sexual abuse (lifetime)</label>
+                    </div>
+                    <div class="sr-checkbox-item">
+                      <input type="checkbox" id="risk_fam_suicide" name="risk_fam_suicide">
+                      <label for="risk_fam_suicide">Family history of suicide (lifetime)</label>
+                    </div>
+                  </div>
+                </div>
+    
+                <!-- RIGHT COLUMN: PROTECTIVE FACTORS -->
+                <div class="sr-factor-column">
+                  <h4 style="color: var(--accent);">Protective Factors</h4>
+                  <div class="sr-checkbox-item">
+                    <input type="checkbox" id="protect_reasons" name="protect_reasons">
+                    <label for="protect_reasons">Identifies reasons for living</label>
+                  </div>
+                  <div class="sr-checkbox-item">
+                    <input type="checkbox" id="protect_family" name="protect_family">
+                    <label for="protect_family">Responsibility to family/others; living with family</label>
+                  </div>
+                  <div class="sr-checkbox-item">
+                    <input type="checkbox" id="protect_support" name="protect_support">
+                    <label for="protect_support">Supportive social network or family</label>
+                  </div>
+                  <div class="sr-checkbox-item">
+                    <input type="checkbox" id="protect_fear_death" name="protect_fear_death">
+                    <label for="protect_fear_death">Fear of death or dying due to pain/suffering</label>
+                  </div>
+                  <div class="sr-checkbox-item">
+                    <input type="checkbox" id="protect_spiritual" name="protect_spiritual">
+                    <label for="protect_spiritual">Belief that suicide is immoral; high spirituality</label>
+                  </div>
+                  <div class="sr-checkbox-item">
+                    <input type="checkbox" id="protect_work" name="protect_work">
+                    <label for="protect_work">Engaged in work or school</label>
+                  </div>
+                  <div class="sr-checkbox-item">
+                    <input type="checkbox" id="protect_treatment" name="protect_treatment">
+                    <label for="protect_treatment">Engaged with treatment provider</label>
+                  </div>
+                  <div class="sr-checkbox-item">
+                    <input type="checkbox" id="protect_other" name="protect_other">
+                    <label for="protect_other">Other protective factors</label>
+                  </div>
+    
+                  <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border);">
+                    <label for="sr-full-behavior-notes" style="display: block; font-weight: 500; margin-bottom: 8px;">Describe any suicidal, self-injury or aggressive behavior (include dates):</label>
+                    <textarea class="sr-text-area" id="sr-full-behavior-notes" placeholder="Document specific behaviors, dates, methods, and circumstances..."></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <!-- SECTION B: SUICIDAL IDEATION ASSESSMENT -->
+            <button class="sr-accordion-header" type="button">
+              Section B: Suicidal Ideation Assessment
+            </button>
+            <div class="sr-accordion-content">
+              <div id="sr-ideation-group">
+                <!-- Level 1 -->
+                <div class="sr-ideation-level">
+                  <span class="sr-ideation-level-number">1</span>
+                  <div class="sr-ideation-question">Wish to be Dead</div>
+                  <div class="sr-ideation-description">Person thinks about wanting to be dead, losing consciousness, or going to sleep permanently.</div>
+                  <div class="sr-dual-checkbox">
+                    <div class="sr-checkbox-inline">
+                      <input type="checkbox" id="ideation1_lifetime" name="ideation1_lifetime">
+                      <label for="ideation1_lifetime">Lifetime</label>
+                    </div>
+                    <div class="sr-checkbox-inline">
+                      <input type="checkbox" id="ideation1_month" name="ideation1_month">
+                      <label for="ideation1_month">Past Month</label>
+                    </div>
+                  </div>
+                </div>
+    
+                <!-- Level 2 -->
+                <div class="sr-ideation-level">
+                  <span class="sr-ideation-level-number">2</span>
+                  <div class="sr-ideation-question">Non-Specific Active Suicidal Thoughts</div>
+                  <div class="sr-ideation-description">Person actively thinks about killing themselves, but general or vague (e.g., "I've been thinking I'd be better off dead").</div>
+                  <div class="sr-dual-checkbox">
+                    <div class="sr-checkbox-inline">
+                      <input type="checkbox" id="ideation2_lifetime" name="ideation2_lifetime">
+                      <label for="ideation2_lifetime">Lifetime</label>
+                    </div>
+                    <div class="sr-checkbox-inline">
+                      <input type="checkbox" id="ideation2_month" name="ideation2_month">
+                      <label for="ideation2_month">Past Month</label>
+                    </div>
+                  </div>
+                </div>
+    
+                <!-- Level 3 -->
+                <div class="sr-ideation-level">
+                  <span class="sr-ideation-level-number">3</span>
+                  <div class="sr-ideation-question">Active Suicidal Ideation with Any Methods (Not Plan) without Intent to Act</div>
+                  <div class="sr-ideation-description">Person has active suicidal thoughts and has considered one or more methods, but has not formulated a specific plan and does not intend to act.</div>
+                  <div class="sr-dual-checkbox">
+                    <div class="sr-checkbox-inline">
+                      <input type="checkbox" id="ideation3_lifetime" name="ideation3_lifetime">
+                      <label for="ideation3_lifetime">Lifetime</label>
+                    </div>
+                    <div class="sr-checkbox-inline">
+                      <input type="checkbox" id="ideation3_month" name="ideation3_month">
+                      <label for="ideation3_month">Past Month</label>
+                    </div>
+                  </div>
+                </div>
+    
+                <!-- Level 4 -->
+                <div class="sr-ideation-level">
+                  <span class="sr-ideation-level-number">4</span>
+                  <div class="sr-ideation-question">Active Suicidal Ideation with Some Intent to Act, without Specific Plan</div>
+                  <div class="sr-ideation-description">Person has active suicidal thoughts and intends to act, but has not developed a specific plan.</div>
+                  <div class="sr-dual-checkbox">
+                    <div class="sr-checkbox-inline">
+                      <input type="checkbox" id="ideation4_lifetime" name="ideation4_lifetime">
+                      <label for="ideation4_lifetime">Lifetime</label>
+                    </div>
+                    <div class="sr-checkbox-inline">
+                      <input type="checkbox" id="ideation4_month" name="ideation4_month">
+                      <label for="ideation4_month">Past Month</label>
+                    </div>
+                  </div>
+                </div>
+    
+                <!-- Level 5 -->
+                <div class="sr-ideation-level">
+                  <span class="sr-ideation-level-number">5</span>
+                  <div class="sr-ideation-question">Active Suicidal Ideation with Specific Plan and Intent</div>
+                  <div class="sr-ideation-description">Person has active suicidal thoughts, intends to act, and has worked out the details of a specific plan, including time, place, and method.</div>
+                  <div class="sr-dual-checkbox">
+                    <div class="sr-checkbox-inline">
+                      <input type="checkbox" id="ideation5_lifetime" name="ideation5_lifetime">
+                      <label for="ideation5_lifetime">Lifetime</label>
+                    </div>
+                    <div class="sr-checkbox-inline">
+                      <input type="checkbox" id="ideation5_month" name="ideation5_month">
+                      <label for="ideation5_month">Past Month</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <!-- SECTION C: INTENSITY OF IDEATION -->
+            <button class="sr-accordion-header" type="button">
+              Section C: Intensity of Ideation (if any ideation present)
+            </button>
+            <div class="sr-accordion-content">
+              <p style="font-size: 13px; color: #666; margin-bottom: 16px;">Rate each dimension on the scale provided. Only enabled if ideation is present.</p>
+    
+              <div class="sr-intensity-row">
+                <label for="intensity_frequency" class="sr-intensity-label">Frequency (1-5):</label>
+                <select id="intensity_frequency" class="sr-select sr-intensity-select" name="intensity_frequency" disabled>
+                  <option value="">-- Select --</option>
+                  <option value="1">1: Less than once a week</option>
+                  <option value="2">2: Once a week</option>
+                  <option value="3">3: 2–5 times in a week</option>
+                  <option value="4">4: Daily or almost daily</option>
+                  <option value="5">5: Many times each day</option>
+                </select>
+              </div>
+    
+              <div class="sr-intensity-row">
+                <label for="intensity_duration" class="sr-intensity-label">Duration (1-5):</label>
+                <select id="intensity_duration" class="sr-select sr-intensity-select" name="intensity_duration" disabled>
+                  <option value="">-- Select --</option>
+                  <option value="1">1: Fleeting — a few seconds or minutes</option>
+                  <option value="2">2: Less than 1 hour / some of the time</option>
+                  <option value="3">3: 1–4 hours / a lot of time</option>
+                  <option value="4">4: 4–8 hours / most of the day</option>
+                  <option value="5">5: More than 8 hours / persistent or continuous</option>
+                </select>
+              </div>
+    
+              <div class="sr-intensity-row">
+                <label for="intensity_control" class="sr-intensity-label">Controllability (0-5): could/can you stop thinking about killing yourself or wanting to die if you want to?</label>
+                <select id="intensity_control" class="sr-select sr-intensity-select" name="intensity_control" disabled>
+                  <option value="">-- Select --</option>
+                  <option value="1">1: Easily able to control thoughts</option>
+                  <option value="2">2: Can control thoughts with little difficulty</option>
+                  <option value="3">3: Can control thoughts with some difficulty</option>
+                  <option value="4">4: Can control thoughts with a lot of difficulty</option>
+                  <option value="5">5: Unable to control thoughts</option>
+                  <option value="0">0: Does not attempt to control thoughts</option>
+                </select>
+              </div>
+    
+              <div class="sr-intensity-row">
+                <label for="intensity_deterrents" class="sr-intensity-label">Deterrents (0-5):</label>
+                <select id="intensity_deterrents" class="sr-select sr-intensity-select" name="intensity_deterrents" disabled>
+                  <option value="">-- Select --</option>
+                  <option value="0">0: N/A</option>
+                  <option value="1">1: Definitely stopped action</option>
+                  <option value="2">2: Probably stopped action</option>
+                  <option value="3">3: May or may not have stopped action</option>
+                  <option value="4">4: Probably did not stop action</option>
+                  <option value="5">5: Definitely did not stop action</option>
+                </select>
+              </div>
+    
+              <div class="sr-intensity-row">
+                <label for="intensity_reasons" class="sr-intensity-label">Reasons for Ideation (0-5):</label>
+                <select id="intensity_reasons" class="sr-select sr-intensity-select" name="intensity_reasons" disabled>
+                  <option value="">-- Select --</option>
+                  <option value="0">0: N/A</option>
+                  <option value="1">1: Completely to get attention, revenge, or a reaction from others</option>
+                  <option value="2">2: Mostly to get attention, revenge, or a reaction from others</option>
+                  <option value="3">3: Equally to get attention, revenge, or a reaction and to end/stop the pain</option>
+                  <option value="4">4: Mostly to end or stop the pain</option>
+                  <option value="5">5: Completely to end or stop the pain</option>
+                </select>
+              </div>
+            </div>
+    
+            <!-- SECTION D: SUICIDAL BEHAVIOR -->
+            <button class="sr-accordion-header" type="button">
+              Section D: Suicidal Behavior
+            </button>
+            <div class="sr-accordion-content">
+              <p style="font-size: 13px; color: #666; margin-bottom: 16px;">Record actual behaviors and their frequency.</p>
+    
+              <div style="display: grid; gap: 16px;">
+                <!-- Actual Attempt -->
+                <div style="border: 1px solid var(--border); padding: 12px; border-radius: 4px;">
+                  <div style="font-weight: 600; margin-bottom: 12px;">Actual Suicide Attempt</div>
+                  <div class="sr-behavior-row">
+                    <label class="sr-behavior-label">Lifetime Yes/No:</label>
+                    <div class="sr-dual-checkbox">
+                      <div class="sr-checkbox-inline">
+                        <input type="checkbox" id="behavior_attempt_lt" name="behavior_attempt_lt">
+                        <label for="behavior_attempt_lt">Yes</label>
+                      </div>
+                    </div>
+                    <div class="sr-dual-checkbox">
+                      <div class="sr-checkbox-inline">
+                        <input type="checkbox" id="behavior_attempt_3m" name="behavior_attempt_3m">
+                        <label for="behavior_attempt_3m">Past 3 Months</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sr-behavior-row">
+                    <label for="behavior_attempt_count" class="sr-behavior-label">Total # of attempts:</label>
+                    <input type="number" class="sr-behavior-input" id="behavior_attempt_count" name="behavior_attempt_count" min="0" placeholder="0">
+                  </div>
+                </div>
+    
+                <!-- Interrupted Attempt -->
+                <div style="border: 1px solid var(--border); padding: 12px; border-radius: 4px;">
+                  <div style="font-weight: 600; margin-bottom: 12px;">Interrupted Attempt</div>
+                  <div class="sr-behavior-row">
+                    <label class="sr-behavior-label">Lifetime Yes/No:</label>
+                    <div class="sr-dual-checkbox">
+                      <div class="sr-checkbox-inline">
+                        <input type="checkbox" id="behavior_interrupted_lt" name="behavior_interrupted_lt">
+                        <label for="behavior_interrupted_lt">Yes</label>
+                      </div>
+                    </div>
+                    <div class="sr-dual-checkbox">
+                      <div class="sr-checkbox-inline">
+                        <input type="checkbox" id="behavior_interrupted_3m" name="behavior_interrupted_3m">
+                        <label for="behavior_interrupted_3m">Past 3 Months</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sr-behavior-row">
+                    <label for="behavior_interrupted_count" class="sr-behavior-label">Total # of attempts:</label>
+                    <input type="number" class="sr-behavior-input" id="behavior_interrupted_count" name="behavior_interrupted_count" min="0" placeholder="0">
+                  </div>
+                </div>
+    
+                <!-- Aborted Attempt -->
+                <div style="border: 1px solid var(--border); padding: 12px; border-radius: 4px;">
+                  <div style="font-weight: 600; margin-bottom: 12px;">Aborted or Self-Interrupted Attempt</div>
+                  <div class="sr-behavior-row">
+                    <label class="sr-behavior-label">Lifetime Yes/No:</label>
+                    <div class="sr-dual-checkbox">
+                      <div class="sr-checkbox-inline">
+                        <input type="checkbox" id="behavior_aborted_lt" name="behavior_aborted_lt">
+                        <label for="behavior_aborted_lt">Yes</label>
+                      </div>
+                    </div>
+                    <div class="sr-dual-checkbox">
+                      <div class="sr-checkbox-inline">
+                        <input type="checkbox" id="behavior_aborted_3m" name="behavior_aborted_3m">
+                        <label for="behavior_aborted_3m">Past 3 Months</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sr-behavior-row">
+                    <label for="behavior_aborted_count" class="sr-behavior-label">Total # of attempts:</label>
+                    <input type="number" class="sr-behavior-input" id="behavior_aborted_count" name="behavior_aborted_count" min="0" placeholder="0">
+                  </div>
+                </div>
+    
+                <!-- Preparatory Acts -->
+                <div style="border: 1px solid var(--border); padding: 12px; border-radius: 4px;">
+                  <div style="font-weight: 600; margin-bottom: 12px;">Preparatory Acts or Behavior</div>
+                  <div class="sr-behavior-row">
+                    <label class="sr-behavior-label">Lifetime Yes/No:</label>
+                    <div class="sr-dual-checkbox">
+                      <div class="sr-checkbox-inline">
+                        <input type="checkbox" id="behavior_prep_lt" name="behavior_prep_lt">
+                        <label for="behavior_prep_lt">Yes</label>
+                      </div>
+                    </div>
+                    <div class="sr-dual-checkbox">
+                      <div class="sr-checkbox-inline">
+                        <input type="checkbox" id="behavior_prep_3m" name="behavior_prep_3m">
+                        <label for="behavior_prep_3m">Past 3 Months</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sr-behavior-row">
+                    <label for="behavior_prep_count" class="sr-behavior-label">Total # of incidents:</label>
+                    <input type="number" class="sr-behavior-input" id="behavior_prep_count" name="behavior_prep_count" min="0" placeholder="0">
+                  </div>
+                </div>
+    
+                <!-- NSSI -->
+                <div style="border: 1px solid var(--border); padding: 12px; border-radius: 4px;">
+                  <div style="font-weight: 600; margin-bottom: 12px;">Non-Suicidal Self-Injurious Behavior</div>
+                  <div class="sr-dual-checkbox">
+                    <div class="sr-checkbox-inline">
+                      <input type="checkbox" id="behavior_nssi_lt" name="behavior_nssi_lt">
+                      <label for="behavior_nssi_lt">Lifetime</label>
+                    </div>
+                    <div class="sr-checkbox-inline">
+                      <input type="checkbox" id="behavior_nssi_3m" name="behavior_nssi_3m">
+                      <label for="behavior_nssi_3m">Past 3 Months</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <!-- SECTION E: LETHALITY -->
+            <button class="sr-accordion-header" type="button">
+              Section E: Lethality (if attempts reported)
+            </button>
+            <div class="sr-accordion-content">
+              <p style="font-size: 13px; color: #666; margin-bottom: 16px;">Assess lethality for up to three attempts: most recent, most lethal, and initial.</p>
+    
+              <div style="display: grid; gap: 20px;">
+                <!-- Most Recent Attempt -->
+                <div class="sr-lethality-section">
+                  <div style="font-weight: 600; margin-bottom: 12px;">Most Recent Attempt</div>
+                  <div class="sr-lethality-row">
+                    <label for="lethality_recent_date" class="sr-lethality-label">Date:</label>
+                    <input type="date" class="sr-behavior-input" id="lethality_recent_date" name="lethality_recent_date">
+                  </div>
+                  <div class="sr-lethality-row">
+                    <label for="lethality_recent_actual" class="sr-lethality-label">Actual Lethality / Medical Damage (0-5):</label>
+                    <select class="sr-select" id="lethality_recent_actual" name="lethality_recent_actual">
+                      <option value="">-- Select --</option>
+                      <option value="0">0: No physical damage or very minor physical damage (e.g., surface scratches)</option>
+                      <option value="1">1: Minor physical damage (e.g., lethargic speech, first-degree burns, mild bleeding, sprains)</option>
+                      <option value="2">2: Moderate physical damage; medical attention needed (e.g., conscious but sleepy, second-degree burns, bleeding of major vessel)</option>
+                      <option value="3">3: Moderately severe physical damage; hospitalization, likely intensive care (e.g., comatose with reflexes intact, third-degree burns &lt;20% of body, extensive blood loss but can recover, major fractures)</option>
+                      <option value="4">4: Severe physical damage; hospitalization with intensive care (e.g., comatose without reflexes, third-degree burns &gt;20% of body, extensive blood loss with unstable vital signs, major damage to a vital area)</option>
+                      <option value="5">5: Death</option>
+                    </select>
+                  </div>
+                  <div class="sr-lethality-row" id="lethality_recent_potential_row" style="display: none;">
+                    <label for="lethality_recent_potential" class="sr-lethality-label">Potential Lethality (0-2) — only if Actual Lethality = 0:</label>
+                    <select class="sr-select" id="lethality_recent_potential" name="lethality_recent_potential">
+                      <option value="">-- Select --</option>
+                      <option value="0">0: Behavior not likely to result in injury</option>
+                      <option value="1">1: Behavior likely to result in injury but not likely to cause death</option>
+                      <option value="2">2: Behavior likely to result in death despite available medical care</option>
+                    </select>
+                  </div>
+                </div>
+    
+                <!-- Most Lethal Attempt -->
+                <div class="sr-lethality-section">
+                  <div style="font-weight: 600; margin-bottom: 12px;">Most Lethal Attempt</div>
+                  <div class="sr-lethality-row">
+                    <label for="lethality_lethal_date" class="sr-lethality-label">Date:</label>
+                    <input type="date" class="sr-behavior-input" id="lethality_lethal_date" name="lethality_lethal_date">
+                  </div>
+                  <div class="sr-lethality-row">
+                    <label for="lethality_lethal_actual" class="sr-lethality-label">Actual Lethality / Medical Damage (0-5):</label>
+                    <select class="sr-select" id="lethality_lethal_actual" name="lethality_lethal_actual">
+                      <option value="">-- Select --</option>
+                      <option value="0">0: No physical damage or very minor physical damage (e.g., surface scratches)</option>
+                      <option value="1">1: Minor physical damage (e.g., lethargic speech, first-degree burns, mild bleeding, sprains)</option>
+                      <option value="2">2: Moderate physical damage; medical attention needed (e.g., conscious but sleepy, second-degree burns, bleeding of major vessel)</option>
+                      <option value="3">3: Moderately severe physical damage; hospitalization, likely intensive care (e.g., comatose with reflexes intact, third-degree burns &lt;20% of body, extensive blood loss but can recover, major fractures)</option>
+                      <option value="4">4: Severe physical damage; hospitalization with intensive care (e.g., comatose without reflexes, third-degree burns &gt;20% of body, extensive blood loss with unstable vital signs, major damage to a vital area)</option>
+                      <option value="5">5: Death</option>
+                    </select>
+                  </div>
+                  <div class="sr-lethality-row" id="lethality_lethal_potential_row" style="display: none;">
+                    <label for="lethality_lethal_potential" class="sr-lethality-label">Potential Lethality (0-2) — only if Actual Lethality = 0:</label>
+                    <select class="sr-select" id="lethality_lethal_potential" name="lethality_lethal_potential">
+                      <option value="">-- Select --</option>
+                      <option value="0">0: Behavior not likely to result in injury</option>
+                      <option value="1">1: Behavior likely to result in injury but not likely to cause death</option>
+                      <option value="2">2: Behavior likely to result in death despite available medical care</option>
+                    </select>
+                  </div>
+                </div>
+    
+                <!-- Initial Attempt -->
+                <div class="sr-lethality-section">
+                  <div style="font-weight: 600; margin-bottom: 12px;">Initial Attempt</div>
+                  <div class="sr-lethality-row">
+                    <label for="lethality_initial_date" class="sr-lethality-label">Date:</label>
+                    <input type="date" class="sr-behavior-input" id="lethality_initial_date" name="lethality_initial_date">
+                  </div>
+                  <div class="sr-lethality-row">
+                    <label for="lethality_initial_actual" class="sr-lethality-label">Actual Lethality / Medical Damage (0-5):</label>
+                    <select class="sr-select" id="lethality_initial_actual" name="lethality_initial_actual">
+                      <option value="">-- Select --</option>
+                      <option value="0">0: No physical damage or very minor physical damage (e.g., surface scratches)</option>
+                      <option value="1">1: Minor physical damage (e.g., lethargic speech, first-degree burns, mild bleeding, sprains)</option>
+                      <option value="2">2: Moderate physical damage; medical attention needed (e.g., conscious but sleepy, second-degree burns, bleeding of major vessel)</option>
+                      <option value="3">3: Moderately severe physical damage; hospitalization, likely intensive care (e.g., comatose with reflexes intact, third-degree burns &lt;20% of body, extensive blood loss but can recover, major fractures)</option>
+                      <option value="4">4: Severe physical damage; hospitalization with intensive care (e.g., comatose without reflexes, third-degree burns &gt;20% of body, extensive blood loss with unstable vital signs, major damage to a vital area)</option>
+                      <option value="5">5: Death</option>
+                    </select>
+                  </div>
+                  <div class="sr-lethality-row" id="lethality_initial_potential_row" style="display: none;">
+                    <label for="lethality_initial_potential" class="sr-lethality-label">Potential Lethality (0-2) — only if Actual Lethality = 0:</label>
+                    <select class="sr-select" id="lethality_initial_potential" name="lethality_initial_potential">
+                      <option value="">-- Select --</option>
+                      <option value="0">0: Behavior not likely to result in injury</option>
+                      <option value="1">1: Behavior likely to result in injury but not likely to cause death</option>
+                      <option value="2">2: Behavior likely to result in death despite available medical care</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+    
+          <div class="sr-button-group">
+            <button class="sr-btn sr-btn-primary" id="sr-full-summary">Generate Summary</button>
+            <button class="sr-btn sr-btn-secondary" id="sr-full-copy" style="display: none;">Copy Summary</button>
+          </div>
+    
+          <div id="sr-full-summary-text" style="display: none; margin-top: 20px;">
+            <pre class="sr-summary-pre" id="sr-full-summary-content"></pre>
+          </div>
+        </div>
+      </div>
+    
+      <!-- TAB 3: RISK & PROTECTIVE FACTORS -->
+      <div id="risk-factors" class="sr-tab-content">
+        <div class="sr-tool-container">
+          <h3>Risk Factors, Protective Factors & Warning Signs</h3>
+          <p style="color: #666; font-size: 14px; margin-bottom: 20px;">Comprehensive framework for suicide risk assessment based on AFSP guidelines. Identify and monitor risk profile across three domains.</p>
+    
+          <form id="sr-risk-factors-form">
+            <div class="sr-panel-grid">
+              <!-- PANEL 1: RISK FACTORS -->
+              <div class="sr-panel">
+                <div class="sr-panel-title">Risk Factors</div>
+    
+                <div class="sr-panel-category">
+                  <div class="sr-panel-category-title">Health Factors</div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_depression" name="rf_depression">
+                    <label for="rf_depression">Depression</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_substance" name="rf_substance">
+                    <label for="rf_substance">Substance use problems</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_bipolar" name="rf_bipolar">
+                    <label for="rf_bipolar">Bipolar disorder</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_schizophrenia" name="rf_schizophrenia">
+                    <label for="rf_schizophrenia">Schizophrenia</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_personality" name="rf_personality">
+                    <label for="rf_personality">Aggression/mood changes/poor relationships</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_conduct" name="rf_conduct">
+                    <label for="rf_conduct">Conduct disorder</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_anxiety" name="rf_anxiety">
+                    <label for="rf_anxiety">Anxiety disorders</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_medical" name="rf_medical">
+                    <label for="rf_medical">Serious physical health conditions/pain</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_tbi" name="rf_tbi">
+                    <label for="rf_tbi">Traumatic brain injury</label>
+                  </div>
+                </div>
+    
+                <div class="sr-panel-category">
+                  <div class="sr-panel-category-title">Environmental Factors</div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_lethal_means" name="rf_lethal_means">
+                    <label for="rf_lethal_means">Access to lethal means (firearms, drugs)</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_prolonged_stress" name="rf_prolonged_stress">
+                    <label for="rf_prolonged_stress">Prolonged stress (harassment, bullying, unemployment)</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_stressful_events" name="rf_stressful_events">
+                    <label for="rf_stressful_events">Stressful life events (rejection, divorce, financial crisis)</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_exposure" name="rf_exposure">
+                    <label for="rf_exposure">Exposure to suicide or graphic accounts</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_discrimination" name="rf_discrimination">
+                    <label for="rf_discrimination">Discrimination</label>
+                  </div>
+                </div>
+    
+                <div class="sr-panel-category">
+                  <div class="sr-panel-category-title">Historical Factors</div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_prior_attempt" name="rf_prior_attempt">
+                    <label for="rf_prior_attempt">Previous suicide attempts</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_family_hx" name="rf_family_hx">
+                    <label for="rf_family_hx">Family history of suicide</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_abuse" name="rf_abuse">
+                    <label for="rf_abuse">Childhood abuse/neglect/trauma</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="rf_generational" name="rf_generational">
+                    <label for="rf_generational">Generational trauma</label>
+                  </div>
+                </div>
+    
+                <div class="sr-summary-stats" id="rf-risk-stats">
+                  0 of 18 risk factors checked
+                </div>
+              </div>
+    
+              <!-- PANEL 2: PROTECTIVE FACTORS -->
+              <div class="sr-panel">
+                <div class="sr-panel-title">Protective Factors</div>
+    
+                <div class="sr-panel-item">
+                  <input type="checkbox" id="pf_mental_care" name="pf_mental_care">
+                  <label for="pf_mental_care">Access to mental health care</label>
+                </div>
+                <div class="sr-panel-item">
+                  <input type="checkbox" id="pf_proactive" name="pf_proactive">
+                  <label for="pf_proactive">Proactive about mental health</label>
+                </div>
+                <div class="sr-panel-item">
+                  <input type="checkbox" id="pf_connected" name="pf_connected">
+                  <label for="pf_connected">Connected to family/community</label>
+                </div>
+                <div class="sr-panel-item">
+                  <input type="checkbox" id="pf_support" name="pf_support">
+                  <label for="pf_support">Strong social support network</label>
+                </div>
+                <div class="sr-panel-item">
+                  <input type="checkbox" id="pf_coping" name="pf_coping">
+                  <label for="pf_coping">Problem-solving & coping skills</label>
+                </div>
+                <div class="sr-panel-item">
+                  <input type="checkbox" id="pf_limited_means" name="pf_limited_means">
+                  <label for="pf_limited_means">Limited access to lethal means</label>
+                </div>
+                <div class="sr-panel-item">
+                  <input type="checkbox" id="pf_spiritual" name="pf_spiritual">
+                  <label for="pf_spiritual">Cultural/religious beliefs</label>
+                </div>
+    
+                <div class="sr-summary-stats" id="pf-protect-stats">
+                  0 of 7 protective factors checked
+                </div>
+              </div>
+    
+              <!-- PANEL 3: WARNING SIGNS -->
+              <div class="sr-panel">
+                <div class="sr-panel-title">Warning Signs</div>
+    
+                <div class="sr-panel-category">
+                  <div class="sr-panel-category-title">Talk</div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_killing" name="ws_killing">
+                    <label for="ws_killing">Talks about killing themselves</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_hopeless" name="ws_hopeless">
+                    <label for="ws_hopeless">Feels hopeless</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_no_reason" name="ws_no_reason">
+                    <label for="ws_no_reason">Has no reason to live</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_burden" name="ws_burden">
+                    <label for="ws_burden">Is a burden to others</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_trapped" name="ws_trapped">
+                    <label for="ws_trapped">Feels trapped</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_unbearable" name="ws_unbearable">
+                    <label for="ws_unbearable">Unbearable pain</label>
+                  </div>
+                </div>
+    
+                <div class="sr-panel-category">
+                  <div class="sr-panel-category-title">Behavior</div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_substance_use" name="ws_substance_use">
+                    <label for="ws_substance_use">Increased alcohol/drug use</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_looking" name="ws_looking">
+                    <label for="ws_looking">Looking for ways to end their lives</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_withdrawn" name="ws_withdrawn">
+                    <label for="ws_withdrawn">Withdrawing from activities</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_isolating" name="ws_isolating">
+                    <label for="ws_isolating">Isolating from family/friends</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_sleep" name="ws_sleep">
+                    <label for="ws_sleep">Sleeping too much or too little</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_goodbye" name="ws_goodbye">
+                    <label for="ws_goodbye">Visiting/calling to say goodbye</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_giving" name="ws_giving">
+                    <label for="ws_giving">Giving away prized possessions</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_aggressive" name="ws_aggressive">
+                    <label for="ws_aggressive">Aggression</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_fatigue" name="ws_fatigue">
+                    <label for="ws_fatigue">Fatigue</label>
+                  </div>
+                </div>
+    
+                <div class="sr-panel-category">
+                  <div class="sr-panel-category-title">Mood</div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_depression" name="ws_depression">
+                    <label for="ws_depression">Depression</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_anxiety" name="ws_anxiety">
+                    <label for="ws_anxiety">Anxiety</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_loss_interest" name="ws_loss_interest">
+                    <label for="ws_loss_interest">Loss of interest</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_irritable" name="ws_irritable">
+                    <label for="ws_irritable">Irritability</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_humiliation" name="ws_humiliation">
+                    <label for="ws_humiliation">Humiliation/Shame</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_agitation" name="ws_agitation">
+                    <label for="ws_agitation">Agitation/Anger</label>
+                  </div>
+                  <div class="sr-panel-item">
+                    <input type="checkbox" id="ws_relief" name="ws_relief">
+                    <label for="ws_relief">Relief/Sudden Improvement</label>
+                  </div>
+                </div>
+    
+                <div class="sr-summary-stats" id="ws-warning-stats">
+                  0 of 23 warning signs present
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <!-- Clinical Assessment Fields -->
+          <div class="sr-clinical-fields">
+            <!-- Location -->
+            <div class="sr-field-group">
+              <div class="sr-field-group-title">Assessment Location</div>
+              <div class="sr-radio-field">
+                <input type="radio" id="loc_outpatient" name="sr_location" value="Outpatient">
+                <label for="loc_outpatient">Outpatient</label>
+              </div>
+              <div class="sr-radio-field">
+                <input type="radio" id="loc_inpatient" name="sr_location" value="Inpatient (General)">
+                <label for="loc_inpatient">Inpatient — General</label>
+              </div>
+              <div class="sr-radio-field">
+                <input type="radio" id="loc_high_sec" name="sr_location" value="Inpatient (High Security)">
+                <label for="loc_high_sec">Inpatient — High Security</label>
+              </div>
+            </div>
+
+            <!-- Overall Risk Assessment -->
+            <div class="sr-field-group">
+              <div class="sr-field-group-title">Overall Risk Assessment</div>
+              <div class="sr-radio-field">
+                <input type="radio" id="risk_high" name="sr_overall_risk" value="High">
+                <label for="risk_high" style="color:#c04030;font-weight:600;">High Risk</label>
+              </div>
+              <div class="sr-radio-field">
+                <input type="radio" id="risk_medium" name="sr_overall_risk" value="Medium">
+                <label for="risk_medium" style="color:#d4850a;font-weight:600;">Medium Risk</label>
+              </div>
+              <div class="sr-radio-field">
+                <input type="radio" id="risk_low" name="sr_overall_risk" value="Low">
+                <label for="risk_low" style="color:var(--accent);font-weight:600;">Low Risk</label>
+              </div>
+            </div>
+
+            <!-- Modifiable Factors -->
+            <div class="sr-field-group">
+              <div class="sr-field-group-title">Modifiable Factors</div>
+              <div class="sr-mod-item">
+                <input type="checkbox" id="mod_medications" name="mod_medications">
+                <label for="mod_medications">Medications</label>
+              </div>
+              <div class="sr-mod-item">
+                <input type="checkbox" id="mod_therapy" name="mod_therapy">
+                <label for="mod_therapy">Therapy</label>
+              </div>
+              <div class="sr-mod-item">
+                <input type="checkbox" id="mod_sobriety" name="mod_sobriety">
+                <label for="mod_sobriety">Sobriety</label>
+              </div>
+              <div class="sr-mod-item">
+                <input type="checkbox" id="mod_symptom_tx" name="mod_symptom_tx">
+                <label for="mod_symptom_tx">Symptom treatment</label>
+              </div>
+              <div class="sr-mod-item">
+                <input type="checkbox" id="mod_access_care" name="mod_access_care">
+                <label for="mod_access_care">Access to care</label>
+              </div>
+              <div class="sr-mod-item">
+                <input type="checkbox" id="mod_support" name="mod_support">
+                <label for="mod_support">Further support</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="sr-button-group">
+            <button class="sr-btn sr-btn-primary" id="sr-risk-summary">Generate Summary</button>
+            <button class="sr-btn sr-btn-secondary" id="sr-risk-copy" style="display: none;">Copy Summary</button>
+          </div>
+    
+          <div id="sr-risk-summary-text" style="display: none; margin-top: 20px;">
+            <pre class="sr-summary-pre" id="sr-risk-summary-content"></pre>
+          </div>
+        </div>
+      </div>
+    
+      <div class="sr-reference">
+        <strong>References:</strong><br>
+        Posner K, Brown GK, Stanley B, et al. The Columbia-Suicide Severity Rating Scale: Initial Validity and Internal Consistency Findings from Three Multisite Studies with Adolescents and Adults. <em>J Clin Psychiatry.</em> 2011;72(2):233-239.<br>
+        American Foundation for Suicide Prevention (AFSP). Risk factors, protective factors, and warning signs. Accessed 2026.
+      </div>

@@ -7,10 +7,11 @@ defaultContentLanguage = "en"
 disableKinds = ["taxonomy", "term"]
 
 [params]
-  description = "Free clinical psychopharmacology reference with 101 medications, receptor binding profiles, P450 interactions, 30+ clinical tools, and 100+ evidence-based blog posts."
+  description = "Free clinical psychopharmacology reference with 101 medications, receptor binding profiles, P450 interactions, 60+ clinical tools, and 120+ evidence-based chapters."
   author = "Jerad Shoemaker, MD"
   authorJobTitle = "Psychiatrist"
   ga4ID = "G-RK6J3FQ9L7"
+  medCount = 101
 
 [markup]
   [markup.goldmark]

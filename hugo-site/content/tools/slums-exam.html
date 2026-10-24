@@ -1,26 +1,43 @@
 ---
-title: "SLUMS Examination — Saint Louis University Mental Status Exam"
-description: "Interactive SLUMS cognitive screening tool with automated scoring, domain analysis (orientation, memory, attention, executive function, visuospatial), and interpretation adjusted for education level."
+title: "SLUMS Exam: Cognitive Screening with Domain Scores"
+description: "Score the 30-point SLUMS cognitive screen with education-adjusted cut-offs, a 1-minute fluency timer, seven domain scores and a copyable report."
 layout: "tool"
 tool_section: "slums-tool"
 category: "Rating Scales"
+date: 2026-10-23
+lastmod: 2026-10-23
 ---
 
 <div class="tool-landing">
   <div class="tool-landing-header">
     <span class="tool-landing-category">Rating Scales</span>
-    <h1>SLUMS Examination — Saint Louis University Mental Status Exam</h1>
-    <p class="tool-landing-desc">Interactive SLUMS cognitive screening tool with automated scoring, domain analysis (orientation, memory, attention, executive function, visuospatial), and interpretation adjusted for education level.</p>
+    <h1>SLUMS Exam: Cognitive Screening with Domain Scores</h1>
+    <p class="tool-landing-desc">Score the 30-point SLUMS cognitive screen with education-adjusted cut-offs, a 1-minute fluency timer, seven domain scores and a copyable report.</p>
   </div>
   <div class="tool-landing-cta">
-    <a href="/#slums-tool" class="tool-launch-btn" id="tool-launch">Open Interactive Tool</a>
-    <p class="tool-landing-note">This tool runs in the PsychoPharmRef clinical reference application.</p>
+    <a href="/#slums-tool" class="tool-launch-btn">Open the SLUMS Exam</a>
+    <p class="tool-landing-note">Runs free in your browser. Scores are calculated on your device and not sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it measures</h2>
+    <p>The Saint Louis University Mental Status Examination (SLUMS; Tariq et al., 2006) is a 30-point screening exam for mild neurocognitive disorder and dementia. The tool notes that its sensitivity to mild cognitive impairment may exceed that of the MMSE. It is a screening instrument and does not replace a full neuropsychological evaluation; results should be read alongside education, medical history, cultural factors and baseline function.</p>
+
+    <h2>Items and scoring</h2>
+    <p>The exam has 11 questions scored as 21 units. Orientation (day, year, state) earns 1 point each. Five words are registered in Q4 for later recall. The money problem scores 1 point for amount spent and 2 for amount left. Animal naming in one minute (with an on-screen timer) scores 0–3 points by count. Delayed recall of the five words earns 1 point each, digit span backwards 1 point per string, the clock 2 points for hour markers and 2 for the time, the shapes task 1 point each, and the story 2 points for each of four questions.</p>
+    <table>
+      <thead><tr><th>Interpretation</th><th>High school or higher</th><th>Less than high school</th></tr></thead>
+      <tbody>
+        <tr><td>Normal</td><td>27–30</td><td>25–30</td></tr>
+        <tr><td>Mild neurocognitive disorder</td><td>21–26</td><td>20–24</td></tr>
+        <tr><td>Dementia</td><td>0–20</td><td>0–19</td></tr>
+      </tbody>
+    </table>
+    <p>Select the education level first; the cut-offs change with it. Unmarked items count as 0, so the interpretation assumes the full exam was given.</p>
+
+    <h2>Domain analysis</h2>
+    <p>The tool splits the total into seven domains: orientation (3), executive function (3, from the money problem), attention (2, from the shapes task), episodic memory (13, from word and story recall), working memory (2), language and processing speed (3, from animal fluency), and visuospatial construction (4, from the clock). Each domain shows a bar and, when points are lost, a short note on the brain regions involved and the clinical meaning. Memory carries the largest weight; the tool notes that disproportionate memory loss suggests an Alzheimer-pattern impairment.</p>
+
+    <h2>What the report includes</h2>
+    <p>Copy Summary to Clipboard produces a plain-text report with the date, education level, total out of 30, interpretation and note, a question-by-question breakdown, domain scores, commentary on each impaired domain, and the Tariq 2006 citation.</p>
   </div>
 </div>
-
-<script>
-// Auto-redirect to the SPA section after a brief delay for SEO crawlers
-if (!navigator.userAgent.match(/bot|crawl|spider|google|bing|yandex|baidu/i)) {
-  window.location.href = '/#slums-tool';
-}
-</script>

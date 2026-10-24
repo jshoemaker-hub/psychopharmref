@@ -1,0 +1,93 @@
+      <div class="mt-warning">
+        <strong>Clinical decision-support only.</strong> Similarity is computed from receptor-binding profiles, <em>action</em> match at shared receptors (both antagonists, both reuptake inhibitors, etc.), <em>signal-transduction tier</em> agreement, drug class, and shared FDA indications &mdash; and, when residual symptoms are ticked, how well each candidate&rsquo;s mechanism still covers them. Any axis that cannot be measured for a pair is dropped and its weight redistributed. Pharmacologic similarity does not guarantee comparable efficacy or tolerability in an individual, and for apparent tachyphylaxis a switch to a <em>different</em> mechanism is sometimes preferable. Use alongside clinical judgment.
+      </div>
+
+      <div class="ref-card sm-setup-card">
+        <h3 class="ref-card-title">&#9878; Select the reference medication</h3>
+        <div class="sm-setup-row">
+          <div class="sm-select-wrap">
+            <label class="sm-select-label" for="sm-ref-select">Medication that worked best</label>
+            <select id="sm-ref-select" class="sm-select"><option value="">&mdash; Select &mdash;</option></select>
+          </div>
+          <label class="sm-toggle">
+            <input type="checkbox" id="sm-samecat" checked>
+            <span>Restrict to same category</span>
+          </label>
+        </div>
+
+        <div class="sm-routes" role="group" aria-label="Filter by route of administration">
+          <div class="sm-routes-head">
+            <span class="sm-routes-title">&#9663; Route of administration</span>
+            <span class="sm-routes-hint">Show only agents available by the selected route(s). Useful when adherence calls for a long-acting injectable, or when the oral route is unavailable.</span>
+          </div>
+          <div class="sm-route-btns">
+            <button type="button" class="sm-route-btn sm-route-btn--on" data-route="" id="sm-route-any">Any route</button>
+            <button type="button" class="sm-route-btn" data-route="oral">Oral</button>
+            <button type="button" class="sm-route-btn" data-route="lai">Long-acting injectable</button>
+            <button type="button" class="sm-route-btn" data-route="im">Intramuscular</button>
+            <button type="button" class="sm-route-btn" data-route="iv">Intravenous</button>
+          </div>
+        </div>
+
+        <div class="sm-symptoms" role="group" aria-label="Residual symptoms to preserve coverage of">
+          <div class="sm-symptoms-head">
+            <span class="sm-symptoms-title">&#9678; Residual symptoms to keep covered <span class="sm-symptoms-opt">(optional)</span></span>
+            <button type="button" class="sm-weights-reset" id="sm-symptom-clear">Clear</button>
+          </div>
+          <p class="sm-symptoms-hint">Tick what the patient still has. Candidates are then scored on whether their mechanism plausibly <em>covers</em> those domains &mdash; and flagged where it may <em>worsen</em> them &mdash; so a switch doesn&rsquo;t trade one problem for another. Leave blank to rank on pharmacology alone.</p>
+          <div class="sm-symptom-grid">
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="insomnia"><span>Insomnia / sleep</span></label>
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="anhedonia"><span>Anhedonia / amotivation</span></label>
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="anxiety"><span>Anxiety / arousal</span></label>
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="cognition"><span>Cognitive / inattention</span></label>
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="agitation"><span>Agitation / irritability</span></label>
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="psychosis"><span>Psychotic symptoms</span></label>
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="appetite"><span>Poor appetite / weight loss</span></label>
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="sexual"><span>Sexual dysfunction</span></label>
+            <label class="sm-symptom"><input type="checkbox" class="sm-symptom-box" value="pain"><span>Somatic pain</span></label>
+          </div>
+        </div>
+
+        <div class="sm-weights" role="group" aria-label="Matching weight controls">
+          <div class="sm-weights-head">
+            <span class="sm-weights-title">&#9707; Matching weights</span>
+            <button type="button" class="sm-weights-reset" id="sm-weights-reset">Reset defaults</button>
+          </div>
+          <p class="sm-weights-hint">Adjust how much each factor counts toward the match. Raise <em>Action match</em> to favor agents that act the <em>same way</em> at shared receptors; raise <em>Cascade-tier match</em> to favor agents working at the same level of signal transduction. Lower <em>Class</em> to surface options in other classes; lower <em>Shared indications</em> to reach across indications. Axes that cannot be measured for a given pair are dropped and their weight redistributed &mdash; <em>Symptom coverage</em> only applies once you tick a residual symptom above. Uncheck &ldquo;Restrict to same category&rdquo; above to widen the pool. Weights normalize to 100%; results re-rank as you drag.</p>
+          <div class="sm-weight-row">
+            <label class="sm-weight-label" for="sm-w-receptor">Receptor binding</label>
+            <input type="range" class="sm-weight-slider" id="sm-w-receptor" min="0" max="100" step="5" value="60" data-default="60">
+            <span class="sm-weight-val" id="sm-w-receptor-val">39%</span>
+          </div>
+          <div class="sm-weight-row">
+            <label class="sm-weight-label" for="sm-w-action">Action match</label>
+            <input type="range" class="sm-weight-slider" id="sm-w-action" min="0" max="100" step="5" value="15" data-default="15">
+            <span class="sm-weight-val" id="sm-w-action-val">10%</span>
+          </div>
+          <div class="sm-weight-row">
+            <label class="sm-weight-label" for="sm-w-tier">Cascade-tier match</label>
+            <input type="range" class="sm-weight-slider" id="sm-w-tier" min="0" max="100" step="5" value="10" data-default="10">
+            <span class="sm-weight-val" id="sm-w-tier-val">6%</span>
+          </div>
+          <div class="sm-weight-row">
+            <label class="sm-weight-label" for="sm-w-class">Class match</label>
+            <input type="range" class="sm-weight-slider" id="sm-w-class" min="0" max="100" step="5" value="25" data-default="25">
+            <span class="sm-weight-val" id="sm-w-class-val">16%</span>
+          </div>
+          <div class="sm-weight-row">
+            <label class="sm-weight-label" for="sm-w-indication">Shared indications</label>
+            <input type="range" class="sm-weight-slider" id="sm-w-indication" min="0" max="100" step="5" value="15" data-default="15">
+            <span class="sm-weight-val" id="sm-w-indication-val">10%</span>
+          </div>
+          <div class="sm-weight-row">
+            <label class="sm-weight-label" for="sm-w-symptom">Symptom coverage</label>
+            <input type="range" class="sm-weight-slider" id="sm-w-symptom" min="0" max="100" step="5" value="30" data-default="30">
+            <span class="sm-weight-val" id="sm-w-symptom-val">19%</span>
+          </div>
+        </div>
+
+        <button class="btn-primary sm-go-btn" id="sm-go-btn">Find Similar Medications &#9656;</button>
+      </div>
+
+      <div id="sm-results" class="sm-results" style="display:none"></div>
+    

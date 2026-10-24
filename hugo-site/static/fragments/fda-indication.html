@@ -1,0 +1,26 @@
+      <div class="mt-warning">
+        <strong>On-label indications only.</strong> This lists FDA-<em>approved</em> uses recorded in the reference database; it is not a treatment guideline and does not capture the large, legitimate role of evidence-based off-label prescribing. Approval status, phase (acute vs. maintenance), line (monotherapy vs. adjunct), and approved age range are shown where known. Confirm against current prescribing information before clinical use.
+      </div>
+
+      <div class="ref-card fi-card">
+        <label class="fi-search-label" for="fi-search">Search by FDA indication</label>
+        <div class="fi-search-wrap">
+          <span class="fi-search-icon" aria-hidden="true">&#128269;</span>
+          <input type="text" id="fi-search" class="fi-search-input" autocomplete="off" spellcheck="false"
+                 placeholder="e.g. Bipolar II, acute mania, schizophrenia, MDD, OCD&hellip;" aria-label="Search medications by FDA indication">
+          <button type="button" id="fi-clear" class="fi-clear-btn" aria-label="Clear search" style="display:none">&times;</button>
+        </div>
+        <div class="fi-chips" role="group" aria-label="Quick searches">
+          <button type="button" class="fi-chip" data-q="Bipolar I">Bipolar I</button>
+          <button type="button" class="fi-chip" data-q="Bipolar II">Bipolar II</button>
+          <button type="button" class="fi-chip" data-q="Acute mania">Acute mania</button>
+          <button type="button" class="fi-chip" data-q="Bipolar depression">Bipolar depression</button>
+          <button type="button" class="fi-chip" data-q="Bipolar maintenance">Bipolar maintenance</button>
+          <button type="button" class="fi-chip" data-q="Schizophrenia">Schizophrenia</button>
+          <button type="button" class="fi-chip" data-q="MDD">MDD</button>
+          <button type="button" class="fi-chip" data-q="OCD">OCD</button>
+        </div>
+      </div>
+
+      <div id="fi-results" class="fi-results" aria-live="polite"></div>
+    

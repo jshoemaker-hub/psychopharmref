@@ -14,6 +14,14 @@
   .tool-features ul { list-style: none; padding: 0; }
   .tool-features li { padding: 8px 0; border-bottom: 1px solid var(--border, #cfc8ba); font-size: 14px; color: var(--text-muted); }
   .tool-features li::before { content: "✓ "; color: var(--accent); font-weight: 700; }
+  .tool-landing-body { margin-top: 36px; }
+  .tool-landing-body h2 { font-size: 20px; margin: 28px 0 10px; color: var(--text, #231e14); }
+  .tool-landing-body p, .tool-landing-body li { font-size: 15px; line-height: 1.65; color: var(--text, #231e14); }
+  .tool-landing-body ul { padding-left: 20px; margin: 8px 0 14px; }
+  .tool-landing-body li { margin-bottom: 6px; }
+  .tool-landing-body table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 10px 0 16px; }
+  .tool-landing-body th, .tool-landing-body td { border: 1px solid var(--border, #cfc8ba); padding: 6px 10px; text-align: left; vertical-align: top; }
+  .tool-landing-body th { background: var(--bg2, #ece6db); }
 </style>
 {{ end }}
 
@@ -25,26 +33,24 @@
     <h2>About PsychoPharmRef</h2>
     <p style="font-size:14px;color:var(--text-muted);line-height:1.6;margin-bottom:20px;">PsychoPharmRef is a free clinical psychopharmacology reference built by <strong>Jerad Shoemaker, MD</strong> for psychiatrists, residents, and medical students. All tools are evidence-based and designed for point-of-care clinical decision support.</p>
     <ul>
-      <li>91 psychiatric medications with complete pharmacology data</li>
-      <li>15+ interactive clinical rating scales (PANSS, SLUMS, CDR, PCL-5, Y-BOCS, YMRS, BFCRS, AIMS, and more)</li>
-      <li>Receptor binding profiles with bar chart and treemap visualization</li>
-      <li>PK curve comparison tool with Bateman equation modeling</li>
-      <li>P450 drug interaction checker</li>
-      <li>QTc calculator with Tisdale risk scoring</li>
+      <li>{{ site.Params.medCount }} psychiatric medications with receptor binding, P450, dosing, and monitoring data</li>
+      <li>{{ len (where site.RegularPages "Section" "tools") }} interactive clinical tools, rating scales, and therapy-course modules</li>
+      <li>Receptor binding profiles with bar chart, heatmap, and treemap views</li>
+      <li>PK curve comparison, P450 interaction checking, and a QTc calculator with Tisdale risk scoring</li>
       <li>Medication taper and cross-taper planners</li>
-      <li>68 evidence-based clinical blog posts</li>
+      <li>{{ len (where site.RegularPages "Section" "blog") }} evidence-based clinical chapters</li>
     </ul>
   </div>
 
   <footer class="ba-footer" style="margin-top:40px;">
-    <p><strong>PsychoPharmRef Clinical Reference</strong> | A resource for medical professionals | Data current as of {{ now.Format "January 2006" }}</p>
+    <p><strong>PsychoPharmRef Clinical Reference</strong> | A resource for medical professionals | Page updated {{ .Lastmod.Format "January 2, 2006" }}</p>
     <p style="margin-top:10px;font-size:12px;">This tool is intended for educational purposes for healthcare professionals. Clinical decision-making should incorporate individual patient assessment and current guidelines.</p>
   </footer>
 </article>
 
 <!-- Newsletter CTA -->
 <div class="nl-blog-cta">
-  <h4>PsychoPharmRef Newsletter</h4>
+  <h2 class="nl-cta-title">PsychoPharmRef Newsletter</h2>
   <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
   <a href="https://subscribe-forms.beehiiv.com/5f2b3081-aa41-452c-95c8-69a5ae899cf8" target="_blank" rel="noopener" class="nl-subscribe-btn">Subscribe — it's free</a>
 </div>

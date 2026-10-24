@@ -1,26 +1,43 @@
 ---
-title: "YMRS — Young Mania Rating Scale Calculator"
-description: "Interactive YMRS scoring tool for mania severity assessment. Score all 11 items with automated severity classification and copy-to-clipboard clinical report for EMR documentation."
+title: "YMRS Calculator: Young Mania Rating Scale"
+description: "Score the 11-item Young Mania Rating Scale (YMRS, 0–60) with anchor text for every rating, see the remission threshold and bands, and copy a dated report."
 layout: "tool"
 tool_section: "ymrs-tool"
 category: "Rating Scales"
+date: 2026-10-23
+lastmod: 2026-10-23
 ---
 
 <div class="tool-landing">
   <div class="tool-landing-header">
     <span class="tool-landing-category">Rating Scales</span>
-    <h1>YMRS — Young Mania Rating Scale Calculator</h1>
-    <p class="tool-landing-desc">Interactive YMRS scoring tool for mania severity assessment. Score all 11 items with automated severity classification and copy-to-clipboard clinical report for EMR documentation.</p>
+    <h1>YMRS Calculator: Young Mania Rating Scale</h1>
+    <p class="tool-landing-desc">Score the 11-item Young Mania Rating Scale (YMRS, 0–60) with anchor text for every rating, see the remission threshold and bands, and copy a dated report.</p>
   </div>
   <div class="tool-landing-cta">
-    <a href="/#ymrs-tool" class="tool-launch-btn" id="tool-launch">Open Interactive Tool</a>
-    <p class="tool-landing-note">This tool runs in the PsychoPharmRef clinical reference application.</p>
+    <a href="/#ymrs-tool" class="tool-launch-btn">Open the YMRS</a>
+    <p class="tool-landing-note">Runs free in your browser. Scores are calculated on your device and not sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it measures</h2>
+    <p>The Young Mania Rating Scale (YMRS; Young, Biggs, Ziegler and Meyer, 1978) is an 11-item clinician-administered scale for rating the severity of manic symptoms in adults. Ratings reflect the patient's behavior, speech and reported subjective experience during the interview. It is used for baseline assessment and for tracking treatment response in bipolar I and bipolar II disorder. It does not replace a full clinical evaluation.</p>
+
+    <h2>Items and scoring</h2>
+    <p>Seven items are scored 0–4: elevated mood, increased motor activity and energy, sexual interest, sleep, language and thought disorder, appearance, and insight. Four items carry double weight and are scored 0, 2, 4, 6 or 8: irritability, speech rate and amount, content, and disruptive or aggressive behavior. Every rating has its anchor description on screen. The total is the sum, from 0 to 60.</p>
+    <table>
+      <thead><tr><th>Total</th><th>Band shown by the tool</th></tr></thead>
+      <tbody>
+        <tr><td>0–12</td><td>Remission / minimal</td></tr>
+        <tr><td>13–19</td><td>Mild (descriptive band)</td></tr>
+        <tr><td>20–25</td><td>Moderate (descriptive band)</td></tr>
+        <tr><td>26–60</td><td>Severe (descriptive band)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Interpreting the result</h2>
+    <p>A YMRS of 12 or less is the conventional remission threshold used in most trials. The bands above 12 are descriptive, not validated severity categories. The tool notes that Lukasiewicz and colleagues (2013) mapped the YMRS to the CGI-BP with different breakpoints, finding a threshold of 25 for markedly ill mania in the EMBLEM cohort and a minimal clinically significant difference of 6.6 points. In the severe band the tool prompts assessment of safety, psychosis, impairment and the need for an urgent treatment setting. The severity label appears only after all 11 items are rated; before that the tool shows how many items are answered.</p>
+
+    <h2>What the report includes</h2>
+    <p>The copied plain-text report lists the date, total score out of 60, severity band, a clinical note for that band, each item score against its maximum, the scoring note on double-weighted items and band validity, and the Young 1978 citation. An on-screen grid shows item scores as you rate, and a Print Blank Form button produces a paper copy for bedside use.</p>
   </div>
 </div>
-
-<script>
-// Auto-redirect to the SPA section after a brief delay for SEO crawlers
-if (!navigator.userAgent.match(/bot|crawl|spider|google|bing|yandex|baidu/i)) {
-  window.location.href = '/#ymrs-tool';
-}
-</script>

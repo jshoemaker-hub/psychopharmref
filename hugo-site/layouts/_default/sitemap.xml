@@ -1,0 +1,27 @@
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {{- range where .Pages "Sitemap.Disable" "ne" true }}
+  {{- if .Permalink }}
+  <url>
+    <loc>{{ .Permalink }}</loc>
+    {{- if not .Lastmod.IsZero }}
+    <lastmod>{{ safeHTML (.Lastmod.Format "2006-01-02") }}</lastmod>
+    {{- end }}
+  </url>
+  {{- end }}
+  {{- end }}
+  {{- /* Static pages Hugo doesn't render: patient handouts and the legal pages */}}
+  {{- range os.ReadDir "static/handouts" }}
+  {{- if strings.HasSuffix .Name ".html" }}
+  <url>
+    <loc>{{ printf "handouts/%s" .Name | absURL }}</loc>
+  </url>
+  {{- end }}
+  {{- end }}
+  <url>
+    <loc>{{ "privacy.html" | absURL }}</loc>
+  </url>
+  <url>
+    <loc>{{ "legal-disclaimer.html" | absURL }}</loc>
+  </url>
+</urlset>

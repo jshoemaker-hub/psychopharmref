@@ -1,0 +1,150 @@
+      <!-- Clinical Warning -->
+      <div class="mt-warning">
+        <span class="mt-warning-icon">&#9888;</span>
+        <div>
+          <strong>Clinical Use Only</strong> — The CDR should be scored based on cognitive decline from the patient's previous usual level, not impairment due to other factors such as physical handicap or depression. Score each domain independently. When ambiguous, score toward the box of greater impairment. This tool implements the standard Morris (1993) algorithm.
+        </div>
+      </div>
+<!-- Domain scoring cards -->
+      <div class="cdr-grid" id="cdr-grid">
+
+        <!-- Memory (primary) -->
+        <div class="cdr-domain-card cdr-primary" data-domain="memory">
+          <div class="cdr-domain-header">
+            <div class="cdr-domain-icon">&#129504;</div>
+            <div class="cdr-domain-name">Memory</div>
+            <div class="cdr-domain-tag">PRIMARY</div>
+          </div>
+          <div class="cdr-opts">
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-memory" value="0"><span class="cdr-opt-score">0</span><div class="cdr-opt-content"><div class="cdr-opt-label">None</div><div class="cdr-opt-desc">No memory loss or slight inconsistent forgetfulness</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-memory" value="0.5"><span class="cdr-opt-score">0.5</span><div class="cdr-opt-content"><div class="cdr-opt-label">Questionable</div><div class="cdr-opt-desc">Consistent slight forgetfulness; partial recollection of events; "benign" forgetfulness</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-memory" value="1"><span class="cdr-opt-score">1</span><div class="cdr-opt-content"><div class="cdr-opt-label">Mild</div><div class="cdr-opt-desc">Moderate memory loss; more marked for recent events; defect interferes with everyday activities</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-memory" value="2"><span class="cdr-opt-score">2</span><div class="cdr-opt-content"><div class="cdr-opt-label">Moderate</div><div class="cdr-opt-desc">Severe memory loss; only highly learned material retained; new material rapidly lost</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-memory" value="3"><span class="cdr-opt-score">3</span><div class="cdr-opt-content"><div class="cdr-opt-label">Severe</div><div class="cdr-opt-desc">Severe memory loss; only fragments remain</div></div></label>
+          </div>
+        </div>
+
+        <!-- Orientation -->
+        <div class="cdr-domain-card" data-domain="orientation">
+          <div class="cdr-domain-header">
+            <div class="cdr-domain-icon">&#128270;</div>
+            <div class="cdr-domain-name">Orientation</div>
+          </div>
+          <div class="cdr-opts">
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-orientation" value="0"><span class="cdr-opt-score">0</span><div class="cdr-opt-content"><div class="cdr-opt-label">None</div><div class="cdr-opt-desc">Fully oriented</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-orientation" value="0.5"><span class="cdr-opt-score">0.5</span><div class="cdr-opt-content"><div class="cdr-opt-label">Questionable</div><div class="cdr-opt-desc">Fully oriented except for slight difficulty with time relationships</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-orientation" value="1"><span class="cdr-opt-score">1</span><div class="cdr-opt-content"><div class="cdr-opt-label">Mild</div><div class="cdr-opt-desc">Moderate difficulty with time relationships; oriented for place at examination; may have geographic disorientation elsewhere</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-orientation" value="2"><span class="cdr-opt-score">2</span><div class="cdr-opt-content"><div class="cdr-opt-label">Moderate</div><div class="cdr-opt-desc">Severe difficulty with time relationships; usually disoriented to time, often to place</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-orientation" value="3"><span class="cdr-opt-score">3</span><div class="cdr-opt-content"><div class="cdr-opt-label">Severe</div><div class="cdr-opt-desc">Oriented to person only</div></div></label>
+          </div>
+        </div>
+
+        <!-- Judgment & Problem Solving -->
+        <div class="cdr-domain-card" data-domain="judgment">
+          <div class="cdr-domain-header">
+            <div class="cdr-domain-icon">&#9878;</div>
+            <div class="cdr-domain-name">Judgment &amp; Problem Solving</div>
+          </div>
+          <div class="cdr-opts">
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-judgment" value="0"><span class="cdr-opt-score">0</span><div class="cdr-opt-content"><div class="cdr-opt-label">None</div><div class="cdr-opt-desc">Solves everyday problems and handles business and financial affairs well; judgment good in relation to past performance</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-judgment" value="0.5"><span class="cdr-opt-score">0.5</span><div class="cdr-opt-content"><div class="cdr-opt-label">Questionable</div><div class="cdr-opt-desc">Slight impairment in solving problems, similarities, and differences</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-judgment" value="1"><span class="cdr-opt-score">1</span><div class="cdr-opt-content"><div class="cdr-opt-label">Mild</div><div class="cdr-opt-desc">Moderate difficulty in handling problems, similarities, and differences; social judgment usually maintained</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-judgment" value="2"><span class="cdr-opt-score">2</span><div class="cdr-opt-content"><div class="cdr-opt-label">Moderate</div><div class="cdr-opt-desc">Severely impaired in handling problems, similarities, and differences; social judgment usually impaired</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-judgment" value="3"><span class="cdr-opt-score">3</span><div class="cdr-opt-content"><div class="cdr-opt-label">Severe</div><div class="cdr-opt-desc">Unable to make judgments or solve problems</div></div></label>
+          </div>
+        </div>
+
+        <!-- Community Affairs -->
+        <div class="cdr-domain-card" data-domain="community">
+          <div class="cdr-domain-header">
+            <div class="cdr-domain-icon">&#127968;</div>
+            <div class="cdr-domain-name">Community Affairs</div>
+          </div>
+          <div class="cdr-opts">
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-community" value="0"><span class="cdr-opt-score">0</span><div class="cdr-opt-content"><div class="cdr-opt-label">None</div><div class="cdr-opt-desc">Independent function at usual level in job, shopping, volunteer and social groups</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-community" value="0.5"><span class="cdr-opt-score">0.5</span><div class="cdr-opt-content"><div class="cdr-opt-label">Questionable</div><div class="cdr-opt-desc">Slight impairment in these activities</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-community" value="1"><span class="cdr-opt-score">1</span><div class="cdr-opt-content"><div class="cdr-opt-label">Mild</div><div class="cdr-opt-desc">Unable to function independently at these activities although may still be engaged in some; appears normal to casual inspection</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-community" value="2"><span class="cdr-opt-score">2</span><div class="cdr-opt-content"><div class="cdr-opt-label">Moderate</div><div class="cdr-opt-desc">No pretense of independent function outside home; appears well enough to be taken to functions outside a family home</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-community" value="3"><span class="cdr-opt-score">3</span><div class="cdr-opt-content"><div class="cdr-opt-label">Severe</div><div class="cdr-opt-desc">Appears too ill to be taken to functions outside a family home</div></div></label>
+          </div>
+        </div>
+
+        <!-- Home and Hobbies -->
+        <div class="cdr-domain-card" data-domain="home">
+          <div class="cdr-domain-header">
+            <div class="cdr-domain-icon">&#127760;</div>
+            <div class="cdr-domain-name">Home &amp; Hobbies</div>
+          </div>
+          <div class="cdr-opts">
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-home" value="0"><span class="cdr-opt-score">0</span><div class="cdr-opt-content"><div class="cdr-opt-label">None</div><div class="cdr-opt-desc">Life at home, hobbies, and intellectual interests well maintained</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-home" value="0.5"><span class="cdr-opt-score">0.5</span><div class="cdr-opt-content"><div class="cdr-opt-label">Questionable</div><div class="cdr-opt-desc">Life at home, hobbies, and intellectual interests slightly impaired</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-home" value="1"><span class="cdr-opt-score">1</span><div class="cdr-opt-content"><div class="cdr-opt-label">Mild</div><div class="cdr-opt-desc">Mild but definite impairment of function at home; more difficult chores abandoned; more complicated hobbies and interests abandoned</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-home" value="2"><span class="cdr-opt-score">2</span><div class="cdr-opt-content"><div class="cdr-opt-label">Moderate</div><div class="cdr-opt-desc">Only simple chores preserved; very restricted interests, poorly maintained</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-home" value="3"><span class="cdr-opt-score">3</span><div class="cdr-opt-content"><div class="cdr-opt-label">Severe</div><div class="cdr-opt-desc">No significant function in home</div></div></label>
+          </div>
+        </div>
+
+        <!-- Personal Care -->
+        <div class="cdr-domain-card" data-domain="personalcare">
+          <div class="cdr-domain-header">
+            <div class="cdr-domain-icon">&#128100;</div>
+            <div class="cdr-domain-name">Personal Care</div>
+          </div>
+          <div class="cdr-opts">
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-personalcare" value="0"><span class="cdr-opt-score">0</span><div class="cdr-opt-content"><div class="cdr-opt-label">None</div><div class="cdr-opt-desc">Fully capable of self-care</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-personalcare" value="1"><span class="cdr-opt-score">1</span><div class="cdr-opt-content"><div class="cdr-opt-label">Mild</div><div class="cdr-opt-desc">Needs prompting</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-personalcare" value="2"><span class="cdr-opt-score">2</span><div class="cdr-opt-content"><div class="cdr-opt-label">Moderate</div><div class="cdr-opt-desc">Requires assistance in dressing, hygiene, keeping of personal effects</div></div></label>
+            <label class="cdr-opt" tabindex="0"><input type="radio" name="cdr-personalcare" value="3"><span class="cdr-opt-score">3</span><div class="cdr-opt-content"><div class="cdr-opt-label">Severe</div><div class="cdr-opt-desc">Requires much help with personal care; frequent incontinence</div></div></label>
+          </div>
+        </div>
+
+      </div><!-- end cdr-grid -->
+
+      <!-- Buttons -->
+      <div class="cdr-btn-row">
+        <button class="cdr-calc-btn" id="cdr-calc-btn">Calculate CDR Score &#9656;</button>
+        <button class="cdr-reset-btn" id="cdr-reset-btn">Reset All</button>
+        <button class="cdr-print-btn" id="cdr-print-btn">&#128438; Print / Save PDF</button>
+      </div>
+      <div class="cdr-error" id="cdr-error"></div>
+
+      <!-- Results -->
+      <div class="cdr-results" id="cdr-results">
+        <div class="cdr-results-title">CDR Assessment Results</div>
+
+        <div class="cdr-score-row" id="cdr-score-row"></div>
+        <div id="cdr-interp"></div>
+
+        <table class="cdr-box-table">
+          <thead>
+            <tr>
+              <th>Domain</th>
+              <th>Score</th>
+              <th>Impairment Level</th>
+            </tr>
+          </thead>
+          <tbody id="cdr-box-tbody"></tbody>
+          <tfoot>
+            <tr>
+              <th>CDR Sum of Boxes (CDR-SB)</th>
+              <th id="cdr-sb-val" colspan="2"></th>
+            </tr>
+          </tfoot>
+        </table>
+
+        <!-- Copy-friendly plain-text summary -->
+        <div id="cdr-summary-wrap" style="display:none;margin-top:20px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <div style="font-weight:700;font-size:1rem;">Summary — Copy to Clipboard</div>
+            <button id="cdr-copy-btn" style="background:var(--accent);color:white;border:none;padding:6px 16px;border-radius:4px;font-size:0.85rem;font-weight:600;cursor:pointer;">Copy</button>
+          </div>
+          <pre id="cdr-summary-text" style="background:#fefcf8;border:1px solid var(--border);border-radius:6px;padding:16px 18px;font-family:'Segoe UI',system-ui,sans-serif;font-size:0.88rem;line-height:1.6;white-space:pre-wrap;word-wrap:break-word;color:var(--text);margin:0;max-height:400px;overflow-y:auto;"></pre>
+          <div id="cdr-copy-msg" style="font-size:0.8rem;color:var(--accent);font-weight:600;margin-top:6px;display:none;">Copied to clipboard</div>
+        </div>
+
+        <div class="cdr-ref-note">
+          <strong>Reference:</strong> Morris JC. The Clinical Dementia Rating (CDR): current version and scoring rules. <em>Neurology.</em> 1993;43(11):2412-2414.<br>
+          <strong>CDR-SB Staging:</strong> 0 = Normal | 0.5–4.0 = Questionable/Very Mild | 4.5–9.0 = Mild | 9.5–15.5 = Moderate | 16.0–18.0 = Severe<br>
+          <strong>Note:</strong> Personal Care does not have a 0.5 score in the standard CDR. The global CDR is derived using the Washington University algorithm where Memory is the primary category. Score only as decline from previous usual level due to cognitive loss, not impairment due to other factors.
+        </div>
+      </div>

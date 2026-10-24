@@ -1,0 +1,69 @@
+  <div class="bo-warning mt-warning">
+    <strong>Clinical Use:</strong> The BAT is a screening instrument, not a diagnostic tool.
+    Elevated scores warrant further clinical evaluation. This tool is for healthcare professionals
+    and should be interpreted within the context of a comprehensive clinical assessment.
+    Reference: Schaufeli, W.B., De Witte, H. &amp; Desart, S. (2019). <em>BAT – Test Manual.</em> KU Leuven.
+  </div>
+
+  <div class="bo-container">
+    <!-- Version Toggle -->
+    <div class="bo-version-toggle">
+      <button type="button" class="bo-version-btn bo-active" id="bo-work-btn">Work-Related Version (23 items)</button>
+      <button type="button" class="bo-version-btn" id="bo-general-btn">General Version (22 items)</button>
+    </div>
+
+    <!-- Dynamic Form Container -->
+    <div id="bo-form-container"></div>
+
+    <!-- Score Display -->
+    <div class="bo-score-display">
+      <div class="bo-score-card bo-score-card--total">
+        <div class="bo-score-num" id="bo-total-num">0.00</div>
+        <div class="bo-score-label" id="bo-total-max">/ 5.00</div>
+        <div class="bo-severity bo-severity-low" id="bo-severity">No/very low risk</div>
+      </div>
+      <div class="bo-score-card bo-score-card--exhaustion">
+        <div class="bo-score-num" id="bo-exh-num">0.00</div>
+        <div class="bo-score-label">Exhaustion</div>
+      </div>
+      <div class="bo-score-card bo-score-card--distance">
+        <div class="bo-score-num" id="bo-md-num">0.00</div>
+        <div class="bo-score-label">Mental Distance</div>
+      </div>
+      <div class="bo-score-card bo-score-card--cognitive">
+        <div class="bo-score-num" id="bo-ci-num">0.00</div>
+        <div class="bo-score-label">Cognitive Impairment</div>
+      </div>
+      <div class="bo-score-card bo-score-card--emotional">
+        <div class="bo-score-num" id="bo-ei-num">0.00</div>
+        <div class="bo-score-label">Emotional Impairment</div>
+      </div>
+      <div class="bo-score-card bo-score-card--secondary">
+        <div class="bo-score-num" id="bo-sec-num">0.00</div>
+        <div class="bo-score-label">Secondary Symptoms</div>
+      </div>
+    </div>
+
+    <!-- Domain Bar Chart -->
+    <div class="bo-bar-chart" id="bo-bar-chart"></div>
+
+    <!-- Buttons -->
+    <div class="bo-button-group">
+      <button type="button" class="bo-button bo-button-primary" id="bo-report-btn">Generate Report &amp; Copy</button>
+      <button type="button" class="bo-button bo-button-secondary" id="bo-reset-btn">Reset</button>
+    </div>
+
+    <!-- Interpretation Guide -->
+    <div class="bo-interp">
+      <div class="bo-interp-title">Interpretation Guide (BAT-23 Total Mean Score)</div>
+      <div class="bo-interp-grid">
+        <span class="bo-interp-range">1.00 – 2.58</span>
+        <span class="bo-interp-desc">No risk of burnout</span>
+        <span class="bo-interp-range">2.59 – 3.01</span>
+        <span class="bo-interp-desc">At risk for burnout</span>
+        <span class="bo-interp-range">3.02 – 5.00</span>
+        <span class="bo-interp-desc">Severe burnout likely — further clinical evaluation</span>
+      </div>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">Clinically validated cut-offs from Schaufeli et al., 2023 (<em>Scand J Work Environ Health</em>; pooled Dutch, Flemish and Finnish samples). Subscale cut-offs (at risk / severe): exhaustion 3.06 / 3.31, mental distance 2.10 / 3.30, cognitive impairment 2.70 / 3.10, emotional impairment 2.30 / 2.90. Derived for the work-related BAT-23; apply with caution to the general version.</p>
+    </div>
+  </div>

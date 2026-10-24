@@ -23,6 +23,9 @@
   function indexData() { byId = {}; CHEM_STRUCTURES.forEach(function (d) { byId[d.id] = d; }); }
 
   // ── 3Dmol loader (local vendor first, CDN fallback; verifies global, retries) ──
+  var CDN_INTEGRITY = {
+    'https://cdn.jsdelivr.net/npm/3dmol@2.4.2/build/3Dmol-min.js': 'sha384-zxWwO8usW1MzUHquSL3foT+Cw2ndelPQ5bNzHVYdKGiJ0vqvqQ8Y9XeKLmotffmQ'
+  };
   function loadFrom(urls, ready) {
     return new Promise(function (resolve, reject) {
       var i = 0;
@@ -30,7 +33,9 @@
         if (ready()) { resolve(); return; }
         if (i >= urls.length) { reject(new Error('all sources failed')); return; }
         var s = document.createElement('script');
-        s.src = urls[i++]; s.async = true;
+        var url = urls[i++];
+        s.src = url; s.async = true;
+        if (CDN_INTEGRITY[url]) { s.integrity = CDN_INTEGRITY[url]; s.crossOrigin = 'anonymous'; }
         s.onload = function () { if (ready()) resolve(); else { s.remove(); tryNext(); } };
         s.onerror = function () { s.remove(); tryNext(); };
         document.head.appendChild(s);

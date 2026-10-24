@@ -1,26 +1,43 @@
 ---
 title: "Psychiatric Medication Price Comparison"
-description: "Compare cash prices for psychiatric medications from Mark Cuban Cost Plus Drugs and HealthWarehouse, with the CMS NADAC wholesale cost as a reference, for common strengths and 30-day quantities."
+description: "Compare cash prices for psychiatric drugs at Mark Cuban Cost Plus Drugs and HealthWarehouse, with CMS NADAC wholesale cost shown for about a 30-day supply."
 layout: "tool"
 tool_section: "price-compare"
 category: "Psychopharmacology"
+date: 2026-10-23
+lastmod: 2026-10-23
 ---
 
 <div class="tool-landing">
   <div class="tool-landing-header">
     <span class="tool-landing-category">Psychopharmacology</span>
     <h1>Psychiatric Medication Price Comparison</h1>
-    <p class="tool-landing-desc">Compare cash prices for psychiatric medications from Mark Cuban Cost Plus Drugs and HealthWarehouse, with the CMS NADAC wholesale cost as a reference, for common strengths and 30-day quantities.</p>
+    <p class="tool-landing-desc">Compare cash prices for psychiatric drugs at Mark Cuban Cost Plus Drugs and HealthWarehouse, with CMS NADAC wholesale cost shown for about a 30-day supply.</p>
   </div>
   <div class="tool-landing-cta">
-    <a href="/#price-compare" class="tool-launch-btn" id="tool-launch">Open Interactive Tool</a>
-    <p class="tool-landing-note">This tool runs in the PsychoPharmRef clinical reference application.</p>
+    <a href="/#price-compare" class="tool-launch-btn">Open the Price Comparison</a>
+    <p class="tool-landing-note">Runs free in your browser. Prices load from a data file on the site; your searches are not sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it shows</h2>
+    <p>The table lists cash (no insurance) prices for the psychiatric medications in the PsychoPharmRef Drug Database, grouped by category: antidepressants, antipsychotics, anxiolytics, mood stabilizers, stimulants, non-stimulant ADHD drugs, sleep medications, VMAT2 inhibitors, substance use treatments and others. Each row names the drug, its class, and the strength and quantity priced, based on usual dosing and roughly a 30-day supply. A search box filters by drug name.</p>
+
+    <h2>Price columns</h2>
+    <table>
+      <thead><tr><th>Column</th><th>What it is</th></tr></thead>
+      <tbody>
+        <tr><td>Cost Plus Drugs</td><td>Mark Cuban Cost Plus Drugs cash price, including its markup and $5 pharmacy fee but not shipping. Cost Plus does not sell controlled substances.</td></tr>
+        <tr><td>HealthWarehouse</td><td>HealthWarehouse cash price for the same strength and quantity</td></tr>
+        <tr><td>NADAC (wholesale)</td><td>CMS National Average Drug Acquisition Cost: what pharmacies pay wholesale, shown as a reference point</td></tr>
+        <tr><td>Best</td><td>The lowest retail price among the pharmacies, with the source and the percentage saved when the gap is 10% or more</td></tr>
+      </tbody>
+    </table>
+    <p>Prices link to the seller's product page. A cell more than 30 days old shows its "as of" date, and the header shows when each source was last updated.</p>
+
+    <h2>Reading the prices</h2>
+    <p>NADAC is not a price a patient can buy at, so it is excluded from the Best column. Because it is an average of what many pharmacies pay, a low-markup seller like Cost Plus can come in below it for some generics. Some rows carry a note, for example for clinic- or REMS-only products, or for drugs with no NADAC listing. For brand-name drugs, check the manufacturer's savings program; retail cash prices appear only when a pharmacy stocks the product.</p>
+
+    <h2>Limitations</h2>
+    <p>Cash prices change often and may vary by pharmacy and zip code. Insurance copays or discount coupons may be lower. Verify current pricing with the pharmacy before counseling patients. Inclusion of a pharmacy does not imply endorsement, and the table is not medical or financial advice.</p>
   </div>
 </div>
-
-<script>
-// Auto-redirect to the SPA section after a brief delay for SEO crawlers
-if (!navigator.userAgent.match(/bot|crawl|spider|google|bing|yandex|baidu/i)) {
-  window.location.href = '/#price-compare';
-}
-</script>

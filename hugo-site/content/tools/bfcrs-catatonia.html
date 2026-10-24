@@ -1,26 +1,45 @@
 ---
-title: "BFCRS — Bush-Francis Catatonia Rating Scale"
-description: "Interactive BFCRS screening and severity tools for catatonia assessment. 14-item screening instrument plus 23-item severity scale with subtype classification and clinical report generation."
+title: "BFCRS Catatonia Rating Scale: Screen and Severity"
+description: "Score the Bush-Francis Catatonia Rating Scale: the 14-item screen (positive at 2 or more signs) and the 23-item severity rating (0–69) with subtype."
 layout: "tool"
 tool_section: "bfcrs-tool"
 category: "Rating Scales"
+date: 2026-10-23
+lastmod: 2026-10-23
 ---
 
 <div class="tool-landing">
   <div class="tool-landing-header">
     <span class="tool-landing-category">Rating Scales</span>
-    <h1>BFCRS — Bush-Francis Catatonia Rating Scale</h1>
-    <p class="tool-landing-desc">Interactive BFCRS screening and severity tools for catatonia assessment. 14-item screening instrument plus 23-item severity scale with subtype classification and clinical report generation.</p>
+    <h1>BFCRS Catatonia Rating Scale: Screen and Severity</h1>
+    <p class="tool-landing-desc">Score the Bush-Francis Catatonia Rating Scale: the 14-item screen (positive at 2 or more signs) and the 23-item severity rating (0–69) with subtype.</p>
   </div>
   <div class="tool-landing-cta">
-    <a href="/#bfcrs-tool" class="tool-launch-btn" id="tool-launch">Open Interactive Tool</a>
-    <p class="tool-landing-note">This tool runs in the PsychoPharmRef clinical reference application.</p>
+    <a href="/#bfcrs-tool" class="tool-launch-btn">Open the BFCRS</a>
+    <p class="tool-landing-note">Runs free in your browser. Scores are calculated on your device and not sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it measures</h2>
+    <p>The Bush-Francis Catatonia Rating Scale (BFCRS) is a standardized bedside examination for catatonia, rated on observed behavior. The tool has two tabs. The Catatonia Screening Instrument uses the first 14 items (immobility/stupor, mutism, staring, posturing, grimacing, echopraxia/echolalia, stereotypy, mannerisms, verbigeration, rigidity, negativism, waxy flexibility, withdrawal, and excitement), each marked present or absent. The Full Rating Scale rates all 23 items, adding impulsivity, automatic obedience, passive obedience (Mitgehen), muscle resistance (Gegenhalten), ambitendency, grasp reflex, perseveration, combativeness, and autonomic abnormality.</p>
+
+    <h2>Scoring</h2>
+    <p>The screen is positive when 2 or more of the 14 items are present. On the full scale, most items are rated 0–3, but items 12 and 17–21 are binary and scored 0 or 3 only. The total is the sum of all 23 items, from 0 to 69. Once all 23 items are rated, the tool shows a descriptive band:</p>
+    <table>
+      <thead><tr><th>Total (items 1–23)</th><th>Descriptive band</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>No catatonia detected</td></tr>
+        <tr><td>1–10</td><td>Mild</td></tr>
+        <tr><td>11–20</td><td>Moderate</td></tr>
+        <tr><td>21–30</td><td>Severe</td></tr>
+        <tr><td>31–69</td><td>Extreme</td></tr>
+      </tbody>
+    </table>
+    <p>These bands are not validated cut-offs. Bush and colleagues (1996) defined the screen and the 0–69 total but no mild, moderate, or severe thresholds, so the validated decision point is the screen. The total is most useful tracked over time, for example across a lorazepam challenge.</p>
+
+    <h2>Subtype and malignant catatonia warning</h2>
+    <p>The tool compares a retarded/withdrawn group (items 1, 2, 3, 4, 10, 13) with an excited group (items 6, 7, 8, 14, 15, 22) and reports the predominant subtype, or "mixed" when they are equal. If excitement (item 14) and autonomic abnormality (item 23) are both rated above 0, it shows a warning to evaluate for malignant catatonia as a medical emergency.</p>
+
+    <h2>What the report includes</h2>
+    <p>Each tab has its own copy button. The screening report lists each of the 14 items as present or absent, the count, and the result. The full report lists each item score, the total, items present out of 23, screening items positive out of 14, the descriptive band, the subtype, any malignant catatonia warning, and scoring notes. Unrated items count as 0, so rate every item before interpreting.</p>
   </div>
 </div>
-
-<script>
-// Auto-redirect to the SPA section after a brief delay for SEO crawlers
-if (!navigator.userAgent.match(/bot|crawl|spider|google|bing|yandex|baidu/i)) {
-  window.location.href = '/#bfcrs-tool';
-}
-</script>

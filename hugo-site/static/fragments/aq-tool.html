@@ -1,0 +1,89 @@
+  <div class="mt-warning">
+    <strong>Clinical Use:</strong> The AQ is a screening instrument, not a diagnostic tool.
+    Elevated scores warrant formal diagnostic evaluation using DSM-5 criteria and clinical interview.
+    This tool is for healthcare professionals and should be interpreted within the context of a
+    comprehensive clinical assessment.<br>
+    Reference: Baron-Cohen, S., Wheelwright, S., Skinner, R., Martin, J., &amp; Clubley, E. (2001).
+    <em>The Autism-Spectrum Quotient (AQ): Evidence from Asperger syndrome/high-functioning autism, males and females, scientists and mathematicians.</em>
+    Journal of Autism and Developmental Disorders, 31(1), 5–17.
+  </div>
+
+  <div class="aq-container">
+    <!-- Version Toggle -->
+    <div class="aq-version-toggle">
+      <button type="button" class="aq-version-btn aq-active" id="aq-10-btn">AQ-10 Short Screener (10 items)</button>
+      <button type="button" class="aq-version-btn" id="aq-50-btn">AQ-50 Full Assessment (50 items)</button>
+    </div>
+
+    <!-- Progress Indicator -->
+    <div class="aq-progress">
+      <span id="aq-progress-text">0 of 10 items answered</span>
+      <div class="aq-progress-bar">
+        <div class="aq-progress-fill" id="aq-progress-fill" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Dynamic Form Container -->
+    <div id="aq-form-container"></div>
+
+    <!-- Score Display -->
+    <div class="aq-score-display">
+      <div class="aq-score-card aq-score-card--total">
+        <div class="aq-score-num" id="aq-total-num">0</div>
+        <div class="aq-score-max" id="aq-total-max">/ 10</div>
+        <div class="aq-result aq-result--low" id="aq-result">Low</div>
+      </div>
+    </div>
+
+    <!-- Domain Score Cards (AQ-50 only) -->
+    <div class="aq-score-display" id="aq-domain-scores" style="display: none;">
+      <div class="aq-score-card aq-score-card--domain" style="border-top-color: #c04030;">
+        <div class="aq-score-num" id="aq-social-num">0</div>
+        <div class="aq-score-label">Social Skills <span class="aq-score-max">/ 10</span></div>
+      </div>
+      <div class="aq-score-card aq-score-card--domain" style="border-top-color: #b05a20;">
+        <div class="aq-score-num" id="aq-switch-num">0</div>
+        <div class="aq-score-label">Attention Switching <span class="aq-score-max">/ 10</span></div>
+      </div>
+      <div class="aq-score-card aq-score-card--domain" style="border-top-color: #8b6914;">
+        <div class="aq-score-num" id="aq-detail-num">0</div>
+        <div class="aq-score-label">Attention to Detail <span class="aq-score-max">/ 10</span></div>
+      </div>
+      <div class="aq-score-card aq-score-card--domain" style="border-top-color: #6a4c93;">
+        <div class="aq-score-num" id="aq-comm-num">0</div>
+        <div class="aq-score-label">Communication <span class="aq-score-max">/ 10</span></div>
+      </div>
+      <div class="aq-score-card aq-score-card--domain" style="border-top-color: #2a7ab5;">
+        <div class="aq-score-num" id="aq-imag-num">0</div>
+        <div class="aq-score-label">Imagination <span class="aq-score-max">/ 10</span></div>
+      </div>
+    </div>
+
+    <!-- Domain Bar Chart (AQ-50 only) -->
+    <div class="aq-bar-chart" id="aq-bar-chart" style="display: none;"></div>
+
+    <!-- Buttons -->
+    <div class="aq-button-group">
+      <button type="button" class="aq-button aq-button-primary" id="aq-report-btn">Generate Report &amp; Copy</button>
+      <button type="button" class="aq-button aq-button-secondary" id="aq-reset-btn">Reset</button>
+    </div>
+
+    <!-- Interpretation Guide -->
+    <div class="aq-interp">
+      <div class="aq-interp-title">Interpretation Guide</div>
+      <div class="aq-interp-grid">
+        <span class="aq-interp-range" style="grid-column: 1 / -1; font-size: 12px; color: var(--accent); margin-top: 4px;">AQ-10 (Short Screener)</span>
+        <span class="aq-interp-range">0 – 5</span>
+        <span class="aq-interp-desc">Low — few autistic traits endorsed</span>
+        <span class="aq-interp-range">6 – 10</span>
+        <span class="aq-interp-desc">Elevated — consider referral for comprehensive autism evaluation</span>
+        <span class="aq-interp-range" style="grid-column: 1 / -1; font-size: 12px; color: var(--accent); margin-top: 8px;">AQ-50 (Full Assessment)</span>
+        <span class="aq-interp-range">0 – 25</span>
+        <span class="aq-interp-desc">Low — non-significant autistic traits</span>
+        <span class="aq-interp-range">26 – 31</span>
+        <span class="aq-interp-desc">Borderline/Elevated — above average autistic traits, consider further evaluation</span>
+        <span class="aq-interp-range">32 – 50</span>
+        <span class="aq-interp-desc">Clinically significant — strong indication, formal evaluation recommended</span>
+      </div>
+    </div>
+  </div>

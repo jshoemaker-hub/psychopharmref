@@ -1,26 +1,41 @@
 ---
-title: "Pharmacokinetic Curve Comparison Tool for Psychiatric Medications"
-description: "Interactive PK curve overlay tool comparing plasma concentration over time across psychiatric medications. Visualize Tmax, half-life, and relative receptor binding affinity for up to 8 drugs simultaneously with Bateman equation modeling."
+title: "PK Curve Comparison: Psychiatric Drug Half-Lives"
+description: "Overlay estimated plasma concentration curves for up to 8 psychiatric drugs to compare Tmax and half-life, using a simplified Bateman model."
 layout: "tool"
 tool_section: "pk-curves"
 category: "Psychopharmacology"
+date: 2026-10-23
+lastmod: 2026-10-23
 ---
 
 <div class="tool-landing">
   <div class="tool-landing-header">
     <span class="tool-landing-category">Psychopharmacology</span>
-    <h1>Pharmacokinetic Curve Comparison Tool for Psychiatric Medications</h1>
-    <p class="tool-landing-desc">Interactive PK curve overlay tool comparing plasma concentration over time across psychiatric medications. Visualize Tmax, half-life, and relative receptor binding affinity for up to 8 drugs simultaneously with Bateman equation modeling.</p>
+    <h1>PK Curve Comparison: Psychiatric Drug Half-Lives</h1>
+    <p class="tool-landing-desc">Overlay estimated plasma concentration curves for up to 8 psychiatric drugs to compare Tmax and half-life, using a simplified Bateman model.</p>
   </div>
   <div class="tool-landing-cta">
-    <a href="/#pk-curves" class="tool-launch-btn" id="tool-launch">Open Interactive Tool</a>
-    <p class="tool-landing-note">This tool runs in the PsychoPharmRef clinical reference application.</p>
+    <a href="/#pk-curves" class="tool-launch-btn">Open PK Curve Comparison</a>
+    <p class="tool-landing-note">Runs free in your browser. Curves are drawn on your device and nothing is sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it shows</h2>
+    <p>This tool draws estimated plasma concentration-over-time curves for psychiatric medications so you can see, side by side, how quickly each drug peaks and how long it lingers. It is useful for teaching and for thinking through dosing intervals, washout and the timing of side effects. Choose a category (antidepressants, antipsychotics, anxiolytics, mood stabilizers, sleep aids, stimulants, non-stimulant ADHD drugs, VMAT2 inhibitors, substance use, or other), then tick up to 8 drugs to overlay. Only drugs with both a Tmax and a half-life on file appear.</p>
+
+    <h2>How the curves are built</h2>
+    <p>Each curve uses a simplified Bateman equation, a single-compartment oral absorption model. The elimination rate comes from the drug's half-life, and the absorption rate is solved so that the curve peaks exactly at the listed Tmax. A dot on each curve marks one half-life after the peak.</p>
+    <p>Peak height is not a concentration. It is scaled to the drug's strongest receptor binding affinity (lowest Ki) on file: lower Ki means stronger binding and a taller peak. Heights range from 15% to 100%. Drugs with no receptor Ki data get a neutral height of 50%. The y-axis is therefore a relative scale for comparing shapes, not a measure of plasma level.</p>
+
+    <h2>Controls</h2>
+    <ul>
+      <li><strong>Time window:</strong> Auto (long enough to show about 2.5 half-lives past the latest peak) or fixed windows of 6, 12, 24, 48 or 72 hours, or 1 week.</li>
+      <li><strong>Top 5:</strong> loads the first five drugs in the selected category, in alphabetical order.</li>
+      <li><strong>Zoom:</strong> scroll on the graph to zoom the time axis; Reset Zoom restores it.</li>
+      <li><strong>Hover:</strong> shows each drug's relative level at that time point.</li>
+      <li><strong>Legend:</strong> lists each drug's Tmax, half-life, primary receptor and any formulation note; click an entry to hide or show its curve.</li>
+    </ul>
+
+    <h2>Limitations</h2>
+    <p>Real pharmacokinetics vary with food, genetics, formulation, drug interactions and individual metabolism. The model ignores active metabolites, multi-compartment distribution, steady state with repeated dosing, and non-oral routes. The curves are a teaching aid and are not for clinical dosing decisions.</p>
   </div>
 </div>
-
-<script>
-// Auto-redirect to the SPA section after a brief delay for SEO crawlers
-if (!navigator.userAgent.match(/bot|crawl|spider|google|bing|yandex|baidu/i)) {
-  window.location.href = '/#pk-curves';
-}
-</script>

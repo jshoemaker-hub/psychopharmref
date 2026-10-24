@@ -1,0 +1,85 @@
+  <div class="dv-warning mt-warning">
+    <strong>Educational tool — not a diagnosis.</strong> The HITS is a screen, not a diagnostic instrument, and the
+    danger review supports (does not replace) clinical judgment or a specialist assessment. <strong>Screening or asking
+    about abuse in the presence of the partner can escalate danger</strong> — interview the patient alone, never use
+    family or the partner as interpreter, and verify what is safe to document and to release before completing this form.
+    A positive or high-risk result should prompt validation, warm referral to a DV advocate, the National DV Hotline
+    (1-800-799-7233), and attention to your jurisdiction’s mandatory-reporting duties.
+  </div>
+
+  <div class="dv-container">
+    <div class="dv-intro-box">
+      Interview the patient <strong>privately</strong>. Frame screening universally ("Because abuse is common and
+      affects health, I ask everyone"). Complete Part A (HITS) with the patient; complete Part B (danger review) from
+      the interview and record. The highest-risk period is during and just after leaving.
+    </div>
+
+    <div class="dv-field">
+      <label class="dv-field-label" for="dv-relationship">Relationship context (optional)</label>
+      <select id="dv-relationship" class="dv-select">
+        <option value="">Select…</option>
+        <option value="Current partner">Current partner</option>
+        <option value="Former partner">Former partner</option>
+        <option value="Family / household member">Family / household member</option>
+        <option value="Not specified">Prefer not to specify</option>
+      </select>
+    </div>
+
+    <!-- Part A: HITS -->
+    <div class="dv-domain">
+      <div class="dv-domain-header">Part A · HITS Screen</div>
+      <div class="dv-domain-sub">Over the last 12 months, how often did your partner… (Never 1 · Rarely 2 · Sometimes 3 · Fairly often 4 · Frequently 5). Range 4–20; a total ≥ 11 is a positive screen.</div>
+      <div id="dv-hits-container"></div>
+    </div>
+
+    <!-- Scores -->
+    <div class="dv-score-display">
+      <div class="dv-score-card dv-score-card--hits">
+        <div class="dv-score-num" id="dv-hits-num">0 / 20</div>
+        <div class="dv-score-label">HITS total</div>
+        <div class="dv-severity dv-sev-neg" id="dv-hits-sev">0 / 4 answered</div>
+      </div>
+      <div class="dv-score-card dv-score-card--danger">
+        <div class="dv-score-num" id="dv-danger-num">0</div>
+        <div class="dv-score-label">Danger-review items endorsed</div>
+        <div class="dv-severity dv-sev-low" id="dv-danger-sev">None endorsed</div>
+      </div>
+    </div>
+
+    <div class="dv-alert" id="dv-alert"></div>
+
+    <!-- Part B: high-risk markers -->
+    <div class="dv-domain">
+      <div class="dv-domain-header dv-domain-header--danger">Part B · Lethality / Danger Review — High-Risk Markers</div>
+      <div class="dv-domain-sub">Sentinel factors most strongly associated with intimate partner homicide. Any "Yes" warrants urgent safety planning.</div>
+      <div id="dv-highrisk-container"></div>
+    </div>
+
+    <!-- Part B: additional risk factors -->
+    <div class="dv-domain">
+      <div class="dv-domain-header dv-domain-header--danger">Part B · Additional Risk Factors</div>
+      <div class="dv-domain-sub">Contributing factors from the femicide-risk literature. More factors indicate greater concern; there is no validated cutoff.</div>
+      <div id="dv-risk-container"></div>
+    </div>
+
+    <div class="dv-field">
+      <label class="dv-field-label" for="dv-note">Clinician note (optional)</label>
+      <textarea id="dv-note" class="dv-textarea" rows="3" placeholder="Context, disposition, referrals made, what is safe to document…"></textarea>
+    </div>
+
+    <div class="dv-btn-row">
+      <button id="dv-report-btn" class="dv-btn dv-btn-primary" type="button">Generate Report &amp; Copy</button>
+      <button id="dv-reset-btn" class="dv-btn dv-btn-secondary" type="button">Reset</button>
+    </div>
+
+    <div class="dv-interp">
+      <div class="dv-interp-title">Interpretation &amp; Response</div>
+      <p><strong>HITS ≥ 11 (positive):</strong> discuss the result, validate ("this is not your fault"), assess danger, and make a warm referral. A negative screen does not rule out abuse — clinical suspicion overrides a negative screen.</p>
+      <p><strong>Any high-risk marker (Part B):</strong> firearm access, prior strangulation, threats to kill, or the patient's belief the partner could kill them — prioritize urgent, private safety planning with a DV advocate and address medical needs (e.g., strangulation evaluation).</p>
+      <p><strong>Response, in brief:</strong> believe and validate → respect autonomy (do not pressure to leave) → assess danger and children's safety → warm referral + hotline + safety plan → document objectively and safely → know your reporting duties.</p>
+      <hr class="dv-interp-divider">
+      <div class="dv-interp-fine">
+        HITS: Sherin KM et al., <em>Fam Med</em> 1998 (score range 4–20; ≥ 11 positive). Danger review adapted from Campbell JC et al., <em>Am J Public Health</em> 2003 (Danger Assessment) and Glass N et al., <em>J Emerg Med</em> 2008 (non-fatal strangulation). USPSTF 2025 recommends IPV screening for women of reproductive age, including pregnant and postpartum patients (Grade B). This tool is educational and does not determine risk on its own; use professional judgment and specialist danger assessment. Reports contain no attribution line and are formatted for EMR pasting.
+      </div>
+    </div>
+  </div>

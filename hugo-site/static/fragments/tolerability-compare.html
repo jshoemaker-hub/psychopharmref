@@ -1,0 +1,30 @@
+      <div class="mt-warning">
+        <strong>Relative, not absolute.</strong> Tolerability tiers are dose- and patient-dependent estimates of burden <em>relative to other psychotropics</em>, synthesized from prescribing guidelines, network meta-analyses, and FDA labeling &mdash; not incidence rates for an individual. QTc risk is further modified by electrolytes, interacting drugs, and cardiac history. Use alongside full prescribing information and clinical judgment.
+      </div>
+
+      <div class="ref-card tc-setup">
+        <h3 class="ref-card-title">&#9878; Select medications</h3>
+        <div class="tc-count-row">
+          <span class="tc-count-label">Number to compare:</span>
+          <div class="tc-count-pills">
+            <button class="tc-count-btn active" data-n="2">2</button>
+            <button class="tc-count-btn" data-n="3">3</button>
+            <button class="tc-count-btn" data-n="4">4</button>
+          </div>
+        </div>
+        <div class="tc-slots" id="tc-slots"></div>
+      </div>
+
+      <div class="tc-toggle-row">
+        <div>
+          <div class="tc-seg" role="tablist" aria-label="Choose results view">
+            <button role="tab" data-view="clin" aria-selected="true">Clinician view</button>
+            <button role="tab" data-view="pat" aria-selected="false">Patient view</button>
+          </div>
+          <div class="tc-desc" id="tc-hint" style="margin:8px 0 0">Clinician view &mdash; full 5-domain tolerability, incidence data, and class safety.</div>
+        </div>
+        <button class="tc-copy-btn" id="tc-copy" type="button">Copy formatted</button>
+      </div>
+
+      <div id="tc-body"></div>
+    

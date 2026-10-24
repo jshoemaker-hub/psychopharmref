@@ -1,0 +1,42 @@
+---
+title: "Chem Structure: Compare Psychotropic Molecules"
+description: "Compare two psychotropic drugs side by side: 2D and 3D structures, molecular weight, cLogP, polar surface area, solubility and structural similarity."
+layout: "tool"
+tool_section: "chem-structure"
+category: "Psychopharmacology"
+date: 2026-10-23
+lastmod: 2026-10-23
+---
+
+<div class="tool-landing">
+  <div class="tool-landing-header">
+    <span class="tool-landing-category">Psychopharmacology</span>
+    <h1>Chem Structure: Compare Psychotropic Molecules</h1>
+    <p class="tool-landing-desc">Compare two psychotropic drugs side by side: 2D and 3D structures, molecular weight, cLogP, polar surface area, solubility and structural similarity.</p>
+  </div>
+  <div class="tool-landing-cta">
+    <a href="/#chem-structure" class="tool-launch-btn">Open Chem Structure</a>
+    <p class="tool-landing-note">Runs free in your browser. The structure library loads once and all comparisons are drawn on your device.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it shows</h2>
+    <p>Chem Structure puts two psychotropic molecules next to each other so you can see how chemistry shapes their behavior. Each panel shows a 2D structure (rotatable) or an interactive 3D model, plus molecular formula, molecular weight, cLogP and a lipophilicity label, topological polar surface area, estimated aqueous solubility, ionization at pH 7.4, the signal entry point, and the year the drug was introduced or synthesized. Curated notes describe the fat- versus water-attracting parts of the molecule, its protein-binding region, receptor-binding region, membrane transport, and signal cascade. Active metabolites are linked so you can load them into the other panel. The library holds 139 structures.</p>
+
+    <h2>Druglikeness and CNS access</h2>
+    <p>Each molecule is placed on colored range bars for molecular weight, cLogP, polar surface area, hydrogen-bond donors and acceptors, and rotatable bonds. Chips summarize three checks the tool computes:</p>
+    <table>
+      <thead><tr><th>Check</th><th>Rule used by the tool</th></tr></thead>
+      <tbody>
+        <tr><td>Lipinski</td><td>Flags two or more of: MW over 500, cLogP over 5, more than 5 donors, more than 10 acceptors</td></tr>
+        <tr><td>Veber</td><td>Oral-favorable when rotatable bonds are 10 or fewer and polar surface area is 140 Å² or less</td></tr>
+        <tr><td>CNS profile</td><td>CNS-penetrant when polar surface area is 90 Å² or less and MW is 450 or less; limited entry up to 140 Å²</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Comparing two drugs</h2>
+    <p>The comparison summary reports structural similarity (Morgan/ECFP4 Tanimoto), shared FDA indications (Jaccard overlap), and whether the two drugs share a pharmacologic class. When a pair are enantiomers, the tool explains that 2D fingerprints cannot see chirality. Built-in lineages, such as amitriptyline to fluoxetine, describe what changed chemically in the newer agent and why the change was expected to help. A single-medication mode and a sortable filter-and-rank table of the whole library are also available, along with links to the Medicinal Chemistry at the Bedside and Pregnancy and Breastfeeding chapters.</p>
+
+    <h2>Limitations</h2>
+    <p>This is an educational reference. Properties are computed with RDKit from each drug's SMILES, solubility uses the ESOL model and gives the neutral-form value (marketed salts are far more soluble), the 3D view is a single computed conformer, and pKa values are approximate literature figures. Region and lineage notes are curated teaching summaries, not a substitute for primary medicinal-chemistry sources.</p>
+  </div>
+</div>

@@ -8,6 +8,7 @@ readTime: "20 min read"
 clinicalSummary: ""
 related: []
 draft: false
+lastmod: 2026-10-16
 ---
 
 
@@ -44,7 +45,7 @@ draft: false
       <p>Lipophilicity is the single most predictive property because it correlates with so many downstream behaviors: higher logP means faster passive membrane crossing, deeper CNS penetration, larger volume of distribution, tighter plasma-protein binding, and more avid CYP450 metabolism — but also more sedation, more fat accumulation with a longer effective half-life, more off-target receptor promiscuity, and higher risk of poor aqueous solubility. Good CNS drugs live in a moderate window, roughly logP 2–4.</p>
 
       <div class="ba-support-card">
-        <h4>Lipinski's Rule of Five</h4>
+        <h4 aria-level="3">Lipinski's Rule of Five</h4>
         <p>A 1997 rule of thumb from Christopher Lipinski for predicting whether an orally administered small molecule will be reasonably absorbed. Poor oral absorption becomes likely when <strong>two or more</strong> of the following are true (each threshold is a multiple of five, hence the name):</p>
         <p>• Molecular weight &gt; <strong>500</strong> Da<br>
         • cLogP &gt; <strong>5</strong><br>
@@ -60,7 +61,7 @@ draft: false
       <p>The point of the bars is not to pass or fail a drug but to make the trade-offs visible. A molecule can sail through Lipinski and still be a poor CNS agent because its polar surface area is too high; another can violate a weight cutoff yet work fine because it is actively transported or given by injection. Two criteria round out the classic rule of five:</p>
 
       <div class="ba-support-card">
-        <h4>Veber's rules — the flexibility and polarity add-ons</h4>
+        <h4 aria-level="3">Veber's rules — the flexibility and polarity add-ons</h4>
         <p>Lipinski predicts absorption from size, lipophilicity, and hydrogen bonding, but says nothing about molecular <em>flexibility</em>. In 2002, Veber and colleagues at GSK found that oral bioavailability also tracks two further descriptors: <strong>rotatable bonds ≤ 10</strong> (a floppy molecule pays a larger entropic penalty to bind and to cross membranes) and <strong>polar surface area ≤ 140 Å²</strong>. A drug that clears both Lipinski and Veber is very likely to be orally absorbable. The tool's "Veber" chip reflects that rotatable-bond and TPSA pair.</p>
       </div>
 
@@ -76,7 +77,7 @@ draft: false
       <p>The more instructive examples are the drugs pushed to <em>high</em> PSA on purpose, to keep them <strong>out</strong> of the brain. Peripheral restriction is a deliberate design strategy, and three pairs make it vivid:</p>
 
       <div class="ba-support-card">
-        <h4>Sedating vs non-sedating antihistamines</h4>
+        <h4 aria-level="3">Sedating vs non-sedating antihistamines</h4>
         <p>First-generation <strong>diphenhydramine</strong> has a low polar surface area and slips easily across the blood–brain barrier — hence the sedation, and its use as a sleep aid. The second-generation agents <strong>fexofenadine</strong> and <strong>loratadine</strong> were designed with higher polarity (and, for fexofenadine, P-glycoprotein efflux) so they stay peripheral, blocking histamine in the airway and skin without the drowsiness. Same target, opposite CNS strategy — largely written in the polar surface area.</p>
       </div>
 
@@ -99,7 +100,7 @@ draft: false
       <p>Because the concept is easier to hold onto through cases than through equations, three clinical situations show ionization actually changing a decision:</p>
 
       <div class="ba-support-card">
-        <h4>1 · pH-dependent absorption: PPIs and weak-base drugs</h4>
+        <h4 aria-level="3">1 · pH-dependent absorption: PPIs and weak-base drugs</h4>
         <p>Some drugs need an acidic stomach to dissolve and be absorbed. Raising gastric pH with a proton-pump inhibitor or antacid leaves them undissolved and drops their absorption — a true efficacy-threatening interaction rather than a nuisance. The classic offenders are weak-base drugs with pH-dependent solubility: the antifungal <strong>ketoconazole</strong>, the HIV drug <strong>atazanavir</strong>, and several oncology tyrosine-kinase inhibitors (<strong>dasatinib</strong>, <strong>erlotinib</strong>). In psychiatry the effect is usually milder, but it is a reminder to ask why a co-prescribed acid suppressant might be quietly undercutting another drug.</p>
       </div>
 
@@ -118,7 +119,7 @@ draft: false
       <p>In plasma, a drug exists in equilibrium between a fraction bound to proteins (mainly albumin for acidic and neutral drugs; α1-acid glycoprotein for many bases) and a free fraction. <strong>Only the free (unbound) fraction is pharmacologically active</strong> — it is the part that can cross membranes, hit receptors, be metabolized, and be filtered by the kidney. The "protein-binding region" the tool highlights is the lipophilic/anionic patch of the molecule that docks into albumin. Highly bound drugs (say, &gt; 90%) carry a large reservoir on protein and a correspondingly tiny free fraction.</p>
 
       <div class="ba-support-card">
-        <h4>The scenario: a highly protein-bound drug in a patient with low albumin</h4>
+        <h4 aria-level="3">The scenario: a highly protein-bound drug in a patient with low albumin</h4>
         <p><strong>The question:</strong> what happens to a drug that is 95%+ protein-bound when the patient is hypoalbuminemic — malnourished, cirrhotic, nephrotic, burned, critically ill, or elderly?</p>
         <p><strong>The mechanism:</strong> fewer binding sites means a larger <em>fraction</em> of the drug is unbound. For a drug that was 95% bound, dropping to 90% bound doubles the free fraction from 5% to 10%. Because only free drug is active, the pharmacologic effect (and toxicity risk) rises even though the <em>total</em> measured concentration is unchanged.</p>
         <p><strong>The catch that traps clinicians:</strong> most laboratory assays report <em>total</em> drug level (bound + free). In hypoalbuminemia, the total level can sit squarely "in range" while the free, active level is high enough to cause toxicity. Phenytoin is the textbook example — a normal total phenytoin in a hypoalbuminemic patient can mask a toxic free level, which is why you correct the reported level (Sheiner–Tozer equation) or, better, order a <strong>free phenytoin</strong> directly. Valproate behaves similarly, and its binding is also saturable, so free fraction climbs at higher doses too.</p>
@@ -163,7 +164,7 @@ draft: false
       <p>Everything so far assumes drugs cross membranes by passive diffusion, which is why size, lipophilicity, charge, and polar surface area predict so much. But a large and clinically important set of drugs cross <em>only</em> because a dedicated transporter carries them — and a second set are actively pumped <em>back out</em>. These carriers explain drugs that "shouldn't" work on paper (too polar, too large) and several that stay out of the brain despite looking like they should get in. Two superfamilies do most of the work: the <strong>SLC</strong> (solute carrier) uptake transporters and the <strong>ABC</strong> (ATP-binding cassette) efflux pumps.</p>
 
       <div class="ba-support-card">
-        <h4>LAT1 — the amino-acid gate every psychiatrist should know</h4>
+        <h4 aria-level="3">LAT1 — the amino-acid gate every psychiatrist should know</h4>
         <p><strong>LAT1 (SLC7A5)</strong>, the large-neutral-amino-acid transporter, ferries amino acids across the blood–brain barrier — and a striking number of neuroactive drugs are built as amino-acid mimics precisely to hitch a ride on it. <strong>Gabapentin</strong> and <strong>pregabalin</strong> (leucine-like), <strong>L-DOPA</strong> (the Parkinson's prodrug that crosses where dopamine cannot), <strong>baclofen</strong>, and <strong>methyldopa</strong> all enter the brain via LAT1. This also creates a food interaction: a high-protein meal floods LAT1 with dietary amino acids and can blunt L-DOPA's effect by competition.</p>
       </div>
 
@@ -187,7 +188,7 @@ draft: false
       <p>None of these properties is accidental. Modern psychopharmacology is largely the story of taking a molecule that <em>works</em> and re-engineering its structure to keep the target activity while dialing away liabilities. The tool's built-in lineages make this concrete — a few recurring design moves:</p>
 
       <div class="ba-support-card">
-        <h4>Strip the scaffold to remove off-target binding (tricyclic → SSRI)</h4>
+        <h4 aria-level="3">Strip the scaffold to remove off-target binding (tricyclic → SSRI)</h4>
         <p>The flat, fused three-ring core of amitriptyline and imipramine incidentally blocks H₁, muscarinic, and α₁ receptors and destabilizes cardiac conduction — the source of TCA sedation, dry mouth, orthostasis, and lethal overdose. Discarding the tricyclic scaffold for an open-chain phenylpropylamine (fluoxetine) keeps serotonin-reuptake inhibition but sheds those liabilities. <strong>Design goal:</strong> selectivity and overdose safety.</p>
       </div>
 

@@ -1,5 +1,5 @@
 {{ define "head" }}
-<link rel="stylesheet" href="{{ "css/slides.css" | relURL }}">
+<link rel="stylesheet" href="{{ "css/slides.css" | relURL }}?v=20261023a">
 {{ if in .Content "rv-section" }}
 <link rel="stylesheet" href="{{ "css/videos.css" | relURL }}?v=20261013a">
 <script src="{{ "js/videos.js" | relURL }}?v=20261013a" defer></script>
@@ -118,6 +118,7 @@ table.dp-cmp td:first-child { font-weight: 600; }
     {{ end }}
     <div class="ba-meta">
       <span class="ba-meta-item">📅 {{ .Date.Format "January 2006" }}</span>
+      {{ if gt .Lastmod .Date }}<span class="ba-meta-item">🔄 Updated <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "January 2, 2006" }}</time></span>{{ end }}
       {{ with .Params.readTime }}
       <span class="ba-meta-item">⏱️ {{ . }}</span>
       {{ end }}
@@ -151,11 +152,11 @@ table.dp-cmp td:first-child { font-weight: 600; }
       </div>
     </div>
   </aside>
-  <script src="{{ "js/slides.js" | relURL }}" defer></script>
+  <script src="{{ "js/slides.js" | relURL }}?v=20261023a" defer></script>
 
   {{ with .Params.clinicalSummary }}
   <div class="ba-clinical-summary">
-    <h4>Clinical Summary</h4>
+    <h2 class="ba-cs-title">Clinical Summary</h2>
     <p>{{ . }}</p>
   </div>
   {{ end }}
@@ -183,7 +184,7 @@ table.dp-cmp td:first-child { font-weight: 600; }
   <!-- Related Posts -->
   {{ if .Params.related }}
   <div class="ba-related">
-    <h4>Related Articles</h4>
+    <h2 class="ba-related-title">Related Articles</h2>
     <div class="ba-related-grid">
       {{ range .Params.related }}
         {{ with site.GetPage (printf "/blog/%s" .) }}
@@ -218,14 +219,14 @@ table.dp-cmp td:first-child { font-weight: 600; }
   </div>
 
   <footer class="ba-footer">
-    <p><strong>PsychoPharmRef Clinical Review</strong> | A resource for medical professionals | Data current as of {{ now.Format "January 2006" }}</p>
+    <p><strong>PsychoPharmRef Clinical Review</strong> | A resource for medical professionals | Content last updated {{ .Lastmod.Format "January 2, 2006" }}</p>
     <p style="margin-top: 15px; font-size: 12px;">This article is intended for educational purposes for healthcare professionals.</p>
   </footer>
 </article>
 
 <!-- Newsletter CTA -->
 <div class="nl-blog-cta">
-  <h4>PsychoPharmRef Newsletter</h4>
+  <h2 class="nl-cta-title">PsychoPharmRef Newsletter</h2>
   <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
   <a href="https://subscribe-forms.beehiiv.com/5f2b3081-aa41-452c-95c8-69a5ae899cf8" target="_blank" rel="noopener" class="nl-subscribe-btn">Subscribe — it's free</a>
 </div>

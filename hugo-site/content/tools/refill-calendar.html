@@ -1,26 +1,40 @@
 ---
-title: "Medication Refill Calendar & Usage Calculator"
-description: "Track medication refill dates, calculate daily usage and adherence percentage, predict future refill schedules, and reverse-calculate fill history. Includes over/underuse percentage for controlled substance monitoring."
+title: "Refill Calendar: Fill Dates, Usage and Med Sync"
+description: "Count days between fills, check over- or underuse against the prescribed rate, project refill dates forward or back, and sync two medications."
 layout: "tool"
 tool_section: "refill-calendar"
 category: "Clinical Tools"
+date: 2026-10-23
+lastmod: 2026-10-23
 ---
 
 <div class="tool-landing">
   <div class="tool-landing-header">
     <span class="tool-landing-category">Clinical Tools</span>
-    <h1>Medication Refill Calendar & Usage Calculator</h1>
-    <p class="tool-landing-desc">Track medication refill dates, calculate daily usage and adherence percentage, predict future refill schedules, and reverse-calculate fill history. Includes over/underuse percentage for controlled substance monitoring.</p>
+    <h1>Refill Calendar: Fill Dates, Usage and Med Sync</h1>
+    <p class="tool-landing-desc">Count days between fills, check over- or underuse against the prescribed rate, project refill dates forward or back, and sync two medications.</p>
   </div>
   <div class="tool-landing-cta">
-    <a href="/#refill-calendar" class="tool-launch-btn" id="tool-launch">Open Interactive Tool</a>
-    <p class="tool-landing-note">This tool runs in the PsychoPharmRef clinical reference application.</p>
+    <a href="/#refill-calendar" class="tool-launch-btn">Open the Refill Calendar</a>
+    <p class="tool-landing-note">Runs free in your browser. Calculations happen on your device and are not sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it is for</h2>
+    <p>The Refill Calendar groups five small calculators for tracking fills of controlled and restricted medications. It is useful when reviewing a prescription monitoring report, deciding whether an early refill request fits the prescribed regimen, or lining up refills for a patient on several medications. Each result has a Copy button that copies a plain-text summary.</p>
+
+    <h2>The five calculators</h2>
+    <ul>
+      <li><strong>Days between two dates.</strong> Gives the exact number of days between any two dates, also shown as weeks plus days and approximate months.</li>
+      <li><strong>Usage calculator.</strong> Enter the fill date, an end or pill-count date, pills dispensed, pill strength (mg, mcg or g), and optionally the prescribed pills per day and pills remaining. It returns pills used, average daily dose, average pills per day, and projected monthly totals. With a prescribed rate, it compares actual use with expected use and labels the result as on track (within 3%), or as a percentage of overuse or underuse.</li>
+      <li><strong>Forward refill dates.</strong> From a fill date and days supply, it projects the next six refill dates.</li>
+      <li><strong>Reverse refill tracker.</strong> From the most recent fill date and the expected days between fills, it estimates when the previous six fills should have occurred.</li>
+      <li><strong>Medication sync.</strong> Aligns two medications to a common refill date with a one-time short fill. Enter each medication's last fill date, days supply, quantity dispensed and daily dose. With no preferred date, it aligns to the later of the two depletion dates. It shows the short-fill quantity and days, then a schedule of future fills for each medication.</li>
+    </ul>
+
+    <h2>Interpreting the results</h2>
+    <p>Usage figures assume the pills not counted as remaining were taken during the period, so an accurate pill count improves the estimate. Reverse-tracker dates are expected dates based on a consistent fill interval. Actual fill dates vary, so compare them with the dispensing record rather than treating them as fact.</p>
+
+    <h2>Limitations</h2>
+    <p>These are arithmetic aids. An overuse or underuse percentage does not explain why a patient's use differs from the prescription. Check short-fill quantities against pharmacy and payer rules for the specific drug.</p>
   </div>
 </div>
-
-<script>
-// Auto-redirect to the SPA section after a brief delay for SEO crawlers
-if (!navigator.userAgent.match(/bot|crawl|spider|google|bing|yandex|baidu/i)) {
-  window.location.href = '/#refill-calendar';
-}
-</script>

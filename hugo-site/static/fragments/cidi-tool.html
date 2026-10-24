@@ -1,0 +1,164 @@
+  <div class="ci-warning mt-warning">
+    <strong>Clinical Note:</strong> This screening tool is designed to identify individuals at risk for bipolar disorder based on DSM-5 Criterion A and B symptoms. A positive screen does not establish diagnosis and should prompt comprehensive psychiatric evaluation including detailed history, substance use assessment, and medical workup to rule out secondary causes of mood elevation (e.g., hyperthyroidism, stimulant use, medical illness).
+  </div>
+<div class="ci-container">
+    <!-- STEM QUESTIONS -->
+    <div class="ci-section-title">Stem Questions</div>
+
+    <div class="ci-question-group">
+      <div class="ci-question-text">
+        <span class="ci-question-number">Q1.</span>
+        Have you ever had a period lasting several days or longer when you felt much more excited and full of energy than usual?
+      </div>
+      <div class="ci-radio-group">
+        <div class="ci-radio-option">
+          <input type="radio" id="q1-yes" name="ci-q1" value="yes" />
+          <label for="q1-yes">Yes</label>
+        </div>
+        <div class="ci-radio-option">
+          <input type="radio" id="q1-no" name="ci-q1" value="no" />
+          <label for="q1-no">No</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="ci-question-group">
+      <div class="ci-question-text">
+        <span class="ci-question-number">Q2.</span>
+        Have you ever had a period lasting several days or longer when most of the time you were so irritable or grouchy that you either started arguments, shouted at people, or hit people?
+      </div>
+      <div class="ci-radio-group">
+        <div class="ci-radio-option">
+          <input type="radio" id="q2-yes" name="ci-q2" value="yes" />
+          <label for="q2-yes">Yes</label>
+        </div>
+        <div class="ci-radio-option">
+          <input type="radio" id="q2-no" name="ci-q2" value="no" />
+          <label for="q2-no">No</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRITERION B GATE -->
+    <div class="ci-question-group" id="ci-q3-group">
+      <div class="ci-question-text">
+        <span class="ci-question-number">Q3.</span>
+        Did you ever have any of the following changes during your episodes of being excited and full of energy or very irritable or grouchy?
+      </div>
+      <div class="ci-radio-group">
+        <div class="ci-radio-option">
+          <input type="radio" id="q3-yes" name="ci-q3" value="yes" />
+          <label for="q3-yes">Yes</label>
+        </div>
+        <div class="ci-radio-option">
+          <input type="radio" id="q3-no" name="ci-q3" value="no" />
+          <label for="q3-no">No</label>
+        </div>
+      </div>
+      <div class="ci-help-text">If "No," screening is negative—skip symptom questions below.</div>
+    </div>
+
+    <!-- CRITERION B SYMPTOMS -->
+    <div class="ci-section-title">Criterion B Symptoms (If Q3 = Yes)</div>
+
+    <div id="ci-symptoms-container" class="ci-symptoms-list ci-disabled">
+      <div class="ci-question-group">
+        <div class="ci-question-text">During these episodes, did any of the following happen:</div>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="ci-symptoms" value="irritability" />
+          <span class="ci-symptom-text">
+            Were you so irritable that you shouted at people or started fights or arguments?
+          </span>
+        </label>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="ci-symptoms" value="restlessness" />
+          <span class="ci-symptom-text">
+            Did you become so restless or wound up that you paced up and down or couldn't stand still?
+          </span>
+        </label>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="ci-symptoms" value="disinhibition" />
+          <span class="ci-symptom-text">
+            Did you do anything else that was unusual for you—like talking about things you would normally keep private, or acting in ways that you would usually find embarrassing?
+          </span>
+        </label>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="ci-symptoms" value="grandiosity" />
+          <span class="ci-symptom-text">
+            Did you ever have a period when you thought you were a very important person, or that you had special powers or talents that most people don't have?
+          </span>
+        </label>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="ci-symptoms" value="goal-directed" />
+          <span class="ci-symptom-text">
+            Were you much more active than usual—for example, taking on many new projects or activities?
+          </span>
+        </label>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="ci-symptoms" value="concentration" />
+          <span class="ci-symptom-text">
+            Did you find it much harder to concentrate than is normal for you?
+          </span>
+        </label>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="ci-symptoms" value="racing" />
+          <span class="ci-symptom-text">
+            Did your thoughts seem to jump from one thing to another, or race through your head so fast you couldn't keep track of them?
+          </span>
+        </label>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="ci-symptoms" value="sleep" />
+          <span class="ci-symptom-text">
+            Did you need less sleep than usual—for example, sleeping 4 hours or less without feeling tired the next day?
+          </span>
+        </label>
+      </div>
+
+      <div class="ci-symptom-item">
+        <label class="ci-symptom-label">
+          <input type="checkbox" name="ci-symptoms" value="spending" />
+          <span class="ci-symptom-text">
+            Did you spend so much more money than usual that it caused you financial trouble?
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <!-- SCORE DISPLAY -->
+    <div class="ci-score-display">
+      <div class="ci-score-title">Screen Result</div>
+      <div class="ci-score-result" id="ci-score-text">—</div>
+      <div id="ci-risk-badge" class="ci-risk-level"></div>
+      <div class="ci-probability" id="ci-probability-text"></div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="ci-button-group">
+      <button class="ci-btn ci-btn-primary" id="ci-report-btn">Generate Report & Copy</button>
+      <button class="ci-btn ci-btn-secondary" id="ci-reset-btn">Reset</button>
+    </div>
+  </div>

@@ -1,26 +1,43 @@
 ---
-title: "QTc Calculator & Tisdale Risk Score for Drug-Induced QT Prolongation"
-description: "Calculate corrected QT interval (Bazett, Fridericia, Framingham formulas), Tisdale risk score for QTc prolongation in hospitalized patients, and reference lists of QT-prolonging psychiatric and non-psychiatric medications."
+title: "QTc Calculator and Tisdale QT Risk Score"
+description: "Calculate QTc with Bazett and Fridericia, score Tisdale QT prolongation risk, and review QT-prolonging psychiatric and non-psychiatric drugs."
 layout: "tool"
 tool_section: "qt-risk"
 category: "Clinical Tools"
+date: 2026-10-23
+lastmod: 2026-10-23
 ---
 
 <div class="tool-landing">
   <div class="tool-landing-header">
     <span class="tool-landing-category">Clinical Tools</span>
-    <h1>QTc Calculator & Tisdale Risk Score for Drug-Induced QT Prolongation</h1>
-    <p class="tool-landing-desc">Calculate corrected QT interval (Bazett, Fridericia, Framingham formulas), Tisdale risk score for QTc prolongation in hospitalized patients, and reference lists of QT-prolonging psychiatric and non-psychiatric medications.</p>
+    <h1>QTc Calculator and Tisdale QT Risk Score</h1>
+    <p class="tool-landing-desc">Calculate QTc with Bazett and Fridericia, score Tisdale QT prolongation risk, and review QT-prolonging psychiatric and non-psychiatric drugs.</p>
   </div>
   <div class="tool-landing-cta">
-    <a href="/#qt-risk" class="tool-launch-btn" id="tool-launch">Open Interactive Tool</a>
-    <p class="tool-landing-note">This tool runs in the PsychoPharmRef clinical reference application.</p>
+    <a href="/#qt-risk" class="tool-launch-btn">Open the QT Risk Tool</a>
+    <p class="tool-landing-note">Runs free in your browser. Values are calculated on your device and not sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>QTc calculator</h2>
+    <p>Enter the measured QT interval (200–700 ms), heart rate (20–200 bpm), and patient sex. The tool converts heart rate to RR (60 ÷ HR) and reports QTc by both Bazett (QT ÷ √RR) and Fridericia (QT ÷ ∛RR). At heart rates below 50 or above 100 bpm it notes that Fridericia is preferred, because Bazett overcorrects at rate extremes. Each result is labeled using sex-specific thresholds:</p>
+    <table>
+      <thead><tr><th>Label</th><th>Men</th><th>Women</th></tr></thead>
+      <tbody>
+        <tr><td>Normal</td><td>≤440 ms</td><td>≤450 ms</td></tr>
+        <tr><td>Borderline, monitor</td><td>441–450 ms</td><td>451–470 ms</td></tr>
+        <tr><td>Prolonged, review agents</td><td>&gt;450 ms</td><td>&gt;470 ms</td></tr>
+        <tr><td>High risk</td><td>≥500 ms</td><td>≥500 ms</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Tisdale QT risk score</h2>
+    <p>The Tisdale score (Tisdale et al., Circ Cardiovasc Qual Outcomes, 2013) predicts QT prolongation in hospitalized patients. Points are added for age ≥68, female sex, and loop diuretic use (+1 each); potassium ≤3.5 mEq/L, baseline QTc ≥450 ms, and acute MI (+2 each); and heart failure, sepsis, one QT-prolonging drug, and a second QT-prolonging drug (+3 each). A total of 6 or less is low risk, 7–10 is moderate, and 11 or more is high. The copyable summary lists the date, total, risk level, factors present, interpretation, and recommendations. The score was validated in inpatients, so the tool suggests using it only as a general guide in outpatient care.</p>
+
+    <h2>Reference sections</h2>
+    <p>The page also explains QT prolongation and torsades de pointes, lists patient-level risk factors, and gives monitoring steps before and during treatment. Action thresholds are given for QTc 450–499 ms, 500–519 ms, and ≥520 ms or a rise of 60 ms from baseline. Two drug lists cover non-psychiatric medications (grouped as Known, Conditional, or Possible risk, based on CredibleMeds/AZCERT and published literature) and the psychiatric medications flagged for QT prolongation in the PsychoPharmRef database.</p>
+
+    <h2>Limitations</h2>
+    <p>The tool is for education and does not replace the CredibleMeds database, which should be checked for current risk categories. Combining several QT-prolonging drugs is the most common preventable cause of drug-induced torsades, so review the full medication list, not one drug at a time.</p>
   </div>
 </div>
-
-<script>
-// Auto-redirect to the SPA section after a brief delay for SEO crawlers
-if (!navigator.userAgent.match(/bot|crawl|spider|google|bing|yandex|baidu/i)) {
-  window.location.href = '/#qt-risk';
-}
-</script>

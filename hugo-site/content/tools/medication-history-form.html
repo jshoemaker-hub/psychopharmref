@@ -1,0 +1,43 @@
+---
+title: "Psychiatric Medication History Form and Trial Review"
+description: "Record a patient's prior psychiatric medication trials, side effects and reasons for stopping, then generate an EMR-ready note with overlap analysis."
+layout: "tool"
+tool_section: "med-history-tool"
+category: "Clinical Tools"
+date: 2026-10-23
+lastmod: 2026-10-23
+---
+
+<div class="tool-landing">
+  <div class="tool-landing-header">
+    <span class="tool-landing-category">Clinical Tools</span>
+    <h1>Psychiatric Medication History Form and Trial Review</h1>
+    <p class="tool-landing-desc">Record a patient's prior psychiatric medication trials, side effects and reasons for stopping, then generate an EMR-ready note with overlap analysis.</p>
+  </div>
+  <div class="tool-landing-cta">
+    <a href="/#med-history-tool" class="tool-launch-btn">Open the Medication History Form</a>
+    <p class="tool-landing-note">Runs free in your browser. Entries stay on your device and are not sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it records</h2>
+    <p>The form captures a patient's past experience with psychiatric medications. It lists 77 medications in six groups: antidepressants, antipsychotics, mood stabilizers, anxiolytics and hypnotics, stimulants and ADHD medications, and substance use disorder and other agents. Each group is subdivided by drug class. Leave a medication untouched if it was never tried; only medications marked "Tried" appear in the report.</p>
+    <p>For each medication marked as tried, you can record:</p>
+    <ul>
+      <li>Overall experience (good, neutral or bad) and the year tried</li>
+      <li>Length of use (weeks, months, years, or still taking)</li>
+      <li>Reason stopped: stopped working, side effect, can't recall, or still taking</li>
+      <li>Specific side effects experienced, from a drug-specific list</li>
+      <li>Class considerations experienced, such as serotonin syndrome or hyponatremia for SSRIs, or metabolic effects for second-generation antipsychotics</li>
+      <li>Boxed (black box) warnings that were experienced or relevant</li>
+    </ul>
+
+    <h2>Failed-trial overlap analysis</h2>
+    <p>When two or more medications were stopped for a side effect or for stopping working, the report adds a failed-trial analysis. It looks for receptor targets shared by two or more failed trials, CYP450 substrate and inhibitor overlap, and repeated side-effect patterns. If none are found, it says so. A shared receptor across several failed trials is flagged as a possible sign of poor individual response to that mechanism.</p>
+
+    <h2>What the report includes</h2>
+    <p>"Generate Report &amp; Code" produces a plain-text history grouped by medication group, with each drug's class, the overlap analysis when it applies, and a restore code. "Copy Note" copies a formatted version for pasting into an EMR. Pasting the restore code back into the form reloads every entry, so a history can be updated at the next visit without starting over. A blank printable version of the form is also available.</p>
+
+    <h2>Limitations</h2>
+    <p>The form documents what the patient reports, so confirm key trials against pharmacy or prior records where possible. The overlap analysis points out patterns to consider. It does not predict response to a future medication.</p>
+  </div>
+</div>

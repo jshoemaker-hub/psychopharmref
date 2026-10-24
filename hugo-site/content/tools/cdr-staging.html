@@ -1,26 +1,45 @@
 ---
-title: "CDR Staging Tool — Clinical Dementia Rating Scale with Box Scores"
-description: "Interactive CDR calculator with box scores across 6 domains, global CDR derivation per Morris (1993) algorithm, CDR Sum of Boxes (CDR-SB), and clinical staging interpretation for dementia severity."
+title: "Clinical Dementia Rating (CDR): Global and Sum of Boxes"
+description: "Rate the six CDR domains, derive the global CDR with the Morris (1993) rules, and get the CDR Sum of Boxes stage with a copyable summary."
 layout: "tool"
 tool_section: "cdr-tool"
 category: "Rating Scales"
+date: 2026-10-23
+lastmod: 2026-10-23
 ---
 
 <div class="tool-landing">
   <div class="tool-landing-header">
     <span class="tool-landing-category">Rating Scales</span>
-    <h1>CDR Staging Tool — Clinical Dementia Rating Scale with Box Scores</h1>
-    <p class="tool-landing-desc">Interactive CDR calculator with box scores across 6 domains, global CDR derivation per Morris (1993) algorithm, CDR Sum of Boxes (CDR-SB), and clinical staging interpretation for dementia severity.</p>
+    <h1>Clinical Dementia Rating (CDR): Global and Sum of Boxes</h1>
+    <p class="tool-landing-desc">Rate the six CDR domains, derive the global CDR with the Morris (1993) rules, and get the CDR Sum of Boxes stage with a copyable summary.</p>
   </div>
   <div class="tool-landing-cta">
-    <a href="/#cdr-tool" class="tool-launch-btn" id="tool-launch">Open Interactive Tool</a>
-    <p class="tool-landing-note">This tool runs in the PsychoPharmRef clinical reference application.</p>
+    <a href="/#cdr-tool" class="tool-launch-btn">Open the CDR Staging Tool</a>
+    <p class="tool-landing-note">Runs free in your browser. Scores are calculated on your device and not sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it measures</h2>
+    <p>The Clinical Dementia Rating is a clinician-rated staging instrument. You score six domains, or "boxes": Memory, Orientation, Judgment &amp; Problem Solving, Community Affairs, Home &amp; Hobbies, and Personal Care. Each box is rated 0 (none), 0.5 (questionable), 1 (mild), 2 (moderate) or 3 (severe). Personal Care has no 0.5 rating. Each level in the tool shows its standard anchor description.</p>
+    <p>Score only decline from the person's own previous usual level that is due to cognitive loss, not impairment from other causes such as physical disability or depression. Score each domain on its own, and when a rating is unclear, choose the box of greater impairment.</p>
+
+    <h2>Scoring</h2>
+    <p>The tool calculates two results. The <strong>global CDR</strong> (0, 0.5, 1, 2 or 3) comes from the Morris (1993) scoring rules, with Memory as the primary category and the other five domains as secondary. The <strong>CDR Sum of Boxes (CDR-SB)</strong> is the sum of all six box scores (0-18), staged as follows:</p>
+    <table>
+      <thead><tr><th>CDR-SB</th><th>Stage</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>Normal</td></tr>
+        <tr><td>0.5-4.0</td><td>Questionable / very mild</td></tr>
+        <tr><td>4.5-9.0</td><td>Mild dementia</td></tr>
+        <tr><td>9.5-15.5</td><td>Moderate dementia</td></tr>
+        <tr><td>16.0-18.0</td><td>Severe dementia</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Interpreting the result</h2>
+    <p>Each global CDR level comes with a short clinical interpretation. These run from normal cognition (CDR 0), through very mild or questionable impairment that may represent mild cognitive impairment (CDR 0.5), to mild, moderate and severe dementia (CDR 1, 2 and 3). The interpretations also include notes on workup, treatment and care planning for each stage.</p>
+
+    <h2>What the report includes</h2>
+    <p>The summary gives the date, the global CDR and its stage, the CDR-SB and its stage, a table of the six box scores with their impairment levels, the clinical interpretation, the CDR-SB staging key, and the Morris (1993) citation. You can copy it as plain text or print it to PDF. The tool will not calculate until all six domains are scored.</p>
   </div>
 </div>
-
-<script>
-// Auto-redirect to the SPA section after a brief delay for SEO crawlers
-if (!navigator.userAgent.match(/bot|crawl|spider|google|bing|yandex|baidu/i)) {
-  window.location.href = '/#cdr-tool';
-}
-</script>

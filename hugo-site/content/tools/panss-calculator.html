@@ -1,26 +1,45 @@
 ---
-title: "PANSS Calculator — Positive and Negative Syndrome Scale"
-description: "Interactive PANSS scoring tool for schizophrenia assessment. Score all 30 items across positive, negative, and general psychopathology subscales with automated severity interpretation and copy-to-clipboard clinical report."
+title: "PANSS Calculator: PANSS-6 and Full PANSS-30"
+description: "Score the PANSS-6 or full 30-item PANSS with subscales, Marder factors and Leucht CGI-linked severity bands, then copy a plain-text report."
 layout: "tool"
 tool_section: "panss-tool"
 category: "Rating Scales"
+date: 2026-10-23
+lastmod: 2026-10-23
 ---
 
 <div class="tool-landing">
   <div class="tool-landing-header">
     <span class="tool-landing-category">Rating Scales</span>
-    <h1>PANSS Calculator — Positive and Negative Syndrome Scale</h1>
-    <p class="tool-landing-desc">Interactive PANSS scoring tool for schizophrenia assessment. Score all 30 items across positive, negative, and general psychopathology subscales with automated severity interpretation and copy-to-clipboard clinical report.</p>
+    <h1>PANSS Calculator: PANSS-6 and Full PANSS-30</h1>
+    <p class="tool-landing-desc">Score the PANSS-6 or full 30-item PANSS with subscales, Marder factors and Leucht CGI-linked severity bands, then copy a plain-text report.</p>
   </div>
   <div class="tool-landing-cta">
-    <a href="/#panss-tool" class="tool-launch-btn" id="tool-launch">Open Interactive Tool</a>
-    <p class="tool-landing-note">This tool runs in the PsychoPharmRef clinical reference application.</p>
+    <a href="/#panss-tool" class="tool-launch-btn">Open the PANSS Calculator</a>
+    <p class="tool-landing-note">Runs free in your browser. Scores are calculated on your device and not sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it measures</h2>
+    <p>The Positive and Negative Syndrome Scale (PANSS; Kay 1987) is a clinician-rated measure of symptom severity in schizophrenia and other psychotic disorders. It requires a trained rater, and ratings reflect the past week. Every item is rated from 1 (absent) through minimal, mild, moderate, moderately severe and severe to 7 (extreme). The tool offers two forms: the brief PANSS-6 and the full PANSS-30.</p>
+
+    <h2>PANSS-6 and PANSS-30 scoring</h2>
+    <p>The PANSS-6 uses six core items: delusions (P1), conceptual disorganization (P2), hallucinatory behavior (P3), blunted affect (N1), passive/apathetic social withdrawal (N4), and lack of spontaneity and flow of conversation (N6). It reports a positive and a negative subscale (each out of 21) and a total out of 42. Formal mild, moderate or marked cut-offs have not been established for the PANSS-6, so interpret it in context, ideally with a CGI-Severity rating.</p>
+    <p>The PANSS-30 reports the Positive scale (P1–P7, out of 49), Negative scale (N1–N7, out of 49), General Psychopathology scale (G1–G16, out of 112), a total out of 210, and a composite index (positive minus negative). Severity is shown once all 30 items are rated, using anchors from Leucht and colleagues (2005) that link totals to CGI-S:</p>
+    <table>
+      <thead><tr><th>PANSS-30 total</th><th>Interpretation</th></tr></thead>
+      <tbody>
+        <tr><td>Below 58</td><td>Below mildly ill (minimal/borderline)</td></tr>
+        <tr><td>58–74</td><td>Mildly ill (58 ≈ CGI-S 3)</td></tr>
+        <tr><td>75–94</td><td>Moderately ill (75 ≈ CGI-S 4)</td></tr>
+        <tr><td>95–115</td><td>Markedly ill (95 ≈ CGI-S 5)</td></tr>
+        <tr><td>116–210</td><td>Severely ill (116 ≈ CGI-S 6)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Marder factor analysis</h2>
+    <p>The full form also calculates the five Marder factors (Marder et al., 1997): positive symptoms (P1, P3, P5, P6, N7, G1, G9, G12; out of 56), negative symptoms (N1, N2, N3, N4, N6, G7, G16; out of 49), disorganized thought (P2, N5, G5, G10, G11, G13, G15; out of 49), uncontrolled hostility/excitement (P4, P7, G8, G14; out of 28), and anxiety/depression (G2, G3, G4, G6; out of 28).</p>
+
+    <h2>What the report includes</h2>
+    <p>Generate Report copies a plain-text summary. For the PANSS-6 it lists each item rating, both subscales, the total and the interpretation note. For the PANSS-30 it lists every item by subscale, the subscale scores, the total, the composite index, the severity band (or a note that not all 30 items are rated), and the Marder factor scores. The CGI-linked anchors are approximate and should be read in clinical context.</p>
   </div>
 </div>
-
-<script>
-// Auto-redirect to the SPA section after a brief delay for SEO crawlers
-if (!navigator.userAgent.match(/bot|crawl|spider|google|bing|yandex|baidu/i)) {
-  window.location.href = '/#panss-tool';
-}
-</script>

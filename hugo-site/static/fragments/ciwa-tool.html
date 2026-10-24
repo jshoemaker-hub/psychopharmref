@@ -1,0 +1,231 @@
+  <div class="ciwa-warning mt-warning">
+    <strong>Clinical Use:</strong> CIWA-Ar is validated for adults with known alcohol withdrawal; it assumes the patient can communicate and is not heavily sedated. Patients with impaired consciousness, acute medical illness, or severe comorbidity (e.g., hepatic encephalopathy, head trauma) may require fixed-dose regimens instead of symptom-triggered protocols. Scores &gt;15 indicate severe withdrawal with increased risk of seizures and delirium tremens; treat promptly and monitor closely.
+  </div>
+
+  <div class="ciwa-container">
+    <div class="ciwa-vitals">
+      <label>Pulse / heart rate (1 min) <input id="ciwa-pulse" type="text" inputmode="numeric" placeholder="e.g., 96 bpm"></label>
+      <label>Blood pressure <input id="ciwa-bp" type="text" placeholder="e.g., 148/92 mmHg"></label>
+    </div>
+
+    <form id="ciwa-form">
+      <!-- Item 1: Nausea & Vomiting (0–7) -->
+      <div class="ciwa-item-group">
+        <div class="ciwa-item-header">
+          <span class="ciwa-item-num">1</span>
+          <span class="ciwa-item-title">Nausea &amp; Vomiting</span>
+          <span class="ciwa-item-maxscore">0&ndash;7</span>
+        </div>
+        <div class="ciwa-item-prompt">Ask &quot;Do you feel sick to your stomach? Have you vomited?&quot; (Observation.)</div>
+        <div class="ciwa-options">
+          <div class="ciwa-option"><input type="radio" id="ciwa-item1-0" name="ciwa-item1" value="0"> <label for="ciwa-item1-0"><strong>0</strong> = No nausea and no vomiting</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item1-1" name="ciwa-item1" value="1"> <label for="ciwa-item1-1"><strong>1</strong> = Mild nausea with no vomiting</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item1-2" name="ciwa-item1" value="2"> <label for="ciwa-item1-2"><strong>2</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item1-3" name="ciwa-item1" value="3"> <label for="ciwa-item1-3"><strong>3</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item1-4" name="ciwa-item1" value="4"> <label for="ciwa-item1-4"><strong>4</strong> = Intermittent nausea with dry heaves</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item1-5" name="ciwa-item1" value="5"> <label for="ciwa-item1-5"><strong>5</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item1-6" name="ciwa-item1" value="6"> <label for="ciwa-item1-6"><strong>6</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item1-7" name="ciwa-item1" value="7"> <label for="ciwa-item1-7"><strong>7</strong> = Constant nausea, frequent dry heaves and vomiting</label></div>
+        </div>
+      </div>
+
+      <!-- Item 2: Tremor (0–7) -->
+      <div class="ciwa-item-group">
+        <div class="ciwa-item-header">
+          <span class="ciwa-item-num">2</span>
+          <span class="ciwa-item-title">Tremor</span>
+          <span class="ciwa-item-maxscore">0&ndash;7</span>
+        </div>
+        <div class="ciwa-item-prompt">Arms extended and fingers spread apart. (Observation.)</div>
+        <div class="ciwa-options">
+          <div class="ciwa-option"><input type="radio" id="ciwa-item2-0" name="ciwa-item2" value="0"> <label for="ciwa-item2-0"><strong>0</strong> = No tremor</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item2-1" name="ciwa-item2" value="1"> <label for="ciwa-item2-1"><strong>1</strong> = Not visible, but can be felt fingertip to fingertip</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item2-2" name="ciwa-item2" value="2"> <label for="ciwa-item2-2"><strong>2</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item2-3" name="ciwa-item2" value="3"> <label for="ciwa-item2-3"><strong>3</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item2-4" name="ciwa-item2" value="4"> <label for="ciwa-item2-4"><strong>4</strong> = Moderate, with patient&#39;s arms extended</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item2-5" name="ciwa-item2" value="5"> <label for="ciwa-item2-5"><strong>5</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item2-6" name="ciwa-item2" value="6"> <label for="ciwa-item2-6"><strong>6</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item2-7" name="ciwa-item2" value="7"> <label for="ciwa-item2-7"><strong>7</strong> = Severe, even with arms not extended</label></div>
+        </div>
+      </div>
+
+      <!-- Item 3: Paroxysmal Sweats (0–7) -->
+      <div class="ciwa-item-group">
+        <div class="ciwa-item-header">
+          <span class="ciwa-item-num">3</span>
+          <span class="ciwa-item-title">Paroxysmal Sweats</span>
+          <span class="ciwa-item-maxscore">0&ndash;7</span>
+        </div>
+        <div class="ciwa-item-prompt">Observation.</div>
+        <div class="ciwa-options">
+          <div class="ciwa-option"><input type="radio" id="ciwa-item3-0" name="ciwa-item3" value="0"> <label for="ciwa-item3-0"><strong>0</strong> = No sweat visible</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item3-1" name="ciwa-item3" value="1"> <label for="ciwa-item3-1"><strong>1</strong> = Barely perceptible sweating, palms moist</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item3-2" name="ciwa-item3" value="2"> <label for="ciwa-item3-2"><strong>2</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item3-3" name="ciwa-item3" value="3"> <label for="ciwa-item3-3"><strong>3</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item3-4" name="ciwa-item3" value="4"> <label for="ciwa-item3-4"><strong>4</strong> = Beads of sweat obvious on forehead</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item3-5" name="ciwa-item3" value="5"> <label for="ciwa-item3-5"><strong>5</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item3-6" name="ciwa-item3" value="6"> <label for="ciwa-item3-6"><strong>6</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item3-7" name="ciwa-item3" value="7"> <label for="ciwa-item3-7"><strong>7</strong> = Drenching sweats</label></div>
+        </div>
+      </div>
+
+      <!-- Item 4: Anxiety (0–7) -->
+      <div class="ciwa-item-group">
+        <div class="ciwa-item-header">
+          <span class="ciwa-item-num">4</span>
+          <span class="ciwa-item-title">Anxiety</span>
+          <span class="ciwa-item-maxscore">0&ndash;7</span>
+        </div>
+        <div class="ciwa-item-prompt">Ask &quot;Do you feel nervous?&quot; (Observation.)</div>
+        <div class="ciwa-options">
+          <div class="ciwa-option"><input type="radio" id="ciwa-item4-0" name="ciwa-item4" value="0"> <label for="ciwa-item4-0"><strong>0</strong> = No anxiety, at ease</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item4-1" name="ciwa-item4" value="1"> <label for="ciwa-item4-1"><strong>1</strong> = Mildly anxious</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item4-2" name="ciwa-item4" value="2"> <label for="ciwa-item4-2"><strong>2</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item4-3" name="ciwa-item4" value="3"> <label for="ciwa-item4-3"><strong>3</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item4-4" name="ciwa-item4" value="4"> <label for="ciwa-item4-4"><strong>4</strong> = Moderately anxious, or guarded, so anxiety is inferred</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item4-5" name="ciwa-item4" value="5"> <label for="ciwa-item4-5"><strong>5</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item4-6" name="ciwa-item4" value="6"> <label for="ciwa-item4-6"><strong>6</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item4-7" name="ciwa-item4" value="7"> <label for="ciwa-item4-7"><strong>7</strong> = Equivalent to acute panic states as seen in severe delirium or acute schizophrenic reactions</label></div>
+        </div>
+      </div>
+
+      <!-- Item 5: Agitation (0–7) -->
+      <div class="ciwa-item-group">
+        <div class="ciwa-item-header">
+          <span class="ciwa-item-num">5</span>
+          <span class="ciwa-item-title">Agitation</span>
+          <span class="ciwa-item-maxscore">0&ndash;7</span>
+        </div>
+        <div class="ciwa-item-prompt">Observation.</div>
+        <div class="ciwa-options">
+          <div class="ciwa-option"><input type="radio" id="ciwa-item5-0" name="ciwa-item5" value="0"> <label for="ciwa-item5-0"><strong>0</strong> = Normal activity</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item5-1" name="ciwa-item5" value="1"> <label for="ciwa-item5-1"><strong>1</strong> = Somewhat more than normal activity</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item5-2" name="ciwa-item5" value="2"> <label for="ciwa-item5-2"><strong>2</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item5-3" name="ciwa-item5" value="3"> <label for="ciwa-item5-3"><strong>3</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item5-4" name="ciwa-item5" value="4"> <label for="ciwa-item5-4"><strong>4</strong> = Moderately fidgety and restless</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item5-5" name="ciwa-item5" value="5"> <label for="ciwa-item5-5"><strong>5</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item5-6" name="ciwa-item5" value="6"> <label for="ciwa-item5-6"><strong>6</strong> = (interpolate between anchors)</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item5-7" name="ciwa-item5" value="7"> <label for="ciwa-item5-7"><strong>7</strong> = Paces back and forth during most of the interview, or constantly thrashes about</label></div>
+        </div>
+      </div>
+
+      <!-- Item 6: Tactile Disturbances (0–7) -->
+      <div class="ciwa-item-group">
+        <div class="ciwa-item-header">
+          <span class="ciwa-item-num">6</span>
+          <span class="ciwa-item-title">Tactile Disturbances</span>
+          <span class="ciwa-item-maxscore">0&ndash;7</span>
+        </div>
+        <div class="ciwa-item-prompt">Ask &quot;Have you any itching, pins and needles sensations, any burning, any numbness, or do you feel bugs crawling on or under your skin?&quot; (Observation.)</div>
+        <div class="ciwa-options">
+          <div class="ciwa-option"><input type="radio" id="ciwa-item6-0" name="ciwa-item6" value="0"> <label for="ciwa-item6-0"><strong>0</strong> = None</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item6-1" name="ciwa-item6" value="1"> <label for="ciwa-item6-1"><strong>1</strong> = Very mild itching, pins and needles, burning, or numbness</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item6-2" name="ciwa-item6" value="2"> <label for="ciwa-item6-2"><strong>2</strong> = Mild itching, pins and needles, burning, or numbness</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item6-3" name="ciwa-item6" value="3"> <label for="ciwa-item6-3"><strong>3</strong> = Moderate itching, pins and needles, burning, or numbness</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item6-4" name="ciwa-item6" value="4"> <label for="ciwa-item6-4"><strong>4</strong> = Moderately severe hallucinations</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item6-5" name="ciwa-item6" value="5"> <label for="ciwa-item6-5"><strong>5</strong> = Severe hallucinations</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item6-6" name="ciwa-item6" value="6"> <label for="ciwa-item6-6"><strong>6</strong> = Extremely severe hallucinations</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item6-7" name="ciwa-item6" value="7"> <label for="ciwa-item6-7"><strong>7</strong> = Continuous hallucinations</label></div>
+        </div>
+      </div>
+
+      <!-- Item 7: Auditory Disturbances (0–7) -->
+      <div class="ciwa-item-group">
+        <div class="ciwa-item-header">
+          <span class="ciwa-item-num">7</span>
+          <span class="ciwa-item-title">Auditory Disturbances</span>
+          <span class="ciwa-item-maxscore">0&ndash;7</span>
+        </div>
+        <div class="ciwa-item-prompt">Ask &quot;Are you more aware of sounds around you? Are they harsh? Do they frighten you? Are you hearing anything that is disturbing to you? Are you hearing things you know are not there?&quot; (Observation.)</div>
+        <div class="ciwa-options">
+          <div class="ciwa-option"><input type="radio" id="ciwa-item7-0" name="ciwa-item7" value="0"> <label for="ciwa-item7-0"><strong>0</strong> = Not present</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item7-1" name="ciwa-item7" value="1"> <label for="ciwa-item7-1"><strong>1</strong> = Very mild harshness or ability to frighten</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item7-2" name="ciwa-item7" value="2"> <label for="ciwa-item7-2"><strong>2</strong> = Mild harshness or ability to frighten</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item7-3" name="ciwa-item7" value="3"> <label for="ciwa-item7-3"><strong>3</strong> = Moderate harshness or ability to frighten</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item7-4" name="ciwa-item7" value="4"> <label for="ciwa-item7-4"><strong>4</strong> = Moderately severe hallucinations</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item7-5" name="ciwa-item7" value="5"> <label for="ciwa-item7-5"><strong>5</strong> = Severe hallucinations</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item7-6" name="ciwa-item7" value="6"> <label for="ciwa-item7-6"><strong>6</strong> = Extremely severe hallucinations</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item7-7" name="ciwa-item7" value="7"> <label for="ciwa-item7-7"><strong>7</strong> = Continuous hallucinations</label></div>
+        </div>
+      </div>
+
+      <!-- Item 8: Visual Disturbances (0–7) -->
+      <div class="ciwa-item-group">
+        <div class="ciwa-item-header">
+          <span class="ciwa-item-num">8</span>
+          <span class="ciwa-item-title">Visual Disturbances</span>
+          <span class="ciwa-item-maxscore">0&ndash;7</span>
+        </div>
+        <div class="ciwa-item-prompt">Ask &quot;Does the light appear to be too bright? Is its color different? Does it hurt your eyes? Are you seeing anything that is disturbing to you? Are you seeing things you know are not there?&quot; (Observation.)</div>
+        <div class="ciwa-options">
+          <div class="ciwa-option"><input type="radio" id="ciwa-item8-0" name="ciwa-item8" value="0"> <label for="ciwa-item8-0"><strong>0</strong> = Not present</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item8-1" name="ciwa-item8" value="1"> <label for="ciwa-item8-1"><strong>1</strong> = Very mild sensitivity</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item8-2" name="ciwa-item8" value="2"> <label for="ciwa-item8-2"><strong>2</strong> = Mild sensitivity</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item8-3" name="ciwa-item8" value="3"> <label for="ciwa-item8-3"><strong>3</strong> = Moderate sensitivity</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item8-4" name="ciwa-item8" value="4"> <label for="ciwa-item8-4"><strong>4</strong> = Moderately severe hallucinations</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item8-5" name="ciwa-item8" value="5"> <label for="ciwa-item8-5"><strong>5</strong> = Severe hallucinations</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item8-6" name="ciwa-item8" value="6"> <label for="ciwa-item8-6"><strong>6</strong> = Extremely severe hallucinations</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item8-7" name="ciwa-item8" value="7"> <label for="ciwa-item8-7"><strong>7</strong> = Continuous hallucinations</label></div>
+        </div>
+      </div>
+
+      <!-- Item 9: Headache / Fullness in Head (0–7) -->
+      <div class="ciwa-item-group">
+        <div class="ciwa-item-header">
+          <span class="ciwa-item-num">9</span>
+          <span class="ciwa-item-title">Headache / Fullness in Head</span>
+          <span class="ciwa-item-maxscore">0&ndash;7</span>
+        </div>
+        <div class="ciwa-item-prompt">Ask &quot;Does your head feel different? Does it feel like there is a band around your head?&quot; Do not rate for dizziness or lightheadedness. Otherwise, rate severity.</div>
+        <div class="ciwa-options">
+          <div class="ciwa-option"><input type="radio" id="ciwa-item9-0" name="ciwa-item9" value="0"> <label for="ciwa-item9-0"><strong>0</strong> = Not present</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item9-1" name="ciwa-item9" value="1"> <label for="ciwa-item9-1"><strong>1</strong> = Very mild</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item9-2" name="ciwa-item9" value="2"> <label for="ciwa-item9-2"><strong>2</strong> = Mild</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item9-3" name="ciwa-item9" value="3"> <label for="ciwa-item9-3"><strong>3</strong> = Moderate</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item9-4" name="ciwa-item9" value="4"> <label for="ciwa-item9-4"><strong>4</strong> = Moderately severe</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item9-5" name="ciwa-item9" value="5"> <label for="ciwa-item9-5"><strong>5</strong> = Severe</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item9-6" name="ciwa-item9" value="6"> <label for="ciwa-item9-6"><strong>6</strong> = Very severe</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item9-7" name="ciwa-item9" value="7"> <label for="ciwa-item9-7"><strong>7</strong> = Extremely severe</label></div>
+        </div>
+      </div>
+
+      <!-- Item 10: Orientation & Clouding of Sensorium (0–4) -->
+      <div class="ciwa-item-group">
+        <div class="ciwa-item-header">
+          <span class="ciwa-item-num">10</span>
+          <span class="ciwa-item-title">Orientation &amp; Clouding of Sensorium</span>
+          <span class="ciwa-item-maxscore">0&ndash;4</span>
+        </div>
+        <div class="ciwa-item-prompt">Ask &quot;What day is this? Where are you? Who am I?&quot;</div>
+        <div class="ciwa-options">
+          <div class="ciwa-option"><input type="radio" id="ciwa-item10-0" name="ciwa-item10" value="0"> <label for="ciwa-item10-0"><strong>0</strong> = Oriented and can do serial additions</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item10-1" name="ciwa-item10" value="1"> <label for="ciwa-item10-1"><strong>1</strong> = Cannot do serial additions or is uncertain about date</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item10-2" name="ciwa-item10" value="2"> <label for="ciwa-item10-2"><strong>2</strong> = Disoriented for date by no more than 2 calendar days</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item10-3" name="ciwa-item10" value="3"> <label for="ciwa-item10-3"><strong>3</strong> = Disoriented for date by more than 2 calendar days</label></div>
+          <div class="ciwa-option"><input type="radio" id="ciwa-item10-4" name="ciwa-item10" value="4"> <label for="ciwa-item10-4"><strong>4</strong> = Disoriented for place and/or person</label></div>
+        </div>
+      </div>
+
+    </form>
+
+    <!-- Score Display -->
+    <div class="ciwa-score-display">
+      <div class="ciwa-total-score" id="ciwa-total-score">0</div>
+      <div class="ciwa-max-label">/ 67</div>
+      <div class="ciwa-answered" id="ciwa-answered" style="font-size:13px;color:var(--text-muted);">0 / 10 answered</div>
+      <div class="ciwa-severity-label ciwa-severity-minimal" id="ciwa-severity-level">Minimal to mild withdrawal</div>
+      <div class="ciwa-guidance" id="ciwa-guidance"></div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="ciwa-button-group">
+      <button type="button" class="ciwa-button ciwa-button-primary" id="ciwa-report-btn">Generate Report &amp; Copy</button>
+      <button type="button" class="ciwa-button ciwa-button-secondary" id="ciwa-reset-btn">Reset</button>
+    </div>
+
+    <!-- Summary Section -->
+    <div class="ciwa-summary-section" id="ciwa-summary">
+      <div class="ciwa-summary-title">Item Scores</div>
+      <div class="ciwa-summary-grid" id="ciwa-summary-grid"><!-- Populated by JavaScript --></div>
+    </div>
+  </div>

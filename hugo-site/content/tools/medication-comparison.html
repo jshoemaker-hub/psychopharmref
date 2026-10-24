@@ -1,26 +1,49 @@
 ---
-title: "Side-by-Side Psychiatric Medication Comparison Tool"
-description: "Compare any two psychiatric medications head-to-head: receptor binding profiles, P450 interactions, side effect risk scores, renal/hepatic dosing adjustments, and FDA-approved indications in one view."
+title: "Psychiatric Medication Comparison: 2 to 6 Drugs"
+description: "Compare 2 to 6 psychiatric drugs side by side: receptor binding, P450 interactions, QT flags, predicted side-effect overlap and circuit targets."
 layout: "tool"
 tool_section: "med-compare"
-category: "Clinical Tools"
+category: "Psychopharmacology"
+date: 2026-10-23
+lastmod: 2026-10-23
 ---
 
 <div class="tool-landing">
   <div class="tool-landing-header">
-    <span class="tool-landing-category">Clinical Tools</span>
-    <h1>Side-by-Side Psychiatric Medication Comparison Tool</h1>
-    <p class="tool-landing-desc">Compare any two psychiatric medications head-to-head: receptor binding profiles, P450 interactions, side effect risk scores, renal/hepatic dosing adjustments, and FDA-approved indications in one view.</p>
+    <span class="tool-landing-category">Psychopharmacology</span>
+    <h1>Psychiatric Medication Comparison: 2 to 6 Drugs</h1>
+    <p class="tool-landing-desc">Compare 2 to 6 psychiatric drugs side by side: receptor binding, P450 interactions, QT flags, predicted side-effect overlap and circuit targets.</p>
   </div>
   <div class="tool-landing-cta">
-    <a href="/#med-compare" class="tool-launch-btn" id="tool-launch">Open Interactive Tool</a>
-    <p class="tool-landing-note">This tool runs in the PsychoPharmRef clinical reference application.</p>
+    <a href="/#med-compare" class="tool-launch-btn">Open Medication Comparison</a>
+    <p class="tool-landing-note">Runs free in your browser. Comparisons are calculated on your device and not sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it does</h2>
+    <p>Choose how many medications to compare (2 to 6), select each one, and the tool builds a single stacked comparison report. It is meant for questions such as "how different is this switch, really?", "will these two interact?" and "which side effects will these drugs share?". The same page has tabs for a tolerability comparison and for receptor binding profiles.</p>
+
+    <h2>Sections of the report</h2>
+    <ul>
+      <li><strong>Drug summary:</strong> class, half-life and mechanism for each drug.</li>
+      <li><strong>P450 interactions:</strong> interactions between the selected drugs based on the substrate, inhibitor and inducer data on file, grouped as strong, moderate or weak and by direction (levels raised or lowered), with a suggested action for each. If two or more selected drugs prolong the QT interval, an additive QT warning appears. Pharmacokinetic notes for specific drugs and pairs are shown here too. When no CYP interaction is found, the tool says so and notes that this does not rule out UGT, transporter or pharmacodynamic interactions.</li>
+      <li><strong>Receptor binding:</strong> a bar chart of pKi (9 − log10 Ki) for every receptor where at least one drug binds with Ki of 5,000 nM or less, and a Ki table color-coded by affinity.</li>
+      <li><strong>Side-effect overlap:</strong> predicted risk scores from 0 to 100 for each side-effect category, based on each drug's receptor affinities weighted against the receptors that drive that side effect.</li>
+      <li><strong>Circuits and conditions:</strong> the neuropsychiatric circuits each drug modulates through receptors it binds at Ki of 1,000 nM or less, and the conditions linked to circuits shared by more than one drug.</li>
+    </ul>
+
+    <h2>Reading the binding and side-effect data</h2>
+    <table>
+      <thead><tr><th>Ki</th><th>Affinity label in the table</th></tr></thead>
+      <tbody>
+        <tr><td>Below 10 nM</td><td>Very high</td></tr>
+        <tr><td>10 to below 100 nM</td><td>High</td></tr>
+        <tr><td>100 to below 1,000 nM</td><td>Moderate</td></tr>
+        <tr><td>1,000 nM and above</td><td>Low</td></tr>
+      </tbody>
+    </table>
+    <p>The table's "Shared High Affinity" column counts how many of the selected drugs bind a receptor at Ki of 1,000 nM or less. Side-effect cards are sorted so that effects shared by the most drugs come first, and a card is highlighted when two or more drugs score 25 or higher. The scores are predictions from binding data, not incidence rates from trials.</p>
+
+    <h2>Limitations and output</h2>
+    <p>Binding constants vary between assays and species, and affinity alone does not account for dose, receptor occupancy, active metabolites or intrinsic activity. Drugs without receptor data on file (for example, many mood stabilizers) show gaps in the binding, side-effect and circuit sections. The report can be printed or saved as a PDF with the Print / Save PDF button.</p>
   </div>
 </div>
-
-<script>
-// Auto-redirect to the SPA section after a brief delay for SEO crawlers
-if (!navigator.userAgent.match(/bot|crawl|spider|google|bing|yandex|baidu/i)) {
-  window.location.href = '/#med-compare';
-}
-</script>

@@ -1,0 +1,70 @@
+  <div class="mt-warning">
+    <strong>Capacity is decision-specific.</strong> Assess capacity for a single, specific decision. Address communication barriers (hearing, vision, language, dysphasia) and provide adequate disclosure of treatment, alternatives, risks, and consequences before scoring. People are presumed capable; if uncertain, err on the side of capable.
+  </div>
+
+  <div class="ace-date">Assessment date: <span id="ace-date-display"></span></div>
+
+  <!-- 1. Patient + decision context -->
+  <div class="ace-card">
+    <h3 class="ace-card-title">1. Patient &amp; Decision Context</h3>
+    <p class="ace-card-sub">Briefly identify the decision being assessed. Use the patient&rsquo;s own words wherever possible.</p>
+    <div>
+      <label class="ace-field-label" for="ace-condition">Medical condition</label>
+      <textarea id="ace-condition" class="ace-textarea" rows="2" placeholder="e.g., Below-knee gangrene, type 2 diabetes"></textarea>
+    </div>
+    <div style="margin-top:12px">
+      <label class="ace-field-label" for="ace-treatment">Proposed treatment</label>
+      <textarea id="ace-treatment" class="ace-textarea" rows="2" placeholder="e.g., Below-knee amputation"></textarea>
+    </div>
+    <div style="margin-top:12px">
+      <label class="ace-field-label" for="ace-alternatives">Alternatives discussed (including refusal / withdrawal)</label>
+      <textarea id="ace-alternatives" class="ace-textarea" rows="2" placeholder="e.g., IV antibiotics; comfort-focused care; no treatment"></textarea>
+    </div>
+  </div>
+
+  <!-- 2. Domain scoring -->
+  <div class="ace-card">
+    <h3 class="ace-card-title">2. Domain Scoring</h3>
+    <p class="ace-card-sub">
+      Domains 1&ndash;6: <strong>YES</strong> = appropriate response to open-ended questions; <strong>UNSURE</strong> = needs prompting with closed-ended questions; <strong>NO</strong> = cannot respond appropriately despite repeated prompting.
+      <br>Domain 7 (a/b): <strong>YES</strong> means the decision <em>is</em> affected by depression/psychosis. Never base a finding of incapacity on domain 7 alone.
+    </p>
+    <div id="ace-domains"></div>
+  </div>
+
+  <!-- 3. Overall impression -->
+  <div class="ace-card">
+    <h3 class="ace-card-title">3. Overall Impression</h3>
+    <p class="ace-card-sub">Capacity is presumed; if uncertain, err on the side of calling the person capable.</p>
+    <div class="ace-overall">
+      <label><input type="radio" name="ace-impression" value="def-cap"><span>Definitely Capable</span></label>
+      <label><input type="radio" name="ace-impression" value="prob-cap"><span>Probably Capable</span></label>
+      <label><input type="radio" name="ace-impression" value="prob-inc"><span>Probably Incapable</span></label>
+      <label><input type="radio" name="ace-impression" value="def-inc"><span>Definitely Incapable</span></label>
+    </div>
+    <div style="margin-top:14px">
+      <label class="ace-field-label" for="ace-comments">Comments (e.g., need for psychiatric assessment, further disclosure, family consultation)</label>
+      <textarea id="ace-comments" class="ace-textarea" rows="3" placeholder="Optional &mdash; appended to the report"></textarea>
+    </div>
+    <div style="margin-top:14px">
+      <label class="ace-field-label" for="ace-minutes">Time taken to administer (minutes)</label>
+      <input id="ace-minutes" type="number" min="0" step="1" class="ace-input" style="max-width:160px" placeholder="e.g., 15">
+    </div>
+  </div>
+
+  <!-- Action buttons -->
+  <div class="ace-actions">
+    <button id="ace-generate-btn" class="ace-generate-btn">Generate Report &amp; Copy</button>
+    <button id="ace-print-btn" class="ace-btn-print" type="button">Print Blank Form</button>
+  </div>
+
+  <!-- Output -->
+  <div id="ace-output" class="ace-output ace-hidden">
+    <h3 class="ace-card-title" style="margin-bottom:12px">EMR-Ready Summary</h3>
+    <pre id="ace-output-text" class="ace-output-pre"></pre>
+    <div class="ace-actions">
+      <button type="button" id="ace-copy-btn" class="ace-btn-secondary">Copy to clipboard</button>
+      <button type="button" id="ace-reset-btn" class="ace-btn-secondary">Reset</button>
+      <span id="ace-copy-status" class="ace-copy-status">Copied.</span>
+    </div>
+  </div>

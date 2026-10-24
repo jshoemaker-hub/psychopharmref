@@ -1,26 +1,45 @@
 ---
-title: "Receptor Binding Profiles — Psychiatric Drug Comparison Tool"
-description: "Compare receptor binding affinities (Ki values in nM) across psychiatric medication classes. Interactive bar charts and nested treemap visualization showing pKi values for SERT, NET, DAT, 5-HT, dopamine, histamine, alpha, and muscarinic receptors."
+title: "Receptor Binding Profiles: Psychiatric Drug Ki Values"
+description: "Look up receptor Ki values for psychiatric drugs, compare two drugs side by side, and view pKi by drug class as bar charts, heatmaps, or treemaps."
 layout: "tool"
 tool_section: "receptor-binding"
 category: "Psychopharmacology"
+date: 2026-10-23
+lastmod: 2026-10-23
 ---
 
 <div class="tool-landing">
   <div class="tool-landing-header">
     <span class="tool-landing-category">Psychopharmacology</span>
-    <h1>Receptor Binding Profiles — Psychiatric Drug Comparison Tool</h1>
-    <p class="tool-landing-desc">Compare receptor binding affinities (Ki values in nM) across psychiatric medication classes. Interactive bar charts and nested treemap visualization showing pKi values for SERT, NET, DAT, 5-HT, dopamine, histamine, alpha, and muscarinic receptors.</p>
+    <h1>Receptor Binding Profiles: Psychiatric Drug Ki Values</h1>
+    <p class="tool-landing-desc">Look up receptor Ki values for psychiatric drugs, compare two drugs side by side, and view pKi by drug class as bar charts, heatmaps, or treemaps.</p>
   </div>
   <div class="tool-landing-cta">
-    <a href="/#receptor-binding" class="tool-launch-btn" id="tool-launch">Open Interactive Tool</a>
-    <p class="tool-landing-note">This tool runs in the PsychoPharmRef clinical reference application.</p>
+    <a href="/#receptor-binding" class="tool-launch-btn">Open Receptor Binding</a>
+    <p class="tool-landing-note">Runs free in your browser. No account or sign-in needed.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it shows</h2>
+    <p>The tool displays receptor binding affinity as Ki in nanomolar (nM), where a lower Ki means higher affinity. It has three parts. The single-drug view lists every receptor for the selected drug, sorted by Ki, with the binding action (for example antagonist or agonist), an affinity label, and the pKi, plus a pie chart of relative affinity. The side-by-side view compares any two medications as a bar chart, pie charts, heatmap, or treemap. The class view plots pKi for every drug in a class, from SSRIs, SNRIs, TCAs, and MAOIs to antipsychotics, mood stabilizers, stimulants, hypnotics, VMAT2 inhibitors, and opioid-related agents.</p>
+
+    <h2>How the numbers are calculated</h2>
+    <p>pKi is calculated as 9 − log10(Ki in nM), so a higher pKi bar means stronger binding. The pie charts show relative affinity as 1/Ki normalized to percentages, and only receptors with Ki below 5,000 nM are included. A Ki of 10,000 nM is treated as no meaningful binding. Each Ki is labeled by these bands:</p>
+    <table>
+      <thead><tr><th>Ki (nM)</th><th>Affinity label</th></tr></thead>
+      <tbody>
+        <tr><td>Below 1</td><td>Extremely High</td></tr>
+        <tr><td>1 to below 10</td><td>Very High</td></tr>
+        <tr><td>10 to below 100</td><td>High</td></tr>
+        <tr><td>100 to below 1,000</td><td>Moderate</td></tr>
+        <tr><td>1,000 to below 10,000</td><td>Low</td></tr>
+        <tr><td>10,000 or more</td><td>Negligible</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Comparing two drugs</h2>
+    <p>Pick Drug A and Drug B to see their profiles on the same axes, which makes differences within a class easy to spot. Alongside the charts, the comparison flags additive QT prolongation when both drugs prolong QT, and lists known P450 inhibitor or inducer interactions between the pair. For classes whose main targets fall outside the receptor panel, the class view explains the mechanism instead of showing empty charts. Some drugs carry a short note about their binding data.</p>
+
+    <h2>Limitations</h2>
+    <p>Ki values vary two- to five-fold between studies. The values shown are representative human-receptor data, taken from FDA labels where available. Agonist binding for the muscarinic agonist class (Cobenfy) is not charted, so it is not mistaken for anticholinergic activity.</p>
   </div>
 </div>
-
-<script>
-// Auto-redirect to the SPA section after a brief delay for SEO crawlers
-if (!navigator.userAgent.match(/bot|crawl|spider|google|bing|yandex|baidu/i)) {
-  window.location.href = '/#receptor-binding';
-}
-</script>

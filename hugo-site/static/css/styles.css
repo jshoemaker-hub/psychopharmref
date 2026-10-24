@@ -176,6 +176,7 @@ html, body {
   padding: 0;
 }
 .logo span { color: var(--accent); }
+.logo a { display: inline-block; min-height: 24px; } /* 24px tap target */
 .logo-sub {
   font-size: 11px;
   color: var(--text-muted);
@@ -3089,7 +3090,8 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
   animation: home-ticker-scroll 44s linear infinite;
   will-change: transform;
 }
-.home-ticker:hover .home-ticker-track { animation-play-state: paused; }
+.home-ticker:hover .home-ticker-track,
+.home-ticker:focus-within .home-ticker-track { animation-play-state: paused; }
 .tk-set {
   display: flex;
   align-items: center;
@@ -3098,6 +3100,8 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
   flex-shrink: 0;
 }
 .tk-set a {
+  display: inline-block;
+  padding: 6px 0; /* 24px+ tap target */
   font-size: 12.5px;
   font-weight: 600;
   color: var(--text);
@@ -5312,3 +5316,14 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
 
 /* Rating scales: severity hidden until every item is answered */
 .scale-incomplete { color: var(--text-muted, #6b6050) !important; font-style: italic; background: none !important; }
+
+/* Placeholder for a tool's body while fragments/<section-id>.html loads */
+.tool-fragment { min-height: 50vh; padding: 24px 0; }
+.tool-fragment-msg { color: var(--text-muted, #6b6050); font-size: 14px; }
+
+/* Headings retagged for a correct outline; sized to match their former h4 look */
+.ba-cs-title { font-size: 15px; font-weight: 700; line-height: 1.6; margin: 0 0 8px; padding: 0; border: 0; }
+.ba-related .ba-related-title { font-size: 15px; font-weight: 700; line-height: 24px; margin: 0 0 12px; padding: 0; border: 0; color: var(--text, #231e14); letter-spacing: normal; text-transform: none; }
+.nl-blog-cta .nl-cta-title { font-size: 16px; font-weight: 700; line-height: 25.6px; margin: 0 0 6px; padding: 0; border: 0; color: #fff; letter-spacing: normal; text-transform: none; }
+.filter-panel .filter-panel-title { font-size: 12.5px; font-weight: 700; line-height: 18.75px; margin: 0 0 8px; padding: 0; border: 0; color: var(--text-muted, #6b6050); letter-spacing: 0.8px; text-transform: uppercase; }
+.qt-thresholds-title { font-size: 15px; font-weight: 700; line-height: 1.4; padding: 0; border: 0; }

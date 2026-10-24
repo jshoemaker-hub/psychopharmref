@@ -78,3 +78,14 @@ Claude outputs/
 _to_delete/
 *-preview.html
 HEAD.lock.stale*
+
+# Local backups and editor/OS leftovers (this repo lives on an exFAT volume,
+# where macOS writes ._* metadata files next to everything)
+backups/
+*.bak
+*.bak-*
+._*
+.DS_Store
+.fuse_hidden*
+__pycache__/
+deploy-*.zip

@@ -1,26 +1,40 @@
 ---
-title: "Medication Taper & Cross-Taper Planner for Psychiatric Drugs"
-description: "Generate tapering schedules, cross-tapering plans, and dose titration calendars for psychiatric medication changes. Customizable step sizes, intervals, and start dates with printable output."
+title: "Medication Taper and Cross-Taper Schedule Planner"
+description: "Build a dated taper, titration, or two-drug cross-taper schedule for a psychiatric drug, with step sizes in percent or dose and intervals by half-life."
 layout: "tool"
 tool_section: "med-taper"
 category: "Clinical Tools"
+date: 2026-10-23
+lastmod: 2026-10-23
 ---
 
 <div class="tool-landing">
   <div class="tool-landing-header">
     <span class="tool-landing-category">Clinical Tools</span>
-    <h1>Medication Taper & Cross-Taper Planner for Psychiatric Drugs</h1>
-    <p class="tool-landing-desc">Generate tapering schedules, cross-tapering plans, and dose titration calendars for psychiatric medication changes. Customizable step sizes, intervals, and start dates with printable output.</p>
+    <h1>Medication Taper and Cross-Taper Schedule Planner</h1>
+    <p class="tool-landing-desc">Build a dated taper, titration, or two-drug cross-taper schedule for a psychiatric drug, with step sizes in percent or dose and intervals by half-life.</p>
   </div>
   <div class="tool-landing-cta">
-    <a href="/#med-taper" class="tool-launch-btn" id="tool-launch">Open Interactive Tool</a>
-    <p class="tool-landing-note">This tool runs in the PsychoPharmRef clinical reference application.</p>
+    <a href="/#med-taper" class="tool-launch-btn">Open the Taper / Start Planner</a>
+    <p class="tool-landing-note">Runs free in your browser. Schedules are calculated on your device and not sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it does</h2>
+    <p>The planner turns a starting dose, a target dose, a step size, and a step interval into a dated schedule. It has two modes. Single Drug builds either a taper (reduce dose) or a start (titrate up) for one medication; enter 0 as the target for a full taper. Cross-Taper (2 Drugs) tapers Drug A down while Drug B titrates up, on the same step interval and the same dates.</p>
+
+    <h2>Inputs</h2>
+    <ul>
+      <li><strong>Medication:</strong> chosen from the PsychoPharmRef drug database.</li>
+      <li><strong>Doses:</strong> starting and target dose, in mcg, mg, or g.</li>
+      <li><strong>Step size:</strong> a percent or a fixed amount (mcg, mg, or g) to change at each step.</li>
+      <li><strong>Step interval:</strong> time at each dose before the next step, in hours, days, or half-lives.</li>
+      <li><strong>Start date:</strong> defaults to today.</li>
+    </ul>
+
+    <h2>How the schedule is calculated</h2>
+    <p>A percent step is calculated from the original starting dose, so each step changes the dose by the same amount (a linear schedule, not a percentage of the current dose). The last step lands exactly on the target. When the interval is set in half-lives, the tool reads the drug's half-life from the database (the average of the values listed, converted from days when needed) and shows the equivalent number of days; if no half-life is listed, it uses 24 hours. In cross-taper mode, the half-life of Drug A sets the interval, and if Drug B has no target dose, Drug A's starting dose is used.</p>
+
+    <h2>Output and limitations</h2>
+    <p>The output is a table of step number, date, daily dose, and notes (such as "Discontinue" at 0), with the number of steps, the interval, and the final dose. Cross-taper output shows both drugs' doses side by side. Schedules can be printed or saved as PDF. These are reference schedules only. Tapering and titration should be supervised by a qualified prescriber, because abrupt discontinuation of psychiatric medications can cause withdrawal, relapse, or discontinuation syndrome. Timing and doses should be adjusted to clinical response, tolerability, and patient factors, and cross-tapers need close monitoring.</p>
   </div>
 </div>
-
-<script>
-// Auto-redirect to the SPA section after a brief delay for SEO crawlers
-if (!navigator.userAgent.match(/bot|crawl|spider|google|bing|yandex|baidu/i)) {
-  window.location.href = '/#med-taper';
-}
-</script>

@@ -1,26 +1,44 @@
 ---
-title: "Psychiatric Drug Database — 91 Medications with Receptor Binding & P450 Data"
-description: "Searchable database of 91 psychiatric medications with receptor binding profiles (Ki values), P450 enzyme interactions, renal/hepatic dosing, QT prolongation risk, FDA-approved indications, and side effect profiles. Filter by drug class, sort by side effect risk."
+title: "Psychiatric Drug Database: Dosing, Risks, Binding"
+description: "Searchable table of psychiatric medications with half-life, renal and hepatic adjustment, QT, metabolic and EPS risk, pregnancy, and receptor binding."
 layout: "tool"
 tool_section: "drug-table"
 category: "Psychopharmacology"
+date: 2026-10-23
+lastmod: 2026-10-23
 ---
 
 <div class="tool-landing">
   <div class="tool-landing-header">
     <span class="tool-landing-category">Psychopharmacology</span>
-    <h1>Psychiatric Drug Database — 91 Medications with Receptor Binding & P450 Data</h1>
-    <p class="tool-landing-desc">Searchable database of 91 psychiatric medications with receptor binding profiles (Ki values), P450 enzyme interactions, renal/hepatic dosing, QT prolongation risk, FDA-approved indications, and side effect profiles. Filter by drug class, sort by side effect risk.</p>
+    <h1>Psychiatric Drug Database: Dosing, Risks, Binding</h1>
+    <p class="tool-landing-desc">Searchable table of psychiatric medications with half-life, renal and hepatic adjustment, QT, metabolic and EPS risk, pregnancy, and receptor binding.</p>
   </div>
   <div class="tool-landing-cta">
-    <a href="/#drug-table" class="tool-launch-btn" id="tool-launch">Open Interactive Tool</a>
-    <p class="tool-landing-note">This tool runs in the PsychoPharmRef clinical reference application.</p>
+    <a href="/#drug-table" class="tool-launch-btn">Open the Drug Database</a>
+    <p class="tool-landing-note">Runs free in your browser. Nothing you search or filter is sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it covers</h2>
+    <p>The Drug Database is the core table of PsychoPharmRef. It lists antidepressants, antipsychotics, mood stabilizers, sleep medications, anxiolytics, stimulants, non-stimulant ADHD drugs, VMAT2 inhibitors for movement disorders, and medications for substance use, one row per drug. You can search by name, narrow the table to one category, or filter by pharmacologic class (for example SSRI, SNRI, TCA, MAOI, first- and second-generation antipsychotics, Z-drugs, benzodiazepines, orexin antagonists) and by route of administration from the sidebar.</p>
+
+    <h2>Columns in the table</h2>
+    <table>
+      <thead><tr><th>Group</th><th>Columns</th></tr></thead>
+      <tbody>
+        <tr><td>Identity</td><td>Drug and brand name, class, active enantiomer, route</td></tr>
+        <tr><td>Pharmacokinetics</td><td>Parent half-life, active metabolites, protein binding</td></tr>
+        <tr><td>Special populations</td><td>Renal adjustment, hepatic adjustment, geriatric notes, pregnancy, breastfeeding</td></tr>
+        <tr><td>Safety signals</td><td>QT prolongation, lipid and glucose risk, EPS risk</td></tr>
+        <tr><td>Pharmacodynamics</td><td>Pre- and post-synaptic binding and a receptor chart</td></tr>
+      </tbody>
+    </table>
+    <p>Select any drug name to open its detail view, which adds its mechanism, pharmacokinetics, P450 interactions, FDA-approved indications, and dosing considerations.</p>
+
+    <h2>Sorting by side-effect risk</h2>
+    <p>The side-effect sort reorders the table by relative risk for one adverse effect, from least to most risky or the reverse, and can break ties with a second effect. The effects available are sedation, weight gain, anticholinergic effects, orthostatic hypotension and dizziness, sexual dysfunction, EPS and akathisia, metabolic effects, insomnia and activation, hyperprolactinemia, nausea and GI upset, cognitive impairment, and cardiac or QT effects. When a sort is active, risk columns appear next to the drug name.</p>
+
+    <h2>Limitations</h2>
+    <p>The table summarizes prescribing information and the pharmacology literature for quick comparison. It does not replace current FDA labeling, an interaction checker, or patient-specific dosing decisions, and relative risk ratings are comparisons between drugs rather than incidence figures.</p>
   </div>
 </div>
-
-<script>
-// Auto-redirect to the SPA section after a brief delay for SEO crawlers
-if (!navigator.userAgent.match(/bot|crawl|spider|google|bing|yandex|baidu/i)) {
-  window.location.href = '/#drug-table';
-}
-</script>

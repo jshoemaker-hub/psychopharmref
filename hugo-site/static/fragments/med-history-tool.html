@@ -1,0 +1,33 @@
+  <div class="mt-warning" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+    <span><strong>Clinical Use:</strong> This form is intended to capture a patient's prior medication experience. Leave any medication untouched if not tried. Only medications marked "Tried" will appear in the generated report.</span>
+    <button class="mh-btn mh-btn-outline" id="mh-print-btn" style="white-space:nowrap;flex-shrink:0;">&#128438; Print Blank Form</button>
+  </div>
+
+  <div class="mh-restore-row">
+    <input aria-label="Paste restore code here to reload a prior session" type="text" id="mh-restore-input" placeholder="Paste restore code here to reload a prior session…" autocomplete="off" spellcheck="false">
+    <button class="mh-btn mh-btn-outline" id="mh-restore-btn">Restore</button>
+  </div>
+
+  <div id="mh-form-container">
+    <!-- Dynamically populated by med-history-tool.js -->
+    <p style="color:#888;font-size:0.9rem;">Loading medication list…</p>
+  </div>
+
+  <div class="mh-top-controls" style="margin-top:1.5rem;">
+    <button class="mh-btn mh-btn-primary" id="mh-generate-btn">Generate Report &amp; Code</button>
+    <button class="mh-btn mh-btn-danger" id="mh-reset-btn">Reset All</button>
+  </div>
+
+  <div id="mh-output-section" style="display:none;">
+    <div class="mh-output-block">
+      <span class="mh-output-label">Results — copy report to paste into EMR (restore code included in plain text)</span>
+      <div id="mh-output-area" class="mh-results-display"></div>
+      <div class="mh-btn-row" style="margin-top:0.4rem;">
+        <button class="mh-btn mh-btn-primary" id="mh-copy-note-btn">Copy Note</button>
+      </div>
+      <div id="mh-copy-fallback" class="mh-copy-fallback" hidden>
+        <span id="mh-copy-fallback-label" class="mh-output-label">Copy fallback</span>
+        <textarea aria-labelledby="mh-copy-fallback-label" id="mh-copy-fallback-text" class="mh-copy-fallback-text" rows="10" spellcheck="false" readonly></textarea>
+      </div>
+    </div>
+  </div>

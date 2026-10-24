@@ -1,27 +1,44 @@
 ---
-title: "P450 Drug Interaction Checker for Psychiatric Medications"
-description: "Interactive CYP450 enzyme interaction table for psychiatric drugs. Identify substrates, inhibitors, and inducers across CYP1A2, CYP2B6, CYP2C9, CYP2C19, CYP2D6, and CYP3A4 with clinical significance ratings."
+title: "CYP450 Interactions for Psychiatric Medications"
+description: "See which psychiatric drugs are substrates, inhibitors or inducers of CYP1A2, 2B6, 2C9, 2C19, 2D6 and 3A4, with strong, moderate and weak ratings."
 layout: "tool"
-tool_section: "drug-table"
+tool_section: "p450"
 category: "Psychopharmacology"
+date: 2026-10-23
+lastmod: 2026-10-23
 ---
 
 <div class="tool-landing">
   <div class="tool-landing-header">
     <span class="tool-landing-category">Psychopharmacology</span>
-    <h1>P450 Drug Interaction Checker for Psychiatric Medications</h1>
-    <p class="tool-landing-desc">Interactive CYP450 enzyme interaction table for psychiatric drugs. Identify substrates, inhibitors, and inducers across CYP1A2, CYP2B6, CYP2C9, CYP2C19, CYP2D6, and CYP3A4 with clinical significance ratings.</p>
+    <h1>CYP450 Interactions for Psychiatric Medications</h1>
+    <p class="tool-landing-desc">See which psychiatric drugs are substrates, inhibitors or inducers of CYP1A2, 2B6, 2C9, 2C19, 2D6 and 3A4, with strong, moderate and weak ratings.</p>
   </div>
   <div class="tool-landing-cta">
-    <a href="/#drug-table" class="tool-launch-btn" id="tool-launch">Open the Drug Database</a>
-    <p class="tool-landing-note">CYP450 substrate, inhibitor, and inducer data is now built into each medication&rsquo;s detail view inside the PsychoPharmRef Drug Database &mdash; open any drug to see its P450 profile.</p>
+    <a href="/#p450" class="tool-launch-btn">Open the P450 Interactions table</a>
+    <p class="tool-landing-note">Runs free in your browser. Open any drug to see its P450 profile; nothing you search is sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it shows</h2>
+    <p>PsychoPharmRef records cytochrome P450 metabolism for each medication in its Drug Database, which covers antidepressants, antipsychotics, mood stabilizers, sleep medications, anxiolytics, stimulants, non-stimulant ADHD drugs and VMAT2 inhibitors. For six enzymes (CYP1A2, CYP2B6, CYP2C9, CYP2C19, CYP2D6 and CYP3A4), plus UGT glucuronidation where relevant, it marks whether a drug is a substrate, an inhibitor, or an inducer.</p>
+
+    <h2>Reading the P450 profile</h2>
+    <p>Open any drug from the Drug Database and its detail view shows a P450 fingerprint: one row per enzyme the drug touches, with columns for substrate, inhibitor and inducer.</p>
+    <table>
+      <thead><tr><th>Mark</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>Check mark</td><td>Substrate of that enzyme</td></tr>
+        <tr><td>S / M / W (inhibitor column)</td><td>Strong, moderate or weak inhibitor</td></tr>
+        <tr><td>S / M / W (inducer column)</td><td>Strong, moderate or weak inducer</td></tr>
+        <tr><td>Dash</td><td>No listed effect</td></tr>
+      </tbody>
+    </table>
+    <p>Drugs with no entries show "No significant P450 interactions." Hovering a drug card gives a one-line summary, for example which enzymes a drug strongly or moderately inhibits. The <a href="/#p450">P450 Interactions</a> table lays out every medication against the six CYP enzymes, filterable by category.</p>
+
+    <h2>Checking a combination</h2>
+    <p>To check a specific regimen, add the drugs to Med Comparison and open its P450 tab. It matches each drug's substrates against the others' inhibitors and inducers, ranks the interactions as strong, moderate or weak, and states the expected direction (higher or lower exposure) with suggested action text. It also flags additive QT prolongation when two or more selected agents prolong QT, and adds label-based notes for interactions the CYP model cannot express.</p>
+
+    <h2>Limitations</h2>
+    <p>The substrate, inhibitor and inducer listings are a summary model. They do not capture dose, genotype, the size of each enzyme's contribution to clearance, or non-CYP transporter effects beyond the curated notes. Confirm clinically important interactions against current prescribing information and an interaction reference.</p>
   </div>
 </div>
-
-<script>
-// Auto-redirect to the SPA Drug Database (P450 data now lives in each drug's
-// detail view) after a brief delay for SEO crawlers
-if (!navigator.userAgent.match(/bot|crawl|spider|google|bing|yandex|baidu/i)) {
-  window.location.href = '/#drug-table';
-}
-</script>

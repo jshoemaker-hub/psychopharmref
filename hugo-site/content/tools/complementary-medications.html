@@ -1,0 +1,45 @@
+---
+title: "Find Complementary Psychiatric Medications"
+description: "Pick a reference drug to see curated augmentation strategies and ranked agents that share an indication but act through different receptors."
+layout: "tool"
+tool_section: "complementary-meds"
+category: "Psychopharmacology"
+date: 2026-10-23
+lastmod: 2026-10-23
+---
+
+<div class="tool-landing">
+  <div class="tool-landing-header">
+    <span class="tool-landing-category">Psychopharmacology</span>
+    <h1>Find Complementary Psychiatric Medications</h1>
+    <p class="tool-landing-desc">Pick a reference drug to see curated augmentation strategies and ranked agents that share an indication but act through different receptors.</p>
+  </div>
+  <div class="tool-landing-cta">
+    <a href="/#complementary-meds" class="tool-launch-btn">Open Find Complementary</a>
+    <p class="tool-landing-note">Runs free in your browser. Rankings are calculated on your device and not sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it does</h2>
+    <p>Find Complementary is the mirror of Find Similar. Instead of looking for a like-for-like switch, it looks for agents that treat the same condition through a different mechanism, which makes them candidates for combination or augmentation. For a reference medication it shows two things. First, curated, evidence-based combination strategies that the drug takes part in, covering treatment-resistant depression, treatment-resistant schizophrenia and bipolar augmentation. Each strategy is tagged by evidence tier: FDA-approved adjunct, guideline, or empirical. Second, a computed ranking of other agents.</p>
+
+    <h2>How the ranking works</h2>
+    <p>A candidate must share at least one FDA indication with the reference and must differ mechanistically. It is then scored on these factors, with default weights:</p>
+    <table>
+      <thead><tr><th>Factor</th><th>Default weight</th></tr></thead>
+      <tbody>
+        <tr><td>Receptor-binding divergence</td><td>30%</td></tr>
+        <tr><td>Action divergence at shared receptors (e.g. antagonist vs partial agonist)</td><td>15%</td></tr>
+        <tr><td>Signal-transduction (cascade) tier divergence</td><td>15%</td></tr>
+        <tr><td>Drug class match</td><td>15%</td></tr>
+        <tr><td>Shared FDA indications</td><td>25%</td></tr>
+      </tbody>
+    </table>
+    <p>Sliders let you change the weights, which renormalize to 100%. You can tick residual symptoms the patient still has, such as insomnia, anhedonia, anxiety, inattention, agitation, psychotic symptoms, poor appetite, sexual dysfunction or somatic pain. That adds a symptom-coverage factor and flags candidates whose mechanism may make those symptoms worse. If a factor cannot be measured for a pair, for example receptor divergence for lithium, which has no binding data on file, it is dropped and its weight shared among the others. You can also restrict results to the same category or to a route such as oral or long-acting injectable.</p>
+
+    <h2>Safety handling</h2>
+    <p>Contraindicated pairs, such as an MAOI with a serotonergic agent, are never ranked. They are listed separately with the reason. Ranked candidates carry flags for additive QT prolongation and known P450 interactions. Action data (full or partial agonist, antagonist, inverse agonist, reuptake inhibitor, releaser, allosteric modulator) is curated pharmacology, not a measured constant.</p>
+
+    <h2>What the summary includes and its limits</h2>
+    <p>Copy Summary produces a plain-text report with the date, the reference drug, any route filter, the curated combinations with evidence tier and monitoring notes, and each ranked candidate with its score breakdown, safety cautions, cascade tiers, routes, symptom coverage, new receptor coverage, shared indications, and QT and P450 flags. Neither engine establishes that a combination is effective or safe for a given patient. Check interactions and additive serotonergic, QT, sedation and seizure risk, and consider whether optimizing monotherapy is the better choice.</p>
+  </div>
+</div>

@@ -239,7 +239,8 @@
     buildIndex();
     renderFilters();
     renderAZ();
-    renderGrid();
+    // The full term grid is large; build it when the glossary is first opened
+    (window.whenSectionShown || function(id, fn) { fn(); })('psychiatry-glossary', renderGrid);
 
     // Search input
     var search = document.getElementById('gl-search');

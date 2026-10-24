@@ -465,6 +465,43 @@ function pushSectionState(id) {
   }
 }
 
+// Run fn the first time section `id` is shown (right away if it already is).
+function whenSectionShown(id, fn) {
+  const sec = document.getElementById(id);
+  if (!sec || sec.classList.contains('active')) { fn(); return; }
+  document.addEventListener('pp:sectionchange', function onShow(e) {
+    if (e.detail.id !== id) return;
+    document.removeEventListener('pp:sectionchange', onShow);
+    fn();
+  });
+}
+window.whenSectionShown = whenSectionShown;
+
+// Fetch a section's body markup (fragments/<section-id>.html) and put it in
+// place of its placeholder. Resolves once the markup is in the DOM.
+function loadToolFragment(sec) {
+  const holder = sec.querySelector('.tool-fragment[data-fragment]');
+  if (!holder) return Promise.resolve();
+  if (holder._loading) return holder._loading;
+  holder._loading = fetch('fragments/' + holder.dataset.fragment + '.html')
+    .then(function(r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.text();
+    })
+    .then(function(html) {
+      holder.insertAdjacentHTML('beforebegin', html);
+      holder.remove();
+      document.dispatchEvent(new CustomEvent('pp:fragmentloaded', { detail: { id: sec.id } }));
+    })
+    .catch(function(err) {
+      console.error('Failed to load tool markup for ' + sec.id, err);
+      holder.removeAttribute('aria-busy');
+      holder.querySelector('.tool-fragment-msg').textContent = 'This tool could not be loaded. Check your connection, then reload the page.';
+      throw err;
+    });
+  return holder._loading;
+}
+
 function switchSection(id, skipGroupExpand) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
@@ -490,6 +527,9 @@ function switchSection(id, skipGroupExpand) {
   // Lazy-render charts when section becomes active
   if (id === 'receptor-binding') renderBarChart();
 
+  // Sections without tool JS can still keep their body in a fragment
+  if (sec && !sec.dataset.lazyTool) loadToolFragment(sec).catch(function() {});
+
   // Lazy-load tool CSS/JS on first visit
   if (sec && sec.dataset.lazyTool && !sec.dataset.lazyLoaded) {
     const toolId = sec.dataset.lazyTool;
@@ -506,7 +546,7 @@ function switchSection(id, skipGroupExpand) {
         dataScript.src = 'js/qbank-data.js?v=20261008c';
         dataScript.onload = function() {
           var script = document.createElement('script');
-          script.src = 'js/tools/' + toolId + '.js?v=20261008b';
+          script.src = 'js/tools/' + toolId + '.js?v=20261023a';
           document.body.appendChild(script);
         };
         dataScript.onerror = function() { console.error('Failed to load qbank-data.js'); };
@@ -549,7 +589,7 @@ function switchSection(id, skipGroupExpand) {
           d.onload = function() {
             if (--smPending === 0) {
               var script = document.createElement('script');
-              script.src = 'js/tools/' + toolId + '.js?v=20261002b';
+              script.src = 'js/tools/' + toolId + '.js?v=20261023a';
               document.body.appendChild(script);
             }
           };
@@ -558,7 +598,7 @@ function switchSection(id, skipGroupExpand) {
         });
       } else {
         var script = document.createElement('script');
-        script.src = 'js/tools/' + toolId + '.js?v=20261002b';
+        script.src = 'js/tools/' + toolId + '.js?v=20261023a';
         document.body.appendChild(script);
       }
     }
@@ -593,15 +633,19 @@ function switchSection(id, skipGroupExpand) {
       return false;
     }
 
-    if (shouldLoadToolUtils()) {
-      const utils = document.createElement('script');
-      utils.src = 'js/tools/tool-utils.js?v=20261002a';
-      utils.onload = loadToolScript;
-      utils.onerror = function() { console.error('Failed to load tool-utils.js'); };
-      document.body.appendChild(utils);
-    } else {
-      loadToolScript();
-    }
+    // The tool's markup lives in fragments/<section-id>.html; insert it before
+    // the tool JS runs, since the JS binds to that markup on load.
+    loadToolFragment(sec).then(function() {
+      if (shouldLoadToolUtils()) {
+        const utils = document.createElement('script');
+        utils.src = 'js/tools/tool-utils.js?v=20261002a';
+        utils.onload = loadToolScript;
+        utils.onerror = function() { console.error('Failed to load tool-utils.js'); };
+        document.body.appendChild(utils);
+      } else {
+        loadToolScript();
+      }
+    }, function() {});
     sec.dataset.lazyLoaded = 'true';
   }
 
@@ -3072,13 +3116,15 @@ function initHomeTicker() {
 renderStats();
 initQuickSearch();
 initHomeTicker();
-renderDrugTable();
-renderP450Table();
+// The drug, P450 and receptor-glossary tables hold thousands of elements, so
+// they are built the first time their section is shown, not at page load.
+whenSectionShown('drug-table', renderDrugTable);
+whenSectionShown('p450', renderP450Table);
 populateDrugSelect();
 renderReceptorToggles();
 populateCompareSelects();
 renderGlossaryTypeFilters();
-renderGlossary();
+whenSectionShown('glossary', renderGlossary);
 initFDASearch();
 renderQTNonPsychList();
 renderQTPsychList();

@@ -1,0 +1,49 @@
+---
+title: "24-Hour Alcohol Intake Calculator: Standard Drinks"
+description: "Convert a patient's 24-hour drinks to US standard drinks and grams of ethanol, with editable volume and ABV and a copyable intake report."
+layout: "tool"
+tool_section: "alcohol-tool"
+category: "Clinical Tools"
+date: 2026-10-23
+lastmod: 2026-10-23
+---
+
+<div class="tool-landing">
+  <div class="tool-landing-header">
+    <span class="tool-landing-category">Clinical Tools</span>
+    <h1>24-Hour Alcohol Intake Calculator: Standard Drinks</h1>
+    <p class="tool-landing-desc">Convert a patient's 24-hour drinks to US standard drinks and grams of ethanol, with editable volume and ABV and a copyable intake report.</p>
+  </div>
+  <div class="tool-landing-cta">
+    <a href="/#alcohol-tool" class="tool-launch-btn">Open the Alcohol Intake Calculator</a>
+    <p class="tool-landing-note">Runs free in your browser. Totals are calculated on your device and not sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it does</h2>
+    <p>Patients rarely report alcohol use in standard drinks. They report "a couple of IPAs" or "a big glass of wine". This calculator lets you document what was consumed over a 24-hour period and converts it to US standard drinks and grams of pure ethanol. One US standard drink is 14 g of pure ethanol (0.6 fl oz).</p>
+
+    <h2>Beverages and the calculation</h2>
+    <p>The tool lists twelve preset beverages, each with an editable default volume and ABV, plus one free-text "Other" row:</p>
+    <ul>
+      <li>Beer: regular (12 oz, 5%), light (12 oz, 4.2%), craft beer or IPA (16 oz, 7%), malt liquor (12 oz, 8%), hard seltzer (12 oz, 5%)</li>
+      <li>Wine: standard pour (5 oz, 12%), large pour (8 oz, 12%), fortified wine such as port or sherry (3 oz, 18%), champagne or sparkling (5 oz, 12%)</li>
+      <li>Spirits: shot (1.5 oz, 40%), mixed drink with one shot (1.5 oz, 40%), cocktail with two shots (3 oz, 40%)</li>
+    </ul>
+    <p>Enter the quantity for each row. Grams of ethanol are calculated as volume (oz) × 29.5735 mL/oz × ABV/100 × 0.789 g/mL, multiplied by the quantity. Standard drinks are grams divided by 14. Each row shows its subtotal, and the running total shows standard drinks and grams per 24 hours.</p>
+
+    <h2>Interpreting the total</h2>
+    <p>The tool shows a flag next to the total, based on the NIAAA low-risk limits it cites (men up to 4 per day and 14 per week; women up to 3 per day and 7 per week). The flag does not ask for the patient's sex.</p>
+    <table>
+      <thead><tr><th>Total (std drinks / 24 h)</th><th>Flag shown</th></tr></thead>
+      <tbody>
+        <tr><td>Above 0 and up to 3</td><td>Within NIAAA daily low-risk limits</td></tr>
+        <tr><td>Above 3 and below 5</td><td>At or near the daily ceiling; exceeds the limit for women</td></tr>
+        <tr><td>5 or more</td><td>Binge-level intake; exceeds low-risk limits</td></tr>
+      </tbody>
+    </table>
+    <p>The report notes that binge drinking is about 5 or more drinks for men and 4 or more for women within about 2 hours (approximately 0.08 g/dL BAC). Because the calculator totals a full 24 hours, it cannot tell whether drinks were consumed within that 2-hour window.</p>
+
+    <h2>What the report includes</h2>
+    <p>Generate Report copies a plain-text summary with the date, one line per beverage entered (quantity, volume, ABV, standard drinks and grams), the 24-hour total, and the reference definitions above. Reset clears the quantities and the custom description after a confirmation.</p>
+  </div>
+</div>

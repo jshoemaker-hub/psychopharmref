@@ -1,0 +1,43 @@
+---
+title: "Anticholinergic Burden Calculator: ACB and ARS"
+description: "Build a medication list and total its anticholinergic burden on the ACB and ARS scales, with flags for strong agents and adults 65 or older, plus a report."
+layout: "tool"
+tool_section: "anticholinergic-tool"
+category: "Clinical Tools"
+date: 2026-10-23
+lastmod: 2026-10-23
+---
+
+<div class="tool-landing">
+  <div class="tool-landing-header">
+    <span class="tool-landing-category">Clinical Tools</span>
+    <h1>Anticholinergic Burden Calculator: ACB and ARS</h1>
+    <p class="tool-landing-desc">Build a medication list and total its anticholinergic burden on the ACB and ARS scales, with flags for strong agents and adults 65 or older, plus a report.</p>
+  </div>
+  <div class="tool-landing-cta">
+    <a href="/#anticholinergic-tool" class="tool-launch-btn">Open the Anticholinergic Burden Calculator</a>
+    <p class="tool-landing-note">Runs free in your browser. Totals are calculated on your device and not sent to a server.</p>
+  </div>
+  <div class="tool-landing-body">
+    <h2>What it calculates</h2>
+    <p>The tool adds up the cumulative anticholinergic load of a patient's regimen on two published scales: the Anticholinergic Cognitive Burden (ACB) scale (Boustani 2008, 2012 update) and the Anticholinergic Risk Scale (ARS; Rudolph 2008). You search a library of about 110 agents by generic or brand name, including tricyclic and other antidepressants, antipsychotics, antihistamines, bladder and GI antimuscarinics, antiparkinson agents, muscle relaxants, cardiovascular drugs, diuretics, H2 blockers, opioids and benzodiazepines. Each agent shows its ACB and ARS score. A dash means the drug is not scored on that scale and adds nothing to that total.</p>
+
+    <h2>Scoring and bands</h2>
+    <p>Per-drug scores come from the published scales and are summed across the list. Both totals are shown side by side, and you choose which scale drives the written interpretation.</p>
+    <table>
+      <thead><tr><th>Total</th><th>ACB band</th><th>ARS band</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>None</td><td>None</td></tr>
+        <tr><td>1–2</td><td>Mild</td><td>Low</td></tr>
+        <tr><td>3 or more</td><td>High</td><td>Elevated</td></tr>
+      </tbody>
+    </table>
+    <p>Any agent scoring 3 on either scale is tagged as strongly anticholinergic and listed separately, with a note that these are Beers criteria agents to avoid in adults 65 or older.</p>
+
+    <h2>Interpreting the result</h2>
+    <p>Higher cumulative burden, especially an ACB of 3 or more, is associated with greater risk of cognitive impairment, delirium and falls, particularly in adults 65 or older. At ACB 3 or more the tool also notes cohort data linking higher burden to mortality, with risk rising for each additional point, and suggests prioritizing deprescribing or lower-burden substitutes. At ARS 3 or more it lists the peripheral and central effects to watch for. Ticking the 65-or-older box adds geriatric flags. The totals support, but do not replace, review of the full medication list against current references.</p>
+
+    <h2>What the report includes</h2>
+    <p>Generate Report produces a plain-text summary with the date, the age-group flag if set, each medication with its ACB and ARS scores and a strong-agent marker, both totals with their bands, the interpretation for the selected scale, a geriatric flag when the ACB is 3 or more in an older adult, and references to Boustani, Rudolph and the AGS 2023 Beers Criteria.</p>
+  </div>
+</div>
