@@ -111,9 +111,10 @@
     }
 
     if (equal.length >= 3) return M;
+    // Morris (1993): a 3-vs-2 split around M overrides the majority rule below
+    if ((above.length === 3 && below.length === 2) || (below.length === 3 && above.length === 2)) return M;
     if (above.length >= 3) return majorityScore(above);
     if (below.length >= 3) return majorityScore(below);
-    if ((above.length === 3 && below.length === 2) || (below.length === 3 && above.length === 2)) return M;
     if (above.length > below.length) return closestToM(above, M);
     if (below.length > above.length) return closestToM(below, M);
     if (above.length <= 2 && below.length <= 2) return M;

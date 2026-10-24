@@ -2,8 +2,8 @@
  * sud-tool.js — DSM-5-TR Substance Use Disorder documentation aid
  *
  * Select a substance; the 11 DSM-5-TR criteria populate with substance-
- * specific examples. Generates an EMR-ready summary. Tolerance and
- * withdrawal are excluded for hallucinogens, PCP, and inhalants (max = 10).
+ * specific examples. Generates an EMR-ready summary. Withdrawal is not a
+ * criterion for hallucinogens, PCP, and inhalants (max = 10).
  */
 (function () {
   'use strict';
