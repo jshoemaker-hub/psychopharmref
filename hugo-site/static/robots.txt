@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+# Slide PDFs, page images, and manifests stay on disk but are not for indexing.
+Disallow: /blog/slides/
 
 Sitemap: https://psychopharmref.com/sitemap.xml

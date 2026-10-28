@@ -3,9 +3,15 @@
  * page, fetches blog/slides/<slug>/manifest.json, and wires up a carousel.
  * If the manifest is missing or empty, the entire block is hidden so a
  * chapter can ship the snippet before the PDF is generated.
+ *
+ * Site switch: decks stay off unless <html data-show-slides="true">.
+ * Hugo sets that from showSlides in hugo-site/hugo.toml. Standalone
+ * blog/*.html previews stay hidden until the same attribute is on <html>.
  * ─────────────────────────────────────────────────────────────────────── */
 (function () {
   'use strict';
+
+  if (document.documentElement.getAttribute('data-show-slides') !== 'true') return;
 
   function init(root) {
     // Block starts hidden in markup; we only reveal after a successful manifest load.
