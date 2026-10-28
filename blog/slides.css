@@ -1,6 +1,12 @@
 /* ── PsychoPharmRef Blog — Slide Overview component ─────────────────────── */
 /* Collapsible image carousel + PDF download, sourced from a manifest.json   */
 /* Loaded by blog/slides.js. Hides itself if no manifest is reachable.       */
+/* Also stays hidden unless <html data-show-slides="true"> (showSlides in    */
+/* hugo-site/hugo.toml). Flipping that param is what turns decks back on.    */
+
+html:not([data-show-slides="true"]) .ba-slides {
+  display: none !important;
+}
 
 .ba-slides {
   display: block;

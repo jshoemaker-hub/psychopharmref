@@ -49,6 +49,14 @@ class TextExtractor(HTMLParser):
 
 def extract_body_text(html):
     """Pull text from inside the ba-body element(s) or <article>."""
+    # Slide chrome ("Slide Overview", "Download PDF") is not article text.
+    html = re.sub(
+        r'<aside\b[^>]*\bclass="[^"]*\bba-slides\b[^"]*"[^>]*>.*?</aside>',
+        ' ',
+        html,
+        count=1,
+        flags=re.DOTALL | re.IGNORECASE,
+    )
     body_html = ''
     # Try single wrapping ba-body element (div or main)
     m = re.search(r'<(?:div|main|section|article)\s+class="ba-body"[^>]*>(.*)', html, re.DOTALL)

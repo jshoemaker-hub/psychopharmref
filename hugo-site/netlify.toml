@@ -42,3 +42,9 @@
   for = "/fragments/*"
   [headers.values]
     X-Robots-Tag = "noindex"
+
+# Slide PDFs and carousel images. Hidden in the UI while showSlides = false.
+[[headers]]
+  for = "/blog/slides/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

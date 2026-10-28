@@ -12,6 +12,11 @@ disableKinds = ["taxonomy", "term"]
   authorJobTitle = "Psychiatrist"
   ga4ID = "G-RK6J3FQ9L7"
   medCount = 101
+  # Slide-deck carousels, embeds, and "Download PDF" buttons.
+  # false: chapter templates omit the block (PDFs stay on disk under /blog/slides/).
+  # true:  baseof.html sets <html data-show-slides="true"> and the block renders again.
+  # Standalone blog/*.html previews follow the same attribute; add it to <html> to preview a deck locally.
+  showSlides = false
 
 [markup]
   [markup.goldmark]
