@@ -16,9 +16,10 @@ For each image it:
      front matter of hugo-site/content/news/<slug>.html (the illustrated cover stays as
      the fallback and is used again if the photo lines are removed).
 
-Needs Pillow (pip install pillow) and normal internet access.
+Needs Pillow (pip3 install pillow certifi) and normal internet access. certifi supplies the
+web certificates that python.org builds of Python on macOS lack.
 """
-import argparse, html, io, json, os, re, sys, urllib.parse, urllib.request
+import argparse, html, io, json, os, re, ssl, sys, urllib.error, urllib.parse, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONTENT = os.path.join(ROOT, 'hugo-site', 'content', 'news')
@@ -28,10 +29,22 @@ UA = 'PsychoPharmRef-newsroom/1.0 (https://psychopharmref.com; jshoemakerhwc@gma
 OK_LICENCE = re.compile(r'^(public domain|pd\b|cc0|cc[ -]by(-sa)?[ -]\d)', re.I)
 
 
+try:
+    import certifi
+    SSL_CTX = ssl.create_default_context(cafile=certifi.where())
+except ImportError:
+    SSL_CTX = ssl.create_default_context()
+
+
 def get(url):
     req = urllib.request.Request(url, headers={'User-Agent': UA})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return r.read()
+    try:
+        with urllib.request.urlopen(req, timeout=60, context=SSL_CTX) as r:
+            return r.read()
+    except urllib.error.URLError as e:
+        if isinstance(e.reason, ssl.SSLCertVerificationError):
+            sys.exit('  ✗ Python cannot verify web certificates. Run:  pip3 install certifi  and try again.')
+        raise
 
 
 def strip_tags(s):
@@ -114,7 +127,7 @@ def run(slug, source, focus, alt):
         sys.exit(f'  ✗ {slug}: unknown source "{source}"')
     if not OK_LICENCE.match(info['licence']):
         print(f'  ✗ {slug}: licence "{info["licence"]}" is not free to reuse; keeping the illustration')
-        return
+        return False
     save_photo(info['image'], slug, focus)
     write_front_matter(slug, {
         'photo': f'/news/photos/{slug}.jpg',
@@ -124,6 +137,7 @@ def run(slug, source, focus, alt):
         'photoLicense': info['licence'],
     })
     print(f'  ✓ {slug}: {info["credit"]} ({info["licence"]})')
+    return True
 
 
 def main():
@@ -135,16 +149,20 @@ def main():
     ap.add_argument('--manifest', action='store_true')
     a = ap.parse_args()
     if a.manifest:
+        done = 0
         for line in open(MANIFEST, encoding='utf-8'):
             if not line.strip() or line.startswith('#'):
                 continue
             slug, source, focus, alt = line.rstrip('\n').split('\t')
             try:
-                run(slug, source, float(focus), alt)
+                done += bool(run(slug, source, float(focus), alt))
             except SystemExit as e:
                 print(e)
             except Exception as e:
                 print(f'  ✗ {slug}: {e}')
+        print(f'{done} photo(s) added.')
+        if not done:
+            sys.exit(1)
     elif a.slug and a.source:
         if not a.alt:
             ap.error('--alt is required')
