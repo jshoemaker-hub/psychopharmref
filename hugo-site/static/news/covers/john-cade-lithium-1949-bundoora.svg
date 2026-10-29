@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="A large lithium element tile flanked by a laboratory flask and a balance scale, symbolizing John Cade's 1949 discovery and lithium's narrow safety margin.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4efe6"/>
+      <stop offset="1" stop-color="#e2d9c8"/>
+    </linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="2" fill="#6b6050" opacity="0.14"/>
+    </pattern>
+    <linearGradient id="liquid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d98b5f"/>
+      <stop offset="1" stop-color="#c9a24a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#dots)"/>
+  <circle cx="600" cy="338" r="270" fill="#ece6db"/>
+  <circle cx="600" cy="338" r="270" fill="none" stroke="#5b4a7a" stroke-width="3" opacity="0.35"/>
+  <path d="M120 560 H1080" stroke="#231e14" stroke-width="6" stroke-linecap="round"/>
+  <!-- Flask -->
+  <g transform="translate(250 230)">
+    <rect x="48" y="0" width="54" height="22" rx="4" fill="#6b6050"/>
+    <path d="M55 22 V120 L0 312 Q-6 330 14 330 H136 Q156 330 150 312 L95 120 V22 Z" fill="#f4efe6" stroke="#231e14" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M30 230 L120 230 L148 316 Q150 324 140 324 H10 Q0 324 2 316 Z" fill="url(#liquid)"/>
+    <circle cx="60" cy="280" r="9" fill="#f4efe6" opacity="0.7"/>
+    <circle cx="92" cy="262" r="6" fill="#f4efe6" opacity="0.7"/>
+    <circle cx="78" cy="300" r="5" fill="#f4efe6" opacity="0.7"/>
+  </g>
+  <!-- Element tile -->
+  <g transform="translate(470 160)">
+    <rect x="12" y="12" width="260" height="300" rx="14" fill="#231e14" opacity="0.18"/>
+    <rect x="0" y="0" width="260" height="300" rx="14" fill="#5b4a7a"/>
+    <rect x="14" y="14" width="232" height="272" rx="8" fill="none" stroke="#f4efe6" stroke-width="2" opacity="0.5"/>
+    <text x="30" y="62" font-family="Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#f4efe6">3</text>
+    <text x="130" y="205" text-anchor="middle" font-family="Georgia, serif" font-size="150" font-weight="700" fill="#f4efe6">Li</text>
+    <text x="130" y="262" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="30" fill="#f4efe6" opacity="0.85">6.94</text>
+  </g>
+  <!-- Balance scale -->
+  <g transform="translate(800 200)" stroke="#231e14" stroke-width="6" stroke-linecap="round" fill="none">
+    <path d="M90 20 V350"/>
+    <path d="M40 356 H140"/>
+    <circle cx="90" cy="20" r="10" fill="#c9a24a"/>
+    <path d="M-10 70 L190 50"/>
+    <path d="M-10 70 L-40 170 M-10 70 L20 170"/>
+    <path d="M190 50 L160 150 M190 50 L220 150"/>
+    <path d="M-52 170 Q-10 205 32 170 Z" fill="#9fb88f"/>
+    <path d="M148 150 Q190 185 232 150 Z" fill="#d98b5f"/>
+  </g>
+  <circle cx="788" cy="358" r="9" fill="#5b4a7a"/>
+  <circle cx="990" cy="340" r="9" fill="#5b4a7a"/>
+  <circle cx="1006" cy="340" r="9" fill="#5b4a7a"/>
+  <circle cx="998" cy="326" r="9" fill="#5b4a7a"/>
+</svg>

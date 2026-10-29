@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Stylized orexin-2 receptor with seven helices spanning a cell membrane, a green agonist docked in its pocket and signal rays radiating into the cell, over a background split between a sun and a crescent moon.">
+  <defs>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="1.6" fill="#6b6050" opacity="0.18"/>
+    </pattern>
+    <linearGradient id="mem" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e2d9c8"/><stop offset="0.5" stop-color="#d6cbb4"/><stop offset="1" stop-color="#e2d9c8"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="675" fill="#f4efe6"/>
+  <rect x="600" width="600" height="675" fill="#ddd3bf"/>
+  <rect width="1200" height="675" fill="url(#dots)"/>
+  <!-- sun -->
+  <circle cx="190" cy="140" r="62" fill="#c9a24a"/>
+  <g stroke="#c9a24a" stroke-width="10" stroke-linecap="round">
+    <line x1="190" y1="40" x2="190" y2="58"/><line x1="190" y1="222" x2="190" y2="240"/><line x1="90" y1="140" x2="108" y2="140"/><line x1="272" y1="140" x2="290" y2="140"/>
+    <line x1="119" y1="69" x2="132" y2="82"/><line x1="248" y1="198" x2="261" y2="211"/><line x1="119" y1="211" x2="132" y2="198"/><line x1="248" y1="82" x2="261" y2="69"/>
+  </g>
+  <!-- moon -->
+  <path d="M1030 80 a70 70 0 1 0 50 120 a56 56 0 1 1 -50 -120 z" fill="#6b6050"/>
+  <g fill="#6b6050"><circle cx="930" cy="110" r="4"/><circle cx="1100" cy="250" r="3"/><circle cx="960" cy="230" r="3"/></g>
+  <!-- membrane -->
+  <rect x="0" y="300" width="1200" height="120" fill="url(#mem)"/>
+  <g fill="#c9b99a"><circle cx="40" cy="312" r="10"/><circle cx="80" cy="312" r="10"/><circle cx="120" cy="312" r="10"/><circle cx="160" cy="312" r="10"/><circle cx="200" cy="312" r="10"/><circle cx="240" cy="312" r="10"/><circle cx="280" cy="312" r="10"/><circle cx="920" cy="312" r="10"/><circle cx="960" cy="312" r="10"/><circle cx="1000" cy="312" r="10"/><circle cx="1040" cy="312" r="10"/><circle cx="1080" cy="312" r="10"/><circle cx="1120" cy="312" r="10"/><circle cx="1160" cy="312" r="10"/>
+  <circle cx="40" cy="408" r="10"/><circle cx="80" cy="408" r="10"/><circle cx="120" cy="408" r="10"/><circle cx="160" cy="408" r="10"/><circle cx="200" cy="408" r="10"/><circle cx="240" cy="408" r="10"/><circle cx="280" cy="408" r="10"/><circle cx="920" cy="408" r="10"/><circle cx="960" cy="408" r="10"/><circle cx="1000" cy="408" r="10"/><circle cx="1040" cy="408" r="10"/><circle cx="1080" cy="408" r="10"/><circle cx="1120" cy="408" r="10"/><circle cx="1160" cy="408" r="10"/></g>
+  <!-- receptor: seven helices -->
+  <g stroke="#231e14" stroke-width="5" fill="#4a7c35">
+    <rect x="378" y="250" width="54" height="220" rx="24"/>
+    <rect x="442" y="262" width="54" height="200" rx="24" fill="#5e9145"/>
+    <rect x="506" y="250" width="54" height="220" rx="24"/>
+    <rect x="640" y="250" width="54" height="220" rx="24"/>
+    <rect x="704" y="262" width="54" height="200" rx="24" fill="#5e9145"/>
+    <rect x="768" y="250" width="54" height="220" rx="24"/>
+  </g>
+  <rect x="572" y="290" width="56" height="200" rx="24" fill="#5e9145" stroke="#231e14" stroke-width="5" opacity="0.6"/>
+  <!-- agonist docked -->
+  <g stroke="#231e14" stroke-width="5">
+    <polygon points="600,196 640,219 640,265 600,288 560,265 560,219" fill="#f4efe6"/>
+    <circle cx="600" cy="242" r="16" fill="#c9a24a"/>
+  </g>
+  <!-- signal burst inside cell -->
+  <g stroke="#d98b5f" stroke-width="10" stroke-linecap="round">
+    <line x1="600" y1="520" x2="600" y2="600"/><line x1="560" y1="510" x2="500" y2="580"/><line x1="640" y1="510" x2="700" y2="580"/><line x1="530" y1="490" x2="440" y2="530"/><line x1="670" y1="490" x2="760" y2="530"/>
+  </g>
+  <circle cx="600" cy="490" r="22" fill="#d98b5f" stroke="#231e14" stroke-width="5"/>
+  <text x="600" y="150" font-family="Helvetica, Arial, sans-serif" font-size="34" font-weight="bold" fill="#231e14" text-anchor="middle">OX2R</text>
+</svg>

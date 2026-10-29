@@ -1,0 +1,21 @@
+{{- /* Feed for the home-page front page (js/newsroom.js). Includes scheduled
+     (future-dated) pieces; the client shows each one from its publish date. */ -}}
+{{- $items := slice -}}
+{{- range .Pages.ByDate.Reverse -}}
+  {{- $img := .Params.photo | default .Params.cover -}}
+  {{- $items = $items | append (dict
+      "title" .Title
+      "url" .RelPermalink
+      "date" (.Date.Format "2006-01-02")
+      "desk" .Params.desk
+      "dek" .Params.dek
+      "img" $img
+      "imgAlt" (.Params.photoAlt | default .Params.coverAlt)
+      "readTime" .Params.readTime
+    ) -}}
+{{- end -}}
+{{- $web := slice -}}
+{{- range site.Data.around_the_web -}}
+  {{- $web = $web | append (dict "title" .title "creator" .creator "type" .type "url" .url "blurb" .blurb "cost" .cost) -}}
+{{- end -}}
+{{- dict "desks" site.Data.desks "items" $items "web" $web | jsonify -}}

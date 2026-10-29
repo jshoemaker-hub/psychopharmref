@@ -1,0 +1,71 @@
+{{ define "head" }}
+<link rel="stylesheet" href="{{ "css/newsroom.css" | relURL }}?v=20261029a">
+{{ end }}
+
+{{ define "main" }}
+{{- $desk := index (where site.Data.desks "key" .Params.desk) 0 -}}
+{{- $img := .Params.photo | default .Params.cover -}}
+<article class="nw-article" style="--nw-desk: {{ $desk.accent | safeCSS }}">
+  <a href="{{ "/news/" | relURL }}" class="back-link">← Newsroom</a>
+
+  <header class="nw-art-head">
+    <a class="nw-kicker" href="{{ "/news/" | relURL }}#desk-{{ $desk.key }}">{{ $desk.name }}</a>
+    <h1 class="nw-art-title">{{ .Title }}</h1>
+    {{ with .Params.dek }}<p class="nw-art-dek">{{ . }}</p>{{ end }}
+    <div class="nw-byline">
+      <span class="nw-avatar" aria-hidden="true">{{ substr $desk.author 0 1 }}</span>
+      <span class="nw-byline-text">
+        <span class="nw-byline-name">By {{ $desk.author }}</span>
+        <span class="nw-byline-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>{{ with .Params.readTime }} · {{ . }}{{ end }}</span>
+      </span>
+    </div>
+  </header>
+
+  {{ with $img }}
+  <figure class="nw-art-figure">
+    <img src="{{ . | relURL }}" alt="{{ $.Params.photoAlt | default $.Params.coverAlt }}" width="1200" height="675" fetchpriority="high">
+    {{ with $.Params.photoCredit }}<figcaption>{{ if $.Params.photoCreditUrl }}<a href="{{ $.Params.photoCreditUrl }}" rel="noopener" target="_blank">{{ . }}</a>{{ else }}{{ . }}{{ end }}{{ with $.Params.photoLicense }} · {{ . }}{{ end }}</figcaption>{{ else }}<figcaption>Illustration: PsychoPharmRef</figcaption>{{ end }}
+  </figure>
+  {{ end }}
+
+  <div class="nw-art-body ba-body">
+    {{ .Content }}
+  </div>
+
+  {{ with .Params.sources }}
+  <section class="nw-sources" aria-labelledby="nw-sources-h">
+    <h2 id="nw-sources-h">Sources</h2>
+    <ol>
+      {{ range . }}
+      <li><a href="{{ .url }}" rel="noopener" target="_blank">{{ .title }}</a>{{ with .publisher }} <span class="nw-src-pub">— {{ . }}</span>{{ end }}</li>
+      {{ end }}
+    </ol>
+  </section>
+  {{ end }}
+
+  {{ with .Params.related }}
+  <section class="nw-related" aria-labelledby="nw-related-h">
+    <h2 id="nw-related-h">Go deeper on PsychoPharmRef</h2>
+    <div class="nw-related-grid">
+      {{ range . }}<a href="{{ .url | relURL }}" class="nw-related-link">{{ .title }}</a>{{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{- $more := where (where site.RegularPages "Section" "news") "Params.desk" .Params.desk -}}
+  {{- $more = where $more "Permalink" "ne" .Permalink -}}
+  {{ if $more }}
+  <section class="nw-more" aria-labelledby="nw-more-h">
+    <h2 id="nw-more-h">More from {{ $desk.name }}</h2>
+    <ul class="nw-more-list" data-nw-dated>
+      {{ range first 6 $more.ByDate.Reverse }}
+      <li data-date="{{ .Date.Format "2006-01-02" }}"><a href="{{ .RelPermalink }}">{{ .Title }}</a> <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2" }}</time></li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+
+  {{ partial "news-disclosure.html" . }}
+</article>
+{{ partial "news-schedule.html" . }}
+{{ end }}

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="An approval stamp on a document beside a padlocked pharmacy shelf, with an hourglass partway through running.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4efe6"/>
+      <stop offset="1" stop-color="#e2d9c8"/>
+    </linearGradient>
+    <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="5" cy="5" r="2" fill="#6b6050" opacity="0.12"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#dots)"/>
+  <rect x="0" y="560" width="1200" height="115" fill="#ece6db"/>
+  <!-- document with stamp -->
+  <g transform="translate(300 150) rotate(-6)">
+    <rect x="10" y="12" width="250" height="330" rx="8" fill="#231e14" opacity="0.12"/>
+    <rect width="250" height="330" rx="8" fill="#f4efe6" stroke="#231e14" stroke-width="5"/>
+    <g fill="#6b6050" opacity="0.5">
+      <rect x="30" y="40" width="190" height="12" rx="6"/><rect x="30" y="70" width="160" height="12" rx="6"/><rect x="30" y="100" width="180" height="12" rx="6"/><rect x="30" y="130" width="120" height="12" rx="6"/>
+    </g>
+    <circle cx="125" cy="235" r="68" fill="none" stroke="#2f6f8f" stroke-width="10"/>
+    <circle cx="125" cy="235" r="50" fill="none" stroke="#2f6f8f" stroke-width="3"/>
+    <polyline points="95,237 117,260 158,212" fill="none" stroke="#2f6f8f" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- shelf cabinet -->
+  <g transform="translate(600 150)">
+    <rect width="300" height="380" rx="10" fill="#ece6db" stroke="#231e14" stroke-width="6"/>
+    <line x1="0" y1="130" x2="300" y2="130" stroke="#231e14" stroke-width="5"/>
+    <line x1="0" y1="255" x2="300" y2="255" stroke="#231e14" stroke-width="5"/>
+    <g>
+      <rect x="30" y="60" width="44" height="70" rx="8" fill="#2f6f8f"/><rect x="34" y="48" width="36" height="16" rx="4" fill="#231e14"/>
+      <rect x="95" y="75" width="40" height="55" rx="8" fill="#c9a24a"/><rect x="99" y="64" width="32" height="14" rx="4" fill="#231e14"/>
+      <rect x="160" y="55" width="48" height="75" rx="8" fill="#9fb88f"/><rect x="164" y="43" width="40" height="16" rx="4" fill="#231e14"/>
+      <rect x="40" y="185" width="44" height="70" rx="8" fill="#d98b5f"/><rect x="44" y="173" width="36" height="16" rx="4" fill="#231e14"/>
+      <rect x="110" y="195" width="40" height="60" rx="8" fill="#2f6f8f" opacity="0.7"/><rect x="114" y="183" width="32" height="14" rx="4" fill="#231e14"/>
+    </g>
+    <rect x="0" y="0" width="300" height="380" rx="10" fill="#f4efe6" opacity="0.35"/>
+    <!-- padlock -->
+    <path d="M118 260 v-36 a32 32 0 0 1 64 0 v36" fill="none" stroke="#231e14" stroke-width="12"/>
+    <rect x="100" y="258" width="100" height="84" rx="10" fill="#231e14"/>
+    <circle cx="150" cy="292" r="10" fill="#c9a24a"/>
+    <rect x="146" y="296" width="8" height="24" rx="3" fill="#c9a24a"/>
+  </g>
+  <!-- hourglass -->
+  <g transform="translate(1000 330)">
+    <rect x="-60" y="-120" width="120" height="16" rx="6" fill="#231e14"/>
+    <rect x="-60" y="104" width="120" height="16" rx="6" fill="#231e14"/>
+    <path d="M-46 -104 L46 -104 L6 0 L46 104 L-46 104 L-6 0 Z" fill="#f4efe6" stroke="#231e14" stroke-width="5"/>
+    <path d="M-26 -50 L26 -50 L4 -4 L-4 -4 Z" fill="#c9a24a"/>
+    <line x1="0" y1="0" x2="0" y2="70" stroke="#c9a24a" stroke-width="4"/>
+    <path d="M-40 102 Q0 50 40 102 Z" fill="#c9a24a"/>
+  </g>
+</svg>

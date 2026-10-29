@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="A stack of textbook volumes beside a timeline that forks into two paths, one a steadily declining line and one a wave of rising and falling episodes, symbolizing Kraepelin's dichotomy.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4efe6"/>
+      <stop offset="1" stop-color="#e2d9c8"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 H0 V40" fill="none" stroke="#6b6050" stroke-width="1" opacity="0.12"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#grid)"/>
+  <!-- Book stack -->
+  <g transform="translate(200 250)">
+    <rect x="10" y="300" width="250" height="14" rx="4" fill="#231e14" opacity="0.15"/>
+    <rect x="0" y="240" width="250" height="60" rx="6" fill="#5b4a7a"/>
+    <rect x="18" y="182" width="226" height="58" rx="6" fill="#6b6050"/>
+    <rect x="6" y="126" width="238" height="56" rx="6" fill="#5b4a7a" opacity="0.8"/>
+    <rect x="24" y="72" width="214" height="54" rx="6" fill="#c9a24a"/>
+    <rect x="12" y="20" width="230" height="52" rx="6" fill="#5b4a7a"/>
+    <g fill="#f4efe6" opacity="0.75">
+      <rect x="20" y="262" width="80" height="6" rx="3"/>
+      <rect x="36" y="204" width="60" height="6" rx="3"/>
+      <rect x="24" y="148" width="90" height="6" rx="3"/>
+      <rect x="42" y="94" width="70" height="6" rx="3"/>
+      <rect x="30" y="40" width="80" height="6" rx="3"/>
+    </g>
+    <g fill="none" stroke="#f4efe6" stroke-width="3" opacity="0.6">
+      <path d="M220 240 V300"/><path d="M226 182 V240"/><path d="M224 126 V182"/><path d="M220 72 V126"/><path d="M224 20 V72"/>
+    </g>
+  </g>
+  <!-- Fork timeline -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M470 338 H600" stroke="#231e14" stroke-width="10"/>
+    <circle cx="600" cy="338" r="16" fill="#231e14"/>
+    <path d="M600 338 C640 290 680 190 740 180 L1050 420" stroke="#5b4a7a" stroke-width="10"/>
+    <path d="M600 338 C640 360 660 420 690 430 C730 445 750 480 790 440 C830 400 860 520 900 480 C940 440 970 540 1010 500 C1040 470 1060 500 1080 500" stroke="#d98b5f" stroke-width="10"/>
+  </g>
+  <circle cx="470" cy="338" r="12" fill="#c9a24a"/>
+  <circle cx="1050" cy="420" r="14" fill="#5b4a7a"/>
+  <circle cx="1080" cy="500" r="14" fill="#d98b5f"/>
+  <!-- Faint shared zone -->
+  <ellipse cx="820" cy="360" rx="120" ry="70" fill="#9fb88f" opacity="0.28"/>
+</svg>

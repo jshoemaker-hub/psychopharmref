@@ -47,6 +47,7 @@
   <link rel="manifest" href="site.webmanifest">
 
   <link rel="stylesheet" href="css/styles.css?v=20261023a">
+  <link rel="stylesheet" href="css/newsroom.css?v=20261029a">
   <link rel="canonical" href="https://psychopharmref.com/">
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" integrity="sha384-e6nUZLBkQ86NJ6TVVKAeSaK8jWa3NhkYWZFomE39AvDbQWeie9PlQqM3pmYW5d1g" crossorigin="anonymous"></script>
 
@@ -101,6 +102,9 @@
       <!-- Home -->
       <li>
         <a href="#" class="nav-link active" data-section="overview">Home</a>
+      </li>
+      <li>
+        <a href="/news/" class="nav-link">Newsroom</a>
       </li>
 
       <!-- Psychopharmacology -->
@@ -620,8 +624,6 @@
         <div class="us-results"></div>
       </div>
 
-      <!-- Pre-filled so the page does not shift; renderStats() refreshes the counts from data.js -->
-      <div class="stats-grid home-stats" id="stats-grid"><div class="stat-card"><div class="stat-value">101</div><div class="stat-label">Total Medications</div></div><div class="stat-card"><div class="stat-value">26</div><div class="stat-label">Antidepressants</div></div><div class="stat-card"><div class="stat-value">26</div><div class="stat-label">Antipsychotics</div></div><div class="stat-card"><div class="stat-value">7</div><div class="stat-label">Mood Stabilizers</div></div><div class="stat-card"><div class="stat-value">9</div><div class="stat-label">Sleep Medications</div></div><div class="stat-card"><div class="stat-value">30</div><div class="stat-label">QT Prolonging</div></div></div>
 
       <!-- Popular & Newly Added ticker -->
       <!-- EDIT: replace the anchors below with your curated Popular / New items.
@@ -649,6 +651,15 @@
           </div>
         </div>
       </div>
+
+      <!-- Newsroom front page: rendered by js/newsroom.js from /news/index.json
+           (Hugo builds it from hugo-site/content/news/ + data/desks.yaml + data/around_the_web.yaml). -->
+      <section class="nw-front nw-front-loading" id="nw-front" aria-labelledby="nw-front-h" aria-busy="true">
+        <noscript><p><a href="/news/">Read today's psychopharmacology news and features &rarr;</a></p></noscript>
+      </section>
+
+      <!-- Pre-filled so the page does not shift; renderStats() refreshes the counts from data.js -->
+      <div class="stats-grid home-stats" id="stats-grid"><div class="stat-card"><div class="stat-value">101</div><div class="stat-label">Total Medications</div></div><div class="stat-card"><div class="stat-value">26</div><div class="stat-label">Antidepressants</div></div><div class="stat-card"><div class="stat-value">26</div><div class="stat-label">Antipsychotics</div></div><div class="stat-card"><div class="stat-value">7</div><div class="stat-label">Mood Stabilizers</div></div><div class="stat-card"><div class="stat-value">9</div><div class="stat-label">Sleep Medications</div></div><div class="stat-card"><div class="stat-value">30</div><div class="stat-label">QT Prolonging</div></div></div>
 
       <!-- Task-based router: 7 core clinical tasks, each an expandable pathway -->
       <div class="tr-eyebrow">Start with your task</div>
@@ -4566,6 +4577,7 @@
   <script defer src="js/routes.js?v=20261016a"></script>
   <script defer src="js/bhi-references.js?v=20261002a"></script>
   <script defer src="js/app.js?v=20261023a"></script>
+  <script defer src="js/newsroom.js?v=20261029a"></script>
   <script defer src="js/diagnoses-data.js?v=20261002b"></script>
   <script defer src="js/diagnoses-page.js?v=20261002a"></script>
   <script defer src="js/glossary-data.js?v=20261016a"></script>

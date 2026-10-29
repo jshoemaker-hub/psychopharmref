@@ -1,7 +1,8 @@
 {{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   {{- range where .Pages "Sitemap.Disable" "ne" true }}
-  {{- if .Permalink }}
+  {{- /* Scheduled newsroom pieces are built ahead of time; list them once they are live */}}
+  {{- if and .Permalink (not (and (eq .Section "news") (.Date.After now))) }}
   <url>
     <loc>{{ .Permalink }}</loc>
     {{- if not .Lastmod.IsZero }}

@@ -2,6 +2,9 @@ baseURL = "https://psychopharmref.com"
 languageCode = "en-us"
 title = "PsychoPharmRef — Psychopharmacology Reference for Clinicians"
 defaultContentLanguage = "en"
+# Newsroom pieces are scheduled by their `date`; build them all and let the
+# home page / archive reveal each one on its publish day (js/newsroom.js).
+buildFuture = true
 # No content uses the categories/tags taxonomies, and there are no templates for them,
 # so /categories/ and /tags/ were 404s listed in the sitemap. Disable those page kinds.
 disableKinds = ["taxonomy", "term"]
