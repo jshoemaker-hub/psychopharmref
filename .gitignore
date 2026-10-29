@@ -28,6 +28,9 @@ notes/
 # EXCEPTION: Therapy-Courses blank worksheet PDFs ship with the site
 !hugo-site/static/worksheets/**
 
+# EXCEPTION: Newsroom photos (licence-checked by scripts/fetch-news-photo.py) ship with the site
+!hugo-site/static/news/photos/**
+
 # macOS
 .DS_Store
 .AppleDouble

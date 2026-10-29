@@ -3,8 +3,8 @@
 #   source = "commons:File:<name>"  → licence, author and page read from the Wikimedia Commons API
 #   source = "awm:<ID>"             → Australian War Memorial collection item (public domain items only)
 # Pieces not listed keep their illustrated cover. Only public-domain / CC0 / CC BY / CC BY-SA images are accepted.
-emil-kraepelin-dichotomy-course-legacy	commons:File:E. Kraepelin.jpg	0.3	Studio portrait of Emil Kraepelin as a young man, c. 1886–1891.
+emil-kraepelin-dichotomy-course-legacy	commons:File:Wellcome L0030730.jpg	0.15	Portrait photograph of Emil Kraepelin.
 john-cade-lithium-1949-bundoora	awm:H19367	0.5	The administration block of the Bundoora Repatriation Mental Hospital, Victoria, where John Cade worked.
-electroconvulsive-therapy-history-meduna-to-modern	commons:File:Macchina di Cerletti per l'elettroshock.png	0.5	Ugo Cerletti's electroshock apparatus.
+electroconvulsive-therapy-history-meduna-to-modern	commons:File:Electroshockapparaat 1946.jpg	0.5	An electroshock apparatus from 1946.
 weltruza-monthly-subcutaneous-olanzapine-approval	commons:File:FDA Bldg 1 - Exterior With Circle (5161374950).jpg	0.5	Entrance of Building 1 on the FDA's White Oak campus in Silver Spring, Maryland.
 medicaid-work-requirements-mental-health-exemptions	commons:File:United States Capitol - west front.jpg	0.5	The west front of the United States Capitol.
