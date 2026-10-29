@@ -191,7 +191,7 @@ The 16 medical-student chapters (see `blog/recommended-chapters-medical-students
 ### Newsroom (home-page front page)
 The home page opens with a news-style front page ("Today in Psychopharmacology") rendered by `js/newsroom.js` from `/news/index.json`, which Hugo builds (`layouts/news/list.json`) from:
 - `hugo-site/content/news/<slug>.html`: one file per piece. Front matter includes `date` (= publish day), `desk`, `dek`, `cover`, `sources`, `related`. Bylines come from the desk, not the file.
-- `hugo-site/static/news/covers/<slug>.svg`: original 16:9 cover art. An optional `photo`/`photoAlt`/`photoCredit`/`photoCreditUrl`/`photoLicense` overrides the cover with a free-licence photo; self-host it under `static/news/photos/`.
+- `hugo-site/static/news/covers/<slug>.svg`: original 16:9 cover art. An optional `photo`/`photoAlt`/`photoCredit`/`photoCreditUrl`/`photoLicense` shows a free-licence photo instead (aim for a mix: historic/archival photos for history, profile, policy and FDA pieces; illustrations for mechanisms). Add photos only via `python3 scripts/fetch-news-photo.py --manifest` (rows in `scripts/news-photos.tsv`): it checks the licence, crops to 16:9, saves to `static/news/photos/` and writes the credit.
 - `hugo-site/data/desks.yaml`: desks and their house pen names (disclosed on every page).
 - `hugo-site/data/around_the_web.yaml`: pool of outside newsletters and podcasts. Six rotate onto the front page each week (Mon–Sun), plus a daily pick.
 

@@ -22,11 +22,22 @@ If a week is missed the front page backfills from the archive, so it never goes 
 Before writing, list `hugo-site/content/news/` so you don't repeat a topic, and check what is already scheduled.
 News desks (FDA, policy) must be researched with web search on the day of writing — never from memory.
 
+## Images: mix historic photos and illustrations
+Aim for roughly half photos. Every piece still gets an SVG cover (it is the fallback); a photo goes on top when one fits:
+- **Use a photo** for history and profile pieces (period portraits, hospitals, apparatus, original papers) and for
+  policy/FDA pieces where a public-domain building or event photo works (U.S. government photos are public domain).
+- **Keep the illustration** for mechanism explainers and for anything where no free image actually shows the subject.
+- Find the file on Wikimedia Commons (or another public-domain archive), add a row to `scripts/news-photos.tsv`
+  (slug, `commons:File:<name>` or `awm:<id>`, crop focus, alt text) and run
+  `python3 scripts/fetch-news-photo.py --manifest`. It checks the licence itself, refuses anything that is not
+  public domain / CC0 / CC BY / CC BY-SA, and writes the credit into the front matter. Never add a photo by hand
+  without its credit and licence.
+
 ## After writing
 1. Validate each body with Python's html.parser (balanced tags).
 2. Build: `cd hugo-site && hugo --minify` (Hugo 0.140 extended) and open `/news/index.json` — every new piece should be listed.
 3. Preview a future day on the home page with `?nwdate=YYYY-MM-DD`.
-4. Commit `hugo-site/content/news/` and `hugo-site/static/news/covers/` together.
+4. Commit `hugo-site/content/news/`, `hugo-site/static/news/covers/`, `hugo-site/static/news/photos/` and `scripts/news-photos.tsv` together.
 
 ## Desks and pen names (bylines are added by the template from `desk` — do NOT put author names in files)
 | desk key     | Desk name                       | Pen name        |
