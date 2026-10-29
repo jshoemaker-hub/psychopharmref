@@ -123,6 +123,7 @@ var dateStr = ToolUtils.dateStamp();
 - `mct-` → Marriage & Couples Therapy (course module 10)
 - `sa-` → OTC / Non-Prescription Sleep Aid Comparison
 - `fw-` → Fatigue / Low Energy Workup (tiered symptom → labs + differential)
+- `nw-` → Newsroom (home-page front page, `/news/` archive and article pages)
 
 ### Copy-to-Clipboard Pattern
 Never use `alert()`. Always use `ToolUtils.copyWithButton()` for new tools:
@@ -186,6 +187,15 @@ To rebuild every chapter at once: `python3 build-slides.py --all`.
 **Push size warning:** the home/office Wi-Fi on this Mac drops sustained pushes >~90 MiB; cellular tether is reliable. If a single commit's pack exceeds that ceiling, split it into multiple commits and push them one at a time, or push from a hotspot.
 
 The 16 medical-student chapters (see `blog/recommended-chapters-medical-students.html`) are the priority targets: `learning-tools-medical-students`, `psychiatric-interview`, `major-depressive-disorder`, `bipolar-disorder`, `schizophrenia`, `antidepressant-review`, `antipsychotic-review`, `suicide-risk-assessments`, `serotonin-syndrome-nms`, `delirium`, `alcohol-use-disorder`, `panic-attacks-gad`, `capacity-evaluation`, `ptsd-cptsd`, `adult-adhd`, `emergency-psychiatry`.
+
+### Newsroom (home-page front page)
+The home page opens with a news-style front page ("Today in Psychopharmacology") rendered by `js/newsroom.js` from `/news/index.json`, which Hugo builds (`layouts/news/list.json`) from:
+- `hugo-site/content/news/<slug>.html`: one file per piece. Front matter includes `date` (= publish day), `desk`, `dek`, `cover`, `sources`, `related`. Bylines come from the desk, not the file.
+- `hugo-site/static/news/covers/<slug>.svg`: original 16:9 cover art. An optional `photo`/`photoAlt`/`photoCredit`/`photoCreditUrl`/`photoLicense` overrides the cover with a free-licence photo; self-host it under `static/news/photos/`.
+- `hugo-site/data/desks.yaml`: desks and their house pen names (disclosed on every page).
+- `hugo-site/data/around_the_web.yaml`: pool of outside newsletters and podcasts. Six rotate onto the front page each week (Mon–Sun), plus a daily pick.
+
+**Scheduling:** `buildFuture = true`, so pieces are built ahead of time and shown from their `date` in the reader's time zone. The front page shows the last 7 days (backfilled from the archive if fewer than 5), so one piece per day gives daily news and a full weekly turnover. Preview any day with `/?nwdate=YYYY-MM-DD`. Write a week's slate with the `newsroom-week` skill. News desks (FDA, policy) must be web-researched on the day of writing and cite primary sources.
 
 ### Sidebar Navigation (index.html)
 - Psychopharmacology group includes: Drug Database, P450 Interactions, Receptor Binding, Receptor Glossary, PK Curves, Med Comparison

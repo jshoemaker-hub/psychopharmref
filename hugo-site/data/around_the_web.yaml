@@ -1,0 +1,204 @@
+# Around the Web — rotating pool of outside resources for the home page.
+# 6 entries/week (full weekly turnover) + daily "Pick of the day".
+# Ordered so each consecutive block of 6 mixes types. Verified active as of Oct 2026.
+
+# --- Block 1 ---
+- title: "Psychopharmacology Institute Podcast"
+  creator: "Psychopharmacology Institute"
+  type: podcast
+  url: "https://psychopharmacologyinstitute.com/podcasts/"
+  blurb: "Expert interviews on prescribing decisions (antidepressant combinations, pregnancy, lithium response) from a source that states it takes no pharmaceutical sponsorship."
+  cost: free
+
+- title: "Psychiatric Times"
+  creator: "Psychiatric Times (MJH Life Sciences)"
+  type: newsletter
+  url: "https://www.psychiatrictimes.com/"
+  blurb: "Daily clinical news and commentary plus monthly peer-reviewed Special Reports and pipeline reviews, a quick way to see which new agents are coming."
+  cost: free
+
+- title: "Dr. Tracey Marks"
+  creator: "Tracey Marks, MD"
+  type: video
+  url: "https://www.youtube.com/drtraceymarks"
+  blurb: "A board-certified psychiatrist explains depression, bipolar disorder, ADHD and anxiety in plain language. Good videos to suggest to patients and families."
+  cost: free
+
+- title: "JAMA Psychiatry Author Interviews"
+  creator: "JAMA Network"
+  type: journal
+  url: "https://jamanetwork.com/journals/jamapsychiatry/pages/jama-psychiatry-author-interviews"
+  blurb: "John Torous interviews authors of new JAMA Psychiatry papers. 2026 episodes covered semaglutide for alcohol use disorder and lithium in dementia."
+  cost: free
+
+- title: "Psychiatry & Psychotherapy Podcast"
+  creator: "David Puder, MD"
+  type: podcast
+  url: "https://psychiatrypodcast.com/"
+  blurb: "Long-form episodes that pair psychopharmacology with therapy skill, such as postpartum psychosis and mentalization-based treatment, with optional CME quizzes."
+  cost: freemium
+
+- title: "Psychiatry at the Margins"
+  creator: "Awais Aftab, MD"
+  type: blog
+  url: "https://www.psychiatrymargins.com/"
+  blurb: "Careful essays on the evidence and philosophy behind practice, with recent pieces on deprescribing, antidepressants and suicidality, and what makes good diagnosis."
+  cost: freemium
+
+# --- Block 2 ---
+- title: "The Carlat Psychiatry Podcast"
+  creator: "Carlat Publishing (Chris Aiken, MD & Kellie Newsome, PMHNP)"
+  type: podcast
+  url: "https://www.thecarlatreport.com/blogs/2-the-carlat-psychiatry-podcast"
+  blurb: "Short, practical episodes from the editors of The Carlat Report covering starting and stopping meds, sex differences in pharmacology and adult ADHD."
+  cost: free
+
+- title: "The Mental Elf"
+  creator: "National Elf Service"
+  type: blog
+  url: "https://www.nationalelfservice.net/about-mental/"
+  blurb: "Plain-English critical appraisals of new mental health research, posted on weekdays, with no input from sponsors. A quick way to judge a headline trial."
+  cost: free
+
+- title: "Columbia Psychiatry Video Library"
+  creator: "Columbia University Department of Psychiatry / NYSPI"
+  type: video
+  url: "https://www.columbiapsychiatry.org/about-us/video-library"
+  blurb: "Recorded Adult and Child Psychiatry Grand Rounds from Columbia and NYSPI. Academic-level talks you can watch at lunch."
+  cost: free
+
+- title: "AJP Audio"
+  creator: "American Journal of Psychiatry (APA)"
+  type: journal
+  url: "https://psychiatryonline.org/ajp/audio"
+  blurb: "A monthly author interview on one AJP paper, after which editor Ned Kalin reviews the rest of the issue. An easy way to keep up with the journal."
+  cost: free
+
+- title: "PsychEd: Educational Psychiatry Podcast"
+  creator: "University of Toronto psychiatry residents"
+  type: podcast
+  url: "https://www.psychedpodcast.org/"
+  blurb: "Residents interview Toronto faculty, with learning objectives and transcripts for each episode. Strong on core topics such as antipsychotic side effects and CYP450."
+  cost: free
+
+- title: "Mental Health Clinician"
+  creator: "American Association of Psychiatric Pharmacists (AAPP)"
+  type: journal
+  url: "https://mhc.kglmeridian.com/page/about"
+  blurb: "AAPP's open-access, PubMed-indexed journal. Psychiatric pharmacists write applied psychopharmacology reviews and case reports in it."
+  cost: free
+
+# --- Block 3 ---
+- title: "NEI Podcast"
+  creator: "Neuroscience Education Institute"
+  type: podcast
+  url: "https://nei.global/podcast"
+  blurb: "Andy Cutler interviews leading researchers on current psychopharmacology, such as GLP-1 agonists in psychiatry, anhedonia, and ADHD with substance use."
+  cost: free
+
+- title: "Psychiatric News Alert"
+  creator: "American Psychiatric Association"
+  type: newsletter
+  url: "https://www.psychiatryonline.org/psychiatricnews"
+  blurb: "A short digest of new clinical and research findings every weekday from the APA's newspaper. A one-minute daily scan of the literature."
+  cost: free
+
+- title: "Psychopharmacology Institute on YouTube"
+  creator: "Psychopharmacology Institute"
+  type: video
+  url: "https://www.youtube.com/@Psychopharmacologyinstitute"
+  blurb: "Short lectures grouped by drug class, covering topics such as insomnia pharmacotherapy, treatment-resistant OCD augmentation and antiepileptics in bipolar pregnancy."
+  cost: free
+
+- title: "The Lancet Psychiatry in conversation with"
+  creator: "The Lancet Psychiatry"
+  type: journal
+  url: "https://www.thelancet.com/multimedia/podcasts/in-conversation-with/lanpsy"
+  blurb: "A monthly talk between editors and authors with a global view. Recent episodes covered cannabis and mental health and psychosis care in low- and middle-income countries."
+  cost: free
+
+- title: "Psychiatry Boot Camp"
+  creator: "Mark Mullen, MD"
+  type: podcast
+  url: "https://www.psychiatrybootcamp.com/"
+  blurb: "Started as a crash course for incoming residents. Experts cover suicide risk, catatonia, schizophrenia and decisional capacity. Full video episodes are also available."
+  cost: free
+
+- title: "Psych Scene Hub: Psychopharmacology"
+  creator: "Psych Scene (Sanil Rege, MD)"
+  type: blog
+  url: "https://psychscenehub.com/psychscenehub/psychopharmacology/"
+  blurb: "Readable mechanism-of-action guides such as MAOIs, amisulpride and oral antipsychotics, plus deprescribing tips. A paid Hub Pro tier adds PDF downloads."
+  cost: freemium
+
+# --- Block 4 ---
+- title: "PsyDactic"
+  creator: "Dr. O'Leary"
+  type: podcast
+  url: "https://psydactic.buzzsprout.com"
+  blurb: "A psychiatrist explains the neuroscience behind psychopharmacology and neuromodulation, including clozapine beyond the basics. References are posted for each episode."
+  cost: free
+
+- title: "The Carlat Psychiatry Blog"
+  creator: "Carlat Publishing"
+  type: blog
+  url: "https://www.thecarlatreport.com/blogs/1-the-carlat-psychiatry-blog"
+  blurb: "Practical posts on prescribing and practice, such as difficult-to-treat depression, deprescribing antipsychotics and billing for therapy. Some content is paywalled."
+  cost: freemium
+
+- title: "UW Psychiatry Grand Rounds"
+  creator: "University of Washington Dept. of Psychiatry & Behavioral Sciences"
+  type: video
+  url: "https://psychiatry.uw.edu/training-workforce-development/grand-rounds"
+  blurb: "Weekly grand rounds that are free and open to the public, with an archive of past talks on clinical practice, research and education."
+  cost: free
+
+- title: "BJPsych Podcasts"
+  creator: "Royal College of Psychiatrists"
+  type: journal
+  url: "https://www.rcpsych.ac.uk/about-us/publications-and-books/journals/bjpsych-podcasts"
+  blurb: "Author interviews from BJPsych, BJPsych Advances and BJPsych International, with transcripts. A UK view on the evidence."
+  cost: free
+
+- title: "The Thinking Mind Podcast"
+  creator: "Alex Curmi, MD"
+  type: podcast
+  url: "https://thinkingmindpodcast.buzzsprout.com/277019"
+  blurb: "UK psychiatrists talk about the human side of practice, from GLP-1s and mood to psychotherapy. Useful for the conversations around the prescription."
+  cost: free
+
+- title: "The Journal of Clinical Psychiatry Podcast"
+  creator: "Physicians Postgraduate Press"
+  type: journal
+  url: "https://www.psychiatrist.com/podcasts/"
+  blurb: "Interviews with JCP authors and experts, such as Joseph Goldberg on deprescribing and Roger McIntyre on GLP-1s in psychiatry. Transcripts are included."
+  cost: free
+
+# --- Block 5 (wraps into Block 1 on rotation) ---
+- title: "Rational Psychiatry"
+  creator: "Thomas Reilly, MD"
+  type: newsletter
+  url: "https://rationalpsychiatry.substack.com"
+  blurb: "A monthly, free newsletter from an Oxford psychiatrist-researcher who takes apart new psychiatric research, with a particular interest in hormones and mental health."
+  cost: free
+
+- title: "BBRF Meet the Scientist Webinars"
+  creator: "Brain & Behavior Research Foundation"
+  type: video
+  url: "https://bbrfoundation.org/past-webinars"
+  blurb: "Free recorded webinars where researchers present new treatment work, such as ketamine plus written exposure therapy for PTSD. Approachable enough to share with patients."
+  cost: free
+
+- title: "Psychiatric Services From Pages to Practice"
+  creator: "Psychiatric Services (APA)"
+  type: journal
+  url: "https://psychiatryonline.org/ps/podcast"
+  blurb: "Lisa Dixon and Josh Berezin turn services research, such as measurement-based care and collaborative care, into practical steps for clinics."
+  cost: free
+
+- title: "The Biological Psychiatry Podcast"
+  creator: "Biological Psychiatry journals"
+  type: journal
+  url: "https://thebiologicalpsychiatrypodcast.riverside.com/"
+  blurb: "Authors walk through new neurobiology papers. One asked whether brain changes in first-episode psychosis come from the illness or from antipsychotics."
+  cost: free

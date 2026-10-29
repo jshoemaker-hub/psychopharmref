@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="A wall calendar page torn to December 31 beside a laptop showing a prescription pad and a padlock.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4efe6"/>
+      <stop offset="1" stop-color="#e2d9c8"/>
+    </linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="2" fill="#6b6050" opacity="0.12"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#dots)"/>
+  <circle cx="600" cy="350" r="260" fill="#ece6db"/>
+  <rect x="0" y="560" width="1200" height="115" fill="#6b6050" opacity="0.18"/>
+  <!-- laptop -->
+  <rect x="270" y="215" width="420" height="275" rx="14" fill="#231e14"/>
+  <rect x="288" y="233" width="384" height="239" rx="6" fill="#f4efe6"/>
+  <path d="M230 490 H730 L700 525 H260 Z" fill="#6b6050"/>
+  <rect x="440" y="497" width="80" height="8" rx="4" fill="#231e14" opacity="0.4"/>
+  <!-- rx pad on screen -->
+  <rect x="320" y="258" width="190" height="196" rx="8" fill="#ffffff" stroke="#231e14" stroke-width="4"/>
+  <text x="340" y="315" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#8a3b2e">Rx</text>
+  <rect x="342" y="340" width="140" height="8" rx="4" fill="#6b6050" opacity="0.5"/>
+  <rect x="342" y="364" width="120" height="8" rx="4" fill="#6b6050" opacity="0.5"/>
+  <rect x="342" y="388" width="132" height="8" rx="4" fill="#6b6050" opacity="0.5"/>
+  <rect x="342" y="420" width="90" height="10" rx="5" fill="#c9a24a"/>
+  <!-- padlock -->
+  <path d="M560 330 v-34 a42 42 0 0 1 84 0 v34" fill="none" stroke="#231e14" stroke-width="16"/>
+  <rect x="540" y="328" width="124" height="104" rx="12" fill="#8a3b2e"/>
+  <circle cx="602" cy="370" r="13" fill="#231e14"/>
+  <rect x="596" y="374" width="12" height="32" rx="4" fill="#231e14"/>
+  <!-- calendar -->
+  <g transform="rotate(4 860 330)">
+    <rect x="745" y="170" width="250" height="300" rx="12" fill="#ffffff" stroke="#231e14" stroke-width="5"/>
+    <rect x="745" y="170" width="250" height="72" rx="12" fill="#8a3b2e"/>
+    <rect x="745" y="214" width="250" height="28" fill="#8a3b2e"/>
+    <text x="870" y="220" font-family="Helvetica, Arial, sans-serif" font-size="34" font-weight="bold" fill="#f4efe6" text-anchor="middle">DEC</text>
+    <text x="870" y="395" font-family="Georgia, serif" font-size="140" font-weight="bold" fill="#231e14" text-anchor="middle">31</text>
+    <circle cx="790" cy="170" r="10" fill="#231e14"/>
+    <circle cx="950" cy="170" r="10" fill="#231e14"/>
+    <path d="M745 470 l20 -14 l20 14 l20 -14 l20 14 l20 -14 l20 14 l20 -14 l20 14 l20 -14 l20 14 l20 -14 l20 14" fill="none" stroke="#231e14" stroke-width="4"/>
+  </g>
+  <!-- torn page falling -->
+  <g transform="rotate(-18 1000 560)" opacity="0.85">
+    <rect x="930" y="500" width="150" height="110" rx="8" fill="#ece6db" stroke="#6b6050" stroke-width="3"/>
+    <rect x="950" y="530" width="110" height="8" rx="4" fill="#6b6050" opacity="0.5"/>
+    <rect x="950" y="554" width="80" height="8" rx="4" fill="#6b6050" opacity="0.5"/>
+  </g>
+  <!-- clock arc -->
+  <circle cx="190" cy="190" r="70" fill="none" stroke="#c9a24a" stroke-width="10"/>
+  <path d="M190 190 V140 M190 190 L222 208" stroke="#231e14" stroke-width="8" stroke-linecap="round"/>
+</svg>

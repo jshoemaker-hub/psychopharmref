@@ -1,0 +1,70 @@
+{{ define "head" }}
+<link rel="stylesheet" href="{{ "css/newsroom.css" | relURL }}?v=20261029a">
+{{ end }}
+
+{{ define "main" }}
+<div class="nw-archive">
+  <a href="{{ "/" | relURL }}" class="back-link">← Today's front page</a>
+  <header class="nw-archive-head">
+    <h1>Newsroom</h1>
+    <p>Every piece we've published, newest first. The front page carries the last seven days; everything older lives here.</p>
+  </header>
+
+  <div class="nw-filter" role="group" aria-label="Filter by desk">
+    <button type="button" class="nw-filter-btn is-on" data-desk="all" aria-pressed="true">All desks</button>
+    {{ range site.Data.desks }}{{ if ne .key "web" }}
+    <button type="button" class="nw-filter-btn" data-desk="{{ .key }}" id="desk-{{ .key }}" aria-pressed="false" style="--nw-desk: {{ .accent | safeCSS }}">{{ .name }}</button>
+    {{ end }}{{ end }}
+  </div>
+
+  <div class="nw-grid nw-grid--archive" data-nw-dated>
+    {{ range .Pages.ByDate.Reverse }}
+    {{- $desk := index (where site.Data.desks "key" .Params.desk) 0 -}}
+    {{- $img := .Params.photo | default .Params.cover -}}
+    <a class="nw-card" href="{{ .RelPermalink }}" data-date="{{ .Date.Format "2006-01-02" }}" data-desk="{{ .Params.desk }}" style="--nw-desk: {{ $desk.accent | safeCSS }}">
+      {{ with $img }}<span class="nw-card-img"><img src="{{ . | relURL }}" alt="" width="1200" height="675" loading="lazy"></span>{{ end }}
+      <span class="nw-card-body">
+        <span class="nw-kicker">{{ $desk.name }}</span>
+        <span class="nw-card-title">{{ .Title }}</span>
+        <span class="nw-card-dek">{{ .Params.dek }}</span>
+        <span class="nw-card-meta">{{ $desk.author }} · <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time></span>
+      </span>
+    </a>
+    {{ end }}
+  </div>
+
+  {{ with site.Data.around_the_web }}
+  <section class="nw-web nw-web--all" aria-labelledby="nw-web-h">
+    <h2 id="nw-web-h">Around the Web <span class="nw-web-by">curated by Nora Quill</span></h2>
+    <p class="nw-section-sub">Newsletters, podcasts and channels from other people that we think are worth your time. We're not affiliated with any of them.</p>
+    <div class="nw-web-grid">
+      {{ range . }}
+      <a class="nw-web-item" href="{{ .url }}" target="_blank" rel="noopener">
+        <span class="nw-web-type nw-web-type--{{ .type }}">{{ .type }}</span>
+        <span class="nw-web-title">{{ .title }}</span>
+        <span class="nw-web-creator">{{ .creator }}{{ if ne .cost "free" }} · {{ .cost }}{{ end }}</span>
+        <span class="nw-web-blurb">{{ .blurb }}</span>
+      </a>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{ partial "news-disclosure.html" . }}
+</div>
+{{ partial "news-schedule.html" . }}
+<script>
+(function () {
+  var btns = document.querySelectorAll('.nw-filter-btn');
+  function apply(desk) {
+    btns.forEach(function (b) { var on = b.getAttribute('data-desk') === desk; b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', on); });
+    document.querySelectorAll('.nw-grid--archive .nw-card').forEach(function (c) {
+      c.hidden = desk !== 'all' && c.getAttribute('data-desk') !== desk;
+    });
+  }
+  btns.forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-desk')); }); });
+  var m = location.hash.match(/^#desk-(\w+)/);
+  if (m) apply(m[1]);
+})();
+</script>
+{{ end }}

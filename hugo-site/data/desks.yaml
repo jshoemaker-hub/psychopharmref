@@ -1,0 +1,32 @@
+# Newsroom desks. Bylines are house pen names (disclosed on every article and on /news/).
+# Order here is the order desks appear on the home page and in the archive filter.
+- key: fda
+  name: "FDA Watch"
+  author: "Marion Hale"
+  accent: "#2f6f8f"
+  beat: "Approvals, label changes, boxed warnings and advisory committees in psychopharmacology."
+- key: policy
+  name: "Capitol & Clinic"
+  author: "Theo Whitcombe"
+  accent: "#8a3b2e"
+  beat: "Federal policy that reaches the psychiatric clinic: DEA, CMS, parity, telehealth, 988."
+- key: mechanism
+  name: "How It Works"
+  author: "Iris Calder"
+  accent: "#4a7c35"
+  beat: "Mechanism explainers for new medications: targets, pharmacology and what it predicts."
+- key: instruments
+  name: "Instruments & Origins"
+  author: "Edith Marrow"
+  accent: "#8b6914"
+  beat: "Where psychiatry's tools came from: rating scales, treatments, devices and diagnostic systems."
+- key: profiles
+  name: "Minds That Shaped Psychiatry"
+  author: "Julian Ashby"
+  accent: "#5b4a7a"
+  beat: "Profiles of the psychiatrists behind the field's big ideas, flaws included."
+- key: web
+  name: "Around the Web"
+  author: "Nora Quill"
+  accent: "#6b6050"
+  beat: "Newsletters, podcasts and channels from other people worth a clinician's time."
