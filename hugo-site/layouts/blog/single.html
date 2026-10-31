@@ -1,5 +1,7 @@
 {{ define "head" }}
-<link rel="stylesheet" href="{{ "css/slides.css" | relURL }}?v=20261023a">
+{{ if site.Params.showSlides }}
+<link rel="stylesheet" href="{{ "css/slides.css" | relURL }}?v=20261028a">
+{{ end }}
 {{ if in .Content "rv-section" }}
 <link rel="stylesheet" href="{{ "css/videos.css" | relURL }}?v=20261013a">
 <script src="{{ "js/videos.js" | relURL }}?v=20261013a" defer></script>
@@ -127,7 +129,10 @@ table.dp-cmp td:first-child { font-weight: 600; }
     </div>
   </header>
 
-  {{/* Slide Overview — self-hides if no manifest exists for this slug */}}
+  {{/* Slide Overview — omitted unless showSlides = true in hugo.toml.
+       The markup stays so flipping that param restores the carousel and PDF button.
+       slides.js only reveals the block when <html data-show-slides="true">. */}}
+  {{ if site.Params.showSlides }}
   {{ $slug := .File.ContentBaseName }}
   <aside class="ba-slides" data-slides-slug="{{ $slug }}" aria-label="Slide overview" hidden>
     <button class="ba-slides-toggle" type="button" aria-expanded="false" aria-controls="slides-panel-{{ $slug }}">
@@ -152,7 +157,8 @@ table.dp-cmp td:first-child { font-weight: 600; }
       </div>
     </div>
   </aside>
-  <script src="{{ "js/slides.js" | relURL }}?v=20261023a" defer></script>
+  <script src="{{ "js/slides.js" | relURL }}?v=20261028a" defer></script>
+  {{ end }}
 
   {{ with .Params.clinicalSummary }}
   <div class="ba-clinical-summary">
