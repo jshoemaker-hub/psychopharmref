@@ -211,6 +211,13 @@ Netlify config: because `base = "hugo-site"`, Netlify reads **`hugo-site/netlify
 ### Security headers (CSP)
 `hugo-site/netlify.toml` sends a Content-Security-Policy and Permissions-Policy on every page. Any new third-party host must be added to the matching CSP directive or the browser will block it: scripts → `script-src`, fetch/XHR/websocket → `connect-src`, iframes → `frame-src`, form posts → `form-action`. Pin third-party scripts to an exact version and add `integrity="sha384-…" crossorigin="anonymous"`.
 
+**No inline script.** `script-src` has no `'unsafe-inline'`, so:
+- Never write `onclick="…"` (or any `on*=` attribute), in HTML or in HTML strings built by JS. Use the data- attributes handled by `js/actions.js`: `data-go="section-id"`, `data-call="fnName" data-arg="…"` (the function must be in `CALLABLE` there), `data-print`, `data-toggle-next="cls"`, `data-copy-link`, `data-share`. Or attach a listener in the tool's own JS.
+- Never add an inline `<script>` block; put the code in a file under `js/` (read per-page values from `data-` attributes, as `js/ga-init.js` does).
+- The one exception is the three.js import map in `index.html`, allowed by its `sha256-…` hash in `script-src`. If you edit the import map, recompute the hash (`python3 -c "import re,hashlib,base64;s=open('hugo-site/static/index.html').read();print(base64.b64encode(hashlib.sha256(re.search(r'<script type=\"importmap\">(.*?)</script>',s,re.S).group(1).encode()).digest()).decode())"`) and update both netlify.toml files.
+- Pop-up windows opened with `window.open('')` inherit the CSP: wire their buttons with `addEventListener` after `document.write`.
+- `'wasm-unsafe-eval'` stays: the 3D viewers' Draco decoder needs WebAssembly.
+
 ### Page dates and search titles
 - `python3 sync-lastmod.py` sets each Hugo page's `lastmod:` to the date its body last changed in git. Chapters show it as "Updated …" and the sitemap uses it. Run it before committing content changes.
 - Titles over ~60 characters get cut off in search results. A chapter with a long `title` gets a `seoTitle:` (≤ 60 chars) in front matter; the `<title>` tag uses it and the on-page heading keeps `title`.

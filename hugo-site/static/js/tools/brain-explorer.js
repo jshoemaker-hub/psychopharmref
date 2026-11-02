@@ -73,8 +73,8 @@
   }
   function renderLinks(id){
     var L=LINKS[id]||{}, el=$("be-links"), h="";
-    if(L.c) h+='<a class="be-link" onclick="window.ppGoSection(\'neuro-circuits\',\''+L.c[0]+'\')">Neuropsych circuit: '+L.c[1]+' ↗</a>';
-    if(L.r) h+='<a class="be-link" onclick="window.ppGoSection(\'brain-regions\',\''+L.r[0]+'\')">Brain region: '+L.r[1]+' ↗</a>';
+    if(L.c) h+='<a class="be-link" href="#" data-call="ppGoSection" data-arg="neuro-circuits" data-arg2="'+L.c[0]+'">Neuropsych circuit: '+L.c[1]+' ↗</a>';
+    if(L.r) h+='<a class="be-link" href="#" data-call="ppGoSection" data-arg="brain-regions" data-arg2="'+L.r[0]+'">Brain region: '+L.r[1]+' ↗</a>';
     el.innerHTML=h;
   }
   var current=null, sceneFocus=null;

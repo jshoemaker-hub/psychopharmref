@@ -6,12 +6,7 @@
 </script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RK6J3FQ9L7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-RK6J3FQ9L7');
-  </script>
+  <script async src="js/ga-init.js?v=20261024a" data-ga-id="G-RK6J3FQ9L7"></script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -599,12 +594,12 @@
     </div>
 
     <div class="sidebar-footer">
-      <a href="#" class="sf-link" onclick="switchSection('fda-search');return false;">References &amp; Methods</a>
+      <a href="#" class="sf-link" data-go="fda-search">References &amp; Methods</a>
       <a href="legal-disclaimer.html" class="sf-link" id="sf-disclaimer-link">Legal Disclaimer</a>
       <a href="privacy.html" class="sf-link">Privacy Policy</a>
       <a href="https://psychopharmref.beehiiv.com/" class="sf-link" target="_blank" rel="noopener">Newsletter</a>
-      <a href="#" class="sf-link" onclick="switchSection('contact');return false;">Contact</a>
-      <a href="#" class="sf-link" id="sf-auth-link" onclick="switchSection('question-bank');return false;">Sign In / Sign Up</a>
+      <a href="#" class="sf-link" data-go="contact">Contact</a>
+      <a href="#" class="sf-link" id="sf-auth-link" data-go="question-bank">Sign In / Sign Up</a>
     </div>
   </nav>
 
@@ -627,7 +622,7 @@
 
       <!-- Popular & Newly Added ticker -->
       <!-- EDIT: replace the anchors below with your curated Popular / New items.
-           Internal links: onclick="switchSection('SECTION-ID');return false;"
+           Internal links: data-go="SECTION-ID"
            Chapter links:  href="/blog/<slug>/"  — the track auto-duplicates for the loop. -->
       <div class="home-ticker" aria-label="Popular and newly added">
         <span class="home-ticker-label">Featured</span>
@@ -635,18 +630,18 @@
           <div class="home-ticker-track" id="home-ticker-track">
             <div class="tk-set">
               <span class="tk-tag tk-tag--pop">Popular</span>
-              <a href="#" onclick="switchSection('drug-table');return false;">Drug Database</a>
-              <a href="#" onclick="switchSection('p450');return false;">P450 Interactions</a>
-              <a href="#" onclick="switchSection('receptor-binding');return false;">Receptor Binding</a>
-              <a href="#" onclick="switchSection('qt-risk');return false;">QT Risk Tool</a>
-              <a href="#" onclick="switchSection('phq9-tool');return false;">PHQ-9</a>
-              <a href="#" onclick="switchSection('panss-tool');return false;">PANSS</a>
+              <a href="#" data-go="drug-table">Drug Database</a>
+              <a href="#" data-go="p450">P450 Interactions</a>
+              <a href="#" data-go="receptor-binding">Receptor Binding</a>
+              <a href="#" data-go="qt-risk">QT Risk Tool</a>
+              <a href="#" data-go="phq9-tool">PHQ-9</a>
+              <a href="#" data-go="panss-tool">PANSS</a>
               <span class="tk-tag tk-tag--new">New</span>
-              <a href="#" onclick="switchSection('tolerability-compare');return false;">Tolerability Comparison</a>
-              <a href="#" onclick="switchSection('med-compare');return false;">Medication Comparison</a>
+              <a href="#" data-go="tolerability-compare">Tolerability Comparison</a>
+              <a href="#" data-go="med-compare">Medication Comparison</a>
               <a href="/blog/antipsychotic-weight-management/">Antipsychotic Weight Management</a>
-              <a href="#" onclick="switchSection('frailty-tool');return false;">SMI Medical Frailty Scale</a>
-              <a href="#" onclick="switchSection('handouts');return false;">Patient Handouts</a>
+              <a href="#" data-go="frailty-tool">SMI Medical Frailty Scale</a>
+              <a href="#" data-go="handouts">Patient Handouts</a>
             </div>
           </div>
         </div>
@@ -677,34 +672,34 @@
             <div class="tr-step"><span class="tr-dot">1</span>
               <div class="tr-step-label">Screen by presentation</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('phq9-tool');return false;" class="tr-chip">PHQ-9</a>
-              <a href="#" onclick="switchSection('gad7-tool');return false;" class="tr-chip">GAD-7</a>
-              <a href="#" onclick="switchSection('cidi-tool');return false;" class="tr-chip">CIDI bipolar screen</a>
-              <a href="#" onclick="switchSection('asrs-tool');return false;" class="tr-chip">Adult ADHD (ASRS)</a>
-              <a href="#" onclick="switchSection('pcl5-tool');return false;" class="tr-chip">PCL-5 (PTSD)</a>
-              <a href="#" onclick="switchSection('ybocs-tool');return false;" class="tr-chip">Y-BOCS (OCD)</a>
-              <a href="#" onclick="switchSection('msibpd-tool');return false;" class="tr-chip">MSI-BPD (borderline)</a>
-              <a href="#" onclick="switchSection('aq-tool');return false;" class="tr-chip">Autism (AQ)</a>
-              <a href="#" onclick="switchSection('sud-tool');return false;" class="tr-chip">DSM-5-TR SUD</a>
-              <a href="#" onclick="switchSection('slums-tool');return false;" class="tr-chip">SLUMS / CDR (cognitive)</a>
+              <a href="#" data-go="phq9-tool" class="tr-chip">PHQ-9</a>
+              <a href="#" data-go="gad7-tool" class="tr-chip">GAD-7</a>
+              <a href="#" data-go="cidi-tool" class="tr-chip">CIDI bipolar screen</a>
+              <a href="#" data-go="asrs-tool" class="tr-chip">Adult ADHD (ASRS)</a>
+              <a href="#" data-go="pcl5-tool" class="tr-chip">PCL-5 (PTSD)</a>
+              <a href="#" data-go="ybocs-tool" class="tr-chip">Y-BOCS (OCD)</a>
+              <a href="#" data-go="msibpd-tool" class="tr-chip">MSI-BPD (borderline)</a>
+              <a href="#" data-go="aq-tool" class="tr-chip">Autism (AQ)</a>
+              <a href="#" data-go="sud-tool" class="tr-chip">DSM-5-TR SUD</a>
+              <a href="#" data-go="slums-tool" class="tr-chip">SLUMS / CDR (cognitive)</a>
               </div>
             </div>
             <div class="tr-step"><span class="tr-dot">2</span>
               <div class="tr-step-label">Confirm &amp; grade severity</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('panss-tool');return false;" class="tr-chip">PANSS</a>
-              <a href="#" onclick="switchSection('ymrs-tool');return false;" class="tr-chip">YMRS (mania)</a>
-              <a href="#" onclick="switchSection('bprs-tool');return false;" class="tr-chip">BPRS</a>
-              <a href="#" onclick="switchSection('bfcrs-tool');return false;" class="tr-chip">Catatonia (BFCRS)</a>
-              <a href="#" onclick="switchSection('adl-tool');return false;" class="tr-chip">ADL / IADL</a>
+              <a href="#" data-go="panss-tool" class="tr-chip">PANSS</a>
+              <a href="#" data-go="ymrs-tool" class="tr-chip">YMRS (mania)</a>
+              <a href="#" data-go="bprs-tool" class="tr-chip">BPRS</a>
+              <a href="#" data-go="bfcrs-tool" class="tr-chip">Catatonia (BFCRS)</a>
+              <a href="#" data-go="adl-tool" class="tr-chip">ADL / IADL</a>
               </div>
             </div>
             <div class="tr-step"><span class="tr-dot">3</span>
               <div class="tr-step-label">Reference &amp; framing</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('diagnoses-db');return false;" class="tr-chip">Diagnoses Database</a>
-              <a href="#" onclick="switchSection('psychiatry-glossary');return false;" class="tr-chip">Psychiatry Glossary</a>
-              <a href="#" onclick="switchSection('blog-index');return false;" class="tr-chip">Chapters</a>
+              <a href="#" data-go="diagnoses-db" class="tr-chip">Diagnoses Database</a>
+              <a href="#" data-go="psychiatry-glossary" class="tr-chip">Psychiatry Glossary</a>
+              <a href="#" data-go="blog-index" class="tr-chip">Chapters</a>
               </div>
             </div>
           </div>
@@ -721,31 +716,31 @@
             <div class="tr-step"><span class="tr-dot">1</span>
               <div class="tr-step-label">Safety &amp; capacity</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('suicide-risk-tools');return false;" class="tr-chip">Suicide Risk Tools</a>
-              <a href="#" onclick="switchSection('ace-tool');return false;" class="tr-chip">Aid to Capacity Eval (ACE)</a>
+              <a href="#" data-go="suicide-risk-tools" class="tr-chip">Suicide Risk Tools</a>
+              <a href="#" data-go="ace-tool" class="tr-chip">Aid to Capacity Eval (ACE)</a>
               </div>
             </div>
             <div class="tr-step"><span class="tr-dot">2</span>
               <div class="tr-step-label">Cardiac &amp; medical risk</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('qt-risk');return false;" class="tr-chip">QT Prolongation Risk</a>
-              <a href="#" onclick="switchSection('frailty-tool');return false;" class="tr-chip">SMI Medical Frailty</a>
+              <a href="#" data-go="qt-risk" class="tr-chip">QT Prolongation Risk</a>
+              <a href="#" data-go="frailty-tool" class="tr-chip">SMI Medical Frailty</a>
               </div>
             </div>
             <div class="tr-step"><span class="tr-dot">3</span>
               <div class="tr-step-label">Withdrawal &amp; intoxication</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('ciwa-tool');return false;" class="tr-chip">CIWA-Ar (alcohol)</a>
-              <a href="#" onclick="switchSection('cows-tool');return false;" class="tr-chip">COWS (opioid)</a>
-              <a href="#" onclick="switchSection('caffeine-tool');return false;" class="tr-chip">Caffeine intake</a>
-              <a href="#" onclick="switchSection('thc-tool');return false;" class="tr-chip">THC intake</a>
-              <a href="#" onclick="switchSection('alcohol-tool');return false;" class="tr-chip">Alcohol intake</a>
+              <a href="#" data-go="ciwa-tool" class="tr-chip">CIWA-Ar (alcohol)</a>
+              <a href="#" data-go="cows-tool" class="tr-chip">COWS (opioid)</a>
+              <a href="#" data-go="caffeine-tool" class="tr-chip">Caffeine intake</a>
+              <a href="#" data-go="thc-tool" class="tr-chip">THC intake</a>
+              <a href="#" data-go="alcohol-tool" class="tr-chip">Alcohol intake</a>
               </div>
             </div>
             <div class="tr-step"><span class="tr-dot">4</span>
               <div class="tr-step-label">Movement &amp; emergent effects</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('aims-tool');return false;" class="tr-chip">AIMS (tardive dyskinesia)</a>
+              <a href="#" data-go="aims-tool" class="tr-chip">AIMS (tardive dyskinesia)</a>
               <a href="/blog/serotonin-syndrome-nms/" class="tr-chip tr-chip--chapter">Serotonin Syndrome &amp; NMS</a>
               </div>
             </div>
@@ -763,26 +758,26 @@
             <div class="tr-step"><span class="tr-dot">1</span>
               <div class="tr-step-label">Re-measure symptom trajectory</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('phq9-tool');return false;" class="tr-chip">PHQ-9</a>
-              <a href="#" onclick="switchSection('gad7-tool');return false;" class="tr-chip">GAD-7</a>
-              <a href="#" onclick="switchSection('panss-tool');return false;" class="tr-chip">PANSS</a>
-              <a href="#" onclick="switchSection('ymrs-tool');return false;" class="tr-chip">YMRS</a>
-              <a href="#" onclick="switchSection('ybocs-tool');return false;" class="tr-chip">Y-BOCS</a>
+              <a href="#" data-go="phq9-tool" class="tr-chip">PHQ-9</a>
+              <a href="#" data-go="gad7-tool" class="tr-chip">GAD-7</a>
+              <a href="#" data-go="panss-tool" class="tr-chip">PANSS</a>
+              <a href="#" data-go="ymrs-tool" class="tr-chip">YMRS</a>
+              <a href="#" data-go="ybocs-tool" class="tr-chip">Y-BOCS</a>
               </div>
             </div>
             <div class="tr-step"><span class="tr-dot">2</span>
               <div class="tr-step-label">Monitor treatment safety</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('aims-tool');return false;" class="tr-chip">AIMS surveillance</a>
-              <a href="#" onclick="switchSection('print-forms');return false;" class="tr-chip">Metabolic monitoring forms</a>
-              <a href="#" onclick="switchSection('frailty-tool');return false;" class="tr-chip">SMI Frailty</a>
+              <a href="#" data-go="aims-tool" class="tr-chip">AIMS surveillance</a>
+              <a href="#" data-go="print-forms" class="tr-chip">Metabolic monitoring forms</a>
+              <a href="#" data-go="frailty-tool" class="tr-chip">SMI Frailty</a>
               </div>
             </div>
             <div class="tr-step"><span class="tr-dot">3</span>
               <div class="tr-step-label">Adherence &amp; function</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('refill-calendar');return false;" class="tr-chip">Refill Calendar</a>
-              <a href="#" onclick="switchSection('adl-tool');return false;" class="tr-chip">ADL / IADL</a>
+              <a href="#" data-go="refill-calendar" class="tr-chip">Refill Calendar</a>
+              <a href="#" data-go="adl-tool" class="tr-chip">ADL / IADL</a>
               </div>
             </div>
           </div>
@@ -799,25 +794,25 @@
             <div class="tr-step"><span class="tr-dot">1</span>
               <div class="tr-step-label">Match to indication</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('fda-indication');return false;" class="tr-chip">FDA Indication Search</a>
-              <a href="#" onclick="switchSection('drug-table');return false;" class="tr-chip">Drug Database</a>
-              <a href="#" onclick="switchSection('diagnoses-db');return false;" class="tr-chip">Diagnoses Database</a>
+              <a href="#" data-go="fda-indication" class="tr-chip">FDA Indication Search</a>
+              <a href="#" data-go="drug-table" class="tr-chip">Drug Database</a>
+              <a href="#" data-go="diagnoses-db" class="tr-chip">Diagnoses Database</a>
               </div>
             </div>
             <div class="tr-step"><span class="tr-dot">2</span>
               <div class="tr-step-label">Compare candidate options</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('med-compare');return false;" class="tr-chip">Medication Comparison</a>
-              <a href="#" onclick="switchSection('similar-meds');return false;" class="tr-chip">Find Similar Medications</a>
-              <a href="#" onclick="switchSection('receptor-binding');return false;" class="tr-chip">Receptor Binding</a>
+              <a href="#" data-go="med-compare" class="tr-chip">Medication Comparison</a>
+              <a href="#" data-go="similar-meds" class="tr-chip">Find Similar Medications</a>
+              <a href="#" data-go="receptor-binding" class="tr-chip">Receptor Binding</a>
               </div>
             </div>
             <div class="tr-step"><span class="tr-dot">3</span>
               <div class="tr-step-label">Plan the start (drug + non-drug)</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('med-taper');return false;" class="tr-chip">Taper / Start Scheduler</a>
-              <a href="#" onclick="switchSection('therapy-course');return false;" class="tr-chip">Therapy Courses</a>
-              <a href="#" onclick="switchSection('handouts');return false;" class="tr-chip">Patient Handouts</a>
+              <a href="#" data-go="med-taper" class="tr-chip">Taper / Start Scheduler</a>
+              <a href="#" data-go="therapy-course" class="tr-chip">Therapy Courses</a>
+              <a href="#" data-go="handouts" class="tr-chip">Patient Handouts</a>
               </div>
             </div>
           </div>
@@ -834,23 +829,23 @@
             <div class="tr-step"><span class="tr-dot">1</span>
               <div class="tr-step-label">Reassess response &amp; tolerability</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('tolerability-compare');return false;" class="tr-chip">Tolerability Comparison</a>
-              <a href="#" onclick="switchSection('med-compare');return false;" class="tr-chip">Medication Comparison</a>
+              <a href="#" data-go="tolerability-compare" class="tr-chip">Tolerability Comparison</a>
+              <a href="#" data-go="med-compare" class="tr-chip">Medication Comparison</a>
               </div>
             </div>
             <div class="tr-step"><span class="tr-dot">2</span>
               <div class="tr-step-label">Switch, augment, or combine</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('complementary-meds');return false;" class="tr-chip">Find Complementary Meds</a>
-              <a href="#" onclick="switchSection('med-taper');return false;" class="tr-chip">Cross-taper (Taper / Start)</a>
-              <a href="#" onclick="switchSection('similar-meds');return false;" class="tr-chip">Find Similar Meds</a>
+              <a href="#" data-go="complementary-meds" class="tr-chip">Find Complementary Meds</a>
+              <a href="#" data-go="med-taper" class="tr-chip">Cross-taper (Taper / Start)</a>
+              <a href="#" data-go="similar-meds" class="tr-chip">Find Similar Meds</a>
               </div>
             </div>
             <div class="tr-step"><span class="tr-dot">3</span>
               <div class="tr-step-label">Pharmacology-guided fine-tuning</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('pk-curves');return false;" class="tr-chip">PK Curves</a>
-              <a href="#" onclick="switchSection('receptor-binding');return false;" class="tr-chip">Receptor Binding</a>
+              <a href="#" data-go="pk-curves" class="tr-chip">PK Curves</a>
+              <a href="#" data-go="receptor-binding" class="tr-chip">Receptor Binding</a>
               </div>
             </div>
           </div>
@@ -867,29 +862,29 @@
             <div class="tr-step"><span class="tr-dot">1</span>
               <div class="tr-step-label">Screen interactions</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('p450');return false;" class="tr-chip">P450 Interactions</a>
+              <a href="#" data-go="p450" class="tr-chip">P450 Interactions</a>
               </div>
             </div>
             <div class="tr-step"><span class="tr-dot">2</span>
               <div class="tr-step-label">Cardiac, movement &amp; metabolic</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('qt-risk');return false;" class="tr-chip">QT Risk Tool</a>
-              <a href="#" onclick="switchSection('aims-tool');return false;" class="tr-chip">AIMS</a>
-              <a href="#" onclick="switchSection('tolerability-compare');return false;" class="tr-chip">Tolerability Comparison</a>
-              <a href="#" onclick="switchSection('print-forms');return false;" class="tr-chip">Metabolic monitoring forms</a>
+              <a href="#" data-go="qt-risk" class="tr-chip">QT Risk Tool</a>
+              <a href="#" data-go="aims-tool" class="tr-chip">AIMS</a>
+              <a href="#" data-go="tolerability-compare" class="tr-chip">Tolerability Comparison</a>
+              <a href="#" data-go="print-forms" class="tr-chip">Metabolic monitoring forms</a>
               </div>
             </div>
             <div class="tr-step"><span class="tr-dot">3</span>
               <div class="tr-step-label">Recognize serious reactions</div>
               <div class="tr-chips">
               <a href="/blog/serotonin-syndrome-nms/" class="tr-chip tr-chip--chapter">Serotonin Syndrome &amp; NMS</a>
-              <a href="#" onclick="switchSection('frailty-tool');return false;" class="tr-chip">SMI Frailty</a>
+              <a href="#" data-go="frailty-tool" class="tr-chip">SMI Frailty</a>
               </div>
             </div>
             <div class="tr-step"><span class="tr-dot">4</span>
               <div class="tr-step-label">Educate the patient</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('handouts');return false;" class="tr-chip">Medication Handouts</a>
+              <a href="#" data-go="handouts" class="tr-chip">Medication Handouts</a>
               </div>
             </div>
           </div>
@@ -906,23 +901,23 @@
             <div class="tr-step"><span class="tr-dot">1</span>
               <div class="tr-step-label">Special populations</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('drug-table');return false;" class="tr-chip">Pregnancy / lactation (Drug DB)</a>
-              <a href="#" onclick="switchSection('drug-table');return false;" class="tr-chip">Renal / hepatic / geriatric (Drug DB)</a>
+              <a href="#" data-go="drug-table" class="tr-chip">Pregnancy / lactation (Drug DB)</a>
+              <a href="#" data-go="drug-table" class="tr-chip">Renal / hepatic / geriatric (Drug DB)</a>
               </div>
             </div>
             <div class="tr-step"><span class="tr-dot">2</span>
               <div class="tr-step-label">Pharmacologic individualization</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('receptor-binding');return false;" class="tr-chip">Receptor Binding</a>
-              <a href="#" onclick="switchSection('pk-curves');return false;" class="tr-chip">PK Curves</a>
+              <a href="#" data-go="receptor-binding" class="tr-chip">Receptor Binding</a>
+              <a href="#" data-go="pk-curves" class="tr-chip">PK Curves</a>
               </div>
             </div>
             <div class="tr-step"><span class="tr-dot">3</span>
               <div class="tr-step-label">History &amp; shared decisions</div>
               <div class="tr-chips">
-              <a href="#" onclick="switchSection('med-history-tool');return false;" class="tr-chip">Medication History Form</a>
-              <a href="#" onclick="switchSection('handouts');return false;" class="tr-chip">Patient Handouts</a>
-              <a href="#" onclick="switchSection('psychiatry-glossary');return false;" class="tr-chip">Psychiatry Glossary</a>
+              <a href="#" data-go="med-history-tool" class="tr-chip">Medication History Form</a>
+              <a href="#" data-go="handouts" class="tr-chip">Patient Handouts</a>
+              <a href="#" data-go="psychiatry-glossary" class="tr-chip">Psychiatry Glossary</a>
               </div>
             </div>
           </div>
@@ -1262,10 +1257,10 @@
 
       <div id="compare-container" class="hidden">
         <div class="rb-view-toggle" style="margin-left:0;margin-bottom:14px">
-          <button class="rb-vt-btn rb-vt-active" id="cmp-view-bar" onclick="switchCompareView('bar')">Bar Chart</button>
-          <button class="rb-vt-btn" id="cmp-view-pie" onclick="switchCompareView('pie')">Pie Charts</button>
-          <button class="rb-vt-btn" id="cmp-view-heat" onclick="switchCompareView('heat')">Heatmap</button>
-          <button class="rb-vt-btn" id="cmp-view-tree" onclick="switchCompareView('tree')">Treemap</button>
+          <button class="rb-vt-btn rb-vt-active" id="cmp-view-bar" data-call="switchCompareView" data-arg="bar">Bar Chart</button>
+          <button class="rb-vt-btn" id="cmp-view-pie" data-call="switchCompareView" data-arg="pie">Pie Charts</button>
+          <button class="rb-vt-btn" id="cmp-view-heat" data-call="switchCompareView" data-arg="heat">Heatmap</button>
+          <button class="rb-vt-btn" id="cmp-view-tree" data-call="switchCompareView" data-arg="tree">Treemap</button>
         </div>
 
         <!-- Bar view -->
@@ -1350,9 +1345,9 @@
           <option value="Partial Opioid Agonist">Partial Opioid Agonist (buprenorphine)</option>
         </select>
         <div class="rb-view-toggle">
-          <button class="rb-vt-btn rb-vt-active" id="rb-view-bar" onclick="switchRBView('bar')">Bar Chart</button>
-          <button class="rb-vt-btn" id="rb-view-heat" onclick="switchRBView('heat')">Heatmap</button>
-          <button class="rb-vt-btn" id="rb-view-tree" onclick="switchRBView('tree')">Treemap</button>
+          <button class="rb-vt-btn rb-vt-active" id="rb-view-bar" data-call="switchRBView" data-arg="bar">Bar Chart</button>
+          <button class="rb-vt-btn" id="rb-view-heat" data-call="switchRBView" data-arg="heat">Heatmap</button>
+          <button class="rb-vt-btn" id="rb-view-tree" data-call="switchRBView" data-arg="tree">Treemap</button>
         </div>
         <div class="receptor-toggles" id="receptor-toggles"></div>
       </div>
@@ -1697,7 +1692,7 @@
       <div class="section-header">
         <h2>QT Prolongation Risk Tool</h2>
         <p class="section-sub">QTc calculator, Tisdale risk scoring, drug reference lists, and monitoring guidance. For educational use — always verify with current clinical resources.</p>
-        <button class="pf-inline-btn" onclick="printBlankForm('tisdale-qt')" title="Print a blank version of this form">🖨️ Print Blank Form</button>
+        <button class="pf-inline-btn" data-call="printBlankForm" data-arg="tisdale-qt" title="Print a blank version of this form">🖨️ Print Blank Form</button>
       </div>
 
       <!-- ── Education accordion ──────────────────────────────────────────── -->
@@ -1814,7 +1809,7 @@
               <option value="female">Female</option>
             </select>
           </div>
-          <button class="qt-calc-btn" onclick="calcQTc()">Calculate QTc</button>
+          <button class="qt-calc-btn" data-call="calcQTc">Calculate QTc</button>
         </div>
         <div id="qtc-result" class="qtc-result hidden"></div>
       </div>
@@ -1929,7 +1924,7 @@
             <label for="db-date2">Second Date</label>
             <input type="date" id="db-date2">
           </div>
-          <button class="rc-btn" onclick="calcDaysBetween()">Calculate</button>
+          <button class="rc-btn" data-call="calcDaysBetween">Calculate</button>
         </div>
         <div id="db-result" class="rc-result hidden"></div>
       </div>
@@ -1973,7 +1968,7 @@
             <label for="uc-remaining">Pills remaining at count (optional)</label>
             <input type="number" id="uc-remaining" placeholder="e.g. 4" min="0">
           </div>
-          <button class="rc-btn" onclick="calcUsage()">Calculate</button>
+          <button class="rc-btn" data-call="calcUsage">Calculate</button>
         </div>
         <div id="uc-result" class="rc-result hidden"></div>
       </div>
@@ -1991,7 +1986,7 @@
             <label for="fwd-days">Days Supply</label>
             <input type="number" id="fwd-days" placeholder="e.g. 30" min="1" max="365">
           </div>
-          <button class="rc-btn" onclick="calcForwardRefills()">Generate</button>
+          <button class="rc-btn" data-call="calcForwardRefills">Generate</button>
         </div>
         <div id="fwd-result" class="rc-result hidden"></div>
       </div>
@@ -2009,7 +2004,7 @@
             <label for="rev-days">Days Between Fills</label>
             <input type="number" id="rev-days" placeholder="e.g. 30" min="1" max="365">
           </div>
-          <button class="rc-btn" onclick="calcReverseRefills()">Generate</button>
+          <button class="rc-btn" data-call="calcReverseRefills">Generate</button>
         </div>
         <div id="rev-result" class="rc-result hidden"></div>
       </div>
@@ -2044,7 +2039,7 @@
         <div class="rc-row" style="margin-bottom:12px">
           <div class="rc-field"><label for="ms-target">Preferred Sync Date (optional)</label><input type="date" id="ms-target"><span style="font-size:0.78rem;color:#888;margin-top:4px;display:block">Leave blank to auto-align to the latest depletion date</span></div>
           <div class="rc-field"><label for="ms-future">Future Fills to Show</label><input type="number" id="ms-future" value="4" min="1" max="12"></div>
-          <button class="rc-btn" onclick="calcMedSync()">Sync</button>
+          <button class="rc-btn" data-call="calcMedSync">Sync</button>
         </div>
         <div id="ms-result" class="rc-result hidden"></div>
       </div>
@@ -2096,7 +2091,7 @@
         <p class="ref-caveat">All four loops share the same basic architecture: <strong>Cortex → Striatum → Globus Pallidus/SNr → Thalamus → Cortex</strong>. What differs is <em>which</em> cortical region anchors the loop and therefore which function is modulated. This framework underlies DBS target selection, neuropsychiatric differential diagnosis, and neuroimaging interpretation.</p>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:20px 0;padding:14px 16px;border:1px solid rgba(74,124,53,.35);background:rgba(74,124,53,.07);border-radius:12px;"><span style="font-weight:600;color:var(--accent);font-size:13px;">&#129504; Explore in 3D &rarr;</span><span style="display:flex;flex-wrap:wrap;gap:6px;"><a onclick="ppOpenBrain('dlpfc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">DLPFC</a><a onclick="ppOpenBrain('ofc-vmpfc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">OFC/vmPFC</a><a onclick="ppOpenBrain('acc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">ACC</a><a onclick="ppOpenBrain('dstriatum')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Striatum</a><a onclick="ppOpenBrain('lc-thal')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">MD thalamus</a><a onclick="ppOpenBrain('nacc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">NAcc</a><a onclick="ppOpenBrain('vta-snc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">VTA/SNc</a><a onclick="switchSection('brain-explorer')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Open Explorer &#8599;</a></span></div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:20px 0;padding:14px 16px;border:1px solid rgba(74,124,53,.35);background:rgba(74,124,53,.07);border-radius:12px;"><span style="font-weight:600;color:var(--accent);font-size:13px;">&#129504; Explore in 3D &rarr;</span><span style="display:flex;flex-wrap:wrap;gap:6px;"><a data-call="ppOpenBrain" data-arg="dlpfc" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">DLPFC</a><a data-call="ppOpenBrain" data-arg="ofc-vmpfc" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">OFC/vmPFC</a><a data-call="ppOpenBrain" data-arg="acc" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">ACC</a><a data-call="ppOpenBrain" data-arg="dstriatum" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Striatum</a><a data-call="ppOpenBrain" data-arg="lc-thal" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">MD thalamus</a><a data-call="ppOpenBrain" data-arg="nacc" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">NAcc</a><a data-call="ppOpenBrain" data-arg="vta-snc" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">VTA/SNc</a><a data-go="brain-explorer" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Open Explorer &#8599;</a></span></div>
 
       <!-- ── Category: Cortico-BG-Thalamo-Cortical Loops ── -->
       <div class="circuit-category-header">
@@ -2625,20 +2620,20 @@
         <p class="ref-card-sub">Each major neuropsychiatric condition is associated with dysfunction in a characteristic set of brain regions. Region involvement is based on convergent evidence from structural MRI, functional neuroimaging, lesion studies, and postmortem data. Colors indicate brain region category.</p>
         <!-- Region legend -->
         <div class="region-legend">
-          <span class="rl-item" id="be-r-pfc" style="--rc:#4a90d9;cursor:pointer" title="View in 3D Brain Explorer" onclick="ppOpenBrain('dlpfc')">Prefrontal / Frontal Cortex</span>
-          <span class="rl-item" id="be-r-cingulate" style="--rc:#7ab86e;cursor:pointer" title="View in 3D Brain Explorer" onclick="ppOpenBrain('acc')">Cingulate Cortex</span>
-          <span class="rl-item" id="be-r-amygdala" style="--rc:#b85a5a;cursor:pointer" title="View in 3D Brain Explorer" onclick="ppOpenBrain('amygdala')">Amygdala</span>
-          <span class="rl-item" id="be-r-hippocampus" style="--rc:#9a5ab8;cursor:pointer" title="View in 3D Brain Explorer" onclick="ppOpenBrain('hippocampus')">Hippocampus / MTL</span>
-          <span class="rl-item" id="be-r-striatum" style="--rc:#c8a83a;cursor:pointer" title="View in 3D Brain Explorer" onclick="ppOpenBrain('dstriatum')">Striatum / Basal Ganglia</span>
-          <span class="rl-item" id="be-r-thalamus" style="--rc:#5aacb8;cursor:pointer" title="View in 3D Brain Explorer" onclick="ppOpenBrain('lc-thal')">Thalamus</span>
+          <span class="rl-item" id="be-r-pfc" style="--rc:#4a90d9;cursor:pointer" title="View in 3D Brain Explorer" data-call="ppOpenBrain" data-arg="dlpfc">Prefrontal / Frontal Cortex</span>
+          <span class="rl-item" id="be-r-cingulate" style="--rc:#7ab86e;cursor:pointer" title="View in 3D Brain Explorer" data-call="ppOpenBrain" data-arg="acc">Cingulate Cortex</span>
+          <span class="rl-item" id="be-r-amygdala" style="--rc:#b85a5a;cursor:pointer" title="View in 3D Brain Explorer" data-call="ppOpenBrain" data-arg="amygdala">Amygdala</span>
+          <span class="rl-item" id="be-r-hippocampus" style="--rc:#9a5ab8;cursor:pointer" title="View in 3D Brain Explorer" data-call="ppOpenBrain" data-arg="hippocampus">Hippocampus / MTL</span>
+          <span class="rl-item" id="be-r-striatum" style="--rc:#c8a83a;cursor:pointer" title="View in 3D Brain Explorer" data-call="ppOpenBrain" data-arg="dstriatum">Striatum / Basal Ganglia</span>
+          <span class="rl-item" id="be-r-thalamus" style="--rc:#5aacb8;cursor:pointer" title="View in 3D Brain Explorer" data-call="ppOpenBrain" data-arg="lc-thal">Thalamus</span>
           <span class="rl-item" style="--rc:#e07b39">Temporal Cortex</span>
           <span class="rl-item" style="--rc:#6ab87a">Cerebellum</span>
-          <span class="rl-item" id="be-r-brainstem" style="--rc:#8a9aaa;cursor:pointer" title="View in 3D Brain Explorer" onclick="ppOpenBrain('vta-snc')">Brainstem / SN</span>
+          <span class="rl-item" id="be-r-brainstem" style="--rc:#8a9aaa;cursor:pointer" title="View in 3D Brain Explorer" data-call="ppOpenBrain" data-arg="vta-snc">Brainstem / SN</span>
           <span class="rl-item" style="--rc:#b86e9a">Insula / Parietal</span>
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:20px 0;padding:14px 16px;border:1px solid rgba(74,124,53,.35);background:rgba(74,124,53,.07);border-radius:12px;"><span style="font-weight:600;color:var(--accent);font-size:13px;">&#129504; Explore in 3D &rarr;</span><span style="display:flex;flex-wrap:wrap;gap:6px;"><a onclick="ppOpenBrain('dlpfc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">DLPFC</a><a onclick="ppOpenBrain('acc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">ACC</a><a onclick="ppOpenBrain('amygdala')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Amygdala</a><a onclick="ppOpenBrain('hippocampus')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Hippocampus</a><a onclick="ppOpenBrain('dstriatum')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Striatum</a><a onclick="ppOpenBrain('lc-thal')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">MD thalamus</a><a onclick="ppOpenBrain('nacc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">NAcc</a><a onclick="ppOpenBrain('vta-snc')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">VTA/SNc</a><a onclick="switchSection('brain-explorer')" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Open Explorer &#8599;</a></span></div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:20px 0;padding:14px 16px;border:1px solid rgba(74,124,53,.35);background:rgba(74,124,53,.07);border-radius:12px;"><span style="font-weight:600;color:var(--accent);font-size:13px;">&#129504; Explore in 3D &rarr;</span><span style="display:flex;flex-wrap:wrap;gap:6px;"><a data-call="ppOpenBrain" data-arg="dlpfc" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">DLPFC</a><a data-call="ppOpenBrain" data-arg="acc" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">ACC</a><a data-call="ppOpenBrain" data-arg="amygdala" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Amygdala</a><a data-call="ppOpenBrain" data-arg="hippocampus" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Hippocampus</a><a data-call="ppOpenBrain" data-arg="dstriatum" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Striatum</a><a data-call="ppOpenBrain" data-arg="lc-thal" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">MD thalamus</a><a data-call="ppOpenBrain" data-arg="nacc" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">NAcc</a><a data-call="ppOpenBrain" data-arg="vta-snc" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">VTA/SNc</a><a data-go="brain-explorer" style="cursor:pointer;font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);text-decoration:none;">Open Explorer &#8599;</a></span></div>
 
       <!-- ── Anxiety Disorders ── -->
       <div class="circuit-category-header">
@@ -3733,7 +3728,7 @@
 <section id="isi-tool" data-lazy-tool="isi-tool" class="section">
   <div class="section-header">
     <h2>Insomnia Severity Index (ISI)</h2>
-    <p>Seven-item self-report measure of insomnia severity over the past two weeks (Morin). Total 0&ndash;28 across four severity bands. First-line treatment for chronic insomnia is <a href="#" onclick="switchSection('cbti-insomnia');return false;">CBT-I</a>.</p>
+    <p>Seven-item self-report measure of insomnia severity over the past two weeks (Morin). Total 0&ndash;28 across four severity bands. First-line treatment for chronic insomnia is <a href="#" data-go="cbti-insomnia">CBT-I</a>.</p>
   </div>
 <div class="tool-fragment" data-fragment="isi-tool" aria-busy="true"><p class="tool-fragment-msg">Loading…</p></div>
 </section><!-- end isi-tool -->
@@ -3822,7 +3817,7 @@
 <section id="ba-depression" data-lazy-tool="ba-depression" class="section">
   <div class="section-header">
     <h2>Module 3 &mdash; Behavioral Activation &amp; CBT for Depression</h2>
-    <p class="section-sub">A practical how-to for delivering Behavioral Activation, with interactive worksheets and goal-setting tools. <a href="#" onclick="switchSection('therapy-course');return false;">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/ba-depression-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a> &nbsp;&middot;&nbsp; <a href="#" onclick="switchSection('isi-tool');return false;">Measure baseline severity with the ISI &rarr;</a></p>
+    <p class="section-sub">A practical how-to for delivering Behavioral Activation, with interactive worksheets and goal-setting tools. <a href="#" data-go="therapy-course">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/ba-depression-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a> &nbsp;&middot;&nbsp; <a href="#" data-go="isi-tool">Measure baseline severity with the ISI &rarr;</a></p>
   </div>
 <div class="tool-fragment" data-fragment="ba-depression" aria-busy="true"><p class="tool-fragment-msg">Loading…</p></div>
 </section><!-- end ba-depression -->
@@ -3831,7 +3826,7 @@
 <section id="exposure-anxiety" data-lazy-tool="exposure-anxiety" class="section">
   <div class="section-header">
     <h2>Module 4 &mdash; Exposure-Based CBT for Anxiety Disorders (incl. ERP for OCD)</h2>
-    <p class="section-sub">A practical how-to for delivering exposure therapy with the inhibitory-learning model, with interactive worksheets and goal-setting tools. <a href="#" onclick="switchSection('therapy-course');return false;">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/exposure-anxiety-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
+    <p class="section-sub">A practical how-to for delivering exposure therapy with the inhibitory-learning model, with interactive worksheets and goal-setting tools. <a href="#" data-go="therapy-course">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/exposure-anxiety-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
   </div>
 <div class="tool-fragment" data-fragment="exposure-anxiety" aria-busy="true"><p class="tool-fragment-msg">Loading…</p></div>
 </section><!-- end exposure-anxiety -->
@@ -3840,7 +3835,7 @@
 <section id="aba-autism" data-lazy-tool="aba-autism" class="section">
   <div class="section-header">
     <h2>Module 2 &mdash; ABA &amp; Naturalistic Approaches for Autism Spectrum Disorder</h2>
-    <p class="section-sub">A practical, assent-based, neurodiversity-affirming how-to for Discrete Trial Training, PRT/ESDM, and function-based support, with interactive worksheets. <a href="#" onclick="switchSection('therapy-course');return false;">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/aba-autism-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
+    <p class="section-sub">A practical, assent-based, neurodiversity-affirming how-to for Discrete Trial Training, PRT/ESDM, and function-based support, with interactive worksheets. <a href="#" data-go="therapy-course">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/aba-autism-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
   </div>
 <div class="tool-fragment" data-fragment="aba-autism" aria-busy="true"><p class="tool-fragment-msg">Loading…</p></div>
 </section><!-- end aba-autism -->
@@ -3849,7 +3844,7 @@
 <section id="cbtp-psychosis" data-lazy-tool="cbtp-psychosis" class="section">
   <div class="section-header">
     <h2>Module 6 &mdash; CBT for Psychosis (CBTp) &amp; Related Approaches for Schizophrenia</h2>
-    <p class="section-sub">A practical, collaborative, normalizing how-to for CBTp &mdash; formulation, working with voices and beliefs, functioning goals, and staying-well planning, with interactive worksheets. <a href="#" onclick="switchSection('therapy-course');return false;">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/cbtp-psychosis-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
+    <p class="section-sub">A practical, collaborative, normalizing how-to for CBTp &mdash; formulation, working with voices and beliefs, functioning goals, and staying-well planning, with interactive worksheets. <a href="#" data-go="therapy-course">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/cbtp-psychosis-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
   </div>
 <div class="tool-fragment" data-fragment="cbtp-psychosis" aria-busy="true"><p class="tool-fragment-msg">Loading…</p></div>
 </section><!-- end cbtp-psychosis -->
@@ -3858,7 +3853,7 @@
 <section id="foundations" data-lazy-tool="foundations" class="section">
   <div class="section-header">
     <h2>Module 1 &mdash; Foundational Principles of Behavioral &amp; Cognitive-Behavioral Therapy</h2>
-    <p class="section-sub">The shared core: behavioral &amp; cognitive principles, functional analysis, case formulation, session structure, measurement, and Socratic method. <a href="#" onclick="switchSection('therapy-course');return false;">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/foundations-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
+    <p class="section-sub">The shared core: behavioral &amp; cognitive principles, functional analysis, case formulation, session structure, measurement, and Socratic method. <a href="#" data-go="therapy-course">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/foundations-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
   </div>
   <div class="tool-fragment" data-fragment="foundations" aria-busy="true"><p class="tool-fragment-msg">Loading…</p></div>
 </section><!-- end foundations -->
@@ -3867,7 +3862,7 @@
 <section id="anger-pmt" data-lazy-tool="anger-pmt" class="section">
   <div class="section-header">
     <h2>Module 5 &mdash; CBT for Anger Management &amp; Parent Management Training</h2>
-    <p class="section-sub">Two routes to reducing anger, irritability, and aggression: CBT for anger (adults/adolescents) and PMT for caregivers, with interactive worksheets. <a href="#" onclick="switchSection('therapy-course');return false;">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/anger-pmt-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
+    <p class="section-sub">Two routes to reducing anger, irritability, and aggression: CBT for anger (adults/adolescents) and PMT for caregivers, with interactive worksheets. <a href="#" data-go="therapy-course">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/anger-pmt-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
   </div>
   <div class="tool-fragment" data-fragment="anger-pmt" aria-busy="true"><p class="tool-fragment-msg">Loading…</p></div>
 </section><!-- end anger-pmt -->
@@ -3876,7 +3871,7 @@
 <section id="integration" data-lazy-tool="integration" class="section">
   <div class="section-header">
     <h2>Module 7 &mdash; Integration, Advanced Topics &amp; Implementation</h2>
-    <p class="section-sub">Sequencing therapies, combining with medication, fidelity &amp; supervision, telehealth &amp; stepped care, and a capstone action plan. <a href="#" onclick="switchSection('therapy-course');return false;">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/integration-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
+    <p class="section-sub">Sequencing therapies, combining with medication, fidelity &amp; supervision, telehealth &amp; stepped care, and a capstone action plan. <a href="#" data-go="therapy-course">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/integration-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
   </div>
   <div class="tool-fragment" data-fragment="integration" aria-busy="true"><p class="tool-fragment-msg">Loading…</p></div>
 </section><!-- end integration -->
@@ -3885,7 +3880,7 @@
 <section id="emdr-trauma" data-lazy-tool="emdr-trauma" class="section">
   <div class="section-header">
     <h2>Module 8 &mdash; EMDR Therapy for Trauma &amp; PTSD</h2>
-    <p class="section-sub">A practical how-to for the eight-phase EMDR protocol &mdash; target sequencing, stabilization &amp; resourcing, NC/PC and SUDS/VOC assessment, and set-by-set reprocessing, with interactive worksheets. <a href="#" onclick="switchSection('therapy-course');return false;">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/emdr-trauma-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
+    <p class="section-sub">A practical how-to for the eight-phase EMDR protocol &mdash; target sequencing, stabilization &amp; resourcing, NC/PC and SUDS/VOC assessment, and set-by-set reprocessing, with interactive worksheets. <a href="#" data-go="therapy-course">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/emdr-trauma-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
   </div>
   <div class="tool-fragment" data-fragment="emdr-trauma" aria-busy="true"><p class="tool-fragment-msg">Loading…</p></div>
 </section><!-- end emdr-trauma -->
@@ -3894,7 +3889,7 @@
 <section id="cbti-insomnia" data-lazy-tool="cbti-insomnia" class="section">
   <div class="section-header">
     <h2>Module 9 &mdash; CBT for Insomnia (CBT-I)</h2>
-    <p class="section-sub">A practical how-to for delivering first-line CBT for chronic insomnia &mdash; the 3-P formulation, sleep restriction with weekly titration, stimulus control, and cognitive restructuring, with interactive worksheets and a live sleep-efficiency calculator. <a href="#" onclick="switchSection('therapy-course');return false;">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/cbti-insomnia-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
+    <p class="section-sub">A practical how-to for delivering first-line CBT for chronic insomnia &mdash; the 3-P formulation, sleep restriction with weekly titration, stimulus control, and cognitive restructuring, with interactive worksheets and a live sleep-efficiency calculator. <a href="#" data-go="therapy-course">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/cbti-insomnia-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
   </div>
 <div class="tool-fragment" data-fragment="cbti-insomnia" aria-busy="true"><p class="tool-fragment-msg">Loading…</p></div>
 </section><!-- end cbti-insomnia -->
@@ -3903,7 +3898,7 @@
 <section id="couples-therapy" data-lazy-tool="couples-therapy" class="section">
   <div class="section-header">
     <h2>Module 10 &mdash; Marriage &amp; Couples Therapy</h2>
-    <p class="section-sub">A practical how-to for treating marriage and other committed couples: safety and assessment, the major evidence-based models, couple-based protocols for individual disorders, and the ethics of secrets and documentation, with interactive worksheets. <a href="#" onclick="switchSection('therapy-course');return false;">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/couples-therapy-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
+    <p class="section-sub">A practical how-to for treating marriage and other committed couples: safety and assessment, the major evidence-based models, couple-based protocols for individual disorders, and the ethics of secrets and documentation, with interactive worksheets. <a href="#" data-go="therapy-course">&larr; Back to course overview</a> &nbsp;&middot;&nbsp; <a href="/worksheets/couples-therapy-worksheets.pdf" download title="Blank fill-by-hand worksheets (PDF)">&#8595; Download blank worksheets (PDF)</a></p>
   </div>
 <div class="tool-fragment" data-fragment="couples-therapy" aria-busy="true"><p class="tool-fragment-msg">Loading…</p></div>
 </section><!-- end couples-therapy -->
@@ -3952,11 +3947,11 @@
   </style>
 
   <div class="ho-cats">
-    <button class="ho-cat-btn active" data-cat="all" onclick="handoutsFilter('all')">All</button>
-    <button class="ho-cat-btn" data-cat="therapy" onclick="handoutsFilter('therapy')">Therapy</button>
-    <button class="ho-cat-btn" data-cat="medication" onclick="handoutsFilter('medication')">Medication Ed.</button>
-    <button class="ho-cat-btn" data-cat="dementia" onclick="handoutsFilter('dementia')">Dementia</button>
-    <button class="ho-cat-btn" data-cat="sud" onclick="handoutsFilter('sud')">Substance Use</button>
+    <button class="ho-cat-btn active" data-cat="all" data-call="handoutsFilter" data-arg="all">All</button>
+    <button class="ho-cat-btn" data-cat="therapy" data-call="handoutsFilter" data-arg="therapy">Therapy</button>
+    <button class="ho-cat-btn" data-cat="medication" data-call="handoutsFilter" data-arg="medication">Medication Ed.</button>
+    <button class="ho-cat-btn" data-cat="dementia" data-call="handoutsFilter" data-arg="dementia">Dementia</button>
+    <button class="ho-cat-btn" data-cat="sud" data-call="handoutsFilter" data-arg="sud">Substance Use</button>
   </div>
 
   <div class="ho-group" data-cat="therapy">
@@ -4555,34 +4550,28 @@
       <div class="warning-body">
         <p><strong>PsychoPharmRef is an independent educational reference tool.</strong> The creators of PsychoPharmRef assume no liability for clinical decisions made in whole or in part on the basis of information presented in this tool. Use is entirely at the clinician's own professional discretion and responsibility.</p>
 
-        <p>Considerable effort is made to ensure all information is accurate, but errors are human. Please use the <a href="#" onclick="dismissWarning();switchSection('contact');return false;">contact link</a> for any concerns.</p>
+        <p>Considerable effort is made to ensure all information is accurate, but errors are human. Please use the <a href="#" data-dismiss-warning data-go="contact">contact link</a> for any concerns.</p>
 
         <p class="warning-footer-note">By clicking below, you confirm that you are a licensed healthcare professional or student acting under supervision, and that you understand this tool is for educational reference only and not for direct patient care decision-making.</p>
       </div>
-      <button class="warning-dismiss warning-dismiss--friendly" onclick="dismissWarning()">I agree to these terms</button>
+      <button class="warning-dismiss warning-dismiss--friendly" data-dismiss-warning>I agree to these terms</button>
       <p class="warning-full-terms-link"><a href="legal-disclaimer.html">View full legal disclaimer &rarr;</a> &middot; <a href="privacy.html">Privacy policy</a></p>
     </div>
   </div>
-  <script>
-    /* Persist disclaimer dismissal for the session */
-    (function(){
-      var m=document.getElementById('warning-modal');
-      try{if(sessionStorage.getItem('warningDismissed')){m.classList.add('hidden');}}catch(e){}
-      window.dismissWarning=function(){m.classList.add('hidden');try{sessionStorage.setItem('warningDismissed','1');}catch(e){}};
-    })();
-  </script>
+  <script src="js/disclaimer.js?v=20261024a"></script>
 
   <script defer src="js/data.js?v=20261016a"></script>
   <script defer src="js/monitoring-data.js?v=20261016b"></script>
   <script defer src="js/routes.js?v=20261016a"></script>
   <script defer src="js/bhi-references.js?v=20261002a"></script>
-  <script defer src="js/tools/print-forms.js?v=20261023a"></script>
-  <script defer src="js/app.js?v=20261023a"></script>
+  <script defer src="js/tools/print-forms.js?v=20261024a"></script>
+  <script defer src="js/actions.js?v=20261024a"></script>
+  <script defer src="js/app.js?v=20261024a"></script>
   <script defer src="js/newsroom.js?v=20261029a"></script>
   <script defer src="js/diagnoses-data.js?v=20261002b"></script>
   <script defer src="js/diagnoses-page.js?v=20261002a"></script>
   <script defer src="js/glossary-data.js?v=20261016a"></script>
   <script defer src="js/glossary-page.js?v=20261023a"></script>
-  <script defer src="js/search.js?v=20261001a"></script>
+  <script defer src="js/search.js?v=20261024a"></script>
 </body>
 </html>

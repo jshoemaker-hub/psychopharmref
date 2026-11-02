@@ -76,7 +76,7 @@
       { title: 'Printable Clinical Forms', section: 'print-forms', cat: 'Clinical Tools' },
     ];
 
-    // Close every open results dropdown (used by inline result onclicks).
+    // Close every open results dropdown (results carry data-close-search; see js/actions.js).
     window.__usCloseAll = function() {
       document.querySelectorAll('.us-results').forEach(function(r) { r.classList.remove('open'); });
     };
@@ -136,7 +136,7 @@
         if (drugMatches.length) {
           html += '<div class="us-group-label">Medications</div>';
           drugMatches.forEach(function(m) {
-            html += '<div class="us-item" tabindex="0" onclick="switchSection(\'drug-table\');openDrugModal(\'' + m.id + '\');window.__usCloseAll();">' +
+            html += '<div class="us-item" tabindex="0" data-go="drug-table" data-call="openDrugModal" data-arg="' + m.id + '" data-close-search>' +
               '<span class="us-item-type us-item-type--drug">Drug</span>' +
               '<span class="us-item-title">' + hl(m.name, terms) + '</span>' +
               '<span class="us-item-sub">' + m.brandName + ' &bull; ' + m.class + '</span>' +
@@ -177,7 +177,7 @@
       if (toolMatches.length) {
         html += '<div class="us-group-label">Tools & Scales</div>';
         toolMatches.forEach(function(t) {
-          html += '<div class="us-item" tabindex="0" onclick="switchSection(\'' + t.section + '\');window.__usCloseAll();">' +
+          html += '<div class="us-item" tabindex="0" data-go="' + t.section + '" data-close-search>' +
             '<span class="us-item-type us-item-type--tool">Tool</span>' +
             '<span class="us-item-title">' + hl(t.title, terms) + '</span>' +
             '<span class="us-item-sub">' + t.cat + '</span>' +
@@ -193,7 +193,7 @@
           html += '<div class="us-group-label">Glossary</div>';
           glossMatches.forEach(function(g) {
             var slug = g.term.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-            html += '<div class="us-item us-item--glossary" tabindex="0" onclick="window.glossaryScrollToTerm &amp;&amp; window.glossaryScrollToTerm(\'' + g.term.replace(/\\/g,'\\\\').replace(/\'/g,"\\'") + '\');window.__usCloseAll();">' +
+            html += '<div class="us-item us-item--glossary" tabindex="0" data-call="glossaryScrollToTerm" data-arg="' + String(g.term).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;') + '" data-close-search>' +
               '<span class="us-item-type us-item-type--gloss">Term</span>' +
               '<span class="us-item-title">' + hl(g.term, terms) + '</span>' +
               '<span class="us-item-sub">' + escHtml(g.category) + '</span>' +
