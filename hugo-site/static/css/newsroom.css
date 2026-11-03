@@ -48,6 +48,7 @@ a.nw-kicker:hover { text-decoration: underline; }
 
 /* Lead story */
 .nw-lead { display: block; text-decoration: none; color: var(--text); }
+.nw-lead picture { display: block; }
 .nw-lead .nw-img { border-radius: 10px; }
 .nw-lead-body { padding-top: 12px; }
 .nw-lead-title {

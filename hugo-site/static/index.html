@@ -42,7 +42,9 @@
   <link rel="manifest" href="site.webmanifest">
 
   <link rel="stylesheet" href="css/styles.css?v=20261023a">
-  <link rel="stylesheet" href="css/newsroom.css?v=20261029a">
+  <link rel="stylesheet" href="css/newsroom.css?v=20261102a">
+  <!-- Start the front-page feed now; newsroom.js picks up this response -->
+  <link rel="preload" href="/news/index.json" as="fetch" crossorigin="anonymous">
   <link rel="canonical" href="https://psychopharmref.com/">
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" integrity="sha384-e6nUZLBkQ86NJ6TVVKAeSaK8jWa3NhkYWZFomE39AvDbQWeie9PlQqM3pmYW5d1g" crossorigin="anonymous"></script>
 
@@ -652,6 +654,8 @@
       <section class="nw-front nw-front-loading" id="nw-front" aria-labelledby="nw-front-h" aria-busy="true">
         <noscript><p><a href="/news/">Read today's psychopharmacology news and features &rarr;</a></p></noscript>
       </section>
+      <!-- async, not defer: runs as soon as it arrives instead of waiting for app.js and the data files -->
+      <script async src="js/newsroom.js?v=20261102a"></script>
 
       <!-- Pre-filled so the page does not shift; renderStats() refreshes the counts from data.js -->
       <div class="stats-grid home-stats" id="stats-grid"><div class="stat-card"><div class="stat-value">101</div><div class="stat-label">Total Medications</div></div><div class="stat-card"><div class="stat-value">26</div><div class="stat-label">Antidepressants</div></div><div class="stat-card"><div class="stat-value">26</div><div class="stat-label">Antipsychotics</div></div><div class="stat-card"><div class="stat-value">7</div><div class="stat-label">Mood Stabilizers</div></div><div class="stat-card"><div class="stat-value">9</div><div class="stat-label">Sleep Medications</div></div><div class="stat-card"><div class="stat-value">30</div><div class="stat-label">QT Prolonging</div></div></div>
@@ -4567,7 +4571,6 @@
   <script defer src="js/tools/print-forms.js?v=20261024a"></script>
   <script defer src="js/actions.js?v=20261024a"></script>
   <script defer src="js/app.js?v=20261024a"></script>
-  <script defer src="js/newsroom.js?v=20261029a"></script>
   <script defer src="js/diagnoses-data.js?v=20261002b"></script>
   <script defer src="js/diagnoses-page.js?v=20261002a"></script>
   <script defer src="js/glossary-data.js?v=20261016a"></script>
