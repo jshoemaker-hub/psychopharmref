@@ -5,13 +5,15 @@ Add a free-licence photo to a Newsroom piece, with its credit.
     python3 scripts/fetch-news-photo.py --manifest            # every row of scripts/news-photos.tsv
     python3 scripts/fetch-news-photo.py <slug> "commons:File:Name.jpg" [--focus 0.3] [--alt "…"]
     python3 scripts/fetch-news-photo.py <slug> awm:H19367 --alt "…"
+    python3 scripts/fetch-news-photo.py --small               # make any missing -800.jpg copies
 
 For each image it:
   1. reads the licence and author from the source (Wikimedia Commons API, or the
      Australian War Memorial item page) and refuses anything that is not public
      domain, CC0, CC BY or CC BY-SA;
   2. downloads it, crops to 16:9 around --focus (0 = keep the top, 1 = the bottom)
-     and saves hugo-site/static/news/photos/<slug>.jpg at 1200x675;
+     and saves hugo-site/static/news/photos/<slug>.jpg at 1200x675, plus <slug>-800.jpg
+     at 800x450 for phones and thumbnails;
   3. writes photo / photoAlt / photoCredit / photoCreditUrl / photoLicense into the
      front matter of hugo-site/content/news/<slug>.html (the illustrated cover stays as
      the fallback and is used again if the photo lines are removed).
@@ -103,7 +105,18 @@ def save_photo(url, slug, focus):
     os.makedirs(PHOTOS, exist_ok=True)
     out = os.path.join(PHOTOS, slug + '.jpg')
     im.save(out, 'JPEG', quality=82, optimize=True, progressive=True)
+    save_small(out)
     return out
+
+
+def save_small(path):
+    """Write <slug>-800.jpg beside the full photo. Phones and the front-page
+    thumbnails load this copy (list.json adds it to the feed when it exists)."""
+    from PIL import Image
+    small = path[:-4] + '-800.jpg'
+    Image.open(path).resize((800, 450), Image.LANCZOS).save(
+        small, 'JPEG', quality=78, optimize=True, progressive=True)
+    return small
 
 
 def write_front_matter(slug, fields):
@@ -147,8 +160,14 @@ def main():
     ap.add_argument('--focus', type=float, default=0.5)
     ap.add_argument('--alt', default='')
     ap.add_argument('--manifest', action='store_true')
+    ap.add_argument('--small', action='store_true')
     a = ap.parse_args()
-    if a.manifest:
+    if a.small:
+        for name in sorted(os.listdir(PHOTOS)):
+            if name.endswith('.jpg') and not name.endswith('-800.jpg') and not name.startswith('._') \
+                    and not os.path.exists(os.path.join(PHOTOS, name[:-4] + '-800.jpg')):
+                print('  +', os.path.basename(save_small(os.path.join(PHOTOS, name))))
+    elif a.manifest:
         done = 0
         for line in open(MANIFEST, encoding='utf-8'):
             if not line.strip() or line.startswith('#'):

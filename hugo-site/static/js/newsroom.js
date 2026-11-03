@@ -29,7 +29,9 @@
   var cutoff = new Date(today); cutoff.setDate(cutoff.getDate() - (WINDOW_DAYS - 1));
   var cutoffStr = iso(cutoff);
 
-  fetch('/news/index.json', { cache: 'no-cache' })
+  // Matches the <link rel="preload"> in index.html. Netlify serves the feed with
+  // max-age=0, must-revalidate, so a new day's schedule is never stale.
+  fetch('/news/index.json')
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(render)
     .catch(function () { root.hidden = true; });
@@ -58,10 +60,18 @@
       return esc(deskOf(it).author) + ' · <time datetime="' + esc(it.date) + '">' + esc(fmtShort(it.date)) + '</time>' +
         (it.readTime ? ' · ' + esc(it.readTime) : '');
     }
+    // Only the lead photo loads now; the rest wait in data-src (see loadThumbs)
+    // so they don't take bandwidth from app.js on a slow connection. Photos with
+    // an 800px copy (imgSmall) use it for thumbnails, for the lead on any phone
+    // (whatever its pixel density), and on desktop screens that don't need more.
     function img(it, cls, eager) {
       if (!it.img) return '';
-      return '<img class="' + cls + '" src="' + esc(it.img) + '" alt="' + (eager ? esc(it.imgAlt) : '') + '" width="1200" height="675"' +
+      var src = eager ? it.img : (it.imgSmall || it.img);
+      var set = eager && it.imgSmall
+        ? ' srcset="' + esc(it.imgSmall) + ' 800w, ' + esc(it.img) + ' 1200w" sizes="(min-width: 1100px) 700px, 100vw"' : '';
+      var tag = '<img class="' + cls + '" ' + (eager ? 'src' : 'data-src') + '="' + esc(src) + '"' + set + ' alt="' + (eager ? esc(it.imgAlt) : '') + '" width="1200" height="675"' +
         (eager ? ' fetchpriority="high"' : ' loading="lazy"') + '>';
+      return set ? '<picture><source media="(max-width: 700px)" srcset="' + esc(it.imgSmall) + '">' + tag + '</picture>' : tag;
     }
 
     var h = [];
@@ -153,6 +163,14 @@
     root.querySelectorAll('img').forEach(function (im) {
       im.addEventListener('error', function () { im.style.visibility = 'hidden'; });
     });
+    function loadThumbs() {
+      root.querySelectorAll('img[data-src]').forEach(function (im) {
+        im.src = im.getAttribute('data-src');
+        im.removeAttribute('data-src');
+      });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadThumbs);
+    else loadThumbs();
 
     function card(it) {
       return '<a class="nw-card" href="' + esc(it.url) + '"' + style(it) + '>' +

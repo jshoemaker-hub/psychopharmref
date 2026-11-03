@@ -3,6 +3,12 @@
 {{- $items := slice -}}
 {{- range .Pages.ByDate.Reverse -}}
   {{- $img := .Params.photo | default .Params.cover -}}
+  {{- /* Photos have an 800px copy for phones and thumbnails (scripts/fetch-news-photo.py) */ -}}
+  {{- $small := "" -}}
+  {{- with .Params.photo -}}
+    {{- $s := replaceRE `\.jpg$` "-800.jpg" . -}}
+    {{- if fileExists (printf "static%s" $s) -}}{{- $small = $s -}}{{- end -}}
+  {{- end -}}
   {{- $items = $items | append (dict
       "title" .Title
       "url" .RelPermalink
@@ -10,6 +16,7 @@
       "desk" .Params.desk
       "dek" .Params.dek
       "img" $img
+      "imgSmall" $small
       "imgAlt" (.Params.photoAlt | default .Params.coverAlt)
       "readTime" .Params.readTime
     ) -}}
