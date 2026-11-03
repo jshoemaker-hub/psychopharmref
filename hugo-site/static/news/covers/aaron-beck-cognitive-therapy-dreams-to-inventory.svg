@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="A thought bubble above an open notebook, a triangle of three linked circles, and a stack of questionnaire cards with tick boxes, symbolizing Aaron T. Beck's cognitive therapy and depression inventory.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4efe6"/>
+      <stop offset="1" stop-color="#e2d9c8"/>
+    </linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="2" fill="#6b6050" opacity="0.14"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#dots)"/>
+  <circle cx="600" cy="330" r="275" fill="#ece6db"/>
+  <circle cx="600" cy="330" r="275" fill="none" stroke="#5b4a7a" stroke-width="3" opacity="0.35"/>
+  <path d="M120 570 H1080" stroke="#231e14" stroke-width="6" stroke-linecap="round"/>
+  <!-- Questionnaire cards (left) -->
+  <g transform="translate(200 300) rotate(-6)">
+    <rect x="10" y="10" width="190" height="240" rx="10" fill="#231e14" opacity="0.15"/>
+    <rect x="0" y="0" width="190" height="240" rx="10" fill="#f4efe6" stroke="#231e14" stroke-width="5"/>
+    <g stroke="#231e14" stroke-width="4" fill="none">
+      <rect x="22" y="30" width="26" height="26" rx="3"/>
+      <rect x="22" y="80" width="26" height="26" rx="3"/>
+      <rect x="22" y="130" width="26" height="26" rx="3"/>
+      <rect x="22" y="180" width="26" height="26" rx="3"/>
+    </g>
+    <path d="M27 92 L34 100 L46 82" stroke="#5b4a7a" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M27 192 L34 200 L46 182" stroke="#5b4a7a" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="#6b6050" opacity="0.6">
+      <rect x="62" y="38" width="104" height="10" rx="5"/>
+      <rect x="62" y="88" width="88" height="10" rx="5"/>
+      <rect x="62" y="138" width="110" height="10" rx="5"/>
+      <rect x="62" y="188" width="80" height="10" rx="5"/>
+    </g>
+  </g>
+  <!-- Open notebook (centre) -->
+  <g transform="translate(440 400)">
+    <path d="M0 20 Q80 0 160 20 V160 Q80 140 0 160 Z" fill="#f4efe6" stroke="#231e14" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M160 20 Q240 0 320 20 V160 Q240 140 160 160 Z" fill="#f4efe6" stroke="#231e14" stroke-width="5" stroke-linejoin="round"/>
+    <g stroke="#6b6050" stroke-width="4" opacity="0.5" stroke-linecap="round">
+      <path d="M24 50 H136 M24 78 H136 M24 106 H120"/>
+      <path d="M184 50 H296 M184 78 H280 M184 106 H296"/>
+    </g>
+  </g>
+  <!-- Thought bubble rising from notebook -->
+  <circle cx="610" cy="378" r="10" fill="#5b4a7a"/>
+  <circle cx="630" cy="345" r="16" fill="#5b4a7a"/>
+  <path d="M470 250 Q440 180 510 160 Q530 100 610 112 Q680 80 730 138 Q800 140 790 210 Q820 268 750 288 Q700 330 630 300 Q560 330 520 296 Q450 300 470 250 Z" fill="#5b4a7a"/>
+  <!-- Cognitive triad inside bubble -->
+  <g stroke="#f4efe6" stroke-width="5" fill="none" opacity="0.9">
+    <path d="M630 150 L560 262 L700 262 Z"/>
+  </g>
+  <circle cx="630" cy="150" r="24" fill="#c9a24a" stroke="#f4efe6" stroke-width="4"/>
+  <circle cx="560" cy="262" r="24" fill="#d98b5f" stroke="#f4efe6" stroke-width="4"/>
+  <circle cx="700" cy="262" r="24" fill="#9fb88f" stroke="#f4efe6" stroke-width="4"/>
+  <!-- Moon and dream stars (right) -->
+  <g transform="translate(900 210)">
+    <path d="M60 0 A80 80 0 1 0 140 110 A64 64 0 1 1 60 0 Z" fill="#c9a24a"/>
+    <circle cx="-10" cy="190" r="7" fill="#5b4a7a"/>
+    <circle cx="150" cy="30" r="6" fill="#5b4a7a"/>
+    <circle cx="20" cy="250" r="5" fill="#5b4a7a" opacity="0.7"/>
+  </g>
+  <path d="M900 570 V470 M870 570 L930 570" stroke="#231e14" stroke-width="6" stroke-linecap="round"/>
+  <path d="M860 470 H940 L920 420 H880 Z" fill="#6b6050"/>
+</svg>
