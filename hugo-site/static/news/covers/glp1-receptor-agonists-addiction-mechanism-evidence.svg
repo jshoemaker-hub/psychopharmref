@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="A stylized reward pathway arcing from a midbrain node to a striatal node, with a green GLP-1 receptor dimming a dopamine pulse, beside a wine glass whose level is lowered.">
+  <defs>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="1.6" fill="#6b6050" opacity="0.18"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="#f4efe6"/>
+  <rect x="760" width="440" height="675" fill="#e2d9c8"/>
+  <rect width="1200" height="675" fill="url(#dots)"/>
+  <!-- brain outline -->
+  <path d="M170 360 C150 220 260 110 420 100 C540 92 640 140 690 230 C740 320 700 430 600 470 C560 486 540 520 520 560 L470 560 C470 520 450 500 400 492 C270 470 185 440 170 360 Z" fill="#ece6db" stroke="#231e14" stroke-width="6"/>
+  <!-- brainstem -->
+  <path d="M470 560 L470 620 L520 620 L520 560" fill="#ece6db" stroke="#231e14" stroke-width="6"/>
+  <!-- mesolimbic pathway: VTA to NAc -->
+  <path d="M480 430 C430 330 360 290 300 280" fill="none" stroke="#6b6050" stroke-width="14" stroke-linecap="round"/>
+  <!-- dopamine pulses along path: bright then dimmed -->
+  <circle cx="462" cy="395" r="15" fill="#d98b5f" stroke="#231e14" stroke-width="4"/>
+  <circle cx="410" cy="320" r="13" fill="#d98b5f" stroke="#231e14" stroke-width="4" opacity="0.55"/>
+  <circle cx="350" cy="289" r="11" fill="#d98b5f" stroke="#231e14" stroke-width="4" opacity="0.3"/>
+  <!-- VTA node -->
+  <circle cx="485" cy="440" r="30" fill="#c9a24a" stroke="#231e14" stroke-width="5"/>
+  <!-- NAc node -->
+  <circle cx="290" cy="278" r="36" fill="#9fb88f" stroke="#231e14" stroke-width="5"/>
+  <!-- GLP-1 receptor (green, seven helices) at NAc -->
+  <g stroke="#231e14" stroke-width="4" fill="#4a7c35">
+    <rect x="212" y="170" width="16" height="56" rx="7"/><rect x="232" y="164" width="16" height="64" rx="7"/><rect x="252" y="170" width="16" height="56" rx="7"/><rect x="272" y="164" width="16" height="64" rx="7"/><rect x="292" y="170" width="16" height="56" rx="7"/><rect x="312" y="164" width="16" height="64" rx="7"/><rect x="332" y="170" width="16" height="56" rx="7"/>
+  </g>
+  <!-- peptide ligand -->
+  <g stroke="#231e14" stroke-width="4">
+    <circle cx="240" cy="132" r="11" fill="#4a7c35"/><circle cx="264" cy="122" r="11" fill="#5e9145"/><circle cx="288" cy="128" r="11" fill="#4a7c35"/><circle cx="312" cy="120" r="11" fill="#5e9145"/>
+  </g>
+  <!-- NTS projection from brainstem -->
+  <path d="M495 600 C600 560 620 470 520 440" fill="none" stroke="#4a7c35" stroke-width="8" stroke-dasharray="14 12" stroke-linecap="round"/>
+  <!-- labels -->
+  <text x="290" y="345" font-family="Helvetica, Arial, sans-serif" font-size="26" font-weight="bold" fill="#231e14" text-anchor="middle">NAc</text>
+  <text x="485" y="505" font-family="Helvetica, Arial, sans-serif" font-size="26" font-weight="bold" fill="#231e14" text-anchor="middle">VTA</text>
+  <!-- wine glass with lowered level -->
+  <g stroke="#231e14" stroke-width="6" fill="none" stroke-linejoin="round">
+    <path d="M880 150 L1080 150 C1080 300 1040 360 980 370 C920 360 880 300 880 150 Z" fill="#f4efe6"/>
+  </g>
+  <path d="M893 285 L1067 285 C1056 335 1025 362 980 367 C935 362 904 335 893 285 Z" fill="#d98b5f"/>
+  <line x1="893" y1="285" x2="1067" y2="285" stroke="#231e14" stroke-width="3"/>
+  <!-- previous fill line (dashed) -->
+  <line x1="884" y1="195" x2="1076" y2="195" stroke="#6b6050" stroke-width="4" stroke-dasharray="12 10"/>
+  <g stroke="#231e14" stroke-width="6" fill="none" stroke-linecap="round">
+    <line x1="980" y1="370" x2="980" y2="520"/>
+    <path d="M910 528 Q980 505 1050 528"/>
+  </g>
+  <!-- down arrow -->
+  <g stroke="#4a7c35" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M1130 190 V285"/><path d="M1108 262 L1130 288 L1152 262"/>
+  </g>
+</svg>

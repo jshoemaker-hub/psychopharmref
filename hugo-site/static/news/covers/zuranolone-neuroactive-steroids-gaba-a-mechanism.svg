@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Two GABA-A receptor channels in a membrane: a synaptic receptor under a nerve terminal and an extrasynaptic receptor beside it, both opened by a green steroid molecule nested in the membrane, with a 14-square calendar strip below.">
+  <defs>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="1.6" fill="#6b6050" opacity="0.18"/>
+    </pattern>
+    <linearGradient id="mem" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e2d9c8"/><stop offset="0.5" stop-color="#d6cbb4"/><stop offset="1" stop-color="#e2d9c8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="#f4efe6"/>
+  <rect width="1200" height="675" fill="url(#dots)"/>
+  <!-- presynaptic terminal (synaptic side, left) -->
+  <path d="M250 0 h300 v120 a150 70 0 0 1 -300 0 z" fill="#c9a24a" stroke="#231e14" stroke-width="5"/>
+  <g fill="#f4efe6" stroke="#231e14" stroke-width="3">
+    <circle cx="330" cy="80" r="18"/><circle cx="400" cy="60" r="18"/><circle cx="470" cy="85" r="18"/><circle cx="370" cy="120" r="18"/><circle cx="440" cy="128" r="18"/>
+  </g>
+  <!-- GABA released -->
+  <g fill="#d98b5f"><circle cx="370" cy="215" r="7"/><circle cx="410" cy="235" r="7"/><circle cx="440" cy="205" r="7"/><circle cx="395" cy="255" r="6"/></g>
+  <!-- sparse ambient GABA (extrasynaptic side) -->
+  <g fill="#d98b5f" opacity="0.7"><circle cx="800" cy="200" r="6"/><circle cx="900" cy="245" r="6"/><circle cx="980" cy="190" r="6"/></g>
+  <!-- membrane -->
+  <rect x="0" y="300" width="1200" height="120" fill="url(#mem)"/>
+  <g fill="#c9b99a">
+    <circle cx="30" cy="312" r="10"/><circle cx="70" cy="312" r="10"/><circle cx="110" cy="312" r="10"/><circle cx="150" cy="312" r="10"/><circle cx="190" cy="312" r="10"/><circle cx="230" cy="312" r="10"/><circle cx="570" cy="312" r="10"/><circle cx="610" cy="312" r="10"/><circle cx="650" cy="312" r="10"/><circle cx="690" cy="312" r="10"/><circle cx="1090" cy="312" r="10"/><circle cx="1130" cy="312" r="10"/><circle cx="1170" cy="312" r="10"/>
+    <circle cx="30" cy="408" r="10"/><circle cx="70" cy="408" r="10"/><circle cx="110" cy="408" r="10"/><circle cx="150" cy="408" r="10"/><circle cx="190" cy="408" r="10"/><circle cx="230" cy="408" r="10"/><circle cx="570" cy="408" r="10"/><circle cx="610" cy="408" r="10"/><circle cx="650" cy="408" r="10"/><circle cx="690" cy="408" r="10"/><circle cx="1090" cy="408" r="10"/><circle cx="1130" cy="408" r="10"/><circle cx="1170" cy="408" r="10"/>
+  </g>
+  <!-- synaptic receptor (five subunits, open pore) -->
+  <g stroke="#231e14" stroke-width="5">
+    <rect x="280" y="270" width="48" height="180" rx="22" fill="#9fb88f"/>
+    <rect x="334" y="260" width="48" height="200" rx="22" fill="#4a7c35"/>
+    <rect x="418" y="260" width="48" height="200" rx="22" fill="#4a7c35"/>
+    <rect x="472" y="270" width="48" height="180" rx="22" fill="#9fb88f"/>
+  </g>
+  <!-- extrasynaptic receptor -->
+  <g stroke="#231e14" stroke-width="5">
+    <rect x="760" y="270" width="48" height="180" rx="22" fill="#9fb88f"/>
+    <rect x="814" y="260" width="48" height="200" rx="22" fill="#4a7c35"/>
+    <rect x="898" y="260" width="48" height="200" rx="22" fill="#4a7c35"/>
+    <rect x="952" y="270" width="48" height="180" rx="22" fill="#9fb88f"/>
+  </g>
+  <!-- chloride flow through pores -->
+  <g fill="#231e14">
+    <circle cx="400" cy="300" r="8"/><circle cx="400" cy="360" r="8"/><circle cx="400" cy="420" r="8"/>
+    <circle cx="880" cy="300" r="8"/><circle cx="880" cy="360" r="8"/><circle cx="880" cy="420" r="8"/>
+  </g>
+  <g stroke="#231e14" stroke-width="6" stroke-linecap="round" fill="none">
+    <path d="M400 455 v40 m-14 -14 l14 14 l14 -14"/>
+    <path d="M880 455 v40 m-14 -14 l14 14 l14 -14"/>
+  </g>
+  <!-- steroid (four fused rings) nested in membrane beside each receptor -->
+  <g stroke="#231e14" stroke-width="4" fill="#4a7c35">
+    <polygon points="540,352 556,343 572,352 572,370 556,379 540,370"/>
+    <polygon points="572,352 588,343 604,352 604,370 588,379 572,370"/>
+    <polygon points="588,325 604,316 620,325 620,343 604,352 588,343" fill="#5e9145"/>
+    <polygon points="620,330 636,322 646,338 636,352 620,343"/>
+  </g>
+  <g stroke="#231e14" stroke-width="4" fill="#4a7c35" transform="translate(470 0)">
+    <polygon points="540,352 556,343 572,352 572,370 556,379 540,370"/>
+    <polygon points="572,352 588,343 604,352 604,370 588,379 572,370"/>
+    <polygon points="588,325 604,316 620,325 620,343 604,352 588,343" fill="#5e9145"/>
+    <polygon points="620,330 636,322 646,338 636,352 620,343"/>
+  </g>
+  <!-- small labels -->
+  <text x="400" y="540" font-family="Helvetica, Arial, sans-serif" font-size="28" font-weight="bold" fill="#231e14" text-anchor="middle">γ2</text>
+  <text x="880" y="540" font-family="Helvetica, Arial, sans-serif" font-size="28" font-weight="bold" fill="#231e14" text-anchor="middle">δ</text>
+  <!-- 14-day calendar strip -->
+  <g stroke="#231e14" stroke-width="3">
+    <rect x="285" y="585" width="40" height="40" rx="5" fill="#4a7c35"/><rect x="331" y="585" width="40" height="40" rx="5" fill="#4a7c35"/><rect x="377" y="585" width="40" height="40" rx="5" fill="#4a7c35"/><rect x="423" y="585" width="40" height="40" rx="5" fill="#4a7c35"/><rect x="469" y="585" width="40" height="40" rx="5" fill="#4a7c35"/><rect x="515" y="585" width="40" height="40" rx="5" fill="#4a7c35"/><rect x="561" y="585" width="40" height="40" rx="5" fill="#4a7c35"/>
+    <rect x="607" y="585" width="40" height="40" rx="5" fill="#4a7c35"/><rect x="653" y="585" width="40" height="40" rx="5" fill="#4a7c35"/><rect x="699" y="585" width="40" height="40" rx="5" fill="#4a7c35"/><rect x="745" y="585" width="40" height="40" rx="5" fill="#4a7c35"/><rect x="791" y="585" width="40" height="40" rx="5" fill="#4a7c35"/><rect x="837" y="585" width="40" height="40" rx="5" fill="#4a7c35"/><rect x="883" y="585" width="40" height="40" rx="5" fill="#4a7c35"/>
+  </g>
+  <!-- crescent moon: evening dosing -->
+  <path d="M1010 560 a42 42 0 1 0 30 72 a34 34 0 1 1 -30 -72 z" fill="#6b6050"/>
+</svg>
