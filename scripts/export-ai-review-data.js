@@ -148,7 +148,7 @@ function safeGit(args) {
 
 function loadJsData() {
   const relPath = 'js/data.js';
-  const source = readText(relPath);
+  const source = readText(relPath) + '\n' + readText('js/elimination-data.js');
   const exportExpression = `\n;({ ${JS_DATA_EXPORTS.join(', ')} });`;
   return vm.runInNewContext(source + exportExpression, {}, {
     filename: relPath,
@@ -175,6 +175,7 @@ function normalizeMedication(medication, perinatalData, fdaSafetyData) {
     indications: medication.indications || [],
     dosing: medication.dosing || null,
     halfLife: medication.halfLife || null,
+    elimination: medication.elimination || null,
     tmax: medication.tmax ?? null,
     p450: medication.p450 || null,
     renalImpairment: medication.renalImpairment || null,
