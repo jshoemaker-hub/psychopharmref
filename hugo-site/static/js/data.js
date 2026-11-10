@@ -918,6 +918,9 @@ const PERINATAL_DATA = {
 
 // Ki values in nM. Use 10000 for no clinically significant affinity.
 // Sources: PDSP Ki database, FDA labels, published literature.
+// Route of excretion is not stored here. js/elimination-data.js copies an
+// `elimination` object onto every card ({ summary, sourceUrl, sourceLabel, split, note? }).
+// New medications need an entry in that file or the card has no Elimination line.
 const MEDICATIONS = [
 
   // ── SSRIs ──────────────────────────────────────────────────────────────────

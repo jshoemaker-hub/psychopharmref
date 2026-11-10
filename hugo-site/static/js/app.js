@@ -999,10 +999,25 @@ function drugHovercardHTML(drug) {
     ${scales ? `<div class="dx-scales dhc-scales">${scales}</div>` : ''}
     <div class="dhc-cyp"><span class="dhc-cyp-lab">CYP450</span> ${cypHoverSummary(drug.p450)}</div>
     ${drug.monitoring ? `<div class="dhc-cyp"><span class="dhc-cyp-lab">Monitor</span> ${escMonitoring(drug.monitoring.summary)}</div>` : ''}
+    ${drug.elimination ? `<div class="dhc-cyp"><span class="dhc-cyp-lab">Elimination</span> ${escMonitoring(drug.elimination.summary)}</div>` : ''}
     <div class="dhc-hint">Click for full details</div>`;
 }
 function escMonitoring(s) {
   return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function eliminationFieldHTML(drug) {
+  const e = drug && drug.elimination;
+  const summary = e && e.summary ? escMonitoring(e.summary) : '—';
+  const note = e && e.note
+    ? `<br><small style="color:var(--text-muted)">${escMonitoring(e.note)}</small>`
+    : '';
+  const cite = e && e.sourceUrl
+    ? `<div class="modal-cite">Elimination source: <a href="${escMonitoring(e.sourceUrl)}" target="_blank" rel="noopener">${escMonitoring(e.sourceLabel || 'FDA label')}</a></div>`
+    : '';
+  return `
+      <div class="modal-row">
+        <div class="modal-field" style="flex-basis:100%"><label>Elimination</label><div>${summary}${note}</div>${cite}</div>
+      </div>`;
 }
 function monitoringScheduleHTML(drug) {
   const mon = drug && drug.monitoring;
@@ -1131,6 +1146,7 @@ function openDrugModal(id) {
         <div class="modal-field"><label>Half-Life (Parent)</label><div>${drug.halfLife.drug}</div></div>
         <div class="modal-field"><label>Active Metabolites</label><div>${drug.halfLife.metabolites}</div></div>
       </div>
+      ${eliminationFieldHTML(drug)}
       <div class="modal-row">
         <div class="modal-field"><label>Protein Binding</label><div>${drug.proteinBinding != null ? drug.proteinBinding + '%' + (drug.proteinBindingNote ? `<br><small style="color:var(--text-muted)">${drug.proteinBindingNote}</small>` : '') : (drug.proteinBindingNote || 'N/A')}</div></div>
         <div class="modal-field"><label>Active Enantiomer</label><div>${drug.activeEnantiomer.has ? '✓ ' + drug.activeEnantiomer.name : '—'}</div></div>
@@ -3630,11 +3646,12 @@ function initMedCompare() {
         <td class="mc-sum-name" style="color:${DRUG_COLORS[idx]}">${d.name}</td>
         <td>${d.class || '—'}</td>
         <td>${d.halfLife?.drug || '—'}</td>
+        <td>${d.elimination ? escMonitoring(d.elimination.summary) : '—'}</td>
         <td class="mc-sum-mech">${d.mechanism || (d.receptorKi ? 'Receptor-mediated (see binding)' : '—')}</td>
       </tr>`).join('');
     container.innerHTML = `
       <table class="mc-summary-table">
-        <thead><tr><th>Drug</th><th>Class</th><th>Half-Life</th><th>Mechanism</th></tr></thead>
+        <thead><tr><th>Drug</th><th>Class</th><th>Half-Life</th><th>Elimination</th><th>Mechanism</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>`;
   }
@@ -4051,6 +4068,7 @@ function initMedCompare() {
         <td style="padding:6px 10px;font-weight:700;color:${color};border-bottom:1px solid #e0e0e0">${d.name}</td>
         <td style="padding:6px 10px;border-bottom:1px solid #e0e0e0;font-size:12px">${d.class || '—'}</td>
         <td style="padding:6px 10px;border-bottom:1px solid #e0e0e0;font-size:12px">${d.halfLife?.drug || '—'}</td>
+        <td style="padding:6px 10px;border-bottom:1px solid #e0e0e0;font-size:12px">${d.elimination ? escMonitoring(d.elimination.summary) : '—'}</td>
         <td style="padding:6px 10px;border-bottom:1px solid #e0e0e0;font-size:12px">${d.mechanism || (d.receptorKi ? 'Receptor-mediated (see binding)' : '—')}</td>
       </tr>`;
     }).join('');
@@ -4095,6 +4113,7 @@ function initMedCompare() {
       <th style="${thStyle}">Drug</th>
       <th style="${thStyle}">Class</th>
       <th style="${thStyle}">Half-Life</th>
+      <th style="${thStyle}">Elimination</th>
       <th style="${thStyle}">Mechanism</th>
     </tr></thead>
     <tbody>${drugSummaryRows}</tbody>
