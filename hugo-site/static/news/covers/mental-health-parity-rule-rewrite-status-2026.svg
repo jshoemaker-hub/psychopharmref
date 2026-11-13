@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="A balance scale holding a brain-shaped weight and a heart-shaped weight, standing on an open rule book whose page is being redrafted with a red pencil.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4efe6"/>
+      <stop offset="1" stop-color="#e2d9c8"/>
+    </linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="2" fill="#6b6050" opacity="0.12"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#dots)"/>
+  <circle cx="600" cy="320" r="270" fill="#ece6db"/>
+  <rect x="0" y="580" width="1200" height="95" fill="#6b6050" opacity="0.18"/>
+  <!-- open book -->
+  <path d="M300 540 Q450 500 600 540 Q750 500 900 540 V600 Q750 565 600 600 Q450 565 300 600 Z" fill="#6b6050"/>
+  <path d="M310 520 Q455 480 598 520 V585 Q455 548 310 585 Z" fill="#ffffff" stroke="#231e14" stroke-width="4"/>
+  <path d="M602 520 Q745 480 890 520 V585 Q745 548 602 585 Z" fill="#ffffff" stroke="#231e14" stroke-width="4"/>
+  <g stroke="#6b6050" stroke-width="5" stroke-linecap="round" opacity="0.5">
+    <path d="M345 525 Q440 505 560 527"/>
+    <path d="M345 550 Q440 530 560 552"/>
+    <path d="M640 527 Q760 505 855 525"/>
+  </g>
+  <!-- red redraft strike and new line -->
+  <path d="M640 552 Q760 530 855 550" stroke="#8a3b2e" stroke-width="6" stroke-linecap="round"/>
+  <path d="M650 566 l30 -14 l30 12 l30 -14 l30 12 l30 -14" fill="none" stroke="#8a3b2e" stroke-width="4" stroke-linecap="round"/>
+  <!-- pencil -->
+  <g transform="rotate(-35 930 470)">
+    <rect x="860" y="455" width="170" height="30" rx="4" fill="#8a3b2e"/>
+    <rect x="1030" y="455" width="24" height="30" fill="#c9a24a"/>
+    <path d="M860 455 L825 470 L860 485 Z" fill="#e2d9c8" stroke="#231e14" stroke-width="2"/>
+    <path d="M836 465 L825 470 L836 475 Z" fill="#231e14"/>
+  </g>
+  <!-- scale -->
+  <rect x="588" y="160" width="24" height="345" rx="6" fill="#231e14"/>
+  <path d="M530 510 h140 l-20 -30 h-100 Z" fill="#231e14"/>
+  <circle cx="600" cy="152" r="20" fill="#8a3b2e"/>
+  <rect x="370" y="170" width="460" height="16" rx="8" fill="#231e14"/>
+  <!-- left pan -->
+  <line x1="390" y1="186" x2="335" y2="340" stroke="#231e14" stroke-width="4"/>
+  <line x1="390" y1="186" x2="445" y2="340" stroke="#231e14" stroke-width="4"/>
+  <path d="M310 340 h160 a80 34 0 0 1 -160 0 Z" fill="#c9a24a"/>
+  <!-- brain weight -->
+  <g fill="#d98b5f" stroke="#231e14" stroke-width="4">
+    <path d="M335 335 a30 30 0 0 1 10 -50 a32 32 0 0 1 45 -18 a32 32 0 0 1 45 18 a30 30 0 0 1 10 50 Z"/>
+  </g>
+  <path d="M390 270 v62 M362 300 q14 -10 28 0 M390 300 q14 -10 28 0" fill="none" stroke="#231e14" stroke-width="4" stroke-linecap="round"/>
+  <!-- right pan -->
+  <line x1="810" y1="186" x2="755" y2="340" stroke="#231e14" stroke-width="4"/>
+  <line x1="810" y1="186" x2="865" y2="340" stroke="#231e14" stroke-width="4"/>
+  <path d="M730 340 h160 a80 34 0 0 1 -160 0 Z" fill="#c9a24a"/>
+  <!-- heart weight -->
+  <path d="M810 336 C760 300 760 262 788 258 C802 256 810 266 810 276 C810 266 818 256 832 258 C860 262 860 300 810 336 Z" fill="#8a3b2e" stroke="#231e14" stroke-width="4"/>
+</svg>

@@ -1,0 +1,17 @@
+  <!-- Mobile app shell (≤768px only; hidden on desktop). Styles: css/mobile-app.css, behaviour: js/mobile-app.js -->
+  <header class="ma-topbar">
+    <button type="button" class="ma-back" aria-label="Back">
+      <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg>
+    </button>
+    <a class="ma-brand" href="/">PsychoPharm<span>Ref</span></a>
+    <button type="button" class="ma-search" aria-label="Search drugs, tools and chapters">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    </button>
+  </header>
+  <nav class="ma-tabbar" aria-label="App sections">
+    <a class="ma-tab" href="/" data-ma-tab="home"><span class="ma-ico"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span>Home</a>
+    <a class="ma-tab" href="/#drug-table" data-ma-tab="drugs" data-go="drug-table"><span class="ma-ico"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5 3.5 13.5a5 5 0 0 1 7-7l7 7a5 5 0 0 1-7 7z"/><path d="m8.5 8.5 7 7"/></svg></span>Drugs</a>
+    <button type="button" class="ma-tab" data-ma-tab="tools" aria-label="Clinical tools menu"><span class="ma-ico"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9z"/><path d="M9 12h6M9 16h4"/></svg></span>Tools</button>
+    <a class="ma-tab" href="/#blog-index" data-ma-tab="learn" data-go="blog-index"><span class="ma-ico"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/><path d="M8 7h7"/></svg></span>Learn</a>
+    <a class="ma-tab" href="/#p450" data-ma-tab="interact" data-go="p450"><span class="ma-ico"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h13l-3-3"/><path d="M17 17H4l3 3"/></svg></span>Interactions</a>
+  </nav>

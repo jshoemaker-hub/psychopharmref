@@ -1,14 +1,27 @@
 {
+  "id": "/",
   "name": "PsychoPharmRef",
   "short_name": "PsychoPharmRef",
   "description": "Clinical psychopharmacology reference for psychiatrists, residents, and students.",
+  "lang": "en-US",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#f5f0e8",
+  "background_color": "#f5f0e8",
+  "categories": ["medical", "education", "reference"],
   "icons": [
-    { "src": "/favicon-192.png", "type": "image/png", "sizes": "192x192" },
-    { "src": "/favicon-512.png", "type": "image/png", "sizes": "512x512" },
+    { "src": "/favicon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any" },
+    { "src": "/favicon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any" },
+    { "src": "/icon-maskable-192.png", "type": "image/png", "sizes": "192x192", "purpose": "maskable" },
+    { "src": "/icon-maskable-512.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" },
     { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" }
   ],
-  "theme_color": "#4a7c35",
-  "background_color": "#f5f0e8",
-  "display": "standalone",
-  "start_url": "/"
+  "shortcuts": [
+    { "name": "Drug Database", "short_name": "Drugs", "url": "/#drug-table", "icons": [{ "src": "/favicon-192.png", "sizes": "192x192" }] },
+    { "name": "P450 Interactions", "short_name": "Interactions", "url": "/#p450", "icons": [{ "src": "/favicon-192.png", "sizes": "192x192" }] },
+    { "name": "Clinical Tools", "short_name": "Tools", "url": "/tools/", "icons": [{ "src": "/favicon-192.png", "sizes": "192x192" }] },
+    { "name": "Chapters", "short_name": "Learn", "url": "/#blog-index", "icons": [{ "src": "/favicon-192.png", "sizes": "192x192" }] }
+  ]
 }

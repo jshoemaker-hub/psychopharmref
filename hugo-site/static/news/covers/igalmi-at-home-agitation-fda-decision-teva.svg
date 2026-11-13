@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="A small blue sublingual film resting in front of a simple house outline, with a calendar page marked for mid-November.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4efe6"/>
+      <stop offset="1" stop-color="#e2d9c8"/>
+    </linearGradient>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="2" fill="#6b6050" opacity="0.12"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#dots)"/>
+  <circle cx="600" cy="350" r="255" fill="#ece6db"/>
+  <circle cx="600" cy="350" r="255" fill="none" stroke="#2f6f8f" stroke-width="3" opacity="0.35"/>
+  <!-- house -->
+  <g transform="translate(600 360)">
+    <path d="M-220 -20 L0 -210 L220 -20" fill="none" stroke="#231e14" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+    <rect x="-180" y="-40" width="360" height="230" fill="#f4efe6" stroke="#231e14" stroke-width="8"/>
+    <rect x="120" y="-170" width="40" height="80" fill="#231e14"/>
+    <rect x="-140" y="10" width="80" height="70" fill="#9fb88f" stroke="#231e14" stroke-width="5"/>
+    <line x1="-100" y1="10" x2="-100" y2="80" stroke="#231e14" stroke-width="4"/>
+    <line x1="-140" y1="45" x2="-60" y2="45" stroke="#231e14" stroke-width="4"/>
+    <rect x="60" y="40" width="70" height="150" fill="#c9a24a" stroke="#231e14" stroke-width="5"/>
+    <circle cx="115" cy="120" r="6" fill="#231e14"/>
+  </g>
+  <!-- film -->
+  <g transform="translate(560 470) rotate(-8)">
+    <rect x="-10" y="6" width="200" height="120" rx="14" fill="#231e14" opacity="0.15"/>
+    <rect x="-20" y="-10" width="200" height="120" rx="14" fill="#2f6f8f" stroke="#231e14" stroke-width="5"/>
+    <rect x="-8" y="2" width="176" height="96" rx="10" fill="#4f8fae" opacity="0.6"/>
+    <circle cx="40" cy="50" r="16" fill="#1f4f66"/>
+    <circle cx="120" cy="50" r="16" fill="#1f4f66"/>
+  </g>
+  <!-- calendar -->
+  <g transform="translate(860 100) rotate(6)">
+    <rect x="8" y="10" width="190" height="180" rx="14" fill="#231e14" opacity="0.12"/>
+    <rect x="0" y="0" width="190" height="180" rx="14" fill="#f4efe6" stroke="#231e14" stroke-width="5"/>
+    <rect x="0" y="0" width="190" height="48" rx="14" fill="#2f6f8f"/>
+    <rect x="0" y="34" width="190" height="14" fill="#2f6f8f"/>
+    <g fill="#6b6050" opacity="0.45">
+      <rect x="18" y="66" width="22" height="18" rx="3"/><rect x="52" y="66" width="22" height="18" rx="3"/><rect x="86" y="66" width="22" height="18" rx="3"/><rect x="120" y="66" width="22" height="18" rx="3"/><rect x="154" y="66" width="22" height="18" rx="3"/>
+      <rect x="18" y="100" width="22" height="18" rx="3"/><rect x="52" y="100" width="22" height="18" rx="3"/><rect x="86" y="100" width="22" height="18" rx="3"/><rect x="120" y="100" width="22" height="18" rx="3"/>
+      <rect x="18" y="134" width="22" height="18" rx="3"/><rect x="52" y="134" width="22" height="18" rx="3"/><rect x="86" y="134" width="22" height="18" rx="3"/><rect x="120" y="134" width="22" height="18" rx="3"/><rect x="154" y="134" width="22" height="18" rx="3"/>
+    </g>
+    <rect x="154" y="100" width="22" height="18" rx="3" fill="#d98b5f"/>
+    <circle cx="165" cy="109" r="22" fill="none" stroke="#2f6f8f" stroke-width="5"/>
+  </g>
+  <g transform="translate(170 150)" fill="#6b6050" opacity="0.3">
+    <circle cx="0" cy="0" r="10"/><circle cx="40" cy="22" r="6"/><circle cx="12" cy="52" r="7"/>
+  </g>
+</svg>
