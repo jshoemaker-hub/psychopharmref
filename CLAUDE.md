@@ -124,6 +124,7 @@ var dateStr = ToolUtils.dateStamp();
 - `sa-` → OTC / Non-Prescription Sleep Aid Comparison
 - `fw-` → Fatigue / Low Energy Workup (tiered symptom → labs + differential)
 - `nw-` → Newsroom (home-page front page, `/news/` archive and article pages)
+- `ma-` → Mobile app shell (phone top bar, bottom tab bar, home tiles, install card; `css/mobile-app.css` + `js/mobile-app.js`)
 
 ### Copy-to-Clipboard Pattern
 Never use `alert()`. Always use `ToolUtils.copyWithButton()` for new tools:
@@ -196,6 +197,14 @@ The home page opens with a news-style front page ("Today in Psychopharmacology")
 - `hugo-site/data/around_the_web.yaml`: pool of outside newsletters and podcasts. Six rotate onto the front page each week (Mon–Sun), plus a daily pick.
 
 **Scheduling:** `buildFuture = true`, so pieces are built ahead of time and shown from their `date` in the reader's time zone. The front page shows the last 7 days (backfilled from the archive if fewer than 5), so one piece per day gives daily news and a full weekly turnover. Preview any day with `/?nwdate=YYYY-MM-DD`. Write a week's slate with the `newsroom-week` skill. News desks (FDA, policy) must be web-researched on the day of writing and cite primary sources.
+
+### Mobile app shell & offline (PWA)
+On phones (≤768px) every page gets a top bar and a bottom tab bar (Home · Drugs · Tools · Learn · Interactions), and the SPA home gets quick tiles, "Recently viewed" and an install card. Desktop is unchanged (all `.ma-*` elements are hidden above 768px).
+- Markup: `hugo-site/layouts/partials/mobile-chrome.html` (included by `baseof.html`). `index.html` carries a **copy** of the same markup right after `#sidebar-overlay`; edit both together.
+- Styles `css/mobile-app.css`, behaviour `js/mobile-app.js` (loaded by `index.html` and `partials/scripts.html`). Bump their `?v=` on every edit.
+- Tab mapping (`tabForSection` in `js/mobile-app.js`): sections follow `SECTION_GROUP` from `app.js`; P450 / comparison sections go to Interactions. A new section in an existing sidebar group needs no change.
+- Offline: `/sw.js` (site root). Pages, fragments and JSON are network-first (cached copy only when offline); CSS/JS with `?v=` are cache-first, so **a cache-bust bump is what makes a change reach installed users**; images are refreshed in the background. `/offline.html` is shown for pages never visited. Bump `VERSION` in `sw.js` to wipe all cached copies. `netlify.toml` serves `/sw.js` with `no-cache`.
+- Manifest `site.webmanifest`; maskable icons `icon-maskable-192/512.png` (whitelisted in `.gitignore`).
 
 ### Sidebar Navigation (index.html)
 - Psychopharmacology group includes: Drug Database, P450 Interactions, Receptor Binding, Receptor Glossary, PK Curves, Med Comparison

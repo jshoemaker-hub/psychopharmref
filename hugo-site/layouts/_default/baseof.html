@@ -9,7 +9,7 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   {{- /* Keep titles within ~60 characters: only short titles get the site-name suffix */}}
   {{- $t := .Params.seoTitle | default .Title }}
   <title>{{ if gt (len $t) 43 }}{{ $t }}{{ else }}{{ $t }} - PsychoPharmRef{{ end }}</title>
@@ -38,8 +38,14 @@
   <link rel="icon" type="image/png" sizes="192x192" href="{{ "favicon-192.png" | relURL }}">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
   <link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
+  <meta name="theme-color" content="#f5f0e8">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="PsychoPharmRef">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}?v=20261023a">
   <link rel="stylesheet" href="{{ "css/blog.css" | relURL }}?v=20261023a">
+  <link rel="stylesheet" href="{{ "css/mobile-app.css" | relURL }}?v=20261112a">
   <style>
     .ba-action-bar{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 14px;padding:6px 0;border-bottom:1px solid var(--border,#cfc8ba)}
     .ba-act-btn{display:inline-flex;align-items:center;gap:3px;padding:4px 9px;border-radius:4px;font-size:11px;font-weight:600;border:1px solid var(--border,#cfc8ba);background:var(--bg2,#ece6db);color:var(--text,#231e14);cursor:pointer;text-decoration:none;transition:background .15s,border-color .15s}
@@ -115,6 +121,7 @@
     <span></span><span></span><span></span>
   </button>
   <div id="sidebar-overlay"></div>
+  {{ partial "mobile-chrome.html" . }}
 
   {{ partial "sidebar.html" . }}
 

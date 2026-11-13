@@ -16,6 +16,7 @@ notes/
 !hugo-site/static/favicon-*.png
 !hugo-site/static/apple-touch-icon.png
 !hugo-site/static/og-image.png
+!hugo-site/static/icon-maskable-*.png
 
 # EXCEPTION: per-chapter NotebookLM slide decks ship with the site
 !blog/slides/**
