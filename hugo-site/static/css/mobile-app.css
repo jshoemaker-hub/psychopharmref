@@ -1,0 +1,254 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   PsychoPharmRef mobile app shell  (prefix: ma-)
+   Phones only (≤768px). On wider screens every .ma-* element stays hidden
+   and nothing else on the page changes.
+
+   Pieces:
+     .ma-topbar   fixed top bar: menu button slot, Back (installed app only),
+                  brand, search
+     .ma-tabbar   fixed bottom tab bar: Home · Drugs · Tools · Learn · Interactions
+     .ma-home     home-screen quick tiles, recently viewed, install card
+                  (SPA overview section only)
+   Behaviour lives in js/mobile-app.js.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.ma-topbar,
+.ma-tabbar,
+.ma-home { display: none; }
+
+@media (max-width: 768px) {
+  :root {
+    --ma-top: 56px;
+    --ma-tab: 60px;
+    --ma-safe-t: env(safe-area-inset-top, 0px);
+    --ma-safe-b: env(safe-area-inset-bottom, 0px);
+    --ma-green: #3d6a2b;       /* accent darkened so small text passes 4.5:1 */
+    --ma-green-soft: #e3eedb;
+    --ma-muted: #6b604c;
+  }
+
+  /* ── Top bar ─────────────────────────────────────────────────────────── */
+  .ma-topbar {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 95;                       /* under the sidebar (100) and its overlay (99) */
+    box-sizing: border-box;
+    height: calc(var(--ma-top) + var(--ma-safe-t));
+    padding: var(--ma-safe-t) 6px 0 58px;  /* left slot holds #mobile-menu-btn */
+    background: rgba(245, 240, 232, 0.94);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .ma-back,
+  .ma-search {
+    flex: none;
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0;
+    border: 0; border-radius: 22px;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .ma-back { display: none; }
+  .ma-topbar.ma-has-back .ma-back { display: flex; }
+  .ma-back:active, .ma-search:active { background: var(--bg3); }
+  .ma-back svg, .ma-search svg { flex: none; width: 22px; height: 22px; }
+  .ma-brand {
+    flex: 1;
+    min-width: 0;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 4px;
+  }
+  .ma-brand span { color: var(--ma-green); }
+
+  /* Existing hamburger sits in the top bar's left slot. */
+  #mobile-menu-btn {
+    top: calc(6px + var(--ma-safe-t));
+    left: 8px;
+  }
+  body:not(.sidebar-is-open) #mobile-menu-btn {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  /* ── Bottom tab bar ──────────────────────────────────────────────────── */
+  .ma-tabbar {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 90;
+    box-sizing: border-box;
+    height: calc(var(--ma-tab) + var(--ma-safe-b));
+    padding: 4px 4px var(--ma-safe-b);
+    background: var(--card);
+    border-top: 1px solid var(--border);
+  }
+  .ma-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-height: 48px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    font-size: 10.5px;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--ma-muted);
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .ma-ico {
+    display: flex; align-items: center; justify-content: center;
+    width: 52px; height: 28px;
+    border-radius: 14px;
+    transition: background-color 0.15s;
+  }
+  .ma-ico svg { width: 22px; height: 22px; }
+  .ma-tab.is-active { color: var(--ma-green); }
+  .ma-tab.is-active .ma-ico { background: var(--ma-green-soft); }
+  .ma-tab:focus-visible { outline: 2px solid var(--ma-green); outline-offset: -2px; border-radius: 10px; }
+
+  /* Keyboard up: get the tab bar out of the way. */
+  body.ma-typing .ma-tabbar { display: none; }
+
+  /* ── Room for the bars ───────────────────────────────────────────────── */
+  body { padding-bottom: calc(var(--ma-tab) + var(--ma-safe-b)); }
+  #content .section { padding-top: calc(var(--ma-top) + var(--ma-safe-t) + 16px); }
+  #content > .container { padding-top: calc(var(--ma-top) + var(--ma-safe-t) + 16px); }
+  html { scroll-padding-top: calc(var(--ma-top) + var(--ma-safe-t) + 8px); }
+
+  /* Home hero: the brand is already in the top bar. */
+  #overview .home-hero-header { text-align: left; margin-bottom: 4px; }
+  #overview .home-hero-header h2 { font-size: 24px; }
+  #overview .home-hero-header .section-sub { display: none; }
+
+  /* ── Home: quick tiles, recently viewed, install ─────────────────────── */
+  .ma-home {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin: 4px 0 28px;
+  }
+  .ma-tiles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .ma-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 104px;
+    box-sizing: border-box;
+    padding: 14px;
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+  }
+  .ma-tile svg { width: 24px; height: 24px; color: var(--ma-green); }
+  .ma-tile-title { display: block; font-size: 15px; font-weight: 700; }
+  .ma-tile-sub { display: block; font-size: 12.5px; color: var(--ma-muted); margin-top: 2px; }
+  .ma-tile--primary { background: var(--ma-green); border-color: var(--ma-green); color: #fefcf8; }
+  .ma-tile--primary svg,
+  .ma-tile--primary .ma-tile-sub { color: #fefcf8; }
+  .ma-tile:active { transform: scale(0.98); }
+
+  .ma-block-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 0 2px 8px;
+  }
+  .ma-block-title {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ma-muted);
+  }
+  .ma-link-btn {
+    border: 0; background: transparent; padding: 6px 4px;
+    font: inherit; font-size: 13px; font-weight: 600;
+    color: var(--ma-green); cursor: pointer;
+  }
+  .ma-list {
+    list-style: none;
+    margin: 0; padding: 0;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .ma-list li + li { border-top: 1px solid var(--bg3); }
+  .ma-list a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 52px;
+    padding: 6px 14px 6px 16px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .ma-list-title { flex: 1; min-width: 0; font-size: 15px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ma-list-kind { flex: none; font-size: 12px; color: var(--ma-muted); }
+
+  .ma-install {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    border-radius: 16px;
+    background: var(--text);
+    color: #fefcf8;
+  }
+  .ma-install[hidden] { display: none; }
+  .ma-install-title { margin: 0; font-size: 16px; font-weight: 700; }
+  .ma-install-text { margin: 0; font-size: 14px; line-height: 1.5; color: #e4dccd; }
+  .ma-install-actions { display: flex; gap: 8px; }
+  .ma-install-btn {
+    flex: 1;
+    height: 46px;
+    border-radius: 12px;
+    border: 0;
+    font: inherit; font-size: 15px; font-weight: 700;
+    background: #e9c46a; color: var(--text);
+    cursor: pointer;
+  }
+  .ma-install-btn[hidden] { display: none; }
+  .ma-install-dismiss {
+    height: 46px;
+    padding: 0 16px;
+    border-radius: 12px;
+    border: 1px solid #6b604c;
+    background: transparent;
+    color: #fefcf8;
+    font: inherit; font-size: 14px; font-weight: 600;
+    cursor: pointer;
+  }
+}
+
+@media print {
+  .ma-topbar, .ma-tabbar, .ma-home { display: none !important; }
+}
