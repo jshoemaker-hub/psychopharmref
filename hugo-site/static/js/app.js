@@ -4754,11 +4754,15 @@ function initMedTaper() {
 
   function fmtRelativeDate(isoDate) {
     if (!isoDate) return 'Not yet scraped';
-    const d = new Date(isoDate);
+    // Date-only stamps are noon local, same as the price cells, so a US timezone
+    // does not show the previous calendar day. A future CMS snapshot is not "today".
+    const normalized = /^\d{4}-\d{2}-\d{2}$/.test(isoDate) ? isoDate + 'T12:00:00' : isoDate;
+    const d = new Date(normalized);
     if (Number.isNaN(d.getTime())) return 'Unknown';
     const diffMs = Date.now() - d.getTime();
     const days = Math.floor(diffMs / 86400000);
     const human = d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    if (days < 0) return human;
     if (days < 1) return `${human} (today)`;
     if (days === 1) return `${human} (yesterday)`;
     if (days < 14) return `${human} (${days} days ago)`;
