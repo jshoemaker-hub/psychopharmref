@@ -43,8 +43,9 @@
   </div>
 
   <footer class="ba-footer" style="margin-top:40px;">
-    <p><strong>PsychoPharmRef Clinical Reference</strong> | A resource for medical professionals | Page updated {{ .Lastmod.Format "January 2, 2006" }}</p>
-    <p style="margin-top:10px;font-size:12px;">This tool is intended for educational purposes for healthcare professionals. Clinical decision-making should incorporate individual patient assessment and current guidelines.</p>
+    <p><strong>PsychoPharmRef</strong> | For clinicians and trainees | {{ site.Params.author }} | Page updated {{ .Lastmod.Format "January 2, 2006" }}</p>
+    <p style="margin-top:10px;font-size:12px;">This tool is for education. Clinical decisions still depend on the individual patient and current labeling.</p>
+    {{ partial "trust-links.html" . }}
   </footer>
 </article>
 
@@ -53,5 +54,6 @@
   <h2 class="nl-cta-title">PsychoPharmRef Newsletter</h2>
   <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
   <a href="https://subscribe-forms.beehiiv.com/5f2b3081-aa41-452c-95c8-69a5ae899cf8" target="_blank" rel="noopener" class="nl-subscribe-btn">Subscribe — it's free</a>
+  <p class="nl-archive-link"><a href="https://psychopharmref.beehiiv.com/" target="_blank" rel="noopener">Read past issues</a></p>
 </div>
 {{ end }}

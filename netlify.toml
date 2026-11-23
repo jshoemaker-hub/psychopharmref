@@ -53,3 +53,41 @@
   for = "/blog/slides/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
+
+# Canonical-host cleanup. force is required where a real file would otherwise win.
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sitemap-manual.xml"
+  to = "/sitemap.xml"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 301
+
+[[redirects]]
+  from = "/legal-disclaimer"
+  to = "/legal-disclaimer.html"
+  status = 301
+
+[[redirects]]
+  from = "/editorial-policy"
+  to = "/editorial-policy.html"
+  status = 301
+
+[[redirects]]
+  from = "/handouts/:name"
+  to = "/handouts/:name.html"
+  status = 301
+
+[[redirects]]
+  from = "/blog/:slug/:file.html"
+  to = "/blog/:file/"
+  status = 301

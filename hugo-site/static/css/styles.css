@@ -5327,3 +5327,11 @@ details[open] > .qt-panel-title::before { transform: rotate(90deg); }
 .nl-blog-cta .nl-cta-title { font-size: 16px; font-weight: 700; line-height: 25.6px; margin: 0 0 6px; padding: 0; border: 0; color: #fff; letter-spacing: normal; text-transform: none; }
 .filter-panel .filter-panel-title { font-size: 12.5px; font-weight: 700; line-height: 18.75px; margin: 0 0 8px; padding: 0; border: 0; color: var(--text-muted, #6b6050); letter-spacing: 0.8px; text-transform: uppercase; }
 .qt-thresholds-title { font-size: 15px; font-weight: 700; line-height: 1.4; padding: 0; border: 0; }
+
+.site-footer{max-width:900px;margin:28px auto 8px;padding:16px 20px 4px;border-top:1px solid var(--border);font-size:13.5px;line-height:1.5;color:var(--text-muted)}
+.site-footer p{margin:0 0 4px}
+.site-trust-links{display:flex;flex-wrap:wrap;gap:4px 16px;margin:8px 0 0}
+.site-trust-links a{color:var(--accent);text-decoration:none;min-height:44px;display:inline-flex;align-items:center;font-weight:600}
+.site-trust-links a:hover{text-decoration:underline}
+.nl-archive-link{margin:8px 0 0;font-size:13px}
+.nl-archive-link a{color:var(--accent)}
