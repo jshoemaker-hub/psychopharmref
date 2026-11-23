@@ -18,7 +18,7 @@
       <a href="{{ .Permalink }}" class="blog-post-card">
         <div class="bpc-category">{{ .Params.category }}</div>
         <h2 class="bpc-title">{{ .Title }}</h2>
-        <p class="bpc-excerpt">{{ .Description }}</p>
+        <p class="bpc-excerpt">{{ .Description | default .Summary | plainify | truncate 140 }}</p>
         <span class="bpc-cta">Read article →</span>
       </a>
     {{ end }}
@@ -26,7 +26,9 @@
   </div>
 
   <footer class="ba-footer">
-    <p><strong>PsychoPharmRef</strong> | A resource for medical professionals | Data current as of {{ now.Format "January 2006" }}</p>
+    <p><strong>PsychoPharmRef</strong> | For clinicians and trainees | {{ site.Params.author }}. Each chapter shows its own published date and, when the text has changed, an updated date.</p>
+    <p class="nl-archive-link">The <a href="https://psychopharmref.beehiiv.com/" target="_blank" rel="noopener">newsletter</a> is separate from these chapters. Issues are not republished here.</p>
+    {{ partial "trust-links.html" . }}
   </footer>
 </article>
 {{ end }}

@@ -1,1 +1,13 @@
 /therapy-tools/*  /handouts/:splat  301
+# Duplicate homepage file. The canonical URL is /.
+/index.html  /  301!
+# Stale sitemap of pre-Hugo .html chapter URLs. The live sitemap is /sitemap.xml.
+/sitemap-manual.xml  /sitemap.xml  301!
+# Netlify pretty URLs also answer these without .html. Send them to the canonical file.
+/privacy  /privacy.html  301
+/legal-disclaimer  /legal-disclaimer.html  301
+/editorial-policy  /editorial-policy.html  301
+/handouts/:name  /handouts/:name.html  301
+# Chapter bodies used to link to a sibling .html file. From /blog/<current>/ that
+# resolved under the current chapter and 404ed. Send the target slug to its chapter.
+/blog/:slug/:file.html  /blog/:file/  301

@@ -1,0 +1,36 @@
+{{- /* Structured data that matches the visible page. Dates come from front matter
+     (date / lastmod). Newsroom bylines are house pen names, so the author is the
+     organization and the editor is the person named in the disclosure. */ -}}
+{{- $desc := .Description | default .Summary | plainify | replaceRE `\s+` " " | replaceRE `^\s+|\s+$` "" | truncate 300 | htmlUnescape -}}
+{{- $published := .Date.Format "2006-01-02" -}}
+{{- $modified := .Lastmod.Format "2006-01-02" -}}
+{{- $pageURL := .Permalink -}}
+{{- $org := dict "@type" "Organization" "name" "PsychoPharmRef" "url" "https://psychopharmref.com/" -}}
+{{- $person := dict "@type" "Person" "name" site.Params.author "jobTitle" site.Params.authorJobTitle -}}
+{{- $image := "https://psychopharmref.com/og-image.png" -}}
+{{- if eq .Section "news" -}}
+  {{- with (or .Params.photo .Params.cover) -}}
+    {{- $image = . | absURL -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $node := dict "@context" "https://schema.org" "@type" "WebPage" "name" .Title "description" $desc "url" $pageURL "isPartOf" (dict "@type" "WebSite" "name" "PsychoPharmRef" "url" "https://psychopharmref.com/") -}}
+{{- if and (eq .Section "blog") (eq .Kind "page") -}}
+  {{- $node = dict "@context" "https://schema.org" "@type" "Article" "headline" .Title "description" $desc "url" $pageURL "mainEntityOfPage" $pageURL "datePublished" $published "dateModified" $modified "image" (slice $image) "author" $person "publisher" $org -}}
+{{- else if and (eq .Section "news") (eq .Kind "page") -}}
+  {{- $node = dict "@context" "https://schema.org" "@type" "NewsArticle" "headline" .Title "description" $desc "url" $pageURL "mainEntityOfPage" $pageURL "datePublished" $published "dateModified" $modified "image" (slice $image) "author" $org "editor" $person "publisher" $org -}}
+{{- else if and (eq .Section "tools") (eq .Kind "page") -}}
+  {{- $node = dict "@context" "https://schema.org" "@type" "WebPage" "name" .Title "description" $desc "url" $pageURL "dateModified" $modified "author" $person "publisher" $org "isPartOf" (dict "@type" "WebSite" "name" "PsychoPharmRef" "url" "https://psychopharmref.com/") -}}
+{{- end -}}
+<script type="application/ld+json">{{ $node | jsonify | safeJS }}</script>
+{{- $crumbs := slice (dict "@type" "ListItem" "position" 1 "name" "Home" "item" "https://psychopharmref.com/") -}}
+{{- if eq .Kind "page" -}}
+  {{- with site.GetPage (printf "/%s" .Section) -}}
+    {{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" 2 "name" .Title "item" .Permalink) -}}
+  {{- end -}}
+  {{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" (len $crumbs | add 1) "name" .Title "item" $pageURL) -}}
+{{- else if eq .Kind "section" -}}
+  {{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" 2 "name" .Title "item" $pageURL) -}}
+{{- end -}}
+{{- $bread := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $crumbs -}}
+<script type="application/ld+json">{{ $bread | jsonify | safeJS }}</script>

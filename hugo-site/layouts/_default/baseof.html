@@ -13,13 +13,13 @@
   {{- /* Keep titles within ~60 characters: only short titles get the site-name suffix */}}
   {{- $t := .Params.seoTitle | default .Title }}
   <title>{{ if gt (len $t) 43 }}{{ $t }}{{ else }}{{ $t }} - PsychoPharmRef{{ end }}</title>
-  <meta name="description" content="{{ .Description | default .Summary | plainify | truncate 155 }}">
+  <meta name="description" content="{{ .Description | default .Summary | plainify | replaceRE `\s+` " " | replaceRE `^\s+|\s+$` "" | truncate 155 }}">
   <meta name="author" content="{{ site.Params.author }}">
 
   <!-- Open Graph -->
-  <meta property="og:type" content="article">
+  <meta property="og:type" content="{{ if and (eq .Kind "page") (or (eq .Section "blog") (eq .Section "news")) }}article{{ else }}website{{ end }}">
   <meta property="og:title" content="{{ .Title }}">
-  <meta property="og:description" content="{{ .Description | default .Summary | truncate 200 }}">
+  <meta property="og:description" content="{{ .Description | default .Summary | plainify | replaceRE `\s+` " " | replaceRE `^\s+|\s+$` "" | truncate 200 }}">
   <meta property="og:url" content="{{ .Permalink }}">
   <meta property="og:site_name" content="PsychoPharmRef">
   <meta property="og:image" content="{{ "og-image.png" | absURL }}?v=20261002">
@@ -27,7 +27,7 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ .Title }}">
-  <meta name="twitter:description" content="{{ .Description | default .Summary | truncate 200 }}">
+  <meta name="twitter:description" content="{{ .Description | default .Summary | plainify | replaceRE `\s+` " " | replaceRE `^\s+|\s+$` "" | truncate 200 }}">
   <meta name="twitter:image" content="{{ "og-image.png" | absURL }}?v=20261002">
 
   <link rel="canonical" href="{{ .Permalink }}">
@@ -43,7 +43,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="PsychoPharmRef">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}?v=20261023a">
+  <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}?v=20261123a">
   <link rel="stylesheet" href="{{ "css/blog.css" | relURL }}?v=20261023a">
   <link rel="stylesheet" href="{{ "css/mobile-app.css" | relURL }}?v=20261112a">
   <style>
@@ -90,27 +90,7 @@
     mark{background:rgba(74,124,53,0.2);color:inherit;padding:0 1px;border-radius:2px}
   </style>
 
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "{{ .Title }}",
-    "description": "{{ .Description | default .Summary | truncate 300 }}",
-    "url": "{{ .Permalink }}",
-    "datePublished": "{{ .Date.Format "2006-01-02" }}",
-    "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
-    "author": {
-      "@type": "Person",
-      "name": "{{ site.Params.author }}",
-      "jobTitle": "{{ site.Params.authorJobTitle }}"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "PsychoPharmRef"
-    }
-  }
-  </script>
+  {{ partial "jsonld.html" . }}
 
   {{ block "head" . }}{{ end }}
 </head>

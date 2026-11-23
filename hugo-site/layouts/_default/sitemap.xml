@@ -25,4 +25,7 @@
   <url>
     <loc>{{ "legal-disclaimer.html" | absURL }}</loc>
   </url>
+  <url>
+    <loc>{{ "editorial-policy.html" | absURL }}</loc>
+  </url>
 </urlset>

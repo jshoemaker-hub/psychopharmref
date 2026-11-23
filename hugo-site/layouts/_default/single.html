@@ -121,8 +121,9 @@
   {{ end }}
 
   <footer class="ba-footer">
-    <p><strong>PsychoPharmRef Clinical Review</strong> | A resource for medical professionals | Data current as of {{ now.Format "January 2006" }}</p>
-    <p style="margin-top: 15px; font-size: 12px;">This article is intended for educational purposes for healthcare professionals.</p>
+    <p><strong>PsychoPharmRef</strong> | For clinicians and trainees | {{ site.Params.author }} | Published {{ .Date.Format "January 2006" }}{{ if gt .Lastmod .Date }} | Updated {{ .Lastmod.Format "January 2, 2006" }}{{ end }}</p>
+    <p style="margin-top: 15px; font-size: 12px;">This page is for education. It is not a substitute for clinical judgment or the product label.</p>
+    {{ partial "trust-links.html" . }}
   </footer>
 </article>
 
@@ -131,5 +132,6 @@
   <h2 class="nl-cta-title">PsychoPharmRef Newsletter</h2>
   <p>Stay current with AI-assisted reviews of new psychiatric research, FDA approvals, and guideline updates.</p>
   <a href="https://subscribe-forms.beehiiv.com/5f2b3081-aa41-452c-95c8-69a5ae899cf8" target="_blank" rel="noopener" class="nl-subscribe-btn">Subscribe — it's free</a>
+  <p class="nl-archive-link"><a href="https://psychopharmref.beehiiv.com/" target="_blank" rel="noopener">Read past issues</a></p>
 </div>
 {{ end }}
